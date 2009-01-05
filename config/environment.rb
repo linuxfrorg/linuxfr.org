@@ -1,9 +1,5 @@
 # Be sure to restart your server when you modify this file
 
-# Uncomment below to force Rails into production mode when
-# you don't control web/app server and can't set it the proper way
-# ENV['RAILS_ENV'] ||= 'production'
-
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
 
@@ -18,15 +14,15 @@ Rails::Initializer.run do |config|
 
   # Skip frameworks you're not going to use. To use Rails without a database
   # you must remove the Active Record framework.
-  # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
+  config.frameworks -= [ :active_resource ]
 
   # Specify gems that this application depends on. 
   # They can then be installed with "rake gems:install" on new installations.
   # You have to specify the :lib option for libraries, where the Gem name (sqlite3-ruby) differs from the file itself (sqlite3)
-  # config.gem "bj"
-  # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
-  # config.gem "sqlite3-ruby", :lib => "sqlite3"
-  # config.gem "aws-s3", :lib => "aws/s3"
+  # gem 'will-paginate'
+  # gem 'ruby-openid'
+  # gem 'rubyist-aasm'
+  # gem 'mysql'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -35,10 +31,6 @@ Rails::Initializer.run do |config|
 
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
-
-  # Force all environments to use the same logger level
-  # (by default production uses :info, the others :debug)
-  # config.log_level = :debug
 
   # Make Time.zone default to the specified zone, and make Active Record store time values
   # in the database in UTC, and return them converted to the specified local zone.
@@ -67,7 +59,7 @@ Rails::Initializer.run do |config|
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper,
   # like if you have constraints or database-specific column types
-  # config.active_record.schema_format = :sql
+  config.active_record.schema_format = :sql
 
   # Activate observers that should always be running
   # Please note that observers generated using script/generate observer need to have an _observer suffix
