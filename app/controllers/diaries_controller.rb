@@ -1,7 +1,7 @@
 class DiariesController < ApplicationController
 
   def index
-    @diaries = Diary.all
+    @diaries = Diary.ordered.paginate :page => params[:page], :per_page => 10
   end
 
   def show

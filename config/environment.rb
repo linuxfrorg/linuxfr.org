@@ -23,6 +23,7 @@ Rails::Initializer.run do |config|
   # gem 'ruby-openid'
   # gem 'rubyist-aasm'
   # gem 'mysql'
+  # gem 'mislav-will_paginate', '~>2.1'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -65,3 +66,6 @@ Rails::Initializer.run do |config|
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 end
+
+# FIXME config.gem doesn't seem to work in rails edge
+require 'will_paginate'
