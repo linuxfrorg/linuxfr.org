@@ -19,6 +19,7 @@ class DiariesController < ApplicationController
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @diary.save
       @diary.node = Node.create(:user_id => User.new) # current_user.id)
+      flash[:success] = "Votre journal a bien été créé"
       redirect_to diaries_url
     else
       render :new
@@ -34,6 +35,7 @@ class DiariesController < ApplicationController
     @diary.attributes = params[:diary]
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @diary.save
+      flash[:success] = "Votre journal a bien été modifié"
       redirect_to diaries_url
     else
       render :edit
@@ -44,6 +46,7 @@ class DiariesController < ApplicationController
     diary = Diary.find(params[:id])
     diary.node.destroy
     diary.destroy
+    flash[:success] = "Votre journal a bien été supprimé"
     redirect_to diaries_url
   end
 end

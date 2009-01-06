@@ -1,0 +1,15 @@
+!!! Strict
+%html{html_attrs}
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html;charset=utf-8'}/
+    %title= "Linuxfr.org"
+    = stylesheet_link_tag 'style'
+
+  %body
+    %h1 LinuxFr.org
+
+    - [:error, :success, :notice].each do |type|
+      - if flash[type]
+        %div{:class => type}= flash[type]
+
+    = yield :layout
