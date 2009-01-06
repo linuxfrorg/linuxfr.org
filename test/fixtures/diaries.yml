@@ -1,0 +1,24 @@
+# == Schema Information
+# Schema version: 20090106000348
+#
+# Table name: diaries
+#
+#  id         :integer(4)      not null, primary key
+#  title      :string(255)
+#  body       :text
+#  user_id    :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  body: MyText
+  user: 
+
+two:
+  title: MyString
+  body: MyText
+  user: 

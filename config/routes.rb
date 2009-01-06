@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Contents
   map.resources :news
+  map.resources :diaries
 
   # The priority is based upon order of creation: first created -> highest priority.
 
