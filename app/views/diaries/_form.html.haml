@@ -1,0 +1,11 @@
+= form.error_messages
+
+%p
+  = form.label :title, "Sujet du journal"
+  = form.text_field :title
+%p
+  = form.label :body, "Journal complet"
+  = form.text_area :body
+%p
+  = form.submit "Prévisualiser"
+  = form.submit "Poster le journal" if @preview_mode

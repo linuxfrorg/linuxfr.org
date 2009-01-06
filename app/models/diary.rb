@@ -6,11 +6,13 @@
 #  id         :integer(4)      not null, primary key
 #  title      :string(255)
 #  body       :text
-#  user_id    :integer(4)
 #  created_at :datetime
 #  updated_at :datetime
 #
 
 class Diary < ActiveRecord::Base
-  belongs_to :user
+  has_one :node, :as => :content, :dependent => :destroy
+
+  validates_presence_of :title, :message => "Le titre est obligatoire"
+  validates_presence_of :body,  :message => "Vous ne pouvez pas poster un journal vide"
 end

@@ -4,7 +4,7 @@ class CreateNodes < ActiveRecord::Migration
       t.integer :score
       t.string :content_type
       t.integer :content_id
-
+      t.references :user
       t.timestamps
     end
   end

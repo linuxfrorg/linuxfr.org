@@ -6,7 +6,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :homesite
       t.string :jabber_id
-
       t.timestamps
     end
   end
