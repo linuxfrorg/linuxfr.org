@@ -1,0 +1,14 @@
+%h2 Se logger
+
+= form_tag session_path do |form|
+  %p
+    = form.label :login, 'Identifiant'
+    = form.text_field :login, @login
+  %p
+    = form.label :password, 'Mot de passe'
+    = form.password_field :password
+  %p
+    = form.label :remember_me, 'Se souvenir de moi'
+    = form.check_box :remember_me, '1', @remember_me
+  %p
+    = form.submit "Se logger"

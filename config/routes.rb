@@ -9,7 +9,8 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.login '/login', :controller => 'sessions', :action => 'new'
-  map.login '/logout', :controller => 'sessions', :action => 'destroy'
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+  map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
 
   # The priority is based upon order of creation: first created -> highest priority.
 

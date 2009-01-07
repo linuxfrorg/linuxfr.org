@@ -1,0 +1,18 @@
+%h2 Créer un compte utilisateur
+
+= form_for @user do |form|
+  = form.error_messages
+  %p
+    = form.label :login, 'Identifiant'
+    = form.text_field :login
+  %p
+    = form.label :email, 'Adresse email'
+    = form.text_field :email
+  %p
+    = form.label :password, 'Mot de passe'
+    = form.password_field :password
+  %p
+    = form.label :password_confirmation, 'Confirmation du mot de passe'
+    = form.password_field :password_confirmation
+  %p
+    = form.submit "S'inscrire"
