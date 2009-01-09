@@ -13,6 +13,8 @@
 class Forum < ActiveRecord::Base
   acts_as_list
 
+  has_many :posts
+
   named_scope :sorted, :order => "position ASC"
 
   validates_presence_of :title, :message => "Le titre est obligatoire"

@@ -49,4 +49,5 @@ class DiariesController < ApplicationController
     flash[:success] = "Votre journal a bien été supprimé"
     redirect_to diaries_url
   end
+
 end

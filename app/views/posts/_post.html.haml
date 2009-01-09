@@ -1,0 +1,6 @@
+.post{:id => "post-#{post.id}"}
+  %h3
+    = link_to post.forum.title, post.forum
+    = " : "
+    = link_to post.title, [post.forum, post]
+  .content= post.body

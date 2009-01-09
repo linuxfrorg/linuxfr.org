@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   # Contents
   map.resources :news
   map.resources :diaries
+  map.resources :forums, :has_many => [:posts]
 
   # User account and session
   map.resources :users
@@ -13,7 +14,6 @@ ActionController::Routing::Routes.draw do |map|
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
 
   # TODO admin
-  map.resources :forums
 
   # The priority is based upon order of creation: first created -> highest priority.
 

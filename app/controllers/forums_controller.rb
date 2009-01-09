@@ -45,4 +45,5 @@ class ForumsController < ApplicationController
     flash[:success] = "Forum supprimé"
     redirect_to forums_url
   end
+
 end

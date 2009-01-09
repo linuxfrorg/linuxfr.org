@@ -69,7 +69,9 @@ class UsersController < ApplicationController
   # supply their old password along with a new one to update it, etc.
 
 protected
+
   def find_user
     @user = User.find(params[:id])
   end
+
 end
