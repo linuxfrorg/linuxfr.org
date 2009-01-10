@@ -11,11 +11,8 @@
 #  updated_at :datetime
 #
 
-class Post < ActiveRecord::Base
+class Post < Content
   belongs_to :forum
-  has_one :node, :as => :content, :dependent => :destroy
-
-  named_scope :sorted, :order => "created_at DESC"
 
   validates_presence_of :forum, :message => "Vous devez choisir un forum"
   validates_presence_of :title, :message => "Le titre est obligatoire"
