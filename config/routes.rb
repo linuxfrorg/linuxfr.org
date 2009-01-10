@@ -4,6 +4,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :diaries
   map.resources :forums, :has_many => [:posts]
 
+  # TODO Nodes
+  map.resources :nodes, :has_many => [:comments]
+
   # User account and session
   map.resources :users
   map.resource :session

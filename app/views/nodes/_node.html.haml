@@ -1,0 +1,7 @@
+.comments
+  %p
+    = link_to "Envoyer un commentaire", new_node_comment_url(node)
+  %p
+    %b Note
+    \: les commentaires appartiennent à ceux qui les ont postés. Nous n'en sommes pas responsables.
+  = render node.comments.roots

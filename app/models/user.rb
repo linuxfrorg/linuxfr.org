@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
   include Authorization::AasmRoles
 
   has_many :nodes
+  has_many :comments
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40

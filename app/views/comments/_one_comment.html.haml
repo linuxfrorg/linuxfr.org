@@ -1,0 +1,3 @@
+.comment{:id => "comment-#{one_comment.id}"}
+  %h4= link_to "Commentaire : #{one_comment.title}", [one_comment.node, one_comment]
+  .content= one_comment.body

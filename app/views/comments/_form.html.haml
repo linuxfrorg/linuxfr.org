@@ -1,0 +1,11 @@
+= form.error_messages
+
+%p
+  = form.label :title, "Sujet du commentaire"
+  = form.text_field :title
+%p
+  = form.label :body, "Commentaire complet"
+  = form.text_area :body
+%p
+  = form.submit "Prévisualiser"
+  = form.submit "Poster le commentaire" if @preview_mode

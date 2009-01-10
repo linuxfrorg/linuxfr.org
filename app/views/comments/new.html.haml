@@ -1,0 +1,6 @@
+%h2 &Eacute;crire un commentaire
+
+= render :partial => "preview", :object => @comment if @preview_mode
+
+= form_for [@comment.node, @comment] do |form|
+  = render form

@@ -1,0 +1,4 @@
+.comment{:id => "comment-#{comment.id}"}
+  %h4= link_to "Commentaire : #{comment.title}", [comment.node, comment]
+  .content= comment.body
+  = render comment.children
