@@ -1,4 +1,10 @@
-.comment{:id => "comment-#{comment.id}"}
-  %h4= link_to "Commentaire : #{comment.title}", [comment.node, comment]
-  .content= comment.body
-  = render comment.children
+%li.comment{:id => "comment-#{comment.id}"}
+  %h4
+    = link_to "Commentaire : #{comment.title}", [comment.node, comment]
+  .content
+    = comment.body
+  %p
+    = link_to "Répondre", answer_comment_url(:node_id => comment.node_id, :parent_id => comment.id)
+  - if not comment.children.empty?
+    %ul
+      = render comment.children

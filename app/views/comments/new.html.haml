@@ -3,4 +3,5 @@
 = render :partial => "preview", :object => @comment if @preview_mode
 
 = form_for [@comment.node, @comment] do |form|
+  = form.hidden_field :parent_id
   = render form

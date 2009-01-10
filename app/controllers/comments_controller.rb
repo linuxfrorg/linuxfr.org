@@ -12,6 +12,11 @@ class CommentsController < ApplicationController
   def new
     @preview_mode = false
     @comment = @node.comments.build
+    if params[:parent_id]
+      parent = Comment.find(params[:parent_id])
+      @comment.parent_id = parent.id
+      @comment.title = "Re: #{parent.title}"
+    end
   end
 
   def create
@@ -19,13 +24,14 @@ class CommentsController < ApplicationController
     @comment.attributes = params[:comment]
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @comment.save
-      if params[:parent_id]
-        parent = Comment.find(params[:parent_id])
+      if params[:comment][:parent_id]
+        parent = Comment.find(params[:comment][:parent_id])
         @comment.move_to_child_of(parent)
       end
       flash[:success] = "Votre commentaire a bien été posté"
       redirect_to node_comments_url
     else
+      @comment.parent_id = params[:comment][:parent_id]
       render :new
     end
   end

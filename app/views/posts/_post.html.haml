@@ -3,6 +3,7 @@
     = link_to post.forum.title, post.forum
     \:
     = link_to post.title, [post.forum, post]
-  .content= post.body
+  .content
+    = post.body
 
 = render post.node

@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # TODO Nodes
   map.resources :nodes, :has_many => [:comments]
+  map.answer_comment '/nodes/:node_id/comments/:parent_id/answer', :controller => 'comments', :action => 'new'
 
   # User account and session
   map.resources :users

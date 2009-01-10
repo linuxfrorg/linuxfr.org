@@ -1,5 +1,7 @@
 .diary{:id => "diary-#{diary.id}"}
-  %h3= link_to "Journal : #{diary.title}", diary
-  .content= diary.body
+  %h3
+    = link_to "Journal : #{diary.title}", diary
+  .content
+    = diary.body
 
 = render diary.node

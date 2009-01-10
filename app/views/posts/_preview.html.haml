@@ -1,6 +1,7 @@
 .post{:id => "post-new"}
   %h3
     = link_to preview.forum.title, preview.forum
-    = " : "
+    \:
     = link_to preview.title, [preview.forum, preview]
-  .content= preview.body
+  .content
+    = preview.body

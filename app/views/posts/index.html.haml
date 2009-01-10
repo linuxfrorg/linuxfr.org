@@ -1,4 +1,5 @@
-%h2= "Liste des messages dans le forum #{@forum.title}"
+%h2
+  = "Liste des messages dans le forum #{@forum.title}"
 = will_paginate @posts
 = render @posts
 = will_paginate @posts
