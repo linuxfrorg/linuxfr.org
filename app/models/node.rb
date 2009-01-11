@@ -16,4 +16,6 @@ class Node < ActiveRecord::Base
   belongs_to :user
   belongs_to :content, :polymorphic => true
   has_many :comments
+
+  named_scope :by_date, :order => "created_at DESC"
 end

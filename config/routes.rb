@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :forums, :has_many => [:posts]
 
   # TODO Nodes
+  map.root :controller => 'home'
   map.resources :nodes, :has_many => [:comments]
   map.answer_comment '/nodes/:node_id/comments/:parent_id/answer', :controller => 'comments', :action => 'new'
 
