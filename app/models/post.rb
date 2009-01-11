@@ -17,4 +17,9 @@ class Post < Content
   validates_presence_of :forum, :message => "Vous devez choisir un forum"
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Vous ne pouvez pas poster un journal vide"
+
+  def body
+    b = __send__('body_before_type_cast')
+    b.blank? ? "" : WikiCreole.creole_parse(b)
+  end
 end

@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     @comment.attributes = params[:comment]
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @comment.save
-      if params[:comment][:parent_id]
+      if !params[:comment][:parent_id].blank?
         parent = Comment.find(params[:comment][:parent_id])
         @comment.move_to_child_of(parent)
       end

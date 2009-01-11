@@ -70,3 +70,4 @@ end
 # FIXME config.gem doesn't seem to work in rails edge
 require 'will_paginate'
 require 'aasm'
+require 'wiki_creole'
