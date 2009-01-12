@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :name,  :limit => 100
       t.string   :homesite
       t.string   :jabber_id
+      t.string   :role,  :null => false, :default => 'moule'
       t.string   :state, :null => false, :default => 'passive'
       t.string   :salt,  :limit => 40
       t.string   :remember_token

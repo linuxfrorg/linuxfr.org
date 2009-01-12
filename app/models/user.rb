@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090106000348
+# Schema version: 20090110185148
 #
 # Table name: users
 #
@@ -9,6 +9,7 @@
 #  name                      :string(100)
 #  homesite                  :string(255)
 #  jabber_id                 :string(255)
+#  role                      :string(255)     default("moule"), not null
 #  state                     :string(255)     default("passive"), not null
 #  salt                      :string(40)
 #  remember_token            :string(255)
@@ -50,6 +51,32 @@ class User < ActiveRecord::Base
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation
+  attr_accessible :homesite, :jabber_id
+
+  def public_name
+    name || login
+  end
+
+
+  def amr?
+    admin? || moderator? || reviewer?
+  end
+
+  def admin?
+    self.role == "admin"
+  end
+
+  def moderator?
+    self.role == "moderator"
+  end
+
+  def reviewer?
+    self.role == "reviewer"
+  end
+
+  def writer?
+    self.role == "writer"
+  end
 
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.

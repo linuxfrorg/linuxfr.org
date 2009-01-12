@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090106000348
+# Schema version: 20090110185148
 #
 # Table name: users
 #
@@ -9,6 +9,7 @@
 #  name                      :string(100)
 #  homesite                  :string(255)
 #  jabber_id                 :string(255)
+#  role                      :string(255)     default("moule"), not null
 #  state                     :string(255)     default("passive"), not null
 #  salt                      :string(40)
 #  remember_token            :string(255)
