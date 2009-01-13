@@ -63,19 +63,19 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    self.role == "admin"
+    role == "admin"
   end
 
   def moderator?
-    self.role == "moderator"
+    role == "moderator"
   end
 
   def reviewer?
-    self.role == "reviewer"
+    role == "reviewer"
   end
 
   def writer?
-    self.role == "writer"
+    role == "writer"
   end
 
 

@@ -1,9 +1,10 @@
 # == Schema Information
-# Schema version: 20090108232844
+# Schema version: 20090110185148
 #
 # Table name: forums
 #
 #  id         :integer(4)      not null, primary key
+#  state      :string(255)     default("active"), not null
 #  title      :string(255)
 #  position   :integer(4)
 #  created_at :datetime

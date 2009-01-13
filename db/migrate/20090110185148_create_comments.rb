@@ -3,6 +3,7 @@ class CreateComments < ActiveRecord::Migration
     create_table :comments do |t|
       t.references :node
       t.references :user
+      t.string :state, :null => false, :default => 'published'
       t.string :title
       t.text :body
       t.integer :parent_id

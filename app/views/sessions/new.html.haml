@@ -2,13 +2,13 @@
 
 = form_tag session_path do |form|
   %p
-    = form.label :login, 'Identifiant'
-    = form.text_field :login, @login
+    = label_tag :login, 'Identifiant'
+    = text_field_tag :login, @login
   %p
-    = form.label :password, 'Mot de passe'
-    = form.password_field :password
+    = label_tag :password, 'Mot de passe'
+    = password_field_tag :password
   %p
-    = form.label :remember_me, 'Se souvenir de moi'
-    = form.check_box :remember_me, '1', @remember_me
+    = label_tag :remember_me, 'Se souvenir de moi'
+    = check_box_tag :remember_me, '1', @remember_me
   %p
-    = form.submit "Se logger"
+    = submit_tag "Se logger"

@@ -6,4 +6,34 @@ class Content < ActiveRecord::Base
   has_many :comments, :through => :node
 
   named_scope :sorted, :order => "created_at DESC"
+
+### ACL ###
+
+  def readable_by?(user)
+    state != 'deleted' || (user && user.admin?)
+  end
+
+  def creatable_by?(user)
+    user
+  end
+
+  def editable_by?(user)
+    user
+  end
+
+  def deletable_by?(user)
+    user
+  end
+
+  def commentable_by?(user)
+    readable_by?(user) && (Time.now - created_at) < 3.months
+  end
+
+### Workflow ###
+
+  def mark_as_deleted!
+    state = 'deleted'
+    save
+  end
+
 end
