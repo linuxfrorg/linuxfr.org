@@ -1,0 +1,12 @@
+= form.error_messages
+%p
+  = form.label :title, 'Titre'
+  = form.text_field :title
+%p
+  = form.label :state, 'Status'
+  = form.radio_button :state, "published"
+  = form.label :state_published, 'OK'
+  = form.radio_button :state, "deleted"
+  = form.label :state_deleted, 'Fermée'
+%p
+  = form.submit "Enregistrer"

@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   # Contents
+  map.resources :sections
   map.resources :news
   map.resources :diaries
   map.resources :forums, :has_many => [:posts]
