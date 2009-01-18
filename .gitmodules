@@ -7,3 +7,6 @@
 [submodule "vendor/plugins/awesome_nested_set"]
 	path = vendor/plugins/awesome_nested_set
 	url = git://github.com/collectiveidea/awesome_nested_set.git
+[submodule "vendor/rails"]
+	path = vendor/rails
+	url = git://github.com/rails/rails.git
