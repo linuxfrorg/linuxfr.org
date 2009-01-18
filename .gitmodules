@@ -10,3 +10,6 @@
 [submodule "vendor/rails"]
 	path = vendor/rails
 	url = git://github.com/rails/rails.git
+[submodule "vendor/plugins/acts_like_git"]
+	path = vendor/plugins/acts_like_git
+	url = git://github.com/parfait/acts_like_git.git
