@@ -4,6 +4,8 @@ class CreateNews < ActiveRecord::Migration
       t.string :state, :null => false, :default => 'draft'
       t.string :title
       t.text :body
+      t.text :second_part
+      t.references :section
       t.timestamps
     end
   end
