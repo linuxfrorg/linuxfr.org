@@ -15,9 +15,16 @@ class Section < ActiveRecord::Base
 
   validates_presence_of :title, :message => "Le titre est obligatoire"
 
-  def mark_as_deleted!
-    state = 'deleted'
-    save
-  end
+### Workflow ###
+
+  include AASM
+  aasm_column :state
+  aasm_initial_state :published
+
+  aasm_state :published
+  aasm_state :deleted
+
+  aasm_event :reopen do transitions :from => [:deleted], :to => :published end
+  aasm_event :delete do transitions :from => [:published], :to => :deleted end
 
 end

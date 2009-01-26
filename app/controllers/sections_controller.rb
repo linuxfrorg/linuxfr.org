@@ -40,7 +40,7 @@ class SectionsController < ApplicationController
 
   def destroy
     @section = Section.find(params[:id])
-    @section.mark_as_deleted!
+    @section.delete
     redirect_to sections_url
   end
 end
