@@ -1,12 +1,12 @@
 # == Schema Information
-# Schema version: 20090110185148
+# Schema version: 20090120005239
 #
 # Table name: nodes
 #
 #  id           :integer(4)      not null, primary key
 #  content_type :string(255)
 #  content_id   :integer(4)
-#  score        :integer(4)
+#  score        :integer(4)      default(0)
 #  user_id      :integer(4)
 #  created_at   :datetime
 #  updated_at   :datetime

@@ -14,15 +14,17 @@
 #
 
 class News < Content
+  include AASM
+
   belongs_to :section
   has_many :links
 
-  validates_presence_of :title, :message => "Le titre est obligatoire"
-  validates_presence_of :body,  :message => "Nous n'acceptons pas les dépêches vides"
+  validates_presence_of :title,   :message => "Le titre est obligatoire"
+  validates_presence_of :body,    :message => "Nous n'acceptons pas les dépêches vides"
+  validates_presence_of :section, :message => "Veuillez choisir une section pour cette dépêche"
 
 ### Workflow ###
 
-  include AASM
   aasm_column :state
   aasm_initial_state :draft
 
@@ -34,6 +36,14 @@ class News < Content
   aasm_event :accept do transitions :from => [:draft],   :to => :published end
   aasm_event :refuse do transitions :from => [:draft],     :to => :refused end
   aasm_event :delete do transitions :from => [:published], :to => :deleted end
+
+  def self.accept_threshold
+    User.count_amr / 5
+  end
+
+  def self.refuse_threshold
+    -User.count_amr / 4
+  end
 
 ### Body ###
 
@@ -50,7 +60,7 @@ class News < Content
 ### ACL ###
 
   def readable_by?(user)
-    state == 'published' || (user && user.amr?)
+    published? || (user && user.amr?)
   end
 
   def creatable_by?(user)
@@ -63,6 +73,14 @@ class News < Content
 
   def deletable_by?(user)
     user && (user.moderator? || user.admin?)
+  end
+
+  def acceptable_by?(user)
+    user && (user.moderator? || user.admin?) && score < News.accept_threshold
+  end
+
+  def refusable_by?(user)
+    user && (user.moderator? || user.admin?) && score < News.refuse_threshold
   end
 
 end

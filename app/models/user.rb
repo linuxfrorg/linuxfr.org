@@ -33,6 +33,8 @@ class User < ActiveRecord::Base
   has_many :nodes
   has_many :comments
 
+### Validation ###
+
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
   validates_uniqueness_of   :login
@@ -46,6 +48,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
+### Public informations ###
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
@@ -57,10 +60,19 @@ class User < ActiveRecord::Base
     name || login
   end
 
+### Role ###
 
+  # An AMR is someone who is either an admin, a moderator or a reviewer
   def amr?
     admin? || moderator? || reviewer?
   end
+
+  # Return the number of people who are either admin, moderator or reviewer
+  def self.count_amr
+    count(:conditions => {:role => %w[admin moderator reviewer]})
+  end
+
+# TODO use a state machine for role, but is it possible to use it on 2 fields ?
 
   def admin?
     role == "admin"
@@ -78,6 +90,7 @@ class User < ActiveRecord::Base
     role == "writer"
   end
 
+### Authentication ###
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
