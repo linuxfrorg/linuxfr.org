@@ -1,6 +1,6 @@
 %h2 Créer un compte utilisateur
 
-= form_for @user do |form|
+- form_for @user do |form|
   = form.error_messages
   %p
     = form.label :login, 'Identifiant'
