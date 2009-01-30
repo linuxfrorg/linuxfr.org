@@ -1,0 +1,9 @@
+.news{:id => "news-#{news.id}"}
+  %h3
+    = link_to news.section.title, news.section
+    \:
+    = link_to news.title, [:moderation, news]
+  .content
+    = news.body
+    TODO links
+    = news.second_part

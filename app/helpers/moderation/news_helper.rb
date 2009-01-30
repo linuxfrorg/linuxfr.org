@@ -1,0 +1,2 @@
+module Moderation::NewsHelper
+end

@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :diaries
   map.resources :forums, :has_many => [:posts]
 
-  # TODO Nodes
+  # Nodes
   map.root :controller => 'home'
   map.resources :nodes, :has_many => [:comments]
   map.answer_comment '/nodes/:node_id/comments/:parent_id/answer', :controller => 'comments', :action => 'new'
@@ -20,7 +20,14 @@ ActionController::Routing::Routes.draw do |map|
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
 
-  # TODO admin
+  # Moderation
+  map.namespace :moderation do |moderation|
+    moderation.resources :news
+  end
+
+  # Admin
+  map.namespace :admin do |admin|
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
 
