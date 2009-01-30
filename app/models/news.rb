@@ -76,7 +76,7 @@ class News < Content
   end
 
   def acceptable_by?(user)
-    user && (user.moderator? || user.admin?) && score < News.accept_threshold
+    user && (user.moderator? || user.admin?) && score > News.accept_threshold
   end
 
   def refusable_by?(user)

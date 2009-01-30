@@ -22,7 +22,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Moderation
   map.namespace :moderation do |moderation|
-    moderation.resources :news
+    moderation.resources :news, :member => { :accept => :post, :refuse => :post }
   end
 
   # Admin
