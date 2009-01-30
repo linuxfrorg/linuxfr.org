@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
 
   has_many :nodes
   has_many :comments
+  has_many :votes, :dependent => :destroy
 
 ### Validation ###
 
@@ -71,8 +72,6 @@ class User < ActiveRecord::Base
   def self.count_amr
     count(:conditions => {:role => %w[admin moderator reviewer]})
   end
-
-# TODO use a state machine for role, but is it possible to use it on 2 fields ?
 
   def admin?
     role == "admin"

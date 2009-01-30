@@ -30,6 +30,10 @@ class Content < ActiveRecord::Base
     readable_by?(user) && (Time.now - created_at) < 3.months
   end
 
+  def votable_by?(user)
+    readable_by?(user)
+  end
+
 ### Workflow ###
 
   def mark_as_deleted!

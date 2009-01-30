@@ -1,3 +1,11 @@
+.votes
+  %p
+    = "Score : #{node.score}"
+  = form_tag vote_url(:action => 'for', :node_id => node.id) do
+    = submit_tag "Pertinent"
+  = form_tag vote_url(:action => 'against', :node_id => node.id) do
+    = submit_tag "Inutile"
+
 .comments
   %p
     = link_to "Envoyer un commentaire", new_node_comment_url(node)
