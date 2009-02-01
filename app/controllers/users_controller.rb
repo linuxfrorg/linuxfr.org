@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
       @user.password = @user.password_confirmation = nil
-      render :action => 'new'
+      render :new
     end
   end
 

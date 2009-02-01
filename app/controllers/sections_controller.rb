@@ -20,7 +20,7 @@ class SectionsController < ApplicationController
       flash[:notice] = 'Nouvelle section créée.'
       redirect_to @section
     else
-      render :action => :new
+      render :new
     end
   end
 
@@ -34,7 +34,7 @@ class SectionsController < ApplicationController
       flash[:notice] = 'Section mise à jour.'
       redirect_to @section
     else
-      render :action => :edit
+      render :edit
     end
   end
 
