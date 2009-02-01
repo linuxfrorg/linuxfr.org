@@ -22,4 +22,21 @@ class Moderation::NewsController < ModerationController
     redirect_to @news
   end
 
+  def edit
+    @news = News.find(params[:id])
+    raise ActiveRecord::NotFound unless @news && @news.editable_by?(current_user)
+  end
+
+  def update
+    @news = News.find(params[:id])
+    raise ActiveRecord::NotFound unless @news && @news.editable_by?(current_user)
+    @news.update_attributes(params[:news])
+    if @news.save
+      flash[:success] = "Modification enregistrée"
+      redirect_to [:moderation, @news]
+    else
+      render :edit
+    end
+  end
+
 end
