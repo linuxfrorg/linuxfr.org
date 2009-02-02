@@ -4,6 +4,12 @@
   = link_to "&Eacute;diter", edit_moderation_news_url(@news)
 
 %p
+  Liste des dernières modifications :
+%ul
+  - @news.versions.each do |v|
+    %li= v.message
+
+%p
   %b Pour :
   = voters_for(@news)
 %p

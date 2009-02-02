@@ -30,7 +30,8 @@ class SectionsController < ApplicationController
 
   def update
     @section = Section.find(params[:id])
-    if @section.update_attributes(params[:section])
+    @section.attributes = params[:section]
+    if @section.save
       flash[:notice] = 'Section mise à jour.'
       redirect_to @section
     else

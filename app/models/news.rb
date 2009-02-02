@@ -47,12 +47,19 @@ class News < Content
 
 ### Body ###
 
-  def body
+  attr_accessor :commit_message
+
+  versioning(:title, :body, :second_part) do |v|
+    v.repository = Rails.root.join('git_store', 'news.git')
+    v.message = lambda { |news| news.commit_message }
+  end
+
+  def wikified_body
     b = body_before_type_cast
     b.blank? ? "" : WikiCreole.creole_parse(b)
   end
 
-  def second_part
+  def wikified_second_part
     b = second_part_before_type_cast
     b.blank? ? "" : WikiCreole.creole_parse(b)
   end
