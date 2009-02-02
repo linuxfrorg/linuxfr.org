@@ -7,7 +7,10 @@
   Liste des dernières modifications :
 %ul
   - @news.versions.each do |v|
-    %li= v.message
+    %li
+      = v.committer.name
+      \:
+      = v.message
 
 %p
   %b Pour :

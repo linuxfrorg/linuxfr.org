@@ -48,10 +48,12 @@ class News < Content
 ### Body ###
 
   attr_accessor :commit_message
+  attr_accessor :committer
 
   versioning(:title, :body, :second_part) do |v|
     v.repository = Rails.root.join('git_store', 'news.git')
-    v.message = lambda { |news| news.commit_message }
+    v.message    = lambda { |news| news.commit_message }
+    v.committer  = lambda { |news| [news.committer.public_name, news.committer.email] }
   end
 
   def wikified_body

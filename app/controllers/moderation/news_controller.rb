@@ -31,6 +31,7 @@ class Moderation::NewsController < ModerationController
     @news = News.find(params[:id])
     raise ActiveRecord::NotFound unless @news && @news.editable_by?(current_user)
     @news.attributes = params[:news]
+    @news.committer  = current_user
     if @news.save
       flash[:success] = "Modification enregistrée"
       redirect_to [:moderation, @news]
