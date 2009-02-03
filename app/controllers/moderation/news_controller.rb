@@ -40,4 +40,10 @@ class Moderation::NewsController < ModerationController
     end
   end
 
+  def show_diff
+    @news = News.find(params[:news_id])
+    raise ActiveRecord::NotFound unless @news
+    @version = @news.version(params[:sha])
+  end
+
 end

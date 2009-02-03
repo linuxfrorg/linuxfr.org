@@ -22,7 +22,9 @@ ActionController::Routing::Routes.draw do |map|
 
   # Moderation
   map.namespace :moderation do |moderation|
-    moderation.resources :news, :member => { :accept => :post, :refuse => :post }
+    moderation.resources :news, :member => { :accept => :post, :refuse => :post } do |news|
+      news.show_diff '/show_diff/:sha', :controller => 'news', :action => 'show_diff'
+    end
   end
 
   # Admin
