@@ -1,15 +1,46 @@
-!!! Strict
-%html{html_attrs}
+<!DOCTYPE html>
+%html{'lang' => 'fr'}
   %head
-    %meta{'http-equiv' => 'Content-Type', :content => 'text/html;charset=utf-8'}/
     %title Linuxfr.org
     = stylesheet_link_tag 'style'
 
   %body
-    %h1 LinuxFr.org
+    %nav
+      %ul
+        %li= link_to "Accueil", '/'
+        %li= link_to "Dépêches", '/news'
+        %li= link_to "Journaux", '/diaries'
+        %li= link_to "Forums", '/forums'
+        %li= link_to "Plan", '#'
 
-    - [:error, :success, :notice].each do |type|
-      - if flash[type]
-        %div{:class => type}= flash[type]
+    %aside
+      %h1= link_to "LinuxFr.org", '/'
+      %article.login
+        - if logged_in?
+          %p= current_user.public_name
+          %p= link_to "Admin", '/moderation' if current_user.amr?
+        - else
+          = render '/sessions/new'
+      = yield :column
+      %article.friends
+        %h2 Sites amis
+        %ul
+          %li= link_to "April", 'http://www.april.org'
+          %li= link_to "Agenda du libre", 'http://www.agendadulibre.org'
+          %li= link_to "Framasoft", 'http://www.framasoft.net'
+          %li= link_to "Léa-Linux", 'http://lea-linux.org'
+          %li= link_to "Lolix", 'http://fr.lolix.org'
 
-    = yield :layout
+    %section
+      - [:error, :success, :notice].each do |type|
+        - if flash[type]
+          %div{:class => type}= flash[type]
+      = yield :layout
+
+    %footer
+      %p Cette page a été générée en <a href="http://rubyonrails.org">Ruby on Rails</a>.
+      %ul
+        %li= link_to "Team LinuxFr.org", '#'
+        %li= link_to "Informations sur le site", '#'
+        %li= link_to "Contact", '#'
+        %li= link_to "Plan", '#'

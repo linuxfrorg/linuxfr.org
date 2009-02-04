@@ -1,0 +1,32 @@
+/* Layout */
+body, nav, aside, section, footer, article { margin: 0; padding: 5px; display: block; }
+aside   { float: left; width: 211px; }
+section { float: left; width: 1000px; }
+footer  { clear: both; }
+nav     { background-color: #fcc; }
+aside   { background-color: #cfc; }
+section { background-color: #ffd; }
+footer  { background-color: #ccf; }
+
+/* Logo */
+h1 { display: block; background-image: url('/images/logo.png'); width: 201px; height: 186px; }
+h1 a { display: block; text-indent: -9999em; width: 100%; height: 100%; }
+
+/* Nav and footer */
+nav ul, footer ul { display: inline; width: 100%; }
+nav li, footer li { display: inline; padding: 5px 10px; list-style: none; }
+nav li:hover { background-color: #faa; }
+footer li:hover { background-color: #aaf; }
+
+/* Site amis */
+article.friends ul { list-style: none; padding: 0; }
+article.friends a { display: block; padding: 5px; }
+article.friends a:hover { background-color: #afa; }
+
+/* Contenus */
+section article { background-color: #ffb; border: 1px solid; -moz-border-radius: 15px; margin: 10px; }
+
+/* Divers et variés */
+h2 { color: #333; }
+aside .login p { font-weight: bold; }
+

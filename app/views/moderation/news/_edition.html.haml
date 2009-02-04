@@ -1,0 +1,10 @@
+%article
+  %h2 &Eacute;ditions
+  %p
+    = link_to "&Eacute;diter", edit_moderation_news_url(@news)
+  %p
+    Liste des dernières modifications :
+  %ul
+    - @news.versions.each do |v|
+      %li
+        = link_to "#{v.committer.name} : #{v.message}", moderation_news_show_diff_url(@news.id, v.sha)
