@@ -14,6 +14,8 @@ class Vote < ActiveRecord::Base
   belongs_to :user
   belongs_to :node
 
+  validates_uniqueness_of :node_id, :scope => :user_id
+
   # An user can vote for a node...
   def self.for(user, node)
     cancel(user, node)

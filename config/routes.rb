@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :nodes, :has_many => [:comments]
   map.answer_comment '/nodes/:node_id/comments/:parent_id/answer', :controller => 'comments', :action => 'new'
   map.vote '/vote/:action/:node_id', :controller => 'votes'
+  map.relevance '/relevance/:action/:comment_id', :controller => 'relevances'
 
   # User account and session
   map.resources :users

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090110185148
+# Schema version: 20090205000452
 #
 # Table name: comments
 #
@@ -9,6 +9,7 @@
 #  state      :string(255)     default("published"), not null
 #  title      :string(255)
 #  body       :text
+#  score      :integer(4)      default(0)
 #  parent_id  :integer(4)
 #  lft        :integer(4)
 #  rgt        :integer(4)
@@ -19,6 +20,7 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :node
+  has_many :relevances
 
   acts_as_nested_set :scope => :node
 
@@ -48,6 +50,10 @@ class Comment < ActiveRecord::Base
 
   def deletable_by?(user)
     user && (user.moderator? || user.admin?)
+  end
+
+  def votable_by?(user)
+    user.relevances.count(:conditions => {:comment_id => id}) == 0
   end
 
 ### Workflow ###

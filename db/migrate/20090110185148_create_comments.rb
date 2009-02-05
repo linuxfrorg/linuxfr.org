@@ -6,6 +6,7 @@ class CreateComments < ActiveRecord::Migration
       t.string :state, :null => false, :default => 'published'
       t.string :title
       t.text :body
+      t.integer :score, :default => 0
       t.integer :parent_id
       t.integer :lft
       t.integer :rgt

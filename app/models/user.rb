@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   has_many :nodes
   has_many :comments
   has_many :votes, :dependent => :destroy
+  has_many :relevances, :dependent => :destroy
 
 ### Validation ###
 

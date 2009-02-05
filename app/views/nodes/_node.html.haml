@@ -1,10 +1,11 @@
 .votes
   %p
     = "Score : #{node.score}"
-  - form_tag vote_url(:action => 'for', :node_id => node.id) do
-    = submit_tag "Pertinent"
-  - form_tag vote_url(:action => 'against', :node_id => node.id) do
-    = submit_tag "Inutile"
+  - if logged_in? && node.content.votable_by?(current_user)
+    - form_tag vote_url(:action => 'for', :node_id => node.id) do
+      = submit_tag "Pertinent"
+    - form_tag vote_url(:action => 'against', :node_id => node.id) do
+      = submit_tag "Inutile"
 
 .comments
   %p
