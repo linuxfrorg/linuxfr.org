@@ -3,7 +3,10 @@ class CommentsController < ApplicationController
   before_filter :find_node
 
   def index
-    @comments = @node.comments.roots
+    respond_to do |wants|
+      wants.html { @comments = @node.comments.roots }
+      wants.atom { @comments = @node.comments.published.all(:order => 'id DESC') }
+    end
   end
 
   def show

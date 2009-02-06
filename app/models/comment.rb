@@ -24,6 +24,8 @@ class Comment < ActiveRecord::Base
 
   acts_as_nested_set :scope => :node
 
+  named_scope :published, :conditions => {:state => 'published'}
+
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Vous ne pouvez pas poster un commentaire vide"
 
