@@ -19,4 +19,8 @@ class Node < ActiveRecord::Base
   has_many :votes, :dependent => :destroy
 
   named_scope :by_date, :order => "created_at DESC"
+
+  def threads
+    Threads.all(self.id)
+  end
 end

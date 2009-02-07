@@ -1,1 +1,3 @@
-= render :partial => "one_comment", :object => @comment
+%ul
+  %li.comment{:id => "comment-#{@comment.id}"}
+    = render @comment

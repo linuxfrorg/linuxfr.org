@@ -3,18 +3,16 @@
 #
 # Table name: comments
 #
-#  id         :integer(4)      not null, primary key
-#  node_id    :integer(4)
-#  user_id    :integer(4)
-#  state      :string(255)     default("published"), not null
-#  title      :string(255)
-#  body       :text
-#  score      :integer(4)      default(0)
-#  parent_id  :integer(4)
-#  lft        :integer(4)
-#  rgt        :integer(4)
-#  created_at :datetime
-#  updated_at :datetime
+#  id                :integer(4)      not null, primary key
+#  node_id           :integer(4)
+#  user_id           :integer(4)
+#  state             :string(255)     default("published"), not null
+#  title             :string(255)
+#  body              :text
+#  score             :integer(4)      default(0)
+#  materialized_path :string(1022)    default(""), not null
+#  created_at        :datetime
+#  updated_at        :datetime
 #
 
 class Comment < ActiveRecord::Base
@@ -22,12 +20,23 @@ class Comment < ActiveRecord::Base
   belongs_to :node
   has_many :relevances
 
-  acts_as_nested_set :scope => :node
-
   named_scope :published, :conditions => {:state => 'published'}
 
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Vous ne pouvez pas poster un commentaire vide"
+
+### Threads ###
+
+  def parent_id=(parent_id)
+    return if parent_id.blank?
+    parent = Comment.find(parent_id)
+    self.materialized_path = parent ? Threads.generate_materialized_path(parent) : ''
+    self.title ||= parent ? "Re: #{parent.title}" : ''
+  end
+
+  def parent_id
+    Threads.get_parent_id(self)
+  end
 
 ### Body ###
 

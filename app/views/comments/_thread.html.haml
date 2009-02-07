@@ -1,0 +1,5 @@
+%li.comment{:id => "comment-#{thread.comment.id}"}
+  = render thread.comment
+  - if false && !thread.children.empty?
+    %ul
+      = render thread.children

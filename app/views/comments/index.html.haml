@@ -1,3 +1,5 @@
 %h2 Liste des commentaires
 %ul
-  = render @comments
+  - @comments.each do |comment|
+    %li.comment{:id => "comment-#{comment.id}"}
+      = render comment

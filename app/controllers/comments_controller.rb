@@ -3,9 +3,10 @@ class CommentsController < ApplicationController
   before_filter :find_node
 
   def index
+    @comments = @node.comments.published.all(:order => 'id DESC')
     respond_to do |wants|
-      wants.html { @comments = @node.comments.roots }
-      wants.atom { @comments = @node.comments.published.all(:order => 'id DESC') }
+      wants.html
+      wants.atom
     end
   end
 
@@ -17,11 +18,7 @@ class CommentsController < ApplicationController
   def new
     @preview_mode = false
     @comment = @node.comments.build
-    if params[:parent_id]
-      parent = Comment.find(params[:parent_id])
-      @comment.parent_id = parent.id
-      @comment.title = "Re: #{parent.title}"
-    end
+    @comment.parent_id = params[:parent_id]
     raise ActiveRecord::RecordNotFound.new unless @comment.creatable_by?(current_user)
   end
 
@@ -29,16 +26,12 @@ class CommentsController < ApplicationController
     @comment = @node.comments.build
     raise ActiveRecord::RecordNotFound.new unless @comment.creatable_by?(current_user)
     @comment.attributes = params[:comment]
+    @comment.parent_id  = params[:comment][:parent_id]
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @comment.save
-      if !params[:comment][:parent_id].blank?
-        parent = Comment.find(params[:comment][:parent_id])
-        @comment.move_to_child_of(parent)
-      end
       flash[:success] = "Votre commentaire a bien été posté"
       redirect_to node_comments_url
     else
-      @comment.parent_id = params[:comment][:parent_id]
       render :new
     end
   end

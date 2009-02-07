@@ -13,5 +13,7 @@
   %p
     %b Note
     \: les commentaires appartiennent à ceux qui les ont postés. Nous n'en sommes pas responsables.
-  %ul
-    = render node.comments.roots
+  - unless node.threads.empty?
+    %ul.threads
+      - node.threads.each do |thread|
+        = render 'comments/thread', :object => thread
