@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
     @comment = @node.comments.build
     raise ActiveRecord::RecordNotFound.new unless @comment.creatable_by?(current_user)
     @comment.attributes = params[:comment]
-    @comment.parent_id  = params[:comment][:parent_id]
+    @comment.user = current_user
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @comment.save
       flash[:success] = "Votre commentaire a bien été posté"

@@ -10,7 +10,7 @@
 #  title             :string(255)
 #  body              :text
 #  score             :integer(4)      default(0)
-#  materialized_path :string(1022)    default(""), not null
+#  materialized_path :string(1022)
 #  created_at        :datetime
 #  updated_at        :datetime
 #

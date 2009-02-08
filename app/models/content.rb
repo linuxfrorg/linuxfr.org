@@ -31,7 +31,9 @@ class Content < ActiveRecord::Base
   end
 
   def votable_by?(user)
-    readable_by?(user) && user.votes.count(:conditions => {:node_id => node.id}) == 0
+    readable_by?(user)  &&
+      self.user != user &&
+      user.votes.count(:conditions => {:node_id => node.id}) == 0
   end
 
 ### Workflow ###

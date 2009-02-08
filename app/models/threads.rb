@@ -1,10 +1,4 @@
 # A thread is a tree of comments, attached to a node.
-# A node can have several threads.
-#
-# This class has some expectations:
-#   * each id in the materialized path of a comment references a valid comment,
-#   * a comment must have a greater id than any of its ascendant,
-#   * the id of a comment can't appear in its materialized path (no circular references).
 #
 # Note: this class is called Threads (with a 's') and not Thread,
 # because Thread is already used by the core classes of Ruby.
@@ -26,20 +20,27 @@ class Threads
 
   # Return the threads with all the comments for the given node
   def self.all(node_id)
-    comments = Comment.all(:conditions => {:node_id => node_id}, :order => 'materialized_path ASC')
-    comments.map {|c| self.new(c)}
+    comments = Comment.all(:conditions => ['node_id = ? AND materialized_path IS NOT NULL', node_id], :order => 'materialized_path ASC')
+    please_make_me_a_tree(comments)
   end
 
-### Utility functions ###
+protected
 
-  # Generate the materialized path for a comment, given its parent
-  def self.generate_materialized_path(parent)
-    "%s%012d" % [parent.materialized_path, parent.id]
-  end
-
-  def self.get_parent_id(comment)
-    return nil if comment.materialized_path.blank?
-    comment.materialized_path[0 ... 12].to_i
+  # All the magic is here!
+  def self.please_make_me_a_tree(comments)
+    roots, threads = [], []
+    comments.each do |comment|
+      thread = self.new(comment)
+      if comment.root?
+        threads = []
+        roots << thread
+      else
+        (threads.length - comment.depth).times { threads.pop }
+        threads.last << thread
+      end
+      threads << thread
+    end
+    roots
   end
 
 end

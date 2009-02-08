@@ -10,7 +10,7 @@
 #  title             :string(255)
 #  body              :text
 #  score             :integer(4)      default(0)
-#  materialized_path :string(1022)    default(""), not null
+#  materialized_path :string(1022)
 #  created_at        :datetime
 #  updated_at        :datetime
 #
@@ -27,15 +27,33 @@ class Comment < ActiveRecord::Base
 
 ### Threads ###
 
+  PATH_SIZE = 12  # Each id in the materialized_path is coded on 12 chars
+  MAX_DEPTH = 1022 / PATH_SIZE
+
+  after_create :generate_materialized_path
+
+  def generate_materialized_path
+    parent = Comment.find(parent_id) unless parent_id.blank?
+    parent_path = parent ? parent.materialized_path : ''
+    self.materialized_path = "%s%0#{PATH_SIZE}d" % [parent_path, self.id]
+    save
+  end
+
+  attr_reader :parent_id
+
   def parent_id=(parent_id)
+    @parent_id = parent_id
     return if parent_id.blank?
     parent = Comment.find(parent_id)
-    self.materialized_path = parent ? Threads.generate_materialized_path(parent) : ''
     self.title ||= parent ? "Re: #{parent.title}" : ''
   end
 
-  def parent_id
-    Threads.get_parent_id(self)
+  def depth
+    (materialized_path.length / PATH_SIZE) - 1
+  end
+
+  def root?
+    depth == 0
   end
 
 ### Body ###

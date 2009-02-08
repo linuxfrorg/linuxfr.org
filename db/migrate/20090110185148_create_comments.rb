@@ -7,7 +7,7 @@ class CreateComments < ActiveRecord::Migration
       t.string :title
       t.text :body
       t.integer :score, :default => 0
-      t.string :materialized_path, :limit => 1022, :null => false, :default => ''
+      t.string :materialized_path, :limit => 1022
       t.timestamps
     end
   end
