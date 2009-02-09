@@ -5,5 +5,7 @@
     = preview.title
   .content
     = preview.wikified_body
-    TODO links
+    - preview.links.each do |link|
+      %p
+        = link_to link.title, link.url
     = preview.wikified_second_part

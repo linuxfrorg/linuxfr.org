@@ -15,4 +15,12 @@
 
 class Link < ActiveRecord::Base
   belongs_to :news
+
+  validates_presence_of :title, :message => 'Un lien doit obligatoirement avoir un titre'
+  validates_presence_of :url,   :message => 'Un lien doit obligatoirement avoir une URL'
+
+  def url=(url)
+    url = "http://#{url}" if !url.blank? && !url.starts_with?('http://')
+    write_attribute :url, url
+  end
 end

@@ -5,5 +5,7 @@
     = link_to news.title, news
   .content
     = news.wikified_body
-    TODO links
+    - news.links.each do |link|
+      %p
+        = link_to link.title, link.url
     = news.wikified_second_part
