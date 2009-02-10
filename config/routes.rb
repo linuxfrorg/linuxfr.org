@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :news
   map.resources :diaries
   map.resources :forums, :has_many => [:posts]
+  map.resources :trackers
 
   # Nodes
   map.root :controller => 'home'

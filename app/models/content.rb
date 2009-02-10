@@ -27,13 +27,13 @@ class Content < ActiveRecord::Base
   end
 
   def commentable_by?(user)
-    readable_by?(user) && (Time.now - created_at) < 3.months
+    user && readable_by?(user) && (Time.now - created_at) < 3.months
   end
 
   def votable_by?(user)
-    readable_by?(user)  &&
-      self.user != user &&
-      user.votes.count(:conditions => {:node_id => node.id}) == 0
+    user && readable_by?(user) &&
+        self.user != user      &&
+        user.votes.count(:conditions => {:node_id => node.id}) == 0
   end
 
 ### Workflow ###

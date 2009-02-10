@@ -1,0 +1,14 @@
+= form.error_messages
+
+%p
+  = form.label :title, "Titre"
+  = form.text_field :title
+%p
+  = form.label :category, "Catégorie"
+  = form.collection_select :category_id, Category.all, :id, :title
+%p
+  = form.label :body, "Description détaillée"
+  = form.text_area :body
+%p
+  = form.submit "Prévisualiser"
+  = form.submit "Soumettre" if @preview_mode

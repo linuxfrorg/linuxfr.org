@@ -1,0 +1,23 @@
+%h2 Le suivi
+
+%p
+  = link_to "Proposer une entrée", new_tracker_url
+
+%table#tracker
+  %tr
+    %th N°
+    %th Titre
+    %th Date d'ouverture
+    %th Affecté à
+    %th Envoyé par
+    %th Catégorie
+    %th Score
+  - @trackers.each do |tracker|
+    %tr{:class => tracker.state}
+      %td= link_to tracker.id, tracker
+      %td= link_to tracker.title, tracker
+      %td= tracker.created_at
+      %td= tracker.assigned_to
+      %td= tracker.reported_by
+      %td= tracker.category_title
+      %td= tracker.score

@@ -29,4 +29,6 @@ section article { background-color: #ffb; border: 1px solid; -moz-border-radius:
 /* Divers et variés */
 h2 { color: #333; }
 aside .login p { font-weight: bold; }
+#tracker .fix a, #tracker .invalid a { text-decoration: line-through; }
+.tracker.fix a, .tracker.invalid a { text-decoration: line-through; }
 

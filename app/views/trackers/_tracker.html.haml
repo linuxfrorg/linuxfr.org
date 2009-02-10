@@ -1,0 +1,5 @@
+%article.tracker{:id => "tracker-#{tracker.id}", :class => tracker.state}
+  %h3
+    = link_to "#{tracker.category_title} : #{tracker.title}", tracker
+  .content
+    = tracker.body
