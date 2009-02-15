@@ -1,0 +1,53 @@
+fr:
+  activerecord:
+    models:
+      category: catégorie
+      comment: commentaire
+      content: contenu
+      diary: journal
+      forum: forum
+      link: lien
+      news: dépêche
+      node: noeud
+      post: message
+      relevance: pertinence
+      section: section
+      tracker: entrée du suivi
+      user: utilisateur
+      vote: vote
+    attributes:
+      category:
+        title: le titre
+      comment:
+        title: le titre
+        body:  le corps
+      diary:
+        title: le titre
+        body:  le corps
+      forum:
+        title: le titre
+      link:
+        title: le titre
+        lang:  la langue
+        url: "l'URL"
+      news:
+        title: le titre
+        body:  le corps
+        second_part: la seconde partie
+      post:
+        title: le titre
+        body:  le corps
+      section:
+        title: le titre
+      tracker:
+        title: le titre
+        body:  le corps
+      user:
+        login: le pseudo
+        password: le mot de passe
+        email: "l'adresse email"
+        name: le nom
+        homesite: le site personnel
+        jabber_id: le Jabber ID
+        activation_code: "le code d'activation"
+        password_confirmation: la confirmation du mot de passe
