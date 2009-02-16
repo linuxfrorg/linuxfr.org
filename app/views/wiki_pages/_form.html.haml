@@ -1,0 +1,14 @@
+= form.error_messages
+
+%p
+  = form.label :title, "Titre"
+  = form.text_field :title
+%p
+  = form.label :body, "Contenu"
+  = form.text_area :body
+%p
+  = form.label :commit_message, "Log des modifications"
+  = form.text_field :commit_message
+%p
+  = form.submit "Prévisualiser"
+  = form.submit "Créer" if @preview_mode

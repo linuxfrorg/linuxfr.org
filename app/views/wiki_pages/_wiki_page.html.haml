@@ -1,0 +1,7 @@
+%article.wiki{:id => "wiki-#{wiki_page.id}"}
+  %h3
+    = link_to "Wiki", wiki_pages_url
+    \:
+    = link_to wiki_page.title, wiki_page
+  .content
+    = wiki_page.wikified_body

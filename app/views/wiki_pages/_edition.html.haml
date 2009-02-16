@@ -1,0 +1,10 @@
+%article
+  %h2 &Eacute;ditions
+  %p
+    = link_to "&Eacute;diter", edit_wiki_page_url(edition)
+  %p
+    Liste des dernières modifications :
+  %ul
+    - edition.versions.each do |v|
+      %li
+        = link_to "#{v.committer.name} : #{v.message}", wiki_page_show_diff_url(edition.id, v.sha)

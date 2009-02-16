@@ -5,6 +5,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :diaries
   map.resources :forums, :has_many => [:posts]
   map.resources :trackers
+  map.resources :wiki_pages do |wiki|
+    wiki.show_diff '/show_diff/:sha', :controller => 'wiki_pages', :action => 'show_diff'
+  end
 
   # Nodes
   map.root :controller => 'home'

@@ -1,0 +1,13 @@
+%h2 Visualiser une modification
+
+%h3
+  = @version.committer.name
+  \:
+  = @version.message
+
+%ul
+  - @version.diffs.each do |diff|
+    %li
+      %pre
+        = ' '
+        = diff.diff
