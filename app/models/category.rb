@@ -9,6 +9,9 @@
 #  updated_at :datetime
 #
 
+# The tracker entries are categorized,
+# for helping the users browsing them.
+#
 class Category < ActiveRecord::Base
   has_many :trackers, :dependent => :nullify
 

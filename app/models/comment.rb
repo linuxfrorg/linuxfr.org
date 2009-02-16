@@ -15,6 +15,9 @@
 #  updated_at        :datetime
 #
 
+# The users can comment any content.
+# Those comments are threaded and can be noted.
+#
 class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :node

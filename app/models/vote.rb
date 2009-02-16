@@ -10,6 +10,11 @@
 #  created_at :datetime
 #
 
+# The users can vote on content.
+# Technically, they vote on the node associated to this content, but who cares?
+#
+# Note: these votes are also used the AMR team for news in moderation.
+#
 class Vote < ActiveRecord::Base
   belongs_to :user
   belongs_to :node

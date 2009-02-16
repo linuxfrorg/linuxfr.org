@@ -11,6 +11,9 @@
 #  updated_at :datetime
 #
 
+# The forums is the place where the users ask questions and answer them.
+# It'as all about helping each others.
+#
 class Forum < ActiveRecord::Base
   acts_as_list
 

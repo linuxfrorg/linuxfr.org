@@ -10,6 +10,8 @@
 #  created_at :datetime
 #
 
+# The users can indicates if a comment is relevant... or not.
+#
 class Relevance < ActiveRecord::Base
   belongs_to :user
   belongs_to :comment

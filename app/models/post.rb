@@ -12,6 +12,9 @@
 #  updated_at :datetime
 #
 
+# The post is a question in the forums.
+# The users post them for seeking help.
+#
 class Post < Content
   belongs_to :forum
 

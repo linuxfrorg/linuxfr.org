@@ -12,6 +12,10 @@
 #  updated_at   :datetime
 #
 
+# The node is attached to each content.
+# It helps organizing some common stuff between the contents,
+# and facilitates the transformation of one content to another.
+#
 class Node < ActiveRecord::Base
   belongs_to :user
   belongs_to :content, :polymorphic => true

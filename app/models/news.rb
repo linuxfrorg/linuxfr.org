@@ -13,6 +13,10 @@
 #  updated_at  :datetime
 #
 
+# The news are the first content in LinuxFr.org.
+# Anonymous and authenticated users can submit a news
+# that will be reviewed and moderated by the LinuxFr.org team.
+#
 class News < Content
   include AASM
 

@@ -13,6 +13,10 @@
 #  updated_at          :datetime
 #
 
+# There are no bugs in LinuxFr.org, but if it would happen,
+# the users can report them in the tracker.
+# They can also suggest improvements here.
+#
 class Tracker < Content
   include AASM
 

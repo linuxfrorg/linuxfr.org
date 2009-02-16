@@ -24,6 +24,16 @@
 
 require 'digest/sha1'
 
+# The users are the core of LinuxFr.org, its value.
+# They can submit contents, vote for them, comment them...
+#
+# There are several levels of users:
+#   * anonymous     -> they have no account and can only read public contents
+#   * authenticated -> they can read public contents and submit new ones
+#   * reviewer      -> they can review the news while they are in moderation
+#   * moderator     -> they makes the order and the security ruling
+#   * admin         -> the almighty users
+#
 class User < ActiveRecord::Base
   include Authentication
   include Authentication::ByPassword

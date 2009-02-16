@@ -11,6 +11,10 @@
 #  updated_at :datetime
 #
 
+# The users can post on theirs diaries.
+# They can be used for sharing ideas,
+# informations, discussions and trolls.
+#
 class Diary < Content
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Vous ne pouvez pas poster un journal vide"

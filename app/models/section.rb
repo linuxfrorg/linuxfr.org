@@ -10,6 +10,8 @@
 #  updated_at :datetime
 #
 
+# The news are classified in several sections.
+#
 class Section < ActiveRecord::Base
   has_many :news
 
