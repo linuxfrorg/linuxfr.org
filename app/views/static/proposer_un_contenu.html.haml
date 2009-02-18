@@ -1,0 +1,52 @@
+%h2 Proposer un contenu
+
+%strong TODO :
+%ul
+  %li mettre des images
+  %li différentier la page entre utilisateurs anonymes et authentifiés
+  %li compléter cette page en responsabilisant les utilisateurs
+
+
+%h3 Les dépêches
+%p
+  Les dépêches servent à publier de l'information sur les thèmes principaux de LinuxFr.org, à savoir Linux et les Logiciels Libres.
+  D'autres thèmes peuvent être abordés, mais ils seront alors généralement relégués en seconde page.
+  Les dépêches purement commerciales et publicitaires seront rejetées.
+%p
+  = link_to "Je souhaite proposer une dépêche", new_news_url
+
+%p
+  %strong Note
+  \:
+  -if @anonymous
+    Les utilisateurs authentifiés peuvent également proposer les contenus suivants :
+  -else
+    En tant qu'utilisateur authentifié, vous pouvez également déposer les contenus suivants :
+
+%h3 Les journaux
+%p
+  Les journaux sont destinés aux discussions et aux informations qui n'auraient pas leur place en dépêches.
+%p
+  = link_to "Je souhaite écrire un journal", new_diary_url
+
+%h3 Les forums
+%p
+  Les forums servent pour demander de l'aide, poser des questions diverses et variées.
+  C'est aussi le bon endroit pour poster des petites annonces.
+%p
+  = link_to "Je souhaite poster dans les forums", '/forums/1/posts/new'
+  FIXME créer une page pour poster dans n'importe quel forum
+
+%h3 Le suivi
+%p
+  Si vous avez rencontré un bug en parcourant le site web LinuxFr.org, c'est le bon endroit pour le remonter.
+  Vous pouvez également suggérer des évolutions pour le site.
+%p
+  = link_to "Je souhaite remonter un bug ou proposer une évolution", new_tracker_url
+
+%h3 Le wiki
+%p
+  Le wiki est un espace fourre-tout plus ou moins organisé, dont les pages gardent de l'intérêt dans le temps.
+%p
+  = link_to "Je souhaite écrire une nouvelle page de wiki", new_wiki_page_url
+

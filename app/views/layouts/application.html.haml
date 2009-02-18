@@ -13,7 +13,7 @@
         %li= link_to "Forums", '/forums'
         %li= link_to "Wiki", '/wiki_pages'
         %li= link_to "Suivi", '/trackers'
-        %li= link_to "Plan", '#'
+        %li= link_to "Plan", '/plan'
 
     %aside
       %h1= link_to "LinuxFr.org", '/'
@@ -21,8 +21,10 @@
         - if logged_in?
           %p= current_user.public_name
           %p= link_to "Admin", '/moderation' if current_user.amr?
+          %p= link_to "Proposer un contenu", '/proposer_un_contenu'
         - else
           = render '/sessions/new'
+          %p= link_to "Proposer un contenu", '/proposer_un_contenu_quand_on_est_anonyme'
       = yield :column
       %article.friends
         %h2 Sites amis
@@ -42,7 +44,7 @@
     %footer
       %p Cette page a été générée en <a href="http://rubyonrails.org">Ruby on Rails</a>.
       %ul
-        %li= link_to "Team LinuxFr.org", '#'
-        %li= link_to "Informations sur le site", '#'
-        %li= link_to "Contact", '#'
-        %li= link_to "Plan", '#'
+        %li= link_to "Team LinuxFr.org", '/team'
+        %li= link_to "Informations sur le site", '/informations'
+        %li= link_to "Contact", '/contact'
+        %li= link_to "Plan", '/plan'
