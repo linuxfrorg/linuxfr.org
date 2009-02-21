@@ -2,14 +2,14 @@
   %p
     = "Score : #{node.score}"
   - if logged_in? && node.content.votable_by?(current_user)
-    - form_tag vote_url(:action => 'for', :node_id => node.id) do
+    - form_tag vote_path(:action => 'for', :node_id => node.id) do
       = submit_tag "Pertinent"
-    - form_tag vote_url(:action => 'against', :node_id => node.id) do
+    - form_tag vote_path(:action => 'against', :node_id => node.id) do
       = submit_tag "Inutile"
 
 .comments
   %p
-    = link_to "Envoyer un commentaire", new_node_comment_url(node)
+    = link_to "Envoyer un commentaire", new_node_comment_path(node)
   %p
     %b Note
     \: les commentaires appartiennent à ceux qui les ont postés. Nous n'en sommes pas responsables.

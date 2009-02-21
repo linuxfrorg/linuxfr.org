@@ -15,8 +15,8 @@
       %b Dépêche refusée
   - else
     - if @news.acceptable_by?(current_user)
-      - form_tag accept_moderation_news_url(@news) do
+      - form_tag accept_moderation_news_path(@news) do
         = submit_tag "Publier"
     - if @news.refusable_by?(current_user)
-      - form_tag refuse_moderation_news_url(@news) do
+      - form_tag refuse_moderation_news_path(@news) do
         = submit_tag "Refuser"

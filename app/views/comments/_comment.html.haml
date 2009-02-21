@@ -5,9 +5,9 @@
 %p
   = "Score : #{comment.score}"
 - if logged_in? && comment.votable_by?(current_user)
-  - form_tag relevance_url(:action => 'for', :comment_id => comment.id) do
+  - form_tag relevance_path(:action => 'for', :comment_id => comment.id) do
     = submit_tag "Pertinent"
-  - form_tag relevance_url(:action => 'against', :comment_id => comment.id) do
+  - form_tag relevance_path(:action => 'against', :comment_id => comment.id) do
     = submit_tag "Inutile"
 %p
-  = link_to "Répondre", answer_comment_url(:node_id => comment.node_id, :parent_id => comment.id)
+  = link_to "Répondre", answer_comment_path(:node_id => comment.node_id, :parent_id => comment.id)
