@@ -5,7 +5,7 @@
   %dl
   - @boards.each do |b|
     %dd
-      == [<b>#{b.created_at.strftime("%H:%M:%S")}</b>]
+      == [<b>#{b.created_at.to_s(:norloge)}</b>]
       = link_to b.user.public_name, b.user
     %dt
       = b.message
