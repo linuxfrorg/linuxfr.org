@@ -12,7 +12,7 @@ class WikiPagesController < ApplicationController
 
   def show
     @wiki_page = WikiPage.find(params[:id])
-    raise ActiveRecord::NotFound unless @wiki_page && @wiki_page.readable_by?(current_user)
+    raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.readable_by?(current_user)
   end
 
   def new
@@ -36,12 +36,12 @@ class WikiPagesController < ApplicationController
 
   def edit
     @wiki_page = WikiPage.find(params[:id])
-    raise ActiveRecord::NotFound unless @wiki_page && @wiki_page.editable_by?(current_user)
+    raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.editable_by?(current_user)
   end
 
   def update
     @wiki_page = WikiPage.find(params[:id])
-    raise ActiveRecord::NotFound unless @wiki_page && @wiki_page.editable_by?(current_user)
+    raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.editable_by?(current_user)
     @wiki_page.attributes = params[:wiki_page]
     @wiki_page.committer  = current_user
     if @wiki_page.save
@@ -63,7 +63,7 @@ class WikiPagesController < ApplicationController
 
   def show_diff
     @wiki_page = WikiPage.find(params[:wiki_page_id])
-    raise ActiveRecord::NotFound unless @wiki_page && @wiki_page.readable_by?(current_user)
+    raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.readable_by?(current_user)
     @version = @wiki_page.version(params[:sha])
   end
 

@@ -22,6 +22,7 @@ class NewsController < ApplicationController
     @news = News.new
     @news.attributes = params[:news]
     @news.committer  = current_user # TODO and for anonymous user?
+    @news.commit_message = "Nouvelle dépêche"
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @news.save
       @news.node = Node.create(:user_id => User.new) #(current_user).id)

@@ -16,6 +16,12 @@ ActionController::Routing::Routes.draw do |map|
   map.vote '/vote/:action/:node_id', :controller => 'votes'
   map.relevance '/relevance/:action/:comment_id', :controller => 'relevances'
 
+  # Boards
+  map.add_board '/board/add', :controller => 'boards', :action => 'add', :conditions => { :method => :post }
+  map.writing_board '/redaction', :controller => 'boards', :action => 'index', :id => Board.writing
+  map.free_board '/board', :controller => 'boards', :action => 'index', :id => Board.free
+  map.free_board_xml '/board/index.xml', :controller => 'boards', :action => 'index', :id => Board.free, :format => 'xml'
+
   # User account and session
   map.resources :users
   map.resource :session

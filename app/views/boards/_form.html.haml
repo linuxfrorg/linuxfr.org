@@ -1,0 +1,5 @@
+- form_tag add_board_url do
+  = hidden_field :board, :object_type, :value => form.object_type
+  = hidden_field :board, :object_id, :value => (form.object_id || 0)
+  = text_field :board, :message, :value => '', :size => 20
+  = submit_tag 'Envoyer'

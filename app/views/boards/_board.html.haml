@@ -1,0 +1,11 @@
+= render 'boards/form', :object => board
+- if @boards.empty?
+  Pas de message
+- else
+  %dl
+  - @boards.each do |b|
+    %dd
+      == [<b>#{b.created_at.strftime("%H:%M:%S")}</b>]
+      = link_to b.user.public_name, b.user
+    %dt
+      = b.message

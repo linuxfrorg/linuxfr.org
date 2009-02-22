@@ -21,6 +21,7 @@ class News < Content
   include AASM
 
   belongs_to :section
+  has_many :boards, :as => :object, :dependent => :destroy
   has_many :links
   accepts_nested_attributes_for :links, :allow_destroy => true,
       :reject_if => proc { |attrs| attrs[:title].blank? && attrs[:url].blank? }

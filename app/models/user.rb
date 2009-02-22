@@ -100,6 +100,10 @@ class User < ActiveRecord::Base
     role == "writer"
   end
 
+  def can_post_on_board?
+    true # TODO
+  end
+
 ### Authentication ###
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
