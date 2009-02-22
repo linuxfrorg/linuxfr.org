@@ -20,11 +20,12 @@
       %article.login
         - if logged_in?
           %p= current_user.public_name
-          %p= link_to "Admin", '/moderation' if current_user.amr?
           %p= link_to "Proposer un contenu", '/proposer_un_contenu'
         - else
           = render '/sessions/new'
           %p= link_to "Proposer un contenu", '/proposer_un_contenu_quand_on_est_anonyme'
+      - amr_only do
+        = render 'moderation/box'
       = yield :column
       %article.friends
         %h2 Sites amis

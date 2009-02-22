@@ -1,0 +1,13 @@
+%article
+  %h2
+    = link_to "Modération", '/moderation'
+  - @draft_news = News.draft.sorted
+  - if @draft_news.empty?
+    Pas de dépêche à modérer
+  - else
+    %ul
+    - @draft_news.each do |news|
+      %li
+        = link_to news.title, [:moderation, news]
+  - @boards = Board.by_type(Board.amr)
+  = render 'boards/board', :object => @boards.new

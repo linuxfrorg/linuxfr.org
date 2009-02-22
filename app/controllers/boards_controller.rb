@@ -16,20 +16,8 @@ class BoardsController < ApplicationController
     @board.user = current_user
     @board.save
     respond_to do |wants|
-      wants.html { redirect_to board_url(@board) }
+      wants.html { redirect_to :back }
       wants.js   { render :nothing }
-    end
-  end
-
-protected
-
-  def board_url(board)
-    case board.object_type
-    when Board.news:    moderation_news_url(board.object)
-    when Board.amr:     moderation_news_index_url
-    when Board.writing: writing_board_url
-    when Board.free:    free_board_url
-    else                root_url
     end
   end
 

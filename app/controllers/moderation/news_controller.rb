@@ -2,7 +2,6 @@ class Moderation::NewsController < ModerationController
 
   def index
     @news = News.draft.sorted
-    @boards = Board.by_type(Board.amr)
   end
 
   def show
