@@ -24,7 +24,7 @@ class News < Content
   has_many :boards, :as => :object, :dependent => :destroy
   has_many :links
   accepts_nested_attributes_for :links, :allow_destroy => true,
-      :reject_if => proc { |attrs| attrs[:title].blank? && attrs[:url].blank? }
+      :reject_if => proc { |attrs| attrs['title'].blank? && attrs['url'].blank? }
 
   validates_presence_of :title,   :message => "Le titre est obligatoire"
   validates_presence_of :body,    :message => "Nous n'acceptons pas les dépêches vides"
