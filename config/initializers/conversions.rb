@@ -1,5 +1,6 @@
 date_formats = {
-  :norloge => '%H:%M:%S',
+  :norloge   => '%H:%M:%S',
+  :timestamp => '%Y%m%d%H%M%S'
 }
 
 ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.update(date_formats)

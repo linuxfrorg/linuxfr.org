@@ -4,8 +4,8 @@
 - else
   %dl
   - @boards.each do |b|
-    %dd
+    %dd{:title => b.user_agent}
       == [<b>#{b.created_at.to_s(:norloge)}</b>]
-      = link_to b.user.public_name, b.user
+      = link_to b.login, "/~#{b.login}"
     %dt
       = b.message
