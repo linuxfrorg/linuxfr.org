@@ -26,6 +26,10 @@ class Tracker < Content
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Veuillez décrire cette entrée du suivi"
 
+### SEO ###
+
+  has_friendly_id :title, :use_slug => true
+
 ### Workflow ###
 
   States = {'Ouvert' => :open, 'Fermé' => :fix, 'Invalide' => :invalid}.freeze

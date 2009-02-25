@@ -30,6 +30,10 @@ class News < Content
   validates_presence_of :body,    :message => "Nous n'acceptons pas les dépêches vides"
   validates_presence_of :section, :message => "Veuillez choisir une section pour cette dépêche"
 
+### SEO ###
+
+  has_friendly_id :title, :use_slug => true
+
 ### Workflow ###
 
   aasm_column :state

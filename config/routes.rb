@@ -2,10 +2,10 @@ ActionController::Routing::Routes.draw do |map|
   # Contents
   map.resources :sections
   map.resources :news
-  map.resources :diaries
+  map.resources :diaries, :as => 'journaux'
   map.resources :forums, :has_many => [:posts]
-  map.resources :trackers
-  map.resources :wiki_pages do |wiki|
+  map.resources :trackers, :as => 'suivi'
+  map.resources :wiki_pages, :as => 'wiki' do |wiki|
     wiki.show_diff '/show_diff/:sha', :controller => 'wiki_pages', :action => 'show_diff'
   end
 
@@ -25,15 +25,15 @@ ActionController::Routing::Routes.draw do |map|
   # User account and session
   map.resources :users
   map.resource :session
-  map.signup '/signup', :controller => 'users', :action => 'new'
-  map.register '/register', :controller => 'users', :action => 'create'
+  map.signup '/inscription', :controller => 'users', :action => 'new'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
+  map.activate '/activation/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
 
   # Moderation
   map.namespace :moderation do |moderation|
-    moderation.resources :news, :member => { :accept => :post, :refuse => :post } do |news|
+    moderation.resources :news, :as => 'dépêches',
+                         :member => { :accept => :post, :refuse => :post } do |news|
       news.show_diff '/show_diff/:sha', :controller => 'news', :action => 'show_diff'
     end
   end

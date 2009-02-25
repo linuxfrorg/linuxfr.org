@@ -17,6 +17,10 @@ class WikiPage < Content
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Le corps est obligatoire"
 
+### SEO ###
+
+  has_friendly_id :title, :use_slug => true
+
 ### Body ###
 
   attr_accessor :commit_message

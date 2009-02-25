@@ -16,6 +16,11 @@ class Section < ActiveRecord::Base
   has_many :news
 
   validates_presence_of :title, :message => "Le titre est obligatoire"
+  validates_uniqueness_of :title, :message => 'Ce titre est déjà utilisé'
+
+### SEO ###
+
+  has_friendly_id :title
 
 ### Workflow ###
 

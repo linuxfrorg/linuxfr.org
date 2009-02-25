@@ -21,6 +21,7 @@ Rails::Initializer.run do |config|
   # You have to specify the :lib option for libraries, where the Gem name (sqlite3-ruby) differs from the file itself (sqlite3)
   config.gem 'mysql', :version => '~>2.7'
   config.gem 'haml', :version => '~>2.0'
+  config.gem 'friendly_id', :version => '~>2.0'
   config.gem 'WikiCreole', :lib => 'wiki_creole', :version => '~>0.1'
   config.gem 'rubyist-aasm', :lib => 'aasm', :version => '~>2.0'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :version => '~>2.1'
