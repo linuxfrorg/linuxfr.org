@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 %html{'lang' => 'fr'}
   %head
-    %title Linuxfr.org
+    %title= @title.join ' -> '
     = stylesheet_link_tag 'style'
+    <meta name="description" content="L'actualité de Linux et du Logiciel Libre" />
+    == <meta name="keywords" content="#{@keywords.join ', '}" />
+    <link rel="icon" type="image/x-icon" href="/favicon.png" />
 
   %body
     %nav

@@ -6,12 +6,17 @@ class ApplicationController < ActionController::Base
 
   helper :all # include all helpers, all the time
 
-  # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => '8a6eeeea65a728190594ee186b4f9258'
-  
-  # See ActionController::Base for details 
-  # Uncomment this to filter the contents of submitted sensitive data parameters
-  # from your application log (in this case, all fields with names like "password"). 
   filter_parameter_logging :password, :password_confirmation
+
+  before_filter :seo_filter
+
+protected
+
+  def seo_filter
+    @title    = %w(LinuxFr.org)
+    @keywords = %w(Linux Logiciel Libre GNU Free Software Actualité Forum Communauté)
+  end
+
 end
