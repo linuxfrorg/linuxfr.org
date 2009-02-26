@@ -1,2 +1,3 @@
 - title @forum.title
+- feed "Flux Atom du forum #{@forum.title}", forum_posts_url(:forum_id => @forum.id, :format => :atom)
 = render @forum

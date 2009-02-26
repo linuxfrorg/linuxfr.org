@@ -9,6 +9,10 @@ module ApplicationHelper
     title(str, :h2)
   end
 
+  def feed(title, link)
+    @feeds[link] = title
+  end
+
   def admin_only(&blk)
     blk.call if current_user && current_user.admin?
   end

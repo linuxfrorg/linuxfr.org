@@ -17,6 +17,7 @@ protected
   def seo_filter
     @title    = %w(LinuxFr.org)
     @keywords = %w(Linux Logiciel Libre GNU Free Software Actualité Forum Communauté)
+    @feeds    = {}
   end
 
 end

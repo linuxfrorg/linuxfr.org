@@ -7,6 +7,7 @@
     - form_tag vote_path(:action => 'against', :node_id => node.id) do
       = submit_tag "Inutile"
 
+- feed "Flux Atom des commentaires #{node.content.title}", node_comments_url(:node_id => node.id, :format => :atom)
 .comments
   %p
     = link_to "Envoyer un commentaire", new_node_comment_path(node)

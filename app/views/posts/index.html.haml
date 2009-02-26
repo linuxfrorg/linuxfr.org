@@ -1,4 +1,5 @@
 =h2 "Liste des messages dans le forum #{@forum.title}"
+- feed "Flux Atom du forum #{@forum.title}", forum_posts_url(:forum_id => @forum.id, :format => :atom)
 = will_paginate @posts
 = render @posts
 = will_paginate @posts

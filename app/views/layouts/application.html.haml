@@ -6,6 +6,8 @@
     <meta name="description" content="L'actualité de Linux et du Logiciel Libre" />
     == <meta name="keywords" content="#{@keywords.join ', '}" />
     <link rel="icon" type="image/x-icon" href="/favicon.png" />
+    - @feeds.each do |link,title|
+      == <link rel="alternate" type="application/atom+xml" title="#{title}" href="#{link}" />
 
   %body
     %nav

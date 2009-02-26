@@ -3,4 +3,5 @@
     = render :partial => 'edition', :object => @main_page
 
 =h2 "Wiki"
+- feed "Flux Atom du wiki", wiki_pages_url(:format => :atom)
 = render @main_page if @main_page
