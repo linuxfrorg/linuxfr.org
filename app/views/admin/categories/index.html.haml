@@ -1,0 +1,19 @@
+=h2 "Liste des catégories"
+
+%p= link_to "Créer une catégorie", new_admin_category_path
+
+- if @categories.empty?
+  %p Pas de catégories
+- else
+  %table
+    %tr
+      %th Nom
+      %th Actions
+    - @categories.each do |category|
+      %tr
+        %th
+          = category.title
+        %th
+          = link_to "Modifier", edit_admin_category_path(category)
+          \|
+          = link_to "Supprimer", [:admin, category], :method => :delete

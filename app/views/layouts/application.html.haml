@@ -29,6 +29,8 @@
         - else
           = render '/sessions/new'
           %p= link_to "Proposer un contenu", '/proposer_un_contenu_quand_on_est_anonyme'
+      - admin_only do
+        %p= link_to "Admin", '/admin'
       - amr_only do
         = render 'moderation/box'
       = yield :column

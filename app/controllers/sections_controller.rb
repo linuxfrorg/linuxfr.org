@@ -1,8 +1,7 @@
 class SectionsController < ApplicationController
-  # TODO move new/edit/delete to an admin controller
 
   def index
-    @sections = Section.find(:all)
+    @sections = Section.published
   end
 
   def show
@@ -10,38 +9,4 @@ class SectionsController < ApplicationController
     # TODO show news in this section
   end
 
-  def new
-    @section = Section.new
-  end
-
-  def create
-    @section = Section.new(params[:section])
-    if @section.save
-      flash[:notice] = 'Nouvelle section créée.'
-      redirect_to @section
-    else
-      render :new
-    end
-  end
-
-  def edit
-    @section = Section.find(params[:id])
-  end
-
-  def update
-    @section = Section.find(params[:id])
-    @section.attributes = params[:section]
-    if @section.save
-      flash[:notice] = 'Section mise à jour.'
-      redirect_to @section
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @section = Section.find(params[:id])
-    @section.delete
-    redirect_to sections_url
-  end
 end

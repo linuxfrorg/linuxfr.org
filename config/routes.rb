@@ -32,14 +32,16 @@ ActionController::Routing::Routes.draw do |map|
 
   # Moderation
   map.namespace :moderation do |moderation|
-    moderation.resources :news, :as => 'dépêches',
-                         :member => { :accept => :post, :refuse => :post } do |news|
+    moderation.resources :news, :member => { :accept => :post, :refuse => :post } do |news|
       news.show_diff '/show_diff/:sha', :controller => 'news', :action => 'show_diff'
     end
   end
 
   # Admin
   map.namespace :admin do |admin|
+    admin.resources :sections
+    admin.resources :forums
+    admin.resources :categories
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

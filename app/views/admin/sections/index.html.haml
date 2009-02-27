@@ -1,0 +1,22 @@
+=h2 "Liste des sections"
+
+%p= link_to "Créer une section", new_admin_section_path
+
+- if @sections.empty?
+  %p Pas de sections
+- else
+  %table
+    %tr
+      %th Nom
+      %th &Eacute;tat
+      %th Actions
+    - @sections.each do |section|
+      %tr
+        %th
+          = link_to section.title, section
+        %th
+          = section.state
+        %th
+          = link_to "Modifier", edit_admin_section_path(section)
+          \|
+          = link_to "Supprimer", [:admin, section], :method => :delete
