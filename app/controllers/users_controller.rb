@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     logout_keeping_session!
     user = User.find_by_activation_code(params[:activation_code]) unless params[:activation_code].blank?
     case
-    when (!params[:activation_code].blank?) && user && !user.active?
+    when params[:activation_code].not.blank? && user && user.not.active?
       user.activate!
       flash[:notice] = "Signup complete! Please sign in to continue."
       redirect_to '/login'
