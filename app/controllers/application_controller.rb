@@ -20,4 +20,12 @@ protected
     @feeds    = {}
   end
 
+  def admin_required
+    (logged_in? && current_user.admin?) || access_denied
+  end
+
+  def amr_required
+    (logged_in? && current_user.amr?) || access_denied
+  end
+
 end

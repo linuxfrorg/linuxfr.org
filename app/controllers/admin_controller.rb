@@ -1,6 +1,5 @@
 class AdminController < ApplicationController
-  before_filter :login_required
-  # TODO only admin here
+  before_filter :admin_required
 
   def index
   end

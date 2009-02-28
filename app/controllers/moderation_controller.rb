@@ -1,6 +1,5 @@
 class ModerationController < ApplicationController
-  before_filter :login_required
-  # TODO only allows amr in the moderation backend
+  before_filter :amr_required
 
   def index
     redirect_to moderation_news_index_url
