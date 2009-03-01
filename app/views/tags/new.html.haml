@@ -1,0 +1,8 @@
+= title "Tagger un contenu"
+
+%p Vous pouvez mettre plusieurs tags séparés par une virgule
+
+- form_tag "/nodes/#{@node.id}/tags" do
+  = label_tag :tags
+  = text_field_tag :tags
+  = submit_tag "Tagger"

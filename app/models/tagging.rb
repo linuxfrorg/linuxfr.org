@@ -14,4 +14,11 @@ class Tagging < ActiveRecord::Base
   belongs_to :tag, :counter_cache => true
   belongs_to :node
   belongs_to :user
+
+  named_scope :owned_by, lambda { |user_id|
+    {
+      :conditions => { :user_id => user_id },
+      :order      => "created_at DESC"
+    }
+  }
 end

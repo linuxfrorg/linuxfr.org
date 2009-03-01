@@ -11,7 +11,14 @@ ActionController::Routing::Routes.draw do |map|
 
   # Nodes
   map.root :controller => 'home'
-  map.resources :nodes, :has_many => [:comments]
+  map.resources :nodes do |node|
+    node.resources :comments
+    node.new_tag '/tags/new', :controller => 'tags', :action => 'new'
+    node.connect '/tags', :controller => 'tags', :action => 'create', :conditions => { :method => :post }
+  end
+  map.tags '/tags', :controller => 'tags', :action => 'index'
+  map.tag '/tags/:id', :controller => 'tags', :action => 'show'
+  map.public_tag '/tags/:id/public', :controller => 'tags', :action => 'public'
   map.answer_comment '/nodes/:node_id/comments/:parent_id/answer', :controller => 'comments', :action => 'new'
   map.vote '/vote/:action/:node_id', :controller => 'votes'
   map.relevance '/relevance/:action/:comment_id', :controller => 'relevances'
