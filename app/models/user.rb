@@ -44,6 +44,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :votes, :dependent => :destroy
   has_many :relevances, :dependent => :destroy
+  has_many :taggings, :dependent => :destroy, :include => :tag
+  has_many :tags, :through => :taggings, :uniq => true
 
 ### Validation ###
 
@@ -100,8 +102,14 @@ class User < ActiveRecord::Base
     role == "writer"
   end
 
+### Actions ###
+
   def can_post_on_board?
     true # TODO
+  end
+
+  def tag(node, tags)
+    node.set_taglist(tags, self)
   end
 
 ### Authentication ###
