@@ -8,7 +8,7 @@ class TagsController < ApplicationController
 
   def create
     current_user.tag(@node, params[:tags])
-    redirect_to @node.content
+    redirect_to_content @node.content
   end
 
   # TODO add pagination for index, show and public

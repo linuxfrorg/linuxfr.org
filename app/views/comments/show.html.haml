@@ -1,3 +1,6 @@
+%p
+  = link_to "Retourner au contenu associé", url_for_content(@comment.node.content)
+
 %ul
   %li.comment{:id => "comment-#{@comment.id}"}
     = render @comment

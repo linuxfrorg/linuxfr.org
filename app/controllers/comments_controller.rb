@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @comment.save
       flash[:success] = "Votre commentaire a bien été posté"
-      redirect_to node_comments_url
+      redirect_to_content @node.content
     else
       render :new
     end
@@ -48,7 +48,7 @@ class CommentsController < ApplicationController
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @comment.save
       flash[:success] = "Votre commentaire a bien été modifié"
-      redirect_to node_comments_url
+      redirect_to_content @node.content
     else
       render :edit
     end
@@ -59,7 +59,7 @@ class CommentsController < ApplicationController
     raise ActiveRecord::RecordNotFound.new unless @comment.deletable_by?(current_user)
     @comment.mark_as_deleted
     flash[:success] = "Votre commentaire a bien été supprimé"
-    redirect_to node_comments_url
+    redirect_to_content @node.content
   end
 
 protected
