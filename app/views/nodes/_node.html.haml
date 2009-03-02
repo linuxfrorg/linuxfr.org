@@ -12,7 +12,8 @@
     = link_to "Tagger", node_new_tag_path(:node_id => node.id)
   %p
     Ce contenu est taggé avec :
-    = node.tags.map(&:name).to_sentence
+    - node.tags.each do |tag|
+      = link_to tag.name, public_tag_path(:id => tag.name)
 
 - feed "Flux Atom des commentaires #{node.content.title}", node_comments_url(:node_id => node.id, :format => :atom)
 .comments

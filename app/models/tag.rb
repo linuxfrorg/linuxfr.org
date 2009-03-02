@@ -10,7 +10,7 @@
 
 class Tag < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy
-  has_many :nodes, :through => :taggings
+  has_many :nodes, :through => :taggings, :uniq => true
 
   validates_presence_of :name
   validates_uniqueness_of :name
