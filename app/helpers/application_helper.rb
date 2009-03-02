@@ -13,6 +13,11 @@ module ApplicationHelper
     @feeds[link] = title
   end
 
+  def keywords_from_tags(tags)
+    tags = tags.map(&:name)
+    @keywords += tags
+  end
+
   def admin_only(&blk)
     blk.call if current_user && current_user.admin?
   end

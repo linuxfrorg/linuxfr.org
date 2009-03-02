@@ -48,4 +48,9 @@ class Node < ActiveRecord::Base
     end
   end
 
+  def popular_tags(nb=10)
+    # FIXME We should count only taggings for this node for sorting tags
+    tags.all(:order => 'taggings_count DESC', :limit => nb)
+  end
+
 end

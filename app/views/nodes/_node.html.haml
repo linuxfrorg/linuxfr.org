@@ -8,6 +8,7 @@
       = submit_tag "Inutile"
 
 .tags
+  - keywords_from_tags(node.popular_tags)
   %p
     = link_to "Tagger", node_new_tag_path(:node_id => node.id)
   %p
@@ -15,8 +16,8 @@
     - node.tags.each do |tag|
       = link_to tag.name, public_tag_path(:id => tag.name)
 
-- feed "Flux Atom des commentaires #{node.content.title}", node_comments_url(:node_id => node.id, :format => :atom)
 .comments
+  - feed "Flux Atom des commentaires #{node.content.title}", node_comments_url(:node_id => node.id, :format => :atom)
   %p
     = link_to "Envoyer un commentaire", new_node_comment_path(node)
   %p
