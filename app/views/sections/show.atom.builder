@@ -1,6 +1,6 @@
 atom_feed do |feed|
   feed.title("LinuxFr.org : les dépêches de #{@section.title}")
-  feed.updated(@news.first.updated_at)
+  feed.updated(@news.first.try :updated_at)
 
   @news.each do |news|
     feed.entry(news) do |entry|

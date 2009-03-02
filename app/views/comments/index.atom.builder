@@ -1,6 +1,6 @@
 atom_feed do |feed|
   feed.title("LinuxFr.org : les commentaires pour #{@node.content.title}")
-  feed.updated(@comments.last.created_at)
+  feed.updated(@comments.last.try :created_at)
 
   @comments.each do |comment|
     feed.entry(comment, :url => node_comment_url(@node, comment)) do |entry|

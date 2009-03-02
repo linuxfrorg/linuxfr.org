@@ -1,6 +1,6 @@
 atom_feed do |feed|
   feed.title("LinuxFr.org : les entrées du suivi")
-  feed.updated(@trackers.first.created_at)
+  feed.updated(@trackers.first.try :created_at)
 
   @trackers.each do |tracker|
     feed.entry(tracker) do |entry|

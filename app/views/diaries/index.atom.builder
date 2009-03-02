@@ -1,6 +1,6 @@
 atom_feed do |feed|
   feed.title("LinuxFr.org : les journaux")
-  feed.updated(@diaries.first.created_at)
+  feed.updated(@diaries.first.try :created_at)
 
   @diaries.each do |diary|
     feed.entry(diary) do |entry|

@@ -1,6 +1,6 @@
 atom_feed do |feed|
   feed.title("LinuxFr.org : les forums")
-  feed.updated(@posts.first.created_at)
+  feed.updated(@posts.first.try :created_at)
 
   @posts.each do |post|
     feed.entry([post.forum, post]) do |entry|
