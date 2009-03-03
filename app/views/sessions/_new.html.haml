@@ -1,10 +1,10 @@
 - form_tag session_path do
   %p
     = label_tag :login, 'Identifiant'
-    = text_field_tag :login, @login
+    = text_field_tag :login, @login, :required => 'required'
   %p
     = label_tag :password, 'Mot de passe'
-    = password_field_tag :password
+    = password_field_tag :password, :required => 'required'
   %p
     = label_tag :remember_me, 'Se souvenir de moi'
     = check_box_tag :remember_me, '1', @remember_me

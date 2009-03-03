@@ -4,15 +4,15 @@
   = form.error_messages
   %p
     = form.label :login, 'Identifiant'
-    = form.text_field :login
+    = form.text_field :login, :required => 'required'
   %p
     = form.label :email, 'Adresse email'
-    = form.text_field :email
+    = form.text_field :email, :required => 'required'
   %p
     = form.label :password, 'Mot de passe'
-    = form.password_field :password
+    = form.password_field :password, :required => 'required'
   %p
     = form.label :password_confirmation, 'Confirmation du mot de passe'
-    = form.password_field :password_confirmation
+    = form.password_field :password_confirmation, :required => 'required'
   %p
     = form.submit "S'inscrire"

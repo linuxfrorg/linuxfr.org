@@ -2,6 +2,6 @@
 
 %p
   = form.label :title, "Titre du forum"
-  = form.text_field :title
+  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
 %p
   = form.submit "Envoyer"

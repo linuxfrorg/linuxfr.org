@@ -2,13 +2,13 @@
 
 %p
   = form.label :title, "Titre"
-  = form.text_field :title
+  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
 %p
   = form.label :category, "Catégorie"
   = form.collection_select :category_id, Category.all, :id, :title
 %p
   = form.label :body, "Description détaillée"
-  = form.text_area :body
+  = form.text_area :body, :required => 'required', :spellcheck => 'true'
 %p
   = form.submit "Prévisualiser"
   = form.submit "Soumettre" if @preview_mode
