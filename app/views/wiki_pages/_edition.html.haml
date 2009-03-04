@@ -5,6 +5,6 @@
   %p
     Liste des dernières modifications :
   %ul
-    - edition.versions.each do |v|
+    - edition.revisions.each do |v|
       %li
         = link_to "#{v.committer.name} : #{v.message}", wiki_page_show_diff_path(edition.id, v.sha)

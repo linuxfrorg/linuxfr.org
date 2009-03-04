@@ -5,6 +5,6 @@
   %p
     Liste des dernières modifications :
   %ul
-    - @news.versions.each do |v|
+    - @news.revisions.each do |v|
       %li
         = link_to "#{v.committer.name} : #{v.message}", moderation_news_show_diff_path(@news.id, v.sha)
