@@ -3,5 +3,9 @@
     = link_to post.forum.title, post.forum
     \:
     = link_to post.title, [post.forum, post]
+  %p
+    = posted_by(post)
   .content
     = post.body
+  %p
+    = read_it(post)

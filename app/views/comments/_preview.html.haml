@@ -2,5 +2,8 @@
   %li.comment{:id => "comment-new"}
     %h4
       = "Commentaire : #{preview.title}"
+    %p
+      = posted_by(preview)
+      == &Eacute;valué à #{preview.score}
     .content
       = preview.body

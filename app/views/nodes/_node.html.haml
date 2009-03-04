@@ -1,17 +1,21 @@
 .votes
   %p
-    = "Score : #{node.score}"
-  - if logged_in? && node.content.votable_by?(current_user)
-    - form_tag vote_path(:action => 'for', :node_id => node.id) do
-      = submit_tag "Pertinent"
-    - form_tag vote_path(:action => 'against', :node_id => node.id) do
-      = submit_tag "Inutile"
+    = "Score : #{node.score}."
+    - if logged_in? && node.content.votable_by?(current_user)
+      Ce contenu est-il
+      - form_tag vote_path(:action => 'for', :node_id => node.id) do
+        = submit_tag "pertinent"
+      ou
+      - form_tag vote_path(:action => 'against', :node_id => node.id) do
+        = submit_tag "inutile"
+      \?
 
 .tags
   - keywords_from_tags(node.popular_tags)
   %p
+    \[
     = link_to "Tagger", node_new_tag_path(:node_id => node.id)
-  %p
+    \]
     Ce contenu est taggé avec :
     - node.tags.each do |tag|
       = link_to tag.name, public_tag_path(:id => tag.name)

@@ -1,5 +1,9 @@
 - article_for diary do
   %h3
     = link_to "Journal : #{diary.title}", diary
+  %p
+    = posted_by(diary)
   .content
     = diary.body
+  %p
+    = read_it(diary)

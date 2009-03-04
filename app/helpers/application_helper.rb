@@ -30,4 +30,17 @@ module ApplicationHelper
     content_tag_for(:article, record, :class => 'content', &blk)
   end
 
+  def posted_by(content)
+    user = content.user || current_user
+    user_link = link_to(user.public_name, user)
+    date_time = (content.created_at || DateTime.now).to_s(:posted)
+    "Posté par #{user_link} le #{date_time}."
+  end
+
+  def read_it(content)
+    link = link_to("Lire la suite", url_for_content(content))
+    nb_comments = pluralize(content.node.try(:comments).try(:count), "commentaire") # FIXME comments_count
+    "> #{link} (#{nb_comments})."
+  end
+
 end

@@ -3,5 +3,9 @@
     = link_to "Wiki", wiki_pages_path
     \:
     = preview.title
+  %p
+    = posted_by(preview)
   .content
     = preview.wikified_body
+  %p
+    = read_it(preview)
