@@ -42,7 +42,8 @@ class Content < ActiveRecord::Base
 
 ### Workflow ###
 
-  def mark_as_deleted!
+  def mark_as_deleted
+    node.update_attribute(:public, false)
     state = 'deleted'
     save
   end

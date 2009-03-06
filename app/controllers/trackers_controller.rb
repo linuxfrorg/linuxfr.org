@@ -56,7 +56,6 @@ class TrackersController < ApplicationController
   def destroy
     @tracker = Tracker.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @tracker && @tracker.deletable_by?(current_user)
-    @tracker.node.destroy # FIXME
     @tracker.mark_as_deleted
     flash[:success] = "Entrée du suivi supprimée"
     redirect_to trackers_url

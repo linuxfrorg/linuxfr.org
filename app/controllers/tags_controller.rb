@@ -17,7 +17,8 @@ class TagsController < ApplicationController
   def index
     @nodes = Node.all(:select => "DISTINCT nodes.*",
                       :joins => [:taggings],
-                      :conditions => {"taggings.user_id" =>  current_user.id},
+                      :conditions => {"taggings.user_id" => current_user.id,
+                                      "nodes.public"     => true},
                       :order => "taggings.created_at DESC")
   end
 
@@ -26,7 +27,9 @@ class TagsController < ApplicationController
     @tag   = Tag.find_by_name(params[:id])
     @nodes = Node.all(:select => "DISTINCT nodes.*",
                       :joins => [:taggings],
-                      :conditions => {"taggings.user_id" =>  current_user.id, "taggings.tag_id" => @tag.id},
+                      :conditions => {"taggings.user_id" => current_user.id,
+                                      "taggings.tag_id"  => @tag.id,
+                                      "nodes.public"     => true},
                       :order => "taggings.created_at DESC")
   end
 

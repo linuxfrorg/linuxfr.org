@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090209232103
+# Schema version: 20090301003336
 #
 # Table name: nodes
 #
@@ -8,6 +8,7 @@
 #  content_type :string(255)
 #  score        :integer(4)      default(0)
 #  user_id      :integer(4)
+#  public       :boolean(1)      default(TRUE)
 #  created_at   :datetime
 #  updated_at   :datetime
 #

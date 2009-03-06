@@ -56,7 +56,6 @@ class PostsController < ApplicationController
   def destroy
     @post = @forum.posts.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @post && @post.deletable_by?(current_user)
-    @post.node.destroy # FIXME
     @post.mark_as_deleted
     flash[:success] = "Votre message a bien été supprimé"
     redirect_to forum_posts_url

@@ -55,7 +55,6 @@ class DiariesController < ApplicationController
   def destroy
     @diary = Diary.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @diary && @diary.deletable_by?(current_user)
-    @diary.node.destroy # FIXME
     @diary.mark_as_deleted
     flash[:success] = "Votre journal a bien été supprimé"
     redirect_to diaries_url

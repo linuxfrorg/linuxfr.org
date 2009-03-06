@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20090209232103
+# Schema version: 20090301003336
 #
 # Table name: nodes
 #
@@ -8,6 +8,7 @@
 #  content_type :string(255)
 #  score        :integer(4)      default(0)
 #  user_id      :integer(4)
+#  public       :boolean(1)      default(TRUE)
 #  created_at   :datetime
 #  updated_at   :datetime
 #
@@ -24,6 +25,7 @@ class Node < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy, :include => :tag
   has_many :tags, :through => :taggings, :uniq => true
 
+  named_scope :public, :conditions => {:public => true}
   named_scope :by_date, :order => "created_at DESC"
 
 ### Comments ###

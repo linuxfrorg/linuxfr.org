@@ -55,7 +55,6 @@ class WikiPagesController < ApplicationController
   def destroy
     @wiki_page = WikiPage.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @wiki_page && @wiki_page.deletable_by?(current_user)
-    @wiki_page.node.destroy # FIXME
     @wiki_page.mark_as_deleted
     flash[:success] = "Page de wiki supprimée"
     redirect_to wiki_pages_url

@@ -44,9 +44,13 @@ class News < Content
   aasm_state :refused
   aasm_state :deleted
 
-  aasm_event :accept do transitions :from => [:draft],   :to => :published end
+  aasm_event :accept do transitions :from => [:draft],   :to => :published, :on_transition => :publish end
   aasm_event :refuse do transitions :from => [:draft],     :to => :refused end
   aasm_event :delete do transitions :from => [:published], :to => :deleted end
+
+  def publish
+    node.update_attribute(:public, true)
+  end
 
   def self.accept_threshold
     User.count_amr / 5
