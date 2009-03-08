@@ -36,7 +36,7 @@ class Comment < ActiveRecord::Base
   after_create :generate_materialized_path
 
   def generate_materialized_path
-    parent = Comment.find(parent_id) unless parent_id.blank?
+    parent = Comment.find(parent_id) if parent_id.present?
     parent_path = parent ? parent.materialized_path : ''
     self.materialized_path = "%s%0#{PATH_SIZE}d" % [parent_path, self.id]
     save
