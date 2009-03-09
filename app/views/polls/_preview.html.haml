@@ -1,0 +1,9 @@
+- article_for preview do
+  %h3
+    = "Sondage : #{preview.title}"
+  %p
+    = posted_by(preview)
+  .content
+    = render :partial => "answers_current", :object => preview
+  %p
+    = read_it(preview)

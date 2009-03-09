@@ -41,4 +41,8 @@ protected
     end
   end
 
+  def on_the_first_page?
+    params[:page].to_i <= 1
+  end
+
 end

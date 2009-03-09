@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :news
   map.resources :diaries, :as => 'journaux'
   map.resources :forums, :has_many => [:posts]
+  map.resources :polls, :as => 'sondages'
   map.resources :trackers, :as => 'suivi'
   map.resources :wiki_pages, :as => 'wiki' do |wiki|
     wiki.show_diff '/show_diff/:sha', :controller => 'wiki_pages', :action => 'show_diff'

@@ -1,0 +1,27 @@
+# == Schema Information
+# Schema version: 20090308232205
+#
+# Table name: poll_answers
+#
+#  id         :integer(4)      not null, primary key
+#  poll_id    :integer(4)
+#  answer     :string(255)
+#  votes      :integer(4)      default(0), not null
+#  position   :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  poll: 
+  answer: MyString
+  votes: 1
+  position: 1
+
+two:
+  poll: 
+  answer: MyString
+  votes: 1
+  position: 1

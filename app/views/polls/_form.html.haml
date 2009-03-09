@@ -1,0 +1,11 @@
+= form.error_messages
+
+%p
+  = form.label :title, "Question"
+  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
+- form.fields_for :answers do |aform|
+  %p
+    = aform.text_field :answer
+%p
+  = form.submit "Prévisualiser"
+  = form.submit "Proposer ce sondage" if @preview_mode

@@ -1,0 +1,8 @@
+%ul
+  - answers_archived.answers.each do |answer|
+    %li
+      = answer.answer
+      \:
+      %div{ :style => "width: #{answer.percent}px;" }
+        = answer.votes
+      == (#{answer.percent} %)
