@@ -43,6 +43,7 @@ ActionController::Routing::Routes.draw do |map|
     moderation.resources :news, :member => { :accept => :post, :refuse => :post } do |news|
       news.show_diff '/show_diff/:sha', :controller => 'news', :action => 'show_diff'
     end
+    moderation.resources :polls, :member => { :accept => :post, :refuse => :post }, :as => 'sondages'
   end
 
   # Admin

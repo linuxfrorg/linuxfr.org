@@ -1,0 +1,9 @@
+%article
+  %h2 &Eacute;ditions
+  %p
+    = link_to "&Eacute;diter", edit_moderation_poll_path(:id => @poll.id)
+  %h2 Modération
+  - form_tag accept_moderation_poll_path(@poll) do
+    = submit_tag "Publier"
+  - form_tag refuse_moderation_poll_path(@poll) do
+    = submit_tag "Refuser"

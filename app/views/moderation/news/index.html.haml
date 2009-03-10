@@ -1,5 +1,5 @@
 =h2 "Nouvelles dépêches"
-- if @news
-  = render @news
-- else
+- if @news.empty?
   Aucune dépêche dans la file de modération.
+- else
+  = render @news

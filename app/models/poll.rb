@@ -28,16 +28,16 @@ class Poll < Content
 ### Workflow ###
 
   aasm_column :state
-  aasm_initial_state :suggested
+  aasm_initial_state :draft
 
-  aasm_state :suggested
+  aasm_state :draft
   aasm_state :published
   aasm_state :archived
   aasm_state :refused
   aasm_state :deleted
 
-  aasm_event :accept  do transitions :from => [:suggested], :to => :published, :on_transition => :publish end
-  aasm_event :refuse  do transitions :from => [:suggested], :to => :refused  end
+  aasm_event :accept  do transitions :from => [:draft],     :to => :published, :on_transition => :publish end
+  aasm_event :refuse  do transitions :from => [:draft],     :to => :refused  end
   aasm_event :archive do transitions :from => [:published], :to => :archived end
   aasm_event :delete  do transitions :from => [:published], :to => :deleted  end
 
@@ -61,6 +61,14 @@ class Poll < Content
 
   def deletable_by?(user)
     user && user.admin?
+  end
+
+  def acceptable_by?(user)
+    user && user.amr?
+  end
+
+  def refusable_by?(user)
+    user && user.amr?
   end
 
   def answerable_by?(ip)

@@ -2,7 +2,10 @@ class PollsController < ApplicationController
 
   def index
     @polls = Poll.archived.sorted.paginate :page => params[:page], :per_page => 10
-    @polls.unshift(Poll.published.first) if on_the_first_page?
+    if on_the_first_page?
+      poll = Poll.published.first
+      @polls.unshift(poll) if poll
+    end
     respond_to do |wants|
       wants.html
       wants.atom

@@ -1,0 +1,9 @@
+- article_for poll do
+  %h3
+    = link_to "Sondage : #{poll.title}", moderation_poll_path(:id => poll.id)
+  %p
+    = posted_by(poll)
+  .content
+    = render :partial => "polls/answers_current", :object => poll
+  %p
+    = read_it(poll)
