@@ -37,7 +37,6 @@ protected
     case content
     when Post: url_for([content.forum, content])
     when News: content.new_record? ? news_index_path : url_for(content)
-    when Poll: content.new_record? ? polls_path : poll_url(:id => content.id) # FIXME
     else       url_for(content)
     end
   end

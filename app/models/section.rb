@@ -20,7 +20,7 @@ class Section < ActiveRecord::Base
 
 ### SEO ###
 
-  has_friendly_id :title
+  has_friendly_id :title, :use_slug => true
 
 ### Workflow ###
 
