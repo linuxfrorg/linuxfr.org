@@ -1,4 +1,7 @@
-%ul
-  - answers_current.answers.each do |answer|
-    %li
-      = answer.answer
+- form_tag vote_poll_path(answers_current) do
+  %ul
+    - answers_current.answers.each do |answer|
+      %li
+        = radio_button_tag :position, answer.position, false
+        = label_tag :position, answer.answer
+  = submit_tag "Voter"

@@ -3,7 +3,7 @@ class PollsController < ApplicationController
   def index
     @polls = Poll.archived.sorted.paginate :page => params[:page], :per_page => 10
     if on_the_first_page?
-      poll = Poll.published.first
+      poll = Poll.current
       @polls.unshift(poll) if poll
     end
     respond_to do |wants|
@@ -35,6 +35,16 @@ class PollsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def vote
+    @poll = Poll.find(params[:id])
+    raise ActiveRecord::RecordNotFound unless @poll && @poll.answerable_by?(current_user)
+    @answer = @poll.answers.scoped_by_position(params[:position]).first
+    raise ActiveRecord::RecordNotFound unless @answer
+    @answer.vote
+    flash[:notice] = "Merci d'avoir voté pour ce sondage"
+    redirect_to @poll
   end
 
 end

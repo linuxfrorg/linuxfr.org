@@ -22,6 +22,11 @@ class PollAnswer < ActiveRecord::Base
   validates_presence_of :answer, :message => "La description de la réponse ne peut pas être vide"
 
   def percent
+    return 0.0 if poll.total_votes == 0
     100.0 * votes / poll.total_votes
+  end
+
+  def vote
+    self.class.increment_counter(:votes, self.id)
   end
 end

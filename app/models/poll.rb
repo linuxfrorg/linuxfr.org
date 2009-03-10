@@ -49,6 +49,10 @@ class Poll < Content
     end
   end
 
+  def self.current
+    published.first
+  end
+
 ### ACL ###
 
   def readable_by?(user)
@@ -79,7 +83,7 @@ class Poll < Content
 
   # Number of votes + 1 to avoid division by 0
   def total_votes
-    1 + answers.sum(:votes)
+    answers.sum(:votes)
   end
 
 end
