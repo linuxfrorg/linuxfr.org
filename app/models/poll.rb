@@ -76,7 +76,7 @@ class Poll < Content
   end
 
   def answerable_by?(ip)
-    published? # FIXME only one vote per IP and per day
+    published? && !PollIp.has_voted?(ip)
   end
 
 ### Votes ###

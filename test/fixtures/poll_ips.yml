@@ -1,0 +1,16 @@
+# == Schema Information
+# Schema version: 20090310234743
+#
+# Table name: poll_ips
+#
+#  id :integer(4)      not null, primary key
+#  ip :integer(4)      not null
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ip: 1
+
+two:
+  ip: 1

@@ -26,7 +26,8 @@ class PollAnswer < ActiveRecord::Base
     100.0 * votes / poll.total_votes
   end
 
-  def vote
+  def vote(ip)
     self.class.increment_counter(:votes, self.id)
+    PollIp.create!(:ip => ip)
   end
 end
