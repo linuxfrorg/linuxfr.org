@@ -25,7 +25,7 @@ class Node < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy, :include => :tag
   has_many :tags, :through => :taggings, :uniq => true
 
-  named_scope :public, :conditions => {:public => true}
+  named_scope :public, :conditions => { :public => true }
   named_scope :by_date, :order => "created_at DESC"
 
 ### Comments ###

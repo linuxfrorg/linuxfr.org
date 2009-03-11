@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     @post.attributes = params[:post]
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @post.save
-      @post.node = Node.create(:user_id => User.new) #(current_user).id)
+      @post.node = Node.create(:user_id => current_user.id)
       flash[:success] = "Votre message a bien été créé"
       redirect_to forum_posts_url
     else

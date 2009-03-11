@@ -1,7 +1,8 @@
-- form_tag vote_poll_path(answers_current) do
+- poll = answers_current
+- form_tag vote_poll_path(:id => poll.id || 0) do
   %ul
-    - answers_current.answers.each do |answer|
+    - poll.answers.each do |answer|
       %li
         = radio_button_tag :position, answer.position, false
         = label_tag :position, answer.answer
-  = submit_tag "Voter"
+  = submit_tag "Voter" unless poll.new_record?

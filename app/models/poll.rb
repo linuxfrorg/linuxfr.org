@@ -47,6 +47,7 @@ class Poll < Content
     Poll.published.each do |poll|
       poll.archive unless poll.id == self.id
     end
+    node.update_attribute(:public, true)
   end
 
   def self.current

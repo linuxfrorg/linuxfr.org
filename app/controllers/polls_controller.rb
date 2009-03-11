@@ -1,4 +1,5 @@
 class PollsController < ApplicationController
+  before_filter :login_required, :only => [:new, :create]
 
   def index
     @polls = Poll.archived.sorted.paginate :page => params[:page], :per_page => 10
@@ -29,7 +30,7 @@ class PollsController < ApplicationController
     @poll.attributes = params[:poll]
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @poll.save
-      @poll.node = Node.create(:user_id => User.new) #(current_user).id)
+      @poll.node = Node.create(:public => false, :user_id => current_user.id)
       flash[:success] = "L'équipe de modération de LinuxFr.org vous remercie pour votre proposition de sondage"
       redirect_to polls_url
     else
