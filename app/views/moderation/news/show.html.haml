@@ -1,9 +1,9 @@
 - title @news.title
 
-= content_for :column do
-  = render :partial => 'vote'
-  = render :partial => 'edition'
-  = render :partial => 'board'
+- content_for :column do
+  = render 'vote'
+  = render 'edition'
+  = render 'board'
 
 = render @news
 = render @news.node

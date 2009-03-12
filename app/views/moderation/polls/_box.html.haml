@@ -1,0 +1,8 @@
+%article
+  %h2 Sondages
+  %p
+    - if @polls.empty?
+      Aucune proposition
+    - else
+      - @polls.each do |poll|
+        = link_to poll.title, [:moderation, poll]

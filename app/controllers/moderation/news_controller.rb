@@ -1,11 +1,12 @@
 class Moderation::NewsController < ModerationController
 
   def index
-    @news = News.draft.sorted
+    @news  = News.draft.sorted
+    @polls = Poll.draft
   end
 
   def show
-    @news = News.find(params[:id])
+    @news   = News.find(params[:id])
     @boards = @news.boards
   end
 
