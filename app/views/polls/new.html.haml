@@ -1,6 +1,6 @@
 =h2 "Suggérer un sondage"
 
-= render :partial => "preview", :object => @poll if @preview_mode
+= render "preview", :object => @poll if @preview_mode
 
 - form_for setup_poll(@poll) do |form|
   = render form

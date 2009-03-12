@@ -1,6 +1,6 @@
 =h2 "Modifier une page de wiki"
 
-= render :partial => "preview", :object => @wiki_page if @preview_mode
+= render "preview", :object => @wiki_page if @preview_mode
 
 - form_for @wiki_page do |form|
   = render form

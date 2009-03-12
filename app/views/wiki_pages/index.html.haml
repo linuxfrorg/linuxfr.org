@@ -1,6 +1,6 @@
 - if @main_page
   = content_for :column do
-    = render :partial => 'edition', :object => @main_page
+    = render 'edition', :object => @main_page
 
 =h2 "Wiki"
 - feed "Flux Atom du wiki", wiki_pages_url(:format => :atom)

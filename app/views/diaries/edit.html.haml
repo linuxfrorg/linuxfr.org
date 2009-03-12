@@ -1,6 +1,6 @@
 =h2 "&Eacute;diter un journal"
 
-= render :partial => "preview", :object => @diary if @preview_mode
+= render "preview", :object => @diary if @preview_mode
 
 - form_for @diary do |form|
   = render form
