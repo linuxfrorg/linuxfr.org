@@ -8,7 +8,7 @@
   = form.collection_select :section_id, Section.published, :id, :title
 %p
   = form.label :body, "Contenu de la dépêche"
-  = form.text_area :body, :required => 'required', :spellcheck => 'true'
+  = form.text_area :body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
 - form.fields_for :links do |lform|
   %p
     = lform.text_field :title
@@ -16,7 +16,7 @@
     = lform.text_field :lang
 %p
   = form.label :second_part, "Seconde partie"
-  = form.text_area :second_part, :spellcheck => 'true'
+  = form.text_area :second_part, :spellcheck => 'true', :class => 'markItUp'
 %p
   = form.label :commit_message, "Log des modifications"
   = form.text_field :commit_message, :autocomplete => 'off', :spellcheck => 'true'

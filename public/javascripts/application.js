@@ -1,0 +1,1 @@
+$(".markItUp").markItUp(markItUpSettings);

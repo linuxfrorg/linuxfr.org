@@ -8,7 +8,7 @@
   = form.text_area :body, :required => 'required', :spellcheck => 'true'
 %p
   = form.label :commit_message, "Log des modifications"
-  = form.text_field :commit_message, :autocomplete => 'off', :spellcheck => 'true'
+  = form.text_field :commit_message, :autocomplete => 'off', :spellcheck => 'true', :class => 'markItUp'
 %p
   = form.submit "Prévisualiser"
   = form.submit "Créer" if @preview_mode
