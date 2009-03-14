@@ -9,7 +9,8 @@
     - @feeds.each do |link,title|
       == <link rel="alternate" type="application/atom+xml" title="#{title}" href="#{link}" />
 
-  %body
+  %body{body_attr}
+    = check_js
     %nav
       %ul
         %li= link_to "Accueil", '/'
