@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 20090113223625
+# Schema version: 20090310234743
 #
 # Table name: sections
 #
 #  id         :integer(4)      not null, primary key
-#  state      :string(255)
-#  title      :string(255)     default("published"), not null
+#  state      :string(255)     default("published"), not null
+#  title      :string(255)
 #  created_at :datetime
 #  updated_at :datetime
 #

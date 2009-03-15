@@ -1,8 +1,8 @@
 class CreateSections < ActiveRecord::Migration
   def self.up
     create_table :sections do |t|
-      t.string :state
-      t.string :title, :null => false, :default => 'published'
+      t.string :state, :null => false, :default => 'published'
+      t.string :title
       t.timestamps
     end
   end
