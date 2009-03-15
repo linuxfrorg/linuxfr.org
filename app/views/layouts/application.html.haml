@@ -30,6 +30,7 @@
           %p= link_to "Proposer un contenu", '/proposer_un_contenu'
         - else
           = render '/sessions/new'
+          = link_to "S'inscrire", signup_path
           %p= link_to "Proposer un contenu", '/proposer_un_contenu_quand_on_est_anonyme'
       - admin_only do
         %p= link_to "Admin", '/admin'
