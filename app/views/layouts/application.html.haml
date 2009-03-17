@@ -28,9 +28,10 @@
         - if logged_in?
           %p= current_user.public_name
           %p= link_to "Proposer un contenu", '/proposer_un_contenu'
+          %p= link_to "Se délogger", logout_path
         - else
           = render '/sessions/new'
-          = link_to "S'inscrire", signup_path
+          %p= link_to "S'inscrire", signup_path
           %p= link_to "Proposer un contenu", '/proposer_un_contenu_quand_on_est_anonyme'
       - admin_only do
         %p= link_to "Admin", '/admin'
