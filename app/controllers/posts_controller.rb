@@ -3,11 +3,7 @@ class PostsController < ApplicationController
   before_filter :find_forum
 
   def index
-    @posts = @forum.posts.sorted.paginate(:page => params[:page], :per_page => 10)
-    respond_to do |wants|
-      wants.html
-      wants.atom
-    end
+    redirect_to @forum
   end
 
   def show
