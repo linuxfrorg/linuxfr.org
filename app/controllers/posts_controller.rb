@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_filter :login_required, :except => [:index, :show]
-  before_filter :find_forum
+  before_filter :find_forum, :except => [:new, :create]
 
   def index
     redirect_to @forum
@@ -18,14 +18,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = @forum.posts.build
-    raise ActiveRecord::RecordNotFound.new unless @post && @post.creatable_by?(current_user)
+    @post = Post.new
     @post.attributes = params[:post]
+    raise ActiveRecord::RecordNotFound.new unless @post && @post.creatable_by?(current_user)
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @post.save
       @post.node = Node.create(:user_id => current_user.id)
       flash[:success] = "Votre message a bien été créé"
-      redirect_to forum_posts_url
+      redirect_to forum_posts_url(:forum_id => @post.forum_id)
     else
       render :new
     end
@@ -38,8 +38,8 @@ class PostsController < ApplicationController
 
   def update
     @post = @forum.posts.find(params[:id])
-    raise ActiveRecord::RecordNotFound.new unless @post && @post.editable_by?(current_user)
     @post.attributes = params[:post]
+    raise ActiveRecord::RecordNotFound.new unless @post && @post.editable_by?(current_user)
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @post.save
       flash[:success] = "Votre message a bien été modifié"

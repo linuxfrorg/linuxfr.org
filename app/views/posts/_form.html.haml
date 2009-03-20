@@ -1,6 +1,9 @@
 = form.error_messages
 
 %p
+  = form.label :forum_id, "Forum"
+  = form.select :forum_id, Forum.all.map { |f| [f.title, f.id] }
+%p
   = form.label :title, "Sujet du message"
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
 %p

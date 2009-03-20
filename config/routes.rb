@@ -4,6 +4,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :news
   map.resources :diaries, :as => 'journaux'
   map.resources :forums, :has_many => [:posts]
+  map.new_post '/posts/new', :controller => 'posts', :action => 'new'
+  map.posts '/posts', :controller => 'posts', :action => 'create', :conditions => { :method => :post }
   map.resources :polls, :member => { :vote => :post }, :as => 'sondages'
   map.resources :trackers, :as => 'suivi'
   map.resources :wiki_pages, :as => 'wiki' do |wiki|
