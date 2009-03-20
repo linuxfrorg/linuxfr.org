@@ -9,7 +9,8 @@ module ApplicationHelper
     title(str, :h2)
   end
 
-  def feed(title, link)
+  def feed(title, link=nil)
+    link ||= { :format => :atom }
     @feeds[link] = title
   end
 

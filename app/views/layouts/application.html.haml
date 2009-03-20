@@ -7,7 +7,7 @@
     == <meta name="keywords" content="#{@keywords.join ', '}" />
     <link rel="icon" type="image/x-icon" href="/favicon.png" />
     - @feeds.each do |link,title|
-      == <link rel="alternate" type="application/atom+xml" title="#{title}" href="#{link}" />
+      = auto_discovery_link_tag :atom, link, { :title => title }
 
   %body{body_attr}
     = check_js
