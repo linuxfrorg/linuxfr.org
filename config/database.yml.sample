@@ -3,9 +3,9 @@
 development:
   adapter: mysql
   encoding: utf8
-  database: linuxfr_development
+  database: linuxfr_rails
   pool: 5
-  username: root
+  username: linuxfr_rails
   password:
   socket: /var/run/mysqld/mysqld.sock
 
