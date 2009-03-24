@@ -24,6 +24,9 @@ class Comment < ActiveRecord::Base
   has_many :relevances
 
   named_scope :published, :conditions => {:state => 'published'}
+  named_scope :by_content_type, lambda {|type|
+    { :include => :node, :conditions => ["nodes.content_type = ?", type] }
+  }
 
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Vous ne pouvez pas poster un commentaire vide"

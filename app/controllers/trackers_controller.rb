@@ -1,11 +1,19 @@
 class TrackersController < ApplicationController
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show, :comments]
 
   def index
     @trackers = Tracker.sorted
     respond_to do |wants|
       wants.html
       wants.atom
+    end
+  end
+
+  def comments
+    @comments = Comment.published.by_content_type('Tracker').all(:limit => 20)
+    @title    = 'le tracker'
+    respond_to do |wants|
+      wants.atom { render 'comments/index' }
     end
   end
 
