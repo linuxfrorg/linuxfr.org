@@ -1,0 +1,9 @@
+%article
+  %h2 &Eacute;ditions
+  %p
+    = link_to "&Eacute;diter", edit_moderation_interview_path(:id => @interview.id)
+  %h2 Modération
+  - form_tag accept_moderation_interview_path(@interview) do
+    = submit_tag "Publier"
+  - form_tag refuse_moderation_interview_path(@interview) do
+    = submit_tag "Refuser"

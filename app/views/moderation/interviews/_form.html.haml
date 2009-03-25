@@ -1,0 +1,11 @@
+= form.error_messages
+
+%p
+  = form.label :title, "Personne à interviewer"
+  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'false'
+%p
+  = form.label :body, "Description détaillée"
+  = form.text_area :body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
+%p
+  = form.submit "Enregistrer"
+

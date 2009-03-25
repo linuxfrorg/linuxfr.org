@@ -5,7 +5,8 @@
     = posted_by(interview)
   .content
     = interview.body
-  %p
-    - if interview.news
+  - if interview.news
+    %p
       = "> Cet entretien est à l'origine de la dépêche suivante : #{link_to interview.news.title, interview.news}"
+  %p
     = read_it(interview)

@@ -69,19 +69,27 @@ class Interview < Content
 ### ACL ###
 
   def readable_by?(user)
-    state != :draft || editable_by?(user)
+    state != :draft || (user && user.amr?)
   end
 
   def editable_by?(user)
-    user && (user.moderator? || user.admin?)
+    user && user.amr?
   end
 
   def deletable_by?(user)
-    user && (user.moderator? || user.admin?)
+    user && user.amr?
   end
 
   def commentable_by?(user)
     user && readable_by?(user)
+  end
+
+  def acceptable_by?(user)
+    user && user.amr?
+  end
+
+  def refusable_by?(user)
+    user && user.amr?
   end
 
 end

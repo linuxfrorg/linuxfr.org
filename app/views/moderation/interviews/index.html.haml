@@ -1,0 +1,20 @@
+-title "Propositions d'entretien"
+
+%h2 Nouvelles propositions d'entretien
+- if @drafts.empty?
+  Aucune proposition d'entretien.
+  = link_to "En proposer un.", new_interview_path
+- else
+  = render @drafts
+
+%h2 Propositions d'entretiens pouvant être envoyées
+- if @open_itws.empty?
+  Aucune proposition ne peut être envoyée
+- else
+  = render @open_itws
+
+%h2 Propositions d'entretiens envoyées
+- if @sent_itws.empty?
+  Aucune proposition d'entretien n'a été envoyée
+- else
+  = render @sent_itws

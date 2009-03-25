@@ -1,0 +1,17 @@
+- article_for interview do
+  %h3
+    = link_to "Proposition d'entretien : #{interview.title}", moderation_interview_path(:id => interview.id)
+  %p
+    = posted_by(interview)
+  .content
+    = interview.body
+  %p
+    - if interview.open?
+      - form_tag contact_moderation_interview_path(interview) do
+        = submit_tag "J'ai contacté l'interviewé"
+    - if interview.sent? || interview.published?
+      - form_tag publish_moderation_interview_path(interview) do
+        = label_tag :news_id, 'Associer à la dépêche n°'
+        = text_field_tag :news_id, '', :size => 8
+        = submit_tag "Associer"
+    = read_it(interview)
