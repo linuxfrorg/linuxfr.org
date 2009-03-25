@@ -1,7 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
+
   # Contents
   map.resources :sections
   map.resources :news
+  map.resources :interviews, :collection => { :comments => :get }, :as => 'entretiens'
   map.resources :diaries, :as => 'journaux'
   map.resources :forums, :has_many => [:posts]
   map.new_post '/posts/new', :controller => 'posts', :action => 'new'

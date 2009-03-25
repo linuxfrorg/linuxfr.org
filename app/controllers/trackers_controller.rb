@@ -68,4 +68,5 @@ class TrackersController < ApplicationController
     flash[:success] = "Entrée du suivi supprimée"
     redirect_to trackers_url
   end
+
 end

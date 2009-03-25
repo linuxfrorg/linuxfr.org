@@ -1,0 +1,9 @@
+- article_for preview do
+  %h3
+    = link_to "Proposition d'entretien : #{preview.title}", preview
+  %p
+    = posted_by(preview)
+  .content
+    = preview.body
+  %p
+    = read_it(preview)

@@ -63,7 +63,7 @@ class Tracker < Content
   end
 
   def reported_by
-    node.user.try(:public_name) || "Pierre Tramo"
+    user.try(:public_name) || "Pierre Tramo"
   end
 
 ### ACL ###
