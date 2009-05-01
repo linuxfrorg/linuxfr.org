@@ -15,7 +15,7 @@ CREATE TABLE `categories` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL auto_increment,
@@ -29,7 +29,7 @@ CREATE TABLE `comments` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `diaries` (
   `id` int(11) NOT NULL auto_increment,
@@ -50,6 +50,18 @@ CREATE TABLE `forums` (
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `interviews` (
+  `id` int(11) NOT NULL auto_increment,
+  `state` varchar(255) NOT NULL default 'draft',
+  `title` varchar(255) default NULL,
+  `body` text,
+  `news_id` int(11) default NULL,
+  `assigned_to_user_id` int(11) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `links` (
   `id` int(11) NOT NULL auto_increment,
@@ -85,7 +97,7 @@ CREATE TABLE `nodes` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `poll_answers` (
   `id` int(11) NOT NULL auto_increment,
@@ -132,7 +144,7 @@ CREATE TABLE `relevances` (
   `vote` tinyint(1) default NULL,
   `created_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `schema_migrations` (
   `version` varchar(255) NOT NULL,
@@ -159,7 +171,7 @@ CREATE TABLE `slugs` (
   PRIMARY KEY  (`id`),
   UNIQUE KEY `index_slugs_on_name_and_sluggable_type_and_scope_and_sequence` (`name`,`sluggable_type`,`scope`,`sequence`),
   KEY `index_slugs_on_sluggable_id` (`sluggable_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `taggings` (
   `id` int(11) NOT NULL auto_increment,
@@ -187,7 +199,7 @@ CREATE TABLE `trackers` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL auto_increment,
@@ -270,3 +282,5 @@ INSERT INTO schema_migrations (version) VALUES ('20090308230814');
 INSERT INTO schema_migrations (version) VALUES ('20090308232205');
 
 INSERT INTO schema_migrations (version) VALUES ('20090310234743');
+
+INSERT INTO schema_migrations (version) VALUES ('20090324234852');
