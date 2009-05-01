@@ -22,16 +22,11 @@ class Post < Content
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Vous ne pouvez pas poster un journal vide"
 
+  wikify :body
+
 ### SEO ###
 
   has_friendly_id :title, :use_slug => true
-
-### Body ###
-
-  def body
-    b = body_before_type_cast
-    b.blank? ? "" : WikiCreole.creole_parse(b)
-  end
 
 ### ACL ###
 

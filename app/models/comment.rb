@@ -31,6 +31,8 @@ class Comment < ActiveRecord::Base
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Vous ne pouvez pas poster un commentaire vide"
 
+  wikify :body
+
 ### Threads ###
 
   PATH_SIZE = 12  # Each id in the materialized_path is coded on 12 chars
@@ -60,13 +62,6 @@ class Comment < ActiveRecord::Base
 
   def root?
     depth == 0
-  end
-
-### Body ###
-
-  def body
-    b = body_before_type_cast
-    b.blank? ? "" : WikiCreole.creole_parse(b)
   end
 
 ### ACL ###

@@ -22,7 +22,7 @@ Rails::Initializer.run do |config|
   config.gem 'mysql', :version => '~>2.7'
   config.gem 'haml', :version => '~>2.0'
   config.gem 'friendly_id', :version => '~>2.0'
-  config.gem 'WikiCreole', :lib => 'wiki_creole', :version => '~>0.1'
+  config.gem 'wikitext', :version => '~>1.5'
   config.gem 'rubyist-aasm', :lib => 'aasm', :version => '~>2.0'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :version => '~>2.1'
 

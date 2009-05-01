@@ -2,11 +2,14 @@
 %table
   %tbody
     %tr
-      %td //italique//
+      %td ''italique''
       %td <em>italique</em>
     %tr
-      %td **gras**
+      %td '''gras'''
       %td <strong>gras</strong>
+    %tr
+      %td `teletype`
+      %td <tt>teletype</tt>
     %tr
       %td * Liste &agrave; puces<br/>* Deuxi&egrave;me &eacute;l&eacute;ment<br/>** Sous-&eacute;l&eacute;ment
       %td &#8226; Liste &agrave; puces<br/>&#8226; Deuxi&egrave;me &eacute;l&eacute;ment<br/>..&#8226; Sous-&eacute;l&eacute;ment
@@ -17,26 +20,8 @@
       %td Lien vers une [[page wiki]]
       %td Lien vers une <a href="http://www.wikicreole.org/attach/CheatSheet/URL">page wiki</a>
     %tr
-      %td [[URL|lien externe]]
+      %td [URL lien externe]
       %td <a href="http://www.wikicreole.org/attach/CheatSheet/URL">lien externe</a>
     %tr
-      %td == Titre de section<br/>=== Sous-titre<br/>==== Intertitre
+      %td = Titre de section =<br/>== Sous-titre ==<br/>=== Intertitre ===
       %td <h3>Titre de section</h3><br/><h4>Sous-titre</h4><br/><h5>Intertitre</h5>
-    %tr
-      %td Pas de<br/> saut de ligne!<br/><br/>Utilisez une ligne vide
-      %td Pas de saut de ligne!<br/><br/>Utilisez une ligne vide
-    %tr
-      %td Saut de ligne\\forc&eacute;<br/>
-      %td Saut de ligne<br/>forc&eacute;
-    %tr
-      %td Ligne horizontale :<br/>----
-      %td Ligne horizontale: <hr/>
-    %tr
-      %td {{Image.jpg|titre}}
-      %td Image avec titre
-    %tr
-      %td |=|=en-t&ecirc;te|=de|=tableau|<br/>|a|ligne|de|tableau|<br/>|b|ligne|de|tableau|
-      %td Tableau
-    %tr
-      %td {{{<br>== [[Nowiki]]:<br/> //**ne pas** formater//<br/>}}}
-      %td == [[Nowiki]]:<br/> //**ne pas** formater//

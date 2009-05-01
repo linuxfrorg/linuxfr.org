@@ -17,11 +17,13 @@ class WikiPage < Content
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Le corps est obligatoire"
 
+  wikify :body, :as => :wikified_body
+
 ### SEO ###
 
   has_friendly_id :title, :use_slug => true
 
-### Body ###
+### Versioning ###
 
   attr_accessor :commit_message
   attr_accessor :committer
@@ -30,11 +32,6 @@ class WikiPage < Content
     v.repository = Rails.root.join('git_store', 'wiki.git')
     v.message    = lambda { |page| page.commit_message }
     v.committer  = lambda { |page| [page.committer.public_name, page.committer.email] }
-  end
-
-  def wikified_body
-    b = body_before_type_cast
-    b.blank? ? "" : WikiCreole.creole_parse(b)
   end
 
 ### ACL ###

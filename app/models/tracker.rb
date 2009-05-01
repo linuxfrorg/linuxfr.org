@@ -26,6 +26,8 @@ class Tracker < Content
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Veuillez décrire cette entrée du suivi"
 
+  wikify :body
+
 ### SEO ###
 
   has_friendly_id :title, :use_slug => true
@@ -44,13 +46,6 @@ class Tracker < Content
   aasm_event :fix        do transitions :from => [:open], :to => :fixed   end
   aasm_event :invalidate do transitions :from => [:open], :to => :invalid end
   aasm_event :reopen     do transitions :from => [:fixed, :invalid], :to => :open end
-
-### Body ###
-
-  def body
-    b = body_before_type_cast
-    b.blank? ? "" : WikiCreole.creole_parse(b)
-  end
 
 ### Presentation ###
 

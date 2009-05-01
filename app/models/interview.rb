@@ -22,10 +22,12 @@ class Interview < Content
   belongs_to :news
   belongs_to :assigned_to_user, :class_name => 'User'
 
+  named_scope :public, :conditions => ["state != ?", :draft]
+
   validates_presence_of :title, :message => "Vous devez préciser la personne à interviewer"
   validates_presence_of :body,  :message => "Veuillez donner quelques informations sur la personne à interviewer"
 
-  named_scope :public, :conditions => ["state != ?", :draft]
+  wikify :body
 
 ### SEO ###
 
@@ -48,13 +50,6 @@ class Interview < Content
   aasm_event :refuse  do transitions :from => [:draft, :open, :sent], :to => :refused end
   aasm_event :contact do transitions :from => [:open], :to => :sent end
   aasm_event :publish do transitions :from => [:open, :sent], :to => :published end
-
-### Body ###
-
-  def body
-    b = body_before_type_cast
-    b.blank? ? "" : WikiCreole.creole_parse(b)
-  end
 
 ### Presentation ###
 

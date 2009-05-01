@@ -30,6 +30,9 @@ class News < Content
   validates_presence_of :body,    :message => "Nous n'acceptons pas les dépêches vides"
   validates_presence_of :section, :message => "Veuillez choisir une section pour cette dépêche"
 
+  wikify :body,        :as => :wikified_body
+  wikify :second_part, :as => :wikified_second_part
+
 ### SEO ###
 
   has_friendly_id :title, :use_slug => true
@@ -60,7 +63,7 @@ class News < Content
     -User.count_amr / 4
   end
 
-### Body ###
+### Versioning ###
 
   attr_accessor :commit_message
   attr_accessor :committer
@@ -69,16 +72,6 @@ class News < Content
     v.repository = Rails.root.join('git_store', 'news.git')
     v.message    = lambda { |news| news.commit_message }
     v.committer  = lambda { |news| [news.committer.public_name, news.committer.email] }
-  end
-
-  def wikified_body
-    b = body_before_type_cast
-    b.blank? ? "" : WikiCreole.creole_parse(b)
-  end
-
-  def wikified_second_part
-    b = second_part_before_type_cast
-    b.blank? ? "" : WikiCreole.creole_parse(b)
   end
 
 ### ACL ###

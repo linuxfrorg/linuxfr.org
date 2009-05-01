@@ -171,6 +171,9 @@
 .markItUp .italic a {
 	background-image:url(/images/markitup/italic.png);
 }
+.markItUp .stroke a {
+	background-image:url(/images/markitup/stroke.png);
+}
 .markItUp .list-bullet a {
 	background-image:url(/images/markitup/list-bullet.png);
 }	
