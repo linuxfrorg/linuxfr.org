@@ -1,8 +1,8 @@
 =h2 "&Eacute;diter un commentaire"
 
-= render "preview", :object => @comment if @preview_mode
+~ render "preview", :object => @comment if @preview_mode
 
 - form_for @comment do |form|
-  = render form
+  ~ render form
 
-= render '/shared/wiki_help'
+~ render '/shared/wiki_help'

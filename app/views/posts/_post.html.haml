@@ -1,8 +1,6 @@
 - article_for post do
   %h3
-    = link_to post.forum.title, post.forum
-    \:
-    = link_to post.title, [post.forum, post]
+    = link_to(post.forum.title, post.forum), ':', link_to(post.title, [post.forum, post])
   %p
     = posted_by(post)
   .content

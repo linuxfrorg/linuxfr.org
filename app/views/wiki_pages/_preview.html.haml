@@ -1,8 +1,6 @@
 - article_for preview do
   %h3
-    = link_to "Wiki", wiki_pages_path
-    \:
-    = preview.title
+    = link_to("Wiki", wiki_pages_path), ':', preview.title
   %p
     = posted_by(preview)
   .content

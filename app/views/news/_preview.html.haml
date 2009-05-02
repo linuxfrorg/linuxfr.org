@@ -1,8 +1,6 @@
 - article_for preview do
   %h3
-    = link_to preview.section.title, preview.section
-    \:
-    = preview.title
+    = link_to(preview.section.title, preview.section), ':', preview.title
   %p
     = posted_by(preview)
   .content

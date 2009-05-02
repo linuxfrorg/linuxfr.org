@@ -4,6 +4,6 @@
   %p
     = posted_by(poll)
   .content
-    = render "polls/answers_current", :poll => poll
+    ~ render "polls/answers_current", :poll => poll
   %p
     = read_it(poll)

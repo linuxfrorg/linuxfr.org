@@ -1,8 +1,6 @@
 - article_for news do
   %h3
-    = link_to news.section.title, news.section
-    \:
-    = link_to news.title, news
+    = link_to(news.section.title, news.section), ':', link_to(news.title, news)
   %p
     = posted_by(news)
   .content

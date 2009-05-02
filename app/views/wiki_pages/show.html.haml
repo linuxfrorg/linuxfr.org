@@ -1,7 +1,7 @@
 - title @wiki_page.title
 
 = content_for :column do
-  = render 'edition', :object => @wiki_page
+  ~ render 'edition', :object => @wiki_page
 
-= render @wiki_page
-= render @wiki_page.node
+~ render @wiki_page
+~ render @wiki_page.node

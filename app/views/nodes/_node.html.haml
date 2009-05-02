@@ -25,9 +25,9 @@
   %p
     = link_to "Envoyer un commentaire", new_node_comment_path(node)
   %p
-    %b Note
-    \: les commentaires appartiennent à ceux qui les ont postés. Nous n'en sommes pas responsables.
+    %b Note :
+    les commentaires appartiennent à ceux qui les ont postés. Nous n'en sommes pas responsables.
   - unless node.threads.empty?
     %ul.threads
       - node.threads.each do |thread|
-        = render 'comments/thread', :object => thread
+        ~ render 'comments/thread', :object => thread

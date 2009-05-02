@@ -4,6 +4,6 @@
   %p
     = posted_by(preview)
   .content
-    = render "answers_current", :poll => preview
+    ~ render "answers_current", :poll => preview
   %p
     = read_it(preview)
