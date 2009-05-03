@@ -17,6 +17,5 @@
         %th
           = section.state
         %th
-          = link_to "Modifier", edit_admin_section_path(section)
-          \|
-          = link_to "Supprimer", [:admin, section], :method => :delete
+          = link_to("Modifier", edit_admin_section_path(section)), '|'
+          = link_to("Supprimer", [:admin, section], :method => :delete)

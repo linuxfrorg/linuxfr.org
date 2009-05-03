@@ -1,14 +1,12 @@
 %h4
-  = link_to "Commentaire : #{comment.title}", [comment.node, comment]
+  = link_to "Commentaire : #{h comment.title}", [comment.node, comment]
 %p
   = posted_by(comment)
   == &Eacute;valué à #{comment.score}
 .content
-  = comment.body
+  = sanitize comment.body
 %p
-  \[
-  = link_to "Répondre", answer_comment_path(:node_id => comment.node_id, :parent_id => comment.id)
-  \]
+  = '[', link_to "Répondre", answer_comment_path(:node_id => comment.node_id, :parent_id => comment.id), ']'
   - if logged_in? && comment.votable_by?(current_user)
     Ce commentaire est-il 
     - form_tag relevance_path(:action => 'for', :comment_id => comment.id) do

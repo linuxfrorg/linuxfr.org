@@ -1,11 +1,11 @@
 =h2 "Modifier une entrée dans le suivi"
 
-~ render "preview", :object => @tracker if @preview_mode
+= render "preview", :object => @tracker if @preview_mode
 
 - form_for @tracker do |form|
   %p
     = form.label :state, "État"
     = form.select :state, Tracker::States
-  ~ render form
+  = render form
 
-~ render '/shared/wiki_help'
+= render '/shared/wiki_help'

@@ -1,9 +1,9 @@
 %ul
   %li.comment{:id => "comment-new"}
     %h4
-      = "Commentaire : #{preview.title}"
+      = "Commentaire : #{h preview.title}"
     %p
       = posted_by(preview)
       == &Eacute;valué à #{preview.score}
     .content
-      = preview.body
+      = sanitize preview.body

@@ -1,9 +1,9 @@
 - article_for tracker do
   %h3
-    = link_to "#{tracker.category_title} : #{tracker.title}", tracker
+    = link_to "#{h tracker.category_title} : #{h tracker.title}", tracker
   %p
     = posted_by(tracker)
   .content
-    = tracker.body
+    = sanitize tracker.body
   %p
     = read_it(tracker)

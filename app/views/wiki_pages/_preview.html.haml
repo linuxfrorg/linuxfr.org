@@ -1,9 +1,9 @@
 - article_for preview do
   %h3
-    = link_to("Wiki", wiki_pages_path), ':', preview.title
+    = link_to("Wiki", wiki_pages_path), ':', h(preview.title)
   %p
     = posted_by(preview)
   .content
-    = preview.wikified_body
+    = sanitize preview.wikified_body
   %p
     = read_it(preview)

@@ -1,8 +1,8 @@
 =h2 "Modifier une page de wiki"
 
-~ render "preview", :object => @wiki_page if @preview_mode
+= render "preview", :object => @wiki_page if @preview_mode
 
 - form_for @wiki_page do |form|
-  ~ render form
+  = render form
 
-~ render '/shared/wiki_help'
+= render '/shared/wiki_help'

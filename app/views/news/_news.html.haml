@@ -1,13 +1,13 @@
 - article_for news do
   %h3
-    = link_to(news.section.title, news.section), ':', link_to(news.title, news)
+    = link_to(h(news.section.title), news.section), ':', link_to(h(news.title), news)
   %p
     = posted_by(news)
   .content
-    = news.wikified_body
+    = sanitize news.wikified_body
     - news.links.each do |link|
       %p
-        = link_to link.title, link.url
-    = news.wikified_second_part
+        = link_to h(link.title), h(link.url)
+    = sanitize news.wikified_second_part
   %p
     = read_it(news)

@@ -1,5 +1,6 @@
 %article
-  %h2 &Eacute;ditions
+  %h2
+    &Eacute;ditions
   %p
     = link_to "&Eacute;diter", edit_wiki_page_path(edition)
   %p
@@ -7,4 +8,4 @@
   %ul
     - edition.revisions.each do |v|
       %li
-        = link_to "#{v.committer.name} : #{v.message}", wiki_page_show_diff_path(edition.id, v.sha)
+        = link_to "#{h v.committer.name} : #{h v.message}", wiki_page_show_diff_path(edition.id, v.sha)

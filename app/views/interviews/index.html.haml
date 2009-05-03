@@ -16,9 +16,9 @@
   - @interviews.each do |itw|
     %tr{:class => itw.state}
       %td= link_to itw.id, itw
-      %td= link_to itw.title, itw
-      %td= itw.created_at
-      %td= itw.assigned_to
-      %td= itw.reported_by
-      %td= itw.score
+      %td= link_to h(itw.title), itw
+      %td= h itw.created_at
+      %td= h itw.assigned_to
+      %td= h itw.reported_by
+      %td= h itw.score
 

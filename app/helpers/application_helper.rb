@@ -1,6 +1,7 @@
 module ApplicationHelper
 
   def title(title, tag=nil)
+    title = h(title)
     @title << title
     content_tag(tag, title) if tag
   end
@@ -15,7 +16,7 @@ module ApplicationHelper
   end
 
   def keywords_from_tags(tags)
-    tags = tags.map(&:name)
+    tags = tags.map {|t| h(t.name) }
     @keywords += tags
   end
 
@@ -44,7 +45,7 @@ module ApplicationHelper
 
   def posted_by(content)
     user = content.user || current_user
-    user_link = link_to(user.public_name, user)
+    user_link = link_to(h(user.public_name), user)
     date_time = (content.created_at || DateTime.now).to_s(:posted)
     "Posté par #{user_link} le #{date_time}."
   end
@@ -52,7 +53,7 @@ module ApplicationHelper
   def read_it(content)
     link = link_to("Lire la suite", url_for_content(content))
     nb_comments = pluralize(content.node.try(:comments).try(:count), "commentaire") # FIXME comments_count
-    "> #{link} (#{nb_comments})."
+    "&gt; #{link} (#{nb_comments})."
   end
 
 end

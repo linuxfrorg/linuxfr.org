@@ -1,9 +1,9 @@
 - article_for preview do
   %h3
-    = "Journal : #{preview.title}"
+    = "Journal : #{h preview.title}"
   %p
     = posted_by(preview)
   .content
-    = preview.body
+    = sanitize preview.body
   %p
     = read_it(preview)

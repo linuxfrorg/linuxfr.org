@@ -1,9 +1,9 @@
 - article_for preview do
   %h3
-    = link_to "#{preview.category_title} : #{preview.title}", preview
+    = link_to "#{h preview.category_title} : #{h preview.title}", preview
   %p
     = posted_by(preview)
   .content
-    = preview.body
+    = sanitize preview.body
   %p
     = read_it(preview)

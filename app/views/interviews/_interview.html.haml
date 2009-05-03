@@ -1,12 +1,12 @@
 - article_for interview do
   %h3
-    = link_to "Proposition d'entretien n°#{interview.id} : #{interview.title}", interview
+    = link_to "Proposition d'entretien n°#{interview.id} : #{h interview.title}", interview
   %p
     = posted_by(interview)
   .content
-    = interview.body
+    = sanitize interview.body
   - if interview.news
     %p
-      = "> Cet entretien est à l'origine de la dépêche suivante : #{link_to interview.news.title, interview.news}"
+      = "&gt; Cet entretien est à l'origine de la dépêche suivante : ", link_to(h(interview.news.title), interview.news)
   %p
     = read_it(interview)

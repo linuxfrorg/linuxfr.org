@@ -1,9 +1,9 @@
 - article_for diary do
   %h3
-    = link_to "Journal : #{diary.title}", diary
+    = link_to "Journal : #{h diary.title}", diary
   %p
     = posted_by(diary)
   .content
-    = diary.body
+    = sanitize diary.body
   %p
     = read_it(diary)

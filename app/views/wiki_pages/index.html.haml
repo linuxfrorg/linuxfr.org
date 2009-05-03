@@ -1,7 +1,7 @@
 - if @main_page
   = content_for :column do
-    ~ render 'edition', :object => @main_page
+    = render 'edition', :object => @main_page
 
 =h2 "Wiki"
 - feed "Flux Atom du wiki"
-~ render @main_page if @main_page
+= render @main_page if @main_page

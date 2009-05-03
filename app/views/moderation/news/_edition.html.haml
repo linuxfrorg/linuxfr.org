@@ -7,4 +7,4 @@
   %ul
     - @news.revisions.each do |v|
       %li
-        = link_to "#{v.committer.name} : #{v.message}", moderation_news_show_diff_path(@news.id, v.sha)
+        = link_to "#{h v.committer.name} : #{h v.message}", moderation_news_show_diff_path(@news.id, v.sha)

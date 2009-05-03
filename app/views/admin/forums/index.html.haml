@@ -14,6 +14,5 @@
         %td
           = link_to forum.title, forum
         %td
-          = link_to "Modifier", edit_admin_forum_path(forum)
-          \|
-          = link_to "Supprimer", [:admin, forum], :method => :delete
+          = link_to("Modifier", edit_admin_forum_path(forum)), '|'
+          = link_to("Supprimer", [:admin, forum], :method => :delete)

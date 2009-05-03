@@ -1,6 +1,6 @@
 %li.comment{:id => "comment-#{thread.comment.id}"}
-  ~ render thread.comment
+  = render thread.comment
   - if thread.children.not.empty?
     %ul
       - thread.children.each do |thread|
-        ~ render 'comments/thread', :object => thread
+        = render 'comments/thread', :object => thread

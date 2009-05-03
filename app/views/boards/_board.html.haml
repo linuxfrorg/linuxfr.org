@@ -1,11 +1,11 @@
-~ render 'boards/form', :object => board
+= render 'boards/form', :object => board
 - if @boards.empty?
   Pas de message
 - else
   %dl
   - @boards.each do |b|
     %dd{:title => b.user_agent}
-      == [<b>#{b.created_at.to_s(:norloge)}</b>]
-      = link_to b.login, "/~#{b.login}"
+      = "[<b>#{b.created_at.to_s(:norloge)}</b>]"
+      = link_to h(b.login), "/~#{h b.login}"
     %dt
-      = b.message
+      = sanitize b.message

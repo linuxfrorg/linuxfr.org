@@ -7,5 +7,4 @@
   - @version.diffs.each do |diff|
     %li
       %pre
-        = ' '
-        = diff.diff
+        = "\n", sanitize diff.diff

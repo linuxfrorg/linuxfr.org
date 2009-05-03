@@ -2,4 +2,4 @@
 %ul
   - @comments.each do |comment|
     %li.comment{:id => "comment-#{comment.id}"}
-      ~ render comment
+      = render comment

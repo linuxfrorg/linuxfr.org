@@ -1,10 +1,10 @@
 - article_for interview do
   %h3
-    = link_to "Proposition d'entretien : #{interview.title}", moderation_interview_path(:id => interview.id)
+    = link_to "Proposition d'entretien : #{h interview.title}", moderation_interview_path(:id => interview.id)
   %p
     = posted_by(interview)
   .content
-    = interview.body
+    = sanitize interview.body
   %p
     - if interview.open?
       - form_tag contact_moderation_interview_path(interview) do

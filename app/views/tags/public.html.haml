@@ -1,4 +1,4 @@
-=h2 "Tous les contenus taggés avec #{@tag.name}"
+=h2 "Tous les contenus taggés avec #{h @tag.name}"
 
 - @nodes.each do |node|
-  ~ render node.content
+  = render node.content
