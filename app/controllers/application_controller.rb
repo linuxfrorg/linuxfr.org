@@ -5,10 +5,9 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
 
   helper :all # include all helpers, all the time
-  helper_method :url_for_content
+  helper_method :url_for_content, :current_user, :logged_in?
 
-  # Uncomment the :secret if you're not using the cookie session store
-  protect_from_forgery # :secret => '8a6eeeea65a728190594ee186b4f9258'
+  protect_from_forgery
   filter_parameter_logging :password, :password_confirmation
 
   before_filter :seo_filter
@@ -19,6 +18,14 @@ protected
     @title    = %w(LinuxFr.org)
     @keywords = %w(Linux Logiciel Libre GNU Free Software Actualité Forum Communauté)
     @feeds    = {}
+  end
+
+  def current_user
+    # TODO
+  end
+
+  def logged_in?
+    !!current_user
   end
 
   def admin_required

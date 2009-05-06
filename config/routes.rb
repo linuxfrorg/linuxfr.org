@@ -36,11 +36,12 @@ ActionController::Routing::Routes.draw do |map|
 
   # User account and session
   map.resources :users
-  map.resource :session
-  map.signup '/inscription', :controller => 'users', :action => 'new'
+  map.resource :account
+  map.resource :account_session
+  map.signup '/inscription', :controller => 'account', :action => 'new'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  map.activate '/activation/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
+  # map.activate '/activation/:activation_code', :controller => 'account', :action => 'activate', :activation_code => nil
 
   # Moderation
   map.namespace :moderation do |moderation|
