@@ -48,4 +48,10 @@ class PollsController < ApplicationController
     redirect_to @poll
   end
 
+protected
+
+  def on_the_first_page?
+    params[:page].to_i <= 1
+  end
+
 end

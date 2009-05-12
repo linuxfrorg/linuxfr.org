@@ -1,7 +1,7 @@
 .votes
   %p
     = "Score : #{node.score}."
-    - if logged_in? && node.content.votable_by?(current_user)
+    - if node.content.votable_by?(current_user)
       Ce contenu est-il
       - form_tag vote_path(:action => 'for', :node_id => node.id) do
         = submit_tag "pertinent"

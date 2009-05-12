@@ -14,7 +14,6 @@
 #  updated_at :datetime
 #
 
-require 'digest/sha1'
 
 # The users are the core of LinuxFr.org, its value.
 # They can submit contents, vote for them, comment them...
