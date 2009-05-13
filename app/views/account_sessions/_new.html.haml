@@ -1,0 +1,15 @@
+-# This form can be used several times on the same page,
+-# so we use a suffix to have unique id
+- suffix = cycle(1, 2)
+- form_for AccountSession.new, :url => account_session_path, :html => {:id => "account_session_#{suffix}"} do |form|
+  %p
+    = form.label "login_#{suffix}", 'Identifiant'
+    = form.text_field :login, :id => "account_session_login_#{suffix}", :required => 'required'
+  %p
+    = form.label "password_#{suffix}", 'Mot de passe'
+    = form.password_field :password, :id => "account_session_password_#{suffix}", :required => 'required'
+  %p
+    = form.label "remember_me_#{suffix}", 'Connexion automatique'
+    = form.check_box :remember_me, :id => "account_session_remember_me_#{suffix}"
+  %p
+    = form.submit "Se connecter"

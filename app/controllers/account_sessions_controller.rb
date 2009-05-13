@@ -1,4 +1,4 @@
-class AccountSessionController < ApplicationController
+class AccountSessionsController < ApplicationController
   before_filter :anonymous_required, :only => [:new, :create]
   before_filter :user_required, :only => :destroy
 
