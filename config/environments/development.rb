@@ -15,3 +15,11 @@ config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
+
+# Use Rack::Bug on the development environment if available
+begin
+  config.middleware.use 'Rack::Bug'
+  puts "Rack::Bug enabled"
+rescue LoadError
+  puts "Rack::Bug disabled"
+end
