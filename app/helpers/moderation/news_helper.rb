@@ -10,7 +10,7 @@ module Moderation::NewsHelper
 
   def voters_condition(news, bool)
     votes  = news.node.votes.all(:conditions => {:vote => bool})
-    voters = votes.map {|v| v.user.public_name}
+    voters = votes.map {|v| v.user.name}
     voters.to_sentence
   end
 

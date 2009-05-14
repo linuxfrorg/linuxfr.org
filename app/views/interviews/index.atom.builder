@@ -7,7 +7,7 @@ atom_feed do |feed|
       entry.title(interview.title)
       entry.content(interview.body, :type => 'html')
       entry.author do |author|
-        author.name(interview.user.public_name)
+        author.name(interview.user.name)
       end
     end
   end

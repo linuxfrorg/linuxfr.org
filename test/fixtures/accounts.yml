@@ -7,6 +7,7 @@
 #  user_id             :integer(4)
 #  login               :string(40)      not null
 #  email               :string(100)     not null
+#  state               :string(255)     default("passive"), not null
 #  crypted_password    :string(255)     not null
 #  password_salt       :string(255)     not null
 #  persistence_token   :string(255)     not null

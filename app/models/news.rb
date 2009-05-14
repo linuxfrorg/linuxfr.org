@@ -56,11 +56,11 @@ class News < Content
   end
 
   def self.accept_threshold
-    User.count_amr / 5
+    User.amr.count / 5
   end
 
   def self.refuse_threshold
-    -User.count_amr / 4
+    -User.amr.count / 4
   end
 
 ### Versioning ###
@@ -71,7 +71,7 @@ class News < Content
   versioning(:title, :body, :second_part) do |v|
     v.repository = Rails.root.join('git_store', 'news.git')
     v.message    = lambda { |news| news.commit_message }
-    v.committer  = lambda { |news| [news.committer.public_name, news.committer.email] }
+    v.committer  = lambda { |news| [news.committer.name, news.committer.email] }
   end
 
 ### ACL ###

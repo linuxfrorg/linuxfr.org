@@ -4,6 +4,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.references :user
       t.string   :login, :limit => 40,  :null => false
       t.string   :email, :limit => 100, :null => false
+      t.string   :state,                :null => false, :default => 'passive'
       t.string   :crypted_password,     :null => false
       t.string   :password_salt,        :null => false
       t.string   :persistence_token,    :null => false

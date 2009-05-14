@@ -7,7 +7,7 @@ atom_feed do |feed|
       entry.title(poll.title)
       entry.content(poll_body(poll), :type => 'html')
       entry.author do |author|
-        author.name(poll.user.public_name)
+        author.name(poll.user.name)
       end
     end
   end

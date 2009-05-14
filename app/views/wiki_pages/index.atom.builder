@@ -7,7 +7,7 @@ atom_feed do |feed|
       entry.title(page.title)
       entry.content(page.wikified_body, :type => 'html')
       entry.author do |author|
-        author.name(page.user.public_name)
+        author.name(page.user.name)
       end
     end
   end

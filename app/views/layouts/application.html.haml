@@ -28,7 +28,7 @@
       %h1= link_to "LinuxFr.org", '/'
       %article.login
         - if current_user
-          %p= current_user.public_name
+          %p= current_user.name
           %p= link_to "Proposer un contenu", '/proposer_un_contenu'
           %p= link_to "Se déconnecter", logout_path
         - else

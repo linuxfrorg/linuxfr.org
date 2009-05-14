@@ -54,11 +54,11 @@ class Tracker < Content
   end
 
   def assigned_to
-    assigned_to_user.try(:public_name) || 'Personne'
+    assigned_to_user.try(:name) || 'Personne'
   end
 
   def reported_by
-    user.try(:public_name) || "Pierre Tramo"
+    user.try(:name) || "Pierre Tramo"
   end
 
 ### ACL ###

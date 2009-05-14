@@ -31,7 +31,7 @@ class WikiPage < Content
   versioning(:title, :body) do |v|
     v.repository = Rails.root.join('git_store', 'wiki.git')
     v.message    = lambda { |page| page.commit_message }
-    v.committer  = lambda { |page| [page.committer.public_name, page.committer.email] }
+    v.committer  = lambda { |page| [page.committer.name, page.committer.email] }
   end
 
 ### ACL ###

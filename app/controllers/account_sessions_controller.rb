@@ -1,6 +1,6 @@
 class AccountSessionsController < ApplicationController
   before_filter :anonymous_required, :only => [:new, :create]
-  before_filter :user_required, :only => :destroy
+  before_filter :user_required,    :except => [:new, :create]
 
   def new
     @account_session = AccountSession.new
@@ -8,8 +8,9 @@ class AccountSessionsController < ApplicationController
 
   def create
     @account_session = AccountSession.new(params[:account_session])
+    # TODO remember_me
     if @account_session.save
-      flash[:notice] = "Vous êtes loggé"
+      flash[:notice] = "Vous êtes connecté"
       redirect_to '/'
     else
       render :action => :new
@@ -18,7 +19,7 @@ class AccountSessionsController < ApplicationController
 
   def destroy
     current_account_session.destroy
-    flash[:notice] = "Vous êtes déloggé"
+    flash[:notice] = "Vous êtes déconnecté"
     redirect_to '/'
   end
 
