@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: votes
+#
+#  id         :integer(4)      not null, primary key
+#  user_id    :integer(4)
+#  node_id    :integer(4)
+#  vote       :boolean(1)
+#  created_at :datetime
+#
+
 require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase

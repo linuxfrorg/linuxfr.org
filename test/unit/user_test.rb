@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(100)
+#  homesite   :string(255)
+#  jabber_id  :string(255)
+#  role       :string(255)     default("moule"), not null
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require File.dirname(__FILE__) + '/../test_helper'
 
 class UserTest < ActiveSupport::TestCase

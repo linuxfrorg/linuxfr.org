@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: polls
+#
+#  id         :integer(4)      not null, primary key
+#  state      :string(255)     default("draft"), not null
+#  title      :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'test_helper'
 
 class PollTest < ActiveSupport::TestCase

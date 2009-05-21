@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id         :integer(4)      not null, primary key
+#  state      :string(255)     default("published"), not null
+#  title      :string(255)
+#  body       :text
+#  forum_id   :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase

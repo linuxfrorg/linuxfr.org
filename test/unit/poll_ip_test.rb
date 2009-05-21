@@ -1,3 +1,11 @@
+# == Schema Information
+#
+# Table name: poll_ips
+#
+#  id :integer(4)      not null, primary key
+#  ip :integer(4)      not null
+#
+
 require 'test_helper'
 
 class PollIpTest < ActiveSupport::TestCase
