@@ -10,6 +10,7 @@ class AccountsController < ApplicationController
     @account = Account.new(params[:account])
     if @account.save
       flash[:notice] = "Votre compte a été créé. Vous allez recevoir un email avec les informations pour l'activer"
+      AccountNotifications.deliver_signup(@account) # TODO run_later
       redirect_to '/'
     else
       render :new
