@@ -1,7 +1,7 @@
 class AccountSession < Authlogic::Session::Base
 
   def user
-    account.find(:include => [:user]).user
+    account.user
   end
 
 end

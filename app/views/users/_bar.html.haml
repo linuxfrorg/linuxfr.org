@@ -1,6 +1,0 @@
-#user-bar
-  - if current_user
-    = "Loggé en tant que #{link_to h(current_user.login), current_user} (#{link_to 'Se délogger', logout_path})"
-  - else
-    = link_to "Se logger", login_path
-    = link_to "S'inscrire", signup_path

@@ -1,4 +1,4 @@
-class AccountController < ApplicationController
+class AccountsController < ApplicationController
   before_filter :anonymous_required, :only => [:new, :create, :activate]
   before_filter :user_required,    :except => [:new, :create, :activate]
 
@@ -17,7 +17,7 @@ class AccountController < ApplicationController
   end
 
   def activate
-    @account = Account.find_using_perishable_token(params[:id], 24.hours)
+    @account = Account.find_using_perishable_token(params[:code], 24.hours)
     if @account && @account.activate!
       flash[:notice] = 'Votre compte a bien été activé'
     else

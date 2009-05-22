@@ -1,0 +1,12 @@
+=h2 "Créer un compte"
+
+- form_for @account, :url => account_path do |form|
+  = form.error_messages
+  %p
+    = form.label :login, 'Identifiant'
+    = form.text_field :login, :required => 'required'
+  %p
+    = form.label :email, 'Adresse email'
+    = form.text_field :email, :required => 'required'
+  %p
+    = form.submit "S'inscrire"

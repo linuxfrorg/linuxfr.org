@@ -29,11 +29,27 @@ class Account < ActiveRecord::Base
 
   belongs_to :user
 
+### Validation ###
+
+  # TODO add more validation checks
+  validates_presence_of :login
+  validates_presence_of :email
+
 ### Authentication ###
 
   acts_as_authentic do |config|
-    config.validates_length_of_login_field_options :within => 2..100
+    config.validates_length_of_login_field_options :within => 3..30
     config.validates_uniqueness_of_login_field_options :case_sensitive => true
+  end
+
+### Password ###
+
+  before_validation_on_create :generate_a_password
+
+  def generate_a_password
+    chars = [*'A'..'Z'] + [*'a'..'z'] + [*'1'..'9'] + %w(- + ! ? : £ $ % &)
+    pass  = (0..7).map { chars.rand }.join
+    self.password = self.password_confirmation = pass
   end
 
 ### Workflow ###
@@ -49,7 +65,8 @@ class Account < ActiveRecord::Base
   aasm_event :delete   do transitions :from => [:active],  :to => :deleted, :on_transition => :deletion   end
 
   def activation
-    self.user.create(:name => self.login)
+    self.user = User.create(:name => self.login)
+    save
   end
 
   def deletion
