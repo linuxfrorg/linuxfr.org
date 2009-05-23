@@ -10,6 +10,11 @@
   - if @news.published?
     %p
       %b Dépêche publiée
+    - if @news.on_ppp?
+      %b En PPP
+    - elsif @news.pppable_by?(current_user)
+      - form_tag ppp_moderation_news_path(@news) do
+        = submit_tag "Placer en PPP"
   - elsif @news.refused?
     %p
       %b Dépêche refusée

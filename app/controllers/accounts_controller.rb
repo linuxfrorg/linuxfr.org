@@ -33,7 +33,6 @@ class AccountsController < ApplicationController
   def update
   end
 
-  # TODO
   def destroy
   end
 

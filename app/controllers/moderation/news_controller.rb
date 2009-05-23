@@ -25,6 +25,13 @@ class Moderation::NewsController < ModerationController
     redirect_to @news
   end
 
+  def ppp
+    @news = News.find(params[:id])
+    raise ActiveRecord::RecordNotFound unless @news && @news.pppable_by?(current_user)
+    @news.set_on_ppp
+    redirect_to @news
+  end
+
   def edit
     @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)

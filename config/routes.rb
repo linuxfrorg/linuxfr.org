@@ -46,7 +46,7 @@ ActionController::Routing::Routes.draw do |map|
   # Moderation
   map.namespace :moderation do |moderation|
     # TODO should we use PUT instead of POST for accept/refuse?
-    moderation.resources :news, :member => { :accept => :post, :refuse => :post } do |news|
+    moderation.resources :news, :member => { :accept => :post, :refuse => :post, :ppp => :post } do |news|
       news.show_diff '/show_diff/:sha', :controller => 'news', :action => 'show_diff'
     end
     moderation.resources :interviews, :member => { :accept => :post, :refuse => :post, :contact => :post, :publish => :post }, :as => 'entretiens'

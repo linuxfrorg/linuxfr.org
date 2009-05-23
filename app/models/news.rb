@@ -100,4 +100,23 @@ class News < Content
     user && (user.moderator? || user.admin?) && score < News.refuse_threshold
   end
 
+  def pppable_by?(user)
+    user && (user.moderator? || user.admin?) && published?
+  end
+
+### PPP ###
+
+  def self.ppp
+    id = Dictionary['PPP']
+    id && find(id)
+  end
+
+  def set_on_ppp
+    Dictionary['PPP'] = self.id
+  end
+
+  def on_ppp?
+    self.id == Dictionary['PPP'].to_i
+  end
+
 end

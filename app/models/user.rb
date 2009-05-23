@@ -33,6 +33,8 @@ class User < ActiveRecord::Base
   has_many :relevances, :dependent => :destroy
   has_many :taggings, :dependent => :destroy, :include => :tag
   has_many :tags, :through => :taggings, :uniq => true
+  
+  delegate :email, :to => :account
 
 ### Role ###
 

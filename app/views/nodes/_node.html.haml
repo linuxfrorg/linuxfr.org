@@ -13,7 +13,7 @@
 .tags
   - keywords_from_tags(node.popular_tags)
   %p
-    = '[', link_to "Tagger", node_new_tag_path(:node_id => node.id), ']'
+    = '[', link_to("Tagger", node_new_tag_path(:node_id => node.id)), ']'
     Ce contenu est taggé avec :
     - node.tags.each do |tag|
       = link_to h(tag.name), public_tag_path(:id => h(tag.name))
