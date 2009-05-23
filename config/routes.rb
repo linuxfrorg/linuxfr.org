@@ -55,7 +55,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sessions
   map.resource :account_session, :as => 'session'
-  map.with_options :controller => 'account_session' do |a|
+  map.with_options :controller => 'account_sessions' do |a|
     a.login  '/login',  :action => 'new'
     a.logout '/logout', :action => 'destroy'
   end

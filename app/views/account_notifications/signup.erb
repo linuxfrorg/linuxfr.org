@@ -5,7 +5,7 @@ login : <%= @account.login %>
 password : <%= @account.password %>
 
 Pour finaliser votre inscription, veuillez suivre le lien suivant :
-<%= activate_url(@account.perishable_token, :host => 'linuxfr.org') %>
+<%= activate_url(@account.perishable_token) %>
 
 Si vous n'avez pas demandé la création de ce compte, veuillez simplement
 ignorer cet email. La demande de création de compte sera détruite au bout
