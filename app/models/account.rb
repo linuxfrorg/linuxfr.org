@@ -73,4 +73,10 @@ class Account < ActiveRecord::Base
     self.user.inactivate!
   end
 
+### Presentation ###
+
+  def email_address
+    "#{login} <#{email}>"
+  end
+
 end

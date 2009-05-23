@@ -1,3 +1,26 @@
+CREATE TABLE `accounts` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` int(11) default NULL,
+  `login` varchar(40) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `state` varchar(255) NOT NULL default 'passive',
+  `crypted_password` varchar(255) NOT NULL,
+  `password_salt` varchar(255) NOT NULL,
+  `persistence_token` varchar(255) NOT NULL,
+  `single_access_token` varchar(255) NOT NULL,
+  `perishable_token` varchar(255) NOT NULL,
+  `login_count` int(11) NOT NULL default '0',
+  `failed_login_count` int(11) NOT NULL default '0',
+  `last_request_at` datetime default NULL,
+  `current_login_at` datetime default NULL,
+  `last_login_at` datetime default NULL,
+  `current_login_ip` varchar(255) default NULL,
+  `last_login_ip` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
 CREATE TABLE `boards` (
   `id` int(11) NOT NULL auto_increment,
   `login` varchar(255) default NULL,
@@ -15,7 +38,7 @@ CREATE TABLE `categories` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL auto_increment,
@@ -29,7 +52,7 @@ CREATE TABLE `comments` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `diaries` (
   `id` int(11) NOT NULL auto_increment,
@@ -39,7 +62,15 @@ CREATE TABLE `diaries` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `dictionaries` (
+  `id` int(11) NOT NULL auto_increment,
+  `key` varchar(16) NOT NULL,
+  `value` varchar(1024) default NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `index_dictionaries_on_key` (`key`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `forums` (
   `id` int(11) NOT NULL auto_increment,
@@ -49,7 +80,7 @@ CREATE TABLE `forums` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `interviews` (
   `id` int(11) NOT NULL auto_increment,
@@ -61,7 +92,7 @@ CREATE TABLE `interviews` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `links` (
   `id` int(11) NOT NULL auto_increment,
@@ -73,7 +104,7 @@ CREATE TABLE `links` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `news` (
   `id` int(11) NOT NULL auto_increment,
@@ -85,7 +116,7 @@ CREATE TABLE `news` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `nodes` (
   `id` int(11) NOT NULL auto_increment,
@@ -97,7 +128,7 @@ CREATE TABLE `nodes` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `poll_answers` (
   `id` int(11) NOT NULL auto_increment,
@@ -108,14 +139,14 @@ CREATE TABLE `poll_answers` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `poll_ips` (
   `id` int(11) NOT NULL auto_increment,
   `ip` int(11) NOT NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `index_poll_ips_on_ip` (`ip`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `polls` (
   `id` int(11) NOT NULL auto_increment,
@@ -124,7 +155,7 @@ CREATE TABLE `polls` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL auto_increment,
@@ -135,7 +166,7 @@ CREATE TABLE `posts` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `relevances` (
   `id` int(11) NOT NULL auto_increment,
@@ -144,7 +175,7 @@ CREATE TABLE `relevances` (
   `vote` tinyint(1) default NULL,
   `created_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `schema_migrations` (
   `version` varchar(255) NOT NULL,
@@ -171,7 +202,7 @@ CREATE TABLE `slugs` (
   PRIMARY KEY  (`id`),
   UNIQUE KEY `index_slugs_on_name_and_sluggable_type_and_scope_and_sequence` (`name`,`sluggable_type`,`scope`,`sequence`),
   KEY `index_slugs_on_sluggable_id` (`sluggable_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `taggings` (
   `id` int(11) NOT NULL auto_increment,
@@ -199,28 +230,18 @@ CREATE TABLE `trackers` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL auto_increment,
-  `login` varchar(40) NOT NULL,
-  `email` varchar(100) NOT NULL,
   `name` varchar(100) default NULL,
   `homesite` varchar(255) default NULL,
   `jabber_id` varchar(255) default NULL,
   `role` varchar(255) NOT NULL default 'moule',
-  `state` varchar(255) NOT NULL default 'passive',
-  `salt` varchar(40) default NULL,
-  `remember_token` varchar(255) default NULL,
-  `remember_token_expires_at` datetime default NULL,
-  `crypted_password` varchar(40) default NULL,
-  `activation_code` varchar(40) default NULL,
-  `activated_at` datetime default NULL,
-  `deleted_at` datetime default NULL,
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `votes` (
   `id` int(11) NOT NULL auto_increment,
@@ -239,7 +260,7 @@ CREATE TABLE `wiki_pages` (
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO schema_migrations (version) VALUES ('20090105233501');
 
@@ -284,3 +305,7 @@ INSERT INTO schema_migrations (version) VALUES ('20090308232205');
 INSERT INTO schema_migrations (version) VALUES ('20090310234743');
 
 INSERT INTO schema_migrations (version) VALUES ('20090324234852');
+
+INSERT INTO schema_migrations (version) VALUES ('20090505233940');
+
+INSERT INTO schema_migrations (version) VALUES ('20090522224128');

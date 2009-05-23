@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sections
   map.resources :news
   map.resources :interviews, :collection => { :comments => :get }, :as => 'entretiens'
+  map.resources :users
   map.resources :diaries, :as => 'journaux'
   map.resources :forums, :has_many => [:posts]
   map.new_post '/posts/new', :controller => 'posts', :action => 'new'
@@ -18,39 +19,55 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'home'
   map.resources :nodes do |node|
     node.resources :comments
-    node.new_tag '/tags/new', :controller => 'tags', :action => 'new'
-    node.connect '/tags', :controller => 'tags', :action => 'create', :conditions => { :method => :post }
+    map.with_options :controller => 'tags' do |t|
+      t.new_tag   '/tags/new', :action => 'new'
+      t.node_tags '/tags',     :action => 'create', :conditions => { :method => :post }
+    end
   end
-  map.tags '/tags', :controller => 'tags', :action => 'index'
-  map.tag '/tags/:id', :controller => 'tags', :action => 'show'
-  map.public_tag '/tags/:id/public', :controller => 'tags', :action => 'public'
+  map.with_options :controller => 'tags' do |t|
+    t.tags       '/tags',            :action => 'index'
+    t.tag        '/tags/:id',        :action => 'show'
+    t.public_tag '/tags/:id/public', :action => 'public'
+  end
   map.answer_comment '/nodes/:node_id/comments/:parent_id/answer', :controller => 'comments', :action => 'new'
   map.vote '/vote/:action/:node_id', :controller => 'votes'
   map.relevance '/relevance/:action/:comment_id', :controller => 'relevances'
 
   # Boards
-  map.add_board '/board/add', :controller => 'boards', :action => 'add', :conditions => { :method => :post }
-  map.writing_board '/redaction', :controller => 'boards', :action => 'index', :id => Board.writing
-  map.free_board '/board', :controller => 'boards', :action => 'index', :id => Board.free
-  map.free_board_xml '/board/index.xml', :controller => 'boards', :action => 'index', :id => Board.free, :format => 'xml'
+  map.with_options :controller => 'boards' do |b|
+    b.add_board '/board/add', :action => 'add', :conditions => { :method => :post }
+    b.with_options :action => 'index' do |i|
+      i.writing_board  '/redaction',       :id => Board.writing
+      i.free_board     '/board',           :id => Board.free
+      i.free_board_xml '/board/index.xml', :id => Board.free, :format => 'xml'
+    end
+  end
 
-  # User account and session
-  map.resources :users
+  # Accounts
   map.resource :account, :as => 'compte'
+  map.with_options :controller => 'accounts' do |a|
+    a.signup           '/inscription', :action => 'new'
+    a.activate   '/activation/:token', :action => 'activate',        :token => nil
+    a.forgot_password '/mot-de-passe', :action => 'forgot_password', :conditions => { :method => :get }
+    a.send_password   '/mot-de-passe', :action => 'send_password',   :conditions => { :method => :post }
+    a.reset_password  '/reset/:token', :action => 'reset_password',  :token => nil
+  end
+
+  # Sessions
   map.resource :account_session, :as => 'session'
-  map.signup   '/inscription', :controller => 'accounts', :action => 'new'
-  map.activate '/activation/:code', :controller => 'accounts', :action => 'activate', :code => nil
-  map.login  '/login',  :controller => 'account_sessions', :action => 'new'
-  map.logout '/logout', :controller => 'account_sessions', :action => 'destroy'
+  map.with_options :controller => 'account_session' do |a|
+    a.login  '/login',  :action => 'new'
+    a.logout '/logout', :action => 'destroy'
+  end
 
   # Moderation
-  map.namespace :moderation do |moderation|
+  map.namespace :moderation do |m|
     # TODO should we use PUT instead of POST for accept/refuse?
-    moderation.resources :news, :member => { :accept => :post, :refuse => :post, :ppp => :post } do |news|
+    m.resources :news, :member => { :accept => :post, :refuse => :post, :ppp => :post } do |news|
       news.show_diff '/show_diff/:sha', :controller => 'news', :action => 'show_diff'
     end
-    moderation.resources :interviews, :member => { :accept => :post, :refuse => :post, :contact => :post, :publish => :post }, :as => 'entretiens'
-    moderation.resources :polls, :member => { :accept => :post, :refuse => :post }, :as => 'sondages'
+    m.resources :interviews, :member => { :accept => :post, :refuse => :post, :contact => :post, :publish => :post }, :as => 'entretiens'
+    m.resources :polls, :member => { :accept => :post, :refuse => :post }, :as => 'sondages'
   end
 
   # Admin
@@ -60,47 +77,11 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :categories
   end
 
-  # The priority is based upon order of creation: first created -> highest priority.
-
-  # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
-
-  # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
-
-  # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
-  # Sample resource route with more complex sub-resources
-  #   map.resources :products do |products|
-  #     products.resources :comments
-  #     products.resources :sales, :collection => { :recent => :get }
-  #   end
-
-  # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
-  #   end
-
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "welcome"
-
-  # See how all your routes lay out with "rake routes"
-
-  # Install the default routes as the lowest priority.
-  # Note: These default routes make all actions in every controller accessible via GET requests. You should
-  # consider removing the them or commenting them out if you're using named routes and resources.
+  # Default routes (should not be used)
+  # TODO remove them
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 
+  # Static pages
   map.static ':action', :controller => 'static'
 end
