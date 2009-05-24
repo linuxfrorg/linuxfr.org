@@ -1,14 +1,23 @@
 ActionController::Routing::Routes.draw do |map|
+  map.root :controller => 'home'
 
-  # Contents
+  # News
   map.resources :sections
   map.resources :news
-  map.resources :interviews, :collection => { :comments => :get }, :as => 'entretiens'
+
+  # Diaries & Users
   map.resources :users
   map.resources :diaries, :as => 'journaux'
+
+  # Forums
   map.resources :forums, :has_many => [:posts]
-  map.new_post '/posts/new', :controller => 'posts', :action => 'new'
-  map.posts '/posts', :controller => 'posts', :action => 'create', :conditions => { :method => :post }
+  map.with_options :controller => 'posts' do |p|
+    p.new_post   '/posts/new', :action => 'new'
+    p.post_posts '/posts',     :action => 'create', :conditions => { :method => :post }
+  end
+
+  # Other contents
+  map.resources :interviews, :collection => { :comments => :get }, :as => 'entretiens'
   map.resources :polls, :member => { :vote => :post }, :as => 'sondages'
   map.resources :trackers, :collection => { :comments => :get }, :as => 'suivi'
   map.resources :wiki_pages, :as => 'wiki' do |wiki|
@@ -16,7 +25,6 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   # Nodes
-  map.root :controller => 'home'
   map.resources :nodes do |node|
     node.resources :comments
     map.with_options :controller => 'tags' do |t|
