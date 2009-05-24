@@ -51,6 +51,7 @@ ActionController::Routing::Routes.draw do |map|
     a.forgot_password '/mot-de-passe', :action => 'forgot_password', :conditions => { :method => :get }
     a.send_password   '/mot-de-passe', :action => 'send_password',   :conditions => { :method => :post }
     a.reset_password  '/reset/:token', :action => 'reset_password',  :token => nil
+    a.close_account '/desinscription', :action => 'delete'
   end
 
   # Sessions

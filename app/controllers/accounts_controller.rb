@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
-  before_filter :anonymous_required,  :except => [:edit, :update, :destroy]
-  before_filter :user_required,         :only => [:edit, :update, :destroy]
-  before_filter :load_account_by_token, :only => [:activate, :reset_password]
+  before_filter :load_account_by_token, :only => [:activate, :reset_password, :destroy]
+  before_filter :anonymous_required,  :except => [:edit, :update, :delete, :destroy]
+  before_filter :user_required,         :only => [:edit, :update, :delete, :destroy]
 
   def new
     @account = Account.new
@@ -56,19 +56,34 @@ class AccountsController < ApplicationController
     end
   end
 
+  # TODO add a link to close_account_url
   def edit
   end
 
   def update
   end
 
+  def delete
+    @account = current_account_session.account
+    @account.reset_perishable_token!
+  end
+
   def destroy
+    if @account && @account.id  == current_account_session.account.id
+      @account.delete
+      current_account_session.destroy
+      flash[:notice] = "Votre compte a bien été supprimé"
+      redirect_to '/'
+    else
+      flash[:error] = "Le code aléatoire n'est pas le bon"
+      redirect_to :back
+    end
   end
 
 protected
 
   def load_account_by_token
-    @account = Account.find_using_perishable_token(params[:token], 24.hours)
+    @account = Account.find_using_perishable_token(params[:token])
   end
 
 end

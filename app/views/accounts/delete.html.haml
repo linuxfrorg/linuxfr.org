@@ -1,0 +1,23 @@
+=h2 "Fermer son compte"
+
+%p
+  Si vous souhaitez fermer votre compte de manière irrévocable.
+  Copiez/collez la chaîne aléatoire et validez.
+%p
+  %strong Important :
+  vous ne pourrez plus utiliser ce compte-ci.
+  Vos sessions, nom, prénom, page personnelle et identifiant Jabber seront
+  définitivement supprimés (la prise en compte sur tout le site sera faite
+  lors de la prochaine purge du cache).
+  Vous pourrez toujours recréer un compte ultérieurement cependant, mais ni
+  avec le même login, ni la même adresse de courriel.
+%p
+  Les articles, commentaires, et toutes vos contributions resteront visibles
+  sur ce site.
+
+- form_for @account, :url => account_path, :html => {:method => :delete} do |form|
+  %p
+    = label_tag :token, @account.perishable_token
+    = text_field_tag :token, nil, :id => :token, :required => 'required'
+  %p
+    = form.submit "Fermer"

@@ -40,6 +40,7 @@ class Account < ActiveRecord::Base
   acts_as_authentic do |config|
     config.validates_length_of_login_field_options :within => 3..30
     config.validates_uniqueness_of_login_field_options :case_sensitive => true
+    config.perishable_token_valid_for 24.hours
   end
 
 ### Password ###
