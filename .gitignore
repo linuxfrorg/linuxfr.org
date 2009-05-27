@@ -4,4 +4,3 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 git_store
-vendor/plugins/rack-bug

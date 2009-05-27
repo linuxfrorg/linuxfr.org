@@ -17,10 +17,3 @@ config.action_controller.perform_caching             = false
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
 config.action_mailer.default_url_options = { :host => MY_DOMAIN }
-
-# Use Rack::Bug on the development environment if available
-begin
-  config.middleware.use 'Rack::Bug'
-rescue LoadError
-  puts "Rack::Bug disabled"
-end
