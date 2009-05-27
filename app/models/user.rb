@@ -35,7 +35,11 @@ class User < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy, :include => :tag
   has_many :tags, :through => :taggings, :uniq => true
   
-  delegate :email, :to => :account
+  delegate :login, :email, :to => :account
+
+### SEO ###
+
+  has_friendly_id :login, :use_slug => true
 
 ### Role ###
 

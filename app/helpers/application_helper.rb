@@ -43,6 +43,10 @@ module ApplicationHelper
     content_tag_for(:article, record, :class => 'content', &blk)
   end
 
+  def link_to_content(content)
+    link_to h(content.title), url_for_content(content)
+  end
+
   def posted_by(content)
     user = content.user || current_user
     user_link = link_to(h(user.name), user)
