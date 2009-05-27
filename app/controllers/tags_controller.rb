@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_filter :login_required, :except => [:public]
+  before_filter :user_required, :except => [:public]
   before_filter :find_node, :only => [:new, :create]
 
   def new

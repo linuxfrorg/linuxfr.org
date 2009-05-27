@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :user_required, :except => [:index, :show]
   before_filter :find_node
 
   def index

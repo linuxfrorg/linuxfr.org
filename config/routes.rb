@@ -6,14 +6,21 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :news
 
   # Diaries & Users
-  map.resources :users
-  map.resources :diaries, :as => 'journaux'
+  map.resources :users do |u|
+    u.resources :diaries, :as => 'journaux'
+  end
+  map.with_options :controller => 'diaries' do |d|
+    d.diaries    '/journaux',         :action => 'index',  :conditions => { :method => :get }
+    d.diaries    '/journaux.:format', :action => 'index',  :conditions => { :method => :get }
+    d.new_diary  '/journaux/nouveau', :action => 'new',    :conditions => { :method => :get }
+    d.post_diary '/journaux',         :action => 'create', :conditions => { :method => :post }
+  end
 
   # Forums
   map.resources :forums, :has_many => [:posts]
   map.with_options :controller => 'posts' do |p|
-    p.new_post   '/posts/new', :action => 'new'
-    p.post_posts '/posts',     :action => 'create', :conditions => { :method => :post }
+    p.new_post   '/posts/nouveau', :action => 'new',    :conditions => { :method => :get }
+    p.post_posts '/posts',         :action => 'create', :conditions => { :method => :post }
   end
 
   # Other contents
@@ -28,14 +35,14 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :nodes do |node|
     node.resources :comments
     map.with_options :controller => 'tags' do |t|
-      t.new_tag   '/tags/new', :action => 'new'
-      t.node_tags '/tags',     :action => 'create', :conditions => { :method => :post }
+      t.node_new_tag '/nodes/:node_id/tags/new', :action => 'new',    :conditions => { :method => :get }
+      t.node_tags    '/nodes/:node_id/tags',     :action => 'create', :conditions => { :method => :post }
     end
   end
   map.with_options :controller => 'tags' do |t|
-    t.tags       '/tags',            :action => 'index'
-    t.tag        '/tags/:id',        :action => 'show'
-    t.public_tag '/tags/:id/public', :action => 'public'
+    t.tags       '/tags',            :action => 'index',  :conditions => { :method => :get }
+    t.tag        '/tags/:id',        :action => 'show',   :conditions => { :method => :get }
+    t.public_tag '/tags/:id/public', :action => 'public', :conditions => { :method => :get }
   end
   map.answer_comment '/nodes/:node_id/comments/:parent_id/answer', :controller => 'comments', :action => 'new'
   map.vote '/vote/:action/:node_id', :controller => 'votes'

@@ -1,5 +1,5 @@
 class TrackersController < ApplicationController
-  before_filter :login_required, :except => [:index, :show, :comments]
+  before_filter :user_required, :except => [:index, :show, :comments]
 
   def index
     @trackers = Tracker.sorted

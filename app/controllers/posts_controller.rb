@@ -1,15 +1,8 @@
 class PostsController < ApplicationController
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :user_required, :except => [:index, :show]
   before_filter :find_forum, :except => [:new, :create]
 
-  def index
-    redirect_to @forum
-  end
-
-  def show
-    @post = @forum.posts.find(params[:id])
-    raise ActiveRecord::RecordNotFound.new unless @post && @post.readable_by?(current_user)
-  end
+### Global ###
 
   def new
     @preview_mode = false
@@ -29,6 +22,17 @@ class PostsController < ApplicationController
     else
       render :new
     end
+  end
+
+### By forum ###
+
+  def index
+    redirect_to @forum
+  end
+
+  def show
+    @post = @forum.posts.find(params[:id])
+    raise ActiveRecord::RecordNotFound.new unless @post && @post.readable_by?(current_user)
   end
 
   def edit

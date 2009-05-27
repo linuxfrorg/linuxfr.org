@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_filter :login_required
+  before_filter :user_required
 
   def for
     node = Node.find(params[:node_id])

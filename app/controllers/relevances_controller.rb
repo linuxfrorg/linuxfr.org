@@ -1,5 +1,5 @@
 class RelevancesController < ApplicationController
-  before_filter :login_required
+  before_filter :user_required
 
   def for
     comment = Comment.find(params[:comment_id])

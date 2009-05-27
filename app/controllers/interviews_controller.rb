@@ -1,5 +1,5 @@
 class InterviewsController < ApplicationController
-  before_filter :login_required, :except => [:index, :show, :comments]
+  before_filter :user_required, :except => [:index, :show, :comments]
 
   def index
     @interviews = Interview.public.sorted

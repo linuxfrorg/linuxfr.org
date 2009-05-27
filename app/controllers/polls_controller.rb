@@ -1,5 +1,5 @@
 class PollsController < ApplicationController
-  before_filter :login_required, :only => [:new, :create]
+  before_filter :user_required, :only => [:new, :create]
 
   def index
     @polls = Poll.archived.sorted.paginate :page => params[:page], :per_page => 10

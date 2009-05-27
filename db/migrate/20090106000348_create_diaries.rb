@@ -3,6 +3,7 @@ class CreateDiaries < ActiveRecord::Migration
     create_table :diaries do |t|
       t.string :state, :null => false, :default => 'published'
       t.string :title
+      t.integer :owner_id
       t.text :body
       t.timestamps
     end

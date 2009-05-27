@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 20090110185148
 #
 # Table name: diaries
 #
 #  id         :integer(4)      not null, primary key
 #  state      :string(255)     default("published"), not null
 #  title      :string(255)
+#  owner_id   :integer(4)
 #  body       :text
 #  created_at :datetime
 #  updated_at :datetime
@@ -16,6 +16,8 @@
 # informations, discussions and trolls.
 #
 class Diary < Content
+  belongs_to :owner, :class_name => 'User'
+
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Vous ne pouvez pas poster un journal vide"
 
@@ -23,7 +25,6 @@ class Diary < Content
 
 ### SEO ###
 
-  # TODO "~#{user.login}/#{title}"
   has_friendly_id :title, :use_slug => true
 
 ### ACL ###

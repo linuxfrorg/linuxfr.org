@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_filter :login_required
+  before_filter :user_required
 
   def index
     @board = Board[params[:id]]

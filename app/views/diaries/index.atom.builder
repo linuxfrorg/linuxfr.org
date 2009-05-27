@@ -3,7 +3,7 @@ atom_feed do |feed|
   feed.updated(@diaries.first.try :created_at)
 
   @diaries.each do |diary|
-    feed.entry(diary) do |entry|
+    feed.entry(diary, :url => polymorphic_url([diary.owner, diary])) do |entry|
       entry.title(diary.title)
       entry.content(diary.body, :type => 'html')
       entry.author do |author|

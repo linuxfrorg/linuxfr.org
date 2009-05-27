@@ -1,6 +1,6 @@
 - article_for diary do
   %h3
-    = link_to "Journal : #{h diary.title}", diary
+    = link_to "Journal : #{h diary.title}", [diary.owner, diary]
   %p
     = posted_by(diary)
   .content

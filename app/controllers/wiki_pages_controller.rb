@@ -1,5 +1,5 @@
 class WikiPagesController < ApplicationController
-  before_filter :login_required, :except => [:index, :show, :show_diff]
+  before_filter :user_required, :except => [:index, :show, :show_diff]
 
   def index
     @main_page  = WikiPage.find_by_title("MainPage")
