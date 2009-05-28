@@ -1,8 +1,8 @@
-=h2 "&Eacute;crire un message"
+=h2 "Écrire un message"
 
 = render "preview", :object => @post if @preview_mode
 
-- form_for @post do |form|
+- form_for @post, :url => post_posts_path do |form|
   = render form
 
 = render '/shared/wiki_help'

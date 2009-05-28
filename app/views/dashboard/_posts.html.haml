@@ -1,0 +1,21 @@
+%h3
+  Vos derniers messages dans les forums
+- if @posts.empty?
+  %p
+    Vous n'avez posté aucun message dans les forums
+- else
+  %table
+    %tr
+      %th Forum
+      %th Sujet
+      %th Note
+      %th Nombre de commentaires
+      %th Date du message
+    - @posts.each do |node|
+      - post = node.content
+      %tr
+        %td= post.forum.title
+        %td= link_to h(post.title), [post.forum, post]
+        %td= node.score
+        %td= node.comments.count
+        %td= post.created_at.to_s(:long)

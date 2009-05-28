@@ -26,7 +26,10 @@ class Node < ActiveRecord::Base
   has_many :tags, :through => :taggings, :uniq => true
 
   named_scope :public, :conditions => { :public => true }
-  named_scope :by_date, :order => "created_at DESC"
+  named_scope :by_date, :order => 'created_at DESC'
+  named_scope :on_dashboard, lambda {|type|
+    {:conditions => {:public => true, :content_type => type}, :order => 'created_at DESC'}
+  }
 
 ### Comments ###
 

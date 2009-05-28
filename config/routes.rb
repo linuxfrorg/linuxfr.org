@@ -32,6 +32,7 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   # Nodes
+  map.dashboard '/tableau-de-bord', :controller => 'dashboard', :action => 'index'
   map.resources :nodes do |node|
     node.resources :comments
     map.with_options :controller => 'tags' do |t|

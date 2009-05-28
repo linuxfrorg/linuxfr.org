@@ -1,0 +1,21 @@
+%h3
+  Vos dernières entrées dans le suivi
+- if @trackers.empty?
+  %p
+    Vous n'avez posté aucun entrée dans le suivi
+- else
+  %table
+    %tr
+      %th Catégorie
+      %th Sujet
+      %th Note
+      %th Nombre de commentaires
+      %th Date du message
+    - @trackers.each do |node|
+      - tracker = node.content
+      %tr
+        %td= tracker.category.title
+        %td= link_to h(tracker.title), tracker
+        %td= node.score
+        %td= node.comments.count
+        %td= tracker.created_at.to_s(:long)

@@ -27,6 +27,10 @@ class Comment < ActiveRecord::Base
   named_scope :by_content_type, lambda {|type|
     { :include => :node, :conditions => ["nodes.content_type = ?", type] }
   }
+  named_scope :on_dashboard, :conditions => {:state => 'published'}, :order => 'created_at DESC'
+  named_scope :descendants, lambda {|path|
+    {:conditions => ["materialized_path LIKE ?", "#{path}_%"]}
+  }
 
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Vous ne pouvez pas poster un commentaire vide"
@@ -62,6 +66,16 @@ class Comment < ActiveRecord::Base
 
   def root?
     depth == 0
+  end
+
+### Calculations ###
+
+  def nb_answers
+    self.class.published.descendants(materialized_path).count
+  end
+
+  def last_answer
+    self.class.published.descendants(materialized_path).first(:order => 'created_at DESC')
   end
 
 ### ACL ###
