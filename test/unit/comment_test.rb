@@ -9,6 +9,7 @@
 #  title             :string(255)
 #  body              :text
 #  score             :integer(4)      default(0)
+#  answered_to_self  :boolean(1)
 #  materialized_path :string(1022)
 #  created_at        :datetime
 #  updated_at        :datetime

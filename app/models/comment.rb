@@ -1,5 +1,4 @@
 # == Schema Information
-# Schema version: 20090205000452
 #
 # Table name: comments
 #
@@ -10,6 +9,7 @@
 #  title             :string(255)
 #  body              :text
 #  score             :integer(4)      default(0)
+#  answered_to_self  :boolean(1)
 #  materialized_path :string(1022)
 #  created_at        :datetime
 #  updated_at        :datetime
@@ -27,10 +27,11 @@ class Comment < ActiveRecord::Base
   named_scope :by_content_type, lambda {|type|
     { :include => :node, :conditions => ["nodes.content_type = ?", type] }
   }
-  named_scope :on_dashboard, :conditions => {:state => 'published'}, :order => 'created_at DESC'
   named_scope :descendants, lambda {|path|
     {:conditions => ["materialized_path LIKE ?", "#{path}_%"]}
   }
+  named_scope :on_dashboard, :order => 'created_at DESC', :conditions =>
+    { :state => 'published', :answered_to_self => false }
 
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Vous ne pouvez pas poster un commentaire vide"
@@ -48,6 +49,7 @@ class Comment < ActiveRecord::Base
     parent = Comment.find(parent_id) if parent_id.present?
     parent_path = parent ? parent.materialized_path : ''
     self.materialized_path = "%s%0#{PATH_SIZE}d" % [parent_path, self.id]
+    self.answered_to_self  = is_an_answer_to_self?
     save
   end
 
@@ -66,6 +68,11 @@ class Comment < ActiveRecord::Base
 
   def root?
     depth == 0
+  end
+
+  def is_an_answer_to_self?
+    return false if root?
+    ret = Comment.exists? ["node_id = ? AND user_id = ? AND LOCATE(materialized_path, ?) > 0 AND id != ?", node_id, user_id, materialized_path, id]
   end
 
 ### Calculations ###
