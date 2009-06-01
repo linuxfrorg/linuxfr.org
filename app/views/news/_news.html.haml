@@ -2,7 +2,7 @@
   %h3
     = link_to(h(news.section.title), news.section), ':', link_to(h(news.title), news)
   %p
-    = posted_by(news)
+    = news_posted_by(news)
   .content
     = sanitize news.wikified_body
     - news.links.each do |link|

@@ -47,10 +47,10 @@ module ApplicationHelper
     link_to h(content.title), url_for_content(content)
   end
 
-  def posted_by(content)
+  def posted_by(content, user_link=nil)
     user = content.user || current_user
-    user_link = link_to(h(user.name), user)
-    date_time = (content.created_at || DateTime.now).to_s(:posted)
+    user_link ||= link_to(h(user.name), user)
+    date_time   = (content.created_at || DateTime.now).to_s(:posted)
     "Posté par #{user_link} le #{date_time}."
   end
 

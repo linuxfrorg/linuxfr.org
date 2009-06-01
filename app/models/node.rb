@@ -18,7 +18,7 @@
 # and facilitates the transformation of one content to another.
 #
 class Node < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user     # can be NULL
   belongs_to :content, :polymorphic => true
   has_many :comments
   has_many :votes, :dependent => :destroy

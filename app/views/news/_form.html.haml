@@ -1,5 +1,12 @@
 = form.error_messages
 
+- unless current_user
+  %p
+    = form.label :author_name, "Votre nom"
+    = form.text_field :author_name, :autocomplete => 'on', :required => 'required'
+  %p
+    = form.label :author_email, "Votre adresse de courriel"
+    = form.text_field :author_email, :autocomplete => 'on', :required => 'required'
 %p
   = form.label :title, "Titre de la dépêche"
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'

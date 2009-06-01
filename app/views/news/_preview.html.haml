@@ -2,7 +2,7 @@
   %h3
     = link_to(preview.section.title, preview.section), ':', h(preview.title)
   %p
-    = posted_by(preview)
+    = news_posted_by(preview)
   .content
     = sanitize preview.wikified_body
     - preview.links.each do |link|

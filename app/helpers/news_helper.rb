@@ -10,4 +10,8 @@ module NewsHelper
     news
   end
 
+  def news_posted_by(news)
+    posted_by(news, news.user ? nil : news.author_name)
+  end
+
 end

@@ -21,11 +21,12 @@ class NewsController < ApplicationController
   def create
     @news = News.new
     @news.attributes = params[:news]
-    @news.committer  = current_user # TODO and for anonymous user?
     @news.commit_message = "Nouvelle dépêche"
+    @news.author_name  = current_user.name  if current_user
+    @news.author_email = current_user.email if current_user
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @news.save
-      @news.node = Node.create(:public => false, :user_id => current_user.id)
+      @news.node = Node.create(:public => false, :user_id => (current_user && current_user.id))
       flash[:success] = "Votre proposition de dépêche a bien été soumise, et sera modérée dans les heures ou jours à venir"
       redirect_to news_index_url
     else

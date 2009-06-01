@@ -6,6 +6,8 @@ class CreateNews < ActiveRecord::Migration
       t.text :body
       t.text :second_part
       t.references :section
+      t.string :author_name,  :null => false, :default => 'anonymous'
+      t.string :author_email, :null => false, :default => 'anonymous@dlfp.org'
       t.timestamps
     end
   end

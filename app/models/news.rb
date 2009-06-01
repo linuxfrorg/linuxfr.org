@@ -1,16 +1,17 @@
 # == Schema Information
-# Schema version: 20090120005239
 #
 # Table name: news
 #
-#  id          :integer(4)      not null, primary key
-#  state       :string(255)     default("draft"), not null
-#  title       :string(255)
-#  body        :text
-#  second_part :text
-#  section_id  :integer(4)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id           :integer(4)      not null, primary key
+#  state        :string(255)     default("draft"), not null
+#  title        :string(255)
+#  body         :text
+#  second_part  :text
+#  section_id   :integer(4)
+#  author_name  :string(255)     default("anonymous"), not null
+#  author_email :string(255)     default("anonymous@dlfp.org"), not null
+#  created_at   :datetime
+#  updated_at   :datetime
 #
 
 # The news are the first content in LinuxFr.org.
@@ -66,12 +67,11 @@ class News < Content
 ### Versioning ###
 
   attr_accessor :commit_message
-  attr_accessor :committer
 
   versioning(:title, :body, :second_part) do |v|
     v.repository = Rails.root.join('git_store', 'news.git')
     v.message    = lambda { |news| news.commit_message }
-    v.committer  = lambda { |news| [news.committer.name, news.committer.email] }
+    v.committer  = lambda { |news| [news.author_name, news.author_email] }
   end
 
 ### ACL ###
