@@ -30,6 +30,7 @@
           %p= current_user.name
           %p= link_to "Proposer un contenu", '/proposer_un_contenu'
           %p= link_to "Mon tableau de bord", dashboard_path
+          %p= link_to "Modifier mes préférences", edit_account_path
           %p= link_to "Se déconnecter", logout_path
         - else
           = render '/account_sessions/new'

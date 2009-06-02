@@ -56,11 +56,15 @@ class AccountsController < ApplicationController
     end
   end
 
-  # TODO add a link to close_account_url
   def edit
+    @account = current_account_session.account
   end
 
   def update
+    @account = current_account_session.account
+    @account.attributes = params[:account]
+    flash[:success] = "Vos préférences ont été enregistrées" if @account.save
+    render :edit
   end
 
   def delete

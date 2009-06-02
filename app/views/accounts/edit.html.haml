@@ -1,0 +1,34 @@
+=h2 "Modifier mes préférences"
+
+%p
+  Ce formulaire permet de changer vos parametres utilisateurs. Votre login ne peut pas être modifié.
+%p
+  Si vous souhaitez fermer votre compte, veuillez suivre
+  = link_to("ce lien", close_account_url), '.'
+
+- form_for @account, :url => account_path do |form|
+  = form.error_messages
+  %p
+    Login
+    = h(@account.login)
+  %p
+    = form.label :email, "Adresse de courriel"
+    = form.text_field :email
+  %p
+    = form.label :password, "Mot de passe"
+    = form.password_field :password
+  %p
+    = form.label :password_confirmation, "Confirmation du mot de passe"
+    = form.password_field :password_confirmation
+  - form.fields_for :user do |uform|
+    %p
+      = uform.label :name, "Prénom et nom"
+      = uform.text_field :name
+    %p
+      = uform.label :homesite, "Site web"
+      = uform.text_field :homesite
+    %p
+      = uform.label :jabber_id, "Jabber ID"
+      = 'xmpp:', uform.text_field(:jabber_id)
+  %p
+    = form.submit "Enregistrer"
