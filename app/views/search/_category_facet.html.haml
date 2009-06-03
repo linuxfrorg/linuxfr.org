@@ -1,0 +1,7 @@
+%div
+  %h3 Catégories
+  %ul
+    - @facets.each do |facet,count|
+      %li
+        = link_to "#{facet} (#{count})", search_by_facet_path(:type => 'Tracker', :facet => facet, :query => @query)
+

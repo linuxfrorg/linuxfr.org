@@ -94,10 +94,15 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :categories
   end
 
+  # Search
+  map.search          '/recherche',              :controller => 'search'
+  map.search_by_type  '/recherche/:type',        :controller => 'search', :action => 'type'
+  map.search_by_facet '/recherche/:type/:facet', :controller => 'search', :action => 'facet'
+
   # Default routes (should not be used)
   # TODO remove them
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  # map.connect ':controller/:action/:id'
+  # map.connect ':controller/:action/:id.:format'
 
   # Static pages
   map.static ':action', :controller => 'static'
