@@ -25,6 +25,17 @@ class Poll < Content
 
   has_friendly_id :title, :use_slug => true
 
+### Sphinx ####
+
+  define_index do
+    indexes title
+    indexes user.name, :as => :user
+    indexes answers.answer, :as => :answers
+    where "state IN ('published', 'archived')"
+    set_property :field_weights => { :title => 10, :user => 3, :answers => 4 }
+    set_property :delta => :datetime, :threshold => 1.hour
+  end
+
 ### Workflow ###
 
   aasm_column :state

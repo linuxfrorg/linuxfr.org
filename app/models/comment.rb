@@ -38,6 +38,16 @@ class Comment < ActiveRecord::Base
 
   wikify :body
 
+### Sphinx ####
+
+  define_index do
+    indexes title, body
+    indexes user.name, :as => :user
+    where "state = 'published'"
+    set_property :field_weights => { :title => 5, :user => 2, :body => 1 }
+    set_property :delta => :datetime, :threshold => 1.hour
+  end
+
 ### Threads ###
 
   PATH_SIZE = 12  # Each id in the materialized_path is coded on 12 chars

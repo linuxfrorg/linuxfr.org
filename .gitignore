@@ -1,7 +1,9 @@
-TODO
 config/database.yml
+config/*.sphinx.conf
 db/*.sqlite3
-log/*.log
-tmp/**/*
+db/sphinx/**/*
 git_store
+log/*.log
 public/uploads/**/*
+tmp/**/*
+TODO

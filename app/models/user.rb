@@ -44,6 +44,15 @@ class User < ActiveRecord::Base
 
   has_friendly_id :name, :use_slug => true
 
+### Sphinx ####
+
+  define_index do
+    indexes name, homesite, jabber_id
+    where "role != 'inactive'"
+    set_property :field_weights => { :name => 5, :homesite => 1, :jabber_id => 1 }
+    set_property :delta => :datetime, :threshold => 1.hour
+  end
+
 ### Avatar ###
 
   has_attached_file :avatar, :styles      => { :thumbnail => "100x100>" },

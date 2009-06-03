@@ -23,6 +23,16 @@ class WikiPage < Content
 
   has_friendly_id :title, :use_slug => true
 
+### Sphinx ####
+
+  define_index do
+    indexes title, body
+    indexes user.name, :as => :user
+    where "state = 'public'"
+    set_property :field_weights => { :title => 15, :user => 1, :body => 5 }
+    set_property :delta => :datetime, :threshold => 1.hour
+  end
+
 ### Versioning ###
 
   attr_accessor :commit_message

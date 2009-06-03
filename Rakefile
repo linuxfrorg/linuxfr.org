@@ -22,3 +22,4 @@ if RAILS_ENV == 'development'
 end
 
 require 'tasks/rails'
+require 'thinking_sphinx/tasks'

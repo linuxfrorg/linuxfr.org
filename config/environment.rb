@@ -27,6 +27,7 @@ Rails::Initializer.run do |config|
   config;gem 'authlogic', :version => '~>2.0'
   config.gem 'rubyist-aasm', :lib => 'aasm', :version => '~>2.0'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :version => '~>2.1'
+  config.gem 'freelancing-god-thinking-sphinx', :lib => 'thinking_sphinx', :version => '~>1.1'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

@@ -33,6 +33,15 @@ class Interview < Content
 
   has_friendly_id :title, :use_slug => true
 
+### Sphinx ####
+
+  define_index do
+    indexes title, body
+    where "state != 'draft'"
+    set_property :field_weights => { :title => 20, :body => 4 }
+    set_property :delta => :datetime, :threshold => 1.hour
+  end
+
 ### Workflow ###
 
   States = {'Proposition' => :draft, 'En cours' => :open, 'Envoyé' => :sent, 'Publié' => :published, 'Refusé' => :refused}.freeze
