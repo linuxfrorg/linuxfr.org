@@ -6,7 +6,7 @@
   Si vous souhaitez fermer votre compte, veuillez suivre
   = link_to("ce lien", close_account_url), '.'
 
-- form_for @account, :url => account_path do |form|
+- form_for @account, :url => account_path, :html => { :multipart => true } do |form|
   = form.error_messages
   %p
     Login
@@ -30,5 +30,8 @@
     %p
       = uform.label :jabber_id, "Jabber ID"
       = 'xmpp:', uform.text_field(:jabber_id)
+    %p
+      = uform.label :avatar, "Avatar"
+      = uform.file_field :avatar
   %p
     = form.submit "Enregistrer"

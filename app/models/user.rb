@@ -1,15 +1,18 @@
 # == Schema Information
-# Schema version: 20090505233940
 #
 # Table name: users
 #
-#  id         :integer(4)      not null, primary key
-#  name       :string(100)
-#  homesite   :string(255)
-#  jabber_id  :string(255)
-#  role       :string(255)     default("moule"), not null
-#  created_at :datetime
-#  updated_at :datetime
+#  id                  :integer(4)      not null, primary key
+#  name                :string(100)
+#  homesite            :string(255)
+#  jabber_id           :string(255)
+#  role                :string(255)     default("moule"), not null
+#  avatar_file_name    :string(255)
+#  avatar_content_type :string(255)
+#  avatar_file_size    :integer(4)
+#  avatar_updated_at   :datetime
+#  created_at          :datetime
+#  updated_at          :datetime
 #
 
 
@@ -40,6 +43,13 @@ class User < ActiveRecord::Base
 ### SEO ###
 
   has_friendly_id :name, :use_slug => true
+
+### Avatar ###
+
+  has_attached_file :avatar, :styles      => { :thumbnail => "100x100>" },
+                             :path        => ':rails_root/public/uploads/:id_partition/avatar_:style.:extension',
+                             :url         => '/uploads/:id_partition/avatar_:style.:extension',
+                             :default_url => '/images/default_avatar.png'
 
 ### Role ###
 

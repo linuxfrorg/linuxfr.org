@@ -2,13 +2,17 @@
 #
 # Table name: users
 #
-#  id         :integer(4)      not null, primary key
-#  name       :string(100)
-#  homesite   :string(255)
-#  jabber_id  :string(255)
-#  role       :string(255)     default("moule"), not null
-#  created_at :datetime
-#  updated_at :datetime
+#  id                  :integer(4)      not null, primary key
+#  name                :string(100)
+#  homesite            :string(255)
+#  jabber_id           :string(255)
+#  role                :string(255)     default("moule"), not null
+#  avatar_file_name    :string(255)
+#  avatar_content_type :string(255)
+#  avatar_file_size    :integer(4)
+#  avatar_updated_at   :datetime
+#  created_at          :datetime
+#  updated_at          :datetime
 #
 
 require File.dirname(__FILE__) + '/../test_helper'

@@ -22,6 +22,7 @@ Rails::Initializer.run do |config|
   config.gem 'mysql', :version => '~>2.7'
   config.gem 'haml', :version => '~>2.0'
   config.gem 'friendly_id', :version => '~>2.0'
+  config.gem 'paperclip', :version => '~>2.1'
   config.gem 'wikitext', :version => '~>1.5'
   config;gem 'authlogic', :version => '~>2.0'
   config.gem 'rubyist-aasm', :lib => 'aasm', :version => '~>2.0'

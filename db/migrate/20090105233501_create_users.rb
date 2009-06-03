@@ -5,6 +5,13 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :homesite
       t.string   :jabber_id
       t.string   :role,  :null => false, :default => 'moule'
+
+      # Avatar
+      t.string   :avatar_file_name
+      t.string   :avatar_content_type
+      t.integer  :avatar_file_size
+      t.datetime :avatar_updated_at
+
       t.timestamps
     end
   end

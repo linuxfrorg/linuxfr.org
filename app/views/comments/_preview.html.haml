@@ -4,6 +4,7 @@
       = "Commentaire : #{h preview.title}"
     %p
       = posted_by(preview)
-      == &Eacute;valué à #{preview.score}
+      == Évalué à #{preview.score}
     .content
+      = image_tag current_user.avatar.url(:thumbnail), :class => 'avatar'
       = sanitize preview.body

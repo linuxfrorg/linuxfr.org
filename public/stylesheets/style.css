@@ -32,4 +32,5 @@ aside .login p { font-weight: bold; }
 .comment { border:1px solid black; }
 #tracker .fix a, #tracker .invalid a { text-decoration: line-through; }
 .tracker.fix a, .tracker.invalid a { text-decoration: line-through; }
+.avatar { float:left; margin: 5px 10px; }
 

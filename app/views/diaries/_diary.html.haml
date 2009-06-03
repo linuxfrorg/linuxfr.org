@@ -2,6 +2,7 @@
   %h3
     = link_to "Journal : #{h diary.title}", [diary.owner, diary]
   %p
+    = image_tag diary.owner.avatar.url(:thumbnail), :class => 'avatar'
     = posted_by(diary)
   .content
     = sanitize diary.body

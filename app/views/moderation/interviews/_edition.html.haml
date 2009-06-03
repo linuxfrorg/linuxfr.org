@@ -1,7 +1,7 @@
 %article
-  %h2 &Eacute;ditions
+  %h2 Éditions
   %p
-    = link_to "&Eacute;diter", edit_moderation_interview_path(:id => @interview.id)
+    = link_to "Éditer", edit_moderation_interview_path(:id => @interview.id)
   %h2 Modération
   - form_tag accept_moderation_interview_path(@interview) do
     = submit_tag "Publier"

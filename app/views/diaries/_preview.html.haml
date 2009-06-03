@@ -2,6 +2,7 @@
   %h3
     = "Journal : #{h preview.title}"
   %p
+    = image_tag current_user.avatar.url(:thumbnail), :class => 'avatar'
     = posted_by(preview)
   .content
     = sanitize preview.body
