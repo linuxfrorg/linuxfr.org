@@ -31,6 +31,13 @@ module ApplicationHelper
     javascript_tag "document.body.className = document.body.className.replace('js-off', 'js-on');"
   end
 
+  def logo
+    img = Dictionary['logo']
+    content_tag(:h1, :style => "background-image: url('/images/logos/#{img}');") do
+      link_to "LinuxFr.org", '/'
+    end
+  end
+
   def admin_only(&blk)
     blk.call if current_user && current_user.admin?
   end

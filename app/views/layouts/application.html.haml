@@ -26,8 +26,10 @@
         = text_field_tag :query
         = submit_tag "Rechercher"
 
+    %header
+      = logo
+
     %aside
-      %h1= link_to "LinuxFr.org", '/'
       %article.login
         - if current_user
           %p= current_user.name
@@ -39,7 +41,7 @@
           = render '/account_sessions/new'
           %p= link_to "Proposer un contenu", '/proposer_un_contenu_quand_on_est_anonyme'
       - admin_only do
-        %p= link_to "Admin", '/admin'
+        = render '/admin/box'
       - amr_only do
         = render '/moderation/box'
       = yield :column
