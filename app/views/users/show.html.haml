@@ -1,7 +1,7 @@
 - content_for :column do
   = render 'nodes'
 
-=h2 "La page de #{h @user.name}"
+=h1 "La page de #{h @user.name}"
 - feed "Flux Atom des journaux de #{h @user.name}"
 = will_paginate @diaries
 = render @diaries

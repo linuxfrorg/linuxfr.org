@@ -7,7 +7,7 @@ class ActiveRecord::Base
     define_method accessor do
       txt = read_attribute(attr)
       return "" if txt.blank?
-      parser = Wikitext::Parser.new(:base_heading_level => 2)
+      parser = Wikitext::Parser.new(:base_heading_level => 1)
       parser.parse(txt)
     end
   end

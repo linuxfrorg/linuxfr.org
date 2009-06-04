@@ -1,5 +1,5 @@
 - article_for news do
-  %h3
+  %h2
     = link_to(h(news.section.title), news.section), ':', link_to(h(news.title), news)
   %p
     = news_posted_by(news)

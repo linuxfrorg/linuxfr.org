@@ -1,5 +1,5 @@
 - article_for post do
-  %h3
+  %h2
     = link_to(h(post.forum.title), post.forum), ':', link_to(h(post.title), [post.forum, post])
   %p
     = posted_by(post)

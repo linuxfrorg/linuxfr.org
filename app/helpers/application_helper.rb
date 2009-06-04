@@ -6,8 +6,8 @@ module ApplicationHelper
     content_tag(tag, title) if tag
   end
 
-  def h2(str)
-    title(str, :h2)
+  def h1(str)
+    title(str, :h1)
   end
 
   def feed(title, link=nil)

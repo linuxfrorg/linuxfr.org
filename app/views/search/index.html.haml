@@ -1,9 +1,9 @@
-=h2 "Recherche"
+=h1 "Recherche"
 - if @results.empty?
   Pas de résultats.
 - else
   = render "#{@facet}_facet" if @facets
   %div
-    %h3 Résultats
+    %h2 Résultats
     = render @results
     - will_paginate @results

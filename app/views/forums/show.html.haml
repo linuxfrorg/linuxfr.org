@@ -1,7 +1,7 @@
 - content_for :column do
   = render @forums
 
-=h2 "Liste des messages dans le forum #{h @forum.title}"
+=h1 "Liste des messages dans le forum #{h @forum.title}"
 - feed "Flux Atom du forum #{h @forum.title}", forum_url(:forum_id => @forum.id, :format => :atom)
 
 = will_paginate @posts

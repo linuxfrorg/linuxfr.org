@@ -1,5 +1,5 @@
 - article_for interview do
-  %h3
+  %h2
     = link_to "Proposition d'entretien : #{h interview.title}", moderation_interview_path(:id => interview.id)
   %p
     = posted_by(interview)
