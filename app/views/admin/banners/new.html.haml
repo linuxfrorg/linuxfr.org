@@ -1,3 +1,8 @@
 =h1 "Nouvelle bannière"
+
+- if @preview_mode
+  %div.banner
+    = @banner.content
+
 - form_for [:admin, @banner] do |form|
   = render form

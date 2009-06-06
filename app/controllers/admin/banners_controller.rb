@@ -5,12 +5,14 @@ class Admin::BannersController < AdminController
   end
 
   def new
+    @preview_mode = false
     @banner = Banner.new
   end
 
   def create
     @banner = Banner.new(params[:banner])
-    if @banner.save
+    @preview_mode = (params[:commit] == 'Prévisualiser')
+    if !@preview_mode && @banner.save
       flash[:notice] = 'Nouvelle bannière créée.'
       redirect_to admin_banners_url
     else
@@ -19,13 +21,15 @@ class Admin::BannersController < AdminController
   end
 
   def edit
+    @preview_mode = true
     @banner = Banner.find(params[:id])
   end
 
   def update
     @banner = Banner.find(params[:id])
     @banner.attributes = params[:banner]
-    if @banner.save
+    @preview_mode = (params[:commit] == 'Prévisualiser')
+    if !@preview_mode && @banner.save
       flash[:notice] = 'Bannière mise à jour.'
       redirect_to admin_banners_url
     else
