@@ -15,4 +15,4 @@
           = category.title
         %th
           = link_to("Modifier", edit_admin_category_path(category)), '|'
-          = link_to("Supprimer", [:admin, category], :method => :delete)
+          = button_to("Supprimer", [:admin, category], :method => :delete)

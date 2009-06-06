@@ -36,6 +36,8 @@ class Admin::SectionsController < AdminController
   def destroy
     @section = Section.find(params[:id])
     @section.delete
+    flash[:notice] = 'Section supprimée'
     redirect_to admin_sections_url
   end
+
 end
