@@ -1,0 +1,8 @@
+%p
+  = form.label :title, 'Titre'
+  = form.text_field :title
+%p
+  = form.label :content, 'code HTML de la bannière'
+  = form.text_area :content, :autocomplete => 'off', :required => 'required'
+%p
+  = form.submit "Enregistrer"

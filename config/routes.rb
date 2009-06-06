@@ -94,6 +94,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :sections
     admin.resources :forums
     admin.resources :categories
+    admin.resources :banners
     admin.resource  :logo
   end
 

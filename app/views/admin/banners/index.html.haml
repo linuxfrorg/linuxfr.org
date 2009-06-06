@@ -1,0 +1,25 @@
+=h1 "Bannière de la Home Page"
+
+%p
+  On affiche sur la Home Page une bannière choisie aléatoirement parmi les bannières suivantes :
+
+- if @banners.empty?
+  %p Pas de bannières
+- else
+  %table
+    %tr
+      %th Titre
+      %th Bannière
+      %th Actions
+    - @banners.each do |banner|
+      %tr
+        %td
+          = banner.title
+        %td
+          = banner.content
+        %td
+          = link_to("Modifier", edit_admin_banner_path(banner)), '|'
+          = button_to("Supprimer", [:admin, banner], :method => :delete)
+
+%p
+  = link_to "Ajouter une bannière", new_admin_banner_path

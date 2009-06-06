@@ -1,5 +1,8 @@
 =h1 "Home Page"
 - feed "S'abonner au flux Atom des dépêches", news_index_url(:format => :atom)
 = render @ppp if @ppp
+- if @banner
+  %div.banner
+    = @banner
 - @nodes.each do |node|
   = render node.content
