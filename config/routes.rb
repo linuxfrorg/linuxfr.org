@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   # News
   map.resources :sections
   map.resources :news
+  map.connect '/redirect/:id', :controller => 'links', :action => 'show'
 
   # Diaries & Users
   map.resources :users do |u|

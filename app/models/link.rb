@@ -26,4 +26,8 @@ class Link < ActiveRecord::Base
     url = "http://#{url}" if url.present? && url.not.starts_with?('http')
     write_attribute :url, url
   end
+
+  def hit
+    self.class.increment_counter(:nb_clicks, self.id)
+  end
 end

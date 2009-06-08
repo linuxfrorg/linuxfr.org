@@ -5,7 +5,7 @@ class CreateLinks < ActiveRecord::Migration
       t.string :title
       t.string :url
       t.string :lang
-      t.integer :nb_clicks
+      t.integer :nb_clicks, :default => 0
       t.timestamps
     end
   end
