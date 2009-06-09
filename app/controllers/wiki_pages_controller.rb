@@ -44,7 +44,8 @@ class WikiPagesController < ApplicationController
     raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.editable_by?(current_user)
     @wiki_page.attributes = params[:wiki_page]
     @wiki_page.committer  = current_user
-    if @wiki_page.save
+    @preview_mode = (params[:commit] == 'Prévisualiser')
+    if !@preview_mode && @wiki_page.save
       flash[:success] = "Modification enregistrée"
       redirect_to @wiki_page
     else

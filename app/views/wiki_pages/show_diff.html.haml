@@ -1,10 +1,10 @@
 =h1 "Visualiser une modification"
 
 %h2
-  = h @version.committer.name, ':', h @version.message
+  = h(@version.committer.name), ':', h(@version.message)
 
 %ul
   - @version.diffs.each do |diff|
     %li
       %pre
-        = "\n", sanitize diff.diff
+        = "\n", sanitize(diff.diff)
