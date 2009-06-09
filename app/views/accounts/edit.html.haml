@@ -4,7 +4,7 @@
   Ce formulaire permet de changer vos parametres utilisateurs. Votre login ne peut pas être modifié.
 %p
   Si vous souhaitez fermer votre compte, veuillez suivre
-  = link_to("ce lien", close_account_url), '.'
+  = link_to("ce lien", close_account_path), '.'
 
 - form_for @account, :url => account_path, :html => { :multipart => true } do |form|
   = form.error_messages
