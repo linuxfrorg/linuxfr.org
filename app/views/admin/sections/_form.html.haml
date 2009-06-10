@@ -3,6 +3,9 @@
   = form.label :title, 'Titre'
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
 %p
+  = form.label :image, 'Image'
+  = form.file_field :image
+%p
   = form.label :state, 'Status'
   = form.radio_button :state, "published"
   = form.label :state_published, 'OK'

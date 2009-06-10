@@ -2,11 +2,9 @@
 #
 # Table name: banners
 #
-#  id         :integer(4)      not null, primary key
-#  title      :string(255)
-#  content    :text
-#  created_at :datetime
-#  updated_at :datetime
+#  id      :integer(4)      not null, primary key
+#  title   :string(255)
+#  content :text
 #
 
 require 'test_helper'

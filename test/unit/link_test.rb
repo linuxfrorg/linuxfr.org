@@ -7,7 +7,7 @@
 #  title      :string(255)
 #  url        :string(255)
 #  lang       :string(255)
-#  nb_clicks  :integer(4)
+#  nb_clicks  :integer(4)      default(0)
 #  created_at :datetime
 #  updated_at :datetime
 #

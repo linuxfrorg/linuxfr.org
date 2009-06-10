@@ -2,9 +2,9 @@
 #
 # Table name: banners
 #
-#  id         :integer(4)      not null, primary key
-#  title      :string(255)
-#  content    :text
+#  id      :integer(4)      not null, primary key
+#  title   :string(255)
+#  content :text
 #
 
 class Banner < ActiveRecord::Base

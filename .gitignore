@@ -4,6 +4,7 @@ db/*.sqlite3
 db/sphinx/**/*
 git_store
 log/*.log
+public/sections/**
 public/uploads/**/*
 tmp/**/*
 TODO

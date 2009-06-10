@@ -29,6 +29,7 @@ article.friends a:hover { background-color: #afa; }
 section article { background-color: #ffb; border: 1px solid; -moz-border-radius: 15px; margin: 10px; }
 
 /* Divers et variés */
+a img { border: none; }
 h2 { color: #333; }
 aside .login p { font-weight: bold; }
 .comment { border:1px solid black; }

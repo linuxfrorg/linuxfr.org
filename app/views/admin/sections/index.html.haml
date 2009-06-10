@@ -8,14 +8,17 @@
   %table
     %tr
       %th Nom
+      %th Image
       %th État
       %th Actions
     - @sections.each do |section|
       %tr
-        %th
+        %td
           = link_to section.title, section
-        %th
+        %td
+          = image_tag(section.image.url, :alt => section.title)
+        %td
           = section.state
-        %th
+        %td
           = link_to("Modifier", edit_admin_section_path(section)), '|'
           = button_to("Supprimer", [:admin, section], :method => :delete)

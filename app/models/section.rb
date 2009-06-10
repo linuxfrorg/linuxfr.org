@@ -1,13 +1,16 @@
 # == Schema Information
-# Schema version: 20090310234743
 #
 # Table name: sections
 #
-#  id         :integer(4)      not null, primary key
-#  state      :string(255)     default("published"), not null
-#  title      :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id                 :integer(4)      not null, primary key
+#  state              :string(255)     default("published"), not null
+#  title              :string(255)
+#  image_file_name    :string(255)
+#  image_content_type :string(255)
+#  image_file_size    :integer(4)
+#  image_updated_at   :datetime
+#  created_at         :datetime
+#  updated_at         :datetime
 #
 
 # The news are classified in several sections.
@@ -16,11 +19,17 @@ class Section < ActiveRecord::Base
   has_many :news
 
   validates_presence_of :title, :message => "Le titre est obligatoire"
-  validates_uniqueness_of :title, :message => 'Ce titre est déjà utilisé'
+  validates_uniqueness_of :title, :message => "Ce titre est déjà utilisé"
 
 ### SEO ###
 
   has_friendly_id :title, :use_slug => true
+
+### Image ###
+
+  has_attached_file :image, :path => ':rails_root/public/sections/:id.:extension',
+                            :url  => '/sections/:id.:extension'
+  validates_attachment_presence :image, :message => "L'image est obligatoire"
 
 ### Workflow ###
 
