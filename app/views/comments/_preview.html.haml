@@ -7,4 +7,4 @@
       == Évalué à #{preview.score}
     .content
       = image_tag current_user.avatar.url(:thumbnail), :class => 'avatar'
-      = sanitize preview.body
+      = sanitize(spellify preview.body)

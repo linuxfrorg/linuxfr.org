@@ -1,13 +1,13 @@
 - article_for preview do
   %h2
-    = link_to(preview.section.title, preview.section), ':', h(preview.title)
+    = link_to(preview.section.title, preview.section), ' : ', h(preview.title)
   %p
     = news_posted_by(preview)
   .content
-    = sanitize preview.wikified_body
+    = sanitize(spellify preview.wikified_body)
     - preview.links.each do |link|
       %p
         = link_to h(link.title), link.url
-    = sanitize preview.wikified_second_part
+    = sanitize(spellify preview.wikified_second_part)
   %p
     = read_it(preview)

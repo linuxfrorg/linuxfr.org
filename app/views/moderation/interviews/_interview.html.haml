@@ -4,7 +4,7 @@
   %p
     = posted_by(interview)
   .content
-    = sanitize interview.body
+    = sanitize(spellify interview.body)
   %p
     - if interview.open?
       - form_tag contact_moderation_interview_path(interview) do

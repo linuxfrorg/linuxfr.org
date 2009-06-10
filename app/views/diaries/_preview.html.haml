@@ -5,6 +5,6 @@
     = image_tag current_user.avatar.url(:thumbnail), :class => 'avatar'
     = posted_by(preview)
   .content
-    = sanitize preview.body
+    = sanitize(spellify preview.body)
   %p
     = read_it(preview)

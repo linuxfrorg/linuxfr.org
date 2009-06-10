@@ -35,4 +35,5 @@ aside .login p { font-weight: bold; }
 #tracker .fix a, #tracker .invalid a { text-decoration: line-through; }
 .tracker.fix a, .tracker.invalid a { text-decoration: line-through; }
 .avatar { float:left; margin: 5px 10px; }
+.misspelled { border-bottom:1px dashed red; }
 
