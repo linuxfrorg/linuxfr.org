@@ -15,6 +15,7 @@ class Moderation::NewsController < ModerationController
     @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @news && @news.acceptable_by?(current_user)
     @news.accept!
+    NewsNotifications.deliver_accept(@news)
     redirect_to @news
   end
 
