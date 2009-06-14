@@ -91,6 +91,7 @@ ActionController::Routing::Routes.draw do |map|
   # Admin
   map.connect '/admin', :controller => 'admin'
   map.namespace :admin do |admin|
+    admin.resources :accounts
     admin.resources :responses
     admin.resources :sections
     admin.resources :forums

@@ -63,8 +63,9 @@ class Account < ActiveRecord::Base
   aasm_state :active
   aasm_state :deleted
 
-  aasm_event :activate do transitions :from => [:passive], :to => :active,  :on_transition => :activation end
-  aasm_event :delete   do transitions :from => [:active],  :to => :deleted, :on_transition => :deletion   end
+  aasm_event :activate   do transitions :from => [:passive], :to => :active,  :on_transition => :activation   end
+  aasm_event :delete     do transitions :from => [:active],  :to => :deleted, :on_transition => :deletion     end
+  aasm_event :reactivate do transitions :from => [:deleted], :to => :active,  :on_transition => :reactivation end
 
   def activation
     self.user = User.create(:name => login)
@@ -73,6 +74,10 @@ class Account < ActiveRecord::Base
 
   def deletion
     self.user.inactivate!
+  end
+
+  def reactivation
+    self.user.reactivate!
   end
 
 ### Presentation ###

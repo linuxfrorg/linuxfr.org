@@ -1,0 +1,21 @@
+=h1 "Liste des derniers comptes utilisateurs créés"
+
+%table
+  %tr
+    %th Login
+    %th Email
+    %th IP
+    %th Status
+    %th Date de création
+    %th Actions
+  - @accounts.each do |account|
+    %tr
+      %td= link_to h(account.login), account.user
+      %td= h(account.email)
+      %td= account.current_login_ip
+      %td= account.state
+      %td= account.created_at.to_s(:posted)
+      %td
+        = button_to("Activer",   [:admin, account], :method => :put)    if account.passive?
+        = button_to("Fermer",    [:admin, account], :method => :delete) if account.active?
+        = button_to("Réactiver", [:admin, account], :method => :put)    if account.deleted?

@@ -75,6 +75,7 @@ class User < ActiveRecord::Base
   aasm_state :admin
 
   aasm_event :inactivate            do transitions :from => [:moule, :writer, :reviewer, :moderator, :admin], :to => [:inactive] end
+  aasm_event :reactivate            do transitions :from => [:inactive],                   :to => [:moule]     end
   aasm_event :give_writer_rights    do transitions :from => [:moule, :reviewer],           :to => [:writer]    end
   aasm_event :give_reviewer_rights  do transitions :from => [:moule, :writer, :moderator], :to => [:reviewer]  end
   aasm_event :give_moderator_rights do transitions :from => [:reviewer, :admin],           :to => [:moderator] end
