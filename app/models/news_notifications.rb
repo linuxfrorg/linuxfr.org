@@ -6,8 +6,23 @@ class NewsNotifications < ActionMailer::Base
     setup_email
   end
 
-  def refuse(news)
+  def refuse(news, message)
     @subject = "Dépêche refusée : #{news.title}"
+    @news    = news
+    @message = message
+    setup_email
+  end
+
+  def refuse_template(news, message, template)
+    @subject = "Dépêche refusée : #{news.title}"
+    @news    = news
+    @message = message.present? ? "Le modérateur a tenu a rajouté : #{message}\n\n" : ""
+    @response= Response.find(template)
+    setup_email
+  end
+
+  def refuse_en(news)
+    @subject = "News rejected: #{news.title}"
     @news    = news
     setup_email
   end

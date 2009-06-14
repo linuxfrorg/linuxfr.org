@@ -1,0 +1,15 @@
+=h1 "Liste des réponses de refus pour les dépêches"
+
+%p= link_to "Créer une réponse", new_admin_response_path
+
+%table
+  %tr
+    %th Nom
+    %th Actions
+  - @responses.each do |resp|
+    %tr
+      %th
+        = resp.title
+      %th
+        = link_to("Modifier", edit_admin_response_path(resp)), '|'
+        = button_to("Supprimer", [:admin, resp], :method => :delete)

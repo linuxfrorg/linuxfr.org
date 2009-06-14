@@ -22,8 +22,19 @@ class Moderation::NewsController < ModerationController
   def refuse
     @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @news && @news.refusable_by?(current_user)
-    @news.refuse!
-    redirect_to @news
+    if params[:message]
+      @news.refuse!
+      if params[:template]
+        NewsNotifications.deliver_refuse_template(@news, params[:message], params[:template])
+      elsif params[:message] == 'en'
+        NewsNotifications.deliver_refuse_en(@news)
+      elsif params[:message].present?
+        NewsNotifications.deliver_refuse(@news, params[:message])
+      end
+      redirect_to @news
+    else
+      @boards = @news.boards
+    end
   end
 
   def ppp

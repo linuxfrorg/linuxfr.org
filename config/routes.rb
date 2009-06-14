@@ -81,7 +81,6 @@ ActionController::Routing::Routes.draw do |map|
   # Moderation
   map.connect '/moderation', :controller => 'moderation'
   map.namespace :moderation do |m|
-    # TODO should we use PUT instead of POST for accept/refuse?
     m.resources :news, :member => { :accept => :post, :refuse => :post, :ppp => :post } do |news|
       news.show_diff '/show_diff/:sha', :controller => 'news', :action => 'show_diff'
     end
@@ -92,6 +91,7 @@ ActionController::Routing::Routes.draw do |map|
   # Admin
   map.connect '/admin', :controller => 'admin'
   map.namespace :admin do |admin|
+    admin.resources :responses
     admin.resources :sections
     admin.resources :forums
     admin.resources :categories
@@ -103,11 +103,6 @@ ActionController::Routing::Routes.draw do |map|
   map.search          '/recherche',              :controller => 'search'
   map.search_by_type  '/recherche/:type',        :controller => 'search', :action => 'type'
   map.search_by_facet '/recherche/:type/:facet', :controller => 'search', :action => 'facet'
-
-  # Default routes (should not be used)
-  # TODO remove them
-  # map.connect ':controller/:action/:id'
-  # map.connect ':controller/:action/:id.:format'
 
   # Static pages
   map.static ':action', :controller => 'static'
