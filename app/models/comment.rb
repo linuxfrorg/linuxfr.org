@@ -114,14 +114,18 @@ class Comment < ActiveRecord::Base
   end
 
   def votable_by?(user)
-    user && user.relevances.count(:conditions => {:comment_id => id}) == 0
+    user && user.relevances.count(:conditions => {:comment_id => id}) == 0 && !deleted?
   end
 
 ### Workflow ###
 
   def mark_as_deleted!
-    state = 'deleted'
+    self.state = 'deleted'
     save
+  end
+
+  def deleted?
+    state == 'deleted'
   end
 
 end

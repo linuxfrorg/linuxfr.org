@@ -5,7 +5,10 @@
   == Évalué à #{comment.score}
 .content
   = image_tag comment.user.avatar.url(:thumbnail), :class => 'avatar'
-  = sanitize comment.body
+  - if comment.deleted?
+    %em Ce commentaire a été supprimé par l'équipe de modération.
+  - else
+    = sanitize comment.body
 %p
   = '[', link_to("Répondre", answer_comment_path(:node_id => comment.node_id, :parent_id => comment.id)), ']'
   - if comment.votable_by?(current_user)
