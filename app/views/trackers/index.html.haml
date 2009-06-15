@@ -5,21 +5,29 @@
 %p
   = link_to "Proposer une entrée", new_tracker_path
 
-%table#tracker
-  %tr
-    %th N°
-    %th Titre
-    %th Date d'ouverture
-    %th Affecté à
-    %th Envoyé par
-    %th Catégorie
-    %th Score
-  - @trackers.each do |tracker|
-    %tr{:class => tracker.state}
-      %td= link_to tracker.id, tracker
-      %td= link_to h(tracker.title), tracker
-      %td= h tracker.created_at
-      %td= h tracker.assigned_to
-      %td= h tracker.reported_by
-      %td= h tracker.category_title
-      %td= h tracker.score
+- if @trackers.empty?
+  %p
+    Pas d'entrées dans le suivi
+- else
+  %table#tracker
+    %tr
+      %th N°
+      %th Titre
+      %th Date d'ouverture
+      %th Affecté à
+      %th Envoyé par
+      %th Catégorie
+      %th Score
+      - if @trackers.first.editable_by?(current_user)
+        %th Actions
+    - @trackers.each do |tracker|
+      %tr{:class => tracker.state}
+        %td= link_to tracker.id, tracker
+        %td= link_to h(tracker.title), tracker
+        %td= h tracker.created_at
+        %td= h tracker.assigned_to
+        %td= h tracker.reported_by
+        %td= h tracker.category_title
+        %td= h tracker.score
+        - if tracker.editable_by?(current_user)
+          %td= link_to "Modifier", edit_tracker_path(tracker)

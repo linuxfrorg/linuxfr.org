@@ -44,7 +44,7 @@ class Tracker < Content
 
 ### Workflow ###
 
-  States = {'Ouvert' => :open, 'Fermé' => :fix, 'Invalide' => :invalid}.freeze
+  States = {'Ouvert' => :open, 'Corrigé' => :fix, 'Invalide' => :invalid}.freeze
 
   aasm_column :state
   aasm_initial_state :open

@@ -2,7 +2,7 @@ class TrackersController < ApplicationController
   before_filter :user_required, :except => [:index, :show, :comments]
 
   def index
-    @trackers = Tracker.sorted
+    @trackers = Tracker.sorted.open
     respond_to do |wants|
       wants.html
       wants.atom

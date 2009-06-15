@@ -22,7 +22,7 @@
         %li= link_to "Wiki", wiki_pages_path
         %li= link_to "Suivi", trackers_path
         %li= link_to "Plan", static_path(:action => 'plan')
-      - form_tag search_path, :html => { :method => :get } do
+      - form_tag search_path, :method => :get do
         = text_field_tag :query
         = submit_tag "Rechercher"
 
