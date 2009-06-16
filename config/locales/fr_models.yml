@@ -51,3 +51,6 @@ fr:
         jabber_id: le Jabber ID
         activation_code: "le code d'activation"
         password_confirmation: la confirmation du mot de passe
+      wiki_page:
+        title: le titre
+        body:  le corps

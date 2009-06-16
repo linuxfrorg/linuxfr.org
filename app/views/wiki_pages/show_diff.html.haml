@@ -1,10 +1,12 @@
 =h1 "Visualiser une modification"
 
 %h2
-  = h(@version.committer.name), ' : ', h(@version.message)
+  = h(@commit.committer), ' : ', h(@commit.message)
 
-%ul
-  - @version.diffs.each do |diff|
-    %li
-      %pre
-        = "\n", sanitize(diff.diff)
+- @commit.fields.each do |field|
+  - old = @commit.old_field(field)
+  - new = @commit.new_field(field)
+  %h3
+    = WikiPage.human_attribute_name(field.to_s).gsub(/^l[ae]/, '').titleize
+  %pre
+    = HTMLDiff.diff(old, new)

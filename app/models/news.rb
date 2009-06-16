@@ -78,6 +78,7 @@ class News < Content
 ### Versioning ###
 
   attr_accessor :commit_message
+  attr_accessor :committer
 
   versioning(:title, :body, :second_part) do |v|
     v.repository = Rails.root.join('git_store', 'news.git')

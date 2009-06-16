@@ -28,6 +28,10 @@ article.friends a:hover { background-color: #afa; }
 /* Contenus */
 section article { background-color: #ffb; border: 1px solid; -moz-border-radius: 15px; margin: 10px; }
 
+/* Diffs */
+ins.diffins, ins.diffmod { background-color: #3f3; }
+del.diffdel, del.diffmod { background-color: #f33; }
+
 /* Divers et variés */
 a img { border: none; }
 h2 { color: #333; }

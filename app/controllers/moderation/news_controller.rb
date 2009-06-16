@@ -65,7 +65,7 @@ class Moderation::NewsController < ModerationController
   def show_diff
     @news = News.find(params[:news_id])
     raise ActiveRecord::RecordNotFound unless @news
-    @version = @news.version(params[:sha])
+    @commit = Commit.new(@news, params[:sha])
   end
 
 end

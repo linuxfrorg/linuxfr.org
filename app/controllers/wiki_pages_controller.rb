@@ -64,7 +64,7 @@ class WikiPagesController < ApplicationController
   def show_diff
     @wiki_page = WikiPage.find(params[:wiki_page_id])
     raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.readable_by?(current_user)
-    @version = @wiki_page.version(params[:sha])
+    @commit = Commit.new(@wiki_page, params[:sha])
   end
 
 end
