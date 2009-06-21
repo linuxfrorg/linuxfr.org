@@ -64,7 +64,14 @@ module ApplicationHelper
   def read_it(content)
     link = link_to("Lire la suite", url_for_content(content))
     nb_comments = pluralize(content.node.try(:comments).try(:count), "commentaire") # FIXME comments_count
-    "&gt; #{link} (#{nb_comments})."
+    if current_user
+      visit = case content.node.read_status(current_user)
+              when :not_read     then ", non visité"
+              when :new_comments then ", Nouveaux !"
+              else                    ", déjà visité"
+              end
+    end
+    "&gt; #{link} (#{nb_comments}#{visit})."
   end
 
   def spellify(str)

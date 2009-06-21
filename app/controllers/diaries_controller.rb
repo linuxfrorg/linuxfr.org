@@ -1,6 +1,7 @@
 class DiariesController < ApplicationController
   before_filter :user_required, :except => [:index, :show]
   before_filter :find_user, :except => [:index, :new, :create]
+  after_filter  :marked_as_read, :only => [:show]
 
 ### Global ###
 
@@ -69,6 +70,10 @@ protected
 
   def find_user
     @user = User.find(params[:user_id])
+  end
+
+  def marked_as_read
+    current_user.read(@diary.node) if current_user
   end
 
 end

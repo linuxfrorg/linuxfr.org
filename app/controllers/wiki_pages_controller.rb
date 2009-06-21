@@ -1,5 +1,6 @@
 class WikiPagesController < ApplicationController
   before_filter :user_required, :except => [:index, :show, :show_diff]
+  after_filter  :marked_as_read, :only => [:show]
 
   def index
     @main_page  = WikiPage.find_by_title("MainPage")
@@ -65,6 +66,12 @@ class WikiPagesController < ApplicationController
     @wiki_page = WikiPage.find(params[:wiki_page_id])
     raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.readable_by?(current_user)
     @commit = Commit.new(@wiki_page, params[:sha])
+  end
+
+protected
+
+  def marked_as_read
+    current_user.read(@wiki_page.node) if current_user
   end
 
 end

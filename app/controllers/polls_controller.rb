@@ -1,5 +1,6 @@
 class PollsController < ApplicationController
   before_filter :user_required, :only => [:new, :create]
+  after_filter  :marked_as_read, :only => [:show]
 
   def index
     @polls = Poll.archived.sorted.paginate :page => params[:page], :per_page => 10
@@ -52,6 +53,10 @@ protected
 
   def on_the_first_page?
     params[:page].to_i <= 1
+  end
+
+  def marked_as_read
+    current_user.read(@poll.node) if current_user
   end
 
 end

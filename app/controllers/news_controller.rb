@@ -1,4 +1,5 @@
 class NewsController < ApplicationController
+  after_filter  :marked_as_read, :only => [:show]
 
   def index
     @news = News.published.sorted.paginate :page => params[:page], :per_page => 10
@@ -32,6 +33,12 @@ class NewsController < ApplicationController
     else
       render :new
     end
+  end
+
+protected
+
+  def marked_as_read
+    current_user.read(@news.node) if current_user
   end
 
 end

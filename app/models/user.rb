@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   has_many :nodes
   has_many :diaries, :dependent => :destroy, :foreign_key => 'owner_id'
   has_many :comments
+  has_many :readings, :dependent => :destroy
   has_many :votes, :dependent => :destroy
   has_many :relevances, :dependent => :destroy
   has_many :taggings, :dependent => :destroy, :include => :tag
@@ -98,6 +99,10 @@ class User < ActiveRecord::Base
 
   def tag(node, tags)
     node.set_taglist(tags, self)
+  end
+
+  def read(node)
+    Reading.update_for(node.id, self.id)
   end
 
 end

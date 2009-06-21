@@ -48,6 +48,15 @@ class Comment < ActiveRecord::Base
     set_property :delta => :datetime, :threshold => 1.hour
   end
 
+### Optimizations ###
+
+  after_create :update_last_commented_at
+
+  def update_last_commented_at
+    stmt = "UPDATE nodes SET last_commented_at=NOW() WHERE id = #{node.id}"
+    connection.update_sql(stmt)
+  end
+
 ### Threads ###
 
   PATH_SIZE = 12  # Each id in the materialized_path is coded on 12 chars

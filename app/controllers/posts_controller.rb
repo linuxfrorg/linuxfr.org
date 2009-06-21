@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_filter :user_required, :except => [:index, :show]
   before_filter :find_forum, :except => [:new, :create]
+  after_filter  :marked_as_read, :only => [:show]
 
 ### Global ###
 
@@ -65,6 +66,10 @@ protected
 
   def find_forum
     @forum = Forum.find(params[:forum_id])
+  end
+
+  def marked_as_read
+    current_user.read(@post.node) if current_user
   end
 
 end

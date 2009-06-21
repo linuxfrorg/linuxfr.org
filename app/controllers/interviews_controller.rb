@@ -1,5 +1,6 @@
 class InterviewsController < ApplicationController
   before_filter :user_required, :except => [:index, :show, :comments]
+  after_filter  :marked_as_read, :only => [:show]
 
   def index
     @interviews = Interview.public.sorted
@@ -40,6 +41,12 @@ class InterviewsController < ApplicationController
     else
       render :new
     end
+  end
+
+protected
+
+  def marked_as_read
+    current_user.read(@interview.node) if current_user
   end
 
 end

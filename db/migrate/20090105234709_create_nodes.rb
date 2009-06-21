@@ -5,6 +5,7 @@ class CreateNodes < ActiveRecord::Migration
       t.integer :score, :default => 0
       t.references :user
       t.boolean :public, :default => true
+      t.datetime :last_commented_at
       t.timestamps
     end
   end

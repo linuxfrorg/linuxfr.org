@@ -1,5 +1,6 @@
 class TrackersController < ApplicationController
   before_filter :user_required, :except => [:index, :show, :comments]
+  after_filter  :marked_as_read, :only => [:show]
 
   def index
     @trackers = Tracker.sorted.open
@@ -67,6 +68,12 @@ class TrackersController < ApplicationController
     @tracker.mark_as_deleted
     flash[:success] = "Entrée du suivi supprimée"
     redirect_to trackers_url
+  end
+
+protected
+
+  def marked_as_read
+    current_user.read(@tracker.node) if current_user
   end
 
 end
