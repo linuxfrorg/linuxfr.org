@@ -20,6 +20,7 @@ Toolbar.prev_comment = function() {
     this.go_to_current();
 };
 Toolbar.go_to_current = function() {
+    if (this.nb_comments == 0) return ;
     var comment = this.comments[this.current - 1];
     $(document).scrollTop($(comment).offset().top);
 };

@@ -1,9 +1,9 @@
 module CommentsHelper
 
-  def comment_attrs(comment)
-    attrs = { :id => "comment-#{comment.id}", :class => "comment" }
-    attrs[:class] += " new-comment" unless comment.read_by?(current_user)
-    attrs
+  def comment_attr(comment)
+    classes = %w(comment)
+    classes << "new-comment" unless comment.read_by?(current_user)
+    { :id => "comment-#{comment.id}", :class => classes.join(" ") }
   end
 
 end
