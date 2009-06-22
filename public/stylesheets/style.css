@@ -32,13 +32,15 @@ section article { background-color: #ffb; border: 1px solid; -moz-border-radius:
 ins.diffins, ins.diffmod { background-color: #3f3; }
 del.diffdel, del.diffmod { background-color: #f33; }
 
+/* Comments */
+.comment { border: 1px solid black; }
+.new-comment h3 { border: 1px solid red; }
+
 /* Divers et variés */
 a img { border: none; }
 h2 { color: #333; }
 aside .login p { font-weight: bold; }
-.comment { border:1px solid black; }
-#tracker .fix a, #tracker .invalid a { text-decoration: line-through; }
-.tracker.fix a, .tracker.invalid a { text-decoration: line-through; }
+#tracker .fix a, #tracker .invalid a, .tracker.fix a, .tracker.invalid a { text-decoration: line-through; }
 .avatar { float:left; margin: 5px 10px; }
 .misspelled { border-bottom:1px dashed red; }
 

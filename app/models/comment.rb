@@ -48,13 +48,21 @@ class Comment < ActiveRecord::Base
     set_property :delta => :datetime, :threshold => 1.hour
   end
 
-### Optimizations ###
+### Reading status ###
 
   after_create :update_last_commented_at
 
   def update_last_commented_at
     stmt = "UPDATE nodes SET last_commented_at=NOW() WHERE id = #{node.id}"
     connection.update_sql(stmt)
+  end
+
+  # Returns true if this comment has been read by the given user,
+  # but also for anonymous users
+  def read_by?(user)
+    return true if user.nil?
+    r = Reading.first(:conditions => {:user_id => user.id, :node_id => node_id})
+    r && r.updated_at >= created_at
   end
 
 ### Threads ###
