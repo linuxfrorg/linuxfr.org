@@ -35,6 +35,7 @@ del.diffdel, del.diffmod { background-color: #f33; }
 /* Comments */
 .comment { border: 1px solid black; }
 .new-comment h3 { border: 1px solid red; }
+.fold { display:none; }
 
 /* Divers et variés */
 a img { border: none; }

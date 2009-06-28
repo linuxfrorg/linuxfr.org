@@ -1,8 +1,40 @@
 $(".markItUp").markItUp(markItUpSettings);
 
-$("a.hit-counter").each(function(n,link) {
+$("a.hit-counter").each(function(idx,link) {
     link.href = "/redirect/" + link.getAttribute('data-hit');
 });
+
+/* Comments folding */
+var Folding = {};
+Folding.create = function(threshold) {
+    var score, link;
+    $('#comments .comment .folding').remove();
+    $('#comments .comment').each(function(idx,comment) {
+        comment = $(comment);
+        score = parseInt(comment.find('.score:first').text());
+        link  = comment.children('h3').prepend('<a href="#" class="folding">[-]</a>').children('.folding');
+        link.toggle(
+            function() { Folding.fold($(this).closest('.comment')); },
+            function() { Folding.unfold($(this).closest('.comment')); }
+        );
+        if (score < threshold) {
+            link.click();
+        } else {
+            Folding.unfold(comment);
+        }
+    });
+};
+Folding.unfold = function(comment) {
+    comment.children('p, .content, .action').removeClass('fold');
+    comment.children('h3').children('.folding').text('[-]').attr('title','Plier');
+};
+Folding.fold = function(comment) {
+    comment.children('p, .content, .action').addClass('fold');
+    comment.children('h3').children('.folding').text('[+]').attr('title','Déplier');
+};
+
+/* Fold/unfold comments */
+Folding.create(1);
 
 /* DLFP Toolbar */
 var Toolbar = {};
