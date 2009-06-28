@@ -33,25 +33,26 @@ Folding.fold = function(comment) {
     comment.children('h3').children('.folding').text('[+]').attr('title','Déplier');
 };
 
-/* Fold/unfold comments */
-Folding.create(1);
-
 /* DLFP Toolbar */
 var Toolbar = {};
+Toolbar.threshold = 1;
 Toolbar.items     = [];
 Toolbar.nb_items  = 0;
 Toolbar.current   = 0;
 Toolbar.create = function(items, txt) {
     Toolbar.items    = items;
     Toolbar.nb_items = items.length;
-    $('body').append('<div id="toolbar"><span>' + txt + ' : ' +
+    $('body').append('<div id="toolbar"><span id="toolbar-items">' + txt + ' : ' +
             '<span id="toolbar-current-item">' + Toolbar.current + '</span> / ' +
             '<span id="toolbar-nb-items">' + Toolbar.nb_items + '</span> ' +
             '<a href="#" accesskey="<" class="prev">&lt;</a> | ' +
             '<a href="#" accesskey=">" class="next">&gt;</a>' +
-            '</span></div>');
-    $('#toolbar .prev').click(function() { return Toolbar.prev_item(); });
-    $('#toolbar .next').click(function() { return Toolbar.next_item(); });
+            '</span><span id="toolbar-threshold">Seuil : ' +
+            '<a href="#" class="change">' + Toolbar.threshold +
+            '</a></span></div>');
+    $('#toolbar .prev').click(Toolbar.prev_item);
+    $('#toolbar .next').click(Toolbar.next_item);
+    $('#toolbar .change').click(Toolbar.change_threshold);
     /* Use the '<' and '>' to navigate in the items */
     $(document).keypress(function(e) {
         if ($(e.target).is("input")) return ;
@@ -60,20 +61,28 @@ Toolbar.create = function(items, txt) {
     });
 };
 Toolbar.next_item = function() {
-    this.current++;
-    if (this.current > this.nb_items) this.current -= this.nb_items;
-    return this.go_to_current();
+    Toolbar.current++;
+    if (Toolbar.current > Toolbar.nb_items) Toolbar.current -= Toolbar.nb_items;
+    return Toolbar.go_to_current();
 };
 Toolbar.prev_item = function() {
-    this.current--;
-    if (this.current <= 0) this.current += this.nb_items;
-    return this.go_to_current();
+    Toolbar.current--;
+    if (Toolbar.current <= 0) Toolbar.current += Toolbar.nb_items;
+    return Toolbar.go_to_current();
 };
 Toolbar.go_to_current = function() {
-    if (this.nb_items == 0) return ;
-    var item = this.items[this.current - 1];
+    if (Toolbar.nb_items == 0) return ;
+    var item = Toolbar.items[Toolbar.current - 1];
     $(document).scrollTop($(item).offset().top);
     $('#toolbar-current-item').text(Toolbar.current);
+    return false;
+};
+Toolbar.change_threshold = function() {
+    var thresholds = [-42, 0, 1, 2, 5];
+    var index = jQuery.inArray(parseInt($(this).text()), thresholds) + 1
+    var value = thresholds[index % thresholds.length];
+    $(this).text(value);
+    Folding.create(value);
     return false;
 };
 
@@ -82,4 +91,7 @@ if ($('body').hasClass('logged')) {
     if ($('#comments').length > 0) Toolbar.create($('#comments .new-comment'), 'Nouveaux commentaires');
     if ($('#contents').length > 0) Toolbar.create($('#contents .new-content'), 'Contenus pas encore visités');
 }
+
+/* Fold/unfold comments */
+Folding.create(Toolbar.threshold);
 
