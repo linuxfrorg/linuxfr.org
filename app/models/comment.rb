@@ -80,7 +80,9 @@ class Comment < ActiveRecord::Base
     save
   end
 
-  attr_reader :parent_id
+  def parent_id
+    @parent_id ||= materialized_path[-2 * PATH_SIZE .. - PATH_SIZE - 1].to_i
+  end
 
   def parent_id=(parent_id)
     @parent_id = parent_id

@@ -1,8 +1,11 @@
 %h3
+  = link_to "[^]", "#comment-#{comment.parent_id}", :title => "Aller au commentaire parent" unless comment.root?
+  = ' '
   = link_to "Commentaire : #{h comment.title}", [comment.node, comment]
 %p
   = posted_by(comment)
-  == Évalué à #{comment.score}
+  Évalué à
+  %span.score= comment.score
 .content
   = image_tag comment.user.avatar.url(:thumbnail), :class => 'avatar'
   - if comment.deleted?
