@@ -1,7 +1,9 @@
 module NodeHelper
 
   def article_for(record, &blk)
-    content_tag_for(:article, record, :class => 'content', &blk)
+    css_class = 'content'
+    css_class << ' new-content' if current_user && record.node.read_status(current_user) == :not_read
+    content_tag_for(:article, record, :class => css_class, &blk)
   end
 
   def link_to_content(content)

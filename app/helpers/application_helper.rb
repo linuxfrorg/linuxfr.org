@@ -22,6 +22,7 @@ module ApplicationHelper
 
   def body_attr
     classes = %w(js-off)
+    classes << 'logged' if current_user
     classes << current_user.role if current_user
     classes << Rails.env if Rails.env != 'production'
     { :class => classes.join(' ') }

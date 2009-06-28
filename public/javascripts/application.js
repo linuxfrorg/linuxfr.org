@@ -6,52 +6,48 @@ $("a.hit-counter").each(function(n,link) {
 
 /* DLFP Toolbar */
 var Toolbar = {};
-Toolbar.comments    = $(".new-comment");
-Toolbar.nb_comments = Toolbar.comments.size();
-Toolbar.current     = 0;
-Toolbar.next_comment = function() {
-    this.current++;
-    if (this.current > this.nb_comments) this.current -= this.nb_comments;
-    this.go_to_current();
+Toolbar.items     = [];
+Toolbar.nb_items  = 0;
+Toolbar.current   = 0;
+Toolbar.create = function(items, txt) {
+    Toolbar.items    = items;
+    Toolbar.nb_items = items.length;
+    $('body').append('<div id="toolbar"><span>' + txt + ' : ' +
+            '<span id="toolbar-current-item">' + Toolbar.current + '</span> / ' +
+            '<span id="toolbar-nb-items">' + Toolbar.nb_items + '</span> ' +
+            '<a href="#" accesskey="<" class="prev">&lt;</a> | ' +
+            '<a href="#" accesskey=">" class="next">&gt;</a>' +
+            '</span></div>');
+    $('#toolbar .prev').click(function() { return Toolbar.prev_item(); });
+    $('#toolbar .next').click(function() { return Toolbar.next_item(); });
+    /* Use the '<' and '>' to navigate in the items */
+    $(document).keypress(function(e) {
+        if ($(e.target).is("input")) return ;
+        if (e.which == 60) return Toolbar.prev_item();
+        if (e.which == 62) return Toolbar.next_item();
+    });
 };
-Toolbar.prev_comment = function() {
+Toolbar.next_item = function() {
+    this.current++;
+    if (this.current > this.nb_items) this.current -= this.nb_items;
+    return this.go_to_current();
+};
+Toolbar.prev_item = function() {
     this.current--;
-    if (this.current <= 0) this.current += this.nb_comments;
-    this.go_to_current();
+    if (this.current <= 0) this.current += this.nb_items;
+    return this.go_to_current();
 };
 Toolbar.go_to_current = function() {
-    if (this.nb_comments == 0) return ;
-    var comment = this.comments[this.current - 1];
-    $(document).scrollTop($(comment).offset().top);
-	$('#current-comment').text(Toolbar.current);
+    if (this.nb_items == 0) return ;
+    var item = this.items[this.current - 1];
+    $(document).scrollTop($(item).offset().top);
+    $('#toolbar-current-item').text(Toolbar.current);
+    return false;
 };
 
 /* Show the toolbar */
-$('body').append('<div id="toolbar"><span>Nouveaux commentaires : <span id="current-comment">' +
-		Toolbar.current + '</span> / ' + Toolbar.nb_comments +
-		' <a href="#" accesskey="<" class="prev">&lt;</a> | ' +
-		' <a href="#" accesskey=">" class="next">&gt;</a>' +
-		'</span></div>');
-
-$('#toolbar .prev').click(function() {
-    Toolbar.prev_comment();
-	return false;
-});
-$('#toolbar .next').click(function() {
-    Toolbar.next_comment();
-	return false;
-});
-
-/* Use the '<' and '>' to navigate in the new comments */
-$(document).keypress(function(e) {
-    if ($(e.target).is("input")) return ;
-    if (e.which == 60) {
-        Toolbar.prev_comment();
-		return false;
-    }
-    if (e.which == 62) {
-        Toolbar.next_comment();
-		return false;
-    }
-});
+if ($('body').hasClass('logged')) {
+    if ($('#comments').length > 0) Toolbar.create($('#comments .new-comment'), 'Nouveaux commentaires');
+    if ($('#contents').length > 0) Toolbar.create($('#contents .new-content'), 'Contenus pas encore visités');
+}
 

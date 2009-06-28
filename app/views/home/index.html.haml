@@ -4,5 +4,6 @@
 - if @banner
   %div.banner
     = @banner
-- @nodes.each do |node|
-  = render node.content
+#contents
+  - @nodes.each do |node|
+    = render node.content
