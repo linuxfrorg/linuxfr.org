@@ -39,6 +39,7 @@ class TrackersController < ApplicationController
       flash[:success] = "Votre entrée a bien été créée dans le suivi"
       redirect_to trackers_url
     else
+      @tracker.node = Node.new
       render :new
     end
   end

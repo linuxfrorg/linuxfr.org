@@ -39,6 +39,7 @@ class InterviewsController < ApplicationController
       flash[:success] = "Nous vous remercions pour avoir proposé un entretien. Cette proposition va être examinée par l'équipe de modération."
       redirect_to interviews_url
     else
+      @interview.node = Node.new
       render :new
     end
   end

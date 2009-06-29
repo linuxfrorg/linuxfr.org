@@ -21,6 +21,7 @@ class PostsController < ApplicationController
       flash[:success] = "Votre message a bien été créé"
       redirect_to forum_posts_url(:forum_id => @post.forum_id)
     else
+      @post.node = Node.new
       render :new
     end
   end

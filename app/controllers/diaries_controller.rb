@@ -29,6 +29,7 @@ class DiariesController < ApplicationController
       flash[:success] = "Votre journal a bien été créé"
       redirect_to [@diary.user, @diary]
     else
+      @diary.node = Node.new
       render :new
     end
   end

@@ -31,6 +31,7 @@ class NewsController < ApplicationController
       flash[:success] = "Votre proposition de dépêche a bien été soumise, et sera modérée dans les heures ou jours à venir"
       redirect_to news_index_url
     else
+      @news.node = Node.new
       render :new
     end
   end

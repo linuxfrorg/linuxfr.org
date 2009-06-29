@@ -31,6 +31,7 @@ class WikiPagesController < ApplicationController
       flash[:success] = "Nouvelle page de wiki créée"
       redirect_to wiki_pages_url
     else
+      @wiki_page.node = Node.new
       render :new
     end
   end

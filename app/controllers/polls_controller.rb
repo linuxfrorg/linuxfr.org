@@ -35,6 +35,7 @@ class PollsController < ApplicationController
       flash[:success] = "L'équipe de modération de LinuxFr.org vous remercie pour votre proposition de sondage"
       redirect_to polls_url
     else
+      @poll.node = Node.new
       render :new
     end
   end
