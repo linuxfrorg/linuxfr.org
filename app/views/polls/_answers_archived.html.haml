@@ -1,7 +1,7 @@
 %ul
   - poll.answers.each do |answer|
     %li
-      = h(answer.answer), ' : '
-      %div{ :style => "width: #{answer.percent}px;" }
+      #{h answer.answer} :
+      %div(style="width: #{answer.percent}px;")
         = answer.votes
-      = '(', answer.percent, ' %)'
+      (#{answer.percent} %)

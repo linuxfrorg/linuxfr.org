@@ -2,5 +2,5 @@
 - form_tag admin_logo_path do
   - @logos.each do |logo|
     - file = File.basename(logo)
-    %button{:type => "submit", :name => "logo", :value => file}
+    %button(type="submit" name="logo" value=file)
       = image_tag logo

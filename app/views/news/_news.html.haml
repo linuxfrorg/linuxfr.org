@@ -1,6 +1,6 @@
 - article_for news do
   %h2
-    = link_to(h(news.section.title), news.section), ' : ', link_to(h(news.title), news)
+    #{link_to h(news.section.title), news.section} : #{link_to h(news.title), news}
   %p
     = news_posted_by(news)
   .content
@@ -9,7 +9,7 @@
     - news.links.each do |link|
       %p
         = link_to(h(link.title), link.url, 'data-hit' => link.id, :title => link.url, :lang => link.lang, :class => 'hit-counter')
-        = '(', pluralize(link.nb_clicks, 'hit'), ')'
+        (#{pluralize link.nb_clicks, 'hit'})
     = sanitize news.wikified_second_part
   %p
     = read_it(news)

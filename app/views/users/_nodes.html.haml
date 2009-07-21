@@ -3,4 +3,4 @@
   %ul
     - @nodes.each do |node|
       %li
-        = '[', node.content_type, '] ', link_to_content(node.content)
+        [#{node.content_type}] #{link_to_content node.content}

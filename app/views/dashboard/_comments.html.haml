@@ -14,7 +14,7 @@
     - @comments.each do |comment|
       - answer = comment.last_answer
       %tr
-        %td= comment.node.content_type, ' : ', link_to_content(comment.node.content)
+        %td #{comment.node.content_type} : #{link_to_content comment.node.content}
         %td= link_to h(comment.title), [comment.node, comment]
         %td= comment.score
         %td= comment.nb_answers

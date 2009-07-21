@@ -1,7 +1,7 @@
 =h1 "Visualiser une modification"
 
 %h2
-  = h(@commit.committer), ' : ', h(@commit.message)
+  #{h @commit.committer} : #{h @commit.message}
 
 - @commit.fields.each do |field|
   - old = @commit.old_field(field)

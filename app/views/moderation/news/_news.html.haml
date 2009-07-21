@@ -1,15 +1,15 @@
 - article_for news do
   %h2
-    = link_to(news.section.title, news.section), ' : ', link_to(news.title, [:moderation, news])
+    #{link_to news.section.title, news.section} : #{link_to news.title, [:moderation, news]}
   %p
     = posted_by(news)
   .content
-    = link_to(image_tag(news.section.image.url, :alt => news.section.title), news.section)
+    = link_to image_tag(news.section.image.url, :alt => news.section.title), news.section
     = sanitize(spellify news.wikified_body)
     - news.links.each do |link|
       %p
         = link_to(h(link.title), link.url, 'data-hit' => link.id, :title => link.url, :lang => link.lang, :class => 'hit-counter')
-        = '(', pluralize(link.nb_clicks, 'hit'), ')'
+        (#{pluralize link.nb_clicks, 'hit'})
     = sanitize(spellify news.wikified_second_part)
   %p
     = read_it(news)

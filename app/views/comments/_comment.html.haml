@@ -13,7 +13,7 @@
   - else
     = sanitize comment.body
 %p
-  = '[', link_to("Répondre", answer_comment_path(:node_id => comment.node_id, :parent_id => comment.id)), ']'
+  [#{link_to "Répondre", answer_comment_path(:node_id => comment.node_id, :parent_id => comment.id)}]
 .action
   - if comment.votable_by?(current_user)
     Ce commentaire est-il 

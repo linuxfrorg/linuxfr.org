@@ -7,6 +7,6 @@
     = sanitize interview.body
   - if interview.news
     %p
-      = "&gt; Cet entretien est à l'origine de la dépêche suivante : ", link_to(h(interview.news.title), interview.news)
+      &gt; Cet entretien est à l'origine de la dépêche suivante : #{link_to h(interview.news.title), interview.news}
   %p
     = read_it(interview)

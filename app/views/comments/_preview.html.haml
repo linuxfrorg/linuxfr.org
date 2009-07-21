@@ -1,10 +1,10 @@
 %ul
-  %li.comment{:id => "comment-new"}
+  %li.comment(id="comment-new")
     %h3
       = "Commentaire : #{h preview.title}"
     %p
       = posted_by(preview)
-      == Évalué à #{preview.score}
+      Évalué à #{preview.score}
     .content
       = image_tag current_user.avatar.url(:thumbnail), :class => 'avatar'
       = sanitize(spellify preview.body)

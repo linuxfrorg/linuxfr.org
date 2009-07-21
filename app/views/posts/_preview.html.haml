@@ -1,6 +1,6 @@
 - article_for preview do
   %h2
-    = link_to(h(preview.forum.title), preview.forum), ' : ', link_to(h(preview.title), [preview.forum, preview])
+    #{link_to h(preview.forum.title), preview.forum} : #{link_to h(preview.title), [preview.forum, preview]}
   %p
     = posted_by(preview)
   .content
