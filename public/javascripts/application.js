@@ -39,17 +39,18 @@ Toolbar.threshold = 1;
 Toolbar.items     = [];
 Toolbar.nb_items  = 0;
 Toolbar.current   = 0;
+Toolbar.template  = '<div id="toolbar"><span id="toolbar-items">{text} : ' +
+                    '  <span id="toolbar-current-item">{toolbar.current}</span> / ' +
+                    '  <span id="toolbar-nb-items">{toolbar.nb_items}</span> ' +
+                    '  <a href="#" accesskey="<" class="prev">&lt;</a> | ' +
+                    '  <a href="#" accesskey=">" class="next">&gt;</a>' +
+                    '</span><span id="toolbar-threshold">Seuil : ' +
+                    '  <a href="#" class="change">{toolbar.threshold}</a>' +
+                    '</span></div>';
 Toolbar.create = function(items, txt) {
     Toolbar.items    = items;
     Toolbar.nb_items = items.length;
-    $('body').append('<div id="toolbar"><span id="toolbar-items">' + txt + ' : ' +
-            '<span id="toolbar-current-item">' + Toolbar.current + '</span> / ' +
-            '<span id="toolbar-nb-items">' + Toolbar.nb_items + '</span> ' +
-            '<a href="#" accesskey="<" class="prev">&lt;</a> | ' +
-            '<a href="#" accesskey=">" class="next">&gt;</a>' +
-            '</span><span id="toolbar-threshold">Seuil : ' +
-            '<a href="#" class="change">' + Toolbar.threshold +
-            '</a></span></div>');
+    $('body').append($.nano(Toolbar.template, {text: txt, toolbar: Toolbar}));
     $('#toolbar .prev').click(Toolbar.prev_item);
     $('#toolbar .next').click(Toolbar.next_item);
     $('#toolbar .change').click(Toolbar.change_threshold);
