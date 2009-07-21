@@ -19,6 +19,7 @@ Rails::Initializer.run do |config|
   # Specify gems that this application depends on. 
   # They can then be installed with "rake gems:install" on new installations.
   # You have to specify the :lib option for libraries, where the Gem name (sqlite3-ruby) differs from the file itself (sqlite3)
+  require 'htmldiff'
   config.gem 'mysql', :version => '~>2.7'
   config.gem 'haml', :version => '~>2.0'
   config.gem 'raspell', :version => '~>1.1'
@@ -30,7 +31,10 @@ Rails::Initializer.run do |config|
   config.gem 'rubyist-aasm', :lib => 'aasm', :version => '~>2.0'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :version => '~>2.1'
   config.gem 'freelancing-god-thinking-sphinx', :lib => 'thinking_sphinx', :version => '~>1.1'
-  require 'htmldiff'
+  config.gem 'json', :version => '~>1.1'
+  ActiveSupport::JSON.backend = "JSONGem"
+  #config.gem 'libxml-ruby', :version => '~>0.9'
+  #ActiveSupport::XmlMini.backend = "LibXML"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
