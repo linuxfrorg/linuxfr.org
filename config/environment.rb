@@ -31,8 +31,8 @@ Rails::Initializer.run do |config|
   config.gem 'rubyist-aasm', :lib => 'aasm', :version => '~>2.0'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :version => '~>2.1'
   config.gem 'freelancing-god-thinking-sphinx', :lib => 'thinking_sphinx', :version => '~>1.1'
-  config.gem 'json', :version => '~>1.1'
-  ActiveSupport::JSON.backend = "JSONGem"
+  #config.gem 'json', :version => '~>1.1'
+  #ActiveSupport::JSON.backend = "JSONGem"
   #config.gem 'libxml-ruby', :version => '~>0.9'
   #ActiveSupport::XmlMini.backend = "LibXML"
 
