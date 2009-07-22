@@ -1,9 +1,11 @@
 - article_for preview do
-  %h2
-    = link_to "Proposition d'entretien : #{h preview.title}", preview
-  %p
-    = posted_by(preview)
+  %header
+    %h2
+      = link_to "Proposition d'entretien : #{h preview.title}", preview
+    %p
+      = posted_by(preview)
   .content
     = sanitize(spellify preview.body)
-  %p
-    = read_it(preview)
+  %footer
+    %p
+      = read_it(preview)

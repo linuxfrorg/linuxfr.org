@@ -1,9 +1,11 @@
 - article_for wiki_page do
-  %h2
-    #{link_to "Wiki", wiki_pages_path} : #{link_to h(wiki_page.title), wiki_page}
-  %p
-    = posted_by(wiki_page)
+  %header
+    %h2
+      #{link_to "Wiki", wiki_pages_path} : #{link_to h(wiki_page.title), wiki_page}
+    %p
+      = posted_by(wiki_page)
   .content
     = sanitize wiki_page.wikified_body
-  %p
-    = read_it(wiki_page)
+  %footer
+    %p
+      = read_it(wiki_page)

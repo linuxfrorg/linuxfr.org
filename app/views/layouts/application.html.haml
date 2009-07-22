@@ -11,7 +11,7 @@
 
   %body{body_attr}
     = check_js
-    %nav
+    %nav#site
       %ul
         %li= link_to "Accueil", '/'
         %li= link_to "Dépêches", news_index_path
@@ -26,10 +26,10 @@
         = text_field_tag :query
         = submit_tag "Rechercher"
 
-    %header
+    %header#branding
       = logo
 
-    %aside
+    %aside#sidebar
       %article.login
         - if current_user
           %p= current_user.name
@@ -54,18 +54,19 @@
           %li= link_to "Léa-Linux", 'http://lea-linux.org'
           %li= link_to "Lolix", 'http://fr.lolix.org'
 
-    %section
+    %section#container
       - [:error, :success, :notice].each do |type|
         - if flash[type]
           %div(class=type)= flash[type]
       = yield :layout
 
-    %footer
+    %footer#bigfooter
       %p Cette page a été générée en <a href="http://rubyonrails.org">Ruby on Rails</a>.
-      %ul
-        %li= link_to "Team LinuxFr.org", '/team'
-        %li= link_to "Informations sur le site", '/informations'
-        %li= link_to "Contact", '/contact'
-        %li= link_to "Plan", '/plan'
+      %nav
+        %ul
+          %li= link_to "Team LinuxFr.org", '/team'
+          %li= link_to "Informations sur le site", '/informations'
+          %li= link_to "Contact", '/contact'
+          %li= link_to "Plan", '/plan'
 
     = javascript_include_tag 'jquery-1.3.2', 'jquery.nano', 'jquery.markitup', 'markitup-wiki', 'application'

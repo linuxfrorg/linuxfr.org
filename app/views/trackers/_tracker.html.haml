@@ -1,11 +1,13 @@
 - article_for tracker do
-  %h2
-    = link_to "#{h tracker.category_title} : #{h tracker.title}", tracker
-  %p
-    = posted_by(tracker)
-    - if tracker.editable_by?(current_user)
-      = link_to "Modifier", edit_tracker_path(tracker)
+  %header
+    %h2
+      = link_to "#{h tracker.category_title} : #{h tracker.title}", tracker
+    %p
+      = posted_by(tracker)
+      - if tracker.editable_by?(current_user)
+        = link_to "Modifier", edit_tracker_path(tracker)
   .content
     = sanitize tracker.body
-  %p
-    = read_it(tracker)
+  %footer
+    %p
+      = read_it(tracker)

@@ -1,8 +1,9 @@
 - article_for preview do
-  %h2
-    #{link_to preview.section.title, preview.section} : #{h preview.title}
-  %p
-    = news_posted_by(preview)
+  %header
+    %h2
+      #{link_to preview.section.title, preview.section} : #{h preview.title}
+    %p.meta
+      = news_posted_by(preview)
   .content
     = link_to image_tag(preview.section.image.url, :alt => preview.section.title), preview.section
     = sanitize(spellify preview.wikified_body)
@@ -10,5 +11,6 @@
       %p
         = link_to h(link.title), link.url
     = sanitize(spellify preview.wikified_second_part)
-  %p
-    = read_it(preview)
+  %footer
+    %p
+      = read_it(preview)

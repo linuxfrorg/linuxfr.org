@@ -1,10 +1,13 @@
 - article_for diary do
-  %h2
-    = link_to "Journal : #{h diary.title}", [diary.owner, diary]
-  %p
+  %header
+    %h2
+      = link_to "Journal : #{h diary.title}", [diary.owner, diary]
+    %p
+      = posted_by(diary)
+  %aside
     = image_tag diary.owner.avatar.url(:thumbnail), :class => 'avatar'
-    = posted_by(diary)
   .content
     = sanitize diary.body
-  %p
-    = read_it(diary)
+  %footer
+    %p
+      = read_it(diary)

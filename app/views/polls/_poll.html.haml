@@ -1,9 +1,11 @@
 - article_for poll do
-  %h2
-    = link_to "Sondage : #{h poll.title}", poll
-  %p
-    = posted_by(poll)
+  %header
+    %h2
+      = link_to "Sondage : #{h poll.title}", poll
+    %p
+      = posted_by(poll)
   .content
     = render "polls/answers_#{poll_current_or_archived poll}", :poll => poll
-  %p
-    = read_it(poll)
+  %footer
+    %p
+      = read_it(poll)

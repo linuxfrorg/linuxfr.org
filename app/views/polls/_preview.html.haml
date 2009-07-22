@@ -1,9 +1,11 @@
 - article_for preview do
-  %h2
-    = "Sondage : #{h preview.title}"
-  %p
-    = posted_by(preview)
+  %footer
+    %h2
+      = "Sondage : #{h preview.title}"
+    %p
+      = posted_by(preview)
   .content
     = render "answers_current", :poll => preview
-  %p
-    = read_it(preview)
+  %footer
+    %p
+      = read_it(preview)
