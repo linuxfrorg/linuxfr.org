@@ -13,3 +13,6 @@
 [submodule "vendor/plugins/french_rails"]
 	path = vendor/plugins/french_rails
 	url = git://github.com/nono/french-rails.git
+[submodule "vendor/plugins/sitemap_generator-plugin"]
+	path = vendor/plugins/sitemap_generator-plugin
+	url = git@github.com:nono/sitemap_generator-plugin.git
