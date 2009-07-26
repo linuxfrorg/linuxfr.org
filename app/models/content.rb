@@ -54,4 +54,22 @@ class Content < ActiveRecord::Base
     3
   end
 
+### Sitemap ###
+
+  def lastmod
+    [node.last_commented_at, updated_at].compact.max
+  end
+
+  def changefreq
+    if created_at.today?
+      'hourly'
+    elsif created_at > 3.days.ago
+      'daily'
+    elsif created_at > 3.months.ago
+      'monthly'
+    else
+      'yearly'
+    end
+  end
+
 end

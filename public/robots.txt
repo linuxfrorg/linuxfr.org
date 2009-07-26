@@ -1,5 +1,17 @@
-# See http://www.robotstxt.org/wc/norobots.html for documentation on how to use the robots.txt file
-#
-# To ban all spiders from the entire site uncomment the next two lines:
-# User-Agent: *
-# Disallow: /
+User-Agent: *
+Disallow: /stats
+Disallow: /nodes
+Disallow: /vote
+Disallow: /relevance
+Disallow: /board
+Disallow: /compte
+Disallow: /session
+Disallow: /redirect
+Disallow: /inscription
+Disallow: /mot-de-passe
+
+User-Agent: Twiceler
+User-Agent: Twiceler-0.9
+Disallow: /
+
+Sitemap: http://linuxfr.org/sitemap_index.xml.gz
