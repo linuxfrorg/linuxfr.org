@@ -26,6 +26,7 @@ class Vote < ActiveRecord::Base
     cancel(user, node)
     user.votes.create(:node_id => node.id, :vote => true)
     Node.increment_counter(:score, node.id)
+    node.compute_interest
   end
 
   # ...or he can vote against it
@@ -33,6 +34,7 @@ class Vote < ActiveRecord::Base
     cancel(user, node)
     user.votes.create(:node_id => node.id, :vote => false)
     Node.decrement_counter(:score, node.id)
+    node.compute_interest
   end
 
 protected

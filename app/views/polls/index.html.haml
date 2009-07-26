@@ -1,5 +1,4 @@
 =h1 "Liste des sondages"
 - feed "Flux Atom des sondages"
-= will_paginate @polls
-= render @polls
-= will_paginate @polls
+= render 'shared/order_navbar'
+- paginated_contents @polls

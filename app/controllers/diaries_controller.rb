@@ -6,7 +6,8 @@ class DiariesController < ApplicationController
 ### Global ###
 
   def index
-    @diaries = Diary.sorted.paginate :page => params[:page], :per_page => 10
+    @order   = params[:order] || 'created_at'
+    @diaries = Diary.paginate(:page => params[:page], :per_page => 10, :order => "nodes.#{@order} DESC", :joins => :node)
     respond_to do |wants|
       wants.html
       wants.atom

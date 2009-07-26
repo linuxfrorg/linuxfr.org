@@ -6,6 +6,7 @@
 #  content_id        :integer(4)
 #  content_type      :string(255)
 #  score             :integer(4)      default(0)
+#  interest          :integer(4)      default(0)
 #  user_id           :integer(4)
 #  public            :boolean(1)      default(TRUE)
 #  created_at        :datetime
@@ -31,6 +32,16 @@ class Node < ActiveRecord::Base
   named_scope :on_dashboard, lambda {|type|
     {:conditions => {:public => true, :content_type => type}, :order => 'created_at DESC'}
   }
+
+### Interest ###
+
+  after_create :compute_interest
+
+  def compute_interest
+    coeff = content_type.constantize.interest_coefficient
+    stmt  = "UPDATE nodes SET interest=(score * #{coeff} + UNIX_TIMESTAMP(created_at) / 1000) WHERE node_id=#{self.id}"
+    connection.update_sql(stmt)
+  end
 
 ### Comments ###
 

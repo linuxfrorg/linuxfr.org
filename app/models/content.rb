@@ -48,4 +48,10 @@ class Content < ActiveRecord::Base
     save
   end
 
+### Interest ###
+
+  def self.interest_coefficient
+    3
+  end
+
 end

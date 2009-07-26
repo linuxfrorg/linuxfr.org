@@ -1,5 +1,4 @@
 =h1 @section.title
 - feed "S'abonner au flux Atom des dépêches de #{@section.title}"
-= will_paginate @news
-= render @news
-= will_paginate @news
+= render 'shared/order_navbar'
+- paginated_contents @news

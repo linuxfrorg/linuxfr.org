@@ -62,4 +62,10 @@ class WikiPage < Content
     user && readable_by?(user)
   end
 
+### Interest ###
+
+  def self.interest_coefficient
+    5
+  end
+
 end

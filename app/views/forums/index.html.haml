@@ -3,7 +3,5 @@
 
 =h1 "Liste des forums"
 - feed "Flux Atom des forums"
-
-= will_paginate @posts
-= render @posts
-= will_paginate @posts
+= render 'shared/order_navbar'
+- paginated_contents @posts

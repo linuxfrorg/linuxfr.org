@@ -3,7 +3,8 @@ class PollsController < ApplicationController
   after_filter  :marked_as_read, :only => [:show]
 
   def index
-    @polls = Poll.archived.sorted.paginate :page => params[:page], :per_page => 10
+    @order = params[:order] || 'created_at'
+    @polls = Poll.archived.paginate(:page => params[:page], :per_page => 10, :order => "nodes.#{@order} DESC", :joins => :node)
     if on_the_first_page?
       poll = Poll.current
       @polls.unshift(poll) if poll

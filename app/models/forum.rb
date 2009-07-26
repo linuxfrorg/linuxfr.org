@@ -25,4 +25,11 @@ class Forum < ActiveRecord::Base
   validates_uniqueness_of :title, :message => 'Ce titre est déjà utilisé'
 
   has_friendly_id :title, :use_slug => true
+
+### Interest ###
+
+  def self.interest_coefficient
+    1
+  end
+
 end

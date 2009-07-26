@@ -4,6 +4,7 @@
 - if @banner
   %aside.banner
     = @banner
-#contents
-  - @nodes.each do |node|
-    = render node.content
+= render 'shared/order_navbar'
+- paginated_section @nodes do
+  #contents
+    = render @nodes.map(&:content)

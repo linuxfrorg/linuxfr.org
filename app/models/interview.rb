@@ -96,4 +96,10 @@ class Interview < Content
     user && user.amr?
   end
 
+### Interest ###
+
+  def self.interest_coefficient
+    10
+  end
+
 end

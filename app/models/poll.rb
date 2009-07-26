@@ -98,4 +98,10 @@ class Poll < Content
     answers.sum(:votes)
   end
 
+### Interest ###
+
+  def self.interest_coefficient
+    10
+  end
+
 end

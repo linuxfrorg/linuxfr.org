@@ -3,7 +3,5 @@
 
 =h1 "Liste des messages dans le forum #{h @forum.title}"
 - feed "Flux Atom du forum #{h @forum.title}", forum_path(:forum_id => @forum.id, :format => :atom)
-
-= will_paginate @posts
-= render @posts
-= will_paginate @posts
+= render 'shared/order_navbar'
+- paginated_contents @posts

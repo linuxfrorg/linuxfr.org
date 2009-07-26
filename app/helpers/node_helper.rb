@@ -10,6 +10,12 @@ module NodeHelper
     link_to h(content.title), url_for_content(content)
   end
 
+  def paginated_contents(contents)
+    paginated_section(contents) do
+      concat(content_tag(:div, render(contents), :id => 'contents'))
+    end
+  end
+
   def posted_by(content, user_link=nil)
     user = content.user || current_user
     user_link ||= link_to(h(user.name), user)

@@ -1,5 +1,4 @@
 =h1 "Liste des journaux"
 - feed "Flux Atom des journaux"
-= will_paginate @diaries
-= render @diaries
-= will_paginate @diaries
+= render 'shared/order_navbar'
+- paginated_contents @diaries

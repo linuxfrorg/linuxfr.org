@@ -131,4 +131,10 @@ class News < Content
     self.id == Dictionary['PPP'].to_i
   end
 
+### Interest ###
+
+  def self.interest_coefficient
+    5
+  end
+
 end
