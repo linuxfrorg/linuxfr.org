@@ -16,6 +16,8 @@ protected
     @title    = %w(LinuxFr.org)
     @keywords = %w(Linux Logiciel Libre GNU Free Software Actualité Forum Communauté)
     @feeds    = {}
+    @last_comments = Comment.footer
+    @popular_tags  = Tag.footer
   end
 
 ### Content ###

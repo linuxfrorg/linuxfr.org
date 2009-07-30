@@ -3,7 +3,7 @@ body, nav, header, aside, section, footer, article { margin: 0; padding: 5px; di
 #branding  { float: left; clear: left; width: 211px; }
 #sidebar   { float: left; clear: left; width: 211px; }
 #container { width: 1000px; margin-left: 225px; }
-#bigfooter { clear: both; }
+#bigfooter { clear: both; margin-bottom: 20px; }
 #site      { background-color: #fcc; }
 #sidebar   { background-color: #cfc; }
 #container { background-color: #ffd; }
@@ -13,17 +13,15 @@ body, nav, header, aside, section, footer, article { margin: 0; padding: 5px; di
 #branding h1 { display: block; width: 201px; height: 186px; }
 #branding h1 a { display: block; text-indent: -9999em; width: 100%; height: 100%; }
 
-/* Nav and footer */
-#site ul, #bigfooter ul { display: inline; width: 100%; }
-#site li, #bigfooter li { display: inline; padding: 5px 10px; list-style: none; }
+/* Nav */
+#site ul { display: inline; width: 100%; }
+#site li { display: inline; padding: 5px 10px; list-style: none; }
 #site li:hover { background-color: #faa; }
 #site form { float: right; }
-#bigfooter li:hover { background-color: #aaf; }
 
-/* Site amis */
-#sidebar article.friends ul { list-style: none; padding: 0; }
-#sidebar article.friends a { display: block; padding: 5px; }
-#sidebar article.friends a:hover { background-color: #afa; }
+/* Footer */
+#bigfooter > div { display: inline-block; height: 100%; width: 24%; vertical-align: top; }
+#bigfooter li:hover { background-color: #aaf; }
 
 /* Contenus */
 #container article { background-color: #ffb; border: 1px solid; -moz-border-radius: 15px; margin: 10px; padding: 0px; }

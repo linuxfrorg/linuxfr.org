@@ -32,6 +32,7 @@ class Comment < ActiveRecord::Base
   }
   named_scope :on_dashboard, :order => 'created_at DESC', :conditions =>
     { :state => 'published', :answered_to_self => false }
+  named_scope :footer, :conditions => {:state => 'published'}, :order => 'created_at DESC', :limit => 12
 
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Vous ne pouvez pas poster un commentaire vide"
