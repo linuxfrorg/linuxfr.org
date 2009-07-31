@@ -57,7 +57,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @node.comments.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @comment.deletable_by?(current_user)
-    @comment.mark_as_deleted!
+    @comment.mark_as_deleted
     flash[:success] = "Votre commentaire a bien été supprimé"
     redirect_to_content @node.content
   end

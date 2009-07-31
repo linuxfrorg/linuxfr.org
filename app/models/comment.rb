@@ -139,7 +139,7 @@ class Comment < ActiveRecord::Base
 
 ### Workflow ###
 
-  def mark_as_deleted!
+  def mark_as_deleted
     self.state = 'deleted'
     save
   end

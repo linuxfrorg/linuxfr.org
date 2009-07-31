@@ -1,7 +1,10 @@
 =h1 "Éditer un journal"
 
+= button_to "Supprimer", [@diary.owner, @diary], :method => :delete
+
 = render "preview", :object => @diary if @preview_mode
 
+%h2 Édition
 - form_for [@diary.owner, @diary] do |form|
   = render form
 

@@ -44,7 +44,7 @@ class Content < ActiveRecord::Base
 
   def mark_as_deleted
     node.update_attribute(:public, false)
-    state = 'deleted'
+    self.state = 'deleted'
     save
   end
 
