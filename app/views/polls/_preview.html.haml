@@ -1,11 +1,3 @@
-- article_for preview do
-  %footer
-    %h2
-      = "Sondage : #{h preview.title}"
-    %p
-      = posted_by(preview)
-  .content
-    = render "answers_current", :poll => preview
-  %footer
-    %p
-      = read_it(preview)
+= article_for preview do |c|
+  - c.title = "Sondage : #{h preview.title}"
+  - c.body  = render("answers_current", :poll => preview)

@@ -1,23 +1,23 @@
 %article
   %h1 Votes
   %p
-    %b Pour :
+    %strong Pour :
     = voters_for(@news)
   %p
-    %b Contre :
+    %strong Contre :
     = voters_against(@news)
 
   - if @news.published?
     %p
-      %b Dépêche publiée
+      %strong Dépêche publiée
     - if @news.on_ppp?
-      %b En PPP
+      %strong En PPP
     - elsif @news.pppable_by?(current_user)
       - form_tag ppp_moderation_news_path(@news) do
         = submit_tag "Placer en PPP"
   - elsif @news.refused?
     %p
-      %b Dépêche refusée
+      %strong Dépêche refusée
   - else
     - if @news.acceptable_by?(current_user)
       - form_tag accept_moderation_news_path(@news) do

@@ -1,14 +1,5 @@
-- article_for interview do
-  %header
-    %h2
-      = link_to "Proposition d'entretien n°#{interview.id} : #{h interview.title}", interview
-    %p
-      = posted_by(interview)
-  .content
-    = sanitize interview.body
-  %footer
-    - if interview.news
-      %p
-        &gt; Cet entretien est à l'origine de la dépêche suivante : #{link_to h(interview.news.title), interview.news}
-    %p
-      = read_it(interview)
+= article_for interview do |c|
+  - c.title = link_to("Proposition d'entretien n°#{interview.id} : #{h interview.title}", interview)
+  - c.body  = sanitize(spellify interview.body)
+  - if interview.news
+    - c.actions = "<br/>&gt; Cet entretien est à l'origine de la dépêche suivante : #{link_to h(interview.news.title), interview.news}"

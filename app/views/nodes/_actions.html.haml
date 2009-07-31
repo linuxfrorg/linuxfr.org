@@ -1,0 +1,9 @@
+[#{link_to "Tagger", node_new_tag_path(:node_id => node.id)}]
+- if node.content.votable_by?(current_user)
+  Ce contenu est-il
+  - form_tag vote_path(:action => 'for', :node_id => node.id) do
+    = submit_tag "pertinent"
+  ou
+  - form_tag vote_path(:action => 'against', :node_id => node.id) do
+    = submit_tag "inutile"
+  \?

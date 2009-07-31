@@ -1,29 +1,9 @@
-.votes
-  %p
-    Score : #{node.score}.
-    - if node.content.votable_by?(current_user)
-      Ce contenu est-il
-      - form_tag vote_path(:action => 'for', :node_id => node.id) do
-        = submit_tag "pertinent"
-      ou
-      - form_tag vote_path(:action => 'against', :node_id => node.id) do
-        = submit_tag "inutile"
-      \?
-
-.tags
-  - keywords_from_tags(node.popular_tags)
-  %p
-    [#{link_to "Tagger", node_new_tag_path(:node_id => node.id)}]
-    Ce contenu est taggé avec :
-    - node.tags.each do |tag|
-      = link_to h(tag.name), public_tag_path(:id => h(tag.name))
-
 #comments
   - feed "Flux Atom des commentaires #{h node.content.title}", node_comments_path(:node_id => node.id, :format => :atom)
   %p
     = link_to "Envoyer un commentaire", new_node_comment_path(node)
   %p
-    %b Note :
+    %strong Note :
     les commentaires appartiennent à ceux qui les ont postés. Nous n'en sommes pas responsables.
   - unless node.threads.empty?
     %ul.threads

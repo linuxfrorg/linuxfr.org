@@ -1,0 +1,21 @@
+%article{:class => css_class}
+  %header
+    %h2
+      = title
+    %p.meta
+      = meta
+      Tags :
+      - record.node.popular_tags.each do |tag|
+        = link_to h(tag.name), public_tag_path(:id => h(tag.name))
+  %aside.score
+    = record.score
+  - if image
+    %aside.image
+      = image
+  .content
+    = body
+  %footer
+    %p
+      = read_it(record)
+      = actions
+      = render('nodes/actions', :node => record.node) unless record.new_record?

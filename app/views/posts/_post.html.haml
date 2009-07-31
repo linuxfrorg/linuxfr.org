@@ -1,11 +1,2 @@
-- article_for post do
-  %header
-    %h2
-      #{link_to h(post.forum.title), post.forum} : #{link_to h(post.title), [post.forum, post]}
-    %p
-      = posted_by(post)
-  .content
-    = sanitize post.body
-  %footer
-    %p
-      = read_it(post)
+= article_for post do |c|
+  - c.title = "#{link_to h(post.forum.title), post.forum} : #{link_to h(post.title), [post.forum, post]}"

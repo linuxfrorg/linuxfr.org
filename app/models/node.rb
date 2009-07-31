@@ -38,8 +38,12 @@ class Node < ActiveRecord::Base
   after_create :compute_interest
 
   def compute_interest
-    coeff = content_type.constantize.interest_coefficient
-    stmt  = "UPDATE nodes SET interest=(score * #{coeff} + UNIX_TIMESTAMP(created_at) / 1000) WHERE node_id=#{self.id}"
+    if content_type # FIXME
+      coeff = content_type.constantize.interest_coefficient
+    else
+      coeff = 1
+    end
+    stmt  = "UPDATE nodes SET interest=(score * #{coeff} + UNIX_TIMESTAMP(created_at) / 1000) WHERE id=#{self.id}"
     connection.update_sql(stmt)
   end
 
@@ -73,7 +77,7 @@ class Node < ActiveRecord::Base
     end
   end
 
-  def popular_tags(nb=10)
+  def popular_tags(nb=7)
     # FIXME We should count only taggings for this node for sorting tags
     tags.all(:order => 'taggings_count DESC', :limit => nb)
   end

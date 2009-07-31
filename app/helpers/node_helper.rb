@@ -1,9 +1,21 @@
 module NodeHelper
 
-  def article_for(record, &blk)
-    css_class = 'content'
-    css_class << ' new-content' if current_user && record.node.read_status(current_user) == :not_read
-    content_tag_for(:article, record, :class => css_class, &blk)
+  ContentPresenter = Struct.new(:record, :title, :meta, :image, :body, :actions, :css_class) do
+    def to_hash
+      attrs = members.map(&:to_sym)
+      Hash[*attrs.zip(values).flatten]
+    end
+  end
+
+  def article_for(record)
+    cp = ContentPresenter.new
+    cp.record = record
+    cp.css_class = 'content'
+    cp.css_class << ' new-content' if current_user && record.node.read_status(current_user) == :not_read
+    yield cp
+    cp.meta ||= posted_by(record)
+    cp.body ||= sanitize(record.body)
+    render 'nodes/content', cp.to_hash
   end
 
   def link_to_content(content)

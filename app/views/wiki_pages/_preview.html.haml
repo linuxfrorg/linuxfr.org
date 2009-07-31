@@ -1,11 +1,3 @@
-- article_for preview do
-  %header
-    %h2
-      #{link_to "Wiki", wiki_pages_path} : #{h preview.title}
-    %p
-      = posted_by(preview)
-  .content
-    = sanitize(spellify preview.wikified_body)
-  %footer
-    %p
-      = read_it(preview)
+= article_for preview do |c|
+  - c.title = "#{link_to "Wiki", wiki_pages_path} : #{h preview.title}"
+  - c.body  = sanitize(spellify preview.wikified_body)

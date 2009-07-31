@@ -1,13 +1,4 @@
-- article_for preview do
-  %header
-    %h2
-      = "Journal : #{h preview.title}"
-    %p
-      = posted_by(preview)
-  %aside
-    = image_tag current_user.avatar.url(:thumbnail), :class => 'avatar'
-  .content
-    = sanitize(spellify preview.body)
-  %footer
-    %p
-      = read_it(preview)
+= article_for preview do |c|
+  - c.title = "Journal : #{h preview.title}"
+  - c.image = image_tag(current_user.avatar.url(:thumbnail), :class => 'avatar')
+  - c.body  = sanitize(spellify preview.body)
