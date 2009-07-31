@@ -1,7 +1,10 @@
 =h1 "Éditer un message"
 
+= button_to "Supprimer", [@post.forum, @post], :method => :delete
+
 = render "preview", :object => @post if @preview_mode
 
+%h2 Édition
 - form_for [@forum, @post] do |form|
   = render form
 

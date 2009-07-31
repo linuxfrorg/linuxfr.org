@@ -22,6 +22,8 @@ class Post < Content
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Vous ne pouvez pas poster un journal vide"
 
+  named_scope :published, :conditions => {:state => 'published'}
+
   wikify :body
 
 ### SEO ###
