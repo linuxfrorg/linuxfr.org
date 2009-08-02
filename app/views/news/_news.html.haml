@@ -7,5 +7,5 @@
     - news.links.each do |link|
       %p
         = link_to h(link.title), link.url, 'data-hit' => link.id, :title => link.url, :lang => link.lang, :class => 'hit-counter'
-        (#{pluralize link.nb_clicks, 'hit'})
+        (#{pluralize link.nb_clicks, 'clic'})
     = sanitize news.wikified_second_part
