@@ -91,13 +91,14 @@ ActionController::Routing::Routes.draw do |map|
   # Admin
   map.connect '/admin', :controller => 'admin'
   map.namespace :admin do |admin|
-    admin.resources :accounts
-    admin.resources :responses
+    admin.resources :accounts,  :as => 'comptes'
+    admin.resources :responses, :as => 'reponses'
     admin.resources :sections
     admin.resources :forums
     admin.resources :categories
-    admin.resources :banners
+    admin.resources :banners, :as => 'bannieres'
     admin.resource  :logo
+    admin.resources :friend_sites, :member => { :lower => :post, :higher => :post }, :as => 'sites_amis'
   end
 
   # Search

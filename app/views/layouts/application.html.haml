@@ -66,11 +66,8 @@
       #friends
         %h2 Sites amis
         %ul
-          %li= link_to "April", 'http://www.april.org'
-          %li= link_to "Agenda du libre", 'http://www.agendadulibre.org'
-          %li= link_to "Framasoft", 'http://www.framasoft.net'
-          %li= link_to "Léa-Linux", 'http://lea-linux.org'
-          %li= link_to "Lolix", 'http://fr.lolix.org'
+          - @friend_sites.each do |site|
+            %li= link_to site.title, site.url
       #about-us
         %h2 À propos de LinuxFr.org
         %ul

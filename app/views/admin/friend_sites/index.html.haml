@@ -1,0 +1,19 @@
+=h1 "Liste des sites amis"
+
+%p= link_to "Ajouter un site ami", new_admin_friend_site_path
+
+- if @friend_sites.empty?
+  %p Pas de site ami
+- else
+  %table
+    %tr
+      %th Nom
+      %th URL
+      %th Actions
+    - @friend_sites.each do |site|
+      %tr
+        %td= site.title
+        %td= link_to site.url, site.url
+        %td
+          #{button_to "&uarr;", higher_admin_friend_site_path(site)} | #{button_to "&darr;", lower_admin_friend_site_path(site)} |
+          #{link_to "Modifier", edit_admin_friend_site_path(site)} | #{button_to "Supprimer", [:admin, site], :method => :delete}

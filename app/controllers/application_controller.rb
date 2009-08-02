@@ -18,6 +18,7 @@ protected
     @feeds    = {}
     @last_comments = Comment.footer
     @popular_tags  = Tag.footer
+    @friend_sites  = FriendSite.sorted
   end
 
 ### Content ###

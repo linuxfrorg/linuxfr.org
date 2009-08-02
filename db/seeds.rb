@@ -13,3 +13,17 @@ Response.create(:title => "Problèmes de rédaction",      :content => "Cette d�
 Response.create(:title => "Site (presque) vide",         :content => "LinuxFr.org préfère valider des dépêches de ce type quand le site est\ndéjà bien avancé. Si d'ici quelques temps, c'est le cas, n'hésitez pas\nà re-proposer une dépêche.")
 Response.create(:title => "Version mineure du logiciel", :content => "Votre dépêche traite d'une version mineure d'un logiciel, et n'apporte\nrien de fort d'un point de vue information. Pour cette raison elle a été\nrefusée.")
 
+# Friend sites
+FriendSite.create(:title => "April", :url => "http://www.april.org/")
+FriendSite.create(:title => "Agenda du libre", :url => "http://www.agendadulibre.org/")
+FriendSite.create(:title => "Framasoft", :url => "http://www.framasoft.net/")
+FriendSite.create(:title => "Léa-Linux", :url => "http://lea-linux.org/")
+FriendSite.create(:title => "Lolix", :url => "http://fr.lolix.org/")
+FriendSite.create(:title => "JeSuisLibre", :url => "http://www.jesuislibre.org/")
+FriendSite.create(:title => "Eyrolles", :url => "http://www.editions-eyrolles.com/Recherche/?q=linux")
+FriendSite.create(:title => "LinuxMag", :url => "http://www.gnulinuxmag.com/")
+FriendSite.create(:title => "Veni, Vedi, Libri", :url => "http://www.venividilibri.org/")
+FriendSite.create(:title => "InLibroVeritas", :url => "http://www.inlibroveritas.net/linuxfr.html")
+FriendSite.create(:title => "LinuxGraphic", :url => "http://www.linuxgraphic.org/")
+FriendSite.create(:title => "Éditions ENI", :url => "http://www.editions-eni.fr/Livres/Systeme/.2_3a6222cf-b921-41f5-886c-c989f77ba994_a8799413-9165-4927-bb7e-36491cc3dcf2_1_0_0_0_d9bd8b5e-f324-473f-b1fc-b41b421c950f.html")
+
