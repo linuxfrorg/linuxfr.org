@@ -26,7 +26,7 @@ Rails::Initializer.run do |config|
   config.gem 'htmlentities', :version => '~>4.0'
   config.gem 'friendly_id', :version => '~>2.0'
   config.gem 'paperclip', :version => '~>2.1'
-  config.gem 'wikitext', :version => '~>1.5'
+  config.gem 'wikitext', :version => '~>1.8'
   config.gem 'authlogic', :version => '~>2.1'
   config.gem 'rubyist-aasm', :lib => 'aasm', :version => '~>2.0'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :version => '~>2.1'
