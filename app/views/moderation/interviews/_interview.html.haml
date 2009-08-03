@@ -3,8 +3,7 @@
   - c.body  = sanitize(spellify interview.body)
   - if interview.open?
     - c.actions = capture do
-      - form_tag contact_moderation_interview_path(interview) do
-        = submit_tag "J'ai contacté l'interviewé"
+      = button_to "J'ai contacté l'interviewé", contact_moderation_interview_path(interview)
   - if interview.sent? || interview.published?
     - c.actions = capture do
       - form_tag publish_moderation_interview_path(interview) do

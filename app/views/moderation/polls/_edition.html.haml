@@ -3,7 +3,5 @@
   %p
     = link_to "Éditer", edit_moderation_poll_path(:id => @poll.id)
   %h1 Modération
-  - form_tag accept_moderation_poll_path(@poll) do
-    = submit_tag "Publier"
-  - form_tag refuse_moderation_poll_path(@poll) do
-    = submit_tag "Refuser"
+  = button_to "Publier", accept_moderation_poll_path(@poll)
+  = button_to "Refuser", refuse_moderation_poll_path(@poll)

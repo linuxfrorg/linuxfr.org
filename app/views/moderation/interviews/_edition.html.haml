@@ -3,7 +3,5 @@
   %p
     = link_to "Éditer", edit_moderation_interview_path(:id => @interview.id)
   %h1 Modération
-  - form_tag accept_moderation_interview_path(@interview) do
-    = submit_tag "Publier"
-  - form_tag refuse_moderation_interview_path(@interview) do
-    = submit_tag "Refuser"
+  = button_to "Publier", accept_moderation_interview_path(@interview)
+  = button_to "Refuser", refuse_moderation_interview_path(@interview)

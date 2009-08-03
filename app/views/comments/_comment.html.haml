@@ -17,9 +17,7 @@
 .action
   - if comment.votable_by?(current_user)
     Ce commentaire est-il 
-    - form_tag relevance_path(:action => 'for', :comment_id => comment.id) do
-      = submit_tag "pertinent"
+    = button_to "pertinent", relevance_path(:action => 'for', :comment_id => comment.id)
     ou
-    - form_tag relevance_path(:action => 'against', :comment_id => comment.id) do
-      = submit_tag "inutile"
+    = button_to "inutile", relevance_path(:action => 'against', :comment_id => comment.id)
     \?
