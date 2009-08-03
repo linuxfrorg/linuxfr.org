@@ -34,6 +34,16 @@ class News < Content
   wikify :body,        :as => :wikified_body
   wikify :second_part, :as => :wikified_second_part
 
+### Message to the moderation team ###
+
+  attr_accessor :message
+
+  after_create :post_message
+  def post_message
+    return if message.blank?
+    boards.create(:login => author_name, :message => message, :user_agent => 'auto')
+  end
+
 ### SEO ###
 
   has_friendly_id :title, :use_slug => true

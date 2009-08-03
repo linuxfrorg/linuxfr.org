@@ -25,5 +25,8 @@
   = form.label :second_part, "Seconde partie"
   = form.text_area :second_part, :spellcheck => 'true', :class => 'markItUp'
 %p
+  = form.label :message, "Si vous le souhaitez, vous pouvez laisser un message à l'équipe de modération"
+  = form.text_area :message, :spellcheck => 'true'
+%p
   = form.submit "Prévisualiser"
   = form.submit "Soumettre cette dépêche" if @preview_mode
