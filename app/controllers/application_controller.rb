@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  helper_method :url_for_content, :current_user
+  helper_method :url_for_content, :current_user, :current_account_session
 
   protect_from_forgery
   filter_parameter_logging :password, :password_confirmation

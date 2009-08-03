@@ -61,7 +61,7 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   # Accounts
-  map.resource :account, :as => 'compte'
+  map.resource :account, :has_one => :stylesheet, :as => 'compte'
   map.with_options :controller => 'accounts' do |a|
     a.signup           '/inscription', :action => 'new'
     a.activate   '/activation/:token', :action => 'activate',        :token => nil

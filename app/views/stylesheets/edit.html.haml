@@ -1,0 +1,22 @@
+=h1 "Feuilles de style alternatives"
+
+%p
+  Il est possible de choisir une feuille de style (CSS) alternative pour l'affichage du site LinuxFr.org.
+  Les feuilles de styles disponibles ici sont des copies provenant de sites externes.
+  Pour en choisir une, cliquer simplement sur son nom.
+
+%p
+  Votre feuille de style actuelle est : #{@current || "celle par défaut"}.
+
+- @stylesheets.each do |css|
+  - form_tag account_stylesheet_path do
+    = hidden_field_tag :stylesheet, css.url
+    = submit_tag css.name
+
+- form_tag account_stylesheet_path do
+  = label_tag :stylesheet, "Autre feuille de style"
+  = text_field_tag :stylesheet
+  = submit_tag 'OK'
+
+
+= button_to "CSS par défaut", account_stylesheet_path, :method => :delete

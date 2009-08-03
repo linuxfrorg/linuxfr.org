@@ -2,7 +2,10 @@
 %html(lang="fr")
   %head
     %title= @title.join ' -> '
-    = stylesheet_link_tag 'style', 'markitup'
+    - if current_account_session && current_account_session.stylesheet
+      = stylesheet_link_tag current_account_session.stylesheet
+    - else
+      = stylesheet_link_tag 'style', 'markitup'
     <meta name="description" content="L'actualité de Linux et du Logiciel Libre" />
     <meta name="keywords" content="#{@keywords.join ', '}" />
     <link rel="icon" type="image/x-icon" href="/favicon.png" />
@@ -36,6 +39,7 @@
           %p= link_to "Proposer un contenu", '/proposer_un_contenu'
           %p= link_to "Mon tableau de bord", dashboard_path
           %p= link_to "Modifier mes préférences", edit_account_path
+          %p= link_to "Changer de CSS", edit_account_stylesheet_path
           %p= link_to "Se déconnecter", logout_path
         - else
           = render '/account_sessions/new'

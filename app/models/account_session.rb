@@ -1,7 +1,5 @@
 class AccountSession < Authlogic::Session::Base
 
-  def user
-    account.user
-  end
+  delegate :user, :stylesheet, :to => :account
 
 end

@@ -3,8 +3,9 @@
 %p
   Ce formulaire permet de changer vos parametres utilisateurs. Votre login ne peut pas être modifié.
 %p
-  Si vous souhaitez fermer votre compte, veuillez suivre
-  = link_to("ce lien", close_account_path), '.'
+  Si vous le souhaitez, vous pouvez #{link_to "choisir une feuille de style personnalisée", edit_account_stylesheet_path}.
+%p
+  Pour fermer votre compte, veuillez suivre #{link_to "ce lien", close_account_path} et suivre les instructions.
 
 - form_for @account, :url => account_path, :html => { :multipart => true } do |form|
   = form.error_messages
@@ -29,7 +30,7 @@
       = uform.text_field :homesite
     %p
       = uform.label :jabber_id, "Jabber ID"
-      = 'xmpp:', uform.text_field(:jabber_id)
+      xmpp:#{uform.text_field(:jabber_id)}
     %p
       = uform.label :avatar, "Avatar"
       = uform.file_field :avatar
