@@ -7,15 +7,14 @@
       Tags :
       - record.node.popular_tags.each do |tag|
         = link_to h(tag.name), public_tag_path(:id => h(tag.name))
-  %aside.score
+  %figure.score
     = record.score
   - if image
-    %aside.image
+    %figure.image
       = image
   .content
     = body
-  %footer
-    %p
-      = read_it(record)
-      = actions
-      = render('nodes/actions', :node => record.node) unless record.new_record?
+  %footer.actions
+    = read_it(record)
+    = actions
+    = render('nodes/actions', :node => record.node) unless record.new_record?

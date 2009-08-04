@@ -1,5 +1,5 @@
 /* Layout */
-body, nav, header, aside, section, footer, article { margin: 0; padding: 5px; display: block; }
+body, nav, header, aside, figure, section, footer, article { margin: 0; padding: 5px; display: block; }
 #branding  { float: left; clear: left; width: 211px; }
 #sidebar   { float: left; clear: left; width: 211px; }
 #container { width: 1000px; margin-left: 225px; }
@@ -28,7 +28,7 @@ body, nav, header, aside, section, footer, article { margin: 0; padding: 5px; di
 #container article header, #container article footer { background-color: #339; padding: 1px 5px:; }
 #container article header { -moz-border-radius-topleft: 15px; -moz-border-radius-topright: 15px; }
 #container article footer { -moz-border-radius-bottomleft: 15px; -moz-border-radius-bottomright: 15px; }
-#container article aside { float: left; }
+#container article figure { float: left; }
 
 /* Diffs */
 ins.diffins, ins.diffmod { background-color: #3f3; }

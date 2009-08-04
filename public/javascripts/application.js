@@ -25,11 +25,11 @@ Folding.create = function(threshold) {
     });
 };
 Folding.unfold = function(comment) {
-    comment.children('p, .content, .action').removeClass('fold');
+    comment.children('.meta, .image, .content, .actions').removeClass('fold');
     comment.children('h3').children('.folding').text('[-]').attr('title','Plier');
 };
 Folding.fold = function(comment) {
-    comment.children('p, .content, .action').addClass('fold');
+    comment.children('.meta, .image, .content, .actions').addClass('fold');
     comment.children('h3').children('.folding').text('[+]').attr('title','Déplier');
 };
 

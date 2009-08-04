@@ -1,4 +1,4 @@
 = article_for post do |c|
   - c.title = "#{link_to h(post.forum.title), post.forum} : #{link_to h(post.title), [post.forum, post]}"
   - if post.editable_by?(current_user)
-    - c.actions = "[#{link_to "Modifier", edit_forum_post_path(:forum_id => post.forum_id, :id => post.id)}]"
+    - c.actions = link_to("Modifier", edit_forum_post_path(:forum_id => post.forum_id, :id => post.id), :class => 'action')

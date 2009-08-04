@@ -1,4 +1,4 @@
-[#{link_to "Tagger", node_new_tag_path(:node_id => node.id)}]
+= link_to "Tagger", node_new_tag_path(:node_id => node.id), :class => 'action'
 - if node.content.votable_by?(current_user)
   Ce contenu est-il
   = button_to "pertinent", vote_path(:action => 'for', :node_id => node.id)

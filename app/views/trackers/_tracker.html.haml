@@ -1,4 +1,4 @@
 = article_for tracker do |c|
   - c.title = link_to "#{h tracker.category_title} : #{h tracker.title}", tracker
   - if tracker.editable_by?(current_user)
-    - c.actions = "[#{link_to "Modifier", edit_tracker_path(tracker)}]"
+    - c.actions = link_to("Modifier", edit_tracker_path(tracker), :class => 'action')
