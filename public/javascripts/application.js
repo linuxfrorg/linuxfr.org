@@ -87,6 +87,37 @@ Toolbar.change_threshold = function() {
     return false;
 };
 
+/* */
+var FormLinks = {};
+FormLinks.div;
+FormLinks.counter  = 0;
+FormLinks.template = '<p class="link">' +
+                     '  <input id="news_links_attributes_{i}_title" name="news[links_attributes][{i}][title]" size="30" type="text" /> ' +
+                     '  <input id="news_links_attributes_{i}_url" name="news[links_attributes][{i}][url]" size="30" type="text" /> ' +
+                     '  <input id="news_links_attributes_{i}_lang" name="news[links_attributes][{i}][lang]" size="30" type="text" /> ' +
+                     '</p>';
+FormLinks.create = function(div) {
+    var links = div.children('.link');
+    FormLinks.counter = links.length;
+    links.each(function(link) { FormLinks.bind_link(this); });
+    div.append('<p><button type="button" id="add-link">Ajouter un lien</button></p>');
+    $('#add-link').click(function() { FormLinks.add_link(div); });
+};
+FormLinks.bind_link = function(link) {
+    var link = $(link);
+    link.append('<button type="button" class="remove">Supprimer ce lien</button>');
+    link.children('.remove').click(function() { FormLinks.remove_link(link); });
+};
+FormLinks.add_link = function(div) {
+    var last_link = div.children('.link:last');
+    last_link.after($.nano(FormLinks.template, {i: FormLinks.counter}));
+    FormLinks.bind_link(last_link.next());
+    FormLinks.counter++;
+};
+FormLinks.remove_link = function(link) {
+    link.remove();
+};
+
 /* Show the toolbar */
 if ($('body').hasClass('logged')) {
     if ($('#comments').length > 0) Toolbar.create($('#comments .new-comment'), 'Nouveaux commentaires');
@@ -95,4 +126,9 @@ if ($('body').hasClass('logged')) {
 
 /* Fold/unfold comments */
 Folding.create(Toolbar.threshold);
+
+/* */
+if ($('#form-links')) {
+    FormLinks.create($('#form-links'));
+}
 
