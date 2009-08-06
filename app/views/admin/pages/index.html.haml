@@ -1,0 +1,17 @@
+=h1 "Liste des pages statiques"
+
+%p= link_to "Créer une page", new_admin_page_path
+
+%table
+  %tr
+    %th Nom
+    %th Slug
+    %th Actions
+  - @pages.each do |page|
+    %tr
+      %td
+        = page.title
+      %td
+        = link_to page.slug, static_path(:id => page.slug)
+      %td
+        #{link_to "Modifier", edit_admin_page_path(page)} | #{button_to "Supprimer", [:admin, page], :method => :delete}

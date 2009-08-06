@@ -78,6 +78,11 @@ ActionController::Routing::Routes.draw do |map|
     a.logout '/logout', :action => 'destroy'
   end
 
+  # Search
+  map.search          '/recherche',              :controller => 'search'
+  map.search_by_type  '/recherche/:type',        :controller => 'search', :action => 'type'
+  map.search_by_facet '/recherche/:type/:facet', :controller => 'search', :action => 'facet'
+
   # Moderation
   map.connect '/moderation', :controller => 'moderation'
   map.namespace :moderation do |m|
@@ -99,13 +104,11 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :banners, :as => 'bannieres'
     admin.resource  :logo
     admin.resources :friend_sites, :member => { :lower => :post, :higher => :post }, :as => 'sites_amis'
+    admin.resources :pages
   end
 
-  # Search
-  map.search          '/recherche',              :controller => 'search'
-  map.search_by_type  '/recherche/:type',        :controller => 'search', :action => 'type'
-  map.search_by_facet '/recherche/:type/:facet', :controller => 'search', :action => 'facet'
-
   # Static pages
-  map.static ':action', :controller => 'static'
+  map.submit_content '/proposer_un_contenu', :controller => 'static', :action => 'proposer_un_contenu'
+  map.submit_content '/proposer_un_contenu_quand_on_est_anonyme', :controller => 'static', :action => 'proposer_un_contenu_quand_on_est_anonyme'
+  map.static ':id', :controller => 'static', :action => 'show'
 end

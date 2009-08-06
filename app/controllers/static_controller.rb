@@ -1,5 +1,9 @@
 class StaticController < ApplicationController
 
+  def show
+    @page = Page.find_by_slug!(params[:id])
+  end
+
   def proposer_un_contenu_quand_on_est_anonyme
     if current_user
       redirect_to :action => 'proposer_un_contenu'
@@ -15,19 +19,6 @@ class StaticController < ApplicationController
     else
       redirect_to :action => 'proposer_un_contenu_quand_on_est_anonyme'
     end
-  end
-
-  def team
-  end
-
-  def informations
-  end
-
-  def contact
-    render :team
-  end
-
-  def plan
   end
 
 end

@@ -27,3 +27,14 @@ FriendSite.create(:title => "InLibroVeritas", :url => "http://www.inlibroveritas
 FriendSite.create(:title => "LinuxGraphic", :url => "http://www.linuxgraphic.org/")
 FriendSite.create(:title => "Éditions ENI", :url => "http://www.editions-eni.fr/Livres/Systeme/.2_3a6222cf-b921-41f5-886c-c989f77ba994_a8799413-9165-4927-bb7e-36491cc3dcf2_1_0_0_0_d9bd8b5e-f324-473f-b1fc-b41b421c950f.html")
 
+# Pages
+dir = File.join(File.dirname(__FILE__), 'pages')
+Dir.chdir(dir) do
+  Dir["*.html"].each do |file|
+    slug  = File.basename(file, '.html')
+    body  = File.read(file)
+    title = slug.capitalize.tr('_', ' ')
+    Page.create(:slug => slug, :title => title, :body => body)
+  end
+end
+

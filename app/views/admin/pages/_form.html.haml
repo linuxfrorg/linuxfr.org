@@ -1,0 +1,13 @@
+= form.error_messages
+%p
+  = form.label :title, 'Titre'
+  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
+%p
+  = form.label :slug, 'Slug'
+  = form.text_field :slug, :required => 'required'
+%p
+  = form.label :body, 'Corps de la page'
+  = form.text_area :body
+%p
+  = form.submit "Enregistrer"
+
