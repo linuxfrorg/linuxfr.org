@@ -7,7 +7,7 @@
       Évalué à
     %span.score= preview.score
     %figure.image
-      = image_tag current_user.avatar.url(:thumbnail), :class => 'avatar'
+      = image_tag current_user.avatar.url(:thumbnail), :class => 'avatar', :alt => "Avatar de #{current_user.name}"
     .content
       = sanitize(spellify preview.body)
     %footer

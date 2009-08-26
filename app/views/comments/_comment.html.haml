@@ -7,7 +7,7 @@
   Évalué à
   %span.score= comment.score
 %figure.image
-  = image_tag comment.user.avatar.url(:thumbnail), :class => 'avatar'
+  = image_tag comment.user.avatar.url(:thumbnail), :class => 'avatar', :alt => "Avatar de #{comment.user.name}"
 .content
   - if comment.deleted?
     %em Ce commentaire a été supprimé par l'équipe de modération.
