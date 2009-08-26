@@ -1,3 +1,11 @@
-%article{:class => 'content'}
+%article{:class => 'content vcard'}
   %h2
-    = link_to h(user.name), user
+    = link_to h(user.name), user, :class => 'fn url'
+  %figure.image
+    = image_tag user.avatar.url(:thumbnail), :class => 'avatar photo'
+  - if user.homesite
+    %p
+      Site personnel : #{link_to h(user.homesite), user.homesite, :class => 'url'}
+  - if user.jabber_id
+    %p
+      Jabber ID : #{link_to h('xmpp:' + user.jabber_id), 'xmpp:' + user.jabber_id, :class => 'url'}
