@@ -74,11 +74,11 @@ class Account < ActiveRecord::Base
   end
 
   def deletion
-    self.user.inactivate!
+    user.inactivate!
   end
 
   def reactivation
-    self.user.reactivate!
+    user.reactivate!
   end
 
 ### Presentation ###
