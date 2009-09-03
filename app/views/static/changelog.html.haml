@@ -1,0 +1,11 @@
+=h1 "Changelog"
+
+#changelog
+  %pre
+    =sanitize @commits
+  %nav
+    - if @page > 0
+      %span
+        = link_to "Commits plus récents", { :page => @page - 1 }, { :rel => 'prev' }
+    %span
+      = link_to "Commits plus anciens", { :page => @page + 1 }, { :rel => 'next' }

@@ -108,7 +108,8 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   # Static pages
-  map.submit_content '/proposer_un_contenu', :controller => 'static', :action => 'proposer_un_contenu'
-  map.submit_content '/proposer_un_contenu_quand_on_est_anonyme', :controller => 'static', :action => 'proposer_un_contenu_quand_on_est_anonyme'
+  map.submit_content   '/proposer_un_contenu', :controller => 'static', :action => 'proposer_un_contenu'
+  map.submit_anonymous '/proposer_un_contenu_quand_on_est_anonyme', :controller => 'static', :action => 'proposer_un_contenu_quand_on_est_anonyme'
+  map.changelog        '/changelog', :controller => 'static', :action => 'changelog'
   map.static ':id', :controller => 'static', :action => 'show'
 end
