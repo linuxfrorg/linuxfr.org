@@ -20,6 +20,12 @@ class CreateAccounts < ActiveRecord::Migration
       t.string   :stylesheet
       t.timestamps
     end
+
+    execute "ALTER TABLE `accounts` MODIFY COLUMN `crypted_password` VARCHAR(255) BINARY CHARACTER SET latin1 COLLATE latin1_bin NOT NULL"
+    execute "ALTER TABLE `accounts` MODIFY COLUMN `password_salt` VARCHAR(255) BINARY CHARACTER SET latin1 COLLATE latin1_bin NOT NULL"
+    execute "ALTER TABLE `accounts` MODIFY COLUMN `persistence_token` VARCHAR(255) BINARY CHARACTER SET latin1 COLLATE latin1_bin NOT NULL"
+    execute "ALTER TABLE `accounts` MODIFY COLUMN `single_access_token` VARCHAR(255) BINARY CHARACTER SET latin1 COLLATE latin1_bin NOT NULL"
+    execute "ALTER TABLE `accounts` MODIFY COLUMN `perishable_token` VARCHAR(255) BINARY CHARACTER SET latin1 COLLATE latin1_bin NOT NULL"
   end
 
   def self.down
