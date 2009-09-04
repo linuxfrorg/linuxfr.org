@@ -12,6 +12,7 @@ class BoardsController < ApplicationController
   end
 
   def add
+    # FIXME we should also keep the current_user.id
     @board = Board.new(params[:board])
     @board.message    = board_auto_link(@board.message)
     @board.login      = current_user.login

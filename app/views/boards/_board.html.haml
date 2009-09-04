@@ -2,10 +2,10 @@
 - if @boards.empty?
   Pas de message
 - else
-  %dl
+  %dialog
   - @boards.each do |b|
-    %dd{:title => b.user_agent}
-      = "[<b>#{b.created_at.to_s(:norloge)}</b>]"
-      = link_to h(b.login), "/~#{h b.login}"
-    %dt
+    %dt{:title => b.user_agent}
+      = "[<time datetime=\"#{b.created_at.iso8601}\">#{b.created_at.to_s(:norloge)}</time>]"
+      = link_to h(b.login), user_url(:id => b.login)
+    %dd
       = sanitize b.message
