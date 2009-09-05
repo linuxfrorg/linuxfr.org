@@ -20,7 +20,7 @@
   - form.fields_for :links do |lform|
     %p.link
       = lform.text_field :title
-      = lform.text_field :url
+      = lform.url_field  :url
       = lform.text_field :lang
 %p
   = form.label :second_part, "Seconde partie"

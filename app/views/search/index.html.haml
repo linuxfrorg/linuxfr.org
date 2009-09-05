@@ -6,5 +6,5 @@
   %div
     %h2 Résultats
     - @results.each do |result|
-      = render result
+      = highlight render(result), @query, :highlighter => '<mark>\1</mark>'
     - will_paginate @results

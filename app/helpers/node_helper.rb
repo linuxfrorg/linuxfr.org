@@ -30,7 +30,7 @@ module NodeHelper
 
   def posted_by(content, user_link=nil)
     user = content.user || current_user
-    user_link  ||= link_to(h(user.name), user)
+    user_link  ||= link_to(h(user.name), user, :rel => 'author')
     date_time    = (content.created_at || Time.now)
     published_at = content_tag(:time, date_time.to_s(:posted), :datetime => date_time.iso8601)
     "Posté par #{user_link} le #{published_at}."

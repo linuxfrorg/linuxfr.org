@@ -28,7 +28,7 @@
         %li= link_to "Suivi", trackers_path
         %li= link_to "Plan", static_path(:id => 'plan')
       - form_tag search_path, :method => :get do
-        = text_field_tag :query
+        <input id="query" name="query" type="search" placeholder="Entrer un mot-clé" />
         = submit_tag "Rechercher"
 
     %header#branding
