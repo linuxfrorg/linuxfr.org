@@ -4,6 +4,13 @@ $("a.hit-counter").each(function(idx,link) {
     link.href = "/redirect/" + link.getAttribute('data-hit');
 });
 
+$("a.scroll").click(function() {
+    var dst = $(this.hash);
+    var pos = dst ? dst.offset().top : 0;
+    $('html').animate({scrollTop: pos}, 500);
+    return false;
+});
+
 /* Comments folding */
 var Folding = {};
 Folding.create = function(threshold) {
@@ -74,7 +81,8 @@ Toolbar.prev_item = function() {
 Toolbar.go_to_current = function() {
     if (Toolbar.nb_items == 0) return ;
     var item = Toolbar.items[Toolbar.current - 1];
-    $(document).scrollTop($(item).offset().top);
+    var pos = $(item).offset().top;
+    $('html').animate({scrollTop: pos}, 500);
     $('#toolbar-current-item').text(Toolbar.current);
     return false;
 };

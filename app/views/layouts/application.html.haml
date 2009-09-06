@@ -15,7 +15,9 @@
       = auto_discovery_link_tag :atom, link, { :title => title }
 
   %body{body_attr}
-    = check_js
+    #top
+      = check_js
+
     %nav#site
       %ul
         %li= link_to "Accueil", '/'
@@ -57,6 +59,7 @@
         - if flash[type]
           %div(class=type)= flash[type]
       = yield :layout
+      %p= link_to "Revenir en haut de page", '#top', :class => 'scroll'
 
     %footer#bigfooter
       #last-comments
