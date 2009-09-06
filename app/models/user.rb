@@ -59,7 +59,18 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles      => { :thumbnail => "100x100>" },
                              :path        => ':rails_root/public/uploads/:id_partition/avatar_:style.:extension',
                              :url         => '/uploads/:id_partition/avatar_:style.:extension',
-                             :default_url => '/images/default_avatar.png'
+                             :default_url => ':gravatar_url'
+
+  DEFAULT_AVATAR_URL = "http://#{MY_DOMAIN}/images/default_avatar.png"
+
+  Paperclip::Attachment.interpolations[:gravatar_url] = proc do |attachment, style|
+    attachment.instance.gravatar_url
+  end
+
+  def gravatar_url
+    hash = Digest::MD5.hexdigest(account.email.downcase.strip)[0..31]
+    "http://www.gravatar.com/avatar/#{hash}.jpg?size=100&d=#{CGI::escape DEFAULT_AVATAR_URL}"
+  end
 
 ### Role ###
 
