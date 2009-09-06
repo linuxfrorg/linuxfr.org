@@ -1,0 +1,122 @@
+<h2 id="aide-gagnants">Gagnants et prix</h2>
+
+<p>
+	Vous pouvez gagner des livres des éditions <a href="http://www.editions-eyrolles.com/Recherche/?q=linux">Eyrolles</a>,
+	<a href="http://www.editions-eni.fr/Livres/Systeme/.2_3a6222cf-b921-41f5-886c-c989f77ba994_a8799413-9165-4927-bb7e-36491cc3dcf2_1_0_0_0_d9bd8b5e-f324-473f-b1fc-b41b421c950f.html">ENI</a>
+	ou <a href="http://www.inlibroveritas.net/linuxfr.html">InLibroVeritas</a>,
+	ou encore des abonnements <a href="http://www.gnulinuxmag.com/">Linux Mag France</a> en contribuant au site :
+	<a href="/news/nouveau">soumission de dépêche</a>, journaux, amélioration du code du site, logos, feuilles de style, etc.
+</p>
+
+
+<h2 id="aide-authentification">Visiteur (non) authentifié, ou pourquoi ouvrir un compte&nbsp;?</h2>
+
+<p>
+	Pour passer du statut de visiteur non authentifié à celui de visiteur authentifié,
+	il suffit de se <a href="/inscription">créer un compte</a> sur le site et de se connecter avec.
+</p>
+<p>Un visiteur non authentifié peut :</p>
+<ul>
+	<li>lire le site (dépêches, journaux, forums, sondages, tâches du système de suivi, les commentaires associés, flux RSS) ;</li>
+	<li>proposer des dépêches et des bogues/suggestions dans le système de suivi.</li>
+</ul>
+<p>Un visiteur authentifié peut :</p>
+<ul>
+	<li>écrire des commentaires sur les différentes ressources du site (dépêches, journaux, forums, sondages, tâches du système de suivi, tribunes) ;</li>
+	<li>activer la barre de navigation du site pour se déplacer plus rapidement dans les nouveaux commentaires ou pour filtrer les commentaires mal notés ;</li>
+	<li>changer l'apparence du site (choix de la CSS) ;</li>
+	<li>fournir son adresse de courriel pour être contacté ;</li>
+	<li>noter les commentaires des autres visiteurs ;</li>
+	<li>voir les commentaires nouveaux depuis sa dernière visite ;</li>
+	<li>retrouver ses dernières contributions dans sa page personnelle ;</li>
+	<li>écrire dans les forums ou publier des journaux ;</li>
+	<li>voter pour le bogue/la suggestion la plus prioritaire dans le système de suivi ;</li>
+	<li>être remarqué pour la qualité de ses contributions et devenir relecteur ou modérateur.</li>
+</ul>
+
+
+<h2 id="aide-toolbar">Barre d'outils</h2>
+
+<p>La barre d'outils (<i>toolbar</i>) du site n'est que pour les visiteurs authentifiés.</p>
+<p>Elle permet&nbsp;:</p>
+<ul>
+	<li>d'adapter le seuil de visualisation des commentaires (à -42 vous aurez tout, même les commentaires les plus mal notés)</li>
+	<li>d'enrouler / dérouler un commentaire avec une élégante petite case [-] ou [+]. C'est notamment utile pour les commentaires masqués à cause du seuil de visualisation, pour éviter d'avoir à ouvrir un nouvel onglet/une nouvelle page pour tout de même lire le commentaire</li>
+	<li>de bénéficier d'une navigation rapide à la souris, en cliquant sur &lt; # &gt;, de nouveau commentaire en nouveau commentaire, pour ne pas user la molette de votre souris</li>
+	<li>de bénéficier d'une navigation rapide au clavier, avec les touches &lt; et &gt;, de nouveau commentaire en nouveau commentaire, pour ne pas lâcher votre clavier des mains pour utiliser une souris</li>
+</ul>
+
+
+<h2 id="aide-boiteperso">Boîte d'identification personnelle</h2>
+
+<p>Une boîte d'identification personnelle apparaît sur chaque page sous le logo. Elle contient différentes informations :</p>
+<ul>
+	<li>Votre login qui pointe vers l'adresse de votre page personnelle LinuxFr.org&nbsp;;</li>
+	<li>Une ligne qui vous donne le nombre de fois où vous pouvez encore donner votre avis sur un commentaire aujourd'hui ainsi que le total quotidien. Si vous n'avez pas cette ligne c'est que vous n'avez pas la possibilité de le faire&nbsp;;</li>
+	<li>Différents liens pour la gestion de votre compte&nbsp;;</li>
+</ul>
+<p><i>Note</i> : Le nombre d'avis auquel vous avez droit peut évoluer.</p>
+
+
+<h2 id="aide-note">Notes sur les contenus</h2>
+
+<p>
+	Les contenus du site (dépêches, journaux, forums, sondages, système de suivi, propositions d'entretien, etc.)
+	peuvent être notés pertinent (+1) ou inutile (-1).
+</p>
+<p>
+	Il n'est pas possible de noter ses propres contenus, de noter un même contenu plusieurs fois
+	ou de noter les contenus anciens. Il faut être authentifié pour pouvoir noter un
+	contenu. L'affichage de la nouvelle note peut être légèrement différée pour des raisons techniques
+	(systèmes de cache en place sur le site).
+</p>
+<p>
+	La <b>note</b> globale d'un contenu est la somme des notes pertinent (+1) et inutile (-1)
+	mises par les visiteurs. Elle peut être positive, négative ou nulle.
+</p>
+<p>
+	L'<b>intérêt</b> d'un contenu est un indicateur calculé à partir de la date de création
+	et de la note globale du contenu. Il sert à trier les contenus récents et bien notés (donc soit
+	les plus récents, soit les suffisamment bien notés et pas trop anciens).
+</p>
+<p>intérêt = date de création + note * coefficient de contenu * coefficient de fréquence</p>
+<ul>
+	<li>date de création en secondes depuis Epoch</li>
+	<li>coefficient de contenu =
+	<ul>
+		<li>dépêches&nbsp;: 3</li>
+		<li>forums&nbsp;: 1</li>
+		<li>journaux&nbsp;: 2</li>
+		<li>sondages&nbsp;: 7</li>
+		<li>système de suivi&nbsp;: 2</li>
+		<li>propositions d'entretiens&nbsp;: 7</li>
+	</ul></li>
+	<li>coefficient de fréquence&nbsp;: 864 (~ nombre de secondes par jour / nombre de votes par jour)</li>
+</ul>
+
+
+<h2 id="aide-fermercompte">Fermer son compte</h2>
+
+<p>
+	La «&nbsp;fermeture du compte&nbsp;» consiste en une invalidation du compte, qui devient inutilisable.
+	Pour cela, suivez les instructions sur la page de <a href="/desinscription">fermeture de compte</a>.
+	Les contenus et commentaires associés au compte restent inchangés.
+	Si vous ne souhaitez pas que les éventuels nom et prénom renseignés dans les <a href="/compte/modifier">préférences</a> ne continuent d'apparaître en ligne
+	(et soient donc indexés par les moteurs de recherche),
+	pensez à les supprimer avant de fermer le compte (le changement sera effectif à la prochaine suppression du cache temporaire LinuxFr.org).
+</p>
+<p>
+	Si vous souhaitez ne plus faire apparaître votre pseudo/login pour les mêmes raisons,
+	<a href="mailto:administrateurs@linuxfr.org">envoyez une demande aux administrateurs</a> de fermeture d'un compte avec anonymisation
+	(tous les contenus et commentaires associés seront affectés à Anonyme).
+	Cette dernière opération est définitive.
+</p>
+<p>Il n'est pas possible d'utiliser à nouveau le pseudo/login ou l'adresse de courriel associés à un compte fermé&nbsp;:</p>
+<ul>
+	<li>supprimer l'adresse de courriel d'un compte fermé nécessite de faire une demande aux administrateurs</li>
+	<li>libérer un pseudo/login nécessite une purge du compte et donc une demande aux administrateurs</li>
+</ul>
+<p>
+	La «&nbsp;purge du compte&nbsp;» consiste à totalement supprimer le compte et à anonymiser ou supprimer tous les contenus associés.
+	Seuls les administrateurs peuvent réaliser cette opération, définitive par nature.
+</p>
