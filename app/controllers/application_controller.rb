@@ -55,7 +55,7 @@ protected
     return if current_user
     store_location
     flash[:notice] = "Cette fonctionnalité est réservée aux utilisateurs loggés"
-    redirect_to new_user_session_url
+    redirect_to new_account_session_url
   end
 
   def anonymous_required
