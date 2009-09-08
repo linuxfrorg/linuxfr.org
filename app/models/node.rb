@@ -68,9 +68,8 @@ class Node < ActiveRecord::Base
   end
 
   def set_taglist(list, user)
-    list = TagList.from(list)
     self.class.transaction do
-      list.each do |tagname|
+      TagList.new(list).each do |tagname|
         tag = Tag.find_or_create_by_name(tagname)
         taggings.create(:tag_id => tag.id, :user_id => user.id)
       end
