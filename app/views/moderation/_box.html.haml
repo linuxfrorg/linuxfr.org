@@ -9,5 +9,5 @@
     - @draft_news.each do |news|
       %li
         = link_to h(news.title), [:moderation, news]
-  - @boards = Board.by_type(Board.amr)
+  - @boards = Board.scoped_by_type(Board.amr)
   = render 'boards/board', :object => @boards.new

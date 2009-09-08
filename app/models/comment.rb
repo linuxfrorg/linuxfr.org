@@ -24,9 +24,6 @@ class Comment < ActiveRecord::Base
   has_many :relevances
 
   named_scope :published, :conditions => {:state => 'published'}
-  named_scope :by_content_type, lambda {|type|
-    { :include => :node, :conditions => ["nodes.content_type = ?", type] }
-  }
   named_scope :descendants, lambda {|path|
     {:conditions => ["materialized_path LIKE ?", "#{path}_%"]}
   }

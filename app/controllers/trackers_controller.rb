@@ -11,7 +11,7 @@ class TrackersController < ApplicationController
   end
 
   def comments
-    @comments = Comment.published.by_content_type('Tracker').all(:limit => 20)
+    @comments = Comment.published.scoped_by_content_type('Tracker').all(:limit => 20)
     @title    = 'le tracker'
     respond_to do |wants|
       wants.atom { render 'comments/index' }

@@ -18,9 +18,6 @@ class Board < ActiveRecord::Base
   belongs_to :object, :polymorphic => true
 
   default_scope :order => 'created_at DESC'
-  named_scope :by_type, lambda { |type|
-    { :conditions => { :object_type => type } }
-  }
 
 ### Types ###
 

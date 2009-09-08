@@ -11,7 +11,7 @@ class InterviewsController < ApplicationController
   end
 
   def comments
-    @comments = Comment.published.by_content_type('Interview').all(:limit => 20)
+    @comments = Comment.published.scoped_by_content_type('Interview').all(:limit => 20)
     @title    = "les propositions d'entretien"
     respond_to do |wants|
       wants.atom { render 'comments/index' }

@@ -4,7 +4,7 @@ class BoardsController < ApplicationController
   def index
     @board = Board[params[:id]]
     raise ActiveRecord::RecordNotFound unless @board && @board.accessible_by?(current_user)
-    @boards = Board.by_type(@board.object_type).all
+    @boards = Board.scoped_by_type(@board.object_type).all
     respond_to do |wants|
       wants.html
       wants.xml
