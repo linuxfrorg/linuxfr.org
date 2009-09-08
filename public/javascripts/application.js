@@ -11,6 +11,11 @@ $("a.scroll").click(function() {
     return false;
 });
 
+$('input.autocomplete').each(function() {
+    var input = $(this);
+    input.autocomplete(input.attr('data-url'), {multiple: true, multipleSeparator: ' '});
+});
+
 /* Comments folding */
 var Folding = {};
 Folding.create = function(threshold) {

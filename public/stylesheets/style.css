@@ -44,6 +44,14 @@ del.diffdel, del.diffmod { background-color: #f33; }
 #toolbar { position: fixed; overflow: hidden; bottom: 0; left: 20px; right: 20px; padding: 2px; color: #333; background-color: #dfd6d1; border: 1px solid #baa; }
 #toolbar-items { float: right; }
 
+/* Autocomplete plugin */
+.ac_results { padding: 0px; border: 1px solid black; background-color: white; overflow: hidden; z-index: 99999; }
+.ac_results ul { width: 100%; list-style-position: outside; list-style: none; padding: 0; margin: 0; }
+.ac_results li { margin: 0px; padding: 2px 5px; cursor: default; display: block; font: menu; font-size: 12px; line-height: 16px; overflow: hidden; }
+.ac_loading { background: white url('/images/ajax-loader.gif') right center no-repeat; }
+.ac_odd { background-color: #eee; }
+.ac_over { background-color: #0A246A; color: white; }
+
 /* Divers et variés */
 a img { border: none; }
 h2 { color: #333; }
@@ -52,4 +60,3 @@ h2 { color: #333; }
 .misspelled { border-bottom:1px dashed red; }
 a.action:before { content: "["; }
 a.action:after  { content: "]"; }
-

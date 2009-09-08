@@ -42,9 +42,10 @@ ActionController::Routing::Routes.draw do |map|
     end
   end
   map.with_options :controller => 'tags' do |t|
-    t.tags       '/tags',            :action => 'index',  :conditions => { :method => :get }
-    t.tag        '/tags/:id',        :action => 'show',   :conditions => { :method => :get }
-    t.public_tag '/tags/:id/public', :action => 'public', :conditions => { :method => :get }
+    t.tags          '/tags',              :action => 'index',                     :conditions => { :method => :get }
+    t.complete_tags '/tags/autocomplete', :action => 'autocomplete_for_tag_name', :conditions => { :method => :get }
+    t.tag           '/tags/:id',          :action => 'show',                      :conditions => { :method => :get }
+    t.public_tag    '/tags/:id/public',   :action => 'public',                    :conditions => { :method => :get }
   end
   map.answer_comment '/nodes/:node_id/comments/:parent_id/answer', :controller => 'comments', :action => 'new'
   map.vote '/vote/:action/:node_id', :controller => 'votes'

@@ -2,6 +2,8 @@ class TagsController < ApplicationController
   before_filter :user_required, :except => [:public]
   before_filter :find_node, :only => [:new, :create]
 
+  autocomplete_for :tag, :name, :order => "taggings_count DESC"
+
   def new
     @tag = @node.tags.build
   end
