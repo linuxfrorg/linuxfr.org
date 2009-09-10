@@ -35,7 +35,7 @@ class TrackersController < ApplicationController
     @tracker.attributes = params[:tracker]
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @tracker.save
-      @tracker.node = Node.create(:user_id => current_user.id)
+      @tracker.create_node(:user_id => current_user.id)
       flash[:success] = "Votre entrée a bien été créée dans le suivi"
       redirect_to trackers_url
     else

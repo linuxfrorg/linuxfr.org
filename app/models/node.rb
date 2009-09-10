@@ -38,11 +38,7 @@ class Node < ActiveRecord::Base
   after_create :compute_interest
 
   def compute_interest
-    if content_type # FIXME
-      coeff = content_type.constantize.interest_coefficient
-    else
-      coeff = 1
-    end
+    coeff = content_type.constantize.interest_coefficient
     stmt  = "UPDATE nodes SET interest=(score * #{coeff} + UNIX_TIMESTAMP(created_at) / 1000) WHERE id=#{self.id}"
     connection.update_sql(stmt)
   end

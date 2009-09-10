@@ -27,7 +27,7 @@ class WikiPagesController < ApplicationController
     @wiki_page.committer  = current_user
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @wiki_page.save
-      @wiki_page.node = Node.create(:user_id => current_user.id)
+      @wiki_page.create_node(:user_id => current_user.id)
       flash[:success] = "Nouvelle page de wiki créée"
       redirect_to wiki_pages_url
     else

@@ -32,7 +32,7 @@ class PollsController < ApplicationController
     @poll.attributes = params[:poll]
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @poll.save
-      @poll.node = Node.create(:public => false, :user_id => current_user.id)
+      @poll.create_node(:public => false, :user_id => current_user.id)
       flash[:success] = "L'équipe de modération de LinuxFr.org vous remercie pour votre proposition de sondage"
       redirect_to polls_url
     else

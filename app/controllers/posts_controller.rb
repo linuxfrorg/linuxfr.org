@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     raise ActiveRecord::RecordNotFound.new unless @post && @post.creatable_by?(current_user)
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @post.save
-      @post.node = Node.create(:user_id => current_user.id)
+      @post.create_node(:user_id => current_user.id)
       flash[:success] = "Votre message a bien été créé"
       redirect_to forum_posts_url(:forum_id => @post.forum_id)
     else

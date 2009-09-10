@@ -26,7 +26,7 @@ class DiariesController < ApplicationController
     @diary.attributes = params[:diary]
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @diary.save
-      @diary.node = Node.create(:user_id => current_user.id)
+      @diary.create_node(:user_id => current_user.id)
       flash[:success] = "Votre journal a bien été créé"
       redirect_to [@diary.user, @diary]
     else

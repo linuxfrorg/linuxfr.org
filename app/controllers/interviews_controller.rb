@@ -35,7 +35,7 @@ class InterviewsController < ApplicationController
     @interview.attributes = params[:interview]
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @interview.save
-      @interview.node = Node.create(:public => false, :user_id => current_user.id)
+      @interview.create_node(:public => false, :user_id => current_user.id)
       flash[:success] = "Nous vous remercions pour avoir proposé un entretien. Cette proposition va être examinée par l'équipe de modération."
       redirect_to interviews_url
     else
