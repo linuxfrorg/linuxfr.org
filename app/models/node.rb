@@ -64,7 +64,7 @@ class Node < ActiveRecord::Base
 ### Tags ###
 
   def can_be_tagged_by?(user)
-    !!user # FIXME
+    user && content.readable_by?(user)
   end
 
   def set_taglist(list, user)
@@ -77,8 +77,11 @@ class Node < ActiveRecord::Base
   end
 
   def popular_tags(nb=7)
-    # FIXME We should count only taggings for this node for sorting tags
-    tags.all(:order => 'taggings_count DESC', :limit => nb)
+    Tag.all(:joins => [:taggings],
+            :conditions => { "taggings.node_id" => self.id },
+            :group => "tags.id",
+            :order => "COUNT(tags.id) DESC",
+            :limit => nb)
   end
 
 end
