@@ -6,6 +6,7 @@ class CreateNodes < ActiveRecord::Migration
       t.integer :interest, :default => 0
       t.references :user
       t.boolean :public, :default => true
+      t.integer :comments_count, :default => 0
       t.datetime :last_commented_at
       t.timestamps
     end

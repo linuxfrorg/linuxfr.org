@@ -20,7 +20,7 @@
 #
 class Comment < ActiveRecord::Base
   belongs_to :user
-  belongs_to :node
+  belongs_to :node, :touch => :last_commented_at, :counter_cache => :comments_count
   has_many :relevances
 
   named_scope :published, :conditions => {:state => 'published'}
@@ -48,13 +48,6 @@ class Comment < ActiveRecord::Base
 
 ### Reading status ###
 
-  after_create :update_last_commented_at
-
-  def update_last_commented_at
-    stmt = "UPDATE nodes SET last_commented_at=NOW() WHERE id = #{node.id}"
-    connection.update_sql(stmt)
-  end
-
   # Returns true if this comment has been read by the given user,
   # but also for anonymous users
   def read_by?(user)
@@ -79,8 +72,8 @@ class Comment < ActiveRecord::Base
   end
 
   def parent_id
-    @parent_id   = 0 if new_record?
-    @parent_id ||= materialized_path[-2 * PATH_SIZE .. - PATH_SIZE - 1].to_i
+    @parent_id ||= materialized_path[-2 * PATH_SIZE .. - PATH_SIZE - 1].to_i unless new_record?
+    @parent_id
   end
 
   def parent_id=(parent_id)

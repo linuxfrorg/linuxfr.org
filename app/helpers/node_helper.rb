@@ -38,7 +38,7 @@ module NodeHelper
 
   def read_it(content)
     link = link_to("Lire la suite", url_for_content(content))
-    nb_comments = pluralize(content.node.try(:comments).try(:count), "commentaire") # FIXME comments_count
+    nb_comments = pluralize(content.node.try(:comments_count), "commentaire")
     if current_user
       visit = case content.node.read_status(current_user)
               when :not_read     then ", non visité"
