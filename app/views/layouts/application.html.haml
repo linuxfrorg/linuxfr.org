@@ -69,7 +69,7 @@
             %li= link_to h(comment.title), node_comment_url(:node_id => comment.node_id, :id => comment.id)
       #popular-tags
         %h2 Tags populaires
-        %ul
+        %ul.tag-cloud
           - @popular_tags.each do |tag|
             %li= link_to h(tag.name), public_tag_url(:id => h(tag.name))
       #friends
