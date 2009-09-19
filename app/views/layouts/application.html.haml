@@ -37,7 +37,7 @@
       = logo
 
     %aside#sidebar
-      %article.login
+      .login
         - if current_user
           %p= current_user.name
           %p= link_to "Proposer un contenu", '/proposer_un_contenu'
