@@ -59,7 +59,8 @@
         - if flash[type]
           %div(class=type)= flash[type]
       = yield :layout
-      %p= link_to "Revenir en haut de page", '#top', :class => 'scroll'
+      %footer
+        %p= link_to "Revenir en haut de page", '#top', :class => 'scroll'
 
     %footer#bigfooter
       #last-comments

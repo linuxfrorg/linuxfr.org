@@ -1,4 +1,4 @@
-%nav
+.order-navbar
   Trier par :
   %ul
     %li= link_to_unless @order == 'created_at', "date", params.merge(:order => 'created_at', :page => nil)

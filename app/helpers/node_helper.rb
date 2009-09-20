@@ -24,8 +24,16 @@ module NodeHelper
 
   def paginated_contents(contents)
     paginated_section(contents) do
-      concat(content_tag(:div, render(contents), :id => 'contents'))
+      content_tag(:div, render(contents), :id => 'contents')
     end
+  end
+
+  def paginated_section(*args, &block)
+    pagination = will_paginate(*args).to_s
+    order_bar  = render 'shared/order_navbar'
+    before = content_tag(:nav, order_bar + pagination, :class => "toolbox")
+    after  = content_tag(:nav, pagination, :class => "toolbox")
+    before + capture(&block) + after
   end
 
   def pubdate_for(content)
@@ -51,7 +59,7 @@ module NodeHelper
               else                    ", déjà visité"
               end
     end
-    "&gt; #{link} (#{nb_comments}#{visit})."
+    "#{link} (#{nb_comments}#{visit})."
   end
   # TODO safe_helper :read_it
 

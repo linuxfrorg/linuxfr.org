@@ -25,7 +25,7 @@ module ApplicationHelper
     classes << 'logged' if current_user
     classes << current_user.role if current_user
     classes << Rails.env if Rails.env != 'production'
-    { :class => classes.join(' ') }
+    { :class => classes.join(' '), :id => controller.controller_name }
   end
 
   def check_js

@@ -37,9 +37,14 @@ del.diffdel, del.diffmod { background-color: #f33; }
 
 /* Comments */
 .comment { border: 1px solid black; }
+.comment.odd { border-left: 3px solid #f33; }
 .new-comment h3 { border: 1px solid red; }
 .fold { display:none; }
 .avatar { float:left; margin: 5px 10px; }
+
+/* Toolbox */
+.toolbox { background-color: orange; }
+.toolbox li { display: inline; }
 
 /* Toolbar */
 #toolbar { position: fixed; overflow: hidden; bottom: 0; left: 20px; right: 20px; padding: 2px; color: #333; background-color: #dfd6d1; border: 1px solid #baa; }
@@ -59,5 +64,6 @@ h2 { color: #333; }
 #sidebar .login p { font-weight: bold; }
 #tracker .fix a, #tracker .invalid a, .tracker.fix a, .tracker.invalid a { text-decoration: line-through; }
 .misspelled { border-bottom:1px dashed red; }
-a.action:before { content: "["; }
-a.action:after  { content: "]"; }
+footer.actions:before { content: ">"; }
+a.action:before, time.norloge:before, span.content-type:before { content: "["; }
+a.action:after,  time.norloge:after,  span.content-type:after  { content: "]"; }

@@ -1,11 +1,12 @@
 = render 'boards/form', :object => board
 - if @boards.empty?
-  Pas de message
+  %p
+    Pas de message
 - else
   %dialog
     - @boards.each do |b|
       %dt{:title => b.user_agent}
-        = "[<time datetime=\"#{b.created_at.iso8601}\">#{b.created_at.to_s(:norloge)}</time>]"
+        = content_tag(:time, b.created_at.to_s(:norloge), :class => "norloge", :datetime => b.created_at.iso8601)
         = link_to b.login, user_url(:id => b.login)
       %dd
         = sanitize b.message
