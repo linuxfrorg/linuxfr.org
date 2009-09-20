@@ -11,7 +11,7 @@ class Admin::SectionsController < AdminController
   def create
     @section = Section.new(params[:section])
     if @section.save
-      flash[:notice] = 'Nouvelle section créée.'
+      flash[:success] = 'Nouvelle section créée.'
       redirect_to admin_sections_url
     else
       render :new
@@ -26,7 +26,7 @@ class Admin::SectionsController < AdminController
     @section = Section.find(params[:id])
     @section.attributes = params[:section]
     if @section.save
-      flash[:notice] = 'Section mise à jour.'
+      flash[:success] = 'Section mise à jour.'
       redirect_to admin_sections_url
     else
       render :edit
@@ -36,7 +36,7 @@ class Admin::SectionsController < AdminController
   def destroy
     @section = Section.find(params[:id])
     @section.delete
-    flash[:notice] = 'Section supprimée'
+    flash[:success] = 'Section supprimée'
     redirect_to admin_sections_url
   end
 

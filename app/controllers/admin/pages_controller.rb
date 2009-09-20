@@ -11,7 +11,7 @@ class Admin::PagesController < AdminController
   def create
     @page = Page.new(params[:page])
     if @page.save
-      flash[:notice] = 'Nouvelle page créée.'
+      flash[:success] = 'Nouvelle page créée.'
       redirect_to admin_pages_url
     else
       render :new
@@ -26,7 +26,7 @@ class Admin::PagesController < AdminController
     @page = Page.find(params[:id])
     @page.attributes = params[:page]
     if @page.save
-      flash[:notice] = 'Page mise à jour.'
+      flash[:success] = 'Page mise à jour.'
       redirect_to admin_pages_url
     else
       render :edit
@@ -36,7 +36,7 @@ class Admin::PagesController < AdminController
   def destroy
     @page = Page.find(params[:id])
     @page.destroy
-    flash[:notice] = 'Page supprimée'
+    flash[:success] = 'Page supprimée'
     redirect_to admin_pages_url
   end
 

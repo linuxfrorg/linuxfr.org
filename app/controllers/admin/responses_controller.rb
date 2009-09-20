@@ -11,7 +11,7 @@ class Admin::ResponsesController < AdminController
   def create
     @response = Response.new(params[:response])
     if @response.save
-      flash[:notice] = 'Nouvelle réponse créée.'
+      flash[:success] = 'Nouvelle réponse créée.'
       redirect_to admin_responses_url
     else
       render :new
@@ -26,7 +26,7 @@ class Admin::ResponsesController < AdminController
     @response = Response.find(params[:id])
     @response.attributes = params[:response]
     if @response.save
-      flash[:notice] = 'Réponse mise à jour.'
+      flash[:success] = 'Réponse mise à jour.'
       redirect_to admin_responses_url
     else
       render :edit
@@ -36,7 +36,7 @@ class Admin::ResponsesController < AdminController
   def destroy
     @response = Response.find(params[:id])
     @response.destroy
-    flash[:notice] = 'Réponse supprimée'
+    flash[:success] = 'Réponse supprimée'
     redirect_to admin_responses_url
   end
 

@@ -47,7 +47,7 @@ class PollsController < ApplicationController
     @answer = @poll.answers.scoped_by_position(params[:position]).first
     raise ActiveRecord::RecordNotFound unless @answer
     @answer.vote(request.remote_ip)
-    flash[:notice] = "Merci d'avoir voté pour ce sondage"
+    flash[:success] = "Merci d'avoir voté pour ce sondage"
     redirect_to @poll
   end
 

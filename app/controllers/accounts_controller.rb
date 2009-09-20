@@ -10,7 +10,7 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(params[:account])
     if @account.save
-      flash[:notice] = "Votre compte a été créé. Vous allez recevoir un email avec les informations pour l'activer"
+      flash[:success] = "Votre compte a été créé. Vous allez recevoir un email avec les informations pour l'activer"
       AccountNotifications.deliver_signup(@account) # TODO run_later
       redirect_to '/'
     else
@@ -21,7 +21,7 @@ class AccountsController < ApplicationController
   def activate
     if @account && @account.activate!
       AccountSession.create(@account, true)
-      flash[:notice] = "Votre compte a bien été activé"
+      flash[:success] = "Votre compte a bien été activé"
       redirect_to '/'
     else
       flash[:error] = "Désolé, le lien d'activation n'est pas valide"
@@ -35,7 +35,7 @@ class AccountsController < ApplicationController
   def send_password
     @account = Account.find_by_login(params[:login])
     if @account
-      flash[:notice] = "Vous allez recevoir un email avec un lien pour changer votre mot de passe"
+      flash[:success] = "Vous allez recevoir un email avec un lien pour changer votre mot de passe"
       @account.reset_perishable_token!
       AccountNotifications.deliver_forgot_password(@account) # TODO run_later
       redirect_to '/'
@@ -48,7 +48,7 @@ class AccountsController < ApplicationController
   def reset_password
     if @account && @account.active?
       AccountSession.create(@account, true)
-      flash[:notice] = "Veuillez changer votre mot de passe"
+      flash[:success] = "Veuillez changer votre mot de passe"
       redirect_to edit_account_url
     else
       flash[:error] = "Désolé, ce lien n'est pas/plus valide"
@@ -76,7 +76,7 @@ class AccountsController < ApplicationController
     if @account && @account.id  == current_account_session.account.id
       @account.delete
       current_account_session.destroy
-      flash[:notice] = "Votre compte a bien été supprimé"
+      flash[:success] = "Votre compte a bien été supprimé"
       redirect_to '/'
     else
       flash[:error] = "Le code aléatoire n'est pas le bon"

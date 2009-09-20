@@ -13,7 +13,7 @@ class Admin::BannersController < AdminController
     @banner = Banner.new(params[:banner])
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @banner.save
-      flash[:notice] = 'Nouvelle bannière créée.'
+      flash[:success] = 'Nouvelle bannière créée.'
       redirect_to admin_banners_url
     else
       render :new
@@ -30,7 +30,7 @@ class Admin::BannersController < AdminController
     @banner.attributes = params[:banner]
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @banner.save
-      flash[:notice] = 'Bannière mise à jour.'
+      flash[:success] = 'Bannière mise à jour.'
       redirect_to admin_banners_url
     else
       render :edit
@@ -40,7 +40,7 @@ class Admin::BannersController < AdminController
   def destroy
     @banner = Banner.find(params[:id])
     @banner.destroy
-    flash[:notice] = 'Bannière supprimée'
+    flash[:success] = 'Bannière supprimée'
     redirect_to admin_banners_url
   end
 

@@ -54,7 +54,7 @@ protected
   def user_required
     return if current_user
     store_location
-    flash[:notice] = "Cette fonctionnalité est réservée aux utilisateurs loggés"
+    flash[:error] = "Cette fonctionnalité est réservée aux utilisateurs loggés"
     redirect_to new_account_session_url
   end
 

@@ -11,14 +11,14 @@ class Admin::AccountsController < AdminController
     else
       @account.reactivate!
     end
-    flash[:notice] = "Compte activé"
+    flash[:success] = "Compte activé"
     redirect_to admin_accounts_url
   end
 
   def destroy
     @account = Account.find(params[:id])
     @account.delete!
-    flash[:notice] = "Compte supprimé"
+    flash[:success] = "Compte supprimé"
     redirect_to admin_accounts_url
   end
 

@@ -55,7 +55,7 @@
       = yield :column
 
     %section#container
-      - [:error, :success, :notice].each do |type|
+      - [:error, :success].each do |type|
         - if flash[type]
           %div(class=type)= flash[type]
       = yield :layout
