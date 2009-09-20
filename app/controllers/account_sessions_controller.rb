@@ -8,7 +8,6 @@ class AccountSessionsController < ApplicationController
 
   def create
     @account_session = AccountSession.new(params[:account_session])
-    # TODO remember_me
     if @account_session.save
       flash[:success] = "Vous êtes connecté"
       redirect_to '/'
