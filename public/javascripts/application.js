@@ -4,6 +4,7 @@ $("a.hit-counter").each(function(idx,link) {
     link.href = "/redirect/" + link.getAttribute('data-hit');
 });
 
+/* Animate the scrolling to a fragment */
 $("a.scroll").click(function() {
     var dst = $(this.hash);
     var pos = dst ? dst.offset().top : 0;
@@ -62,6 +63,8 @@ Toolbar.template  = '<div id="toolbar"><span id="toolbar-items">{text} : ' +
 Toolbar.create = function(items, txt) {
     Toolbar.items    = items;
     Toolbar.nb_items = items.length;
+    if (localStorage.threshold)
+        Toolbar.threshold = parseInt(localStorage.threshold, 10);
     $('body').append($.nano(Toolbar.template, {text: txt, toolbar: Toolbar}));
     $('#toolbar .prev').click(Toolbar.prev_item);
     $('#toolbar .next').click(Toolbar.next_item);
@@ -95,12 +98,13 @@ Toolbar.change_threshold = function() {
     var thresholds = [-42, 0, 1, 2, 5];
     var index = jQuery.inArray(parseInt($(this).text()), thresholds) + 1
     var value = thresholds[index % thresholds.length];
+    localStorage.threshold = value;
     $(this).text(value);
     Folding.create(value);
     return false;
 };
 
-/* */
+/* Add/Remove dynamically links in the news form. */
 var FormLinks = {};
 FormLinks.div;
 FormLinks.counter  = 0;
@@ -140,7 +144,7 @@ if ($('body').hasClass('logged')) {
 /* Fold/unfold comments */
 Folding.create(Toolbar.threshold);
 
-/* */
+/* Create the button for adding/removing links */
 if ($('#form-links')) {
     FormLinks.create($('#form-links'));
 }
