@@ -3,6 +3,7 @@ class CreateBoards < ActiveRecord::Migration
     create_table :boards do |t|
       t.string :login
       t.string :user_agent
+      t.references :user
       t.references :object, :polymorphic => true
       t.text :message
       t.datetime :created_at

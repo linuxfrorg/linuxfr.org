@@ -7,6 +7,6 @@
     - @boards.each do |b|
       %dt{:title => b.user_agent}
         = content_tag(:time, b.created_at.to_s(:norloge), :class => "norloge", :datetime => b.created_at.iso8601)
-        = link_to b.login, user_url(:id => b.login)
+        = link_to b.login, b.user
       %dd
         = sanitize b.message

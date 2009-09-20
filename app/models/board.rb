@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 20090222161451
 #
 # Table name: boards
 #
 #  id          :integer(4)      not null, primary key
 #  login       :string(255)
 #  user_agent  :string(255)
+#  user_id     :integer(4)
 #  object_id   :integer(4)
 #  object_type :string(255)
 #  message     :text
@@ -15,9 +15,13 @@
 # It's the famous board, from DaCode (then templeet).
 #
 class Board < ActiveRecord::Base
+  belongs_to :user
   belongs_to :object, :polymorphic => true
 
   default_scope :order => 'created_at DESC'
+  named_scope :by_type, lambda { |type|
+    { :include => [:user], :conditions => { :object_type => type } }
+  }
 
 ### Types ###
 
