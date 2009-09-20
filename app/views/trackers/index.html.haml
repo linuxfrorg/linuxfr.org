@@ -23,11 +23,11 @@
     - @trackers.each do |tracker|
       %tr{:class => tracker.state}
         %td= link_to tracker.id, tracker
-        %td= link_to h(tracker.title), tracker
-        %td= h tracker.created_at
-        %td= h tracker.assigned_to
-        %td= h tracker.reported_by
-        %td= h tracker.category_title
-        %td= h tracker.score
+        %td= link_to tracker.title, tracker
+        %td= tracker.created_at
+        %td= tracker.assigned_to
+        %td= tracker.reported_by
+        %td= tracker.category_title
+        %td= tracker.score
         - if tracker.editable_by?(current_user)
           %td= link_to "Modifier", edit_tracker_path(tracker)

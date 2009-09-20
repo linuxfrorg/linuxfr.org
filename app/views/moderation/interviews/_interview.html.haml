@@ -1,5 +1,5 @@
 = article_for interview do |c|
-  - c.title = link_to("Proposition d'entretien : #{h interview.title}", moderation_interview_path(:id => interview.id))
+  - c.title = link_to("Proposition d'entretien : #{interview.title}", moderation_interview_path(:id => interview.id))
   - c.body  = sanitize(spellify interview.body)
   - if interview.open?
     - c.actions = capture do

@@ -1,7 +1,7 @@
 %h3
   = link_to "[^]", "#comment-#{comment.parent_id}", :title => "Aller au commentaire parent" unless comment.root?
   = ' '
-  = link_to "Commentaire : #{h comment.title}", [comment.node, comment]
+  = link_to "Commentaire : #{comment.title}", [comment.node, comment]
 %p.meta
   = posted_by(comment)
   Évalué à
@@ -16,8 +16,5 @@
 %footer.actions
   = link_to "Répondre", answer_comment_path(:node_id => comment.node_id, :parent_id => comment.id), :class => 'action'
   - if comment.votable_by?(current_user)
-    Ce commentaire est-il 
-    = button_to "pertinent", relevance_path(:action => 'for', :comment_id => comment.id)
-    ou
-    = button_to "inutile", relevance_path(:action => 'against', :comment_id => comment.id)
-    \?
+    Ce commentaire est-il #{button_to "pertinent", relevance_path(:action => 'for', :comment_id => comment.id)}
+    ou #{button_to "inutile", relevance_path(:action => 'against', :comment_id => comment.id)} ?

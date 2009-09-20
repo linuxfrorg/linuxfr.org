@@ -3,5 +3,5 @@
     - poll.answers.each do |answer|
       %li
         = radio_button_tag :position, answer.position, false
-        = label_tag(:position, h answer.answer)
+        = label_tag(:position, answer.answer)
   = submit_tag "Voter" unless poll.new_record?

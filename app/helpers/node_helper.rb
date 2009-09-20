@@ -19,7 +19,7 @@ module NodeHelper
   end
 
   def link_to_content(content)
-    link_to h(content.title), url_for_content(content)
+    link_to content.title, url_for_content(content)
   end
 
   def paginated_contents(contents)
@@ -34,11 +34,12 @@ module NodeHelper
 
   def posted_by(content, user_link=nil)
     user = content.user || current_user
-    user_link  ||= link_to(h(user.name), user, :rel => 'author')
+    user_link  ||= link_to(user.name, user, :rel => 'author')
     date_time    = content.created_at || Time.now
     published_at = content_tag(:time, date_time.to_s(:posted), :datetime => pubdate_for(content))
     "Posté par #{user_link} le #{published_at}."
   end
+  # TODO safe_helper :posted_by
 
   def read_it(content)
     link = link_to("Lire la suite", url_for_content(content))
@@ -52,5 +53,6 @@ module NodeHelper
     end
     "&gt; #{link} (#{nb_comments}#{visit})."
   end
+  # TODO safe_helper :read_it
 
 end

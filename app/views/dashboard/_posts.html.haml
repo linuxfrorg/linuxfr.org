@@ -15,7 +15,7 @@
       - post = node.content
       %tr
         %td= post.forum.title
-        %td= link_to h(post.title), [post.forum, post]
+        %td= link_to post.title, [post.forum, post]
         %td= node.score
         %td= node.comments.count
         %td= post.created_at.to_s(:long)

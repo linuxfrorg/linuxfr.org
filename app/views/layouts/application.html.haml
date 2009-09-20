@@ -66,12 +66,12 @@
         %h2 Derniers commentaires
         %ul
           - @last_comments.each do |comment|
-            %li= link_to h(comment.title), node_comment_url(:node_id => comment.node_id, :id => comment.id)
+            %li= link_to comment.title, node_comment_url(:node_id => comment.node_id, :id => comment.id)
       #popular-tags
         %h2 Tags populaires
         %ul.tag-cloud
           - @popular_tags.each do |tag|
-            %li= link_to h(tag.name), public_tag_url(:id => h(tag.name))
+            %li= link_to tag.name, public_tag_url(:id => tag.name)
       #friends
         %h2 Sites amis
         %ul

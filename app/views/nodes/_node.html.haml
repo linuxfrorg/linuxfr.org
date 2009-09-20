@@ -1,5 +1,5 @@
 #comments
-  - feed "Flux Atom des commentaires #{h node.content.title}", node_comments_path(:node_id => node.id, :format => :atom)
+  - feed "Flux Atom des commentaires #{node.content.title}", node_comments_path(:node_id => node.id, :format => :atom)
   %p
     = link_to "Envoyer un commentaire", new_node_comment_path(node)
   %p

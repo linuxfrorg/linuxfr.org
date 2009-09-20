@@ -1,3 +1,3 @@
 = article_for preview do |c|
-  - c.title = link_to("Proposition d'entretien : #{h preview.title}", preview)
+  - c.title = link_to("Proposition d'entretien : #{preview.title}", preview)
   - c.body  = sanitize(spellify preview.body)

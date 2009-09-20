@@ -1,7 +1,7 @@
 - content_for :column do
   = render @forums
 
-=h1 "Liste des messages dans le forum #{h @forum.title}"
-- feed "Flux Atom du forum #{h @forum.title}", forum_path(:forum_id => @forum.id, :format => :atom)
+=h1 "Liste des messages dans le forum #{@forum.title}"
+- feed "Flux Atom du forum #{@forum.title}", forum_path(:forum_id => @forum.id, :format => :atom)
 = render 'shared/order_navbar'
 - paginated_contents @posts

@@ -2,6 +2,7 @@ module StaticHelper
   def helperify(txt)
     txt.gsub(/\{\{([a-z_]+)\}\}/) { send "helper_#{$1}" }
   end
+  # TODO safe_helper :helperify
 
   def helper_admin_list
     User.admin.all.map { |user| link_to user.login, user }.to_sentence

@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def keywords_from_tags(tags)
-    tags = tags.map {|t| h(t.name) }
+    tags = tags.map {|t| t.name }
     @keywords += tags
   end
 

@@ -7,7 +7,7 @@
       Tags :
     %ul.tag-cloud
       - record.node.popular_tags.each do |tag|
-        %li= link_to h(tag.name), public_tag_path(:id => h(tag.name)), :rel => 'tag'
+        %li= link_to tag.name, public_tag_path(:id => tag.name), :rel => 'tag'
   %figure.score
     = record.score
   - if image

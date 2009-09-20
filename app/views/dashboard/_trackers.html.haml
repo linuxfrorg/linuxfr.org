@@ -15,7 +15,7 @@
       - tracker = node.content
       %tr
         %td= tracker.category.title
-        %td= link_to h(tracker.title), tracker
+        %td= link_to tracker.title, tracker
         %td= node.score
         %td= node.comments.count
         %td= tracker.created_at.to_s(:long)

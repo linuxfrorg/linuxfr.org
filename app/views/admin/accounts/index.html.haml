@@ -10,8 +10,8 @@
     %th Actions
   - @accounts.each do |account|
     %tr
-      %td= link_to h(account.login), account.user
-      %td= h(account.email)
+      %td= link_to account.login, account.user
+      %td= account.email
       %td= account.current_login_ip
       %td= account.state
       %td= account.created_at.to_s(:posted)

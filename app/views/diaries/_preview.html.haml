@@ -1,4 +1,4 @@
 = article_for preview do |c|
-  - c.title = "Journal : #{h preview.title}"
+  - c.title = "Journal : #{preview.title}"
   - c.image = image_tag(current_user.avatar.url(:thumbnail), :class => 'avatar', :alt => "Avatar de #{current_user.name}")
   - c.body  = sanitize(spellify preview.body)
