@@ -4,6 +4,6 @@
 - if @banner
   %aside.banner
     = @banner
-= paginated_section @nodes do
+= paginated_section @nodes, link_to("Proposer une dépêche", new_news_path) do
   #contents
     = render @nodes.map(&:content)

@@ -22,16 +22,17 @@ module NodeHelper
     link_to content.title, url_for_content(content)
   end
 
-  def paginated_contents(contents)
-    paginated_section(contents) do
+  def paginated_contents(contents, link=nil)
+    paginated_section(contents, link) do
       content_tag(:div, render(contents), :id => 'contents')
     end
   end
 
-  def paginated_section(*args, &block)
-    pagination = will_paginate(*args).to_s
+  def paginated_section(args, link=nil, &block)
+    toolbox    = content_tag(:div, link, :class => 'new-content') if link
     order_bar  = render 'shared/order_navbar'
-    before = content_tag(:nav, order_bar + pagination, :class => "toolbox")
+    pagination = will_paginate(args).to_s
+    before = content_tag(:nav, toolbox.to_s + order_bar + pagination, :class => "toolbox")
     after  = content_tag(:nav, pagination, :class => "toolbox")
     before + capture(&block) + after
   end
