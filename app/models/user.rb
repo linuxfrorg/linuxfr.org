@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
 
 ### SEO ###
 
-  has_friendly_id :name, :use_slug => true
+  has_friendly_id :login, :use_slug => true
 
 ### Sphinx ####
 
