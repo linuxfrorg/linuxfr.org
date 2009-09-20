@@ -1,4 +1,5 @@
 %article{:pubdate => pubdate_for(@page)}
   =h1 @page.title
+  - @description = @page.title
   .body
     = helperify(@page.body)

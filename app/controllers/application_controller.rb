@@ -16,9 +16,11 @@ class ApplicationController < ActionController::Base
 protected
 
   def seo_filter
-    @title    = %w(LinuxFr.org)
-    @keywords = %w(Linux Logiciel Libre GNU Free Software Actualité Forum Communauté)
-    @feeds    = {}
+    @title         = %w(LinuxFr.org)
+    @author        = nil
+    @keywords      = %w(Linux Logiciel Libre GNU Free Software Actualité Forum Communauté)
+    @description   = "L'actualité de Linux et du Logiciel Libre"
+    @feeds         = {}
     @last_comments = Comment.footer
     @popular_tags  = Tag.footer
     @friend_sites  = FriendSite.sorted

@@ -15,9 +15,10 @@ module ApplicationHelper
     @feeds[link] = title
   end
 
-  def keywords_from_tags(tags)
-    tags = tags.map {|t| t.name }
-    @keywords += tags
+  def meta_for(content)
+    @author      = content.user.name
+    @keywords   += content.node.popular_tags.map &:name
+    @description = content.title
   end
 
   def body_attr
@@ -34,7 +35,7 @@ module ApplicationHelper
 
   def logo
     img = Dictionary['logo']
-    content_tag(:h1, :style => "background-image: url('/images/logos/#{img}');") do
+    content_tag(:h1, :title => "Le logo de LinuxFr.org", :style => "background-image: url('/images/logos/#{img}');") do
       link_to "LinuxFr.org", '/'
     end
   end

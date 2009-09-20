@@ -6,7 +6,9 @@
       = stylesheet_link_tag current_account_session.stylesheet
     - else
       = stylesheet_link_tag 'style', 'markitup'
-    <meta name="description" content="L'actualité de Linux et du Logiciel Libre" />
+    - if @author
+      <meta name="author" content="#{@author}" />
+    <meta name="description" content="#{@description}" />
     <meta name="keywords" content="#{@keywords.join ', '}" />
     <link rel="icon" type="image/x-icon" href="/favicon.png" />
     <!--[if IE]><script src="/javascripts/html5.js"></script><![endif]-->  

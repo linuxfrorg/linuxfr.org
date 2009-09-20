@@ -1,5 +1,6 @@
 =h1 "Home Page"
 - feed "S'abonner au flux Atom des dépêches", news_index_path(:format => :atom)
+- @keywords += @popular_tags.map &:name
 = render @ppp if @ppp
 - if @banner
   %aside.banner
