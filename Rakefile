@@ -5,13 +5,7 @@ require(File.join(File.dirname(__FILE__), 'config', 'boot'))
 
 require 'rake'
 require 'rake/testtask'
-
-begin
-  # gem install mislav-hanna
-  require 'hanna/rdoctask'
-rescue LoadError
-  require 'rake/rdoctask'
-end
+require 'rake/rdoctask'
 
 if RAILS_ENV == 'development'
   begin
