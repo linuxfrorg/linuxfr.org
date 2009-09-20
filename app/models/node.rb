@@ -12,6 +12,7 @@
 #  created_at        :datetime
 #  updated_at        :datetime
 #  last_commented_at :datetime
+#  comments_count    :integer(4)      default(0)
 #
 
 # The node is attached to each content.
