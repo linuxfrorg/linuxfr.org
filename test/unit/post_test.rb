@@ -5,6 +5,7 @@
 #  id         :integer(4)      not null, primary key
 #  state      :string(255)     default("published"), not null
 #  title      :string(255)
+#  cache_slug :string(255)
 #  body       :text
 #  forum_id   :integer(4)
 #  created_at :datetime

@@ -9,10 +9,10 @@
 #  interest          :integer(4)      default(0)
 #  user_id           :integer(4)
 #  public            :boolean(1)      default(TRUE)
+#  comments_count    :integer(4)      default(0)
+#  last_commented_at :datetime
 #  created_at        :datetime
 #  updated_at        :datetime
-#  last_commented_at :datetime
-#  comments_count    :integer(4)      default(0)
 #
 
 # The node is attached to each content.

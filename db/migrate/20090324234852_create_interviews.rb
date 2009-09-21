@@ -3,6 +3,7 @@ class CreateInterviews < ActiveRecord::Migration
     create_table :interviews do |t|
       t.string :state, :null => false, :default => 'draft'
       t.string :title
+      t.string :cache_slug
       t.text :body
       t.references :news
       t.references :assigned_to_user

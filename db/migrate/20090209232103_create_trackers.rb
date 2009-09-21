@@ -3,6 +3,7 @@ class CreateTrackers < ActiveRecord::Migration
     create_table :trackers do |t|
       t.string :state, :null => false, :default => 'open'
       t.string :title
+      t.string :cache_slug
       t.text :body
       t.references :category
       t.references :assigned_to_user

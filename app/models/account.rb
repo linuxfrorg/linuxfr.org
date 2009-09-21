@@ -69,7 +69,9 @@ class Account < ActiveRecord::Base
   aasm_event :reactivate do transitions :from => [:deleted], :to => :active,  :on_transition => :reactivation end
 
   def activation
-    self.user = User.create(:name => login)
+    user = User.new(:name => login)
+    user.account = self
+    user.save
     save
   end
 

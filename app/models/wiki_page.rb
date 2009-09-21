@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 20090216004002
 #
 # Table name: wiki_pages
 #
 #  id         :integer(4)      not null, primary key
 #  state      :string(255)     default("public"), not null
 #  title      :string(255)
+#  cache_slug :string(255)
 #  body       :text
 #  created_at :datetime
 #  updated_at :datetime
@@ -21,7 +21,7 @@ class WikiPage < Content
 
 ### SEO ###
 
-  has_friendly_id :title, :use_slug => true
+  has_friendly_id :title
 
 ### Sphinx ####
 

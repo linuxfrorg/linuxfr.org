@@ -3,6 +3,7 @@ class CreateWikiPages < ActiveRecord::Migration
     create_table :wiki_pages do |t|
       t.string :state, :null => false, :default => 'public'
       t.string :title
+      t.string :cache_slug
       t.text :body
       t.timestamps
     end

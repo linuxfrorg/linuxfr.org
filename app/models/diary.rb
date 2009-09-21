@@ -5,6 +5,7 @@
 #  id         :integer(4)      not null, primary key
 #  state      :string(255)     default("published"), not null
 #  title      :string(255)
+#  cache_slug :string(255)
 #  owner_id   :integer(4)
 #  body       :text
 #  created_at :datetime
@@ -27,7 +28,7 @@ class Diary < Content
 
 ### SEO ###
 
-  has_friendly_id :title, :use_slug => true
+  has_friendly_id :title
 
 ### Sphinx ####
 

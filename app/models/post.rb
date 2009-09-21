@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 20090110185148
 #
 # Table name: posts
 #
 #  id         :integer(4)      not null, primary key
 #  state      :string(255)     default("published"), not null
 #  title      :string(255)
+#  cache_slug :string(255)
 #  body       :text
 #  forum_id   :integer(4)
 #  created_at :datetime
@@ -28,7 +28,7 @@ class Post < Content
 
 ### SEO ###
 
-  has_friendly_id :title, :use_slug => true
+  has_friendly_id :title
 
 ### Sphinx ####
 

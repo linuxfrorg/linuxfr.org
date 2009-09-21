@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 20090209232103
 #
 # Table name: trackers
 #
 #  id                  :integer(4)      not null, primary key
 #  state               :string(255)     default("open"), not null
 #  title               :string(255)
+#  cache_slug          :string(255)
 #  body                :text
 #  category_id         :integer(4)
 #  assigned_to_user_id :integer(4)
@@ -30,7 +30,7 @@ class Tracker < Content
 
 ### SEO ###
 
-  has_friendly_id :title, :use_slug => true
+  has_friendly_id :title
 
 ### Sphinx ####
 

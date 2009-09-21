@@ -7,6 +7,7 @@
 #  homesite            :string(255)
 #  jabber_id           :string(255)
 #  role                :string(255)     default("moule"), not null
+#  cache_slug          :string(255)
 #  avatar_file_name    :string(255)
 #  avatar_content_type :string(255)
 #  avatar_file_size    :integer(4)
@@ -43,7 +44,7 @@ class User < ActiveRecord::Base
 
 ### SEO ###
 
-  has_friendly_id :login, :use_slug => true
+  has_friendly_id :login
 
 ### Sphinx ####
 

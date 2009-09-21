@@ -5,6 +5,7 @@
 #  id         :integer(4)      not null, primary key
 #  state      :string(255)     default("public"), not null
 #  title      :string(255)
+#  cache_slug :string(255)
 #  body       :text
 #  created_at :datetime
 #  updated_at :datetime
