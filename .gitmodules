@@ -19,3 +19,6 @@
 [submodule "vendor/plugins/simple_auto_complete"]
 	path = vendor/plugins/simple_auto_complete
 	url = git://github.com/grosser/simple_auto_complete.git
+[submodule "vendor/plugins/friendly_id"]
+	path = vendor/plugins/friendly_id
+	url = git@github.com:nono/friendly_id.git
