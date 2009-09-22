@@ -21,6 +21,7 @@ class InterviewsController < ApplicationController
   def show
     @interview = Interview.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @interview && @interview.readable_by?(current_user)
+    redirect_to @interview, :status => 301 if @interview.has_better_id?
   end
 
   def new

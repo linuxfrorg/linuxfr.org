@@ -35,6 +35,7 @@ class PostsController < ApplicationController
   def show
     @post = @forum.posts.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @post && @post.readable_by?(current_user)
+    redirect_to @post, :status => 301 if @post.has_better_id?
   end
 
   def edit

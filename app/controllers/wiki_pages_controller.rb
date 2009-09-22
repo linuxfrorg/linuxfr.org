@@ -14,6 +14,7 @@ class WikiPagesController < ApplicationController
   def show
     @wiki_page = WikiPage.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.readable_by?(current_user)
+    redirect_to @wiki_page, :status => 301 if @wiki_page.has_better_id?
   end
 
   def new

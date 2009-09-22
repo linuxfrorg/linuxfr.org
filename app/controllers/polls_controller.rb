@@ -18,6 +18,7 @@ class PollsController < ApplicationController
   def show
     @poll = Poll.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @poll && @poll.readable_by?(current_user)
+    redirect_to @poll, :status => 301 if @poll.has_better_id?
   end
 
   def new

@@ -21,6 +21,7 @@ class TrackersController < ApplicationController
   def show
     @tracker = Tracker.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @tracker && @tracker.readable_by?(current_user)
+    redirect_to @tracker, :status => 301 if @tracker.has_better_id?
   end
 
   def new

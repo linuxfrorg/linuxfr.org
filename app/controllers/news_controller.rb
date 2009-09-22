@@ -13,6 +13,7 @@ class NewsController < ApplicationController
   def show
     @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @news && @news.readable_by?(current_user)
+    redirect_to @news, :status => 301 if @news.has_better_id?
   end
 
   def new
