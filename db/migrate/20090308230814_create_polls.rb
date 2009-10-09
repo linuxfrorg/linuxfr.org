@@ -3,7 +3,7 @@ class CreatePolls < ActiveRecord::Migration
     create_table :polls do |t|
       t.string :state, :null => false, :default => 'draft'
       t.string :title
-      t.string :cache_slug
+      t.string :cached_slug
       t.timestamps
     end
   end

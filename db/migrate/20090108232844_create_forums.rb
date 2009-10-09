@@ -3,7 +3,7 @@ class CreateForums < ActiveRecord::Migration
     create_table :forums do |t|
       t.string :state, :null => false, :default => 'active'
       t.string :title
-      t.string :cache_slug
+      t.string :cached_slug
       t.integer :position
       t.timestamps
     end

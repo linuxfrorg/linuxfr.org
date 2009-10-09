@@ -3,7 +3,7 @@ class CreateSections < ActiveRecord::Migration
     create_table :sections do |t|
       t.string :state, :null => false, :default => 'published'
       t.string :title
-      t.string :cache_slug
+      t.string :cached_slug
 
       # Image
       t.string   :image_file_name

@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :homesite
       t.string   :jabber_id
       t.string   :role,  :null => false, :default => 'moule'
-      t.string   :cache_slug
+      t.string   :cached_slug
 
       # Avatar
       t.string   :avatar_file_name
