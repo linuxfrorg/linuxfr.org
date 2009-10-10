@@ -19,6 +19,8 @@
 class Diary < Content
   belongs_to :owner, :class_name => 'User'
 
+  attr_accessible :title, :body
+
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Vous ne pouvez pas poster un journal vide"
 

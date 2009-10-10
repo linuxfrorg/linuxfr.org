@@ -42,6 +42,8 @@ class User < ActiveRecord::Base
   
   delegate :login, :email, :to => :account
 
+  attr_accessible :name, :homesite, :jabber_id # TODO avatar?
+
 ### SEO ###
 
   has_friendly_id :login

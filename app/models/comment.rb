@@ -23,6 +23,8 @@ class Comment < ActiveRecord::Base
   belongs_to :node, :touch => :last_commented_at, :counter_cache => :comments_count
   has_many :relevances
 
+  attr_accessible :title, :body, :node_id
+
   named_scope :published, :conditions => {:state => 'published'}
   named_scope :descendants, lambda {|path|
     {:conditions => ["materialized_path LIKE ?", "#{path}_%"]}

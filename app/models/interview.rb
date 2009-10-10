@@ -22,6 +22,8 @@ class Interview < Content
   belongs_to :news
   belongs_to :assigned_to_user, :class_name => 'User'
 
+  attr_accessible :title, :body
+
   named_scope :public, :conditions => ["state != ?", :draft]
 
   validates_presence_of :title, :message => "Vous devez préciser la personne à interviewer"

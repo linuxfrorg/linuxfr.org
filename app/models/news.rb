@@ -28,6 +28,8 @@ class News < Content
   accepts_nested_attributes_for :links, :allow_destroy => true,
       :reject_if => proc { |attrs| attrs['title'].blank? && attrs['url'].blank? }
 
+  attr_accessible :title, :body, :second_part, :section_id, :author_name, :author_email
+
   validates_presence_of :title,   :message => "Le titre est obligatoire"
   validates_presence_of :body,    :message => "Nous n'acceptons pas les dépêches vides"
   validates_presence_of :section, :message => "Veuillez choisir une section pour cette dépêche"

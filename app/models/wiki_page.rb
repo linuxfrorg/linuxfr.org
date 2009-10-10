@@ -14,6 +14,8 @@
 # The wiki have pages, with the content that can't go anywhere else.
 #
 class WikiPage < Content
+  attr_accessible :title, :body
+
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Le corps est obligatoire"
 

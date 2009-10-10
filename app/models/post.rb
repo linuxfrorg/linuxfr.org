@@ -18,6 +18,8 @@
 class Post < Content
   belongs_to :forum
 
+  attr_accessible :title, :body
+
   validates_presence_of :forum, :message => "Vous devez choisir un forum"
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Vous ne pouvez pas poster un journal vide"

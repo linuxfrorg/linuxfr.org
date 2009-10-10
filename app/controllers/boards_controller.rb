@@ -13,6 +13,7 @@ class BoardsController < ApplicationController
 
   def add
     @board = Board.new(params[:board])
+    raise ActiveRecord::RecordNotFound unless @board && @board.accessible_by?(current_user)
     @board.message    = board_auto_link(@board.message)
     @board.user_id    = current_user.id
     @board.login      = current_user.login

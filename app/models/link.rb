@@ -18,6 +18,8 @@
 class Link < ActiveRecord::Base
   belongs_to :news
 
+  attr_accessible :title, :url, :lang
+
   validates_presence_of :title, :message => 'Un lien doit obligatoirement avoir un titre'
   validates_url_format_of :url, :message => "n'est pas une URL valide"
 

@@ -17,6 +17,8 @@ class PollAnswer < ActiveRecord::Base
 
   acts_as_list :scope => :poll
 
+  attr_accessible :answer
+
   named_scope :sorted, :order => "position ASC"
 
   validates_presence_of :answer, :message => "La description de la réponse ne peut pas être vide"
