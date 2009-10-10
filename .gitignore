@@ -7,5 +7,6 @@ log/*.log
 public/sitemap*
 public/sections/**
 public/uploads/**/*
+tmp/restart.txt
 tmp/**/*
 TODO

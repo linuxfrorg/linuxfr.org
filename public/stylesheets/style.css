@@ -24,10 +24,10 @@ body, nav, header, aside, figure, section, footer, article { margin: 0; padding:
 #bigfooter li:hover { background-color: #aaf; }
 
 /* Contenus */
-article { background-color: #ffb; border: 1px solid; -moz-border-radius: 15px; margin: 10px; padding: 0px; }
+article { background-color: #ffb; border: 1px solid; -moz-border-radius: 15px; margin: 10px; padding: 0px; overflow: hidden; }
 article header, #container article footer { background-color: #ff9; padding: 1px 5px:; }
 article header { -moz-border-radius-topleft: 15px; -moz-border-radius-topright: 15px; }
-article footer { -moz-border-radius-bottomleft: 15px; -moz-border-radius-bottomright: 15px; }
+article footer { -moz-border-radius-bottomleft: 15px; -moz-border-radius-bottomright: 15px; clear: both; }
 article figure { float: left; }
 article ul.tag-cloud, article .tag-cloud li { display: inline; }
 
