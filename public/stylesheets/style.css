@@ -68,3 +68,4 @@ footer.actions:before { content: ">"; }
 a.action:before, time.norloge:before, span.content-type:before { content: "["; }
 a.action:after,  time.norloge:after,  span.content-type:after  { content: "]"; }
 meter { display: block; border: 1px solid #333; background-color: orange; margin: 0 0 0 -10px; }
+#sidebar img.access { float: right; margin: 5px; }

@@ -2,7 +2,7 @@
   %h2
     = link_to user.name, user, :class => 'fn url'
   %figure.image
-    = image_tag user.avatar.url(:thumbnail), :class => 'avatar photo', :alt => "Avatar de #{user.name}"
+    = image_tag user.avatar_url(:thumbnail, request.ssl?), :class => 'avatar photo', :alt => "Avatar de #{user.name}"
   - if user.homesite
     %p
       Site personnel : #{link_to user.homesite, user.homesite, :class => 'url'}

@@ -41,6 +41,10 @@
 
     %aside#sidebar
       .login
+        - if request.ssl?
+          = image_tag 'icones/lock-secure.png', :alt => "Accès sécurisé (https)", :class => "access"
+        - else
+          = image_tag 'icones/lock-insecure.png', :alt => "Accès en clair (http)", :class => "access"
         - if current_user
           %p= current_user.name
           %p= link_to "Proposer un contenu", '/proposer_un_contenu'

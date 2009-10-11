@@ -11,11 +11,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   filter_parameter_logging :password, :password_confirmation
 
-  before_filter :seo_filter
+  before_filter :seo_filter_and_ssl
 
 protected
 
-  def seo_filter
+  def seo_filter_and_ssl
+    ActionController::Base.session_options[:secure] = request.ssl?
     @title         = %w(LinuxFr.org)
     @author        = nil
     @keywords      = %w(Linux Logiciel Libre GNU Free Software Actualité Forum Communauté)
