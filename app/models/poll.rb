@@ -19,7 +19,7 @@ class Poll < Content
   accepts_nested_attributes_for :answers, :allow_destroy => true,
       :reject_if => proc { |attrs| attrs['answer'].blank? }
 
-  attr_accessible :title
+  attr_accessible :title, :answers_attributes
 
   validates_presence_of :title, :message => "La question est obligatoire"
 
@@ -95,9 +95,8 @@ class Poll < Content
 
 ### Votes ###
 
-  # Number of votes + 1 to avoid division by 0
   def total_votes
-    answers.sum(:votes)
+    @total_votes ||= answers.sum(:votes)
   end
 
 ### Interest ###
