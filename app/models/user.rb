@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   
   delegate :login, :email, :to => :account
 
-  attr_accessible :name, :homesite, :jabber_id # TODO avatar?
+  attr_accessible :name, :homesite, :jabber_id, :avatar
 
 ### SEO ###
 

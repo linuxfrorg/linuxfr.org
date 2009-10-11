@@ -30,7 +30,8 @@
       = uform.text_field :homesite
     %p
       = uform.label :jabber_id, "Jabber ID"
-      xmpp:#{uform.text_field(:jabber_id)}
+      xmpp:
+      = uform.text_field :jabber_id
     %p
       = uform.label :avatar, "Avatar"
       = uform.file_field :avatar

@@ -18,7 +18,7 @@ class Board < ActiveRecord::Base
   belongs_to :user
   belongs_to :object, :polymorphic => true
 
-  attr_accessible :object_id, :object_type, :message, :user_agent
+  attr_accessible :object_id, :object_type, :message, :user_agent, :login
 
   default_scope :order => 'created_at DESC'
   named_scope :by_type, lambda { |type|

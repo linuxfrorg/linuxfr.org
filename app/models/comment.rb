@@ -23,7 +23,7 @@ class Comment < ActiveRecord::Base
   belongs_to :node, :touch => :last_commented_at, :counter_cache => :comments_count
   has_many :relevances
 
-  attr_accessible :title, :body, :node_id
+  attr_accessible :title, :body, :node_id, :parent_id
 
   named_scope :published, :conditions => {:state => 'published'}
   named_scope :descendants, lambda {|path|
@@ -74,7 +74,7 @@ class Comment < ActiveRecord::Base
   end
 
   def parent_id
-    @parent_id ||= materialized_path[-2 * PATH_SIZE .. - PATH_SIZE - 1].to_i unless new_record?
+    @parent_id ||= materialized_path && materialized_path[-2 * PATH_SIZE .. - PATH_SIZE - 1].to_i
     @parent_id
   end
 

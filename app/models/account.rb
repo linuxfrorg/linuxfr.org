@@ -31,7 +31,7 @@ class Account < ActiveRecord::Base
   belongs_to :user
   accepts_nested_attributes_for :user, :reject_if => proc { |attrs| attrs['user'].blank? }
 
-  attr_accessible :login, :email, :stylesheet, :user_attributes
+  attr_accessible :login, :email, :stylesheet, :password, :password_confirmation, :user_attributes
 
 ### Validation ###
 
