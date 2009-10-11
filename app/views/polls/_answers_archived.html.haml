@@ -2,6 +2,6 @@
   - poll.answers.each do |answer|
     %li
       #{answer.answer} :
-      %div(style="width: #{answer.percent}px;")
+      %meter(style="width: #{answer.percent}%;" min="0" max="100" value="#{answer.percent}")
         = answer.votes
       (#{answer.percent} %)
