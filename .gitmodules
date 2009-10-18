@@ -22,3 +22,6 @@
 [submodule "vendor/plugins/friendly_id"]
 	path = vendor/plugins/friendly_id
 	url = git://github.com/nono/friendly_id.git
+[submodule "vendor/plugins/rails_xss"]
+	path = vendor/plugins/rails_xss
+	url = git://github.com/NZKoz/rails_xss.git
