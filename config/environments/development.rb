@@ -1,5 +1,5 @@
 # Settings specified here will take precedence over those in config/environment.rb
-MY_DOMAIN = 'localhost:3000'
+MY_DOMAIN = 'dlfp.lo'
 
 # In the development environment your application's code is reloaded on
 # every request.  This slows down response time but is perfect for development

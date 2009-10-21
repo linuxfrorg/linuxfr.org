@@ -1,6 +1,11 @@
 # Dictionary
 Dictionary['logo'] = 'linuxfr2_gnu.png'
 
+# Category
+%w(Autres Administration Commentaires CSS Dépêches Forums Journaux Modération Entretiens Sondages 'Sites amis' Suivi Toolbar Tribune).each do |cat|
+  Category.create(:title => cat)
+end
+
 # Responses
 Response.create(:title => "Copie de dépêche externe",    :content => "La dépêche que vous avez proposée n'est qu'une copie d'un article\nprovenant d'un autre site (en partie ou en entier).\nNous refusons ce genre d'article, même si la source est citée.")
 Response.create(:title => "Dépêche trop courte",         :content => "La dépêche que vous avez proposée a été considérée trop courte pour être\nvalidée sur LinuxFr.org. En effet, nous n'acceptons que des dépêches de\nplusieurs lignes, comme celles qui passent sur le site habituellement.")

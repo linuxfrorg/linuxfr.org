@@ -1,5 +1,5 @@
 = article_for interview do |c|
   - c.title = link_to("Proposition d'entretien n°#{interview.id} : #{interview.title}", interview)
-  - c.body  = sanitize(spellify interview.body)
+  - c.body  = sanitize(interview.body)
   - if interview.news
     - c.actions = "<br/>&gt; Cet entretien est à l'origine de la dépêche suivante : #{link_to interview.news.title, interview.news}"
