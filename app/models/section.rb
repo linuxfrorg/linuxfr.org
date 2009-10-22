@@ -39,9 +39,9 @@ class Section < ActiveRecord::Base
   aasm_initial_state :published
 
   aasm_state :published
-  aasm_state :deleted
+  aasm_state :archived
 
-  aasm_event :reopen do transitions :from => [:deleted], :to => :published end
-  aasm_event :delete do transitions :from => [:published], :to => :deleted end
+  aasm_event :reopen do transitions :from => [:archived], :to => :published end
+  aasm_event :delete do transitions :from => [:published], :to => :archived end
 
 end
