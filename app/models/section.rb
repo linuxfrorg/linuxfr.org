@@ -28,8 +28,8 @@ class Section < ActiveRecord::Base
 
 ### Image ###
 
-  has_attached_file :image, :path => ':rails_root/public/sections/:id.:extension',
-                            :url  => '/sections/:id.:extension'
+  has_attached_file :image, :path => ':rails_root/public/images/sections/:id.:extension',
+                            :url  => '/images/sections/:id.:extension'
   validates_attachment_presence :image, :message => "L'image est obligatoire"
 
 ### Workflow ###
