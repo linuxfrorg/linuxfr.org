@@ -5,7 +5,7 @@
 #  id                 :integer(4)      not null, primary key
 #  state              :string(255)     default("published"), not null
 #  title              :string(255)
-#  cache_slug         :string(255)
+#  cached_slug        :string(255)
 #  image_file_name    :string(255)
 #  image_content_type :string(255)
 #  image_file_size    :integer(4)

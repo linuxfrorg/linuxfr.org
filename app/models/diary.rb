@@ -2,14 +2,14 @@
 #
 # Table name: diaries
 #
-#  id         :integer(4)      not null, primary key
-#  state      :string(255)     default("published"), not null
-#  title      :string(255)
-#  cache_slug :string(255)
-#  owner_id   :integer(4)
-#  body       :text
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer(4)      not null, primary key
+#  state       :string(255)     default("published"), not null
+#  title       :string(255)
+#  cached_slug :string(255)
+#  owner_id    :integer(4)
+#  body        :text
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 # The users can post on theirs diaries.

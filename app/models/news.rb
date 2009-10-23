@@ -5,7 +5,7 @@
 #  id           :integer(4)      not null, primary key
 #  state        :string(255)     default("draft"), not null
 #  title        :string(255)
-#  cache_slug   :string(255)
+#  cached_slug  :string(255)
 #  body         :text
 #  second_part  :text
 #  section_id   :integer(4)
