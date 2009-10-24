@@ -8,6 +8,7 @@
 #  cached_slug  :string(255)
 #  body         :text
 #  second_part  :text
+#  moderator_id :integer(4)
 #  section_id   :integer(4)
 #  author_name  :string(255)     default("anonymous"), not null
 #  author_email :string(255)     default("anonymous@dlfp.org"), not null
@@ -23,6 +24,7 @@ class News < Content
   include AASM
 
   belongs_to :section
+  belongs_to :moderator, :class_name => "User"
   has_many :boards, :as => :object, :dependent => :destroy
   has_many :links
   accepts_nested_attributes_for :links, :allow_destroy => true,

@@ -18,4 +18,4 @@ config.action_controller.perform_caching             = false
 config.action_mailer.raise_delivery_errors = false
 config.action_mailer.default_url_options = { :host => MY_DOMAIN }
 
-config.action_controller.asset_host = "static.dlfp.lo"
+# config.action_controller.asset_host = "static.dlfp.lo"

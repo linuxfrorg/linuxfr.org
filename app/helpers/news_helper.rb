@@ -11,7 +11,11 @@ module NewsHelper
   end
 
   def news_posted_by(news)
-    posted_by(news, news.user ? nil : news.author_name)
+    posted_by(news, news.user ? nil : news.author_name) + moderated_by(news)
+  end
+
+  def moderated_by(news)
+    news.moderator_id ? " Modéré par #{link_to news.moderator.name, news.moderator}." : ""
   end
 
 end

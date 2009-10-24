@@ -6,6 +6,7 @@ class CreateNews < ActiveRecord::Migration
       t.string :cached_slug
       t.text :body
       t.text :second_part
+      t.references :moderator
       t.references :section
       t.string :author_name,  :null => false, :default => 'anonymous'
       t.string :author_email, :null => false, :default => 'anonymous@dlfp.org'
