@@ -18,6 +18,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.string   :current_login_ip
       t.string   :last_login_ip
       t.string   :stylesheet
+      t.string   :old_password, :limit => 20
       t.timestamps
     end
 

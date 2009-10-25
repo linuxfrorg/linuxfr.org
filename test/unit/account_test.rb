@@ -20,6 +20,7 @@
 #  current_login_ip    :string(255)
 #  last_login_ip       :string(255)
 #  stylesheet          :string(255)
+#  old_password        :string(20)
 #  created_at          :datetime
 #  updated_at          :datetime
 #

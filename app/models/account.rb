@@ -1,5 +1,4 @@
 # == Schema Information
-# Schema version: 20090505233940
 #
 # Table name: accounts
 #
@@ -21,6 +20,7 @@
 #  current_login_ip    :string(255)
 #  last_login_ip       :string(255)
 #  stylesheet          :string(255)
+#  old_password        :string(20)
 #  created_at          :datetime
 #  updated_at          :datetime
 #
@@ -55,6 +55,18 @@ class Account < ActiveRecord::Base
     chars = [*'A'..'Z'] + [*'a'..'z'] + [*'1'..'9'] + %w(- + ! ? : £ $ % &)
     pass  = (0..7).map { chars.rand }.join
     self.password = self.password_confirmation = pass
+  end
+
+  # Try to import the password from templeet
+  def self.try_import_old_password(credentials)
+    login      = credentials[:login]
+    password   = credentials[:password]
+    conditions = ["LOGIN = ? AND ENCRYPT(?, old_password) = old_password", login, password]
+    account    = Account.first(:conditions => conditions)
+    return unless account
+    account.password = account.password_confirmation = password
+    account.old_password = nil
+    account.save
   end
 
 ### Workflow ###

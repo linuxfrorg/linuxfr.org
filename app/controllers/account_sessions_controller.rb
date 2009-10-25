@@ -8,6 +8,10 @@ class AccountSessionsController < ApplicationController
 
   def create
     @account_session = AccountSession.new(params[:account_session])
+    if !@account_session.valid?
+      Account.try_import_old_password(params[:account_session])
+      @account_session = AccountSession.new(params[:account_session])
+    end
     if @account_session.save
       flash[:success] = "Vous êtes connecté"
       redirect_to '/'
