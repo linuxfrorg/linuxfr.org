@@ -1,3 +1,3 @@
 = article_for preview do |c|
-  - c.title = "Sondage : #{preview.title}"
+  - c.title = sanitize("Sondage : #{preview.title}")
   - c.body  = render("answers_current", :poll => preview)

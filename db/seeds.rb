@@ -2,7 +2,7 @@
 Dictionary['logo'] = 'linuxfr2_gnu.png'
 
 # Category
-%w(Autres Administration Commentaires CSS Dépêches Forums Journaux Modération Entretiens Proposition Recherche Sondages 'Sites amis' Suivi Toolbar Tribune XMPP).each do |cat|
+%w(Autres Administration Commentaires CSS Dépêches Forums Journaux Modération Entretiens Proposition Recherche Sondages Sites\ amis Suivi Toolbar Tribune XMPP).each do |cat|
   Category.create(:title => cat)
 end
 
