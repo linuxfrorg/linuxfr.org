@@ -4,8 +4,5 @@
   - c.image = link_to(image_tag(news.section.image.url, :alt => news.section.title), news.section)
   - c.body  = capture do
     = sanitize(spellify news.wikified_body)
-    - news.links.each do |link|
-      %p
-        = link_to(link.title, link.url, 'data-hit' => link.id, :title => link.url, :lang => link.lang, :class => 'hit-counter')
-        (#{pluralize link.nb_clicks, 'clic'})
+    = render news.links
     = sanitize(spellify news.wikified_second_part)

@@ -17,8 +17,8 @@ class Dictionary < ActiveRecord::Base
 ### Shortcuts ###
 
   def self.[](k)
-    entry = first(:conditions => {:key => k}, :select => [:value])
-    entry && entry.value
+    term = first(:conditions => {:key => k}, :select => [:value])
+    term && term.value
   end
 
   def self.[]=(k,v)
@@ -26,6 +26,14 @@ class Dictionary < ActiveRecord::Base
     v = connection.quote(v)
     stmt = "INSERT INTO dictionaries(`key`, `value`) VALUES (#{k}, #{v}) ON DUPLICATE KEY UPDATE `value`=#{v}"
     connection.insert_sql(stmt)
+  end
+
+  def self.collection(coll)
+    all(:conditions => ['`key` LIKE ?', "#{coll}[%]"])
+  end
+
+  def self.collection_get(coll, k)
+    self["#{coll}[#{k}]"]
   end
 
 end

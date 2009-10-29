@@ -4,7 +4,5 @@
   - c.image = link_to(image_tag(preview.section.image.url, :alt => preview.section.title), preview.section)
   - c.body  = capture do
     = sanitize(spellify preview.wikified_body)
-    - preview.links.each do |link|
-      %p
-        = link_to link.title, link.url
+    = render preview.links
     = sanitize(spellify preview.wikified_second_part)

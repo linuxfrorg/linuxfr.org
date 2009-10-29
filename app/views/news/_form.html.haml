@@ -17,11 +17,12 @@
   = form.label :body, "Contenu de la dépêche"
   = form.text_area :body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
 #form-links
+  - langs = Dictionary.collection('lang')
   - form.fields_for :links do |lform|
     %p.link
       = lform.text_field :title
       = lform.url_field  :url
-      = lform.text_field :lang
+      = lform.collection_select :lang, langs, :key, :value
 %p
   = form.label :second_part, "Seconde partie"
   = form.text_area :second_part, :spellcheck => 'true', :class => 'markItUp'

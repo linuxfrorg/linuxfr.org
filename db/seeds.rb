@@ -1,6 +1,28 @@
 # Dictionary
 Dictionary['logo'] = 'linuxfr2_gnu.png'
 
+# Langs
+Dictionary['lang[fr]'] = 'Français'
+Dictionary['lang[en]'] = 'Anglais'
+Dictionary['lang[de]'] = 'Allemand'
+Dictionary['lang[it]'] = 'Italien'
+Dictionary['lang[es]'] = 'Espagnol'
+Dictionary['lang[fi]'] = 'Finnois'
+Dictionary['lang[eu]'] = 'Basque'
+Dictionary['lang[ja]'] = 'Japonais'
+Dictionary['lang[ru]'] = 'Russe'
+Dictionary['lang[pt]'] = 'Portugais'
+Dictionary['lang[nl]'] = 'Néerlandais'
+Dictionary['lang[da]'] = 'Danois'
+Dictionary['lang[el]'] = 'Grec'
+Dictionary['lang[sv]'] = 'Suédois'
+Dictionary['lang[cn]'] = 'Chinois'
+Dictionary['lang[pl]'] = 'Polonais'
+Dictionary['lang[xx]'] = '!? hmmm ?!'
+Dictionary['lang[ct]'] = 'Catalan'
+Dictionary['lang[no]'] = 'Norvégien'
+Dictionary['lang[ko]'] = 'Coréen'
+
 # Category
 %w(Autres Administration Commentaires CSS Dépêches Forums Journaux Modération Entretiens Proposition Recherche Sondages Sites\ amis Suivi Toolbar Tribune XMPP).each do |cat|
   Category.create(:title => cat)

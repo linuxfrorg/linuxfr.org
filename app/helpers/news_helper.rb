@@ -11,7 +11,7 @@ module NewsHelper
   end
 
   def news_posted_by(news)
-    posted_by(news, news.user ? nil : news.author_name) + moderated_by(news)
+    (posted_by(news, news.user ? nil : news.author_name) + moderated_by(news)).html_safe!
   end
 
   def moderated_by(news)
