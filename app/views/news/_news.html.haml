@@ -5,4 +5,5 @@
   - c.body  = capture do
     = sanitize news.wikified_body
     = render news.links
-    = sanitize news.wikified_second_part
+    - if defined?(with_second_part) && with_second_part
+      = sanitize news.wikified_second_part
