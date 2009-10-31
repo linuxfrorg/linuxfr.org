@@ -6,6 +6,7 @@ class CreateVotes < ActiveRecord::Migration
       t.boolean :vote
       t.datetime :created_at
     end
+    add_index :votes, [:node_id, :user_id], :unique => true
   end
 
   def self.down

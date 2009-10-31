@@ -5,6 +5,7 @@ class CreateFriendSites < ActiveRecord::Migration
       t.string :url
       t.integer :position
     end
+    add_index :friend_sites, :position
   end
 
   def self.down

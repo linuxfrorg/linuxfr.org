@@ -6,6 +6,8 @@ class CreatePolls < ActiveRecord::Migration
       t.string :cached_slug
       t.timestamps
     end
+    add_index :polls, :state
+    add_index :polls, :cached_slug
   end
 
   def self.down

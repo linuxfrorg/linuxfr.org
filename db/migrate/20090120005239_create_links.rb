@@ -8,6 +8,7 @@ class CreateLinks < ActiveRecord::Migration
       t.integer :nb_clicks, :default => 0
       t.timestamps
     end
+    add_index :links, :news_id
   end
 
   def self.down

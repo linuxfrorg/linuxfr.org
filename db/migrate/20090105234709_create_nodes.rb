@@ -10,6 +10,7 @@ class CreateNodes < ActiveRecord::Migration
       t.datetime :last_commented_at
       t.timestamps
     end
+    add_index :nodes, [:content_type, :content_id], :unique => true
   end
 
   def self.down

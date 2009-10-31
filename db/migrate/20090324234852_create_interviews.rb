@@ -9,6 +9,8 @@ class CreateInterviews < ActiveRecord::Migration
       t.references :assigned_to_user
       t.timestamps
     end
+    add_index :interviews, :cached_slug
+    add_index :interviews, :state
   end
 
   def self.down

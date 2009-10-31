@@ -7,6 +7,7 @@ class CreatePollAnswers < ActiveRecord::Migration
       t.integer :position
       t.timestamps
     end
+    add_index :poll_answers, [:poll_id, :position]
   end
 
   def self.down
