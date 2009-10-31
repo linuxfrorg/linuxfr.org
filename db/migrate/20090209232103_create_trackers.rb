@@ -9,6 +9,8 @@ class CreateTrackers < ActiveRecord::Migration
       t.references :assigned_to_user
       t.timestamps
     end
+    add_index :trackers, :state
+    add_index :trackers, :cached_slug
   end
 
   def self.down

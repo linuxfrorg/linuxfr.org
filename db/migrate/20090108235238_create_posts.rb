@@ -8,6 +8,8 @@ class CreatePosts < ActiveRecord::Migration
       t.references :forum
       t.timestamps
     end
+    add_index :posts, :state
+    add_index :posts, :cached_slug
   end
 
   def self.down

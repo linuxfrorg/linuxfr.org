@@ -2,8 +2,8 @@ class NewsController < ApplicationController
   after_filter  :marked_as_read, :only => [:show]
 
   def index
-    @order = params[:order] || 'created_at'
-    @news  = News.published.paginate(:page => params[:page], :per_page => 10, :order => "nodes.#{@order} DESC", :joins => :node)
+    @order = params[:order] ? "nodex.#{params[:order]}" : 'news.created_at'
+    @news  = News.published.paginate(:page => params[:page], :per_page => 10, :order => "#{@order} DESC", :joins => :node)
     respond_to do |wants|
       wants.html
       wants.atom

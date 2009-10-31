@@ -7,6 +7,8 @@ class CreateWikiPages < ActiveRecord::Migration
       t.text :body
       t.timestamps
     end
+    add_index :wiki_pages, :state
+    add_index :wiki_pages, :cached_slug
   end
 
   def self.down

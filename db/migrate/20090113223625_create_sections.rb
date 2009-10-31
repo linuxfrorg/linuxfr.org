@@ -13,6 +13,7 @@ class CreateSections < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :sections, :cached_slug
   end
 
   def self.down

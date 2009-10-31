@@ -4,6 +4,8 @@ class CreateTags < ActiveRecord::Migration
       t.string :name
       t.integer :taggings_count, :default => 0, :null => false
     end
+    add_index :tags, :name
+    add_index :tags, :taggings_count
   end
 
   def self.down

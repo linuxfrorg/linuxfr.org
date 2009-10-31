@@ -8,6 +8,7 @@ class CreateBoards < ActiveRecord::Migration
       t.text :message
       t.datetime :created_at
     end
+    add_index :boards, [:object_type, :object_id]
   end
 
   def self.down

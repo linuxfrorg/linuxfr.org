@@ -12,6 +12,8 @@ class CreateNews < ActiveRecord::Migration
       t.string :author_email, :null => false, :default => 'anonymous@dlfp.org'
       t.timestamps
     end
+    add_index :news, [:state, :section_id]
+    add_index :news, :cached_slug
   end
 
   def self.down

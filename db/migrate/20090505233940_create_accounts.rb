@@ -27,6 +27,8 @@ class CreateAccounts < ActiveRecord::Migration
     execute "ALTER TABLE `accounts` MODIFY COLUMN `persistence_token` VARCHAR(255) BINARY CHARACTER SET latin1 COLLATE latin1_bin NOT NULL"
     execute "ALTER TABLE `accounts` MODIFY COLUMN `single_access_token` VARCHAR(255) BINARY CHARACTER SET latin1 COLLATE latin1_bin NOT NULL"
     execute "ALTER TABLE `accounts` MODIFY COLUMN `perishable_token` VARCHAR(255) BINARY CHARACTER SET latin1 COLLATE latin1_bin NOT NULL"
+
+    add_index :accounts, :user_id
   end
 
   def self.down

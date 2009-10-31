@@ -11,6 +11,8 @@ class CreateComments < ActiveRecord::Migration
       t.string :materialized_path, :limit => 1022
       t.timestamps
     end
+    add_index :comments, :node_id
+    add_index :comments, [:user_id, :answered_to_self]
   end
 
   def self.down

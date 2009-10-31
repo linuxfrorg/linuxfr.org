@@ -7,6 +7,7 @@ class CreateForums < ActiveRecord::Migration
       t.integer :position
       t.timestamps
     end
+    add_index :forums, :cached_slug
   end
 
   def self.down

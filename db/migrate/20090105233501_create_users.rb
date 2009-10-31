@@ -15,6 +15,7 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :users, :cached_slug
   end
 
   def self.down
