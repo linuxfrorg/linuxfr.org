@@ -25,7 +25,7 @@ class PollAnswer < ActiveRecord::Base
 
   def percent
     return 0.0 if poll.total_votes == 0
-    100.0 * votes / poll.total_votes
+    "%.1f" % (100.0 * votes / poll.total_votes)
   end
 
   def vote(ip)
