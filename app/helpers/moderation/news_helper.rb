@@ -13,6 +13,5 @@ module Moderation::NewsHelper
     voters = votes.map { |v| v.user.name }
     voters.to_sentence
   end
-  # TODO safe_helper :voters_condition
 
 end
