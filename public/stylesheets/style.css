@@ -20,7 +20,7 @@ body, nav, header, aside, figure, section, footer, article { margin: 0; padding:
 #site form { float: right; }
 
 /* Footer */
-#bigfooter > div { display: inline-block; height: 100%; width: 24%; vertical-align: top; }
+#bigfooter nav, #bigfooter section { display: inline-block; height: 100%; width: 24%; vertical-align: top; }
 #bigfooter li:hover { background-color: #aaf; }
 
 /* Contenus */

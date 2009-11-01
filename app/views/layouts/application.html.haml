@@ -6,7 +6,7 @@
       = stylesheet_link_tag current_account_session.stylesheet
     - else
       = stylesheet_link_tag 'style', 'markitup'
-    <link rel="icon" type="image/x-icon" href="/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
     - if @author
       %meta(name="author" content=@author)
     %meta(name="description" content=@description)
@@ -46,7 +46,7 @@
         - else
           = image_tag 'icones/lock-insecure.png', :alt => "Accès en clair (http)", :class => "access"
         - if current_user
-          %p= current_user.name
+          %h1= current_user.name
           %p= link_to "Proposer un contenu", '/proposer_un_contenu'
           %p= link_to "Mon tableau de bord", dashboard_path
           %p= link_to "Modifier mes préférences", edit_account_path
@@ -70,23 +70,23 @@
         %p= link_to "Revenir en haut de page", '#top', :class => 'scroll'
 
     %footer#bigfooter
-      #last-comments
-        %h2 Derniers commentaires
+      %nav#last-comments
+        %h1 Derniers commentaires
         %ul
           - @last_comments.each do |comment|
             %li= link_to comment.title, node_comment_url(:node_id => comment.node_id, :id => comment.id)
-      #popular-tags
-        %h2 Tags populaires
+      %nav#popular-tags
+        %h1 Tags populaires
         %ul.tag-cloud
           - @popular_tags.each do |tag|
             %li= link_to tag.name, public_tag_url(:id => tag.name)
-      #friends
-        %h2 Sites amis
+      %section#friends
+        %h1 Sites amis
         %ul
           - @friend_sites.each do |site|
             %li= link_to site.title, site.url
-      #about-us
-        %h2 À propos de LinuxFr.org
+      %nav#about-us
+        %h1 À propos de LinuxFr.org
         %ul
           %li= link_to "Nous contacter", '/contact'
           %li= link_to "Faire un don", '/faire_un_don'
