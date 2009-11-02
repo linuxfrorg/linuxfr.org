@@ -54,7 +54,7 @@ ActionController::Routing::Routes.draw do |map|
   # Boards
   map.with_options :controller => 'boards' do |b|
     b.add_board '/board/add', :action => 'add', :conditions => { :method => :post }
-    b.with_options :action => 'index' do |i|
+    b.with_options :action => 'show' do |i|
       i.writing_board  '/redaction',       :id => Board.writing
       i.free_board     '/board',           :id => Board.free
       i.free_board_xml '/board/index.xml', :id => Board.free, :format => 'xml'

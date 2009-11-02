@@ -1,7 +1,6 @@
 class CreateBoards < ActiveRecord::Migration
   def self.up
     create_table :boards do |t|
-      t.string :login
       t.string :user_agent
       t.references :user
       t.references :object, :polymorphic => true

@@ -5,7 +5,7 @@ xml.board(:site => root_url) do
     xml.post(:time => board.created_at.to_s(:timestamp), :id => board.id) do
       xml.info board.user_agent
       xml.message board.message
-      xml.login board.login
+      xml.login board.user.name
     end
   end
 end

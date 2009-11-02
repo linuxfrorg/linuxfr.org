@@ -1,7 +1,7 @@
 class BoardsController < ApplicationController
   before_filter :user_required
 
-  def index
+  def show
     @board = Board[params[:id]]
     raise ActiveRecord::RecordNotFound unless @board && @board.accessible_by?(current_user)
     @boards = Board.by_type(@board.object_type)
@@ -16,7 +16,6 @@ class BoardsController < ApplicationController
     raise ActiveRecord::RecordNotFound unless @board && @board.accessible_by?(current_user)
     @board.message    = board_auto_link(@board.message)
     @board.user_id    = current_user.id
-    @board.login      = current_user.login
     @board.user_agent = request.user_agent
     @board.save
     respond_to do |wants|

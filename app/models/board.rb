@@ -3,7 +3,6 @@
 # Table name: boards
 #
 #  id          :integer(4)      not null, primary key
-#  login       :string(255)
 #  user_agent  :string(255)
 #  user_id     :integer(4)
 #  object_id   :integer(4)
@@ -18,7 +17,7 @@ class Board < ActiveRecord::Base
   belongs_to :user
   belongs_to :object, :polymorphic => true
 
-  attr_accessible :object_id, :object_type, :message, :user_agent, :login
+  attr_accessible :object_id, :object_type, :message, :user_agent
 
   default_scope :order => 'created_at DESC'
   named_scope :by_type, lambda { |type|
@@ -49,7 +48,6 @@ class Board < ActiveRecord::Base
 
   validates_presence_of :object_type
   validates_presence_of :object_id
-  validates_presence_of :login
   validates_presence_of :user_agent
   validates_presence_of :message
 
