@@ -8,9 +8,14 @@ namespace :friendly_id do
     while records = sluggable_class.find(:all, :include => :slugs, :conditions => "slugs.id IS NULL", :limit => 1000) do
       break if records.size == 0
       records.each do |r|
-        r.send(:set_slug)
-        r.save!
-        puts "#{sluggable_class.to_s}(#{r.id}) friendly_id set to \"#{r.slug.name}\""
+        begin
+          r.send(:set_slug)
+          r.save!
+          puts "#{sluggable_class.to_s}(#{r.id}) friendly_id set to \"#{r.slug.name}\""
+        rescue
+          $stderr.puts "Id = #{r.id}"
+          raise
+        end
       end
     end
   end
