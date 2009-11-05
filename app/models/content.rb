@@ -15,7 +15,7 @@ class Content < ActiveRecord::Base
 ### ACL ###
 
   def readable_by?(user)
-    state != 'deleted' || (user && user.admin?)
+    !deleted? || (user && user.admin?)
   end
 
   def creatable_by?(user)
@@ -35,9 +35,9 @@ class Content < ActiveRecord::Base
   end
 
   def votable_by?(user)
-    user && readable_by?(user) &&
-        self.user != user      &&
-        user.votes.count(:conditions => {:node_id => node.id}) == 0
+    user && !deleted? && self.user != user &&
+        (Time.now - created_at) < 3.months &&
+        !user.votes.exists?(:node_id => node.id)
   end
 
 ### Workflow ###
@@ -46,6 +46,10 @@ class Content < ActiveRecord::Base
     node.update_attribute(:public, false)
     self.state = 'deleted'
     save
+  end
+
+  def deleted?
+    state == 'deleted'
   end
 
 ### Interest ###

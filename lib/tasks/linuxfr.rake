@@ -4,6 +4,7 @@ namespace :linuxfr do
     :flush_poll_ips,
     :delete_old_passive_accounts,
     :delete_old_boards,
+    :delete_old_votes,
     'sitemap:refresh',
     'friendly_id:remove_old_slugs'
   ]
@@ -20,7 +21,12 @@ namespace :linuxfr do
 
   desc "Delete old messages in the boards"
   task :delete_old_boards => :environment do
-    Board.delete_all(["created_at <= ? AND object_type = ?", DateTime.now - 12.hours, Board.free])
-    Board.delete_all(["created_at <= ?", DateTime.now - 1.month])
+    Board.old.delete_all
+  end
+
+  desc "Delete old votes on contents and comments (users cannot vote on them)"
+  task :delete_old_votes => :environment do
+    Vote.old.delete_all
+    Relevance.old.delete_all
   end
 end

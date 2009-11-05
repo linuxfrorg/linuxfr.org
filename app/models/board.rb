@@ -23,6 +23,10 @@ class Board < ActiveRecord::Base
   named_scope :by_type, lambda { |type|
     { :include => [:user], :conditions => { :object_type => type } }
   }
+  named_scope :old, lambda {
+    { :conditions => ["(created_at < ? AND object_type = ?) OR (created_at < ?)",
+      DateTime.now - 12.hours, Board.free, DateTime.now - 1.month] }
+  }
 
 ### Types ###
 

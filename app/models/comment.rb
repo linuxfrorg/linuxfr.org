@@ -127,7 +127,9 @@ class Comment < ActiveRecord::Base
   end
 
   def votable_by?(user)
-    user && user.relevances.count(:conditions => {:comment_id => id}) == 0 && !deleted?
+    user && !deleted? && self.user != user &&
+        (Time.now - created_at) < 3.months &&
+        !user.relevances.exists?(:comment_id => id)
   end
 
 ### Workflow ###

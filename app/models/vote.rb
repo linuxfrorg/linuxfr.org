@@ -19,6 +19,10 @@ class Vote < ActiveRecord::Base
   belongs_to :user
   belongs_to :node
 
+  named_scope :old, lambda {
+    { :conditions => ["created_at < ?", DateTime.now - 3.months] }
+  }
+
   validates_uniqueness_of :node_id, :scope => :user_id
 
   # An user can vote for a node...

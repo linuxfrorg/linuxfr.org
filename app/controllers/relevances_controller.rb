@@ -3,13 +3,13 @@ class RelevancesController < ApplicationController
 
   def for
     comment = Comment.find(params[:comment_id])
-    Relevance.for(current_user, comment)
+    Relevance.for(current_user, comment) if comment.votable_by?(current_user)
     redirect_to :back
   end
 
   def against
     comment = Comment.find(params[:comment_id])
-    Relevance.against(current_user, comment)
+    Relevance.against(current_user, comment) if comment.votable_by?(current_user)
     redirect_to :back
   end
 

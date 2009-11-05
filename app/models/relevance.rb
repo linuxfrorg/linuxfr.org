@@ -16,6 +16,10 @@ class Relevance < ActiveRecord::Base
   belongs_to :user
   belongs_to :comment
 
+  named_scope :old, lambda {
+    { :conditions => ["created_at < ?", DateTime.now - 3.months] }
+  }
+
   validates_uniqueness_of :comment_id, :scope => :user_id
 
   # An user can vote for a comment...
