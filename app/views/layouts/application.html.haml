@@ -34,7 +34,7 @@
         %li= link_to "Plan", static_path(:id => 'plan')
       - form_tag search_path, :method => :get do
         <input id="query" name="query" type="search" placeholder="Entrer un mot-clé" />
-        = submit_tag "Rechercher"
+        = submit_tag "Rechercher", :name => nil
 
     %header#branding
       = logo
