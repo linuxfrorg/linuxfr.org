@@ -13,6 +13,7 @@ class CreateComments < ActiveRecord::Migration
     end
     add_index :comments, :node_id
     add_index :comments, [:user_id, :answered_to_self]
+    add_index :comments, [:state, :created_at]
   end
 
   def self.down
