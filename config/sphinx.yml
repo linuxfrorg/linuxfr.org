@@ -1,5 +1,6 @@
 development: &my_settings
   pid_file: tmp/pids/searchd.pid
+  mem_limit: 256M
   morphology: stem_en
   enable_star: 1
   min_infix_len: 3

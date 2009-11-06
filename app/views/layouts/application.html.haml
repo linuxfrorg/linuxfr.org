@@ -7,6 +7,7 @@
     - else
       = stylesheet_link_tag 'style', 'markitup'
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
+    <link rel="search" type="application/opensearchdescription+xml" title="Recherche LinuxFr.org" href="/opensearch.xml" />
     - if @author
       %meta(name="author" content=@author)
     %meta(name="description" content=@description)
@@ -33,7 +34,7 @@
         %li= link_to "Suivi", trackers_path
         %li= link_to "Plan", static_path(:id => 'plan')
       - form_tag search_path, :method => :get do
-        <input id="query" name="query" type="search" placeholder="Entrer un mot-clé" />
+        <input id="query" name="q" type="search" placeholder="Entrer un mot-clé" />
         = submit_tag "Rechercher", :name => nil
 
     %header#branding

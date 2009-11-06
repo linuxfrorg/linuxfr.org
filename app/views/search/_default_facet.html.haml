@@ -3,4 +3,4 @@
   %ul
     - @facets.each do |type,count|
       %li
-        = link_to "#{type} (#{count})", search_by_type_path(:type => type, :query => @query)
+        = link_to "#{type} (#{count})", search_by_type_path(:type => type, :q => @query)

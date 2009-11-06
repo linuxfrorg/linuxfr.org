@@ -6,14 +6,14 @@ class SearchController < ApplicationController
   }
 
   def index
-    @query   = params[:query].to_s
+    @query   = params[:q].to_s
     @facet   = 'default'
     @results = ThinkingSphinx::Search.search(@query + '*', :page => params[:page], :per_page => 10)
     @facets  = ThinkingSphinx::Search.facets(@query + '*')[:class]
   end
 
   def type
-    @query   = params[:query].to_s
+    @query   = params[:q].to_s
     @type    = params[:type].constantize
     @facet   = FACET_BY_TYPE[params[:type]]
     @results = @type.search(@query + '*', :page => params[:page], :per_page => 10)
@@ -22,7 +22,7 @@ class SearchController < ApplicationController
   end
 
   def facet
-    @query   = params[:query].to_s
+    @query   = params[:q].to_s
     @type    = params[:type].constantize
     @facet   = FACET_BY_TYPE[params[:type]]
     by_facet = @type.facets(@query + '*', :page => params[:page], :per_page => 10)
