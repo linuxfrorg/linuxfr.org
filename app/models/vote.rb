@@ -27,6 +27,7 @@ class Vote < ActiveRecord::Base
 
   # An user can vote for a node...
   def self.for(user, node)
+    Account.decrement_counter(:nb_votes, user.account.id)
     cancel(user, node)
     user.votes.create(:node_id => node.id, :vote => true)
     Node.increment_counter(:score, node.id)
@@ -35,6 +36,7 @@ class Vote < ActiveRecord::Base
 
   # ...or he can vote against it
   def self.against(user, node)
+    Account.decrement_counter(:nb_votes, user.account.id)
     cancel(user, node)
     user.votes.create(:node_id => node.id, :vote => false)
     Node.decrement_counter(:score, node.id)

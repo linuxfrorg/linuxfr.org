@@ -1,6 +1,7 @@
 namespace :linuxfr do
   desc "Daily crontab"
   task :daily => [
+    :daily_karma,
     :flush_poll_ips,
     :delete_old_passive_accounts,
     :delete_old_boards,
@@ -8,6 +9,11 @@ namespace :linuxfr do
     'sitemap:refresh',
     'friendly_id:remove_old_slugs'
   ]
+
+  desc "New day => update karma and give new votes"
+  task :daily_karma => :environment do
+    Account.active.find_each {|a| a.daily_karma }
+  end
 
   desc "New day => the users can revote on polls"
   task :flush_poll_ips => :environment do

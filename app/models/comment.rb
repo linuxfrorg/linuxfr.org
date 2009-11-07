@@ -100,6 +100,12 @@ class Comment < ActiveRecord::Base
 
 ### Calculations ###
 
+  before_create :default_score
+
+  def default_score
+    self.score = Math.log10(user.account.karma).to_i - 1
+  end
+
   def nb_answers
     self.class.published.descendants(materialized_path).count
   end
@@ -129,6 +135,7 @@ class Comment < ActiveRecord::Base
   def votable_by?(user)
     user && !deleted? && self.user != user &&
         (Time.now - created_at) < 3.months &&
+        user.account.nb_votes > 0          &&
         !user.relevances.exists?(:comment_id => id)
   end
 

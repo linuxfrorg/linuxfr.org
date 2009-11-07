@@ -21,6 +21,8 @@
 #  last_login_ip       :string(255)
 #  stylesheet          :string(255)
 #  old_password        :string(20)
+#  karma               :integer(4)      default(20), not null
+#  nb_votes            :integer(4)      default(0), not null
 #  created_at          :datetime
 #  updated_at          :datetime
 #
@@ -37,13 +39,13 @@ class Account < ActiveRecord::Base
 
   validates_presence_of :login, :message => "Veuillez choisir un pseudo"
   validates_presence_of :email, :message => "Veuillez entrer votre adresse email"
-  validates_uniqueness_of :email, :case_sensitive => false, :message => "Cette adresse email est déjà utilisée pour un compte LinuxFr.org"
 
 ### Authentication ###
 
   acts_as_authentic do |config|
     config.validates_length_of_login_field_options :within => 3..30, :message => "Le login doit faire au moins 3 caractères, et pas plus de 30 caractères"
     config.validates_uniqueness_of_login_field_options :case_sensitive => true, :message => "Ce login est déjà utilisé, veuillez en choisir un autre"
+    config.validates_uniqueness_of_email_field_options :case_sensitive => true, :message => "Cette adresse email est déjà utilisée pour un compte LinuxFr.org"
     config.perishable_token_valid_for 24.hours
   end
 
@@ -95,6 +97,25 @@ class Account < ActiveRecord::Base
 
   def reactivation
     user.reactivate!
+  end
+
+### Karma ###
+
+  def daily_karma
+    self.karma -= Vote.count(:conditions => ["nodes.user_id = ? AND (votes.created_at BETWEEN ? AND ?) AND vote = 0",
+                                             self.id, DateTime.yesterday.beginning_of_day, DateTime.yesterday.end_of_day],
+                             :joins => :node).to_i
+    self.karma += Vote.count(:conditions => ["nodes.user_id = ? AND (votes.created_at BETWEEN ? AND ?) AND vote = 1",
+                                             self.id, DateTime.yesterday.beginning_of_day, DateTime.yesterday.end_of_day],
+                             :joins => :node).to_i
+    self.karma -= Relevance.count(:conditions => ["comments.user_id = ? AND (relevances.created_at BETWEEN ? AND ?) AND vote = 0",
+                                                  self.id, DateTime.yesterday.beginning_of_day, DateTime.yesterday.end_of_day],
+                                  :joins => :comment).to_i
+    self.karma += Relevance.count(:conditions => ["comments.user_id = ? AND (relevances.created_at BETWEEN ? AND ?) AND vote = 1",
+                                                  self.id, DateTime.yesterday.beginning_of_day, DateTime.yesterday.end_of_day],
+                                  :joins => :comment).to_i
+    self.nb_votes = 3 + karma / 10
+    save
   end
 
 ### Presentation ###

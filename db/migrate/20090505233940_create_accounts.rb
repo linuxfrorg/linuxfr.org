@@ -17,6 +17,8 @@ class CreateAccounts < ActiveRecord::Migration
       t.datetime :last_login_at
       t.string   :current_login_ip
       t.string   :last_login_ip
+      t.integer  :karma,                :null => false, :default => 20
+      t.integer  :nb_votes,             :null => false, :default => 0
       t.string   :stylesheet
       t.string   :old_password, :limit => 20
       t.timestamps
@@ -29,6 +31,11 @@ class CreateAccounts < ActiveRecord::Migration
     execute "ALTER TABLE `accounts` MODIFY COLUMN `perishable_token` VARCHAR(255) BINARY CHARACTER SET latin1 COLLATE latin1_bin NOT NULL"
 
     add_index :accounts, :user_id
+    add_index :accounts, :login
+    add_index :accounts, :email
+    add_index :accounts, :persistence_token
+    add_index :accounts, :single_access_token
+    add_index :accounts, :perishable_token
   end
 
   def self.down

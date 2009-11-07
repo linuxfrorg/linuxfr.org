@@ -23,6 +23,8 @@
 #  old_password        :string(20)
 #  created_at          :datetime
 #  updated_at          :datetime
+#  karma               :integer(4)      default(20), not null
+#  nb_votes            :integer(4)      default(0), not null
 #
 
 require 'test_helper'

@@ -48,6 +48,7 @@
           = image_tag 'icones/lock-insecure.png', :alt => "Accès en clair (http)", :class => "access"
         - if current_user
           %h1= current_user.name
+          %p Il vous reste #{current_user.account.nb_votes} avis
           %p= link_to "Proposer un contenu", '/proposer_un_contenu'
           %p= link_to "Mon tableau de bord", dashboard_path
           %p= link_to "Modifier mes préférences", edit_account_path

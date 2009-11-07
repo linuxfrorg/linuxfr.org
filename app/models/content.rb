@@ -37,6 +37,7 @@ class Content < ActiveRecord::Base
   def votable_by?(user)
     user && !deleted? && self.user != user &&
         (Time.now - created_at) < 3.months &&
+        user.account.nb_votes > 0          &&
         !user.votes.exists?(:node_id => node.id)
   end
 
