@@ -4,6 +4,7 @@
   %tr
     %th Login
     %th Email
+    %th Karma
     %th IP
     %th Status
     %th Date de création
@@ -12,6 +13,7 @@
     %tr
       %td= link_to account.login, account.user
       %td= account.email
+      %td= account.karma
       %td= account.current_login_ip
       %td= account.state
       %td= account.created_at.to_s(:posted)

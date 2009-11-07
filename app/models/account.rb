@@ -118,6 +118,11 @@ class Account < ActiveRecord::Base
     save
   end
 
+  def give_karma(points)
+    self.karma += points
+    save
+  end
+
 ### Presentation ###
 
   def email_address

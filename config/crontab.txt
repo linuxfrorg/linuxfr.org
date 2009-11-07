@@ -1,1 +1,2 @@
 1 0 * * *  rake linuxfr:daily
+9 * * * *  rake ts:in:delta

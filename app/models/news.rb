@@ -80,6 +80,8 @@ class News < Content
 
   def publish
     node.update_attribute(:public, true)
+    author = Account.find_by_email(author_email)
+    author.give_karma(50) if author
   end
 
   def self.accept_threshold
