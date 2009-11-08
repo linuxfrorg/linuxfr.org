@@ -39,7 +39,7 @@ class Diary < Content
     indexes user.name, :as => :user
     where "state = 'published'"
     set_property :field_weights => { :title => 10, :user => 4, :body => 2 }
-    set_property :delta => :datetime, :threshold => 1.hour
+    set_property :delta => :datetime, :threshold => 75.minutes
   end
 
 ### ACL ###

@@ -28,9 +28,10 @@ Rails::Initializer.run do |config|
   config.gem 'paperclip', :version => '~>2.1'
   config.gem 'wikitext', :version => '~>1.9'
   config.gem 'authlogic', :version => '~>2.1'
-  config.gem 'rubyist-aasm', :lib => 'aasm', :version => '~>2.1'
-  config.gem 'mislav-will_paginate', :lib => 'will_paginate', :version => '~>2.3'
-  config.gem 'freelancing-god-thinking-sphinx', :lib => 'thinking_sphinx', :version => '~>1.2'
+  config.gem 'aasm', :version => '~>2.1'
+  config.gem 'will_paginate', :version => '~>2.3'
+  config.gem 'thinking-sphinx', :version => '~>1.3'
+  config.gem 'ts-datetime-delta', :lib => 'thinking_sphinx/deltas/datetime_delta', :version => '~>1.0'
   #config.gem 'json', :version => '~>1.1'
   #ActiveSupport::JSON.backend = "JSONGem"
   #config.gem 'libxml-ruby', :version => '~>0.9'

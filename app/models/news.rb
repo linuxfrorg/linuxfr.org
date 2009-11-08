@@ -61,7 +61,7 @@ class News < Content
     indexes section.title, :as => :section, :facet => true
     where "news.state = 'published'"
     set_property :field_weights => { :title => 25, :user => 10, :body => 3, :second_part => 2, :section => 4 }
-    set_property :delta => :datetime, :threshold => 1.hour
+    set_property :delta => :datetime, :threshold => 75.minutes
   end
 
 ### Workflow ###
@@ -96,12 +96,6 @@ class News < Content
 
   attr_accessor :commit_message
   attr_accessor :committer
-
-  versioning(:title, :body, :second_part) do |v|
-    v.repository = Rails.root.join('git_store', 'news.git')
-    v.message    = lambda { |news| news.commit_message }
-    v.committer  = lambda { |news| [news.author_name, news.author_email] }
-  end
 
 ### ACL ###
 

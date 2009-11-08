@@ -32,19 +32,13 @@ class WikiPage < Content
     indexes user.name, :as => :user
     where "state = 'public'"
     set_property :field_weights => { :title => 15, :user => 1, :body => 5 }
-    set_property :delta => :datetime, :threshold => 1.hour
+    set_property :delta => :datetime, :threshold => 75.minutes
   end
 
 ### Versioning ###
 
   attr_accessor :commit_message
   attr_accessor :committer
-
-  versioning(:title, :body) do |v|
-    v.repository = Rails.root.join('git_store', 'wiki.git')
-    v.message    = lambda { |page| page.commit_message }
-    v.committer  = lambda { |page| [page.committer.name, page.committer.email] }
-  end
 
 ### ACL ###
 

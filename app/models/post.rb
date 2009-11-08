@@ -40,7 +40,7 @@ class Post < Content
     indexes forum.title, :as => :forum, :facet => true
     where "posts.state = 'published'"
     set_property :field_weights => { :title => 10, :user => 4, :body => 2, :forum => 3 }
-    set_property :delta => :datetime, :threshold => 1.hour
+    set_property :delta => :datetime, :threshold => 75.minutes
   end
 
 ### ACL ###

@@ -41,7 +41,7 @@ class Tracker < Content
     indexes user.name, :as => :user
     indexes category.title, :as => :category, :facet => true
     set_property :field_weights => { :title => 2, :user => 1, :body => 1, :category => 1 }
-    set_property :delta => :datetime, :threshold => 1.hour
+    set_property :delta => :datetime, :threshold => 75.minutes
   end
 
 ### Workflow ###

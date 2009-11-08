@@ -35,7 +35,7 @@ class Poll < Content
     indexes answers.answer, :as => :answers
     where "state IN ('published', 'archived')"
     set_property :field_weights => { :title => 10, :user => 3, :answers => 4 }
-    set_property :delta => :datetime, :threshold => 1.hour
+    set_property :delta => :datetime, :threshold => 75.minutes
   end
 
 ### Workflow ###

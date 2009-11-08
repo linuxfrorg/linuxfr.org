@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
     indexes name, homesite, jabber_id
     where "role != 'inactive'"
     set_property :field_weights => { :name => 5, :homesite => 1, :jabber_id => 1 }
-    set_property :delta => :datetime, :threshold => 1.hour
+    set_property :delta => :datetime, :threshold => 75.minutes
   end
 
 ### Avatar ###
