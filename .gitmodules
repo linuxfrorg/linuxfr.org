@@ -1,15 +1,12 @@
-[submodule "vendor/plugins/acts_as_list"]
-	path = vendor/plugins/acts_as_list
-	url = git://github.com/rails/acts_as_list.git
 [submodule "vendor/rails"]
 	path = vendor/rails
 	url = git://github.com/rails/rails.git
+[submodule "vendor/plugins/acts_as_list"]
+	path = vendor/plugins/acts_as_list
+	url = git://github.com/rails/acts_as_list.git
 [submodule "vendor/plugins/validates_url_format_of"]
 	path = vendor/plugins/validates_url_format_of
 	url = git://github.com/henrik/validates_url_format_of.git
-[submodule "vendor/plugins/acts_like_git"]
-	path = vendor/plugins/acts_like_git
-	url = git://github.com/nono/acts_like_git.git
 [submodule "vendor/plugins/french_rails"]
 	path = vendor/plugins/french_rails
 	url = git://github.com/nono/french-rails.git
