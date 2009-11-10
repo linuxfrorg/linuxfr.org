@@ -25,7 +25,6 @@ class InterviewsController < ApplicationController
   end
 
   def new
-    @preview_mode = false
     @interview = Interview.new
     raise ActiveRecord::RecordNotFound.new unless @interview && @interview.creatable_by?(current_user)
   end
@@ -34,8 +33,7 @@ class InterviewsController < ApplicationController
     @interview = Interview.new
     raise ActiveRecord::RecordNotFound.new unless @interview && @interview.creatable_by?(current_user)
     @interview.attributes = params[:interview]
-    @preview_mode = (params[:commit] == 'Prévisualiser')
-    if !@preview_mode && @interview.save
+    if !preview_mode && @interview.save
       @interview.create_node(:public => false, :user_id => current_user.id)
       flash[:success] = "Nous vous remercions pour avoir proposé un entretien. Cette proposition va être examinée par l'équipe de modération."
       redirect_to interviews_url

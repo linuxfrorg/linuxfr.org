@@ -42,6 +42,10 @@ protected
     end
   end
 
+  def preview_mode
+    @preview_mode = (params[:commit] == 'Prévisualiser')
+  end
+
 ### Authentication & authorizations ###
 
   def current_account_session

@@ -6,7 +6,6 @@ class PostsController < ApplicationController
 ### Global ###
 
   def new
-    @preview_mode = false
     @post = Post.new
     raise ActiveRecord::RecordNotFound.new unless @post && @post.creatable_by?(current_user)
   end
@@ -15,8 +14,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @post.attributes = params[:post]
     raise ActiveRecord::RecordNotFound.new unless @post && @post.creatable_by?(current_user)
-    @preview_mode = (params[:commit] == 'Prévisualiser')
-    if !@preview_mode && @post.save
+    if !preview_mode && @post.save
       @post.create_node(:user_id => current_user.id)
       flash[:success] = "Votre message a bien été créé"
       redirect_to forum_posts_url(:forum_id => @post.forum_id)
@@ -47,8 +45,7 @@ class PostsController < ApplicationController
     @post = @forum.posts.find(params[:id])
     @post.attributes = params[:post]
     raise ActiveRecord::RecordNotFound.new unless @post && @post.editable_by?(current_user)
-    @preview_mode = (params[:commit] == 'Prévisualiser')
-    if !@preview_mode && @post.save
+    if !preview_mode && @post.save
       flash[:success] = "Votre message a bien été modifié"
       redirect_to forum_posts_url
     else

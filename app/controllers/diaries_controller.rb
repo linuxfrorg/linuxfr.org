@@ -15,7 +15,6 @@ class DiariesController < ApplicationController
   end
 
   def new
-    @preview_mode = false
     @diary = current_user.diaries.build
     raise ActiveRecord::RecordNotFound.new unless @diary && @diary.creatable_by?(current_user)
   end
@@ -24,8 +23,7 @@ class DiariesController < ApplicationController
     @diary = current_user.diaries.build
     raise ActiveRecord::RecordNotFound.new unless @diary && @diary.creatable_by?(current_user)
     @diary.attributes = params[:diary]
-    @preview_mode = (params[:commit] == 'Prévisualiser')
-    if !@preview_mode && @diary.save
+    if !preview_mode && @diary.save
       @diary.create_node(:user_id => current_user.id)
       flash[:success] = "Votre journal a bien été créé"
       redirect_to [@diary.user, @diary]
@@ -52,8 +50,7 @@ class DiariesController < ApplicationController
     @diary = @user.diaries.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @diary && @diary.editable_by?(current_user)
     @diary.attributes = params[:diary]
-    @preview_mode = (params[:commit] == 'Prévisualiser')
-    if !@preview_mode && @diary.save
+    if !preview_mode && @diary.save
       flash[:success] = "Votre journal a bien été modifié"
       redirect_to [@user, @diary]
     else

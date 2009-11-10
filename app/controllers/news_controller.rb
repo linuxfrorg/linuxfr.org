@@ -17,7 +17,6 @@ class NewsController < ApplicationController
   end
 
   def new
-    @preview_mode = false
     @news = News.new
   end
 
@@ -27,8 +26,7 @@ class NewsController < ApplicationController
     @news.commit_message = "Nouvelle dépêche"
     @news.author_name  = current_user.name  if current_user
     @news.author_email = current_user.email if current_user
-    @preview_mode = (params[:commit] == 'Prévisualiser')
-    if !@preview_mode && @news.save
+    if !preview_mode && @news.save
       @news.create_node(:public => false, :user_id => (current_user && current_user.id))
       flash[:success] = "Votre proposition de dépêche a bien été soumise, et sera modérée dans les heures ou jours à venir"
       redirect_to news_index_url

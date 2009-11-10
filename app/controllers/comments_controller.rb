@@ -16,7 +16,6 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @preview_mode = false
     @comment = @node.comments.build
     @comment.parent_id = params[:parent_id]
     raise ActiveRecord::RecordNotFound.new unless @comment.creatable_by?(current_user)
@@ -27,8 +26,7 @@ class CommentsController < ApplicationController
     raise ActiveRecord::RecordNotFound.new unless @comment.creatable_by?(current_user)
     @comment.attributes = params[:comment]
     @comment.user = current_user
-    @preview_mode = (params[:commit] == 'Prévisualiser')
-    if !@preview_mode && @comment.save
+    if !preview_mode && @comment.save
       flash[:success] = "Votre commentaire a bien été posté"
       redirect_to_content @node.content
     else
@@ -45,8 +43,7 @@ class CommentsController < ApplicationController
     @comment = @node.comments.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @comment.editable_by?(current_user)
     @comment.attributes = params[:comment]
-    @preview_mode = (params[:commit] == 'Prévisualiser')
-    if !@preview_mode && @comment.save
+    if !preview_mode && @comment.save
       flash[:success] = "Votre commentaire a bien été modifié"
       redirect_to_content @node.content
     else

@@ -22,7 +22,6 @@ class WikiPagesController < ApplicationController
   end
 
   def new
-    @preview_mode = false
     @wiki_page = WikiPage.new
   end
 
@@ -31,8 +30,7 @@ class WikiPagesController < ApplicationController
     @wiki_page.title = params[:wiki_page][:title]
     @wiki_page.user_id = current_user.id
     @wiki_page.attributes = params[:wiki_page]
-    @preview_mode = (params[:commit] == 'Prévisualiser')
-    if !@preview_mode && @wiki_page.save
+    if !preview_mode && @wiki_page.save
       @wiki_page.create_node(:user_id => current_user.id)
       flash[:success] = "Nouvelle page de wiki créée"
       redirect_to @wiki_page
@@ -53,8 +51,7 @@ class WikiPagesController < ApplicationController
     raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.editable_by?(current_user)
     @wiki_page.attributes = params[:wiki_page]
     @wiki_page.user_id = current_user.id
-    @preview_mode = (params[:commit] == 'Prévisualiser')
-    if !@preview_mode && @wiki_page.save
+    if !preview_mode && @wiki_page.save
       flash[:success] = "Modification enregistrée"
       redirect_to @wiki_page
     else
