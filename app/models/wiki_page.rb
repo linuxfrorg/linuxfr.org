@@ -14,8 +14,6 @@
 # The wiki have pages, with the content that can't go anywhere else.
 #
 class WikiPage < Content
-  HomePage = "LinuxFr.org"
-
   has_many :versions, :class_name => 'WikiVersion', :dependent => :destroy, :order => 'version DESC'
 
   attr_accessible :wiki_body, :message
@@ -47,10 +45,16 @@ class WikiPage < Content
     self.body = parser.parse(wiki_body)
   end
 
-  before_save :create_new_version
+  after_save :create_new_version
   def create_new_version
-    return false unless title_changed? || body_changed?
-    WikiVersion.create(:user_id => user_id, :body => wiki_body, :message => message)
+    versions.create(:user_id => user_id, :body => wiki_body, :message => message)
+  end
+
+### HomePage ###
+
+  HomePage = "LinuxFr.org"
+  def self.home_page
+    find_by_title(HomePage)
   end
 
 ### ACL ###

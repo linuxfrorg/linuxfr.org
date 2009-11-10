@@ -1,8 +1,3 @@
-= form.error_messages
-
-%p
-  = form.label :title, "Titre"
-  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
 %p
   = form.label :wiki_body, "Contenu"
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'

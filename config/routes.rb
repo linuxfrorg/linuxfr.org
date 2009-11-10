@@ -29,7 +29,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :polls, :member => { :vote => :post }, :as => 'sondages'
   map.resources :trackers, :collection => { :comments => :get }, :as => 'suivi'
   map.resources :wiki_pages, :as => 'wiki' do |wiki|
-    wiki.show_diff '/show_diff/:sha', :controller => 'wiki_pages', :action => 'show_diff'
+    wiki.revision '/revisions/:revision', :controller => 'wiki_pages', :action => 'revision'
   end
 
   # Nodes
