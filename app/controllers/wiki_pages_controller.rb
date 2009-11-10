@@ -1,5 +1,5 @@
 class WikiPagesController < ApplicationController
-  before_filter :user_required, :except => [:index, :show, :show_diff]
+  before_filter :user_required, :except => [:index, :show, :revision, :changes]
   after_filter  :marked_as_read, :only => [:show]
 
   def index
@@ -76,6 +76,14 @@ class WikiPagesController < ApplicationController
     @version = @wiki_page.versions.find_by_version!(params[:revision])
     previous = @version.higher_item
     @was     = previous ? previous.body : ''
+  end
+
+  def changes
+    @versions = WikiVersion.paginate(:page => params[:page], :per_page => 30, :order => "created_at DESC", :joins => :wiki_page)
+    respond_to do |wants|
+      wants.html
+      wants.atom
+    end
   end
 
 protected

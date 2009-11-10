@@ -5,9 +5,9 @@ atom_feed do |feed|
   @wiki_pages.each do |page|
     feed.entry(page) do |entry|
       entry.title(page.title)
-      entry.content(page.wikified_body, :type => 'html')
+      entry.content(page.body, :type => 'html')
       entry.author do |author|
-        author.name(page.user.name)
+        author.name(page.node.user.name)
       end
     end
   end

@@ -1,5 +1,7 @@
 - title @wiki_page.title
 - meta_for @wiki_page
+- if @wiki_page.title == WikiPage::HomePage
+  - feed "Flux Atom du wiki", wiki_pages_path(:format => :atom)
 
 = content_for :column do
   = render 'edition', :object => @wiki_page

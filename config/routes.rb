@@ -28,6 +28,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :interviews, :collection => { :comments => :get }, :as => 'entretiens'
   map.resources :polls, :member => { :vote => :post }, :as => 'sondages'
   map.resources :trackers, :collection => { :comments => :get }, :as => 'suivi'
+  map.wiki_changes '/wiki/changes', :controller => 'wiki_pages', :action => 'changes'
   map.resources :wiki_pages, :as => 'wiki' do |wiki|
     wiki.revision '/revisions/:revision', :controller => 'wiki_pages', :action => 'revision'
   end
