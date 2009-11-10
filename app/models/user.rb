@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   has_one  :account, :dependent => :destroy
   has_many :nodes
   has_many :diaries, :dependent => :destroy, :foreign_key => 'owner_id'
+  has_many :wiki_versions, :dependent => :nullify
   has_many :comments
   has_many :readings, :dependent => :destroy
   has_many :votes, :dependent => :destroy

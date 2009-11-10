@@ -14,12 +14,14 @@
 # The wiki have pages, with the content that can't go anywhere else.
 #
 class WikiPage < Content
-  attr_accessible :title, :body
+  HomePage = "LinuxFr.org"
+
+  has_many :versions, :class_name => 'WikiVersion', :dependent => :destroy, :order => 'version DESC'
+
+  attr_accessible :wiki_body, :message
 
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Le corps est obligatoire"
-
-  wikify :body, :as => :wikified_body
 
 ### SEO ###
 
@@ -37,8 +39,19 @@ class WikiPage < Content
 
 ### Versioning ###
 
-  attr_accessor :commit_message
-  attr_accessor :committer
+  attr_accessor :user_id, :wiki_body, :message
+
+  before_validation :wikify_body
+  def wikify_body
+    parser = Wikitext::Parser.new(:base_heading_level => 1, :internal_link_prefix => "/wiki/")
+    self.body = parser.parse(wiki_body)
+  end
+
+  before_save :create_new_version
+  def create_new_version
+    return false unless title_changed? || body_changed?
+    WikiVersion.create(:user_id => user_id, :body => wiki_body, :message => message)
+  end
 
 ### ACL ###
 

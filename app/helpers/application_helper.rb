@@ -16,7 +16,7 @@ module ApplicationHelper
   end
 
   def meta_for(content)
-    @author      = content.user.name
+    @author      = content.user.name if content.respond_to?(:user) && content.user
     @keywords   += content.node.popular_tags.map &:name
     @description = content.title
   end

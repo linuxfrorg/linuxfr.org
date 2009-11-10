@@ -3,16 +3,20 @@ class WikiPagesController < ApplicationController
   after_filter  :marked_as_read, :only => [:show]
 
   def index
-    @main_page  = WikiPage.find_by_title("MainPage")
-    @wiki_pages = WikiPage.sorted # TODO only public ones?
     respond_to do |wants|
-      wants.html
-      wants.atom
+      wants.html { redirect_to WikiPage.find_by_title(WikiPage::HomePage) }
+      wants.atom { @wiki_pages = WikiPage.sorted }
     end
   end
 
   def show
-    @wiki_page = WikiPage.find(params[:id])
+    begin
+      @wiki_page = WikiPage.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      new
+      @wiki_page.title = params[:id].titleize
+      render :new and return
+    end
     raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.readable_by?(current_user)
     redirect_to @wiki_page, :status => 301 if @wiki_page.has_better_id?
   end
@@ -24,13 +28,14 @@ class WikiPagesController < ApplicationController
 
   def create
     @wiki_page = WikiPage.new
+    @wiki_page.title = params[:wiki_page][:title]
+    @wiki_page.user_id = current_user.id
     @wiki_page.attributes = params[:wiki_page]
-    @wiki_page.committer  = current_user
     @preview_mode = (params[:commit] == 'Prévisualiser')
     if !@preview_mode && @wiki_page.save
       @wiki_page.create_node(:user_id => current_user.id)
       flash[:success] = "Nouvelle page de wiki créée"
-      redirect_to wiki_pages_url
+      redirect_to @wiki_page
     else
       @wiki_page.node = Node.new
       render :new
@@ -39,6 +44,7 @@ class WikiPagesController < ApplicationController
 
   def edit
     @wiki_page = WikiPage.find(params[:id])
+    @wiki_page.wiki_body = @wiki_body.versions.last.body
     raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.editable_by?(current_user)
   end
 
@@ -73,7 +79,7 @@ class WikiPagesController < ApplicationController
 protected
 
   def marked_as_read
-    current_user.read(@wiki_page.node) if current_user
+    current_user.read(@wiki_page.node) if current_user && @wiki_page.node
   end
 
 end

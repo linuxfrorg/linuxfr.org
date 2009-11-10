@@ -65,3 +65,21 @@ Dir.chdir(dir) do
   end
 end
 
+# Wiki
+wp = WikiPage.new
+wp.title = WikiPage::HomePage
+wp.wiki_body = <<EOS
+= Le wiki de LinuxFr.org =
+== Fonctionnement ==
+Cet espace est un [http://fr.wikipedia.org/wiki/Wiki wiki], c'est-à-dire un endroit où tous les utilisateurs (du moins, ceux qui sont authentifiés) peuvent écrire.
+Pour créer une page, le plus simple est de faire un lien vers cette page en utilisant la syntaxe <pre>[[MaPage]]</pre> puis de cliquer sur ce lien.
+Si la page n'existe pas encore, un formulaire vous sera proposée pour la créer.
+== Les pages principales ==
+C'est à '''vous''' de jouer et de créer ces pages ;-)
+Voici quelques pages qu'il serait intéressant d'avoir :
+* [[FAQ]] : une foire aux questions pour aider les débutants (et les utilisateurs plus réguliers) à mieux connaître le site
+* [[PierreTramo]], [[42]], [[Templeet]] : le bestiaire de LinuxFr.org
+* [[Astuces]] : des astuces sur Linux et les Logiciels Libres.
+EOS
+wp.save
+wp.create_node(:user_id => 1)

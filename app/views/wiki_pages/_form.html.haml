@@ -4,11 +4,11 @@
   = form.label :title, "Titre"
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
 %p
-  = form.label :body, "Contenu"
-  = form.text_area :body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
+  = form.label :wiki_body, "Contenu"
+  = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
 %p
-  = form.label :commit_message, "Log des modifications"
-  = form.text_field :commit_message, :autocomplete => 'off', :spellcheck => 'true'
+  = form.label :message, "Log des modifications"
+  = form.text_field :message, :autocomplete => 'off', :spellcheck => 'true'
 %p
   = form.submit "Prévisualiser"
   = form.submit "Créer" if @preview_mode
