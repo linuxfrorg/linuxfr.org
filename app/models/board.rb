@@ -32,8 +32,8 @@ class Board < ActiveRecord::Base
 
   # There are several boards:
   #  * the free one for testing
-  #  * the writing board is used for collaborating the future news
-  #  * the AMR board is used by the LinuxFR.org staff
+  #  * the writing board is used for collaborating on the future news
+  #  * the AMR board is used by the LinuxFr.org staff
   #  * and one board for each news in moderation.
   TYPES = %w(Free Writing AMR News)
 
@@ -68,6 +68,18 @@ class Board < ActiveRecord::Base
     when Board.writing: user.can_post_on_board?
     when Board.free:    user.can_post_on_board?
     else                false
+    end
+  end
+
+### Chat (tornado) ###
+
+  after_create :push_to_chat
+  def push_to_chat
+    Chat.create do |c|
+      c.chan = object_type == Board.news ? object : "#{object_type}::#{object_id}"
+      c.type = "board"
+      c.user = user.name
+      c.msg  = message
     end
   end
 
