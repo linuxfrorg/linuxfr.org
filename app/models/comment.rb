@@ -64,7 +64,6 @@ class Comment < ActiveRecord::Base
   MAX_DEPTH = 1022 / PATH_SIZE
 
   after_create :generate_materialized_path
-
   def generate_materialized_path
     parent = Comment.find(parent_id) if parent_id.present?
     parent_path = parent ? parent.materialized_path : ''
@@ -101,7 +100,6 @@ class Comment < ActiveRecord::Base
 ### Calculations ###
 
   before_create :default_score
-
   def default_score
     self.score = Math.log10(user.account.karma).to_i - 1
   end

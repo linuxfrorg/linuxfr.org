@@ -52,7 +52,6 @@ class Account < ActiveRecord::Base
 ### Password ###
 
   before_validation_on_create :generate_a_password
-
   def generate_a_password
     chars = [*'A'..'Z'] + [*'a'..'z'] + [*'1'..'9'] + %w(- + ! ? : £ $ % &)
     pass  = (0..7).map { chars.rand }.join

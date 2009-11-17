@@ -12,6 +12,17 @@ class Content < ActiveRecord::Base
   named_scope :sorted, :order => 'created_at DESC'
   delegate :score, :user_id, :to => :node
 
+### License ###
+
+  attr_accessor :cc_licensed
+  attr_accessible :cc_licensed
+
+  def create_node_with_license(attrs={}, replace_existing=true)
+    attrs[:cc_licensed] = true if cc_licensed && cc_licensed != '0'
+    create_node_without_license attrs, replace_existing
+  end
+  alias_method_chain :create_node, :license
+
 ### ACL ###
 
   def readable_by?(user)

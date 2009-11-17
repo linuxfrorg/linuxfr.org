@@ -20,7 +20,6 @@ class WikiVersion < ActiveRecord::Base
 ### Append-only ###
 
   before_update :raise_on_update
-
   def raise_on_update
     raise ActiveRecordError.new "On ne modifie pas les anciennes versions !"
   end

@@ -31,7 +31,7 @@ class WikiPagesController < ApplicationController
     @wiki_page.user_id = current_user.id
     @wiki_page.attributes = params[:wiki_page]
     if !preview_mode && @wiki_page.save
-      @wiki_page.create_node(:user_id => current_user.id)
+      @wiki_page.create_node(:user_id => current_user.id, :cc_licensed => true)
       flash[:success] = "Nouvelle page de wiki créée"
       redirect_to @wiki_page
     else

@@ -9,6 +9,7 @@
 #  interest          :integer(4)      default(0)
 #  user_id           :integer(4)
 #  public            :boolean(1)      default(TRUE)
+#  cc_licensed       :boolean(1)
 #  comments_count    :integer(4)      default(0)
 #  last_commented_at :datetime
 #  created_at        :datetime
@@ -37,7 +38,6 @@ class Node < ActiveRecord::Base
 ### Interest ###
 
   after_create :compute_interest
-
   def compute_interest
     coeff = content_type.constantize.interest_coefficient
     stmt  = "UPDATE nodes SET interest=(score * #{coeff} + UNIX_TIMESTAMP(created_at) / 1000) WHERE id=#{self.id}"

@@ -27,6 +27,9 @@
   = form.label :second_part, "Seconde partie"
   = form.text_area :second_part, :spellcheck => 'true', :class => 'markItUp'
 %p
+  = form.check_box :cc_licensed
+  = form.label :cc_licensed, 'Je place ce document sous licence Creative Commons Paternité-Partage des Conditions Initiales à l\'Identique 3.0 (<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.fr">licence CC by-sa</a>)'.html_safe!
+%p
   = form.label :message, "Si vous le souhaitez, vous pouvez laisser un message à l'équipe de modération"
   <br/>
   = form.text_area :message, :spellcheck => 'true'

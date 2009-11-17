@@ -4,6 +4,8 @@
       = title
     .meta
       = meta
+      - if record.node.cc_licensed?
+        = link_to "Licence CC by-sa", 'http://creativecommons.org/licenses/by-sa/3.0/deed.fr'
       Tags :
       %ul.tag-cloud
         - record.node.popular_tags.each do |tag|
