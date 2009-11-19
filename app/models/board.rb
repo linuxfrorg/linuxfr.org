@@ -73,14 +73,8 @@ class Board < ActiveRecord::Base
 
 ### Chat (tornado) ###
 
-  after_create :push_to_chat
-  def push_to_chat
-    Chat.create do |c|
-      c.chan = object_type == Board.news ? object : "#{object_type}::#{object_id}"
-      c.type = "board"
-      c.user = user.name
-      c.msg  = message
-    end
+  def chan
+    "#{object_type}::#{object_id}"
   end
 
 end

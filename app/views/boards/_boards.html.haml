@@ -1,0 +1,7 @@
+= render 'boards/form', :object => (@board || @boards.new)
+- if @boards.empty?
+  %p
+    Pas de message
+- else
+  .board
+    = render @boards

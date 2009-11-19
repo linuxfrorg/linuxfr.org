@@ -1,11 +1,4 @@
-= render 'boards/form', :object => board
-- if @boards.empty?
-  %p
-    Pas de message
-- else
-  .board
-    - @boards.each do |b|
-      %p{:id => "board-#{b.id}", :title => b.user_agent}
-        = content_tag(:time, b.created_at.to_s(:norloge), :class => "norloge", :datetime => b.created_at.iso8601)
-        %b= link_to b.user.name, b.user
-        = sanitize b.message
+%p{:id => "board-#{board.id}", :title => board.user_agent}
+  = content_tag(:time, board.created_at.to_s(:norloge), :class => "norloge", :datetime => board.created_at.iso8601)
+  %b= link_to board.user.name, board.user
+  = sanitize board.message

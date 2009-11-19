@@ -18,6 +18,7 @@ class BoardsController < ApplicationController
     @board.user_id    = current_user.id
     @board.user_agent = request.user_agent
     @board.save
+    Chat.create(@board.id, @board.chan, render_to_string(@board))
     respond_to do |wants|
       wants.html { redirect_to :back }
       wants.js   { render :nothing }

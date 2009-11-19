@@ -1,26 +1,23 @@
+require 'digest/sha1'
+
 ##
 # The chat is a tornado application used
 # for pushing messages to the browsers.
 #
-class Chat
+class Chat < Struct.new(:id, :chan, :msg)
   @@url = "http://#{MY_DOMAIN}/chat/new"
-
-  attr_accessor :type, :user, :msg, :chan
   
-  def self.chan_for(object)
-    "#{object.class_name}::#{object.id}"
-    # TODO md5sum
-  end
-
-  def self.create(&blk)
-    chat = new
-    yield chat
+  def self.create(*attrs, &blk)
+    chat = new(*attrs)
+    yield chat if block_given?
     chat.post
     chat
   end
 
   def post
-    RestClient.post(@@url, :chan => @chan, :type => @type, :user => @user, :msg => @msg)
+    # TODO add a secret
+    chan = Digest::SHA1.hexdigest(self.chan)
+    RestClient.post(@@url, :id => self.id, :chan => chan, :msg => self.msg)
   end
 
 end
