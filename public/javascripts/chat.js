@@ -39,18 +39,23 @@ var Chat = {
         window.setTimeout(Chat.poll, Chat.errorSleepTime);
     },
 
+    /* Dispatch messages to their callbacks */
     newMessages: function(response) {
         if (!response.messages) return;
         var messages = response.messages;
+        var method, message;
         Chat.cursor = messages[messages.length - 1].id;
-        for (var i = 0; i < messages.length; i++) {
-            Chat.showMessage(messages[i]);
+        for (var i = 0, message; i < messages.length; i++) {
+            message = messages[i];
+            method  = 'on_' + message['type'];
+            Chat[method](message);
         }
     },
 
-    showMessage: function(message) {
-//         var existing = $("#m" + message.id);
-//         if (existing.length > 0) return;
+    /* Callback for a new message on the board */
+    on_board: function(message) {
+        var existing = $("#board-" + message.id);
+        if (existing.length > 0) return;
         Chat.inbox.prepend(message.msg);
     }
 };

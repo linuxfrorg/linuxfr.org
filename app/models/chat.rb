@@ -4,7 +4,7 @@ require 'digest/sha1'
 # The chat is a tornado application used
 # for pushing messages to the browsers.
 #
-class Chat < Struct.new(:id, :chan, :msg)
+class Chat < Struct.new(:id, :chan, :type, :msg)
   @@url = "http://#{MY_DOMAIN}/chat/new"
   
   def self.create(*attrs, &blk)
@@ -16,8 +16,10 @@ class Chat < Struct.new(:id, :chan, :msg)
 
   def post
     key = self.class.private_chan_key(chan)
-    Rails.logger.info("Post chat: id=#{id} chan='#{key}'")
-    RestClient.post(@@url, :id => id, :chan => key, :msg => msg)
+    Rails.logger.info("Post chat: id=#{id} chan='#{key}' type='#{type}'")
+    RestClient.post(@@url, :id => id, :chan => key, :type => type, :msg => msg)
+  rescue
+    nil
   end
 
   def self.public_chan_key(str)

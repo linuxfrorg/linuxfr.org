@@ -18,7 +18,12 @@ class BoardsController < ApplicationController
     board.user_id    = current_user.id
     board.user_agent = request.user_agent
     board.save
-    Chat.create(board.id, board.chan, render_to_string(board)) rescue nil
+    Chat.create do |c|
+      c.id   = board.id
+      c.chan = board.chan
+      c.type = 'board'
+      c.msg  = render_to_string(board)
+    end
     respond_to do |wants|
       wants.html { redirect_to :back }
       wants.js   { render :nothing => true }
