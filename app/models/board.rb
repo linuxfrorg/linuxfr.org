@@ -21,7 +21,7 @@ class Board < ActiveRecord::Base
 
   default_scope :order => 'created_at DESC'
   named_scope :by_type, lambda { |type|
-    { :include => [:user], :conditions => { :object_type => type } }
+    { :include => [:user], :conditions => { :object_type => type }, :limit => 100 }
   }
   named_scope :old, lambda {
     { :conditions => ["(created_at < ? AND object_type = ?) OR (created_at < ?)",
