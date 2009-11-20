@@ -1,61 +1,13 @@
-/* Chat */
-function newMessage(form) {
-    var message = form.formToDict();
-    var disabled = form.find("input[type=submit]");
-    disabled.disable();
-    $.postJSON("/a/message/new", message, function(response) {
-        Chat.showMessage(response);
-        if (message.id) {
-            form.parent().remove();
-        } else {
-            form.find("input[type=text]").val("").select();
-            disabled.enable();
-        }
-    });
-}
-
-jQuery.postJSON = function(url, args, callback) {
-    args._xsrf = getCookie("_xsrf");
-    $.ajax({url: url, data: $.param(args), dataType: "text", type: "POST",
-            success: function(response) {
-        if (callback) callback(eval("(" + response + ")"));
-    }, error: function(response) {
-        console.log("ERROR:", response)
-    }});
-};
-
-jQuery.fn.formToDict = function() {
-    var fields = this.serializeArray();
-    var json = {}
-    for (var i = 0; i < fields.length; i++) {
-        json[fields[i].name] = fields[i].value;
-    }
-    if (json.next) delete json.next;
-    return json;
-};
-
-jQuery.fn.disable = function() {
-    this.enable(false);
-    return this;
-};
-
-jQuery.fn.enable = function(opt_enable) {
-    if (arguments.length && !opt_enable) {
-        this.attr("disabled", "disabled");
-    } else {
-        this.removeAttr("disabled");
-    }
-    return this;
-};
-
 var Chat = {
+    /* FIXME do not share these variables */
     errorSleepTime: 500,
     cursor: null,
     inbox: null,
-    chan: 'Free',
+    chan: null,
 
-    create: function(inbox) {
+    create: function(inbox, chan) {
         Chat.inbox = inbox;
+        Chat.chan = chan;
         Chat.poll();
     },
 
@@ -103,16 +55,20 @@ var Chat = {
     }
 };
 
-// $("#messageform").live("submit", function() {
-//     newMessage($(this));
-//     return false;
-// });
-// $("#messageform").live("keypress", function(e) {
-//     if (e.keyCode == 13) {
-//         newMessage($(this));
-//         return false;
-//     }
-// });
-$("#message").select();
-Chat.create($(".board:last"));
+$(".board").each(function() {
+    var board = $(this);
+    Chat.create(board.find('.inbox'), board.attr('data-chat'));
+});
+
+/* Post a message in ajax */
+$('form.chat').submit(function() {
+    var form = $(this);
+    $.post(form.attr('action'), form.serialize(), function (response) {
+        form.find("input[type=text]").val("").select();
+    });
+    return false;
+});
+
+/* Ready to moule */
+$("form.chat:last input[type=text]").select();
 

@@ -1,7 +1,26 @@
+/* jQuery and Rails' respond_to */
+$.ajaxSetup({
+    'beforeSend': function(xhr) { xhr.setRequestHeader("Accept", "text/javascript") }
+})
+
+/* jQuery extensions */
+$.fn.disable = function() {
+    this.removeAttr("disabled");
+    return this;
+};
+
+$.fn.enable = function() {
+    this.attr("disabled", "disabled");
+    return this;
+};
+
+
+/* Misc */
 $(".markItUp").markItUp(markItUpSettings);
 
-$("a.hit-counter").each(function(idx,link) {
-    link.href = "/redirect/" + link.getAttribute('data-hit');
+$("a.hit-counter").each(function() {
+    var link = $(this);
+    link.href = "/redirect/" + link.attr('data-hit');
 });
 
 /* Animate the scrolling to a fragment */
@@ -22,8 +41,8 @@ var Folding = {};
 Folding.create = function(threshold) {
     var score, link;
     $('#comments .comment .folding').remove();
-    $('#comments .comment').each(function(idx,comment) {
-        comment = $(comment);
+    $('#comments .comment').each(function() {
+        comment = $(this);
         score = parseInt(comment.find('.score:first').text());
         link  = comment.children('h3').prepend('<a href="#" class="folding">[-]</a>').children('.folding');
         link.toggle(
@@ -116,7 +135,7 @@ FormLinks.template = '<p class="link">' +
 FormLinks.create = function(div) {
     var links = div.children('.link');
     FormLinks.counter = links.length;
-    links.each(function(link) { FormLinks.bind_link(this); });
+    links.each(function() { FormLinks.bind_link(this); });
     div.append('<p><button type="button" id="add-link">Ajouter un lien</button></p>');
     $('#add-link').click(function() { FormLinks.add_link(div); });
 };

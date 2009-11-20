@@ -1,7 +1,6 @@
-= render 'boards/form', :object => (@board || @boards.new)
-- if @boards.empty?
-  %p
-    Pas de message
-- else
-  .board
+- board = @boards.new
+- board.object_id ||= 0
+.board{'data-chat' => board.chan_key}
+  = render 'boards/form', :object => board
+  .inbox
     = render @boards

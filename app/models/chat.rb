@@ -15,9 +15,19 @@ class Chat < Struct.new(:id, :chan, :msg)
   end
 
   def post
+    key = self.class.private_chan_key(chan)
+    Rails.logger.info("Post chat: id=#{id} chan='#{key}'")
+    RestClient.post(@@url, :id => id, :chan => key, :msg => msg)
+  end
+
+  def self.public_chan_key(str)
+    key = private_chan_key(str)
+    Digest::SHA1.hexdigest(key)
+  end
+
+  def self.private_chan_key(str)
     # TODO add a secret
-    chan = Digest::SHA1.hexdigest(self.chan)
-    RestClient.post(@@url, :id => self.id, :chan => chan, :msg => self.msg)
+    Digest::SHA1.hexdigest(str)
   end
 
 end

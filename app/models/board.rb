@@ -77,4 +77,8 @@ class Board < ActiveRecord::Base
     "#{object_type}::#{object_id}"
   end
 
+  def chan_key
+    Chat.public_chan_key(chan)
+  end
+
 end
