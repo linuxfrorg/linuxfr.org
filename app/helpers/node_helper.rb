@@ -45,7 +45,7 @@ module NodeHelper
     user = content.user || current_user
     user_link  ||= link_to(user.name, user, :rel => 'author')
     date_time    = content.created_at || Time.now
-    published_at = content_tag(:time, date_time.to_s(:posted), :datetime => pubdate_for(content))
+    published_at = content_tag(:time, date_time.to_s(:posted), :datetime => pubdate_for(content), :pubdate => "pubdate")
     "Posté par #{user_link} le #{published_at}.".html_safe!
   end
 
