@@ -27,26 +27,35 @@ class News < Content
   belongs_to :moderator, :class_name => "User"
   has_many :boards, :as => :object, :dependent => :destroy
   has_many :links
+  has_many :paragraphs
   accepts_nested_attributes_for :links, :allow_destroy => true,
       :reject_if => proc { |attrs| attrs['title'].blank? && attrs['url'].blank? }
+  accepts_nested_attributes_for :links, :allow_destroy => true,
+      :reject_if => proc { |attrs| attrs['body'].blank? }
 
-  attr_accessible :title, :body, :second_part, :section_id, :author_name, :author_email, :links_attributes, :message
+  attr_accessible :title, :section_id, :author_name, :author_email, :links_attributes, :paragraphs_attributes
 
   validates_presence_of :title,   :message => "Le titre est obligatoire"
   validates_presence_of :body,    :message => "Nous n'acceptons pas les dépêches vides"
   validates_presence_of :section, :message => "Veuillez choisir une section pour cette dépêche"
 
-  wikify :body,        :as => :wikified_body
-  wikify :second_part, :as => :wikified_second_part
+### Virtual attributes ###
 
-### Message to the moderation team ###
+  attr_accessor   :message, :wiki_body, :wiki_second_part
+  attr_accessible :message, :wiki_body, :wiki_second_part
 
-  attr_accessor :message
-
-  after_create :post_message
-  def post_message
+  after_create :create_parts
+  def create_parts
+    paragraphs.in_first_part.create(:body => :wiki_body)
+    paragraphs.in_second_part.create(:body => :wiki_second_part)
     return if message.blank?
     boards.create(:login => author_name, :message => message, :user_agent => 'auto')
+  end
+
+  before_update :put_paragraphs_together
+  def put_paragraphs_together
+    self.body        = wikify paragraphs.in_first_part.map(&:body).join(Paragraph.separator)
+    self.second_part = wikify paragraphs.in_second_part.map(&:body).join(Paragraph.separator)
   end
 
 ### SEO ###
@@ -70,13 +79,18 @@ class News < Content
   aasm_initial_state :draft
 
   aasm_state :draft
+  aasm_state :candidate
+  aasm_state :waiting
   aasm_state :published
   aasm_state :refused
   aasm_state :deleted
 
-  aasm_event :accept do transitions :from => [:draft],   :to => :published, :on_transition => :publish end
-  aasm_event :refuse do transitions :from => [:draft],     :to => :refused end
-  aasm_event :delete do transitions :from => [:published], :to => :deleted end
+  aasm_event :submit  do transitions :from => [:draft],     :to => :candidate end
+  aasm_event :wait    do transitions :from => [:candidate], :to => :waiting   end
+  aasm_event :unblock do transitions :from => [:wait],      :to => :candidate end
+  aasm_event :accept  do transitions :from => [:candidate], :to => :published, :on_transition => :publish end
+  aasm_event :refuse  do transitions :from => [:candidate], :to => :refused   end
+  aasm_event :delete  do transitions :from => [:published], :to => :deleted   end
 
   def publish
     node.update_attribute(:public, true)
@@ -91,11 +105,6 @@ class News < Content
   def self.refuse_threshold
     -User.amr.count / 4
   end
-
-### Versioning ###
-
-  attr_accessor :commit_message
-  attr_accessor :committer
 
 ### ACL ###
 

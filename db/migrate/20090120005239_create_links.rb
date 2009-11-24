@@ -1,7 +1,7 @@
 class CreateLinks < ActiveRecord::Migration
   def self.up
     create_table :links do |t|
-      t.references :news
+      t.references :news, :null => false
       t.string :title
       t.string :url
       t.string :lang
