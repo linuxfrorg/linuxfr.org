@@ -16,8 +16,6 @@
 class WikiPage < Content
   has_many :versions, :class_name => 'WikiVersion', :dependent => :destroy, :order => 'version DESC'
 
-  attr_accessible :wiki_body, :message
-
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Le corps est obligatoire"
 
@@ -35,14 +33,14 @@ class WikiPage < Content
     set_property :delta => :datetime, :threshold => 75.minutes
   end
 
-### Versioning ###
+### Hey, it's a wiki! ###
 
-  attr_accessor :user_id, :wiki_body, :message
+  attr_accessor   :wiki_body, :message, :user_id
+  attr_accessible :wiki_body, :message
 
   before_validation :wikify_body
   def wikify_body
-    parser = Wikitext::Parser.new(:base_heading_level => 1, :internal_link_prefix => "/wiki/")
-    self.body = parser.parse(wiki_body)
+    self.body = wikify(wiki_body, :internal_link_prefix => "/wiki/")
   end
 
   after_save :create_new_version

@@ -30,7 +30,7 @@ class News < Content
   has_many :paragraphs
   accepts_nested_attributes_for :links, :allow_destroy => true,
       :reject_if => proc { |attrs| attrs['title'].blank? && attrs['url'].blank? }
-  accepts_nested_attributes_for :links, :allow_destroy => true,
+  accepts_nested_attributes_for :paragraphs, :allow_destroy => true,
       :reject_if => proc { |attrs| attrs['body'].blank? }
 
   attr_accessible :title, :section_id, :author_name, :author_email, :links_attributes, :paragraphs_attributes
@@ -44,23 +44,29 @@ class News < Content
   attr_accessor   :message, :wiki_body, :wiki_second_part
   attr_accessible :message, :wiki_body, :wiki_second_part
 
+  before_validation :wikify_fields
+  def wikify_fields
+    self.body        = wikify wiki_body
+    self.second_part = wikify wiki_second_part
+  end
+
   after_create :create_parts
   def create_parts
-    paragraphs.in_first_part.create(:body => :wiki_body)
-    paragraphs.in_second_part.create(:body => :wiki_second_part)
+    paragraphs.in_first_part.create(:body => wiki_body)
+    paragraphs.in_second_part.create(:body => wiki_second_part)
     return if message.blank?
     boards.create(:login => author_name, :message => message, :user_agent => 'auto')
   end
 
   before_update :put_paragraphs_together
   def put_paragraphs_together
-    self.body        = wikify paragraphs.in_first_part.map(&:body).join(Paragraph.separator)
-    self.second_part = wikify paragraphs.in_second_part.map(&:body).join(Paragraph.separator)
+    self.body        = wikify paragraphs.in_first_part.map(&:body).join
+    self.second_part = wikify paragraphs.in_second_part.map(&:body).join
   end
 
 ### SEO ###
 
-  has_friendly_id :title
+  has_friendly_id :title, :use_slug => true
 
 ### Sphinx ####
 

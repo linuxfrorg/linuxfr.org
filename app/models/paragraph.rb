@@ -12,25 +12,24 @@
 class Paragraph < ActiveRecord::Base
   belongs_to :news
 
-  acts_as_list :scope => [:news, :second_part]
+  acts_as_list :scope => :news
 
-  attr_accessible :body, :second_part
+  attr_accessor   :already_split
+  attr_accessible :already_split, :body, :second_part
 
   named_scope :in_first_part,  :conditions => { :second_part => false }, :order => "position ASC"
   named_scope :in_second_part, :conditions => { :second_part => true  }, :order => "position ASC"
 
 ### Automatically split parapgraphs ###
 
-  def self.separator
-    "\n\n"
-  end
-
   before_save :split_body
   def split_body
-    bodys = body.split(self.class.separator)
+    return if already_split
+    bodys = body.scan /[^\n]+\n*/
     self.body = bodys.shift
+    add_to_list_bottom unless position
     bodys.each_with_index do |b,i|
-      p = self.class.create(:body => b, :second_part => second_part)
+      p = self.class.create(:body => b, :second_part => second_part, :already_split => true)
       p.insert_at(position + i + 1)
     end
   end

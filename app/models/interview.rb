@@ -29,7 +29,7 @@ class Interview < Content
   validates_presence_of :title, :message => "Vous devez préciser la personne à interviewer"
   validates_presence_of :body,  :message => "Veuillez donner quelques informations sur la personne à interviewer"
 
-  wikify :body
+  wikify_attr :body
 
 ### SEO ###
 

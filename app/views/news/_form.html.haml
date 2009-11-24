@@ -14,8 +14,8 @@
   = form.label :section, "Section de la dépêche"
   = form.collection_select :section_id, Section.published, :id, :title
 %p
-  = form.label :body, "Contenu de la dépêche"
-  = form.text_area :body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
+  = form.label :wiki_body, "Contenu de la dépêche"
+  = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
 #form-links
   - langs = Dictionary.collection('lang')
   - form.fields_for :links do |lform|
@@ -24,8 +24,8 @@
       = lform.url_field  :url
       = lform.collection_select :lang, langs, :key, :value
 %p
-  = form.label :second_part, "Seconde partie"
-  = form.text_area :second_part, :spellcheck => 'true', :class => 'markItUp'
+  = form.label :wiki_second_part, "Seconde partie"
+  = form.text_area :wiki_second_part, :spellcheck => 'true', :class => 'markItUp'
 %p
   = form.check_box :cc_licensed
   = form.label :cc_licensed, 'Je place ce document sous licence Creative Commons Paternité-Partage des Conditions Initiales à l\'Identique 3.0 (<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.fr">licence CC by-sa</a>)'.html_safe!

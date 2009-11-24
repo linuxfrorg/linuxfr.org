@@ -36,7 +36,7 @@ class Comment < ActiveRecord::Base
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Vous ne pouvez pas poster un commentaire vide"
 
-  wikify :body
+  wikify_attr :body
 
 ### Sphinx ####
 

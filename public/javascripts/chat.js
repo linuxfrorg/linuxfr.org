@@ -75,5 +75,5 @@ $('form.chat').submit(function() {
 });
 
 /* Ready to moule */
-$("form.chat:last input[type=text]").select();
+$("#container form.chat input[type=text]").select();
 

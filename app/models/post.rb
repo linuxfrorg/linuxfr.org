@@ -26,7 +26,7 @@ class Post < Content
 
   named_scope :published, :conditions => {:state => 'published'}
 
-  wikify :body
+  wikify_attr :body
 
 ### SEO ###
 

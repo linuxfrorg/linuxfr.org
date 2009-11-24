@@ -32,8 +32,15 @@ class Dictionary < ActiveRecord::Base
     all(:conditions => ['`key` LIKE ?', "#{coll}[%]"])
   end
 
+  # TODO dead code?
   def self.collection_get(coll, k)
     self["#{coll}[#{k}]"]
+  end
+
+  def key
+    k = read_attribute(:key)
+    return $1 if k =~ /\[(\w+)\]$/
+    k
   end
 
 end

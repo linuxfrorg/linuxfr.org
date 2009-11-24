@@ -28,7 +28,7 @@ class Tracker < Content
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Veuillez décrire cette entrée du suivi"
 
-  wikify :body
+  wikify_attr :body
 
 ### SEO ###
 
