@@ -1,4 +1,8 @@
 %p{:id => "board-#{board.id}", :title => board.user_agent}
   = content_tag(:time, board.created_at.to_s(:norloge), :class => "norloge", :datetime => board.created_at.iso8601)
-  %b= link_to board.user.name, board.user
+  %b
+    - if board.user
+      = link_to board.user.name, board.user
+    - else
+      = board.user_agent
   = sanitize board.message

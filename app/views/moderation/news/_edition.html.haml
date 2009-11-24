@@ -4,7 +4,7 @@
     = link_to "Éditer", edit_moderation_news_path(@news)
   %p
     Liste des dernières modifications :
-  %ul
-    - @news.revisions.each do |v|
-      %li
-        = link_to "#{v.committer.name} : #{v.message}", moderation_news_show_diff_path(@news.id, v.sha)
+  -# %ul
+  -#   - @news.revisions.each do |v|
+  -#     %li
+  -#       = link_to "#{v.committer.name} : #{v.message}", moderation_news_show_diff_path(@news.id, v.sha)
