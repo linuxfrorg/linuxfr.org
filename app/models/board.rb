@@ -4,6 +4,7 @@
 #
 #  id          :integer(4)      not null, primary key
 #  user_agent  :string(255)
+#  type        :string(255)     default("chat"), not null
 #  user_id     :integer(4)
 #  object_id   :integer(4)
 #  object_type :string(255)
@@ -17,11 +18,11 @@ class Board < ActiveRecord::Base
   belongs_to :user
   belongs_to :object, :polymorphic => true
 
-  attr_accessible :object_id, :object_type, :message, :user_agent
+  attr_accessible :object_id, :object_type, :message, :user_agent, :user_id
 
   default_scope :order => 'created_at DESC'
-  named_scope :by_type, lambda { |type|
-    { :include => [:user], :conditions => { :object_type => type }, :limit => 100 }
+  named_scope :by_kind, lambda { |kind|
+    { :include => [:user], :conditions => { :object_type => kind }, :limit => 100 }
   }
   named_scope :old, lambda {
     { :conditions => ["(created_at < ? AND object_type = ?) OR (created_at < ?)",
@@ -30,21 +31,39 @@ class Board < ActiveRecord::Base
 
 ### Types ###
 
+  # The default for STI is the "type" column, but we do not use this feature.
+  def self.inheritance_column
+    :nothing
+  end
+
+  # A message in a board can be of several types.
+  # The most common are the 'chat' ones (ie a user chats on a board).
+  # But there are also other types for more internal usages.
+  # For example, locking a paragraph is posted in a board with the 'lock' type.
+  TYPES = %w(chat indication vote moderation lock)
+
+  TYPES.each do |t|
+    named_scope t.to_sym, :conditions => { :type => t }
+    self.send(:define_method, "#{t}?") { read_attribute(:type) == t }
+  end
+
+### Kinds ###
+
   # There are several boards:
   #  * the free one for testing
   #  * the writing board is used for collaborating on the future news
   #  * the AMR board is used by the LinuxFr.org staff
   #  * and one board for each news in moderation.
-  TYPES = %w(Free Writing AMR News)
+  KINDS = %w(Free Writing AMR News)
 
-  TYPES.each do |type|
-    self.class.send(:define_method, type.downcase) { type }
+  KINDS.each do |k|
+    (class << self; self; end).send(:define_method, k.downcase) { k }
   end
 
-  def self.[](type)
-    raise ActiveRecord::RecordNotFound unless TYPES.include?(type)
+  def self.[](kind)
+    raise ActiveRecord::RecordNotFound unless KINDS.include?(kind)
     board = Board.new
-    board.object_type = type
+    board.object_type = kind
     board
   end
 
@@ -55,7 +74,7 @@ class Board < ActiveRecord::Base
   validates_presence_of :user_agent
   validates_presence_of :message
 
-  validates_inclusion_of :object_type, :in => TYPES
+  validates_inclusion_of :object_type, :in => KINDS
 
 ### ACL ###
 
@@ -71,14 +90,34 @@ class Board < ActiveRecord::Base
     end
   end
 
-### Chat (tornado) ###
+### Push to tornado ###
+
+  PUSH_URL = "http://#{MY_DOMAIN}/chat/new"
+
+  after_create :push
+  def push
+    id   = self.id
+    key  = private_chan_key
+    av   = ActionView::Base.new(Rails::Configuration.new.view_path)
+    msg  = av.render(:partial => 'boards/board', :locals => {:board => self})
+    Rails.logger.info("Post chat: id=#{id} chan='#{key}' type='#{type}'")
+    RestClient.post(PUSH_URL, :id => id, :chan => key, :type => type, :msg => msg)
+  rescue
+    nil
+  end
 
   def chan
     "#{object_type}::#{object_id}"
   end
 
+  # Public chan key
   def chan_key
-    Chat.public_chan_key(chan)
+    Digest::SHA1.hexdigest(private_chan_key)
+  end
+
+  def private_chan_key
+    # TODO add a secret
+    Digest::SHA1.hexdigest(chan)
   end
 
 end

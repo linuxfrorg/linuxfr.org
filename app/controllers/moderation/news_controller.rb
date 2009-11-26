@@ -1,7 +1,7 @@
 class Moderation::NewsController < ModerationController
 
   def index
-    @news  = News.draft.sorted
+    @news  = News.candidate.sorted
     @polls = Poll.draft
     @interviews = Interview.draft
   end
@@ -9,6 +9,7 @@ class Moderation::NewsController < ModerationController
   def show
     @news   = News.find(params[:id])
     @boards = @news.boards
+    render :show, :layout => 'redaction'
   end
 
   def accept
@@ -16,6 +17,7 @@ class Moderation::NewsController < ModerationController
     raise ActiveRecord::RecordNotFound unless @news && @news.acceptable_by?(current_user)
     @news.moderator_id = current_user.id
     @news.accept!
+    @news.boards.moderation.create(:message => "<b>Dépêche acceptée</b>", :user_agent => request.user_agent, :user_id => current_user.id)
     NewsNotifications.deliver_accept(@news)
     redirect_to @news
   end
@@ -25,6 +27,7 @@ class Moderation::NewsController < ModerationController
     raise ActiveRecord::RecordNotFound unless @news && @news.refusable_by?(current_user)
     if params[:message]
       @news.refuse!
+      @news.boards.moderation.create(:message => "<b>Dépêche refusée</b>", :user_agent => request.user_agent, :user_id => current_user.id)
       if params[:template]
         NewsNotifications.deliver_refuse_template(@news, params[:message], params[:template])
       elsif params[:message] == 'en'

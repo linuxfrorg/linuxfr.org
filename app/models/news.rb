@@ -55,7 +55,7 @@ class News < Content
     paragraphs.in_first_part.create(:body => wiki_body)
     paragraphs.in_second_part.create(:body => wiki_second_part)
     return if message.blank?
-    boards.create(:message => message, :user_agent => author_name)
+    boards.indication.create(:message => message, :user_agent => author_name)
   end
 
   before_update :put_paragraphs_together

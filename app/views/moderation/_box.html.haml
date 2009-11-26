@@ -1,13 +1,13 @@
 #moderation-box.box
   %h1
     = link_to "Modération", '/moderation'
-  - @draft_news = News.draft.sorted
-  - if @draft_news.empty?
+  - @candidate_news = News.candidate.sorted
+  - if @candidate_news.empty?
     Pas de dépêche à modérer
   - else
     %ul
-      - @draft_news.each do |news|
+      - @candidate_news.each do |news|
         %li
           = link_to news.title, [:moderation, news]
-  - @boards = Board.by_type(Board.amr)
+  - @boards = Board.by_kind(Board.amr)
   = render 'boards/boards'

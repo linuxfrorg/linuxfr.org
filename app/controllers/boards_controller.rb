@@ -4,7 +4,7 @@ class BoardsController < ApplicationController
   def show
     @board = Board[params[:id]]
     raise ActiveRecord::RecordNotFound unless @board && @board.accessible_by?(current_user)
-    @boards = Board.by_type(@board.object_type)
+    @boards = Board.by_kind(@board.object_type)
     respond_to do |wants|
       wants.html
       wants.xml
@@ -18,12 +18,6 @@ class BoardsController < ApplicationController
     board.user_id    = current_user.id
     board.user_agent = request.user_agent
     board.save
-    Chat.create do |c|
-      c.id   = board.id
-      c.chan = board.chan
-      c.type = 'board'
-      c.msg  = render_to_string(board)
-    end
     respond_to do |wants|
       wants.html { redirect_to :back }
       wants.js   { render :nothing => true }

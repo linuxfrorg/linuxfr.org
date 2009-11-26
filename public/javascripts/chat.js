@@ -43,20 +43,25 @@ var Chat = {
     newMessages: function(response) {
         if (!response.messages) return;
         var messages = response.messages;
-        var method, message;
         Chat.cursor = messages[messages.length - 1].id;
         for (var i = 0, message; i < messages.length; i++) {
-            message = messages[i];
-            method  = 'on_' + message['type'];
+            Chat.newMessage(messages[i]);
+        }
+    },
+
+    newMessage: function(message) {
+        var existing = $("#board-" + message.id);
+        if (existing.length > 0) return;
+        Chat.inbox.prepend(message.msg);
+        var method  = 'on_' + message['type'];
+        if (Chat[method]) {
             Chat[method](message);
         }
     },
 
-    /* Callback for a new message on the board */
-    on_board: function(message) {
-        var existing = $("#board-" + message.id);
-        if (existing.length > 0) return;
-        Chat.inbox.prepend(message.msg);
+    /* Callback for logs */
+    on_log: function(message) {
+        alert(message.type);
     }
 };
 

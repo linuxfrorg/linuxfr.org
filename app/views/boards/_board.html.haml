@@ -1,8 +1,9 @@
-%p{:id => "board-#{board.id}", :title => board.user_agent}
+%p{:id => "board-#{board.id}", :class => board.type, :title => board.user_agent}
   = content_tag(:time, board.created_at.to_s(:norloge), :class => "norloge", :datetime => board.created_at.iso8601)
   %b
-    - if board.user
-      = link_to board.user.name, board.user
-    - else
+    - if board.indication?
       = board.user_agent
+    - else
+      -# link_to cannot be called here when this partial is rendered from the Board model
+      %a(href="/users/#{board.user.to_param}")= board.user.name
   = sanitize board.message
