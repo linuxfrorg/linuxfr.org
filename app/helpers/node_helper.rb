@@ -18,6 +18,12 @@ module NodeHelper
     render 'nodes/content', cp.to_hash
   end
 
+  def editable_field(record, field)
+    value = record.send(field)
+    obj = ActionController::RecordIdentifier.singular_class_name(record)
+    content_tag(:span, value, :class => 'rest_in_place', :"data-attribute" => field, :"data-object" => obj)
+  end
+
   def link_to_content(content)
     link_to content.title, url_for_content(content)
   end

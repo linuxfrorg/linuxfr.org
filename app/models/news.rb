@@ -52,13 +52,13 @@ class News < Content
 
   after_create :create_parts
   def create_parts
-    paragraphs.in_first_part.create(:body => wiki_body)
-    paragraphs.in_second_part.create(:body => wiki_second_part)
+    paragraphs.in_first_part.create(:body => wiki_body)         unless wiki_body.blank?
+    paragraphs.in_second_part.create(:body => wiki_second_part) unless wiki_second_part.blank?
     return if message.blank?
     boards.indication.create(:message => message, :user_agent => author_name)
   end
 
-  before_update :put_paragraphs_together
+  before_validation_on_update :put_paragraphs_together
   def put_paragraphs_together
     self.body        = wikify paragraphs.in_first_part.map(&:body).join
     self.second_part = wikify paragraphs.in_second_part.map(&:body).join

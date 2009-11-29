@@ -9,7 +9,13 @@ class Moderation::NewsController < ModerationController
   def show
     @news   = News.find(params[:id])
     @boards = @news.boards
-    render :show, :layout => 'redaction'
+    respond_to do |wants|
+      wants.html {
+        redirect_to [:moderation, @news], :status => 301 and return if @news.has_better_id?
+        render :show, :layout => 'redaction'
+      }
+      wants.json { render :json => @news }
+    end
   end
 
   def accept
@@ -46,21 +52,18 @@ class Moderation::NewsController < ModerationController
     redirect_to @news
   end
 
-  def edit
-    @news = News.find(params[:id])
-    raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
-  end
-
   def update
     @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
     @news.attributes = params[:news]
-    @news.committer  = current_user
-    if @news.save
-      flash[:success] = "Modification enregistrée"
-      redirect_to [:moderation, @news]
-    else
-      render :edit
+    respond_to do |wants|
+      if @news.save
+        wants.html { flash[:success] = "Modification enregistrée"; redirect_to [:moderation, @news] }
+        wants.json { render :nothing => true }
+      else
+        wants.html { render :edit }
+        wants.json { render :nothing => true }
+      end
     end
   end
 
