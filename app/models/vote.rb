@@ -63,7 +63,7 @@ protected
   def announce
     c = node.content
     return unless c.announce_vote?
-    c.boards.vote.create(:message => "#{current_user.name} a voté #{word}", :user_agent => '', :user_id => user_id)
+    c.boards.vote.create(:message => "#{current_user.name} a voté #{word}", :user_id => user_id)
   end
 
   def word

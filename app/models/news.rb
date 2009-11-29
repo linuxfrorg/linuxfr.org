@@ -94,14 +94,23 @@ class News < Content
   aasm_event :submit  do transitions :from => [:draft],     :to => :candidate end
   aasm_event :wait    do transitions :from => [:candidate], :to => :waiting   end
   aasm_event :unblock do transitions :from => [:wait],      :to => :candidate end
-  aasm_event :accept  do transitions :from => [:candidate], :to => :published, :on_transition => :publish end
-  aasm_event :refuse  do transitions :from => [:candidate], :to => :refused   end
-  aasm_event :delete  do transitions :from => [:published], :to => :deleted   end
+  aasm_event :accept  do transitions :from => [:candidate], :to => :published, :on_transition => :publish    end
+  aasm_event :refuse  do transitions :from => [:candidate], :to => :refused,   :on_transition => :be_refused end
+  aasm_event :delete  do transitions :from => [:published], :to => :deleted,   :on_transition => :deletion   end
 
   def publish
     node.update_attribute(:public, true)
     author = Account.find_by_email(author_email)
     author.give_karma(50) if author
+    boards.moderation.create(:message => "<b>La dépêche a été publiée</b>", :user_id => moderator_id)
+  end
+
+  def be_refused
+    boards.moderation.create(:message => "<b>La dépêche a été refusée</b>", :user_id => moderator_id)
+  end
+
+  def deletion
+    boards.moderation.create(:message => "<b>La dépêche a été supprimée</b>", :user_id => moderator_id)
   end
 
   def self.accept_threshold
