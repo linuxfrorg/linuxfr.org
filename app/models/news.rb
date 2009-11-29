@@ -41,8 +41,8 @@ class News < Content
 
 ### Virtual attributes ###
 
-  attr_accessor   :message, :wiki_body, :wiki_second_part
-  attr_accessible :message, :wiki_body, :wiki_second_part
+  attr_accessor   :message, :wiki_body, :wiki_second_part, :editor_id
+  attr_accessible :message, :wiki_body, :wiki_second_part, :editor_id
 
   before_validation :wikify_fields
   def wikify_fields
@@ -62,6 +62,12 @@ class News < Content
   def put_paragraphs_together
     self.body        = wikify paragraphs.in_first_part.map(&:body).join
     self.second_part = wikify paragraphs.in_second_part.map(&:body).join
+  end
+
+  after_update :announce_modification
+  def announce_modification
+    # TODO generate a diff
+    boards.edit.create(:message => 'La dépêche a été modifiée', :user_id => editor_id)
   end
 
 ### SEO ###
