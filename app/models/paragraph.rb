@@ -25,12 +25,10 @@ class Paragraph < ActiveRecord::Base
   before_save :split_body
   def split_body
     return if already_split
-    bodys = body.scan /[^\r\n]+[\r\n]*/
-    self.body = bodys.shift
-    add_to_list_bottom unless position
-    bodys.each_with_index do |b,i|
-      p = self.class.create(:body => b, :second_part => second_part, :already_split => true)
-      p.insert_at(position + i + 1)
+    sentences = body.scan /[^\r\n]+[\r\n]*/
+    self.body = sentences.pop
+    sentences.each do |body|
+      p = self.class.create(:body => body, :second_part => second_part, :already_split => true)
     end
   end
 end
