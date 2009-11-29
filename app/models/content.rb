@@ -64,6 +64,10 @@ class Content < ActiveRecord::Base
     state == 'deleted'
   end
 
+  def announce_vote?
+    false
+  end
+
 ### Interest ###
 
   def self.interest_coefficient

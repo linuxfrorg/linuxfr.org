@@ -112,6 +112,10 @@ class News < Content
     -User.amr.count / 4
   end
 
+  def announce_vote?
+    candidate?
+  end
+
 ### ACL ###
 
   def readable_by?(user)
@@ -140,6 +144,10 @@ class News < Content
 
   def pppable_by?(user)
     user && (user.moderator? || user.admin?) && published?
+  end
+
+  def votable_by?(user)
+    super(user) || user.amr?
   end
 
 ### PPP ###
