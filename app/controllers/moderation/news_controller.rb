@@ -14,7 +14,26 @@ class Moderation::NewsController < ModerationController
         redirect_to [:moderation, @news], :status => 301 and return if @news.has_better_id?
         render :show, :layout => 'redaction'
       }
-      wants.json { render :json => @news }
+      wants.js { render :partial => 'short' }
+    end
+  end
+
+  def edit
+    @news = News.find(params[:id])
+    raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
+    respond_to do |wants|
+      wants.js { render :partial => 'form' }
+    end
+  end
+
+  def update
+    @news = News.find(params[:id])
+    raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
+    @news.attributes = params[:news]
+    @news.editor_id = current_user.id
+    @news.save
+    respond_to do |wants|
+      wants.js { render :nothing => true }
     end
   end
 
@@ -50,22 +69,6 @@ class Moderation::NewsController < ModerationController
     raise ActiveRecord::RecordNotFound unless @news && @news.pppable_by?(current_user)
     @news.set_on_ppp
     redirect_to @news
-  end
-
-  def update
-    @news = News.find(params[:id])
-    raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
-    @news.attributes = params[:news]
-    @news.editor_id = current_user.id
-    respond_to do |wants|
-      if @news.save
-        wants.html { flash[:success] = "Modification enregistrée"; redirect_to [:moderation, @news] }
-        wants.json { render :nothing => true }
-      else
-        wants.html { render :edit }
-        wants.json { render :nothing => true }
-      end
-    end
   end
 
   def show_diff

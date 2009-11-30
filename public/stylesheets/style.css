@@ -32,7 +32,8 @@ article figure { float: left; }
 article ul.tag-cloud, article .tag-cloud li { display: inline; }
 
 /* Redaction */
-#edition, #chat { float: left; width: 490px; }
+#edition { float: left; width: 60%; }
+#chat    { float: left; width: 35%; }
 
 /* Diffs */
 ins.diffins, ins.diffmod { background-color: #3f3; }

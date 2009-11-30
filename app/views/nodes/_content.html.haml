@@ -6,10 +6,11 @@
       = meta
       - if record.node.cc_licensed?
         = link_to "Licence CC by-sa", 'http://creativecommons.org/licenses/by-sa/3.0/deed.fr', :rel => 'license'
-      Tags :
-      %ul.tag-cloud
-        - record.node.popular_tags.each do |tag|
-          %li= link_to tag.name, public_tag_path(:id => tag.name), :rel => 'tag'
+      - unless (tags = record.node.popular_tags).empty?
+        Tags :
+        %ul.tag-cloud
+          - tags.each do |tag|
+            %li= link_to tag.name, public_tag_path(:id => tag.name), :rel => 'tag'
   %figure.score
     = record.score
   - if image

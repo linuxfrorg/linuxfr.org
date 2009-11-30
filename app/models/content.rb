@@ -52,6 +52,10 @@ class Content < ActiveRecord::Base
         !user.votes.exists?(:node_id => node.id)
   end
 
+  def taggable_by?(user)
+    user && !deleted?
+  end
+
 ### Workflow ###
 
   def mark_as_deleted

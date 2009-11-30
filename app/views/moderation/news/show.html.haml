@@ -6,8 +6,7 @@
 
 = article_for @news do |c|
   - c.title = capture do
-    = @news.section.title
-    = editable_field(@news, :title)
+    = render :partial => 'short'
   - c.meta  = news_posted_by(@news)
   - c.image = link_to(image_tag(@news.section.image.url, :alt => @news.section.title), @news.section)
   - c.body  = capture do

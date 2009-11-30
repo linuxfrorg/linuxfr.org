@@ -1,22 +1,7 @@
-= form.error_messages
-
-%p
-  = form.label :title, "Titre de la dépêche"
-  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
-%p
-  = form.label :section, "Section de la dépêche"
+- form_for @news do |form|
+  = form.label :section, "Section"
   = form.collection_select :section_id, Section.published, :id, :title
-%p
-  = form.label :body, "Contenu de la dépêche"
-  = form.text_area :body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
-#form-links
-  - form.fields_for :links do |lform|
-    %p.link
-      = lform.text_field :title
-      = lform.text_field :url
-      = lform.text_field :lang
-%p
-  = form.label :second_part, "Seconde partie"
-  = form.text_area :second_part, :spellcheck => 'true', :class => 'markItUp'
-%p
-  = form.submit "Valider"
+  = form.label :title, "Titre"
+  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
+  %button.cancel Annuler
+  = form.submit "OK"
