@@ -71,14 +71,10 @@ $(".board").each(function() {
 });
 
 /* Post a message in ajax */
-$('form.chat').submit(function() {
+$('.board form').submit(function() {
     var form = $(this);
     $.post(form.attr('action'), form.serialize(), function (response) {
         form.find("input[type=text]").val("").select();
     });
     return false;
 });
-
-/* Ready to moule */
-$("#container form.chat input[type=text]").select();
-

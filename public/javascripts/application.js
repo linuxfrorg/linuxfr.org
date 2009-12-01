@@ -4,15 +4,16 @@ $.ajaxSetup({
 })
 
 /* jQuery extensions */
-$.fn.disable = function() {
-    this.removeAttr("disabled");
-    return this;
-};
-
-$.fn.enable = function() {
-    this.attr("disabled", "disabled");
-    return this;
-};
+//  TODO remove these lines?
+// $.fn.disable = function() {
+//     this.removeAttr("disabled");
+//     return this;
+// };
+// 
+// $.fn.enable = function() {
+//     this.attr("disabled", "disabled");
+//     return this;
+// };
 
 
 /* Misc */
@@ -22,6 +23,10 @@ $("a.hit-counter").each(function() {
     var link = $(this);
     link.href = "/redirect/" + link.attr('data-hit');
 });
+
+/* Ready to moule */
+// TODO $('.board').board('.inbox');
+$("#main-board input[type=text]").select();
 
 /* Animate the scrolling to a fragment */
 $("a.scroll").click(function() {

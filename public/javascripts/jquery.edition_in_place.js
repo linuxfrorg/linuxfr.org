@@ -11,17 +11,15 @@
         };
 
         base.editForm = function() {
-            $.ajax({
-                url: base.url + '/modifier',
-                type: "get",
-                success: function(form) {
-                    base.element.unbind('click');
-                    base.element.html(form);
-                    var form = base.element.find('form')
-                    form.submit(base.submitForm);
-                    form.find('.cancel').click(base.showHtml);
-                    form.find('textarea input')[0].select();
-                }
+            base.element.unbind('click');
+            base.element.load(base.url + '/modifier', function(form) {
+                var form = base.element.find('form')
+                form.submit(base.submitForm);
+                form.find('.cancel').click(function() {
+                    base.showHtml();
+                    return false;
+                });
+                form.find('textarea, input')[0].select();
             });
         };
 
@@ -36,14 +34,8 @@
         };
 
         base.showHtml = function() {
-            $.ajax({
-                url: base.url,
-                type: "get",
-                success: function(html) {
-                    base.element.html(html);
-                    base.element.click(base.editForm);
-                }
-            });
+            base.element.load(base.url);
+            base.element.click(base.editForm);
         };
 
         base.init();
@@ -54,7 +46,4 @@
             (new $.EditionInPlace(this));
         });
     };
-
 })(jQuery);
-
-$('.edition_in_place').editionInPlace();

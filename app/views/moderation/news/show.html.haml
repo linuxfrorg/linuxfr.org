@@ -1,8 +1,9 @@
 - title @news.title
 
 - content_for :chat do
-  = render 'vote'
-  = render 'board'
+  #main-board
+    = render 'vote'
+    = render 'board'
 
 = article_for @news do |c|
   - c.title = capture do
