@@ -26,8 +26,8 @@ class News < Content
   belongs_to :section
   belongs_to :moderator, :class_name => "User"
   has_many :boards, :as => :object, :dependent => :destroy
-  has_many :links
-  has_many :paragraphs
+  has_many :links, :dependent => :destroy
+  has_many :paragraphs, :dependent => :destroy
   accepts_nested_attributes_for :links, :allow_destroy => true,
       :reject_if => proc { |attrs| attrs['title'].blank? && attrs['url'].blank? }
   accepts_nested_attributes_for :paragraphs, :allow_destroy => true,

@@ -52,16 +52,40 @@ var Chat = {
     newMessage: function(message) {
         var existing = $("#board-" + message.id);
         if (existing.length > 0) return;
-        Chat.inbox.prepend(message.msg);
         var method  = 'on_' + message['type'];
         if (Chat[method]) {
-            Chat[method](message);
+            Chat[method](message.msg);
         }
     },
 
-    /* Callback for logs */
-    on_log: function(message) {
-        alert(message.type);
+    /* Callback for chat */
+    on_chat: function(message) {
+        Chat.inbox.prepend(message);
+    },
+
+    /* Callback for indication */
+    on_indication: function(message) {
+        Chat.inbox.prepend(message);
+    },
+
+    /* Callback for vote */
+    on_vote: function(message) {
+        Chat.inbox.prepend(message);
+    },
+
+    /* Callback for moderation */
+    on_moderation: function(message) {
+        Chat.inbox.prepend(message);
+    },
+
+    /* Callback for lock */
+    on_lock: function(message) {
+        Chat.inbox.prepend(message);
+    },
+
+    /* Callback for edit */
+    on_edit: function(message) {
+        Chat.inbox.prepend(msg);
     }
 };
 

@@ -5,6 +5,7 @@ class CreateParagraphs < ActiveRecord::Migration
       t.integer :position
       t.boolean :second_part
       t.text :body
+      t.text :wiki_body
     end
     add_index :paragraphs, [:news_id, :second_part, :position]
   end

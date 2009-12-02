@@ -16,7 +16,8 @@
                 var form = base.element.find('form')
                 form.submit(base.submitForm);
                 form.find('.cancel').click(function() {
-                    base.showHtml();
+                    base.element.load(base.url);
+                    base.element.click(base.editForm);
                     return false;
                 });
                 form.find('textarea, input')[0].select();
@@ -28,14 +29,12 @@
                 url: base.url,
                 type: "post",
                 data: base.element.find('form').serialize(),
-                success: base.showHtml
+                success: function() {
+                    base.element.click(base.editForm);
+                }
             });
+            base.element.html('');
             return false;
-        };
-
-        base.showHtml = function() {
-            base.element.load(base.url);
-            base.element.click(base.editForm);
         };
 
         base.init();

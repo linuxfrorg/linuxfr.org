@@ -52,7 +52,8 @@ ActionController::Routing::Routes.draw do |map|
   map.vote '/vote/:action/:node_id', :controller => 'votes'
   map.relevance '/relevance/:action/:comment_id', :controller => 'relevances'
 
-  # Boards
+  # Boards & Redaction
+  map.resources :paragraphs
   map.with_options :controller => 'boards' do |b|
     b.add_board '/board/add', :action => 'add', :conditions => { :method => :post }
     b.with_options :action => 'show' do |i|

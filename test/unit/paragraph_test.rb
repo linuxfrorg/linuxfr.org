@@ -7,6 +7,7 @@
 #  position    :integer(4)
 #  second_part :boolean(1)
 #  body        :text
+#  wiki_body   :text
 #
 
 require 'test_helper'
