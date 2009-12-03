@@ -85,17 +85,22 @@ var Chat = {
 
     /* Callback for creation */
     on_creation: function(message) {
-        Chat.inbox.prepend(msg);
+        console.log(message);
+        Chat.inbox.prepend(message);
+        var element = Chat.inbox.find("p:first");
+        element.find(".link").each(function() { $('#redaction .new_link').before(this); });
+        element.find(".paragraph.first_part").each(function() { $('#redaction #first_part').append(this); });
+        element.find(".paragraph.second_part").each(function() { $('#redaction #second_part').append(this); });
     },
 
     /* Callback for edition */
     on_edition: function(message) {
-        Chat.inbox.prepend(msg);
+        Chat.inbox.prepend(message);
     },
 
     /* Callback for deletion */
     on_deletion: function(message) {
-        Chat.inbox.prepend(msg);
+        Chat.inbox.prepend(message);
     }
 };
 

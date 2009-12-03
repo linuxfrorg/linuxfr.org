@@ -38,17 +38,17 @@ class Link < ActiveRecord::Base
 
   after_create :announce_create
   def announce_create
-    news.boards.creation.create(:message => "lien ajouté : <span id=\"creation_link_#{self.id}\">#{simple_html}</span>", :user_id => user_id)
+    news.boards.creation.create(:message => "lien ajouté : <span class=\"link\" id=\"creation_link_#{self.id}\">#{simple_html}</span>", :user_id => user_id)
   end
 
   after_update :announce_update
   def announce_update
-    news.boards.edition.create(:message => "lien modifié : <span id=\"edition_link_#{self.id}\">#{simple_html}</span>", :user_id => user_id)
+    news.boards.edition.create(:message => "lien modifié : <span class=\"link\" id=\"edition_link_#{self.id}\">#{simple_html}</span>", :user_id => user_id)
   end
 
   before_destroy :announce_destroy
   def announce_destroy
-    news.boards.deletion.create(:message => "<span id=\"deletion_link_#{self.id}\">lien supprimé</span>", :user_id => user_id)
+    news.boards.deletion.create(:message => "<span class=\"link\" id=\"deletion_link_#{self.id}\">lien supprimé</span>", :user_id => user_id)
   end
 
   def simple_html

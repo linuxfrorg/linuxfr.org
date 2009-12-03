@@ -64,4 +64,10 @@ class Paragraph < ActiveRecord::Base
     self.user_id = nil
   end
 
+### Presentation ###
+
+  def part
+    second_part ? 'second_part' : 'first_part'
+  end
+
 end

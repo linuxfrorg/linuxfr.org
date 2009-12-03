@@ -1,6 +1,7 @@
 (function($) {
-    $.EditionInPlace = function(element, options) {
+    $.EditionInPlace = function(element, creation, options) {
         var base = this;
+        base.creation = creation;
         base.element = $(element);
         base.element.data("EditionInPlace", base);
 
@@ -15,7 +16,9 @@
             base.element.unbind('click');
             base.element.load(base.url, function(form) {
                 var form = base.element.find('form')
-                form.submit(base.submitForm);
+                form.submit(function() {
+                    base.submitForm(base.creation ? old : '');
+                });
                 form.find('.cancel').click(function() {
                     base.element.html(old);
                     base.element.click(base.editForm);
@@ -25,7 +28,7 @@
             });
         };
 
-        base.submitForm = function() {
+        base.submitForm = function(content) {
             var form = base.element.find('form');
             $.ajax({
                 url: form.attr('action'),
@@ -35,7 +38,8 @@
                     base.element.click(base.editForm);
                 }
             });
-            base.element.html('');
+            base.element.html(content);
+            base.element.click(base.editForm);
             return false;
         };
 
@@ -44,13 +48,13 @@
 
     $.fn.editionInPlace = function() {
         return this.each(function() {
-            (new $.EditionInPlace(this));
+            (new $.EditionInPlace(this, false));
         });
     };
 
     $.fn.creationInPlace = function() {
         return this.each(function() {
-            (new $.EditionInPlace(this));
+            (new $.EditionInPlace(this, true));
         });
     };
 })(jQuery);
