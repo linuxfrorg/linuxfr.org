@@ -60,7 +60,7 @@ class Paragraph < ActiveRecord::Base
   after_save :announce
   def announce
     return unless user_id
-    news.boards.edit.create(:message => wiki_body, :user_id => user_id)
+    news.boards.edition.create(:message => wiki_body, :user_id => user_id)
     self.user_id = nil
   end
 

@@ -33,4 +33,5 @@ protected
     @paragraph = Paragraph.find_by_id(params[:id])
     @news = @paragraph.try(:news)
   end
+
 end

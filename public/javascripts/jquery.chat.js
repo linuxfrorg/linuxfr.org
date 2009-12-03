@@ -83,8 +83,18 @@ var Chat = {
         Chat.inbox.prepend(message);
     },
 
-    /* Callback for edit */
-    on_edit: function(message) {
+    /* Callback for creation */
+    on_creation: function(message) {
+        Chat.inbox.prepend(msg);
+    },
+
+    /* Callback for edition */
+    on_edition: function(message) {
+        Chat.inbox.prepend(msg);
+    },
+
+    /* Callback for deletion */
+    on_deletion: function(message) {
         Chat.inbox.prepend(msg);
     }
 };

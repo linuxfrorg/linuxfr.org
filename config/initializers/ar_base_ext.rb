@@ -1,5 +1,5 @@
 ##
-# Transform wiki syntax to HTML
+# Some ActiveRecord::Base extensions
 #
 class ActiveRecord::Base
   def self.wikify_attr(attr, opts={})
@@ -11,6 +11,7 @@ class ActiveRecord::Base
     end
   end
 
+  # Transform wiki syntax to HTML
   def wikify(txt, opts={})
     return '' if txt.blank?
     opts = { :base_heading_level => 1, :internal_link_prefix => "http://fr.wikipedia.org/wiki/" }.merge(opts)

@@ -54,6 +54,8 @@ ActionController::Routing::Routes.draw do |map|
 
   # Boards & Redaction
   map.resources :paragraphs
+  map.resources :links
+  map.news_new_link '/news/:news_id/links/nouveau', :controller => 'links', :action => 'new'
   map.with_options :controller => 'boards' do |b|
     b.add_board '/board/add', :action => 'add', :conditions => { :method => :post }
     b.with_options :action => 'show' do |i|
