@@ -132,16 +132,16 @@ Toolbar.change_threshold = function() {
 var FormLinks = {};
 FormLinks.div;
 FormLinks.counter  = 0;
-FormLinks.template = '<p class="link">' +
+FormLinks.template = '<fieldset class="link">' +
                      '  <input id="news_links_attributes_{i}_title" name="news[links_attributes][{i}][title]" size="30" type="text" /> ' +
                      '  <input id="news_links_attributes_{i}_url" name="news[links_attributes][{i}][url]" size="30" type="text" /> ' +
                      '  <input id="news_links_attributes_{i}_lang" name="news[links_attributes][{i}][lang]" size="30" type="text" /> ' +
-                     '</p>';
+                     '</fieldset>';
 FormLinks.create = function(div) {
     var links = div.children('.link');
     FormLinks.counter = links.length;
     links.each(function() { FormLinks.bind_link(this); });
-    div.append('<p><button type="button" id="add-link">Ajouter un lien</button></p>');
+    div.append('<fieldset><button type="button" id="add-link">Ajouter un lien</button></fieldset>');
     $('#add-link').click(function() { FormLinks.add_link(div); });
 };
 FormLinks.bind_link = function(link) {

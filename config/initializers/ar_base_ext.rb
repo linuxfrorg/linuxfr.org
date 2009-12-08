@@ -19,4 +19,8 @@ class ActiveRecord::Base
     ret = parser.parse(txt)
     ret.gsub(/\[BR\]/, '<br/>')
   end
+
+  def render_to_string(opts)
+    ActionView::Base.new(Rails::Configuration.new.view_path).render(opts)
+  end
 end

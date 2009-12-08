@@ -30,6 +30,7 @@ var Chat = {
             Chat.errorSleepTime = 500;
             window.setTimeout(Chat.poll, 0);
         } catch (e) {
+            console.warn(e); // TODO remove this line
             Chat.onError();
         }
     },
@@ -96,11 +97,15 @@ var Chat = {
     /* Callback for edition */
     on_edition: function(message) {
         Chat.inbox.prepend(message);
+        var element = Chat.inbox.find("p:first");
+        element.find(".link").each(function() { $('#link_' + $(this).attr('data-id')).html($(this).html()); });
     },
 
     /* Callback for deletion */
     on_deletion: function(message) {
         Chat.inbox.prepend(message);
+        var element = Chat.inbox.find("p:first");
+        element.find(".link").each(function() { $('#link_' + $(this).attr('data-id')).remove(); });
     }
 };
 

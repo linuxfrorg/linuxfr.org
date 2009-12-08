@@ -19,7 +19,7 @@
 #form-links
   - langs = Dictionary.collection('lang')
   - form.fields_for :links do |lform|
-    %p.link
+    %fieldset.link
       = lform.text_field :title
       = lform.url_field  :url
       = lform.collection_select :lang, langs, :key, :value

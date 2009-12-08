@@ -55,6 +55,10 @@ Rails::Initializer.run do |config|
     :edit => 'modifier'
   }
 
+  config.after_initialize do
+    ActionView::Base.sanitized_allowed_attributes << 'data-id'
+  end
+
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper,
   # like if you have constraints or database-specific column types
@@ -64,4 +68,3 @@ Rails::Initializer.run do |config|
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 end
-
