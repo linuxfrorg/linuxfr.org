@@ -34,7 +34,6 @@ class Paragraph < ActiveRecord::Base
     self.wiki_body = sentences.pop
     sentences.each do |body|
       news.paragraphs.create(:wiki_body => body, :second_part => second_part, :already_split => true)
-      # TODO user_id
     end
   end
 
@@ -52,16 +51,28 @@ class Paragraph < ActiveRecord::Base
 
   before_save :wikify_body
   def wikify_body
-    self.body = wikify(wiki_body)
+    self.body = wikify(wiki_body).gsub(/<\/?p>/, '')
   end
 
 ### Chat ###
 
-  after_save :announce
-  def announce
+  after_create :announce_create
+  def announce_create
     return unless user_id
-    news.boards.edition.create(:message => wiki_body, :user_id => user_id)
-    self.user_id = nil
+    message = render_to_string(:partial => 'paragraphs/board', :locals => {:action => 'paragraphe ajouté', :paragraph => self})
+    news.boards.creation.create(:message => message, :user_id => user_id)
+  end
+
+  after_update :announce_update
+  def announce_update
+    message = render_to_string(:partial => 'paragraphs/board', :locals => {:action => 'paragraphe modifié', :paragraph => self})
+    news.boards.edition.create(:message => message, :user_id => user_id)
+  end
+
+  before_destroy :announce_destroy
+  def announce_destroy
+    message = render_to_string(:partial => 'paragraphs/board', :locals => {:action => 'paragraphe supprimé', :paragraph => self})
+    news.boards.deletion.create(:message => message, :user_id => user_id)
   end
 
 ### Presentation ###

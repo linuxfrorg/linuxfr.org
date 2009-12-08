@@ -86,7 +86,6 @@ var Chat = {
 
     /* Callback for creation */
     on_creation: function(message) {
-        console.log(message);
         Chat.inbox.prepend(message);
         var element = Chat.inbox.find("p:first");
         element.find(".link").each(function() { $('#redaction .new_link').before(this); });
@@ -99,6 +98,7 @@ var Chat = {
         Chat.inbox.prepend(message);
         var element = Chat.inbox.find("p:first");
         element.find(".link").each(function() { $('#link_' + $(this).attr('data-id')).html($(this).html()); });
+        element.find(".paragraph").each(function() { $('#paragraph_' + $(this).attr('data-id')).html($(this).html()); });
     },
 
     /* Callback for deletion */
@@ -106,6 +106,7 @@ var Chat = {
         Chat.inbox.prepend(message);
         var element = Chat.inbox.find("p:first");
         element.find(".link").each(function() { $('#link_' + $(this).attr('data-id')).remove(); });
+        element.find(".paragraph").each(function() { $('#paragraph_' + $(this).attr('data-id')).remove(); });
     }
 };
 
