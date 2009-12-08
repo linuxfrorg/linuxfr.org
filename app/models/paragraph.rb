@@ -13,8 +13,6 @@
 class Paragraph < ActiveRecord::Base
   belongs_to :news
 
-  acts_as_list :scope => :news
-
   attr_accessor   :user_id, :already_split
   attr_accessible :user_id, :already_split, :wiki_body, :second_part, :news_id
 
@@ -61,19 +59,29 @@ class Paragraph < ActiveRecord::Base
     return unless user_id
     message = render_to_string(:partial => 'paragraphs/board', :locals => {:action => 'paragraphe ajouté', :paragraph => self})
     news.boards.creation.create(:message => message, :user_id => user_id)
+    self.user_id = nil
   end
 
   after_update :announce_update
   def announce_update
+    return unless user_id
     message = render_to_string(:partial => 'paragraphs/board', :locals => {:action => 'paragraphe modifié', :paragraph => self})
     news.boards.edition.create(:message => message, :user_id => user_id)
+    self.user_id = nil
   end
 
   before_destroy :announce_destroy
   def announce_destroy
+    return unless user_id
     message = render_to_string(:partial => 'paragraphs/board', :locals => {:action => 'paragraphe supprimé', :paragraph => self})
     news.boards.deletion.create(:message => message, :user_id => user_id)
+    self.user_id = nil
   end
+
+  # Warning, acts_as_list also declares a before_destroy callback,
+  # and this callback must be called after +announce_destroy+.
+  # So do NOT move this line upper in this file.
+  acts_as_list :scope => :news
 
 ### Presentation ###
 

@@ -88,9 +88,9 @@ var Chat = {
     on_creation: function(message) {
         Chat.inbox.prepend(message);
         var element = Chat.inbox.find("p:first");
-        element.find(".link").each(function() { $('#redaction .new_link').before(this); });
-        element.find(".paragraph.first_part").each(function() { $('#redaction #first_part').append(this); });
-        element.find(".paragraph.second_part").each(function() { $('#redaction #second_part').append(this); });
+        element.find(".link").each(function() { $('#redaction .new_link').before($(this).html()); });
+        element.find(".paragraph.first_part").each(function() { $('#redaction #first_part').append($(this).html()); });
+        element.find(".paragraph.second_part").each(function() { $('#redaction #second_part').append($(this).html()); });
     },
 
     /* Callback for edition */
