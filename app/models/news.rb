@@ -66,8 +66,8 @@ class News < Content
 
   after_update :announce_modification
   def announce_modification
-    # TODO diff
-    boards.edition.create(:message => 'Cette dépêche a été modifiée', :user_id => editor_id)
+    message = render_to_string(:partial => 'news/board', :locals => {:action => 'dépêche modifiée :', :news => self})
+    boards.edition.create(:message => message, :user_id => editor_id)
   end
 
 ### SEO ###

@@ -96,6 +96,7 @@ var Chat = {
     on_edition: function(message) {
         Chat.inbox.prepend(message);
         var element = Chat.inbox.find("p:first");
+        element.find(".news").each(function() { $('#news_header').html($(this).clone()); });
         element.find(".link").each(function() { $('#link_' + $(this).attr('data-id')).html($(this).clone()); });
         element.find(".paragraph").each(function() { $('#paragraph_' + $(this).attr('data-id')).html($(this).clone()); });
     },
