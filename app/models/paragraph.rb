@@ -13,8 +13,8 @@
 class Paragraph < ActiveRecord::Base
   belongs_to :news
 
-  attr_accessor   :user_id, :already_split
-  attr_accessible :user_id, :already_split, :wiki_body, :second_part, :news_id
+  attr_accessor   :user_id, :after, :already_split
+  attr_accessible :user_id, :after, :already_split, :wiki_body, :second_part, :news_id
 
   named_scope :in_first_part,  :conditions => { :second_part => false }, :order => "position ASC"
   named_scope :in_second_part, :conditions => { :second_part => true  }, :order => "position ASC"
@@ -40,7 +40,7 @@ class Paragraph < ActiveRecord::Base
     sentences = split_body
     self.wiki_body = sentences.shift
     sentences.each_with_index do |body,i|
-      p = news.paragraphs.create(:wiki_body => body, :second_part => second_part, :already_split => true, :user_id => user_id)
+      p = news.paragraphs.create(:wiki_body => body, :second_part => second_part, :already_split => true, :user_id => user_id, :after => self.id)
       p.insert_at(position + i + 1)
     end
   end

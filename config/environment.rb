@@ -56,7 +56,7 @@ Rails::Initializer.run do |config|
   }
 
   config.after_initialize do
-    ActionView::Base.sanitized_allowed_attributes << 'data-id'
+    ActionView::Base.sanitized_allowed_attributes.merge %w(data-id data-after)
   end
 
   # Use SQL instead of Active Record's schema dumper when creating the test database.

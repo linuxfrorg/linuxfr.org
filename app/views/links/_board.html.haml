@@ -1,4 +1,4 @@
-= action
+= action + ' : '
 %span.link(data-id="#{link.id}")
   = image_tag "langs/#{link.lang}.png", :alt => "[#{link.lang}]"
   = link_to link.title, link.url, 'data-hit' => link.id, :title => link.url, :hreflang => link.lang, :class => 'hit-counter'

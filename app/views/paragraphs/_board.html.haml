@@ -1,3 +1,3 @@
-= action
-%span.paragraph{'data-id' => paragraph.id, 'class' => paragraph.part}
+= action + ' : '
+%span.paragraph{'data-id' => paragraph.id, 'data-after' => paragraph.after}
   = sanitize(paragraph.body)

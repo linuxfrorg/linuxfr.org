@@ -88,17 +88,16 @@ var Chat = {
     on_creation: function(message) {
         Chat.inbox.prepend(message);
         var element = Chat.inbox.find("p:first");
-        element.find(".link").each(function() { $('#redaction .new_link').before($(this).html()); });
-        element.find(".paragraph.first_part").each(function() { $('#redaction #first_part').append($(this).html()); });
-        element.find(".paragraph.second_part").each(function() { $('#redaction #second_part').append($(this).html()); });
+        element.find(".link").each(function() { $('#redaction .new_link').before(this.clone()); });
+        element.find(".paragraph").each(function() { $('#paragraph_' + $(this).attr('data-after')).after(this.clone()); });
     },
 
     /* Callback for edition */
     on_edition: function(message) {
         Chat.inbox.prepend(message);
         var element = Chat.inbox.find("p:first");
-        element.find(".link").each(function() { $('#link_' + $(this).attr('data-id')).html($(this).html()); });
-        element.find(".paragraph").each(function() { $('#paragraph_' + $(this).attr('data-id')).html($(this).html()); });
+        element.find(".link").each(function() { $('#link_' + $(this).attr('data-id')).html($(this).clone()); });
+        element.find(".paragraph").each(function() { $('#paragraph_' + $(this).attr('data-id')).html($(this).clone()); });
     },
 
     /* Callback for deletion */

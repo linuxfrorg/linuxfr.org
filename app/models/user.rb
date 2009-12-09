@@ -67,6 +67,7 @@ class User < ActiveRecord::Base
 
   DEFAULT_AVATAR_URL = "http://#{MY_DOMAIN}/images/default-avatar.png"
 
+  # TODO paperclip deprecations: user interpolates instead of interpolations
   Paperclip::Attachment.interpolations[:gravatar_url] = proc do |attachment, style|
     attachment.instance.gravatar_url
   end
