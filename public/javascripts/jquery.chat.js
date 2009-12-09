@@ -88,25 +88,46 @@ var Chat = {
     on_creation: function(message) {
         Chat.inbox.prepend(message);
         var element = Chat.inbox.find("p:first");
-        element.find(".link").each(function() { $('#redaction .new_link').before(this.clone()); });
-        element.find(".paragraph").each(function() { $('#paragraph_' + $(this).attr('data-after')).after(this.clone()); });
+        element.find(".link").each(function() {
+            var id = $(this).attr('data-id');
+            var html = '<p id="link_' + id + '" data-url="/links/' + id + '/modifier">' + $(this).html() + '</p>';
+            $('#redaction .new_link').before(html);
+            $('#link_' + id).editionInPlace();
+        });
+        element.find(".paragraph").each(function() {
+            var id = $(this).attr('data-id');
+            var after = $(this).attr('data-after');
+            var html = '<div id="link_' + id + '" data-url="/links/' + id + '/modifier">' + $(this).html() + '</div>';
+            $('#paragraph_' + after).after(html)
+            $('#paragraph_' + id).editionInPlace();
+        });
     },
 
     /* Callback for edition */
     on_edition: function(message) {
         Chat.inbox.prepend(message);
         var element = Chat.inbox.find("p:first");
-        element.find(".news").each(function() { $('#news_header').html($(this).clone()); });
-        element.find(".link").each(function() { $('#link_' + $(this).attr('data-id')).html($(this).clone()); });
-        element.find(".paragraph").each(function() { $('#paragraph_' + $(this).attr('data-id')).html($(this).clone()); });
+        element.find(".news").each(function() {
+            $('#news_header').html($(this).clone());
+        });
+        element.find(".link").each(function() {
+            $('#link_' + $(this).attr('data-id')).html($(this).html());
+        });
+        element.find(".paragraph").each(function() {
+            $('#paragraph_' + $(this).attr('data-id')).html($(this).html());
+        });
     },
 
     /* Callback for deletion */
     on_deletion: function(message) {
         Chat.inbox.prepend(message);
         var element = Chat.inbox.find("p:first");
-        element.find(".link").each(function() { $('#link_' + $(this).attr('data-id')).remove(); });
-        element.find(".paragraph").each(function() { $('#paragraph_' + $(this).attr('data-id')).remove(); });
+        element.find(".link").each(function() {
+            $('#link_' + $(this).attr('data-id')).remove();
+        });
+        element.find(".paragraph").each(function() {
+            $('#paragraph_' + $(this).attr('data-id')).remove();
+        });
     }
 };
 
