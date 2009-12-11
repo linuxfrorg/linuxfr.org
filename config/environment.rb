@@ -25,7 +25,7 @@ Rails::Initializer.run do |config|
   config.gem 'raspell', :version => '~>1.1'
   config.gem 'htmlentities', :version => '~>4.2'
   config.gem 'friendly_id', :version => '~>2.2'
-  config.gem 'paperclip', :version => '~>2.1'
+  config.gem 'paperclip', :version => '~>2.3'
   config.gem 'wikitext', :version => '~>1.9'
   config.gem 'authlogic', :version => '~>2.1'
   config.gem 'aasm', :version => '~>2.1'
