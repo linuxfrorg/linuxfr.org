@@ -3,11 +3,10 @@
 #
 class ActiveRecord::Base
   def self.wikify_attr(attr, opts={})
-    accessor = opts[:as] || attr
-    define_method accessor do
-      txt = read_attribute(attr)
-      return "" if txt.blank?
-      wikify txt
+    method = "wikify_#{attr}".to_sym
+    before_validation method
+    define_method method do
+      send("#{attr}=", wikify(send("wiki_#{attr}"), opts))
     end
   end
 

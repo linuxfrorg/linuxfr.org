@@ -7,8 +7,8 @@
   = form.label :title, "Sujet du message"
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
 %p
-  = form.label :body, "Message complet"
-  = form.text_area :body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
+  = form.label :wiki_body, "Message complet"
+  = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
 %p
   = form.submit "Prévisualiser"
   = form.submit "Poster le message" if @preview_mode

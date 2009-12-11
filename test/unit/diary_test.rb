@@ -8,6 +8,7 @@
 #  cached_slug :string(255)
 #  owner_id    :integer(4)
 #  body        :text
+#  wiki_body   :text
 #  created_at  :datetime
 #  updated_at  :datetime
 #

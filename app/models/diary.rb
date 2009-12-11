@@ -8,6 +8,7 @@
 #  cached_slug :string(255)
 #  owner_id    :integer(4)
 #  body        :text
+#  wiki_body   :text
 #  created_at  :datetime
 #  updated_at  :datetime
 #
@@ -19,10 +20,10 @@
 class Diary < Content
   belongs_to :owner, :class_name => 'User'
 
-  attr_accessible :title, :body
+  attr_accessible :title, :wiki_body
 
-  validates_presence_of :title, :message => "Le titre est obligatoire"
-  validates_presence_of :body,  :message => "Vous ne pouvez pas poster un journal vide"
+  validates_presence_of :title,     :message => "Le titre est obligatoire"
+  validates_presence_of :wiki_body, :message => "Vous ne pouvez pas poster un journal vide"
 
   named_scope :published, :conditions => { :state => 'published' }
 

@@ -7,6 +7,7 @@
 #  title               :string(255)
 #  cached_slug         :string(255)
 #  body                :text
+#  wiki_body           :text
 #  category_id         :integer(4)
 #  assigned_to_user_id :integer(4)
 #  created_at          :datetime
@@ -23,10 +24,10 @@ class Tracker < Content
   belongs_to :assigned_to_user, :class_name => "User"
   belongs_to :category
 
-  attr_accessible :title, :body, :category_id
+  attr_accessible :title, :wiki_body, :category_id
 
-  validates_presence_of :title, :message => "Le titre est obligatoire"
-  validates_presence_of :body,  :message => "Veuillez décrire cette entrée du suivi"
+  validates_presence_of :title,     :message => "Le titre est obligatoire"
+  validates_presence_of :wiki_body, :message => "Veuillez décrire cette entrée du suivi"
 
   wikify_attr :body
 

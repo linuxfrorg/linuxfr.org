@@ -7,6 +7,7 @@
 #  title               :string(255)
 #  cached_slug         :string(255)
 #  body                :text
+#  wiki_body           :text
 #  news_id             :integer(4)
 #  assigned_to_user_id :integer(4)
 #  created_at          :datetime
@@ -22,12 +23,12 @@ class Interview < Content
   belongs_to :news
   belongs_to :assigned_to_user, :class_name => 'User'
 
-  attr_accessible :title, :body
+  attr_accessible :title, :wiki_body
 
   named_scope :public, :conditions => ["state != ?", :draft]
 
-  validates_presence_of :title, :message => "Vous devez préciser la personne à interviewer"
-  validates_presence_of :body,  :message => "Veuillez donner quelques informations sur la personne à interviewer"
+  validates_presence_of :title,     :message => "Vous devez préciser la personne à interviewer"
+  validates_presence_of :wiki_body, :message => "Veuillez donner quelques informations sur la personne à interviewer"
 
   wikify_attr :body
 

@@ -1,3 +1,4 @@
+- preview.wikify_body
 = article_for preview do |c|
   - c.title = "#{link_to preview.forum.title, preview.forum} : #{link_to preview.title, [preview.forum, preview]}".html_safe!
   - c.body  = sanitize(spellify preview.body)

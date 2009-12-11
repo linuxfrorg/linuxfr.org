@@ -5,6 +5,7 @@ class CreateTrackers < ActiveRecord::Migration
       t.string :title
       t.string :cached_slug
       t.text :body
+      t.text :wiki_body
       t.references :category
       t.references :assigned_to_user
       t.timestamps

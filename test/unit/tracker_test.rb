@@ -7,6 +7,7 @@
 #  title               :string(255)
 #  cached_slug         :string(255)
 #  body                :text
+#  wiki_body           :text
 #  category_id         :integer(4)
 #  assigned_to_user_id :integer(4)
 #  created_at          :datetime

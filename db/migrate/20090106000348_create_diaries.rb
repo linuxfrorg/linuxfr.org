@@ -6,6 +6,7 @@ class CreateDiaries < ActiveRecord::Migration
       t.string :cached_slug
       t.integer :owner_id
       t.text :body
+      t.text :wiki_body
       t.timestamps
     end
     add_index :diaries, [:state, :owner_id]

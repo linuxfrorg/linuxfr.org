@@ -7,6 +7,7 @@
 #  title       :string(255)
 #  cached_slug :string(255)
 #  body        :text
+#  wiki_body   :text
 #  forum_id    :integer(4)
 #  created_at  :datetime
 #  updated_at  :datetime

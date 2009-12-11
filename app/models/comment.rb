@@ -8,6 +8,7 @@
 #  state             :string(255)     default("published"), not null
 #  title             :string(255)
 #  body              :text
+#  wiki_body         :text
 #  score             :integer(4)      default(0)
 #  answered_to_self  :boolean(1)
 #  materialized_path :string(1022)
@@ -23,7 +24,7 @@ class Comment < ActiveRecord::Base
   belongs_to :node, :touch => :last_commented_at, :counter_cache => :comments_count
   has_many :relevances
 
-  attr_accessible :title, :body, :node_id, :parent_id
+  attr_accessible :title, :wiki_body, :node_id, :parent_id
 
   named_scope :published, :conditions => {:state => 'published'}
   named_scope :descendants, lambda {|path|
@@ -33,8 +34,8 @@ class Comment < ActiveRecord::Base
     { :state => 'published', :answered_to_self => false }
   named_scope :footer, :conditions => {:state => 'published'}, :order => 'created_at DESC', :limit => 12
 
-  validates_presence_of :title, :message => "Le titre est obligatoire"
-  validates_presence_of :body,  :message => "Vous ne pouvez pas poster un commentaire vide"
+  validates_presence_of :title,     :message => "Le titre est obligatoire"
+  validates_presence_of :wiki_body, :message => "Vous ne pouvez pas poster un commentaire vide"
 
   wikify_attr :body
 

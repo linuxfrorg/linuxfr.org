@@ -6,6 +6,7 @@ class CreateComments < ActiveRecord::Migration
       t.string :state, :null => false, :default => 'published'
       t.string :title
       t.text :body
+      t.text :wiki_body
       t.integer :score, :default => 0
       t.boolean :answered_to_self, :default => false
       t.string :materialized_path, :limit => 1022
