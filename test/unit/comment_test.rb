@@ -1,3 +1,12 @@
+require 'test_helper'
+
+class CommentTest < ActiveSupport::TestCase
+  # Replace this with your real tests.
+  test "the truth" do
+    assert true
+  end
+end
+
 # == Schema Information
 #
 # Table name: comments
@@ -10,17 +19,9 @@
 #  body              :text
 #  wiki_body         :text
 #  score             :integer(4)      default(0)
-#  answered_to_self  :boolean(1)
+#  answered_to_self  :boolean(1)      default(FALSE)
 #  materialized_path :string(1022)
 #  created_at        :datetime
 #  updated_at        :datetime
 #
 
-require 'test_helper'
-
-class CommentTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
-end

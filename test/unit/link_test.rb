@@ -1,17 +1,3 @@
-# == Schema Information
-#
-# Table name: links
-#
-#  id         :integer(4)      not null, primary key
-#  news_id    :integer(4)
-#  title      :string(255)
-#  url        :string(255)
-#  lang       :string(255)
-#  nb_clicks  :integer(4)      default(0)
-#  created_at :datetime
-#  updated_at :datetime
-#
-
 require 'test_helper'
 
 class LinkTest < ActiveSupport::TestCase
@@ -25,3 +11,18 @@ class LinkTest < ActiveSupport::TestCase
   end
 
 end
+
+# == Schema Information
+#
+# Table name: links
+#
+#  id         :integer(4)      not null, primary key
+#  news_id    :integer(4)      not null
+#  title      :string(255)
+#  url        :string(255)
+#  lang       :string(255)
+#  nb_clicks  :integer(4)      default(0)
+#  created_at :datetime
+#  updated_at :datetime
+#
+

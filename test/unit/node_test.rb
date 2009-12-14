@@ -1,3 +1,12 @@
+require 'test_helper'
+
+class NodeTest < ActiveSupport::TestCase
+  # Replace this with your real tests.
+  test "the truth" do
+    assert true
+  end
+end
+
 # == Schema Information
 #
 # Table name: nodes
@@ -9,18 +18,10 @@
 #  interest          :integer(4)      default(0)
 #  user_id           :integer(4)
 #  public            :boolean(1)      default(TRUE)
-#  cc_licensed       :boolean(1)
+#  cc_licensed       :boolean(1)      default(FALSE)
 #  comments_count    :integer(4)      default(0)
 #  last_commented_at :datetime
 #  created_at        :datetime
 #  updated_at        :datetime
 #
 
-require 'test_helper'
-
-class NodeTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
-end

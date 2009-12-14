@@ -1,3 +1,12 @@
+require 'test_helper'
+
+class AccountTest < ActiveSupport::TestCase
+  # Replace this with your real tests.
+  test "the truth" do
+    assert true
+  end
+end
+
 # == Schema Information
 #
 # Table name: accounts
@@ -19,19 +28,11 @@
 #  last_login_at       :datetime
 #  current_login_ip    :string(255)
 #  last_login_ip       :string(255)
+#  karma               :integer(4)      default(20), not null
+#  nb_votes            :integer(4)      default(0), not null
 #  stylesheet          :string(255)
 #  old_password        :string(20)
 #  created_at          :datetime
 #  updated_at          :datetime
-#  karma               :integer(4)      default(20), not null
-#  nb_votes            :integer(4)      default(0), not null
 #
 
-require 'test_helper'
-
-class AccountTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
-end
