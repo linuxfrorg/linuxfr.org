@@ -16,10 +16,10 @@ class PostsController < ApplicationController
     raise ActiveRecord::RecordNotFound.new unless @post && @post.creatable_by?(current_user)
     if !preview_mode && @post.save
       @post.create_node(:user_id => current_user.id)
-      flash[:success] = "Votre message a bien été créé"
-      redirect_to forum_posts_url(:forum_id => @post.forum_id)
+      redirect_to forum_posts_url(:forum_id => @post.forum_id), :notice => "Votre message a bien été créé"
     else
       @post.node = Node.new
+      flash.now[:alert] = "Impossible d'enregistrer ce message"
       render :new
     end
   end
@@ -46,9 +46,9 @@ class PostsController < ApplicationController
     @post.attributes = params[:post]
     raise ActiveRecord::RecordNotFound.new unless @post && @post.editable_by?(current_user)
     if !preview_mode && @post.save
-      flash[:success] = "Votre message a bien été modifié"
-      redirect_to forum_posts_url
+      redirect_to forum_posts_url, :notice => "Votre message a bien été modifié"
     else
+      flash.now[:alert] = "Impossible d'enregistrer ce message"
       render :edit
     end
   end
@@ -57,8 +57,7 @@ class PostsController < ApplicationController
     @post = @forum.posts.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @post && @post.deletable_by?(current_user)
     @post.mark_as_deleted
-    flash[:success] = "Votre message a bien été supprimé"
-    redirect_to forum_posts_url
+    redirect_to forum_posts_url, :notice => "Votre message a bien été supprimé"
   end
 
 protected

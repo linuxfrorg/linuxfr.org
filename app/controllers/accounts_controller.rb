@@ -10,9 +10,8 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(params[:account])
     if @account.save
-      flash[:success] = "Votre compte a été créé. Vous allez recevoir un email avec les informations pour l'activer"
       AccountNotifications.deliver_signup(@account)
-      redirect_to '/'
+      redirect_to '/', :notice => "Votre compte a été créé. Vous allez recevoir un email avec les informations pour l'activer"
     else
       render :new
     end
@@ -21,10 +20,9 @@ class AccountsController < ApplicationController
   def activate
     if @account && @account.activate!
       AccountSession.create(@account, true)
-      flash[:success] = "Votre compte a bien été activé"
-      redirect_to '/'
+      redirect_to '/', :notice => "Votre compte a bien été activé"
     else
-      flash[:error] = "Désolé, le lien d'activation n'est pas valide"
+      flash.now[:alert] = "Désolé, le lien d'activation n'est pas valide"
       render :forgot_password
     end
   end
@@ -35,12 +33,11 @@ class AccountsController < ApplicationController
   def send_password
     @account = Account.find_by_login(params[:login])
     if @account
-      flash[:success] = "Vous allez recevoir un email avec un lien pour changer votre mot de passe"
       @account.reset_perishable_token!
       AccountNotifications.deliver_forgot_password(@account)
-      redirect_to '/'
+      redirect_to '/', :notice => "Vous allez recevoir un email avec un lien pour changer votre mot de passe"
     else
-      flash[:error] = "Désolé, ce login ne correspond à aucun compte actif"
+      flash.now[:alert] = "Désolé, ce login ne correspond à aucun compte actif"
       render :forgot_password
     end
   end
@@ -48,10 +45,9 @@ class AccountsController < ApplicationController
   def reset_password
     if @account && @account.active?
       AccountSession.create(@account, true)
-      flash[:success] = "Veuillez changer votre mot de passe"
-      redirect_to edit_account_url
+      redirect_to edit_account_url, :notice => "Veuillez changer votre mot de passe"
     else
-      flash[:error] = "Désolé, ce lien n'est pas/plus valide"
+      flash.now[:alert] = "Désolé, ce lien n'est pas/plus valide"
       render :forgot_password
     end
   end
@@ -63,8 +59,12 @@ class AccountsController < ApplicationController
   def update
     @account = current_account_session.account
     @account.attributes = params[:account]
-    flash[:success] = "Vos préférences ont été enregistrées" if @account.save
-    render :edit
+    if @account.save
+      redirect_to :edit, :notice => "Vos préférences ont été enregistrées"
+    else
+      flash.now[:alert] = "Impossible d'enregistrer vos préférences !"
+      render :edit
+    end
   end
 
   def delete
@@ -76,11 +76,9 @@ class AccountsController < ApplicationController
     if @account && @account.id  == current_account_session.account.id
       @account.delete
       current_account_session.destroy
-      flash[:success] = "Votre compte a bien été supprimé"
-      redirect_to '/'
+      redirect_to '/', :notice => "Votre compte a bien été supprimé"
     else
-      flash[:error] = "Le code aléatoire n'est pas le bon"
-      redirect_to :back
+      redirect_to :back, :alert => "Le code aléatoire n'est pas le bon"
     end
   end
 

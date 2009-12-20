@@ -13,8 +13,7 @@ class AccountSessionsController < ApplicationController
       @account_session = AccountSession.new(params[:account_session])
     end
     if @account_session.save
-      flash[:success] = "Vous êtes connecté"
-      redirect_to '/'
+      redirect_to '/', :notice => "Vous êtes connecté"
     else
       render :action => :new
     end
@@ -22,8 +21,7 @@ class AccountSessionsController < ApplicationController
 
   def destroy
     current_account_session.destroy
-    flash[:success] = "Vous êtes déconnecté"
-    redirect_to '/'
+    redirect_to '/', :notice => "Vous êtes déconnecté"
   end
 
 end

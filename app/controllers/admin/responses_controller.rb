@@ -11,9 +11,9 @@ class Admin::ResponsesController < AdminController
   def create
     @response = Response.new(params[:response])
     if @response.save
-      flash[:success] = 'Nouvelle réponse créée.'
-      redirect_to admin_responses_url
+      redirect_to admin_responses_url, :notice => 'Nouvelle réponse créée.'
     else
+      flash.now[:alert] = "Impossible d'enregistrer cette réponse"
       render :new
     end
   end
@@ -26,9 +26,9 @@ class Admin::ResponsesController < AdminController
     @response = Response.find(params[:id])
     @response.attributes = params[:response]
     if @response.save
-      flash[:success] = 'Réponse mise à jour.'
-      redirect_to admin_responses_url
+      redirect_to admin_responses_url, :notice => 'Réponse mise à jour.'
     else
+      flash.now[:alert] = "Impossible d'enregistrer cette réponse"
       render :edit
     end
   end
@@ -36,8 +36,7 @@ class Admin::ResponsesController < AdminController
   def destroy
     @response = Response.find(params[:id])
     @response.destroy
-    flash[:success] = 'Réponse supprimée'
-    redirect_to admin_responses_url
+    redirect_to admin_responses_url, :notice => 'Réponse supprimée'
   end
 
 end

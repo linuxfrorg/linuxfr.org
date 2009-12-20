@@ -10,16 +10,14 @@ class StylesheetsController < ApplicationController
     account = current_account_session.account
     account.stylesheet = params[:stylesheet]
     account.save
-    flash[:success] = "Feuille de style enregistrée"
-    redirect_to edit_account_stylesheet_url
+    redirect_to edit_account_stylesheet_url, :notice => "Feuille de style enregistrée"
   end
 
   def destroy
     account = current_account_session.account
     account.stylesheet = nil
     account.save
-    flash[:success] = "Feuille de style par défaut"
-    redirect_to edit_account_stylesheet_url
+    redirect_to edit_account_stylesheet_url, :notice => "Feuille de style par défaut"
   end
 
 end

@@ -11,9 +11,9 @@ class Admin::BannersController < AdminController
   def create
     @banner = Banner.new(params[:banner])
     if !preview_mode && @banner.save
-      flash[:success] = 'Nouvelle bannière créée.'
-      redirect_to admin_banners_url
+      redirect_to admin_banners_url, :notice => 'Nouvelle bannière créée.'
     else
+      flash.now[:alert] = "Impossible d'enregistrer cette banière"
       render :new
     end
   end
@@ -27,9 +27,9 @@ class Admin::BannersController < AdminController
     @banner = Banner.find(params[:id])
     @banner.attributes = params[:banner]
     if !preview_mode && @banner.save
-      flash[:success] = 'Bannière mise à jour.'
-      redirect_to admin_banners_url
+      redirect_to admin_banners_url, :notice => 'Bannière mise à jour.'
     else
+      flash.now[:alert] = "Impossible d'enregistrer cette banière"
       render :edit
     end
   end
@@ -37,8 +37,7 @@ class Admin::BannersController < AdminController
   def destroy
     @banner = Banner.find(params[:id])
     @banner.destroy
-    flash[:success] = 'Bannière supprimée'
-    redirect_to admin_banners_url
+    redirect_to admin_banners_url, :notice => 'Bannière supprimée'
   end
 
 end

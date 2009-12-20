@@ -9,8 +9,7 @@ class Admin::LogosController < AdminController
 
   def create
     Dictionary['logo'] = params[:logo]
-    flash[:success] = "Changement de logo enregistré"
-    redirect_to admin_logo_url
+    redirect_to admin_logo_url, :notice => "Changement de logo enregistré"
   end
 
 end

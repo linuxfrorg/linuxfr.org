@@ -11,9 +11,9 @@ class Admin::CategoriesController < AdminController
   def create
     @category = Category.new(params[:category])
     if @category.save
-      flash[:success] = 'Nouvelle category créée.'
-      redirect_to admin_categories_url
+      redirect_to admin_categories_url, :notice => 'Nouvelle category créée.'
     else
+      flash.now[:alert] = "Impossible d'enregistrer cette catégorie"
       render :new
     end
   end
@@ -26,9 +26,9 @@ class Admin::CategoriesController < AdminController
     @category = Category.find(params[:id])
     @category.attributes = params[:category]
     if @category.save
-      flash[:success] = 'Category mise à jour.'
-      redirect_to admin_categories_url
+      redirect_to admin_categories_url, :notice => 'Category mise à jour.'
     else
+      flash.now[:alert] = "Impossible d'enregistrer cette catégorie"
       render :edit
     end
   end
@@ -36,8 +36,7 @@ class Admin::CategoriesController < AdminController
   def destroy
     @category = Category.find(params[:id])
     @category.delete
-    flash[:success] = 'Catégorie supprimée'
-    redirect_to admin_categories_url
+    redirect_to admin_categories_url, :notice => 'Catégorie supprimée'
   end
 
 end

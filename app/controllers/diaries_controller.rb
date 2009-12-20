@@ -25,10 +25,10 @@ class DiariesController < ApplicationController
     @diary.attributes = params[:diary]
     if !preview_mode && @diary.save
       @diary.create_node(:user_id => current_user.id)
-      flash[:success] = "Votre journal a bien été créé"
-      redirect_to [@diary.user, @diary]
+      redirect_to [@diary.user, @diary], :notice => "Votre journal a bien été créé"
     else
       @diary.node = Node.new
+      flash.now[:alert] = "Impossible d'enregistrer ce journal"
       render :new
     end
   end
@@ -51,9 +51,9 @@ class DiariesController < ApplicationController
     raise ActiveRecord::RecordNotFound.new unless @diary && @diary.editable_by?(current_user)
     @diary.attributes = params[:diary]
     if !preview_mode && @diary.save
-      flash[:success] = "Votre journal a bien été modifié"
-      redirect_to [@user, @diary]
+      redirect_to [@user, @diary], :notice => "Votre journal a bien été modifié"
     else
+      flash.now[:alert] = "Impossible d'enregistrer ce journal"
       render :edit
     end
   end
@@ -62,8 +62,7 @@ class DiariesController < ApplicationController
     @diary = @user.diaries.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @diary && @diary.deletable_by?(current_user)
     @diary.mark_as_deleted
-    flash[:success] = "Votre journal a bien été supprimé"
-    redirect_to diaries_url
+    redirect_to diaries_url, :notice => "Votre journal a bien été supprimé"
   end
 
 protected

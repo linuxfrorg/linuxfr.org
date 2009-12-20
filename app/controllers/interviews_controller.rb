@@ -35,10 +35,10 @@ class InterviewsController < ApplicationController
     @interview.attributes = params[:interview]
     if !preview_mode && @interview.save
       @interview.create_node(:public => false, :user_id => current_user.id)
-      flash[:success] = "Nous vous remercions pour avoir proposé un entretien. Cette proposition va être examinée par l'équipe de modération."
-      redirect_to interviews_url
+      redirect_to interviews_url, :notice => "Nous vous remercions pour avoir proposé un entretien. Cette proposition va être examinée par l'équipe de modération."
     else
       @interview.node = Node.new
+      flash.now[:alert] = "Impossible d'enregistrer cette proposition d'entretien"
       render :new
     end
   end

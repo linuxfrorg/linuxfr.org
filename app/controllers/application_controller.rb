@@ -62,8 +62,7 @@ protected
   def user_required
     return if current_user
     store_location
-    flash[:error] = "Cette fonctionnalité est réservée aux utilisateurs loggés"
-    redirect_to new_account_session_url
+    redirect_to new_account_session_url, :alert => "Cette fonctionnalité est réservée aux utilisateurs loggés"
   end
 
   def anonymous_required
@@ -73,22 +72,19 @@ protected
   def admin_required
     return if current_user && current_user.admin?
     store_location
-    flash[:error] = "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
-    redirect_to new_account_session_url
+    redirect_to new_account_session_url, :alert => "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
   end
 
   def amr_required
     return if current_user && current_user.amr?
     store_location
-    flash[:error] = "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
-    redirect_to new_account_session_url
+    redirect_to new_account_session_url, :alert => "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
   end
 
   def writer_required
     return if current_user && (current_user.writer? || current_user.amr?)
     store_location
-    flash[:error] = "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
-    redirect_to new_account_session_url
+    redirect_to new_account_session_url, :alert => "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
   end
 
   def store_location

@@ -32,10 +32,10 @@ class PollsController < ApplicationController
     @poll.attributes = params[:poll]
     if !preview_mode && @poll.save
       @poll.create_node(:public => false, :user_id => current_user.id)
-      flash[:success] = "L'équipe de modération de LinuxFr.org vous remercie pour votre proposition de sondage"
-      redirect_to polls_url
+      redirect_to polls_url, :notice => "L'équipe de modération de LinuxFr.org vous remercie pour votre proposition de sondage"
     else
       @poll.node = Node.new
+      flash.now[:alert] = "Impossible d'enregistrer ce sondage"
       render :new
     end
   end
@@ -46,8 +46,7 @@ class PollsController < ApplicationController
     @answer = @poll.answers.scoped_by_position(params[:position]).first
     raise ActiveRecord::RecordNotFound unless @answer
     @answer.vote(request.remote_ip)
-    flash[:success] = "Merci d'avoir voté pour ce sondage"
-    redirect_to @poll
+    redirect_to @poll, :notice => "Merci d'avoir voté pour ce sondage"
   end
 
 protected

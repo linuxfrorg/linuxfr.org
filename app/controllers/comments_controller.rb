@@ -27,9 +27,10 @@ class CommentsController < ApplicationController
     @comment.attributes = params[:comment]
     @comment.user = current_user
     if !preview_mode && @comment.save
-      flash[:success] = "Votre commentaire a bien été posté"
+      flash[:notice] = "Votre commentaire a bien été posté"
       redirect_to_content @node.content
     else
+      flash.now[:alert] = "Impossible d'enregistrer ce commentaire"
       render :new
     end
   end
@@ -44,9 +45,10 @@ class CommentsController < ApplicationController
     raise ActiveRecord::RecordNotFound.new unless @comment.editable_by?(current_user)
     @comment.attributes = params[:comment]
     if !preview_mode && @comment.save
-      flash[:success] = "Votre commentaire a bien été modifié"
+      flash[:notice] = "Votre commentaire a bien été modifié"
       redirect_to_content @node.content
     else
+      flash.now[:alert] = "Impossible d'enregistrer ce commentaire"
       render :edit
     end
   end
@@ -55,7 +57,7 @@ class CommentsController < ApplicationController
     @comment = @node.comments.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @comment.deletable_by?(current_user)
     @comment.mark_as_deleted
-    flash[:success] = "Votre commentaire a bien été supprimé"
+    flash[:notice] = "Votre commentaire a bien été supprimé"
     redirect_to_content @node.content
   end
 

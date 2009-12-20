@@ -35,10 +35,10 @@ class TrackersController < ApplicationController
     @tracker.attributes = params[:tracker]
     if !preview_mode && @tracker.save
       @tracker.create_node(:user_id => current_user.id)
-      flash[:success] = "Votre entrée a bien été créée dans le suivi"
-      redirect_to trackers_url
+      redirect_to trackers_url, :notice => "Votre entrée a bien été créée dans le suivi"
     else
       @tracker.node = Node.new
+      flash.now[:alert] = "Impossible d'enregistrer cette entrée du suivi"
       render :new
     end
   end
@@ -54,9 +54,9 @@ class TrackersController < ApplicationController
     @tracker.attributes = params[:tracker]
     @tracker.assigned_to_user = current_user
     if !preview_mode && @tracker.save
-      flash[:success] = "Entrée du suivi modifiée"
-      redirect_to trackers_url
+      redirect_to trackers_url, :notice => "Entrée du suivi modifiée"
     else
+      flash.now[:alert] = "Impossible d'enregistrer cette entrée du suivi"
       render :edit
     end
   end
@@ -65,8 +65,7 @@ class TrackersController < ApplicationController
     @tracker = Tracker.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @tracker && @tracker.deletable_by?(current_user)
     @tracker.mark_as_deleted
-    flash[:success] = "Entrée du suivi supprimée"
-    redirect_to trackers_url
+    redirect_to trackers_url, :notice => "Entrée du suivi supprimée"
   end
 
 protected

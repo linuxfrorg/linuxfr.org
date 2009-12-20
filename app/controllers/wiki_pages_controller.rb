@@ -32,10 +32,10 @@ class WikiPagesController < ApplicationController
     @wiki_page.attributes = params[:wiki_page]
     if !preview_mode && @wiki_page.save
       @wiki_page.create_node(:user_id => current_user.id, :cc_licensed => true)
-      flash[:success] = "Nouvelle page de wiki créée"
-      redirect_to @wiki_page
+      redirect_to @wiki_page, :notice => "Nouvelle page de wiki créée"
     else
       @wiki_page.node = Node.new
+      flash.now[:alert] = "Impossible d'enregistrer cette page de wiki"
       render :new
     end
   end
@@ -52,9 +52,9 @@ class WikiPagesController < ApplicationController
     @wiki_page.attributes = params[:wiki_page]
     @wiki_page.user_id = current_user.id
     if !preview_mode && @wiki_page.save
-      flash[:success] = "Modification enregistrée"
-      redirect_to @wiki_page
+      redirect_to @wiki_page, :notice => "Modification enregistrée"
     else
+      flash.now[:alert] = "Impossible d'enregistrer cette page de wiki"
       render :edit
     end
   end
@@ -63,8 +63,7 @@ class WikiPagesController < ApplicationController
     @wiki_page = WikiPage.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @wiki_page && @wiki_page.deletable_by?(current_user)
     @wiki_page.mark_as_deleted
-    flash[:success] = "Page de wiki supprimée"
-    redirect_to WikiPage.home_page
+    redirect_to WikiPage.home_page, :notice => "Page de wiki supprimée"
   end
 
   def revision

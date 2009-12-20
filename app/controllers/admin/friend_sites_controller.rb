@@ -13,9 +13,9 @@ class Admin::FriendSitesController < AdminController
     @friend_site.attributes = params[:friend_site]
     if @friend_site.save
       @friend_site.move_to_bottom
-      flash[:success] = "Site ami créé"
-      redirect_to admin_friend_sites_url
+      redirect_to admin_friend_sites_url, :notice => "Site ami créé"
     else
+      flash.now[:alert] = "Impossible d'enregistrer ce site"
       render :new
     end
   end
@@ -28,9 +28,9 @@ class Admin::FriendSitesController < AdminController
     @friend_site = FriendSite.find(params[:id])
     @friend_site.attributes = params[:friend_site]
     if @friend_site.save
-      flash[:success] = "Site ami modifié"
-      redirect_to admin_friend_sites_url
+      redirect_to admin_friend_sites_url, :notice => "Site ami modifié"
     else
+      flash.now[:alert] = "Impossible d'enregistrer ce site"
       render :edit
     end
   end
@@ -38,8 +38,7 @@ class Admin::FriendSitesController < AdminController
   def destroy
     site = FriendSite.find(params[:id])
     site.destroy
-    flash[:success] = "Site ami supprimé"
-    redirect_to admin_friend_sites_url
+    redirect_to admin_friend_sites_url, :notice => "Site ami supprimé"
   end
 
   def lower

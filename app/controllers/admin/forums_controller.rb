@@ -14,9 +14,9 @@ class Admin::ForumsController < AdminController
     @forum.attributes = params[:forum]
     if @forum.save
       @forum.move_to_bottom
-      flash[:success] = "Forum créé"
-      redirect_to admin_forums_url
+      redirect_to admin_forums_url, :notice => "Forum créé"
     else
+      flash.now[:alert] = "Impossible d'enregistrer ce forum"
       render :new
     end
   end
@@ -29,9 +29,9 @@ class Admin::ForumsController < AdminController
     @forum = Forum.find(params[:id])
     @forum.attributes = params[:forum]
     if @forum.save
-      flash[:success] = "Forum modifié"
-      redirect_to admin_forums_url
+      redirect_to admin_forums_url, :notice => "Forum modifié"
     else
+      flash.now[:alert] = "Impossible d'enregistrer ce forum"
       render :edit
     end
   end
@@ -39,8 +39,7 @@ class Admin::ForumsController < AdminController
   def destroy
     forum = Forum.find(params[:id])
     forum.destroy
-    flash[:success] = "Forum supprimé"
-    redirect_to admin_forums_url
+    redirect_to admin_forums_url, :notice => "Forum supprimé"
   end
 
 end
