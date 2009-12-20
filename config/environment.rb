@@ -28,6 +28,7 @@ Rails::Initializer.run do |config|
   config.gem 'paperclip', :version => '~>2.3'
   config.gem 'wikitext', :version => '~>1.9'
   config.gem 'authlogic', :version => '~>2.1'
+  config.gem 'acts_as_list', :version => '~>0.1'
   config.gem 'aasm', :version => '~>2.1'
   config.gem 'will_paginate', :version => '~>2.3'
   config.gem 'rest-client', :lib => 'restclient', :version => '~>1.0'
