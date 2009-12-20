@@ -31,7 +31,6 @@ class NewsController < ApplicationController
       redirect_to news_index_url, :notice => "Votre proposition de dépêche a bien été soumise, et sera modérée dans les heures ou jours à venir"
     else
       @news.node = Node.new
-      flash.now[:alert] = "Impossible d'enregistrer cette dépêche"
       render :new
     end
   end

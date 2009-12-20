@@ -30,7 +30,6 @@ class CommentsController < ApplicationController
       flash[:notice] = "Votre commentaire a bien été posté"
       redirect_to_content @node.content
     else
-      flash.now[:alert] = "Impossible d'enregistrer ce commentaire"
       render :new
     end
   end
@@ -48,7 +47,6 @@ class CommentsController < ApplicationController
       flash[:notice] = "Votre commentaire a bien été modifié"
       redirect_to_content @node.content
     else
-      flash.now[:alert] = "Impossible d'enregistrer ce commentaire"
       render :edit
     end
   end

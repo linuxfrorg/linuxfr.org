@@ -13,7 +13,6 @@ class Admin::BannersController < AdminController
     if !preview_mode && @banner.save
       redirect_to admin_banners_url, :notice => 'Nouvelle bannière créée.'
     else
-      flash.now[:alert] = "Impossible d'enregistrer cette banière"
       render :new
     end
   end
@@ -29,7 +28,6 @@ class Admin::BannersController < AdminController
     if !preview_mode && @banner.save
       redirect_to admin_banners_url, :notice => 'Bannière mise à jour.'
     else
-      flash.now[:alert] = "Impossible d'enregistrer cette banière"
       render :edit
     end
   end

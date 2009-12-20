@@ -35,7 +35,6 @@ class PollsController < ApplicationController
       redirect_to polls_url, :notice => "L'équipe de modération de LinuxFr.org vous remercie pour votre proposition de sondage"
     else
       @poll.node = Node.new
-      flash.now[:alert] = "Impossible d'enregistrer ce sondage"
       render :new
     end
   end

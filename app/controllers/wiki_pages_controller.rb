@@ -35,7 +35,6 @@ class WikiPagesController < ApplicationController
       redirect_to @wiki_page, :notice => "Nouvelle page de wiki créée"
     else
       @wiki_page.node = Node.new
-      flash.now[:alert] = "Impossible d'enregistrer cette page de wiki"
       render :new
     end
   end
@@ -54,7 +53,6 @@ class WikiPagesController < ApplicationController
     if !preview_mode && @wiki_page.save
       redirect_to @wiki_page, :notice => "Modification enregistrée"
     else
-      flash.now[:alert] = "Impossible d'enregistrer cette page de wiki"
       render :edit
     end
   end

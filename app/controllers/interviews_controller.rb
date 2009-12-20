@@ -38,7 +38,6 @@ class InterviewsController < ApplicationController
       redirect_to interviews_url, :notice => "Nous vous remercions pour avoir proposé un entretien. Cette proposition va être examinée par l'équipe de modération."
     else
       @interview.node = Node.new
-      flash.now[:alert] = "Impossible d'enregistrer cette proposition d'entretien"
       render :new
     end
   end

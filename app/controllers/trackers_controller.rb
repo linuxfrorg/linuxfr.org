@@ -38,7 +38,6 @@ class TrackersController < ApplicationController
       redirect_to trackers_url, :notice => "Votre entrée a bien été créée dans le suivi"
     else
       @tracker.node = Node.new
-      flash.now[:alert] = "Impossible d'enregistrer cette entrée du suivi"
       render :new
     end
   end
@@ -56,7 +55,6 @@ class TrackersController < ApplicationController
     if !preview_mode && @tracker.save
       redirect_to trackers_url, :notice => "Entrée du suivi modifiée"
     else
-      flash.now[:alert] = "Impossible d'enregistrer cette entrée du suivi"
       render :edit
     end
   end

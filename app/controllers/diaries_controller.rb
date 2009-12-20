@@ -28,7 +28,6 @@ class DiariesController < ApplicationController
       redirect_to [@diary.user, @diary], :notice => "Votre journal a bien été créé"
     else
       @diary.node = Node.new
-      flash.now[:alert] = "Impossible d'enregistrer ce journal"
       render :new
     end
   end
@@ -53,7 +52,6 @@ class DiariesController < ApplicationController
     if !preview_mode && @diary.save
       redirect_to [@user, @diary], :notice => "Votre journal a bien été modifié"
     else
-      flash.now[:alert] = "Impossible d'enregistrer ce journal"
       render :edit
     end
   end

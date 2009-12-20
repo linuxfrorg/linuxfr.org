@@ -19,7 +19,6 @@ class PostsController < ApplicationController
       redirect_to forum_posts_url(:forum_id => @post.forum_id), :notice => "Votre message a bien été créé"
     else
       @post.node = Node.new
-      flash.now[:alert] = "Impossible d'enregistrer ce message"
       render :new
     end
   end
