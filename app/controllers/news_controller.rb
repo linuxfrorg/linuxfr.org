@@ -22,7 +22,7 @@ class NewsController < ApplicationController
 
   def create
     @news = News.new
-    @news.attributes = params[:news]
+    @news.attributes   = params[:news]
     @news.author_name  = current_user.name  if current_user
     @news.author_email = current_user.email if current_user
     if !preview_mode && @news.save

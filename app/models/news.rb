@@ -134,7 +134,7 @@ class News < Content
 ### ACL ###
 
   def readable_by?(user)
-    published? || (user && user.amr?)
+    published? || (user && (user.amr? || (draft? && user.writer)))
   end
 
   def creatable_by?(user)
@@ -142,7 +142,8 @@ class News < Content
   end
 
   def editable_by?(user)
-    user && user.amr?
+    return false unless user
+    published? ? (user.moderator? || user.admin?) : readable_by?(user)
   end
 
   def deletable_by?(user)
@@ -162,7 +163,7 @@ class News < Content
   end
 
   def votable_by?(user)
-    super(user) || user.amr?
+    super(user) || (user && user.amr?)
   end
 
 ### PPP ###

@@ -1,0 +1,21 @@
+- title @news.title
+
+- content_for :chat do
+  #main-board
+    = render 'board'
+
+= article_for @news do |c|
+  - c.title = capture do
+    = render :partial => 'short'
+  - c.meta  = news_posted_by(@news)
+  - c.image = link_to(image_tag(@news.section.image.url, :alt => @news.section.title), @news.section)
+  - c.body  = capture do
+    #first_part
+      - @news.paragraphs.in_first_part.each do |paragraph|
+        = render paragraph
+    = render @news.links
+    %p.new_link{'data-url' => news_new_link_path(:news_id => @news.id)}
+      %button Ajouter un lien
+    #second_part
+      - @news.paragraphs.in_second_part.each do |paragraph|
+        = render paragraph

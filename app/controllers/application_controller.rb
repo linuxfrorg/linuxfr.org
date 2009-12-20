@@ -72,14 +72,21 @@ protected
   def admin_required
     return if current_user && current_user.admin?
     store_location
-    flash[:error] = "Cette fonctionnalité est réservée aux administrateurs du site"
+    flash[:error] = "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
     redirect_to new_account_session_url
   end
 
   def amr_required
     return if current_user && current_user.amr?
     store_location
-    flash[:error] = "Cette fonctionnalité est réservée aux administrateurs, modérateurs et relecteurs"
+    flash[:error] = "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
+    redirect_to new_account_session_url
+  end
+
+  def writer_required
+    return if current_user && (current_user.writer? || current_user.amr?)
+    store_location
+    flash[:error] = "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
     redirect_to new_account_session_url
   end
 

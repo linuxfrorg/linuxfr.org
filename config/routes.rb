@@ -52,13 +52,11 @@ ActionController::Routing::Routes.draw do |map|
   map.vote '/vote/:action/:node_id', :controller => 'votes'
   map.relevance '/relevance/:action/:comment_id', :controller => 'relevances'
 
-  # Boards & Redaction
-  map.resources :paragraphs
-  map.resources :links
-  map.news_new_link '/news/:news_id/links/nouveau', :controller => 'links', :action => 'new'
+  # Boards
   map.with_options :controller => 'boards' do |b|
     b.add_board '/board/add', :action => 'add', :conditions => { :method => :post }
     b.with_options :action => 'show' do |i|
+      # TODO remove this route!
       i.writing_board  '/redaction',       :id => Board.writing
       i.free_board     '/board',           :id => Board.free
       i.free_board_xml '/board/index.xml', :id => Board.free, :format => 'xml'
@@ -87,6 +85,16 @@ ActionController::Routing::Routes.draw do |map|
   map.search          '/recherche',              :controller => 'search'
   map.search_by_type  '/recherche/:type',        :controller => 'search', :action => 'type'
   map.search_by_facet '/recherche/:type/:facet', :controller => 'search', :action => 'facet'
+
+  # Redaction
+  map.connect '/redaction', :controller => 'redaction'
+  map.namespace :redaction do |r|
+    r.resources :news
+  end
+  # TODO move these resources in the redaction namespace
+  map.resources :paragraphs
+  map.resources :links
+  map.news_new_link '/news/:news_id/links/nouveau', :controller => 'links', :action => 'new'
 
   # Moderation
   map.connect '/moderation', :controller => 'moderation'

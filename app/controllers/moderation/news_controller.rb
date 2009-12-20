@@ -71,6 +71,7 @@ class Moderation::NewsController < ModerationController
     redirect_to @news
   end
 
+  # TODO to be removed?
   def show_diff
     @news = News.find(params[:news_id])
     raise ActiveRecord::RecordNotFound unless @news
