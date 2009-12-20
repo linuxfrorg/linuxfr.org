@@ -1,0 +1,2 @@
+module Redaction::LinksHelper
+end

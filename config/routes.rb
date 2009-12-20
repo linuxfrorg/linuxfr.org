@@ -88,11 +88,10 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/redaction', :controller => 'redaction'
   map.namespace :redaction do |r|
     r.resources :news
+    r.resources :paragraphs
+    r.resources :links
+    r.news_new_link '/news/:news_id/links/nouveau', :controller => 'links', :action => 'new'
   end
-  # TODO move these resources in the redaction namespace
-  map.resources :paragraphs
-  map.resources :links
-  map.news_new_link '/news/:news_id/links/nouveau', :controller => 'links', :action => 'new'
 
   # Moderation
   map.connect '/moderation', :controller => 'moderation'

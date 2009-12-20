@@ -1,4 +1,4 @@
-%p[link]{'data-url' => edit_link_path(link)}
+%p[link]
   = image_tag "langs/#{link.lang}.png", :alt => "[#{link.lang}]"
   = link_to link.title, link.url, 'data-hit' => link.id, :title => link.url, :hreflang => link.lang, :class => 'hit-counter'
   (#{pluralize link.nb_clicks, 'clic'})

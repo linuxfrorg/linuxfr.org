@@ -1,5 +1,4 @@
-class ParagraphsController < ApplicationController
-  before_filter :user_required
+class Redaction::ParagraphsController < RedactionController
   before_filter :find_paragraph
 
   def show
