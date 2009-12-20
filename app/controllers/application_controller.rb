@@ -2,6 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 require 'html5_helper'
+require 'htmldiff'
 
 
 class ApplicationController < ActionController::Base
