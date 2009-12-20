@@ -18,4 +18,5 @@ end
 require 'tasks/rails'
 require 'thinking_sphinx/tasks'
 require 'thinking_sphinx/deltas/datetime_delta/tasks'
+require 'sitemap_generator/tasks'
 

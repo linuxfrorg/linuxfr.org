@@ -32,6 +32,7 @@ Rails::Initializer.run do |config|
   config.gem 'aasm', :version => '~>2.1'
   config.gem 'will_paginate', :version => '~>2.3'
   config.gem 'rest-client', :lib => 'restclient', :version => '~>1.0'
+  config.gem 'sitemap_generator', :lib => false, :version => '~>0.2'
   config.gem 'thinking-sphinx', :lib => 'thinking_sphinx', :version => '~>1.3'
   config.gem 'ts-datetime-delta', :lib => 'thinking_sphinx/deltas/datetime_delta', :version => '~>1.0'
   #config.gem 'json', :version => '~>1.2'
