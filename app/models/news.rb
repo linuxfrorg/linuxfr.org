@@ -52,8 +52,8 @@ class News < Content
 
   after_create :create_parts
   def create_parts
-    paragraphs.in_first_part.create(:body => wiki_body)         unless wiki_body.blank?
-    paragraphs.in_second_part.create(:body => wiki_second_part) unless wiki_second_part.blank?
+    paragraphs.in_first_part.create(:wiki_body => wiki_body)         unless wiki_body.blank?
+    paragraphs.in_second_part.create(:wiki_body => wiki_second_part) unless wiki_second_part.blank?
     return if message.blank?
     boards.indication.create(:message => message, :user_agent => author_name)
   end

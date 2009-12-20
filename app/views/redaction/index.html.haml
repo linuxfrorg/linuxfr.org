@@ -1,0 +1,15 @@
+#news
+  %h1 Dépêches en cours de rédaction
+  - if @news.empty?
+    Aucune dépêche.
+  - else
+    %ul
+      - @news.each do |n|
+        %li
+          = link_to n.title, [:redaction, n]
+    = link_to "Afficher toutes les dépêches", redaction_news_path
+  = button_to "Commencer une nouvelle dépêche", '/redaction/news'
+
+#main-board
+  =h1 "Tribune rédacteurs"
+  = render 'boards/boards'

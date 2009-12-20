@@ -48,6 +48,10 @@ module ApplicationHelper
     blk.call if current_user && current_user.amr?
   end
 
+  def writer_only(&blk)
+    blk.call if current_user && (current_user.writer? || current_user.amr?)
+  end
+
   def spellify(str)
     speller = Aspell.new('fr_FR', nil, nil, 'utf-8')
     speller.set_option('mode', 'html')

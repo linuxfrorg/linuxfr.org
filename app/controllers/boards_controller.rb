@@ -2,7 +2,7 @@ class BoardsController < ApplicationController
   before_filter :user_required
 
   def show
-    @board = Board[params[:id]]
+    @board = Board[Board.free]
     raise ActiveRecord::RecordNotFound unless @board && @board.accessible_by?(current_user)
     @boards = Board.by_kind(@board.object_type)
     respond_to do |wants|

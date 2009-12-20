@@ -1,0 +1,4 @@
+#redaction-box.box
+  %h1
+    = link_to "Rédaction", '/redaction'
+  = link_to "#{pluralize News.draft.count, 'dépêche'} en cours de rédaction", '/redaction/news'

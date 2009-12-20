@@ -60,6 +60,8 @@
         = render '/admin/box'
       - amr_only do
         = render '/moderation/box'
+      - writer_only do
+        = render '/redaction/box'
       = yield :column
 
     %section#container
