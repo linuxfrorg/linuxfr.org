@@ -13,10 +13,11 @@
   - c.body  = capture do
     #first_part
       - @news.paragraphs.in_first_part.each do |paragraph|
-        = render paragraph
-    = render @news.links
-    %p.new_link{'data-url' => news_new_link_path(:news_id => @news.id)}
+        = render 'redaction/paragraphs/paragraph', :paragraph => paragraph
+    - @news.links.each do |link|
+      = render 'redaction/links/link', :link => link
+    %p.new_link{'data-url' => redaction_news_new_link_path(:news_id => @news.id)}
       %button Ajouter un lien
     #second_part
       - @news.paragraphs.in_second_part.each do |paragraph|
-        = render paragraph
+        = render 'redaction/paragraphs/paragraph', :paragraph => paragraph

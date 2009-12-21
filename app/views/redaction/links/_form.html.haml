@@ -1,5 +1,5 @@
 - langs = Dictionary.collection('lang')
-- form_for @link, :url => @link do |form|
+- form_for [:redaction, @link] do |form|
   - if @link.new_record?
     %input(type="hidden" name="news_id" value="#{@news.id}")
   %p.legend
