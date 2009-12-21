@@ -12,6 +12,10 @@
         };
 
         base.editForm = function() {
+            if (base.element.hasClass('locked')) {
+                $.noticeAdd({text: "Désolé, quelqu'un est déjà en train de modifier cet élément."});
+                return false;
+            }
             var old = base.element.html();
             base.element.unbind('click');
             base.element.load(base.url, function(form) {

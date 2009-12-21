@@ -6,6 +6,7 @@
 #  news_id     :integer(4)      not null
 #  position    :integer(4)
 #  second_part :boolean(1)
+#  locked_by   :integer(4)
 #  body        :text
 #  wiki_body   :text
 #

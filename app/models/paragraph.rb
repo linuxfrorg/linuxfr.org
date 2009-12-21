@@ -6,6 +6,7 @@
 #  news_id     :integer(4)      not null
 #  position    :integer(4)
 #  second_part :boolean(1)
+#  locked_by   :integer(4)
 #  body        :text
 #  wiki_body   :text
 #
@@ -82,6 +83,15 @@ class Paragraph < ActiveRecord::Base
   # and this callback must be called after +announce_destroy+.
   # So do NOT move this line upper in this file.
   acts_as_list :scope => :news
+
+  def lock_by(user)
+    return true  if locked_by == user.id
+    return false if locked_by
+    self.locked_by = user.id
+    save
+    news.boards.lock.create(:message => "<span class=\"paragraph\" data-id=\"#{self.id}\">#{user.name} édite le paragraph #{wiki_body[0,20]}</span>", :user_id => user.id)
+    true
+  end
 
 ### Presentation ###
 

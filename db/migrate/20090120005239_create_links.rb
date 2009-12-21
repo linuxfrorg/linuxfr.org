@@ -6,6 +6,7 @@ class CreateLinks < ActiveRecord::Migration
       t.string :url
       t.string :lang
       t.integer :nb_clicks, :default => 0
+      t.references :locked_by
       t.timestamps
     end
     add_index :links, :news_id

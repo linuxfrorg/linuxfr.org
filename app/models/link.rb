@@ -8,6 +8,7 @@
 #  url        :string(255)
 #  lang       :string(255)
 #  nb_clicks  :integer(4)      default(0)
+#  locked_by  :integer(4)
 #  created_at :datetime
 #  updated_at :datetime
 #
@@ -55,6 +56,15 @@ class Link < ActiveRecord::Base
     return unless user_id
     message = render_to_string(:partial => 'redaction/links/board', :locals => {:action => 'lien supprimé', :link => self})
     news.boards.deletion.create(:message => message, :user_id => user_id)
+  end
+
+  def lock_by(user)
+    return true  if locked_by == user.id
+    return false if locked_by
+    self.locked_by = user.id
+    save
+    news.boards.lock.create(:message => "<span class=\"link\" data-id=\"#{self.id}\">#{user.name} édite le lien #{title}</span>", :user_id => user.id)
+    true
   end
 
 end

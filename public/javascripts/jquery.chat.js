@@ -77,16 +77,27 @@ var Chat = {
     /* Callback for submission */
     on_submission: function(message) {
         Chat.inbox.prepend(message);
+        $.noticeAdd({text: message, stay: true});
     },
 
     /* Callback for moderation */
     on_moderation: function(message) {
         Chat.inbox.prepend(message);
+        $.noticeAdd({text: message, stay: true});
     },
 
     /* Callback for lock */
     on_lock: function(message) {
         Chat.inbox.prepend(message);
+        var element = Chat.inbox.find("p:first");
+        element.find(".link").each(function() {
+            var id = $(this).attr('data-id');
+            $('#link_' + id).addClass('locked');
+        });
+        element.find(".paragraph").each(function() {
+            var id = $(this).attr('data-id');
+            $('#paragraph_' + id).addClass('locked');
+        });
     },
 
     /* Callback for creation */
@@ -95,14 +106,14 @@ var Chat = {
         var element = Chat.inbox.find("p:first");
         element.find(".link").each(function() {
             var id = $(this).attr('data-id');
-            var html = '<p id="link_' + id + '" data-url="/links/' + id + '/modifier">' + $(this).html() + '</p>';
+            var html = '<p id="link_' + id + '" data-url="/redaction/links/' + id + '/modifier">' + $(this).html() + '</p>';
             $('#redaction .new_link').before(html);
             $('#link_' + id).editionInPlace();
         });
         element.find(".paragraph").each(function() {
             var id = $(this).attr('data-id');
             var after = $(this).attr('data-after');
-            var html = '<div id="link_' + id + '" data-url="/links/' + id + '/modifier">' + $(this).html() + '</div>';
+            var html = '<div id="link_' + id + '" data-url="/redaction/paragraphs/' + id + '/modifier">' + $(this).html() + '</div>';
             $('#paragraph_' + after).after(html)
             $('#paragraph_' + id).editionInPlace();
         });

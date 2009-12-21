@@ -4,6 +4,7 @@ class CreateParagraphs < ActiveRecord::Migration
       t.references :news, :null => false
       t.integer :position
       t.boolean :second_part
+      t.references :locked_by
       t.text :body
       t.text :wiki_body
     end

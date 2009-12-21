@@ -14,12 +14,17 @@ class Redaction::LinksController < RedactionController
   end
 
   def edit
-    render :partial => 'form'
+    if @link.lock_by(current_user)
+      render :partial => 'form'
+    else
+      render @link
+    end
   end
 
   def update
     @link.attributes = params[:link]
     @link.user_id = current_user.id
+    @link.locked_by = nil
     if @link.url.blank?
       @link.destroy
     else

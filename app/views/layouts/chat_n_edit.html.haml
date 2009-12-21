@@ -5,7 +5,7 @@
     - if current_account_session && current_account_session.stylesheet
       = stylesheet_link_tag current_account_session.stylesheet
     - else
-      = stylesheet_link_tag 'style', 'markitup'
+      = stylesheet_link_tag 'style', 'markitup', 'jquery.notice'
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
 
   %body{body_attr}
@@ -34,4 +34,4 @@
         = yield :chat
 
     = javascript_include_tag 'jquery-1.3.2', 'jquery.nano', 'jquery.autocomplete', 'jquery.markitup', 'jquery.chat', 'markitup-wiki', 'application'
-    = javascript_include_tag 'jquery.edition_in_place', 'redaction'
+    = javascript_include_tag 'jquery.notice', 'jquery.edition_in_place', 'redaction'

@@ -11,13 +11,18 @@ class Redaction::ParagraphsController < RedactionController
 
   def edit
     raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
-    render :partial => 'form'
+    if @paragraph.lock_by(current_user)
+      render :partial => 'form'
+    else
+      render @paragraph
+    end
   end
 
   def update
     raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
     @paragraph.attributes = params[:paragraph]
     @paragraph.user_id = current_user.id
+    @paragraph.locked_by = nil
     if @paragraph.wiki_body.blank?
       @paragraph.destroy
     else
