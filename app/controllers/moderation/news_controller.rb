@@ -40,10 +40,14 @@ class Moderation::NewsController < ModerationController
   def accept
     @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @news && @news.acceptable_by?(current_user)
-    @news.moderator_id = current_user.id
-    @news.accept!
-    NewsNotifications.deliver_accept(@news)
-    redirect_to @news
+    if @news.unlocked?
+      @news.moderator_id = current_user.id
+      @news.accept!
+      NewsNotifications.deliver_accept(@news)
+      redirect_to @news, :alert => "Dépêche acceptée"
+    else
+      redirect_to [:moderation, @news], :alert => "Impossible de modérer la dépêche tant que quelqu'un est en train de la modifier"
+    end
   end
 
   def refuse
@@ -59,8 +63,10 @@ class Moderation::NewsController < ModerationController
         NewsNotifications.deliver_refuse(@news, params[:message])
       end
       redirect_to @news
-    else
+    elsif @news.unlocked?
       @boards = @news.boards
+    else
+      redirect_to [:moderation, @news], :alert => "Impossible de modérer la dépêche tant que quelqu'un est train de la modifier"
     end
   end
 
@@ -76,6 +82,16 @@ class Moderation::NewsController < ModerationController
     @news = News.find(params[:news_id])
     raise ActiveRecord::RecordNotFound unless @news
     @commit = Commit.new(@news, params[:sha])
+  end
+
+  def clear_locks
+    @news = News.find(params[:id])
+    raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
+    @news.clear_locks(current_user)
+    respond_to do |wants|
+      wants.html { redirect_to :back }
+      wants.js   { render :nothing => true }
+    end
   end
 
 end

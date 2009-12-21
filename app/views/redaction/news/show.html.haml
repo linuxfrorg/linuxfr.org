@@ -22,3 +22,5 @@
         = render 'redaction/paragraphs/paragraph', :paragraph => paragraph
 
 = button_to "Soumettre la dépêche", submit_redaction_news_url(@news)
+- if current_user.amr?
+  = button_to "Supprimer tous les locks", clear_locks_moderation_news_url(@news), :class => 'ajax'

@@ -171,6 +171,20 @@ class News < Content
     super(user) || (user && user.amr? && !draft?)
   end
 
+### Locks ###
+
+  def unlocked?
+    return false if links.any{ |l| l.locked_by }
+    return false if paragraphs.any{ |p| p.locked_by }
+    true
+  end
+
+  def clear_locks(user)
+    links.each {|l| l.locked_by = nil; l.save }
+    paragraphs.each {|p| p.locked_by = nil; p.save }
+    boards.lock.create(:message => "<span class=\"clear\">#{user.name} a supprimer tous les locks</span>", :user_id => user.id)
+  end
+
 ### PPP ###
 
   def self.ppp

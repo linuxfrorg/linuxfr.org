@@ -50,8 +50,12 @@ class Redaction::NewsController < RedactionController
   def submit
     @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
-    @news.submit_and_notify(current_user.id)
-    redirect_to '/redaction', :notice => "Dépêche soumis à la modération"
+    if @news.unlocked?
+      @news.submit_and_notify(current_user.id)
+      redirect_to '/redaction', :notice => "Dépêche soumis à la modération"
+    else
+      redirect_to [:redaction, @news], :alert => "Impossible de soumettre la dépêche car quelqu'un est encore en train de la modifier"
+    end
   end
 
 end

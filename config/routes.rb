@@ -96,7 +96,7 @@ ActionController::Routing::Routes.draw do |map|
   # Moderation
   map.connect '/moderation', :controller => 'moderation'
   map.namespace :moderation do |m|
-    m.resources :news, :member => { :accept => :post, :refuse => :post, :ppp => :post } do |news|
+    m.resources :news, :member => { :accept => :post, :refuse => :post, :ppp => :post, :clear_locks => :post } do |news|
       news.show_diff '/show_diff/:sha', :controller => 'news', :action => 'show_diff'
     end
     m.resources :interviews, :member => { :accept => :post, :refuse => :post, :contact => :post, :publish => :post }, :as => 'entretiens'

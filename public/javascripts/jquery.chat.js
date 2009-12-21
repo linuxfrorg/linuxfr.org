@@ -90,6 +90,10 @@ var Chat = {
     on_lock: function(message) {
         Chat.inbox.prepend(message);
         var element = Chat.inbox.find("p:first");
+        element.find(".clear").each(function() {
+            $('.locked').removeClass('locked');
+            $.noticeAdd({text: message});
+        });
         element.find(".link").each(function() {
             var id = $(this).attr('data-id');
             $('#link_' + id).addClass('locked');

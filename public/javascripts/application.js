@@ -3,6 +3,10 @@ $.ajaxSetup({
     'beforeSend': function(xhr) { xhr.setRequestHeader("Accept", "text/javascript") }
 })
 
+$('input.ajax').each(function() {
+    // TODO submit with Ajax
+});
+
 /* jQuery extensions */
 //  TODO remove these lines?
 // $.fn.disable = function() {
