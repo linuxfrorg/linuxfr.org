@@ -40,7 +40,7 @@ class Board < ActiveRecord::Base
   # The most common are the 'chat' ones (ie a user chats on a board).
   # But there are also other types for more internal usages.
   # For example, locking a paragraph is posted in a board with the 'lock' type.
-  TYPES = %w(chat indication vote moderation lock creation edition deletion)
+  TYPES = %w(chat indication vote submission moderation lock creation edition deletion)
 
   TYPES.each do |t|
     named_scope t.to_sym, :conditions => { :type => t }

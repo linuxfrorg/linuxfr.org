@@ -42,7 +42,7 @@ class News < Content
 ### Virtual attributes ###
 
   attr_accessor   :message, :wiki_body, :wiki_second_part, :editor_id
-  attr_accessible :message, :wiki_body, :wiki_second_part, :editor_id
+  attr_accessible :message, :wiki_body, :wiki_second_part
 
   before_validation :wikify_fields
   def wikify_fields
@@ -103,6 +103,11 @@ class News < Content
   aasm_event :accept  do transitions :from => [:candidate], :to => :published, :on_transition => :publish    end
   aasm_event :refuse  do transitions :from => [:candidate], :to => :refused,   :on_transition => :be_refused end
   aasm_event :delete  do transitions :from => [:published], :to => :deleted,   :on_transition => :deletion   end
+
+  def submit_and_notify(user_id)
+    submit!
+    boards.submission.create(:message => "<b>La dépêche a été soumise à la modération</b>", :user_id => user_id)
+  end
 
   def publish
     node.update_attribute(:public, true)

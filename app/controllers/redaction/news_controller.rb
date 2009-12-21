@@ -47,4 +47,11 @@ class Redaction::NewsController < RedactionController
     end
   end
 
+  def submit
+    @news = News.find(params[:id])
+    raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
+    @news.submit_and_notify(current_user.id)
+    redirect_to '/redaction', :notice => "Dépêche soumis à la modération"
+  end
+
 end

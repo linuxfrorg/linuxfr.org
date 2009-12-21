@@ -74,6 +74,11 @@ var Chat = {
         Chat.inbox.prepend(message);
     },
 
+    /* Callback for submission */
+    on_submission: function(message) {
+        Chat.inbox.prepend(message);
+    },
+
     /* Callback for moderation */
     on_moderation: function(message) {
         Chat.inbox.prepend(message);

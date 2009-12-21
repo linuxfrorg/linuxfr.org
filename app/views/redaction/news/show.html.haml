@@ -20,3 +20,5 @@
     #second_part
       - @news.paragraphs.in_second_part.each do |paragraph|
         = render 'redaction/paragraphs/paragraph', :paragraph => paragraph
+
+= button_to "Soumettre la dépêche", submit_redaction_news_url(@news)

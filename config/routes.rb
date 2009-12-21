@@ -87,7 +87,7 @@ ActionController::Routing::Routes.draw do |map|
   # Redaction
   map.connect '/redaction', :controller => 'redaction'
   map.namespace :redaction do |r|
-    r.resources :news
+    r.resources :news, :member => { :submit => :post }
     r.resources :paragraphs
     r.resources :links
     r.news_new_link '/news/:news_id/links/nouveau', :controller => 'links', :action => 'new'
