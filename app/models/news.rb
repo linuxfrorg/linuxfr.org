@@ -163,7 +163,7 @@ class News < Content
   end
 
   def votable_by?(user)
-    super(user) || (user && user.amr?)
+    super(user) || (user && user.amr? && !draft?)
   end
 
 ### PPP ###
