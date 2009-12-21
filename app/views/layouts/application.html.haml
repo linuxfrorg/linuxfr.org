@@ -54,14 +54,14 @@
           %p= link_to "Changer de CSS", edit_account_stylesheet_path
           %p= link_to "Se déconnecter", logout_path
         - else
-          = render '/account_sessions/new'
+          = render 'account_sessions/new'
           %p= link_to "Proposer un contenu", '/proposer_un_contenu_quand_on_est_anonyme'
       - admin_only do
-        = render '/admin/box'
+        = render 'admin/box'
       - amr_only do
-        = render '/moderation/box'
+        = render 'moderation/box'
       - writer_only do
-        = render '/redaction/box'
+        = render 'redaction/box'
       = yield :column
 
     %section#container
