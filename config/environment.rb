@@ -12,6 +12,7 @@ Rails::Initializer.run do |config|
   config.gem 'aasm', :version => '~>2.1'
   config.gem 'acts-as-list', :lib => 'acts_as_list', :version => '~>0.1'
   config.gem 'authlogic', :version => '~>2.1'
+  config.gem 'french_rails', :version => '~>0.1'
   config.gem 'friendly_id', :version => '~>2.2'
   config.gem 'haml', :version => '~>2.2'
   config.gem 'htmlentities', :version => '~>4.2'
@@ -28,12 +29,6 @@ Rails::Initializer.run do |config|
   #ActiveSupport::JSON.backend = "JSONGem"
   #config.gem 'libxml-ruby', :version => '~>0.9'
   #ActiveSupport::XmlMini.backend = "LibXML"
-
-  # TODO move this in french_rails
-  config.action_controller.resources_path_names = {
-    :new  => 'nouveau',
-    :edit => 'modifier'
-  }
 
   config.after_initialize do
     ActionView::Base.sanitized_allowed_attributes.merge %w(data-id data-after)

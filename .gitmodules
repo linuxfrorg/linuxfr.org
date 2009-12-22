@@ -4,9 +4,6 @@
 [submodule "vendor/plugins/validates_url_format_of"]
 	path = vendor/plugins/validates_url_format_of
 	url = git://github.com/henrik/validates_url_format_of.git
-[submodule "vendor/plugins/french_rails"]
-	path = vendor/plugins/french_rails
-	url = git://github.com/nono/french-rails.git
 [submodule "vendor/plugins/simple_auto_complete"]
 	path = vendor/plugins/simple_auto_complete
 	url = git://github.com/grosser/simple_auto_complete.git

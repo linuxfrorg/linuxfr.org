@@ -7,16 +7,13 @@ require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
 
-if RAILS_ENV == 'development'
-  begin
-    # gem install nono-railroad
-    require 'railroad/tasks/diagrams'
-  rescue LoadError
-  end
-end
-
 require 'tasks/rails'
-require 'thinking_sphinx/tasks'
-require 'thinking_sphinx/deltas/datetime_delta/tasks'
-require 'sitemap_generator/tasks'
+require 'thinking_sphinx/tasks' rescue LoadError
+require 'thinking_sphinx/deltas/datetime_delta/tasks' rescue LoadError
+require 'sitemap_generator/tasks' rescue LoadError
+
+if Rails.env == 'development'
+  # gem install nono-railroad
+  require 'railroad/tasks/diagrams' rescue LoadError
+end
 
