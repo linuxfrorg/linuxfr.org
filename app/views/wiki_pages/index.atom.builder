@@ -7,7 +7,7 @@ atom_feed do |feed|
       entry.title(page.title)
       entry.content(page.body, :type => 'html')
       entry.author do |author|
-        author.name(page.node.user.name)
+        author.name(page.node.user.try :name)
       end
     end
   end

@@ -12,6 +12,7 @@ Rails::Initializer.run do |config|
   config.gem 'aasm', :version => '~>2.1'
   config.gem 'acts-as-list', :lib => 'acts_as_list', :version => '~>0.1'
   config.gem 'authlogic', :version => '~>2.1'
+  config.gem 'erubis', :version => '~>2.6'
   config.gem 'french_rails', :version => '~>0.1'
   config.gem 'friendly_id', :version => '~>2.2'
   config.gem 'haml', :version => '~>2.2'
