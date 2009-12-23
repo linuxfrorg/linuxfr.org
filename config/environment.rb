@@ -22,6 +22,7 @@ Rails::Initializer.run do |config|
   config.gem 'raspell', :version => '~>1.1'
   config.gem 'rest-client', :lib => 'restclient', :version => '~>1.0'
   config.gem 'sitemap_generator', :lib => false, :version => '~>0.2'
+  config.gem 'simple_autocomplete', :version => '~>0.3'
   config.gem 'thinking-sphinx', :lib => 'thinking_sphinx', :version => '~>1.3'
   config.gem 'ts-datetime-delta', :lib => 'thinking_sphinx/deltas/datetime_delta', :version => '~>1.0'
   config.gem 'wikitext', :version => '~>1.9'
