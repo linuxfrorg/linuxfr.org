@@ -32,15 +32,19 @@ LinuxfrOrg::Application.routes.draw do
   end
   match '/wiki/changes' => 'wiki_pages#changes', :as => :wiki_changes
   resources :wiki_pages do # TODO :as => 'wiki'
-    match '/revisions/:revision' => 'wiki_pages#revision', :as => :revision
+    member do
+      match '/revisions/:revision' => 'wiki_pages#revision', :as => :revision
+    end
   end
 
   # Nodes
   match '/tableau-de-bord' => 'dashboard#index', :as => :dashboard
   resources :nodes do
     resources :comments
-    match '/nodes/:node_id/tags/new' => 'tags#new', :as => :node_new_tag, :via => 'get'
-    match '/nodes/:node_id/tags' => 'tags#create', :as => :node_tags, :via => 'post'
+    member do
+      match '/tags/new' => 'tags#new', :as => :node_new_tag, :via => 'get'
+      match '/tags' => 'tags#create', :as => :node_tags, :via => 'post'
+    end
   end
   match '/tags' => 'tags#index', :as => :tags, :via => 'get'
   match '/tags/autocomplete' => 'tags#autocomplete_for_tag_name', :as => :complete_tags, :via => 'get'
@@ -89,7 +93,9 @@ LinuxfrOrg::Application.routes.draw do
   match '/moderation' => 'moderation#index'
   namespace :moderation do
     resources :news do
-      match '/show_diff/:sha' => 'news#show_diff', :as => :show_diff
+      member do
+        match '/show_diff/:sha' => 'news#show_diff', :as => :show_diff
+      end
     end
     resources :interviews do # TODO :as => 'entretiens'
       member do
