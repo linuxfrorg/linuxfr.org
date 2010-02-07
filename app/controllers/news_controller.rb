@@ -3,7 +3,7 @@ class NewsController < ApplicationController
 
   def index
     @order = params[:order] ? "nodex.#{params[:order]}" : 'news.created_at'
-    @news  = News.published.paginate(:page => params[:page], :per_page => 10, :order => "#{@order} DESC", :joins => :node)
+    @news  = News.published.joins(:nodes).order("nodes.#{@order} DESC").paginate(:page => params[:page], :per_page => 10)
     respond_to do |wants|
       wants.html
       wants.atom

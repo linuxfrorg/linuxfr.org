@@ -4,7 +4,7 @@ class PollsController < ApplicationController
 
   def index
     @order = params[:order] || 'created_at'
-    @polls = Poll.archived.paginate(:page => params[:page], :per_page => 10, :order => "nodes.#{@order} DESC", :joins => :node)
+    @polls = Poll.archived.joins(:nodes).order("nodes.#{@order} DESC").paginate(:page => params[:page], :per_page => 10)
     if on_the_first_page?
       poll = Poll.current
       @polls.unshift(poll) if poll

@@ -3,7 +3,7 @@ class ForumsController < ApplicationController
 
   def index
     @order = params[:order] || 'created_at'
-    @posts = Post.published.paginate(:page => params[:page], :per_page => 10, :order => "nodes.#{@order} DESC", :joins => :node)
+    @posts = Post.published.joins(:nodes).order("nodes.#{@order} DESC").paginate(:page => params[:page], :per_page => 10)
     respond_to do |wants|
       wants.html
       wants.atom
@@ -13,7 +13,7 @@ class ForumsController < ApplicationController
   def show
     @order = params[:order] || 'created_at'
     @forum = Forum.find(params[:id])
-    @posts = @forum.posts.published.paginate(:page => params[:page], :per_page => 10, :order => "nodes.#{@order} DESC", :joins => :node)
+    @posts = @forum.posts.published.joins(:nodes).order("nodes.#{@order} DESC").paginate(:page => params[:page], :per_page => 10)
     respond_to do |wants|
       wants.html
       wants.atom
@@ -23,7 +23,7 @@ class ForumsController < ApplicationController
 protected
 
   def find_forums
-    @forums = Forum.sorted.all
+    @forums = Forum.sorted
   end
 
 end

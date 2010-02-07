@@ -16,6 +16,7 @@ class TagsController < ApplicationController
   # Show all the nodes tagged by the current user
   def index
     @order = params[:order] ? "nodes.#{params[:order]}" : 'taggings.created_at'
+    # TODO Rails3
     @nodes = Node.paginate(:select => "DISTINCT nodes.*",
                            :joins => [:taggings],
                            :conditions => {"taggings.user_id" => current_user.id,
@@ -29,6 +30,7 @@ class TagsController < ApplicationController
   def show
     @order = params[:order] ? "nodes.#{params[:order]}" : 'taggings.created_at'
     @tag   = Tag.find_by_name(params[:id])
+    # TODO Rails3
     @nodes = Node.paginate(:select => "DISTINCT nodes.*",
                            :joins => [:taggings],
                            :conditions => {"taggings.user_id" => current_user.id,
