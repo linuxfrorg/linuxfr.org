@@ -25,7 +25,7 @@ class Interview < Content
 
   attr_accessible :title, :wiki_body
 
-  named_scope :public, :conditions => ["state != ?", :draft]
+  scope :public, where("state != ?", :draft)
 
   validates_presence_of :title,     :message => "Vous devez préciser la personne à interviewer"
   validates_presence_of :wiki_body, :message => "Veuillez donner quelques informations sur la personne à interviewer"

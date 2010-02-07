@@ -62,8 +62,7 @@ class Account < ActiveRecord::Base
   def self.try_import_old_password(credentials)
     login      = credentials[:login]
     password   = credentials[:password]
-    conditions = ["LOGIN = ? AND ENCRYPT(?, old_password) = old_password", login, password]
-    account    = Account.first(:conditions => conditions)
+    account    = Account.where(:login => login).where("ENCRYPT(?, old_password) = old_password", password).first
     return unless account
     account.password = account.password_confirmation = password
     account.old_password = nil
@@ -101,18 +100,14 @@ class Account < ActiveRecord::Base
 ### Karma ###
 
   def daily_karma
-    self.karma -= Vote.count(:conditions => ["nodes.user_id = ? AND (votes.created_at BETWEEN ? AND ?) AND vote = 0",
-                                             self.id, DateTime.yesterday.beginning_of_day, DateTime.yesterday.end_of_day],
-                             :joins => :node).to_i
-    self.karma += Vote.count(:conditions => ["nodes.user_id = ? AND (votes.created_at BETWEEN ? AND ?) AND vote = 1",
-                                             self.id, DateTime.yesterday.beginning_of_day, DateTime.yesterday.end_of_day],
-                             :joins => :node).to_i
-    self.karma -= Relevance.count(:conditions => ["comments.user_id = ? AND (relevances.created_at BETWEEN ? AND ?) AND vote = 0",
-                                                  self.id, DateTime.yesterday.beginning_of_day, DateTime.yesterday.end_of_day],
-                                  :joins => :comment).to_i
-    self.karma += Relevance.count(:conditions => ["comments.user_id = ? AND (relevances.created_at BETWEEN ? AND ?) AND vote = 1",
-                                                  self.id, DateTime.yesterday.beginning_of_day, DateTime.yesterday.end_of_day],
-                                  :joins => :comment).to_i
+    nodes       = Node.where(:user_id => self.id)
+    yesterday   = [DateTime.yesterday.beginning_of_day, DateTime.yesterday.end_of_day]
+    votes       = nodes.join(:votes).where("votes.created_at BETWEEN ? AND ?", *yesterday)
+    relevances  = nodes.join(:relevances).where("relevances.created_at BETWEEN ? AND ?", *yesterday)
+    self.karma -= votes.where("vote = 0").count
+    self.karma += votes.where("vote = 1").count
+    self.karma -= relevances.where("vote = 0").count
+    self.karma += relevances.where("vote = 1").count
     self.nb_votes = 3 + karma / 10
     save
   end

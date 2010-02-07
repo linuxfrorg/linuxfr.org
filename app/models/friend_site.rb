@@ -11,7 +11,7 @@
 class FriendSite < ActiveRecord::Base
   acts_as_list
 
-  named_scope :sorted, :order => "position ASC"
+  scope :sorted, order("position ASC")
 
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :url, :message => "L'URL est obligatoire"

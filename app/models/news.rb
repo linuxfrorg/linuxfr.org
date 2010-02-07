@@ -174,8 +174,8 @@ class News < Content
 ### Locks ###
 
   def unlocked?
-    return false if links.any{ |l| l.locked_by }
-    return false if paragraphs.any{ |p| p.locked_by }
+    return false if links.any? { |l| l.locked_by }
+    return false if paragraphs.any? { |p| p.locked_by }
     true
   end
 

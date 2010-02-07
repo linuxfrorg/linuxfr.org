@@ -20,7 +20,7 @@ class Threads
 
   # Return the threads with all the comments for the given node
   def self.all(node_id)
-    comments = Comment.all(:conditions => ['node_id = ? AND materialized_path IS NOT NULL', node_id], :order => 'materialized_path ASC')
+    comments = Comment.where(:node_id => node_id).where("materialized_path IS NOT NULL").order('materialized_path ASC')
     please_make_me_a_tree(comments)
   end
 

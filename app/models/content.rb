@@ -9,7 +9,7 @@ class Content < ActiveRecord::Base
   has_one :user, :through => :node
   has_many :comments, :through => :node
 
-  named_scope :sorted, :order => 'created_at DESC'
+  scope :sorted, order('created_at DESC')
   delegate :score, :user_id, :to => :node
 
 ### License ###

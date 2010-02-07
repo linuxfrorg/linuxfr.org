@@ -19,7 +19,7 @@ class Forum < ActiveRecord::Base
 
   has_many :posts
 
-  named_scope :sorted, :order => "position ASC"
+  scope :sorted, order("position ASC")
 
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_uniqueness_of :title, :message => 'Ce titre est déjà utilisé'

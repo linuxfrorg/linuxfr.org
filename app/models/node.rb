@@ -29,11 +29,9 @@ class Node < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy, :include => :tag
   has_many :tags, :through => :taggings, :uniq => true
 
-  named_scope :public, :conditions => { :public => true }
-  named_scope :by_date, :order => 'created_at DESC'
-  named_scope :on_dashboard, lambda {|type|
-    {:conditions => {:public => true, :content_type => type}, :order => 'created_at DESC'}
-  }
+  scope :public, where(:public => true)
+  scope :by_date, order('created_at DESC')
+  scope :on_dashboard, lambda {|type| public.where(:content_type => type).by_date }
 
 ### Interest ###
 
@@ -51,7 +49,7 @@ class Node < ActiveRecord::Base
   end
 
   def read_status(user)
-    r = Reading.first(:conditions => {:user_id => user.id, :node_id => self.id}) if user
+    r = Reading.where(:user_id => user.id, :node_id => self.id).first if user
     return :not_read if r.nil?
     return :no_comments if last_commented_at.nil?
     return :new_comments if r.updated_at < last_commented_at
@@ -74,11 +72,11 @@ class Node < ActiveRecord::Base
   end
 
   def popular_tags(nb=7)
-    Tag.all(:joins => [:taggings],
-            :conditions => { "taggings.node_id" => self.id },
-            :group => "tags.id",
-            :order => "COUNT(tags.id) DESC",
-            :limit => nb)
+    Tag.joins(:taggings).
+        where("taggings.node_id" => self.id).
+        group("tags.id").
+        order("COUNT(tags.id) DESC").
+        limit(nb)
   end
 
 end

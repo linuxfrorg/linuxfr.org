@@ -11,7 +11,7 @@ class Banner < ActiveRecord::Base
   validates_presence_of :content
 
   def self.random
-    banner = first(:order => "RAND()")
+    banner = order("RAND()").first
     banner && banner.content
   end
 end

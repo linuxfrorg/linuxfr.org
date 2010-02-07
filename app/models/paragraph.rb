@@ -17,8 +17,8 @@ class Paragraph < ActiveRecord::Base
   attr_accessor   :user_id, :after, :already_split
   attr_accessible :user_id, :after, :already_split, :wiki_body, :second_part, :news_id
 
-  named_scope :in_first_part,  :conditions => { :second_part => false }, :order => "position ASC"
-  named_scope :in_second_part, :conditions => { :second_part => true  }, :order => "position ASC"
+  scope :in_first_part,  where(:second_part => false).order("position ASC")
+  scope :in_second_part, where(:second_part => true ).order("position ASC")
 
 ### Automatically split parapgraphs ###
 

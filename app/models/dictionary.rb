@@ -17,7 +17,7 @@ class Dictionary < ActiveRecord::Base
 ### Shortcuts ###
 
   def self.[](k)
-    term = first(:conditions => {:key => k}, :select => [:value])
+    term = where(:key => k).select(:value).first
     term && term.value
   end
 
@@ -29,7 +29,8 @@ class Dictionary < ActiveRecord::Base
   end
 
   def self.collection(coll)
-    all(:conditions => ['`key` LIKE ?', "#{coll}[%]"])
+    # TODO can I remove this 'all'?
+    where('`key` LIKE ?', "#{coll}[%]").all
   end
 
   # TODO dead code?

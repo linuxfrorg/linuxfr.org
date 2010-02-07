@@ -20,14 +20,9 @@ class Board < ActiveRecord::Base
 
   attr_accessible :object_id, :object_type, :message, :user_agent, :user_id
 
-  default_scope :order => 'created_at DESC'
-  named_scope :by_kind, lambda { |kind|
-    { :include => [:user], :conditions => { :object_type => kind }, :limit => 100 }
-  }
-  named_scope :old, lambda {
-    { :conditions => ["(created_at < ? AND object_type = ?) OR (created_at < ?)",
-      DateTime.now - 12.hours, Board.free, DateTime.now - 1.month] }
-  }
+  default_scope order('created_at DESC')
+  scope :by_kind, lambda { |kind| where(:object_type => kind).includes(user).limit(100) }
+  scope :old, lambda { where("(created_at < ? AND object_type = ?) OR (created_at < ?)", DateTime.now - 12.hours, Board.free, DateTime.now - 1.month) }
 
 ### Types ###
 
@@ -43,7 +38,7 @@ class Board < ActiveRecord::Base
   TYPES = %w(chat indication vote submission moderation lock creation edition deletion)
 
   TYPES.each do |t|
-    named_scope t.to_sym, :conditions => { :type => t }
+    scope t.to_sym, where(:type => t)
     self.send(:define_method, "#{t}?") { read_attribute(:type) == t }
   end
 

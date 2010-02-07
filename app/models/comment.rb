@@ -26,13 +26,10 @@ class Comment < ActiveRecord::Base
 
   attr_accessible :title, :wiki_body, :node_id, :parent_id
 
-  named_scope :published, :conditions => {:state => 'published'}
-  named_scope :descendants, lambda {|path|
-    {:conditions => ["materialized_path LIKE ?", "#{path}_%"]}
-  }
-  named_scope :on_dashboard, :order => 'created_at DESC', :conditions =>
-    { :state => 'published', :answered_to_self => false }
-  named_scope :footer, :conditions => {:state => 'published'}, :order => 'created_at DESC', :limit => 12
+  scope :published,    where(:state => 'published')
+  scope :descendants,  lambda { |path| where("materialized_path LIKE ?", "#{path}_%") }
+  scope :on_dashboard, published.where(:answered_to_self => false).order('created_at DESC')
+  scope :footer,       published.order('created_at DESC').limit(12)
 
   validates_presence_of :title,     :message => "Le titre est obligatoire"
   validates_presence_of :wiki_body, :message => "Vous ne pouvez pas poster un commentaire vide"
@@ -55,7 +52,7 @@ class Comment < ActiveRecord::Base
   # but also for anonymous users
   def read_by?(user)
     return true if user.nil?
-    r = Reading.first(:conditions => {:user_id => user.id, :node_id => node_id})
+    r = Reading.where(:user_id => user.id, :node_id => node_id).first
     r && r.updated_at >= created_at
   end
 
@@ -95,7 +92,10 @@ class Comment < ActiveRecord::Base
 
   def is_an_answer_to_self?
     return false if root?
-    ret = Comment.exists? ["node_id = ? AND user_id = ? AND LOCATE(materialized_path, ?) > 0 AND id != ?", node_id, user_id, materialized_path, id]
+    ret = Comment.where(:node_id => node_id, :user_id => user_id).
+                  where("LOCATE(materialized_path, ?) > 0").
+                  where("id != ?", self.id).
+                  exists?
   end
 
 ### Calculations ###
@@ -110,7 +110,7 @@ class Comment < ActiveRecord::Base
   end
 
   def last_answer
-    self.class.published.descendants(materialized_path).first(:order => 'created_at DESC')
+    self.class.published.descendants(materialized_path).order('created_at DESC').first
   end
 
 ### ACL ###

@@ -26,7 +26,7 @@ class Link < ActiveRecord::Base
   validates_url_format_of :url, :message => "n'est pas une URL valide"
 
   def url=(url)
-    url = "http://#{url}" if url.present? && url.not.starts_with?('http')
+    url = "http://#{url}" if url.present? && url.not.start_with?('http')
     write_attribute :url, url
   end
 

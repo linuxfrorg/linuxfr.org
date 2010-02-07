@@ -84,7 +84,7 @@ class User < ActiveRecord::Base
 
 ### Role ###
 
-  named_scope :amr, :conditions => {:role => %w[admin moderator reviewer]}
+  scope :amr, where(:role => %w[admin moderator reviewer])
 
   aasm_column :role
   aasm_initial_state :moule
