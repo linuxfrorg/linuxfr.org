@@ -1,11 +1,10 @@
+.bundle
 config/database.yml
 config/*.sphinx.conf
 db/*.sqlite3
 db/sphinx/**/*
-git_store
 log/*.log
 public/sitemap*
 public/uploads/**/*
-tmp/restart.txt
 tmp/**/*
 TODO

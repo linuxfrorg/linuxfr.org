@@ -1,12 +1,9 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
+# TODO move this somewhere else
 require 'html5_helper'
 require 'htmldiff'
 
 
 class ApplicationController < ActionController::Base
-  helper :all # include all helpers, all the time
   helper_method :url_for_content, :current_user, :current_account_session
 
   protect_from_forgery

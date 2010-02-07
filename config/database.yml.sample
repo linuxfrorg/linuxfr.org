@@ -4,7 +4,6 @@ development:
   adapter: mysql
   encoding: utf8
   database: linuxfr_rails
-  pool: 5
   username: linuxfr_rails
   password:
   socket: /var/run/mysqld/mysqld.sock
@@ -16,7 +15,6 @@ test:
   adapter: mysql
   encoding: utf8
   database: linuxfr_test
-  pool: 5
   username: linuxfr_test
   password:
   socket: /var/run/mysqld/mysqld.sock
@@ -25,7 +23,6 @@ production:
   adapter: mysql
   encoding: utf8
   database: linuxfr_production
-  pool: 5
   username: linuxfr
   password: XXX
   socket: /var/run/mysqld/mysqld.sock

@@ -1,125 +1,58 @@
-ActionController::Routing::Routes.draw do |map|
-  map.root :controller => 'home'
+LinuxfrOrg::Application.routes.draw do |map|
+  # The priority is based upon order of creation:
+  # first created -> highest priority.
 
-  # News
-  map.resources :sections
-  map.resources :news
-  map.connect '/redirect/:id', :controller => 'links', :action => 'show'
+  # Sample of regular route:
+  #   match 'products/:id' => 'catalog#view'
+  # Keep in mind you can assign values other than :controller and :action
 
-  # Diaries & Users
-  map.resources :users do |u|
-    u.resources :diaries, :as => 'journaux'
-  end
-  map.with_options :controller => 'diaries' do |d|
-    d.diaries    '/journaux',         :action => 'index',  :conditions => { :method => :get }
-    d.diaries    '/journaux.:format', :action => 'index',  :conditions => { :method => :get }
-    d.new_diary  '/journaux/nouveau', :action => 'new',    :conditions => { :method => :get }
-    d.post_diary '/journaux',         :action => 'create', :conditions => { :method => :post }
-  end
+  # Sample of named route:
+  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
+  # This route can be invoked with purchase_url(:id => product.id)
 
-  # Forums
-  map.resources :forums, :has_many => [:posts]
-  map.with_options :controller => 'posts' do |p|
-    p.new_post   '/posts/nouveau', :action => 'new',    :conditions => { :method => :get }
-    p.post_posts '/posts',         :action => 'create', :conditions => { :method => :post }
-  end
+  # Sample resource route (maps HTTP verbs to controller actions automatically):
+  #   resources :products
 
-  # Other contents
-  map.resources :interviews, :collection => { :comments => :get }, :as => 'entretiens'
-  map.resources :polls, :member => { :vote => :post }, :as => 'sondages'
-  map.resources :trackers, :collection => { :comments => :get }, :as => 'suivi'
-  map.wiki_changes '/wiki/changes', :controller => 'wiki_pages', :action => 'changes'
-  map.resources :wiki_pages, :as => 'wiki' do |wiki|
-    wiki.revision '/revisions/:revision', :controller => 'wiki_pages', :action => 'revision'
-  end
+  # Sample resource route with options:
+  #   resources :products do
+  #     member do
+  #       get :short
+  #       post :toggle
+  #     end
+  #
+  #     collection do
+  #       get :sold
+  #     end
+  #   end
 
-  # Nodes
-  map.dashboard '/tableau-de-bord', :controller => 'dashboard', :action => 'index'
-  map.resources :nodes do |node|
-    node.resources :comments
-    map.with_options :controller => 'tags' do |t|
-      t.node_new_tag '/nodes/:node_id/tags/new', :action => 'new',    :conditions => { :method => :get }
-      t.node_tags    '/nodes/:node_id/tags',     :action => 'create', :conditions => { :method => :post }
-    end
-  end
-  map.with_options :controller => 'tags' do |t|
-    t.tags          '/tags',              :action => 'index',                     :conditions => { :method => :get }
-    t.complete_tags '/tags/autocomplete', :action => 'autocomplete_for_tag_name', :conditions => { :method => :get }
-    t.tag           '/tags/:id',          :action => 'show',                      :conditions => { :method => :get }
-    t.public_tag    '/tags/:id/public',   :action => 'public',                    :conditions => { :method => :get }
-  end
-  map.answer_comment '/nodes/:node_id/comments/:parent_id/answer', :controller => 'comments', :action => 'new'
-  map.vote '/vote/:action/:node_id', :controller => 'votes'
-  map.relevance '/relevance/:action/:comment_id', :controller => 'relevances'
+  # Sample resource route with sub-resources:
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
 
-  # Boards
-  map.with_options :controller => 'boards' do |b|
-    b.add_board '/board/add', :action => 'add', :conditions => { :method => :post }
-    b.with_options :action => 'show' do |i|
-      i.free_board     '/board'
-      i.free_board_xml '/board/index.xml', :format => 'xml'
-    end
-  end
+  # Sample resource route with more complex sub-resources
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get :recent, :on => :collection
+  #     end
+  #   end
 
-  # Accounts
-  map.resource :account, :has_one => :stylesheet, :as => 'compte'
-  map.with_options :controller => 'accounts' do |a|
-    a.signup           '/inscription', :action => 'new'
-    a.activate   '/activation/:token', :action => 'activate',        :token => nil
-    a.forgot_password '/mot-de-passe', :action => 'forgot_password', :conditions => { :method => :get }
-    a.send_password   '/mot-de-passe', :action => 'send_password',   :conditions => { :method => :post }
-    a.reset_password  '/reset/:token', :action => 'reset_password',  :token => nil
-    a.close_account '/desinscription', :action => 'delete'
-  end
+  # Sample resource route within a namespace:
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
 
-  # Sessions
-  map.resource :account_session, :as => 'session'
-  map.with_options :controller => 'account_sessions' do |a|
-    a.login  '/login',  :action => 'new'
-    a.logout '/logout', :action => 'destroy'
-  end
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+  # root :to => "welcome#index"
 
-  # Search
-  map.search          '/recherche',              :controller => 'search'
-  map.search_by_type  '/recherche/:type',        :controller => 'search', :action => 'type'
-  map.search_by_facet '/recherche/:type/:facet', :controller => 'search', :action => 'facet'
+  # See how all your routes lay out with "rake routes"
 
-  # Redaction
-  map.connect '/redaction', :controller => 'redaction'
-  map.namespace :redaction do |r|
-    r.resources :news, :member => { :submit => :post }
-    r.resources :paragraphs
-    r.resources :links
-    r.news_new_link '/news/:news_id/links/nouveau', :controller => 'links', :action => 'new'
-  end
-
-  # Moderation
-  map.connect '/moderation', :controller => 'moderation'
-  map.namespace :moderation do |m|
-    m.resources :news, :member => { :accept => :post, :refuse => :post, :ppp => :post, :clear_locks => :post } do |news|
-      news.show_diff '/show_diff/:sha', :controller => 'news', :action => 'show_diff'
-    end
-    m.resources :interviews, :member => { :accept => :post, :refuse => :post, :contact => :post, :publish => :post }, :as => 'entretiens'
-    m.resources :polls, :member => { :accept => :post, :refuse => :post }, :as => 'sondages'
-  end
-
-  # Admin
-  map.connect '/admin', :controller => 'admin'
-  map.namespace :admin do |admin|
-    admin.resources :accounts,  :as => 'comptes'
-    admin.resources :responses, :as => 'reponses'
-    admin.resources :sections
-    admin.resources :forums
-    admin.resources :categories
-    admin.resources :banners, :as => 'bannieres'
-    admin.resource  :logo
-    admin.resources :friend_sites, :member => { :lower => :post, :higher => :post }, :as => 'sites_amis'
-    admin.resources :pages
-  end
-
-  # Static pages
-  map.submit_content   '/proposer_un_contenu', :controller => 'static', :action => 'proposer_un_contenu'
-  map.submit_anonymous '/proposer_un_contenu_quand_on_est_anonyme', :controller => 'static', :action => 'proposer_un_contenu_quand_on_est_anonyme'
-  map.changelog        '/changelog', :controller => 'static', :action => 'changelog'
-  map.static ':id', :controller => 'static', :action => 'show'
+  # This is a legacy wild controller route that's not recommended for RESTful applications.
+  # Note: This route will make all actions in every controller accessible via GET requests.
+  # match ':controller(/:action(/:id(.:format)))'
 end
