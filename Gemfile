@@ -1,24 +1,34 @@
-# Edit this Gemfile to bundle your application's dependencies.
-source 'http://gemcutter.org'
-
-
-gem "rails", "3.0.0.beta"
+source "http://gemcutter.org"
 
 ## Bundle edge rails:
 # gem "rails", :git => "git://github.com/rails/rails.git"
+gem "rails", "3.0.0.beta"
 
-# ActiveRecord requires a database adapter. By default,
-# Rails has selected sqlite3.
-gem "sqlite3-ruby", :require => "sqlite3"
+gem "aasm", "~>2.1"
+gem "acts-as-list", "~>0.1", :require => "acts_as_list"
+gem "authlogic", "~>2.1"
+gem "erubis", "~>2.6"
+gem "french_rails", "~>0.1"
+gem "friendly_id", "~>2.2"
+gem "haml", "~>2.2"
+gem "htmlentities", "~>4.2"
+gem "mysql", "~>2.8"
+gem "paperclip", "~>2.3"
+gem "raspell", "~>1.1"
+gem "rest-client", "~>1.0", :require => "restclient"
+gem "sitemap_generator", "~>0.2"
+gem "simple_autocomplete", "~>0.3"
+gem "thinking-sphinx", "~>1.3", :require => "thinking_sphinx"
+gem "ts-datetime-delta", "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
+gem "validates_url_format_of", '~>0.1'
+gem "wikitext", "~>1.9"
+gem "will_paginate", "~>2.3"
 
-## Bundle the gems you use:
-# gem "bj"
-# gem "hpricot", "0.6"
-# gem "sqlite3-ruby", :require => "sqlite3"
-# gem "aws-s3", :require => "aws/s3"
+group :development do
+  gem "nono-railroad" # TODO rails3
+end
 
-## Bundle gems used only in certain environments:
-# gem "rspec", :group => :test
-# group :test do
-#   gem "webrat"
-# end
+group :test do
+  gem "factory_girl"
+end
+
