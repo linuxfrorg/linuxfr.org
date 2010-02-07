@@ -6,20 +6,24 @@ gem "rails", "3.0.0.beta"
 
 gem "aasm", "~>2.1"
 gem "acts-as-list", "~>0.1", :require => "acts_as_list"
-gem "authlogic", "~>2.1"
+# TODO rails3 -> try installing it as a plugin: http://github.com/binarylogic/authlogic
+# gem "authlogic", "~>2.1"
 gem "erubis", "~>2.6"
 gem "french_rails", "~>0.1"
 gem "friendly_id", "~>2.2"
 gem "haml", "~>2.2"
 gem "htmlentities", "~>4.2"
 gem "mysql", "~>2.8"
-gem "paperclip", "~>2.3"
+# TODO rails3
+# gem "paperclip", "~>2.3"
 gem "raspell", "~>1.1"
 gem "rest-client", "~>1.0", :require => "restclient"
-gem "sitemap_generator", "~>0.2"
+# TODO rails3
+# gem "sitemap_generator", "~>0.2"
 gem "simple_autocomplete", "~>0.3"
-gem "thinking-sphinx", "~>1.3", :require => "thinking_sphinx"
-gem "ts-datetime-delta", "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
+# TODO rails3
+# gem "thinking-sphinx", "~>1.3", :require => "thinking_sphinx"
+# gem "ts-datetime-delta", "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
 gem "validates_url_format_of", '~>0.1'
 gem "wikitext", "~>1.9"
 gem "will_paginate", "~>2.3"
