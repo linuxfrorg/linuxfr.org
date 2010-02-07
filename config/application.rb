@@ -7,6 +7,9 @@ Bundler.require :default, Rails.env
 
 module LinuxfrOrg
   class Application < Rails::Application
+    # TODO Rails3
+    # config.frameworks -= [ :active_resource ]
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -30,13 +33,17 @@ module LinuxfrOrg
     # config.i18n.default_locale = :de
 
     # Configure generators values. Many other options are available, be sure to check the documentation.
-    # config.generators do |g|
-    #   g.orm             :active_record
-    #   g.template_engine :erb
-    #   g.test_framework  :test_unit, :fixture => true
-    # end
+    config.generators do |g|
+      g.orm             :active_record
+      g.template_engine :haml
+      g.test_framework  :test_unit, :fixture => false
+    end
+
+    config.after_initialize do
+      ActionView::Base.sanitized_allowed_attributes.merge %w(data-id data-after)
+    end
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters << :password
+    config.filter_parameters << :password << :password_confirmation
   end
 end
