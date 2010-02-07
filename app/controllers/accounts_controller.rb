@@ -10,7 +10,7 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(params[:account])
     if @account.save
-      AccountNotifications.deliver_signup(@account)
+      AccountNotifications.signup(@account).deliver
       redirect_to '/', :notice => "Votre compte a été créé. Vous allez recevoir un email avec les informations pour l'activer"
     else
       render :new
@@ -34,7 +34,7 @@ class AccountsController < ApplicationController
     @account = Account.find_by_login(params[:login])
     if @account
       @account.reset_perishable_token!
-      AccountNotifications.deliver_forgot_password(@account)
+      AccountNotifications.forgot_password(@account).deliver
       redirect_to '/', :notice => "Vous allez recevoir un email avec un lien pour changer votre mot de passe"
     else
       flash.now[:alert] = "Désolé, ce login ne correspond à aucun compte actif"

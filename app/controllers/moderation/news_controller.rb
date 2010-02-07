@@ -43,7 +43,7 @@ class Moderation::NewsController < ModerationController
     if @news.unlocked?
       @news.moderator_id = current_user.id
       @news.accept!
-      NewsNotifications.deliver_accept(@news)
+      NewsNotifications.accept(@news).deliver
       redirect_to @news, :alert => "Dépêche acceptée"
     else
       redirect_to [:moderation, @news], :alert => "Impossible de modérer la dépêche tant que quelqu'un est en train de la modifier"
@@ -56,11 +56,11 @@ class Moderation::NewsController < ModerationController
     if params[:message]
       @news.refuse!
       if params[:template]
-        NewsNotifications.deliver_refuse_template(@news, params[:message], params[:template])
+        NewsNotifications.refuse_template(@news, params[:message], params[:template]).deliver
       elsif params[:message] == 'en'
-        NewsNotifications.deliver_refuse_en(@news)
+        NewsNotifications.refuse_en(@news).deliver
       elsif params[:message].present?
-        NewsNotifications.deliver_refuse(@news, params[:message])
+        NewsNotifications.refuse(@news, params[:message]).deliver
       end
       redirect_to @news
     elsif @news.unlocked?
