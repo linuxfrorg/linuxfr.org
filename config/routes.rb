@@ -1,58 +1,134 @@
-LinuxfrOrg::Application.routes.draw do |map|
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
+LinuxfrOrg::Application.routes.draw do
+  root :to => 'home#index'
 
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
+  # News
+  resources :sections
+  resources :news
+  match '/redirect/:id' => 'links#show'
 
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
+  # Diaries & Users
+  resources :users do
+    resources :diaries # TODO :as => 'journaux'
+  end
+  match '/journaux' => 'diaries#index', :as => :diaries, :via => 'get'
+  match '/journaux.:format' => 'diaries#index', :as => :diaries, :via => 'get'
+  match '/journaux/nouveau' => 'diaries#new', :as => :new_diary, :via => 'get'
+  match '/journaux' => 'diaries#create', :as => :post_diary, :via => 'post'
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  # Forums
+  resources :forums
+  match '/posts/nouveau' => 'posts#new', :as => :new_post, :via => 'get'
+  match '/posts' => 'posts#create', :as => :post_posts, :via => 'post'
 
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get :short
-  #       post :toggle
-  #     end
-  #
-  #     collection do
-  #       get :sold
-  #     end
-  #   end
+  # Other contents
+  resources :interviews do # TODO :as => 'entretiens'
+    get :comments, :on => :collection
+  end
+  resources :polls do # TODO :as => 'sondages'
+    post :vote, :on => :member
+  end
+  resources :trackers do # TODO :as => 'suivi'
+    get :comments, :on => :collection
+  end
+  match '/wiki/changes' => 'wiki_pages#changes', :as => :wiki_changes
+  resources :wiki_pages do # TODO :as => 'wiki'
+    match '/revisions/:revision' => 'wiki_pages#revision', :as => :revision
+  end
 
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+  # Nodes
+  match '/tableau-de-bord' => 'dashboard#index', :as => :dashboard
+  resources :nodes do
+    resources :comments
+    match '/nodes/:node_id/tags/new' => 'tags#new', :as => :node_new_tag, :via => 'get'
+    match '/nodes/:node_id/tags' => 'tags#create', :as => :node_tags, :via => 'post'
+  end
+  match '/tags' => 'tags#index', :as => :tags, :via => 'get'
+  match '/tags/autocomplete' => 'tags#autocomplete_for_tag_name', :as => :complete_tags, :via => 'get'
+  match '/tags/:id' => 'tags#show', :as => :tag, :via => 'get'
+  match '/tags/:id/public' => 'tags#public', :as => :public_tag, :via => 'get'
+  match '/nodes/:node_id/comments/:parent_id/answer' => 'comments#new', :as => :answer_comment
+  match '/vote/:action/:node_id' => 'votes#index', :as => :vote
+  match '/relevance/:action/:comment_id' => 'relevances#index', :as => :relevance
 
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get :recent, :on => :collection
-  #     end
-  #   end
+  # Boards
+  match '/board/add' => 'boards#add', :as => :add_board, :via => 'post'
+  match '/board' => 'boards#show', :as => :free_board
+  match '/board/index.xml' => 'boards#show', :as => :free_board_xml, :format => 'xml'
 
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  # Accounts
+  resource :account # TODO :as => 'compte'
+  match '/inscription' => 'accounts#new', :as => :signup
+  match '/activation/:token' => 'accounts#activate', :as => :activate, :token => ''
+  match '/mot-de-passe' => 'accounts#forgot_password', :as => :forgot_password, :via => 'get'
+  match '/mot-de-passe' => 'accounts#send_password', :as => :send_password, :via => 'post'
+  match '/reset/:token' => 'accounts#reset_password', :as => :reset_password, :token => ''
+  match '/desinscription' => 'accounts#delete', :as => :close_account
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+  # Sessions
+  resource :account_session # TODO :as => 'sessions'
+  match '/login' => 'account_sessions#new', :as => :login
+  match '/logout' => 'account_sessions#destroy', :as => :logout
 
-  # See how all your routes lay out with "rake routes"
+  # Search
+  match '/recherche' => 'search#index', :as => :search
+  match '/recherche/:type' => 'search#type', :as => :search_by_type
+  match '/recherche/:type/:facet' => 'search#facet', :as => :search_by_facet
 
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+  # Redaction
+  match '/redaction' => 'redaction#index'
+  namespace :redaction do
+    resources :news do
+      post :submit, :on => :member
+    end
+    resources :paragraphs
+    resources :links
+    match '/news/:news_id/links/nouveau' => 'links#new', :as => :news_new_link
+  end
+
+  # Moderation
+  match '/moderation' => 'moderation#index'
+  namespace :moderation do
+    resources :news do
+      match '/show_diff/:sha' => 'news#show_diff', :as => :show_diff
+    end
+    resources :interviews do # TODO :as => 'entretiens'
+      member do
+        post :contact
+        post :publish
+        post :refuse
+        post :accept
+      end
+    end
+    resources :polls do # TODO :as => 'sondages'
+      member do
+        post :refuse
+        post :accept
+      end
+    end
+  end
+
+  # Admin
+  match '/admin' => 'admin#index'
+  namespace :admin do
+    resources :accounts # TODO :as => 'comptes'
+    resources :responses # TODO :as => 'reponses'
+    resources :sections
+    resources :forums
+    resources :categories
+    resources :banners # TODO :as => 'bannieres'
+    resource :logo
+    resources :friend_sites do # TODO :as => 'sites_amis'
+      member do
+        post :lower
+        post :higher
+      end
+    end
+    resources :pages
+  end
+
+  # Static pages
+  match '/proposer_un_contenu' => 'static#proposer_un_contenu', :as => :submit_content
+  match '/proposer_un_contenu_quand_on_est_anonyme' => 'static#proposer_un_contenu_quand_on_est_anonyme', :as => :submit_anonymous
+  match '/changelog' => 'static#changelog', :as => :changelog
+  match ':id' => 'static#show', :as => :static
 end
