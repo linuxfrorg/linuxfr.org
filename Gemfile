@@ -29,6 +29,7 @@ gem "wikitext",                "~>1.9"
 gem "will_paginate",           "~>2.3"
 
 group :development do
+  gem "rails3-generators"
   gem "nono-railroad" # TODO rails3
 end
 

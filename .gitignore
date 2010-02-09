@@ -3,7 +3,6 @@ config/database.yml
 config/*.sphinx.conf
 db/*.sqlite3
 db/sphinx/**/*
-lig/generators/.git
 log/*.log
 public/sitemap*
 public/uploads/**/*
