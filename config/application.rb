@@ -34,9 +34,16 @@ module LinuxfrOrg
 
     # Configure generators values. Many other options are available, be sure to check the documentation.
     config.generators do |g|
-      g.orm             :active_record
-      g.template_engine :haml
-      g.test_framework  :test_unit, :fixture => false
+      g.orm              :active_record
+      g.template_engine  :haml
+      g.integration_tool :rspec
+      g.test_framework   :rspec,
+                         :fixture     => false,
+                         :controllers => false,
+                         :views       => false,
+                         :helpers     => false,
+                         :routes      => false,
+                         :integration => true
     end
 
     config.after_initialize do
