@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Banner do
   it "should create a new instance given valid attributes" do
-    Factory.build(:banner).save!
+    Factory.create(:banner)
   end
 
   it "should return the text of a banner on random" do
