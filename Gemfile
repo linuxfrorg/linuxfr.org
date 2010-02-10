@@ -6,8 +6,7 @@ gem "rails",                   "3.0.0.beta"
 
 gem "aasm",                    "~>2.1"
 gem "acts-as-list",            "~>0.1", :require => "acts_as_list"
-# TODO rails3 -> try installing it as a plugin: http://github.com/binarylogic/authlogic
-# gem "authlogic",             "~>2.1"
+gem "authlogic",               "~>2.1"
 gem "erubis",                  "~>2.6"
 gem "french_rails",            "~>0.1"
 gem "friendly_id",             "~>2.3"
