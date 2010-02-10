@@ -10,12 +10,11 @@ gem "acts-as-list",            "~>0.1", :require => "acts_as_list"
 # gem "authlogic",             "~>2.1"
 gem "erubis",                  "~>2.6"
 gem "french_rails",            "~>0.1"
-gem "friendly_id",             "~>2.2"
+gem "friendly_id",             "~>2.3"
 gem "haml",                    "~>2.2"
 gem "htmlentities",            "~>4.2"
 gem "mysql",                   "~>2.8"
-# TODO rails3
-# gem "paperclip",             "~>2.3"
+gem "paperclip",               "~>2.3"
 gem "raspell",                 "~>1.1"
 gem "rest-client",             "~>1.0", :require => "restclient"
 # TODO rails3
@@ -26,11 +25,10 @@ gem "simple_autocomplete",     "~>0.3"
 # gem "ts-datetime-delta",     "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
 gem "validates_url_format_of", "~>0.1"
 gem "wikitext",                "~>1.9"
-gem "will_paginate",           "~>2.3"
+gem "will_paginate",           ">=3.0.pre"
 
 group :development do
   gem "rails3-generators"
-  gem "nono-railroad" # TODO rails3
 end
 
 group :test do
