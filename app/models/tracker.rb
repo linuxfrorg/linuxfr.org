@@ -37,13 +37,14 @@ class Tracker < Content
 
 ### Sphinx ####
 
-  define_index do
-    indexes title, body
-    indexes user.name, :as => :user
-    indexes category.title, :as => :category, :facet => true
-    set_property :field_weights => { :title => 2, :user => 1, :body => 1, :category => 1 }
-    set_property :delta => :datetime, :threshold => 75.minutes
-  end
+# TODO Rails 3
+#   define_index do
+#     indexes title, body
+#     indexes user.name, :as => :user
+#     indexes category.title, :as => :category, :facet => true
+#     set_property :field_weights => { :title => 2, :user => 1, :body => 1, :category => 1 }
+#     set_property :delta => :datetime, :threshold => 75.minutes
+#   end
 
 ### Workflow ###
 

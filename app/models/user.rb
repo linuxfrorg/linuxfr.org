@@ -51,12 +51,13 @@ class User < ActiveRecord::Base
 
 ### Sphinx ####
 
-  define_index do
-    indexes name, homesite, jabber_id
-    where "role != 'inactive'"
-    set_property :field_weights => { :name => 5, :homesite => 1, :jabber_id => 1 }
-    set_property :delta => :datetime, :threshold => 75.minutes
-  end
+# TODO Rails 3
+#   define_index do
+#     indexes name, homesite, jabber_id
+#     where "role != 'inactive'"
+#     set_property :field_weights => { :name => 5, :homesite => 1, :jabber_id => 1 }
+#     set_property :delta => :datetime, :threshold => 75.minutes
+#   end
 
 ### Avatar ###
 

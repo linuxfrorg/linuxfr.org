@@ -76,14 +76,15 @@ class News < Content
 
 ### Sphinx ####
 
-  define_index do
-    indexes title, body, second_part
-    indexes author_name, :as => :user
-    indexes section.title, :as => :section, :facet => true
-    where "news.state = 'published'"
-    set_property :field_weights => { :title => 25, :user => 10, :body => 3, :second_part => 2, :section => 4 }
-    set_property :delta => :datetime, :threshold => 75.minutes
-  end
+# TODO Rails 3
+#   define_index do
+#     indexes title, body, second_part
+#     indexes author_name, :as => :user
+#     indexes section.title, :as => :section, :facet => true
+#     where "news.state = 'published'"
+#     set_property :field_weights => { :title => 25, :user => 10, :body => 3, :second_part => 2, :section => 4 }
+#     set_property :delta => :datetime, :threshold => 75.minutes
+#   end
 
 ### Workflow ###
 

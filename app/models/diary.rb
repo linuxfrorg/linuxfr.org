@@ -35,13 +35,14 @@ class Diary < Content
 
 ### Sphinx ####
 
-  define_index do
-    indexes title, body
-    indexes user.name, :as => :user
-    where "state = 'published'"
-    set_property :field_weights => { :title => 10, :user => 4, :body => 2 }
-    set_property :delta => :datetime, :threshold => 75.minutes
-  end
+# TODO Rails 3
+#   define_index do
+#     indexes title, body
+#     indexes user.name, :as => :user
+#     where "state = 'published'"
+#     set_property :field_weights => { :title => 10, :user => 4, :body => 2 }
+#     set_property :delta => :datetime, :threshold => 75.minutes
+#   end
 
 ### ACL ###
 

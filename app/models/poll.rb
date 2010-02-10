@@ -29,14 +29,15 @@ class Poll < Content
 
 ### Sphinx ####
 
-  define_index do
-    indexes title
-    indexes user.name, :as => :user
-    indexes answers.answer, :as => :answers
-    where "state IN ('published', 'archived')"
-    set_property :field_weights => { :title => 10, :user => 3, :answers => 4 }
-    set_property :delta => :datetime, :threshold => 75.minutes
-  end
+# TODO Rails 3
+#   define_index do
+#     indexes title
+#     indexes user.name, :as => :user
+#     indexes answers.answer, :as => :answers
+#     where "state IN ('published', 'archived')"
+#     set_property :field_weights => { :title => 10, :user => 3, :answers => 4 }
+#     set_property :delta => :datetime, :threshold => 75.minutes
+#   end
 
 ### Workflow ###
 

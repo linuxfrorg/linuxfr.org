@@ -38,12 +38,13 @@ class Interview < Content
 
 ### Sphinx ####
 
-  define_index do
-    indexes title, body
-    where "state != 'draft'"
-    set_property :field_weights => { :title => 20, :body => 4 }
-    set_property :delta => :datetime, :threshold => 75.minutes
-  end
+# TODO Rails 3
+#   define_index do
+#     indexes title, body
+#     where "state != 'draft'"
+#     set_property :field_weights => { :title => 20, :body => 4 }
+#     set_property :delta => :datetime, :threshold => 75.minutes
+#   end
 
 ### Workflow ###
 
