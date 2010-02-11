@@ -1,5 +1,4 @@
 # TODO move this somewhere else
-require 'html5_helper'
 require 'htmldiff'
 
 
