@@ -17,7 +17,7 @@
 # The news are classified in several sections.
 #
 class Section < ActiveRecord::Base
-  has_many :news
+  has_many :news, :inverse_of => :section
 
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_uniqueness_of :title, :message => "Ce titre est déjà utilisé"

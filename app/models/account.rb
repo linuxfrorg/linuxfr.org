@@ -30,7 +30,7 @@
 class Account < ActiveRecord::Base
   include AASM
 
-  belongs_to :user
+  belongs_to :user, :inverse_of => :account
   accepts_nested_attributes_for :user, :reject_if => proc { |attrs| attrs['user'].blank? }
 
   attr_accessible :login, :email, :stylesheet, :password, :password_confirmation, :user_attributes

@@ -23,7 +23,7 @@
 class Node < ActiveRecord::Base
   belongs_to :user     # can be NULL
   belongs_to :content, :polymorphic => true
-  has_many :comments
+  has_many :comments, :inverse_of => :node
   has_many :readings, :dependent => :destroy
   has_many :votes, :dependent => :destroy
   has_many :taggings, :dependent => :destroy, :include => :tag

@@ -17,7 +17,7 @@
 class Forum < ActiveRecord::Base
   acts_as_list
 
-  has_many :posts
+  has_many :posts, :inverse_of => :forum
 
   scope :sorted, order("position ASC")
 

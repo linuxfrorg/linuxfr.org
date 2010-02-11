@@ -14,8 +14,9 @@ class Poll < Content
   include AASM
 
   has_many :answers, :class_name => 'PollAnswer',
-                     :dependent => :destroy,
-                     :order => 'position'
+                     :dependent  => :destroy,
+                     :order      => 'position',
+                     :inverse_of => :poll
   accepts_nested_attributes_for :answers, :allow_destroy => true,
       :reject_if => proc { |attrs| attrs['answer'].blank? }
 

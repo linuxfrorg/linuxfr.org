@@ -30,11 +30,11 @@
 class User < ActiveRecord::Base
   include AASM
 
-  has_one  :account, :dependent => :destroy
-  has_many :nodes
+  has_one  :account, :dependent => :destroy, :inverse_of => :user
+  has_many :nodes, :inverse_of => :user
   has_many :diaries, :dependent => :destroy, :foreign_key => 'owner_id'
   has_many :wiki_versions, :dependent => :nullify
-  has_many :comments
+  has_many :comments, :inverse_of => :user
   has_many :readings, :dependent => :destroy
   has_many :votes, :dependent => :destroy
   has_many :relevances, :dependent => :destroy
