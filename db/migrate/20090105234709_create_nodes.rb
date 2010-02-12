@@ -12,6 +12,7 @@ class CreateNodes < ActiveRecord::Migration
       t.timestamps
     end
     add_index :nodes, [:content_type, :content_id], :unique => true
+    add_index :nodes, :user_id
   end
 
   def self.down

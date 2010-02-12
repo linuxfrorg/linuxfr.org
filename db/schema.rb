@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
   end
 
   add_index "nodes", ["content_type", "content_id"], :name => "index_nodes_on_content_type_and_content_id", :unique => true
+  add_index "nodes", ["user_id"], :name => "index_nodes_on_user_id"
 
   create_table "pages", :force => true do |t|
     t.string   "slug"
@@ -246,6 +247,7 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
   end
 
   add_index "posts", ["cached_slug"], :name => "index_posts_on_cached_slug"
+  add_index "posts", ["forum_id"], :name => "index_posts_on_forum_id"
   add_index "posts", ["state"], :name => "index_posts_on_state"
 
   create_table "readings", :force => true do |t|
@@ -328,7 +330,9 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
     t.datetime "updated_at"
   end
 
+  add_index "trackers", ["assigned_to_user_id"], :name => "index_trackers_on_assigned_to_user_id"
   add_index "trackers", ["cached_slug"], :name => "index_trackers_on_cached_slug"
+  add_index "trackers", ["category_id"], :name => "index_trackers_on_category_id"
   add_index "trackers", ["state"], :name => "index_trackers_on_state"
 
   create_table "users", :force => true do |t|

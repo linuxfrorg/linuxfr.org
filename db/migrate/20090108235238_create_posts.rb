@@ -11,6 +11,7 @@ class CreatePosts < ActiveRecord::Migration
     end
     add_index :posts, :state
     add_index :posts, :cached_slug
+    add_index :posts, :forum_id
   end
 
   def self.down

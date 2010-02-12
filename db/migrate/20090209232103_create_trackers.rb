@@ -12,6 +12,8 @@ class CreateTrackers < ActiveRecord::Migration
     end
     add_index :trackers, :state
     add_index :trackers, :cached_slug
+    add_index :trackers, :category_id
+    add_index :trackers, :assigned_to_user_id
   end
 
   def self.down
