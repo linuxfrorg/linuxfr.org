@@ -1,9 +1,0 @@
-#interviews-box.box
-  %h1 Entretiens
-  %p
-    - if @interviews.empty?
-      Aucune proposition
-    - else
-      - @interviews.each do |interview|
-        = link_to interview.title, [:moderation, interview]
-

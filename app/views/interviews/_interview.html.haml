@@ -1,6 +1,0 @@
-= article_for interview do |c|
-  - c.title = link_to("Proposition d'entretien n°#{interview.id} : #{interview.title}", interview)
-  - c.image = image_tag('Entretien.png', :alt => "Proposition d'entretien")
-  - c.body  = sanitize(interview.body)
-  - if interview.news
-    - c.actions = "<br/>&gt; Cet entretien est à l'origine de la dépêche suivante : #{link_to interview.news.title, interview.news}"

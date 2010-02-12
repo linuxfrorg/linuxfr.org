@@ -4,7 +4,6 @@ class Moderation::NewsController < ModerationController
   def index
     @news  = News.candidate.sorted
     @polls = Poll.draft
-    @interviews = Interview.draft
   end
 
   def show

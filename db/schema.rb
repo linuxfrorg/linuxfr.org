@@ -124,21 +124,6 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
 
   add_index "friend_sites", ["position"], :name => "index_friend_sites_on_position"
 
-  create_table "interviews", :force => true do |t|
-    t.string   "state",               :default => "draft", :null => false
-    t.string   "title"
-    t.string   "cached_slug"
-    t.text     "body"
-    t.text     "wiki_body"
-    t.integer  "news_id"
-    t.integer  "assigned_to_user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "interviews", ["cached_slug"], :name => "index_interviews_on_cached_slug"
-  add_index "interviews", ["state"], :name => "index_interviews_on_state"
-
   create_table "links", :force => true do |t|
     t.integer  "news_id",                     :null => false
     t.string   "title"

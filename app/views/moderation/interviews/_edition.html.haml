@@ -1,7 +1,0 @@
-#interview-edition
-  %h1 Éditions
-  %p
-    = link_to "Éditer", edit_moderation_interview_path(:id => @interview.id)
-  %h1 Modération
-  = button_to "Publier", accept_moderation_interview_path(@interview)
-  = button_to "Refuser", refuse_moderation_interview_path(@interview)
