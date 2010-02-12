@@ -1,6 +1,6 @@
 class DiariesController < ApplicationController
   before_filter :user_required, :except => [:index, :show]
-  before_filter :find_user, :except => [:index, :new, :create]
+  before_filter :find_diary, :except => [:index, :new, :create]
   after_filter  :marked_as_read, :only => [:show]
 
 ### Global ###
@@ -35,18 +35,15 @@ class DiariesController < ApplicationController
 ### By user ###
 
   def show
-    @diary = @user.diaries.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @diary && @diary.readable_by?(current_user)
     redirect_to [@user, @diary], :status => 301 if @diary.has_better_id?
   end
 
   def edit
-    @diary = @user.diaries.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @diary && @diary.editable_by?(current_user)
   end
 
   def update
-    @diary = @user.diaries.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @diary && @diary.editable_by?(current_user)
     @diary.attributes = params[:diary]
     if !preview_mode && @diary.save
@@ -57,7 +54,6 @@ class DiariesController < ApplicationController
   end
 
   def destroy
-    @diary = @user.diaries.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @diary && @diary.deletable_by?(current_user)
     @diary.mark_as_deleted
     redirect_to diaries_url, :notice => "Votre journal a bien été supprimé"
@@ -65,8 +61,9 @@ class DiariesController < ApplicationController
 
 protected
 
-  def find_user
-    @user = User.find(params[:user_id])
+  def find_diary
+    @user  = User.find(params[:user_id])
+    @diary = @user.diaries.find(params[:id])
   end
 
   def marked_as_read

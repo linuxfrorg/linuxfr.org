@@ -1,5 +1,5 @@
 %p
-  = link_to "Retourner au contenu associé", url_for_content(@comment.node.content)
+  = link_to "Retourner au contenu associé", url_for_content(@comment.content)
 
 - if @comment.editable_by?(current_user)
   %p

@@ -1,9 +1,9 @@
 class ForumsController < ApplicationController
   before_filter :find_forums
+  before_filter :get_order
 
   def index
-    @order = params[:order] || 'created_at'
-    @posts = Post.published.joins(:nodes).order("nodes.#{@order} DESC").paginate(:page => params[:page], :per_page => 10)
+    @posts = Post.published.joins(:nodes).order(@order).paginate(:page => params[:page], :per_page => 10)
     respond_to do |wants|
       wants.html
       wants.atom
@@ -11,9 +11,8 @@ class ForumsController < ApplicationController
   end
 
   def show
-    @order = params[:order] || 'created_at'
     @forum = Forum.find(params[:id])
-    @posts = @forum.posts.published.joins(:nodes).order("nodes.#{@order} DESC").paginate(:page => params[:page], :per_page => 10)
+    @posts = @forum.posts.published.joins(:nodes).order(@order).paginate(:page => params[:page], :per_page => 10)
     respond_to do |wants|
       wants.html
       wants.atom
@@ -24,6 +23,10 @@ protected
 
   def find_forums
     @forums = Forum.sorted
+  end
+
+  def get_order
+    @order = "nodes." + (params[:order] || "created_at") + " DESC"
   end
 
 end

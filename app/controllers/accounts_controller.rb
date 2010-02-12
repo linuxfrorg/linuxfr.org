@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
   before_filter :load_account_by_token, :only => [:activate, :reset_password, :destroy]
+  before_filter :load_current_account,  :only => [:edit, :update, :delete]
   before_filter :anonymous_required,  :except => [:edit, :update, :delete, :destroy]
   before_filter :user_required,         :only => [:edit, :update, :delete, :destroy]
 
@@ -53,11 +54,9 @@ class AccountsController < ApplicationController
   end
 
   def edit
-    @account = current_account_session.account
   end
 
   def update
-    @account = current_account_session.account
     @account.attributes = params[:account]
     if @account.save
       redirect_to :edit, :notice => "Vos préférences ont été enregistrées"
@@ -68,7 +67,6 @@ class AccountsController < ApplicationController
   end
 
   def delete
-    @account = current_account_session.account
     @account.reset_perishable_token!
   end
 
@@ -86,6 +84,10 @@ protected
 
   def load_account_by_token
     @account = Account.find_using_perishable_token(params[:token])
+  end
+
+  def load_current_account
+    @account = current_account_session.account
   end
 
 end

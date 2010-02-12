@@ -23,13 +23,7 @@ class Redaction::LinksController < RedactionController
 
   def update
     @link.attributes = params[:link]
-    @link.user_id = current_user.id
-    @link.locked_by = nil
-    if @link.url.blank?
-      @link.destroy
-    else
-      @link.save
-    end
+    @link.update_by(current_user)
     render :nothing => true
   end
 

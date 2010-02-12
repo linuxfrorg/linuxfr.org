@@ -1,4 +1,5 @@
 class Admin::SectionsController < AdminController
+  before_filter :find_section, :only => [:edit, :update, :destroy]
 
   def index
     @sections = Section.all
@@ -19,11 +20,9 @@ class Admin::SectionsController < AdminController
   end
 
   def edit
-    @section = Section.find(params[:id])
   end
 
   def update
-    @section = Section.find(params[:id])
     @section.attributes = params[:section]
     if @section.save
       redirect_to admin_sections_url, :notice => 'Section mise à jour.'
@@ -34,9 +33,14 @@ class Admin::SectionsController < AdminController
   end
 
   def destroy
-    @section = Section.find(params[:id])
     @section.delete
     redirect_to admin_sections_url, :notice => 'Section supprimée'
+  end
+
+protected
+
+  def find_section
+    @section = Section.find(params[:id])
   end
 
 end

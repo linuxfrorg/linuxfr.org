@@ -1,4 +1,5 @@
 class Admin::ForumsController < AdminController
+  before_filter :find_forum, :only => [:edit, :update, :destroy]
 
   def index
     @forums = Forum.sorted.all
@@ -22,11 +23,9 @@ class Admin::ForumsController < AdminController
   end
 
   def edit
-    @forum = Forum.find(params[:id])
   end
 
   def update
-    @forum = Forum.find(params[:id])
     @forum.attributes = params[:forum]
     if @forum.save
       redirect_to admin_forums_url, :notice => "Forum modifié"
@@ -37,9 +36,14 @@ class Admin::ForumsController < AdminController
   end
 
   def destroy
-    forum = Forum.find(params[:id])
-    forum.destroy
+    @forum.destroy
     redirect_to admin_forums_url, :notice => "Forum supprimé"
+  end
+
+protected
+
+  def find_forum
+    @forum = Forum.find(params[:id])
   end
 
 end

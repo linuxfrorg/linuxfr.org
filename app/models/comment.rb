@@ -24,6 +24,8 @@ class Comment < ActiveRecord::Base
   belongs_to :node, :touch => :last_commented_at, :counter_cache => :comments_count
   has_many :relevances
 
+  delegate :content, :content_type, :to => :node
+
   attr_accessible :title, :wiki_body, :node_id, :parent_id
 
   scope :published,    where(:state => 'published')
@@ -148,6 +150,12 @@ class Comment < ActiveRecord::Base
 
   def deleted?
     state == 'deleted'
+  end
+
+### Presentation ###
+
+  def user_name
+    user.try :name
   end
 
 end

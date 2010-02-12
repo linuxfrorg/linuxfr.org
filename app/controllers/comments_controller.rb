@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_filter :user_required, :except => [:index, :show]
   before_filter :find_node
+  before_filter :find_comment, :except => [:index, :new, :create]
 
   def index
     @comments = @node.comments.published.all(:order => 'id DESC')
@@ -11,7 +12,6 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @comment = @node.comments.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @comment && @comment.readable_by?(current_user)
   end
 
@@ -35,12 +35,10 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = @node.comments.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @comment.editable_by?(current_user)
   end
 
   def update
-    @comment = @node.comments.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @comment.editable_by?(current_user)
     @comment.attributes = params[:comment]
     if !preview_mode && @comment.save
@@ -52,7 +50,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = @node.comments.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @comment.deletable_by?(current_user)
     @comment.mark_as_deleted
     flash[:notice] = "Votre commentaire a bien été supprimé"
@@ -63,6 +60,10 @@ protected
 
   def find_node
     @node = Node.find(params[:node_id])
+  end
+
+  def find_comment
+    @comment = @node.comments.find(params[:id])
   end
 
 end

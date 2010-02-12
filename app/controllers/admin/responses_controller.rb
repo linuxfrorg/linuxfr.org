@@ -1,4 +1,5 @@
 class Admin::ResponsesController < AdminController
+  before_filter :find_response, :only => [:edit, :update, :destroy]
 
   def index
     @responses = Response.all
@@ -19,11 +20,9 @@ class Admin::ResponsesController < AdminController
   end
 
   def edit
-    @response = Response.find(params[:id])
   end
 
   def update
-    @response = Response.find(params[:id])
     @response.attributes = params[:response]
     if @response.save
       redirect_to admin_responses_url, :notice => 'Réponse mise à jour.'
@@ -34,9 +33,14 @@ class Admin::ResponsesController < AdminController
   end
 
   def destroy
-    @response = Response.find(params[:id])
     @response.destroy
     redirect_to admin_responses_url, :notice => 'Réponse supprimée'
+  end
+
+protected
+
+  def find_response
+    @response = Response.find(params[:id])
   end
 
 end

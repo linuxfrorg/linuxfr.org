@@ -1,4 +1,5 @@
 class Admin::BannersController < AdminController
+  before_filter :load_banner, :only => [:update, :destroy]
 
   def index
     @banners = Banner.all
@@ -23,7 +24,6 @@ class Admin::BannersController < AdminController
   end
 
   def update
-    @banner = Banner.find(params[:id])
     @banner.attributes = params[:banner]
     if !preview_mode && @banner.save
       redirect_to admin_banners_url, :notice => 'Bannière mise à jour.'
@@ -33,9 +33,14 @@ class Admin::BannersController < AdminController
   end
 
   def destroy
-    @banner = Banner.find(params[:id])
     @banner.destroy
     redirect_to admin_banners_url, :notice => 'Bannière supprimée'
+  end
+
+protected
+
+  def load_banner
+    @banner = Banner.find(params[:id])
   end
 
 end

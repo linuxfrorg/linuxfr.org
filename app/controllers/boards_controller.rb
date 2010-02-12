@@ -12,10 +12,9 @@ class BoardsController < ApplicationController
   end
 
   def add
-    board = Board.new(params[:board])
+    board = current_user.boards.build(params[:board])
     raise ActiveRecord::RecordNotFound unless board && board.accessible_by?(current_user)
     board.message    = board_auto_link(board.message)
-    board.user_id    = current_user.id
     board.user_agent = request.user_agent
     board.save
     respond_to do |wants|

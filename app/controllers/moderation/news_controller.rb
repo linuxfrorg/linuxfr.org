@@ -1,4 +1,5 @@
 class Moderation::NewsController < ModerationController
+  before_filter :find_news, :except => [:index]
 
   def index
     @news  = News.candidate.sorted
@@ -7,7 +8,6 @@ class Moderation::NewsController < ModerationController
   end
 
   def show
-    @news   = News.find(params[:id])
     @boards = @news.boards
     respond_to do |wants|
       wants.html {
@@ -19,7 +19,6 @@ class Moderation::NewsController < ModerationController
   end
 
   def edit
-    @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
     respond_to do |wants|
       wants.js { render :partial => 'form' }
@@ -27,7 +26,6 @@ class Moderation::NewsController < ModerationController
   end
 
   def update
-    @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
     @news.attributes = params[:news]
     @news.editor_id = current_user.id
@@ -38,7 +36,6 @@ class Moderation::NewsController < ModerationController
   end
 
   def accept
-    @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @news && @news.acceptable_by?(current_user)
     if @news.unlocked?
       @news.moderator_id = current_user.id
@@ -51,17 +48,11 @@ class Moderation::NewsController < ModerationController
   end
 
   def refuse
-    @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @news && @news.refusable_by?(current_user)
     if params[:message]
       @news.refuse!
-      if params[:template]
-        NewsNotifications.refuse_template(@news, params[:message], params[:template]).deliver
-      elsif params[:message] == 'en'
-        NewsNotifications.refuse_en(@news).deliver
-      elsif params[:message].present?
-        NewsNotifications.refuse(@news, params[:message]).deliver
-      end
+      notif = NewsNotifications.refuse_with_message(@news, params[:message], params[:template])
+      notif.deliver if notif
       redirect_to @news
     elsif @news.unlocked?
       @boards = @news.boards
@@ -71,7 +62,6 @@ class Moderation::NewsController < ModerationController
   end
 
   def ppp
-    @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @news && @news.pppable_by?(current_user)
     @news.set_on_ppp
     redirect_to @news
@@ -79,19 +69,23 @@ class Moderation::NewsController < ModerationController
 
   # TODO to be removed?
   def show_diff
-    @news = News.find(params[:news_id])
     raise ActiveRecord::RecordNotFound unless @news
     @commit = Commit.new(@news, params[:sha])
   end
 
   def clear_locks
-    @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
     @news.clear_locks(current_user)
     respond_to do |wants|
       wants.html { redirect_to :back }
       wants.js   { render :nothing => true }
     end
+  end
+
+protected
+
+  def find_news
+    @news = News.find(params[:id])
   end
 
 end

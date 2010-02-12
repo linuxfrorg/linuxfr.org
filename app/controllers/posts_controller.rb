@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_filter :user_required, :except => [:index, :show]
   before_filter :find_forum, :except => [:new, :create]
+  before_filter :find_post,  :except => [:new, :create, :index]
   after_filter  :marked_as_read, :only => [:show]
 
 ### Global ###
@@ -30,18 +31,15 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = @forum.posts.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @post && @post.readable_by?(current_user)
     redirect_to @post, :status => 301 if @post.has_better_id?
   end
 
   def edit
-    @post = @forum.posts.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @post && @post.editable_by?(current_user)
   end
 
   def update
-    @post = @forum.posts.find(params[:id])
     @post.attributes = params[:post]
     raise ActiveRecord::RecordNotFound.new unless @post && @post.editable_by?(current_user)
     if !preview_mode && @post.save
@@ -53,7 +51,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = @forum.posts.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @post && @post.deletable_by?(current_user)
     @post.mark_as_deleted
     redirect_to forum_posts_url, :notice => "Votre message a bien été supprimé"
@@ -63,6 +60,10 @@ protected
 
   def find_forum
     @forum = Forum.find(params[:forum_id])
+  end
+
+  def find_post
+    @post = @forum.posts.find(params[:id])
   end
 
   def marked_as_read

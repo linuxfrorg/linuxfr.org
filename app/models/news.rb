@@ -137,6 +137,17 @@ class News < Content
     candidate?
   end
 
+  def self.create_for_redaction(user)
+    news = News.new
+    news.title = "Nouvelle dépêche #{News.maximum :id}"
+    news.section = Section.published.first
+    news.wiki_body = news.wiki_second_part = "Vous pouvez éditer cette partie en cliquant dessus !"
+    news.author_name  = user.name
+    news.author_email = user.email
+    news.save
+    news
+  end
+
 ### ACL ###
 
   def readable_by?(user)

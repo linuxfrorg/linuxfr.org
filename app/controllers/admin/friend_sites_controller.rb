@@ -1,4 +1,5 @@
 class Admin::FriendSitesController < AdminController
+  before_filter :find_friend_site, :except => [:index, :new, :create]
 
   def index
     @friend_sites = FriendSite.sorted.all
@@ -21,11 +22,9 @@ class Admin::FriendSitesController < AdminController
   end
 
   def edit
-    @friend_site = FriendSite.find(params[:id])
   end
 
   def update
-    @friend_site = FriendSite.find(params[:id])
     @friend_site.attributes = params[:friend_site]
     if @friend_site.save
       redirect_to admin_friend_sites_url, :notice => "Site ami modifié"
@@ -36,21 +35,24 @@ class Admin::FriendSitesController < AdminController
   end
 
   def destroy
-    site = FriendSite.find(params[:id])
-    site.destroy
+    @site.destroy
     redirect_to admin_friend_sites_url, :notice => "Site ami supprimé"
   end
 
   def lower
-    site = FriendSite.find(params[:id])
-    site.move_lower
+    @site.move_lower
     redirect_to admin_friend_sites_url
   end
 
   def higher
-    site = FriendSite.find(params[:id])
-    site.move_higher
+    @site.move_higher
     redirect_to admin_friend_sites_url
+  end
+
+protected
+
+  def find_friend_site
+    @friend_site = FriendSite.find(params[:id])
   end
 
 end

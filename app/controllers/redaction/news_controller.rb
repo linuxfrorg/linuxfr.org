@@ -1,23 +1,17 @@
 class Redaction::NewsController < RedactionController
+  before_filter :load_news, :except => [:index, :create]
 
   def index
     @news = News.draft.sorted
   end
 
   def create
-    @news = News.new
-    @news.title = "Nouvelle dépêche #{News.maximum :id}"
-    @news.section = Section.published.first
-    @news.wiki_body = @news.wiki_second_part = "Vous pouvez éditer cette partie en cliquant dessus !"
-    @news.author_name  = current_user.name
-    @news.author_email = current_user.email
-    @news.save
+    @news = News.create_for_redaction(current_user)
     @news.create_node(:public => false, :user_id => (current_user && current_user.id))
     redirect_to [:redaction, @news]
   end
 
   def show
-    @news   = News.find(params[:id])
     @boards = @news.boards
     respond_to do |wants|
       wants.html {
@@ -29,7 +23,6 @@ class Redaction::NewsController < RedactionController
   end
 
   def edit
-    @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
     respond_to do |wants|
       wants.js { render :partial => 'form' }
@@ -37,7 +30,6 @@ class Redaction::NewsController < RedactionController
   end
 
   def update
-    @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
     @news.attributes = params[:news]
     @news.editor_id = current_user.id
@@ -48,7 +40,6 @@ class Redaction::NewsController < RedactionController
   end
 
   def submit
-    @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
     if @news.unlocked?
       @news.submit_and_notify(current_user.id)
@@ -56,6 +47,12 @@ class Redaction::NewsController < RedactionController
     else
       redirect_to [:redaction, @news], :alert => "Impossible de soumettre la dépêche car quelqu'un est encore en train de la modifier"
     end
+  end
+
+protected
+
+  def load_news
+    @news = News.find(params[:id])
   end
 
 end

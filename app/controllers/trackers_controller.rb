@@ -1,5 +1,6 @@
 class TrackersController < ApplicationController
   before_filter :user_required, :except => [:index, :show, :comments]
+  before_filter :load_tracker, :only => [:show, :edit, :update, :destroy]
   after_filter  :marked_as_read, :only => [:show]
 
   def index
@@ -19,7 +20,6 @@ class TrackersController < ApplicationController
   end
 
   def show
-    @tracker = Tracker.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @tracker && @tracker.readable_by?(current_user)
     redirect_to @tracker, :status => 301 if @tracker.has_better_id?
   end
@@ -43,12 +43,10 @@ class TrackersController < ApplicationController
   end
 
   def edit
-    @tracker = Tracker.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @tracker && @tracker.editable_by?(current_user)
   end
 
   def update
-    @tracker = Tracker.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @tracker && @tracker.editable_by?(current_user)
     @tracker.attributes = params[:tracker]
     @tracker.assigned_to_user = current_user
@@ -60,7 +58,6 @@ class TrackersController < ApplicationController
   end
 
   def destroy
-    @tracker = Tracker.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @tracker && @tracker.deletable_by?(current_user)
     @tracker.mark_as_deleted
     redirect_to trackers_url, :notice => "Entrée du suivi supprimée"
@@ -70,6 +67,10 @@ protected
 
   def marked_as_read
     current_user.read(@tracker.node) if current_user
+  end
+
+  def load_tracker
+    @tracker = Tracker.find(params[:id])
   end
 
 end

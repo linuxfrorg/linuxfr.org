@@ -6,6 +6,16 @@ class NewsNotifications < ActionMailer::Base
     send_email "Dépêche acceptée :", news
   end
 
+  def self.refuse_with_message(news, message, template)
+    if template
+      refuse_template news, message, template
+    elsif message == 'en'
+      refuse_en news
+    elsif message.present?
+      refuse news, message
+    end
+  end
+
   def refuse(news, message)
     @message = message
     send_email "Dépêche refusée :", news

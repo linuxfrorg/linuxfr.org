@@ -1,4 +1,5 @@
 class Admin::CategoriesController < AdminController
+  before_filter :load_category, :only => [:edit, :update, :destroy]
 
   def index
     @categories = Category.all
@@ -19,11 +20,9 @@ class Admin::CategoriesController < AdminController
   end
 
   def edit
-    @category = Category.find(params[:id])
   end
 
   def update
-    @category = Category.find(params[:id])
     @category.attributes = params[:category]
     if @category.save
       redirect_to admin_categories_url, :notice => 'Category mise à jour.'
@@ -34,9 +33,14 @@ class Admin::CategoriesController < AdminController
   end
 
   def destroy
-    @category = Category.find(params[:id])
     @category.delete
     redirect_to admin_categories_url, :notice => 'Catégorie supprimée'
+  end
+
+protected
+
+  def load_category
+    @category = Category.find(params[:id])
   end
 
 end

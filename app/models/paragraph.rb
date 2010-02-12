@@ -46,6 +46,18 @@ class Paragraph < ActiveRecord::Base
     end
   end
 
+### Behaviour ###
+
+  def update_by(user)
+    if wiki_body.blank?
+      destroy
+    else
+      self.user_id = current_user.id
+      self.locked_by = nil
+      save
+    end
+  end
+
 ### Wikify ###
 
   before_save :wikify_body

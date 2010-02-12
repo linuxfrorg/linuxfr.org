@@ -30,9 +30,21 @@ class Link < ActiveRecord::Base
     write_attribute :url, url
   end
 
+### Behaviour ###
+
   def hit
     self.class.increment_counter(:nb_clicks, self.id)
     url
+  end
+
+  def update_by(user)
+    if url.blank?
+      destroy
+    else
+      self.user_id = user.id
+      self.locked_by = nil
+      save
+    end
   end
 
 ### Chat ###

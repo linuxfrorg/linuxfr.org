@@ -1,5 +1,6 @@
 class WikiPagesController < ApplicationController
   before_filter :user_required, :except => [:index, :show, :revision, :changes]
+  before_filter :load_wiki_page, :only => [:edit, :update, :destroy]
   after_filter  :marked_as_read, :only => [:show]
 
   def index
@@ -40,13 +41,11 @@ class WikiPagesController < ApplicationController
   end
 
   def edit
-    @wiki_page = WikiPage.find(params[:id])
     @wiki_page.wiki_body = @wiki_page.versions.last.body
     raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.editable_by?(current_user)
   end
 
   def update
-    @wiki_page = WikiPage.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.editable_by?(current_user)
     @wiki_page.attributes = params[:wiki_page]
     @wiki_page.user_id = current_user.id
@@ -58,7 +57,6 @@ class WikiPagesController < ApplicationController
   end
 
   def destroy
-    @wiki_page = WikiPage.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @wiki_page && @wiki_page.deletable_by?(current_user)
     @wiki_page.mark_as_deleted
     redirect_to WikiPage.home_page, :notice => "Page de wiki supprimée"
@@ -84,6 +82,10 @@ protected
 
   def marked_as_read
     current_user.read(@wiki_page.node) if current_user && @wiki_page.node
+  end
+
+  def load_wiki_page
+    @wiki_page = WikiPage.find(params[:id])
   end
 
 end

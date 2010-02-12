@@ -1,5 +1,6 @@
 class PollsController < ApplicationController
   before_filter :user_required, :only => [:new, :create]
+  before_filter :find_poll, :only => [:show, :vote]
   after_filter  :marked_as_read, :only => [:show]
 
   def index
@@ -16,7 +17,6 @@ class PollsController < ApplicationController
   end
 
   def show
-    @poll = Poll.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @poll && @poll.readable_by?(current_user)
     redirect_to @poll, :status => 301 if @poll.has_better_id?
   end
@@ -40,7 +40,6 @@ class PollsController < ApplicationController
   end
 
   def vote
-    @poll = Poll.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @poll && @poll.answerable_by?(request.remote_ip)
     @answer = @poll.answers.scoped_by_position(params[:position]).first
     raise ActiveRecord::RecordNotFound unless @answer
@@ -52,6 +51,10 @@ protected
 
   def on_the_first_page?
     params[:page].to_i <= 1
+  end
+
+  def find_poll
+    @poll = Poll.find(params[:id])
   end
 
   def marked_as_read

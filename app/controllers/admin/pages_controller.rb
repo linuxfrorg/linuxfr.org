@@ -1,4 +1,5 @@
 class Admin::PagesController < AdminController
+  before_filter :find_page, :only => [:edit, :update, :destroy]
 
   def index
     @pages = Page.all
@@ -19,11 +20,9 @@ class Admin::PagesController < AdminController
   end
 
   def edit
-    @page = Page.find(params[:id])
   end
 
   def update
-    @page = Page.find(params[:id])
     @page.attributes = params[:page]
     if @page.save
       redirect_to admin_pages_url, :notice => 'Page mise à jour.'
@@ -34,9 +33,14 @@ class Admin::PagesController < AdminController
   end
 
   def destroy
-    @page = Page.find(params[:id])
     @page.destroy
     redirect_to admin_pages_url, :notice => 'Page supprimée'
+  end
+
+protected
+
+  def find_page
+    @page = Page.find(params[:id])
   end
 
 end
