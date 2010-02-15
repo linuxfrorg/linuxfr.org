@@ -58,7 +58,7 @@ class News < Content
     boards.indication.create(:message => message, :user_agent => author_name)
   end
 
-  before_validation_on_update :put_paragraphs_together
+  before_validation :put_paragraphs_together, :on => :create
   def put_paragraphs_together
     self.body        = wikify paragraphs.in_first_part.map(&:body).join
     self.second_part = wikify paragraphs.in_second_part.map(&:body).join

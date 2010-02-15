@@ -26,7 +26,7 @@ class Paragraph < ActiveRecord::Base
     wiki_body.scan /[^\r\n]+[\r\n]*/
   end
 
-  before_validation_on_create :split_on_create
+  before_validation :split_on_create, :on => :create
   def split_on_create
     return if already_split
     sentences = split_body
@@ -36,7 +36,7 @@ class Paragraph < ActiveRecord::Base
     end
   end
 
-  before_validation_on_update :split_on_update
+  before_validation :split_on_update, :on => :update
   def split_on_update
     sentences = split_body
     self.wiki_body = sentences.shift
