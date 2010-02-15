@@ -5,7 +5,7 @@ source "http://gemcutter.org"
 gem "rails",                   "3.0.0.beta"
 
 gem "aasm",                    "~>2.1"
-gem "acts-as-list",            "~>0.1", :require => "acts_as_list"
+gem "acts_as_list",            "~>0.1"
 gem "authlogic",               "~>2.1"
 gem "erubis",                  "~>2.6"
 gem "french_rails",            "~>0.2"
