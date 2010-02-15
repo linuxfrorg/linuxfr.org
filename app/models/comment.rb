@@ -69,7 +69,7 @@ class Comment < ActiveRecord::Base
     parent = Comment.find(parent_id) if parent_id.present?
     parent_path = parent ? parent.materialized_path : ''
     self.materialized_path = "%s%0#{PATH_SIZE}d" % [parent_path, self.id]
-    self.answered_to_self  = is_an_answer_to_self?
+    self.answered_to_self  = answer_to_self?
     save
   end
 
@@ -93,10 +93,10 @@ class Comment < ActiveRecord::Base
     depth == 0
   end
 
-  def is_an_answer_to_self?
+  def answer_to_self?
     return false if root?
     ret = Comment.where(:node_id => node_id, :user_id => user_id).
-                  where("LOCATE(materialized_path, ?) > 0").
+                  where("LOCATE(materialized_path, ?) > 0", self.materialized_path).
                   where("id != ?", self.id).
                   exists?
   end
