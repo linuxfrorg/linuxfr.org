@@ -47,7 +47,8 @@ class User < ActiveRecord::Base
 
 ### SEO ###
 
-  has_friendly_id :login, :use_slug => true
+# TODO Rails 3
+#   has_friendly_id :login, :use_slug => true
 
 ### Sphinx ####
 
