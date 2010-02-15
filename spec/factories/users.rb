@@ -3,6 +3,7 @@ Factory.define :user do |f|
   f.homesite  "http://java.sun.com/javaee/"
   f.jabber_id "pierre.tramo@dlfp.org"
   f.role      "moule"
+  f.association :account
 end
 
 Factory.define :anonymous, :class => "user" do |f|
