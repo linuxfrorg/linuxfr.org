@@ -2,11 +2,12 @@ require 'spec_helper'
 
 describe Relevance do
   before(:each) do
-    @user    = Factory(:writer)
-    @comment = Factory(:comment)
+    @user    = Factory(:user)
+    writer   = Factory(:writer)
+    @comment = Factory(:comment, :user_id => writer.id)
   end
 
-  it "should create an instance when an user votes for" do
+  it "should create an instance when an user votes for a comment" do
     Relevance.for(@user, @comment)
     @user.relevances.count.should == 1
     @comment.reload.score.should == 1
