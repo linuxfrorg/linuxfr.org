@@ -23,7 +23,7 @@ describe Comment do
       @child_three= Factory(:comment, :id => 7,:user_id => @modo.id, :parent_id => @parent_one.id)
     end
 
-    it "should be 2 roots" do
+    it "should have 2 roots" do
       @root_one.should be_root
       @root_two.should be_root
       @parent_one.should_not be_root
@@ -33,7 +33,7 @@ describe Comment do
       @child_three.should_not be_root
     end
 
-    it "should be answer to self when one of its ascendant is from the same user" do
+    it "should be marked as answer to self when one of its ascendant is from the same user" do
       @root_one.should_not be_answer_to_self
       @root_two.should_not be_answer_to_self
       @parent_one.should_not be_answer_to_self

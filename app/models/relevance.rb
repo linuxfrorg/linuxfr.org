@@ -22,15 +22,17 @@ class Relevance < ActiveRecord::Base
 
   # An user can vote for a comment...
   def self.for(user, comment)
+    relevance = user.relevances.create(:comment_id => comment.id, :vote => true)
+    return if relevance.invalid?
     Account.decrement_counter(:nb_votes, user.account.id)
-    user.relevances.create(:comment_id => comment.id, :vote => true)
     Comment.increment_counter(:score, comment.id)
   end
 
   # ...or he can vote against it
   def self.against(user, comment)
+    relevance = user.relevances.create(:comment_id => comment.id, :vote => false)
+    return if relevance.invalid?
     Account.decrement_counter(:nb_votes, user.account.id)
-    user.relevances.create(:comment_id => comment.id, :vote => false)
     Comment.decrement_counter(:score, comment.id)
   end
 

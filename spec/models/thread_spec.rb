@@ -6,7 +6,7 @@ describe Thread do
     @node_id = 1
   end
 
-  it "should create a empty thread when no comments" do
+  it "should create an empty thread when no comments" do
     Threads.all(@node_id).should be_empty
   end
 
@@ -18,7 +18,7 @@ describe Thread do
     threads.first.children.should be_empty
   end
 
-  context "in a simple thread" do
+  context "in a simple discussion" do
     before :each do
       @root_one   = Factory(:comment, :user_id => @user_id, :node_id => @node_id)
       @root_two   = Factory(:comment, :user_id => @user_id, :node_id => @node_id)
@@ -29,7 +29,7 @@ describe Thread do
       @child_three= Factory(:comment, :user_id => @user_id, :node_id => @node_id, :parent_id => @parent_one.id)
     end
 
-    it "should create the threads" do
+    it "should create the complete threads" do
       threads = Threads.all(@node_id)
       threads.size.should == 2
         first_thread = threads.first
