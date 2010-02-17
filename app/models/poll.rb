@@ -26,7 +26,8 @@ class Poll < Content
 
 ### SEO ###
 
-  has_friendly_id :title, :use_slug => true
+# TODO Rails 3
+#   has_friendly_id :title, :use_slug => true
 
 ### Sphinx ####
 
