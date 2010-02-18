@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+%html(lang="fr")
+  %head
+    %title= @title.join ' -> '
+    - if current_account_session && current_account_session.stylesheet
+      = stylesheet_link_tag current_account_session.stylesheet
+    - else
+      = stylesheet_link_tag 'style', 'markitup'
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/iphone.png" />
+    <link rel="search" type="application/opensearchdescription+xml" title="Recherche LinuxFr.org" href="/opensearch.xml" />
+    - if @author
+      %meta(name="author" content=@author)
+    %meta(name="description" content=@description)
+    %meta(name="keywords" content="#{@keywords.join ', '}")
+    %meta(name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;")
+    - @feeds.each do |link,title|
+      = auto_discovery_link_tag :atom, link, { :title => title }
+
+  %body{body_attr}
+    #top
+      = check_js
+
+    %nav#site
+      %ul
+        %li= link_to "Accueil", '/'
+        %li= link_to "Dépêches", news_index_path
+        %li= link_to "Journaux", diaries_path
+        %li= link_to "Forums", forums_path
+        %li= link_to "Sondages", polls_path
+        %li= link_to "Wiki", wiki_pages_path
+        %li= link_to "Suivi", trackers_path
+        %li= link_to "Plan", static_path(:id => 'plan')
+      - form_tag search_path, :method => :get do
+        <input id="query" name="q" type="search" placeholder="Entrer un mot-clé" />
+        = submit_tag "Rechercher", :name => nil
+
+    %section#container
+      - [:alert, :notice].each do |type|
+        - if flash[type]
+          %div(class=type)= flash[type]
+      = yield :layout
+      %footer
+        %p= link_to "Revenir en haut de page", '#top', :class => 'scroll'
+
+    = javascript_include_tag 'jquery-1.4.1.min', 'jquery.nano', 'jquery.autocomplete', 'jquery.markitup', 'jquery.chat', 'markitup-wiki', 'application'

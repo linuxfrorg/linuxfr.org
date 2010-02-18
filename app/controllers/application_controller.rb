@@ -12,6 +12,7 @@ protected
 
   def seo_filter_and_ssl
     ActionController::Base.session_options[:secure] = request.ssl?
+    request.format = "mobile" if request.subdomains.first == 'm'
     @title         = %w(LinuxFr.org)
     @author        = nil
     @keywords      = %w(Linux Logiciel Libre GNU Free Software Actualité Forum Communauté)
