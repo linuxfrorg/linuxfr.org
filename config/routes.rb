@@ -1,17 +1,21 @@
 LinuxfrOrg::Application.routes.draw do
+  # TODO Rails 3
+  # http://guides.rails.info/routing.html
+  # http://yehudakatz.com/2009/12/26/the-rails-3-router-rack-it-up/
+
   root :to => 'home#index'
 
   # News
   resources :sections
-  resources :news
+  match '/news(.:format)', :to => 'news#index', :as => 'news_index'
+  resources :news, :except => [:index]
   match '/redirect/:id' => 'links#show'
 
   # Diaries & Users
   resources :users do
     resources :diaries # TODO :as => 'journaux'
   end
-  match '/journaux' => 'diaries#index', :as => :diaries, :via => 'get'
-  match '/journaux.:format' => 'diaries#index', :as => :diaries, :via => 'get'
+  match '/journaux(.:format)' => 'diaries#index', :as => :diaries, :via => 'get'
   match '/journaux/nouveau' => 'diaries#new', :as => :new_diary, :via => 'get'
   match '/journaux' => 'diaries#create', :as => :post_diary, :via => 'post'
 

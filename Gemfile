@@ -19,6 +19,7 @@ gem "rest-client",             "~>1.0", :require => "restclient"
 # TODO rails3
 # gem "sitemap_generator",     "~>0.2"
 gem "simple_autocomplete",     "~>0.3"
+gem "thin",                    "~>1.2"
 # TODO rails3
 # gem "thinking-sphinx",       "~>1.3", :require => "thinking_sphinx"
 # gem "ts-datetime-delta",     "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
