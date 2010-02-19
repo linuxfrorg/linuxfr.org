@@ -6,13 +6,12 @@ class ApplicationController < ActionController::Base
   # TODO rails3
   # protect_from_forgery is on by default, says the release notes
   before_filter :seo_filter_and_ssl
-  helper_method :url_for_content, :current_user, :current_account_session
+  helper_method :mobile?, :url_for_content, :current_user, :current_account_session
 
 protected
 
   def seo_filter_and_ssl
     ActionController::Base.session_options[:secure] = request.ssl?
-    request.format = "mobile" if request.subdomains.first == 'm'
     @title         = %w(LinuxFr.org)
     @author        = nil
     @keywords      = %w(Linux Logiciel Libre GNU Free Software Actualité Forum Communauté)
@@ -21,6 +20,10 @@ protected
     @last_comments = Comment.footer
     @popular_tags  = Tag.footer
     @friend_sites  = FriendSite.sorted
+  end
+
+  def mobile?
+    request.subdomains.first == 'm'
   end
 
 ### Content ###
