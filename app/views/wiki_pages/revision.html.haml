@@ -5,7 +5,7 @@
 %h3
   #{@version.user.try :name} : #{@version.message}
 %pre
-  = HTMLDiff.diff(h(@was), h(@version.body)).html_safe!
+  = HTMLDiff.diff(h(@was), h(@version.body)).html_safe
 
 - if @version.higher_item || @version.lower_item
   %nav

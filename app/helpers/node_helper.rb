@@ -52,7 +52,7 @@ module NodeHelper
     user_link  ||= link_to(user.name, user, :rel => 'author')
     date_time    = content.created_at || Time.now
     published_at = content_tag(:time, date_time.to_s(:posted), :datetime => pubdate_for(content), :pubdate => "pubdate")
-    "Posté par #{user_link} le #{published_at}.".html_safe!
+    "Posté par #{user_link} le #{published_at}.".html_safe
   end
 
   def read_it(content)
@@ -65,7 +65,7 @@ module NodeHelper
               else                    ", déjà visité"
               end
     end
-    "#{link} (#{nb_comments}#{visit}).".html_safe!
+    "#{link} (#{nb_comments}#{visit}).".html_safe
   end
 
 end

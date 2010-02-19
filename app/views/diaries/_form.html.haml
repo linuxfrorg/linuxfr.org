@@ -8,7 +8,7 @@
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
 %p
   = form.check_box :cc_licensed
-  = form.label :cc_licensed, 'Je place ce document sous licence Creative Commons Paternité-Partage des Conditions Initiales à l\'Identique 3.0 (<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.fr">licence CC by-sa</a>)'.html_safe!
+  = form.label :cc_licensed, 'Je place ce document sous licence Creative Commons Paternité-Partage des Conditions Initiales à l\'Identique 3.0 (<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.fr">licence CC by-sa</a>)'.html_safe
 %p
   = form.submit "Prévisualiser"
   = form.submit "Poster le journal" if @preview_mode

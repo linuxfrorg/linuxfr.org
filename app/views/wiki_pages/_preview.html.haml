@@ -1,4 +1,4 @@
 - preview.wikify_body
 = article_for preview do |c|
-  - c.title = "#{link_to "Wiki", wiki_pages_path} : #{h preview.title}".html_safe!
+  - c.title = "#{link_to "Wiki", wiki_pages_path} : #{h preview.title}".html_safe
   - c.body  = sanitize(spellify preview.body)

@@ -8,6 +8,6 @@
     = form.label :lang, 'Langue'
   %p.link
     = form.text_field :title
-    = form.url_field  :url
+    = form.text_field :url, :type => 'url'
     = form.collection_select :lang, langs, :key, :value
     = form.submit "OK"

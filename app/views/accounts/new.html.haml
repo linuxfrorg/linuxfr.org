@@ -7,6 +7,6 @@
     = form.text_field :login, :required => 'required'
   %p
     = form.label :email, 'Adresse email'
-    = form.email_field :email, :required => 'required'
+    = form.text_field :email, :required => 'required', :type => 'email'
   %p
     = form.submit "S'inscrire"

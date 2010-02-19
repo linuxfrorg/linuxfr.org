@@ -14,7 +14,7 @@
     = @account.login
   %p
     = form.label :email, "Adresse de courriel"
-    = form.email_field :email
+    = form.text_field :email, :type => 'email'
   %p
     = form.label :password, "Mot de passe"
     = form.password_field :password

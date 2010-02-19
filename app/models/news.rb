@@ -23,6 +23,9 @@
 class News < Content
   include AASM
 
+  # TODO Rails3
+  set_table_name "news"
+
   belongs_to :section
   belongs_to :moderator, :class_name => "User"
   has_many :boards, :as => :object, :dependent => :destroy

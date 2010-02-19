@@ -1,6 +1,6 @@
 module StaticHelper
   def helperify(txt)
-    txt.gsub(/\{\{([a-z_]+)\}\}/) { send "helper_#{$1}" }.html_safe!
+    txt.gsub(/\{\{([a-z_]+)\}\}/) { send "helper_#{$1}" }.html_safe
   end
 
   def helper_admin_list
