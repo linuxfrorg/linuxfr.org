@@ -15,6 +15,7 @@ gem "htmlentities",            "~>4.2"
 gem "mysql",                   "~>2.8"
 gem "paperclip",               "~>2.3"
 gem "raspell",                 "~>1.1"
+gem "rdiscount",               "~>1.5"
 gem "rest-client",             "~>1.0", :require => "restclient"
 # TODO rails3
 # gem "sitemap_generator",     "~>0.2"
@@ -24,7 +25,6 @@ gem "thin",                    "~>1.2"
 # gem "thinking-sphinx",       "~>1.3", :require => "thinking_sphinx"
 # gem "ts-datetime-delta",     "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
 gem "validates_url_format_of", "~>0.1"
-gem "wikitext",                "~>1.9"
 gem "will_paginate",           ">=3.0.pre"
 
 group :development do

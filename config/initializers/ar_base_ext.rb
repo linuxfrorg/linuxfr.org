@@ -1,3 +1,5 @@
+require 'gfm'
+
 ##
 # Some ActiveRecord::Base extensions
 #
@@ -11,12 +13,9 @@ class ActiveRecord::Base
   end
 
   # Transform wiki syntax to HTML
-  def wikify(txt, opts={})
+  def wikify(txt, opts=[:filter_html])
     return '' if txt.blank?
-    opts = { :base_heading_level => 1, :internal_link_prefix => "http://fr.wikipedia.org/wiki/" }.merge(opts)
-    parser = Wikitext::Parser.new(opts)
-    ret = parser.parse(txt)
-    ret.gsub(/\[BR\]/, '<br/>')
+    gfm RDiscount.new(txt, *opts).to_html
   end
 
   def render_to_string(opts)
