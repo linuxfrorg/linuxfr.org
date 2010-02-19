@@ -31,7 +31,7 @@
 	background-image:url(/images/markitup/bg-editor.png);
 	background-repeat:no-repeat;
 	/* clear:both; */
-    display:block;
+	display:block;
 	line-height:18px;
 	overflow:auto;
 }
