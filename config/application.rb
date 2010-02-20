@@ -40,8 +40,6 @@ module LinuxfrOrg
       g.test_framework   :rspec,
                          :fixture_replacement => :factory_girl,
                          :fixture     => false,
-                         :controllers => false,
-                         :views       => false,
                          :helpers     => false,
                          :routes      => false,
                          :integration => true

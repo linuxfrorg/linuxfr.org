@@ -6,7 +6,9 @@ gem "rails",                   "3.0.0.beta"
 
 gem "aasm",                    "~>2.1"
 gem "acts_as_list",            "~>0.1"
-gem "authlogic",               "~>2.1"
+# TODO Rails 3
+# gem "authlogic",               "~>2.1"
+gem "authlogic", :git => "git://github.com/railsbros/authlogic.git"
 gem "erubis",                  "~>2.6"
 gem "french_rails",            "~>0.2"
 gem "friendly_id",             "~>2.3"
@@ -17,11 +19,11 @@ gem "paperclip",               "~>2.3"
 gem "raspell",                 "~>1.1"
 gem "rdiscount",               "~>1.5"
 gem "rest-client",             "~>1.0", :require => "restclient"
-# TODO rails3
+# TODO Rails 3
 # gem "sitemap_generator",     "~>0.2"
 gem "simple_autocomplete",     "~>0.3"
 gem "thin",                    "~>1.2"
-# TODO rails3
+# TODO Rails 3
 # gem "thinking-sphinx",       "~>1.3", :require => "thinking_sphinx"
 # gem "ts-datetime-delta",     "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
 gem "validates_url_format_of", "~>0.1"

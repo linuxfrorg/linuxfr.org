@@ -7,7 +7,7 @@ require 'rspec/rails'
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
-Rspec::Core.configure do |config|
+Rspec.configure do |config|
   require 'rspec/expectations'
   config.include Rspec::Matchers
   config.mock_with :rspec

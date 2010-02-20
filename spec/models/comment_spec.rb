@@ -6,8 +6,8 @@ describe Comment do
   end
 
   it "should wikify the body" do
-    comment = Factory(:comment, :wiki_body => "''it'' et '''gras'''")
-    comment.body.should == "<p><em>it</em> et <strong>gras</strong></p>\n"
+    comment = Factory(:comment, :wiki_body => "_it_ et **gras**")
+    comment.body.should == "<p><em>it</em> et <strong>gras</strong></p> \n"
   end
 
   context "in a simple thread" do
