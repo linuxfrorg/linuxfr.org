@@ -1,3 +1,5 @@
+# This mailer is used for sending mails to users about their accounts.
+#
 class AccountNotifications < ActionMailer::Base
   default :from => "LinuxFr.org <moderateurs@linuxfr.org>"
 

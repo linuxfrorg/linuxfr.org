@@ -1,3 +1,5 @@
+# This mailer is used to notify news writers when their news are accepted or refused.
+#
 class NewsNotifications < ActionMailer::Base
   default :from => "LinuxFr.org <moderateurs@linuxfr.org>",
           :cc   => "LinuxFr.org <moderateurs@linuxfr.org>"

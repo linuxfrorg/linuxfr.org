@@ -1,3 +1,5 @@
+# The contrib stylesheets.
+#
 class Stylesheet < Struct.new(:name, :url)
   BASE_DIR = 'stylesheets/contrib'
 

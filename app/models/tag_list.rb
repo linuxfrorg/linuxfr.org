@@ -1,5 +1,7 @@
 require 'shellwords'
 
+# The TagList class is used to convert a string to an array of tags.
+#
 class TagList < Array
 
   # Returns a new TagList using the given tag string.
