@@ -7,7 +7,7 @@ class DiariesController < ApplicationController
 
   def index
     @order   = params[:order] || 'created_at'
-    @diaries = Diary.published.joins(:nodes).order("nodes.#{@order} DESC").paginate(:page => params[:page], :per_page => 10)
+    @diaries = Diary.published.joins(:node).order("nodes.#{@order} DESC").paginate(:page => params[:page], :per_page => 10)
     respond_to do |wants|
       wants.html
       wants.atom

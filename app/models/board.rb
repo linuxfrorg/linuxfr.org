@@ -21,7 +21,7 @@ class Board < ActiveRecord::Base
   attr_accessible :object_id, :object_type, :message, :user_agent, :user_id
 
   default_scope order('created_at DESC')
-  scope :by_kind, lambda { |kind| where(:object_type => kind).includes(user).limit(100) }
+  scope :by_kind, lambda { |kind| where(:object_type => kind).includes(:user).limit(100) }
   scope :old, lambda { where("(created_at < ? AND object_type = ?) OR (created_at < ?)", DateTime.now - 12.hours, Board.free, DateTime.now - 1.month) }
 
 ### Types ###
@@ -34,8 +34,8 @@ class Board < ActiveRecord::Base
   # A message in a board can be of several types.
   # The most common are the 'chat' ones (ie a user chats on a board).
   # But there are also other types for more internal usages.
-  # For example, locking a paragraph is posted in a board with the 'lock' type.
-  TYPES = %w(chat indication vote submission moderation lock creation edition deletion)
+  # For example, locking a paragraph is posted in a board with the 'locking' type.
+  TYPES = %w(chat indication vote submission moderation locking creation edition deletion)
 
   TYPES.each do |t|
     scope t.to_sym, where(:type => t)

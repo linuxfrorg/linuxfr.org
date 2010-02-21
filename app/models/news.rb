@@ -197,7 +197,7 @@ class News < Content
   def clear_locks(user)
     links.each {|l| l.locked_by = nil; l.save }
     paragraphs.each {|p| p.locked_by = nil; p.save }
-    boards.lock.create(:message => "<span class=\"clear\">#{user.name} a supprimer tous les locks</span>", :user_id => user.id)
+    boards.locking.create(:message => "<span class=\"clear\">#{user.name} a supprimer tous les locks</span>", :user_id => user.id)
   end
 
 ### PPP ###

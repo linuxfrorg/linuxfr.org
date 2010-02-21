@@ -101,7 +101,7 @@ class Paragraph < ActiveRecord::Base
     return false if locked_by
     self.locked_by = user.id
     save
-    news.boards.lock.create(:message => "<span class=\"paragraph\" data-id=\"#{self.id}\">#{user.name} édite le paragraph #{wiki_body[0,20]}</span>", :user_id => user.id)
+    news.boards.locking.create(:message => "<span class=\"paragraph\" data-id=\"#{self.id}\">#{user.name} édite le paragraph #{wiki_body[0,20]}</span>", :user_id => user.id)
     true
   end
 

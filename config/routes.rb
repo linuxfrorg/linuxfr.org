@@ -2,6 +2,8 @@ LinuxfrOrg::Application.routes.draw do
   # TODO Rails 3
   # http://guides.rails.info/routing.html
   # http://yehudakatz.com/2009/12/26/the-rails-3-router-rack-it-up/
+  #
+  # TODO :only & :except
 
   root :to => 'home#index'
 
@@ -13,7 +15,7 @@ LinuxfrOrg::Application.routes.draw do
 
   # Diaries & Users
   resources :users do
-    resources :diaries # TODO :as => 'journaux'
+    resources :diaries, :as => 'journaux'
   end
   match '/journaux(.:format)' => 'diaries#index', :as => :diaries, :via => 'get'
   match '/journaux/nouveau' => 'diaries#new', :as => :new_diary, :via => 'get'
@@ -25,17 +27,14 @@ LinuxfrOrg::Application.routes.draw do
   match '/posts' => 'posts#create', :as => :post_posts, :via => 'post'
 
   # Other contents
-  resources :interviews do # TODO :as => 'entretiens'
-    get :comments, :on => :collection
-  end
-  resources :polls do # TODO :as => 'sondages'
+  resources :polls, :as => 'sondages' do
     post :vote, :on => :member
   end
-  resources :trackers do # TODO :as => 'suivi'
+  resources :trackers, :as => 'suivi' do
     get :comments, :on => :collection
   end
   match '/wiki/changes' => 'wiki_pages#changes', :as => :wiki_changes
-  resources :wiki_pages do # TODO :as => 'wiki'
+  resources :wiki_pages, :as => 'wiki' do
     member do
       match '/revisions/:revision' => 'wiki_pages#revision', :as => :revision
     end
@@ -46,8 +45,8 @@ LinuxfrOrg::Application.routes.draw do
   resources :nodes do
     resources :comments
     member do
-      match '/tags/new' => 'tags#new', :as => :node_new_tag, :via => 'get'
-      match '/tags' => 'tags#create', :as => :node_tags, :via => 'post'
+      match '/tags/new' => 'tags#new', :as => :new_tag, :via => 'get'
+      match '/tags' => 'tags#create', :as => :tags, :via => 'post'
     end
   end
   match '/tags' => 'tags#index', :as => :tags, :via => 'get'
@@ -64,7 +63,9 @@ LinuxfrOrg::Application.routes.draw do
   match '/board/index.xml' => 'boards#show', :as => :free_board_xml, :format => 'xml'
 
   # Accounts
-  resource :account # TODO :as => 'compte'
+  resource :account, :as => 'compte' do
+    resource :stylesheet
+  end
   match '/inscription' => 'accounts#new', :as => :signup
   match '/activation/:token' => 'accounts#activate', :as => :activate, :token => ''
   match '/mot-de-passe' => 'accounts#forgot_password', :as => :forgot_password, :via => 'get'
@@ -73,7 +74,7 @@ LinuxfrOrg::Application.routes.draw do
   match '/desinscription' => 'accounts#delete', :as => :close_account
 
   # Sessions
-  resource :account_session # TODO :as => 'sessions'
+  resource :account_session, :as => 'session'
   match '/login' => 'account_sessions#new', :as => :login
   match '/logout' => 'account_sessions#destroy', :as => :logout
 
@@ -101,15 +102,7 @@ LinuxfrOrg::Application.routes.draw do
         match '/show_diff/:sha' => 'news#show_diff', :as => :show_diff
       end
     end
-    resources :interviews do # TODO :as => 'entretiens'
-      member do
-        post :contact
-        post :publish
-        post :refuse
-        post :accept
-      end
-    end
-    resources :polls do # TODO :as => 'sondages'
+    resources :polls, :as => 'sondages' do
       member do
         post :refuse
         post :accept
@@ -120,14 +113,14 @@ LinuxfrOrg::Application.routes.draw do
   # Admin
   match '/admin' => 'admin#index'
   namespace :admin do
-    resources :accounts # TODO :as => 'comptes'
-    resources :responses # TODO :as => 'reponses'
+    resources :accounts, :as => 'comptes'
+    resources :responses, :as => 'reponses'
     resources :sections
     resources :forums
     resources :categories
-    resources :banners # TODO :as => 'bannieres'
+    resources :banners, :as => 'bannieres'
     resource :logo
-    resources :friend_sites do # TODO :as => 'sites_amis'
+    resources :friend_sites, :as => 'sites_amis' do
       member do
         post :lower
         post :higher

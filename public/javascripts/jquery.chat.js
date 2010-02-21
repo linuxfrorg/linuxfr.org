@@ -86,8 +86,8 @@ var Chat = {
         $.noticeAdd({text: message, stay: true});
     },
 
-    /* Callback for lock */
-    on_lock: function(message) {
+    /* Callback for locking */
+    on_locking: function(message) {
         Chat.inbox.prepend(message);
         var element = Chat.inbox.find("p:first");
         element.find(".clear").each(function() {
