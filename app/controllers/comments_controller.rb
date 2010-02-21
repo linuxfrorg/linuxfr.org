@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_filter :user_required, :except => [:index, :show]
   before_filter :find_node
-  before_filter :find_comment, :except => [:index, :new, :create]
+  before_filter :find_comment, :except => [:index, :new, :answer, :create]
 
   def index
     @comments = @node.comments.published.all(:order => 'id DESC')
@@ -17,8 +17,13 @@ class CommentsController < ApplicationController
 
   def new
     @comment = @node.comments.build
-    @comment.parent_id = params[:parent_id]
     raise ActiveRecord::RecordNotFound.new unless @comment.creatable_by?(current_user)
+  end
+
+  def answer
+    new
+    @comment.parent_id = params[:id]
+    render :new
   end
 
   def create

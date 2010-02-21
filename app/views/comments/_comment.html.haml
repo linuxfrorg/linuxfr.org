@@ -14,7 +14,7 @@
   - else
     = sanitize comment.body
 %footer.actions
-  = link_to "Répondre", answer_comment_path(:node_id => comment.node_id, :parent_id => comment.id), :class => 'action'
+  = link_to "Répondre", answer_comment_node_path(:node_id => comment.node_id, :parent_id => comment.id), :class => 'action'
   - if comment.votable_by?(current_user)
     Ce commentaire est-il #{button_to "pertinent", relevance_path(:action => 'for', :comment_id => comment.id)}
     ou #{button_to "inutile", relevance_path(:action => 'against', :comment_id => comment.id)} ?

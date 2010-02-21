@@ -1,137 +1,127 @@
+# http://guides.rails.info/routing.html
+# http://yehudakatz.com/2009/12/26/the-rails-3-router-rack-it-up/
+#
 LinuxfrOrg::Application.routes.draw do
-  # TODO Rails 3
-  # http://guides.rails.info/routing.html
-  # http://yehudakatz.com/2009/12/26/the-rails-3-router-rack-it-up/
-  #
-  # TODO :only & :except
-
   root :to => 'home#index'
 
   # News
-  resources :sections
-  match '/news(.:format)', :to => 'news#index', :as => 'news_index'
-  resources :news, :except => [:index]
-  match '/redirect/:id' => 'links#show'
+  resources :sections, :only => [:index, :show]
+  get '/news(.:format)' => 'news#index', :as => 'news_index'
+  resources :news, :only => [:show, :new, :create]
+  get '/redirect/:id' => 'links#show'
 
   # Diaries & Users
-  resources :users do
-    resources :diaries, :as => 'journaux'
+  resources :users, :only => [:show] do
+    resources :diaries, :as => 'journaux', :except => [:index, :new, :create]
   end
-  match '/journaux(.:format)' => 'diaries#index', :as => :diaries, :via => 'get'
-  match '/journaux/nouveau' => 'diaries#new', :as => :new_diary, :via => 'get'
-  match '/journaux' => 'diaries#create', :as => :post_diary, :via => 'post'
+  resources :diaries, :only => [:index, :new, :create]
 
   # Forums
-  resources :forums
-  match '/posts/nouveau' => 'posts#new', :as => :new_post, :via => 'get'
-  match '/posts' => 'posts#create', :as => :post_posts, :via => 'post'
+  resources :forums, :only => [:index, :show] do
+    resources :posts, :except => [:new, :create]
+  end
+  resources :posts, :only => [:new, :create]
 
   # Other contents
-  resources :polls, :as => 'sondages' do
+  resources :polls, :as => 'sondages', :except => [:edit, :update, :destroy] do
     post :vote, :on => :member
   end
   resources :trackers, :as => 'suivi' do
     get :comments, :on => :collection
   end
-  match '/wiki/changes' => 'wiki_pages#changes', :as => :wiki_changes
   resources :wiki_pages, :as => 'wiki' do
-    member do
-      match '/revisions/:revision' => 'wiki_pages#revision', :as => :revision
-    end
+    get :changes, :on => :collection
+    get '/revisions/:revision' => 'wiki_pages#revision', :as => :revision, :on => :member
   end
 
   # Nodes
-  match '/tableau-de-bord' => 'dashboard#index', :as => :dashboard
-  resources :nodes do
-    resources :comments
-    member do
-      match '/tags/new' => 'tags#new', :as => :new_tag, :via => 'get'
-      match '/tags' => 'tags#create', :as => :tags, :via => 'post'
+  get '/tableau-de-bord' => 'dashboard#index', :as => :dashboard
+  resources :nodes, :only => [] do
+    resources :comments do
+      get :answer, :on => :member
+      post '/relevance/:action' => 'relevances#index', :as => :relevance, :on => :member
     end
+    resources :tags, :only => [:new, :create]
+    post '/vote/:action' => 'votes#index', :as => :vote, :on => :member
   end
-  match '/tags' => 'tags#index', :as => :tags, :via => 'get'
-  match '/tags/autocomplete' => 'tags#autocomplete_for_tag_name', :as => :complete_tags, :via => 'get'
-  match '/tags/:id' => 'tags#show', :as => :tag, :via => 'get'
-  match '/tags/:id/public' => 'tags#public', :as => :public_tag, :via => 'get'
-  match '/nodes/:node_id/comments/:parent_id/answer' => 'comments#new', :as => :answer_comment
-  match '/vote/:action/:node_id' => 'votes#index', :as => :vote
-  match '/relevance/:action/:comment_id' => 'relevances#index', :as => :relevance
+  resources :tags, :only => [:index, :show] do
+    get :autocomplete, :on => :collection
+    get :public, :on => :member
+  end
 
   # Boards
-  match '/board/add' => 'boards#add', :as => :add_board, :via => 'post'
-  match '/board' => 'boards#show', :as => :free_board
-  match '/board/index.xml' => 'boards#show', :as => :free_board_xml, :format => 'xml'
+  post '/board/add' => 'boards#add', :as => :add_board
+  get  '/board' => 'boards#show', :as => :free_board
+  get  '/board/index.xml' => 'boards#show', :as => :free_board_xml, :format => 'xml'
 
   # Accounts
   resource :account, :as => 'compte' do
-    resource :stylesheet
+    resource :stylesheet, :only => [:edit, :create, :destroy]
   end
-  match '/inscription' => 'accounts#new', :as => :signup
-  match '/activation/:token' => 'accounts#activate', :as => :activate, :token => ''
-  match '/mot-de-passe' => 'accounts#forgot_password', :as => :forgot_password, :via => 'get'
-  match '/mot-de-passe' => 'accounts#send_password', :as => :send_password, :via => 'post'
-  match '/reset/:token' => 'accounts#reset_password', :as => :reset_password, :token => ''
-  match '/desinscription' => 'accounts#delete', :as => :close_account
+  get  '/inscription' => 'accounts#new', :as => :signup
+  get  '/activation/:token' => 'accounts#activate', :as => :activate, :defaults => { :token => nil }
+  get  '/mot-de-passe' => 'accounts#forgot_password', :as => :forgot_password
+  post '/mot-de-passe' => 'accounts#send_password', :as => :send_password
+  get  '/reset/:token' => 'accounts#reset_password', :as => :reset_password, :defaults => { :token => nil }
+  get  '/desinscription' => 'accounts#delete', :as => :close_account
 
   # Sessions
-  resource :account_session, :as => 'session'
-  match '/login' => 'account_sessions#new', :as => :login
-  match '/logout' => 'account_sessions#destroy', :as => :logout
+  resource :account_session, :as => 'session', :only => [:new, :create, :destroy]
+  post '/login' => 'account_sessions#new', :as => :login
+  post '/logout' => 'account_sessions#destroy', :as => :logout
 
   # Search
-  match '/recherche' => 'search#index', :as => :search
-  match '/recherche/:type' => 'search#type', :as => :search_by_type
-  match '/recherche/:type/:facet' => 'search#facet', :as => :search_by_facet
+  get '/recherche' => 'search#index', :as => :search
+  get '/recherche/:type' => 'search#type', :as => :search_by_type
+  get '/recherche/:type/:facet' => 'search#facet', :as => :search_by_facet
 
   # Redaction
-  match '/redaction' => 'redaction#index'
   namespace :redaction do
-    resources :news do
+    root :to => 'redaction#index'
+    resources :news, :except => [:new, :destroy] do
       post :submit, :on => :member
+      resources :links, :only => [:new, :create]
     end
-    resources :paragraphs
-    resources :links
-    match '/news/:news_id/links/nouveau' => 'links#new', :as => :news_new_link
+    resources :links, :only => [:edit, :update]
+    resources :paragraphs, :only => [:show, :edit, :update]
   end
 
   # Moderation
-  match '/moderation' => 'moderation#index'
   namespace :moderation do
-    resources :news do
-      member do
-        match '/show_diff/:sha' => 'news#show_diff', :as => :show_diff
-      end
+    root :to => 'moderation#index'
+    resources :news, :except => [:new, :create, :destroy] do
+      post :accept, :on => :member
+      post :refuse, :on => :member
+      post :ppp, :on => :member
+      post :clear_locks, :on => :member
+      get '/show_diff/:sha' => 'news#show_diff', :as => :show_diff, :on => :member
     end
-    resources :polls, :as => 'sondages' do
-      member do
-        post :refuse
-        post :accept
-      end
+    resources :polls, :as => 'sondages', :except => [:new, :create, :destroy] do
+      post :refuse, :on => :member
+      post :accept, :on => :member
     end
   end
 
   # Admin
-  match '/admin' => 'admin#index'
   namespace :admin do
-    resources :accounts, :as => 'comptes'
-    resources :responses, :as => 'reponses'
-    resources :sections
-    resources :forums
-    resources :categories
-    resources :banners, :as => 'bannieres'
-    resource :logo
-    resources :friend_sites, :as => 'sites_amis' do
-      member do
-        post :lower
-        post :higher
-      end
+    root :to => 'admin#index'
+    resources :accounts, :as => 'comptes', :only => [:index, :update, :destroy]
+    resources :responses, :as => 'reponses', :except => [:show]
+    resources :sections, :except => [:show]
+    resources :forums, :except => [:show]
+    resources :categories, :except => [:show]
+    resources :banners, :as => 'bannieres', :except => [:show]
+    resource :logo, :only => [:show, :create]
+    resources :friend_sites, :as => 'sites_amis', :except => [:show] do
+      post :lower,  :on => :member
+      post :higher, :on => :member
     end
-    resources :pages
+    resources :pages, :except => [:show]
   end
 
   # Static pages
-  match '/proposer_un_contenu' => 'static#proposer_un_contenu', :as => :submit_content
-  match '/proposer_un_contenu_quand_on_est_anonyme' => 'static#proposer_un_contenu_quand_on_est_anonyme', :as => :submit_anonymous
+  match '/proposer-un-contenu' => 'static#submit_content', :as => :submit_content
+  match '/proposer-un-contenu-en-anonyme' => 'static#submit_anonymous', :as => :submit_anonymous
   match '/changelog' => 'static#changelog', :as => :changelog
-  match ':id' => 'static#show', :as => :static
+  match ':id' => 'static#show', :as => :static, :id => /^[a-z_]+$/
 end

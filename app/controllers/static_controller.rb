@@ -4,7 +4,7 @@ class StaticController < ApplicationController
     @page = Page.find_by_slug!(params[:id])
   end
 
-  def proposer_un_contenu_quand_on_est_anonyme
+  def submit_anonymous
     if current_user
       redirect_to :action => 'proposer_un_contenu'
     else
@@ -13,7 +13,7 @@ class StaticController < ApplicationController
     end
   end
 
-  def proposer_un_contenu
+  def submit_content
     if current_user
       @anonymous = false
     else

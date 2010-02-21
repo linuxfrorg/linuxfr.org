@@ -5,5 +5,5 @@
 
 - form_tag node_tags_path(@node) do
   = label_tag :tags
-  = text_field_tag :tags, nil, :class => 'autocomplete', 'data-url' => complete_tags_path
+  = text_field_tag :tags, nil, :class => 'autocomplete', 'data-url' => autocomplete_tags_path
   = submit_tag "Tagger"
