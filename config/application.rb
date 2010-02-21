@@ -19,6 +19,8 @@ module LinuxfrOrg
 
     config.after_initialize do
       ActionView::Base.sanitized_allowed_attributes.merge %w(data-id data-after)
+      ActiveSupport::JSON.backend = "JSONGem"
+      ActiveSupport::XmlMini.backend = "Nokogiri"
     end
 
     config.filter_parameters << :password << :password_confirmation
