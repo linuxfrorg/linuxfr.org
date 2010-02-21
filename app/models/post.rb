@@ -25,6 +25,7 @@ class Post < Content
   validates_presence_of :title,     :message => "Le titre est obligatoire"
   validates_presence_of :wiki_body, :message => "Vous ne pouvez pas poster un journal vide"
 
+  scope :sorted, order('created_at DESC')
   scope :published, where(:state => 'published')
 
   wikify_attr :body

@@ -25,11 +25,8 @@ class Diary < Content
   validates_presence_of :title,     :message => "Le titre est obligatoire"
   validates_presence_of :wiki_body, :message => "Vous ne pouvez pas poster un journal vide"
 
-  # TODO Rails3
-  #scope :published, where(:state => 'published')
-
-  # FIXME Rails3
-  set_table_name "diaries"
+  scope :sorted, order('created_at DESC')
+  scope :published, where(:state => 'published')
 
   wikify_attr :body
 

@@ -23,9 +23,6 @@
 class News < Content
   include AASM
 
-  # TODO Rails3
-  set_table_name "news"
-
   belongs_to :section
   belongs_to :moderator, :class_name => "User"
   has_many :boards, :as => :object, :dependent => :destroy
@@ -37,6 +34,8 @@ class News < Content
       :reject_if => proc { |attrs| attrs['body'].blank? }
 
   attr_accessible :title, :section_id, :author_name, :author_email, :links_attributes, :paragraphs_attributes
+
+  scope :sorted, order('created_at DESC')
 
   validates_presence_of :title,   :message => "Le titre est obligatoire"
   validates_presence_of :body,    :message => "Nous n'acceptons pas les dépêches vides"

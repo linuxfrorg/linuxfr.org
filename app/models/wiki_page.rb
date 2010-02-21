@@ -22,6 +22,8 @@ class WikiPage < Content
   validates_presence_of :title, :message => "Le titre est obligatoire"
   validates_presence_of :body,  :message => "Le corps est obligatoire"
 
+  scope :sorted, order('created_at DESC')
+
 ### SEO ###
 
   has_friendly_id :title, :use_slug => true

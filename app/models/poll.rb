@@ -24,6 +24,8 @@ class Poll < Content
 
   validates_presence_of :title, :message => "La question est obligatoire"
 
+  scope :sorted, order('created_at DESC')
+
 ### SEO ###
 
 # TODO Rails 3
