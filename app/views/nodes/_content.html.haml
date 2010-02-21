@@ -6,7 +6,7 @@
       = meta
       - if record.node.cc_licensed?
         = link_to "Licence CC by-sa", 'http://creativecommons.org/licenses/by-sa/3.0/deed.fr', :rel => 'license'
-      - unless (tags = record.node.popular_tags).empty?
+      - unless (tags = record.node.popular_tags.all).empty?
         Tags :
         %ul.tag-cloud
           - tags.each do |tag|

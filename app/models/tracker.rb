@@ -31,7 +31,8 @@ class Tracker < Content
 
   scope :sorted, order('created_at DESC')
 
-  wikify_attr :body
+# TODO Rails 3
+#   wikify_attr :body
 
 ### SEO ###
 

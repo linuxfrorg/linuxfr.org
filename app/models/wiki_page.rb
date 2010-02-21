@@ -26,7 +26,8 @@ class WikiPage < Content
 
 ### SEO ###
 
-  has_friendly_id :title, :use_slug => true
+# TODO Rails 3
+#   has_friendly_id :title, :use_slug => true
 
 ### Sphinx ####
 
@@ -46,7 +47,9 @@ class WikiPage < Content
 
   before_validation :wikify_body
   def wikify_body
-    self.body = wikify(wiki_body, :internal_link_prefix => "/wiki/")
+    # FIXME
+    # self.body = wikify(wiki_body, :internal_link_prefix => "/wiki/")
+    self.body = wikify(wiki_body)
   end
 
   after_save :create_new_version
