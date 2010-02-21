@@ -17,7 +17,7 @@ gem "htmlentities",            "~>4.2"
 gem "mysql",                   "~>2.8"
 gem "paperclip",               "~>2.3"
 gem "raspell",                 "~>1.1"
-gem "rdiscount",               "~>1.5"
+gem "rdiscount",               "~>1.6"
 gem "rest-client",             "~>1.0", :require => "restclient"
 # TODO Rails 3
 # gem "sitemap_generator",     "~>0.2"
