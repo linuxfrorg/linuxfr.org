@@ -2,7 +2,7 @@
 
 = button_to "Supprimer", [@post.forum, @post], :method => :delete
 
-= render "preview", :object => @post if @preview_mode
+= render "preview", :preview => @post if @preview_mode
 
 %h2 Édition
 - form_for [@forum, @post] do |form|

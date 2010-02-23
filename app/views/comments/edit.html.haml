@@ -1,6 +1,6 @@
 =h1 "Éditer un commentaire"
 
-= render "preview", :object => @comment if @preview_mode
+= render "preview", :preview => @comment if @preview_mode
 
 - form_for [@comment.node, @comment] do |form|
   = render form

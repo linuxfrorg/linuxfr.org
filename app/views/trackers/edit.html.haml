@@ -2,7 +2,7 @@
 
 = button_to "Supprimer", @tracker, :method => :delete
 
-= render "preview", :object => @tracker if @preview_mode
+= render "preview", :preview => @tracker if @preview_mode
 
 %h2 Édition
 - form_for @tracker do |form|

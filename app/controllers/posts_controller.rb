@@ -32,7 +32,8 @@ class PostsController < ApplicationController
 
   def show
     raise ActiveRecord::RecordNotFound.new unless @post && @post.readable_by?(current_user)
-    redirect_to @post, :status => 301 if @post.has_better_id?
+    # TODO Rails 3
+    # redirect_to @post, :status => 301 if @post.has_better_id?
   end
 
   def edit

@@ -1,6 +1,6 @@
 =h1 "Modifier une page de wiki"
 
-= render "preview", :object => @wiki_page if @preview_mode
+= render "preview", :preview => @wiki_page if @preview_mode
 
 - form_for @wiki_page do |form|
   = form.error_messages

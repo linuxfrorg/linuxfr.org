@@ -4,7 +4,7 @@
   - feed "Flux Atom du wiki", wiki_pages_path(:format => :atom)
 
 = content_for :column do
-  = render 'edition', :object => @wiki_page
+  = render 'edition', :edition => @wiki_page
 
 = render @wiki_page
 = render @wiki_page.node

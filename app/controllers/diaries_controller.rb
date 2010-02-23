@@ -36,7 +36,8 @@ class DiariesController < ApplicationController
 
   def show
     raise ActiveRecord::RecordNotFound.new unless @diary && @diary.readable_by?(current_user)
-    redirect_to [@user, @diary], :status => 301 if @diary.has_better_id?
+    # TODO Rails 3
+    # redirect_to [@user, @diary], :status => 301 if @diary.has_better_id?
   end
 
   def edit

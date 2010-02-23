@@ -1,6 +1,6 @@
 =h1 "Proposer une dépêche"
 
-= render "preview", :object => @news if @preview_mode
+= render "preview", :preview => @news if @preview_mode
 
 - form_for setup_news(@news), :url => '/news' do |form|
   = render form
