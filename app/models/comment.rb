@@ -135,9 +135,9 @@ class Comment < ActiveRecord::Base
   end
 
   def votable_by?(user)
-    user && !deleted? && self.user != user &&
-        (Time.now - created_at) < 3.months &&
-        user.account.nb_votes > 0          &&
+    user && !deleted? && self.user != user       &&
+        (Time.now - created_at) < 3.months       &&
+        (user.account.nb_votes > 0 || user.amr?) &&
         !user.relevances.exists?(:comment_id => id)
   end
 

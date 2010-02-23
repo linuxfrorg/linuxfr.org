@@ -1,5 +1,6 @@
 - if node.can_be_tagged_by?(current_user)
   = link_to "Tagger", new_node_tag_path(:node_id => node.id), :class => 'action'
 - if node.content.votable_by?(current_user)
-  Ce contenu est-il #{button_to "pertinent", node_vote_path(:action => 'for', :id => node.id)}
-  ou #{button_to "inutile", node_vote_path(:action => 'against', :id => node.id)} ?
+  %div.vote
+    Ce contenu est-il #{button_to "pertinent", node_vote_path(:action => 'for', :id => node.id), :remote => true}
+    ou #{button_to "inutile", node_vote_path(:action => 'against', :id => node.id), :remote => :true} ?

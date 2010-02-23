@@ -1,15 +1,23 @@
 class RelevancesController < ApplicationController
+  respond_to :html, :js
+
   before_filter :user_required
   before_filter :load_comment
 
   def for
     Relevance.for(current_user, @comment) if @comment.votable_by?(current_user)
-    redirect_to :back
+    respond_to do |wants|
+      wants.html { redirect_to :back }
+      wants.js   { render :nothing => true }
+    end
   end
 
   def against
     Relevance.against(current_user, @comment) if @comment.votable_by?(current_user)
-    redirect_to :back
+    respond_to do |wants|
+      wants.html { redirect_to :back }
+      wants.js   { render :nothing => true }
+    end
   end
 
 protected
