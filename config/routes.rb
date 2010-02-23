@@ -1,7 +1,20 @@
+class AnonymousConstraint
+  def self.matches?(request)
+    !request.cookies.has_key? 'account_credentials'
+  end
+end
+
+
 # http://guides.rails.info/routing.html
 # http://yehudakatz.com/2009/12/26/the-rails-3-router-rack-it-up/
 #
 LinuxfrOrg::Application.routes.draw do
+  # These routes are here only for cacheability reasons
+  constraints(AnonymousConstraint) do
+    get ''          => 'home#anonymous'
+    get '/news/:id' => 'news#anonymous'
+  end
+
   root :to => 'home#index'
 
   # News
@@ -67,8 +80,8 @@ LinuxfrOrg::Application.routes.draw do
 
   # Sessions
   resource :account_session, :as => 'session', :only => [:new, :create, :destroy]
-  post '/login' => 'account_sessions#new', :as => :login
-  post '/logout' => 'account_sessions#destroy', :as => :logout
+  post  '/login' => 'account_sessions#new', :as => :login
+  match '/logout' => 'account_sessions#destroy', :as => :logout
 
   # Search
   get '/recherche' => 'search#index', :as => :search

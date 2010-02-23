@@ -1,4 +1,5 @@
 class AccountSessionsController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => [:create]
   before_filter :anonymous_required, :only => [:new, :create]
   before_filter :user_required,    :except => [:new, :create]
 

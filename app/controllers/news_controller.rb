@@ -1,19 +1,30 @@
 class NewsController < ApplicationController
   after_filter  :marked_as_read, :only => [:show]
+  respond_to :html, :atom
 
   def index
     @order = params[:order] ? "nodes.#{params[:order]}" : 'news.created_at'
     @news  = News.published.joins(:node).order("#{@order} DESC").paginate(:page => params[:page], :per_page => 10)
-    respond_to do |wants|
-      wants.html
-      wants.atom
-    end
+    respond_with(@news)
   end
 
   def show
     @news = News.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @news && @news.readable_by?(current_user)
-    redirect_to @news, :status => 301 if @news.has_better_id?
+    # TODO Rails 3
+    # redirect_to @news, :status => 301 if @news.has_better_id?
+    respond_with(@news)
+  end
+
+  # It's exactly the same thing that show, but only for anonymous users.
+  # So we can safely cache it.
+  # TODO factorize code
+  def anonymous
+    @news = News.find(params[:id])
+    raise ActiveRecord::RecordNotFound.new unless @news && @news.readable_by?(current_user)
+    # TODO Rails 3
+    # redirect_to @news, :status => 301 if @news.has_better_id?
+    render :show
   end
 
   def new
