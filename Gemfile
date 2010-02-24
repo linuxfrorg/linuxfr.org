@@ -1,3 +1,6 @@
+git "git://github.com/bryanl/paperclip.git", :branch => 'rails3'
+gem "paperclip"
+
 source "http://gemcutter.org"
 
 ## Bundle edge rails:
@@ -17,7 +20,8 @@ gem "htmlentities",            "~>4.2"
 gem "json",                    "~>1.2"
 gem "mysql",                   "~>2.8"
 gem "nokogiri",                "~>1.4"
-gem "paperclip",               "~>2.3"
+# TODO Rails 3
+# gem "paperclip",               "~>2.3"
 gem "raspell",                 "~>1.1"
 gem "rdiscount",               "~>1.6"
 gem "rest-client",             "~>1.0", :require => "restclient"
