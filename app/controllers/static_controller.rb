@@ -9,7 +9,7 @@ class StaticController < ApplicationController
       redirect_to :action => 'proposer_un_contenu'
     else
       @anonymous = true
-      render :proposer_un_contenu
+      render :submit_content
     end
   end
 

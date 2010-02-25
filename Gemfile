@@ -7,7 +7,9 @@ source "http://gemcutter.org"
 # gem "rails", :git => "git://github.com/rails/rails.git"
 gem "rails",                   "3.0.0.beta"
 
-gem "aasm",                    "~>2.1"
+# TODO Rails 3
+# gem "aasm",                    "~>2.1"
+gem "aasm", :git => "git://github.com/rubyist/aasm.git"
 gem "acts_as_list",            "~>0.1"
 # TODO Rails 3
 # gem "authlogic",               "~>2.1"
