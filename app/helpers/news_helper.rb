@@ -15,7 +15,7 @@ module NewsHelper
   end
 
   def moderated_by(news)
-    news.moderator_id ? " Modéré par #{link_to news.moderator.name, news.moderator}." : ""
+    news.moderator_id ? " Modéré par #{link_to news.moderator.name, news.moderator}.".html_safe : ""
   end
 
 end

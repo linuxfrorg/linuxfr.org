@@ -19,6 +19,8 @@ gem "french_rails",            "~>0.2"
 gem "friendly_id",             "~>2.3"
 gem "haml",                    "~>2.2"
 gem "htmlentities",            "~>4.2"
+# TODO I18n v0.3.5
+gem "i18n",                    "=0.3.3"
 gem "json",                    "~>1.2"
 gem "mysql",                   "~>2.8"
 gem "nokogiri",                "~>1.4"
