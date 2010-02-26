@@ -1,21 +1,8 @@
-/* jQuery extensions */
-//  TODO remove these lines?
-// $.fn.disable = function() {
-//     this.removeAttr("disabled");
-//     return this;
-// };
-// 
-// $.fn.enable = function() {
-//     this.attr("disabled", "disabled");
-//     return this;
-// };
-
 /* Misc */
 $(".markItUp").markItUp(markItUpSettings);
 
 $("a.hit-counter").each(function() {
-    var link = $(this);
-    link.href = "/redirect/" + link.attr('data-hit');
+    this.href = "/redirect/" + $(this).attr('data-hit');
 });
 
 /* Ready to moule */
@@ -79,6 +66,7 @@ Toolbar.template  = '<div id="toolbar"><span id="toolbar-items">{text} : ' +
                     '  <a href="#" class="change">{toolbar.threshold}</a>' +
                     '</span></div>';
 Toolbar.create = function(items, txt) {
+    var doc = $(document);
     Toolbar.items    = items;
     Toolbar.nb_items = items.length;
     if (localStorage.threshold)
@@ -88,11 +76,10 @@ Toolbar.create = function(items, txt) {
     $('#toolbar .next').click(Toolbar.next_item);
     $('#toolbar .change').click(Toolbar.change_threshold);
     /* Use the '<' and '>' to navigate in the items */
-    $(document).keypress(function(e) {
-        if ($(e.target).is("input")) return ;
-        if (e.which == 60) return Toolbar.prev_item();
-        if (e.which == 62) return Toolbar.next_item();
-    });
+    doc.bind('keypress', '<',       function() { return Toolbar.prev_item(); });
+    doc.bind('keypress', 'shift+>', function() { return Toolbar.next_item(); });
+    doc.bind('keypress', 'k',       function() { return Toolbar.prev_item(); });
+    doc.bind('keypress', 'j',       function() { return Toolbar.next_item(); });
 };
 Toolbar.next_item = function() {
     Toolbar.current++;
@@ -166,4 +153,15 @@ Folding.create(Toolbar.threshold);
 if ($('#form-links')) {
     FormLinks.create($('#form-links'));
 }
+
+/* Hotkeys */
+var doc = $(document);
+doc.bind('keypress', 'g', function() {
+  $('html').animate({scrollTop: 0}, 500);
+  return false;
+});
+doc.bind('keypress', 'shift+g', function() {
+  $('html').animate({scrollTop: document.body.scrollHeight}, 500);
+  return false;
+});
 
