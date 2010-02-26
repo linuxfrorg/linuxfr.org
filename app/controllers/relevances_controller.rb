@@ -8,7 +8,7 @@ class RelevancesController < ApplicationController
     Relevance.for(current_user, @comment) if @comment.votable_by?(current_user)
     respond_to do |wants|
       wants.html { redirect_to :back }
-      wants.js   { render :nothing => true }
+      wants.js   { render :text => "Merci pour votre vote" }
     end
   end
 
@@ -16,7 +16,7 @@ class RelevancesController < ApplicationController
     Relevance.against(current_user, @comment) if @comment.votable_by?(current_user)
     respond_to do |wants|
       wants.html { redirect_to :back }
-      wants.js   { render :nothing => true }
+      wants.js   { render :text => "Merci pour votre vote" }
     end
   end
 

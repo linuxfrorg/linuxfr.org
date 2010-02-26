@@ -1,18 +1,18 @@
 // Adapted from http://github.com/rails/jquery-ujs
 //
-jQuery(function ($) {
+jQuery(function($) {
     var csrf_token = $('meta[name=csrf-token]').attr('content'),
         csrf_param = $('meta[name=csrf-param]').attr('content');
 
     $.fn.extend({
-        triggerAndReturn: function (name, data) {
+        triggerAndReturn: function(name, data) {
             var event = new $.Event(name);
             this.trigger(event, data);
 
             return event.result !== false;
         },
 
-        callRemote: function () {
+        callRemote: function() {
             var el      = this,
                 data    = el.is('form') ? el.serializeArray() : [],
                 method  = el.attr('method') || el.attr('data-method') || 'GET',
@@ -48,12 +48,15 @@ jQuery(function ($) {
         }
     });
 
-    $('form[data-remote]').live('submit', function (e) {
+    $('form[data-remote]').live('submit', function(e) {
         $(this).callRemote();
         e.preventDefault();
     });
 
-    $('form[data-remote]').live('ajax:complete', function () {
+    $('form[data-remote]').live('ajax:success', function(e, data) {
+        if (data) {
+          jQuery.noticeAdd({text: data});
+        }
         $(this).parent().hide();
     });
 });

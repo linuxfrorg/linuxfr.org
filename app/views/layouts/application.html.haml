@@ -7,7 +7,7 @@
     - elsif mobile?
       = stylesheet_link_tag 'mobile'
     - else
-      = stylesheet_link_tag 'style', 'markitup'
+      = stylesheet_link_tag 'style', 'markitup', 'jquery.notice'
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
     <link rel="search" type="application/opensearchdescription+xml" title="Recherche LinuxFr.org" href="/opensearch.xml" />
     - if mobile?
@@ -107,4 +107,4 @@
             %li= link_to "Code source du site", '/code_source_du_site'
             %li= link_to "Plan du site", '/plan'
 
-    = javascript_include_tag 'jquery-1.4.2.min', 'jquery.nano', 'jquery.autocomplete', 'jquery.markitup.pack', 'jquery.chat', 'markitup-markdown', 'rails', 'application'
+    = javascript_include_tag 'jquery-1.4.2.min', 'jquery.nano', 'jquery.autocomplete', 'jquery.markitup.pack', 'jquery.notice', 'jquery.chat', 'markitup-markdown', 'rails', 'application'
