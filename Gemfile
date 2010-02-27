@@ -1,11 +1,9 @@
-git "git://github.com/bryanl/paperclip.git", :branch => 'rails3'
-gem "paperclip"
-
 source "http://gemcutter.org"
 
 ## Bundle edge rails:
 # gem "rails", :git => "git://github.com/rails/rails.git"
-gem "rails",                   "3.0.0.beta"
+# gem "rails",                   "3.0.0.beta"
+gem "rails", :path => "../rails"
 
 # TODO Rails 3
 # gem "aasm",                    "~>2.1"
@@ -13,19 +11,21 @@ gem "aasm", :git => "git://github.com/rubyist/aasm.git"
 gem "acts_as_list",            "~>0.1"
 # TODO Rails 3
 # gem "authlogic",               "~>2.1"
-gem "authlogic", :git => "git://github.com/railsbros/authlogic.git"
+# gem "authlogic", :git => "git://github.com/railsbros/authlogic.git"
+gem "authlogic", :path => "../authlogic"
 gem "erubis",                  "~>2.6"
 gem "french_rails",            "~>0.2"
 gem "friendly_id",             "~>2.3"
 gem "haml",                    "~>2.2"
 gem "htmlentities",            "~>4.2"
 # TODO I18n v0.3.5
-gem "i18n",                    "=0.3.3"
+# gem "i18n",                    "=0.3.3"
 gem "json",                    "~>1.2"
 gem "mysql",                   "~>2.8"
 gem "nokogiri",                "~>1.4"
 # TODO Rails 3
 # gem "paperclip",               "~>2.3"
+gem "paperclip", :git => "git://github.com/bryanl/paperclip.git", :branch => 'rails3'
 gem "raspell",                 "~>1.1"
 gem "rdiscount",               "~>1.6"
 gem "rest-client",             "~>1.0", :require => "restclient"

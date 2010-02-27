@@ -5,7 +5,7 @@ class TagsController < ApplicationController
   before_filter :get_order, :only => [:index, :show]
 
   autocomplete_for :tag, :name, :order => "taggings_count DESC"
-  alias_method :autocomplete_for_tag_name, :autocomplete
+  alias_method :autocomplete, :autocomplete_for_tag_name
 
   def new
     @tag = @node.tags.build
