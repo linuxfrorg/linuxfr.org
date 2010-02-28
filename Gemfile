@@ -18,8 +18,8 @@ gem "french_rails",            "~>0.2"
 gem "friendly_id",             "~>2.3"
 gem "haml",                    "~>2.2"
 gem "htmlentities",            "~>4.2"
-# TODO I18n v0.3.5
-# gem "i18n",                    "=0.3.3"
+# TODO I18n v0.3.5 with this patch:
+# http://github.com/svenfuchs/i18n/commit/32aafb05f920ce2a0ee6a901d02fee24f795ccbb
 gem "json",                    "~>1.2"
 gem "mysql",                   "~>2.8"
 gem "nokogiri",                "~>1.4"

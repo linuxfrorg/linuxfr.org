@@ -43,7 +43,7 @@ del.diffdel, del.diffmod { background-color: #f33; }
 .comment { border: 1px solid black; }
 .comment.odd { border-left: 3px solid #f33; }
 .new-comment h3 { border: 1px solid red; }
-.fold { display:none; }
+.fold > .meta, .fold > .image, .fold > .content, .fold > .actions { display:none; }
 .avatar { float:left; margin: 5px 10px; }
 
 /* Toolbox */

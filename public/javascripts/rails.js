@@ -19,7 +19,7 @@ jQuery(function($) {
                 url     = el.attr('action') || el.attr('href');
 
             if (url === undefined) {
-              throw "No URL specified for remote call (action or href must be present).";
+                throw "No URL specified for remote call (action or href must be present).";
             } else {
                 if (el.triggerAndReturn('ajax:before')) {
                     $.ajax({
@@ -55,7 +55,7 @@ jQuery(function($) {
 
     $('form[data-remote]').live('ajax:success', function(e, data) {
         if (data) {
-          jQuery.noticeAdd({text: data});
+            jQuery.noticeAdd({text: data});
         }
         $(this).parent().hide();
     });
