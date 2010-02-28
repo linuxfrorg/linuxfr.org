@@ -10,7 +10,7 @@
 // -------------------------------------------------------------------
 // Feel free to add more tags
 // -------------------------------------------------------------------
-markItUpSettings = {
+var markItUpSettings = {
 	previewParserPath:	'',
 	onShiftEnter:		{keepDefault:false, openWith:'\n\n'},
 	markupSet: [
@@ -36,7 +36,7 @@ markItUpSettings = {
 }
 
 // mIu nameSpace to avoid conflict.
-miu = {
+var miu = {
 	markdownTitle: function(markItUp, char) {
 		heading = '';
 		n = $.trim(markItUp.selection||markItUp.placeHolder).length;

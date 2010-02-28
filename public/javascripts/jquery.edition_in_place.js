@@ -1,3 +1,5 @@
+/*global jQuery */
+
 (function($) {
     $.EditionInPlace = function(element, creation, options) {
         var base = this;
@@ -18,8 +20,8 @@
             }
             var old = base.element.html();
             base.element.unbind('click');
-            base.element.load(base.url, function(form) {
-                var form = base.element.find('form')
+            base.element.load(base.url, function() {
+                var form = base.element.find('form');
                 form.submit(function() {
                     base.submitForm(base.creation ? old : '');
                 });

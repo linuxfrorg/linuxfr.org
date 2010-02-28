@@ -40,6 +40,7 @@ gem "validates_url_format_of", "~>0.1"
 gem "will_paginate",           ">=3.0.pre"
 
 group :development do
+  gem "jslint_on_rails"
   gem "rails3-generators"
 end
 

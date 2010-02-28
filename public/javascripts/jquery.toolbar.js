@@ -1,3 +1,5 @@
+/*global jQuery, localStorage */ 
+
 (function($) {
     $.Toolbar = function(items, text, options){
         var base = this;
@@ -9,7 +11,7 @@
             base.text = text;
             base.options = $.extend({}, $.Toolbar.defaultOptions, options);
             base.threshold = localStorage.threshold || base.thresholds[0];
-            base.folding()
+            base.folding();
             base.create();
         };
 
@@ -34,19 +36,19 @@
         };
 
         base.next_item = function() {
-            base.current++;
-            if (base.current > base.nb_items) base.current -= base.nb_items;
+            base.current += 1;
+            if (base.current > base.nb_items) { base.current -= base.nb_items; }
             return base.go_to_current();
         };
 
         base.prev_item = function() {
-            base.current--;
-            if (base.current <= 0) base.current += base.nb_items;
+            base.current -= 1;
+            if (base.current <= 0) { base.current += base.nb_items; }
             return base.go_to_current();
         };
 
         base.go_to_current = function() {
-            if (base.nb_items == 0) return ;
+            if (base.nb_items === 0) { return ; }
             var item = base.items[base.current - 1];
             var pos = $(item).offset().top;
             $('html').animate({scrollTop: pos}, 500);
@@ -56,7 +58,7 @@
 
         base.change_threshold = function() {
             var ths = base.options.thresholds;
-            var index = $.inArray(parseInt($(this).text()), ths) + 1
+            var index = $.inArray(parseInt($(this).text(), 10), ths) + 1;
             localStorage.threshold = base.threshold = ths[index % ths.length];
             $(this).text(base.threshold);
             base.folding();
@@ -64,13 +66,15 @@
         };
 
         base.folding = function() {
-            if (!base.options.folding) return ;
+            if (!base.options.folding) { return ; }
             var items = $(base.options.folding);
             items.find('.folding').remove();
             items.each(function() {
                 var item  = $(this);
-                var score = parseInt(item.find('.score:first').text());
-                var link  = item.children('h3').prepend('<a href="#" class="folding" title="Plier">[-]</a>').children('.folding');
+                var score = parseInt(item.find('.score:first').text(), 10);
+                var link  = item.children('h3')
+                                .prepend('<a href="#" class="folding" title="Plier">[-]</a>')
+                                .children('.folding');
                 var fold  = function(b) {
                     if (b) {
                         item.addClass('fold');
@@ -81,7 +85,7 @@
                     }
                 };
                 link.click(function() {
-                    fold(link.text() == '[-]');
+                    fold(link.text() === '[-]');
                     return false;
                 });
                 fold(score < base.threshold);

@@ -1,3 +1,5 @@
+/*global $, jQuery, markItUpSettings */
+
 $(".markItUp").markItUp(markItUpSettings);
 
 $("a.hit-counter").each(function() {
@@ -23,13 +25,13 @@ $('input.autocomplete').each(function() {
 
 /* Add/Remove dynamically links in the news form. */
 var FormLinks = {};
-FormLinks.div;
+FormLinks.div      = null;
 FormLinks.counter  = 0;
 FormLinks.template = '<fieldset class="link">' +
-                     '  <input id="news_links_attributes_{i}_title" name="news[links_attributes][{i}][title]" size="30" type="text" /> ' +
-                     '  <input id="news_links_attributes_{i}_url" name="news[links_attributes][{i}][url]" size="30" type="text" /> ' +
-                     '  <input id="news_links_attributes_{i}_lang" name="news[links_attributes][{i}][lang]" size="30" type="text" /> ' +
-                     '</fieldset>';
+'  <input id="news_links_attributes_{i}_title" name="news[links_attributes][{i}][title]" size="30" type="text" /> ' +
+'  <input id="news_links_attributes_{i}_url" name="news[links_attributes][{i}][url]" size="30" type="text" /> ' +
+'  <input id="news_links_attributes_{i}_lang" name="news[links_attributes][{i}][lang]" size="30" type="text" /> ' +
+'</fieldset>';
 FormLinks.create = function(div) {
     var links = div.children('.link');
     FormLinks.counter = links.length;
@@ -38,15 +40,15 @@ FormLinks.create = function(div) {
     $('#add-link').click(function() { FormLinks.add_link(div); });
 };
 FormLinks.bind_link = function(link) {
-    var link = $(link);
-    link.append('<button type="button" class="remove">Supprimer ce lien</button>');
-    link.children('.remove').click(function() { FormLinks.remove_link(link); });
+    var l = $(link);
+    l.append('<button type="button" class="remove">Supprimer ce lien</button>');
+    l.children('.remove').click(function() { FormLinks.remove_link(l); });
 };
 FormLinks.add_link = function(div) {
     var last_link = div.children('.link:last');
     last_link.after($.nano(FormLinks.template, {i: FormLinks.counter}));
     FormLinks.bind_link(last_link.next());
-    FormLinks.counter++;
+    FormLinks.counter += 1;
 };
 FormLinks.remove_link = function(link) {
     link.remove();
@@ -59,8 +61,12 @@ if ($('#form-links')) {
 
 /* Show the toolbar */
 if ($('body').hasClass('logged')) {
-    if ($('#comments').length > 0) $('#comments .new-comment').toolbar('Nouveaux commentaires', {folding: '#comments .comment'});
-    if ($('#contents').length > 0) $('#contents .new-content').toolbar('Contenus pas encore visités');
+    if ($('#comments').length > 0) {
+        $('#comments .new-comment').toolbar('Nouveaux commentaires', {folding: '#comments .comment'});
+    }
+    if ($('#contents').length > 0) {
+        $('#contents .new-content').toolbar('Contenus pas encore visités');
+    }
 }
 
 /* Hotkeys */

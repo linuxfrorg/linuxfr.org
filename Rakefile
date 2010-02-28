@@ -11,11 +11,14 @@ require 'rake/rdoctask'
 # require 'thinking_sphinx/tasks' rescue LoadError
 # require 'thinking_sphinx/deltas/datetime_delta/tasks' rescue LoadError
 # require 'sitemap_generator/tasks' rescue LoadError
-# 
-# if Rails.env == 'development'
-#   # gem install nono-railroad
-#   require 'railroad/tasks/diagrams' rescue LoadError
-# end
+# require 'paperclip/tasks/paperclip_tasks'
+
+if Rails.env.development?
+  require 'jslint/tasks'
+  JSLint.config_path = "config/jslint.yml"
+  # gem install nono-railroad
+  # require 'railroad/tasks/diagrams' rescue LoadError
+end
 
 
 Rails::Application.load_tasks

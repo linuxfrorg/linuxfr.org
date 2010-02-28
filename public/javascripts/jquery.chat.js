@@ -1,3 +1,5 @@
+/*global jQuery, $ */
+
 var Chat = {
     /* FIXME do not share these variables */
     errorSleepTime: 500,
@@ -13,7 +15,7 @@ var Chat = {
 
     poll: function() {
         var args = {};
-        if (Chat.cursor) args.cursor = Chat.cursor;
+        if (Chat.cursor) { args.cursor = Chat.cursor; }
         $.ajax({
             url: "/chat/chan/" + Chat.chan,
             type: "POST",
@@ -26,9 +28,9 @@ var Chat = {
 
     onSuccess: function(response) {
         try {
-            Chat.newMessages(eval("(" + response + ")"));
+            Chat.newMessages(eval("(" + response + ")")); // TODO eval is evil
             Chat.errorSleepTime = 500;
-            window.setTimeout(Chat.poll, 0);
+            setTimeout(Chat.poll, 0);
         } catch (e) {
             console.warn(e); // TODO remove this line
             Chat.onError();
@@ -37,23 +39,23 @@ var Chat = {
 
     onError: function(response) {
         Chat.errorSleepTime *= 2;
-        window.setTimeout(Chat.poll, Chat.errorSleepTime);
+        setTimeout(Chat.poll, Chat.errorSleepTime);
     },
 
     /* Dispatch messages to their callbacks */
     newMessages: function(response) {
-        if (!response.messages) return;
+        if (!response.messages) { return ; }
         var messages = response.messages;
         Chat.cursor = messages[messages.length - 1].id;
-        for (var i = 0, message; i < messages.length; i++) {
+        for (var i = 0, message; i < messages.length; i += 1) {
             Chat.newMessage(messages[i]);
         }
     },
 
     newMessage: function(message) {
         var existing = $("#board-" + message.id);
-        if (existing.length > 0) return;
-        var method  = 'on_' + message['type'];
+        if (existing.length > 0) { return ; }
+        var method  = 'on_' + message['type']; // TODO message.type
         if (Chat[method]) {
             Chat[method](message.msg);
         }
@@ -110,15 +112,19 @@ var Chat = {
         var element = Chat.inbox.find("p:first");
         element.find(".link").each(function() {
             var id = $(this).attr('data-id');
-            var html = '<p id="link_' + id + '" data-url="/redaction/links/' + id + '/modifier">' + $(this).html() + '</p>';
+            var html = '<p id="link_' + id +
+                       '" data-url="/redaction/links/' + id +
+                       '/modifier">' + $(this).html() + '</p>';
             $('#redaction .new_link').before(html);
             $('#link_' + id).editionInPlace();
         });
         element.find(".paragraph").each(function() {
             var id = $(this).attr('data-id');
             var after = $(this).attr('data-after');
-            var html = '<div id="link_' + id + '" data-url="/redaction/paragraphs/' + id + '/modifier">' + $(this).html() + '</div>';
-            $('#paragraph_' + after).after(html)
+            var html = '<div id="link_' + id +
+                       '" data-url="/redaction/paragraphs/' + id +
+                       '/modifier">' + $(this).html() + '</div>';
+            $('#paragraph_' + after).after(html);
             $('#paragraph_' + id).editionInPlace();
         });
     },

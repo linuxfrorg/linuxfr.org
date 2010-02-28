@@ -1,6 +1,7 @@
-// Adapted from http://github.com/rails/jquery-ujs
-//
-jQuery(function($) {
+/*global jQuery */
+/* Adapted from http://github.com/rails/jquery-ujs */
+
+(function($) {
     var csrf_token = $('meta[name=csrf-token]').attr('content'),
         csrf_param = $('meta[name=csrf-param]').attr('content');
 
@@ -59,4 +60,4 @@ jQuery(function($) {
         }
         $(this).parent().hide();
     });
-});
+})(jQuery);
