@@ -15,6 +15,8 @@
 # It's the famous board, from DaCode (then templeet).
 #
 class Board < ActiveRecord::Base
+  include Canable::Ables
+
   belongs_to :user
   belongs_to :object, :polymorphic => true
 
@@ -73,7 +75,7 @@ class Board < ActiveRecord::Base
 ### ACL ###
 
   # Can the given user see messages (and post) on this board?
-  def accessible_by?(user)
+  def viewable_by?(user)
     return false unless user
     case object_type
     when Board.news:    user.amr?

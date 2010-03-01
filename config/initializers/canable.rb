@@ -1,0 +1,7 @@
+Canable.add(:vote, :votable)
+Canable.add(:comment, :commentable)
+Canable.add(:tag, :taggable)
+Canable.add(:accept, :acceptable)
+Canable.add(:refuse, :refusable)
+Canable.add(:ppp, :pppable)
+Canable.add(:answer, :answerable)

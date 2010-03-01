@@ -12,12 +12,12 @@ class CommentsController < ApplicationController
   end
 
   def show
-    raise ActiveRecord::RecordNotFound.new unless @comment && @comment.readable_by?(current_user)
+    enforce_view_permission(@comment)
   end
 
   def new
     @comment = @node.comments.build
-    raise ActiveRecord::RecordNotFound.new unless @comment.creatable_by?(current_user)
+    enforce_create_permission(@comment)
   end
 
   def answer
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @node.comments.build
-    raise ActiveRecord::RecordNotFound.new unless @comment.creatable_by?(current_user)
+    enforce_create_permission(@comment)
     @comment.attributes = params[:comment]
     @comment.user = current_user
     if !preview_mode && @comment.save
@@ -40,11 +40,11 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    raise ActiveRecord::RecordNotFound.new unless @comment.editable_by?(current_user)
+    enforce_update_permission(@comment)
   end
 
   def update
-    raise ActiveRecord::RecordNotFound.new unless @comment.editable_by?(current_user)
+    enforce_update_permission(@comment)
     @comment.attributes = params[:comment]
     if !preview_mode && @comment.save
       flash[:notice] = "Votre commentaire a bien été modifié"
@@ -55,7 +55,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    raise ActiveRecord::RecordNotFound.new unless @comment.deletable_by?(current_user)
+    enforce_destroy_permission(@comment)
     @comment.mark_as_deleted
     flash[:notice] = "Votre commentaire a bien été supprimé"
     redirect_to_content @node.content

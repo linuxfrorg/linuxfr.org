@@ -23,14 +23,12 @@ class Redaction::NewsController < RedactionController
   end
 
   def edit
-    raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
     respond_to do |wants|
       wants.js { render :partial => 'form' }
     end
   end
 
   def update
-    raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
     @news.attributes = params[:news]
     @news.editor_id = current_user.id
     @news.save
@@ -40,7 +38,6 @@ class Redaction::NewsController < RedactionController
   end
 
   def submit
-    raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
     if @news.unlocked?
       @news.submit_and_notify(current_user.id)
       redirect_to '/redaction', :notice => "Dépêche soumis à la modération"
@@ -53,6 +50,7 @@ protected
 
   def load_news
     @news = News.find(params[:id])
+    enforce_update_permission(@news)
   end
 
 end

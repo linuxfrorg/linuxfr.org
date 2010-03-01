@@ -32,13 +32,13 @@ protected
   def new_link
     @news = News.find(params[:news_id])
     @link = @news.links.new
-    raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
+    enforce_update_permission(@news)
   end
 
   def find_link
     @link = Link.find(params[:id])
     @news = @link.news
-    raise ActiveRecord::RecordNotFound unless @news && @news.editable_by?(current_user)
+    enforce_update_permission(@news)
   end
 
 end

@@ -22,6 +22,7 @@
 #
 class News < Content
   include AASM
+  include Canable::Ables
 
   belongs_to :section
   belongs_to :moderator, :class_name => "User"
@@ -153,7 +154,7 @@ class News < Content
 
 ### ACL ###
 
-  def readable_by?(user)
+  def viewable_by?(user)
     published? || (user && (user.amr? || (draft? && user.writer)))
   end
 
@@ -161,12 +162,12 @@ class News < Content
     true
   end
 
-  def editable_by?(user)
+  def updatable_by?(user)
     return false unless user
-    published? ? (user.moderator? || user.admin?) : readable_by?(user)
+    published? ? (user.moderator? || user.admin?) : viewable_by?(user)
   end
 
-  def deletable_by?(user)
+  def destroyable_by?(user)
     user && (user.moderator? || user.admin?)
   end
 

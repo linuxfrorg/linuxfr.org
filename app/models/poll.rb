@@ -74,15 +74,15 @@ class Poll < Content
 
 ### ACL ###
 
-  def readable_by?(user)
+  def viewable_by?(user)
     %w(published archived).include?(state) || (user && user.amr?)
   end
 
-  def editable_by?(user)
+  def updatable_by?(user)
     user && user.amr?
   end
 
-  def deletable_by?(user)
+  def destroyable_by?(user)
     user && user.admin?
   end
 

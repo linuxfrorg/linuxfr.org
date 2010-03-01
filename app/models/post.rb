@@ -49,11 +49,11 @@ class Post < Content
 
 ### ACL ###
 
-  def editable_by?(user)
+  def updatable_by?(user)
     user && (user.id == user_id || user.moderator? || user.admin?)
   end
 
-  def deletable_by?(user)
+  def destroyable_by?(user)
     user && (user.moderator? || user.admin?)
   end
 

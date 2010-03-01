@@ -6,26 +6,27 @@ class Moderation::PollsController < ModerationController
   end
 
   def show
+    enforce_view_permission(@poll)
   end
 
   def accept
-    raise ActiveRecord::RecordNotFound unless @poll && @poll.acceptable_by?(current_user)
+    enforce_accept_permission(@poll)
     @poll.accept!
     redirect_to @poll, :notice => "Sondage accepté"
   end
 
   def refuse
-    raise ActiveRecord::RecordNotFound unless @poll && @poll.refusable_by?(current_user)
+    enforce_refuse_permission(@poll)
     @poll.refuse!
     redirect_to moderation_polls_url, :notice => "Sondage refusé"
   end
 
   def edit
-    raise ActiveRecord::RecordNotFound unless @poll && @poll.editable_by?(current_user)
+    enforce_update_permission(@poll)
   end
 
   def update
-    raise ActiveRecord::RecordNotFound unless @poll && @poll.editable_by?(current_user)
+    enforce_update_permission(@poll)
     @poll.attributes = params[:poll]
     if @poll.save
       redirect_to [:moderation, @poll], :notice => "Modification enregistrée"

@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board[Board.free]
-    raise ActiveRecord::RecordNotFound unless @board && @board.accessible_by?(current_user)
+    enforce_view_permission(@board)
     @boards = Board.by_kind(@board.object_type)
     respond_to do |wants|
       wants.html
@@ -13,7 +13,7 @@ class BoardsController < ApplicationController
 
   def add
     board = current_user.boards.build(params[:board])
-    raise ActiveRecord::RecordNotFound unless board && board.accessible_by?(current_user)
+    enforce_view_permission(board)
     board.message    = board_auto_link(board.message)
     board.user_agent = request.user_agent
     board.save

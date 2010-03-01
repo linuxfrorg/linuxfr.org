@@ -70,16 +70,16 @@ class WikiPage < Content
     user # && user.karma > 0
   end
 
-  def editable_by?(user)
+  def updatable_by?(user)
     user && (state == "public" || user.amr?)
   end
 
-  def deletable_by?(user)
+  def destroyable_by?(user)
     user && user.amr?
   end
 
   def commentable_by?(user)
-    user && readable_by?(user)
+    user && viewable_by?(user)
   end
 
 ### Interest ###

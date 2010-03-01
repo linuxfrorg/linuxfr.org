@@ -13,6 +13,7 @@ gem "acts_as_list",            "~>0.1"
 # gem "authlogic",               "~>2.1"
 # gem "authlogic", :git => "git://github.com/railsbros/authlogic.git"
 gem "authlogic", :path => "../authlogic"
+gem "canable",                 "~>0.1"
 gem "erubis",                  "~>2.6"
 gem "french_rails",            "~>0.2"
 gem "friendly_id",             "~>2.3"
@@ -48,4 +49,3 @@ group :test do
   gem "rspec-rails",           ">=2.0.0.a5"
   gem "factory_girl",          "~>1.2"
 end
-

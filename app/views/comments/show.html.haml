@@ -1,12 +1,13 @@
 %p
   = link_to "Retourner au contenu associé", url_for_content(@comment.content)
 
-- if @comment.editable_by?(current_user)
-  %p
-    = link_to "Modifier ce commentaire", edit_node_comment_path(@comment.node, @comment)
-- if @comment.deletable_by?(current_user)
-  %p
-    = button_to "Supprimer ce commentaire", [@comment.node, @comment], :method => :delete
+- if current_user
+  - if current_user.can_update?(@comment)
+    %p
+      = link_to "Modifier ce commentaire", edit_node_comment_path(@comment.node, @comment)
+  - if current_user.can_destroy?(@comment)
+    %p
+      = button_to "Supprimer ce commentaire", [@comment.node, @comment], :method => :delete
 
 %ul
   %li.comment{comment_attr(@comment)}

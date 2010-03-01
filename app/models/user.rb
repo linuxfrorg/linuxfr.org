@@ -29,6 +29,7 @@
 #
 class User < ActiveRecord::Base
   include AASM
+  include Canable::Cans
 
   has_one  :account, :dependent => :destroy, :inverse_of => :user
   has_many :nodes, :inverse_of => :user

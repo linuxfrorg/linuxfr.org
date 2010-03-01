@@ -3,6 +3,8 @@ require 'htmldiff'
 
 
 class ApplicationController < ActionController::Base
+  include Canable::Enforcers
+
   # TODO rails3
   # protect_from_forgery is on by default, says the release notes
   before_filter :seo_filter_and_ssl

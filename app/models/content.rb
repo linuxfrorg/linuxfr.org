@@ -24,7 +24,7 @@ class Content < ActiveRecord::Base
 
 ### ACL ###
 
-  def readable_by?(user)
+  def viewable_by?(user)
     !deleted? || (user && user.admin?)
   end
 
@@ -32,16 +32,16 @@ class Content < ActiveRecord::Base
     user
   end
 
-  def editable_by?(user)
+  def updatable_by?(user)
     user
   end
 
-  def deletable_by?(user)
+  def destroyable_by?(user)
     user
   end
 
   def commentable_by?(user)
-    user && readable_by?(user) && (Time.now - created_at) < 3.months
+    user && viewable_by?(user) && (Time.now - created_at) < 3.months
   end
 
   def votable_by?(user)
@@ -52,7 +52,7 @@ class Content < ActiveRecord::Base
   end
 
   def taggable_by?(user)
-    user && !deleted?
+    user && !deleted? && viewable_by?(user)
   end
 
 ### Workflow ###

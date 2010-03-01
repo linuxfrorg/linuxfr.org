@@ -18,7 +18,7 @@
       %th Envoyé par
       %th Catégorie
       %th Score
-      - if @trackers.first.editable_by?(current_user)
+      - if current_user && current_user.can_update?(@trackers.first)
         %th Actions
     - @trackers.each do |tracker|
       %tr{:class => tracker.state}
@@ -29,5 +29,5 @@
         %td= tracker.reported_by
         %td= tracker.category_title
         %td= tracker.score
-        - if tracker.editable_by?(current_user)
+        - if current_user && current_user.can_update?(tracker)
           %td= link_to "Modifier", edit_tracker_path(tracker)

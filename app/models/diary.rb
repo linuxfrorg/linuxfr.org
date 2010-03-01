@@ -52,11 +52,11 @@ class Diary < Content
     user # && user.karma > 0
   end
 
-  def editable_by?(user)
+  def updatable_by?(user)
     user && (user.moderator? || user.admin?)
   end
 
-  def deletable_by?(user)
+  def destroyable_by?(user)
     user && (user.moderator? || user.admin?)
   end
 

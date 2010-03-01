@@ -51,7 +51,7 @@ protected
 
   def find_node
     @node = Node.find(params[:node_id])
-    raise ActiveRecord::RecordNotFound unless @node && @node.can_be_tagged_by?(current_user)
+    enforce_taggable_permission(@node.content)
   end
 
   def find_tag

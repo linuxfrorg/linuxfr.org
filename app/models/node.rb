@@ -58,10 +58,6 @@ class Node < ActiveRecord::Base
 
 ### Tags ###
 
-  def can_be_tagged_by?(user)
-    user && content.readable_by?(user)
-  end
-
   def set_taglist(list, user)
     self.class.transaction do
       TagList.new(list).each do |tagname|

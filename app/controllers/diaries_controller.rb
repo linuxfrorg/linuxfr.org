@@ -16,12 +16,12 @@ class DiariesController < ApplicationController
 
   def new
     @diary = current_user.diaries.build
-    raise ActiveRecord::RecordNotFound.new unless @diary && @diary.creatable_by?(current_user)
+    enforce_create_permission(@diary)
   end
 
   def create
     @diary = current_user.diaries.build
-    raise ActiveRecord::RecordNotFound.new unless @diary && @diary.creatable_by?(current_user)
+    enforce_create_permission(@diary)
     @diary.attributes = params[:diary]
     if !preview_mode && @diary.save
       @diary.create_node(:user_id => current_user.id)
@@ -35,17 +35,17 @@ class DiariesController < ApplicationController
 ### By user ###
 
   def show
-    raise ActiveRecord::RecordNotFound.new unless @diary && @diary.readable_by?(current_user)
+    enforce_view_permission(@diary)
     # TODO Rails 3
     # redirect_to [@user, @diary], :status => 301 if @diary.has_better_id?
   end
 
   def edit
-    raise ActiveRecord::RecordNotFound.new unless @diary && @diary.editable_by?(current_user)
+    enforce_update_permission(@diary)
   end
 
   def update
-    raise ActiveRecord::RecordNotFound.new unless @diary && @diary.editable_by?(current_user)
+    enforce_update_permission(@diary)
     @diary.attributes = params[:diary]
     if !preview_mode && @diary.save
       redirect_to [@user, @diary], :notice => "Votre journal a bien été modifié"
@@ -55,7 +55,7 @@ class DiariesController < ApplicationController
   end
 
   def destroy
-    raise ActiveRecord::RecordNotFound.new unless @diary && @diary.deletable_by?(current_user)
+    enforce_destroy_permission(@diary)
     @diary.mark_as_deleted
     redirect_to diaries_url, :notice => "Votre journal a bien été supprimé"
   end

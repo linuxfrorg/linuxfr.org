@@ -8,13 +8,13 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    raise ActiveRecord::RecordNotFound.new unless @post && @post.creatable_by?(current_user)
+    enforce_view_permission(@post)
   end
 
   def create
     @post = Post.new
     @post.attributes = params[:post]
-    raise ActiveRecord::RecordNotFound.new unless @post && @post.creatable_by?(current_user)
+    enforce_create_permission(@post)
     if !preview_mode && @post.save
       @post.create_node(:user_id => current_user.id)
       redirect_to forum_posts_url(:forum_id => @post.forum_id), :notice => "Votre message a bien été créé"
@@ -31,18 +31,18 @@ class PostsController < ApplicationController
   end
 
   def show
-    raise ActiveRecord::RecordNotFound.new unless @post && @post.readable_by?(current_user)
+    enforce_view_permission(@post)
     # TODO Rails 3
     # redirect_to @post, :status => 301 if @post.has_better_id?
   end
 
   def edit
-    raise ActiveRecord::RecordNotFound.new unless @post && @post.editable_by?(current_user)
+    enforce_update_permission(@post)
   end
 
   def update
     @post.attributes = params[:post]
-    raise ActiveRecord::RecordNotFound.new unless @post && @post.editable_by?(current_user)
+    enforce_update_permission(@post)
     if !preview_mode && @post.save
       redirect_to forum_posts_url, :notice => "Votre message a bien été modifié"
     else
@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    raise ActiveRecord::RecordNotFound.new unless @post && @post.deletable_by?(current_user)
+    enforce_destroy_permission(@post)
     @post.mark_as_deleted
     redirect_to forum_posts_url, :notice => "Votre message a bien été supprimé"
   end

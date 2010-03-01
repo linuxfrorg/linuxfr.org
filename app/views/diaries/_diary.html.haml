@@ -1,5 +1,5 @@
 = article_for diary do |c|
   - c.title = link_to("Journal : #{diary.title}", [diary.owner, diary])
   - c.image = avatar_url(diary.owner)
-  - if diary.editable_by?(current_user)
+  - if current_user && current_user.can_update?(diary)
     - c.actions = link_to("Modifier", edit_user_diary_path(:user_id => diary.owner_id, :id => diary.id), :class => 'action')

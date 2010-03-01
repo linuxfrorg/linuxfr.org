@@ -18,12 +18,13 @@ class WikiPagesController < ApplicationController
       @wiki_page.title = params[:id].titleize
       render :new and return
     end
-    raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.readable_by?(current_user)
+    enforce_view_permission(@wiki_page)
     redirect_to @wiki_page, :status => 301 if @wiki_page.has_better_id?
   end
 
   def new
     @wiki_page = WikiPage.new
+    enforce_create_permission(@wiki_page)
   end
 
   def create
@@ -31,6 +32,7 @@ class WikiPagesController < ApplicationController
     @wiki_page.title = params[:wiki_page][:title]
     @wiki_page.user_id = current_user.id
     @wiki_page.attributes = params[:wiki_page]
+    enforce_create_permission(@wiki_page)
     if !preview_mode && @wiki_page.save
       @wiki_page.create_node(:user_id => current_user.id, :cc_licensed => true)
       redirect_to @wiki_page, :notice => "Nouvelle page de wiki créée"
@@ -42,11 +44,11 @@ class WikiPagesController < ApplicationController
 
   def edit
     @wiki_page.wiki_body = @wiki_page.versions.last.body
-    raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.editable_by?(current_user)
+    enforce_update_permission(@wiki_page)
   end
 
   def update
-    raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.editable_by?(current_user)
+    enforce_update_permission(@wiki_page)
     @wiki_page.attributes = params[:wiki_page]
     @wiki_page.user_id = current_user.id
     if !preview_mode && @wiki_page.save
@@ -57,14 +59,14 @@ class WikiPagesController < ApplicationController
   end
 
   def destroy
-    raise ActiveRecord::RecordNotFound.new unless @wiki_page && @wiki_page.deletable_by?(current_user)
+    enforce_destroy_permission(@wiki_page)
     @wiki_page.mark_as_deleted
     redirect_to WikiPage.home_page, :notice => "Page de wiki supprimée"
   end
 
   def revision
     @wiki_page = WikiPage.find(params[:wiki_page_id])
-    raise ActiveRecord::RecordNotFound unless @wiki_page && @wiki_page.readable_by?(current_user)
+    enforce_view_permission(@wiki_page)
     @version = @wiki_page.versions.find_by_version!(params[:revision])
     previous = @version.higher_item
     @was     = previous ? previous.body : ''

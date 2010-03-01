@@ -20,6 +20,8 @@
 # Those comments are threaded and can be noted.
 #
 class Comment < ActiveRecord::Base
+  include Canable::Ables
+
   belongs_to :user
   belongs_to :node, :touch => :last_commented_at, :counter_cache => :comments_count
   has_many :relevances
@@ -118,7 +120,7 @@ class Comment < ActiveRecord::Base
 
 ### ACL ###
 
-  def readable_by?(user)
+  def viewable_by?(user)
     state != 'deleted' || (user && user.admin?)
   end
 
@@ -126,11 +128,11 @@ class Comment < ActiveRecord::Base
     node && node.content && node.content.commentable_by?(user)
   end
 
-  def editable_by?(user)
+  def updatable_by?(user)
     user && (user.moderator? || user.admin?)
   end
 
-  def deletable_by?(user)
+  def destroyable_by?(user)
     user && (user.moderator? || user.admin?)
   end
 

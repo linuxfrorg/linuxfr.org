@@ -1,4 +1,5 @@
 class NewsController < ApplicationController
+  before_filter :find_news, :only => [:show, :anonymous]
   after_filter  :marked_as_read, :only => [:show]
   respond_to :html, :atom
 
@@ -9,21 +10,12 @@ class NewsController < ApplicationController
   end
 
   def show
-    @news = News.find(params[:id])
-    raise ActiveRecord::RecordNotFound.new unless @news && @news.readable_by?(current_user)
-    # TODO Rails 3
-    # redirect_to @news, :status => 301 if @news.has_better_id?
     respond_with(@news)
   end
 
   # It's exactly the same thing that show, but only for anonymous users.
   # So we can safely cache it.
-  # TODO factorize code
   def anonymous
-    @news = News.find(params[:id])
-    raise ActiveRecord::RecordNotFound.new unless @news && @news.readable_by?(current_user)
-    # TODO Rails 3
-    # redirect_to @news, :status => 301 if @news.has_better_id?
     render :show
   end
 
@@ -47,6 +39,13 @@ class NewsController < ApplicationController
   end
 
 protected
+
+  def find_news
+    @news = News.find(params[:id])
+    enforce_view_permission(@news)
+    # TODO Rails 3
+    # redirect_to @news, :status => 301 if @news.has_better_id?
+  end
 
   def marked_as_read
     current_user.read(@news.node) if current_user

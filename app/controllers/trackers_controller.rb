@@ -20,18 +20,18 @@ class TrackersController < ApplicationController
   end
 
   def show
-    raise ActiveRecord::RecordNotFound unless @tracker && @tracker.readable_by?(current_user)
+    enforce_view_permission(@tracker)
     redirect_to @tracker, :status => 301 if @tracker.has_better_id?
   end
 
   def new
     @tracker = Tracker.new
-    raise ActiveRecord::RecordNotFound.new unless @tracker && @tracker.creatable_by?(current_user)
+    enforce_create_permission(@tracker)
   end
 
   def create
     @tracker = Tracker.new
-    raise ActiveRecord::RecordNotFound.new unless @tracker && @tracker.creatable_by?(current_user)
+    enforce_create_permission(@tracker)
     @tracker.attributes = params[:tracker]
     if !preview_mode && @tracker.save
       @tracker.create_node(:user_id => current_user.id)
@@ -43,11 +43,11 @@ class TrackersController < ApplicationController
   end
 
   def edit
-    raise ActiveRecord::RecordNotFound.new unless @tracker && @tracker.editable_by?(current_user)
+    enforce_update_permission(@tracker)
   end
 
   def update
-    raise ActiveRecord::RecordNotFound.new unless @tracker && @tracker.editable_by?(current_user)
+    enforce_update_permission(@tracker)
     @tracker.attributes = params[:tracker]
     @tracker.assigned_to_user = current_user
     if !preview_mode && @tracker.save
@@ -58,7 +58,7 @@ class TrackersController < ApplicationController
   end
 
   def destroy
-    raise ActiveRecord::RecordNotFound.new unless @tracker && @tracker.deletable_by?(current_user)
+    enforce_destroy_permission(@tracker)
     @tracker.mark_as_deleted
     redirect_to trackers_url, :notice => "Entrée du suivi supprimée"
   end

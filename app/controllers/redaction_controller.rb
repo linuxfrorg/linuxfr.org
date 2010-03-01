@@ -3,7 +3,7 @@ class RedactionController < ApplicationController
 
   def index
     @board = Board[Board.writing]
-    raise ActiveRecord::RecordNotFound unless @board && @board.accessible_by?(current_user)
+    enforce_view_permission(@board)
     @boards = Board.by_kind(@board.object_type)
     @news   = News.draft.sorted.all(:limit => 3)
   end

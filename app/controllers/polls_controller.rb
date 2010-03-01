@@ -17,19 +17,19 @@ class PollsController < ApplicationController
   end
 
   def show
-    raise ActiveRecord::RecordNotFound.new unless @poll && @poll.readable_by?(current_user)
+    enforce_view_permission(@poll)
     # TODO Rails 3
     # redirect_to @poll, :status => 301 if @poll.has_better_id?
   end
 
   def new
     @poll = Poll.new
-    raise ActiveRecord::RecordNotFound.new unless @poll && @poll.creatable_by?(current_user)
+    enforce_create_permission(@poll)
   end
 
   def create
     @poll = Poll.new
-    raise ActiveRecord::RecordNotFound.new unless @poll && @poll.creatable_by?(current_user)
+    enforce_create_permission(@poll)
     @poll.attributes = params[:poll]
     if !preview_mode && @poll.save
       @poll.create_node(:public => false, :user_id => current_user.id)
@@ -41,7 +41,7 @@ class PollsController < ApplicationController
   end
 
   def vote
-    raise ActiveRecord::RecordNotFound unless @poll && @poll.answerable_by?(request.remote_ip)
+    enforce_answer_permission(@poll)
     @answer = @poll.answers.scoped_by_position(params[:position]).first
     raise ActiveRecord::RecordNotFound unless @answer
     @answer.vote(request.remote_ip)
