@@ -35,10 +35,10 @@ module NodeHelper
   end
 
   def paginated_section(args, link=nil, &block)
-    toolbox    = content_tag(:div, link, :class => 'new-content') if link
+    toolbox    = link ? content_tag(:div, link, :class => 'new-content') : ''.html_safe
     order_bar  = render 'shared/order_navbar'
     pagination = will_paginate(args).to_s
-    before = content_tag(:nav, toolbox.to_s + order_bar + pagination, :class => "toolbox")
+    before = content_tag(:nav, toolbox + order_bar + pagination, :class => "toolbox")
     after  = content_tag(:nav, pagination, :class => "toolbox")
     before + capture(&block) + after
   end
