@@ -6,6 +6,5 @@
   %p
     Liste des dernières modifications :
   %ul
-    - edition.versions.each do |v|
-      %li
-        = link_to "#{v.user.try :name} : #{v.message}", wiki_page_revision_path(edition.friendly_id, v.version)
+    = list_of(edition.versions) do |v|
+      = link_to "#{v.user.try :name} : #{v.message}", wiki_page_revision_path(edition.friendly_id, v.version)

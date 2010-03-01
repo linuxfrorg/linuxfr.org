@@ -6,8 +6,7 @@
     Pas de dépêche à modérer
   - else
     %ul
-      - @candidate_news.each do |news|
-        %li
-          = link_to news.title, [:moderation, news]
+      = list_of(@candidate_news) do |news|
+        = link_to news.title, [:moderation, news]
   - @boards = Board.by_kind(Board.amr)
   = render 'boards/boards'

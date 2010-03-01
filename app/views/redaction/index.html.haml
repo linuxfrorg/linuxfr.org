@@ -4,9 +4,8 @@
     Aucune dépêche.
   - else
     %ul
-      - @news.each do |n|
-        %li
-          = link_to n.title, [:redaction, n]
+      = list_of @news do |n|
+        = link_to n.title, [:redaction, n]
     = link_to "Afficher toutes les dépêches", redaction_news_index_path
   = button_to "Commencer une nouvelle dépêche", '/redaction/news'
 

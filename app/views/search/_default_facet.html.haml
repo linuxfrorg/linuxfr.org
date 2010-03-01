@@ -1,6 +1,5 @@
 %div
   %h2 Types
   %ul
-    - @facets.each do |type,count|
-      %li
-        = link_to "#{type} (#{count})", search_by_type_path(:type => type, :q => @query)
+    = list_of @facets do |type,count|
+      = link_to "#{type} (#{count})", search_by_type_path(:type => type, :q => @query)

@@ -9,8 +9,8 @@
       - unless (tags = record.node.popular_tags.all).empty?
         Tags :
         %ul.tag-cloud
-          - tags.each do |tag|
-            %li= link_to tag.name, public_tag_path(:id => tag.name), :rel => 'tag'
+          = list_of tags do |tag|
+            = link_to tag.name, public_tag_path(:id => tag.name), :rel => 'tag'
   %figure.score
     = record.score
   - if image

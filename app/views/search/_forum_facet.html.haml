@@ -1,6 +1,5 @@
 %div
   %h2 Forums
   %ul
-    - @facets.each do |facet,count|
-      %li
-        = link_to "#{facet} (#{count})", search_by_facet_path(:type => 'Post', :facet => facet, :q => @query)
+    = list_of @facets do |facet,count|
+      = link_to "#{facet} (#{count})", search_by_facet_path(:type => 'Post', :facet => facet, :q => @query)

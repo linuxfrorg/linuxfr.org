@@ -1,7 +1,6 @@
 #user-recent-nodes
   %h1 Derniers contenus
   %ul
-    - @nodes.each do |node|
-      %li
-        %span.content-type= node.content_type
-        = link_to_content node.content
+    = list_of(@nodes) do |node|
+      %span.content-type= node.content_type
+      = link_to_content node.content

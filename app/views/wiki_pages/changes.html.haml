@@ -4,9 +4,8 @@
 %nav.toolbox
   = will_paginate @versions
 %ul.changes
-  - @versions.each do |v|
-    %li
-      = link_to v.wiki_page.title, v.wiki_page
-      = link_to "(révision #{v.version})", wiki_page_revision_path(v.wiki_page.friendly_id, v.version)
+  - list_of(@versions) do |v|
+    = link_to v.wiki_page.title, v.wiki_page
+    = link_to "(révision #{v.version})", wiki_page_revision_path(v.wiki_page.friendly_id, v.version)
 %nav.toolbox
   = will_paginate @versions
