@@ -1,5 +1,5 @@
 require 'compass'
-# If you have any compass plugins, require them here.
-Compass.configuration.parse(File.join(RAILS_ROOT, "config", "compass.config"))
-Compass.configuration.environment = Rails.env.to_sym
+rails_root = (defined?(Rails) ? Rails.root : RAILS_ROOT).to_s
+Compass.add_project_configuration(File.join(rails_root, "config", "compass.rb"))
 Compass.configure_sass_plugin!
+Compass.handle_configuration_change!

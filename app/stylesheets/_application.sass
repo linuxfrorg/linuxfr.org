@@ -3,16 +3,16 @@
 
 @import compass/reset
 @import blueprint
-@import blueprint/modules/scaffolding.sass
+@import blueprint/scaffolding.sass
 
 +reset-html5
 
 /* ---------------
 
 //Recommended Blueprint configuration with scoping and semantic layout:
-+blueprint-typography("body.bp")
 +blueprint-scaffolding("body.bp")
 body.bp
+  +blueprint-typography(true)
   +blueprint-utilities
   +blueprint-debug
   +blueprint-interaction
