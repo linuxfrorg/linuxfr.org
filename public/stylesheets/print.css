@@ -1,77 +1,74 @@
-/* line 17, ../../../../gem/gems/compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_print.sass */
-body {
+/* line 7, ../../app/stylesheets/print.sass */
+body.bp {
   line-height: 1.5;
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
   color: #000;
   background: none;
-  font-size: 10pt; }
-
-/* line 39, ../../../../gem/gems/compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_print.sass */
-.container {
-  background: none; }
-
-/* line 41, ../../../../gem/gems/compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_print.sass */
-hr {
+  font-size: 10pt;
+}
+/* line 46, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_print.sass */
+body.bp .container {
+  background: none;
+}
+/* line 48, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_print.sass */
+body.bp hr {
   background: #ccc;
   color: #ccc;
   width: 100%;
   height: 2px;
   margin: 2em 0;
   padding: 0;
-  border: none; }
-  /* line 49, ../../../../gem/gems/compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_print.sass */
-  hr.space {
-    background: #fff;
-    color: #fff; }
-
-/* line 52, ../../../../gem/gems/compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_print.sass */
-h1, h2, h3, h4, h5, h6 {
-  font-family: Helvetica Neue, Arial, Helvetica, sans-serif; }
-
-/* line 54, ../../../../gem/gems/compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_print.sass */
-code {
+  border: none;
+}
+/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_print.sass */
+body.bp hr.space {
+  background: #fff;
+  color: #fff;
+}
+/* line 59, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_print.sass */
+body.bp h1, body.bp h2, body.bp h3, body.bp h4, body.bp h5, body.bp h6 {
+  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+}
+/* line 61, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_print.sass */
+body.bp code {
   font-size: .9em;
-  font-family: 'andale mono', 'lucida console', monospace; }
-
-/* line 58, ../../../../gem/gems/compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_print.sass */
-img {
-  display: inline;
-  float: left;
-  margin: 1.5em 1.5em 1.5em 0; }
-
-/* line 62, ../../../../gem/gems/compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_print.sass */
-a img {
-  border: none; }
-/* line 64, ../../../../gem/gems/compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_print.sass */
-a:link,
-a:visited {
+  font-family: 'andale mono', 'lucida console', monospace;
+}
+/* line 66, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_print.sass */
+body.bp a img {
+  border: none;
+}
+/* line 68, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_print.sass */
+body.bp a:link,
+body.bp a:visited {
   background: transparent;
   font-weight: 700;
-  text-decoration: underline; }
-
-/* line 69, ../../../../gem/gems/compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_print.sass */
-p img.top {
-  margin-top: 0; }
-
-/* line 71, ../../../../gem/gems/compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_print.sass */
-blockquote {
+  text-decoration: underline;
+}
+/* line 73, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_print.sass */
+body.bp p img.top {
+  margin-top: 0;
+}
+/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_print.sass */
+body.bp blockquote {
   margin: 1.5em;
   padding: 1em;
   font-style: italic;
-  font-size: .9em; }
-
-/* line 76, ../../../../gem/gems/compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_print.sass */
-.small {
-  font-size: .9em; }
-
-/* line 78, ../../../../gem/gems/compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_print.sass */
-.large {
-  font-size: 1.1em; }
-
-/* line 80, ../../../../gem/gems/compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_print.sass */
-.quiet {
-  color: #999; }
-
-/* line 82, ../../../../gem/gems/compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_print.sass */
-.hide {
-  display: none; }
+  font-size: .9em;
+}
+/* line 80, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_print.sass */
+body.bp .small {
+  font-size: .9em;
+}
+/* line 82, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_print.sass */
+body.bp .large {
+  font-size: 1.1em;
+}
+/* line 84, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_print.sass */
+body.bp .quiet {
+  color: #999;
+}
+/* line 86, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_print.sass */
+body.bp .hide {
+  display: none;
+}

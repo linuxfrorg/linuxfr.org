@@ -43,10 +43,10 @@
         = submit_tag "Rechercher", :name => nil
 
     - unless mobile?
-      %header#branding
-        = logo
-
       %aside#sidebar
+        %header#branding
+          = logo
+
         .login
           - if request.ssl?
             = image_tag 'icones/lock-secure.png', :alt => "Accès sécurisé (https)", :class => "access"
