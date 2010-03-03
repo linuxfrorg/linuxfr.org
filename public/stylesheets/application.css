@@ -121,7 +121,7 @@ body.bp form.inline p {
   margin-bottom: 0;
 }
 
-/* line 11, ../../app/stylesheets/_application.sass */
+/* line 18, ../../app/stylesheets/_application.sass */
 body {
   line-height: 1.5;
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
@@ -509,965 +509,88 @@ form textarea {
   height: 250px;
 }
 
-/* line 49, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.container {
-  min-width: 950px;
-  width: 80%;
-  margin: 0 auto;
+/* line 2, ../../app/stylesheets/layout/_site.sass */
+#site .go-to-content {
+  float: left;
+  text-indent: -9999em;
   overflow: hidden;
-  display: inline-block;
+  text-align: left;
 }
-/* line 5, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
-.container {
+/* line 5, ../../app/stylesheets/layout/_site.sass */
+#site ul {
+  display: inline;
+  list-style: none;
+  width: 100%;
+}
+/* line 4, ../../app/stylesheets/mixins/_list.sass */
+#site ul li {
+  display: inline;
+}
+/* line 10, ../../app/stylesheets/mixins/_list.sass */
+#site ul li:after {
+  content: " | ";
+}
+/* line 13, ../../app/stylesheets/mixins/_list.sass */
+#site ul li:last-child:after, #site ul li.last:after {
+  content: "";
+}
+/* line 8, ../../app/stylesheets/layout/_site.sass */
+#site ul li {
+  padding: 5px 2px;
+}
+/* line 10, ../../app/stylesheets/layout/_site.sass */
+#site form {
+  float: right;
+  padding: 5px 10px;
+}
+
+/* line 1, ../../app/stylesheets/layout/_sidebar.sass */
+#sidebar {
+  padding: 10px;
+}
+/* line 3, ../../app/stylesheets/layout/_sidebar.sass */
+#sidebar img.access {
+  float: right;
+  margin: 5px;
+}
+
+/* line 8, ../../app/stylesheets/layout/_sidebar.sass */
+#branding h1 {
   display: block;
+  width: 201px;
+  height: 186px;
 }
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-1 {
-  width: 3.167%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-1 {
-  display: inline;
-  float: left;
+/* line 12, ../../app/stylesheets/layout/_sidebar.sass */
+#branding h1 a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-indent: -9999em;
   overflow: hidden;
-  width: 3.167%;
-  margin-right: 1.042%;
+  text-align: left;
 }
 
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-2 {
-  width: 7.376%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-2 {
+/* line 3, ../../app/stylesheets/layout/_container.sass */
+#container .toolbox ul, #container .toolbox li {
   display: inline;
-  float: left;
-  overflow: hidden;
-  width: 7.376%;
-  margin-right: 1.042%;
 }
 
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-3 {
-  width: 11.585%;
+/* line 1, ../../app/stylesheets/layout/_bigfooter.sass */
+#bigfooter {
+  padding-bottom: 25px;
 }
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-3 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 11.585%;
-  margin-right: 1.042%;
+/* line 3, ../../app/stylesheets/layout/_bigfooter.sass */
+#bigfooter nav, #bigfooter section {
+  display: inline-block;
+  height: 100%;
+  vertical-align: top;
 }
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-4 {
-  width: 15.794%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-4 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 15.794%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-5 {
-  width: 20.003%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-5 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 20.003%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-6 {
-  width: 24.212%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-6 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 24.212%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-7 {
-  width: 28.421%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-7 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 28.421%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-8 {
-  width: 32.63%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-8 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 32.63%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-9 {
-  width: 36.839%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-9 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 36.839%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-10 {
-  width: 41.048%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-10 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 41.048%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-11 {
-  width: 45.257%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-11 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 45.257%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-12 {
-  width: 49.466%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-12 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 49.466%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-13 {
-  width: 53.675%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-13 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 53.675%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-14 {
-  width: 57.884%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-14 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 57.884%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-15 {
-  width: 62.093%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-15 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 62.093%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-16 {
-  width: 66.302%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-16 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 66.302%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-17 {
-  width: 70.511%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-17 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 70.511%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-18 {
-  width: 74.72%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-18 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 74.72%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-19 {
-  width: 78.929%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-19 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 78.929%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-20 {
-  width: 83.138%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-20 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 83.138%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-21 {
-  width: 87.347%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-21 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 87.347%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-22 {
-  width: 91.556%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-22 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 91.556%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-23 {
-  width: 95.765%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-23 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 95.765%;
-  margin-right: 1.042%;
-}
-
-/* line 53, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.span-24 {
-  width: 99.974%;
-}
-
-/* line 56, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.span-24 {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 99.974%;
+/* line 7, ../../app/stylesheets/layout/_bigfooter.sass */
+#bigfooter #about-us {
   margin-right: 0;
 }
 
-/* line 59, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-div.last {
-  margin-right: 0;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-1 {
-  padding-right: 4.209%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-2 {
-  padding-right: 8.418%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-3 {
-  padding-right: 12.627%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-4 {
-  padding-right: 16.836%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-5 {
-  padding-right: 21.045%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-6 {
-  padding-right: 25.254%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-7 {
-  padding-right: 29.463%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-8 {
-  padding-right: 33.672%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-9 {
-  padding-right: 37.881%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-10 {
-  padding-right: 42.09%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-11 {
-  padding-right: 46.299%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-12 {
-  padding-right: 50.508%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-13 {
-  padding-right: 54.717%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-14 {
-  padding-right: 58.926%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-15 {
-  padding-right: 63.135%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-16 {
-  padding-right: 67.344%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-17 {
-  padding-right: 71.553%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-18 {
-  padding-right: 75.762%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-19 {
-  padding-right: 79.971%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-20 {
-  padding-right: 84.18%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-21 {
-  padding-right: 88.389%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-22 {
-  padding-right: 92.598%;
-}
-
-/* line 63, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.append-23 {
-  padding-right: 96.807%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-1 {
-  padding-left: 4.209%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-2 {
-  padding-left: 8.418%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-3 {
-  padding-left: 12.627%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-4 {
-  padding-left: 16.836%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-5 {
-  padding-left: 21.045%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-6 {
-  padding-left: 25.254%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-7 {
-  padding-left: 29.463%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-8 {
-  padding-left: 33.672%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-9 {
-  padding-left: 37.881%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-10 {
-  padding-left: 42.09%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-11 {
-  padding-left: 46.299%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-12 {
-  padding-left: 50.508%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-13 {
-  padding-left: 54.717%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-14 {
-  padding-left: 58.926%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-15 {
-  padding-left: 63.135%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-16 {
-  padding-left: 67.344%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-17 {
-  padding-left: 71.553%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-18 {
-  padding-left: 75.762%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-19 {
-  padding-left: 79.971%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-20 {
-  padding-left: 84.18%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-21 {
-  padding-left: 88.389%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-22 {
-  padding-left: 92.598%;
-}
-
-/* line 67, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.prepend-23 {
-  padding-left: 96.807%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-1 {
-  margin-left: -4.209%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-2 {
-  margin-left: -8.418%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-3 {
-  margin-left: -12.627%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-4 {
-  margin-left: -16.836%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-5 {
-  margin-left: -21.045%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-6 {
-  margin-left: -25.254%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-7 {
-  margin-left: -29.463%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-8 {
-  margin-left: -33.672%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-9 {
-  margin-left: -37.881%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-10 {
-  margin-left: -42.09%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-11 {
-  margin-left: -46.299%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-12 {
-  margin-left: -50.508%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-13 {
-  margin-left: -54.717%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-14 {
-  margin-left: -58.926%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-15 {
-  margin-left: -63.135%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-16 {
-  margin-left: -67.344%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-17 {
-  margin-left: -71.553%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-18 {
-  margin-left: -75.762%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-19 {
-  margin-left: -79.971%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-20 {
-  margin-left: -84.18%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-21 {
-  margin-left: -88.389%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-22 {
-  margin-left: -92.598%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-23 {
-  margin-left: -96.807%;
-}
-
-/* line 72, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.pull-24 {
-  margin-left: -101.016%;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-1 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -4.209%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-2 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -8.418%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-3 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -12.627%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-4 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -16.836%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-5 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -21.045%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-6 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -25.254%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-7 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -29.463%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-8 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -33.672%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-9 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -37.881%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-10 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -42.09%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-11 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -46.299%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-12 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -50.508%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-13 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -54.717%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-14 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -58.926%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-15 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -63.135%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-16 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -67.344%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-17 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -71.553%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-18 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -75.762%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-19 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -79.971%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-20 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -84.18%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-21 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -88.389%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-22 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -92.598%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-23 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -96.807%;
-  margin-bottom: 0;
-}
-
-/* line 75, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_liquid.sass */
-.push-24 {
-  display: inline;
-  float: right;
-  margin-top: 0;
-  margin-left: 1.042%;
-  margin-right: -101.016%;
-  margin-bottom: 0;
-}
-
-/* line 4, ../../app/stylesheets/partials/_layout.sass */
-body {
-  min-width: 950px;
-  width: 80%;
-  margin: 0 auto;
-  overflow: hidden;
-  display: inline-block;
-  width: 99%;
-}
-/* line 5, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
-body {
-  display: block;
-}
-
-/* line 7, ../../app/stylesheets/partials/_layout.sass */
+/* line 7, ../../app/stylesheets/layout/_layout.sass */
 #site {
   display: inline;
   float: left;
@@ -1475,59 +598,27 @@ body {
   width: 99.974%;
   margin-right: 1.042%;
 }
-/* line 9, ../../app/stylesheets/partials/_layout.sass */
-#site ul {
-  display: inline;
-  width: 100%;
-}
-/* line 12, ../../app/stylesheets/partials/_layout.sass */
-#site ul li {
-  display: inline;
-  padding: 5px 10px;
-  list-style: none;
-}
-/* line 16, ../../app/stylesheets/partials/_layout.sass */
-#site form {
-  float: right;
-}
 
-/* line 19, ../../app/stylesheets/partials/_layout.sass */
-#branding h1 {
-  display: block;
-  width: 201px;
-  height: 186px;
-}
-/* line 23, ../../app/stylesheets/partials/_layout.sass */
-#branding h1 a {
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-indent: -9999em;
-}
-
-/* line 28, ../../app/stylesheets/partials/_layout.sass */
+/* line 9, ../../app/stylesheets/layout/_layout.sass */
 #sidebar {
   display: inline;
   float: left;
   overflow: hidden;
-  width: 24.212%;
+  width: 20.003%;
   margin-right: 1.042%;
+  min-width: 221px;
 }
 
-/* line 30, ../../app/stylesheets/partials/_layout.sass */
+/* line 12, ../../app/stylesheets/layout/_layout.sass */
 #container {
   display: inline;
   float: left;
   overflow: hidden;
-  width: 70.511%;
+  width: 74.72%;
   margin-right: 1.042%;
 }
-/* line 33, ../../app/stylesheets/partials/_layout.sass */
-#container .toolbox ul, #container .toolbox li {
-  display: inline;
-}
 
-/* line 35, ../../app/stylesheets/partials/_layout.sass */
+/* line 14, ../../app/stylesheets/layout/_layout.sass */
 #redaction {
   display: inline;
   float: left;
@@ -1536,7 +627,7 @@ body {
   margin-right: 1.042%;
 }
 
-/* line 37, ../../app/stylesheets/partials/_layout.sass */
+/* line 16, ../../app/stylesheets/layout/_layout.sass */
 #chat {
   display: inline;
   float: left;
@@ -1545,7 +636,7 @@ body {
   margin-right: 1.042%;
 }
 
-/* line 39, ../../app/stylesheets/partials/_layout.sass */
+/* line 18, ../../app/stylesheets/layout/_layout.sass */
 #bigfooter {
   display: inline;
   float: left;
@@ -1553,20 +644,124 @@ body {
   width: 99.974%;
   margin-right: 1.042%;
 }
-/* line 41, ../../app/stylesheets/partials/_layout.sass */
+/* line 20, ../../app/stylesheets/layout/_layout.sass */
 #bigfooter nav, #bigfooter section {
-  display: inline-block;
-  height: 100%;
   display: inline;
   float: left;
   overflow: hidden;
   width: 24.212%;
   margin-right: 1.042%;
-  vertical-align: top;
 }
-/* line 46, ../../app/stylesheets/partials/_layout.sass */
-#bigfooter #about-us {
-  margin-right: 0;
+
+/* line 1, ../../app/stylesheets/partials/_generics.sass */
+ins.diffins, ins.diffmod {
+  background-color: #3f3;
+}
+
+/* line 3, ../../app/stylesheets/partials/_generics.sass */
+del.diffdel, del.diffmod {
+  background-color: #f33;
+}
+
+/* line 5, ../../app/stylesheets/partials/_generics.sass */
+.misspelled {
+  border-bottom: 1px dashed red;
+}
+
+/* line 8, ../../app/stylesheets/partials/_generics.sass */
+a.action:before, time.norloge:before, span.content-type:before {
+  content: "[";
+}
+/* line 10, ../../app/stylesheets/partials/_generics.sass */
+a.action:after, time.norloge:after, span.content-type:after {
+  content: "]";
+}
+
+/* line 12, ../../app/stylesheets/partials/_generics.sass */
+footer.actions:before {
+  content: ">";
+}
+
+/* line 3, ../../app/stylesheets/partials/_contents.sass */
+article figure {
+  float: left;
+  margin-right: 5px;
+}
+/* line 6, ../../app/stylesheets/partials/_contents.sass */
+article figure.score {
+  width: 18px;
+  height: 18px;
+  padding: 10px;
+  border: 1px solid #333;
+  text-align: center;
+  font-weight: bold;
+  border-radius: !amount;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+/* line 14, ../../app/stylesheets/partials/_contents.sass */
+article ul.tag-cloud {
+  display: inline;
+  list-style: none;
+}
+/* line 4, ../../app/stylesheets/mixins/_list.sass */
+article ul.tag-cloud li {
+  display: inline;
+}
+
+/* line 18, ../../app/stylesheets/partials/_contents.sass */
+.comment {
+  clear: both;
+}
+/* line 20, ../../app/stylesheets/partials/_contents.sass */
+.comment .new-comment h3 {
+  border: 1px solid red;
+}
+/* line 22, ../../app/stylesheets/partials/_contents.sass */
+.comment .avatar {
+  float: left;
+  margin: 5px 10px;
+}
+
+/* line 28, ../../app/stylesheets/partials/_contents.sass */
+#polls meter, .poll meter {
+  display: block;
+  margin: 0 0 0 -10px;
+  background-color: orange;
+  border: 1px solid #333;
+}
+/* line 33, ../../app/stylesheets/partials/_contents.sass */
+#polls ul, .poll ul {
+  list-style: none;
+  margin-left: 10px;
+}
+
+/* line 40, ../../app/stylesheets/partials/_contents.sass */
+#tracker .fix a, #tracker .invalid a, .tracker .fix a, .tracker .invalid a {
+  text-decoration: line-through;
+}
+
+/* line 1, ../../app/stylesheets/partials/_toolbar.sass */
+#toolbar {
+  position: fixed;
+  overflow: hidden;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  padding: 2px;
+  color: #333;
+  background-color: #dfd6d1;
+  border: 1px solid #baa;
+}
+
+/* line 11, ../../app/stylesheets/partials/_toolbar.sass */
+#toolbar-items {
+  float: right;
+}
+
+/* line 13, ../../app/stylesheets/partials/_toolbar.sass */
+.fold > .meta, .fold > .image, .fold > .content, .fold > .actions {
+  display: none;
 }
 
 /* line 1, ../../app/stylesheets/partials/_autocomplete.sass */

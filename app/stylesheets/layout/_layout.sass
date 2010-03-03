@@ -1,0 +1,21 @@
+@import blueprint/modules/liquid
+@import layout/site
+@import layout/sidebar
+@import layout/container
+@import layout/bigfooter
+
+#site
+  +column(24)
+#sidebar
+  +column(5)
+  min-width: 221px
+#container
+  +column(18)
+#redaction
+  +column(16)
+#chat
+  +column(8)
+#bigfooter
+  +column(24)
+  nav, section
+    +column(6)

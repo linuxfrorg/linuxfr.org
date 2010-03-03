@@ -10,7 +10,8 @@ module NodeHelper
   def article_for(record)
     cp = ContentPresenter.new
     cp.record = record
-    cp.css_class = 'content'
+    cp.css_class = 'content '
+    cp.css_class << record.class.class_name.downcase
     cp.css_class << ' new-content' if current_user && record.node.read_status(current_user) == :not_read
     yield cp
     cp.meta ||= posted_by(record)

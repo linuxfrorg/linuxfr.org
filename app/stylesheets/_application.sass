@@ -1,5 +1,12 @@
-@import partials/colors
+// Constants
+@import constants/colors
 
+// Mixins
+@import mixins/rounded
+@import mixins/list
+@import compass/utilities/text
+
+// Reset
 @import compass/reset
 +reset-html5
 
@@ -16,7 +23,13 @@ body
 form
   +blueprint-form
 
-@import partials/layout
+// Layout
+@import layout/layout
+
+// Partials
+@import partials/generics
+@import partials/contents
+@import partials/toolbar
 @import partials/autocomplete
 @import partials/notice
 @import partials/markitup
