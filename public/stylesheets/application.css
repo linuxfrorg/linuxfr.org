@@ -208,11 +208,11 @@ body p img.right {
 /* line 100, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_typography.sass */
 body a {
   text-decoration: underline;
-  color: #9fb4cc;
+  color: #000099;
 }
 /* line 12, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
 body a:visited {
-  color: #6c8199;
+  color: #000066;
 }
 /* line 15, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
 body a:focus {
@@ -224,7 +224,7 @@ body a:hover {
 }
 /* line 21, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
 body a:active {
-  color: #ffb4cc;
+  color: #cc0099;
 }
 /* line 103, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_typography.sass */
 body blockquote {
@@ -554,13 +554,7 @@ form textarea {
 /* line 15, ../../app/stylesheets/layout/_site.sass */
 #site ul li a {
   color: inherit;
-  text-decoration: inherit;
-  cursor: inherit;
   text-decoration: none;
-}
-/* line 6, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/compass/stylesheets/compass/utilities/links/_unstyled_link.sass */
-#site ul li a:active, #site ul li a:focus {
-  outline: none;
 }
 /* line 4, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/compass/stylesheets/compass/utilities/links/_hover_link.sass */
 #site ul li a:hover {
@@ -581,14 +575,32 @@ form textarea {
   float: right;
   margin: 5px;
 }
+/* line 6, ../../app/stylesheets/layout/_sidebar.sass */
+#sidebar .box {
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #fff8e3;
+  border: 3px solid #1f1f18;
+  border-radius: !amount;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+}
+/* line 12, ../../app/stylesheets/layout/_sidebar.sass */
+#sidebar h1 {
+  font-size: 2em;
+}
+/* line 14, ../../app/stylesheets/layout/_sidebar.sass */
+#sidebar input {
+  max-width: 200px;
+}
 
-/* line 8, ../../app/stylesheets/layout/_sidebar.sass */
+/* line 18, ../../app/stylesheets/layout/_sidebar.sass */
 #branding h1 {
   display: block;
   width: 201px;
   height: 186px;
 }
-/* line 12, ../../app/stylesheets/layout/_sidebar.sass */
+/* line 22, ../../app/stylesheets/layout/_sidebar.sass */
 #branding h1 a {
   display: block;
   width: 100%;
@@ -601,10 +613,12 @@ form textarea {
 /* line 2, ../../app/stylesheets/layout/_container.sass */
 #container > h1 {
   text-align: center;
+  font-family: Megalopolis, helvetica, arial, serif;
   font-size: 5em;
   font-weight: bolder;
+  line-height: 80px;
 }
-/* line 7, ../../app/stylesheets/layout/_container.sass */
+/* line 9, ../../app/stylesheets/layout/_container.sass */
 #container .toolbox ul, #container .toolbox li {
   display: inline;
 }
@@ -743,17 +757,15 @@ article {
 article header h1 {
   margin: 15px 0 5px;
   font-family: Megalopolis, helvetica, arial, serif;
-  color: #db4105;
+  color: #000099;
 }
 /* line 12, ../../app/stylesheets/partials/_contents.sass */
 article header h1 a {
-  color: inherit;
-  text-decoration: inherit;
-  cursor: inherit;
+  text-decoration: none;
 }
-/* line 6, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/compass/stylesheets/compass/utilities/links/_unstyled_link.sass */
-article header h1 a:active, article header h1 a:focus {
-  outline: none;
+/* line 4, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/compass/stylesheets/compass/utilities/links/_hover_link.sass */
+article header h1 a:hover {
+  text-decoration: underline;
 }
 /* line 14, ../../app/stylesheets/partials/_contents.sass */
 article figure {

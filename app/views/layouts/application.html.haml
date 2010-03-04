@@ -49,7 +49,7 @@
         %header#branding
           = logo
 
-        .login
+        .login.box
           - if request.ssl?
             = image_tag 'icones/lock-secure.png', :alt => "Accès sécurisé (https)", :class => "access"
           - else
