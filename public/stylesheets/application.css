@@ -591,7 +591,7 @@ form textarea {
 }
 /* line 14, ../../app/stylesheets/layout/_sidebar.sass */
 #sidebar input {
-  max-width: 200px;
+  max-width: 180px;
 }
 
 /* line 18, ../../app/stylesheets/layout/_sidebar.sass */
@@ -662,19 +662,19 @@ form textarea {
   overflow: hidden;
   width: 20.003%;
   margin-right: 1.042%;
-  min-width: 221px;
+  width: 201px;
 }
 
 /* line 12, ../../app/stylesheets/layout/_layout.sass */
 #container {
-  display: inline;
-  float: left;
-  overflow: hidden;
-  width: 74.72%;
-  margin-right: 1.042%;
+  padding-top: 70px;
+}
+/* line 14, ../../app/stylesheets/layout/_layout.sass */
+#container > * {
+  margin: 0 50px 0 251px;
 }
 
-/* line 14, ../../app/stylesheets/layout/_layout.sass */
+/* line 16, ../../app/stylesheets/layout/_layout.sass */
 #redaction {
   display: inline;
   float: left;
@@ -683,7 +683,7 @@ form textarea {
   margin-right: 1.042%;
 }
 
-/* line 16, ../../app/stylesheets/layout/_layout.sass */
+/* line 18, ../../app/stylesheets/layout/_layout.sass */
 #chat {
   display: inline;
   float: left;
@@ -692,7 +692,7 @@ form textarea {
   margin-right: 1.042%;
 }
 
-/* line 18, ../../app/stylesheets/layout/_layout.sass */
+/* line 20, ../../app/stylesheets/layout/_layout.sass */
 #bigfooter {
   display: inline;
   float: left;
@@ -700,7 +700,7 @@ form textarea {
   width: 99.974%;
   margin-right: 1.042%;
 }
-/* line 20, ../../app/stylesheets/layout/_layout.sass */
+/* line 22, ../../app/stylesheets/layout/_layout.sass */
 #bigfooter nav, #bigfooter section {
   display: inline;
   float: left;
@@ -794,34 +794,30 @@ article ul.tag-cloud li {
   display: inline;
 }
 
-/* line 29, ../../app/stylesheets/partials/_contents.sass */
-.comment {
-  clear: both;
-}
-/* line 31, ../../app/stylesheets/partials/_contents.sass */
+/* line 30, ../../app/stylesheets/partials/_contents.sass */
 .comment .new-comment h3 {
   border: 1px solid red;
 }
-/* line 33, ../../app/stylesheets/partials/_contents.sass */
+/* line 32, ../../app/stylesheets/partials/_contents.sass */
 .comment .avatar {
   float: left;
   margin: 5px 10px;
 }
 
-/* line 39, ../../app/stylesheets/partials/_contents.sass */
+/* line 38, ../../app/stylesheets/partials/_contents.sass */
 #polls meter, .poll meter {
   display: block;
   margin: 0 0 0 -10px;
   background-color: orange;
   border: 1px solid #333;
 }
-/* line 44, ../../app/stylesheets/partials/_contents.sass */
+/* line 43, ../../app/stylesheets/partials/_contents.sass */
 #polls ul, .poll ul {
   list-style: none;
   margin-left: 10px;
 }
 
-/* line 51, ../../app/stylesheets/partials/_contents.sass */
+/* line 50, ../../app/stylesheets/partials/_contents.sass */
 #tracker .fix a, #tracker .invalid a, .tracker .fix a, .tracker .invalid a {
   text-decoration: line-through;
 }
