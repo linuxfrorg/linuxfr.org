@@ -20,7 +20,7 @@
     %meta(name="description" content=@description)
     %meta(name="keywords" content="#{@keywords.join ', '}")
     <!--[if IE]><script src="/javascripts/html5.js"></script><![endif]-->  
-    <!--[if lte IE 7]><script src="/javascripts/IE8.js"></script><![endif]-->  
+    <!--[if lt IE 9]><script src="/javascripts/IE9.js"></script><![endif]-->  
     - @feeds.each do |link,title|
       = auto_discovery_link_tag :atom, link, { :title => title }
 
