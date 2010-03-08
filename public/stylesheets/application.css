@@ -389,7 +389,7 @@ body .bottom {
 }
 /* line 7, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_debug.sass */
 body .showgrid {
-  background: url('../images/grid.png?1267574011');
+  background: url('../images/grid.png?1267744199');
 }
 /* line 5, ../../../../gem/gems/compass-0.10.0.pre8/frameworks/blueprint/stylesheets/blueprint/_interaction.sass */
 body .error {
@@ -930,9 +930,201 @@ article ul.tag-cloud li {
   cursor: pointer;
 }
 
+/* line 1, ../../app/stylesheets/partials/_markitup.sass */
+.markItUp {
+  width: 700px;
+  margin: 5px 0 5px 0;
+  border: 5px solid #F5F5F5;
+}
+/* line 5, ../../app/stylesheets/partials/_markitup.sass */
+.markItUp .markItUp a: link,
+.markItUp .markItUp a: visited {
+  color: #000;
+  text-decoration: none;
+}
 
+/* line 10, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpContainer {
+  border: 1px solid #3C769D;
+  background: #FFF url(/images/markitup/bg-container.png) repeat-x top left;
+  padding: 5px 5px 2px 5px;
+  font: 11px Verdana, Arial, Helvetica, sans-serif;
+}
 
 /* line 16, ../../app/stylesheets/partials/_markitup.sass */
 .markItUpEditor {
-  /* clear:both */
+  font: 12px 'Courier New', Courier, monospace;
+  padding: 5px 5px 5px 35px;
+  border: 3px solid #3C769D;
+  width: 643px;
+  height: 320px;
+  background-image: url(/images/markitup/bg-editor-markdown.png);
+  background-repeat: no-repeat;
+  /* clear: both */
+  display: block;
+  line-height: 18px;
+  overflow: auto;
+}
+
+/* line 29, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpPreviewFrame {
+  overflow: auto;
+  background-color: #FFFFFF;
+  border: 1px solid #3C769D;
+  width: 99.9%;
+  height: 300px;
+  margin: 5px 0;
+}
+
+/* line 37, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpFooter {
+  width: 100%;
+  cursor: n-resize;
+}
+
+/* line 41, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpResizeHandle {
+  overflow: hidden;
+  width: 22px;
+  height: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url(/images/markitup/handle.png);
+  cursor: n-resize;
+}
+
+/* line 51, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpHeader ul li {
+  list-style: none;
+  float: left;
+  position: relative;
+  &: hover > ul;
+  &-display: block;
+}
+/* line 55, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpHeader ul li ul {
+  display: none;
+}
+/* line 59, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpHeader ul a {
+  display: block;
+  width: 16px height:16px;
+  text-indent: -10000px;
+  background-repeat: no-repeat;
+  padding: 3px;
+  margin: 0px;
+}
+/* line 66, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpHeader ul .markItUpDropMenu {
+  background: transparent url(/images/markitup/menu.png) no-repeat 115% 50%;
+  margin-right: 5px;
+}
+/* line 69, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpHeader ul .markItUpDropMenu li {
+  margin-right: 0px;
+}
+/* line 71, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpHeader ul .markItUpSeparator {
+  margin: 0 10px;
+  width: 1px;
+  height: 16px;
+  overflow: hidden;
+  background-color: #CCC;
+}
+/* line 77, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpHeader ul ul {
+  display: none;
+  position: absolute;
+  top: 18px left:0px;
+  background: #F5F5F5;
+  border: 1px solid #3C769D;
+  height: inherit;
+}
+/* line 84, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpHeader ul ul .markItUpSeparator {
+  width: auto height:1px;
+  margin: 0px;
+}
+/* line 87, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpHeader ul ul li {
+  float: none;
+  border-bottom: 1px solid #3C769D;
+}
+/* line 90, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpHeader ul ul .markItUpDropMenu {
+  background: #F5F5F5 url(/images/markitup/submenu.png) no-repeat 100% 50%;
+}
+/* line 92, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpHeader ul ul ul {
+  position: absolute;
+  top: -1px left:150px;
+}
+/* line 95, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpHeader ul ul ul li {
+  float: none;
+}
+/* line 97, ../../app/stylesheets/partials/_markitup.sass */
+.markItUpHeader ul ul a {
+  display: block;
+  padding-left: 0px;
+  text-indent: 0;
+  width: 120px;
+  padding: 5px 5px 5px 25px;
+  background-position: 2px 50%;
+  &: hover;
+  &-color: #FFF;
+  &-background-color: #3C769D;
+}
+
+/* line 109, ../../app/stylesheets/partials/_markitup.sass */
+.markItUp .h1 a {
+  background-image: url(/images/markitup/h1.png);
+}
+/* line 111, ../../app/stylesheets/partials/_markitup.sass */
+.markItUp .h2 a {
+  background-image: url(/images/markitup/h2.png);
+}
+/* line 113, ../../app/stylesheets/partials/_markitup.sass */
+.markItUp .h3 a {
+  background-image: url(/images/markitup/h3.png);
+}
+/* line 115, ../../app/stylesheets/partials/_markitup.sass */
+.markItUp .h4 a {
+  background-image: url(/images/markitup/h4.png);
+}
+/* line 117, ../../app/stylesheets/partials/_markitup.sass */
+.markItUp .bold a {
+  background-image: url(/images/markitup/bold.png);
+}
+/* line 119, ../../app/stylesheets/partials/_markitup.sass */
+.markItUp .italic a {
+  background-image: url(/images/markitup/italic.png);
+}
+/* line 121, ../../app/stylesheets/partials/_markitup.sass */
+.markItUp .stroke a {
+  background-image: url(/images/markitup/stroke.png);
+}
+/* line 123, ../../app/stylesheets/partials/_markitup.sass */
+.markItUp .list-bullet a {
+  background-image: url(/images/markitup/list-bullet.png);
+}
+/* line 125, ../../app/stylesheets/partials/_markitup.sass */
+.markItUp .list-numeric a {
+  background-image: url(/images/markitup/list-numeric.png);
+}
+/* line 127, ../../app/stylesheets/partials/_markitup.sass */
+.markItUp .image a {
+  background-image: url(/images/markitup/picture.png);
+}
+/* line 129, ../../app/stylesheets/partials/_markitup.sass */
+.markItUp .link a {
+  background-image: url(/images/markitup/link.png);
+}
+/* line 131, ../../app/stylesheets/partials/_markitup.sass */
+.markItUp .quotes a {
+  background-image: url(/images/markitup/quotes.png);
+}
+/* line 133, ../../app/stylesheets/partials/_markitup.sass */
+.markItUp .code a {
+  background-image: url(/images/markitup/page_white_code.png);
 }

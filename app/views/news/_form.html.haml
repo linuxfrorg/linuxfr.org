@@ -18,6 +18,11 @@
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
 #form-links
   - langs = Dictionary.collection('lang')
+  %fieldset
+    %label Nom du lien
+    %label URL
+    %label langue
+    %label actions
   - form.fields_for :links do |lform|
     %fieldset.link
       = lform.text_field :title
