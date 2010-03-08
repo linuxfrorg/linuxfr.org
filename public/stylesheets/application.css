@@ -757,14 +757,15 @@ article {
   border-radius: !amount;
   -moz-border-radius: 25px;
   -webkit-border-radius: 25px;
+  overflow: hidden;
 }
-/* line 8, ../../app/stylesheets/partials/_contents.sass */
+/* line 9, ../../app/stylesheets/partials/_contents.sass */
 article header h1 {
   margin: 15px 0 5px;
   font-family: Megalopolis, helvetica, arial, serif;
   color: #000099;
 }
-/* line 12, ../../app/stylesheets/partials/_contents.sass */
+/* line 13, ../../app/stylesheets/partials/_contents.sass */
 article header h1 a {
   text-decoration: none;
 }
@@ -772,12 +773,12 @@ article header h1 a {
 article header h1 a:hover {
   text-decoration: underline;
 }
-/* line 14, ../../app/stylesheets/partials/_contents.sass */
+/* line 15, ../../app/stylesheets/partials/_contents.sass */
 article figure {
   float: left;
   margin-right: 5px;
 }
-/* line 17, ../../app/stylesheets/partials/_contents.sass */
+/* line 18, ../../app/stylesheets/partials/_contents.sass */
 article figure.score {
   width: 18px;
   height: 18px;
@@ -789,7 +790,7 @@ article figure.score {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
 }
-/* line 25, ../../app/stylesheets/partials/_contents.sass */
+/* line 26, ../../app/stylesheets/partials/_contents.sass */
 article ul.tag-cloud {
   display: inline;
   list-style: none;
@@ -799,30 +800,30 @@ article ul.tag-cloud li {
   display: inline;
 }
 
-/* line 30, ../../app/stylesheets/partials/_contents.sass */
+/* line 31, ../../app/stylesheets/partials/_contents.sass */
 .comment .new-comment h3 {
   border: 1px solid red;
 }
-/* line 32, ../../app/stylesheets/partials/_contents.sass */
+/* line 33, ../../app/stylesheets/partials/_contents.sass */
 .comment .avatar {
   float: left;
   margin: 5px 10px;
 }
 
-/* line 38, ../../app/stylesheets/partials/_contents.sass */
+/* line 39, ../../app/stylesheets/partials/_contents.sass */
 #polls meter, .poll meter {
   display: block;
   margin: 0 0 0 -10px;
   background-color: orange;
   border: 1px solid #333;
 }
-/* line 43, ../../app/stylesheets/partials/_contents.sass */
+/* line 44, ../../app/stylesheets/partials/_contents.sass */
 #polls ul, .poll ul {
   list-style: none;
   margin-left: 10px;
 }
 
-/* line 50, ../../app/stylesheets/partials/_contents.sass */
+/* line 51, ../../app/stylesheets/partials/_contents.sass */
 #tracker .fix a, #tracker .invalid a, .tracker .fix a, .tracker .invalid a {
   text-decoration: line-through;
 }
