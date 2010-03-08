@@ -1,77 +1,14 @@
 <!DOCTYPE html>
 %html(lang="fr")
-  %head
-    %title= @title.join ' -> '
-    - if current_account_session && current_account_session.stylesheet
-      = stylesheet_link_tag current_account_session.stylesheet, :media => "screen, projection"
-    - elsif mobile?
-      = stylesheet_link_tag 'mobile'
-    - else
-      = stylesheet_link_tag 'application', :media => "screen, projection"
-    - unless mobile?
-      = stylesheet_link_tag 'print', :media => "print"
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
-    <link rel="search" type="application/opensearchdescription+xml" title="Recherche LinuxFr.org" href="/opensearch.xml" />
-    - if mobile?
-      <link rel="apple-touch-icon" href="/iphone.png" />
-      %meta(name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;")
-    - if @author
-      %meta(name="author" content=@author)
-    %meta(name="description" content=@description)
-    %meta(name="keywords" content="#{@keywords.join ', '}")
-    <!--[if IE]><script src="/javascripts/html5.js"></script><![endif]-->  
-    <!--[if lt IE 9]><script src="/javascripts/IE9.js"></script><![endif]-->  
-    - @feeds.each do |link,title|
-      = auto_discovery_link_tag :atom, link, { :title => title }
+  = render 'layouts/head'
 
   %body{body_attr}
     #top
       = check_js
 
-    %nav#site
-      .go-to-content
-        %a(href="#container") Aller au contenu
-      %ul
-        %li= link_to "Accueil", '/'
-        %li= link_to "Dépêches", news_index_path
-        %li= link_to "Journaux", diaries_path
-        %li= link_to "Forums", forums_path
-        %li= link_to "Sondages", polls_path
-        %li= link_to "Wiki", wiki_pages_path
-        %li= link_to "Suivi", trackers_path
-        %li= link_to "Plan", static_path(:id => 'plan')
-      - form_tag search_path, :method => :get do
-        <input id="query" name="q" type="search" placeholder="Entrer un mot-clé" />
-        = submit_tag "Rechercher", :name => nil
-
+    = render 'layouts/site'
     - unless mobile?
-      %aside#sidebar
-        %header#branding
-          = logo
-
-        .login.box
-          - if request.ssl?
-            = image_tag 'icones/lock-secure.png', :alt => "Accès sécurisé (https)", :class => "access"
-          - else
-            = image_tag 'icones/lock-insecure.png', :alt => "Accès en clair (http)", :class => "access"
-          - if current_user
-            %h1= current_user.name
-            %p Il vous reste #{current_user.account.nb_votes} avis
-            %p= link_to "Proposer un contenu", '/proposer-un-contenu'
-            %p= link_to "Mon tableau de bord", dashboard_path
-            %p= link_to "Modifier mes préférences", edit_account_path
-            %p= link_to "Changer de CSS", edit_stylesheet_path
-            %p= link_to "Se déconnecter", logout_path
-          - else
-            = render 'account_sessions/new'
-            %p= link_to "Proposer un contenu", '/proposer-un-contenu-en-anonyme'
-        - admin_only do
-          = render 'admin/box'
-        - amr_only do
-          = render 'moderation/box'
-        - writer_only do
-          = render 'redaction/box'
-        = yield :column
+      = render 'layouts/sidebar'
 
     %section#container
       - [:alert, :notice].each do |type|
@@ -82,34 +19,5 @@
         %p= link_to "Revenir en haut de page", '#top', :class => 'scroll'
 
     - unless mobile?
-      %footer#bigfooter
-        %nav#last-comments
-          %h1 Derniers commentaires
-          %ul
-            - @last_comments.each do |comment|
-              %li= link_to comment.title, node_comment_url(:node_id => comment.node_id, :id => comment.id)
-        %nav#popular-tags
-          %h1 Tags populaires
-          %ul.tag-cloud
-            - @popular_tags.each do |tag|
-              %li= link_to tag.name, public_tag_url(:id => tag.name)
-        %section#friends
-          %h1 Sites amis
-          %ul
-            - @friend_sites.each do |site|
-              %li= link_to site.title, site.url
-        %nav#about-us
-          %h1 À propos de LinuxFr.org
-          %ul
-            %li= link_to "Nous contacter", '/contact'
-            %li= link_to "Faire un don", '/faire_un_don'
-            %li= link_to "Team LinuxFr.org", '/team'
-            %li= link_to "Informations sur le site", '/informations'
-            %li= link_to "Foire aux questions", '/aide'
-            %li= link_to "Règles de modération", '/regles_de_moderation'
-            %li= link_to "Statistiques", '/statistiques'
-            %li= link_to "Code source du site", '/code_source_du_site'
-            %li= link_to "Plan du site", '/plan'
-
-    = javascript_include_tag 'http://code.jquery.com/jquery-1.4.2.min.js'
-    = javascript_include_tag 'jquery.nano', 'jquery.autocomplete', 'jquery.markitup.pack', 'jquery.hotkeys', 'jquery.notice', 'jquery.chat', 'jquery.toolbar', 'jquery.nested_fields', 'markitup-markdown', 'rails', 'application'
+      = render 'layouts/footer'
+    = common_js

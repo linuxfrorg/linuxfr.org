@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
 protected
 
   def seo_filter_and_ssl
-    ActionController::Base.session_options[:secure] = request.ssl?
+    # TODO Rails3
+    # ActionController::Base.session_options[:secure] = request.ssl?
     @title         = %w(LinuxFr.org)
     @author        = nil
     @keywords      = %w(Linux Logiciel Libre GNU Free Software Actualité Forum Communauté)
