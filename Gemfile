@@ -22,7 +22,6 @@ gem "haml",                    "~>2.2"
 gem "htmlentities",            "~>4.2"
 # TODO I18n v0.3.5 with this patch:
 # http://github.com/svenfuchs/i18n/commit/32aafb05f920ce2a0ee6a901d02fee24f795ccbb
-gem "json",                    "~>1.2"
 gem "mysql",                   "~>2.8"
 gem "nokogiri",                "~>1.4"
 # TODO Rails 3
@@ -40,6 +39,7 @@ gem "thin",                    "~>1.2"
 # gem "ts-datetime-delta",     "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
 gem "validates_url_format_of", "~>0.1"
 gem "will_paginate",           ">=3.0.pre"
+gem "yajl-ruby",               "~>0.7", :require => "yajl"
 
 group :development do
   gem "jslint_on_rails"
