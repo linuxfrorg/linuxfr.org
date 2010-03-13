@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
   # TODO rails3
   # protect_from_forgery is on by default, says the release notes
   before_filter :seo_filter_and_ssl
-  helper_method :mobile?, :url_for_content, :current_user, :current_account_session
+  # TODO authlogic
+  helper_method :mobile?, :url_for_content #, :current_user, :current_account_session
 
 protected
 
@@ -50,51 +51,52 @@ protected
 
 ### Authentication & authorizations ###
 
-  def current_account_session
-    return @current_account_session if defined?(@current_account_session)
-    @current_account_session = AccountSession.find
-  end
-
-  def current_user
-    return @current_user if defined?(@current_user)
-    @current_user = current_account_session && current_account_session.user
-  end
-
-  def user_required
-    return if current_user
-    store_location
-    redirect_to new_account_session_url, :alert => "Cette fonctionnalité est réservée aux utilisateurs loggés"
-  end
-
-  def anonymous_required
-    redirect_to '/' if current_user
-  end
-
-  def admin_required
-    return if current_user && current_user.admin?
-    store_location
-    redirect_to new_account_session_url, :alert => "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
-  end
-
-  def amr_required
-    return if current_user && current_user.amr?
-    store_location
-    redirect_to new_account_session_url, :alert => "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
-  end
-
-  def writer_required
-    return if current_user && (current_user.writer? || current_user.amr?)
-    store_location
-    redirect_to new_account_session_url, :alert => "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
-  end
-
-  def store_location
-    session[:return_to] = request.get? ? request.request_uri : request.header['Referer']
-  end
-
-  def redirect_back_or_default(default)
-    redirect_to(session[:return_to] || default)
-    session[:return_to] = nil
-  end
+# TODO authlogic
+#   def current_account_session
+#     return @current_account_session if defined?(@current_account_session)
+#     @current_account_session = AccountSession.find
+#   end
+# 
+#   def current_user
+#     return @current_user if defined?(@current_user)
+#     @current_user = current_account_session && current_account_session.user
+#   end
+# 
+#   def user_required
+#     return if current_user
+#     store_location
+#     redirect_to new_account_session_url, :alert => "Cette fonctionnalité est réservée aux utilisateurs loggés"
+#   end
+# 
+#   def anonymous_required
+#     redirect_to '/' if current_user
+#   end
+# 
+#   def admin_required
+#     return if current_user && current_user.admin?
+#     store_location
+#     redirect_to new_account_session_url, :alert => "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
+#   end
+# 
+#   def amr_required
+#     return if current_user && current_user.amr?
+#     store_location
+#     redirect_to new_account_session_url, :alert => "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
+#   end
+# 
+#   def writer_required
+#     return if current_user && (current_user.writer? || current_user.amr?)
+#     store_location
+#     redirect_to new_account_session_url, :alert => "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
+#   end
+# 
+#   def store_location
+#     session[:return_to] = request.get? ? request.request_uri : request.header['Referer']
+#   end
+# 
+#   def redirect_back_or_default(default)
+#     redirect_to(session[:return_to] || default)
+#     session[:return_to] = nil
+#   end
 
 end

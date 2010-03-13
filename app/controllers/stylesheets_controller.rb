@@ -22,6 +22,7 @@ class StylesheetsController < ApplicationController
 protected
 
   def load_account
+    # TODO authlogic
     @account = current_account_session.account
   end
 

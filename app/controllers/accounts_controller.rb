@@ -83,10 +83,12 @@ class AccountsController < ApplicationController
 protected
 
   def load_account_by_token
+    # TODO authlogic
     @account = Account.find_using_perishable_token(params[:token])
   end
 
   def load_current_account
+    # TODO authlogic
     @account = current_account_session.account
   end
 

@@ -42,12 +42,13 @@ class Account < ActiveRecord::Base
 
 ### Authentication ###
 
-  acts_as_authentic do |config|
-    config.validates_length_of_login_field_options :within => 3..30, :message => "Le login doit faire au moins 3 caractères, et pas plus de 30 caractères"
-    config.validates_uniqueness_of_login_field_options :case_sensitive => true, :message => "Ce login est déjà utilisé, veuillez en choisir un autre"
-    config.validates_uniqueness_of_email_field_options :case_sensitive => true, :message => "Cette adresse email est déjà utilisée pour un compte LinuxFr.org"
-    config.perishable_token_valid_for 24.hours
-  end
+# TODO authlogic
+#   acts_as_authentic do |config|
+#     config.validates_length_of_login_field_options :within => 3..30, :message => "Le login doit faire au moins 3 caractères, et pas plus de 30 caractères"
+#     config.validates_uniqueness_of_login_field_options :case_sensitive => true, :message => "Ce login est déjà utilisé, veuillez en choisir un autre"
+#     config.validates_uniqueness_of_email_field_options :case_sensitive => true, :message => "Cette adresse email est déjà utilisée pour un compte LinuxFr.org"
+#     config.perishable_token_valid_for 24.hours
+#   end
 
 ### Password ###
 

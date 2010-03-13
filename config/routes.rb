@@ -1,5 +1,6 @@
 class AnonymousConstraint
   def self.matches?(request)
+    # TODO authlogic
     !request.cookies.has_key? 'account_credentials'
   end
 end
@@ -79,9 +80,10 @@ LinuxfrOrg::Application.routes.draw do
   get  '/desinscription' => 'accounts#delete', :as => :close_account
 
   # Sessions
-  resource :account_session, :as => 'session', :only => [:new, :create, :destroy]
-  post  '/login' => 'account_sessions#new', :as => :login
-  match '/logout' => 'account_sessions#destroy', :as => :logout
+# TODO authlogic
+#   resource :account_session, :as => 'session', :only => [:new, :create, :destroy]
+#   post  '/login' => 'account_sessions#new', :as => :login
+#   match '/logout' => 'account_sessions#destroy', :as => :logout
 
   # Search
   get '/recherche' => 'search#index', :as => :search
