@@ -1,0 +1,40 @@
+fr:
+  errors:
+    messages:
+      not_found: "pas trouvé"
+      already_confirmed: "était déjà confirmé"
+      not_locked: "n'était pas verouillé"
+
+  devise:
+    sessions:
+      link: "Se connecter"
+      signed_in: "Connexion réussie."
+      signed_out: "Déconnexion réussie."
+      unauthenticated: "Vous devez vous connecter ou vous inscrire avant de poursuivre."
+      unconfirmed: "Vous devez confirmer votre compte avant de poursuivre."
+      locked: "Votre compte a été vérouillé."
+      invalid: "Adresse email ou mot de passe invalide."
+      invalid_token: "Token d'authentification invalide."
+      timeout: "Votre session a expirée, veuillez vous reconnecter pour poursuivre."
+      inactive: "Votre compte n'a pas encore été activé."
+    passwords:
+      link: "Mot de passe oublié ?"
+      send_instructions: "Vous allez recevoir un email avec les instructions pour réinitialiser votre mot de passe dans quelques minutes."
+      updated: "Votre mot de passe a été modifié avec succès. Vous êtes maintenant connecté."
+    confirmations:
+      link: "Pas encore reçu les instructions de confirmation ?"
+      send_instructions: "Vous allez recevoir un email avec les instruction pour confirmer votre compte dans quelques minutes."
+      confirmed: "Votre compt a été confirmé avec succès. Vous êtes maintenant connecté."
+    registrations:
+      link: "S'inscrire"
+      signed_up: "Vous vous êtes inscrit avec succès."
+      updated: "Vous avez mis à jour votre compte avec succès."
+      destroyed: "Au revoir. Votre compte a été annulé avec succès. Nous espérons vous revoir bientôt."
+    unlocks:
+      link: "Pas encore reçu les instructions pour déverrouillé votre compte ?"
+      send_instructions: "Vous allez recevoir un email avec les instructions pour déverrouiller votre compte dans quelques minutes."
+      unlocked: "Votre compte a été déverrouillé avec succès. Vous êtes maintenant connecté."
+    mailer:
+      confirmation_instructions: "Instructions pour la confirmation"
+      reset_password_instructions: "Instructions pour la réinitialisation du mot de passe"
+      unlock_instructions: "Instructions pour le déverrouillage"

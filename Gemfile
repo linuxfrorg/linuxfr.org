@@ -10,14 +10,15 @@ gem "rails", :path => "../rails"
 gem "aasm", :git => "git://github.com/rubyist/aasm.git"
 gem "acts_as_list",            "~>0.1"
 gem "canable",                 "~>0.1"
-gem "compass",                 "0.10.0.pre8"
+gem "compass",                 "0.10.0.rc1"
+# TODO Rails 3
+# gem "devise",                  "~>1.1"
+gem "devise", :git => "git://github.com/plataformatec/devise.git"
 gem "erubis",                  "~>2.6"
 gem "french_rails",            "~>0.2"
 gem "friendly_id",             "~>2.3"
 gem "haml",                    "~>2.2"
 gem "htmlentities",            "~>4.2"
-# TODO I18n v0.3.5 with this patch:
-# http://github.com/svenfuchs/i18n/commit/32aafb05f920ce2a0ee6a901d02fee24f795ccbb
 gem "mysql",                   "~>2.8"
 gem "nokogiri",                "~>1.4"
 # TODO Rails 3
@@ -43,6 +44,6 @@ group :development do
 end
 
 group :test do
-  gem "rspec-rails",           ">=2.0.0.beta.3"
+  gem "rspec-rails",           ">=2.0.0.beta.4"
   gem "factory_girl",          "~>1.2"
 end
