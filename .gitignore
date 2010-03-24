@@ -6,6 +6,7 @@ db/sphinx/**/*
 log/*.log
 public/sitemap*
 public/uploads/**/*
+tmp/*
 tmp/**/*
 LATER
 TODO

@@ -23,7 +23,7 @@ gem "mysql",                   "~>2.8"
 gem "nokogiri",                "~>1.4"
 # TODO Rails 3
 # gem "paperclip",               "~>2.3"
-gem "paperclip", :git => "git://github.com/bryanl/paperclip.git", :branch => 'rails3'
+gem "paperclip", :git => "git://github.com/nono/paperclip.git", :branch => 'rails3'
 gem "raspell",                 "~>1.1"
 gem "rdiscount",               "~>1.6"
 gem "rest-client",             "~>1.0", :require => "restclient"
@@ -39,6 +39,7 @@ gem "will_paginate",           ">=3.0.pre"
 gem "yajl-ruby",               "~>0.7", :require => "yajl"
 
 group :development do
+  gem "annotate"
   gem "jslint_on_rails"
   gem "rails3-generators"
 end

@@ -11,7 +11,6 @@ require 'rake/rdoctask'
 # require 'thinking_sphinx/tasks' rescue LoadError
 # require 'thinking_sphinx/deltas/datetime_delta/tasks' rescue LoadError
 # require 'sitemap_generator/tasks' rescue LoadError
-# require 'paperclip/tasks/paperclip_tasks'
 
 if Rails.env.development?
   require 'jslint/tasks'
