@@ -13,34 +13,34 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
-    t.string   "login",               :limit => 40,                         :null => false
-    t.string   "email",               :limit => 100,                        :null => false
+    t.string   "login",                :limit => 40,                        :null => false
     t.string   "state",                              :default => "passive", :null => false
-    t.string   "crypted_password",                                          :null => false
-    t.string   "password_salt",                                             :null => false
-    t.string   "persistence_token",                                         :null => false
-    t.string   "single_access_token",                                       :null => false
-    t.string   "perishable_token",                                          :null => false
-    t.integer  "login_count",                        :default => 0,         :null => false
-    t.integer  "failed_login_count",                 :default => 0,         :null => false
-    t.datetime "last_request_at"
-    t.datetime "current_login_at"
-    t.datetime "last_login_at"
-    t.string   "current_login_ip"
-    t.string   "last_login_ip"
     t.integer  "karma",                              :default => 20,        :null => false
     t.integer  "nb_votes",                           :default => 0,         :null => false
     t.string   "stylesheet"
-    t.string   "old_password",        :limit => 20
+    t.string   "old_password",         :limit => 20
+    t.string   "email",                                                     :null => false
+    t.string   "encrypted_password",   :limit => 40,                        :null => false
+    t.string   "password_salt",                                             :null => false
+    t.string   "confirmation_token",   :limit => 20
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "reset_password_token", :limit => 20
+    t.string   "remember_token",       :limit => 20
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count"
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "accounts", ["email"], :name => "index_accounts_on_email"
+  add_index "accounts", ["confirmation_token"], :name => "index_accounts_on_confirmation_token", :unique => true
+  add_index "accounts", ["email"], :name => "index_accounts_on_email", :unique => true
   add_index "accounts", ["login"], :name => "index_accounts_on_login"
-  add_index "accounts", ["perishable_token"], :name => "index_accounts_on_perishable_token"
-  add_index "accounts", ["persistence_token"], :name => "index_accounts_on_persistence_token"
-  add_index "accounts", ["single_access_token"], :name => "index_accounts_on_single_access_token"
+  add_index "accounts", ["reset_password_token"], :name => "index_accounts_on_reset_password_token", :unique => true
   add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"
 
   create_table "banners", :force => true do |t|

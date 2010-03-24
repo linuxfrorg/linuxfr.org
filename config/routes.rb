@@ -69,21 +69,16 @@ LinuxfrOrg::Application.routes.draw do
   get  '/board/index.xml' => 'boards#show', :as => :free_board_xml, :format => 'xml'
 
   # Accounts
-  resource :account, :as => 'compte' do
-    resource :stylesheet, :only => [:edit, :create, :destroy]
-  end
-  get  '/inscription' => 'accounts#new', :as => :signup
-  get  '/activation/:token' => 'accounts#activate', :as => :activate, :defaults => { :token => nil }
-  get  '/mot-de-passe' => 'accounts#forgot_password', :as => :forgot_password
-  post '/mot-de-passe' => 'accounts#send_password', :as => :send_password
-  get  '/reset/:token' => 'accounts#reset_password', :as => :reset_password, :defaults => { :token => nil }
-  get  '/desinscription' => 'accounts#delete', :as => :close_account
-
-  # Sessions
-# TODO authlogic
-#   resource :account_session, :as => 'session', :only => [:new, :create, :destroy]
-#   post  '/login' => 'account_sessions#new', :as => :login
-#   match '/logout' => 'account_sessions#destroy', :as => :logout
+  devise_for :account, :as => 'compte'
+#   resource :account, :as => 'compte' do
+#     resource :stylesheet, :only => [:edit, :create, :destroy]
+#   end
+#   get  '/inscription' => 'accounts#new', :as => :signup
+#   get  '/activation/:token' => 'accounts#activate', :as => :activate, :defaults => { :token => nil }
+#   get  '/mot-de-passe' => 'accounts#forgot_password', :as => :forgot_password
+#   post '/mot-de-passe' => 'accounts#send_password', :as => :send_password
+#   get  '/reset/:token' => 'accounts#reset_password', :as => :reset_password, :defaults => { :token => nil }
+#   get  '/desinscription' => 'accounts#delete', :as => :close_account
 
   # Search
   get '/recherche' => 'search#index', :as => :search

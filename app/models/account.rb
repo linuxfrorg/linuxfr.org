@@ -2,29 +2,30 @@
 #
 # Table name: accounts
 #
-#  id                  :integer(4)      not null, primary key
-#  user_id             :integer(4)
-#  login               :string(40)      not null
-#  email               :string(100)     not null
-#  state               :string(255)     default("passive"), not null
-#  crypted_password    :string(255)     not null
-#  password_salt       :string(255)     not null
-#  persistence_token   :string(255)     not null
-#  single_access_token :string(255)     not null
-#  perishable_token    :string(255)     not null
-#  login_count         :integer(4)      default(0), not null
-#  failed_login_count  :integer(4)      default(0), not null
-#  last_request_at     :datetime
-#  current_login_at    :datetime
-#  last_login_at       :datetime
-#  current_login_ip    :string(255)
-#  last_login_ip       :string(255)
-#  karma               :integer(4)      default(20), not null
-#  nb_votes            :integer(4)      default(0), not null
-#  stylesheet          :string(255)
-#  old_password        :string(20)
-#  created_at          :datetime
-#  updated_at          :datetime
+#  id                   :integer(4)      not null, primary key
+#  user_id              :integer(4)
+#  login                :string(40)      not null
+#  state                :string(255)     default("passive"), not null
+#  karma                :integer(4)      default(20), not null
+#  nb_votes             :integer(4)      default(0), not null
+#  stylesheet           :string(255)
+#  old_password         :string(20)
+#  email                :string(255)     not null
+#  encrypted_password   :string(40)      not null
+#  password_salt        :string(255)     not null
+#  confirmation_token   :string(20)
+#  confirmed_at         :datetime
+#  confirmation_sent_at :datetime
+#  reset_password_token :string(20)
+#  remember_token       :string(20)
+#  remember_created_at  :datetime
+#  sign_in_count        :integer(4)
+#  current_sign_in_at   :datetime
+#  last_sign_in_at      :datetime
+#  current_sign_in_ip   :string(255)
+#  last_sign_in_ip      :string(255)
+#  created_at           :datetime
+#  updated_at           :datetime
 #
 
 class Account < ActiveRecord::Base
@@ -35,20 +36,14 @@ class Account < ActiveRecord::Base
 
   attr_accessible :login, :email, :stylesheet, :password, :password_confirmation, :user_attributes
 
+### Authentication ###
+
+  devise :registerable, :authenticatable, :confirmable, :recoverable, :rememberable, :trackable, :validatable
+
 ### Validation ###
 
   validates_presence_of :login, :message => "Veuillez choisir un pseudo"
-  validates_presence_of :email, :message => "Veuillez entrer votre adresse email"
-
-### Authentication ###
-
-# TODO authlogic
-#   acts_as_authentic do |config|
-#     config.validates_length_of_login_field_options :within => 3..30, :message => "Le login doit faire au moins 3 caractères, et pas plus de 30 caractères"
-#     config.validates_uniqueness_of_login_field_options :case_sensitive => true, :message => "Ce login est déjà utilisé, veuillez en choisir un autre"
-#     config.validates_uniqueness_of_email_field_options :case_sensitive => true, :message => "Cette adresse email est déjà utilisée pour un compte LinuxFr.org"
-#     config.perishable_token_valid_for 24.hours
-#   end
+  validates_uniqueness_of :login, :message => "Ce pseudo est déjà pris"
 
 ### Password ###
 

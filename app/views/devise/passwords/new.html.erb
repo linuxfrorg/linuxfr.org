@@ -1,0 +1,12 @@
+<h2>Mot de passe oublié ?</h2>
+
+<%= form_for(resource_name, resource, :url => password_path(resource_name)) do |f| %>
+  <%= f.error_messages %>
+
+  <p><%= f.label :email %></p>
+  <p><%= f.text_field :email %></p>
+
+  <p><%= f.submit "Envoyer les instructions pour réinitialiser le mot de passe" %></p>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>
