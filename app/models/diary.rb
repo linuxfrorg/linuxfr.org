@@ -32,8 +32,7 @@ class Diary < Content
 
 ### SEO ###
 
-  # TODO Rails3
-  # has_friendly_id :title, :use_slug => true
+  has_friendly_id :title, :use_slug => true
 
 ### Sphinx ####
 
