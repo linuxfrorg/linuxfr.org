@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
     t.string   "reset_password_token", :limit => 20
     t.string   "remember_token",       :limit => 20
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count"
+    t.integer  "sign_in_count",                      :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"

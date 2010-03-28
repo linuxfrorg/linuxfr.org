@@ -69,16 +69,13 @@ LinuxfrOrg::Application.routes.draw do
   get  '/board/index.xml' => 'boards#show', :as => :free_board_xml, :format => 'xml'
 
   # Accounts
-  devise_for :account, :as => 'compte'
-#   resource :account, :as => 'compte' do
-#     resource :stylesheet, :only => [:edit, :create, :destroy]
-#   end
-#   get  '/inscription' => 'accounts#new', :as => :signup
-#   get  '/activation/:token' => 'accounts#activate', :as => :activate, :defaults => { :token => nil }
-#   get  '/mot-de-passe' => 'accounts#forgot_password', :as => :forgot_password
-#   post '/mot-de-passe' => 'accounts#send_password', :as => :send_password
-#   get  '/reset/:token' => 'accounts#reset_password', :as => :reset_password, :defaults => { :token => nil }
-#   get  '/desinscription' => 'accounts#delete', :as => :close_account
+  devise_for :account, :as => 'compte', :path_names => {
+    :sign_in  => 'connexion',
+    :sign_out => 'deconnexion',
+    :sign_up  => 'inscription',
+    :unlock   => 'debloquage'
+  }
+  resource :stylesheet, :only => [:edit, :create, :destroy]
 
   # Search
   get '/recherche' => 'search#index', :as => :search

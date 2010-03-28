@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   # TODO rails3
   # protect_from_forgery is on by default, says the release notes
   before_filter :seo_filter_and_ssl
-  # before_filter :authenticate_account!
   helper_method :mobile?, :url_for_content, :current_user, :current_account_session
 
 protected
