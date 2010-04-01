@@ -17,6 +17,5 @@ LinuxfrOrg::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
-  # TODO Rails3
-  # config.action_mailer.default_url_options = { :host => MY_DOMAIN }
+  config.action_mailer.default_url_options = { :host => MY_DOMAIN }
 end

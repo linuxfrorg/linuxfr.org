@@ -38,7 +38,7 @@ class Account < ActiveRecord::Base
 
 ### Authentication ###
 
-  devise :registerable, :authenticatable, :confirmable, :recoverable, :rememberable, :trackable, :validatable
+  devise :registerable, :database_authenticatable, :confirmable, :recoverable, :rememberable, :trackable, :validatable
 
 ### Validation ###
 
