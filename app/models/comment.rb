@@ -115,7 +115,7 @@ class Comment < ActiveRecord::Base
   end
 
   def last_answer
-    self.class.published.descendants(materialized_path).order('created_at DESC').first
+    self.class.published.descendants(materialized_path).last
   end
 
 ### ACL ###
