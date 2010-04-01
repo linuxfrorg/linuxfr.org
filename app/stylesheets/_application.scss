@@ -1,0 +1,41 @@
+// Constants
+@import "constants/colors";
+@import "constants/fonts";
+
+// Mixins
+@import "mixins/rounded";
+@import "mixins/list";
+@import "compass/utilities/links";
+@import "compass/utilities/text";
+
+// Reset
+@import "compass/reset";
+
+@include reset-html5;
+
+@import "blueprint";
+
+//Recommended Blueprint configuration with scoping and semantic layout:
+@import "blueprint/scaffolding";
+
+@include blueprint-scaffolding(unquote("body.bp"));
+
+body {
+  @include blueprint-typography(true);
+  @include blueprint-utilities;
+  @include blueprint-debug;
+  @include blueprint-interaction; }
+
+form {
+  @include blueprint-form; }
+
+// Layout
+@import "layout/layout";
+
+// Partials
+@import "partials/generics";
+@import "partials/contents";
+@import "partials/toolbar";
+@import "partials/autocomplete";
+@import "partials/notice";
+@import "partials/markitup";

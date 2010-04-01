@@ -1,0 +1,20 @@
+#site {
+  background-color: $back_color;
+  border-bottom: unquote("3px") solid $border_color;
+  margin-bottom: 20px;
+  .go-to-content {
+    float: left;
+    @include hide-text; }
+  ul {
+    @include pipe-delimited-list;
+    width: 100%;
+    li {
+      padding: 5px 0;
+      color: $header_color;
+      font-size: 1.6em;
+      a {
+        color: inherit;
+        @include hover-link; } } }
+  form {
+    float: right;
+    padding: 5px 10px; } }

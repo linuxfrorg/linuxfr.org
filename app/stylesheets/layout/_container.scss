@@ -1,0 +1,10 @@
+#container {
+  & > h1 {
+    text-align: center;
+    font-family: $header_font;
+    font-size: 5em;
+    font-weight: bolder;
+    line-height: 80px; }
+  .toolbox {
+    ul, li {
+      display: inline; } } }

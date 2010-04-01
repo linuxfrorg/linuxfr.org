@@ -1,4 +1,5 @@
 .bundle
+.sass-cache
 config/database.yml
 config/*.sphinx.conf
 db/*.sqlite3

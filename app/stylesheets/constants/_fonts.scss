@@ -1,0 +1,6 @@
+// http://www.fontsquirrel.com/fonts/Indubitably
+@font-face {
+  font-family: Megalopolis;
+  src: url('/fonts/MEgalopolisExtra.otf') format("opentype"); }
+
+$header_font: unquote("Megalopolis, helvetica, arial, serif") !default;

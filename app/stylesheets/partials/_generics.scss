@@ -1,0 +1,20 @@
+body {
+  font-color: $font_color; }
+
+ins.diffins, ins.diffmod {
+  background-color: #33ff33; }
+
+del.diffdel, del.diffmod {
+  background-color: #ff3333; }
+
+.misspelled {
+  border-bottom: 1px dashed red; }
+
+a.action, time.norloge, span.content-type {
+  &:before {
+    content: "["; }
+  &:after {
+    content: "]"; } }
+
+footer.actions:before {
+  content: ">"; }

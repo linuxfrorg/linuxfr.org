@@ -1,0 +1,52 @@
+// Contents
+article {
+  margin: 15px 0;
+  padding: 10px;
+  background-color: $back_color;
+  border: unquote("3px") solid $border_color;
+  @include round-corners(25px);
+  overflow: hidden;
+  header h1 {
+    margin: 15px 0 5px;
+    font-family: $header_font;
+    color: $link_color;
+    a {
+      @include hover-link; } }
+  figure {
+    float: left;
+    margin-right: 5px;
+    &.score {
+      width: 18px;
+      height: 18px;
+      padding: 10px;
+      border: 1px solid #333333;
+      text-align: center;
+      font-weight: bold;
+      @include round-corners; } }
+  ul.tag-cloud {
+    @include inline-list; } }
+
+// Comments
+.comment {
+  .new-comment h3 {
+    border: 1px solid red; }
+  .avatar {
+    float: left;
+    margin: 5px 10px; } }
+
+// Polls
+#polls, .poll {
+  meter {
+    display: block;
+    margin: 0 0 0 -10px;
+    background-color: orange;
+    border: 1px solid #333333; }
+  ul {
+    @include no-bullets;
+    margin-left: 10px; } }
+
+// Tracker
+#tracker, .tracker {
+  .fix, .invalid {
+    a {
+      text-decoration: line-through; } } }
