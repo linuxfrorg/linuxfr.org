@@ -13,22 +13,22 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
-    t.string   "login",                :limit => 40,                        :null => false
-    t.string   "state",                              :default => "passive", :null => false
-    t.integer  "karma",                              :default => 20,        :null => false
-    t.integer  "nb_votes",                           :default => 0,         :null => false
+    t.string   "login",                :limit => 40,                         :null => false
+    t.string   "state",                               :default => "passive", :null => false
+    t.integer  "karma",                               :default => 20,        :null => false
+    t.integer  "nb_votes",                            :default => 0,         :null => false
     t.string   "stylesheet"
     t.string   "old_password",         :limit => 20
-    t.string   "email",                                                     :null => false
-    t.string   "encrypted_password",   :limit => 40,                        :null => false
-    t.string   "password_salt",                                             :null => false
-    t.string   "confirmation_token",   :limit => 20
+    t.string   "email",                               :default => "",        :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "",        :null => false
+    t.string   "password_salt",                       :default => "",        :null => false
+    t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "reset_password_token", :limit => 20
-    t.string   "remember_token",       :limit => 20
+    t.string   "reset_password_token"
+    t.string   "remember_token"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      :default => 0
+    t.integer  "sign_in_count",                       :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"

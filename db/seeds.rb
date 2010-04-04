@@ -65,6 +65,19 @@ Dir.chdir(dir) do
   end
 end
 
+# Anonymous account
+user = User.new
+user.name = "Anonyme"
+user.role = "inactive"
+user.save
+
+anon = Account.new
+anon.login = "Anonyme"
+anon.email = "anonyme@linuxfr.org"
+anon.state = "deleted"
+anon.user_id = user.id
+anon.save
+
 # Wiki
 wp = WikiPage.new
 wp.title = WikiPage::HomePage
@@ -90,4 +103,4 @@ Voici quelques pages qu'il serait intéressant d'avoir :
 - [[Astuces]] : des astuces sur Linux et les Logiciels Libres.
 EOS
 wp.save
-wp.create_node(:user_id => 1)
+wp.create_node(:user_id => user.id)
