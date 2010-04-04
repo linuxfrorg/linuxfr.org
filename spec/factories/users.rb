@@ -9,6 +9,7 @@ end
 Factory.define :anonymous, :class => "user" do |f|
   f.name "Anonyme"
   f.role "inactive"
+  f.association :account, :factory => :anonymous_account
 end
 
 Factory.define :writer, :class => "user" do |f|

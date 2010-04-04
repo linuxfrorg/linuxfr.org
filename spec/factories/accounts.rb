@@ -3,6 +3,11 @@ Factory.define :account do |f|
   f.email "ptramo@dlfp.org"
 end
 
+Factory.define :anonymous_account, :class => 'account' do |f|
+  f.login "anonyme"
+  f.email "anonyme@dlfp.org"
+end
+
 Factory.define :writer_account, :class => 'account' do |f|
   f.login "LionelAllorge"
   f.email "writer@dlfp.org"
