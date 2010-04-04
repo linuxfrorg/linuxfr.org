@@ -34,7 +34,8 @@ class Account < ActiveRecord::Base
   belongs_to :user, :inverse_of => :account
   accepts_nested_attributes_for :user, :reject_if => proc { |attrs| attrs['user'].blank? }
 
-  attr_accessible :login, :email, :stylesheet, :password, :password_confirmation, :user_attributes
+  attr_accessor :remember_me
+  attr_accessible :login, :email, :stylesheet, :password, :password_confirmation, :user_attributes, :remember_me
 
 ### Authentication ###
 
@@ -63,34 +64,6 @@ class Account < ActiveRecord::Base
     account.password = account.password_confirmation = password
     account.old_password = nil
     account.save
-  end
-
-### Workflow ###
-
-  aasm_column :state
-  aasm_initial_state :passive
-
-  aasm_state :passive
-  aasm_state :active
-  aasm_state :deleted
-
-  aasm_event :activate   do transitions :from => [:passive], :to => :active,  :on_transition => :activation   end
-  aasm_event :delete     do transitions :from => [:active],  :to => :deleted, :on_transition => :deletion     end
-  aasm_event :reactivate do transitions :from => [:deleted], :to => :active,  :on_transition => :reactivation end
-
-  def activation
-    user = User.new(:name => login)
-    user.account = self
-    user.save
-    save
-  end
-
-  def deletion
-    user.inactivate!
-  end
-
-  def reactivation
-    user.reactivate!
   end
 
 ### Karma ###

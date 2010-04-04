@@ -1,8 +1,8 @@
 %head
   %title= @title.join ' -> '
   -# TODO authlogic
-  - if current_account && account_session.stylesheet
-    = stylesheet_link_tag account_session.stylesheet, :media => "screen, projection"
+  - if current_account && current_account.stylesheet.present?
+    = stylesheet_link_tag current_account.stylesheet, :media => "screen, projection"
   - elsif mobile?
     = stylesheet_link_tag 'mobile'
   - else

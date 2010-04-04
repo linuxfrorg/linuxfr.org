@@ -3,7 +3,6 @@ class CreateAccounts < ActiveRecord::Migration
     create_table :accounts do |t|
       t.references :user
       t.string   :login, :limit => 40,  :null => false
-      t.string   :state,                :null => false, :default => 'passive'
       t.integer  :karma,                :null => false, :default => 20
       t.integer  :nb_votes,             :null => false, :default => 0
       t.string   :stylesheet
