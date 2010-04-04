@@ -5,7 +5,7 @@
 = render "preview", :preview => @post if @preview_mode
 
 %h2 Édition
-- form_for [@forum, @post] do |form|
+= form_for [@forum, @post] do |form|
   = render form
 
 = render 'shared/wiki_help'

@@ -3,7 +3,7 @@
 %p
   = form.label :title, "Question"
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
-- form.fields_for :answers do |aform|
+= form.fields_for :answers do |aform|
   %p
     = aform.text_field :answer
 %p

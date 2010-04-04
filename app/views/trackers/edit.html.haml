@@ -5,7 +5,7 @@
 = render "preview", :preview => @tracker if @preview_mode
 
 %h2 Édition
-- form_for @tracker do |form|
+= form_for @tracker do |form|
   %p
     = form.label :state, "État"
     = form.select :state, Tracker::States

@@ -1,4 +1,4 @@
-- form_for [:redaction, @news] do |form|
+= form_for [:redaction, @news] do |form|
   = form.label :section, "Section"
   = form.collection_select :section_id, Section.published, :id, :title
   = form.label :title, "Titre"

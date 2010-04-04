@@ -23,7 +23,7 @@
     %label URL
     %label langue
     %label actions
-  - form.fields_for :links do |lform|
+  = form.fields_for :links do |lform|
     %fieldset.link
       = lform.text_field :title
       = lform.text_field :url, :type => 'url'

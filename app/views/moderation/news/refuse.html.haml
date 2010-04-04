@@ -4,7 +4,7 @@
   = render 'boards/boards'
 
 %h2 Utiliser un mail de refus type
-- form_tag refuse_moderation_news_path(@news) do
+= form_tag refuse_moderation_news_path(@news) do
   %p
     = label_tag :template, 'Modèle'
     = select_tag :template, options_from_collection_for_select(Response.all, 'id', 'title')
@@ -14,11 +14,11 @@
   = submit_tag "Refuser"
 
 %h2 Utiliser un mail de refus personnalisé
-- form_tag refuse_moderation_news_path(@news) do
+= form_tag refuse_moderation_news_path(@news) do
   = text_area_tag :message
   = submit_tag "Refuser"
 
 %h2 Utiliser le mail de refus en anglais
-- form_tag refuse_moderation_news_path(@news) do
+= form_tag refuse_moderation_news_path(@news) do
   = hidden_field_tag :message, 'en'
   = submit_tag "Refuser"

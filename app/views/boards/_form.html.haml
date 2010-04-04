@@ -1,4 +1,4 @@
-- form_tag add_board_path, :class => 'chat' do
+= form_tag add_board_path, :class => 'chat' do
   = hidden_field :board, :object_type, :value => form.object_type
   = hidden_field :board, :object_id, :value => form.object_id
   = text_field :board, :message, :value => '', :size => 20, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'

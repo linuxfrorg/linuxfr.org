@@ -2,7 +2,7 @@
 
 = render "preview", :preview => @comment if @preview_mode
 
-- form_for [@comment.node, @comment] do |form|
+= form_for [@comment.node, @comment] do |form|
   = render form
 
 = render 'shared/wiki_help'

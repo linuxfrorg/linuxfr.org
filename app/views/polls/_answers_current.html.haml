@@ -1,4 +1,4 @@
-- form_tag vote_poll_path(:id => poll.id || 0) do
+= form_tag vote_poll_path(:id => poll.id || 0) do
   %ul
     = list_of poll.answers do |answer|
       = radio_button_tag :position, answer.position, false

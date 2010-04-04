@@ -2,7 +2,7 @@
 
 = render "preview", :preview => @post if @preview_mode
 
-- form_for @post, :url => post_posts_path do |form|
+= form_for @post, :url => post_posts_path do |form|
   = render form
 
 = render 'shared/wiki_help'

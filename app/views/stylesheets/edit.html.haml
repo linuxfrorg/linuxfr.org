@@ -9,11 +9,11 @@
   Votre feuille de style actuelle est : #{@current || "celle par défaut"}.
 
 - @stylesheets.each do |css|
-  - form_tag stylesheet_path do
+  = form_tag stylesheet_path do
     = hidden_field_tag :stylesheet, css.url
     = submit_tag css.name
 
-- form_tag stylesheet_path do
+= form_tag stylesheet_path do
   = label_tag :stylesheet, "Autre feuille de style"
   = text_field_tag :stylesheet
   = submit_tag 'OK'
