@@ -1,12 +1,12 @@
-<h2>Resend unlock instructions</h2>
+<h2>Envoyer les instructions pour débloquer mon compte</h2>
 
-<%= form_for(resource_name, resource, :url => unlock_path(resource_name)) do |f| %>
+<%= form_for(:account, @account, :url => unlock_path(:account)) do |f| %>
   <%= f.error_messages %>
 
   <p><%= f.label :email %></p>
   <p><%= f.text_field :email %></p>
 
-  <p><%= f.submit "Resend unlock instructions" %></p>
+  <p><%= f.submit "Envoyer" %></p>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>

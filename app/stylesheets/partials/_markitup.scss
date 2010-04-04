@@ -2,8 +2,8 @@
   width: 700px;
   margin: 5px 0 5px 0;
   border: 5px solid #f5f5f5;
-  .markItUp a: link,
-  .markItUp a: visited {
+  .markItUp a:link,
+  .markItUp a:visited {
     color: black;
     text-decoration: none; } }
 
@@ -54,7 +54,7 @@
     position: relative;
     ul {
       display: none; }
-    &: hover > ul {
+    &:hover > ul {
       display: block; } }
   a {
     display: block;
@@ -79,15 +79,13 @@
     display: none;
     position: absolute;
     top: 18px;
-    left:0px {
- }
+    left: 0px;
     background: #f5f5f5;
     border: 1px solid #3c769d;
     height: inherit;
     .markItUpSeparator {
       width: auto;
-      height:1px {
- }
+      height: 1px;
       margin: 0px; }
     li {
       float: none;
@@ -97,8 +95,7 @@
     ul {
       position: absolute;
       top: -1px;
-      left:150px {
- }
+      left: 150px;
       li {
         float: none; } }
     a {
@@ -108,7 +105,7 @@
       width: 120px;
       padding: 5px 5px 5px 25px;
       background-position: 2px 50%;
-      &: hover {
+      &:hover {
         color: white;
         background-color: #3c769d; } } } }
 

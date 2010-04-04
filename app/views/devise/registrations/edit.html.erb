@@ -1,6 +1,6 @@
 <h2>Modifier son compte utilisateur</h2>
 
-<%= form_for(resource_name, resource, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+<%= form_for(:account, @account, :url => registration_path(:account), :html => { :method => :put }) do |f| %>
   <%= f.error_messages %>
 
   <p><%= f.label :email %></p>
@@ -20,6 +20,6 @@
 
 <h3>Fermer son compte</h3>
 
-<p>Vous souhaitez fermer votre compte ? <%= link_to "Fermer mon compte", registration_path(resource_name), :confirm => "Êtes-vous sûr ?", :method => :delete %>.</p>
+<p>Vous souhaitez fermer votre compte ? <%= link_to "Fermer mon compte", registration_path(:account), :confirm => "Êtes-vous sûr ?", :method => :delete %>.</p>
 
 <%= link_to "Retour", :back %>
