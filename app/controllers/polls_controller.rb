@@ -1,5 +1,5 @@
 class PollsController < ApplicationController
-  before_filter :user_required, :only => [:new, :create]
+  before_filter :authenticate_account!, :only => [:new, :create]
   before_filter :find_poll, :only => [:show, :vote]
   after_filter  :marked_as_read, :only => [:show]
 

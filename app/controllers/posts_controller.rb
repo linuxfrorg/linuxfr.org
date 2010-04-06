@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :user_required, :except => [:index, :show]
+  before_filter :authenticate_account!, :except => [:index, :show]
   before_filter :find_forum, :except => [:new, :create]
   before_filter :find_post,  :except => [:new, :create, :index]
   after_filter  :marked_as_read, :only => [:show]

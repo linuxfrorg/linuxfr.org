@@ -1,5 +1,5 @@
 class StylesheetsController < ApplicationController
-  before_filter :user_required
+  before_filter :authenticate_account!
   before_filter :load_account
 
   def edit

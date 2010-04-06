@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :user_required, :except => [:index, :show]
+  before_filter :authenticate_account!, :except => [:index, :show]
   before_filter :find_node
   before_filter :find_comment, :except => [:index, :new, :answer, :create]
 

@@ -1,5 +1,5 @@
 class DiariesController < ApplicationController
-  before_filter :user_required, :except => [:index, :show]
+  before_filter :authenticate_account!, :except => [:index, :show]
   before_filter :find_diary, :except => [:index, :new, :create]
   after_filter  :marked_as_read, :only => [:show]
 

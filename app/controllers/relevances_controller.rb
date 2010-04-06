@@ -1,7 +1,7 @@
 class RelevancesController < ApplicationController
   respond_to :html, :js
 
-  before_filter :user_required
+  before_filter :authenticate_account!
   before_filter :load_comment
 
   def for

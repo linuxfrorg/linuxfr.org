@@ -17,7 +17,7 @@
       %p= link_to "Se déconnecter", logout_path
     - else
       %h1 Se connecter
-      = render "devise/sessions/new"
+      = render "sessions/new"
       %p= link_to "Pas de compte ? S'inscrire !", new_registration_path(:account)
       %p= link_to "Proposer un contenu", '/proposer-un-contenu-en-anonyme'
   - admin_only do

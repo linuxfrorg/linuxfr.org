@@ -69,7 +69,9 @@ LinuxfrOrg::Application.routes.draw do
   get  '/board/index.xml' => 'boards#show', :as => :free_board_xml, :format => 'xml'
 
   # Accounts
-  devise_for :account, :as => 'compte', :path_names => {
+  devise_for :account, :as => 'compte', :controllers => {
+    :sessions = "sessions"
+  }, :path_names => {
     :sign_in  => 'connexion',
     :sign_out => 'deconnexion',
     :sign_up  => 'inscription',

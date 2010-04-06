@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_filter :user_required
+  before_filter :authenticate_account!
 
   def show
     @board = Board[Board.free]
