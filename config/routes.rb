@@ -70,7 +70,7 @@ LinuxfrOrg::Application.routes.draw do
 
   # Accounts
   devise_for :account, :as => 'compte', :controllers => {
-    :sessions = "sessions"
+    :sessions => "sessions"
   }, :path_names => {
     :sign_in  => 'connexion',
     :sign_out => 'deconnexion',
