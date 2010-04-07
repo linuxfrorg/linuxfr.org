@@ -74,8 +74,9 @@ user.save
 anon = Account.new
 anon.login = "Anonyme"
 anon.email = "anonyme@linuxfr.org"
-anon.state = "deleted"
+anon.encrypted_password = "XXX"
 anon.user_id = user.id
+anon.skip_confirmation!
 anon.save
 
 # Wiki
