@@ -389,7 +389,7 @@ body .bottom {
 }
 /* line 7, ../../../../gem/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_debug.sass */
 body .showgrid {
-  background: url('../images/grid.png?1270385571');
+  background: url('../images/grid.png?1267744199');
 }
 /* line 5, ../../../../gem/gems/compass-0.10.0.rc1/frameworks/blueprint/stylesheets/blueprint/_interaction.sass */
 body .error {
@@ -716,33 +716,34 @@ form textarea {
 /* line 1, ../../app/stylesheets/partials/_generics.scss */
 body {
   font-color: #33332d;
+  font-family: "Droid Sans", sans-serif;
 }
 
-/* line 4, ../../app/stylesheets/partials/_generics.scss */
+/* line 5, ../../app/stylesheets/partials/_generics.scss */
 ins.diffins, ins.diffmod {
   background-color: #33ff33;
 }
 
-/* line 7, ../../app/stylesheets/partials/_generics.scss */
+/* line 8, ../../app/stylesheets/partials/_generics.scss */
 del.diffdel, del.diffmod {
   background-color: #ff3333;
 }
 
-/* line 10, ../../app/stylesheets/partials/_generics.scss */
+/* line 11, ../../app/stylesheets/partials/_generics.scss */
 .misspelled {
   border-bottom: 1px dashed red;
 }
 
-/* line 14, ../../app/stylesheets/partials/_generics.scss */
+/* line 15, ../../app/stylesheets/partials/_generics.scss */
 a.action:before, time.norloge:before, span.content-type:before {
   content: "[";
 }
-/* line 16, ../../app/stylesheets/partials/_generics.scss */
+/* line 17, ../../app/stylesheets/partials/_generics.scss */
 a.action:after, time.norloge:after, span.content-type:after {
   content: "]";
 }
 
-/* line 19, ../../app/stylesheets/partials/_generics.scss */
+/* line 20, ../../app/stylesheets/partials/_generics.scss */
 footer.actions:before {
   content: ">";
 }
