@@ -22,11 +22,11 @@ fr:
       updated: "Votre mot de passe a été modifié avec succès. Vous êtes maintenant connecté."
     confirmations:
       send_instructions: "Vous allez recevoir un email avec les instruction pour confirmer votre compte dans quelques minutes."
-      confirmed: "Votre compte a été confirmé avec succès. Vous pouvez maintenant vous connecter."
+      confirmed: "Votre compte a été confirmé avec succès."
     registrations:
-      signed_up: "Vous vous êtes inscrit avec succès. Vous allez recevoir votre mot de passe par email."
+      signed_up: "Vous vous êtes inscrit avec succès. Vous allez recevoir les instructions de confirmation par email."
       updated: "Vous avez mis à jour votre compte avec succès."
-      destroyed: "Au revoir. Votre compte a été annulé avec succès. Nous espérons vous revoir bientôt."
+      destroyed: "Au revoir. Votre compte a été fermé avec succès. Nous espérons vous revoir bientôt."
     unlocks:
       send_instructions: "Vous allez recevoir un email avec les instructions pour déverrouiller votre compte dans quelques minutes."
       unlocked: "Votre compte a été déverrouillé avec succès. Vous êtes maintenant connecté."

@@ -38,6 +38,11 @@ class Account < ActiveRecord::Base
 
   devise :registerable, :database_authenticatable, :confirmable, :recoverable, :rememberable, :trackable, :validatable
 
+  before_create :create_user
+  def create_user
+    self.user_id = User.create(:name => login).id
+  end
+
 ### Validation ###
 
   validates_presence_of :login, :message => "Veuillez choisir un pseudo"

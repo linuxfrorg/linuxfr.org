@@ -12,9 +12,9 @@
       %p Il vous reste #{current_user.account.nb_votes} avis
       %p= link_to "Proposer un contenu", '/proposer-un-contenu'
       %p= link_to "Mon tableau de bord", dashboard_path
-      %p= link_to "Modifier mes préférences", edit_account_path
+      %p= link_to "Modifier mes préférences", edit_account_registration_path
       %p= link_to "Changer de CSS", edit_stylesheet_path
-      %p= link_to "Se déconnecter", logout_path
+      %p= link_to "Se déconnecter", destroy_account_session_path
     - else
       %h1 Se connecter
       = render "sessions/new"
