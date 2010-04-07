@@ -1,5 +1,7 @@
 <p>Bienvenue <%= @resource.email %> !</p>
 
+<p>Votre mot de passe est : <%= @resource.password %></p>
+
 <p>Vous pouvez confirmer la création de votre compte en suivant ce lien :</p>
 
 <p><%= link_to 'Confirmer mon compte', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
