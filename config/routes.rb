@@ -1,7 +1,6 @@
 class AnonymousConstraint
   def self.matches?(request)
-    # TODO authlogic
-    !request.cookies.has_key? 'account_credentials'
+    !request.cookies.has_key? 'linuxfr.org_session'
   end
 end
 

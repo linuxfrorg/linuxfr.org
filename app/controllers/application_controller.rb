@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include Canable::Enforcers
 
   before_filter :seo_filter_and_ssl
-  helper_method :mobile?, :url_for_content, :current_user, :current_account_session
+  helper_method :mobile?, :url_for_content, :current_user
 
 protected
 
