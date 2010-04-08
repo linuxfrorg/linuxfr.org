@@ -12,7 +12,10 @@ class SessionsController < ApplicationController
 
   # POST /account/sign_in
   def create
-    @account = warden.authenticate!(:scope => :account, :recall => "new")
+    @account   = warden.authenticate!(:scope => :account, :recall => "new")
+    # FIXME http://wiki.github.com/hassox/warden/strategies
+    # FIXME ~gem/devise-1.1.rc0/lib/devise/strategies/database_authenticatable.rb
+    @account ||= Account.try_import_old_password(params[:account])
     sign_in :account, @account
     redirect_to stored_location_for(:account) || root_path, :notice => I18n.t("devise.sessions.signed_in")
   end
