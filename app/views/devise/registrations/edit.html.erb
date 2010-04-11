@@ -1,6 +1,6 @@
 <h2>Modifier son compte utilisateur</h2>
 
-<%= form_for(:account, @account, :url => registration_path(:account), :html => { :method => :put }) do |f| %>
+<%= form_for @account, :url => registration_path(:account), :html => { :method => :put } do |f| %>
   <%= f.error_messages %>
 
   <p><%= f.label :email %></p>

@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
 
   # GET /account/sign_in
   def new
-    @account = Account.new
     render :new
   end
 
