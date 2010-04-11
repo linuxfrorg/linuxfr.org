@@ -1,6 +1,6 @@
 class AnonymousConstraint
   def self.matches?(request)
-    !request.cookies.has_key? 'linuxfr.org_session'
+    !request.cookies.has_key? "linuxfr.org_session"
   end
 end
 
@@ -11,23 +11,23 @@ end
 LinuxfrOrg::Application.routes.draw do
   # These routes are here only for cacheability reasons
   constraints(AnonymousConstraint) do
-    get '/'         => 'home#anonymous'
-    get '/news/:id' => 'news#anonymous'
+    get "/"         => "home#anonymous"
+    get "/news/:id" => "news#anonymous"
   end
 
-  root :to => 'home#index'
+  root :to => "home#index"
 
   # News
   resources :sections, :only => [:index, :show]
-  get '/news(.:format)' => 'news#index', :as => 'news_index'
+  get "/news(.:format)" => "news#index", :as => "news_index"
   resources :news, :only => [:show, :new, :create]
-  get '/redirect/:id' => 'links#show'
+  get "/redirect/:id" => "links#show"
 
   # Diaries & Users
   resources :users, :only => [:show] do
-    resources :diaries, :as => 'journaux', :except => [:index, :new, :create]
+    resources :journaux, :controller => "diaries", :as => "diaries", :except => [:index, :new, :create]
   end
-  resources :diaries, :only => [:index, :new, :create]
+  resources :diaries, :controller => "diaries", :as => "diaries", :only => [:index, :new, :create]
 
   # Forums
   resources :forums, :only => [:index, :show] do
@@ -36,26 +36,26 @@ LinuxfrOrg::Application.routes.draw do
   resources :posts, :only => [:new, :create]
 
   # Other contents
-  resources :polls, :as => 'sondages', :except => [:edit, :update, :destroy] do
+  resources :sondages, :controller => "polls", :as => "polls", :except => [:edit, :update, :destroy] do
     post :vote, :on => :member
   end
-  resources :trackers, :as => 'suivi' do
+  resources :suivi, :controller => "trackers", :as => "trackers" do
     get :comments, :on => :collection
   end
-  resources :wiki_pages, :as => 'wiki' do
+  resources :wiki, :controller => "wiki_pages", :as => "wiki_pages" do
     get :changes, :on => :collection
-    get '/revisions/:revision' => 'wiki_pages#revision', :as => :revision, :on => :member
+    get "/revisions/:revision" => "wiki_pages#revision", :as => :revision, :on => :member
   end
 
   # Nodes
-  get '/tableau-de-bord' => 'dashboard#index', :as => :dashboard
+  get "/tableau-de-bord" => "dashboard#index", :as => :dashboard
   resources :nodes, :only => [] do
     resources :comments do
       get :answer, :on => :member
-      post '/relevance/:action' => 'relevances#index', :as => :relevance, :on => :member
+      post "/relevance/:action" => "relevances#index", :as => :relevance, :on => :member
     end
     resources :tags, :only => [:new, :create]
-    post '/vote/:action' => 'votes#index', :as => :vote, :on => :member
+    post "/vote/:action" => "votes#index", :as => :vote, :on => :member
   end
   resources :tags, :only => [:index, :show] do
     get :autocomplete, :on => :collection
@@ -63,29 +63,29 @@ LinuxfrOrg::Application.routes.draw do
   end
 
   # Boards
-  post '/board/add' => 'boards#add', :as => :add_board
-  get  '/board' => 'boards#show', :as => :free_board
-  get  '/board/index.xml' => 'boards#show', :as => :free_board_xml, :format => 'xml'
+  post "/board/add" => "boards#add", :as => :add_board
+  get  "/board" => "boards#show", :as => :free_board
+  get  "/board/index.xml" => "boards#show", :as => :free_board_xml, :format => "xml"
 
   # Accounts
-  devise_for :account, :as => 'compte', :controllers => {
+  devise_for :account, :as => "compte", :controllers => {
     :sessions => "sessions"
   }, :path_names => {
-    :sign_in  => 'connexion',
-    :sign_out => 'deconnexion',
-    :sign_up  => 'inscription',
-    :unlock   => 'debloquage'
+    :sign_in  => "connexion",
+    :sign_out => "deconnexion",
+    :sign_up  => "inscription",
+    :unlock   => "debloquage"
   }
   resource :stylesheet, :only => [:edit, :create, :destroy]
 
   # Search
-  get '/recherche' => 'search#index', :as => :search
-  get '/recherche/:type' => 'search#type', :as => :search_by_type
-  get '/recherche/:type/:facet' => 'search#facet', :as => :search_by_facet
+  get "/recherche" => "search#index", :as => :search
+  get "/recherche/:type" => "search#type", :as => :search_by_type
+  get "/recherche/:type/:facet" => "search#facet", :as => :search_by_facet
 
   # Redaction
   namespace :redaction do
-    root :to => 'redaction#index'
+    root :to => "redaction#index"
     resources :news, :except => [:new, :destroy] do
       post :submit, :on => :member
       resources :links, :only => [:new, :create]
@@ -96,15 +96,15 @@ LinuxfrOrg::Application.routes.draw do
 
   # Moderation
   namespace :moderation do
-    root :to => 'moderation#index'
+    root :to => "moderation#index"
     resources :news, :except => [:new, :create, :destroy] do
       post :accept, :on => :member
       post :refuse, :on => :member
       post :ppp, :on => :member
       post :clear_locks, :on => :member
-      get '/show_diff/:sha' => 'news#show_diff', :as => :show_diff, :on => :member
+      get "/show_diff/:sha" => "news#show_diff", :as => :show_diff, :on => :member
     end
-    resources :polls, :as => 'sondages', :except => [:new, :create, :destroy] do
+    resources :sondages, :controller => "polls", :as => "polls", :except => [:new, :create, :destroy] do
       post :refuse, :on => :member
       post :accept, :on => :member
     end
@@ -112,15 +112,15 @@ LinuxfrOrg::Application.routes.draw do
 
   # Admin
   namespace :admin do
-    root :to => 'admin#index'
-    resources :accounts, :as => 'comptes', :only => [:index, :update, :destroy]
-    resources :responses, :as => 'reponses', :except => [:show]
+    root :to => "admin#index"
+    resources :comptes, :controller => "accounts", :as => "accounts", :only => [:index, :update, :destroy]
+    resources :reponses, :controller => "responses", :as => "responses", :except => [:show]
     resources :sections, :except => [:show]
     resources :forums, :except => [:show]
     resources :categories, :except => [:show]
-    resources :banners, :as => 'bannieres', :except => [:show]
+    resources :bannieres, :controller => "banners", :as => "banners", :except => [:show]
     resource :logo, :only => [:show, :create]
-    resources :friend_sites, :as => 'sites_amis', :except => [:show] do
+    resources :sites_amis, :controller => "friend_sites", :as => "friend_sites", :except => [:show] do
       post :lower,  :on => :member
       post :higher, :on => :member
     end
@@ -128,8 +128,9 @@ LinuxfrOrg::Application.routes.draw do
   end
 
   # Static pages
-  match '/proposer-un-contenu' => 'static#submit_content', :as => :submit_content
-  match '/proposer-un-contenu-en-anonyme' => 'static#submit_anonymous', :as => :submit_anonymous
-  match '/changelog' => 'static#changelog', :as => :changelog
-  match '/:id' => 'static#show', :as => :static#, :id => /^[a-z_]+$/
+  match "/proposer-un-contenu" => "static#submit_content", :as => :submit_content
+  match "/proposer-un-contenu-en-anonyme" => "static#submit_anonymous", :as => :submit_anonymous
+  match "/changelog" => "static#changelog", :as => :changelog
+  # FIXME
+  match "/:id" => "static#show", :as => :static#, :id => /^[a-z_]+$/
 end
