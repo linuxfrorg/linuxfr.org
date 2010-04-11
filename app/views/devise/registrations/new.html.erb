@@ -6,7 +6,7 @@
   <p><%= f.text_field :login, :required => 'required' %></p>
 
   <p><%= f.label :email, "Adresse email" %></p>
-  <p><%= f.text_field :email, :required => "required", :type => "email" %></p>
+  <p><%= f.email_field :email, :required => "required" %></p>
 
   <p><%= f.submit "S'inscrire" %></p>
 <% end %>

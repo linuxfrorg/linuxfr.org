@@ -6,7 +6,7 @@
     = form.text_field :author_name, :autocomplete => 'on', :required => 'required'
   %p
     = form.label :author_email, "Votre adresse de courriel"
-    = form.text_field :author_email, :autocomplete => 'on', :required => 'required'
+    = form.email_field :author_email, :autocomplete => 'on', :required => 'required'
 %p
   = form.label :title, "Titre de la dépêche"
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
@@ -26,7 +26,7 @@
   = form.fields_for :links do |lform|
     %fieldset.link
       = lform.text_field :title
-      = lform.text_field :url, :type => 'url'
+      = lform.url_field :url
       = lform.collection_select :lang, langs, :key, :value
 %p
   = form.label :wiki_second_part, "Seconde partie"

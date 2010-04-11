@@ -5,6 +5,6 @@
   = form.text_field :title, :autocomplete => 'off', :required => 'required'
 %p
   = form.label :url, "URL"
-  = form.text_field :url, :autocomplete => 'off', :required => 'required', :type => 'url'
+  = form.url_field :url, :autocomplete => 'off', :required => 'required'
 %p
   = form.submit "Envoyer"
