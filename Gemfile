@@ -1,6 +1,7 @@
 source "http://gemcutter.org"
 
-gem "rails",                   "3.0.0.beta2"
+# gem "rails",                   "3.0.0.beta2"
+gem "rails", :path => "../rails"
 
 # TODO Rails 3
 # gem "aasm",                    "~>2.1"
