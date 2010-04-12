@@ -21,18 +21,6 @@ module ApplicationHelper
     @description = content.title
   end
 
-  def admin_only(&blk)
-    blk.call if current_user && current_user.admin?
-  end
-
-  def amr_only(&blk)
-    blk.call if current_user && current_user.amr?
-  end
-
-  def writer_only(&blk)
-    blk.call if current_user && (current_user.writer? || current_user.amr?)
-  end
-
   def spellify(str)
     speller = Aspell.new('fr_FR', nil, nil, 'utf-8')
     speller.set_option('mode', 'html')

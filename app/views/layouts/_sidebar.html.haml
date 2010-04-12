@@ -20,10 +20,10 @@
       = render "sessions/new"
       %p= link_to "Pas de compte ? S'inscrire !", new_registration_path(:account)
       %p= link_to "Proposer un contenu", '/proposer-un-contenu-en-anonyme'
-  - admin_only do
+  - if current_user && current_user.admin?
     = render 'admin/box'
-  - amr_only do
+  - if current_user && current_user.amr?
     = render 'moderation/box'
-  - writer_only do
+  - if current_user && (current_user.writer? || current_user.amr?)
     = render 'redaction/box'
   = yield :column
