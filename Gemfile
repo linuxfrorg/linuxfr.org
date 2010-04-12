@@ -8,16 +8,14 @@ gem "rails", :path => "../rails"
 gem "aasm", :git => "git://github.com/rubyist/aasm.git"
 gem "acts_as_list",            "~>0.1"
 gem "canable",                 "~>0.1"
-gem "compass",                 "0.10.0.rc1"
+gem "compass",                 "0.10.0.rc2"
 # TODO Rails 3
 # gem "devise",                  "~>1.1.rc0"
 gem "devise", :git => "git://github.com/plataformatec/devise.git"
 gem "erubis",                  "~>2.6"
 gem "french_rails",            "~>0.2"
 gem "friendly_id",             "~>3.0"
-# TODO Rails 3
-# gem "haml",                    "~>3.0.beta.1"
-gem "haml", :git => "git://github.com/nex3/haml.git"
+gem "haml",                    "~>3.0.beta.2"
 gem "htmlentities",            "~>4.2"
 gem "mysql",                   "~>2.8"
 gem "nokogiri",                "~>1.4"
@@ -45,6 +43,6 @@ group :development do
 end
 
 group :test do
-  gem "rspec-rails",           ">=2.0.0.beta.5"
+  gem "rspec-rails",           ">=2.0.0.beta.6"
   gem "factory_girl",          "~>1.2"
 end
