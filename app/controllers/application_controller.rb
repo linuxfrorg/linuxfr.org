@@ -5,14 +5,13 @@ require 'htmldiff'
 class ApplicationController < ActionController::Base
   include Canable::Enforcers
 
-  before_filter :seo_filter_and_ssl
+  before_filter :seo_filter
   helper_method :mobile?, :url_for_content, :current_user
 
 protected
 
-  def seo_filter_and_ssl
-    # TODO Rails3
-    # ActionController::Base.session_options[:secure] = request.ssl?
+  def seo_filter
+    request.session_options[:secure] = request.ssl?
     @title         = %w(LinuxFr.org)
     @author        = nil
     @keywords      = %w(Linux Logiciel Libre GNU Free Software Actualité Forum Communauté)
