@@ -10,7 +10,7 @@
             base.current = 0;
             base.text = text;
             base.options = $.extend({}, $.Toolbar.defaultOptions, options);
-            base.threshold = localStorage.threshold || base.thresholds[0];
+            base.threshold = localStorage.threshold || base.options.thresholds[0];
             base.folding();
             base.create();
         };
