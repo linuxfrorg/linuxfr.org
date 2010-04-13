@@ -1,7 +1,3 @@
-# TODO move this somewhere else
-require 'htmldiff'
-
-
 class ApplicationController < ActionController::Base
   include Canable::Enforcers
 

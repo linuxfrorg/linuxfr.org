@@ -43,8 +43,7 @@ protected
   def find_news
     @news = News.find(params[:id])
     enforce_view_permission(@news)
-    # TODO Rails 3
-    # redirect_to @news, :status => 301 if @news.has_better_id?
+    redirect_to @news, :status => 301 if @news.has_better_id?
   end
 
   def marked_as_read

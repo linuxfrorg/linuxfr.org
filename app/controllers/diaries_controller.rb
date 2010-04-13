@@ -36,8 +36,7 @@ class DiariesController < ApplicationController
 
   def show
     enforce_view_permission(@diary)
-    # TODO Rails 3
-    # redirect_to [@user, @diary], :status => 301 if @diary.has_better_id?
+    redirect_to [@user, @diary], :status => 301 if @diary.has_better_id?
   end
 
   def edit

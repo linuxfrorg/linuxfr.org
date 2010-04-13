@@ -18,8 +18,7 @@ class PollsController < ApplicationController
 
   def show
     enforce_view_permission(@poll)
-    # TODO Rails 3
-    # redirect_to @poll, :status => 301 if @poll.has_better_id?
+    redirect_to @poll, :status => 301 if @poll.has_better_id?
   end
 
   def new
