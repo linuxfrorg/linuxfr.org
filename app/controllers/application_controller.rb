@@ -48,8 +48,6 @@ protected
     @current_user = current_account && current_account.user
   end
 
-  alias_method :user_required, :account_signed_in?
-
   def admin_required
     return if current_user && current_user.admin?
     store_location!(:account)
