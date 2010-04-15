@@ -18,8 +18,8 @@ class WikiPagesController < ApplicationController
       @wiki_page.title = params[:id].titleize
       render :new and return
     end
-    enforce_view_permission(@wiki_page)
-    redirect_to @wiki_page, :status => 301 if @wiki_page.has_better_id?
+    # FIXME enforce_view_permission(@wiki_page)
+    redirect_to @wiki_page, :status => 301 if !@wiki_page.friendly_id_status.best?
   end
 
   def new

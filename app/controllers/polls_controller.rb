@@ -18,7 +18,7 @@ class PollsController < ApplicationController
 
   def show
     enforce_view_permission(@poll)
-    redirect_to @poll, :status => 301 if @poll.has_better_id?
+    redirect_to @poll, :status => 301 if !@poll.friendly_id_status.best?
   end
 
   def new

@@ -15,7 +15,7 @@ class Redaction::NewsController < RedactionController
     @boards = @news.boards
     respond_to do |wants|
       wants.html {
-        redirect_to [:redaction, @news], :status => 301 and return if @news.has_better_id?
+        redirect_to [:redaction, @news], :status => 301 and return if !@news.friendly_id_status.best?
         render :show, :layout => 'chat_n_edit'
       }
       wants.js { render :partial => 'short' }

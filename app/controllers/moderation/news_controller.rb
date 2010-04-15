@@ -11,7 +11,7 @@ class Moderation::NewsController < ModerationController
     @boards = @news.boards
     respond_to do |wants|
       wants.html {
-        redirect_to [:moderation, @news], :status => 301 and return if @news.has_better_id?
+        redirect_to [:moderation, @news], :status => 301 and return if !@news.friendly_id_status.best?
         render :show, :layout => 'chat_n_edit'
       }
       wants.js { render :partial => 'short' }

@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 
   def show
     enforce_view_permission(@post)
-    redirect_to @post, :status => 301 if @post.has_better_id?
+    redirect_to @post, :status => 301 if !@post.friendly_id_status.best?
   end
 
   def edit

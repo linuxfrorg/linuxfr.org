@@ -21,7 +21,7 @@ class TrackersController < ApplicationController
 
   def show
     enforce_view_permission(@tracker)
-    redirect_to @tracker, :status => 301 if @tracker.has_better_id?
+    redirect_to @tracker, :status => 301 if !@tracker.friendly_id_status.best?
   end
 
   def new

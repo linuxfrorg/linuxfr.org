@@ -6,14 +6,14 @@
   <p><%= f.label :email %></p>
   <p><%= f.email_field :email %></p>
 
+  <p><%= f.label :current_password %> <i>(votre mot de passe actuel est nécessaire pour valider ce changement)</i></p>
+  <p><%= f.password_field :current_password %></p>
+
   <p><%= f.label :password %> <i>(laissez ce champ vide si vous ne souhaitez pas changer de mot de passe)</i></p>
   <p><%= f.password_field :password %></p>
 
   <p><%= f.label :password_confirmation %></p>
   <p><%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.label :current_password %> <i>(votre mot de passe actuel est nécessaire pour valider ce changement)</i></p>
-  <p><%= f.password_field :current_password %></p>
 
   <p><%= f.submit "Update" %></p>
 <% end %>
