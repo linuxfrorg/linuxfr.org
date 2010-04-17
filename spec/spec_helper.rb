@@ -1,6 +1,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require 'factory_girl'
-require File.dirname(__FILE__) + "/../config/environment" unless defined?(RAILS_ROOT)
+require File.dirname(__FILE__) + "/../config/environment" unless defined?(Rails)
 require 'rspec/rails'
 
 # Requires supporting files with custom matchers and macros, etc,
