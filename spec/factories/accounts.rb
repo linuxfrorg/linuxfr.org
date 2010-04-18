@@ -1,6 +1,7 @@
 Factory.define :account do |f|
   f.login "ptramo"
   f.email "ptramo@dlfp.org"
+  f.old_password "xPYiaHploF546" # I<3J2EE
   f.after_build { |a| a.skip_confirmation! }
 end
 

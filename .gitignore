@@ -9,5 +9,6 @@ public/sitemap*
 public/uploads/**/*
 tmp/*
 tmp/**/*
+webrat.log
 LATER
 TODO
