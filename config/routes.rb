@@ -12,7 +12,7 @@ LinuxfrOrg::Application.routes.draw do
   # These routes are here only for cacheability reasons
   constraints(AnonymousConstraint) do
     get "/"         => "home#anonymous"
-    get "/news/:id" => "news#anonymous"
+    # FIXME get "/news/:id" => "news#anonymous"
   end
 
   root :to => "home#index"
