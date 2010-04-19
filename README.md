@@ -31,8 +31,8 @@ LinuxFr.org on a debian box.
     $ git clone git://github.com/nono/linuxfr.org.git
 	$ cd linuxfr.org
 	$ cp config/database.yml{.sample,}
-	$ gem install bundle rake
-	$ gem install rails rspec-rails compass haml devise will_paginate --pre
+	$ gem install bundler rake
+	$ gem install rails rspec-rails compass haml devise will_paginate --pre -y
 	$ rake setup
 
 4) Let's run it:
