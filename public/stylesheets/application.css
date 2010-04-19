@@ -389,7 +389,7 @@ body .bottom {
 }
 /* line 7, ../../../../../../usr/lib/ruby/gems/1.8/gems/compass-0.10.0.rc3/frameworks/blueprint/stylesheets/blueprint/_debug.scss */
 body .showgrid {
-  background: url('../images/grid.png?1267744199');
+  background: url('/images/grid.png?1267744199');
 }
 /* line 4, ../../../../../../usr/lib/ruby/gems/1.8/gems/compass-0.10.0.rc3/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
 body .error {
