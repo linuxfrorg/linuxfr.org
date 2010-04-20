@@ -22,8 +22,7 @@ gem "paperclip", :git => "git://github.com/nono/paperclip.git", :branch => 'rail
 gem "raspell",                 "~>1.1"
 gem "rdiscount",               "~>1.6"
 gem "rest-client",             "~>1.0", :require => "restclient"
-# TODO Rails 3
-# gem "sitemap_generator",     "~>0.2"
+gem "sitemap_generator",       "~>0.2"
 gem "simple_autocomplete",     "~>0.3"
 gem "thin",                    "~>1.2"
 # TODO Rails 3

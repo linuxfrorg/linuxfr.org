@@ -14,7 +14,7 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   #           :lastmod => Time.now, :host => default_host
 
   # Static pages
-  sitemap.add '/proposer_un_contenu_quand_on_est_anonyme', :priority => 0.5, :changefreq => 'yearly'
+  sitemap.add submit_anonymous_path, :priority => 0.5, :changefreq => 'yearly'
   sitemap.add '/team', :priority => 0.5, :changefreq => 'monthly'
   sitemap.add '/informations', :priority => 0.5, :changefreq => 'yearly'
   sitemap.add '/plan', :priority => 0.3, :changefreq => 'monthly'
@@ -50,10 +50,6 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   end
 
   # Other contents
-  sitemap.add interviews_path, :priority => 0.3, :changefreq => 'weekly'
-  Interview.public.find_each(:include => [:node]) do |interview|
-    sitemap.add interview_path(interview), :priority => 0.3, :changefreq => interview.changefreq, :lastmod => interview.lastmod
-  end
   sitemap.add polls_path, :priority => 0.3, :changefreq => 'weekly'
   if poll = Poll.current
     sitemap.add poll_path(poll), :priority => 0.5, :changefreq => 'hourly', :lastmod => poll.lastmod
