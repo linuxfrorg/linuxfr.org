@@ -5,18 +5,24 @@ describe "News" do
     @section = Factory(:section)
   end
 
+  after :each do
+    Section.destroy_all
+  end
+
   it "can be listed" do
-    news = Factory(:news)
+    news = Factory(:news, :section_id => @section.id)
     get news_path
     response.should contain(news.title)
   end
 
   it "can be submitted" do
+    @section.should_not be_nil
+    @section.should be_valid
     get new_news_path
     fill_in :news_author_name, :with => "Pierre Tramo"
     fill_in :news_author_email, :with => "pierre.tramo@dlfp.org"
     fill_in :news_title, :with => "J2EE is so cool"
-    select @section.id, :from => :news_section_id
+    select @section.title
     fill_in :news_wiki_body, :with => "Really, you should try it!"
     click_button "Prévisualiser"
     response.should contain("J2EE is so cool")
