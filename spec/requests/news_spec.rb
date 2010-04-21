@@ -11,13 +11,14 @@ describe "News" do
 
   it "can be listed" do
     news = Factory(:news, :section_id => @section.id)
-    get news_path
+    get news_index_path
     response.should contain(news.title)
   end
 
   it "can be submitted" do
     @section.should_not be_nil
     @section.should be_valid
+    @section.should be_published
     get new_news_path
     fill_in :news_author_name, :with => "Pierre Tramo"
     fill_in :news_author_email, :with => "pierre.tramo@dlfp.org"

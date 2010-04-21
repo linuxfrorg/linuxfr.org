@@ -1,5 +1,5 @@
 Factory.define :news do |f|
-  f.state :published
+  f.state 'published'
   f.title "New release of J2EE"
   f.wiki_body "Not much to say about it"
   f.second_part "Nothing here"
@@ -7,4 +7,5 @@ Factory.define :news do |f|
   f.association :section
   f.author_name "Pierre Tramo"
   f.author_email "pierre.tramo@dlfp.org"
+  f.after_build { |n| n.create_node(:public => true) }
 end

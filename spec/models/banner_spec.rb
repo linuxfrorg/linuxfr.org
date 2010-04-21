@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe Banner do
-  it "should create a new instance given valid attributes" do
-    Factory.create(:banner)
-  end
+  subject { Factory.new(:banner) }
+
+  it { should be_valid }
 
   it "should return the text of a banner on random" do
-    Factory.create(:banner)
-    Banner.random.should_not be_nil
+    Factory(:banner)
+    Banner.random.should be_present
   end
 end
