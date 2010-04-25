@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Comment do
-  it "should create a new instance given valid attributes" do
-    Factory.create(:comment)
+  it "should be valid" do
+    Factory.build(:comment).should be_valid
   end
 
   it "should wikify the body" do
