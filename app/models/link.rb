@@ -23,7 +23,7 @@ class Link < ActiveRecord::Base
   attr_accessible :user_id, :title, :url, :lang
 
   validates_presence_of :title, :message => 'Un lien doit obligatoirement avoir un titre'
-  validates_url_format_of :url, :message => "n'est pas une URL valide"
+  validates_url_format_of :url, :message => "Cette URL n'est pas valide"
 
   def url=(url)
     url = "http://#{url}" if url.present? && url.not.start_with?('http')

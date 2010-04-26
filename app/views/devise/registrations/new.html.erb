@@ -1,7 +1,8 @@
 <h2>S'inscrire</h2>
 
 <%= form_for @account, :as =>:account, :url => registration_path(:account) do |f| %>
-  <%= f.error_messages %>
+  <%= messages_on_error @account %>
+
   <p><%= f.label :login, "Identifiant" %></p>
   <p><%= f.text_field :login, :required => 'required' %></p>
 

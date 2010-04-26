@@ -1,7 +1,7 @@
 <h2>Changer de mot de passe</h2>
 
 <%= form_for @account, :url => password_path(:account), :html => { :method => :put } do |f| %>
-  <%= f.error_messages %>
+  <%= messages_on_error @account %>
   <%= f.hidden_field :reset_password_token %>
 
   <p><%= f.label :password %></p>

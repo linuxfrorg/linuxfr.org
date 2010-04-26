@@ -1,7 +1,7 @@
 <h2>Mot de passe oublié ?</h2>
 
 <%= form_for @account, :url => password_path(:account) do |f| %>
-  <%= f.error_messages %>
+  <%= messages_on_error @account %>
 
   <p><%= f.label :email %></p>
   <p><%= f.email_field :email %></p>

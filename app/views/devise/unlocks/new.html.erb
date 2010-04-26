@@ -1,7 +1,7 @@
 <h2>Envoyer les instructions pour débloquer mon compte</h2>
 
 <%= form_for @account, :url => unlock_path(:account) do |f| %>
-  <%= f.error_messages %>
+  <%= messages_on_error @account %>
 
   <p><%= f.label :email %></p>
   <p><%= f.email_field :email %></p>

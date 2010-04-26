@@ -3,7 +3,7 @@
 = render "preview", :preview => @wiki_page if @preview_mode
 
 = form_for @wiki_page do |form|
-  = form.error_messages
+  = messages_on_error @wiki_page
   = render form
 
 = render 'shared/wiki_help'

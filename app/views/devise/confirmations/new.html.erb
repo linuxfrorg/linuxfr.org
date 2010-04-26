@@ -1,7 +1,7 @@
 <h2>Renvoyer les instructions de confirmation</h2>
 
 <%= form_for @account, :url => confirmation_path(:account) do |f| %>
-  <%= f.error_messages %>
+  <%= messages_on_error @account %>
 
   <p><%= f.label :email %></p>
   <p><%= f.email_field :email %></p>
