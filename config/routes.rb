@@ -132,6 +132,5 @@ LinuxfrOrg::Application.routes.draw do
   match "/proposer-un-contenu" => "static#submit_content", :as => :submit_content
   match "/proposer-un-contenu-en-anonyme" => "static#submit_anonymous", :as => :submit_anonymous
   match "/changelog" => "static#changelog", :as => :changelog
-  # FIXME
-  match "/:id" => "static#show", :as => :static#, :id => /^[a-z_]+$/
+  match "/:id" => "static#show", :as => :static, :id => /[a-z_]+/
 end
