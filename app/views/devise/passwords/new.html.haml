@@ -1,0 +1,11 @@
+%h2 Mot de passe oublié ?
+
+= form_for @account, :url => password_path(:account) do |f|
+  = messages_on_error @account
+  %p
+    = f.label :email
+    = f.email_field :email
+  %p
+    = f.submit "Envoyer les instructions pour réinitialiser le mot de passe"
+
+= render :partial => "devise/shared/links"

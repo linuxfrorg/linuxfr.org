@@ -1,0 +1,26 @@
+%h2 Modifier son compte utilisateur
+
+= form_for @account, :url => registration_path(:account), :html => { :method => :put } do |f|
+  = messages_on_error @account
+  %p
+    = f.label :email
+    = f.email_field :email
+  %p
+    = f.label :current_password
+    %i (votre mot de passe actuel est nécessaire pour valider ce changement)
+    = f.password_field :current_password
+  %p
+    = f.label :password
+    %i (laissez ce champ vide si vous ne souhaitez pas changer de mot de passe)
+    = f.password_field :password
+  %p
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+  %p
+    = f.submit "Update"
+
+%h3 Fermer son compte
+%p
+  Vous souhaitez fermer votre compte ? #{link_to "Fermer mon compte", registration_path(:account), :confirm => "Êtes-vous sûr ?", :method => :delete}.
+
+= link_to "Retour", :back

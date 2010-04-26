@@ -1,0 +1,14 @@
+%h2 S'inscrire
+
+= form_for @account, :as =>:account, :url => registration_path(:account) do |f|
+  = messages_on_error @account
+  %p
+    = f.label :login, "Identifiant"
+    = f.text_field :login, :required => 'required'
+  %p
+    = f.label :email, "Adresse email"
+    = f.email_field :email, :required => "required"
+  %p
+    = f.submit "S'inscrire"
+
+= render :partial => "devise/shared/links"
