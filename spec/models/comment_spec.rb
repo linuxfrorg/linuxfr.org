@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe Comment do
+  before(:each) do
+    User.delete_all
+    Account.delete_all
+  end
+
   it "should be valid" do
     Factory.build(:comment).should be_valid
   end

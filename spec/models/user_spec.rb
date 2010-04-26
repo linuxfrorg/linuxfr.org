@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe User do
+  before(:each) do
+    User.delete_all
+    Account.delete_all
+  end
+
   it "should be only reviewers, moderators and admins that are 'amr'" do
     user = Factory(:user)
     user.should_not be_amr
