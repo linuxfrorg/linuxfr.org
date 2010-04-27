@@ -6,7 +6,7 @@ describe User do
     Account.delete_all
   end
 
-  it "should be only reviewers, moderators and admins that are 'amr'" do
+  it "is 'amr' only for reviewers, moderators and admins" do
     user = Factory(:user)
     user.should_not be_amr
     anon = Factory(:anonymous)
@@ -22,7 +22,7 @@ describe User do
     User.amr.all.should == [reviewer, moderator, admin]
   end
 
-  it "should have an account" do
+  it "has an account" do
     user = Factory(:user)
     user.account.should_not be_nil
   end

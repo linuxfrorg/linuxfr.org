@@ -4,32 +4,32 @@ describe Vote do
   let(:user) { Factory(:user) }
   let(:node) { Factory(:node) }
 
-  it "should create a new instance when an user votes for a node" do
+  it "creates a new instance when an user votes for a node" do
     Vote.for(user, node)
     user.votes.count.should == 1
     node.reload.score.should == 1
   end
 
-  it "should create a new instance when an user votes against a node" do
+  it "creates a new instance when an user votes against a node" do
     Vote.against(user, node)
     user.votes.count.should == 1
     node.reload.score.should == -1
   end
 
-  it "should not possible for an user to change his mind" do
+  it "can't be changed by an user if he changes his mind" do
     Vote.against(user, node)
     Vote.for(user, node)
     user.votes.count.should == 1
     node.reload.score.should == 1
   end
 
-  it "should be idempotent" do
+  it "is idempotent" do
     3.times { Vote.for(user, node) }
     user.votes.count.should == 1
     node.reload.score.should == 1
   end
 
-  it "should decrement the number of votes for the user" do
+  it "decrements the number of votes for the user" do
     user.account.update_attribute(:nb_votes, 10)
     Vote.for(user, node)
     Account.where(:user_id => user.id).first.nb_votes.should == 9

@@ -5,7 +5,7 @@ describe Banner do
 
   it { should be_valid }
 
-  it "should return the text of a banner on random" do
+  it "returns the text of a banner on random" do
     Factory(:banner)
     Banner.random.should be_present
   end

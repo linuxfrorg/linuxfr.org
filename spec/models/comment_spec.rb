@@ -6,11 +6,11 @@ describe Comment do
     Account.delete_all
   end
 
-  it "should be valid" do
+  it "is valid" do
     Factory.build(:comment).should be_valid
   end
 
-  it "should wikify the body" do
+  it "wikifies the body" do
     comment = Factory(:comment, :wiki_body => "_it_ et **gras**")
     comment.body.should == "<p><em>it</em> et <strong>gras</strong></p>\n"
   end
@@ -28,7 +28,7 @@ describe Comment do
       @child_three= Factory(:comment, :id => 7,:user_id => @modo.id, :parent_id => @parent_one.id)
     end
 
-    it "should have 2 roots" do
+    it "has 2 roots" do
       @root_one.should be_root
       @root_two.should be_root
       @parent_one.should_not be_root
@@ -38,7 +38,7 @@ describe Comment do
       @child_three.should_not be_root
     end
 
-    it "should be marked as answer to self when one of its ascendant is from the same user" do
+    it "is marked as answer to self when one of its ascendant is from the same user" do
       @root_one.should_not be_answer_to_self
       @root_two.should_not be_answer_to_self
       @parent_one.should_not be_answer_to_self
@@ -48,7 +48,7 @@ describe Comment do
       @child_three.should be_answer_to_self
     end
 
-    it "should set depth" do
+    it "has correct depth" do
       @root_one.depth.should be_equal(0)
       @root_two.depth.should be_equal(0)
       @parent_one.depth.should be_equal(1)
@@ -58,7 +58,7 @@ describe Comment do
       @child_three.depth.should be_equal(2)
     end
 
-    it "should set materialized_path" do
+    it "has correct materialized_path" do
       @root_one.materialized_path.should == "000000000001"
       @root_two.materialized_path.should == "000000000002"
       @parent_one.materialized_path.should == "000000000001000000000003"
@@ -68,7 +68,7 @@ describe Comment do
       @child_three.materialized_path.should == "000000000001000000000003000000000007"
     end
 
-    it "should compute parent_id" do
+    it "has correct parent_id" do
       Comment.find(@root_one.id).parent_id.should == 0
       Comment.find(@root_two.id).parent_id.should == 0
       Comment.find(@parent_one.id).parent_id.should == @root_one.id
@@ -78,7 +78,7 @@ describe Comment do
       Comment.find(@child_three.id).parent_id.should == @parent_one.id
     end
 
-    it "should compute nb_answers" do
+    it "has correct nb_answers" do
       @root_one.nb_answers.should be_equal(5)
       @root_two.nb_answers.should be_equal(0)
       @parent_one.nb_answers.should be_equal(3)
@@ -88,7 +88,7 @@ describe Comment do
       @child_three.nb_answers.should be_equal(0)
     end
 
-    it "should find the last answer" do
+    it "finds the last answer" do
       @root_one.last_answer.should == @child_three
       @root_two.last_answer.should == nil
       @parent_one.last_answer.should == @child_three

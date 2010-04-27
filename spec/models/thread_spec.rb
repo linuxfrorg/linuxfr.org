@@ -6,16 +6,20 @@ describe Thread do
     @node_id = 1
   end
 
-  it "should create an empty thread when no comments" do
-    Threads.all(@node_id).should be_empty
+  context "when no comments have been posted" do
+    it "is empty" do
+      Threads.all(@node_id).should be_empty
+    end
   end
 
-  it "should create a thread with the only comment" do
-    @root = Factory(:comment, :user_id => @user_id, :node_id => @node_id)
-    threads = Threads.all(@node_id)
-    threads.size.should == 1
-    threads.first.comment.should == @root
-    threads.first.children.should be_empty
+  context "when there is only one comment" do
+    it "contains the comment" do
+      @root = Factory(:comment, :user_id => @user_id, :node_id => @node_id)
+      threads = Threads.all(@node_id)
+      threads.size.should == 1
+      threads.first.comment.should == @root
+      threads.first.children.should be_empty
+    end
   end
 
   context "in a simple discussion" do
@@ -29,7 +33,7 @@ describe Thread do
       @child_three= Factory(:comment, :user_id => @user_id, :node_id => @node_id, :parent_id => @parent_one.id)
     end
 
-    it "should create the complete threads" do
+    it "is created with every comment" do
       threads = Threads.all(@node_id)
       threads.size.should == 2
         first_thread = threads.first
