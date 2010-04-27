@@ -26,7 +26,7 @@ class WikiPage < Content
 
 ### Associated node ###
 
-  after_save :create_associated_node
+  after_create :create_associated_node
   def create_associated_node
     create_node(:user_id => user_id, :cc_licensed => true)
   end

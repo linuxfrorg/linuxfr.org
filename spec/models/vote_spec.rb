@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Vote do
   let(:user) { Factory(:user) }
-  let(:node) { Factory(:node) }
+  let(:node) { Factory(:diary).node }
 
   it "creates a new instance when an user votes for a node" do
     Vote.for(user, node)

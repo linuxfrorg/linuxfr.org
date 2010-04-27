@@ -4,7 +4,7 @@ gem "rails",                   "3.0.0.beta3"
 
 # TODO Rails 3
 # gem "aasm",                    "~>2.1"
-gem "aasm", :git => "git://github.com/rubyist/aasm.git"
+gem "aasm", :git => "http://github.com/larspind/aasm.git"
 gem "acts_as_list",            "~>0.1"
 gem "canable",                 "~>0.1"
 gem "compass",                 "0.10.0.rc3"

@@ -44,10 +44,10 @@ class News < Content
 
 ### Associated node ###
 
-  after_save :create_associated_node
+  after_create :create_associated_node
   def create_associated_node
-    user = User.find_by_email(author_email)
-    create_node(:public => false, :user_id => (user && user.id))
+    account = Account.find_by_email(author_email)
+    create_node(:public => false, :user_id => (account && account.user_id))
   end
 
 ### Virtual attributes ###
