@@ -25,8 +25,29 @@
     });
 
     /* Add/Remove dynamically links in the news form. */
-    $("#form_links").nested_fields("news", "link", "lien", {title: 'text', url: 'url', lang: 'text'});
-    // TODO lang should be a <select>, not an <input type="text">
+    var langs = {
+        fr: 'Français',
+        en: 'Anglais',
+        de: 'Allemand',
+        it: 'Italien',
+        es: 'Espagnol',
+        fi: 'Finnois',
+        eu: 'Basque',
+        ja: 'Japonais',
+        ru: 'Russe',
+        pt: 'Portugais',
+        nl: 'Néerlandais',
+        da: 'Danois',
+        el: 'Grec',
+        sv: 'Suédois',
+        cn: 'Chinois',
+        pl: 'Polonais',
+        xx: '!? hmmm ?!',
+        ct: 'Catalan',
+        no: 'Norvégien',
+        ko: 'Coréen'
+    };
+    $("#form_links").nested_fields("news", "link", "lien", {title: 'text', url: 'url', lang: langs});
 
     /* Show the toolbar */
     if ($('body').hasClass('logged')) {

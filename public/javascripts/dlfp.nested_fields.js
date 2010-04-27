@@ -22,7 +22,7 @@
                 id: "add_" + base.nested,
                 text: "Ajouter un " + base.text
             })}));
-            $('#add-' + base.nested).click(function() { base.add_item(); });
+            $('#add_' + base.nested).click(function() { base.add_item(); });
         };
 
         base.bind_item = function(item) {
@@ -37,7 +37,16 @@
             last.after(fset);
             for (var i in base.attributes) {
                 var name = base.parent + '[' + base.nested + 's_attributes][' + base.counter + '][' + i + ']';
-                $('<input/>', {name: name, type: base.attributes[i]}).appendTo(fset);
+                var type = base.attributes[i];
+                if (typeof(type) === "string") {
+                    elem = $('<input/>', {name: name, type: type})
+                } else {
+                    elem = $('<select/>', {name: name});
+                    for (var j in type) {
+                        $('<option/>', {value: j, text: type[j]}).appendTo(elem);
+                    }
+                }
+                elem.appendTo(fset);
             }
             base.bind_item(last.next());
             base.counter += 1;
