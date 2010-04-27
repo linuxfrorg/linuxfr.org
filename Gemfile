@@ -12,7 +12,7 @@ gem "devise",                  "~>1.1.rc1"
 gem "erubis",                  "~>2.6"
 gem "french_rails",            "~>0.2"
 gem "friendly_id",             "~>3.0"
-gem "haml",                    "3.0.0.rc.1"
+gem "haml",                    "3.0.0.rc.2"
 gem "htmlentities",            "~>4.2"
 gem "mysql",                   "~>2.8"
 gem "nokogiri",                "~>1.4"
@@ -39,6 +39,6 @@ group :development do
 end
 
 group :test do
-  gem "rspec-rails",           ">=2.0.0.beta.7"
+  gem "rspec-rails",           ">=2.0.0.beta.8"
   gem "factory_girl",          "~>1.2"
 end

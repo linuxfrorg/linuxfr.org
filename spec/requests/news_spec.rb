@@ -18,7 +18,6 @@ describe "News" do
   it "can be listed" do
     news = Factory(:news, :section_id => section.id)
     get news_index_path
-    save_and_open_page
     assert_response :success
     response.should contain(news.title)
   end
