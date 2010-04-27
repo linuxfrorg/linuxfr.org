@@ -103,7 +103,6 @@ LinuxfrOrg::Application.routes.draw do
       post :refuse, :on => :member
       post :ppp, :on => :member
       post :clear_locks, :on => :member
-      get "/show_diff/:sha" => "news#show_diff", :as => :show_diff, :on => :member
     end
     resources :sondages, :controller => "polls", :as => "polls", :except => [:new, :create, :destroy] do
       post :refuse, :on => :member

@@ -67,12 +67,6 @@ class Moderation::NewsController < ModerationController
     redirect_to @news
   end
 
-  # TODO to be removed?
-  def show_diff
-    enforce_view_permission(@news)
-    @commit = Commit.new(@news, params[:sha])
-  end
-
   def clear_locks
     enforce_update_permission(@news)
     @news.clear_locks(current_user)

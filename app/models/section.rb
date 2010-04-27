@@ -30,7 +30,7 @@ class Section < ActiveRecord::Base
 
   has_attached_file :image, :path => ':rails_root/public/images/sections/:id.:extension',
                             :url  => '/images/sections/:id.:extension'
-  # FIXME validates_attachment_presence :image, :message => "L'image est obligatoire"
+  validates_attachment_presence :image, :message => "L'image est obligatoire"
 
 ### Workflow ###
 

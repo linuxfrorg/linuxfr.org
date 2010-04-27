@@ -1,7 +1,7 @@
 /*global jQuery, $ */
 
 var Chat = {
-    /* FIXME do not share these variables */
+    /* TODO do not share these variables */
     errorSleepTime: 500,
     cursor: null,
     inbox: null,
