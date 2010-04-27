@@ -11,7 +11,7 @@ del.diffdel, del.diffmod {
 .misspelled {
   border-bottom: 1px dashed red; }
 
-a.action, time.norloge, span.content-type {
+a.action, time.norloge, span.content_type {
   &:before {
     content: "["; }
   &:after {

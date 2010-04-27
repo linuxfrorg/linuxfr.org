@@ -53,7 +53,7 @@ var Chat = {
     },
 
     newMessage: function(message) {
-        var existing = $("#board-" + message.id);
+        var existing = $("#board_" + message.id);
         if (existing.length > 0) { return ; }
         var method  = 'on_' + message['type']; // TODO message.type
         if (Chat[method]) {

@@ -19,7 +19,7 @@
             items.each(function() { base.bind_item(this); });
             base.element.append($('<fieldset/>', {html: $('<button/>', {
                 type: "button",
-                id: "add-" + base.nested,
+                id: "add_" + base.nested,
                 text: "Ajouter un " + base.text
             })}));
             $('#add-' + base.nested).click(function() { base.add_item(); });

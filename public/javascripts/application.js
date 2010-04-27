@@ -3,13 +3,13 @@
 (function($) {
     $(".markItUp").markItUp(markItUpSettings);
 
-    $("a.hit-counter").each(function() {
+    $("a.hit_counter").each(function() {
         this.href = "/redirect/" + $(this).attr('data-hit');
     });
 
     /* Ready to moule */
     // TODO $('.board').board('.inbox');
-    $("#main-board input[type=text]").select();
+    $("#main_board input[type=text]").select();
 
     /* Animate the scrolling to a fragment */
     $("a.scroll").click(function() {
@@ -25,16 +25,16 @@
     });
 
     /* Add/Remove dynamically links in the news form. */
-    $("#form-links").nested_fields("news", "link", "lien", {title: 'text', url: 'url', lang: 'text'});
+    $("#form_links").nested_fields("news", "link", "lien", {title: 'text', url: 'url', lang: 'text'});
     // TODO lang should be a <select>, not an <input type="text">
 
     /* Show the toolbar */
     if ($('body').hasClass('logged')) {
         if ($('#comments').length > 0) {
-            $('#comments .new-comment').toolbar('Nouveaux commentaires', {folding: '#comments .comment'});
+            $('#comments .new_comment').toolbar('Nouveaux commentaires', {folding: '#comments .comment'});
         }
         if ($('#contents').length > 0) {
-            $('#contents .new-content').toolbar('Contenus pas encore visités');
+            $('#contents .new_content').toolbar('Contenus pas encore visités');
         }
     }
 

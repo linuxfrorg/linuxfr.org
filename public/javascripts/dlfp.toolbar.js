@@ -16,12 +16,12 @@
         };
 
         base.create = function() {
-            var t = '<div id="toolbar"><span id="toolbar-items">{toolbar.text} : ' +
-                    '  <span id="toolbar-current-item">{toolbar.current}</span> / ' +
-                    '  <span id="toolbar-nb-items">{toolbar.nb_items}</span> ' +
+            var t = '<div id="toolbar"><span id="toolbar_items">{toolbar.text} : ' +
+                    '  <span id="toolbar_current_item">{toolbar.current}</span> / ' +
+                    '  <span id="toolbar_nb_items">{toolbar.nb_items}</span> ' +
                     '  <a href="#" accesskey="<" class="prev">&lt;</a> | ' +
                     '  <a href="#" accesskey=">" class="next">&gt;</a>' +
-                    '</span><span id="toolbar-threshold">Seuil : ' +
+                    '</span><span id="toolbar_threshold">Seuil : ' +
                     '  <a href="#" class="change">{toolbar.threshold}</a>' +
                     '</span></div>';
             $('body').append($.nano(t, {toolbar: base}));
@@ -52,7 +52,7 @@
             var item = base.items[base.current - 1];
             var pos = $(item).offset().top;
             $('html').animate({scrollTop: pos}, 500);
-            $('#toolbar-current-item').text(base.current);
+            $('#toolbar_current_item').text(base.current);
             return false;
         };
 

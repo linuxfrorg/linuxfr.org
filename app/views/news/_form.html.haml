@@ -16,7 +16,7 @@
 %p
   = form.label :wiki_body, "Contenu de la dépêche"
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
-#form-links
+#form_links
   - langs = Dictionary.collection('lang')
   %fieldset
     %label Nom du lien

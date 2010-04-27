@@ -2,7 +2,7 @@
   background-color: $back_color;
   border-bottom: unquote("3px") solid $border_color;
   margin-bottom: 20px;
-  .go-to-content {
+  .go_to_content {
     float: left;
     @include hide-text; }
   ul {

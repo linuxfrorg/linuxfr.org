@@ -1,10 +1,10 @@
 %footer#bigfooter
-  %nav#last-comments
+  %nav#last_comments
     %h1 Derniers commentaires
     %ul
       - @last_comments.each do |comment|
         %li= link_to comment.title, node_comment_url(:node_id => comment.node_id, :id => comment.id)
-  %nav#popular-tags
+  %nav#popular_tags
     %h1 Tags populaires
     %ul.tag-cloud
       - @popular_tags.each do |tag|
@@ -14,7 +14,7 @@
     %ul
       - @friend_sites.each do |site|
         %li= link_to site.title, site.url
-  %nav#about-us
+  %nav#about_us
     %h1 À propos de LinuxFr.org
     %ul
       %li= link_to "Nous contacter", '/contact'

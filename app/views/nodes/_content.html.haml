@@ -8,7 +8,7 @@
         = link_to "Licence CC by-sa", 'http://creativecommons.org/licenses/by-sa/3.0/deed.fr', :rel => 'license'
       - unless (tags = record.node.popular_tags.all).empty?
         Tags :
-        %ul.tag-cloud
+        %ul.tag_cloud
           = list_of tags do |tag|
             = link_to tag.name, public_tag_path(:id => tag.name), :rel => 'tag'
   %figure.score

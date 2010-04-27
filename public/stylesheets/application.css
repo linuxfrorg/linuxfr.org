@@ -1,6 +1,6 @@
 @font-face {
   font-family: Megalopolis;
-  src: url('/fonts/MEgalopolisExtra.otf') format("opentype");
+  src: url('"/fonts/MEgalopolisExtra.otf"') format("opentype");
 }
 
 /* line 13, ../../../../gem/gems/compass-0.10.0.rc3/frameworks/compass/stylesheets/compass/utilities/general/_reset.scss */
@@ -520,7 +520,7 @@ form textarea {
   margin-bottom: 20px;
 }
 /* line 5, ../../app/stylesheets/layout/_site.scss */
-#site .go-to-content {
+#site .go_to_content {
   float: left;
   text-indent: -9999em;
   overflow: hidden;
@@ -646,7 +646,7 @@ form textarea {
   font-size: 2.5em;
 }
 /* line 13, ../../app/stylesheets/layout/_bigfooter.scss */
-#bigfooter #about-us {
+#bigfooter #about_us {
   margin-right: 0;
 }
 
@@ -735,11 +735,11 @@ del.diffdel, del.diffmod {
 }
 
 /* line 15, ../../app/stylesheets/partials/_generics.scss */
-a.action:before, time.norloge:before, span.content-type:before {
+a.action:before, time.norloge:before, span.content_type:before {
   content: "[";
 }
 /* line 17, ../../app/stylesheets/partials/_generics.scss */
-a.action:after, time.norloge:after, span.content-type:after {
+a.action:after, time.norloge:after, span.content_type:after {
   content: "]";
 }
 
@@ -791,17 +791,17 @@ article figure.score {
   -webkit-border-radius: 5px;
 }
 /* line 26, ../../app/stylesheets/partials/_contents.scss */
-article ul.tag-cloud {
+article ul.tag_cloud {
   display: inline;
   list-style: none;
 }
 /* line 4, ../../app/stylesheets/mixins/_list.scss */
-article ul.tag-cloud li {
+article ul.tag_cloud li {
   display: inline;
 }
 
 /* line 31, ../../app/stylesheets/partials/_contents.scss */
-.comment .new-comment h3 {
+.comment .new_comment h3 {
   border: 1px solid red;
 }
 /* line 33, ../../app/stylesheets/partials/_contents.scss */
@@ -842,7 +842,7 @@ article ul.tag-cloud li {
 }
 
 /* line 12, ../../app/stylesheets/partials/_toolbar.scss */
-#toolbar-items {
+#toolbar_items {
   float: right;
 }
 
@@ -881,7 +881,7 @@ article ul.tag-cloud li {
 
 /* line 23, ../../app/stylesheets/partials/_autocomplete.scss */
 .ac_loading {
-  background: white url('/images/ajax-loader.gif') right center no-repeat;
+  background: white url('"/images/ajax-loader.gif"') right center no-repeat;
 }
 
 /* line 26, ../../app/stylesheets/partials/_autocomplete.scss */

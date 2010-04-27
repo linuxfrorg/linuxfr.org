@@ -23,12 +23,12 @@ article {
       text-align: center;
       font-weight: bold;
       @include round-corners; } }
-  ul.tag-cloud {
+  ul.tag_cloud {
     @include inline-list; } }
 
 // Comments
 .comment {
-  .new-comment h3 {
+  .new_comment h3 {
     border: 1px solid red; }
   .avatar {
     float: left;
