@@ -13,10 +13,10 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new
-    @post.attributes = params[:post]
     enforce_create_permission(@post)
+    @post.attributes = params[:post]
+    @post.user_id = current_user.id
     if !preview_mode && @post.save
-      @post.create_node(:user_id => current_user.id)
       redirect_to forum_posts_url(:forum_id => @post.forum_id), :notice => "Votre message a bien été créé"
     else
       @post.node = Node.new

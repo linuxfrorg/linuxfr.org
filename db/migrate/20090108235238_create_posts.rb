@@ -7,6 +7,7 @@ class CreatePosts < ActiveRecord::Migration
       t.text :body
       t.text :wiki_body
       t.references :forum
+      t.references :user
       t.timestamps
     end
     add_index :posts, :state

@@ -34,7 +34,6 @@ class WikiPagesController < ApplicationController
     @wiki_page.attributes = params[:wiki_page]
     enforce_create_permission(@wiki_page)
     if !preview_mode && @wiki_page.save
-      @wiki_page.create_node(:user_id => current_user.id, :cc_licensed => true)
       redirect_to @wiki_page, :notice => "Nouvelle page de wiki créée"
     else
       @wiki_page.node = Node.new

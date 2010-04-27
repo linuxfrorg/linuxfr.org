@@ -227,6 +227,7 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
     t.text     "body"
     t.text     "wiki_body"
     t.integer  "forum_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

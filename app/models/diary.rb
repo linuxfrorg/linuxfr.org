@@ -30,6 +30,13 @@ class Diary < Content
 
   wikify_attr :body
 
+### Associated node ###
+
+  after_save :create_associated_node
+  def create_associated_node
+    create_node(:user_id => owner_id)
+  end
+
 ### SEO ###
 
   has_friendly_id :title, :use_slug => true

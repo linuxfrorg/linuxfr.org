@@ -7,7 +7,6 @@ class Redaction::NewsController < RedactionController
 
   def create
     @news = News.create_for_redaction(current_user)
-    @news.create_node(:public => false, :user_id => (current_user && current_user.id))
     redirect_to [:redaction, @news]
   end
 

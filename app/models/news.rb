@@ -42,6 +42,14 @@ class News < Content
   validates_presence_of :body,    :message => "Nous n'acceptons pas les dépêches vides"
   validates_presence_of :section, :message => "Veuillez choisir une section pour cette dépêche"
 
+### Associated node ###
+
+  after_save :create_associated_node
+  def create_associated_node
+    user = User.find_by_email(author_email)
+    create_node(:public => false, :user_id => (user && user.id))
+  end
+
 ### Virtual attributes ###
 
   attr_accessor   :message, :wiki_body, :wiki_second_part, :editor_id

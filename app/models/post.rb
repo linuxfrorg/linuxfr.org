@@ -9,6 +9,7 @@
 #  body        :text
 #  wiki_body   :text
 #  forum_id    :integer(4)
+#  user_id     :integer(4)
 #  created_at  :datetime
 #  updated_at  :datetime
 #
@@ -18,6 +19,7 @@
 #
 class Post < Content
   belongs_to :forum
+  belongs_to :user
 
   attr_accessible :title, :wiki_body
 
@@ -29,6 +31,13 @@ class Post < Content
   scope :published, where(:state => 'published')
 
   wikify_attr :body
+
+### Associated node ###
+
+  after_save :create_associated_node
+  def create_associated_node
+    create_node(:user_id => user_id)
+  end
 
 ### SEO ###
 

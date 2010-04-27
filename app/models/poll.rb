@@ -26,6 +26,15 @@ class Poll < Content
 
   scope :sorted, order('created_at DESC')
 
+### Associated node ###
+
+  attr_accessor :user_id
+
+  after_save :create_associated_node
+  def create_associated_node
+    create_node(:user_id => user_id)
+  end
+
 ### SEO ###
 
   has_friendly_id :title, :use_slug => true
