@@ -14,10 +14,10 @@ LinuxFr.org on a debian box.
 
 1) First install the debian packages:
 
-    # aptitude install ruby1.8 ruby1.8-dev
-	# aptitude install mysql-server mysql-client libmysql++-dev
-	# aptitude install build-essential libxslt1-dev libxml2-dev
-	# aptitude install aspell libaspell-dev aspell-fr
+    # aptitude install ruby1.8 ruby1.8-dev irb1.8 libopenssl-ruby1.8
+    # aptitude install mysql-server mysql-client libmysql++-dev
+    # aptitude install build-essential libxslt1-dev libxml2-dev
+    # aptitude install aspell libaspell-dev aspell-fr
 
 2) Install rubygems from source (the debian version is too old).
 You can follow instructions of
@@ -26,26 +26,24 @@ http://railstips.org/blog/archives/2008/11/24/rubygems-yours-mine-and-ours/
 3) Configure the database:
 
     # mysql -p -u root
-	<enter your root password for mysql>
-	> CREATE DATABASE linuxfr_rails;
-	> GRANT ALL PRIVILEGES ON linuxfr_rails.* TO "linuxfr_rails"@"localhost";
+    <enter your root password for mysql>
+    > CREATE DATABASE linuxfr_rails;
+    > GRANT ALL PRIVILEGES ON linuxfr_rails.* TO "linuxfr_rails"@"localhost";
 
 4) Clone the repository, configure and install gems:
 
     $ git clone git://github.com/nono/linuxfr.org.git
-	$ cd linuxfr.org
-	$ cp config/database.yml{.sample,}
-	$ gem install bundler rake
-	$ gem install rails rspec-rails compass haml devise will_paginate --pre -y
-	$ rake setup
+    $ cd linuxfr.org
+    $ cp config/database.yml{.sample,}
+    $ gem install bundler rake
+    $ gem install rails rspec-rails compass haml devise will_paginate --pre -y
+    $ bundle install
+    $ rake db:setup
 
 5) Let's run it:
 
     $ rails server
-	$ firefox http://127.0.0.1:3000/
-
-I don't have tested these instructions on a fresh debian, so if it don't work,
-ask me by mail: NoNo@linuxfr.org.
+    $ firefox http://127.0.0.1:3000/
 
 
 See also
