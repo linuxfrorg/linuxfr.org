@@ -12,7 +12,7 @@ gem "devise",                  "~>1.1.rc1"
 gem "erubis",                  "~>2.6"
 gem "french_rails",            "~>0.2"
 gem "friendly_id",             "~>3.0"
-gem "haml",                    "3.0.0.rc.3"
+gem "haml",                    "3.0.0.rc.4"
 gem "htmlentities",            "~>4.2"
 gem "mysql",                   "~>2.8"
 gem "nokogiri",                "~>1.4"
@@ -40,5 +40,7 @@ end
 
 group :test do
   gem "rspec-rails",           ">=2.0.0.beta.8"
-  gem "factory_girl",          "~>1.2"
+  # TODO Rails 3
+  # gem "factory_girl",          "~>1.2"
+  gem "factory_girl", :git => "git://github.com/thoughtbot/factory_girl.git"
 end
