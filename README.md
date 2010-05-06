@@ -36,7 +36,7 @@ http://railstips.org/blog/archives/2008/11/24/rubygems-yours-mine-and-ours/
     $ cd linuxfr.org
     $ cp config/database.yml{.sample,}
     $ gem install bundler rake
-    $ gem install rails rspec-rails compass haml devise will_paginate --pre -y
+    $ gem install rails rspec-rails compass haml devise will_paginate --pre
     $ bundle install
     $ rake db:setup
 
