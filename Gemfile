@@ -7,7 +7,7 @@ gem "rails",                   "3.0.0.beta3"
 gem "aasm", :git => "http://github.com/larspind/aasm.git"
 gem "acts_as_list",            "~>0.1"
 gem "canable",                 "~>0.1"
-gem "compass",                 "0.10.0.rc3"
+gem "compass",                 "0.10.0.rc5"
 gem "devise",                  "~>1.1.rc1"
 gem "erubis",                  "~>2.6"
 gem "french_rails",            "~>0.2"
@@ -42,5 +42,5 @@ group :test do
   gem "rspec-rails",           ">=2.0.0.beta.8"
   # TODO Rails 3
   # gem "factory_girl",          "~>1.2"
-  gem "factory_girl", :git => "git://github.com/thoughtbot/factory_girl.git"
+  gem "factory_girl", :git => "git://github.com/thoughtbot/factory_girl.git", :branch => "fixes_for_rails3"
 end
