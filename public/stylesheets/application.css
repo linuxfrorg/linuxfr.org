@@ -1,6 +1,6 @@
 @font-face {
   font-family: Megalopolis;
-  src: url('"/fonts/MEgalopolisExtra.otf"') format("opentype");
+  src: url(/fonts/MEgalopolisExtra.otf) format("opentype");
 }
 
 /* line 14, ../../../../gem/gems/compass-0.10.0.rc5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
