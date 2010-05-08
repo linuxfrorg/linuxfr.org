@@ -99,4 +99,3 @@ Voici quelques pages qu'il serait intéressant d'avoir :
 - [[Astuces]] : des astuces sur Linux et les Logiciels Libres.
 EOS
 wp.save
-wp.create_node(:user_id => anon.user.id)
