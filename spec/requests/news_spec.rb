@@ -9,7 +9,7 @@ describe "News" do
     Node.delete_all
   end
 
-  let(:section) do
+  let!(:section) do
     Factory(:section).tap do |sect|
       sect.stub(:image).and_return(double('image', :url => ''))
     end
@@ -23,7 +23,6 @@ describe "News" do
   end
 
   it "can be submitted" do
-    section.should be_published
     get new_news_path
     fill_in :news_author_name, :with => "Pierre Tramo"
     fill_in :news_author_email, :with => "pierre.tramo@dlfp.org"

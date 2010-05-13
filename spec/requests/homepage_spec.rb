@@ -9,7 +9,7 @@ describe "Homepage" do
     Account.delete_all
   end
 
-  let(:account) { Factory(:account) }
+  let!(:account) { Factory(:account) }
 
   it "works for anonymous" do
     get '/'
