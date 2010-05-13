@@ -64,9 +64,11 @@ LinuxfrOrg::Application.routes.draw do
   end
 
   # Boards
-  post "/board/add" => "boards#add", :as => :add_board
-  get  "/board" => "boards#show", :as => :free_board
-  get  "/board/index.xml" => "boards#show", :as => :free_board_xml, :format => "xml"
+  controller :boards do
+    post "/board/add" => :add, :as => :add_board
+    get  "/board" => :show, :as => :free_board
+    get  "/board/index.xml" => :show, :as => :free_board_xml, :format => "xml"
+  end
 
   # Accounts
   devise_for :account, :path => "compte", :controllers => {
@@ -80,9 +82,11 @@ LinuxfrOrg::Application.routes.draw do
   resource :stylesheet, :only => [:edit, :create, :destroy]
 
   # Search
-  get "/recherche" => "search#index", :as => :search
-  get "/recherche/:type" => "search#type", :as => :search_by_type
-  get "/recherche/:type/:facet" => "search#facet", :as => :search_by_facet
+  controller :search do
+    get "/recherche" => :index, :as => :search
+    get "/recherche/:type" => :type, :as => :search_by_type
+    get "/recherche/:type/:facet" => :facet, :as => :search_by_facet
+  end
 
   # Redaction
   namespace :redaction do
@@ -128,8 +132,10 @@ LinuxfrOrg::Application.routes.draw do
   end
 
   # Static pages
-  match "/proposer-un-contenu" => "static#submit_content", :as => :submit_content
-  match "/proposer-un-contenu-en-anonyme" => "static#submit_anonymous", :as => :submit_anonymous
-  match "/changelog" => "static#changelog", :as => :changelog
-  match "/:id" => "static#show", :as => :static, :id => /[a-z_]+/
+  controller :static do
+    get "/proposer-un-contenu" => :submit_content, :as => :submit_content
+    get "/proposer-un-contenu-en-anonyme" => :submit_anonymous, :as => :submit_anonymous
+    get "/changelog" => :changelog, :as => :changelog
+    get "/:id" => :show, :as => :static, :constraints => { :id => /[a-z_]+/ }
+  end
 end
