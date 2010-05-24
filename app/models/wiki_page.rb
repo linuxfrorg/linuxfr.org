@@ -73,7 +73,7 @@ class WikiPage < Content
 ### ACL ###
 
   def creatable_by?(user)
-    user # && user.karma > 0
+    user && user.account.karma > 0
   end
 
   def updatable_by?(user)

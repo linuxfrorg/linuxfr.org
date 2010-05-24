@@ -49,4 +49,7 @@ protected
     current_user.read(@news.node) if current_user
   end
 
+  def enforce_view_permission(resource)
+    raise Canable::Transgression unless resource.viewable_by?(current_user)
+  end
 end
