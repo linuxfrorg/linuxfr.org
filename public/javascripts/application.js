@@ -62,15 +62,19 @@
     /* Hotkeys */
     $(document)
     .bind('keypress', 'g', function() {
-      $('html').animate({scrollTop: 0}, 500);
-      return false;
+        $('html').animate({scrollTop: 0}, 500);
+        return false;
     })
     .bind('keypress', 'shift+g', function() {
-      $('html').animate({scrollTop: $('body').scrollHeight}, 500);
-      return false;
+        $('html').animate({scrollTop: $('body').attr("scrollHeight")}, 500);
+        return false;
     })
     .bind('keypress', 'shift+?', function() {
-        // TODO complete help
-        $.noticeAdd({text: "Raccourcis clavier :<ul><li>? pour l'aide</li></ul>"});
+        $.noticeAdd({text: "Raccourcis clavier :<ul><li>? pour l'aide</li>" +
+                    "<li>&lt; pour le commentaire/contenu précédent</li>" +
+                    "<li>&gt; pour le commentaire/contenu suivant</li>" +
+                    "<li>g pour aller au début de la page</li>" +
+                    "<li>G pour aller à la fin de la page</li></ul>"});
+        return false;
     });
 })(jQuery);

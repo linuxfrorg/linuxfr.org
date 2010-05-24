@@ -2,9 +2,6 @@
 /* Adapted from http://github.com/rails/jquery-ujs */
 
 (function($) {
-    var csrf_token = $('meta[name=csrf-token]').attr('content'),
-        csrf_param = $('meta[name=csrf-param]').attr('content');
-
     $.fn.extend({
         triggerAndReturn: function(name, data) {
             var event = new $.Event(name);
