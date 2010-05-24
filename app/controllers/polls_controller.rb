@@ -2,6 +2,7 @@ class PollsController < ApplicationController
   before_filter :authenticate_account!, :only => [:new, :create]
   before_filter :find_poll, :only => [:show, :vote]
   after_filter  :marked_as_read, :only => [:show]
+  respond_to :html, :atom
 
   def index
     @order = params[:order] || 'created_at'
@@ -10,10 +11,7 @@ class PollsController < ApplicationController
       poll = Poll.current
       @polls.unshift(poll) if poll
     end
-    respond_to do |wants|
-      wants.html
-      wants.atom
-    end
+    respond_with(@polls)
   end
 
   def show
