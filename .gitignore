@@ -6,6 +6,8 @@ db/*.sqlite3
 db/sphinx/**/*
 log/*.log
 public/sitemap*
+public/stylesheets/application.css
+public/stylesheets/print.css
 public/uploads/**/*
 tmp/*
 tmp/**/*
