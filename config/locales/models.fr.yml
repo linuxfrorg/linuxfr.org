@@ -1,0 +1,27 @@
+fr:
+  activerecord:
+    models:
+      account: compte
+      banner: bannière
+      board: tribune
+      category: catégorie
+      comment: commentaire
+      content: contenu
+      diary: journal
+      forum: forum
+      friend_site: site ami
+      link: lien
+      news: dépêche
+      node: noeud
+      page: page
+      paragraph: paragraphe
+      poll: sondage
+      post: message
+      relevance: pertinence
+      response: réponse
+      section: section
+      tracker: entrée du suivi
+      user: utilisateur
+      vote: vote
+      wiki_page: page de wiki
+      wiki_version: version

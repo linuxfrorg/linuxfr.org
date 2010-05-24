@@ -10,8 +10,8 @@
 #  second_part  :text
 #  moderator_id :integer(4)
 #  section_id   :integer(4)
-#  author_name  :string(255)     default("anonymous"), not null
-#  author_email :string(255)     default("anonymous@dlfp.org"), not null
+#  author_name  :string(255)     not null
+#  author_email :string(255)     not null
 #  created_at   :datetime
 #  updated_at   :datetime
 #
@@ -38,9 +38,11 @@ class News < Content
 
   scope :sorted, order('created_at DESC')
 
-  validates_presence_of :title,   :message => "Le titre est obligatoire"
-  validates_presence_of :body,    :message => "Nous n'acceptons pas les dépêches vides"
-  validates_presence_of :section, :message => "Veuillez choisir une section pour cette dépêche"
+  validates_presence_of :title,        :message => "Le titre est obligatoire"
+  validates_presence_of :body,         :message => "Nous n'acceptons pas les dépêches vides"
+  validates_presence_of :section,      :message => "Veuillez choisir une section pour cette dépêche"
+  validates_presence_of :author_name,  :message => "Veuillez entrer votre nom"
+  validates_presence_of :author_email, :message => "Veuillez entrer votre adresse email"
 
 ### Associated node ###
 

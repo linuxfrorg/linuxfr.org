@@ -66,11 +66,11 @@ class Board < ActiveRecord::Base
 
 ### Validation ###
 
-  validates_presence_of :object_type
-  validates_presence_of :object_id
-  validates_presence_of :message
+  validates_presence_of :object_type, :message => "Impossible de poster un message"
+  validates_presence_of :object_id,   :message => "Impossible de poster un message"
+  validates_presence_of :message,     :message => "Ce message est vide"
 
-  validates_inclusion_of :object_type, :in => KINDS
+  validates_inclusion_of :object_type, :in => KINDS, :message => "Impossible de poster un message"
 
 ### ACL ###
 
