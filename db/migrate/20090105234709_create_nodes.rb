@@ -11,7 +11,12 @@ class CreateNodes < ActiveRecord::Migration
       t.datetime :last_commented_at
       t.timestamps
     end
-    add_index :nodes, [:content_type, :content_id], :unique => true
+    add_index :nodes, [:content_id, :content_type], :unique => true
+    add_index :nodes, [:content_type, :public]
+    add_index :nodes, [:public, :created_at]
+    add_index :nodes, [:public, :score]
+    add_index :nodes, [:public, :interest]
+    add_index :nodes, [:public, :last_commented_at]
     add_index :nodes, :user_id
   end
 

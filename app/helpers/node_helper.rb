@@ -29,6 +29,12 @@ module NodeHelper
     link_to content.title, url_for_content(content)
   end
 
+  def paginated_nodes(nodes, link=nil)
+    paginated_section(nodes, link) do
+      content_tag(:div, render(nodes.map &:content), :id => 'contents')
+    end
+  end
+
   def paginated_contents(contents, link=nil)
     paginated_section(contents, link) do
       content_tag(:div, render(contents), :id => 'contents')

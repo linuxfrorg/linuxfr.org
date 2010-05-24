@@ -3,8 +3,8 @@ class DashboardController < ApplicationController
 
   def index
     @comments = current_user.comments.on_dashboard.all(:limit => 20)
-    @posts    = current_user.nodes.on_dashboard('Post').all(:limit => 10)
-    @trackers = current_user.nodes.on_dashboard('Tracker').all(:limit => 10)
+    @posts    = Node.where(:user_id => current_user.id).on_dashboard('Post').all(:limit => 10)
+    @trackers = Node.where(:user_id => current_user.id).on_dashboard('Tracker').all(:limit => 10)
   end
 
 end

@@ -22,7 +22,7 @@
 #
 class Node < ActiveRecord::Base
   belongs_to :user     # can be NULL
-  belongs_to :content, :polymorphic => true
+  belongs_to :content, :polymorphic => true, :inverse_of => :node
   has_many :comments, :inverse_of => :node
   has_many :readings, :dependent => :destroy
   has_many :votes, :dependent => :destroy
@@ -31,7 +31,8 @@ class Node < ActiveRecord::Base
 
   scope :visible, where(:public => true)
   scope :by_date, order('created_at DESC')
-  scope :on_dashboard, lambda {|type| visible.where(:content_type => type).by_date }
+  scope :public_listing, lambda {|type,order| visible.where(:content_type => type).order("#{order} DESC") }
+  scope :on_dashboard, lambda {|type| public_listing(type, "created_at") }
 
 ### Interest ###
 
