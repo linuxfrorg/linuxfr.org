@@ -3,7 +3,7 @@
 # Table name: trackers
 #
 #  id                  :integer(4)      not null, primary key
-#  state               :string(255)     default("open"), not null
+#  state               :string(255)     default("opened"), not null
 #  title               :string(255)
 #  cached_slug         :string(255)
 #  body                :text
@@ -59,18 +59,18 @@ class Tracker < Content
 
 ### Workflow ###
 
-  States = {'Ouvert' => :open, 'Corrigé' => :fix, 'Invalide' => :invalid}.freeze
+  States = {'Ouvert' => :opened, 'Corrigé' => :fix, 'Invalide' => :invalid}.freeze
 
   aasm_column :state
-  aasm_initial_state :open
+  aasm_initial_state :opened
 
-  aasm_state :open
+  aasm_state :opened
   aasm_state :fixed
   aasm_state :invalid
 
-  aasm_event :fix        do transitions :from => [:open], :to => :fixed   end
-  aasm_event :invalidate do transitions :from => [:open], :to => :invalid end
-  aasm_event :reopen     do transitions :from => [:fixed, :invalid], :to => :open end
+  aasm_event :fix        do transitions :from => [:opened], :to => :fixed   end
+  aasm_event :invalidate do transitions :from => [:opened], :to => :invalid end
+  aasm_event :reopen     do transitions :from => [:fixed, :invalid], :to => :opened end
 
 ### Presentation ###
 

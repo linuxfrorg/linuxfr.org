@@ -4,7 +4,7 @@ class TrackersController < ApplicationController
   after_filter  :marked_as_read, :only => [:show]
 
   def index
-    @trackers = Tracker.sorted.open
+    @trackers = Tracker.sorted.opened
     respond_to do |wants|
       wants.html
       wants.atom

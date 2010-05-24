@@ -1,7 +1,7 @@
 class CreateTrackers < ActiveRecord::Migration
   def self.up
     create_table :trackers do |t|
-      t.string :state, :null => false, :default => 'open'
+      t.string :state, :null => false, :default => 'opened'
       t.string :title
       t.string :cached_slug
       t.text :body
