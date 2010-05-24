@@ -41,7 +41,7 @@ class Post < Content
 
 ### SEO ###
 
-  has_friendly_id :title, :use_slug => true
+  has_friendly_id :title, :use_slug => true, :scope => :forum
 
 ### Sphinx ####
 

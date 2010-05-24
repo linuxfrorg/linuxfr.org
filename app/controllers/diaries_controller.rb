@@ -61,8 +61,8 @@ class DiariesController < ApplicationController
 protected
 
   def find_diary
-    @user  = User.find(params[:user_id])
-    @diary = @user.diaries.find(params[:id])
+    @diary = Diary.find(params[:id], :scope => params[:user_id])
+    @user  = @diary.owner
   end
 
   def marked_as_read

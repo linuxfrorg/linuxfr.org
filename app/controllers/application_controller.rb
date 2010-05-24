@@ -66,4 +66,8 @@ protected
     redirect_to new_account_session_url, :alert => "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
   end
 
+  def enforce_view_permission(resource)
+    raise Canable::Transgression unless resource.viewable_by?(current_user)
+  end
+
 end
