@@ -4,9 +4,9 @@ class NewsController < ApplicationController
   respond_to :html, :atom
 
   def index
-    @order = params[:order] ? "nodes.#{params[:order]}" : 'news.created_at'
-    @news  = News.published.joins(:node).order("#{@order} DESC").paginate(:page => params[:page], :per_page => 10)
-    respond_with(@news)
+    @order = params[:order] || 'created_at'
+    @nodes = Node.public_listing('News', @order).paginate(:page => params[:page], :per_page => 10)
+    respond_with(@nodes)
   end
 
   def show

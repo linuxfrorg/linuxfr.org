@@ -126,7 +126,9 @@ class News < Content
   end
 
   def publish
-    node.update_attribute(:public, true)
+    node.public = true
+    node.created_at = DateTime.now
+    node.save
     author = Account.find_by_email(author_email)
     author.give_karma(50) if author
     boards.moderation.create(:message => "<b>La dépêche a été publiée</b>", :user_id => moderator_id)
