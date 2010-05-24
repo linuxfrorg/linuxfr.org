@@ -23,7 +23,7 @@ class RelevancesController < ApplicationController
 protected
 
   def load_comment
-    @comment = Comment.find(params[:comment_id])
+    @comment = Comment.find(params[:id])
   end
 
 end
