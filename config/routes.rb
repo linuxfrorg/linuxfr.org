@@ -28,7 +28,7 @@ LinuxfrOrg::Application.routes.draw do
   resources :users, :only => [:show] do
     resources :journaux, :controller => "diaries", :as => "diaries", :except => [:index, :new, :create]
   end
-  resources :diaries, :controller => "diaries", :as => "diaries", :only => [:index, :new, :create]
+  resources :journaux, :controller => "diaries", :as => "diaries", :only => [:index, :new, :create]
 
   # Forums
   resources :forums, :only => [:index, :show] do
