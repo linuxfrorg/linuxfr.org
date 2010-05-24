@@ -1,8 +1,8 @@
 atom_feed do |feed|
   feed.title("LinuxFr.org : les journaux")
-  feed.updated(@diaries.first.try :created_at)
+  feed.updated(@nodes.first.try :created_at)
 
-  @diaries.each do |diary|
+  @nodes.map(&:content).each do |diary|
     feed.entry(diary, :url => polymorphic_url([diary.owner, diary])) do |entry|
       entry.title(diary.title)
       entry.content(diary.body, :type => 'html')

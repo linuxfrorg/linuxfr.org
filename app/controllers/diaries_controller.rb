@@ -2,16 +2,14 @@ class DiariesController < ApplicationController
   before_filter :authenticate_account!, :except => [:index, :show]
   before_filter :find_diary, :except => [:index, :new, :create]
   after_filter  :marked_as_read, :only => [:show]
+  respond_to :html, :atom
 
 ### Global ###
 
   def index
     @order = params[:order] || 'created_at'
     @nodes = Node.public_listing('Diary', @order).paginate(:page => params[:page], :per_page => 10)
-    respond_to do |wants|
-      wants.html
-      wants.atom
-    end
+    respond_with(@nodes)
   end
 
   def new
