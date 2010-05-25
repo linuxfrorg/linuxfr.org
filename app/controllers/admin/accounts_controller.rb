@@ -6,14 +6,15 @@ class Admin::AccountsController < AdminController
   end
 
   def update
-    if @account.passive?
-      @account.activate!
+    if @account.user && @account.user.inactive?
+      @account.user.reactivate!
     else
-      @account.reactivate!
+      @account.user.inactivate!
     end
     redirect_to admin_accounts_url, :notice => "Compte activé"
   end
 
+  # TODO purger un compte
   def destroy
     @account.delete!
     redirect_to admin_accounts_url, :notice => "Compte supprimé"

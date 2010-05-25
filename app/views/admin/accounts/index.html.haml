@@ -14,10 +14,9 @@
       %td= link_to account.login, account.user
       %td= account.email
       %td= account.karma
-      %td= account.current_login_ip
-      %td= account.state
+      %td= account.current_sign_in_ip
+      %td= account.user && account.user.inactive? ? "Inactif" : "Actif"
       %td= account.created_at.to_s(:posted)
       %td
-        = button_to("Activer",   [:admin, account], :method => :put)    if account.passive?
-        = button_to("Fermer",    [:admin, account], :method => :delete) if account.active?
-        = button_to("Réactiver", [:admin, account], :method => :put)    if account.deleted?
+        = button_to("Activer",   [:admin, account], :method => :put) if account.user && account.user.inactive? && account.user_id != 1
+        = button_to("Suspendre", [:admin, account], :method => :put) if account.user && !account.user.inactive?
