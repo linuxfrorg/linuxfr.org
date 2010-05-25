@@ -19,7 +19,7 @@
       %h1 Se connecter
       = render "sessions/new"
       %p= link_to "Pas de compte ? S'inscrire !", new_registration_path(:account)
-      %p= link_to "Proposer un contenu", '/proposer-un-contenu-en-anonyme'
+      %p= link_to "Proposer un contenu", '/proposer-un-contenu'
   - if current_user && current_user.admin?
     = render 'admin/box'
   - if current_user && current_user.amr?

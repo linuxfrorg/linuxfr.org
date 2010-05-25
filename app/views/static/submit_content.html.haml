@@ -16,10 +16,10 @@
 
 %p
   %strong Note :
-  -if @anonymous
-    Les utilisateurs authentifiés peuvent également proposer les contenus suivants :
-  -else
+  -if account_signed_in?
     En tant qu'utilisateur authentifié, vous pouvez également déposer les contenus suivants :
+  -else
+    Les utilisateurs authentifiés peuvent également proposer les contenus suivants :
 
 .authenticated-only
   %h2 Les journaux

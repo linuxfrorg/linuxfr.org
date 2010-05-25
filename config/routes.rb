@@ -134,7 +134,6 @@ LinuxfrOrg::Application.routes.draw do
   # Static pages
   controller :static do
     get "/proposer-un-contenu" => :submit_content, :as => :submit_content
-    get "/proposer-un-contenu-en-anonyme" => :submit_anonymous, :as => :submit_anonymous
     get "/changelog" => :changelog, :as => :changelog
     get "/:id" => :show, :as => :static, :constraints => { :id => /[a-z_]+/ }
   end
