@@ -40,7 +40,7 @@ class Admin::PagesController < AdminController
 protected
 
   def find_page
-    @page = Page.find(params[:id])
+    @page = Page.find_by_slug(params[:id])
   end
 
 end
