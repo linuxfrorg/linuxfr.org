@@ -1,19 +1,18 @@
 =h1 "Proposer un contenu"
 
-%strong TODO :
-%ul
-  %li mettre des images
-  %li différentier la page entre utilisateurs anonymes et authentifiés
-  %li compléter cette page en responsabilisant les utilisateurs
-
-
-%h2 Les dépêches
 %p
-  Les dépêches servent à publier de l'information sur les thèmes principaux de LinuxFr.org, à savoir Linux et les Logiciels Libres.
-  D'autres thèmes peuvent être abordés, mais ils seront alors généralement relégués en seconde page.
-  Les dépêches purement commerciales et publicitaires seront rejetées.
-%p
-  = link_to "Je souhaite proposer une dépêche", new_news_path
+  Le site vit grâce aux contributions des lecteurs, vous !
+  Vous pouvez participer en écrivant différents contenus, allant du simple commentaire à la dépêche façon patrick_g.
+  Voici de manière plus détaillée les types contenus que vous pouvez proposer.
+
+.free-for-all
+  %h2 Les dépêches
+  %p
+    Les dépêches servent à publier de l'information sur les thèmes principaux de LinuxFr.org, à savoir Linux et les Logiciels Libres.
+    D'autres thèmes peuvent être abordés, mais ils seront alors généralement relégués en seconde page.
+    Les dépêches purement commerciales et publicitaires seront rejetées.
+  %p
+    = link_to "Je souhaite proposer une dépêche", new_news_path
 
 %p
   %strong Note :
@@ -22,36 +21,40 @@
   -else
     En tant qu'utilisateur authentifié, vous pouvez également déposer les contenus suivants :
 
-%h2 Les journaux
-%p
-  Les journaux sont destinés aux discussions et aux informations qui n'auraient pas leur place en dépêches.
-%p
-  = link_to "Je souhaite écrire un journal", new_diary_path
+.authenticated-only
+  %h2 Les journaux
+  %p
+    Les journaux sont destinés aux discussions et aux informations qui n'auraient pas leur place en dépêches.
+  %p
+    = link_to "Je souhaite écrire un journal", new_diary_path
 
-%h2 Les forums
-%p
-  Les forums servent pour demander de l'aide, poser des questions diverses et variées.
-  C'est aussi le bon endroit pour poster des petites annonces.
-%p
-  = link_to "Je souhaite poster dans les forums", new_post_path
+.authenticated-only
+  %h2 Les forums
+  %p
+    Les forums servent pour demander de l'aide, poser des questions diverses et variées.
+    C'est aussi le bon endroit pour poster des petites annonces.
+  %p
+    = link_to "Je souhaite poster dans les forums", new_post_path
 
-%h2 Les sondages
-%p
-  Vous pouvez suggérer un sondage.
-  Si celui-ci retient l'attention de l'équipe de modération, il sera publié.
-%p
-  = link_to "Je souhaite suggérer un sondage", new_poll_path
+.authenticated-only
+  %h2 Les sondages
+  %p
+    Vous pouvez suggérer un sondage.
+    Si celui-ci retient l'attention de l'équipe de modération, il sera publié.
+  %p
+    = link_to "Je souhaite suggérer un sondage", new_poll_path
 
-%h2 Le suivi
-%p
-  Si vous avez rencontré un bug en parcourant le site web LinuxFr.org, c'est le bon endroit pour le remonter.
-  Vous pouvez également suggérer des évolutions pour le site.
-%p
-  = link_to "Je souhaite remonter un bug ou proposer une évolution", new_tracker_path
+.authenticated-only
+  %h2 Le suivi
+  %p
+    Si vous avez rencontré un bug en parcourant le site web LinuxFr.org, c'est le bon endroit pour le remonter.
+    Vous pouvez également suggérer des évolutions pour le site.
+  %p
+    = link_to "Je souhaite remonter un bug ou proposer une évolution", new_tracker_path
 
-%h2 Le wiki
-%p
-  Le wiki est un espace fourre-tout plus ou moins organisé, dont les pages gardent de l'intérêt dans le temps.
-%p
-  = link_to "Je souhaite écrire une nouvelle page de wiki", new_wiki_page_path
-
+.authenticated-only
+  %h2 Le wiki
+  %p
+    Le wiki est un espace fourre-tout plus ou moins organisé, dont les pages gardent de l'intérêt dans le temps.
+  %p
+    = link_to "Je souhaite écrire une nouvelle page de wiki", new_wiki_page_path
