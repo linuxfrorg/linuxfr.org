@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: banners
+#
+#  id      :integer(4)      not null, primary key
+#  title   :string(255)
+#  content :text
+#
+
 require 'spec_helper'
 
 describe Banner do

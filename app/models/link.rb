@@ -2,15 +2,15 @@
 #
 # Table name: links
 #
-#  id         :integer(4)      not null, primary key
-#  news_id    :integer(4)      not null
-#  title      :string(255)
-#  url        :string(255)
-#  lang       :string(255)
-#  nb_clicks  :integer(4)      default(0)
-#  locked_by  :integer(4)
-#  created_at :datetime
-#  updated_at :datetime
+#  id           :integer(4)      not null, primary key
+#  news_id      :integer(4)      not null
+#  title        :string(255)
+#  url          :string(255)
+#  lang         :string(255)
+#  nb_clicks    :integer(4)      default(0)
+#  locked_by_id :integer(4)
+#  created_at   :datetime
+#  updated_at   :datetime
 #
 
 # The news can have some important links.

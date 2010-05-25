@@ -3,7 +3,7 @@
 # Table name: trackers
 #
 #  id                  :integer(4)      not null, primary key
-#  state               :string(255)     default("opened"), not null
+#  state               :string(255)     default("open"), not null
 #  title               :string(255)
 #  cached_slug         :string(255)
 #  body                :text
