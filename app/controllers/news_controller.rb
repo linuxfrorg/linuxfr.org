@@ -1,4 +1,5 @@
 class NewsController < ApplicationController
+  caches_action :anonymous
   before_filter :find_news, :only => [:show, :anonymous]
   after_filter  :marked_as_read, :only => [:show]
   respond_to :html, :atom

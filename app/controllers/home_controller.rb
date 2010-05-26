@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  caches_action :anonymous
 
   def index
     @order  = params[:order] || 'interest'

@@ -21,6 +21,8 @@ gem "nokogiri",                "~>1.4"
 gem "paperclip", :git => "git://github.com/nono/paperclip.git", :branch => 'rails3'
 gem "raspell",                 "~>1.1"
 gem "rdiscount",               "~>1.6"
+# TODO Rails 3
+gem "redis-store", :git => "http://github.com/nono/redis-store.git", :branch => 'rails3'
 gem "rest-client",             "~>1.5", :require => "restclient"
 gem "sitemap_generator",       "~>0.3"
 gem "simple_autocomplete",     "~>0.3"
