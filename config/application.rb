@@ -11,7 +11,6 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 module LinuxfrOrg
   class Application < Rails::Application
     config.generators do |g|
-      g.orm              :active_record
       g.template_engine  :haml
       g.integration_tool :rspec
       g.test_framework   :rspec, :fixture_replacement => :factory_girl

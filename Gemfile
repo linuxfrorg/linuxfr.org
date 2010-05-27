@@ -43,6 +43,8 @@ group :development do
 end
 
 group :test do
-  gem "rspec-rails",           ">=2.0.0.beta.8"
-  gem "factory_girl",          ">=1.2.5"
+  gem "rspec-rails",           ">=2.0.0.beta.9"
+  # TODO Rails 3
+  #gem "factory_girl",          ">=1.2.5"
+  gem "factory_girl", :git => "git://github.com/thoughtbot/factory_girl.git", :branch => "fixes_for_rails3"
 end
