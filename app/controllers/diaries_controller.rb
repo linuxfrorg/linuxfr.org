@@ -1,4 +1,5 @@
 class DiariesController < ApplicationController
+  caches_page :index, :if => Proc.new { |c| c.request.format.atom? }
   caches_action :show, :unless => :account_signed_in?, :expires_in => 1.hour
   before_filter :authenticate_account!, :except => [:index, :show]
   before_filter :find_diary, :except => [:index, :new, :create]
