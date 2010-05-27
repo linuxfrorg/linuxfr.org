@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     cookies[:ssl] = { :value => "on", :secure => false } if request.ssl?
     @account = warden.authenticate!(:scope => :account, :recall => "new")
     sign_in :account, @account
-    redirect_to stored_location_for(:account) || root_path, :notice => I18n.t("devise.sessions.signed_in")
+    redirect_to stored_location_for(:account) || "/", :notice => I18n.t("devise.sessions.signed_in")
   end
 
   # GET /account/sign_out

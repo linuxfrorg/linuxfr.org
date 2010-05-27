@@ -1,9 +1,9 @@
 =h1 "Le suivi"
 - feed "Flux Atom du suivi"
-- feed "Flux Atom des commentaires", comments_trackers_path(:format => :atom)
+- feed "Flux Atom des commentaires", "/suivi.comments.atom"
 
 %p
-  = link_to "Proposer une entrée", new_tracker_path
+  = link_to "Proposer une entrée", "/suivi/nouveau"
 
 - if @trackers.empty?
   %p
@@ -30,4 +30,4 @@
         %td= tracker.category_title
         %td= tracker.score
         - if current_user && current_user.can_update?(tracker)
-          %td= link_to "Modifier", edit_tracker_path(tracker)
+          %td= link_to "Modifier", "/suivi/#{tracker.to_param}/modifier"

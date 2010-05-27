@@ -1,7 +1,7 @@
 - if current_user
   - if current_user.can_tag?(node.content)
-    = link_to "Tagger", new_node_tag_path(:node_id => node.id), :class => 'action'
+    = link_to "Tagger", "/nodes/#{node.id}/tags/nouveau", :class => 'action'
   - if current_user.can_vote?(node.content)
     %div.vote
-      Ce contenu est-il #{button_to "pertinent", node_vote_path(:action => 'for', :id => node.id), :remote => true}
-      ou #{button_to "inutile", node_vote_path(:action => 'against', :id => node.id), :remote => :true} ?
+      Ce contenu est-il #{button_to "pertinent", "/nodes/#{node.id}/vote/for", :remote => true}
+      ou #{button_to "inutile", "/nodes/#{node.id}/vote/against", :remote => :true} ?

@@ -2,6 +2,6 @@
   = render @forums
 
 =h1 "Liste des messages dans le forum #{@forum.title}"
-- feed "Flux Atom du forum #{@forum.title}", forum_path(:forum_id => @forum.id, :format => :atom)
-- new_content_link = link_to("Poster dans les forums", new_post_path) if current_user
+- feed "Flux Atom du forum #{@forum.title}", "/forums/#{@forum.to_param}.atom"
+- new_content_link = link_to("Poster dans les forums", "/posts/nouveau") if current_user
 = paginated_contents @posts, new_content_link

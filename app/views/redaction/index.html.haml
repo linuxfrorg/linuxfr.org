@@ -6,8 +6,8 @@
     %ul
       = list_of @news do |n|
         = link_to n.title, [:redaction, n]
-    = link_to "Afficher toutes les dépêches", redaction_news_index_path
-  = button_to "Commencer une nouvelle dépêche", '/redaction/news'
+    = link_to "Afficher toutes les dépêches", "/redaction/news"
+  = button_to "Commencer une nouvelle dépêche", "/redaction/news"
 
 #main_board
   =h1 "Tribune rédacteurs"

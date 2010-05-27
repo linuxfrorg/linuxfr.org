@@ -1,4 +1,4 @@
 =h1 "Liste des journaux"
 - feed "Flux Atom des journaux"
-- new_content_link = link_to("Écrire un journal", new_diary_path) if current_user
+- new_content_link = link_to("Écrire un journal", "/journaux/nouveau") if current_user
 = paginated_nodes @nodes, new_content_link

@@ -1,10 +1,10 @@
 =h1 "Home Page"
-- feed "S'abonner au flux Atom des dépêches", news_index_path(:format => :atom)
+- feed "S'abonner au flux Atom des dépêches", "/news.atom"
 - @keywords += @popular_tags.map &:name
 = render @ppp if @ppp
 - if @banner
   %aside.banner
     = @banner
-= paginated_section @nodes, link_to("Proposer une dépêche", new_news_path) do
+= paginated_section @nodes, link_to("Proposer une dépêche", "/news/nouveau") do
   #contents
     = render @nodes.map(&:content)

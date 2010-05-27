@@ -31,7 +31,7 @@ protected
   def url_for_content(content)
     case content
     when Diary: url_for([content.user, content])
-    when News:  content.new_record? ? news_index_path : url_for(content)
+    when News:  content.new_record? ? "/news" : url_for(content)
     when Post:  url_for([content.forum, content])
     else        url_for(content)
     end

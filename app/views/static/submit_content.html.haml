@@ -12,7 +12,7 @@
     D'autres thèmes peuvent être abordés, mais ils seront alors généralement relégués en seconde page.
     Les dépêches purement commerciales et publicitaires seront rejetées.
   %p
-    = link_to "Je souhaite proposer une dépêche", new_news_path
+    = link_to "Je souhaite proposer une dépêche", "/news/nouveau"
 
 %p
   %strong Note :
@@ -26,7 +26,7 @@
   %p
     Les journaux sont destinés aux discussions et aux informations qui n'auraient pas leur place en dépêches.
   %p
-    = link_to "Je souhaite écrire un journal", new_diary_path
+    = link_to "Je souhaite écrire un journal", "/journaux/nouveau"
 
 .authenticated-only
   %h2 Les forums
@@ -34,7 +34,7 @@
     Les forums servent pour demander de l'aide, poser des questions diverses et variées.
     C'est aussi le bon endroit pour poster des petites annonces.
   %p
-    = link_to "Je souhaite poster dans les forums", new_post_path
+    = link_to "Je souhaite poster dans les forums", "/posts/nouveau"
 
 .authenticated-only
   %h2 Les sondages
@@ -42,7 +42,7 @@
     Vous pouvez suggérer un sondage.
     Si celui-ci retient l'attention de l'équipe de modération, il sera publié.
   %p
-    = link_to "Je souhaite suggérer un sondage", new_poll_path
+    = link_to "Je souhaite suggérer un sondage", "/sondages/nouveau"
 
 .authenticated-only
   %h2 Le suivi
@@ -50,11 +50,11 @@
     Si vous avez rencontré un bug en parcourant le site web LinuxFr.org, c'est le bon endroit pour le remonter.
     Vous pouvez également suggérer des évolutions pour le site.
   %p
-    = link_to "Je souhaite remonter un bug ou proposer une évolution", new_tracker_path
+    = link_to "Je souhaite remonter un bug ou proposer une évolution", "/suivi/nouveau"
 
 .authenticated-only
   %h2 Le wiki
   %p
     Le wiki est un espace fourre-tout plus ou moins organisé, dont les pages gardent de l'intérêt dans le temps.
   %p
-    = link_to "Je souhaite écrire une nouvelle page de wiki", new_wiki_page_path
+    = link_to "Je souhaite écrire une nouvelle page de wiki", "/wiki/nouveau"

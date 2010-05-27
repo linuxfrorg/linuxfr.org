@@ -2,9 +2,9 @@
   %h1
     Éditions
   %p
-    = link_to "Éditer", edit_wiki_page_path(edition)
+    = link_to "Éditer", "/wiki/#{edition.to_param}/modifier"
   %p
     Liste des dernières modifications :
   %ul
     = list_of(edition.versions) do |v|
-      = link_to "#{v.user.try :name} : #{v.message}", wiki_page_revision_path(edition.friendly_id, v.version)
+      = link_to "#{v.user.try :name} : #{v.message}", "/wiki/#{edition.to_param}/revisions/#{v.version}"

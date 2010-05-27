@@ -4,7 +4,7 @@
 - if current_user
   - if current_user.can_update?(@comment)
     %p
-      = link_to "Modifier ce commentaire", edit_node_comment_path(@comment.node, @comment)
+      = link_to "Modifier ce commentaire", "/nodes/#{@comment.node_id}/comments/#{@comment.id}/modifier"
   - if current_user.can_destroy?(@comment)
     %p
       = button_to "Supprimer ce commentaire", [@comment.node, @comment], :method => :delete
