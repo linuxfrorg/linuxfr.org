@@ -1,21 +1,7 @@
-class AnonymousConstraint
-  def self.matches?(request)
-    !request.cookies.has_key? "linuxfr.org_session"
-  end
-end
-
-
 # http://guides.rails.info/routing.html
 # http://yehudakatz.com/2009/12/26/the-rails-3-router-rack-it-up/
 #
 LinuxfrOrg::Application.routes.draw do
-  # These routes are here only for cacheability reasons
-  constraints(AnonymousConstraint) do
-    get "/"             => "home#anonymous"
-    get "/news/nouveau" => "news#new"
-    get "/news/:id"     => "news#anonymous"
-  end
-
   root :to => "home#index"
 
   # News

@@ -1,7 +1,7 @@
 class TrackersController < ApplicationController
   before_filter :authenticate_account!, :except => [:index, :show, :comments]
   before_filter :load_tracker, :only => [:show, :edit, :update, :destroy]
-  after_filter  :marked_as_read, :only => [:show]
+  after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
 
   def index
     @trackers = Tracker.sorted.opened
@@ -66,7 +66,7 @@ class TrackersController < ApplicationController
 protected
 
   def marked_as_read
-    current_user.read(@tracker.node) if current_user
+    current_user.read(@tracker.node)
   end
 
   def load_tracker

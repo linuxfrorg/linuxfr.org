@@ -1,4 +1,5 @@
 class StaticController < ApplicationController
+  caches_action :show, :unless => :account_signed_in?, :expires_in => 7.days
 
   def show
     @page = Page.find_by_slug!(params[:id])

@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
-  caches_action :anonymous
+  caches_action :index, :unless     => :account_signed_in?,
+                        :expires_in => 5.minutes,
+                        :cache_path => Proc.new {|c| "home/#{c.params[:order]}/#{c.params[:page]}" }
 
   def index
     @order  = params[:order] || 'interest'
@@ -7,12 +9,4 @@ class HomeController < ApplicationController
     @banner = Banner.random
     @nodes  = Node.visible.paginate(:page => params[:page], :per_page => 10, :order => "#{@order} DESC")
   end
-
-  # It's exactly the same thing that index, but only for anonymous users.
-  # So we can safely cache it.
-  def anonymous
-    index
-    render :index
-  end
-
 end

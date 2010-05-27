@@ -1,7 +1,7 @@
 class NewsController < ApplicationController
-  caches_action :anonymous
+  caches_action :show, :unless => :account_signed_in?, :expires_in => 1.hour
   before_filter :find_news, :only => [:show, :anonymous]
-  after_filter  :marked_as_read, :only => [:show]
+  after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
   respond_to :html, :atom
 
   def index
@@ -11,13 +11,6 @@ class NewsController < ApplicationController
   end
 
   def show
-    respond_with(@news)
-  end
-
-  # It's exactly the same thing that show, but only for anonymous users.
-  # So we can safely cache it.
-  def anonymous
-    render :show
   end
 
   def new
@@ -47,7 +40,7 @@ protected
   end
 
   def marked_as_read
-    current_user.read(@news.node) if current_user
+    current_user.read(@news.node)
   end
 
 end

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_filter :authenticate_account!, :except => [:index, :show]
   before_filter :find_post,  :except => [:new, :create, :index]
-  after_filter  :marked_as_read, :only => [:show]
+  after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
 
 ### Global ###
 
@@ -64,7 +64,7 @@ protected
   end
 
   def marked_as_read
-    current_user.read(@post.node) if current_user
+    current_user.read(@post.node)
   end
 
 end

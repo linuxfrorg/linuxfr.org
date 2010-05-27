@@ -1,7 +1,7 @@
 class PollsController < ApplicationController
   before_filter :authenticate_account!, :only => [:new, :create]
   before_filter :find_poll, :only => [:show, :vote]
-  after_filter  :marked_as_read, :only => [:show]
+  after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
   respond_to :html, :atom
 
   def index
@@ -56,7 +56,7 @@ protected
   end
 
   def marked_as_read
-    current_user.read(@poll.node) if current_user
+    current_user.read(@poll.node)
   end
 
 end

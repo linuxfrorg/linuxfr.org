@@ -1,7 +1,7 @@
 class WikiPagesController < ApplicationController
   before_filter :authenticate_account!, :except => [:index, :show, :revision, :changes]
   before_filter :load_wiki_page, :only => [:edit, :update, :destroy]
-  after_filter  :marked_as_read, :only => [:show]
+  after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
 
   def index
     respond_to do |wants|
@@ -81,7 +81,7 @@ class WikiPagesController < ApplicationController
 protected
 
   def marked_as_read
-    current_user.read(@wiki_page.node) if current_user && @wiki_page.node
+    current_user.read(@wiki_page.node) if @wiki_page.node
   end
 
   def load_wiki_page

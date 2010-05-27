@@ -15,4 +15,17 @@ describe "Homepage" do
     get '/'
     assert_response :success
   end
+
+  it "works for authenticated user" do
+    get '/news'
+    fill_in :account_login, :with => account.login
+    fill_in :account_password, :with => "I<3J2EE"
+    click_button "Se connecter"
+    response.should_not contain("Identifiant ou mot de passe invalide.")
+    get '/'
+    assert_response :success
+    response.should have_selector(".login") do |box|
+      box.should contain(account.login)
+    end
+  end
 end

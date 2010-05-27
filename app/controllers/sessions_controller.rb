@@ -21,6 +21,6 @@ class SessionsController < ApplicationController
   def destroy
     cookies.delete :ssl
     sign_out :account
-    redirect_to root_url, :notice => I18n.t("devise.sessions.signed_out")
+    redirect_to "/"
   end
 end
