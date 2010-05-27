@@ -6,7 +6,8 @@
     #top
       = check_js
 
-    = render 'layouts/site'
+    - cache "fragments/layouts/site", :expires_in => 30.days do
+      = render 'layouts/site'
 
     %section#redaction
       %section#edition

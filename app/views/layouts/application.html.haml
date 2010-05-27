@@ -6,7 +6,8 @@
     #top
       = check_js
 
-    = render 'layouts/site'
+    - cache "fragments/layouts/site", :expires_in => 30.days do
+      = render 'layouts/site'
     - unless mobile?
       = render 'layouts/sidebar'
 
@@ -19,5 +20,6 @@
         %p= link_to "Revenir en haut de page", '#top', :class => 'scroll'
 
     - unless mobile?
-      = render 'layouts/footer'
+      - cache "fragments/layouts/footer", :expires_in => 1.minute do
+        = render 'layouts/footer'
     = common_js
