@@ -1,6 +1,7 @@
 .bundle
 .sass-cache
 config/database.yml
+config/newrelic.yml
 config/*.sphinx.conf
 db/*.sqlite3
 db/sphinx/**/*

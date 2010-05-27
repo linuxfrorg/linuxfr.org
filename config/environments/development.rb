@@ -19,3 +19,5 @@ LinuxfrOrg::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => MY_DOMAIN }
 end
+
+require 'newrelic_rpm' if File.exists?("config/newrelic.yml")
