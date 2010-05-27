@@ -7,5 +7,9 @@ Factory.define :news do |f|
   f.association :section
   f.author_name "Pierre Tramo"
   f.author_email "pierre.tramo@dlfp.org"
-  f.after_build { |n| n.create_node(:public => true) }
+  f.after_create do |n|
+    n.node.public = true
+    n.node.created_at = DateTime.now
+    n.node.save
+  end
 end

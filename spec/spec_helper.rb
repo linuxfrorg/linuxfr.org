@@ -11,3 +11,7 @@ Rspec.configure do |config|
   Factory::Railtie.configure # FIXME see http://github.com/thoughtbot/factory_girl/issues/#issue/57
   config.mock_with :rspec
 end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
+end

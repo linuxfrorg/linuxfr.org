@@ -16,7 +16,8 @@ describe "News" do
   end
 
   it "can be listed" do
-    news = Factory(:news, :section_id => section.id)
+    news = Factory.create(:news, :section_id => section.id)
+    news.should be_valid
     get news_index_path
     assert_response :success
     response.should contain(news.title)
