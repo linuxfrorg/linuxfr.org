@@ -11,14 +11,14 @@
       %h1= current_user.name
       %p Il vous reste #{current_user.account.nb_votes} avis
       %p= link_to "Proposer un contenu", '/proposer-un-contenu'
-      %p= link_to "Mon tableau de bord", dashboard_path
-      %p= link_to "Modifier mes préférences", edit_account_registration_path
-      %p= link_to "Changer de CSS", edit_stylesheet_path
-      %p= link_to "Se déconnecter", destroy_account_session_path
+      %p= link_to "Mon tableau de bord", '/tableau-de-bord'
+      %p= link_to "Modifier mes préférences", '/compte/modifier'
+      %p= link_to "Changer de CSS", '/stylesheet/modifier'
+      %p= link_to "Se déconnecter", '/compte/deconnexion'
     - else
       %h1 Se connecter
       = render "sessions/new"
-      %p= link_to "Pas de compte ? S'inscrire !", new_registration_path(:account)
+      %p= link_to "Pas de compte ? S'inscrire !", '/compte/inscription'
       %p= link_to "Proposer un contenu", '/proposer-un-contenu'
   - if current_user && current_user.admin?
     = render 'admin/box'

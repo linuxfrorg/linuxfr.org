@@ -3,12 +3,12 @@
     %h1 Derniers commentaires
     %ul
       - @last_comments.each do |comment|
-        %li= link_to comment.title, node_comment_url(:node_id => comment.node_id, :id => comment.id)
+        %li= link_to comment.title, "/nodes/#{comment.node_id}/comments/#{comment.id}"
   %nav#popular_tags
     %h1 Tags populaires
     %ul.tag-cloud
       - @popular_tags.each do |tag|
-        %li= link_to tag.name, public_tag_url(:id => tag.name)
+        %li= link_to tag.name, :controller => "tags", :action => "public", :id => tag.name
   %section#friends
     %h1 Sites amis
     %ul

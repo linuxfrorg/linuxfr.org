@@ -1,4 +1,4 @@
-= form_for((@account || Account.new), :url => session_path(:account)) do |f|
+= form_for((@account || Account.new), :url => '/compte/connexion') do |f|
   %p
     = f.label :login, "Identifiant"
     = f.text_field :login, :required => "required"
