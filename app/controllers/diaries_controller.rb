@@ -10,7 +10,7 @@ class DiariesController < ApplicationController
 
   def index
     @order = params[:order] || 'created_at'
-    @nodes = Node.public_listing('Diary', @order).paginate(:page => params[:page], :per_page => 10)
+    @nodes = Node.public_listing(Diary, @order).paginate(:page => params[:page], :per_page => 10)
     respond_with(@nodes)
   end
 

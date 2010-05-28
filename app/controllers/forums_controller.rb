@@ -3,7 +3,8 @@ class ForumsController < ApplicationController
   before_filter :get_order
 
   def index
-    @posts = Post.published.joins(:node).order(@order).paginate(:page => params[:page], :per_page => 10)
+    @order = params[:order] || 'created_at'
+    @nodes = Node.public_listing(Post, @order).paginate(:page => params[:page], :per_page => 10)
     respond_to do |wants|
       wants.html
       wants.atom
