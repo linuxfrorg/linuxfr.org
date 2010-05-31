@@ -25,7 +25,7 @@ module LinuxfrOrg
 
     config.encoding = "utf-8"
 
-    # TODO config.cache_store = :redis_store
+    config.cache_store = :memory_store # TODO :redis_store
     config.session_store :cookie_store, :key => '_linuxfr.org_session'
   end
 end
