@@ -185,7 +185,7 @@ specs:
 - canable: 
     version: "0.1"
 - haml: 
-    version: 3.0.7
+    version: 3.0.9
 - compass: 
     version: 0.10.2
 - daemons: 
