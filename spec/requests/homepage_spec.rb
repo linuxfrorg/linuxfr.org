@@ -7,6 +7,7 @@ describe "Homepage" do
     Node.delete_all
     User.delete_all
     Account.delete_all
+    Rails.cache.clear
   end
 
   let!(:account) { Factory.create(:account) }

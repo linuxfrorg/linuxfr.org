@@ -53,9 +53,8 @@ class WikiPage < Content
 
   before_validation :wikify_body
   def wikify_body
-    # FIXME
-    # self.body = wikify(wiki_body, :internal_link_prefix => "/wiki/")
-    self.body = wikify(wiki_body)
+    txt = wiki_body.gsub(/\[\[(\w+)\]\]/, '[\1](/wiki/\1 "Lien interne du wiki LinuxFr.org")')
+    self.body = wikify(txt)
   end
 
   after_save :create_new_version

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
-describe "Polls" do
+describe "Wiki" do
+  include Warden::Test::Helpers
+
   before(:each) do
     User.delete_all
     Account.delete_all
@@ -8,16 +10,18 @@ describe "Polls" do
     Rails.cache.clear
   end
 
+  after(:each)  { Warden.test_reset! }
+
   let(:account) { Factory.create(:account) }
-  let!(:poll)   { Factory.create(:poll) }
+  let!(:wiki)   { Factory.create(:wiki) }
 
   it "can be listed and showed" do
-    get polls_path
+    get "/"
     assert_response :success
-    response.should contain(poll.title)
-    response.should contain("Debian")
-    click_link "Lire la suite"
+    response.should contain(wiki.title)
+    click_link wiki.title
     assert_response :success
-    response.should contain(poll.title)
+    response.should contain(wiki.title)
   end
 end
+
