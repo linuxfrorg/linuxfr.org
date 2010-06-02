@@ -261,7 +261,7 @@ specs:
     version: 3.0.pre
 - yajl-ruby: 
     version: 0.7.6
-hash: d3978b51c5bdb3d7f82c0e6a335772a2d6dba409
+hash: 2b3856e259a333fead34e6470928332858ee35dc
 sources: 
 - Git: 
     uri: git://github.com/thoughtbot/factory_girl.git

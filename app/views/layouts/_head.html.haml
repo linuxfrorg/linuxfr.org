@@ -9,7 +9,8 @@
   - unless mobile?
     = stylesheet_link_tag 'print', :media => "print"
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
-  <link rel="search" type="application/opensearchdescription+xml" title="Recherche LinuxFr.org" href="/opensearch.xml" />
+  -# TODO Thinking Sphinx compatible with Rails3
+    <link rel="search" type="application/opensearchdescription+xml" title="Recherche LinuxFr.org" href="/opensearch.xml" />
   - if mobile?
     <link rel="apple-touch-icon" href="/iphone.png" />
     %meta(name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;")

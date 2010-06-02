@@ -68,11 +68,13 @@ LinuxfrOrg::Application.routes.draw do
   resource :stylesheet, :only => [:edit, :create, :destroy]
 
   # Search
-  controller :search do
-    get "/recherche" => :index, :as => :search
-    get "/recherche/:type" => :type, :as => :search_by_type
-    get "/recherche/:type/:facet" => :facet, :as => :search_by_facet
-  end
+  # TODO Thinking Sphinx compatible with Rails3
+  #controller :search do
+  #  get "/recherche" => :index, :as => :search
+  #  get "/recherche/:type" => :type, :as => :search_by_type
+  #  get "/recherche/:type/:facet" => :facet, :as => :search_by_facet
+  #end
+  get "/recherche" => "search#google", :as => :search
 
   # Redaction
   namespace :redaction do

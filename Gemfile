@@ -27,10 +27,8 @@ gem "rest-client",             "~>1.5", :require => "restclient"
 gem "sitemap_generator",       "~>0.3"
 gem "simple_autocomplete",     "~>0.3"
 gem "thin",                    "~>1.2"
-# TODO Rails 3
+# TODO Thinking Sphinx compatible with Rails3
 # gem "thinking-sphinx",       "~>1.3", :require => "thinking_sphinx"
-#gem "thinking-sphinx", :git => "git://github.com/nono/thinking-sphinx.git", :branch => "rails3", :require => "thinking_sphinx"
-#gem "thinking-sphinx", :path => "../thinking-sphinx", :require => "thinking_sphinx"
 # gem "ts-datetime-delta",     "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
 gem "validates_url_format_of", "~>0.1"
 gem "will_paginate",           ">=3.0.pre"

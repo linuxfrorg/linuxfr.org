@@ -5,7 +5,7 @@ class SearchController < ApplicationController
     'Tracker' => :category
   }
 
-  before_filter :get_params
+  before_filter :get_params, :except => [:google]
 
   def index
     @results = ThinkingSphinx::Search.search(@query + '*', :page => params[:page], :per_page => 10)
@@ -22,6 +22,15 @@ class SearchController < ApplicationController
     by_facet = @type.facets(@query + '*', :page => params[:page], :per_page => 10)
     @results = by_facet.for(@facet => params[:facet])
     render :index
+  end
+
+  GOOGLE_URL = "http://www.google.fr/custom"
+  GOOGLE_COF = "AH:center;LP:1;LW:100;LH:100;L:http://linuxfr.org/images/linuxfr2_100.png;S:https://linuxfr.org/;FORID:1;"
+  GOOGLE_PUB = "pub-7360553289941628"
+
+  def google
+    query = {:cof => GOOGLE_COF, :client => GOOGLE_PUB, :sitesearch => MY_DOMAIN, :domains => MY_DOMAIN, :q => params[:q], :hl => "fr", :forid => 1}
+    redirect_to "#{GOOGLE_URL}?#{query.to_query}"
   end
 
 protected
