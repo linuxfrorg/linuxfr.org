@@ -14,9 +14,14 @@ class WikiPagesController < ApplicationController
     begin
       @wiki_page = WikiPage.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      new
-      @wiki_page.title = params[:id].titleize
-      render :new and return
+      if current_account
+        new
+        @wiki_page.title = params[:id].titleize
+        render :new
+      else
+        render :not_found
+      end
+      return
     end
     redirect_to @wiki_page, :status => 301 if !@wiki_page.friendly_id_status.best?
   end
