@@ -59,6 +59,7 @@ class News < Content
 
   before_validation :wikify_fields
   def wikify_fields
+    return if wiki_body.blank?
     self.body        = wikify wiki_body
     self.second_part = wikify wiki_second_part
   end

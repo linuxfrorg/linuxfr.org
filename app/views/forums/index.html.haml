@@ -4,4 +4,4 @@
 =h1 "Liste des forums"
 - feed "Flux Atom des forums"
 - new_content_link = link_to("Poster dans les forums", "/posts/nouveau") if current_user
-= paginated_contents @posts, new_content_link
+= paginated_contents @nodes, new_content_link
