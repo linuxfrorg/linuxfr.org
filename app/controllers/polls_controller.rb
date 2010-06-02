@@ -59,4 +59,7 @@ protected
     current_user.read(@poll.node)
   end
 
+  def enforce_answer_permission(poll)
+    raise Canable::Transgression unless poll.answerable_by?(request.remote_ip)
+  end
 end
