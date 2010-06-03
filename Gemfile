@@ -38,7 +38,6 @@ group :development do
   gem "annotate"
   gem "jslint_on_rails"
   gem "rails3-generators"
-  gem 'newrelic_rpm', :require => false
 end
 
 group :test do

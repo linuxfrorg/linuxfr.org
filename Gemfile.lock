@@ -1,63 +1,57 @@
 --- 
 dependencies: 
-  jslint_on_rails: 
-    group: 
-    - :development
-    version: ">= 0"
-  acts_as_list: 
-    group: 
-    - :default
-    version: ~> 0.1
-  compass: 
-    group: 
-    - :default
-    version: ~> 0.10
   sitemap_generator: 
     group: 
     - :default
     version: ~> 0.3
-  simple_autocomplete: 
+  compass: 
     group: 
     - :default
-    version: ~> 0.3
-  rails: 
+    version: ~> 0.10
+  acts_as_list: 
     group: 
     - :default
-    version: = 3.0.0.beta3
+    version: ~> 0.1
+  jslint_on_rails: 
+    group: 
+    - :development
+    version: ">= 0"
   annotate: 
     group: 
     - :development
     version: ">= 0"
-  mysql: 
+  rails: 
     group: 
     - :default
-    version: ~> 2.8
+    version: = 3.0.0.beta3
+  simple_autocomplete: 
+    group: 
+    - :default
+    version: ~> 0.3
   haml: 
     group: 
     - :default
     version: ~> 3.0
-  newrelic_rpm: 
+  mysql: 
     group: 
-    - :development
-    version: ">= 0"
-    require: []
-
+    - :default
+    version: ~> 2.8
   validates_url_format_of: 
     group: 
     - :default
     version: ~> 0.1
-  htmlentities: 
-    group: 
-    - :default
-    version: ~> 4.2
-  thin: 
-    group: 
-    - :default
-    version: ~> 1.2
   rails3-generators: 
     group: 
     - :development
     version: ">= 0"
+  thin: 
+    group: 
+    - :default
+    version: ~> 1.2
+  htmlentities: 
+    group: 
+    - :default
+    version: ~> 4.2
   rspec-rails: 
     group: 
     - :test
@@ -66,66 +60,66 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
+  will_paginate: 
+    group: 
+    - :default
+    version: ">= 3.0.pre"
+  friendly_id: 
+    group: 
+    - :default
+    version: ~> 3.0
+  erubis: 
+    group: 
+    - :default
+    version: ~> 2.6
+  devise: 
+    group: 
+    - :default
+    version: ~> 1.1.rc1
+  paperclip: 
+    group: 
+    - :default
+    version: ">= 0"
   rest-client: 
     group: 
     - :default
     version: ~> 1.5
     require: 
     - restclient
-  paperclip: 
-    group: 
-    - :default
-    version: ">= 0"
-  devise: 
-    group: 
-    - :default
-    version: ~> 1.1.rc1
-  erubis: 
-    group: 
-    - :default
-    version: ~> 2.6
-  friendly_id: 
-    group: 
-    - :default
-    version: ~> 3.0
-  will_paginate: 
-    group: 
-    - :default
-    version: ">= 3.0.pre"
   raspell: 
     group: 
     - :default
     version: ~> 1.1
-  rdiscount: 
-    group: 
-    - :default
-    version: ~> 1.6
-  aasm: 
-    group: 
-    - :default
-    version: ">= 0"
   redis-store: 
     group: 
     - :default
     version: ">= 0"
+  aasm: 
+    group: 
+    - :default
+    version: ">= 0"
+  rdiscount: 
+    group: 
+    - :default
+    version: ~> 1.6
   yajl-ruby: 
     group: 
     - :default
     version: ~> 0.7
     require: 
     - yajl
-  french_rails: 
-    group: 
-    - :default
-    version: ~> 0.2
-  canable: 
-    group: 
-    - :default
-    version: ~> 0.1
   nokogiri: 
     group: 
     - :default
     version: ~> 1.4
+  canable: 
+    group: 
+    - :default
+    version: ~> 0.1
+  french_rails: 
+    group: 
+    - :default
+    version: ~> 0.2
 specs: 
 - rake: 
     version: 0.8.7
@@ -211,8 +205,6 @@ specs:
     version: 1.0.2
 - mysql: 
     version: 2.8.1
-- newrelic_rpm: 
-    version: 2.12.1
 - nokogiri: 
     version: 1.4.2
 - paperclip: 
@@ -261,7 +253,7 @@ specs:
     version: 3.0.pre
 - yajl-ruby: 
     version: 0.7.6
-hash: 2b3856e259a333fead34e6470928332858ee35dc
+hash: 4c99d2519df2449c4fe2c430bc229066de2bc18f
 sources: 
 - Git: 
     uri: git://github.com/thoughtbot/factory_girl.git
