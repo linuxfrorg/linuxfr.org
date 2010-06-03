@@ -70,4 +70,7 @@ protected
     raise Canable::Transgression unless resource.viewable_by?(current_user)
   end
 
+  def store_location!(scope)
+    session[:"#{scope}_return_to"] = attempted_path if request && request.get?
+  end
 end

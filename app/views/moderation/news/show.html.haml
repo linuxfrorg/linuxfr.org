@@ -16,10 +16,10 @@
         = render 'redaction/paragraphs/paragraph', :paragraph => paragraph
     - @news.links.each do |link|
       = render 'redaction/links/link', :link => link
-    %p.new_link{'data-url' => redaction_news_new_link_path(:news_id => @news.id)}
+    %p.new_link{'data-url' => new_redaction_news_link_path(:news_id => @news.id)}
       %button Ajouter un lien
     #second_part
       - @news.paragraphs.in_second_part.each do |paragraph|
         = render 'redaction/paragraphs/paragraph', :paragraph => paragraph
 
-= button_to "Supprimer tous les locks", clear_locks_moderation_news_url(@news), :class => 'ajax'
+= button_to "Supprimer tous les locks", clear_locks_moderation_news_path(@news), :class => 'ajax'

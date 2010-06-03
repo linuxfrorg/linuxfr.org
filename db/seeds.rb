@@ -99,3 +99,5 @@ Voici quelques pages qu'il serait intéressant d'avoir :
 - [[Astuces]] : des astuces sur Linux et les Logiciels Libres.
 EOS
 wp.save
+wp.reload
+wp.node.update_attribute(:user_id, 1)

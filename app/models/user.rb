@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
   has_many :readings, :dependent => :destroy
   has_many :votes, :dependent => :destroy
   has_many :relevances, :dependent => :destroy
+  has_many :boards, :inverse_of => :user, :dependent => :destroy
   has_many :taggings, :dependent => :destroy, :include => :tag
   has_many :tags, :through => :taggings, :uniq => true
   

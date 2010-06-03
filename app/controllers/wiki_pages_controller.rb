@@ -1,6 +1,6 @@
 class WikiPagesController < ApplicationController
   before_filter :authenticate_account!, :except => [:index, :show, :revision, :changes]
-  before_filter :load_wiki_page, :only => [:edit, :update, :destroy]
+  before_filter :load_wiki_page, :only => [:edit, :update, :destroy, :revision]
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
 
   def index
@@ -46,7 +46,7 @@ class WikiPagesController < ApplicationController
   end
 
   def edit
-    @wiki_page.wiki_body = @wiki_page.versions.last.body
+    @wiki_page.wiki_body = @wiki_page.versions.first.body
     enforce_update_permission(@wiki_page)
   end
 
@@ -68,7 +68,6 @@ class WikiPagesController < ApplicationController
   end
 
   def revision
-    @wiki_page = WikiPage.find(params[:wiki_page_id])
     enforce_view_permission(@wiki_page)
     @version = @wiki_page.versions.find_by_version!(params[:revision])
     previous = @version.higher_item
