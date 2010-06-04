@@ -42,7 +42,7 @@ class Link < ActiveRecord::Base
       destroy
     else
       self.user_id = user.id
-      self.locked_by = nil
+      self.locked_by_id = nil
       save
     end
   end
@@ -71,12 +71,15 @@ class Link < ActiveRecord::Base
   end
 
   def lock_by(user)
-    return true  if locked_by == user.id
-    return false if locked_by
-    self.locked_by = user.id
+    return true  if locked_by_id == user.id
+    return false if locked?
+    self.locked_by_id = user.id
     save
     news.boards.lock.create(:message => "<span class=\"link\" data-id=\"#{self.id}\">#{user.name} édite le lien #{title}</span>", :user_id => user.id)
     true
   end
 
+  def locked?
+    !!locked_by_id
+  end
 end

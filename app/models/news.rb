@@ -60,8 +60,8 @@ class News < Content
   before_validation :wikify_fields
   def wikify_fields
     return if wiki_body.blank?
-    self.body        = wikify wiki_body
-    self.second_part = wikify wiki_second_part
+    self.body        = wikify(wiki_body).gsub(/^NdM :/, '<abbr title="Note des modérateurs">NdM</abbr>')
+    self.second_part = wikify(wiki_second_part)
   end
 
   after_create :create_parts
@@ -69,7 +69,7 @@ class News < Content
     paragraphs.in_first_part.create(:wiki_body => wiki_body)         unless wiki_body.blank?
     paragraphs.in_second_part.create(:wiki_body => wiki_second_part) unless wiki_second_part.blank?
     return if message.blank?
-    boards.indication.create(:message => message, :user_agent => author_name)
+    boards.indication.create(:message => message, :user_agent => author_name) # TODO type should be indication
   end
 
 # FIXME
@@ -204,14 +204,14 @@ class News < Content
 ### Locks ###
 
   def unlocked?
-    return false if links.any? { |l| l.locked_by }
-    return false if paragraphs.any? { |p| p.locked_by }
+    return false if links.any? { |l| l.locked? }
+    return false if paragraphs.any? { |p| p.locked? }
     true
   end
 
   def clear_locks(user)
-    links.each {|l| l.locked_by = nil; l.save }
-    paragraphs.each {|p| p.locked_by = nil; p.save }
+    links.each {|l| l.locked_by_id = nil; l.save }
+    paragraphs.each {|p| p.locked_by_id = nil; p.save }
     boards.locking.create(:message => "<span class=\"clear\">#{user.name} a supprimer tous les locks</span>", :user_id => user.id)
   end
 

@@ -53,7 +53,7 @@ class Paragraph < ActiveRecord::Base
       destroy
     else
       self.user_id = current_user.id
-      self.locked_by = nil
+      self.locked_by_id = nil
       save
     end
   end
@@ -97,12 +97,16 @@ class Paragraph < ActiveRecord::Base
   acts_as_list :scope => :news
 
   def lock_by(user)
-    return true  if locked_by == user.id
-    return false if locked_by
-    self.locked_by = user.id
+    return true  if locked_by_id == user.id
+    return false if locked?
+    self.locked_by_id = user.id
     save
     news.boards.locking.create(:message => "<span class=\"paragraph\" data-id=\"#{self.id}\">#{user.name} édite le paragraph #{wiki_body[0,20]}</span>", :user_id => user.id)
     true
+  end
+
+  def locked?
+    !!locked_by_id
   end
 
 ### Presentation ###
@@ -110,5 +114,4 @@ class Paragraph < ActiveRecord::Base
   def part
     second_part ? 'second_part' : 'first_part'
   end
-
 end

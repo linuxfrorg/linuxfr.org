@@ -23,3 +23,6 @@
         = render 'redaction/paragraphs/paragraph', :paragraph => paragraph
 
 = button_to "Supprimer tous les locks", clear_locks_moderation_news_path(@news), :class => 'ajax'
+
+%p
+  Pour ajouter une note des modérateurs, commencez simplement une ligne par <code>NdM :</code>.
