@@ -51,7 +51,7 @@ protected
 
   def find_node
     @node = Node.find(params[:node_id])
-    enforce_taggable_permission(@node.content)
+    enforce_tag_permission(@node.content)
   end
 
   def find_tag

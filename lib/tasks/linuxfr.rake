@@ -12,7 +12,8 @@ namespace :linuxfr do
 
   desc "New day => update karma and give new votes"
   task :daily_karma => :environment do
-    Account.active.find_each {|a| a.daily_karma }
+    # TODO only active accounts
+    Account.find_each {|a| a.daily_karma }
   end
 
   desc "New day => the users can revote on polls"
@@ -22,6 +23,7 @@ namespace :linuxfr do
 
   desc "Delete old accounts that were never activated"
   task :delete_old_passive_accounts => :environment do
+    # FIXME
     Account.passive.delete_all(["created_at <= ?", DateTime.now - 2.days])
   end
 

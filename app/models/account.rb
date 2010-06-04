@@ -87,9 +87,10 @@ class Account < ActiveRecord::Base
 
   def daily_karma
     nodes       = Node.where(:user_id => self.id)
+    comments    = Comment.where(:user_id => self.id)
     yesterday   = [DateTime.yesterday.beginning_of_day, DateTime.yesterday.end_of_day]
-    votes       = nodes.join(:votes).where("votes.created_at BETWEEN ? AND ?", *yesterday)
-    relevances  = nodes.join(:relevances).where("relevances.created_at BETWEEN ? AND ?", *yesterday)
+    votes       = nodes.joins(:votes).where("votes.created_at BETWEEN ? AND ?", *yesterday)
+    relevances  = comments.joins(:relevances).where("relevances.created_at BETWEEN ? AND ?", *yesterday)
     self.karma -= votes.where("vote = 0").count
     self.karma += votes.where("vote = 1").count
     self.karma -= relevances.where("vote = 0").count
