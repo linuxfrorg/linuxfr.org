@@ -8,7 +8,7 @@
     %h1 Tags populaires
     %ul.tag-cloud
       - @popular_tags.each do |tag|
-        %li= link_to tag.name, :controller => "tags", :action => "public", :id => tag.name
+        %li= link_to tag.name, "/tags/#{tag.name}/public"
   - cache "fragments/layouts/friends_and_links", :expires_in => 30.days do
     %section#friends
       %h1 Sites amis
