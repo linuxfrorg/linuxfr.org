@@ -16,8 +16,8 @@
   & > * {
     margin: 0 50px 0 257px; } }
 
-#redaction {
-  @include column(16); }
+#edition {
+  @include column(15); }
 
 #chat {
   @include column(8); }

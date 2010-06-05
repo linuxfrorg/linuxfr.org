@@ -3,7 +3,7 @@
 (function($) {
     $(".markItUp").markItUp(markItUpSettings);
 
-    $("a.hit_counter").each(function() {
+    $("a.hit_counter[data-hit]").each(function() {
         this.href = "/redirect/" + $(this).attr('data-hit');
     });
 

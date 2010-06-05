@@ -32,7 +32,9 @@ article {
     border: 1px solid red; }
   .avatar {
     float: left;
-    margin: 5px 10px; } }
+    margin: 5px 10px; }
+  img {
+    max-width: 100%; } }
 
 // Polls
 #polls, .poll {
