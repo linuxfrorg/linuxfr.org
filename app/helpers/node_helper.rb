@@ -1,6 +1,6 @@
 module NodeHelper
 
-  ContentPresenter = Struct.new(:record, :title, :meta, :image, :body, :actions, :css_class) do
+  ContentPresenter = Struct.new(:record, :title, :meta, :image, :body, :actions, :css_class, :truncate_words) do
     def to_hash
       attrs = members.map(&:to_sym)
       Hash[*attrs.zip(values).flatten]
@@ -15,7 +15,9 @@ module NodeHelper
     cp.css_class << ' new-content' if current_user && record.node.read_status(current_user) == :not_read
     yield cp
     cp.meta ||= posted_by(record)
-    cp.body ||= sanitize(record.body)
+    cp.body ||= sanitize(cp.truncate_words ?
+                         truncate_html(record.body, cp.truncate_words, link_to(" (...)", url_for_content(record))) :
+                         record.body)
     render 'nodes/content', cp.to_hash
   end
 

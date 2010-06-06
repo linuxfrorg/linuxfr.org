@@ -6,5 +6,5 @@
 = content_for :column do
   = render 'edition', :edition => @wiki_page
 
-= render @wiki_page
+= render @wiki_page, :full => true
 = render @wiki_page.node

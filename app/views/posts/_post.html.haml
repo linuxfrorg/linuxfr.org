@@ -1,4 +1,5 @@
 = article_for post do |c|
   - c.title = "#{link_to post.forum.title, post.forum} : #{link_to post.title, [post.forum, post]}".html_safe
+  - c.truncate_words = (defined?(full) && full) ? false : 100
   - if current_user && current_user.can_update?(post)
     - c.actions = link_to("Modifier", "/forums/#{post.forum_id}/posts/#{post.id}/modifier", :class => 'action')
