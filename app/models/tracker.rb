@@ -26,8 +26,8 @@ class Tracker < Content
 
   attr_accessible :title, :wiki_body, :category_id
 
-  validates_presence_of :title,     :message => "Le titre est obligatoire"
-  validates_presence_of :wiki_body, :message => "Veuillez décrire cette entrée du suivi"
+  validates :title,     :presence => { :message => "Le titre est obligatoire" }
+  validates :wiki_body, :presence => { :message => "Veuillez décrire cette entrée du suivi" }
 
   scope :sorted, order('created_at DESC')
 

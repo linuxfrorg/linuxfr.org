@@ -11,9 +11,9 @@
 #
 
 class Page < ActiveRecord::Base
-  validates_presence_of :slug,  :message => "Le slug est obligatoire"
-  validates_presence_of :title, :message => "Le titre est obligatoire"
-  validates_presence_of :body,  :message => "Le corps est obligatoire"
+  validates :slug,  :presence => { :message => "Le slug est obligatoire" }
+  validates :title, :presence => { :message => "Le titre est obligatoire" }
+  validates :body,  :presence => { :message => "Le corps est obligatoire" }
 
   def to_param
     slug

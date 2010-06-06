@@ -21,8 +21,8 @@ class Forum < ActiveRecord::Base
 
   scope :sorted, order("position ASC")
 
-  validates_presence_of :title, :message => "Le titre est obligatoire"
-  validates_uniqueness_of :title, :message => 'Ce titre est déjà utilisé'
+  validates :title, :presence   => { :message => "Le titre est obligatoire" },
+                    :uniqueness => { :message => "Ce titre est déjà utilisé" }
 
   has_friendly_id :title, :use_slug => true
 

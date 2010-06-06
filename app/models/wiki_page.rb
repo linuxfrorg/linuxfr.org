@@ -19,8 +19,8 @@ class WikiPage < Content
                       :order      => 'version DESC',
                       :inverse_of => :wiki_page
 
-  validates_presence_of :title, :message => "Le titre est obligatoire"
-  validates_presence_of :body,  :message => "Le corps est obligatoire"
+  validates :title, :presence => { :message => "Le titre est obligatoire" }
+  validates :body,  :presence => { :message => "Le corps est obligatoire" }
 
   scope :sorted, order('created_at DESC')
 

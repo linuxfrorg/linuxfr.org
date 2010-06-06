@@ -22,7 +22,7 @@ class Link < ActiveRecord::Base
   attr_accessor   :user_id
   attr_accessible :user_id, :title, :url, :lang
 
-  validates_presence_of :title, :message => "Un lien doit obligatoirement avoir un titre"
+  validates :title, :presence => { :message => "Un lien doit obligatoirement avoir un titre" }
   validates_url_format_of :url, :message => "L'URL d'un lien n'est pas valide"
 
   def url=(url)

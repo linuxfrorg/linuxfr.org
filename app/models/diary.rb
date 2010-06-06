@@ -22,8 +22,8 @@ class Diary < Content
 
   attr_accessible :title, :wiki_body
 
-  validates_presence_of :title,     :message => "Le titre est obligatoire"
-  validates_presence_of :wiki_body, :message => "Vous ne pouvez pas poster un journal vide"
+  validates :title,     :presence => { :message => "Le titre est obligatoire" }
+  validates :wiki_body, :presence => { :message => "Vous ne pouvez pas poster un journal vide" }
 
   scope :sorted, order('created_at DESC')
   scope :published, where(:state => 'published')

@@ -19,8 +19,8 @@
 class Section < ActiveRecord::Base
   has_many :news, :inverse_of => :section
 
-  validates_presence_of :title, :message => "Le titre est obligatoire"
-  validates_uniqueness_of :title, :message => "Ce titre est déjà utilisé"
+  validates :title, :presence   => { :message => "Le titre est obligatoire" },
+                    :uniqueness => { :message => "Ce titre est déjà utilisé" }
 
 ### SEO ###
 

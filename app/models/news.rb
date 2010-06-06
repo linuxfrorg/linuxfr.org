@@ -38,11 +38,11 @@ class News < Content
 
   scope :sorted, order('created_at DESC')
 
-  validates_presence_of :title,        :message => "Le titre est obligatoire"
-  validates_presence_of :body,         :message => "Nous n'acceptons pas les dépêches vides"
-  validates_presence_of :section,      :message => "Veuillez choisir une section pour cette dépêche"
-  validates_presence_of :author_name,  :message => "Veuillez entrer votre nom"
-  validates_presence_of :author_email, :message => "Veuillez entrer votre adresse email"
+  validates :title,        :presence => { :message => "Le titre est obligatoire" }
+  validates :body,         :presence => { :message => "Nous n'acceptons pas les dépêches vides" }
+  validates :section,      :presence => { :message => "Veuillez choisir une section pour cette dépêche" }
+  validates :author_name,  :presence => { :message => "Veuillez entrer votre nom" }
+  validates :author_email, :presence => { :message => "Veuillez entrer votre adresse email" }
 
 ### Associated node ###
 

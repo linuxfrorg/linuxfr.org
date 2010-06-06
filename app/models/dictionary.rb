@@ -11,8 +11,8 @@
 #
 class Dictionary < ActiveRecord::Base
 
-  validates_presence_of :key
-  validates_presence_of :value
+  validates :key,   :presence => true
+  validates :value, :presence => true
 
 ### Shortcuts ###
 

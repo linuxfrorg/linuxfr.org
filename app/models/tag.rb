@@ -12,8 +12,7 @@ class Tag < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy, :inverse_of => :tag
   has_many :nodes, :through => :taggings, :uniq => true
 
-  validates_presence_of :name
-  validates_uniqueness_of :name
+  validates :name, :presence => true, :uniqueness => true
 
   scope :footer, order('taggings_count DESC').limit(12)
 end

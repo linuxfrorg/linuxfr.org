@@ -60,8 +60,8 @@ class Account < ActiveRecord::Base
 
 ### Validation ###
 
-  validates_presence_of :login, :message => "Veuillez choisir un pseudo"
-  validates_uniqueness_of :login, :message => "Ce pseudo est déjà pris"
+  validates :login, :presence   => { :message => "Veuillez choisir un pseudo"},
+                    :uniqueness => { :message => "Ce pseudo est déjà pris" }
 
 ### Password ###
 

@@ -8,7 +8,7 @@
 #
 
 class Banner < ActiveRecord::Base
-  validates_presence_of :content, :message => "La bannière ne peut être vide !"
+  validates :content, :presence => { :message => "La bannière ne peut être vide !" }
 
   def self.random
     banner = order("RAND()").first

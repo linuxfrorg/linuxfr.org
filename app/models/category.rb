@@ -15,7 +15,7 @@
 class Category < ActiveRecord::Base
   has_many :trackers, :dependent => :nullify
 
-  validates_presence_of :title, :message => 'Les catégories ont obligatoirement un titre'
+  validates :title, :presence => { :message => 'Les catégories ont obligatoirement un titre' }
 
   default_scope order("title ASC")
 end

@@ -21,7 +21,7 @@ class Vote < ActiveRecord::Base
 
   scope :old, lambda { where("created_at < ?", DateTime.now - 3.months) }
 
-  validates_uniqueness_of :node_id, :scope => :user_id
+  validates :node_id, :uniqueness => { :scope => :user_id, :message => "Vous avez déjà voté sur ce commentaire" }
 
   # An user can vote for a node...
   def self.for(user, node)

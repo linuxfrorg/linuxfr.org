@@ -22,7 +22,7 @@ class Poll < Content
 
   attr_accessible :title, :answers_attributes
 
-  validates_presence_of :title, :message => "La question est obligatoire"
+  validates :title, :presence => { :message => "La question est obligatoire" }
 
   scope :sorted, order('created_at DESC')
 

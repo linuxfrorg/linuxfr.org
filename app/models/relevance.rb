@@ -18,7 +18,7 @@ class Relevance < ActiveRecord::Base
 
   scope :old, lambda { where("created_at < ?", DateTime.now - 3.months) }
 
-  validates_uniqueness_of :comment_id, :scope => :user_id
+  validates :comment_id, :uniqueness => { :scope => :user_id, :message => "Vous avez déjà voté sur ce commentaire" }
 
   # An user can vote for a comment...
   def self.for(user, comment)
