@@ -6,7 +6,7 @@
         %li= link_to comment.title, "/nodes/#{comment.node_id}/comments/#{comment.id}"
   %nav#popular_tags
     %h1 Tags populaires
-    %ul.tag-cloud
+    %ul.tag_cloud
       - @popular_tags.each do |tag|
         %li= link_to tag.name, "/tags/#{tag.name}/public"
   - cache "fragments/layouts/friends_and_links", :expires_in => 30.days do
