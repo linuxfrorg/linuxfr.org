@@ -1,9 +1,20 @@
 module NodeHelper
 
-  ContentPresenter = Struct.new(:record, :title, :meta, :image, :body, :actions, :css_class, :truncate_words) do
+  ContentPresenter = Struct.new(:record, :title, :meta, :image, :body, :actions, :css_class) do
     def to_hash
       attrs = members.map(&:to_sym)
       Hash[*attrs.zip(values).flatten]
+    end
+
+    def self.collection?
+      !!@collection
+    end
+
+    def self.collection(&blk)
+      was, @collection = @collection, true
+      ret = yield
+      @collection = was
+      ret
     end
   end
 
@@ -15,8 +26,8 @@ module NodeHelper
     cp.css_class << ' new-content' if current_user && record.node.read_status(current_user) == :not_read
     yield cp
     cp.meta ||= posted_by(record)
-    cp.body ||= sanitize(cp.truncate_words ?
-                         truncate_html(record.body, cp.truncate_words, link_to(" (...)", url_for_content(record))) :
+    cp.body ||= sanitize(ContentPresenter.collection? ?
+                         truncate_html(record.body, 80, link_to(" (...)", url_for_content(record))) :
                          record.body)
     render 'nodes/content', cp.to_hash
   end
@@ -49,7 +60,9 @@ module NodeHelper
     pagination = will_paginate(args).to_s
     before = content_tag(:nav, toolbox + order_bar + pagination, :class => "toolbox")
     after  = content_tag(:nav, pagination, :class => "toolbox")
-    before + capture(&block) + after
+    ContentPresenter.collection do
+      before + capture(&block) + after
+    end
   end
 
   def pubdate_for(content)
