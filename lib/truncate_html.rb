@@ -4,39 +4,49 @@
 #
 require "nokogiri"
 
+
 def truncate_html(text, max_words, ellipsis="...")
   doc = Nokogiri::HTML::DocumentFragment.parse(text)
-  doc.nb_words > max_words ? doc.truncate(max_words).inner_html + ellipsis : text.to_s
+  doc.truncate(max_words, ellipsis)
 end
 
-module NokogiriTruncator
-  module NodeWithChildren
-    def truncate(max_words)
-      return self if nb_words <= max_words
-      truncated_node = self.dup
-      truncated_node.children.remove
 
-      self.children.each do |node|
-        remaining = max_words - truncated_node.nb_words
-        $stderr.puts "****** remaining = #{remaining} ******"
-        break if remaining <= 0
-        truncated_node.add_child node.truncate(remaining)
-      end
-      truncated_node
-    end
-
-    def nb_words
-      inner_text.split.length
-    end
-  end
-
-  module TextNode
-    def truncate(max_words)
-      Nokogiri::XML::Text.new(content.split.slice(0, max_words+1).join(' '), parent)
-    end
+class Nokogiri::HTML::DocumentFragment
+  def truncate(max_words, ellipsis)
+    inner_truncate(max_words, ellipsis).first
   end
 end
 
-Nokogiri::HTML::DocumentFragment.send(:include, NokogiriTruncator::NodeWithChildren)
-Nokogiri::XML::Element.send(:include, NokogiriTruncator::NodeWithChildren)
-Nokogiri::XML::Text.send(:include, NokogiriTruncator::TextNode)
+class Nokogiri::XML::Node
+  def truncate(max_words, ellipsis)
+    inner, remaining = inner_truncate(max_words, ellipsis)
+    children.remove
+    add_child Nokogiri::HTML::DocumentFragment.parse(inner)
+    [to_xml, max_words - remaining]
+  end
+
+  def inner_truncate(max_words, ellipsis)
+    inner, remaining = "", max_words
+    self.children.each do |node|
+      txt, nb = node.truncate(remaining, ellipsis)
+      remaining -= nb
+      inner += txt
+      break if remaining < 0
+    end
+    [inner, remaining]
+  end
+
+  def nb_words
+    inner_text.split.length
+  end
+end
+
+class Nokogiri::XML::Text
+  def truncate(max_words, ellipsis)
+    words    = content.split
+    nb_words = words.length
+    return [to_xhtml, nb_words] if nb_words <= max_words
+    return [ellipsis, 1] if max_words == 0
+    [words.slice(0, max_words).join + ellipsis, nb_words]
+  end
+end
