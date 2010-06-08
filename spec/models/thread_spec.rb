@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe Thread do
   before(:each) do
+    Comment.delete_all
+    User.delete_all
+    Account.delete_all
     @user_id = Factory(:user).id
     @node_id = 1
   end

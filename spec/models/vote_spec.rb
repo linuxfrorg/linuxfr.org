@@ -12,6 +12,11 @@
 require 'spec_helper'
 
 describe Vote do
+  before(:each) do
+    User.delete_all
+    Account.delete_all
+  end
+
   let(:user) { Factory(:user) }
   let(:node) { Factory(:diary).node }
 

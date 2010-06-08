@@ -12,6 +12,11 @@
 require 'spec_helper'
 
 describe Relevance do
+  before(:each) do
+    User.delete_all
+    Account.delete_all
+  end
+
   let(:user)    { Factory(:user) }
   let(:writer)  { Factory(:writer) }
   let(:comment) { Factory(:comment, :user_id => writer.id) }

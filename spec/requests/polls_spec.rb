@@ -5,6 +5,7 @@ describe "Polls" do
     User.delete_all
     Account.delete_all
     Node.delete_all
+    Poll.delete_all
     Rails.cache.clear
   end
 
