@@ -20,9 +20,7 @@ gem "haml",                    "~>3.0"
 gem "htmlentities",            "~>4.2"
 gem "mysql",                   "~>2.8"
 gem "nokogiri",                "~>1.4"
-# TODO Rails 3
-#gem "paperclip",               "~>2.3"
-gem "paperclip", :git => "http://github.com/joeljunstrom/paperclip.git"
+gem "paperclip",               "~>2.3"
 gem "raspell",                 "~>1.1"
 gem "rdiscount",               "~>1.6"
 # TODO Rails 3
