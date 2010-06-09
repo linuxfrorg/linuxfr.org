@@ -24,7 +24,6 @@ gem "paperclip",               "~>2.3"
 gem "raspell",                 "~>1.1"
 gem "rdiscount",               "~>1.6"
 # TODO Rails 3
-gem 'redis-store', :git => 'git://github.com/jodosha/redis-store.git', :branch => 'rails3'
 gem "rest-client",             "~>1.5", :require => "restclient"
 gem "sitemap_generator",       "~>0.3"
 gem "simple_autocomplete",     "~>0.3"
@@ -47,4 +46,8 @@ group :test do
   # TODO Rails 3
   #gem "factory_girl",          ">=1.2.5"
   gem "factory_girl", :git => "git://github.com/thoughtbot/factory_girl.git"
+end
+
+group :production do
+  gem 'redis-store',           ">=1.0.0.beta1"
 end

@@ -1,9 +1,9 @@
 --- 
 dependencies: 
-  sitemap_generator: 
+  jslint_on_rails: 
     group: 
-    - :default
-    version: ~> 0.3
+    - :development
+    version: ">= 0"
   compass: 
     group: 
     - :default
@@ -12,22 +12,22 @@ dependencies:
     group: 
     - :default
     version: ~> 0.1
-  jslint_on_rails: 
-    group: 
-    - :development
-    version: ">= 0"
-  annotate: 
-    group: 
-    - :development
-    version: ">= 0"
-  rails: 
+  sitemap_generator: 
     group: 
     - :default
-    version: = 3.0.0.beta4
+    version: ~> 0.3
   simple_autocomplete: 
     group: 
     - :default
     version: ~> 0.3
+  rails: 
+    group: 
+    - :default
+    version: = 3.0.0.beta4
+  annotate: 
+    group: 
+    - :development
+    version: ">= 0"
   haml: 
     group: 
     - :default
@@ -40,30 +40,28 @@ dependencies:
     group: 
     - :default
     version: ~> 0.1
-  rails3-generators: 
-    group: 
-    - :development
-    version: ">= 0"
-  thin: 
-    group: 
-    - :default
-    version: ~> 1.2
-  htmlentities: 
-    group: 
-    - :default
-    version: ~> 4.2
   rspec-rails: 
     group: 
     - :test
     version: ">= 2.0.0.beta.11"
-  factory_girl: 
-    group: 
-    - :test
-    version: ">= 0"
-  will_paginate: 
+  htmlentities: 
     group: 
     - :default
-    version: ">= 3.0.pre"
+    version: ~> 4.2
+  thin: 
+    group: 
+    - :default
+    version: ~> 1.2
+  rails3-generators: 
+    group: 
+    - :development
+    version: ">= 0"
+  rest-client: 
+    group: 
+    - :default
+    version: ~> 1.5
+    require: 
+    - restclient
   friendly_id: 
     group: 
     - :default
@@ -80,20 +78,22 @@ dependencies:
     group: 
     - :default
     version: ~> 2.3
-  rest-client: 
+  will_paginate: 
     group: 
     - :default
-    version: ~> 1.5
-    require: 
-    - restclient
+    version: ">= 3.0.pre"
+  factory_girl: 
+    group: 
+    - :test
+    version: ">= 0"
   raspell: 
     group: 
     - :default
     version: ~> 1.1
   redis-store: 
     group: 
-    - :default
-    version: ">= 0"
+    - :production
+    version: ">= 1.0.0.beta1"
   aasm: 
     group: 
     - :default
@@ -125,7 +125,7 @@ specs:
     version: 0.8.7
 - aasm: 
     version: 2.1.5
-    source: 4
+    source: 3
 - abstract: 
     version: 1.0.0
 - activesupport: 
@@ -182,7 +182,7 @@ specs:
     version: 0.10.7
 - devise: 
     version: 1.1.rc1
-    source: 3
+    source: 2
 - diff-lcs: 
     version: 1.1.2
 - eventmachine: 
@@ -194,7 +194,7 @@ specs:
     version: 0.2.2
 - friendly_id: 
     version: 3.0.5
-    source: 2
+    source: 1
 - htmlentities: 
     version: 4.2.1
 - jslint_on_rails: 
@@ -220,8 +220,7 @@ specs:
 - redis: 
     version: 2.0.1
 - redis-store: 
-    version: 0.3.8
-    source: 1
+    version: 1.0.0.beta1
 - rest-client: 
     version: 1.5.1
 - rspec-core: 
@@ -248,17 +247,12 @@ specs:
     version: 3.0.pre
 - yajl-ruby: 
     version: 0.7.6
-hash: 83a247ce2bdf6a8464bfd03e0873717ca4c3e25b
+hash: 15ba46e8e6492e8311eb7cdde5955fd0f65a5a9c
 sources: 
 - Git: 
     uri: git://github.com/thoughtbot/factory_girl.git
     git: git://github.com/thoughtbot/factory_girl.git
     ref: 434f67b236382cb9e5f69f6a695e190d46098f1e
-- Git: 
-    uri: git://github.com/jodosha/redis-store.git
-    branch: rails3
-    git: git://github.com/jodosha/redis-store.git
-    ref: 234be8a77855f302a3f616ca86697cd493ef0ce6
 - Git: 
     uri: http://github.com/nono/friendly_id.git
     branch: edge
