@@ -2,4 +2,4 @@
   - c.title = link_to("Journal : #{diary.title}", [diary.owner, diary])
   - c.image = avatar_url(diary.owner)
   - if current_user && current_user.can_update?(diary)
-    - c.actions = link_to("Modifier", edit_user_diary_path(:user_id => diary.owner_id, :id => diary.id), :class => 'action')
+    - c.actions = link_to("Modifier", edit_user_diary_path(:user_id => diary.owner.to_param, :id => diary.to_param), :class => 'action')

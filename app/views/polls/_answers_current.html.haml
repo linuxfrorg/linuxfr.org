@@ -1,4 +1,4 @@
-= form_tag "/sondages/#{poll.id || 0}/vote" do
+= form_tag "/sondages/#{poll.new_record? ? 0 : poll.to_param}/vote" do
   %ul
     = list_of poll.answers do |answer|
       = radio_button_tag :position, answer.position, false

@@ -16,7 +16,7 @@
         = render 'redaction/paragraphs/paragraph', :paragraph => paragraph
     - @news.links.each do |link|
       = render 'redaction/links/link', :link => link
-    %p.new_link{'data-url' => new_redaction_news_link_path(:news_id => @news.id)}
+    %p.new_link{'data-url' => new_redaction_news_link_path(:news_id => @news.to_param)}
       %button Ajouter un lien
     #second_part
       - @news.paragraphs.in_second_part.each do |paragraph|
