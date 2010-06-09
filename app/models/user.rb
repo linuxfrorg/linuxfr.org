@@ -64,11 +64,10 @@ class User < ActiveRecord::Base
 
 ### Avatar ###
 
-# TODO Rails 3 + paperclip
-#   has_attached_file :avatar, :styles      => { :thumbnail => "100x100>" },
-#                              :path        => ':rails_root/public/uploads/:id_partition/avatar_:style.:extension',
-#                              :url         => '/uploads/:id_partition/avatar_:style.:extension',
-#                              :default_url => ':gravatar_url'
+  has_attached_file :avatar, :styles      => { :thumbnail => "100x100>" },
+                             :path        => ':rails_root/public/uploads/:id_partition/avatar_:style.:extension',
+                             :url         => '/uploads/:id_partition/avatar_:style.:extension',
+                             :default_url => ':gravatar_url'
 
   DEFAULT_AVATAR_URL = "http://#{MY_DOMAIN}/images/default-avatar.png"
 

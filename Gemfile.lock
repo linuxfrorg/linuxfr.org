@@ -79,7 +79,7 @@ dependencies:
   paperclip: 
     group: 
     - :default
-    version: ~> 2.3
+    version: ">= 0"
   rest-client: 
     group: 
     - :default
@@ -125,7 +125,7 @@ specs:
     version: 0.8.7
 - aasm: 
     version: 2.1.5
-    source: 4
+    source: 5
 - abstract: 
     version: 1.0.0
 - activesupport: 
@@ -182,7 +182,7 @@ specs:
     version: 0.10.7
 - devise: 
     version: 1.1.rc1
-    source: 3
+    source: 4
 - diff-lcs: 
     version: 1.1.2
 - eventmachine: 
@@ -194,7 +194,7 @@ specs:
     version: 0.2.2
 - friendly_id: 
     version: 3.0.5
-    source: 2
+    source: 3
 - htmlentities: 
     version: 4.2.1
 - jslint_on_rails: 
@@ -205,6 +205,7 @@ specs:
     version: 1.4.2
 - paperclip: 
     version: 2.3.2
+    source: 2
 - thor: 
     version: 0.13.6
 - railties: 
@@ -248,7 +249,7 @@ specs:
     version: 3.0.pre
 - yajl-ruby: 
     version: 0.7.6
-hash: 83a247ce2bdf6a8464bfd03e0873717ca4c3e25b
+hash: c979bce3044e0c9b0b00fa1b40dee87038369cb5
 sources: 
 - Git: 
     uri: git://github.com/thoughtbot/factory_girl.git
@@ -259,6 +260,10 @@ sources:
     branch: rails3
     git: git://github.com/jodosha/redis-store.git
     ref: 234be8a77855f302a3f616ca86697cd493ef0ce6
+- Git: 
+    uri: http://github.com/joeljunstrom/paperclip.git
+    git: http://github.com/joeljunstrom/paperclip.git
+    ref: 3203025dc726be86122194ea254179020224e313
 - Git: 
     uri: http://github.com/nono/friendly_id.git
     branch: edge
