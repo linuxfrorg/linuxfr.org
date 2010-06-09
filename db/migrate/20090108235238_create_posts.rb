@@ -7,10 +7,10 @@ class CreatePosts < ActiveRecord::Migration
       t.text :body
       t.text :wiki_body
       t.references :forum
-      t.references :user
+      t.integer :owner_id
       t.timestamps
     end
-    add_index :posts, :state
+    add_index :posts, [:state, :owner_id]
     add_index :posts, :cached_slug
     add_index :posts, :forum_id
   end

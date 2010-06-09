@@ -7,7 +7,6 @@ describe "News" do
     Section.delete_all
     News.delete_all
     Node.delete_all
-    Rails.cache.clear
   end
 
   let!(:section) do

@@ -6,7 +6,6 @@ describe "Polls" do
     Account.delete_all
     Node.delete_all
     Poll.delete_all
-    Rails.cache.clear
   end
 
   let(:account) { Factory.create(:account) }

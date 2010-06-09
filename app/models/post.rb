@@ -9,7 +9,7 @@
 #  body        :text
 #  wiki_body   :text
 #  forum_id    :integer(4)
-#  user_id     :integer(4)
+#  owner_id    :integer(4)
 #  created_at  :datetime
 #  updated_at  :datetime
 #
@@ -19,9 +19,9 @@
 #
 class Post < Content
   belongs_to :forum
-  belongs_to :user
+  belongs_to :owner, :class_name => 'User'
 
-  attr_accessible :title, :wiki_body
+  attr_accessible :title, :wiki_body, :forum_id
 
   validates :forum,     :presence => { :message => "Vous devez choisir un forum" }
   validates :title,     :presence => { :message => "Le titre est obligatoire" }
@@ -36,7 +36,7 @@ class Post < Content
 
   after_create :create_associated_node
   def create_associated_node
-    create_node(:user_id => user_id)
+    create_node(:user_id => owner_id)
   end
 
 ### SEO ###
@@ -48,7 +48,7 @@ class Post < Content
 # TODO Rails 3
 #   define_index do
 #     indexes title, body
-#     indexes user.name, :as => :user
+#     indexes owner.name, :as => :user
 #     indexes forum.title, :as => :forum, :facet => true
 #     where "posts.state = 'published'"
 #     set_property :field_weights => { :title => 10, :user => 4, :body => 2, :forum => 3 }

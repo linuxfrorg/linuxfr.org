@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     @post = Post.new
     enforce_create_permission(@post)
     @post.attributes = params[:post]
-    @post.user_id = current_user.id
+    @post.owner_id = current_user.id
     if !preview_mode && @post.save
       redirect_to forum_posts_url(:forum_id => @post.forum_id), :notice => "Votre message a bien été créé"
     else
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
     if !preview_mode && @post.save
       redirect_to forum_posts_url, :notice => "Votre message a bien été modifié"
     else
-      flash.now[:alert] = "Impossible d'enregistrer ce message"
+      flash.now[:alert] = "Impossible d'enregistrer ce message" if @post.invalid?
       render :edit
     end
   end

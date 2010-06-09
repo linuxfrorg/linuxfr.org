@@ -20,6 +20,7 @@ class Forum < ActiveRecord::Base
   has_many :posts, :inverse_of => :forum
 
   scope :sorted, order("position ASC")
+  scope :active, where(:state => "active")
 
   validates :title, :presence   => { :message => "Le titre est obligatoire" },
                     :uniqueness => { :message => "Ce titre est déjà utilisé" }
