@@ -68,7 +68,9 @@ class Account < ActiveRecord::Base
   before_validation :generate_a_password, :on => :create
   def generate_a_password
     chars = [*'A'..'Z'] + [*'a'..'z'] + [*'1'..'9'] + %w(- + ! ? : £ $ % &)
-    pass  = (0..7).map { chars.rand }.join
+    # TODO Rails 3 -> rand is private?
+    #pass  = (0..7).map { chars.rand }.join
+    pass = "foobar"
     self.password = self.password_confirmation = pass
   end
 

@@ -23,7 +23,7 @@ dependencies:
   rails: 
     group: 
     - :default
-    version: = 3.0.0.beta3
+    version: = 3.0.0.beta4
   simple_autocomplete: 
     group: 
     - :default
@@ -55,7 +55,7 @@ dependencies:
   rspec-rails: 
     group: 
     - :test
-    version: ">= 2.0.0.beta.9"
+    version: ">= 2.0.0.beta.11"
   factory_girl: 
     group: 
     - :test
@@ -67,7 +67,7 @@ dependencies:
   friendly_id: 
     group: 
     - :default
-    version: ~> 3.0
+    version: ">= 0"
   erubis: 
     group: 
     - :default
@@ -75,11 +75,11 @@ dependencies:
   devise: 
     group: 
     - :default
-    version: ~> 1.1.rc1
+    version: ">= 0"
   paperclip: 
     group: 
     - :default
-    version: ">= 0"
+    version: ~> 2.3
   rest-client: 
     group: 
     - :default
@@ -125,21 +125,17 @@ specs:
     version: 0.8.7
 - aasm: 
     version: 2.1.5
-    source: 3
+    source: 4
 - abstract: 
     version: 1.0.0
+- activesupport: 
+    version: 3.0.0.beta4
 - builder: 
     version: 2.1.2
 - i18n: 
-    version: 0.3.7
-- memcache-client: 
-    version: 1.8.3
-- tzinfo: 
-    version: 0.3.22
-- activesupport: 
-    version: 3.0.0.beta3
+    version: 0.4.1
 - activemodel: 
-    version: 3.0.0.beta3
+    version: 3.0.0.beta4
 - erubis: 
     version: 2.6.5
 - rack: 
@@ -148,8 +144,10 @@ specs:
     version: 0.6.3
 - rack-test: 
     version: 0.5.4
+- tzinfo: 
+    version: 0.3.22
 - actionpack: 
-    version: 3.0.0.beta3
+    version: 3.0.0.beta4
 - mime-types: 
     version: "1.16"
 - polyglot: 
@@ -157,25 +155,21 @@ specs:
 - treetop: 
     version: 1.4.8
 - mail: 
-    version: 2.2.2
-- text-hyphen: 
-    version: 1.0.0
-- text-format: 
-    version: 1.0.0
+    version: 2.2.3
 - actionmailer: 
-    version: 3.0.0.beta3
+    version: 3.0.0.beta4
 - arel: 
-    version: 0.3.3
+    version: 0.4.0
 - activerecord: 
-    version: 3.0.0.beta3
+    version: 3.0.0.beta4
 - activeresource: 
-    version: 3.0.0.beta3
+    version: 3.0.0.beta4
 - acts_as_list: 
     version: 0.1.2
 - annotate: 
     version: 2.4.0
 - bundler: 
-    version: 0.9.25
+    version: 0.9.26
 - canable: 
     version: "0.1"
 - haml: 
@@ -188,17 +182,19 @@ specs:
     version: 0.10.7
 - devise: 
     version: 1.1.rc1
+    source: 3
 - diff-lcs: 
     version: 1.1.2
 - eventmachine: 
     version: 0.12.10
 - factory_girl: 
-    version: 1.2.5.beta1
+    version: 1.2.5
     source: 0
 - french_rails: 
-    version: 0.2.1
+    version: 0.2.2
 - friendly_id: 
-    version: 3.0.4
+    version: 3.0.5
+    source: 2
 - htmlentities: 
     version: 4.2.1
 - jslint_on_rails: 
@@ -208,14 +204,13 @@ specs:
 - nokogiri: 
     version: 1.4.2
 - paperclip: 
-    version: 2.3.1.1
-    source: 2
+    version: 2.3.2
 - thor: 
     version: 0.13.6
 - railties: 
-    version: 3.0.0.beta3
+    version: 3.0.0.beta4
 - rails: 
-    version: 3.0.0.beta3
+    version: 3.0.0.beta4
 - rails3-generators: 
     version: 0.8.1
 - raspell: 
@@ -253,23 +248,26 @@ specs:
     version: 3.0.pre
 - yajl-ruby: 
     version: 0.7.6
-hash: 4c99d2519df2449c4fe2c430bc229066de2bc18f
+hash: 83a247ce2bdf6a8464bfd03e0873717ca4c3e25b
 sources: 
 - Git: 
     uri: git://github.com/thoughtbot/factory_girl.git
-    branch: fixes_for_rails3
     git: git://github.com/thoughtbot/factory_girl.git
-    ref: ea502f0c5590a49d7d429d880edfbc487fe99053
+    ref: 434f67b236382cb9e5f69f6a695e190d46098f1e
 - Git: 
-    uri: http://github.com/nono/redis-store.git
+    uri: git://github.com/jodosha/redis-store.git
     branch: rails3
-    git: http://github.com/nono/redis-store.git
-    ref: fc7ee77e908cf47e9f7cb6f996c689b5dc015073
+    git: git://github.com/jodosha/redis-store.git
+    ref: 234be8a77855f302a3f616ca86697cd493ef0ce6
 - Git: 
-    uri: git://github.com/nono/paperclip.git
-    branch: rails3
-    git: git://github.com/nono/paperclip.git
-    ref: ee2ee406ef834284f1187b2493ca93e7630b7b99
+    uri: http://github.com/nono/friendly_id.git
+    branch: edge
+    git: http://github.com/nono/friendly_id.git
+    ref: f96551d47f60ae982f9c2f8fd2746fb6add55d23
+- Git: 
+    uri: http://github.com/plataformatec/devise.git
+    git: http://github.com/plataformatec/devise.git
+    ref: 5f2a19d7844abf341ab355bfd7de21ae861c1aae
 - Git: 
     uri: http://github.com/larspind/aasm.git
     git: http://github.com/larspind/aasm.git

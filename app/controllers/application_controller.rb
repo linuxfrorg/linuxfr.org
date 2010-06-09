@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :seo_filter
   helper_method :mobile?, :url_for_content, :current_user
+  protect_from_forgery # TODO
 
 protected
 

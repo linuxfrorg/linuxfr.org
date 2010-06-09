@@ -18,13 +18,13 @@ LinuxfrOrg::Application.configure do
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
+  config.cache_store = :memory_store # TODO :redis_store
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
   config.serve_static_assets = false
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
-  # config.action_controller.asset_host = "http://assets.example.com"
   # config.action_controller.asset_host = "static.#{MY_DOMAIN}"
 
   # Disable delivery errors, bad email addresses will be ignored
