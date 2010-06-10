@@ -92,7 +92,7 @@ class News < Content
 
 ### Sphinx ####
 
-# TODO Rails 3
+# TODO Thinking Sphinx
 #   define_index do
 #     indexes title, body, second_part
 #     indexes author_name, :as => :user

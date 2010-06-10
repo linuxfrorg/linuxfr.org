@@ -43,7 +43,7 @@ class Diary < Content
 
 ### Sphinx ####
 
-# TODO Rails 3
+# TODO Thinking Sphinx
 #   define_index do
 #     indexes title, body
 #     indexes owner.name, :as => :user

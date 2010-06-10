@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   has_many :boards, :inverse_of => :user, :dependent => :destroy
   has_many :taggings, :dependent => :destroy, :include => :tag
   has_many :tags, :through => :taggings, :uniq => true
-  
+
   delegate :login, :email, :to => :account, :allow_nil => true
 
   attr_accessible :name, :homesite, :jabber_id, :avatar
@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
 
 ### Sphinx ####
 
-# TODO Rails 3
+# TODO Thinking Sphinx
 #   define_index do
 #     indexes name, homesite, jabber_id
 #     where "role != 'inactive'"

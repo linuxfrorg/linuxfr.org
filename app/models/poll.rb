@@ -41,7 +41,7 @@ class Poll < Content
 
 ### Sphinx ####
 
-# TODO Rails 3
+# TODO Thinking Sphinx
 #   define_index do
 #     indexes title
 #     indexes user.name, :as => :user
