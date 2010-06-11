@@ -40,11 +40,9 @@ end
 
 group :test do
   gem "rspec-rails",           ">=2.0.0.beta.11"
-  # TODO Rails 3
-  #gem "factory_girl",          ">=1.2.5"
-  gem "factory_girl", :git => "git://github.com/thoughtbot/factory_girl.git"
+  gem "factory_girl_rails",    "~>1.0"
 end
 
 group :production do
-  gem 'redis-store',           ">=1.0.0.beta1"
+  gem 'redis-store',           ">=1.0.0.beta2"
 end
