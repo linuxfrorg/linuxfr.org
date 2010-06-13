@@ -1,7 +1,9 @@
 =h1 "Home Page"
 - feed "S'abonner au flux Atom des dépêches", "/news.atom"
 - @keywords += @popular_tags.map &:name
-= render @ppp if @ppp
+- if @ppp
+  %section#phare
+    = render @ppp
 - if @banner
   %aside.banner
     = @banner.html_safe

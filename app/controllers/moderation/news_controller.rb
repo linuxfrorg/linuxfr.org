@@ -64,7 +64,7 @@ class Moderation::NewsController < ModerationController
   def ppp
     enforce_ppp_permission(@news)
     @news.set_on_ppp
-    redirect_to @news
+    redirect_to [:moderation, @news], :notice => "Cette dépêche est maintenant affichée en phare"
   end
 
   def clear_locks

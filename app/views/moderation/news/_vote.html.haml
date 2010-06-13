@@ -11,9 +11,9 @@
     %p
       %strong Dépêche publiée
     - if @news.on_ppp?
-      %strong En PPP
+      %strong Affichée en phare
     - elsif current_user.can_ppp?(@news)
-      = button_to "Placer en PPP", ppp_moderation_news_path(@news)
+      = button_to "Mettre en phare", ppp_moderation_news_path(@news)
   - elsif @news.refused?
     %p
       %strong Dépêche refusée
