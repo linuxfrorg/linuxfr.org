@@ -6,7 +6,7 @@
     = render @ppp
 - if @banner
   %aside.banner
-    = @banner.html_safe
+    = @banner
 = paginated_section @nodes, link_to("Proposer une dépêche", "/news/nouveau") do
   #contents
     = render @nodes.map(&:content)
