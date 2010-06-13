@@ -34,6 +34,8 @@ class Account < ActiveRecord::Base
   attr_accessor :remember_me
   attr_accessible :login, :email, :stylesheet, :password, :password_confirmation, :user_attributes, :remember_me
 
+  scope :unconfirmed, where(:confirmed_at => nil)
+
 ### Authentication ###
 
   devise :registerable, :database_authenticatable, :confirmable, :recoverable, :rememberable, :trackable, :validatable

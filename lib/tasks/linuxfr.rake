@@ -15,7 +15,7 @@ namespace :linuxfr do
 
   desc "Delete old accounts that were never activated"
   task :delete_old_passive_accounts => :environment do
-    Account.where(:confirmed_at => nil).where(["created_at <= ?", DateTime.now - 2.days]).delete_all
+    Account.unconfirmed.where(["created_at <= ?", DateTime.now - 1.day]).delete_all
   end
 
   desc "Delete old votes on contents and comments (users cannot vote on them)"

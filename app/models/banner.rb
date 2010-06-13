@@ -18,7 +18,7 @@ class Banner < ActiveRecord::Base
   end
 
   after_create :index_banners
-  before_destroy :index_banners
+  after_destroy :index_banners
   def index_banners
     $redis.del("banners")
     Banner.all.each do |b|
