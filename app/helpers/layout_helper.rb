@@ -13,8 +13,8 @@ module LayoutHelper
   end
 
   def logo
-    img = Dictionary['logo']
-    content_tag(:h1, :title => "Le logo de LinuxFr.org", :style => "background-image: url('/images/logos/#{img}');") do
+    img = Logo.image
+    content_tag(:h1, :title => "Le logo de LinuxFr.org", :style => "background-image: url('#{img}');") do
       link_to "LinuxFr.org", '/'
     end
   end

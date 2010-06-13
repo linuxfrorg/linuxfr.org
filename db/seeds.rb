@@ -1,5 +1,5 @@
 # Dictionary
-Dictionary['logo'] = 'linuxfr2_gnu.png'
+Logo.image = '/images/logos/linuxfr2_classic.png'
 
 # Langs
 Dictionary['lang[fr]'] = 'Français'

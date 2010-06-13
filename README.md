@@ -30,7 +30,15 @@ http://railstips.org/blog/archives/2008/11/24/rubygems-yours-mine-and-ours/
     > CREATE DATABASE linuxfr_rails;
     > GRANT ALL PRIVILEGES ON linuxfr_rails.* TO "linuxfr_rails"@"localhost";
 
-4) Clone the repository, configure and install gems:
+4) Install and start redis:
+
+    $ wget "http://code.google.com/p/redis/downloads/detail?name=redis-2.0.0-rc1.tar.gz&can=2&q="
+    $ tar xvzf redis-2.0.0-rc1.tar.gz
+    $ cd redis-2.0.0-rc1
+    $ make
+    $ ./redis-server
+
+5) Clone the repository, configure and install gems:
 
     $ git clone git://github.com/nono/linuxfr.org.git
     $ cd linuxfr.org
@@ -40,7 +48,7 @@ http://railstips.org/blog/archives/2008/11/24/rubygems-yours-mine-and-ours/
     $ bundle install
     $ rake db:setup
 
-5) Let's run it:
+6) Let's run it:
 
     $ rails server
     $ firefox http://127.0.0.1:3000/

@@ -96,7 +96,7 @@ class Board < ActiveRecord::Base
     av   = ActionView::Base.new(Rails::Configuration.new.view_path)
     msg  = av.render(:partial => 'boards/board', :locals => {:board => self})
     Rails.logger.info("Post chat: id=#{id} chan='#{key}' type='#{type}'")
-    RestClient.post(PUSH_URL, :id => id, :chan => key, :type => type, :msg => msg)
+    #RestClient.post(PUSH_URL, :id => id, :chan => key, :type => type, :msg => msg)
   rescue
     nil
   end
