@@ -7,7 +7,6 @@
 #  title        :string(255)
 #  url          :string(255)
 #  lang         :string(255)
-#  nb_clicks    :integer(4)      default(0)
 #  locked_by_id :integer(4)
 #  created_at   :datetime
 #  updated_at   :datetime
@@ -32,9 +31,20 @@ class Link < ActiveRecord::Base
 
 ### Behaviour ###
 
-  def hit
-    self.class.increment_counter(:nb_clicks, self.id)
+  def self.hit(id)
+    url = $redis.get("links/#{id}/url")
+    if url.blank?
+      l = Link.find(id)
+      return nil unless l
+      url = l.url
+      $redis.set("links/#{id}/url", url)
+    end
+    $redis.incr("links/#{id}/hits")
     url
+  end
+
+  def nb_clicks
+    $redis.get("links/#{self.id}/hits").to_i
   end
 
   def update_by(user)
