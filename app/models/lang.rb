@@ -1,0 +1,13 @@
+class Lang
+  def self.all
+    keys = $redis.lrange("lang", 0, -1)
+    full = keys.map {|k| "lang/#{k}" }
+    vals = $redis.mget(*full)
+    vals.zip(keys)
+  end
+
+  def self.[]=(key, value)
+    $redis.set("lang/#{key}", value)
+    $redis.rpush("lang", key)
+  end
+end

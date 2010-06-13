@@ -218,16 +218,16 @@ class News < Content
 ### PPP ###
 
   def self.ppp
-    id = $redis.get("news:ppp")
+    id = $redis.get("news/ppp")
     id && find(id)
   end
 
   def set_on_ppp
-    $redis.set("news:ppp", self.id)
+    $redis.set("news/ppp", self.id)
   end
 
   def on_ppp?
-    self.id == $redis.get("news:ppp").to_i
+    self.id == $redis.get("news/ppp").to_i
   end
 
 ### Interest ###
