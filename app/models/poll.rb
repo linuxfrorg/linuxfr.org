@@ -103,8 +103,19 @@ class Poll < Content
   end
 
   def answerable_by?(ip)
-    published? && !PollIp.has_voted?(ip)
+    published? && !has_voted?(ip)
   end
+
+### Voters IP ###
+
+   def has_voted?(ip)
+     $redis.exists("polls/#{self.id}/#{ip}")
+   end
+
+   def vote(ip)
+     $redis.set("polls/#{self.id}/#{ip}", 1)
+     $redis.expire("polls/#{self.id}/#{ip}", 86400)
+   end
 
 ### Votes ###
 

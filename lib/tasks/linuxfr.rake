@@ -1,9 +1,7 @@
 namespace :linuxfr do
   desc "Daily crontab"
   task :daily => [
-    :flush_poll_ips,
     :delete_old_passive_accounts,
-    :delete_old_boards,
     :delete_old_votes,
     :daily_karma,
     'sitemap:refresh',
@@ -15,19 +13,9 @@ namespace :linuxfr do
     Account.find_each {|a| a.daily_karma }
   end
 
-  desc "New day => the users can revote on polls"
-  task :flush_poll_ips => :environment do
-    PollIp.delete_all
-  end
-
   desc "Delete old accounts that were never activated"
   task :delete_old_passive_accounts => :environment do
     Account.where(:confirmed_at => nil).where(["created_at <= ?", DateTime.now - 2.days]).delete_all
-  end
-
-  desc "Delete old messages in the boards"
-  task :delete_old_boards => :environment do
-    Board.old.delete_all
   end
 
   desc "Delete old votes on contents and comments (users cannot vote on them)"
