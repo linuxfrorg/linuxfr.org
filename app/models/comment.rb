@@ -57,8 +57,8 @@ class Comment < ActiveRecord::Base
   # but also for anonymous users
   def read_by?(user)
     return true if user.nil?
-    r = Reading.where(:user_id => user.id, :node_id => node_id).first
-    r && r.updated_at >= created_at
+    r = Node.last_reading(node_id, user.id)
+    r && r >= created_at
   end
 
 ### Threads ###

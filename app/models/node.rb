@@ -24,7 +24,6 @@ class Node < ActiveRecord::Base
   belongs_to :user     # can be NULL
   belongs_to :content, :polymorphic => true, :inverse_of => :node
   has_many :comments, :inverse_of => :node
-  has_many :readings, :dependent => :destroy
   has_many :votes, :dependent => :destroy
   has_many :taggings, :dependent => :destroy, :include => :tag
   has_many :tags, :through => :taggings, :uniq => true
@@ -49,11 +48,23 @@ class Node < ActiveRecord::Base
     Threads.all(self.id)
   end
 
+### Readings ###
+
+  def read_by(user_id)
+    $redis.set("readings/#{self.id}/#{user_id}", Time.now.to_i)
+    $redis.expire("readings/#{self.id}/#{user_id}", 7776000) # 3 months
+  end
+
+  def self.last_reading(node_id, user_id)
+    time = $redis.get("readings/#{node_id}/#{user_id}")
+    time && Time.at(time.to_i)
+  end
+
   def read_status(user)
-    r = Reading.where(:user_id => user.id, :node_id => self.id).first if user
+    r = Node.last_reading(self.id, user.id) if user
     return :not_read if r.nil?
     return :no_comments if last_commented_at.nil?
-    return :new_comments if r.updated_at < last_commented_at
+    return :new_comments if r < last_commented_at
     return :read
   end
 

@@ -229,14 +229,6 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
   add_index "posts", ["forum_id"], :name => "index_posts_on_forum_id"
   add_index "posts", ["state"], :name => "index_posts_on_state"
 
-  create_table "readings", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "node_id"
-    t.datetime "updated_at"
-  end
-
-  add_index "readings", ["node_id", "user_id"], :name => "index_readings_on_node_id_and_user_id", :unique => true
-
   create_table "relevances", :force => true do |t|
     t.integer  "user_id"
     t.integer  "comment_id"

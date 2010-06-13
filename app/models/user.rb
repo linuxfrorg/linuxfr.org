@@ -127,7 +127,7 @@ class User < ActiveRecord::Base
   end
 
   def read(node)
-    Reading.update_for(node.id, self.id)
+    node.read_by(self.id)
   end
 
 end
