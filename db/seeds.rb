@@ -1,4 +1,4 @@
-# Dictionary
+# The logo
 Logo.image = '/images/logos/linuxfr2_classic.png'
 
 # Langs

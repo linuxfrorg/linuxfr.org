@@ -98,13 +98,6 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
   add_index "diaries", ["cached_slug"], :name => "index_diaries_on_cached_slug"
   add_index "diaries", ["state", "owner_id"], :name => "index_diaries_on_state_and_owner_id"
 
-  create_table "dictionaries", :force => true do |t|
-    t.string "key",   :limit => 16,   :null => false
-    t.string "value", :limit => 1024
-  end
-
-  add_index "dictionaries", ["key"], :name => "index_dictionaries_on_key", :unique => true
-
   create_table "forums", :force => true do |t|
     t.string   "state",       :default => "active", :null => false
     t.string   "title"
