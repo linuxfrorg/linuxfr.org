@@ -88,15 +88,8 @@ class Account < ActiveRecord::Base
 ### Karma ###
 
   def daily_karma
-    nodes       = Node.where(:user_id => self.id)
-    comments    = Comment.where(:user_id => self.id)
-    yesterday   = [DateTime.yesterday.beginning_of_day, DateTime.yesterday.end_of_day]
-    votes       = nodes.joins(:votes).where("votes.created_at BETWEEN ? AND ?", *yesterday)
-    relevances  = comments.joins(:relevances).where("relevances.created_at BETWEEN ? AND ?", *yesterday)
-    self.karma -= votes.where("vote = 0").count
-    self.karma += votes.where("vote = 1").count
-    self.karma -= relevances.where("vote = 0").count
-    self.karma += relevances.where("vote = 1").count
+    self.karma += $redis.get("users/#{self.user_id}/diff_karma").to_i
+    $redis.del("users/#{self.user_id}/diff_karma")
     self.nb_votes = 3 + karma / 10
     save
   end

@@ -24,7 +24,6 @@ class Comment < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :node, :touch => :last_commented_at, :counter_cache => :comments_count
-  has_many :relevances
 
   delegate :content, :content_type, :to => :node
 
@@ -140,7 +139,31 @@ class Comment < ActiveRecord::Base
     user && !deleted? && self.user != user       &&
         (Time.now - created_at) < 3.months       &&
         (user.account.nb_votes > 0 || user.amr?) &&
-        !user.relevances.exists?(:comment_id => id)
+        !vote_by?(user.id)
+  end
+
+### Votes ###
+
+  def vote_by?(user_id)
+    $redis.exists("comments/#{self.id}/votes/#{user_id}")
+  end
+
+  def vote_for(user)
+    vote(user, 1) && Comment.increment_counter(:score, self.id)
+  end
+
+  def vote_against(user)
+    vote(user, -1) && Comment.decrement_counter(:score, self.id)
+  end
+
+  def vote(user, value)
+    key = "comments/#{self.id}/votes/#{user.id}"
+    return false if $redis.getset(key , value)
+    $redis.expire(key, 7776000) # 3 months
+    $redis.incrby("users/#{self.user_id}/diff_karma", value)
+    $redis.expire("users/#{self.user_id}/diff_karma", 86400)
+    Account.decrement_counter(:nb_votes, user.account.id)
+    true
   end
 
 ### Workflow ###

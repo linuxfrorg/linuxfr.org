@@ -21,6 +21,5 @@ namespace :linuxfr do
   desc "Delete old votes on contents and comments (users cannot vote on them)"
   task :delete_old_votes => :environment do
     Vote.old.delete_all
-    Relevance.old.delete_all
   end
 end

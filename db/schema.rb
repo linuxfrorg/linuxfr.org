@@ -229,16 +229,6 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
   add_index "posts", ["forum_id"], :name => "index_posts_on_forum_id"
   add_index "posts", ["state"], :name => "index_posts_on_state"
 
-  create_table "relevances", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "comment_id"
-    t.boolean  "vote"
-    t.datetime "created_at"
-  end
-
-  add_index "relevances", ["comment_id", "user_id"], :name => "index_relevances_on_comment_id_and_user_id", :unique => true
-  add_index "relevances", ["created_at", "vote", "comment_id"], :name => "index_relevances_on_created_at_and_vote_and_comment_id"
-
   create_table "responses", :force => true do |t|
     t.string "title",   :null => false
     t.text   "content"
