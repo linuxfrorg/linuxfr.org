@@ -14,3 +14,5 @@ end
 class ActionController::TestCase
   include Devise::TestHelpers
 end
+
+$redis.select 15

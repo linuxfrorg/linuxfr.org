@@ -7,6 +7,9 @@ describe "News" do
     Section.delete_all
     News.delete_all
     Node.delete_all
+    $redis.flushdb
+    Lang['fr'] = 'Français'
+    Lang['en'] = 'Anglais'
   end
 
   let!(:section) do
