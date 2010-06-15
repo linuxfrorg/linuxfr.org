@@ -78,12 +78,11 @@ class News < Content
 #     self.second_part = wikify paragraphs.in_second_part.map(&:body).join
 #   end
 
-# FIXME
-#   after_update :announce_modification
-#   def announce_modification
-#     message = render_to_string(:partial => 'news/board', :locals => {:action => 'dépêche modifiée :', :news => self})
-#     Board.create_for(news, :user => editor, :kind => "edition", :message => message)
-#   end
+  after_update :announce_modification
+  def announce_modification
+    message = NewsController.new.render_to_string(:partial => 'board', :locals => {:action => 'dépêche modifiée :', :news => self})
+    Board.create_for(self, :user => editor, :kind => "edition", :message => message)
+  end
 
 ### SEO ###
 
@@ -123,7 +122,7 @@ class News < Content
   def submit_and_notify(user)
     submit!
     message = "<b>La dépêche a été soumise à la modération</b>"
-    Board.create_for(content, :user => user, :kind => "submission", :message => message)
+    Board.create_for(self, :user => user, :kind => "submission", :message => message)
   end
 
   def publish
@@ -133,17 +132,17 @@ class News < Content
     author = Account.find_by_email(author_email)
     author.give_karma(50) if author
     message = "<b>La dépêche a été publiée</b>"
-    Board.create_for(news, :user => moderator, :kind => "moderation", :message => message)
+    Board.create_for(self, :user => moderator, :kind => "moderation", :message => message)
   end
 
   def be_refused
     message = "<b>La dépêche a été refusée</b>"
-    Board.create_for(news, :user => moderator, :kind => "moderation", :message => message)
+    Board.create_for(self, :user => moderator, :kind => "moderation", :message => message)
   end
 
   def deletion
     message = "<b>La dépêche a été supprimée</b>"
-    Board.create_for(news, :user => moderator, :kind => "moderation", :message => message)
+    Board.create_for(self, :user => moderator, :kind => "moderation", :message => message)
   end
 
   def self.accept_threshold
@@ -212,7 +211,7 @@ class News < Content
     links.each {|l| l.locked_by_id = nil; l.save }
     paragraphs.each {|p| p.locked_by_id = nil; p.save }
     message = "<span class=\"clear\">#{user.name} a supprimer tous les locks</span>"
-    Board.create_for(news, :user => user, :kind => "locking", :message => message)
+    Board.create_for(self, :user => user, :kind => "locking", :message => message)
   end
 
 ### PPP ###

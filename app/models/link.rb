@@ -62,21 +62,21 @@ class Link < ActiveRecord::Base
   after_create :announce_create
   def announce_create
     return unless user
-    message = render_to_string(:partial => 'redaction/links/board', :locals => {:action => 'lien ajouté', :link => self})
+    message = Redaction::LinksController.new.render_to_string(:partial => 'board', :locals => {:action => 'lien ajouté', :link => self})
     Board.create_for(news, :user => user, :kind => "creation", :message => message)
   end
 
   after_update :announce_update
   def announce_update
     return unless user
-    message = render_to_string(:partial => 'redaction/links/board', :locals => {:action => 'lien modifié', :link => self})
+    message = Redaction::LinksController.new.render_to_string(:partial => 'board', :locals => {:action => 'lien modifié', :link => self})
     Board.create_for(news, :user => user, :kind => "edition", :message => message)
   end
 
   before_destroy :announce_destroy
   def announce_destroy
     return unless user
-    message = render_to_string(:partial => 'redaction/links/board', :locals => {:action => 'lien supprimé', :link => self})
+    message = Redaction::LinksController.new.render_to_string(:partial => 'board', :locals => {:action => 'lien supprimé', :link => self})
     Board.create_for(news, :user => user, :kind => "deletion", :message => message)
   end
 

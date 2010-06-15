@@ -70,7 +70,7 @@ class Paragraph < ActiveRecord::Base
   after_create :announce_create
   def announce_create
     return unless user
-    message = render_to_string(:partial => 'redaction/paragraphs/board', :locals => {:action => 'paragraphe ajouté', :paragraph => self})
+    message = Redaction::ParagraphsController.new.render_to_string(:partial => 'board', :locals => {:action => 'paragraphe ajouté', :paragraph => self})
     Board.create_for(news, :user => user, :kind => "creation", :message => message)
     self.user = nil
   end
@@ -78,7 +78,7 @@ class Paragraph < ActiveRecord::Base
   after_update :announce_update
   def announce_update
     return unless user
-    message = render_to_string(:partial => 'redaction/paragraphs/board', :locals => {:action => 'paragraphe modifié', :paragraph => self})
+    message = Redaction::ParagraphsController.new.render_to_string(:partial => 'board', :locals => {:action => 'paragraphe modifié', :paragraph => self})
     Board.create_for(news, :user => user, :kind => "edition", :message => message)
     self.user = nil
   end
@@ -86,7 +86,7 @@ class Paragraph < ActiveRecord::Base
   before_destroy :announce_destroy
   def announce_destroy
     return unless user
-    message = render_to_string(:partial => 'redaction/paragraphs/board', :locals => {:action => 'paragraphe supprimé', :paragraph => self})
+    message = Redaction::ParagraphsController.new.render_to_string(:partial => 'board', :locals => {:action => 'paragraphe supprimé', :paragraph => self})
     Board.create_for(news, :user => user, :kind => "deletion", :message => message)
     self.user = nil
   end
