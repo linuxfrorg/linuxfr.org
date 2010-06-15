@@ -18,8 +18,8 @@
 class Link < ActiveRecord::Base
   belongs_to :news
 
-  attr_accessor   :user_id
-  attr_accessible :user_id, :title, :url, :lang
+  attr_accessor   :user
+  attr_accessible :user, :title, :url, :lang
 
   validates :title, :presence => { :message => "Un lien doit obligatoirement avoir un titre" }
   validates_url_format_of :url, :message => "L'URL d'un lien n'est pas valide"
@@ -51,7 +51,7 @@ class Link < ActiveRecord::Base
     if url.blank?
       destroy
     else
-      self.user_id = user.id
+      self.user = user
       self.locked_by_id = nil
       save
     end
@@ -61,23 +61,23 @@ class Link < ActiveRecord::Base
 
   after_create :announce_create
   def announce_create
-    return unless user_id
+    return unless user
     message = render_to_string(:partial => 'redaction/links/board', :locals => {:action => 'lien ajouté', :link => self})
-    news.boards.creation.create(:message => message, :user_id => user_id)
+    Board.create_for(news, :user => user, :kind => "creation", :message => message)
   end
 
   after_update :announce_update
   def announce_update
-    return unless user_id
+    return unless user
     message = render_to_string(:partial => 'redaction/links/board', :locals => {:action => 'lien modifié', :link => self})
-    news.boards.edition.create(:message => message, :user_id => user_id)
+    Board.create_for(news, :user => user, :kind => "edition", :message => message)
   end
 
   before_destroy :announce_destroy
   def announce_destroy
-    return unless user_id
+    return unless user
     message = render_to_string(:partial => 'redaction/links/board', :locals => {:action => 'lien supprimé', :link => self})
-    news.boards.deletion.create(:message => message, :user_id => user_id)
+    Board.create_for(news, :user => user, :kind => "deletion", :message => message)
   end
 
   def lock_by(user)
@@ -85,7 +85,8 @@ class Link < ActiveRecord::Base
     return false if locked?
     self.locked_by_id = user.id
     save
-    news.boards.lock.create(:message => "<span class=\"link\" data-id=\"#{self.id}\">#{user.name} édite le lien #{title}</span>", :user_id => user.id)
+    message = "<span class=\"link\" data-id=\"#{self.id}\">#{user.name} édite le lien #{title}</span>"
+    Board.create_for(news, :user => user, :kind => "locking", :message => message)
     true
   end
 

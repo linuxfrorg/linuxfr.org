@@ -28,7 +28,7 @@ class Moderation::NewsController < ModerationController
   def update
     enforce_update_permission(@news)
     @news.attributes = params[:news]
-    @news.editor_id = current_user.id
+    @news.editor = current_user
     @news.save
     respond_to do |wants|
       wants.js { render :nothing => true }

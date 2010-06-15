@@ -76,7 +76,7 @@ class Node < ActiveRecord::Base
       $redis.lrem("nodes/#{self.id}/contre", 1, who)
     end
     $redis.rpush("nodes/#{self.id}/#{word}", who)
-    content.boards.vote.create(:message => "#{who} a voté #{word}", :user_id => user_id)
+    Board.create_for(content, :user => user, :kind => "vote", :message => "#{who} a voté #{word}")
   end
 
   def voters_for

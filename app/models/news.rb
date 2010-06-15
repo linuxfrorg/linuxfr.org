@@ -53,7 +53,7 @@ class News < Content
 
 ### Virtual attributes ###
 
-  attr_accessor   :message, :wiki_body, :wiki_second_part, :editor_id
+  attr_accessor   :message, :wiki_body, :wiki_second_part, :editor
   attr_accessible :message, :wiki_body, :wiki_second_part
 
   before_validation :wikify_fields
@@ -68,7 +68,7 @@ class News < Content
     paragraphs.in_first_part.create(:wiki_body => wiki_body)         unless wiki_body.blank?
     paragraphs.in_second_part.create(:wiki_body => wiki_second_part) unless wiki_second_part.blank?
     return if message.blank?
-    boards.indication.create(:message => message, :user_agent => author_name) # TODO type should be indication
+    Board.create_for(news, :user => author_name, :kind => "indication", :message => message)
   end
 
 # FIXME
@@ -82,7 +82,7 @@ class News < Content
 #   after_update :announce_modification
 #   def announce_modification
 #     message = render_to_string(:partial => 'news/board', :locals => {:action => 'dépêche modifiée :', :news => self})
-#     boards.edition.create(:message => message, :user_id => editor_id)
+#     Board.create_for(news, :user => editor, :kind => "edition", :message => message)
 #   end
 
 ### SEO ###
@@ -120,9 +120,10 @@ class News < Content
   aasm_event :refuse  do transitions :from => [:candidate], :to => :refused,   :on_transition => :be_refused end
   aasm_event :delete  do transitions :from => [:published], :to => :deleted,   :on_transition => :deletion   end
 
-  def submit_and_notify(user_id)
+  def submit_and_notify(user)
     submit!
-    boards.submission.create(:message => "<b>La dépêche a été soumise à la modération</b>", :user_id => user_id)
+    message = "<b>La dépêche a été soumise à la modération</b>"
+    Board.create_for(content, :user => user, :kind => "submission", :message => message)
   end
 
   def publish
@@ -131,15 +132,18 @@ class News < Content
     node.save
     author = Account.find_by_email(author_email)
     author.give_karma(50) if author
-    boards.moderation.create(:message => "<b>La dépêche a été publiée</b>", :user_id => moderator_id)
+    message = "<b>La dépêche a été publiée</b>"
+    Board.create_for(news, :user => moderator, :kind => "moderation", :message => message)
   end
 
   def be_refused
-    boards.moderation.create(:message => "<b>La dépêche a été refusée</b>", :user_id => moderator_id)
+    message = "<b>La dépêche a été refusée</b>"
+    Board.create_for(news, :user => moderator, :kind => "moderation", :message => message)
   end
 
   def deletion
-    boards.moderation.create(:message => "<b>La dépêche a été supprimée</b>", :user_id => moderator_id)
+    message = "<b>La dépêche a été supprimée</b>"
+    Board.create_for(news, :user => moderator, :kind => "moderation", :message => message)
   end
 
   def self.accept_threshold
@@ -207,7 +211,8 @@ class News < Content
   def clear_locks(user)
     links.each {|l| l.locked_by_id = nil; l.save }
     paragraphs.each {|p| p.locked_by_id = nil; p.save }
-    boards.locking.create(:message => "<span class=\"clear\">#{user.name} a supprimer tous les locks</span>", :user_id => user.id)
+    message = "<span class=\"clear\">#{user.name} a supprimer tous les locks</span>"
+    Board.create_for(news, :user => user, :kind => "locking", :message => message)
   end
 
 ### PPP ###

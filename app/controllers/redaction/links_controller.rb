@@ -8,7 +8,7 @@ class Redaction::LinksController < RedactionController
 
   def create
     @link.attributes = params[:link]
-    @link.user_id = current_user.id
+    @link.user = current_user
     @link.save
     render :nothing => true
   end

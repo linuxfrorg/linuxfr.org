@@ -29,7 +29,7 @@ class Redaction::NewsController < RedactionController
 
   def update
     @news.attributes = params[:news]
-    @news.editor_id = current_user.id
+    @news.editor = current_user
     @news.save
     respond_to do |wants|
       wants.js { render :nothing => true }
@@ -38,7 +38,7 @@ class Redaction::NewsController < RedactionController
 
   def submit
     if @news.unlocked?
-      @news.submit_and_notify(current_user.id)
+      @news.submit_and_notify(current_user)
       redirect_to '/redaction', :notice => "Dépêche soumis à la modération"
     else
       redirect_to [:redaction, @news], :alert => "Impossible de soumettre la dépêche car quelqu'un est encore en train de la modifier"

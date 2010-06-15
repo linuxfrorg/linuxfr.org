@@ -14,8 +14,8 @@
 class Paragraph < ActiveRecord::Base
   belongs_to :news
 
-  attr_accessor   :user_id, :after, :already_split
-  attr_accessible :user_id, :after, :already_split, :wiki_body, :second_part, :news_id
+  attr_accessor   :user, :after, :already_split
+  attr_accessible :user, :after, :already_split, :wiki_body, :second_part, :news_id
 
   scope :in_first_part,  where(:second_part => false).order("position ASC")
   scope :in_second_part, where(:second_part => true ).order("position ASC")
@@ -52,7 +52,7 @@ class Paragraph < ActiveRecord::Base
     if wiki_body.blank?
       destroy
     else
-      self.user_id = current_user.id
+      self.user = user
       self.locked_by_id = nil
       save
     end
@@ -69,26 +69,26 @@ class Paragraph < ActiveRecord::Base
 
   after_create :announce_create
   def announce_create
-    return unless user_id
+    return unless user
     message = render_to_string(:partial => 'redaction/paragraphs/board', :locals => {:action => 'paragraphe ajouté', :paragraph => self})
-    news.boards.creation.create(:message => message, :user_id => user_id)
-    self.user_id = nil
+    Board.create_for(news, :user => user, :kind => "creation", :message => message)
+    self.user = nil
   end
 
   after_update :announce_update
   def announce_update
-    return unless user_id
+    return unless user
     message = render_to_string(:partial => 'redaction/paragraphs/board', :locals => {:action => 'paragraphe modifié', :paragraph => self})
-    news.boards.edition.create(:message => message, :user_id => user_id)
-    self.user_id = nil
+    Board.create_for(news, :user => user, :kind => "edition", :message => message)
+    self.user = nil
   end
 
   before_destroy :announce_destroy
   def announce_destroy
-    return unless user_id
+    return unless user
     message = render_to_string(:partial => 'redaction/paragraphs/board', :locals => {:action => 'paragraphe supprimé', :paragraph => self})
-    news.boards.deletion.create(:message => message, :user_id => user_id)
-    self.user_id = nil
+    Board.create_for(news, :user => user, :kind => "deletion", :message => message)
+    self.user = nil
   end
 
   # Warning, acts_as_list also declares a before_destroy callback,
@@ -101,7 +101,8 @@ class Paragraph < ActiveRecord::Base
     return false if locked?
     self.locked_by_id = user.id
     save
-    news.boards.locking.create(:message => "<span class=\"paragraph\" data-id=\"#{self.id}\">#{user.name} édite le paragraph #{wiki_body[0,20]}</span>", :user_id => user.id)
+    message = "<span class=\"paragraph\" data-id=\"#{self.id}\">#{user.name} édite le paragraph #{wiki_body[0,20]}</span>"
+    Board.create_for(news, :user => user, :kind => "locking", :message => message)
     true
   end
 
