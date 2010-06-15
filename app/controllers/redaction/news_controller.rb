@@ -11,7 +11,7 @@ class Redaction::NewsController < RedactionController
   end
 
   def show
-    @boards = @news.boards
+    @boards = Board.all(Board.news, @news.id)
     respond_to do |wants|
       wants.html {
         redirect_to [:redaction, @news], :status => 301 and return if !@news.friendly_id_status.best?

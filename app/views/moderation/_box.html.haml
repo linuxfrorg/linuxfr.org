@@ -8,5 +8,5 @@
     %ul
       = list_of(@candidate_news) do |news|
         = link_to news.title, [:moderation, news]
-  - @boards = Board.by_kind(Board.amr)
+  - @boards = Board.all(Board.amr)
   = render 'boards/boards'

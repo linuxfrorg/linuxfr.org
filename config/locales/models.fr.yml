@@ -3,7 +3,6 @@ fr:
     models:
       account: compte
       banner: bannière
-      board: tribune
       category: catégorie
       comment: commentaire
       content: contenu

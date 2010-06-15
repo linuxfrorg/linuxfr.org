@@ -1,5 +1,5 @@
-= form_tag "/board/add", :class => 'chat' do
+= form_tag "/board", :class => 'chat' do
   = hidden_field :board, :object_type, :value => form.object_type
   = hidden_field :board, :object_id, :value => form.object_id
-  = text_field :board, :message, :value => '', :size => 20, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
+  = text_field :board, :message, :value => '', :size => 80, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
   = submit_tag 'Envoyer'

@@ -1,6 +1,5 @@
-- board = @boards.new
-- board.object_id ||= 0
-.board{'data-chat' => board.chan_key}
+- board = @boards.build
+.board{'data-chat' => board.crypted_chan_key}
   = render 'boards/form', :form => board
   .inbox
     = render @boards

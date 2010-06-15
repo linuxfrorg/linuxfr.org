@@ -37,7 +37,6 @@ class User < ActiveRecord::Base
   has_many :posts, :dependent => :destroy, :inverse_of => :owner, :foreign_key => "owner_id"
   has_many :wiki_versions, :dependent => :nullify
   has_many :comments, :inverse_of => :user
-  has_many :boards, :inverse_of => :user, :dependent => :destroy
   has_many :taggings, :dependent => :destroy, :include => :tag
   has_many :tags, :through => :taggings, :uniq => true
 

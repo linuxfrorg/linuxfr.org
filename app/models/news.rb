@@ -26,7 +26,6 @@ class News < Content
 
   belongs_to :section
   belongs_to :moderator, :class_name => "User"
-  has_many :boards, :as => :object, :dependent => :destroy
   has_many :links, :dependent => :destroy, :inverse_of => :news
   has_many :paragraphs, :dependent => :destroy, :inverse_of => :news
   accepts_nested_attributes_for :links, :allow_destroy => true,

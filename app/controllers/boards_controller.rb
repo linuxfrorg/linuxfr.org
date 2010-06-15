@@ -2,17 +2,18 @@ class BoardsController < ApplicationController
   before_filter :authenticate_account!
 
   def show
-    @board = Board[Board.free]
+    @boards = Board.all(Board.free)
+    @board  = Board.build
     enforce_view_permission(@board)
-    @boards = Board.by_kind(@board.object_type)
     respond_to do |wants|
       wants.html
       wants.xml
     end
   end
 
-  def add
-    board = current_user.boards.build(params[:board])
+  def create
+    board = Board.new(params[:board])
+    board.user = current_user
     enforce_view_permission(board)
     board.message    = board_auto_link(board.message)
     board.user_agent = request.user_agent

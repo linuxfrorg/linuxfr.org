@@ -47,18 +47,6 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
     t.text   "content"
   end
 
-  create_table "boards", :force => true do |t|
-    t.string   "user_agent"
-    t.string   "type",        :default => "chat", :null => false
-    t.integer  "user_id"
-    t.integer  "object_id"
-    t.string   "object_type"
-    t.text     "message"
-    t.datetime "created_at"
-  end
-
-  add_index "boards", ["object_type", "object_id"], :name => "index_boards_on_object_type_and_object_id"
-
   create_table "categories", :force => true do |t|
     t.string   "title",      :null => false
     t.datetime "created_at"

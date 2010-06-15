@@ -8,7 +8,7 @@ class Moderation::NewsController < ModerationController
 
   def show
     enforce_view_permission(@news)
-    @boards = @news.boards
+    @boards = Boards.all(Board.new, @news.id)
     respond_to do |wants|
       wants.html {
         redirect_to [:moderation, @news], :status => 301 and return if !@news.friendly_id_status.best?
@@ -55,7 +55,7 @@ class Moderation::NewsController < ModerationController
       notif.deliver if notif
       redirect_to @news
     elsif @news.unlocked?
-      @boards = @news.boards
+      @boards = Boards.all(Board.new, @news.id)
     else
       redirect_to [:moderation, @news], :alert => "Impossible de modérer la dépêche tant que quelqu'un est train de la modifier"
     end

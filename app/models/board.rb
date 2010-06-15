@@ -1,82 +1,88 @@
-# == Schema Information
+# It's the famous board, from DaCode (then templeet), boosted to store
+# additional messages about redaction & moderation (votes, locks...)
 #
-# Table name: boards
-#
-#  id          :integer(4)      not null, primary key
-#  user_agent  :string(255)
-#  type        :string(255)     default("chat"), not null
-#  user_id     :integer(4)
-#  object_id   :integer(4)
-#  object_type :string(255)
-#  message     :text
-#  created_at  :datetime
-#
-
-# It's the famous board, from DaCode (then templeet).
-#
-class Board < ActiveRecord::Base
+class Board
   include Canable::Ables
 
-  belongs_to :user
-  belongs_to :object, :polymorphic => true
+  NB_MSG_PER_CHAN = 200
 
-  attr_accessible :object_id, :object_type, :message, :user_agent, :user_id
+  attr_accessor :id, :kind, :user_name, :user_url, :user_agent
+  attr_accessor :object_type, :object_id, :message, :created_at
 
-  default_scope order('created_at DESC')
-  scope :by_kind, lambda { |kind| where(:object_type => kind).includes(:user).limit(100) }
-  scope :old, lambda { where("(created_at < ? AND object_type = ?) OR (created_at < ?)", DateTime.now - 12.hours, Board.free, DateTime.now - 1.month) }
-
-### Types ###
-
-  # The default for STI is the "type" column, but we do not use this feature.
-  def self.inheritance_column
-    :nothing
+  def initialize(params={})
+    @kind        = "chat"
+    @object_type = params[:object_type] || Board.free
+    @object_id   = params[:object_id]
+    @message     = params[:message]
   end
 
-  # A message in a board can be of several types.
-  # The most common are the 'chat' ones (ie a user chats on a board).
-  # But there are also other types for more internal usages.
-  # For example, locking a paragraph is posted in a board with the 'locking' type.
-  TYPES = %w(chat indication vote submission moderation locking creation edition deletion)
-
-  TYPES.each do |t|
-    scope t.to_sym, where(:type => t)
-    self.send(:define_method, "#{t}?") { read_attribute(:type) == t }
+  def user=(user)
+    @user_name = user.account.login
+    @user_url  = "/users/#{user.to_param}"
   end
 
-### Kinds ###
-
-  # There are several boards:
-  #  * the free one for testing
-  #  * the writing board is used for collaborating on the future news
-  #  * the AMR board is used by the LinuxFr.org staff
-  #  * and one board for each news in moderation.
-  KINDS = %w(Free Writing AMR News)
-
-  KINDS.each do |k|
-    (class << self; self; end).send(:define_method, k.downcase) { k }
+  def user_link
+    (@user_url.blank? ? @user_name : "<a href=\"#{@user_url}\">#{@user_name}</a>").html_safe
   end
 
-  def self.[](kind)
-    raise ActiveRecord::RecordNotFound unless KINDS.include?(kind)
-    board = Board.new
-    board.object_type = kind
-    board
+  def self.chan_key(object_type, object_id)
+    ["boards/chans",  object_type.downcase, object_id].compact.join('/')
   end
 
-### Validation ###
+  def chan_key
+    self.class.chan_key(@object_type, @object_id)
+  end
 
-  validates :object_type, :presence  => { :message => "Impossible de poster un message" },
-                          :inclusion => { :in => KINDS, :message => "Impossible de poster un message" }
-  validates :object_id,   :presence  => { :message => "Impossible de poster un message" }
-  validates :message,     :presence  => { :message => "Ce message est vide" }
+  def save
+    return false if @message.blank?
+    @id = $redis.incr("boards/id")
+    @created_at = Time.now
+    $redis.hmset "boards/msg/#{@id}", :kind => @kind, :msg => @message, :ua => @user_agent, :user => @user_name, :url => @user_url, :date => @created_at.to_i
+    $redis.multi do
+      $redis.lpush(chan_key, @id)
+      $redis.lrange(chan_key, NB_MSG_PER_CHAN, -1).each do |i|
+        $redis.del "boards/msg/#{i}"
+      end
+      $redis.ltrim(chan_key, 0, NB_MSG_PER_CHAN - 1)
+    end
+    # TODO pubsub
+    true
+  end
+
+  def load(values)
+    @kind       = values[:kind]
+    @message    = values[:msg]
+    @user_agent = values[:ua]
+    @user_name  = values[:user]
+    @user_url   = values[:url]
+    @created_at = Time.at(values[:date])
+  end
+
+  def self.all(object_type, object_id=nil)
+    key = chan_key(object_type, object_id)
+    ids = $redis.lrange(key, 0, -1)
+    boards = []
+    unless ids.empty?
+      ids.map! { |i| "boards/msg/#{i}" }
+      vals = $redis.mget(*ids)
+      vals.each do |val|
+        next if val.nil?
+        b = Board.new
+        b.id = ids.unshift
+        b.load(val)
+        boards << b
+      end
+    end
+    (class << boards; self; end).send(:define_method, :build) { Board.new(:object_type => object_type, :object_id => object_id) }
+    boards
+  end
 
 ### ACL ###
 
   # Can the given user see messages (and post) on this board?
   def viewable_by?(user)
     return false unless user
-    case object_type
+    case @object_type
     when Board.news:    user.amr?
     when Board.amr:     user.amr?
     when Board.writing: user.can_post_on_board?
@@ -85,11 +91,42 @@ class Board < ActiveRecord::Base
     end
   end
 
+### Types ###
+
+  # There are several boards:
+  #  * the free one for testing
+  #  * the writing board is used for collaborating on the future news
+  #  * the AMR board is used by the LinuxFr.org staff
+  #  * and one board for each news in moderation.
+  TYPES = %w(Free Writing AMR News)
+
+  TYPES.each do |t|
+    (class << self; self; end).send(:define_method, t.downcase) { t }
+  end
+
+### TODO ###
+
+  def crypted_chan_key
+    "foobar"
+  end
+
+### Kinds ###
+
+  # A message in a board can be of several kinds.
+  # The most common are the 'chat' ones (ie a user chats on a board).
+  # But there are also other kinds for more internal usages.
+  # For example, locking a paragraph is posted in a board with the 'locking' type.
+  KINDS = %w(chat indication vote submission moderation locking creation edition deletion)
+
+  KINDS.each do |k|
+    self.send(:define_method, "#{k}?") { @kind == k }
+  end
+
 ### Push to tornado ###
 
   PUSH_URL = "http://#{MY_DOMAIN}/chat/new"
 
-  after_create :push
+  #after_create :push
   def push
     id   = self.id
     key  = private_chan_key
