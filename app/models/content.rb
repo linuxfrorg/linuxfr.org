@@ -48,7 +48,7 @@ class Content < ActiveRecord::Base
     user && !deleted? && self.user != user &&
         (Time.now - created_at) < 3.months &&
         user.account.nb_votes > 0          &&
-        !user.votes.exists?(:node_id => node.id)
+        !node.vote_by?(user.id)
   end
 
   def taggable_by?(user)
@@ -65,10 +65,6 @@ class Content < ActiveRecord::Base
 
   def deleted?
     state == 'deleted'
-  end
-
-  def announce_vote?
-    false
   end
 
 ### Interest ###

@@ -161,7 +161,6 @@ class Comment < ActiveRecord::Base
     return false if $redis.getset(key , value)
     $redis.expire(key, 7776000) # 3 months
     $redis.incrby("users/#{self.user_id}/diff_karma", value)
-    $redis.expire("users/#{self.user_id}/diff_karma", 86400)
     Account.decrement_counter(:nb_votes, user.account.id)
     true
   end

@@ -1,53 +1,39 @@
-# == Schema Information
-#
-# Table name: votes
-#
-#  id         :integer(4)      not null, primary key
-#  user_id    :integer(4)
-#  node_id    :integer(4)
-#  vote       :boolean(1)
-#  created_at :datetime
-#
-
 require 'spec_helper'
 
-describe Vote do
+describe "Vote" do
   before(:each) do
     User.delete_all
     Account.delete_all
+    $redis.flushdb
   end
 
   let(:user) { Factory(:user) }
   let(:node) { Factory(:diary).node }
 
   it "creates a new instance when an user votes for a node" do
-    Vote.for(user, node)
-    user.votes.count.should == 1
+    node.vote_for(user)
     node.reload.score.should == 1
   end
 
   it "creates a new instance when an user votes against a node" do
-    Vote.against(user, node)
-    user.votes.count.should == 1
+    node.vote_against(user)
     node.reload.score.should == -1
   end
 
   it "can't be changed by an user if he changes his mind" do
-    Vote.against(user, node)
-    Vote.for(user, node)
-    user.votes.count.should == 1
+    node.vote_against(user)
+    node.vote_for(user)
     node.reload.score.should == 1
   end
 
   it "is idempotent" do
-    3.times { Vote.for(user, node) }
-    user.votes.count.should == 1
+    3.times { node.vote_for(user) }
     node.reload.score.should == 1
   end
 
   it "decrements the number of votes for the user" do
     user.account.update_attribute(:nb_votes, 10)
-    Vote.for(user, node)
+    node.vote_for(user)
     Account.where(:user_id => user.id).first.nb_votes.should == 9
   end
 end

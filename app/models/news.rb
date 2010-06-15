@@ -151,10 +151,6 @@ class News < Content
     -User.amr.count / 4
   end
 
-  def announce_vote?
-    candidate?
-  end
-
   def self.create_for_redaction(user)
     news = News.new
     news.title = "Nouvelle dépêche #{News.maximum :id}"

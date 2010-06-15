@@ -2,10 +2,10 @@
   %h1 Votes
   %p
     %strong Pour :
-    = voters_for(@news)
+    = @news.node.voters_for
   %p
     %strong Contre :
-    = voters_against(@news)
+    = @news.node.voters_against
 
   - if @news.published?
     %p

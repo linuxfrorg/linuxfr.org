@@ -24,7 +24,6 @@ class Node < ActiveRecord::Base
   belongs_to :user     # can be NULL
   belongs_to :content, :polymorphic => true, :inverse_of => :node
   has_many :comments, :inverse_of => :node
-  has_many :votes, :dependent => :destroy
   has_many :taggings, :dependent => :destroy, :include => :tag
   has_many :tags, :through => :taggings, :uniq => true
 
@@ -40,6 +39,52 @@ class Node < ActiveRecord::Base
     coeff = content_type.constantize.interest_coefficient
     stmt  = "UPDATE nodes SET interest=(score * #{coeff} + UNIX_TIMESTAMP(created_at) / 1000) WHERE id=#{self.id}"
     connection.update_sql(stmt)
+  end
+
+### Votes ###
+
+  def vote_by?(user_id)
+    $redis.exists("nodes/#{self.id}/votes/#{user_id}")
+  end
+
+  def vote_for(user)
+    vote(user, 1)
+  end
+
+  def vote_against(user)
+    vote(user, -1)
+  end
+
+  def vote(user, value)
+    key  = "nodes/#{self.id}/votes/#{user.id}"
+    prev = $redis.getset(key , value)
+    return if prev.to_i == value
+    value *= 2 if prev
+    $redis.expire(key, 7776000) # 3 months
+    $redis.incrby("users/#{self.user_id}/diff_karma", value)
+    Account.decrement_counter(:nb_votes, user.account.id) unless user.amr?
+    connection.update_sql("UPDATE nodes SET score=score + #{value} WHERE id=#{self.id}")
+    compute_interest
+    vote_on_candidate_news(value) if content_type == "News" && content.candidate?
+  end
+
+  def vote_on_candidate_news(value)
+    word = value > 0 ? "pour" : "contre"
+    who  = user.account.login
+    if value.abs == 2
+      $redis.lrem("nodes/#{self.id}/pour", 1, who)
+      $redis.lrem("nodes/#{self.id}/contre", 1, who)
+    end
+    $redis.rpush("nodes/#{self.id}/#{word}", who)
+    content.boards.vote.create(:message => "#{who} a voté #{word}", :user_id => user_id)
+  end
+
+  def voters_for
+    $redis.lrange("nodes/#{self.id}/pour", 0, -1).to_sentence
+  end
+
+  def voters_against
+    $redis.lrange("nodes/#{self.id}/contre", 0, -1).to_sentence
   end
 
 ### Comments ###

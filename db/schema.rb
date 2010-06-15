@@ -312,16 +312,6 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
 
   add_index "users", ["cached_slug"], :name => "index_users_on_cached_slug"
 
-  create_table "votes", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "node_id"
-    t.boolean  "vote"
-    t.datetime "created_at"
-  end
-
-  add_index "votes", ["created_at", "vote", "node_id"], :name => "index_votes_on_created_at_and_vote_and_node_id"
-  add_index "votes", ["node_id", "user_id"], :name => "index_votes_on_node_id_and_user_id", :unique => true
-
   create_table "wiki_pages", :force => true do |t|
     t.string   "state",       :default => "public", :null => false
     t.string   "title"
