@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Board do
   before(:each) do
     $redis.flushdb
+    Board.secret = "this is secret!"
   end
 
   let(:john) do
@@ -48,6 +49,13 @@ describe Board do
     b.chan_key.should == "boards/chans/free"
     b = Board.new(:object_type => Board.news, :object_id => 123)
     b.chan_key.should == "boards/chans/news/123"
+  end
+
+  it "has a private_key that depends of the secret" do
+    b = Board.new(:object_type => Board.news, :object_id => 123)
+    b.private_key.should_not == Digest::SHA1.hexdigest("News/123/")
+    Board.secret = nil
+    b.private_key.should == Digest::SHA1.hexdigest("News/123/")
   end
 
   it "can construct the user_link" do
@@ -126,5 +134,26 @@ describe Board do
     boards.should have(200).items
     $redis.keys("boards/msg/*").should have(200).items
     $redis.llen("boards/chans/free").should == 200
+  end
+
+  it "publish to redis" do
+    b = Board.new(:object_type => Board.free, :message => "foobar")
+    b.user = john
+
+    thread = Thread.new do
+      r = Redis.new
+      r.subscribe "boards/#{b.private_key}" do |on|
+        on.message do |chan,msg|
+          @chan, @msg = chan, msg
+          r.unsubscribe
+        end
+      end
+    end
+
+    b.save
+    thread.join
+    @chan.should == "boards/#{b.private_key}"
+    @msg.should  =~ /john-doe/
+    @msg.should  =~ /foobar/
   end
 end

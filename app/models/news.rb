@@ -80,6 +80,7 @@ class News < Content
 
   after_update :announce_modification
   def announce_modification
+    return unless editor
     message = NewsController.new.render_to_string(:partial => 'board', :locals => {:action => 'dépêche modifiée :', :news => self})
     Board.create_for(self, :user => editor, :kind => "edition", :message => message)
   end

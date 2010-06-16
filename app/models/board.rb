@@ -61,8 +61,22 @@ class Board
       $redis.del "boards/msg/#{i}"
     end
     $redis.ltrim(chan_key, 0, NB_MSG_PER_CHAN - 1)
-    # TODO pubsub
+    $redis.publish("boards/#{private_key}", rendered)
     true
+  end
+
+  def rendered
+    BoardsController.new.render_to_string(:partial => "board", :locals => {:board => self})
+  end
+
+### Pubsub keys ###
+
+  class << self
+    attr_accessor :secret
+  end
+
+  def private_key
+    Digest::SHA1.hexdigest("#{@object_type}/#{@object_id}/#{self.class.secret}")
   end
 
 ### Retrieve boards ###
@@ -126,35 +140,5 @@ class Board
   # But there are also other kinds for more internal usages.
   # For example, locking a paragraph is posted in a board with the 'locking' type.
   KINDS = %w(chat indication vote submission moderation locking creation edition deletion)
-
-### Push to tornado ###
-
-  PUSH_URL = "http://#{MY_DOMAIN}/chat/new"
-
-#   #after_create :push
-#   def push
-#     id   = self.id
-#     key  = private_chan_key
-#     av   = ActionView::Base.new(Rails::Configuration.new.view_path)
-#     msg  = av.render(:partial => 'boards/board', :locals => {:board => self})
-#     Rails.logger.info("Post chat: id=#{id} chan='#{key}' type='#{type}'")
-#     #RestClient.post(PUSH_URL, :id => id, :chan => key, :type => type, :msg => msg)
-#   rescue
-#     nil
-#   end
-# 
-#   def chan
-#     "#{object_type}::#{object_id}"
-#   end
-# 
-#   # Public chan key
-#   def chan_key
-#     Digest::SHA1.hexdigest(private_chan_key)
-#   end
-# 
-#   def private_chan_key
-#     # TODO add a secret
-#     Digest::SHA1.hexdigest(chan)
-#   end
 
 end
