@@ -8,9 +8,7 @@ gem "aasm", :git => "http://github.com/larspind/aasm.git"
 gem "acts_as_list",            "~>0.1"
 gem "canable",                 "~>0.1"
 gem "compass",                 "~>0.10"
-# TODO Rails 3
-#gem "devise",                  "~>1.1.rc1"
-gem "devise", :git => "http://github.com/plataformatec/devise.git"
+gem "devise",                  "~>1.1.rc2"
 gem "erubis",                  "~>2.6"
 gem "french_rails",            "~>0.2"
 gem "friendly_id",             "~>3.0"
@@ -39,7 +37,7 @@ group :development do
 end
 
 group :test do
-  gem "rspec-rails",           ">=2.0.0.beta.12"
+  gem "rspec-rails",           ">=2.0.0.beta.13"
   gem "factory_girl_rails",    "~>1.0"
 end
 
