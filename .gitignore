@@ -1,4 +1,5 @@
 .bundle
+.rvmrc
 .sass-cache
 config/database.yml
 config/*.sphinx.conf

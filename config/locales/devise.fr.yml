@@ -31,6 +31,9 @@ fr:
       send_instructions: "Vous allez recevoir un email avec les instructions pour déverrouiller votre compte dans quelques minutes."
       unlocked: "Votre compte a été déverrouillé avec succès. Vous êtes maintenant connecté."
     mailer:
-      confirmation_instructions: "Instructions pour la confirmation"
-      reset_password_instructions: "Instructions pour la réinitialisation du mot de passe"
-      unlock_instructions: "Instructions pour le déverrouillage"
+      confirmation_instructions:
+        subject: "Instructions pour la confirmation"
+      reset_password_instructions:
+        subject: "Instructions pour la réinitialisation du mot de passe"
+      unlock_instructions:
+        subject: "Instructions pour le déverrouillage"

@@ -112,11 +112,11 @@ class Board
   def viewable_by?(user)
     return false unless user
     case @object_type
-    when Board.news:    user.amr?
-    when Board.amr:     user.amr?
-    when Board.writing: user.can_post_on_board?
-    when Board.free:    user.can_post_on_board?
-    else                false
+    when Board.news    then user.amr?
+    when Board.amr     then user.amr?
+    when Board.writing then user.can_post_on_board?
+    when Board.free    then user.can_post_on_board?
+                       else false
     end
   end
 
