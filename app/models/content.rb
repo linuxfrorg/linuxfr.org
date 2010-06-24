@@ -16,11 +16,12 @@ class Content < ActiveRecord::Base
   attr_accessor :cc_licensed
   attr_accessible :cc_licensed
 
-  def create_node_with_license(attrs={}, replace_existing=true)
+  def create_node(attrs={}, replace_existing=true)
     attrs[:cc_licensed] = true if cc_licensed && cc_licensed != '0'
-    create_node_without_license attrs, replace_existing
+    node = build_node(attrs, replace_existing)
+    node.save
+    node
   end
-  alias_method_chain :create_node, :license
 
 ### ACL ###
 
