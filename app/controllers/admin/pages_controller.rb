@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Admin::PagesController < AdminController
   before_filter :find_page, :only => [:edit, :update, :destroy]
 

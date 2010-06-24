@@ -1,3 +1,4 @@
+# encoding: UTF-8
 date_formats = {
   :posted    => '%d/%m/%Y à %H:%M',
   :norloge   => '%H:%M:%S',

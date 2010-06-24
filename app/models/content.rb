@@ -20,6 +20,7 @@ class Content < ActiveRecord::Base
     attrs[:cc_licensed] = true if cc_licensed && cc_licensed != '0'
     create_node_without_license attrs, replace_existing
   end
+  # TODO simple heritage instead of alias_method_chain ?
   alias_method_chain :create_node, :license
 
 ### ACL ###

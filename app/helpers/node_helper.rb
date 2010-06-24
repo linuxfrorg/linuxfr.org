@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module NodeHelper
 
   ContentPresenter = Struct.new(:record, :title, :meta, :image, :body, :actions, :css_class) do

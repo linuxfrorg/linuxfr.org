@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class TrackersController < ApplicationController
   before_filter :authenticate_account!, :except => [:index, :show, :comments]
   before_filter :load_tracker, :only => [:show, :edit, :update, :destroy]

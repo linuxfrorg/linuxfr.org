@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Admin::AccountsController < AdminController
   before_filter :load_account, :only => [:update, :destroy]
 

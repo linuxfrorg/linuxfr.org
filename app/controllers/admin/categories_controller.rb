@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Admin::CategoriesController < AdminController
   before_filter :load_category, :only => [:edit, :update, :destroy]
 

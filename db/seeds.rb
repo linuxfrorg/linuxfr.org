@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 # The logo
 Logo.image = '/images/logos/linuxfr2_classic.png'
 

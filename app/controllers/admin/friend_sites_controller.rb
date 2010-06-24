@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Admin::FriendSitesController < AdminController
   before_filter :find_friend_site, :except => [:index, :new, :create]
 

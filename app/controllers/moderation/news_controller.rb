@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Moderation::NewsController < ModerationController
   before_filter :find_news, :except => [:index]
 

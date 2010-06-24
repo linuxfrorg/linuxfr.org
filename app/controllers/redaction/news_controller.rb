@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Redaction::NewsController < RedactionController
   before_filter :load_news, :except => [:index, :create]
 

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class StylesheetsController < ApplicationController
   before_filter :authenticate_account!
   before_filter :load_account

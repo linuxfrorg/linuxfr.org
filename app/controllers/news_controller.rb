@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class NewsController < ApplicationController
   caches_page :index, :if => Proc.new { |c| c.request.format.atom? }
   caches_action :show, :unless => :account_signed_in?, :expires_in => 1.hour

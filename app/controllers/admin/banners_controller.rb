@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Admin::BannersController < AdminController
   before_filter :load_banner, :only => [:update, :destroy]
 
