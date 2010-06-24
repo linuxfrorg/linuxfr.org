@@ -19,8 +19,6 @@
 # They can also suggest improvements here.
 #
 class Tracker < Content
-  include AASM
-
   belongs_to :assigned_to_user, :class_name => "User"
   belongs_to :category
 
@@ -29,7 +27,8 @@ class Tracker < Content
   validates :title,     :presence => { :message => "Le titre est obligatoire" }
   validates :wiki_body, :presence => { :message => "Veuillez décrire cette entrée du suivi" }
 
-  scope :sorted, order('created_at DESC')
+  scope :sorted, order("created_at DESC")
+  scope :opened, where(:state => "opened")
 
   wikify_attr :body
 
@@ -61,16 +60,11 @@ class Tracker < Content
 
   States = {'Ouvert' => :opened, 'Corrigé' => :fix, 'Invalide' => :invalid}.freeze
 
-  aasm_column :state
-  aasm_initial_state :opened
-
-  aasm_state :opened
-  aasm_state :fixed
-  aasm_state :invalid
-
-  aasm_event :fix        do transitions :from => [:opened], :to => :fixed   end
-  aasm_event :invalidate do transitions :from => [:opened], :to => :invalid end
-  aasm_event :reopen     do transitions :from => [:fixed, :invalid], :to => :opened end
+  state_machine :state, :initial => :opened do
+    event :fix        do transition :opened => :fixed   end
+    event :invalidate do transition :opened => :invalid end
+    event :reopen     do transition all     => :opened  end
+  end
 
 ### Presentation ###
 

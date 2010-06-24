@@ -19,6 +19,8 @@
 class Section < ActiveRecord::Base
   has_many :news, :inverse_of => :section
 
+  scope :published, where(:state => "published")
+
   validates :title, :presence   => { :message => "Le titre est obligatoire" },
                     :uniqueness => { :message => "Ce titre est déjà utilisé" }
 
@@ -34,14 +36,8 @@ class Section < ActiveRecord::Base
 
 ### Workflow ###
 
-  include AASM
-  aasm_column :state
-  aasm_initial_state :published
-
-  aasm_state :published
-  aasm_state :archived
-
-  aasm_event :reopen do transitions :from => [:archived], :to => :published end
-  aasm_event :delete do transitions :from => [:published], :to => :archived end
-
+  state_machine :state, :initial => :published do
+    event :reopen  do transition :archived => :published end
+    event :archive do transition :published => :archived end
+  end
 end

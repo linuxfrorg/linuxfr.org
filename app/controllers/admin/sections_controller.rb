@@ -33,7 +33,7 @@ class Admin::SectionsController < AdminController
   end
 
   def destroy
-    @section.delete
+    @section.archive
     redirect_to admin_sections_url, :notice => 'Section supprimée'
   end
 

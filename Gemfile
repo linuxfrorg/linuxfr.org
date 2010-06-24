@@ -2,9 +2,6 @@ source "http://gemcutter.org"
 
 gem "rails",                   "3.0.0.beta4"
 
-# TODO Rails 3
-# gem "aasm",                    "~>2.1"
-gem "aasm", :git => "http://github.com/larspind/aasm.git"
 gem "acts_as_list",            "~>0.1"
 gem "canable",                 "~>0.1"
 gem "compass",                 "~>0.10"
@@ -22,6 +19,7 @@ gem "rdiscount",               "~>1.6"
 gem "redis",                   "~>2.0"
 gem "sitemap_generator",       "~>0.3"
 gem "simple_autocomplete",     "~>0.3"
+gem "state_machine",           "~>0.9"
 gem "thin",                    "~>1.2"
 # TODO Thinking Sphinx compatible with Rails3
 # gem "thinking-sphinx",       "~>1.3", :require => "thinking_sphinx"

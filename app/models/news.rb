@@ -21,7 +21,6 @@
 # that will be reviewed and moderated by the LinuxFr.org team.
 #
 class News < Content
-  include AASM
   include Canable::Ables
 
   belongs_to :section
@@ -35,7 +34,9 @@ class News < Content
 
   attr_accessible :title, :section_id, :author_name, :author_email, :links_attributes, :paragraphs_attributes
 
-  scope :sorted, order('created_at DESC')
+  scope :sorted,    order("created_at DESC")
+  scope :draft,     where(:state => "draft")
+  scope :candidate, where(:state => "candidate")
 
   validates :title,        :presence => { :message => "Le titre est obligatoire" }
   validates :body,         :presence => { :message => "Nous n'acceptons pas les dépêches vides" }
@@ -103,22 +104,18 @@ class News < Content
 
 ### Workflow ###
 
-  aasm_column :state
-  aasm_initial_state :draft
+  state_machine :state, :initial => :draft do
+    event :submit  do transition :draft     => :candidate end
+    event :wait    do transition :candidate => :waiting   end
+    event :unblock do transition :wait      => :candidate end
+    event :accept  do transition :candidate => :published end
+    event :refuse  do transition :candidate => :refused   end
+    event :delete  do transition :published => :deleted   end
 
-  aasm_state :draft
-  aasm_state :candidate
-  aasm_state :waiting
-  aasm_state :published
-  aasm_state :refused
-  aasm_state :deleted
-
-  aasm_event :submit  do transitions :from => [:draft],     :to => :candidate end
-  aasm_event :wait    do transitions :from => [:candidate], :to => :waiting   end
-  aasm_event :unblock do transitions :from => [:wait],      :to => :candidate end
-  aasm_event :accept  do transitions :from => [:candidate], :to => :published, :on_transition => :publish    end
-  aasm_event :refuse  do transitions :from => [:candidate], :to => :refused,   :on_transition => :be_refused end
-  aasm_event :delete  do transitions :from => [:published], :to => :deleted,   :on_transition => :deletion   end
+    after_transition :on => :accept, :do => :publish
+    after_transition :on => :refuse, :do => :be_refused
+    after_transition :on => :delete, :do => :deletion
+  end
 
   def submit_and_notify(user)
     submit!

@@ -11,8 +11,6 @@
 #
 
 class Poll < Content
-  include AASM
-
   has_many :answers, :class_name => 'PollAnswer',
                      :dependent  => :destroy,
                      :order      => 'position',
@@ -24,7 +22,10 @@ class Poll < Content
 
   validates :title, :presence => { :message => "La question est obligatoire" }
 
-  scope :sorted, order('created_at DESC')
+  scope :sorted,    order('created_at DESC')
+  scope :draft,     where(:state => "draft")
+  scope :published, where(:state => "published")
+  scope :archived,  where(:state => "archived")
 
 ### Associated node ###
 
@@ -53,19 +54,14 @@ class Poll < Content
 
 ### Workflow ###
 
-  aasm_column :state
-  aasm_initial_state :draft
+  state_machine :state, :initial => :draft do
+    event :accept  do transition :draft     => :published end
+    event :refuse  do transition :draft     => :refused   end
+    event :archive do transition :published => :archived  end
+    event :delete  do transition :published => :deleted   end
 
-  aasm_state :draft
-  aasm_state :published
-  aasm_state :archived
-  aasm_state :refused
-  aasm_state :deleted
-
-  aasm_event :accept  do transitions :from => [:draft],     :to => :published, :on_transition => :publish end
-  aasm_event :refuse  do transitions :from => [:draft],     :to => :refused  end
-  aasm_event :archive do transitions :from => [:published], :to => :archived end
-  aasm_event :delete  do transitions :from => [:published], :to => :deleted  end
+    after_transition :on => :accept, :do => :publish
+  end
 
   # There can be only one current poll,
   # so we archive other polls when publish a new one.

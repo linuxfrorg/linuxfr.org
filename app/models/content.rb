@@ -13,7 +13,7 @@ class Content < ActiveRecord::Base
 
 ### License ###
 
-  attr_accessor :cc_licensed
+  attr_accessor   :cc_licensed
   attr_accessible :cc_licensed
 
   def create_node(attrs={}, replace_existing=true)

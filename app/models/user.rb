@@ -28,7 +28,6 @@
 #   * admin         -> the almighty users
 #
 class User < ActiveRecord::Base
-  include AASM
   include Canable::Cans
 
   has_one  :account, :dependent => :destroy, :inverse_of => :user
@@ -84,24 +83,19 @@ class User < ActiveRecord::Base
 
 ### Role ###
 
-  scope :amr, where(:role => %w[admin moderator reviewer])
+  scope :reviewer,  where(:role => "reviewer")
+  scope :moderator, where(:role => "moderator")
+  scope :admin,     where(:role => "admin")
+  scope :amr,       where(:role => %w[admin moderator reviewer])
 
-  aasm_column :role
-  aasm_initial_state :moule
-
-  aasm_state :inactive
-  aasm_state :moule
-  aasm_state :writer
-  aasm_state :reviewer
-  aasm_state :moderator
-  aasm_state :admin
-
-  aasm_event :inactivate            do transitions :from => [:moule, :writer, :reviewer, :moderator, :admin], :to => [:inactive] end
-  aasm_event :reactivate            do transitions :from => [:inactive],                   :to => [:moule]     end
-  aasm_event :give_writer_rights    do transitions :from => [:moule, :reviewer],           :to => [:writer]    end
-  aasm_event :give_reviewer_rights  do transitions :from => [:moule, :writer, :moderator], :to => [:reviewer]  end
-  aasm_event :give_moderator_rights do transitions :from => [:reviewer, :admin],           :to => [:moderator] end
-  aasm_event :give_admin_rights     do transitions :from => [:moderator],                  :to => [:admin]     end
+  state_machine :role, :initial => :moule do
+    event :inactivate            do transition all                 => :inactive end
+    event :reactivate            do transition :inactive           => :moule     end
+    event :give_writer_rights    do transition [:moule, :reviewer] => :writer    end
+    event :give_reviewer_rights  do transition all - :inactive     => :reviewer  end
+    event :give_moderator_rights do transition [:reviewer, :admin] => :moderator end
+    event :give_admin_rights     do transition :moderator          => :admin     end
+  end
 
   # An AMR is someone who is either an admin, a moderator or a reviewer
   def amr?
