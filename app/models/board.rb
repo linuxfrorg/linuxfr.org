@@ -61,7 +61,7 @@ class Board
       $redis.del "boards/msg/#{i}"
     end
     $redis.ltrim(chan_key, 0, NB_MSG_PER_CHAN - 1)
-    $redis.publish("boards/#{private_key}", rendered)
+    $redis.publish("b/#{private_key}", rendered)
     true
   end
 

@@ -142,7 +142,7 @@ describe Board do
 
     thread = Thread.new do
       r = Redis.new
-      r.subscribe "boards/#{b.private_key}" do |on|
+      r.subscribe "b/#{b.private_key}" do |on|
         on.message do |chan,msg|
           @chan, @msg = chan, msg
           r.unsubscribe
@@ -152,7 +152,7 @@ describe Board do
 
     b.save
     thread.join
-    @chan.should == "boards/#{b.private_key}"
+    @chan.should == "b/#{b.private_key}"
     @msg.should  =~ /john-doe/
     @msg.should  =~ /foobar/
   end

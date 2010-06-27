@@ -17,8 +17,8 @@ var Chat = {
         var args = {};
         if (Chat.cursor) { args.cursor = Chat.cursor; }
         $.ajax({
-            url: "/chat/chan/" + Chat.chan,
-            type: "POST",
+            url: "/b/" + Chat.chan,
+            type: "GET",
             dataType: "text",
             data: $.param(args),
             success: Chat.onSuccess,
