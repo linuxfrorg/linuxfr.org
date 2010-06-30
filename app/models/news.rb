@@ -10,8 +10,8 @@
 #  second_part  :text
 #  moderator_id :integer(4)
 #  section_id   :integer(4)
-#  author_name  :string(255)     default("anonymous"), not null
-#  author_email :string(255)     default("anonymous@dlfp.org"), not null
+#  author_name  :string(255)     not null
+#  author_email :string(255)     not null
 #  created_at   :datetime
 #  updated_at   :datetime
 #

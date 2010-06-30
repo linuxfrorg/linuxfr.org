@@ -69,16 +69,17 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
 
   add_index "comments", ["node_id"], :name => "index_comments_on_node_id"
   add_index "comments", ["state", "created_at"], :name => "index_comments_on_state_and_created_at"
-  add_index "comments", ["state", "materialized_path", "created_at"], :name => "index_comments_on_state_and_materialized_path_and_created_at"
+  add_index "comments", ["state", "materialized_path", "created_at"], :name => "index_comments_on_state_and_materialized_path_and_created_at", :length => {"created_at"=>nil, "materialized_path"=>"255", "state"=>nil}
   add_index "comments", ["user_id", "answered_to_self"], :name => "index_comments_on_user_id_and_answered_to_self"
 
   create_table "diaries", :force => true do |t|
-    t.string   "state",       :default => "published", :null => false
+    t.string   "state",          :default => "published", :null => false
     t.string   "title"
     t.string   "cached_slug"
     t.integer  "owner_id"
     t.text     "body"
     t.text     "wiki_body"
+    t.text     "truncated_body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -106,11 +107,10 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
   add_index "friend_sites", ["position"], :name => "index_friend_sites_on_position"
 
   create_table "links", :force => true do |t|
-    t.integer  "news_id",                     :null => false
+    t.integer  "news_id",      :null => false
     t.string   "title"
     t.string   "url"
     t.string   "lang"
-    t.integer  "nb_clicks",    :default => 0
     t.integer  "locked_by_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -119,15 +119,15 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
   add_index "links", ["news_id"], :name => "index_links_on_news_id"
 
   create_table "news", :force => true do |t|
-    t.string   "state",        :default => "draft",              :null => false
+    t.string   "state",        :default => "draft", :null => false
     t.string   "title"
     t.string   "cached_slug"
     t.text     "body"
     t.text     "second_part"
     t.integer  "moderator_id"
     t.integer  "section_id"
-    t.string   "author_name",  :default => "anonymous",          :null => false
-    t.string   "author_email", :default => "anonymous@dlfp.org", :null => false
+    t.string   "author_name",                       :null => false
+    t.string   "author_email",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -149,7 +149,12 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
     t.datetime "updated_at"
   end
 
-  add_index "nodes", ["content_type", "content_id"], :name => "index_nodes_on_content_type_and_content_id", :unique => true
+  add_index "nodes", ["content_id", "content_type"], :name => "index_nodes_on_content_id_and_content_type", :unique => true
+  add_index "nodes", ["content_type", "public"], :name => "index_nodes_on_content_type_and_public"
+  add_index "nodes", ["public", "created_at"], :name => "index_nodes_on_public_and_created_at"
+  add_index "nodes", ["public", "interest"], :name => "index_nodes_on_public_and_interest"
+  add_index "nodes", ["public", "last_commented_at"], :name => "index_nodes_on_public_and_last_commented_at"
+  add_index "nodes", ["public", "score"], :name => "index_nodes_on_public_and_score"
   add_index "nodes", ["user_id"], :name => "index_nodes_on_user_id"
 
   create_table "pages", :force => true do |t|
@@ -184,12 +189,6 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
 
   add_index "poll_answers", ["poll_id", "position"], :name => "index_poll_answers_on_poll_id_and_position"
 
-  create_table "poll_ips", :force => true do |t|
-    t.integer "ip", :null => false
-  end
-
-  add_index "poll_ips", ["ip"], :name => "index_poll_ips_on_ip", :unique => true
-
   create_table "polls", :force => true do |t|
     t.string   "state",       :default => "draft", :null => false
     t.string   "title"
@@ -202,20 +201,21 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
   add_index "polls", ["state"], :name => "index_polls_on_state"
 
   create_table "posts", :force => true do |t|
-    t.string   "state",       :default => "published", :null => false
+    t.string   "state",          :default => "published", :null => false
     t.string   "title"
     t.string   "cached_slug"
     t.text     "body"
     t.text     "wiki_body"
+    t.text     "truncated_body"
     t.integer  "forum_id"
-    t.integer  "user_id"
+    t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "posts", ["cached_slug"], :name => "index_posts_on_cached_slug"
   add_index "posts", ["forum_id"], :name => "index_posts_on_forum_id"
-  add_index "posts", ["state"], :name => "index_posts_on_state"
+  add_index "posts", ["state", "owner_id"], :name => "index_posts_on_state_and_owner_id"
 
   create_table "responses", :force => true do |t|
     t.string "title",   :null => false
@@ -268,11 +268,12 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
   add_index "tags", ["taggings_count"], :name => "index_tags_on_taggings_count"
 
   create_table "trackers", :force => true do |t|
-    t.string   "state",               :default => "open", :null => false
+    t.string   "state",               :default => "opened", :null => false
     t.string   "title"
     t.string   "cached_slug"
     t.text     "body"
     t.text     "wiki_body"
+    t.text     "truncated_body"
     t.integer  "category_id"
     t.integer  "assigned_to_user_id"
     t.datetime "created_at"

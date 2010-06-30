@@ -27,7 +27,7 @@ module NodeHelper
     yield cp
     cp.meta ||= posted_by(record)
     cp.body ||= sanitize(ContentPresenter.collection? ?
-                         truncate_html(record.body, 80, link_to(" (...)", url_for_content(record))) :
+                         record.truncated_body.sub("[...](suite)", link_to(" (...)", url_for_content(record))) :
                          record.body)
     render 'nodes/content', cp.to_hash
   end

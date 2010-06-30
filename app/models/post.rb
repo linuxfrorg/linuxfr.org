@@ -2,16 +2,17 @@
 #
 # Table name: posts
 #
-#  id          :integer(4)      not null, primary key
-#  state       :string(255)     default("published"), not null
-#  title       :string(255)
-#  cached_slug :string(255)
-#  body        :text
-#  wiki_body   :text
-#  forum_id    :integer(4)
-#  owner_id    :integer(4)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id             :integer(4)      not null, primary key
+#  state          :string(255)     default("published"), not null
+#  title          :string(255)
+#  cached_slug    :string(255)
+#  body           :text
+#  wiki_body      :text
+#  truncated_body :text
+#  forum_id       :integer(4)
+#  owner_id       :integer(4)
+#  created_at     :datetime
+#  updated_at     :datetime
 #
 
 # The post is a question in the forums.
@@ -30,7 +31,8 @@ class Post < Content
   scope :sorted, order('created_at DESC')
   scope :published, where(:state => 'published')
 
-  wikify_attr :body
+  wikify_attr   :body
+  truncate_attr :body
 
 ### Associated node ###
 

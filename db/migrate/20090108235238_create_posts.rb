@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :cached_slug
       t.text :body
       t.text :wiki_body
+      t.text :truncated_body
       t.references :forum
       t.integer :owner_id
       t.timestamps

@@ -2,15 +2,16 @@
 #
 # Table name: diaries
 #
-#  id          :integer(4)      not null, primary key
-#  state       :string(255)     default("published"), not null
-#  title       :string(255)
-#  cached_slug :string(255)
-#  owner_id    :integer(4)
-#  body        :text
-#  wiki_body   :text
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id             :integer(4)      not null, primary key
+#  state          :string(255)     default("published"), not null
+#  title          :string(255)
+#  cached_slug    :string(255)
+#  owner_id       :integer(4)
+#  body           :text
+#  wiki_body      :text
+#  truncated_body :text
+#  created_at     :datetime
+#  updated_at     :datetime
 #
 
 # The users can post on theirs diaries.
@@ -28,7 +29,8 @@ class Diary < Content
   scope :sorted, order('created_at DESC')
   scope :published, where(:state => 'published')
 
-  wikify_attr :body
+  wikify_attr   :body
+  truncate_attr :body
 
 ### Associated node ###
 

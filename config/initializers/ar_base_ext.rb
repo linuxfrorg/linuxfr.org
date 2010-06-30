@@ -4,6 +4,14 @@ require 'lfmarkdown'
 # Some ActiveRecord::Base extensions
 #
 class ActiveRecord::Base
+  def self.truncate_attr(attr, nb_words=80)
+    method = "truncate_#{attr}".to_sym
+    before_save method
+    define_method method do
+      send("truncated_#{attr}=", truncate_html(send(attr), nb_words, "[...](suite)")) if send("#{attr}_changed?")
+    end
+  end
+
   def self.wikify_attr(attr, *opts)
     method = "wikify_#{attr}".to_sym
     before_validation method

@@ -3,11 +3,12 @@
 # Table name: trackers
 #
 #  id                  :integer(4)      not null, primary key
-#  state               :string(255)     default("open"), not null
+#  state               :string(255)     default("opened"), not null
 #  title               :string(255)
 #  cached_slug         :string(255)
 #  body                :text
 #  wiki_body           :text
+#  truncated_body      :text
 #  category_id         :integer(4)
 #  assigned_to_user_id :integer(4)
 #  created_at          :datetime
@@ -30,7 +31,8 @@ class Tracker < Content
   scope :sorted, order("created_at DESC")
   scope :opened, where(:state => "opened")
 
-  wikify_attr :body
+  wikify_attr   :body
+  truncate_attr :body
 
 ### Associated node ###
 
