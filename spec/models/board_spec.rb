@@ -139,10 +139,11 @@ describe Board do
   it "publish to redis" do
     b = Board.new(:object_type => Board.free, :message => "foobar")
     b.user = john
+    id = $redis.get("boards/id").to_i + 1
 
     thread = Thread.new do
       r = Redis.new
-      r.subscribe "b/#{b.private_key}" do |on|
+      r.subscribe "b/#{b.private_key}/#{id}/chat" do |on|
         on.message do |chan,msg|
           @chan, @msg = chan, msg
           r.unsubscribe
@@ -152,7 +153,7 @@ describe Board do
 
     b.save
     thread.join
-    @chan.should == "b/#{b.private_key}"
+    @chan.should == "b/#{b.private_key}/#{id}/chat"
     @msg.should  =~ /john-doe/
     @msg.should  =~ /foobar/
   end

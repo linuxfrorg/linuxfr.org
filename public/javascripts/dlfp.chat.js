@@ -43,9 +43,8 @@ var Chat = {
     },
 
     /* Dispatch messages to their callbacks */
-    newMessages: function(response) {
-        if (!response.messages) { return ; }
-        var messages = response.messages;
+    newMessages: function(messages) {
+        if (!messages) { return ; }
         Chat.cursor = messages[messages.length - 1].id;
         for (var i = 0, message; i < messages.length; i += 1) {
             Chat.newMessage(messages[i]);
@@ -55,7 +54,7 @@ var Chat = {
     newMessage: function(message) {
         var existing = $("#board_" + message.id);
         if (existing.length > 0) { return ; }
-        var method  = 'on_' + message['type']; // TODO message.type
+        var method  = 'on_' + message.kind;
         if (Chat[method]) {
             Chat[method](message.msg);
         }
