@@ -37,4 +37,8 @@ describe "truncate_html" do
   it "should be possible to truncate with HTML in the ellipsis" do
     truncate_html(long_text, 2, ' <a href="/more">...</a>').should == '<p>Foo <b>Bar <a href="/more">...</a></b></p>'
   end
+
+  it "should preserve spaces inside a node" do
+    truncate_html("<p>bla bla bla bla bla</p>", 2, "...").should == "<p>bla bla...</p>"
+  end
 end

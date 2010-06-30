@@ -47,6 +47,6 @@ class Nokogiri::XML::Text
     nb_words = words.length
     return [to_xhtml, nb_words] if nb_words <= max_words
     return [ellipsis, 1] if max_words == 0
-    [words.slice(0, max_words).join + ellipsis, nb_words]
+    [words.slice(0, max_words).join(' ') + ellipsis, nb_words]
   end
 end
