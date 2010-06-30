@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
 
   def show
     @boards = Board.all(Board.free)
-    @board  = Board.build
+    @board  = @boards.build
     enforce_view_permission(@board)
     respond_to do |wants|
       wants.html

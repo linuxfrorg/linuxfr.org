@@ -26,8 +26,9 @@ class Board
 
   def initialize(params={})
     @kind        = "chat"
-    @object_type = params[:object_type] || Board.free
-    @object_id   = params[:object_id]
+    @object_type = Board.free
+    @object_type = params[:object_type] unless params[:object_type].blank?
+    @object_id   = params[:object_id]   unless params[:object_id].blank?
     @message     = params[:message]
   end
 
@@ -141,4 +142,18 @@ class Board
   # For example, locking a paragraph is posted in a board with the 'locking' type.
   KINDS = %w(chat indication vote submission moderation locking creation edition deletion)
 
+### ActiveModel ###
+
+  extend  ActiveModel::Naming
+  include ActiveModel::Conversion
+
+  def valid?()     true  end
+  def persisted?() !!@id end
+
+  def errors
+    obj = Object.new
+    def obj.[](key)         [] end
+    def obj.full_messages() [] end
+    obj
+  end
 end
