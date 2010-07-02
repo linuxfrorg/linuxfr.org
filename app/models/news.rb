@@ -60,7 +60,7 @@ class News < Content
   before_validation :wikify_fields
   def wikify_fields
     return if wiki_body.blank?
-    self.body        = wikify(wiki_body).gsub(/^NdM :/, '<abbr title="Note des modérateurs">NdM</abbr>')
+    self.body        = wikify(wiki_body).gsub(/^NdM :/, '<abbr title="Note des modérateurs">NdM</abbr> :')
     self.second_part = wikify(wiki_second_part)
   end
 
