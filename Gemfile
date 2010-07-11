@@ -34,8 +34,11 @@ group :development do
   gem "rails3-generators"
 end
 
+group :development, :test do
+  gem "rspec-rails",           ">=2.0.0.beta.17"
+end
+
 group :test do
-  gem "rspec-rails",           ">=2.0.0.beta.15"
   gem "factory_girl_rails",    "~>1.0"
 end
 
