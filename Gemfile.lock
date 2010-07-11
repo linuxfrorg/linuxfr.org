@@ -209,7 +209,7 @@ specs:
 - paperclip: 
     version: 2.3.3
 - rails3-generators: 
-    version: 0.9.2
+    version: 0.10.1
 - raspell: 
     version: "1.1"
 - rdiscount: 
