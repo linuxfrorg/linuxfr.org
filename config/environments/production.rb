@@ -30,6 +30,6 @@ LinuxfrOrg::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => MY_DOMAIN }
 
-  # Enable threaded mode
-  # config.threadsafe!
+  # Send deprecation notices to registered listeners
+  config.active_support.deprecation = :notify
 end
