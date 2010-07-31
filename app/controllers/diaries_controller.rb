@@ -24,7 +24,7 @@ class DiariesController < ApplicationController
     enforce_create_permission(@diary)
     @diary.attributes = params[:diary]
     if !preview_mode && @diary.save
-      redirect_to [@diary.user, @diary], :notice => "Votre journal a bien été créé"
+      redirect_to [@diary.owner, @diary], :notice => "Votre journal a bien été créé"
     else
       @diary.node = Node.new
       render :new

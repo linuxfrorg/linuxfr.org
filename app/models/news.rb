@@ -46,10 +46,11 @@ class News < Content
 
 ### Associated node ###
 
-  after_create :create_associated_node
-  def create_associated_node
+  def create_node(attrs={}, replace_existing=true)
     account = Account.find_by_email(author_email)
-    create_node(:public => false, :user_id => (account && account.user_id))
+    self.owner_id = account.user_id if account
+    attrs[:public] = false
+    super attrs, replace_existing
   end
 
 ### Virtual attributes ###

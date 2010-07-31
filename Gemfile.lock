@@ -1,6 +1,6 @@
 GIT
   remote: http://github.com/pluginaweek/state_machine.git
-  revision: 10a1784
+  revision: 4718436
   specs:
     state_machine (0.9.3)
 
@@ -39,13 +39,14 @@ GEM
     annotate (2.4.0)
     arel (0.4.0)
       activesupport (>= 3.0.0.beta)
+    babosa (0.1.0)
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
     canable (0.1.1)
     compass (0.10.2)
       haml (>= 3.0.4)
     daemons (1.1.0)
-    devise (1.1.0)
+    devise (1.1.1)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 0.10.7)
     diff-lcs (1.1.2)
@@ -56,10 +57,9 @@ GEM
     factory_girl_rails (1.0)
       factory_girl (~> 1.3)
       rails (>= 3.0.0.beta4)
-    friendly_id (3.0.6)
-      activerecord (>= 2.2)
-      activesupport (>= 2.2)
-    haml (3.0.14)
+    friendly_id (3.1.1.1)
+      babosa (>= 0.1.0)
+    haml (3.0.15)
     htmlentities (4.2.1)
     i18n (0.4.1)
     jslint_on_rails (1.0.3)
@@ -69,7 +69,7 @@ GEM
       treetop (>= 1.4.5)
     mime-types (1.16)
     mysql2 (0.1.9)
-    nokogiri (1.4.2)
+    nokogiri (1.4.3.1)
     paperclip (2.3.3)
       activerecord
       activesupport
@@ -96,7 +96,7 @@ GEM
     rake (0.8.7)
     raspell (1.1)
     rdiscount (1.6.5)
-    redis (2.0.4)
+    redis (2.0.5)
     redis-store (1.0.0.beta2)
       redis (>= 2.0.0)
     rspec (2.0.0.beta.19)
@@ -128,7 +128,7 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
-    will_paginate (3.0.pre)
+    will_paginate (3.0.pre2)
     yajl-ruby (0.7.7)
 
 PLATFORMS
@@ -143,7 +143,7 @@ DEPENDENCIES
   devise (~> 1.1)
   erubis (~> 2.6)
   factory_girl_rails (~> 1.0)
-  friendly_id (~> 3.0)
+  friendly_id (~> 3.1)
   haml (~> 3.0)
   htmlentities (~> 4.2)
   jslint_on_rails
@@ -162,5 +162,5 @@ DEPENDENCIES
   state_machine!
   thin (~> 1.2)
   validates_url_format_of (~> 0.1)
-  will_paginate (>= 3.0.pre)
+  will_paginate (>= 3.0.pre2)
   yajl-ruby (~> 0.7)

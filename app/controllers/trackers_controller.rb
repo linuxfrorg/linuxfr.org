@@ -33,7 +33,7 @@ class TrackersController < ApplicationController
     @tracker = Tracker.new
     enforce_create_permission(@tracker)
     @tracker.attributes = params[:tracker]
-    @tracker.user_id = current_user.id
+    @tracker.owner_id = current_user.id
     if !preview_mode && @tracker.save
       redirect_to trackers_url, :notice => "Votre entrée a bien été créée dans le suivi"
     else

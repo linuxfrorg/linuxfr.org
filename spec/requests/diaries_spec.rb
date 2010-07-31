@@ -7,6 +7,7 @@ describe "Diaries" do
     User.delete_all
     Account.delete_all
     Node.delete_all
+    Diary.delete_all
   end
 
   after(:each)  { Warden.test_reset! }

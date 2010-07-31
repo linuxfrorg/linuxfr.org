@@ -29,11 +29,9 @@ class Poll < Content
 
 ### Associated node ###
 
-  attr_accessor :user_id
-
-  after_create :create_associated_node
-  def create_associated_node
-    create_node(:user_id => user_id, :public => false)
+  def create_node(attrs={}, replace_existing=true)
+    attrs[:public] = false
+    super attrs, replace_existing
   end
 
 ### SEO ###

@@ -4,6 +4,7 @@ development:
   database: linuxfr_rails
   username: linuxfr_rails
   password:
+  reconnect: true
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -21,3 +22,4 @@ production:
   database: linuxfr_production
   username: linuxfr
   password: XXX
+  reconnect: true
