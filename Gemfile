@@ -19,11 +19,10 @@ gem "rdiscount",               "~>1.6"
 gem "redis",                   "~>2.0"
 gem "sitemap_generator",       "~>1.0"
 gem "simple_autocomplete",     "~>0.3"
-# TODO Rails3.rc gem "state_machine",           "~>0.9"
-gem "state_machine", :git => "http://github.com/pluginaweek/state_machine.git"
+gem "state_machine",           "~>0.9"
 gem "SystemTimer",             "~>1.2"
 gem "thin",                    "~>1.2"
-# TODO Thinking Sphinx compatible with Rails3
+# TODO Rails3
 # gem "thinking-sphinx",       "~>1.3", :require => "thinking_sphinx"
 # gem "ts-datetime-delta",     "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
 gem "validates_url_format_of", "~>0.1"
