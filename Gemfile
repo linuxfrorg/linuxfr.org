@@ -33,6 +33,7 @@ group :development do
   gem "annotate"
   gem "jslint_on_rails"
   gem "rails3-generators"
+  gem "slowgrowl"
 end
 
 group :development, :test do
