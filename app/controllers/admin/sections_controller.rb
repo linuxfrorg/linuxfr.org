@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Admin::SectionsController < AdminController
   before_filter :find_section, :only => [:edit, :update, :destroy]
 

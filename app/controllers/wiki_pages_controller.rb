@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class WikiPagesController < ApplicationController
   before_filter :authenticate_account!, :except => [:index, :show, :revision, :changes]
   before_filter :load_wiki_page, :only => [:edit, :update, :destroy, :revision]

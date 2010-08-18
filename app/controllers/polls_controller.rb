@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class PollsController < ApplicationController
   before_filter :authenticate_account!, :only => [:new, :create]
   before_filter :find_poll, :only => [:show, :vote]

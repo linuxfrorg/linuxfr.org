@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module NewsHelper
 
   # Build at least 6 links for a news

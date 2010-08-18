@@ -22,6 +22,7 @@ module ApplicationHelper
   end
 
   def spellify(str)
+    return str unless defined? Aspell
     speller = Aspell.new('fr_FR', nil, nil, 'utf-8')
     speller.set_option('mode', 'html')
     ary = [HTMLEntities.decode_entities(str)]

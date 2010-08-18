@@ -1,3 +1,4 @@
+# encoding: UTF-8
 Factory.define :user do |f|
   f.name      "Pierre Tramo"
   f.homesite  "http://java.sun.com/javaee/"

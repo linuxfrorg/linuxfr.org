@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class PostsController < ApplicationController
   before_filter :authenticate_account!, :except => [:index, :show]
   before_filter :find_post,  :except => [:new, :create, :index]

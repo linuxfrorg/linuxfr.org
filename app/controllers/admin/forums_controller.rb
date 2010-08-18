@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Admin::ForumsController < AdminController
   before_filter :find_forum, :only => [:edit, :update, :destroy]
 

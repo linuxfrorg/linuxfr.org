@@ -1,3 +1,5 @@
+# encoding: UTF-8
+#
 # This mailer is used to notify news writers when their news are accepted or refused.
 #
 class NewsNotifications < ActionMailer::Base

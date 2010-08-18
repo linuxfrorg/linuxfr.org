@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Moderation::PollsController < ModerationController
   before_filter :find_poll, :except => [:index]
 
