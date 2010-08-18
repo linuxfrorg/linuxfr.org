@@ -21,7 +21,6 @@ gem "redis",                   "~>2.0"
 gem "sitemap_generator",       "~>1.0"
 gem "simple_autocomplete",     "~>0.3"
 gem "state_machine",           "~>0.9"
-gem "SystemTimer",             "~>1.2"
 gem "thin",                    "~>1.2"
 # TODO Rails3
 # gem "thinking-sphinx",       "~>1.3", :require => "thinking_sphinx"
@@ -34,7 +33,6 @@ group :development do
   gem "annotate"
   gem "jslint_on_rails"
   gem "rails3-generators"
-  gem "slowgrowl"
 end
 
 group :development, :test do
