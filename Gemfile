@@ -1,6 +1,6 @@
 source "http://gemcutter.org"
 
-gem "rails",                   "3.0.0.rc"
+gem "rails",                   "3.0.0.rc2"
 
 gem "acts_as_list",            "~>0.1"
 gem "canable",                 "~>0.1"
@@ -35,12 +35,10 @@ group :development do
   gem "rails3-generators"
 end
 
-group :development, :test do
-  gem "rspec-rails",           ">=2.0.0.beta.19"
-end
-
 group :test do
+  gem "rspec-rails",           ">=2.0.0.beta.20"
   gem "factory_girl_rails",    "~>1.0"
+  gem "webrat",                "~>0.7"
 end
 
 group :production do
