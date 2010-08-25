@@ -24,8 +24,4 @@ describe Section do
   it "has an image method" do
     lambda { subject.image }.should_not raise_error
   end
-
-  it "has a published scope" do
-    Section.published.should_not raise_error
-  end
 end

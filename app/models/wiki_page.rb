@@ -3,7 +3,6 @@
 # Table name: wiki_pages
 #
 #  id          :integer(4)      not null, primary key
-#  state       :string(255)     default("public"), not null
 #  title       :string(255)
 #  cached_slug :string(255)
 #  body        :text
@@ -76,7 +75,7 @@ class WikiPage < Content
   end
 
   def updatable_by?(user)
-    user && (state == "public" || user.amr?)
+    user
   end
 
   def destroyable_by?(user)

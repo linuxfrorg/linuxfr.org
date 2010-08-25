@@ -1,7 +1,6 @@
 class CreateDiaries < ActiveRecord::Migration
   def self.up
     create_table :diaries do |t|
-      t.string :state, :null => false, :default => 'published'
       t.string :title
       t.string :cached_slug
       t.integer :owner_id
@@ -10,7 +9,7 @@ class CreateDiaries < ActiveRecord::Migration
       t.text :truncated_body
       t.timestamps
     end
-    add_index :diaries, [:state, :owner_id]
+    add_index :diaries, :owner_id
     add_index :diaries, :cached_slug
   end
 

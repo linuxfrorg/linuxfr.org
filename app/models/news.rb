@@ -39,6 +39,7 @@ class News < Content
   scope :sorted,    order("created_at DESC")
   scope :draft,     where(:state => "draft")
   scope :candidate, where(:state => "candidate")
+  scope :published, where(:state => "published")
 
   validates :title,        :presence => { :message => "Le titre est obligatoire" }
   validates :body,         :presence => { :message => "Nous n'acceptons pas les dépêches vides" }
@@ -157,7 +158,7 @@ class News < Content
   def self.create_for_redaction(user)
     news = News.new
     news.title = "Nouvelle dépêche #{News.maximum :id}"
-    news.section = Section.published.first
+    news.section = Section.first
     news.wiki_body = news.wiki_second_part = "Vous pouvez éditer cette partie en cliquant dessus !"
     news.author_name  = user.name
     news.author_email = user.email

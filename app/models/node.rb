@@ -29,9 +29,9 @@ class Node < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy, :include => :tag
   has_many :tags, :through => :taggings, :uniq => true
 
-  scope :visible, where(:public => true)
+  default_scope where(:public => true)
   scope :by_date, order('created_at DESC')
-  scope :public_listing, lambda {|type,order| visible.where(:content_type => type.to_s).order("#{order} DESC") }
+  scope :public_listing, lambda {|type,order| where(:content_type => type.to_s).order("#{order} DESC") }
   scope :on_dashboard, lambda {|type| public_listing(type, "created_at") }
 
 ### Interest ###

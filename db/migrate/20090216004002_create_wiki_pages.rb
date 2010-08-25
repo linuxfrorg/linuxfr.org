@@ -1,13 +1,11 @@
 class CreateWikiPages < ActiveRecord::Migration
   def self.up
     create_table :wiki_pages do |t|
-      t.string :state, :null => false, :default => 'public'
       t.string :title
       t.string :cached_slug
       t.text :body
       t.timestamps
     end
-    add_index :wiki_pages, :state
     add_index :wiki_pages, :cached_slug
   end
 

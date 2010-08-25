@@ -21,7 +21,7 @@
 class Section < ActiveRecord::Base
   has_many :news, :inverse_of => :section
 
-  scope :published, where(:state => "published")
+  default_scope where(:state => "published")
 
   validates :title, :presence   => { :message => "Le titre est obligatoire" },
                     :uniqueness => { :message => "Ce titre est déjà utilisé" }

@@ -1,7 +1,6 @@
 class CreatePosts < ActiveRecord::Migration
   def self.up
     create_table :posts do |t|
-      t.string :state, :null => false, :default => 'published'
       t.string :title
       t.string :cached_slug
       t.text :body
@@ -11,7 +10,7 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :owner_id
       t.timestamps
     end
-    add_index :posts, [:state, :owner_id]
+    add_index :posts, :owner_id
     add_index :posts, :cached_slug
     add_index :posts, :forum_id
   end

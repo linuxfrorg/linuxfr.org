@@ -3,7 +3,7 @@ class Admin::FriendSitesController < AdminController
   before_filter :find_friend_site, :except => [:index, :new, :create]
 
   def index
-    @friend_sites = FriendSite.sorted.all
+    @friend_sites = FriendSite.all
   end
 
   def new

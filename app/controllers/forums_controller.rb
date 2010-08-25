@@ -13,7 +13,7 @@ class ForumsController < ApplicationController
 
   def show
     @forum = Forum.find(params[:id])
-    @posts = @forum.posts.published.joins(:node).order(@order).paginate(:page => params[:page], :per_page => 10)
+    @posts = @forum.posts.joins(:node).where("nodes.public = 1").order(@order).paginate(:page => params[:page], :per_page => 10)
     respond_to do |wants|
       wants.html
       wants.atom

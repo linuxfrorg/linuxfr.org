@@ -21,8 +21,6 @@ class PollAnswer < ActiveRecord::Base
 
   attr_accessible :answer
 
-  scope :sorted, order("position ASC")
-
   validates :answer, :presence => { :message => "La description de la réponse ne peut pas être vide" }
 
   def percent

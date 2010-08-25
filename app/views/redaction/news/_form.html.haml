@@ -1,6 +1,6 @@
 = form_for [:redaction, @news] do |form|
   = form.label :section, "Section"
-  = form.collection_select :section_id, Section.published, :id, :title
+  = form.collection_select :section_id, Section.all, :id, :title
   = form.label :title, "Titre"
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
   %button.cancel Annuler

@@ -3,7 +3,6 @@
 # Table name: diaries
 #
 #  id             :integer(4)      not null, primary key
-#  state          :string(255)     default("published"), not null
 #  title          :string(255)
 #  cached_slug    :string(255)
 #  owner_id       :integer(4)
@@ -27,7 +26,6 @@ class Diary < Content
   validates :wiki_body, :presence => { :message => "Vous ne pouvez pas poster un journal vide" }
 
   scope :sorted, order('created_at DESC')
-  scope :published, where(:state => 'published')
 
   wikify_attr   :body
   truncate_attr :body
