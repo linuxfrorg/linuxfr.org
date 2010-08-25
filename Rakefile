@@ -9,4 +9,4 @@ if Rails.env.development?
   JSLint.config_path = "config/jslint.yml"
 end
 
-Rails::Application.load_tasks
+LinuxfrOrg::Application.load_tasks

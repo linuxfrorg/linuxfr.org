@@ -26,7 +26,5 @@ module LinuxfrOrg
     config.encoding = "utf-8"
 
     config.session_store :cookie_store, :key => '_linuxfr.org_session'
-
-    # TODO Rails3.rc config.autoload_paths += %W(#{config.root}/lib)
   end
 end
