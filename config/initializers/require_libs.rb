@@ -1,2 +1,5 @@
-require 'htmldiff'
-require 'truncate_html'
+require "friendly_id/active_record"
+require "htmldiff"
+require "truncate_html"
+require "ar_base_ext"
+require "not"
