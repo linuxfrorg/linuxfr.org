@@ -30,7 +30,7 @@ class Comment < ActiveRecord::Base
   attr_accessible :title, :wiki_body, :node_id, :parent_id
 
   scope :published,    where(:state => 'published')
-  scope :descendants,  lambda { |path| where("materialized_path LIKE ?", "#{path}_%") }
+  scope :under,        lambda { |path| where("materialized_path LIKE ?", "#{path}_%") }
   scope :on_dashboard, published.where(:answered_to_self => false).order('created_at DESC')
   scope :footer,       published.order('created_at DESC').limit(12)
 
@@ -110,11 +110,11 @@ class Comment < ActiveRecord::Base
   end
 
   def nb_answers
-    self.class.published.descendants(materialized_path).count
+    self.class.published.under(materialized_path).count
   end
 
   def last_answer
-    self.class.published.descendants(materialized_path).last
+    self.class.published.under(materialized_path).last
   end
 
 ### ACL ###
