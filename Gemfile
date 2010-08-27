@@ -3,6 +3,7 @@ source "http://gemcutter.org"
 gem "rails",                   "3.0.0.rc2"
 
 gem "acts_as_list",            "~>0.1"
+gem "albino",                  "~>1.0"
 gem "canable",                 "~>0.1"
 gem "compass",                 "~>0.10"
 gem "devise",                  "~>1.1"

@@ -1,5 +1,6 @@
 # encoding: UTF-8
 require "rdiscount"
+require "digest/sha1"
 
 # LinuxFr Flavored Markdown
 #
@@ -18,12 +19,16 @@ class LFMarkdown < Markdown
     @filter_styles = true
     @filter_html   = true
     @autolink      = true
-    super(text || '', *extensions)
+    @codemap       = {}
+    text         ||= ''
+    super(text.dup, *extensions)
   end
 
   def to_html
     process_wikipedia_links
-    fix_heading_levels(super)
+    extract_code
+    ret = fix_heading_levels(super)
+    process_code(ret)
   end
 
 protected
@@ -37,4 +42,25 @@ protected
     str
   end
 
+  # Code taken from gollum (http://github.com/github/gollum)
+  def extract_code
+    @text.gsub!(/^``` ?(.+?)\r?\n(.+?)\r?\n```\r?$/m) do
+      id = Digest::SHA1.hexdigest($2)
+      @codemap[id] = { :lang => $1, :code => $2 }
+      id
+    end
+  end
+
+  def process_code(data)
+    @codemap.each do |id, spec|
+      lang, code = spec[:lang], spec[:code]
+      if code.lines.all? { |line| line =~ /\A\r?\n\Z/ || line =~ /^(  |\t)/ }
+        code.gsub!(/^(  |\t)/m, '')
+      end
+      Rails.logger.info "*** albino bin: #{Albino.bin}"
+      Rails.logger.info "*** albino: #{Albino.new(code, lang).colorize} ***"
+      data.gsub!(id, Albino.new(code, lang).colorize)
+    end
+    data
+  end
 end
