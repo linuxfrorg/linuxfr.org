@@ -68,6 +68,7 @@ Dir.chdir(dir) do
 end
 
 # Anonymous account
+Account.reset_column_information
 anon = Account.new
 anon.login = "Anonyme"
 anon.email = "anonyme@linuxfr.org"
