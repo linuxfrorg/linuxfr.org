@@ -32,9 +32,9 @@ http://railstips.org/blog/archives/2008/11/24/rubygems-yours-mine-and-ours/
 
 4) Install and start redis:
 
-    $ wget "http://code.google.com/p/redis/downloads/detail?name=redis-2.0.0-rc1.tar.gz&can=2&q="
-    $ tar xvzf redis-2.0.0-rc1.tar.gz
-    $ cd redis-2.0.0-rc1
+    $ wget "http://code.google.com/p/redis/downloads/detail?name=redis-2.0.0-rc4.tar.gz"
+    $ tar xvzf redis-2.0.0-rc4.tar.gz
+    $ cd redis-2.0.0-rc4
     $ make
     $ ./redis-server
 
