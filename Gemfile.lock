@@ -1,5 +1,5 @@
 GEM
-  remote: http://gemcutter.org/
+  remote: http://rubygems.org/
   specs:
     abstract (1.0.0)
     actionmailer (3.0.0.rc2)
@@ -44,6 +44,7 @@ GEM
       bcrypt-ruby (~> 2.1.2)
       warden (~> 0.10.7)
     diff-lcs (1.1.2)
+    dmarkow-raspell (1.2.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     eventmachine (0.12.10)
@@ -83,7 +84,7 @@ GEM
       activesupport (= 3.0.0.rc2)
       bundler (>= 1.0.0.rc.6)
       railties (= 3.0.0.rc2)
-    rails3-generators (0.12.1)
+    rails3-generators (0.13.0)
     railties (3.0.0.rc2)
       actionpack (= 3.0.0.rc2)
       activesupport (= 3.0.0.rc2)
@@ -136,6 +137,7 @@ DEPENDENCIES
   canable (~> 0.1)
   compass (~> 0.10)
   devise (~> 1.1)
+  dmarkow-raspell (~> 1.2)
   erubis (~> 2.6)
   factory_girl_rails (~> 1.0)
   french_rails (~> 0.2)
