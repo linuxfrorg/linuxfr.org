@@ -57,8 +57,6 @@ protected
       if code.lines.all? { |line| line =~ /\A\r?\n\Z/ || line =~ /^(  |\t)/ }
         code.gsub!(/^(  |\t)/m, '')
       end
-      Rails.logger.info "*** albino bin: #{Albino.bin}"
-      Rails.logger.info "*** albino: #{Albino.new(code, lang).colorize} ***"
       data.gsub!(id, Albino.new(code, lang).colorize)
     end
     data
