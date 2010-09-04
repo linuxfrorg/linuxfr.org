@@ -54,7 +54,7 @@ GEM
       rails (>= 3.0.0.beta4)
     french_rails (0.2.4)
       rails (~> 3.0.0)
-    friendly_id (3.1.5)
+    friendly_id (3.1.6)
       babosa (~> 0.2.0)
     haml (3.0.18)
     htmlentities (4.2.1)
