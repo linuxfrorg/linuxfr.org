@@ -8,8 +8,7 @@
     });
 
     /* Ready to moule */
-    // TODO $('.board').board('.inbox');
-    $("#main_board input[type=text]").select();
+    $("input[autofocus=autofocus]").focus();
 
     /* Animate the scrolling to a fragment */
     $("a.scroll").click(function() {
