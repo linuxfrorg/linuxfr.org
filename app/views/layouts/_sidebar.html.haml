@@ -6,7 +6,8 @@
     - if request.ssl?
       = image_tag 'icones/lock-secure.png', :alt => "Accès sécurisé (https)", :class => "access"
     - else
-      = image_tag 'icones/lock-insecure.png', :alt => "Accès en clair (http)", :class => "access"
+      = link_to params.merge(:protocol => 'https', :only_path => false) do
+        = image_tag 'icones/lock-insecure.png', :alt => "Accès en clair (http)", :class => "access"
     - if account_signed_in?
       %h1= current_user.name
       %p Il vous reste #{current_user.account.nb_votes} avis

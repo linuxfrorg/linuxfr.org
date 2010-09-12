@@ -76,7 +76,7 @@ class WikiPagesController < ApplicationController
   end
 
   def changes
-    @versions = WikiVersion.order("created_at DESC").joins(:wiki_pages).paginate(:page => params[:page], :per_page => 30)
+    @versions = WikiVersion.order("created_at DESC").joins(:wiki_page).paginate(:page => params[:page], :per_page => 30)
     respond_to do |wants|
       wants.html
       wants.atom

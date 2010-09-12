@@ -4,7 +4,7 @@ module PollsHelper
     content_tag(:ul) do
       poll.answers.map do |answer|
         content_tag(:li, answer.answer)
-      end
+      end.join
     end
   end
 

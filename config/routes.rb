@@ -30,7 +30,7 @@ LinuxfrOrg::Application.routes.draw do
     get :comments, :on => :collection
   end
   resources :wiki, :controller => "wiki_pages", :as => "wiki_pages" do
-    get :changes, :on => :collection
+    get "modifications" => "wiki_pages#changes", :as => :changes, :on => :collection
     get "/revisions/:revision" => "wiki_pages#revision", :as => :revision, :on => :member
   end
 
