@@ -68,6 +68,10 @@ class WikiPage < Content
     find_by_title(HomePage)
   end
 
+  def home_page?
+    title == HomePage
+  end
+
 ### ACL ###
 
   def creatable_by?(user)
