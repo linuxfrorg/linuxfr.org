@@ -14,12 +14,15 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   #           :lastmod => Time.now, :host => default_host
 
   # Static pages
-  sitemap.add submit_anonymous_path, :priority => 0.5, :changefreq => 'yearly'
+  sitemap.add '/proposer-un-contenu', :priority => 0.5, :changefreq => 'yearly'
+  sitemap.add '/contact', :priority => 0.1, :changefreq => 'yearly'
+  sitemap.add '/faire_un_don', :priority => 0.5, :changefreq => 'monthly'
   sitemap.add '/team', :priority => 0.5, :changefreq => 'monthly'
   sitemap.add '/informations', :priority => 0.5, :changefreq => 'yearly'
+  sitemap.add '/aide', :priority => 0.5, :changefreq => 'monthly'
+  sitemap.add '/regles_de_moderation', :priority => 0.5, :changefreq => 'yearly'
+  sitemap.add '/code_source_du_site', :priority => 0.5, :changefreq => 'monthly'
   sitemap.add '/plan', :priority => 0.3, :changefreq => 'monthly'
-  sitemap.add search_path, :priority => 0.1, :changefreq => 'yealy'
-  sitemap.add tags_path, :priority => 0.5, :changefreq => 'daily'
 
   # News
   sitemap.add sections_path, :priority => 0.6, :changefreq => 'monthly'
