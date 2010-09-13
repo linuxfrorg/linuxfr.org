@@ -1,0 +1,6 @@
+- content_for :column do
+  = render 'recent'
+  = render 'nodes'
+
+=h1 "#{@user.name} a écrit #{pluralize @nodes.total_entries, "entrée"} sur le suivi"
+= paginated_nodes @nodes

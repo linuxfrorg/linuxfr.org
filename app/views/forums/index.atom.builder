@@ -1,5 +1,9 @@
 atom_feed do |feed|
-  feed.title("LinuxFr.org : les forums")
+  if @user
+    feed.title("LinuxFr.org : les posts de #{@user.name}")
+  else
+    feed.title("LinuxFr.org : les forums")
+  end
   feed.updated(@nodes.first.try :created_at)
 
   @nodes.each do |node|

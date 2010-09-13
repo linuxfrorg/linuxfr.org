@@ -1,0 +1,7 @@
+- content_for :column do
+  = render 'recent'
+  = render 'nodes'
+
+=h1 "#{@user.name} a écrit #{pluralize @nodes.total_entries, "post"}"
+- feed "Flux Atom des posts de #{@user.name}"
+= paginated_nodes @nodes

@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title("LinuxFr.org : les commentaires pour #{@title || @node.content.title}")
+  feed.title("LinuxFr.org : les commentaires pour #{@user.try(:name) || @title || @node.content.title}")
   feed.updated(@comments.last.try :created_at)
 
   @comments.each do |comment|

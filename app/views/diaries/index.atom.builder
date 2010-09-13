@@ -1,5 +1,9 @@
 atom_feed do |feed|
-  feed.title("LinuxFr.org : les journaux")
+  if @user
+    feed.title("LinuxFr.org : les journaux de #{@user.name}")
+  else
+    feed.title("LinuxFr.org : les journaux")
+  end
   feed.updated(@nodes.first.try :created_at)
 
   @nodes.map(&:content).each do |diary|

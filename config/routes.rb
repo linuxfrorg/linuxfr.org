@@ -13,6 +13,10 @@ LinuxfrOrg::Application.routes.draw do
   # Diaries & Users
   resources :users, :only => [:show] do
     resources :journaux, :controller => "diaries", :as => "diaries", :except => [:index, :new, :create]
+    get :news, :on => :member
+    get :posts, :on => :member
+    get :suivi, :on => :member
+    get :comments, :on => :member
   end
   resources :journaux, :controller => "diaries", :as => "diaries", :only => [:index, :new, :create]
 
