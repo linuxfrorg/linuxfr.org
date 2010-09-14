@@ -27,7 +27,7 @@ class Forum < ActiveRecord::Base
   validates :title, :presence   => { :message => "Le titre est obligatoire" },
                     :uniqueness => { :message => "Ce titre est déjà utilisé" }
 
-  has_friendly_id :title, :use_slug => true
+  has_friendly_id :title, :use_slug => true, :reserved_words => %w(index nouveau)
 
 ### Interest ###
 

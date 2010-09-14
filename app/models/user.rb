@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
 
 ### SEO ###
 
-  has_friendly_id :login, :use_slug => true, :allow_nil => true
+  has_friendly_id :login, :use_slug => true, :allow_nil => true, :reserved_words => %w(index nouveau)
 
 ### Sphinx ####
 

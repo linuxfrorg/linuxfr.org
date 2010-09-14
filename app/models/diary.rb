@@ -32,7 +32,7 @@ class Diary < Content
 
 ### SEO ###
 
-  has_friendly_id :title, :use_slug => true, :scope => :owner
+  has_friendly_id :title, :use_slug => true, :scope => :owner, :reserved_words => %w(index nouveau)
 
 ### Sphinx ####
 
