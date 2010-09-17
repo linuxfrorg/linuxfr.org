@@ -21,7 +21,6 @@ gem "redis",                   "~>2.0"
 gem "sitemap_generator",       "~>1.0"
 gem "simple_autocomplete",     "~>0.3"
 gem "state_machine",           "~>0.9"
-gem "thin",                    "~>1.2"
 # TODO Rails3
 # gem "thinking-sphinx",       "~>1.3", :require => "thinking_sphinx"
 # gem "ts-datetime-delta",     "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
@@ -33,14 +32,16 @@ group :development do
   gem "annotate"
   gem "jslint_on_rails"
   gem "rails3-generators"
+  gem "thin"
 end
 
 group :test do
-  gem "rspec-rails",           ">=2.0.0.beta.20"
+  gem "rspec-rails",           ">=2.0.0.beta.22"
   gem "factory_girl_rails",    "~>1.0"
   gem "webrat",                "~>0.7"
 end
 
 group :production do
-  gem 'redis-store',           ">=1.0.0.beta2"
+  gem "unicorn",               "~>1.1"
+  gem "redis-store",           ">=1.0.0.beta3"
 end
