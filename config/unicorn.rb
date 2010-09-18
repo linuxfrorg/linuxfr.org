@@ -33,5 +33,9 @@ end
 
 after_fork do |server, worker|
   ActiveRecord::Base.establish_connection
-  $redis.reconnect
+
+  # Don't share the redis connection.
+  # By the way, in a perfect world, we won't need to use some tricks like this `hostname`
+  # but we're in a world where LinuxFr.org has some special firewall rules
+  $redis = Redis.new(:host => `hostname`)
 end

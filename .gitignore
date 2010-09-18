@@ -5,7 +5,7 @@ config/database.yml
 config/*.sphinx.conf
 db/*.sqlite3
 db/sphinx/**/*
-log/*.log
+log
 public/board.xml
 public/sitemap*
 public/stylesheets/application.css
