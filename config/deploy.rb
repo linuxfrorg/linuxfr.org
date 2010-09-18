@@ -48,14 +48,23 @@ before :deploy do
 end
 
 
-# Config/database.yml
-namespace :db do
-  desc "[internal] Updates the symlink for database.yml file to the just deployed release."
+# Symlinks to share files/dirs between deploys
+namespace :fs do
+  desc "[internal] Install some symlinks to share files between deploys."
   task :symlink, :roles => :app, :except => { :no_release => true } do
-    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    symlinks = %w(config/database.yml sockets)
+    symlinks.each do |symlink|
+      run "ln -nfs #{shared_path}/#{symlink} #{release_path}/#{symlink}"
+    end
+  end
+
+  desc "[internal] Create the shared directories"
+  task :create_dirs, :roles => :app do
+    run "test -d #{shared_path}/sockets || mkdir #{shared_path}/sockets"
   end
 end
-after "deploy:finalize_update", "db:symlink"
+after "deploy:finalize_update", "fs:symlink"
+after "deploy:setup", "fs:create_dirs"
 
 
 # Watch the logs
@@ -70,7 +79,7 @@ end
 # The hard-core deployment rules
 namespace :deploy do
   task :start, :roles => :app do
-    run "unicorn -c #{shared_path}/config/thin.yml -E #{rails_env} -D"
+    run "unicorn -c #{release_path}/config/unicorn.rb -E #{rails_env} -D"
   end
 
   task :stop, :rules => :app do

@@ -12,6 +12,10 @@ Install
 The following instructions will help you to install the Rails part of
 LinuxFr.org on a debian box.
 
+Note: I use Ruby 1.9.2 with RVM, even if it's not packaged for debian,
+but these explanations are for Ruby 1.8. The two versions work, so
+you are free to choose your camp.
+
 1) First install the debian packages:
 
     # aptitude install ruby1.8 ruby1.8-dev irb1.8 libopenssl-ruby1.8
@@ -32,11 +36,11 @@ http://railstips.org/blog/archives/2008/11/24/rubygems-yours-mine-and-ours/
 
 4) Install and start redis:
 
-    $ wget "http://code.google.com/p/redis/downloads/detail?name=redis-2.0.0-rc4.tar.gz"
-    $ tar xvzf redis-2.0.0-rc4.tar.gz
-    $ cd redis-2.0.0-rc4
+    $ wget "http://redis.googlecode.com/files/redis-2.0.1.tar.gz"
+    $ tar xvzf redis-2.0.1.tar.gz
+    $ cd redis-2.0.1
     $ make
-    $ ./redis-server
+    $ ./redis-server redis.conf
 
 5) Clone the repository, configure and install gems:
 
@@ -44,7 +48,6 @@ http://railstips.org/blog/archives/2008/11/24/rubygems-yours-mine-and-ours/
     $ cd linuxfr.org
     $ cp config/database.yml{.sample,}
     $ gem install bundler rake
-    $ gem install rails rspec-rails devise will_paginate --pre
     $ bundle install
     $ rake db:setup
 
@@ -60,7 +63,7 @@ See also
 If you want the full stack for running LinuxFr.org, you should also look at:
 
 * [The admin files](http://github.com/nono/admin-linuxfr.org)
-* [The tornado chat](http://github.com/nono/chat-linuxfr.org)
+* [The eventmachine chat](http://github.com/nono/Board-LinuxFr.org)
 * [The migration script](http://github.com/nono/migration-linuxfr.org)
 
 

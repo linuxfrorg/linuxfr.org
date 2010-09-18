@@ -20,10 +20,10 @@ working_directory "#{cap_root}/current"
 # Logs & pid
 stdout_path "#{shared}/log/unicorn.log"
 stderr_path "#{shared}/log/unicorn.log"
-pid "#{shared}/tmp/pids/unicorn.pid"
+pid "#{shared}/pids/unicorn.pid"
 
 # Listen on a Unix data socket
-listen "#{shared}/tmp/sockets/#{rails_env}.sock"
+listen "#{shared}/sockets/#{rails_env}.sock"
 
 
 before_fork do |server, worker|
@@ -33,5 +33,5 @@ end
 
 after_fork do |server, worker|
   ActiveRecord::Base.establish_connection
-  $redis = Redis.connect
+  $redis.reconnect
 end

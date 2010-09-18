@@ -10,9 +10,11 @@ public/board.xml
 public/sitemap*
 public/stylesheets/application.css
 public/stylesheets/print.css
+public/system
 public/uploads/**/*
 tmp/*
 tmp/**/*
 webrat.log
+REVISION
 LATER
 TODO
