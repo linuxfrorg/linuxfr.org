@@ -1,1 +1,1 @@
-$redis = Redis.new
+$redis = Redis.connect

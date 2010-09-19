@@ -83,14 +83,14 @@ namespace :deploy do
   end
 
   task :stop, :rules => :app do
-    pid = File.read("#{shared_path}/pids/unicorn.pid").chomp
-    run "kill -QUIT #{pid}"
+    set :unicorn_pid, capture("cat #{shared_path}/pids/unicorn.pid").chomp
+    run "kill -QUIT #{unicorn_pid}"
   end
 
   task :restart, :roles => :app, :except => { :no_release => true }  do
-    pid = File.read("#{shared_path}/pids/unicorn.pid").chomp
-    run "kill -USR2 #{pid}"
+    set :unicorn_pid, capture("cat #{shared_path}/pids/unicorn.pid").chomp
+    run "kill -USR2 #{unicorn_pid}"
     sleep 1
-    run "kill -QUIT #{pid}"
+    run "kill -QUIT #{unicorn_pid}"
   end
 end
