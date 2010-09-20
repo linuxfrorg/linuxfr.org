@@ -65,7 +65,7 @@ GEM
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
-    mysql2 (0.2.3)
+    mysql2 (0.2.4)
     nokogiri (1.4.3.1)
     paperclip (2.3.3)
       activerecord
@@ -92,7 +92,7 @@ GEM
       thor (~> 0.14.0)
     rake (0.8.7)
     rdiscount (1.6.5)
-    redis (2.0.8)
+    redis (2.0.10)
     redis-store (1.0.0.beta3)
       redis (>= 2.0.0)
     rspec (2.0.0.beta.22)
