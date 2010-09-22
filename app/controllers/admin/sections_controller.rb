@@ -3,7 +3,7 @@ class Admin::SectionsController < AdminController
   before_filter :find_section, :only => [:edit, :update, :destroy]
 
   def index
-    @sections = Section.unscoped
+    @sections = Section.all
   end
 
   def new

@@ -12,7 +12,7 @@
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
 %p
   = form.label :section, "Section de la dépêche"
-  = form.collection_select :section_id, Section.all, :id, :title
+  = form.collection_select :section_id, Section.published, :id, :title
 %p
   = form.label :wiki_body, "Contenu de la dépêche"
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'

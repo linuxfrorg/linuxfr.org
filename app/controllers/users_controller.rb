@@ -42,7 +42,7 @@ protected
   def find_user
     @user = User.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @user
-    @contents = @user.nodes.by_date.limit(20)
+    @contents = @user.nodes.visible.by_date.limit(20)
   end
 
   def find_nodes(klass)

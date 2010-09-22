@@ -7,6 +7,6 @@ class HomeController < ApplicationController
     @order  = params[:order] || 'interest'
     @ppp    = News.ppp
     @banner = Banner.random
-    @nodes  = Node.paginate(:page => params[:page], :per_page => 10, :order => "#{@order} DESC")
+    @nodes  = Node.visible.paginate(:page => params[:page], :per_page => 10, :order => "#{@order} DESC")
   end
 end

@@ -17,7 +17,7 @@ protected
     @feeds         = {}
     @last_comments = Comment.footer
     @popular_tags  = Tag.footer
-    @friend_sites  = FriendSite.all
+    @friend_sites  = FriendSite.scoped
   end
 
   def mobile?

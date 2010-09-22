@@ -1,7 +1,7 @@
 class SectionsController < ApplicationController
 
   def index
-    @sections = Section.unscoped
+    @sections = Section.published
   end
 
   def show
