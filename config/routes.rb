@@ -81,7 +81,7 @@ LinuxfrOrg::Application.routes.draw do
 
   # Redaction
   namespace :redaction do
-    # TODO Rails3.rc root :to => "index"
+    root :to => "redaction#index"
     resources :news, :except => [:new, :destroy] do
       post :submit, :on => :member
       resources :links, :only => [:new, :create]
@@ -92,7 +92,7 @@ LinuxfrOrg::Application.routes.draw do
 
   # Moderation
   namespace :moderation do
-    # TODO Rails3.rc root :to => "index"
+    root :to => "moderation#index"
     resources :news, :except => [:new, :create, :destroy] do
       post :accept, :on => :member
       post :refuse, :on => :member
@@ -107,7 +107,7 @@ LinuxfrOrg::Application.routes.draw do
 
   # Admin
   namespace :admin do
-    # TODO Rails3.rc root :to => "index"
+    root :to => "admin#index"
     resources :comptes, :controller => "accounts", :as => "accounts", :only => [:index, :update, :destroy]
     resources :reponses, :controller => "responses", :as => "responses", :except => [:show]
     resources :sections, :except => [:show]
