@@ -13,6 +13,12 @@
 #  wiki_body    :text
 #
 
+# A paragraph is a block of text from a news, with wiki syntax.
+# The paragraph never modifies the body (or wiki_body) of a news,
+# only the news known its state and when to do the synchronization!
+#
+# A paragraph can be split in several if it has a blank line in its body.
+#
 class Paragraph < ActiveRecord::Base
   belongs_to :news
 
@@ -22,7 +28,7 @@ class Paragraph < ActiveRecord::Base
   scope :in_first_part,  where(:second_part => false).order("position ASC")
   scope :in_second_part, where(:second_part => true ).order("position ASC")
 
-### Automatically split parapgraphs ###
+### Automatically split paragraphs ###
 
   def split_body
     wiki_body.scan /[^\r\n]+[\r\n]*/
