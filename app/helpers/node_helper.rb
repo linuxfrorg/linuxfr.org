@@ -79,7 +79,7 @@ module NodeHelper
   end
 
   def read_it(content)
-    link = link_to("Lire la suite", url_for_content(content))
+    link = link_to_unless_current("Lire la suite", url_for_content(content)) { "" }
     nb_comments = pluralize(content.node.try(:comments_count), "commentaire")
     if current_user
       visit = case content.node.read_status(current_user)
