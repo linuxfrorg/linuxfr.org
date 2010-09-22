@@ -72,7 +72,7 @@ class News < Content
     paragraphs.in_first_part.create(:wiki_body => wiki_body)         unless wiki_body.blank?
     paragraphs.in_second_part.create(:wiki_body => wiki_second_part) unless wiki_second_part.blank?
     return if message.blank?
-    Board.create_for(news, :user => author_name, :kind => "indication", :message => message)
+    Board.create_for(self, :user => author_name, :kind => "indication", :message => message)
   end
 
 # FIXME
