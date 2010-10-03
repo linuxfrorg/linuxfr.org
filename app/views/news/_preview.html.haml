@@ -5,5 +5,6 @@
   - c.image = link_to(image_tag(preview.section.image.url, :alt => preview.section.title), preview.section)
   - c.body  = capture do
     = sanitize(spellify preview.body)
-    = render preview.links
+    %ul
+      = render preview.links
     = sanitize(spellify preview.second_part)

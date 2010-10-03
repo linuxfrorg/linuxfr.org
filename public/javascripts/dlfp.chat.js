@@ -111,16 +111,16 @@ var Chat = {
         var element = Chat.inbox.find("p:first");
         element.find(".link").each(function() {
             var id = $(this).attr('data-id');
-            var html = '<p id="link_' + id +
+            var html = '<li id="link_' + id +
                        '" data-url="/redaction/links/' + id +
-                       '/modifier">' + $(this).html() + '</p>';
-            $('#redaction .new_link').before(html);
+                       '/modifier">' + $(this).html() + '</li>';
+            $('#links').append(html);
             $('#link_' + id).editionInPlace();
         });
         element.find(".paragraph").each(function() {
             var id = $(this).attr('data-id');
             var after = $(this).attr('data-after');
-            var html = '<div id="link_' + id +
+            var html = '<div id="paragraph_' + id +
                        '" data-url="/redaction/paragraphs/' + id +
                        '/modifier">' + $(this).html() + '</div>';
             $('#paragraph_' + after).after(html);

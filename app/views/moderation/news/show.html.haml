@@ -12,15 +12,13 @@
   - c.image = link_to(image_tag(@news.section.image.url, :alt => @news.section.title), @news.section)
   - c.body  = capture do
     #first_part
-      - @news.paragraphs.in_first_part.each do |paragraph|
-        = render 'redaction/paragraphs/paragraph', :paragraph => paragraph
-    - @news.links.each do |link|
-      = render 'redaction/links/link', :link => link
+      = render 'redaction/paragraphs/paragraph', :collection => @news.paragraph.in_first_part
+    %ul#links
+      = render 'redaction/links/link', :collection => @news.links
     %p.new_link{'data-url' => new_redaction_news_link_path(:news_id => @news.to_param)}
       %button Ajouter un lien
     #second_part
-      - @news.paragraphs.in_second_part.each do |paragraph|
-        = render 'redaction/paragraphs/paragraph', :paragraph => paragraph
+      = render 'redaction/paragraphs/paragraph', :collection => @news.paragraph.in_second_part
 
 = button_to "Supprimer tous les locks", clear_locks_moderation_news_path(@news), :class => 'ajax'
 

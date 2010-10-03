@@ -1,5 +1,6 @@
 - content_for :column do
-  = render @forums
+  #forum_box.box
+    = render @forums
 
 =h1 "Liste des messages dans le forum #{@forum.title}"
 - feed "Flux Atom du forum #{@forum.title}", "/forums/#{@forum.to_param}.atom"
