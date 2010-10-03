@@ -2,4 +2,4 @@
 .board{'data-chat' => board.private_key}
   = render 'boards/form', :form => board
   .inbox
-    = render @boards
+    = render :partial => 'boards/board', :collection => @boards
