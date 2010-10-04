@@ -156,8 +156,8 @@ class News < Content
 
   after_create :create_parts
   def create_parts
-    paragraphs.in_first_part.create(:wiki_body => wiki_body)         unless wiki_body.blank?
-    paragraphs.in_second_part.create(:wiki_body => wiki_second_part) unless wiki_second_part.blank?
+    paragraphs.create(:second_part => false, :wiki_body => wiki_body)        unless wiki_body.blank?
+    paragraphs.create(:second_part => true,  :wiki_body => wiki_second_part) unless wiki_second_part.blank?
     return if message.blank?
     Board.create_for(self, :user => author_name, :kind => "indication", :message => message)
   end
@@ -232,7 +232,7 @@ class News < Content
   def clear_locks(user)
     links.each {|l| l.locked_by_id = nil; l.save }
     paragraphs.each {|p| p.locked_by_id = nil; p.save }
-    message = "<span class=\"clear\">#{user.name} a supprimer tous les locks</span>"
+    message = "<span class=\"clear\">#{user.name} a supprimé tous les locks</span>"
     Board.create_for(self, :user => user, :kind => "locking", :message => message)
   end
 

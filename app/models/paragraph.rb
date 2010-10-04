@@ -48,9 +48,9 @@ class Paragraph < ActiveRecord::Base
   def split_on_update
     sentences = split_body
     self.wiki_body = sentences.shift
-    sentences.each_with_index do |body,i|
-      p = news.paragraphs.create(:wiki_body => body, :second_part => second_part, :already_split => true, :user_id => user_id, :after => self.id)
-      p.insert_at(position + i + 1)
+    sentences.reverse.each_with_index do |body,i|
+      p = news.paragraphs.create(:wiki_body => body, :second_part => second_part, :already_split => true, :user => user, :after => self.id)
+      p.insert_at(position + 1)
     end
   end
 
