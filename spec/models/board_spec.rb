@@ -141,20 +141,25 @@ describe Board do
     b.user = john
     id = $redis.get("boards/id").to_i + 1
 
-    thread = Thread.new do
+    t1 = Thread.new do
+      Thread.stop
+      b.save
+    end
+
+    t2 = Thread.new do
+      $stderr.puts "HERE"
       r = Redis.new
       r.subscribe "b/#{b.private_key}/#{id}/chat" do |on|
         on.message do |chan,msg|
           @chan, @msg = chan, msg
           r.unsubscribe
         end
+        t1.run
       end
     end
 
-    Thread.pass
-    b.save
-    require 'timeout'
-    Timeout::timeout(1) { thread.join }
+    t1.join(1)
+    t2.join(1)
 
     @chan.should == "b/#{b.private_key}/#{id}/chat"
     @msg.should  =~ /john-doe/
