@@ -52,7 +52,7 @@ end
 namespace :fs do
   desc "[internal] Install some symlinks to share files between deploys."
   task :symlink, :roles => :app, :except => { :no_release => true } do
-    symlinks = %w(config/database.yml sockets)
+    symlinks = %w(config/database.yml tmp/sockets)
     symlinks.each do |symlink|
       run "ln -nfs #{shared_path}/#{symlink} #{release_path}/#{symlink}"
     end
@@ -60,7 +60,7 @@ namespace :fs do
 
   desc "[internal] Create the shared directories"
   task :create_dirs, :roles => :app do
-    run "test -d #{shared_path}/sockets || mkdir #{shared_path}/sockets"
+    run "mkdir -p #{shared_path}/tmp/sockets"
   end
 end
 after "deploy:finalize_update", "fs:symlink"

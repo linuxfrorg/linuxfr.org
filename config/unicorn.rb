@@ -23,7 +23,7 @@ stderr_path "#{shared}/log/unicorn.log"
 pid "#{shared}/pids/unicorn.pid"
 
 # Listen on a Unix data socket
-listen "#{shared}/sockets/#{rails_env}.sock"
+listen "#{shared}/tmp/sockets/#{rails_env}.sock"
 
 
 before_fork do |server, worker|
