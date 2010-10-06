@@ -2,5 +2,5 @@
   %ul
     = list_of poll.answers do |answer|
       = radio_button_tag :position, answer.position, false
-      = label_tag(:position, answer.answer)
+      = label_tag "position_#{answer.position}", answer.answer
   = submit_tag "Voter" unless poll.new_record?
