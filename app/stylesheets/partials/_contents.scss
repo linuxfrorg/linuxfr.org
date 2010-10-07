@@ -11,7 +11,9 @@ article {
     font-family: $header_font;
     color: $link_color;
     a {
-      @include hover-link; } }
+      @include hover-link; }
+    a + a:before {
+      content: " : " } }
   figure {
     float: left;
     margin-right: 5px;
