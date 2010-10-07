@@ -147,7 +147,6 @@ describe Board do
     end
 
     t2 = Thread.new do
-      $stderr.puts "HERE"
       r = Redis.new
       r.subscribe "b/#{b.private_key}/#{id}/chat" do |on|
         on.message do |chan,msg|
