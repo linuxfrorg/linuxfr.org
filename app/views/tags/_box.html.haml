@@ -1,0 +1,6 @@
+- content_for :column do
+  #tags_box.box
+    %h1 Mes tags
+    %ul
+      - list_of(@tags) do |tag|
+        = link_to tag.name, tag_path(tag.name)

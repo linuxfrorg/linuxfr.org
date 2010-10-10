@@ -32,9 +32,9 @@ class TagList < Array
 
 private
 
-  # Remove whitespace, duplicates, and blanks.
+  # Keeps only letters and digits, and remove duplicates
   def clean!
-    map! {|t| ActiveSupport::Multibyte.proxy_class.new(t).gsub(/\W/u, '').strip.downcase }
+    map! {|t| t.gsub(/\P{Word}/u, '').downcase }
     reject! &:blank?
     uniq!
   end

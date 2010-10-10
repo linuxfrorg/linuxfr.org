@@ -3,6 +3,7 @@ class TagsController < ApplicationController
   before_filter :find_node, :only => [:new, :create]
   before_filter :find_tag,  :only => [:show, :public]
   before_filter :get_order, :only => [:index, :show]
+  before_filter :user_tags, :only => [:index, :show]
 
   autocomplete_for :tag, :name, :order => "taggings_count DESC"
   alias_method :autocomplete, :autocomplete_for_tag_name
@@ -18,7 +19,6 @@ class TagsController < ApplicationController
 
   # Show all the nodes tagged by the current user
   def index
-    # TODO Rails3
     @nodes = Node.paginate(:select => "DISTINCT nodes.*",
                            :joins => [:taggings],
                            :conditions => {"taggings.user_id" => current_user.id,
@@ -30,7 +30,6 @@ class TagsController < ApplicationController
 
   # Show all the nodes tagged with the given tag by the current user
   def show
-    # TODO Rails3
     @nodes = Node.paginate(:select => "DISTINCT nodes.*",
                            :joins => [:taggings],
                            :conditions => {"taggings.user_id" => current_user.id,
@@ -60,6 +59,10 @@ protected
 
   def get_order
     @order = (params[:order] ? "nodes.#{params[:order]}" : "taggings.created_at") + " DESC"
+  end
+
+  def user_tags
+    @tags = current_user.tags.order("taggings_count DESC")
   end
 
 end
