@@ -8,11 +8,20 @@
             var board      = $(element);
             base.inbox     = board.find('.inbox');
             base.chan      = board.attr('data-chat');
-            base.cursor    = null;
+            base.cursor    = base.findCursor();
             base.sleepTime = 500;
 
             board.find('form').submit(base.postMessage);
             base.poll();
+        };
+
+        base.findCursor = function() {
+            var first = base.inbox.find("p:first");
+            if (first.length > 0) {
+                var id = first[0].id;
+                return (id.slice(0,6) == "board-") ? id.slice(6) : null;
+            }
+            return null;
         };
 
         base.postMessage = function() {
