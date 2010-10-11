@@ -9,6 +9,7 @@
 
     /* Ready to moule */
     $("input[autofocus=autofocus]").focus();
+    $(".board").chat();
 
     /* Animate the scrolling to a fragment */
     $("a.scroll").click(function() {

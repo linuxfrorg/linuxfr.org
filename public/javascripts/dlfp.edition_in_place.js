@@ -9,7 +9,6 @@
 
         base.init = function() {
             base.url = base.element.attr('data-url') || (document.location.pathname + '/modifier');
-            base.options = $.extend({}, $.EditionInPlace.defaultOptions, options);
             base.element.click(base.editForm);
         };
 
