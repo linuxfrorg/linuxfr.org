@@ -146,6 +146,8 @@ describe Board do
       b.save
     end
 
+    t1.join(1)
+
     t2 = Thread.new do
       r = Redis.new
       r.subscribe "b/#{b.private_key}/#{id}/chat" do |on|

@@ -26,6 +26,6 @@ describe Section do
   end
 
   it "has a published scope" do
-    Section.published.should_not raise_error
+    lambda { Section.published.all }.should_not raise_error
   end
 end
