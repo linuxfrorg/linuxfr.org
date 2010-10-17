@@ -20,12 +20,11 @@ module LayoutHelper
   end
 
   def common_js
-    jquery         =  'http://code.jquery.com/jquery-1.4.2.min.js'
+    jquery         = %w(jquery-1.4.3.min.js)
     jquery_plugins = %w(jquery.nano jquery.autocomplete jquery.markitup jquery.hotkeys jquery.notice)
     dlfp_plugins   = %w(dlfp.chat dlfp.nested_fields dlfp.toolbar)
     others         = %w(markitup-markdown rails application)
-    local_js       = jquery_plugins + dlfp_plugins + others
-    javascript_include_tag(jquery) + javascript_include_tag(*local_js)
+    javascript_include_tag(jquery + jquery_plugins + dlfp_plugins + others)
   end
 
 end

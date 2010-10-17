@@ -24,8 +24,4 @@ class ActiveRecord::Base
   def wikify(txt, *extensions)
     LFMarkdown.new(txt, *extensions).to_html
   end
-
-  def render_to_string(opts)
-    ActionView::Base.new(Rails::Configuration.new.view_path).render(opts)
-  end
 end

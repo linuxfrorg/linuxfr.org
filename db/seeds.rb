@@ -88,7 +88,7 @@ Fonctionnement
 --------------
 
 Cet espace est un [wiki](http://fr.wikipedia.org/wiki/Wiki), c'est-à-dire un endroit où tous les utilisateurs (du moins, ceux qui sont authentifiés) peuvent écrire.
-Pour créer une page, le plus simple est de faire un lien vers cette page en utilisant la syntaxe `[``[MaPage]``]` puis de cliquer sur ce lien.
+Pour créer une page, le plus simple est de faire un lien vers cette page en utilisant la syntaxe `[[`MaPage`]]` puis de cliquer sur ce lien.
 Si la page n'existe pas encore, un formulaire vous sera proposée pour la créer.
 
 Les pages principales
