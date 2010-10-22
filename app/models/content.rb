@@ -11,6 +11,8 @@ class Content < ActiveRecord::Base
 
   delegate :score, :user_id, :to => :node
 
+  scope :with_node_ordered_by, lambda {|order| joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
+
 ### License ###
 
   attr_accessor   :cc_licensed, :owner_id

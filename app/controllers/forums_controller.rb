@@ -3,7 +3,6 @@ class ForumsController < ApplicationController
   before_filter :get_order
 
   def index
-    @order = params[:order] || 'created_at'
     @nodes = Node.public_listing(Post, @order).paginate(:page => params[:page], :per_page => 10)
     respond_to do |wants|
       wants.html
@@ -13,7 +12,7 @@ class ForumsController < ApplicationController
 
   def show
     @forum = Forum.find(params[:id])
-    @posts = @forum.posts.joins(:node).where("nodes.public = 1").order(@order).paginate(:page => params[:page], :per_page => 10)
+    @posts = @forum.posts.with_node_ordered_by(@order).paginate(:page => params[:page], :per_page => 10)
     respond_to do |wants|
       wants.html
       wants.atom
@@ -27,7 +26,7 @@ protected
   end
 
   def get_order
-    @order = "nodes." + (params[:order] || "created_at") + " DESC"
+    @order = params[:order] || "created_at"
   end
 
 end
