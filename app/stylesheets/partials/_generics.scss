@@ -8,9 +8,6 @@ ins.diffins, ins.diffmod {
 del.diffdel, del.diffmod {
   background-color: #ff3333; }
 
-.misspelled {
-  border-bottom: 1px dashed red; }
-
 a.action, time.norloge, span.content_type {
   &:before {
     content: "["; }

@@ -21,13 +21,4 @@ module ApplicationHelper
     @description = content.title
   end
 
-  def spellify(str)
-    return str unless defined? Aspell
-    speller = Aspell.new('fr_FR', nil, nil, 'utf-8')
-    speller.set_option('mode', 'html')
-    ary = [HTMLEntities.decode_entities(str)]
-    res = speller.correct_lines(ary) { |word| "<span class=\"misspelled\">#{word}</span>" }
-    res.first
-  end
-
 end
