@@ -23,7 +23,6 @@ gem "state_machine",           "~>0.9"
 # TODO Rails3
 # gem "thinking-sphinx",       "~>1.3", :require => "thinking_sphinx"
 # gem "ts-datetime-delta",     "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
-gem "validates_url_format_of", "~>0.1"
 gem "will_paginate",           ">=3.0.pre2"
 gem "yajl-ruby",               "~>0.7", :require => "yajl"
 

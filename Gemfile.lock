@@ -119,8 +119,6 @@ GEM
     tzinfo (0.3.23)
     unicorn (1.1.4)
       rack
-    validates_url_format_of (0.1.0)
-      activerecord (>= 2.3.4)
     warden (0.10.7)
       rack (>= 1.0.0)
     webrat (0.7.2)
@@ -161,7 +159,6 @@ DEPENDENCIES
   state_machine (~> 0.9)
   thin
   unicorn (~> 1.1)
-  validates_url_format_of (~> 0.1)
   webrat (~> 0.7)
   will_paginate (>= 3.0.pre2)
   yajl-ruby (~> 0.7)
