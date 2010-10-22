@@ -20,6 +20,7 @@ class LFMarkdown < Markdown
     @filter_html   = true
     @autolink      = true
     @codemap       = {}
+    @generate_toc  = text.length > 10_000
     text         ||= ''
     super(text.dup, *extensions)
   end
@@ -28,7 +29,9 @@ class LFMarkdown < Markdown
     process_wikipedia_links
     extract_code
     ret = fix_heading_levels(super)
-    process_code(ret)
+    ret = process_code(ret)
+    ret = add_toc_content(ret) if @generate_toc
+    ret
   end
 
 protected
@@ -38,7 +41,7 @@ protected
   end
 
   def fix_heading_levels(str)
-    str.gsub!(/<(\/?)h(\d)>/) { |_| "<#{$1}h#{$2.to_i + 1}>" }
+    str.gsub!(/<(\/?)h(\d)/) { |_| "<#{$1}h#{$2.to_i + 1}" }
     str
   end
 
@@ -61,4 +64,9 @@ protected
     end
     data
   end
+
+  def add_toc_content(str)
+    "<h2 id=\"sommaire\">Sommaire</h2>\n" + toc_content.force_encoding("UTF-8") + str
+  end
+
 end

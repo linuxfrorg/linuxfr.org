@@ -17,7 +17,7 @@ module LinuxfrOrg
     end
 
     config.after_initialize do
-      ActionView::Base.sanitized_allowed_attributes.merge %w(data-id data-after)
+      ActionView::Base.sanitized_allowed_attributes.merge %w(id data-id data-after)
       ActiveSupport::XmlMini.backend = "Nokogiri"
     end
 
