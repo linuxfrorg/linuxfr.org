@@ -1,3 +1,6 @@
+- content_for :column do
+  = render 'box'
+
 =h1 @section.title
 - feed "S'abonner au flux Atom des dépêches de #{@section.title}"
 = paginated_contents @news, link_to("Proposer une dépêche", "/news/nouveau")

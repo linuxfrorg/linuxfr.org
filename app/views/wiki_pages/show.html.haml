@@ -3,7 +3,7 @@
 - if @wiki_page.home_page?
   - feed "Flux Atom du wiki", "/wiki.atom"
 
-= content_for :column do
+- content_for :column do
   - if @wiki_page.home_page?
     = render 'changes_box'
   = render 'edition', :edition => @wiki_page
