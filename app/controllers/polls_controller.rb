@@ -6,7 +6,8 @@ class PollsController < ApplicationController
   respond_to :html, :atom
 
   def index
-    @order = params[:order] || 'created_at'
+    @order = params[:order]
+    @order = "created_at" unless VALID_ORDERS.include?(@order)
     @polls = Poll.archived.joins(:node).order("nodes.#{@order} DESC").paginate(:page => params[:page], :per_page => 10)
     if on_the_first_page?
       poll = Poll.current

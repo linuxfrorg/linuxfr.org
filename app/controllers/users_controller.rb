@@ -46,7 +46,8 @@ protected
   end
 
   def find_nodes(klass)
-    @order = params[:order] || 'created_at'
+    @order = params[:order]
+    @order = "created_at" unless VALID_ORDERS.include?(@order)
     @nodes = Node.public_listing(klass, @order).where("nodes.user_id" => @user.id).paginate(:page => params[:page], :per_page => 10)
   end
 

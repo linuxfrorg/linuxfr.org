@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   before_filter :seo_filter
   helper_method :mobile?, :url_for_content, :current_user
 
+  VALID_ORDERS = %w(created_at score interest last_commented_at)
+
 protected
 
   def seo_filter

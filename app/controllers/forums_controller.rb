@@ -26,7 +26,8 @@ protected
   end
 
   def get_order
-    @order = params[:order] || "created_at"
+    @order = params[:order]
+    @order = "created_at" unless VALID_ORDERS.include?(@order)
   end
 
 end
