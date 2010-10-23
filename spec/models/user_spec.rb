@@ -42,6 +42,6 @@ describe User do
 
   it "has an account" do
     user = Factory(:user)
-    user.account.should_not be_nil
+    user.account.should be
   end
 end

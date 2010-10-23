@@ -16,12 +16,12 @@ require "digest/sha1"
 class LFMarkdown < Markdown
 
   def initialize(text, *extensions)
+    text         ||= ''
     @filter_styles = true
     @filter_html   = true
     @autolink      = true
     @codemap       = {}
     @generate_toc  = text.length > 10_000
-    text         ||= ''
     super(text.dup, *extensions)
   end
 

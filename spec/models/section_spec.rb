@@ -22,10 +22,10 @@ describe Section do
   it { should be_valid }
 
   it "has an image method" do
-    lambda { subject.image }.should_not raise_error
+    expect { subject.image }.to_not raise_error
   end
 
   it "has a published scope" do
-    lambda { Section.published.all }.should_not raise_error
+    expect { Section.published.all }.to_not raise_error
   end
 end
