@@ -40,7 +40,7 @@ class Account < ActiveRecord::Base
 
 ### Authentication ###
 
-  devise :registerable, :database_authenticatable, :confirmable, :recoverable, :rememberable, :trackable, :validatable
+  devise :registerable, :database_authenticatable, :confirmable, :recoverable, :rememberable, :trackable
 
   before_create :create_user
   def create_user
@@ -66,6 +66,13 @@ class Account < ActiveRecord::Base
 
   validates :login, :presence   => { :message => "Veuillez choisir un pseudo"},
                     :uniqueness => { :message => "Ce pseudo est déjà pris" }
+
+  validates :email, :presence   => { :message => "Veuillez remplir l'adresse de courriel" },
+                    :uniqueness => { :message => "Cette adresse de courriel est déjà utilisée", :case_sensitive => false, :allow_blank => true },
+                    :format     => { :message => "L'adresse de courriel n'est pas valide", :with => /^[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}$/i, :allow_blank => true }
+
+  validates :password, :presence     => { :message => "Le mot de passe est absent" },
+                       :confirmation => { :message => "La confirmation du mot de passe ne correspond pas au mot de passe" }
 
 ### Password ###
 

@@ -15,6 +15,7 @@ fr:
       page: page
       paragraph: paragraphe
       poll: sondage
+      poll_answer: réponse
       post: message
       response: réponse
       section: section

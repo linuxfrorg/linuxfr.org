@@ -4,10 +4,10 @@
   = messages_on_error @account
   = f.hidden_field :reset_password_token
   %p
-    = f.label :password
+    = f.label :password, 'Mot de passe'
     = f.password_field :password
   %p
-    = f.label :password_confirmation
+    = f.label :password_confirmation, 'Confirmation du mot de passe'
     = f.password_field :password_confirmation
   %p
     = f.submit "Enregistrer"
