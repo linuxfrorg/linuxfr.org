@@ -17,6 +17,11 @@ describe LFMarkdown do
     html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Linux\" title=\"Définition Wikipédia\">Linux</a></p>\n"
   end
 
+  it "transforms [[]] to wikipedia links, even with spaces and accents" do
+    html = LFMarkdown.new("[[Paul Erdős]]").to_html
+    html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Paul%20Erd%C5%91s\" title=\"Définition Wikipédia\">Paul Erdős</a></p>\n"
+  end
+
   it "leaves underscored words unchanged" do
     html = LFMarkdown.new("foo_bar_baz").to_html
     html.should == "<p>foo_bar_baz</p>\n"

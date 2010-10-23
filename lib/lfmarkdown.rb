@@ -37,7 +37,7 @@ class LFMarkdown < Markdown
 protected
 
   def process_wikipedia_links
-    @text.gsub!(/\[\[(\w+)\]\]/, '[\1](http://fr.wikipedia.org/wiki/\1 "Définition Wikipédia")')
+    @text.gsub!(/\[\[([ \p{Word}]+)\]\]/, '[\1](http://fr.wikipedia.org/wiki/\1 "Définition Wikipédia")')
   end
 
   def fix_heading_levels(str)
