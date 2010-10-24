@@ -10,7 +10,7 @@
 
 - @stylesheets.each do |css|
   = form_tag "/stylesheet" do
-    = hidden_field_tag :stylesheet, css.url
+    = hidden_field_tag :stylesheet, css.url, :id => "stylesheet-#{css.name}"
     = submit_tag css.name
 
 = form_tag "/stylesheet" do
