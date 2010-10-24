@@ -15,6 +15,12 @@ class Page < ActiveRecord::Base
   validates :title, :presence => { :message => "Le titre est obligatoire" }
   validates :body,  :presence => { :message => "Le corps est obligatoire" }
 
+  before_validation :parameterize_slug
+
+  def parameterize_slug
+    self.slug = slug.parameterize
+  end
+
   def to_param
     slug
   end

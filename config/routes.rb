@@ -126,6 +126,6 @@ LinuxfrOrg::Application.routes.draw do
   controller :static do
     get "/proposer-un-contenu" => :submit_content, :as => :submit_content
     get "/changelog" => :changelog, :as => :changelog
-    get "/:id" => :show, :as => :static, :constraints => { :id => /[a-z_]+/ }
+    get "/:id" => :show, :as => :static, :constraints => { :id => /[a-z_\-]+/ }
   end
 end
