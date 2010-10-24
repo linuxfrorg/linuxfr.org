@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
   # POST /account/sign_in
   def create
-    cookies[:ssl] = { :value => "on", :secure => false } if request.ssl?
+    cookies.permanent[:https] = { :value => "1", :secure => false } if request.ssl?
     @account = warden.authenticate!(:scope => :account, :recall => "new")
     sign_in :account, @account
     redirect_to stored_location_for(:account) || "/", :notice => I18n.t("devise.sessions.signed_in")
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 
   # GET /account/sign_out
   def destroy
-    cookies.delete :ssl
+    cookies.delete :https
     sign_out :account
     redirect_to "/"
   end

@@ -21,8 +21,6 @@ module LinuxfrOrg
       ActiveSupport::XmlMini.backend = "Nokogiri"
     end
 
-    config.filter_parameters += [:password, :password_confirmation]
-
     config.encoding = "utf-8"
 
     config.session_store :cookie_store, :key => '_linuxfr.org_session'
