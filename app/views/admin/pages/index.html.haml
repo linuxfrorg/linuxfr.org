@@ -14,4 +14,5 @@
       %td
         = link_to page.slug, static_path(page)
       %td
-        #{link_to "Modifier", edit_admin_page_path(page)} | #{button_to "Supprimer", [:admin, page], :method => :delete}
+        = link_to "Modifier", edit_admin_page_path(page)
+        = button_to "Supprimer", [:admin, page], :method => :delete

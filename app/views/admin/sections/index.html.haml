@@ -18,6 +18,7 @@
         %td
           = image_tag(section.image.url, :alt => section.title)
         %td
-          = section.state
+          = section.state == "published" ? "publiée" : "archivée"
         %td
-          #{link_to "Modifier", edit_admin_section_path(section)} | #{button_to "Supprimer", [:admin, section], :method => :delete}
+          = link_to "Changer le logo", edit_admin_section_path(section)
+          = button_to "Archiver", [:admin, section], :method => :delete

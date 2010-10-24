@@ -36,17 +36,17 @@ class Admin::FriendSitesController < AdminController
   end
 
   def destroy
-    @site.destroy
+    @friend_site.destroy
     redirect_to admin_friend_sites_url, :notice => "Site ami supprimé"
   end
 
   def lower
-    @site.move_lower
+    @friend_site.move_lower
     redirect_to admin_friend_sites_url
   end
 
   def higher
-    @site.move_higher
+    @friend_site.move_higher
     redirect_to admin_friend_sites_url
   end
 

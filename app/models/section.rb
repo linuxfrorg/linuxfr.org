@@ -42,4 +42,5 @@ class Section < ActiveRecord::Base
     event :reopen  do transition :archived => :published end
     event :archive do transition :published => :archived end
   end
+
 end
