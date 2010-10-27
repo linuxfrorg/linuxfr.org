@@ -6,6 +6,11 @@
   %p
     %strong Contre :
     = @news.node.voters_against
+  - if current_user.can_vote?(@news)
+    %div
+      = button_to "Pour", "/nodes/#{@news.node.id}/vote/for", :remote => true
+      ou
+      = button_to "Contre", "/nodes/#{@news.node.id}/vote/against", :remote => :true
 
   - if @news.published?
     %p

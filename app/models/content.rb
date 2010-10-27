@@ -4,6 +4,7 @@
 #
 class Content < ActiveRecord::Base
   self.abstract_class = true
+  include Canable::Ables
 
   has_one :node, :as => :content, :dependent => :destroy, :inverse_of => :content
   has_one :user, :through => :node

@@ -23,8 +23,6 @@
 # that will be reviewed and moderated by the LinuxFr.org team.
 #
 class News < Content
-  include Canable::Ables
-
   belongs_to :section
   belongs_to :moderator, :class_name => "User"
   has_many :links, :dependent => :destroy, :inverse_of => :news
@@ -218,7 +216,7 @@ class News < Content
   end
 
   def votable_by?(user)
-    super(user) || (user && user.amr? && !draft?)
+    super(user) || (user && user.amr? && !draft? && self.user != user)
   end
 
 ### Locks ###
