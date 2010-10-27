@@ -67,10 +67,10 @@ class Node < ActiveRecord::Base
     Account.decrement_counter(:nb_votes, user.account.id) unless user.amr?
     connection.update_sql("UPDATE nodes SET score=score + #{value} WHERE id=#{self.id}")
     compute_interest
-    vote_on_candidate_news(value) if content_type == "News" && content.candidate?
+    vote_on_candidate_news(value, user) if content_type == "News" && content.candidate?
   end
 
-  def vote_on_candidate_news(value)
+  def vote_on_candidate_news(value, user)
     word = value > 0 ? "pour" : "contre"
     who  = user.account.login
     if value.abs == 2
