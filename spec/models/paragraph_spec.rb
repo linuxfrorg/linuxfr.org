@@ -1,0 +1,40 @@
+# encoding: UTF-8
+#
+# == Schema Information
+#
+# Table name: paragraphs
+#
+#  id           :integer(4)      not null, primary key
+#  news_id      :integer(4)      not null
+#  position     :integer(4)
+#  second_part  :boolean(1)
+#  locked_by_id :integer(4)
+#  body         :text
+#  wiki_body    :text
+#
+
+require 'spec_helper'
+
+describe Paragraph do
+  it "split wiki_body correctly" do
+    wiki_body = <<-EOS
+Titre 1
+=======
+
+Titre 2
+-------
+
+Un paragraphe
+qui se continue
+sur plusieurs lignes.
+
+Un autre paragraphe.
+EOS
+    parts = Paragraph.new(:wiki_body => wiki_body).split_body
+    parts.should have(4).items
+    parts[0].should == "Titre 1\n=======\n\n"
+    parts[1].should == "Titre 2\n-------\n\n"
+    parts[2].should == "Un paragraphe\nqui se continue\nsur plusieurs lignes.\n\n"
+    parts[3].should == "Un autre paragraphe.\n"
+  end
+end

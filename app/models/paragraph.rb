@@ -20,6 +20,8 @@
 # A paragraph can be split in several if it has a blank line in its body.
 #
 class Paragraph < ActiveRecord::Base
+  include ERB::Util
+
   belongs_to :news
 
   attr_accessor   :user, :after, :already_split
@@ -31,7 +33,13 @@ class Paragraph < ActiveRecord::Base
 ### Automatically split paragraphs ###
 
   def split_body
-    wiki_body.scan /[^\r\n]+[\r\n]*/
+    parts = []
+    str = wiki_body
+    until str.empty?
+      left, sep, str = str.partition(/(\r?\n){2}/)
+      parts << left + sep
+    end
+    parts
   end
 
   before_validation :split_on_create, :on => :create
@@ -109,7 +117,7 @@ class Paragraph < ActiveRecord::Base
     return false if locked?
     self.locked_by_id = user.id
     save
-    message = "<span class=\"paragraph\" data-id=\"#{self.id}\">#{user.name} édite le paragraphe #{h wiki_body[0,20]}</span>"
+    message = "<span class=\"paragraph\" data-id=\"#{self.id}\">#{user.name} édite le paragraphe #{html_escape wiki_body[0,20]}</span>"
     Board.create_for(news, :user => user, :kind => "locking", :message => message)
     true
   end
