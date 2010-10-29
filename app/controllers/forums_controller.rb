@@ -12,6 +12,7 @@ class ForumsController < ApplicationController
 
   def show
     @forum = Forum.find(params[:id])
+    redirect_to(@forum, :status => 301) and return if !@forum.friendly_id_status.best?
     @posts = @forum.posts.with_node_ordered_by(@order).paginate(:page => params[:page], :per_page => 10)
     respond_to do |wants|
       wants.html

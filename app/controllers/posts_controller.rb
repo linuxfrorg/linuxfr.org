@@ -28,12 +28,12 @@ class PostsController < ApplicationController
 
   def index
     @forum = Forum.find(params[:forum_id])
-    redirect_to @forum
+    redirect_to @forum, :status => 301
   end
 
   def show
     enforce_view_permission(@post)
-    redirect_to @post, :status => 301 if !@post.friendly_id_status.best?
+    redirect_to [@forum, @post], :status => 301 if !@post.friendly_id_status.best?
   end
 
   def edit
@@ -62,6 +62,10 @@ protected
   def find_post
     @post  = Post.find(params[:id], :scope => params[:forum_id])
     @forum = @post.forum
+  rescue ActiveRecord::RecordNotFound
+    @forum = Forum.find(params[:forum_id])
+    @post  = Post.find(params[:id], :scope => @forum.to_param)
+    redirect_to [@forum, @post], :status => 301
   end
 
   def marked_as_read
