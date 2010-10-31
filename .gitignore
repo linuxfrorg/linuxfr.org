@@ -8,6 +8,7 @@ db/*.sqlite3
 db/sphinx/**/*
 log
 public/board.xml
+public/pages
 public/sitemap*
 public/stylesheets/application.css
 public/stylesheets/print.css

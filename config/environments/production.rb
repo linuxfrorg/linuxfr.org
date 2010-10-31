@@ -19,6 +19,9 @@ LinuxfrOrg::Application.configure do
   # Use a different cache store in production
   config.cache_store = :redis_store, "redis://linuxfr.org:6379/0"
 
+  # Set the page cache directory
+  config.action_controller.page_cache_directory = Rails.public_path.join("pages")
+
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
   config.serve_static_assets = false
