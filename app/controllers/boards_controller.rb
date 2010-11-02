@@ -1,5 +1,6 @@
 class BoardsController < ApplicationController
   before_filter :authenticate_account!
+  after_filter :expire_cache, :only => [:create]
   caches_page :show, :if => Proc.new { |c| c.request.format.xml? }
   respond_to :html, :atom
 
@@ -21,7 +22,6 @@ class BoardsController < ApplicationController
       wants.html { redirect_to :back }
       wants.js   { render :nothing => true }
     end
-    expire_page :action => :show, :format => :xml
   end
 
 protected
@@ -30,4 +30,7 @@ protected
     self.class.helpers.auto_link(msg, :all) { "[URL]" }
   end
 
+  def expire_cache
+    expire_page :action => :show, :format => :xml
+  end
 end
