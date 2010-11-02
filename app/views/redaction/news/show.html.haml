@@ -14,7 +14,7 @@
       = render :partial => 'redaction/paragraphs/paragraph', :collection => @news.paragraphs.in_first_part
     %ul#links
       = render :partial => 'redaction/links/link', :collection => @news.links
-    %p.new_link{'data-url' => new_redaction_news_link_path(:news_id => @news.to_param)}
+    %p.new_link{'data-url' => new_redaction_news_link_path(:news_id => @news)}
       %button Ajouter un lien
     #second_part
       = render :partial => 'redaction/paragraphs/paragraph', :collection => @news.paragraphs.in_second_part

@@ -1,3 +1,3 @@
 = article_for poll do |c|
-  - c.title = link_to(sanitize("Sondage : #{poll.title}"), moderation_poll_path(:id => poll.to_param))
+  - c.title = link_to(sanitize("Sondage : #{poll.title}"), moderation_poll_path(:id => poll))
   - c.body  = render("polls/answers_current", :poll => poll)

@@ -1,7 +1,7 @@
 #polls_edition
   %h1 Éditions
   %p
-    = link_to "Éditer", edit_moderation_poll_path(:id => @poll.to_param)
+    = link_to "Éditer", edit_moderation_poll_path(:id => @poll)
   %h1 Modération
   = button_to "Publier", accept_moderation_poll_path(@poll)
   = button_to "Refuser", refuse_moderation_poll_path(@poll)
