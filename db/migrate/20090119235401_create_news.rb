@@ -12,6 +12,10 @@ class CreateNews < ActiveRecord::Migration
       t.string :author_email, :null => false
       t.timestamps
     end
+
+    # Patrick_g writes long enough news that TEXT can't store them completely!
+    execute "ALTER TABLE news MODIFY COLUMN second_part MEDIUMTEXT"
+
     add_index :news, [:state, :section_id]
     add_index :news, :cached_slug
   end
