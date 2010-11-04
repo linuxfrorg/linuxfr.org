@@ -23,6 +23,7 @@ class Content < ActiveRecord::Base
   def create_node(attrs={}, replace_existing=true)
     attrs[:cc_licensed] = true if cc_licensed && cc_licensed != '0'
     attrs[:user_id] = owner_id if owner_id
+    attrs[:user_id] = owner.id if respond_to?(:owner) && owner
     node = build_node(attrs, replace_existing)
     node.save
     node
