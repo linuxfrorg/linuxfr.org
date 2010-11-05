@@ -9,6 +9,7 @@ article {
   header h1 {
     margin: 15px 0 5px;
     font-family: $header_font;
+    font-size: 2em;
     color: $link_color;
     a {
       @include hover-link; }
