@@ -16,8 +16,8 @@ gem "mysql2",                  "~>0.1"
 gem "nokogiri",                "~>1.4"
 gem "paperclip",               "~>2.3"
 gem "rdiscount",               "~>1.6"
-gem "redis",                   "~>2.0"
-gem "sitemap_generator",       "~>1.0"
+gem "redis",                   "~>2.1"
+gem "sitemap_generator",       "~>1.3"
 gem "simple_autocomplete",     "~>0.3"
 gem "state_machine",           "~>0.9"
 # TODO Rails3
@@ -40,6 +40,6 @@ group :test do
 end
 
 group :production do
-  gem "unicorn",               "~>1.1"
+  gem "unicorn",               "~>2.0"
   gem "redis-store",           ">=1.0.0.beta3"
 end
