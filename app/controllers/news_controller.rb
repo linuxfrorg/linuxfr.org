@@ -23,8 +23,8 @@ class NewsController < ApplicationController
   def create
     @news = News.new
     @news.attributes   = params[:news]
-    @news.author_name  = current_user.name  if current_user
-    @news.author_email = current_user.email if current_user
+    @news.author_name  = current_account.name  if current_user
+    @news.author_email = current_account.email if current_account
     if !preview_mode && @news.save
       @news.submit!
       redirect_to news_index_url, :notice => "Votre proposition de dépêche a bien été soumise, et sera modérée dans les heures ou jours à venir"

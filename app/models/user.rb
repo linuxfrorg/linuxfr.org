@@ -38,13 +38,15 @@ class User < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy, :include => :tag
   has_many :tags, :through => :taggings, :uniq => true
 
-  delegate :login, :email, :to => :account, :allow_nil => true
-
   attr_accessible :name, :homesite, :jabber_id, :avatar
 
 ### SEO ###
 
   has_friendly_id :login, :use_slug => true, :allow_nil => true, :reserved_words => %w(index nouveau)
+
+  def login
+    account ? account.login : name
+  end
 
 ### Sphinx ####
 

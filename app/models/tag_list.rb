@@ -32,9 +32,11 @@ class TagList < Array
 
 private
 
+  INVALID_CHARS = RUBY_VERSION.starts_with?('1.8') ? /\W/ : /\P{Word}/u
+
   # Keeps only letters and digits, and remove duplicates
   def clean!
-    map! {|t| t.gsub(/\P{Word}/u, '').downcase }
+    map! {|t| t.gsub(INVALID_CHARS, '').downcase }
     reject! &:blank?
     uniq!
   end

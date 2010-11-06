@@ -36,8 +36,10 @@ class LFMarkdown < Markdown
 
 protected
 
+  WP_LINK_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /\[\[([ \w]+)\]\]/ : /\[\[([ \p{Word}]+)\]\]/
+
   def process_wikipedia_links
-    @text.gsub!(/\[\[([ \p{Word}]+)\]\]/, '[\1](http://fr.wikipedia.org/wiki/\1 "Définition Wikipédia")')
+    @text.gsub!(WP_LINK_REGEXP, '[\1](http://fr.wikipedia.org/wiki/\1 "Définition Wikipédia")')
   end
 
   def fix_heading_levels(str)

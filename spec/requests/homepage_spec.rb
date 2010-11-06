@@ -18,8 +18,8 @@ describe "Homepage" do
 
   it "works for authenticated user" do
     get '/news'
-    fill_in :account_login, :with => account.login
-    fill_in :account_password, :with => "I<3J2EE"
+    fill_in :account_login_sidebar, :with => account.login
+    fill_in :account_password_sidebar, :with => "I<3J2EE"
     click_button "Se connecter"
     response.should_not contain("Identifiant ou mot de passe invalide.")
     get '/'

@@ -7,7 +7,7 @@ class Redaction::NewsController < RedactionController
   end
 
   def create
-    @news = News.create_for_redaction(current_user)
+    @news = News.create_for_redaction(current_account)
     redirect_to [:redaction, @news]
   end
 

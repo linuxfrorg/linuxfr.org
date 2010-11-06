@@ -109,13 +109,13 @@ class News < Content
     Board.create_for(self, :user => moderator, :kind => "moderation", :message => message)
   end
 
-  def self.create_for_redaction(user)
+  def self.create_for_redaction(account)
     news = News.new
     news.title = "Nouvelle dépêche #{News.maximum :id}"
     news.section = Section.published.first
     news.wiki_body = news.wiki_second_part = "Vous pouvez éditer cette partie en cliquant dessus !"
-    news.author_name  = user.name
-    news.author_email = user.email
+    news.author_name  = account.name
+    news.author_email = account.email
     news.save
     news
   end

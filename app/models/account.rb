@@ -29,12 +29,17 @@
 #  updated_at           :datetime
 #
 
+# The accounts are the private informations about users.
+# A user wth an account can login, change its password
+# and do many other things on the site.
+#
 class Account < ActiveRecord::Base
   belongs_to :user, :inverse_of => :account
   accepts_nested_attributes_for :user, :reject_if => proc { |attrs| attrs['user'].blank? }
 
   attr_accessor :remember_me
   attr_accessible :login, :email, :stylesheet, :password, :password_confirmation, :user_attributes, :remember_me
+  delegate :name, :to => :user
 
   scope :unconfirmed, where(:confirmed_at => nil)
 
@@ -67,9 +72,10 @@ class Account < ActiveRecord::Base
   validates :login, :presence   => { :message => "Veuillez choisir un pseudo"},
                     :uniqueness => { :message => "Ce pseudo est déjà pris" }
 
+  EMAIL_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /^.+@.+\.\w{2,4}$/i : /^[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}$/i
   validates :email, :presence   => { :message => "Veuillez remplir l'adresse de courriel" },
                     :uniqueness => { :message => "Cette adresse de courriel est déjà utilisée", :case_sensitive => false, :allow_blank => true },
-                    :format     => { :message => "L'adresse de courriel n'est pas valide", :with => /^[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}$/i, :allow_blank => true }
+                    :format     => { :message => "L'adresse de courriel n'est pas valide", :with => EMAIL_REGEXP, :allow_blank => true }
 
   validates :password, :presence     => { :message => "Le mot de passe est absent" },
                        :confirmation => { :message => "La confirmation du mot de passe ne correspond pas au mot de passe" }
@@ -106,12 +112,6 @@ class Account < ActiveRecord::Base
   def give_karma(points)
     self.karma += points
     save
-  end
-
-### Presentation ###
-
-  def email_address
-    "#{login} <#{email}>"
   end
 
 end
