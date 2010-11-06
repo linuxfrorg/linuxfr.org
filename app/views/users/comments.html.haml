@@ -2,11 +2,12 @@
   = render 'recent'
   = render 'nodes'
 
-=h1 "#{@user.name} a écrit #{pluralize @comments.total_entries, "commentaire"}"
-- feed "Flux Atom des commentaires de #{@user.name}"
-= will_paginate @comments
-%ul
-  - @comments.each do |comment|
-    %li.comment(id="comment-#{comment.id}")
-      = render comment
-= will_paginate @comments
+#contents
+  =h1 "#{@user.name} a écrit #{pluralize @comments.total_entries, "commentaire"}"
+  - feed "Flux Atom des commentaires de #{@user.name}"
+  = will_paginate @comments
+  %ul
+    - @comments.each do |comment|
+      %li.comment(id="comment-#{comment.id}")
+        = render comment
+  = will_paginate @comments

@@ -1,16 +1,17 @@
-=h1 "Visualiser une révision"
+#contents
+  =h1 "Visualiser une révision"
 
-%h2
-  = link_to @wiki_page.title, @wiki_page
-%h3
-  #{@version.user.try :name} : #{@version.message}
-%pre
-  = HTMLDiff.diff(h(@was), h(@version.body)).html_safe
+  %h2
+    = link_to @wiki_page.title, @wiki_page
+  %h3
+    #{@version.user.try :name} : #{@version.message}
+  %pre
+    = HTMLDiff.diff(h(@was), h(@version.body)).html_safe
 
-- if @version.higher_item || @version.lower_item
-  %nav
-    %ul
-      - if @version.higher_item
-        %li= link_to "Précédente révision", wiki_page_revision_path(@wiki_page.friendly_id, @version.higher_item.version)
-      - if @version.lower_item
-        %li= link_to "Révision suivante", wiki_page_revision_path(@wiki_page.friendly_id, @version.lower_item.version)
+  - if @version.higher_item || @version.lower_item
+    %nav
+      %ul
+        - if @version.higher_item
+          %li= link_to "Précédente révision", wiki_page_revision_path(@wiki_page.friendly_id, @version.higher_item.version)
+        - if @version.lower_item
+          %li= link_to "Révision suivante", wiki_page_revision_path(@wiki_page.friendly_id, @version.lower_item.version)

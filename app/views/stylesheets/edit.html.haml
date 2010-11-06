@@ -1,22 +1,23 @@
-=h1 "Feuilles de style alternatives"
+#contents
+  =h1 "Feuilles de style alternatives"
 
-%p
-  Il est possible de choisir une feuille de style (CSS) alternative pour l'affichage du site LinuxFr.org.
-  Les feuilles de styles disponibles ici sont des copies provenant de sites externes.
-  Pour en choisir une, cliquer simplement sur son nom.
+  %p
+    Il est possible de choisir une feuille de style (CSS) alternative pour l'affichage du site LinuxFr.org.
+    Les feuilles de styles disponibles ici sont des copies provenant de sites externes.
+    Pour en choisir une, cliquer simplement sur son nom.
 
-%p
-  Votre feuille de style actuelle est : #{@current || "celle par défaut"}.
+  %p
+    Votre feuille de style actuelle est : #{@current || "celle par défaut"}.
 
-- @stylesheets.each do |css|
+  - @stylesheets.each do |css|
+    = form_tag "/stylesheet" do
+      = hidden_field_tag :stylesheet, css.url, :id => "stylesheet-#{css.name}"
+      = submit_tag css.name
+
   = form_tag "/stylesheet" do
-    = hidden_field_tag :stylesheet, css.url, :id => "stylesheet-#{css.name}"
-    = submit_tag css.name
-
-= form_tag "/stylesheet" do
-  = label_tag :stylesheet, "Autre feuille de style"
-  = text_field_tag :stylesheet
-  = submit_tag 'OK'
+    = label_tag :stylesheet, "Autre feuille de style"
+    = text_field_tag :stylesheet
+    = submit_tag 'OK'
 
 
-= button_to "CSS par défaut", "/stylesheet", :method => :delete
+  = button_to "CSS par défaut", "/stylesheet", :method => :delete

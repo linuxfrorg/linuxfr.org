@@ -1,11 +1,12 @@
-=h1 "Éditer un journal"
+#contents
+  =h1 "Éditer un journal"
 
-= button_to "Supprimer", [@diary.owner, @diary], :method => :delete
+  = button_to "Supprimer", [@diary.owner, @diary], :method => :delete
 
-= render "preview", :preview => @diary if @preview_mode
+  = render "preview", :preview => @diary if @preview_mode
 
-%h2 Édition
-= form_for [@diary.owner, @diary] do |form|
-  = render form
+  %h2 Édition
+  = form_for [@diary.owner, @diary] do |form|
+    = render form
 
-= render 'shared/wiki_help'
+  = render 'shared/wiki_help'

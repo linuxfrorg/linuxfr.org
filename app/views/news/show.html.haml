@@ -1,4 +1,5 @@
-- title @news.title
-- meta_for @news
-= render @news, :with_second_part => true
-= render @news.node
+#contents
+  - title @news.title
+  - meta_for @news
+  = render @news, :with_second_part => true
+  = render @news.node

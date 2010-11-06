@@ -1,14 +1,15 @@
-=h1 "Modifier une entrée dans le suivi"
+#contents
+  =h1 "Modifier une entrée dans le suivi"
 
-= button_to "Supprimer", @tracker, :method => :delete
+  = button_to "Supprimer", @tracker, :method => :delete
 
-= render "preview", :preview => @tracker if @preview_mode
+  = render "preview", :preview => @tracker if @preview_mode
 
-%h2 Édition
-= form_for @tracker do |form|
-  %p
-    = form.label :state, "État"
-    = form.select :state, Tracker::States
-  = render form
+  %h2 Édition
+  = form_for @tracker do |form|
+    %p
+      = form.label :state, "État"
+      = form.select :state, Tracker::States
+    = render form
 
-= render 'shared/wiki_help'
+  = render 'shared/wiki_help'

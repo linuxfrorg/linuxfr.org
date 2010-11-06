@@ -1,10 +1,11 @@
-=h1 "Recherche"
-- if @results.empty?
-  Pas de résultats.
-- else
-  = render "#{@facet}_facet" if @facets
-  %div
-    %h2 Résultats
-    - @results.each do |result|
-      = highlight(render(result), @query, :highlighter => '<mark>\1</mark>').html_safe
-    - will_paginate @results
+#contents
+  =h1 "Recherche"
+  - if @results.empty?
+    Pas de résultats.
+  - else
+    = render "#{@facet}_facet" if @facets
+    %div
+      %h2 Résultats
+      - @results.each do |result|
+        = highlight(render(result), @query, :highlighter => '<mark>\1</mark>').html_safe
+      - will_paginate @results

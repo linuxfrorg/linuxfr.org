@@ -1,8 +1,9 @@
-=h1 "Proposer une dépêche"
+#contents
+  =h1 "Proposer une dépêche"
 
-= render "preview", :preview => @news if @preview_mode
+  = render "preview", :preview => @news if @preview_mode
 
-= form_for setup_news(@news), :url => '/news' do |form|
-  = render form
+  = form_for setup_news(@news), :url => '/news' do |form|
+    = render form
 
-= render 'shared/wiki_help'
+  = render 'shared/wiki_help'

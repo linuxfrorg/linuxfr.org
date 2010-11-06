@@ -1,8 +1,9 @@
-=h1 "Éditer un commentaire"
+#contents
+  =h1 "Éditer un commentaire"
 
-= render "preview", :preview => @comment if @preview_mode
+  = render "preview", :preview => @comment if @preview_mode
 
-= form_for [@comment.node, @comment] do |form|
-  = render form
+  = form_for [@comment.node, @comment] do |form|
+    = render form
 
-= render 'shared/wiki_help'
+  = render 'shared/wiki_help'

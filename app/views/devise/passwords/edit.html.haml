@@ -1,15 +1,16 @@
-%h2 Changer de mot de passe
+#contents
+  %h2 Changer de mot de passe
 
-= form_for @account, :url => password_path(:account), :html => { :method => :put } do |f|
-  = messages_on_error @account
-  = f.hidden_field :reset_password_token
-  %p
-    = f.label :password, 'Mot de passe'
-    = f.password_field :password
-  %p
-    = f.label :password_confirmation, 'Confirmation du mot de passe'
-    = f.password_field :password_confirmation
-  %p
-    = f.submit "Enregistrer"
+  = form_for @account, :url => password_path(:account), :html => { :method => :put } do |f|
+    = messages_on_error @account
+    = f.hidden_field :reset_password_token
+    %p
+      = f.label :password, 'Mot de passe'
+      = f.password_field :password
+    %p
+      = f.label :password_confirmation, 'Confirmation du mot de passe'
+      = f.password_field :password_confirmation
+    %p
+      = f.submit "Enregistrer"
 
-= render :partial => "devise/shared/links"
+  = render :partial => "devise/shared/links"

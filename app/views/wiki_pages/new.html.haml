@@ -1,12 +1,13 @@
-=h1 "Créer une page de wiki"
+#contents
+  =h1 "Créer une page de wiki"
 
-= render "preview", :preview => @wiki_page if @preview_mode
+  = render "preview", :preview => @wiki_page if @preview_mode
 
-= form_for @wiki_page do |form|
-  = messages_on_error @wiki_page
-  %p
-    = form.label :title, "Titre"
-    = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
-  = render form
+  = form_for @wiki_page do |form|
+    = messages_on_error @wiki_page
+    %p
+      = form.label :title, "Titre"
+      = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
+    = render form
 
-= render 'shared/wiki_help'
+  = render 'shared/wiki_help'

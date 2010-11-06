@@ -1,9 +1,10 @@
-=h1 "Modifier une page de wiki"
+#contents
+  =h1 "Modifier une page de wiki"
 
-= render "preview", :preview => @wiki_page if @preview_mode
+  = render "preview", :preview => @wiki_page if @preview_mode
 
-= form_for @wiki_page do |form|
-  = messages_on_error @wiki_page
-  = render form
+  = form_for @wiki_page do |form|
+    = messages_on_error @wiki_page
+    = render form
 
-= render 'shared/wiki_help'
+  = render 'shared/wiki_help'

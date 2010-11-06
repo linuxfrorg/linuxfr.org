@@ -1,8 +1,9 @@
-=h1 "Proposer une entrée dans le suivi"
+#contents
+  =h1 "Proposer une entrée dans le suivi"
 
-= render "preview", :preview => @tracker if @preview_mode
+  = render "preview", :preview => @tracker if @preview_mode
 
-= form_for @tracker do |form|
-  = render form
+  = form_for @tracker do |form|
+    = render form
 
-= render 'shared/wiki_help'
+  = render 'shared/wiki_help'

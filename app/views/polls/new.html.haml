@@ -1,6 +1,7 @@
-=h1 "Suggérer un sondage"
+#contents
+  =h1 "Suggérer un sondage"
 
-= render "preview", :preview => @poll if @preview_mode
+  = render "preview", :preview => @poll if @preview_mode
 
-= form_for setup_poll(@poll) do |form|
-  = render form
+  = form_for setup_poll(@poll) do |form|
+    = render form
