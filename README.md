@@ -36,9 +36,9 @@ http://railstips.org/blog/archives/2008/11/24/rubygems-yours-mine-and-ours/
 
 4) Install and start redis:
 
-    $ wget "http://redis.googlecode.com/files/redis-2.0.1.tar.gz"
-    $ tar xvzf redis-2.0.1.tar.gz
-    $ cd redis-2.0.1
+    $ wget "http://redis.googlecode.com/files/redis-2.0.4.tar.gz"
+    $ tar xvzf redis-2.0.4.tar.gz
+    $ cd redis-2.0.4
     $ make
     $ ./redis-server redis.conf
 
@@ -47,6 +47,7 @@ http://railstips.org/blog/archives/2008/11/24/rubygems-yours-mine-and-ours/
     $ git clone git://github.com/nono/linuxfr.org.git
     $ cd linuxfr.org
     $ cp config/database.yml{.sample,}
+    $ cp config/secret.yml{.sample,}
     $ gem install bundler rake
     $ bundle install
     $ rake db:setup
