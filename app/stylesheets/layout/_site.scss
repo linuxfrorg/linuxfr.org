@@ -18,3 +18,6 @@
   form {
     float: right;
     padding: 5px 10px; } }
+#label_query {
+  float: left;
+  @include hide-text; }
