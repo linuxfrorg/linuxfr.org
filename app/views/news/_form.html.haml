@@ -11,7 +11,7 @@
   = form.label :title, "Titre de la dépêche"
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
 %p
-  = form.label :section, "Section de la dépêche"
+  = form.label :section_id, "Section de la dépêche"
   = form.collection_select :section_id, Section.published, :id, :title
 %p
   = form.label :wiki_body, "Contenu de la dépêche"

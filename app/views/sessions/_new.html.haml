@@ -1,12 +1,13 @@
-= form_for((@account || Account.new), :url => '/compte/connexion') do |f|
+- @account ||= Account.new
+= form_for @account, :url => '/compte/connexion', :html => { :id => "#{dom_id @account}#{id_suffix}" } do |f|
   %p
-    = f.label :login, "Identifiant"
-    = f.text_field :login, :required => "required"
+    = f.label "login#{id_suffix}", "Identifiant"
+    = f.text_field :login, :id => "account_login#{id_suffix}", :required => "required"
   %p
-    = f.label :password, "Mot de passe"
-    = f.password_field :password, :required => "required"
+    = f.label "password#{id_suffix}", "Mot de passe"
+    = f.password_field :password, :id => "account_password#{id_suffix}", :required => "required"
   %p
-    = f.check_box :remember_me
-    = f.label :remember_me, "Connexion automatique"
+    = f.check_box :remember_me, :id => "account_remember_me#{id_suffix}"
+    = f.label "remember_me#{id_suffix}", "Connexion automatique"
   %p
-    = f.submit "Se connecter"
+    = f.submit "Se connecter", :id => "account_submit#{id_suffix}"

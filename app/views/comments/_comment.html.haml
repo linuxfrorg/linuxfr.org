@@ -1,4 +1,4 @@
-%h3
+%h2
   = link_to "[^]", "#comment-#{comment.parent_id}", :title => "Aller au commentaire parent" unless comment.root?
   = ' '
   = link_to comment.title, [comment.node, comment]

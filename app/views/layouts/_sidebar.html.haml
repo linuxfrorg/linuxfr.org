@@ -20,7 +20,7 @@
       %p= link_to "Se déconnecter", '/compte/deconnexion'
     - else
       %h1 Se connecter
-      = render "sessions/new"
+      = render "sessions/new", :id_suffix => "_sidebar"
       %p= link_to "Pas de compte ? S'inscrire !", '/compte/inscription'
       %p= link_to "Proposer un contenu", '/proposer-un-contenu'
   - if current_user && current_user.admin?

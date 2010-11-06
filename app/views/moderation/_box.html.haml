@@ -3,7 +3,7 @@
     = link_to "Modération", '/moderation'
   - @candidate_news = News.candidate.sorted
   - if @candidate_news.empty?
-    Pas de dépêche à modérer
+    %p Pas de dépêche à modérer
   - else
     %ul
       = list_of(@candidate_news) do |news|

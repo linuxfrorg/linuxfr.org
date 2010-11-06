@@ -1,5 +1,5 @@
 = form_for [:moderation, @news] do |form|
-  = form.label :section, "Section"
+  = form.label :section_id, "Section"
   = form.collection_select :section_id, Section.published, :id, :title
   = form.label :title, "Titre"
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
