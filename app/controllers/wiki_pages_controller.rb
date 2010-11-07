@@ -35,7 +35,7 @@ class WikiPagesController < ApplicationController
   def create
     @wiki_page = WikiPage.new
     @wiki_page.title = params[:wiki_page][:title]
-    @wiki_page.user_id = current_user.id
+    @wiki_page.user_id = current_account.user_id
     @wiki_page.attributes = params[:wiki_page]
     enforce_create_permission(@wiki_page)
     if !preview_mode && @wiki_page.save
@@ -54,7 +54,7 @@ class WikiPagesController < ApplicationController
   def update
     enforce_update_permission(@wiki_page)
     @wiki_page.attributes = params[:wiki_page]
-    @wiki_page.user_id = current_user.id
+    @wiki_page.user_id = current_account.user_id
     if !preview_mode && @wiki_page.save
       redirect_to @wiki_page, :notice => "Modification enregistrée"
     else
@@ -86,7 +86,7 @@ class WikiPagesController < ApplicationController
 protected
 
   def marked_as_read
-    current_user.read(@wiki_page.node) if @wiki_page.node
+    current_account.read(@wiki_page.node) if @wiki_page.node
   end
 
   def load_wiki_page

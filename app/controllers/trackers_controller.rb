@@ -67,7 +67,7 @@ class TrackersController < ApplicationController
 protected
 
   def marked_as_read
-    current_user.read(@tracker.node)
+    current_account.read(@tracker.node)
   end
 
   def load_tracker

@@ -54,9 +54,9 @@ class Comment < ActiveRecord::Base
 
   # Returns true if this comment has been read by the given user,
   # but also for anonymous users
-  def read_by?(user)
-    return true if user.nil?
-    r = Node.last_reading(node_id, user.id)
+  def read_by?(account)
+    return true if account.nil?
+    r = Node.last_reading(node_id, account.id)
     r && r >= created_at
   end
 
@@ -119,49 +119,50 @@ class Comment < ActiveRecord::Base
 
 ### ACL ###
 
-  def viewable_by?(user)
-    state != 'deleted' || (user && user.admin?)
+  def viewable_by?(account)
+    state != 'deleted' || account.try(:admin?)
   end
 
-  def creatable_by?(user)
-    node && node.content && node.content.commentable_by?(user)
+  def creatable_by?(account)
+    node && node.content && node.content.commentable_by?(account)
   end
 
-  def updatable_by?(user)
-    user && (user.moderator? || user.admin?)
+  def updatable_by?(account)
+    account && (account.moderator? || account.admin?)
   end
 
-  def destroyable_by?(user)
-    user && (user.moderator? || user.admin?)
+  def destroyable_by?(account)
+    account && (account.moderator? || account.admin?)
   end
 
-  def votable_by?(user)
-    user && !deleted? && self.user != user       &&
-        (Time.now - created_at) < 3.months       &&
-        (user.account.nb_votes > 0 || user.amr?) &&
-        !vote_by?(user.id)
+  def votable_by?(account)
+    account && !deleted?                       &&
+        self.user != account.user              &&
+        (Time.now - created_at) < 3.months     &&
+        (account.nb_votes > 0 || account.amr?) &&
+        !vote_by?(account.id)
   end
 
 ### Votes ###
 
-  def vote_by?(user_id)
-    $redis.exists("comments/#{self.id}/votes/#{user_id}")
+  def vote_by?(account_id)
+    $redis.exists("comments/#{self.id}/votes/#{account_id}")
   end
 
-  def vote_for(user)
-    vote(user, 1) && Comment.increment_counter(:score, self.id)
+  def vote_for(account)
+    vote(account, 1) && Comment.increment_counter(:score, self.id)
   end
 
-  def vote_against(user)
-    vote(user, -1) && Comment.decrement_counter(:score, self.id)
+  def vote_against(account)
+    vote(account, -1) && Comment.decrement_counter(:score, self.id)
   end
 
-  def vote(user, value)
-    key = "comments/#{self.id}/votes/#{user.id}"
+  def vote(account, value)
+    key = "comments/#{self.id}/votes/#{account.id}"
     return false if $redis.getset(key , value)
     $redis.expire(key, 7776000) # 3 months
     $redis.incrby("users/#{self.user_id}/diff_karma", value)
-    Account.decrement_counter(:nb_votes, user.account.id)
+    Account.decrement_counter(:nb_votes, account.id)
     true
   end
 

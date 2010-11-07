@@ -24,7 +24,7 @@ module NodeHelper
     cp.record = record
     cp.css_class = 'content '
     cp.css_class << record.class.name.downcase
-    cp.css_class << ' new-content' if current_user && record.node.read_status(current_user) == :not_read
+    cp.css_class << ' new-content' if current_account && record.node.read_status(current_account) == :not_read
     yield cp
     cp.meta ||= posted_by(record)
     cp.body ||= sanitize(ContentPresenter.collection? ?
@@ -81,8 +81,8 @@ module NodeHelper
   def read_it(content)
     link = link_to_unless_current("Lire la suite", url_for_content(content)) { "" }
     nb_comments = pluralize(content.node.try(:comments_count), "commentaire")
-    if current_user
-      visit = case content.node.read_status(current_user)
+    if current_account
+      visit = case content.node.read_status(current_account)
               when :not_read     then ", non visité"
               when :new_comments then ", Nouveaux !"
               else                    ", déjà visité"

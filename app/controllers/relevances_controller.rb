@@ -5,7 +5,7 @@ class RelevancesController < ApplicationController
   before_filter :load_comment
 
   def for
-    @comment.vote_for(current_user) if @comment.votable_by?(current_user)
+    @comment.vote_for(current_account) if @comment.votable_by?(current_account)
     respond_to do |wants|
       wants.html { redirect_to :back }
       wants.js   { render :text => "Merci pour votre vote" }
@@ -13,7 +13,7 @@ class RelevancesController < ApplicationController
   end
 
   def against
-    @comment.vote_against(current_user) if @comment.votable_by?(current_user)
+    @comment.vote_against(current_account) if @comment.votable_by?(current_account)
     respond_to do |wants|
       wants.html { redirect_to :back }
       wants.js   { render :text => "Merci pour votre vote" }

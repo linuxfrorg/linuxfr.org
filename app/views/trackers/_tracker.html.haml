@@ -1,4 +1,4 @@
 = article_for tracker do |c|
   - c.title = link_to "#{tracker.category_title} : #{tracker.title}", tracker
-  - if current_user && current_user.can_update?(tracker)
+  - if current_account && current_account.can_update?(tracker)
     - c.actions = link_to("Modifier", "/suivi/#{tracker.to_param}/modifier", :class => 'action')

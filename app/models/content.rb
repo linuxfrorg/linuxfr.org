@@ -10,7 +10,7 @@ class Content < ActiveRecord::Base
   has_one :user, :through => :node
   has_many :comments, :through => :node
 
-  delegate :score, :user_id, :to => :node
+  delegate :score, :to => :node
 
   scope :with_node_ordered_by, lambda {|order| joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
 
@@ -31,35 +31,36 @@ class Content < ActiveRecord::Base
 
 ### ACL ###
 
-  def viewable_by?(user)
-    !deleted? || (user && user.admin?)
+  def viewable_by?(account)
+    !deleted? || account.try(:admin?)
   end
 
-  def creatable_by?(user)
-    user
+  def creatable_by?(account)
+    account
   end
 
-  def updatable_by?(user)
-    user
+  def updatable_by?(account)
+    account
   end
 
-  def destroyable_by?(user)
-    user
+  def destroyable_by?(account)
+    account
   end
 
-  def commentable_by?(user)
-    user && viewable_by?(user) && (Time.now - created_at) < 3.months
+  def commentable_by?(account)
+    account && viewable_by?(account) && (Time.now - created_at) < 3.months
   end
 
-  def votable_by?(user)
-    user && !deleted? && self.user != user &&
-        (Time.now - created_at) < 3.months &&
-        user.account.nb_votes > 0          &&
-        !node.vote_by?(user.id)
+  def votable_by?(account)
+    account && !deleted?                      &&
+        self.user != account.user             &&
+        (Time.now - created_at) < 3.months    &&
+        (account.nb_votes > 0 || acount.amr?) &&
+        !node.vote_by?(account.id)
   end
 
-  def taggable_by?(user)
-    user && !deleted? && viewable_by?(user)
+  def taggable_by?(account)
+    account && !deleted? && viewable_by?(account)
   end
 
 ### Workflow ###

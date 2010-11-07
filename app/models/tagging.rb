@@ -10,6 +10,8 @@
 #  created_at :datetime
 #
 
+# TODO user_id should be account_id in fact!
+
 class Tagging < ActiveRecord::Base
   belongs_to :tag, :counter_cache => true
   belongs_to :node

@@ -110,13 +110,13 @@ class Board
 ### ACL ###
 
   # Can the given user see messages (and post) on this board?
-  def viewable_by?(user)
-    return false unless user
+  def viewable_by?(account)
+    return false unless account
     case @object_type
-    when Board.news    then user.amr?
-    when Board.amr     then user.amr?
-    when Board.writing then user.can_post_on_board?
-    when Board.free    then user.can_post_on_board?
+    when Board.news    then account.amr?
+    when Board.amr     then account.amr?
+    when Board.writing then account.can_post_on_board?
+    when Board.free    then account.can_post_on_board?
                        else false
     end
   end

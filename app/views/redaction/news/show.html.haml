@@ -20,5 +20,5 @@
       = render :partial => 'redaction/paragraphs/paragraph', :collection => @news.paragraphs.in_second_part
 
 = button_to "Soumettre la dépêche", submit_redaction_news_path(@news)
-- if current_user.amr?
+- if current_account.amr?
   = button_to "Supprimer tous les locks", clear_locks_moderation_news_path(@news), :class => 'ajax'

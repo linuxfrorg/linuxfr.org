@@ -5,7 +5,7 @@ class VotesController < ApplicationController
   before_filter :load_node
 
   def for
-    @node.vote_for(current_user) if @node.content.votable_by?(current_user)
+    @node.vote_for(current_account) if @node.content.votable_by?(current_account)
     respond_to do |wants|
       wants.html { redirect_to_content @node.content }
       wants.js   { render :text => "Merci pour votre vote" }
@@ -13,7 +13,7 @@ class VotesController < ApplicationController
   end
 
   def against
-    @node.vote_against(current_user) if @node.content.votable_by?(current_user)
+    @node.vote_against(current_account) if @node.content.votable_by?(current_account)
     respond_to do |wants|
       wants.html { redirect_to_content @node.content }
       wants.js   { render :text => "Merci pour votre vote" }

@@ -1,11 +1,11 @@
 %p
   = link_to "Retourner au contenu associé", url_for_content(@comment.content)
 
-- if current_user
-  - if current_user.can_update?(@comment)
+- if current_account
+  - if current_account.can_update?(@comment)
     %p
       = link_to "Modifier ce commentaire", "/nodes/#{@comment.node_id}/comments/#{@comment.id}/modifier"
-  - if current_user.can_destroy?(@comment)
+  - if current_account.can_destroy?(@comment)
     %p
       = button_to "Supprimer ce commentaire", [@comment.node, @comment], :method => :delete
 

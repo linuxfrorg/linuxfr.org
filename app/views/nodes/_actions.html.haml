@@ -1,7 +1,7 @@
-- if current_user
-  - if current_user.can_tag?(node.content)
+- if current_account
+  - if current_account.can_tag?(node.content)
     = link_to "Tagger", "/nodes/#{node.id}/tags/nouveau", :class => 'action'
-  - if current_user.can_vote?(node.content)
+  - if current_account.can_vote?(node.content)
     %div.vote
       Ce contenu est-il #{button_to "pertinent", "/nodes/#{node.id}/vote/for", :remote => true}
       ou #{button_to "inutile", "/nodes/#{node.id}/vote/against", :remote => :true} ?

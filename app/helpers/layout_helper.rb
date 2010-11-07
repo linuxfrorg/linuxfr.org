@@ -2,8 +2,8 @@ module LayoutHelper
 
   def body_attr
     classes = %w(js-off)
-    classes << 'logged' if current_user
-    classes << current_user.role if current_user
+    classes << 'logged' if current_account
+    classes << current_account.role if current_account
     classes << Rails.env if Rails.env != 'production'
     { :class => classes.join(' '), :id => "#{controller.controller_name}-#{controller.action_name}" }
   end

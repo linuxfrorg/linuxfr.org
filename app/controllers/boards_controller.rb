@@ -13,7 +13,7 @@ class BoardsController < ApplicationController
 
   def create
     board = Board.new(params[:board])
-    board.user = current_user
+    board.user = current_account.user
     enforce_view_permission(board)
     board.message    = board_auto_link(board.message)
     board.user_agent = request.user_agent

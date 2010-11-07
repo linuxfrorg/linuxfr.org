@@ -23,7 +23,7 @@ class NewsController < ApplicationController
   def create
     @news = News.new
     @news.attributes   = params[:news]
-    @news.author_name  = current_account.name  if current_user
+    @news.author_name  = current_account.name  if current_account
     @news.author_email = current_account.email if current_account
     if !preview_mode && @news.save
       @news.submit!
@@ -43,7 +43,7 @@ protected
   end
 
   def marked_as_read
-    current_user.read(@news.node)
+    current_account.read(@news.node)
   end
 
 end

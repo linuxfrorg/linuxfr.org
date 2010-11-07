@@ -1,6 +1,6 @@
 = messages_on_error @news
 
-- unless current_user
+- unless current_account
   %p
     = form.label :author_name, "Votre nom"
     = form.text_field :author_name, :autocomplete => 'on', :required => 'required'

@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
     @comment = @node.comments.build
     enforce_create_permission(@comment)
     @comment.attributes = params[:comment]
-    @comment.user = current_user
+    @comment.user = current_account.user
     if !preview_mode && @comment.save
       flash[:notice] = "Votre commentaire a bien été posté"
       redirect_to_content @node.content

@@ -57,7 +57,7 @@ protected
   end
 
   def marked_as_read
-    current_user.read(@poll.node)
+    current_account.read(@poll.node)
   end
 
   def enforce_answer_permission(poll)

@@ -7,6 +7,7 @@
 #  id                   :integer(4)      not null, primary key
 #  user_id              :integer(4)
 #  login                :string(40)      not null
+#  role                 :string(255)     default("moule"), not null
 #  karma                :integer(4)      default(20), not null
 #  nb_votes             :integer(4)      default(0), not null
 #  stylesheet           :string(255)
@@ -32,6 +33,13 @@
 # The accounts are the private informations about users.
 # A user wth an account can login, change its password
 # and do many other things on the site.
+#
+# There are several levels of users:
+#   * anonymous     -> they have no account and can only read public contents
+#   * authenticated -> they can read public contents and submit new ones
+#   * reviewer      -> they can review the news while they are in moderation
+#   * moderator     -> they makes the order and the security ruling
+#   * admin         -> the almighty users
 #
 class Account < ActiveRecord::Base
   belongs_to :user, :inverse_of => :account
@@ -98,6 +106,45 @@ class Account < ActiveRecord::Base
     account.password = account.password_confirmation = password
     account.old_password = nil
     account.save
+  end
+
+### Role ###
+
+  scope :reviewer,  where(:role => "reviewer")
+  scope :moderator, where(:role => "moderator")
+  scope :admin,     where(:role => "admin")
+  scope :amr,       where(:role => %w[admin moderator reviewer])
+
+  state_machine :role, :initial => :moule do
+    event :inactivate            do transition all                 => :inactive  end
+    event :reactivate            do transition :inactive           => :moule     end
+    event :give_writer_rights    do transition [:moule, :reviewer] => :writer    end
+    event :give_reviewer_rights  do transition all - :inactive     => :reviewer  end
+    event :give_moderator_rights do transition [:reviewer, :admin] => :moderator end
+    event :give_admin_rights     do transition :moderator          => :admin     end
+  end
+
+  # An AMR is someone who is either an admin, a moderator or a reviewer
+  def amr?
+    admin? || moderator? || reviewer?
+  end
+
+  def active?
+    role != 'inactive'
+  end
+
+### Actions ###
+
+  def can_post_on_board?
+    active?
+  end
+
+  def tag(node, tags)
+    node.set_taglist(tags, user_id)
+  end
+
+  def read(node)
+    node.read_by(self.id)
   end
 
 ### Karma ###

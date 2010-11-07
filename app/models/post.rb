@@ -48,12 +48,12 @@ class Post < Content
 
 ### ACL ###
 
-  def updatable_by?(user)
-    user && (user.id == user_id || user.moderator? || user.admin?)
+  def updatable_by?(account)
+    account && (node.user_id == account.user_id || account.moderator? || account.admin?)
   end
 
-  def destroyable_by?(user)
-    user && (user.moderator? || user.admin?)
+  def destroyable_by?(account)
+    account && (account.moderator? || account.admin?)
   end
 
 end

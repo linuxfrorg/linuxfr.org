@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     @post = Post.new
     enforce_create_permission(@post)
     @post.attributes = params[:post]
-    @post.owner_id = current_user.id
+    @post.owner_id = current_account.user_id
     if !preview_mode && @post.save
       redirect_to forum_posts_url(:forum_id => @post.forum_id), :notice => "Votre message a bien été créé"
     else
@@ -70,7 +70,7 @@ protected
   end
 
   def marked_as_read
-    current_user.read(@post.node)
+    current_account.read(@post.node)
   end
 
 end

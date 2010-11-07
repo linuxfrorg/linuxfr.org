@@ -3,6 +3,7 @@ class CreateAccounts < ActiveRecord::Migration
     create_table :accounts do |t|
       t.references :user
       t.string   :login, :limit => 40,  :null => false
+      t.string   :role,  :limit => 10,  :null => false, :default => 'moule'
       t.integer  :karma,                :null => false, :default => 20
       t.integer  :nb_votes,             :null => false, :default => 0
       t.string   :stylesheet
@@ -19,6 +20,7 @@ class CreateAccounts < ActiveRecord::Migration
 
     add_index :accounts, :user_id
     add_index :accounts, :login
+    add_index :accounts, :role
     add_index :accounts, :email,                :unique => true
     add_index :accounts, :confirmation_token,   :unique => true
     add_index :accounts, :reset_password_token, :unique => true

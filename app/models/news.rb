@@ -171,7 +171,7 @@ class News < Content
 
   def create_node(attrs={}, replace_existing=true)
     account = Account.find_by_email(author_email)
-    self.owner_id = account.user_id if account
+    self.owner_id = account.try(:user_id)
     attrs[:public] = false
     super attrs, replace_existing
   end
@@ -179,44 +179,44 @@ class News < Content
 ### ACL ###
 
   def self.accept_threshold
-    User.amr.count / 5
+    Account.amr.count / 5
   end
 
   def self.refuse_threshold
-    -User.amr.count / 4
+    -Account.amr.count / 4
   end
 
-  def viewable_by?(user)
-    published? || (user && (user.amr? || (draft? && user.writer)))
+  def viewable_by?(account)
+    published? || (account && draft? && account.writer) || account.try(:amr?)
   end
 
-  def creatable_by?(user)
+  def creatable_by?(account)
     true
   end
 
-  def updatable_by?(user)
-    return false unless user
-    published? ? (user.moderator? || user.admin?) : viewable_by?(user)
+  def updatable_by?(account)
+    return false unless account
+    published? ? (account.moderator? || account.admin?) : viewable_by?(account)
   end
 
-  def destroyable_by?(user)
-    user && (user.moderator? || user.admin?)
+  def destroyable_by?(account)
+    account && (account.moderator? || account.admin?)
   end
 
-  def acceptable_by?(user)
-    user && (user.moderator? || user.admin?) && score > News.accept_threshold
+  def acceptable_by?(account)
+    account && (account.moderator? || account.admin?) && score > News.accept_threshold
   end
 
-  def refusable_by?(user)
-    user && (user.moderator? || user.admin?) && score < News.refuse_threshold
+  def refusable_by?(account)
+    account && (account.moderator? || account.admin?) && score < News.refuse_threshold
   end
 
-  def pppable_by?(user)
-    user && (user.moderator? || user.admin?) && published?
+  def pppable_by?(account)
+    account && (account.moderator? || account.admin?) && published?
   end
 
-  def votable_by?(user)
-    super(user) || (user && user.amr? && !draft? && self.user != user)
+  def votable_by?(account)
+    super(account) || (account && account.amr? && !draft? && self.user != account.user)
   end
 
 ### Locks ###

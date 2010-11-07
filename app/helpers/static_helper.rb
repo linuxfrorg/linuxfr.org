@@ -4,15 +4,15 @@ module StaticHelper
   end
 
   def helper_admin_list
-    User.admin.all.map { |user| link_to user.name, user }.to_sentence
+    Account.admin.all.map { |a| user = a.user; link_to user.name, user }.to_sentence
   end
 
   def helper_moderator_list
-    User.moderator.all.map { |user| link_to user.name, user }.to_sentence
+    Account.moderator.all.map { |a| user = a.user; link_to user.name, user }.to_sentence
   end
 
   def helper_reviewer_list
-    User.reviewer.all.map { |user| link_to user.name, user }.to_sentence
+    Account.reviewer.all.map { |a| user = a.user; link_to user.name, user }.to_sentence
   end
 
   def helper_responses_list

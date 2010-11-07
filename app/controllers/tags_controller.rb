@@ -13,7 +13,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    current_user.tag(@node, params[:tags])
+    current_account.tag(@node, params[:tags])
     redirect_to_content @node.content
   end
 
@@ -21,7 +21,7 @@ class TagsController < ApplicationController
   def index
     @nodes = Node.paginate(:select => "DISTINCT nodes.*",
                            :joins => [:taggings],
-                           :conditions => {"taggings.user_id" => current_user.id,
+                           :conditions => {"taggings.user_id" => current_account.user_id,
                                            "nodes.public"     => true},
                            :order => @order,
                            :page => params[:page],
@@ -32,7 +32,7 @@ class TagsController < ApplicationController
   def show
     @nodes = Node.paginate(:select => "DISTINCT nodes.*",
                            :joins => [:taggings],
-                           :conditions => {"taggings.user_id" => current_user.id,
+                           :conditions => {"taggings.user_id" => current_account.user_id,
                                            "taggings.tag_id"  => @tag.id,
                                            "nodes.public"     => true},
                            :order => @order,

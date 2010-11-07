@@ -45,40 +45,40 @@ class Node < ActiveRecord::Base
 
 ### Votes ###
 
-  def vote_by?(user_id)
-    $redis.exists("nodes/#{self.id}/votes/#{user_id}")
+  def vote_by?(account_id)
+    $redis.exists("nodes/#{self.id}/votes/#{account_id}")
   end
 
-  def vote_for(user)
-    vote(user, 1)
+  def vote_for(account)
+    vote(account, 1)
   end
 
-  def vote_against(user)
-    vote(user, -1)
+  def vote_against(account)
+    vote(account, -1)
   end
 
-  def vote(user, value)
-    key  = "nodes/#{self.id}/votes/#{user.id}"
+  def vote(account, value)
+    key  = "nodes/#{self.id}/votes/#{account.id}"
     prev = $redis.getset(key , value)
     return if prev.to_i == value
     value *= 2 if prev
     $redis.expire(key, 7776000) # 3 months
     $redis.incrby("users/#{self.user_id}/diff_karma", value)
-    Account.decrement_counter(:nb_votes, user.account.id) unless user.amr?
+    Account.decrement_counter(:nb_votes, account.id) unless account.amr?
     connection.update_sql("UPDATE nodes SET score=score + #{value} WHERE id=#{self.id}")
     compute_interest
-    vote_on_candidate_news(value, user) if content_type == "News" && content.candidate?
+    vote_on_candidate_news(value, account) if content_type == "News" && content.candidate?
   end
 
-  def vote_on_candidate_news(value, user)
+  def vote_on_candidate_news(value, account)
     word = value > 0 ? "pour" : "contre"
-    who  = user.account.login
+    who  = account.login
     if value.abs == 2
       $redis.lrem("nodes/#{self.id}/pour", 1, who)
       $redis.lrem("nodes/#{self.id}/contre", 1, who)
     end
     $redis.rpush("nodes/#{self.id}/#{word}", who)
-    Board.create_for(content, :user => user, :kind => "vote", :message => "#{who} a voté #{word}")
+    Board.create_for(content, :user => account.user, :kind => "vote", :message => "#{who} a voté #{word}")
   end
 
   def voters_for
@@ -97,31 +97,31 @@ class Node < ActiveRecord::Base
 
 ### Readings ###
 
-  def read_by(user_id)
-    $redis.set("readings/#{self.id}/#{user_id}", Time.now.to_i)
-    $redis.expire("readings/#{self.id}/#{user_id}", 7776000) # 3 months
+  def read_by(account_id)
+    $redis.set("readings/#{self.id}/#{account_id}", Time.now.to_i)
+    $redis.expire("readings/#{self.id}/#{account_id}", 7776000) # 3 months
   end
 
-  def self.last_reading(node_id, user_id)
-    time = $redis.get("readings/#{node_id}/#{user_id}")
+  def self.last_reading(node_id, account_id)
+    time = $redis.get("readings/#{node_id}/#{account_id}")
     time && Time.at(time.to_i)
   end
 
-  def read_status(user)
-    r = Node.last_reading(self.id, user.id) if user
-    return :not_read if r.nil?
-    return :no_comments if last_commented_at.nil?
+  def read_status(account)
+    r = Node.last_reading(self.id, account.id) if account
+    return :not_read     if r.nil?
+    return :no_comments  if last_commented_at.nil?
     return :new_comments if r < last_commented_at
     return :read
   end
 
 ### Tags ###
 
-  def set_taglist(list, user)
+  def set_taglist(list, user_id)
     self.class.transaction do
       TagList.new(list).each do |tagname|
         tag = Tag.find_or_create_by_name(tagname)
-        taggings.create(:tag_id => tag.id, :user_id => user.id)
+        taggings.create(:tag_id => tag.id, :user_id => user_id)
       end
     end
   end

@@ -69,7 +69,7 @@ protected
   end
 
   def marked_as_read
-    current_user.read(@diary.node)
+    current_account.read(@diary.node)
   end
 
   def expire_cache
