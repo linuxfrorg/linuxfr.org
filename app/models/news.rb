@@ -188,7 +188,7 @@ class News < Content
   end
 
   def viewable_by?(account)
-    published? || (account && draft? && account.writer) || account.try(:amr?)
+    published? || (account && draft? && account.writer?) || account.try(:amr?)
   end
 
   def creatable_by?(account)
