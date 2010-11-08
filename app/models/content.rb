@@ -52,10 +52,10 @@ class Content < ActiveRecord::Base
   end
 
   def votable_by?(account)
-    account && !deleted?                      &&
-        self.user != account.user             &&
-        (Time.now - created_at) < 3.months    &&
-        (account.nb_votes > 0 || acount.amr?) &&
+    account && !deleted?                       &&
+        self.user != account.user              &&
+        (Time.now - created_at) < 3.months     &&
+        (account.nb_votes > 0 || account.amr?) &&
         !node.vote_by?(account.id)
   end
 

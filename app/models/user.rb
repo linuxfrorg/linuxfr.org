@@ -20,8 +20,6 @@
 # See accounts for the private ones, like authentication.
 #
 class User < ActiveRecord::Base
-  include Canable::Cans
-
   has_one  :account, :dependent => :destroy, :inverse_of => :user
   has_many :nodes, :inverse_of => :user
   has_many :diaries, :dependent => :destroy, :inverse_of => :owner, :foreign_key => "owner_id"

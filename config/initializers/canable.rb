@@ -1,15 +1,18 @@
 # Monkey-patching of canable to use current_account instead of current_user
-def Canable.add_enforcer_method(can)
-  Enforcers.module_eval <<-EOM
-    def can_#{can}?(resource)
-      current_account.can_#{can}?(resource)
-    end
+require 'canable'
+module Canable
+  def self.add_enforcer_method(can)
+    Enforcers.module_eval <<-EOM
+      def can_#{can}?(resource)
+        current_account.can_#{can}?(resource)
+      end
 
-    def enforce_#{can}_permission(resource)
-      raise Canable::Transgression unless can_#{can}?(resource)
-    end
-    private :enforce_#{can}_permission
-  EOM
+      def enforce_#{can}_permission(resource)
+        raise Canable::Transgression unless can_#{can}?(resource)
+      end
+      private :enforce_#{can}_permission
+    EOM
+  end
 end
 
 Canable.add(:view,    :viewable)

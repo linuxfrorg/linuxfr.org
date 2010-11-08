@@ -42,6 +42,8 @@
 #   * admin         -> the almighty users
 #
 class Account < ActiveRecord::Base
+  include Canable::Cans
+
   belongs_to :user, :inverse_of => :account
   accepts_nested_attributes_for :user, :reject_if => proc { |attrs| attrs['user'].blank? }
 

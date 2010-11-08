@@ -1,10 +1,11 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of Active Record to incrementally modify your database, and
-# then regenerate this schema definition.
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your database schema. If you need
-# to create the application database on another system, you should be using db:schema:load, not running
-# all the migrations from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
@@ -13,14 +14,15 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
-    t.string   "login",                :limit => 40,                  :null => false
-    t.integer  "karma",                               :default => 20, :null => false
-    t.integer  "nb_votes",                            :default => 0,  :null => false
+    t.string   "login",                :limit => 40,                       :null => false
+    t.string   "role",                 :limit => 10,  :default => "moule", :null => false
+    t.integer  "karma",                               :default => 20,      :null => false
+    t.integer  "nb_votes",                            :default => 0,       :null => false
     t.string   "stylesheet"
     t.string   "old_password",         :limit => 20
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "email",                               :default => "",      :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "",      :null => false
+    t.string   "password_salt",                       :default => "",      :null => false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -69,7 +71,7 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
 
   add_index "comments", ["node_id"], :name => "index_comments_on_node_id"
   add_index "comments", ["state", "created_at"], :name => "index_comments_on_state_and_created_at"
-  add_index "comments", ["state", "materialized_path", "created_at"], :name => "index_comments_on_state_and_materialized_path_and_created_at", :length => {"created_at"=>nil, "materialized_path"=>"255", "state"=>nil}
+  add_index "comments", ["state", "materialized_path", "created_at"], :name => "index_comments_on_state_and_materialized_path_and_created_at", :length => {"state"=>nil, "materialized_path"=>255, "created_at"=>nil}
   add_index "comments", ["user_id", "answered_to_self"], :name => "index_comments_on_user_id_and_answered_to_self"
 
   create_table "diaries", :force => true do |t|
@@ -119,15 +121,15 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
   add_index "links", ["news_id"], :name => "index_links_on_news_id"
 
   create_table "news", :force => true do |t|
-    t.string   "state",        :default => "draft", :null => false
+    t.string   "state",                            :default => "draft", :null => false
     t.string   "title"
     t.string   "cached_slug"
     t.text     "body"
-    t.text     "second_part"
+    t.text     "second_part",  :limit => 16777215
     t.integer  "moderator_id"
     t.integer  "section_id"
-    t.string   "author_name",                       :null => false
-    t.string   "author_email",                      :null => false
+    t.string   "author_name",                                           :null => false
+    t.string   "author_email",                                          :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -289,7 +291,6 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
     t.string   "name",                :limit => 100
     t.string   "homesite"
     t.string   "jabber_id"
-    t.string   "role",                               :default => "moule", :null => false
     t.string   "cached_slug"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
