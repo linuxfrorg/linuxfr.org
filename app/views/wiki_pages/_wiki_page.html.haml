@@ -1,3 +1,5 @@
 = article_for wiki_page do |c|
   - c.title = "#{link_to "Wiki", "/wiki"} #{link_to wiki_page.title, wiki_page}".html_safe
   - c.body  = sanitize(wiki_page.body)
+  - if current_account && current_account.can_update?(wiki_page)
+    - c.actions = link_to("Modifier", "/wiki/#{wiki_page.to_param}/modifier", :class => 'action')
