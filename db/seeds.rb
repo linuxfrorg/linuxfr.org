@@ -71,11 +71,11 @@ end
 Account.reset_column_information
 anon = Account.new
 anon.login = "Anonyme"
+anon.role  = "inactive"
 anon.email = "anonyme@linuxfr.org"
 anon.encrypted_password = "XXX"
 anon.skip_confirmation!
 anon.save
-anon.user.update_attribute(:role, 'inactive')
 
 # Wiki
 wp = WikiPage.new
