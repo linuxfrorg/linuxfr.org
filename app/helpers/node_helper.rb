@@ -22,9 +22,9 @@ module NodeHelper
   def article_for(record)
     cp = ContentPresenter.new
     cp.record = record
-    cp.css_class = 'content '
+    cp.css_class = 'node '
     cp.css_class << record.class.name.downcase
-    cp.css_class << ' new-content' if current_account && record.node.read_status(current_account) == :not_read
+    cp.css_class << ' new-node' if current_account && record.node.read_status(current_account) == :not_read
     yield cp
     cp.meta ||= posted_by(record)
     cp.body ||= sanitize(ContentPresenter.collection? ?
@@ -56,7 +56,7 @@ module NodeHelper
   end
 
   def paginated_section(args, link=nil, &block)
-    toolbox    = link ? content_tag(:div, link, :class => 'new-content') : ''.html_safe
+    toolbox    = link ? content_tag(:div, link, :class => 'new_content') : ''.html_safe
     order_bar  = render 'shared/order_navbar'
     pagination = will_paginate(args).to_s
     before = content_tag(:nav, toolbox + order_bar + pagination, :class => "toolbox")

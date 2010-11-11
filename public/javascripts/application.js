@@ -52,10 +52,10 @@
     /* Show the toolbar */
     if ($('body').hasClass('logged')) {
         if ($('#comments').length > 0) {
-            $('#comments .new_comment').toolbar('Nouveaux commentaires', {folding: '#comments .comment'});
+            $('#comments .new-comment').toolbar('Nouveaux commentaires', {folding: '#comments .comment'});
         }
-        if ($('#contents').length > 0) {
-            $('#contents .new_content').toolbar('Contenus pas encore visités');
+        if ($('#contents .node').length > 1) {
+            $('#contents .new-node').toolbar('Contenus pas encore visités');
         }
     }
 
