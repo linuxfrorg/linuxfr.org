@@ -43,7 +43,7 @@ class TagsController < ApplicationController
   # Show all the nodes tagged with the given tag
   def public
     @order = (params[:order] || "created_at") + " DESC"
-    @nodes = @tag.nodes.paginate(:page => params[:page], :per_page => 15, :order => @order)
+    @nodes = @tag.nodes.where("nodes.public" => true).paginate(:page => params[:page], :per_page => 15, :order => @order)
   end
 
 protected
