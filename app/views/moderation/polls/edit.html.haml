@@ -1,4 +1,7 @@
 =h1 "Éditer un sondage"
 
+= button_to "Publier", accept_moderation_poll_path(@poll)
+= button_to "Refuser", refuse_moderation_poll_path(@poll)
+
 = form_for [:moderation, setup_poll(@poll)] do |form|
   = render form
