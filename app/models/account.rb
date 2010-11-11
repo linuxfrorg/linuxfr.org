@@ -87,7 +87,7 @@ class Account < ActiveRecord::Base
                     :uniqueness => { :message => "Cette adresse de courriel est déjà utilisée", :case_sensitive => false, :allow_blank => true },
                     :format     => { :message => "L'adresse de courriel n'est pas valide", :with => EMAIL_REGEXP, :allow_blank => true }
 
-  validates :password, :presence     => { :message => "Le mot de passe est absent" },
+  validates :password, :presence     => { :message => "Le mot de passe est absent", :on => :create },
                        :confirmation => { :message => "La confirmation du mot de passe ne correspond pas au mot de passe" }
 
 ### Password ###
