@@ -29,6 +29,6 @@ class Banner < ActiveRecord::Base
   end
 
   def content
-    read_attribute(:content).html_safe
+    read_attribute(:content).to_s.html_safe
   end
 end
