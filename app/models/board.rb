@@ -116,9 +116,13 @@ class Board
     when Board.news    then account.amr?
     when Board.amr     then account.amr?
     when Board.writing then account.can_post_on_board?
-    when Board.free    then account.can_post_on_board?
+    when Board.free    then true
                        else false
     end
+  end
+
+  def creatable_by?(account)
+    account.can_post_on_board? && viewable_by?(account)
   end
 
 ### Types ###

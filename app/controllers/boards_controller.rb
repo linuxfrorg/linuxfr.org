@@ -1,20 +1,18 @@
 class BoardsController < ApplicationController
-  before_filter :authenticate_account!
   after_filter :expire_cache, :only => [:create]
   caches_page :show, :if => Proc.new { |c| c.request.format.xml? }
-  respond_to :html, :atom
+  respond_to :html, :xml
 
   def show
     @boards = Board.all(Board.free)
     @board  = @boards.build
-    enforce_view_permission(@board)
     respond_with(@boards)
   end
 
   def create
     board = Board.new(params[:board])
-    board.user = current_account.user
-    enforce_view_permission(board)
+    board.user       = current_account.user
+    enforce_create_permission(board)
     board.message    = board_auto_link(board.message)
     board.user_agent = request.user_agent
     board.save

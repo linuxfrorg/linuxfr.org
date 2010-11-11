@@ -56,7 +56,8 @@ LinuxfrOrg::Application.routes.draw do
   # Boards
   controller :boards do
     post "/board" => :create, :as => :board
-    get  "/board(.:format)" => :show
+    get  "/board" => :show
+    get  "/board/index.xml" => :show, :format => :xml
   end
 
   # Accounts
