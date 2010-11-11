@@ -62,7 +62,8 @@ protected
       if code.lines.all? { |line| line =~ /\A\r?\n\Z/ || line =~ /^(  |\t)/ }
         code.gsub!(/^(  |\t)/m, '')
       end
-      data.gsub!(id, Albino.new(code, lang).colorize)
+      output = Albino.new(code, lang).colorize(:P => "nowrap")
+      data.gsub!(id, "<pre><code class=\"#{lang}\">#{output}</code></pre>")
     end
     data
   end

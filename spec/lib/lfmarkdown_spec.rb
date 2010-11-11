@@ -50,6 +50,6 @@ class Ruby
 end
 ```
 EOS
-    md.to_html.should == "<p>Mon joli code :\n<div class=\"highlight\"><pre><span class=\"k\">class</span> <span class=\"nc\">Ruby</span>\n<span class=\"k\">end</span>\n</pre></div></p>\n"
+    md.to_html.should == "<p>Mon joli code :\n<pre><code class=\"ruby\"><span class=\"k\">class</span> <span class=\"nc\">Ruby</span>\n<span class=\"k\">end</span></code></pre></p>\n"
   end
 end
