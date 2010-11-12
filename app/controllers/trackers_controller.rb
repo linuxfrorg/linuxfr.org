@@ -14,7 +14,7 @@ class TrackersController < ApplicationController
 
   def comments
     @comments = Comment.published.joins(:node).where('nodes.content_type' => 'Tracker').limit(20)
-    @title    = 'le tracker'
+    @feed_for = 'le tracker'
     respond_to do |wants|
       wants.atom { render 'comments/index' }
     end
