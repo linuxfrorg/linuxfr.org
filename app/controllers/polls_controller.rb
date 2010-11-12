@@ -30,7 +30,7 @@ class PollsController < ApplicationController
     @poll = Poll.new
     enforce_create_permission(@poll)
     @poll.attributes = params[:poll]
-    @post.owner_id = current_account.user_id
+    @poll.owner_id = current_account.user_id
     if !preview_mode && @poll.save
       redirect_to polls_url, :notice => "L'équipe de modération de LinuxFr.org vous remercie pour votre proposition de sondage"
     else
