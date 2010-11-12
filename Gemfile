@@ -41,5 +41,6 @@ end
 
 group :production do
   gem "unicorn",               "~>2.0"
-  gem "redis-store",           ">=1.0.0.beta3"
+  # gem "redis-store",           ">=1.0.0.beta3"
+  gem "redis-store", :git => "git://github.com/nono/redis-store.git", :branch => "encoding_issue"
 end
