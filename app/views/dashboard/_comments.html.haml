@@ -10,14 +10,14 @@
       %th Sujet du commentaire
       %th Date
       %th Note
-      %th Nombre de réponses
+      %th Nb de réponses
       %th Dernière réponse
     - @comments.each do |comment|
       - answer = comment.last_answer
       %tr
-        %td #{comment.content_type} : #{link_to_content comment.content}
+        %td #{t "activerecord.models.#{comment.content_type.downcase}"} : #{link_to_content comment.content}
         %td= link_to comment.title, [comment.node, comment]
         %td= comment.created_at.to_s(:posted)
         %td= comment.score
         %td= comment.nb_answers
-        %td= answer && answer.created_at.to_s(:long)
+        %td= answer && answer.created_at.to_s(:posted)

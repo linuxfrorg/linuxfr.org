@@ -10,7 +10,7 @@
         document.write('<img alt="Accès sécurisé (https)" class="access" src="/images/icones/lock-secure.png" />');
       }
     - if account_signed_in?
-      %h1= current_account.login
+      %h1= link_to current_account.login, current_account.user
       %p Il vous reste #{current_account.nb_votes} avis
       %p= link_to "Proposer un contenu", '/proposer-un-contenu'
       %p= link_to "Mon tableau de bord", '/tableau-de-bord'
