@@ -12,10 +12,10 @@ module NodeHelper
     end
 
     def self.collection(&blk)
-      was, @collection = @collection, true
-      ret = yield
-      @collection = was
-      ret
+      @collection = true
+      yield
+    ensure
+      @collection = false
     end
   end
 
