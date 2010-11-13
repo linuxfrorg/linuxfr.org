@@ -16,3 +16,10 @@ a.action, time.norloge, span.content_type {
 
 footer.actions:before {
   content: ">"; }
+
+.banner {
+  text-align: center;
+  font-size: 2em;
+  border-top: 2px solid #333333;
+  border-bottom: 2px solid #333333;
+  background-color: $back_color; }
