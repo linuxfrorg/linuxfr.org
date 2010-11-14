@@ -1,17 +1,8 @@
 User-Agent: *
 Disallow: /stats
 Disallow: /nodes
-Disallow: /vote
-Disallow: /relevance
 Disallow: /board
 Disallow: /compte
-Disallow: /session
 Disallow: /redirect
-Disallow: /inscription
-Disallow: /mot-de-passe
-
-User-Agent: Twiceler
-User-Agent: Twiceler-0.9
-Disallow: /
 
 Sitemap: http://linuxfr.org/sitemap_index.xml.gz
