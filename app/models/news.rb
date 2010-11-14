@@ -37,7 +37,6 @@ class News < Content
   scope :sorted,    order("created_at DESC")
   scope :draft,     where(:state => "draft")
   scope :candidate, where(:state => "candidate")
-  scope :published, where(:state => "published")
 
   validates :title,        :presence => { :message => "Le titre est obligatoire" }
   validates :body,         :presence => { :message => "Nous n'acceptons pas les dépêches vides" }
