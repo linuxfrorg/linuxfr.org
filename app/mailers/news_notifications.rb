@@ -39,6 +39,7 @@ protected
 
   def send_email(subject, news)
     @news = news
+    headers["X-Moderator"] = news.moderator.name
     mail :to      => news.author_email,
          :subject => "[LinuxFr.org] #{subject} #{news.title}"
   end
