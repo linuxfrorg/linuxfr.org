@@ -2,4 +2,4 @@
   = content_tag(:time, board.created_at.to_s(:norloge), :class => "norloge", :datetime => board.created_at.iso8601)
   %b
     = board.user_link
-  = sanitize board.message
+  = Sanitize.clean(board.message[0,500], Board::SANITIZE_CONFIG).html_safe

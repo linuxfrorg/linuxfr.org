@@ -6,6 +6,12 @@ class Board
 
   NB_MSG_PER_CHAN = 200
 
+  SANITIZE_CONFIG = {
+    :elements   => %w(a b i u s strong em code),
+    :attributes => { 'a' => ['href'] },
+    :protocols  => { 'a' => {'href' => ['ftp', 'http', 'https', 'mailto', :relative] } }
+  }
+
 ### Constructors and attributes ###
 
   attr_accessor :id, :kind, :user_name, :user_url, :user_agent
