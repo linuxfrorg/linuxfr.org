@@ -154,7 +154,7 @@ class Account < ActiveRecord::Base
   def daily_karma
     self.karma += $redis.get("users/#{self.user_id}/diff_karma").to_i
     $redis.del("users/#{self.user_id}/diff_karma")
-    self.nb_votes = 3 + karma / 10
+    self.nb_votes = [3 + karma / 10, 100].min
     save
   end
 
