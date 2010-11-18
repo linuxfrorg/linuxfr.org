@@ -26,9 +26,9 @@
 
         base.postMessage = function() {
             var form = $(this);
-            $.post(form.attr('action'), form.serialize(), function (response) {
-                form.find("input[type=text]").val("").select();
-            });
+            var data = form.serialize();
+            form.find("input[type=text]").val("").select();
+            $.post(form.attr('action'), data);
             return false;
         };
 

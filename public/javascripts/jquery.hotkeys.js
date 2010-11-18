@@ -26,9 +26,7 @@
 		},
 	
 		shiftNums: {
-			"`": "~", "1": "!", "2": "@", "3": "#", "4": "$", "5": "%", "6": "^", "7": "&", 
-			"8": "*", "9": "(", "0": ")", "-": "_", "=": "+", ";": ": ", "'": "\"", ",": "<", 
-			".": ">",  "/": "?",  "\\": "|"
+            ",": "?", ";": ".", ":": "/", "<":">"
 		}
 	};
 
@@ -51,7 +49,7 @@
 			// Keypress represents characters, not special keys
 			var special = event.type !== "keypress" && jQuery.hotkeys.specialKeys[ event.which ],
 				character = String.fromCharCode( event.which ).toLowerCase(),
-				key, modif = "", possible = {};
+				modif = "", possible = {};
 
 			// check combinations (alt|ctrl|shift+anything)
 			if ( event.altKey && special !== "alt" ) {
