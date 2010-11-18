@@ -23,9 +23,15 @@ you are free to choose your camp.
     # aptitude install build-essential libxslt1-dev libxml2-dev
     # aptitude install aspell libaspell-dev aspell-fr
 
-2) Install rubygems from source (the debian version is too old).
-You can follow instructions of
+2) Install rubygems
+
+The rubygems package for debian lenny is too old. You can install it from
+sources, by following the instructions of
 http://railstips.org/blog/archives/2008/11/24/rubygems-yours-mine-and-ours/
+
+On later debians, just do:
+
+    # aptitude install rubygems
 
 3) Configure the database:
 
@@ -54,7 +60,7 @@ http://railstips.org/blog/archives/2008/11/24/rubygems-yours-mine-and-ours/
 
 6) Let's run it:
 
-    $ rails server
+    $ bundle exec rails server thin
     $ firefox http://127.0.0.1:3000/
 
 
