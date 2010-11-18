@@ -26,7 +26,12 @@
             var form = $(this);
             var data = form.serialize();
             form.find("input[type=text]").val("").select();
-            $.post(form.attr('action'), data);
+            $.ajax({
+                url: form.attr('action'),
+                data: data,
+                type: 'POST',
+                dataType: 'script'
+            });
             return false;
         };
 

@@ -1,4 +1,6 @@
 class BoardsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+  before_filter :verify_referer_or_authenticity_token, :only => [:create]
   after_filter :expire_cache, :only => [:create]
   caches_page :show, :if => Proc.new { |c| c.request.format.xml? }
   respond_to :html, :xml
@@ -26,6 +28,10 @@ protected
 
   def board_auto_link(msg)
     self.class.helpers.auto_link(msg, :all) { "[URL]" }
+  end
+
+  def verify_referer_or_authenticity_token
+    request.referer =~ /^https?:\/\/#{MY_DOMAIN}\// or verify_authenticity_token
   end
 
   def expire_cache
