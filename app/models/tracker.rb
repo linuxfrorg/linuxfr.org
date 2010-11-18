@@ -53,7 +53,7 @@ class Tracker < Content
 
 ### Workflow ###
 
-  States = {'Ouvert' => :opened, 'Corrigé' => :fix, 'Invalide' => :invalid}.freeze
+  States = {'Ouverte' => :opened, 'Corrigée' => :fixed, 'Invalide' => :invalid}.freeze
 
   state_machine :state, :initial => :opened do
     event :fix        do transition :opened => :fixed   end

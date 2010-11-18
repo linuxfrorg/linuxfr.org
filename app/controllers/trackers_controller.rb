@@ -34,7 +34,7 @@ class TrackersController < ApplicationController
     @tracker = Tracker.new
     enforce_create_permission(@tracker)
     @tracker.attributes = params[:tracker]
-    @tracker.owner_id = current_user.id
+    @tracker.owner_id = current_user.try(:id)
     if !preview_mode && @tracker.save
       redirect_to @tracker, :notice => "Votre entrée a bien été créée dans le suivi"
     else
@@ -49,7 +49,7 @@ class TrackersController < ApplicationController
 
   def update
     enforce_update_permission(@tracker)
-    @tracker.attributes = params[:tracker]
+    @tracker.send(:attributes=, params[:tracker], false) # Bypass the attr_accessible sanitizing
     @tracker.assigned_to_user = current_user
     if !preview_mode && @tracker.save
       redirect_to trackers_url, :notice => "Entrée du suivi modifiée"

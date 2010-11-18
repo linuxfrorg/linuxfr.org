@@ -11,4 +11,4 @@
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
 %p
   = form.submit "Prévisualiser"
-  = form.submit "Soumettre" if @preview_mode
+  = form.submit "Soumettre" if @preview_mode || @tracker.persisted?

@@ -73,7 +73,8 @@ module NodeHelper
   def posted_by(content, user_link=nil)
     user = content.user || current_user
     user_link  ||= user ? link_to(user.name, user, :rel => 'author') : 'Anonyme'
-    date_time    = content.node.try(:created_at) || Time.now
+    date_time    = content.is_a?(Comment) ? content.created_at : content.node.try(:created_at)
+    date_time  ||= Time.now
     published_at = content_tag(:time, date_time.to_s(:posted), :datetime => pubdate_for(content), :pubdate => "pubdate")
     "Posté par #{user_link} le #{published_at}.".html_safe
   end
