@@ -85,9 +85,9 @@ LinuxfrOrg::Application.routes.draw do
   namespace :redaction do
     resources :news, :except => [:new, :destroy] do
       post :submit, :on => :member
-      resources :links, :only => [:new, :create]
+      resources :links, :only => [:new]
     end
-    resources :links, :only => [:edit, :update]
+    resources :links, :only => [:create, :edit, :update]
     resources :paragraphs, :only => [:show, :edit, :update]
   end
 
