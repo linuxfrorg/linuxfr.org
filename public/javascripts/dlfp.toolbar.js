@@ -1,5 +1,3 @@
-/*global jQuery, localStorage */ 
-
 (function($) {
     $.Toolbar = function(items, text, options){
         var base = this;
@@ -72,7 +70,7 @@
             items.each(function() {
                 var item  = $(this);
                 var score = parseInt(item.find('.score:first').text(), 10);
-                var link  = item.children('h3')
+                var link  = item.children('h2')
                                 .prepend('<a href="#" class="folding" title="Plier">[-]</a>')
                                 .children('.folding');
                 var fold  = function(b) {

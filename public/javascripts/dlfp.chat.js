@@ -1,5 +1,3 @@
-/*global jQuery, $ */
-
 (function($) {
     $.Chat = function(element) {
         var base = this;

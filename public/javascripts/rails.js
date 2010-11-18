@@ -1,4 +1,3 @@
-/*global jQuery */
 /* Adapted from http://github.com/rails/jquery-ujs */
 
 (function($) {

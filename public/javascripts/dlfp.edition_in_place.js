@@ -1,5 +1,3 @@
-/*global jQuery */
-
 (function($) {
     $.EditionInPlace = function(element, creation, options) {
         var base = this;

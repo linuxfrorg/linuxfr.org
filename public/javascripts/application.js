@@ -1,5 +1,3 @@
-/*global jQuery, markItUpSettings */
-
 (function($) {
     $(".markItUp").markItUp(markItUpSettings);
 

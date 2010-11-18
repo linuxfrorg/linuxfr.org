@@ -1,5 +1,3 @@
-/*global jQuery */
-
 (function($) {
     $.NestedFields = function(el, parent, nested, text, attributes) {
         var base = this;
