@@ -2,7 +2,7 @@
 
 %p
   = form.label :forum_id, "Forum"
-  = form.select :forum_id, forums_select_list
+  = form.select :forum_id, forums_select_list, { :include_blank => true }, { :required => "required" }
 %p
   = form.label :title, "Sujet du message"
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
