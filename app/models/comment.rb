@@ -82,9 +82,11 @@ class Comment < ActiveRecord::Base
   def parent_id=(parent_id)
     @parent_id = parent_id
     return if parent_id.blank?
-    parent = Comment.find(parent_id)
-    self.title ||= parent ? "Re: #{parent.title}" : ''
+    @parent = Comment.find(parent_id)
+    self.title ||= @parent ? "Re: #{@parent.title}" : ''
   end
+
+  attr_reader :parent
 
   def depth
     (materialized_path.length / PATH_SIZE) - 1

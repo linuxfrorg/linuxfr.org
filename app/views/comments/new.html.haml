@@ -1,6 +1,8 @@
 #contents
   =h1 "Écrire un commentaire"
 
+  = render @comment.parent if @comment.parent
+
   = render "preview", :preview => @comment if @preview_mode
 
   = form_for [@node, @comment] do |form|
