@@ -4,7 +4,7 @@ module NodeHelper
   ContentPresenter = Struct.new(:record, :title, :meta, :image, :body, :actions, :css_class) do
     def to_hash
       attrs = members.map(&:to_sym)
-      Hash[*attrs.zip(values).flatten]
+      Hash[*attrs.zip(values).flatten(1)]
     end
 
     def self.collection?
@@ -22,9 +22,11 @@ module NodeHelper
   def article_for(record)
     cp = ContentPresenter.new
     cp.record = record
-    cp.css_class = 'node '
+    cp.css_class = %w(node)
+    score = [ [record.node.score / 5, -10].max, 10].min
+    cp.css_class << "score#{score}"
     cp.css_class << record.class.name.downcase
-    cp.css_class << ' new-node' if current_account && record.node.read_status(current_account) == :not_read
+    cp.css_class << 'new-node' if current_account && record.node.read_status(current_account) == :not_read
     yield cp
     cp.meta ||= posted_by(record)
     cp.body ||= sanitize(ContentPresenter.collection? ?
