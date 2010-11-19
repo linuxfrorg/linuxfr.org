@@ -53,7 +53,7 @@ class Tracker < Content
 
 ### Workflow ###
 
-  States = {'Ouverte' => :opened, 'Corrigée' => :fixed, 'Invalide' => :invalid}.freeze
+  States = { "opened" => "Ouverte", "fixed" => "Corrigée", "invalid" => "Invalide" }.freeze
 
   state_machine :state, :initial => :opened do
     event :fix        do transition :opened => :fixed   end
@@ -62,6 +62,10 @@ class Tracker < Content
   end
 
 ### Presentation ###
+
+  def state_name
+    States[state].downcase
+  end
 
   def category_title
     category.try(:title) || 'Suivi'

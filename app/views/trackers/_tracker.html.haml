@@ -1,4 +1,7 @@
 = article_for tracker do |c|
   - c.title = link_to "#{tracker.category_title} : #{tracker.title}", tracker
+  - c.meta = capture do
+    = posted_by(tracker)
+    État de l'entrée : #{tracker.state_name}
   - if current_account && current_account.can_update?(tracker)
     - c.actions = link_to("Modifier", "/suivi/#{tracker.to_param}/modifier", :class => 'action')

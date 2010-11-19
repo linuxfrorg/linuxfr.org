@@ -9,7 +9,7 @@
   = form_for @tracker do |form|
     %p
       = form.label :state, "État"
-      = form.select :state, Tracker::States
+      = form.select :state, Tracker::States.invert
     = render form
 
   = render 'shared/wiki_help'
