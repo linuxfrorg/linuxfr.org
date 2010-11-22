@@ -152,11 +152,11 @@ class Comment < ActiveRecord::Base
   end
 
   def vote_for(account)
-    vote(account, 1) && Comment.increment_counter(:score, self.id)
+    vote(account, 1) && Comment.increment_counter(:score, self.id) unless score >= 10
   end
 
   def vote_against(account)
-    vote(account, -1) && Comment.decrement_counter(:score, self.id)
+    vote(account, -1) && Comment.decrement_counter(:score, self.id) unless score <= -10
   end
 
   def vote(account, value)
