@@ -13,3 +13,6 @@
       = sanitize(preview.body)
     %footer
       &nbsp;
+
+- if preview.parent.try(:user_id) == current_account.user_id
+  = image_tag "dessins/geekscottes_005.png", :alt => "Autosatisfaction récursive", :title => "Autosatisfaction récursive - © Johann 'nojhan' Dréo : 2005-03-25 - Licence CC By-Sa 2.5"
