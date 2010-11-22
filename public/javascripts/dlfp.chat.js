@@ -4,11 +4,13 @@
 
         base.init = function() {
             var board      = $(element);
+            base.input     = board.find('input[type=text]');
             base.inbox     = board.find('.inbox');
             base.chan      = board.attr('data-chat');
             base.cursor    = base.findCursor();
             base.sleepTime = 500;
 
+            board.find('p').click(base.norloge);
             board.find('form').submit(base.postMessage);
             base.poll();
         };
@@ -25,7 +27,7 @@
         base.postMessage = function() {
             var form = $(this);
             var data = form.serialize();
-            form.find("input[type=text]").val("").select();
+            base.input.val("").select();
             $.ajax({
                 url: form.attr('action'),
                 data: data,
@@ -33,6 +35,13 @@
                 dataType: 'script'
             });
             return false;
+        };
+
+        base.norloge = function() {
+            var time = $(this).find('.norloge').text();
+            base.input.val(function(index,value) {
+                return  time + ' ' + value;
+            }).focus();
         };
 
         /* Open a connection to the server, waiting for the next message */
@@ -82,7 +91,8 @@
                     }
                     method  = 'on_' + message.kind;
                     if (base[method]) {
-                        base.inbox.prepend(message.msg);
+                        base.inbox.prepend(message.msg)
+                                  .children('p:first').click(base.norloge);
                         base[method](message.msg);
                     }
                 }
