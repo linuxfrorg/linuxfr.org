@@ -72,6 +72,7 @@ class Paragraph < ActiveRecord::Base
       self.locked_by_id = nil
       save
     end
+    news.save
   end
 
 ### Wikify ###
