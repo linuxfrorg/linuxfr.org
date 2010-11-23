@@ -32,13 +32,23 @@ class Paragraph < ActiveRecord::Base
 
 ### Automatically split paragraphs ###
 
+  # Split body in paragraphs, but preserve code!
   def split_body
-    parts = []
-    str = wiki_body
+    parts   = []
+    codemap = {}
+    str = wiki_body.gsub(/^``` ?(.+?)\r?\n(.+?)\r?\n```\r?$/m) do
+      id = Digest::SHA1.hexdigest($2)
+      codemap[id] = $&.chomp
+      id + "\n"
+    end
+
     until str.empty?
       left, sep, str = str.partition(/(\r?\n){2}/)
+      left.sub!(/\A(\r?\n)+/, '')
+      codemap.each { |id,code| left.gsub!(id, code) }
       parts << left + sep
     end
+
     parts
   end
 

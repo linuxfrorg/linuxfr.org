@@ -59,8 +59,8 @@ protected
   def process_code(data)
     @codemap.each do |id, spec|
       lang, code = spec[:lang], spec[:code]
-      if code.lines.all? { |line| line =~ /\A\r?\n\Z/ || line =~ /^(  |\t)/ }
-        code.gsub!(/^(  |\t)/m, '')
+      if code.lines.all? { |line| line =~ /\A\r?\n\Z/ || line =~ /^(    |\t)/ }
+        code.gsub!(/^(    |\t)/m, '')
       end
       output = Albino.new(code, lang).colorize(:P => "nowrap")
       data.gsub!(id, "<pre><code class=\"#{lang}\">#{output}</code></pre>")
