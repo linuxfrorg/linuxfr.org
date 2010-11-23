@@ -4,7 +4,7 @@
 class Board
   include Canable::Ables
 
-  NB_MSG_PER_CHAN = 200
+  NB_MSG_PER_CHAN = 100
 
   SANITIZE_CONFIG = {
     :elements   => %w(a b i u s strong em code),

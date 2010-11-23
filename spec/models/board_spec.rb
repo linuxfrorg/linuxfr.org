@@ -124,16 +124,16 @@ describe Board do
     boards[4].id.should == 1
   end
 
-  it "should be limited to 200 messages" do
+  it "should be limited to 100 messages" do
     250.times do
       b = Board.new(:object_type => Board.free, :message => "foobar")
       b.user = john
       b.save.should be_true
     end
     boards = Board.all(Board.free)
-    boards.should have(200).items
-    $redis.keys("boards/msg/*").should have(200).items
-    $redis.llen("boards/chans/free").should == 200
+    boards.should have(100).items
+    $redis.keys("boards/msg/*").should have(100).items
+    $redis.llen("boards/chans/free").should == 100
   end
 
   it "publish to redis" do
