@@ -27,7 +27,8 @@ class BoardsController < ApplicationController
 protected
 
   def board_auto_link(msg)
-    self.class.helpers.auto_link(msg, :all) { "[URL]" }
+    # Hack! Prevent the returned string to be html_safe by concatening ""
+    "" + self.class.helpers.auto_link(msg, :all) { "[URL]" }
   end
 
   def verify_referer_or_authenticity_token

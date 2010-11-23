@@ -39,9 +39,11 @@ class Board
   end
 
   def self.create_for(content, attrs={})
-    attrs[:object_type] = content.class.name
-    attrs[:object_id]   = content.id
-    b = Board.new(attrs)
+    Rails.logger.info("create_for")
+    b = Board.new
+    b.object_type = content.class.name
+    b.object_id   = content.id
+    b.message = attrs[:message].html_safe
     b.user = attrs[:user]
     b.kind = attrs[:kind]
     b.save
@@ -60,6 +62,8 @@ class Board
 
   def save
     return false if @message.blank?
+    Rails.logger.info("@message.html_safe? = #{@message.html_safe?}")
+    sanitize_message unless @message.html_safe?
     @id = $redis.incr("boards/id")
     @created_at = Time.now
     $redis.hmset("boards/msg/#{@id}", :kind, @kind, :msg, @message, :ua, @user_agent, :user, @user_name, :url, @user_url, :date, @created_at.to_i)
@@ -70,6 +74,12 @@ class Board
     $redis.ltrim(chan_key, 0, NB_MSG_PER_CHAN - 1)
     $redis.publish("b/#{private_key}/#{@id}/#{@kind}", rendered)
     true
+  end
+
+  def sanitize_message
+    Rails.logger.info("***** SANITIZE message *****")
+    @message = Sanitize.clean(@message[0,500], SANITIZE_CONFIG).html_safe
+    Rails.logger.info("@message = #{@message}")
   end
 
   def rendered
@@ -90,7 +100,7 @@ class Board
 
   def load(values)
     @kind       = values['kind']
-    @message    = values['msg']
+    @message    = values['msg'].html_safe
     @user_agent = values['ua']
     @user_name  = values['user']
     @user_url   = values['url']
