@@ -41,6 +41,6 @@ group :test do
 end
 
 group :production do
-  gem "unicorn",               "~>2.0"
+  gem "unicorn",               "~>3.0"
   gem "nono-redis-store",      "~>1.0"
 end
