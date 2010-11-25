@@ -14,4 +14,4 @@
   = form_tag '/recherche', :method => :get, :target => "_blank" do
     <label for="query" id="label_query">Recherche :</label>
     <input id="query" name="q" type="search" placeholder="Entrer un mot-clé" />
-    = submit_tag "Rechercher", :name => nil
+    = submit_tag "Rechercher", :name => nil, :id => "search_submit"
