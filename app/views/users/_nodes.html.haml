@@ -1,6 +1,7 @@
 #user_recent_nodes.box
   %h1 Derniers contenus
   %ul
-    = list_of(@contents) do |node|
-      %span.content_type= node.content_type
-      = link_to_content node.content
+    - @contents.each do |node|
+      %li{:class => node.content_type}
+        %span.content_type= translate_content_type node.content_type
+        = link_to_content node.content

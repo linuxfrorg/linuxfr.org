@@ -94,4 +94,7 @@ module NodeHelper
     "#{link} (#{nb_comments}#{visit}).".html_safe
   end
 
+  def translate_content_type(content_type)
+    t "activerecord.models.#{content_type.downcase}"
+  end
 end

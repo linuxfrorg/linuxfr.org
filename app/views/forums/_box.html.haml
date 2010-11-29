@@ -1,0 +1,6 @@
+#forum_box.box
+  %h1 Forums
+  - @forums.each do |forum|
+    .forum
+      %h2
+        = link_to forum.title, forum
