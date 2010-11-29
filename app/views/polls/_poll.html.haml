@@ -1,3 +1,5 @@
 = article_for poll do |c|
   - c.title = link_to(sanitize("Sondage : #{poll.title}"), poll)
   - c.body  = render("polls/answers_#{poll_current_or_archived poll}", :poll => poll)
+  - if current_account && current_account.can_update?(poll)
+    - c.actions = link_to("Modifier", edit_moderation_poll_path(poll), :class => 'action')
