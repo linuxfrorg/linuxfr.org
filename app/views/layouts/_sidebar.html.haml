@@ -11,18 +11,20 @@
       }
     - if account_signed_in?
       %h1= link_to current_account.login, current_account.user
-      %p Il vous reste #{current_account.nb_votes} avis
-      %p= link_to "Proposer un contenu", '/proposer-un-contenu'
-      %p= link_to "Mon tableau de bord", '/tableau-de-bord'
-      %p= link_to "Mes contenus taggés", '/tags'
-      %p= link_to "Modifier mes préférences", '/compte/modifier'
-      %p= link_to "Changer de style", '/stylesheet/modifier'
-      %p= link_to "Se déconnecter", '/compte/deconnexion'
+      %ul
+        %li Il vous reste #{current_account.nb_votes} avis
+        %li= link_to "Proposer un contenu", '/proposer-un-contenu'
+        %li= link_to "Mon tableau de bord", '/tableau-de-bord'
+        %li= link_to "Mes contenus taggés", '/tags'
+        %li= link_to "Modifier mes préférences", '/compte/modifier'
+        %li= link_to "Changer de style", '/stylesheet/modifier'
+        %li= link_to "Se déconnecter", '/compte/deconnexion'
     - else
       %h1 Se connecter
       = render "sessions/new", :id_suffix => "_sidebar"
-      %p= link_to "Pas de compte ? S'inscrire !", '/compte/inscription'
-      %p= link_to "Proposer un contenu", '/proposer-un-contenu'
+      %ul
+        %li= link_to "Pas de compte ? S'inscrire !", '/compte/inscription'
+        %li= link_to "Proposer un contenu", '/proposer-un-contenu'
   - if current_account && current_account.admin?
     = render 'admin/box'
   - if current_account && current_account.amr?

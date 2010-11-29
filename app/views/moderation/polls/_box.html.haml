@@ -4,5 +4,6 @@
     - if @polls.empty?
       Aucune proposition
     - else
-      - @polls.each do |poll|
-        = link_to poll.title, [:moderation, poll]
+      %ul
+        - @polls.each do |poll|
+          %li= link_to poll.title, [:moderation, poll]

@@ -1,6 +1,6 @@
 #forum_box.box
   %h1 Forums
-  - @forums.each do |forum|
-    .forum
-      %h2
+  %ul
+    - @forums.each do |forum|
+      %li.forum
         = link_to forum.title, forum

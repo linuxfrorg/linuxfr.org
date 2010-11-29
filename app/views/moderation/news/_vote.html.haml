@@ -1,11 +1,11 @@
 #news_vote
   %h1 Votes
   %p
-    = "Nombres n de modérateurs : #{Account.amr.count}"
+    Nombres n de modérateurs : #{Account.amr.count}
     %br
-    = "Seuil d'acceptation (n/5) : > #{News.accept_threshold}"
+    Seuil d'acceptation (n/5) : &gt; #{News.accept_threshold}
     %br
-    = "Seuil de refus (n/4) : < #{News.refuse_threshold}"
+    Seuil de refus (n/4) : &lt; #{News.refuse_threshold}
   %p
     %strong Pour :
     = @news.node.voters_for
