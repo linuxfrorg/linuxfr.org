@@ -11,8 +11,8 @@
       }
     - if account_signed_in?
       %h1= link_to current_account.login, current_account.user
+      %p Il vous reste #{current_account.nb_votes} avis
       %ul
-        %li Il vous reste #{current_account.nb_votes} avis
         %li= link_to "Proposer un contenu", '/proposer-un-contenu'
         %li= link_to "Mon tableau de bord", '/tableau-de-bord'
         %li= link_to "Mes contenus taggés", '/tags'
