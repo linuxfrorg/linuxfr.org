@@ -22,6 +22,13 @@
         input.autocomplete(input.attr('data-url'), {multiple: true, multipleSeparator: ' '});
     });
 
+    /* Force people to preview their modified contents */
+    $("textarea").change(function() {
+        $(this).parents("form")
+               .find("input[value=Prévisualiser]")
+               .next("input[type=submit]").hide();
+    });
+
     /* Add/Remove dynamically links in the news form. */
     var langs = {
         fr: 'Français',

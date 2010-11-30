@@ -10,5 +10,5 @@
   = form.label :wiki_body, "Description détaillée"
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
 %p
-  = form.submit "Prévisualiser"
+  = form.submit "Prévisualiser", :id => "tracker_preview"
   = form.submit "Soumettre" if @preview_mode || @tracker.persisted?

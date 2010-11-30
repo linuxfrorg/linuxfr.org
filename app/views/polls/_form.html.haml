@@ -7,5 +7,5 @@
   %p
     = aform.text_field :answer
 %p
-  = form.submit "Prévisualiser"
+  = form.submit "Prévisualiser", :id => "poll_preview"
   = form.submit "Proposer ce sondage" if @preview_mode

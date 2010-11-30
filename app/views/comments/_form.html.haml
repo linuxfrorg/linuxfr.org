@@ -7,5 +7,5 @@
   = form.label :wiki_body, "Commentaire complet"
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
 %p
-  = form.submit "Prévisualiser"
+  = form.submit "Prévisualiser", :id => "comment_preview"
   = form.submit "Poster le commentaire" if @preview_mode

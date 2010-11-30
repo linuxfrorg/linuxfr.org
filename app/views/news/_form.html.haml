@@ -38,5 +38,5 @@
   <br/>
   = form.text_area :message, :spellcheck => 'true'
 %p
-  = form.submit "Prévisualiser"
+  = form.submit "Prévisualiser", :id =>  "news_preview"
   = form.submit "Soumettre cette dépêche" if @preview_mode

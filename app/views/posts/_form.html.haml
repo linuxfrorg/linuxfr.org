@@ -10,5 +10,5 @@
   = form.label :wiki_body, "Message complet"
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
 %p
-  = form.submit "Prévisualiser"
+  = form.submit "Prévisualiser", :id => "post_preview"
   = form.submit "Poster le message" if @preview_mode

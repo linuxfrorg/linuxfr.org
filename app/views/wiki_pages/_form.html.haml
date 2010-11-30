@@ -5,5 +5,5 @@
   = form.label :message, "Log des modifications"
   = form.text_field :message, :autocomplete => 'off', :spellcheck => 'true'
 %p
-  = form.submit "Prévisualiser"
+  = form.submit "Prévisualiser", :id => "wiki_preview"
   = form.submit "Créer" if @preview_mode
