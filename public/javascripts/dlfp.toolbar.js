@@ -49,7 +49,7 @@
             if (base.nb_items === 0) { return ; }
             var item = base.items[base.current - 1];
             var pos = $(item).offset().top;
-            $('html').animate({scrollTop: pos}, 500);
+            $('html,body').animate({scrollTop: pos}, 500);
             $('#toolbar_current_item').text(base.current);
             return false;
         };

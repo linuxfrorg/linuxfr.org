@@ -13,7 +13,7 @@
     $("a.scroll").click(function() {
         var dst = $(this.hash);
         var pos = dst ? dst.offset().top : 0;
-        $('html').animate({scrollTop: pos}, 500);
+        $('html,body').animate({scrollTop: pos}, 500);
         return false;
     });
 
@@ -67,11 +67,11 @@
     /* Hotkeys */
     $(document)
     .bind('keypress', 'g', function() {
-        $('html').animate({scrollTop: 0}, 500);
+        $('html,body').animate({scrollTop: 0}, 500);
         return false;
     })
     .bind('keypress', 'shift+g', function() {
-        $('html').animate({scrollTop: $('body').attr("scrollHeight")}, 500);
+        $('html,body').animate({scrollTop: $('body').attr("scrollHeight")}, 500);
         return false;
     })
     .bind('keypress', 'shift+?', function() {
