@@ -2,7 +2,7 @@
   =h1 "Écrire un commentaire"
 
   - if @comment.parent
-    %ul
+    %ul.threads
       %li.comment{comment_attr(@comment.parent)}
         = render @comment.parent
 
