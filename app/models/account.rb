@@ -110,6 +110,26 @@ class Account < ActiveRecord::Base
     account.save
   end
 
+  def update_with_password(params={})
+    current_password = params.delete(:current_password)
+
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    end
+
+    result = if valid_password?(current_password)
+      update_attributes(params)
+    else
+      self.errors.add(:current_password, "Mot de passe invalide")
+      self.attributes = params
+      false
+    end
+
+    clean_up_passwords
+    result
+  end
+
 ### Role ###
 
   scope :reviewer,  where(:role => "reviewer")
