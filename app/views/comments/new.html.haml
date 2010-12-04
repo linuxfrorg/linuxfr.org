@@ -1,7 +1,10 @@
 #contents
   =h1 "Écrire un commentaire"
 
-  = render @comment.parent if @comment.parent
+  - if @comment.parent
+    %ul
+      %li.comment{comment_attr(@comment.parent)}
+        = render @comment.parent
 
   = render "preview", :preview => @comment if @preview_mode
 
