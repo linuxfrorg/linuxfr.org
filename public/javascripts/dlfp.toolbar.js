@@ -8,7 +8,8 @@
             base.current = 0;
             base.text = text;
             base.options = $.extend({}, $.Toolbar.defaultOptions, options);
-            base.threshold = localStorage.threshold || base.options.thresholds[0];
+            base.storage = ('localStorage' in window && window['localStorage'] !== null) ? window['localStorage'] : {};
+            base.threshold = base.storage.threshold || base.options.thresholds[0];
             base.folding();
             base.create();
         };
@@ -57,7 +58,7 @@
         base.change_threshold = function() {
             var ths = base.options.thresholds;
             var index = $.inArray(parseInt($(this).text(), 10), ths) + 1;
-            localStorage.threshold = base.threshold = ths[index % ths.length];
+            base.storage.threshold = base.threshold = ths[index % ths.length];
             $(this).text(base.threshold);
             base.folding();
             return false;
