@@ -5,29 +5,30 @@
 %p
   = link_to "Proposer une entrée", "/suivi/nouveau"
 
-- if @trackers.empty?
-  %p
-    Pas d'entrées dans le suivi
-- else
-  %table#tracker
-    %tr
-      %th N°
-      %th Titre
-      %th Date d'ouverture
-      %th Affecté à
-      %th Envoyé par
-      %th Catégorie
-      %th Score
-      - if current_account && current_account.can_update?(@trackers.first)
-        %th Actions
-    - @trackers.each do |tracker|
-      %tr{:class => tracker.state}
-        %td= link_to tracker.id, tracker
-        %td= link_to tracker.title, tracker
-        %td= tracker.created_at
-        %td= tracker.assigned_to
-        %td= tracker.reported_by
-        %td= tracker.category_title
-        %td= tracker.score
-        - if current_account && current_account.can_update?(tracker)
-          %td= link_to "Modifier", "/suivi/#{tracker.to_param}/modifier"
+#contents
+  - if @trackers.empty?
+    %p
+      Pas d'entrées dans le suivi
+  - else
+    %table#tracker
+      %tr
+        %th N°
+        %th Titre
+        %th Date d'ouverture
+        %th Affecté à
+        %th Envoyé par
+        %th Catégorie
+        %th Score
+        - if current_account && current_account.can_update?(@trackers.first)
+          %th Actions
+      - @trackers.each do |tracker|
+        %tr{:class => tracker.state}
+          %td= link_to tracker.id, tracker
+          %td= link_to tracker.title, tracker
+          %td= tracker.created_at
+          %td= tracker.assigned_to
+          %td= tracker.reported_by
+          %td= tracker.category_title
+          %td= tracker.score
+          - if current_account && current_account.can_update?(tracker)
+            %td= link_to "Modifier", "/suivi/#{tracker.to_param}/modifier"
