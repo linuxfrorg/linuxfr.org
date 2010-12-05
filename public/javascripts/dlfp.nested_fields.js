@@ -37,14 +37,14 @@
                 var name = base.parent + '[' + base.nested + 's_attributes][' + base.counter + '][' + i + ']';
                 var type = base.attributes[i];
                 if (typeof(type) === "string") {
-                    elem = $('<input/>', {name: name, type: type})
+                    elem = $('<input/>', {name: name, type: type, size: 30})
                 } else {
                     elem = $('<select/>', {name: name});
                     for (var j in type) {
                         $('<option/>', {value: j, text: type[j]}).appendTo(elem);
                     }
                 }
-                elem.appendTo(fset);
+                fset.append(elem).append(" ");
             }
             base.bind_item(last.next());
             base.counter += 1;
