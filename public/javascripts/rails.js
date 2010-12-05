@@ -45,6 +45,12 @@
         }
     });
 
+    $('a[data-confirm], button[data-confirm], input[data-confirm]').live('click', function (e) {
+        if (!confirm($(this).attr('data-confirm'))) {
+            e.preventDefault();
+        }
+    });
+
     $('form[data-remote]').live('submit', function(e) {
         $(this).callRemote();
         e.preventDefault();
