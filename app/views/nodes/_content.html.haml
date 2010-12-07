@@ -12,11 +12,12 @@
           %ul.tag_cloud
             = list_of tags do |tag|
               = link_to tag.name, public_tag_path(tag.name), :rel => 'tag'
-  %figure.score
-    = record.score
-  - if image
-    %figure.image
-      = image
+  .figures
+    %figure.score
+      = record.score
+    - if image
+      %figure.image
+        = image
   .content
     = body
   %footer.actions
