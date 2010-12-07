@@ -152,7 +152,7 @@ class Account < ActiveRecord::Base
   end
 
   def active?
-    role != 'inactive'
+    super && role != 'inactive'
   end
 
 ### Actions ###
