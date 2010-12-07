@@ -155,6 +155,14 @@ class Account < ActiveRecord::Base
     super && role != 'inactive'
   end
 
+  alias :destroy :inactivate!
+
+  def self.send_reset_password_instructions(attributes={})
+    user = find_or_initialize_with_error_by(:email, attributes[:email], :not_found)
+    user.send_reset_password_instructions if user.persisted? && user.active?
+    user
+  end
+
 ### Actions ###
 
   def can_post_on_board?
