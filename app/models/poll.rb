@@ -15,8 +15,7 @@ class Poll < Content
                      :dependent  => :destroy,
                      :order      => 'position',
                      :inverse_of => :poll
-  accepts_nested_attributes_for :answers, :allow_destroy => true,
-      :reject_if => proc { |attrs| attrs['answer'].blank? }
+  accepts_nested_attributes_for :answers, :allow_destroy => true, :reject_if => :all_blank
 
   attr_accessible :title, :answers_attributes
 
