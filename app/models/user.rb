@@ -54,21 +54,19 @@ class User < ActiveRecord::Base
                              :url         => '/uploads/:id_partition/avatar_:style.:extension',
                              :default_url => ':gravatar_url'
 
-  DEFAULT_AVATAR_URL = "http://#{MY_DOMAIN}/images/default-avatar.png" # TODO https?
+  DEFAULT_AVATAR_URL = "http://#{MY_DOMAIN}/images/default-avatar.png"
 
   Paperclip.interpolates :gravatar_url do |attachment, style|
     attachment.instance.gravatar_url
   end
 
   def gravatar_url
-    # TODO what if no account?
-    hash = account && Digest::MD5.hexdigest(account.email.downcase.strip)[0..31]
-    "http://www.gravatar.com/avatar/#{hash}.jpg?size=100&d=#{CGI::escape DEFAULT_AVATAR_URL}"
+    "http://www.gravatar.com/avatar/#{gravatar_hash}.jpg?size=100&d=#{CGI::escape DEFAULT_AVATAR_URL}"
   end
 
   def avatar_url(style, https)
     url = avatar.url(style)
-    url = url.sub(/^http:\/\/www/, 'https://secure') if https
+    url = url.gsub("http", "https").sub(/^https:\/\/www/, "https://secure") if https
     url
   end
 

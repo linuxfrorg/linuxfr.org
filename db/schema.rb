@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091124003344) do
+ActiveRecord::Schema.define(:version => 20101210181550) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -122,15 +122,15 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
   add_index "links", ["news_id"], :name => "index_links_on_news_id"
 
   create_table "news", :force => true do |t|
-    t.string   "state",                            :default => "draft", :null => false
+    t.string   "state",                              :default => "draft", :null => false
     t.string   "title"
     t.string   "cached_slug"
     t.text     "body"
-    t.text     "second_part",  :limit => 16777215
+    t.text     "second_part",  :limit => 2147483647
     t.integer  "moderator_id"
     t.integer  "section_id"
-    t.string   "author_name",                                           :null => false
-    t.string   "author_email",                                          :null => false
+    t.string   "author_name",                                             :null => false
+    t.string   "author_email",                                            :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -299,6 +299,7 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
     t.datetime "avatar_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "gravatar_hash",       :limit => 32
   end
 
   add_index "users", ["cached_slug"], :name => "index_users_on_cached_slug"
