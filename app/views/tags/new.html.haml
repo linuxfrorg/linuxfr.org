@@ -4,7 +4,4 @@
   %p Vous pouvez mettre plusieurs tags séparés par une espace.
   %p Les caractères autorisés sont les lettres minuscules, les chiffres et le caractère souligné.
 
-  = form_tag "/nodes/#{@node.id}/tags" do
-    = label_tag :tags
-    = text_field_tag :tags, nil, :class => 'autocomplete', 'data-url' => autocomplete_tags_path
-    = submit_tag "Tagger"
+  = render :partial => 'form'

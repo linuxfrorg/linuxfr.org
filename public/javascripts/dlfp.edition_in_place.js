@@ -28,7 +28,9 @@
                     return false;
                 });
                 form.find('textarea, input')[0].select();
+                base.element.trigger("in_place:form");
             });
+            return false;
         };
 
         base.submitForm = function(content) {
@@ -37,7 +39,9 @@
                 url: form.attr('action'),
                 type: "post",
                 data: form.serialize(),
+                dataType: 'script',
                 success: function() {
+                    base.element.trigger("in_place:result");
                     base.element.click(base.editForm);
                 }
             });

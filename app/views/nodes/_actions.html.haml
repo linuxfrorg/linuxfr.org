@@ -1,6 +1,7 @@
 - if current_account
   - if current_account.can_tag?(node.content)
-    = link_to "Tagger", "/nodes/#{node.id}/tags/nouveau", :class => 'action'
+    .tag_in_place{"data-url" => "/nodes/#{node.id}/tags/nouveau"}
+      = link_to "Tagger", "/nodes/#{node.id}/tags/nouveau", :class => 'action'
   - if current_account.can_vote?(node.content)
     %div.vote
       Ce contenu est-il #{button_to "pertinent", "/nodes/#{node.id}/vote/for", :remote => true}

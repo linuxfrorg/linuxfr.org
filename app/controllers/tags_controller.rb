@@ -10,11 +10,15 @@ class TagsController < ApplicationController
 
   def new
     @tag = @node.tags.build
+    render :partial => 'form' if request.xhr?
   end
 
   def create
     current_account.tag(@node, params[:tags])
-    redirect_to_content @node.content
+    respond_to do |wants|
+     wants.html { redirect_to_content @node.content }
+     wants.js { render :nothing => true }
+    end
   end
 
   # Show all the nodes tagged by the current user
