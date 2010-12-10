@@ -73,8 +73,16 @@ module NodeHelper
   end
 
   def posted_by(content, user_link=nil)
-    user = content.user || current_user
-    user_link  ||= user ? link_to(user.name, user, :rel => 'author') : 'Anonyme'
+    user   = content.user
+    user ||= current_user if content.new_record?
+    user_link = 'Anonyme'
+    if user
+      user_link  = link_to(user.name, user, :rel => 'author')
+      user_infos = []
+      user_infos << link_to("page perso", user.homesite)             if user.homesite.present?
+      user_infos << link_to("jabber id", "xmpp://" + user.jabber_id) if user.jabber_id.present?
+      user_link += (" (" + user_infos.join(', ') + ")").html_safe    if user_infos.any?
+    end
     date_time    = content.is_a?(Comment) ? content.created_at : content.node.try(:created_at)
     date_time  ||= Time.now
     published_at = content_tag(:time, date_time.to_s(:posted), :datetime => pubdate_for(content), :pubdate => "pubdate")

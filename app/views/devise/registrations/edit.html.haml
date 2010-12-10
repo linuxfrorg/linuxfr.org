@@ -1,15 +1,14 @@
 #contents
   %h2 Modifier son compte utilisateur
 
+  %p
+    Ce formulaire permet de changer vos parametres utilisateurs. Votre login ne peut pas être modifié.
+
   = form_for @account, :url => registration_path(:account), :html => { :method => :put } do |f|
     = messages_on_error @account
     %p
       = f.label :email, 'Adresse de courriel'
       = f.email_field :email
-    %p
-      = f.label :current_password, 'Mot de passe actuel'
-      %i (votre mot de passe actuel est nécessaire pour valider ce changement)
-      = f.password_field :current_password
     %p
       = f.label :password, 'Nouveau mot de passe'
       %i (laissez ce champ vide si vous ne souhaitez pas changer de mot de passe)
@@ -17,6 +16,21 @@
     %p
       = f.label :password_confirmation, 'Confirmation du mot de passe'
       = f.password_field :password_confirmation
+    = f.fields_for :user do |u|
+      %p
+        = u.label :name, "Prénom et nom"
+        = u.text_field :name
+      %p
+        = u.label :homesite, 'Site web personnel'
+        = u.url_field :homesite
+      %p
+        = u.label :jabber_id, 'Jabber ID'
+        xmpp://
+        = u.text_field :jabber_id, :placeholder => "me@example.net"
+    %p
+      = f.label :current_password, 'Mot de passe actuel'
+      %i (votre mot de passe actuel est nécessaire pour valider ce changement)
+      = f.password_field :current_password
     %p
       = f.submit "Enregistrer"
 

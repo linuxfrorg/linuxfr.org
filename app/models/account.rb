@@ -45,7 +45,7 @@ class Account < ActiveRecord::Base
   include Canable::Cans
 
   belongs_to :user, :inverse_of => :account
-  accepts_nested_attributes_for :user, :reject_if => proc { |attrs| attrs['user'].blank? }
+  accepts_nested_attributes_for :user, :reject_if => :all_blank
 
   attr_accessor :remember_me
   attr_accessible :login, :email, :stylesheet, :password, :password_confirmation, :user_attributes, :remember_me
