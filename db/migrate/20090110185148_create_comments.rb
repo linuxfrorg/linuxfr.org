@@ -14,6 +14,7 @@ class CreateComments < ActiveRecord::Migration
     end
     add_index :comments, :node_id
     add_index :comments, [:user_id, :answered_to_self]
+    add_index :comments, [:user_id, :state, :created_at]
     add_index :comments, [:state, :created_at]
     add_index :comments, [:state, :materialized_path, :created_at]
   end

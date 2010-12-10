@@ -92,7 +92,7 @@ class Node < ActiveRecord::Base
 ### Comments ###
 
   def threads
-    Threads.all(self.id)
+    @threads ||= Threads.all(self.id)
   end
 
 ### Readings ###

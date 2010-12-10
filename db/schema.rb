@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20091124003344) do
   add_index "comments", ["state", "created_at"], :name => "index_comments_on_state_and_created_at"
   add_index "comments", ["state", "materialized_path", "created_at"], :name => "index_comments_on_state_and_materialized_path_and_created_at", :length => {"state"=>nil, "materialized_path"=>255, "created_at"=>nil}
   add_index "comments", ["user_id", "answered_to_self"], :name => "index_comments_on_user_id_and_answered_to_self"
+  add_index "comments", ["user_id", "state", "created_at"], :name => "index_comments_on_user_id_and_state_and_created_at"
 
   create_table "diaries", :force => true do |t|
     t.string   "state",          :default => "published", :null => false

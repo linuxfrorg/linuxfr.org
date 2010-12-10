@@ -7,6 +7,6 @@
   - c.body  = capture do
     = sanitize news.body
     %ul
-      = render news.links
+      = render news.links.select([:lang, :title, :url])
     - if defined?(with_second_part) && with_second_part
       = sanitize news.second_part
