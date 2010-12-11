@@ -82,7 +82,7 @@ end
 # The hard-core deployment rules
 namespace :deploy do
   task :start, :roles => :app do
-    run "unicorn -c #{current_path}/config/unicorn.rb -E #{rails_env} -D"
+    run "cd #{current_path} && bundle exec unicorn -c config/unicorn.rb -E #{rails_env} -D"
   end
 
   task :stop, :rules => :app do
