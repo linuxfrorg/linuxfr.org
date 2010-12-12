@@ -3,7 +3,7 @@
   %li#comment_new.comment.score1
     %h2
       = preview.title
-    %p
+    %p.meta
       = posted_by(preview)
       Évalué à
       %span.score= preview.score
@@ -11,7 +11,7 @@
       = avatar_url(current_user)
     .content
       = sanitize(preview.body)
-    %footer
+    %footer.actions
       &nbsp;
 
 - if preview.parent.try(:user_id) == current_account.user_id
