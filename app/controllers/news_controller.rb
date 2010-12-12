@@ -13,6 +13,13 @@ class NewsController < ApplicationController
     respond_with(@nodes)
   end
 
+  def calendar
+    @year  = params[:year].to_i
+    @month = params[:month].to_i
+    @day   = params[:day].to_i
+    @nodes = Node.public_listing(News, "created_at").published_on(Date.new(@year, @month, @day)).paginate(:page => params[:page], :per_page => 10)
+  end
+
   def show
   end
 
