@@ -47,67 +47,69 @@
   background-image: url(/images/markitup/handle.png);
   cursor: n-resize; }
 
-.markItUpHeader ul {
-  li {
-    list-style: none;
-    float: left;
-    position: relative;
-    ul {
-      display: none; }
-    &:hover > ul {
-      display: block; } }
-  a {
-    display: block;
-    width: 16px;
-    height: 16px;
-    text-indent: -10000px;
-    background-repeat: no-repeat;
-    padding: 3px;
-    margin: 0px; }
-  .markItUpDropMenu {
-    background: transparent url(/images/markitup/menu.png) no-repeat 115% 50%;
-    margin-right: 5px;
-    li {
-      margin-right: 0px; } }
-  .markItUpSeparator {
-    margin: 0 10px;
-    width: 1px;
-    height: 16px;
-    overflow: hidden;
-    background-color: #cccccc; }
+.markItUpHeader {
+  height: 22px;
   ul {
-    display: none;
-    position: absolute;
-    top: 18px;
-    left: 0px;
-    background: #f5f5f5;
-    border: 1px solid #3c769d;
-    height: inherit;
-    .markItUpSeparator {
-      width: auto;
-      height: 1px;
-      margin: 0px; }
     li {
-      float: none;
-      border-bottom: 1px solid #3c769d; }
-    .markItUpDropMenu {
-      background: #f5f5f5 url(/images/markitup/submenu.png) no-repeat 100% 50%; }
-    ul {
-      position: absolute;
-      top: -1px;
-      left: 150px;
-      li {
-        float: none; } }
+      list-style: none;
+      float: left;
+      position: relative;
+      ul {
+        display: none; }
+      &:hover > ul {
+        display: block; } }
     a {
       display: block;
-      padding-left: 0px;
-      text-indent: 0;
-      width: 120px;
-      padding: 5px 5px 5px 25px;
-      background-position: 2px 50%;
-      &:hover {
-        color: white;
-        background-color: #3c769d; } } } }
+      width: 16px;
+      height: 16px;
+      text-indent: -10000px;
+      background-repeat: no-repeat;
+      padding: 3px;
+      margin: 0px; }
+    .markItUpDropMenu {
+      background: transparent url(/images/markitup/menu.png) no-repeat 115% 50%;
+      margin-right: 5px;
+      li {
+        margin-right: 0px; } }
+    .markItUpSeparator {
+      margin: 0 10px;
+      width: 1px;
+      height: 16px;
+      overflow: hidden;
+      background-color: #cccccc; }
+    ul {
+      display: none;
+      position: absolute;
+      top: 18px;
+      left: 0px;
+      background: #f5f5f5;
+      border: 1px solid #3c769d;
+      height: inherit;
+      .markItUpSeparator {
+        width: auto;
+        height: 1px;
+        margin: 0px; }
+      li {
+        float: none;
+        border-bottom: 1px solid #3c769d; }
+      .markItUpDropMenu {
+        background: #f5f5f5 url(/images/markitup/submenu.png) no-repeat 100% 50%; }
+      ul {
+        position: absolute;
+        top: -1px;
+        left: 150px;
+        li {
+          float: none; } }
+      a {
+        display: block;
+        padding-left: 0px;
+        text-indent: 0;
+        width: 120px;
+        padding: 5px 5px 5px 25px;
+        background-position: 2px 50%;
+        &:hover {
+          color: white;
+          background-color: #3c769d; } } } } }
 
 .markItUp {
   .h1 a {
