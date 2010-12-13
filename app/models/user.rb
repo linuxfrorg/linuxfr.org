@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   end
 
   def gravatar_url
-    "http://www.gravatar.com/avatar/#{gravatar_hash}.jpg?size=100&d=#{CGI::escape DEFAULT_AVATAR_URL}"
+    "http://www.gravatar.com/avatar/#{gravatar_hash}.jpg?s=100&d=#{CGI::escape DEFAULT_AVATAR_URL}"
   end
 
   def avatar_url(style, https)

@@ -37,6 +37,7 @@ describe News do
     end
 
     it "has a body and a second part" do
+      news.should have(0).errors
       news.body =~ /Vous pouvez éditer/
       news.second_part =~ /Vous pouvez éditer/
     end
