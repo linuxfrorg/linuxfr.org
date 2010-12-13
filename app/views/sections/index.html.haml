@@ -1,5 +1,6 @@
-#contents
+%article#contents
   =h1 "Liste des sections"
-  - @sections.each do |section|
-    = div_for section do
-      = link_to section.title, section
+  .body
+    - @sections.each do |section|
+      = div_for section do
+        = link_to section.title, section
