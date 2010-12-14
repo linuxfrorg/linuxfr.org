@@ -9,7 +9,12 @@ atom_feed do |feed|
   @nodes.map(&:content).each do |news|
     feed.entry(news) do |entry|
       entry.title(news.title)
-      entry.content(news.body, :type => 'html')
+      first  = content_tag(:div, sanitize(news.body))
+      links  = content_tag(:ul, news.links.map.with_index do |l,i|
+                 content_tag(:li, "lien n°#{i+1} : ".html_safe + link_to(l.title, l.url))
+               end.join.html_safe)
+      second = content_tag(:div, sanitize(news.second_part))
+      entry.content(first + links + second, :type => 'html')
       entry.author do |author|
         author.name(news.author_name)
       end
