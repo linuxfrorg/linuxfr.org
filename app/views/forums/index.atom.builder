@@ -5,6 +5,7 @@ atom_feed do |feed|
     feed.title("LinuxFr.org : les forums")
   end
   feed.updated(@nodes.first.try :created_at)
+  feed.icon("/favicon.png")
 
   @nodes.each do |node|
     post = node.content

@@ -1,6 +1,7 @@
 atom_feed do |feed|
   feed.title("LinuxFr.org : le wiki")
   feed.updated(@wiki_pages.first.try :updated_at)
+  feed.icon("/favicon.png")
 
   @wiki_pages.each do |page|
     feed.entry(page) do |entry|

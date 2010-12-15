@@ -5,6 +5,7 @@ atom_feed do |feed|
     feed.title("LinuxFr.org : les dépêches")
   end
   feed.updated(@nodes.first.try :updated_at)
+  feed.icon("/favicon.png")
 
   @nodes.map(&:content).each do |news|
     feed.entry(news) do |entry|

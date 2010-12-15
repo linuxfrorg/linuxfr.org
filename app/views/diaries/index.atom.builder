@@ -5,6 +5,7 @@ atom_feed do |feed|
     feed.title("LinuxFr.org : les journaux")
   end
   feed.updated(@nodes.first.try :created_at)
+  feed.icon("/favicon.png")
 
   @nodes.map(&:content).each do |diary|
     feed.entry(diary, :url => polymorphic_url([diary.owner, diary])) do |entry|

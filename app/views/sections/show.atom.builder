@@ -1,6 +1,7 @@
 atom_feed do |feed|
   feed.title("LinuxFr.org : les dépêches de #{@section.title}")
   feed.updated(@news.first.try :updated_at)
+  feed.icon("/favicon.png")
 
   @news.each do |news|
     feed.entry(news) do |entry|

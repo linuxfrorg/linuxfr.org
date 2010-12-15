@@ -1,6 +1,7 @@
 atom_feed do |feed|
   feed.title("LinuxFr.org : les sondages")
   feed.updated(@polls.first.try :created_at)
+  feed.icon("/favicon.png")
 
   @polls.each do |poll|
     feed.entry(poll) do |entry|
