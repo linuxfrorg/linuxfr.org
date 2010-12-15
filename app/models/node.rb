@@ -44,6 +44,13 @@ class Node < ActiveRecord::Base
     connection.update_sql(stmt)
   end
 
+  def make_visible
+    self.public = true
+    self.created_at = DateTime.now
+    self.save
+    compute_interest
+  end
+
 ### Votes ###
 
   def vote_by?(account_id)

@@ -90,9 +90,7 @@ class News < Content
   end
 
   def publish
-    node.public = true
-    node.created_at = DateTime.now
-    node.save
+    node.make_visible
     author = Account.find_by_email(author_email)
     author.give_karma(50) if author
     message = "<b>La dépêche a été publiée</b>"
