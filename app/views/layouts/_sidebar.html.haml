@@ -3,6 +3,7 @@
     = logo
 
   .login.box
+    %h1= account_signed_in? ? link_to(current_account.login, current_account.user) : "Se connecter"
     :javascript
       if (location.protocol == 'http:') {
         document.write('<a href="https://' + location.hostname + location.pathname + '"><img alt="Accès en clair (http)" class="access" src="/images/icones/lock-insecure.png" /></a>');
@@ -10,7 +11,6 @@
         document.write('<img alt="Accès sécurisé (https)" class="access" src="/images/icones/lock-secure.png" />');
       }
     - if account_signed_in?
-      %h1= link_to current_account.login, current_account.user
       %p Il vous reste #{current_account.nb_votes} avis
       %ul
         %li= link_to "Proposer un contenu", '/proposer-un-contenu'
@@ -20,7 +20,6 @@
         %li= link_to "Changer de style", '/stylesheet/modifier'
         %li= link_to "Se déconnecter", '/compte/deconnexion'
     - else
-      %h1 Se connecter
       = render "sessions/new", :id_suffix => "_sidebar"
       %ul
         %li= link_to "Pas de compte ? S'inscrire !", '/compte/inscription'
