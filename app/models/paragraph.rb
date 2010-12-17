@@ -82,6 +82,7 @@ class Paragraph < ActiveRecord::Base
       self.locked_by_id = nil
       save
     end
+    news.body = '' # Force the news to save even if no fields have changed
     news.save
   end
 
