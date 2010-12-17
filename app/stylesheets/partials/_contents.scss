@@ -39,6 +39,52 @@ article {
   img {
     max-width: 100%; } }
 
+// News
+.link {
+  a[hreflang=cn] {
+    background: transparent url(/images/langs/cn.png) center left no-repeat; }
+  a[hreflang=ct] {
+    background: transparent url(/images/langs/ct.png) center left no-repeat; }
+  a[hreflang=da] {
+    background: transparent url(/images/langs/da.png) center left no-repeat; }
+  a[hreflang=de] {
+    background: transparent url(/images/langs/de.png) center left no-repeat; }
+  a[hreflang=el] {
+    background: transparent url(/images/langs/el.png) center left no-repeat; }
+  a[hreflang=en] {
+    background: transparent url(/images/langs/en.png) center left no-repeat; }
+  a[hreflang=es] {
+    background: transparent url(/images/langs/es.png) center left no-repeat; }
+  a[hreflang=eu] {
+    background: transparent url(/images/langs/eu.png) center left no-repeat; }
+  a[hreflang=fi] {
+    background: transparent url(/images/langs/fi.png) center left no-repeat; }
+  a[hreflang=fr] {
+    background: transparent url(/images/langs/fr.png) center left no-repeat; }
+  a[hreflang=it] {
+    background: transparent url(/images/langs/it.png) center left no-repeat; }
+  a[hreflang=ja] {
+    background: transparent url(/images/langs/ja.png) center left no-repeat; }
+  a[hreflang=ko] {
+    background: transparent url(/images/langs/ko.png) center left no-repeat; }
+  a[hreflang=nl] {
+    background: transparent url(/images/langs/nl.png) center left no-repeat; }
+  a[hreflang=no] {
+    background: transparent url(/images/langs/no.png) center left no-repeat; }
+  a[hreflang=pl] {
+    background: transparent url(/images/langs/pl.png) center left no-repeat; }
+  a[hreflang=pt] {
+    background: transparent url(/images/langs/pt.png) center left no-repeat; }
+  a[hreflang=ru] {
+    background: transparent url(/images/langs/ru.png) center left no-repeat; }
+  a[hreflang=sv] {
+    background: transparent url(/images/langs/sv.png) center left no-repeat; }
+  a[hreflang=xx] {
+    background: transparent url(/images/langs/xx.png) center left no-repeat; }
+  a {
+    display: inline-block;
+    padding-left: 22px; } }
+
 // Polls
 #polls, .poll {
   meter {
