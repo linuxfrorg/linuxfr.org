@@ -15,10 +15,9 @@ class Admin::AccountsController < AdminController
     redirect_to admin_accounts_url, :notice => "Compte activé"
   end
 
-  # TODO purger un compte
   def destroy
-    @account.delete!
-    redirect_to admin_accounts_url, :notice => "Compte supprimé"
+    @account.inactivate!
+    redirect_to admin_accounts_url, :notice => "Compte désactivé"
   end
 
 protected
