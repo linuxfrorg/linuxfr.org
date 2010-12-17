@@ -3,16 +3,17 @@
   = render 'layouts/head'
 
   %body{body_attr}
-    #top
-      = check_js
+    #wrapper
+      #top
+        = check_js
 
-    - cache "fragments/layouts/site", :expires_in => 30.days do
-      = render 'layouts/site'
+      - cache "fragments/layouts/site", :expires_in => 30.days do
+        = render 'layouts/site'
 
-    %section#redaction
-      %section#edition
-        = yield :layout
-      %section#chat
-        = yield :chat
+      %section#redaction
+        %section#edition
+          = yield :layout
+        %section#chat
+          = yield :chat
 
-    = common_js
+      = common_js

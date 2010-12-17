@@ -3,23 +3,24 @@
   = render 'layouts/head'
 
   %body{body_attr}
-    #top
-      = check_js
+    #wrapper
+      #top
+        = check_js
 
-    - cache "fragments/layouts/site", :expires_in => 30.days do
-      = render 'layouts/site'
-    - unless mobile?
-      = render 'layouts/sidebar'
+      - cache "fragments/layouts/site", :expires_in => 30.days do
+        = render 'layouts/site'
+      - unless mobile?
+        = render 'layouts/sidebar'
 
-    %section#container
-      - [:alert, :notice].each do |type|
-        - if flash[type]
-          %div(class=type)= flash[type]
-      = yield :layout
-      %footer
-        %p= link_to "Revenir en haut de page", '#top', :class => 'scroll'
+      %section#container
+        - [:alert, :notice].each do |type|
+          - if flash[type]
+            %div(class=type)= flash[type]
+        = yield :layout
+        %footer
+          %p= link_to "Revenir en haut de page", '#top', :class => 'scroll'
 
-    - unless mobile?
-      - cache "fragments/layouts/footer", :expires_in => 1.minute do
-        = render 'layouts/footer'
-    = common_js
+      - unless mobile?
+        - cache "fragments/layouts/footer", :expires_in => 1.minute do
+          = render 'layouts/footer'
+      = common_js
