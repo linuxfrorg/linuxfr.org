@@ -1,7 +1,7 @@
 %h2
-  = link_to "[^]", "#comment-#{comment.parent_id}", :title => "Aller au commentaire parent" unless comment.root?
+  = link_to "[^]", "#comment-#{comment.parent_id}", :title => "Aller au commentaire parent", :class => "parent" unless comment.root?
   = ' '
-  = link_to comment.title, [comment.node, comment]
+  = link_to comment.title, [comment.node, comment], :class => "title"
 %p.meta
   = posted_by(comment)
   Évalué à
