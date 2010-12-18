@@ -1,6 +1,6 @@
 %head
   %meta(charset="utf-8")
-  %title= @title.join ' - '
+  %title= @title.join(' - ').html_safe
   - if current_account && current_account.stylesheet.present?
     = stylesheet_link_tag current_account.stylesheet, :media => "screen, projection"
   - elsif mobile?
