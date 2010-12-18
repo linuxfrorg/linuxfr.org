@@ -1,6 +1,6 @@
 #contents
   =h1 "Liste des commentaires"
-  %ul
+  %ul.comments_list
     - @comments.each do |comment|
       %li.comment(id="comment-#{comment.id}")
         = render comment
