@@ -1,5 +1,5 @@
 = form_tag "/sondages/#{poll.new_record? ? 0 : poll.to_param}/vote" do
-  %ul
+  %ul.poll.current
     = list_of poll.answers do |answer|
       = radio_button_tag :position, answer.position, false
       = label_tag "position_#{answer.position}", answer.answer
