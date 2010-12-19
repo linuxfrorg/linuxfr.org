@@ -29,6 +29,10 @@ class WikiPage < Content
 
   has_friendly_id :title, :use_slug => true, :reserved_words => %w(index nouveau)
 
+  def normalize_friendly_id(string)
+    string.to_ascii.word_chars.clean.truncate_bytes(150).with_separators.to_s
+  end
+
 ### Sphinx ####
 
 # TODO Thinking Sphinx
