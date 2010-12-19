@@ -27,6 +27,9 @@ gem "state_machine",           "~>0.9"
 gem "will_paginate",           ">=3.0.pre2"
 gem "yajl-ruby",               "~>0.7", :require => "yajl"
 
+# Rspec-rails must be in development for rake stats and in test for normal stuff
+gem "rspec-rails",             "~>2.3", :groups => [:development, :test]
+
 group :development do
   gem "annotate"
   gem "jslint_on_rails"
@@ -35,7 +38,6 @@ group :development do
 end
 
 group :test do
-  gem "rspec-rails",           "~>2.3"
   gem "factory_girl_rails",    "~>1.0"
   gem "webrat",                "~>0.7"
 end
