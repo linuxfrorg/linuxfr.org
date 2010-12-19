@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class WikiPagesController < ApplicationController
-  before_filter :authenticate_account!, :except => [:index, :show, :revision, :changes]
+  before_filter :authenticate_account!, :except => [:index, :show, :revision, :changes, :pages]
   before_filter :load_wiki_page, :only => [:edit, :update, :destroy, :revision]
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
 
@@ -78,6 +78,12 @@ class WikiPagesController < ApplicationController
       wants.html
       wants.atom
     end
+  end
+
+  def pages
+    @order = params[:order]
+    @order = "created_at" unless VALID_ORDERS.include?(@order)
+    @nodes = Node.public_listing(WikiPage, @order).paginate(:page => params[:page], :per_page => 10)
   end
 
 protected

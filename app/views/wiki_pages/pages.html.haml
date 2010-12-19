@@ -1,0 +1,3 @@
+=h1 "Liste des pages du wiki"
+- new_content_link = link_to("Écrire une page de wiki", "/wiki/nouveau") if current_account
+= paginated_nodes @nodes, new_content_link
