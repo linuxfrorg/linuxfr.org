@@ -12,23 +12,19 @@ class WikiPagesController < ApplicationController
   end
 
   def show
-    begin
-      @wiki_page = WikiPage.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      if current_account
-        new
-        @wiki_page.title = params[:id].titleize
-        render :new
-      else
-        render :not_found
-      end
-      return
-    end
+    @wiki_page = WikiPage.find(params[:id])
     redirect_to @wiki_page, :status => 301 if !@wiki_page.friendly_id_status.best?
+  rescue ActiveRecord::RecordNotFound
+    if current_account
+      redirect_to new_wiki_page_url(:title => params[:id].titleize)
+    else
+      render :not_found
+    end
   end
 
   def new
     @wiki_page = WikiPage.new
+    @wiki_page.title = params[:title]
     enforce_create_permission(@wiki_page)
   end
 
@@ -86,7 +82,7 @@ class WikiPagesController < ApplicationController
 protected
 
   def marked_as_read
-    current_account.read(@wiki_page.node) if @wiki_page.node
+    current_account.read(@wiki_page.node) if @wiki_page.try(:node)
   end
 
   def load_wiki_page
