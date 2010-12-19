@@ -13,6 +13,7 @@ class WikiPagesController < ApplicationController
 
   def show
     @wiki_page = WikiPage.find(params[:id])
+    enforce_view_permission(@wiki_page)
     redirect_to @wiki_page, :status => 301 if !@wiki_page.friendly_id_status.best?
   rescue ActiveRecord::RecordNotFound
     if current_account

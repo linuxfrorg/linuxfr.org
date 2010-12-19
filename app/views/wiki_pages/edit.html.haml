@@ -1,6 +1,8 @@
 #contents
   =h1 "Modifier une page de wiki"
 
+  = button_to "Supprimer", [@wiki_page], :method => :delete
+
   = render "preview", :preview => @wiki_page if @preview_mode
 
   = form_for @wiki_page do |form|
