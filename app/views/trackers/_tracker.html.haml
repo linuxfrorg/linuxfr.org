@@ -1,5 +1,5 @@
 = article_for tracker do |c|
-  - c.title = link_to "#{tracker.category_title} : #{tracker.title}", tracker
+  - c.title = "#{link_to tracker.category_title, "/suivi"} #{link_to tracker.title, tracker}".html_safe
   - c.meta = capture do
     = posted_by(tracker)
     État de l'entrée : #{tracker.state_name}
