@@ -95,13 +95,16 @@ module NodeHelper
     link = link_to_unless_current("Lire la suite", url_for_content(content)) { "" }
     nb_comments = pluralize(content.node.try(:comments_count), "commentaire")
     if current_account
-      visit = case content.node.read_status(current_account)
-              when :not_read     then ", non visité"
-              when :new_comments then ", Nouveaux !"
-              else                    ", déjà visité"
-              end
+      status = content.node.read_status(current_account)
+      visit  = case status
+               when :not_read     then ", non visité"
+               when :new_comments then ", Nouveaux !"
+               else                    ", déjà visité"
+               end
+    else
+      status = "anonymous_reader"
     end
-    "#{link} (#{nb_comments}#{visit}).".html_safe
+    content_tag(:span, "#{link} (#{nb_comments}#{visit}).".html_safe, :class => status)
   end
 
   def translate_content_type(content_type)
