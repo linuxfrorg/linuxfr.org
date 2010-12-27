@@ -1,5 +1,7 @@
 %p{:id => "board-#{board.id}", :class => board.kind, :title => board.user_agent}
-  = content_tag(:time, board.created_at.to_s(:norloge), :class => "norloge", :datetime => board.created_at.iso8601)
-  %b
-    = board.user_link
-  = board.message
+  %span{:class => "board-left"}
+    = content_tag(:time, board.created_at.to_s(:norloge), :class => "norloge", :datetime => board.created_at.iso8601)
+    %b
+      = board.user_link
+  %span{:class => "board-right"}
+    = board.message
