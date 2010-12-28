@@ -1,7 +1,7 @@
 #contents
   =h1 "Éditer un journal"
 
-  = button_to "Supprimer", [@diary.owner, @diary], :method => :delete
+  = button_to "Supprimer", [@diary.owner, @diary], :method => :delete, :confirm => "Êtes-vous sûr de vouloir supprimer ce journal ?"
 
   = render "preview", :preview => @diary if @preview_mode
 

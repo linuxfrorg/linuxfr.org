@@ -7,7 +7,7 @@
       = link_to "Modifier ce commentaire", "/nodes/#{@comment.node_id}/comments/#{@comment.id}/modifier"
   - if current_account.can_destroy?(@comment)
     %p
-      = button_to "Supprimer ce commentaire", [@comment.node, @comment], :method => :delete
+      = button_to "Supprimer ce commentaire", [@comment.node, @comment], :method => :delete, :confirm => "Êtes-vous sûr de vouloir supprimer ce commentaire ?"
 
 #contents
   %ul.threads

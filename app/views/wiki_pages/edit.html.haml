@@ -1,7 +1,7 @@
 #contents
   =h1 "Modifier une page de wiki"
 
-  = button_to "Supprimer", [@wiki_page], :method => :delete
+  = button_to "Supprimer", [@wiki_page], :method => :delete, :confirm => "Êtes-vous sûr de vouloir supprimer cette page de wiki ?"
 
   = render "preview", :preview => @wiki_page if @preview_mode
 

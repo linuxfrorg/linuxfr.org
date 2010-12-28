@@ -1,7 +1,7 @@
 #contents
   =h1 "Modifier une entrée dans le suivi"
 
-  = button_to "Supprimer", @tracker, :method => :delete
+  = button_to "Supprimer", @tracker, :method => :delete, :confirm => "Êtes-vous sûr de vouloir supprimer cette entrée du tracker ?"
 
   = render "preview", :preview => @tracker if @preview_mode
 
