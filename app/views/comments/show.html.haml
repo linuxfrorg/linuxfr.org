@@ -10,6 +10,6 @@
       = button_to "Supprimer ce commentaire", [@comment.node, @comment], :method => :delete
 
 #contents
-  %ul
+  %ul.threads
     %li.comment{comment_attr(@comment)}
       = render @comment
