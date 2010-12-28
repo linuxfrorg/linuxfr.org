@@ -14,6 +14,10 @@ a.action, time.norloge, span.content_type {
   &:after {
     content: "]"; } }
 
+.highlighted {
+  color: #fff;
+  background-color: #33f; }
+
 footer.actions:before {
   content: ">"; }
 

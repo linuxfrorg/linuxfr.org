@@ -13,8 +13,8 @@
             board.find('p').click(base.norloge);
             board.find('form').submit(base.postMessage);
             board.find('.board-right').each(base.norlogize);
-            board.find('.horloge_ref').hover(base.highlitizer, base.deshighlitizer);
-            board.find('.board-left').hover(base.highlitizer, base.deshighlitizer);
+            board.find('time').live('mouseenter', base.highlitizer)
+                              .live('mouseleave', base.deshighlitizer);
             base.poll();
         };
 
@@ -48,44 +48,19 @@
         };
 
         base.norlogize = function() {
-          this.innerHTML = this.innerHTML.replace(/[0-2][0-9]:[0-6][0-9](:[0-6][0-9])?(¹[⁰¹²³⁴⁵⁶⁷⁸⁹]|[¹²³⁴⁵⁶⁷⁸⁹]|[:\^]1[0123456789]|[:\^][123456789])?/g, '<span class="horloge_ref">$&</span>');
+            this.innerHTML = this.innerHTML.replace(/[0-2][0-9]:[0-6][0-9](:[0-6][0-9])?([⁰¹²³⁴⁵⁶⁷⁸⁹]+|[:\^][0-9]+)?/g, '<time>$&</time>');
         };
 
-        getTime = function (element) {
-          if (element.hasClass("horloge_ref")) {
-            return element.text();
-          }
-          if (element.hasClass("board-left")) {
-            return element.find("time").text();
-          }
-        }
-
         base.highlitizer = function() {
-          time = getTime($(this));
-          base.inbox.find(".horloge_ref")
-            .filter(function() {
-                                 return getTime($(this)) == time;
-                               })
-            .addClass("highlighted");
-          base.inbox.find(".board-left")
-            .filter(function() {
-                                 return getTime($(this)) == time;
-                               })
-            .parent().addClass("highlighted");
+            var time = $(this).text();
+            base.inbox.find("time").filter(function() {
+                return $(this).text() == time;
+            }).addClass("highlighted");
         }
 
         base.deshighlitizer = function() {
-          time = getTime($(this));
-          base.inbox.find(".horloge_ref")
-            .filter(function() {
-                                 return getTime($(this)) == time;
-                               })
-            .removeClass("highlighted");
-          base.inbox.find(".board-left")
-            .filter(function() {
-                                 return getTime($(this)) == time;
-                               })
-            .parent().removeClass("highlighted");
+            console.log("deshighlitizer");
+            base.inbox.find("time.highlighted").removeClass("highlighted");
         }
 
         /* Open a connection to the server, waiting for the next message */
@@ -139,6 +114,7 @@
                                   .children('p:first').click(base.norloge);
                         base[method](message.msg);
                     }
+                    base.inbox.find('.board-right:first').each(base.norlogize);
                 }
             }
         };
