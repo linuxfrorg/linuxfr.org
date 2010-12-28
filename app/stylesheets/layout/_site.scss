@@ -14,7 +14,9 @@
       font-size: 1.4em;
       a {
         color: inherit;
-        @include hover-link; } } }
+        @include hover-link; }
+      &.active a {
+        text-decoration: overline; } } }
   form {
     float: right;
     padding: 5px 10px; } }
