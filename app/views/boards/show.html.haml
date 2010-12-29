@@ -9,5 +9,11 @@
     visiteurs ne tenant pas compte de ces conditions d'utilisation
     verront leurs comptes supprimés. Les propos tenus ici sont publiés
     sous la responsabilité de leurs auteurs respectifs.
+  %p
+    Les totoz, vous les préférez :
+    %a{:href=>"#", :onclick=>"$.cookie('totoz-type', 'popup', {path: '/board', expires: new Date('01/01/2042')})"} en popup,
+    %a{:href=>"#", :onclick=>"$.cookie('totoz-type', 'inline', {path: '/board', expires: new Date('01/01/2042')})"} en ligne
+    ou
+    %a{:href=>"#", :onclick=>"$.cookie('totoz-type', null)"} en chauve
   #contents
     = render 'boards'
