@@ -65,7 +65,7 @@
             if (base.totoz_type == 'popup') {
                 this.innerHTML = this.innerHTML.replace(/\[:([^\]]+)\]/g, '<span class="totoz" data-totoz-name="$1">$&</span>');
             } else if (base.totoz_type == 'inline') {
-                this.innerHTML = this.innerHTML.replace(/\[:([^\]]+)\]/g, '<img class="totoz" alt="$&" src="' + base.totoz_url + '$1.gif" style="vertical-align: top; background-color: transparent');
+                this.innerHTML = this.innerHTML.replace(/\[:([^\]]+)\]/g, '<img class="totoz" alt="$&" src="' + base.totoz_url + '$1.gif" style="vertical-align: top; background-color: transparent"');
             }
         };
 
