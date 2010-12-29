@@ -1,11 +1,11 @@
 #comments
   - feed "Flux Atom des commentaires #{node.content.title}", "/nodes/#{node.id}/comments.atom"
+  - unless node.threads.empty?
+    %ul.threads
+      - node.threads.each do |thread|
+        = render 'comments/thread', :thread => thread
   %p
     = link_to "Envoyer un commentaire", "/nodes/#{node.id}/comments/nouveau"
   %p
     %strong Note :
     les commentaires appartiennent à ceux qui les ont postés. Nous n'en sommes pas responsables.
-  - unless node.threads.empty?
-    %ul.threads
-      - node.threads.each do |thread|
-        = render 'comments/thread', :thread => thread
