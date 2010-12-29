@@ -8,6 +8,7 @@
             base.inbox     = board.find('.inbox');
             base.chan      = board.attr('data-chat');
             base.cursor    = base.findCursor();
+            base.totoz     = board.append($('<div id="les-totoz"/>')).find("#les-totoz");
             base.sleepTime = 500;
 
             board.find('p').click(base.norloge);
@@ -15,6 +16,8 @@
             board.find('.board-right').each(base.norlogize);
             board.find('time').live('mouseenter', base.highlitizer)
                               .live('mouseleave', base.deshighlitizer);
+            board.find('.totoz').live('mouseenter', base.createTotoz)
+                                .live('mouseleave', base.destroyTotoz)
             base.poll();
         };
 
@@ -49,6 +52,7 @@
 
         base.norlogize = function() {
             this.innerHTML = this.innerHTML.replace(/[0-2][0-9]:[0-6][0-9](:[0-6][0-9])?([⁰¹²³⁴⁵⁶⁷⁸⁹]+|[:\^][0-9]+)?/g, '<time>$&</time>');
+            this.innerHTML = this.innerHTML.replace(/\[:([^\]]+)\]/g, '<span class="totoz" data-totoz-name="$1">$&</span>');
         };
 
         base.highlitizer = function() {
@@ -60,6 +64,33 @@
 
         base.deshighlitizer = function() {
             base.inbox.find("time.highlighted").removeClass("highlighted");
+        }
+
+        base.createTotoz = function(e) {
+            var totozId = this.getAttribute("data-totoz-name");
+            var totoz = base.totoz.find("#totoz-" + totozId).first();
+            if (totoz.size() == 0) {
+                totoz = $('<div id="totoz-' + totozId + '" class="totozimg"></div>')
+                            .css('display', 'none')
+                            .css('position', 'absolute')
+                            .css('opacity', '0.7')
+                            .append('<img src="http://sfw.totoz.eu/gif/' + totozId + '.gif"/>');
+                base.totoz.append(totoz);
+            }
+            // Position où afficher l'image
+            x = $(this).offset().left;
+            y = $(this).offset().top;
+
+            // Set the z-index of the current item,
+            // make sure it's greater than the rest of thumbnail items
+            // Set the position and display the image tooltip
+            totoz.css({'z-index': '15', 'display': 'block', 'top': y + 20,'left': x + 20});
+        }
+
+        base.destroyTotoz = function() {
+            var totozId = this.getAttribute("data-totoz-name");
+            var totoz = base.totoz.find("#totoz-" + totozId).first();
+            totoz.css('display', 'none');
         }
 
         /* Open a connection to the server, waiting for the next message */
