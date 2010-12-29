@@ -39,7 +39,6 @@ class Board
   end
 
   def self.create_for(content, attrs={})
-    Rails.logger.info("create_for")
     b = Board.new
     b.object_type = content.class.name
     b.object_id   = content.id
@@ -62,7 +61,6 @@ class Board
 
   def save
     return false if @message.blank?
-    Rails.logger.info("@message.html_safe? = #{@message.html_safe?}")
     sanitize_message unless @message.html_safe?
     @id = $redis.incr("boards/id")
     @created_at = Time.now
@@ -77,9 +75,7 @@ class Board
   end
 
   def sanitize_message
-    Rails.logger.info("***** SANITIZE message *****")
     @message = Sanitize.clean(@message[0,500], SANITIZE_CONFIG).html_safe
-    Rails.logger.info("@message = #{@message}")
   end
 
   def rendered
