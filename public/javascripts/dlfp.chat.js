@@ -59,7 +59,6 @@
         }
 
         base.deshighlitizer = function() {
-            console.log("deshighlitizer");
             base.inbox.find("time.highlighted").removeClass("highlighted");
         }
 
