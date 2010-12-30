@@ -118,6 +118,7 @@ LinuxfrOrg::Application.routes.draw do
     resources :categories, :except => [:show]
     resources :bannieres, :controller => "banners", :as => "banners", :except => [:show]
     resource :logo, :only => [:show, :create]
+    resource :stylesheet, :only => [:show, :create]
     resources :sites_amis, :controller => "friend_sites", :as => "friend_sites", :except => [:show] do
       post :lower,  :on => :member
       post :higher, :on => :member

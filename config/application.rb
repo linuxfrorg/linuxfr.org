@@ -24,6 +24,7 @@ module LinuxfrOrg
     config.encoding = "utf-8"
     config.time_zone = 'Paris'
 
-    config.session_store :cookie_store, :key => '_linuxfr.org_session'
+    COOKIE_STORE_KEY = '_linuxfr.org_session'
+    config.session_store :cookie_store, :key => COOKIE_STORE_KEY
   end
 end
