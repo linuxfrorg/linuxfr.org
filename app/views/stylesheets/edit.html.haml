@@ -9,10 +9,10 @@
   %p
     Votre feuille de style actuelle est : #{@current || "celle par défaut"}.
 
-  - @stylesheets.each do |css|
-    = form_tag "/stylesheet" do
-      = hidden_field_tag :stylesheet, css.url, :id => "stylesheet-#{css.name}"
-      = submit_tag css.name
+  = form_tag "/stylesheet" do
+    - @stylesheets.each do |css|
+      %button{ :type => "submit", :name => "stylesheet", :value => css.url, :title => css.name }
+        %img{ :src => css.image, :alt => css.name }
 
   = form_tag "/stylesheet" do
     = label_tag :stylesheet, "Autre feuille de style"

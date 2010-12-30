@@ -11,6 +11,10 @@ class Stylesheet < Struct.new(:name, :url)
     end
   end
 
+  def image
+    url.sub(/css$/, 'png')
+  end
+
   def self.temporary(account, url, &blk)
     original = account.stylesheet
     account.stylesheet = url
