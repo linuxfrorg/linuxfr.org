@@ -2,7 +2,6 @@
 class Admin::StylesheetsController < AdminController
 
   def show
-    Rails.logger.info cookies.inspect
   end
 
   def create

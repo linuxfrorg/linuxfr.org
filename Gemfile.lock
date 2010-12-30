@@ -151,7 +151,7 @@ DEPENDENCIES
   haml (~> 3.0)
   htmlentities (~> 4.2)
   jslint_on_rails
-  mysql2 (~> 0.1)
+  mysql2 (~> 0.2)
   nokogiri (~> 1.4)
   nono-redis-store (~> 1.0)
   paperclip (~> 2.3)
