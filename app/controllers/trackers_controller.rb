@@ -45,12 +45,12 @@ class TrackersController < ApplicationController
 
   def edit
     enforce_update_permission(@tracker)
+    @tracker.assigned_to_user = current_user
   end
 
   def update
     enforce_update_permission(@tracker)
     @tracker.send(:attributes=, params[:tracker], false) # Bypass the attr_accessible sanitizing
-    @tracker.assigned_to_user = current_user
     if !preview_mode && @tracker.save
       redirect_to trackers_url, :notice => "Entrée du suivi modifiée"
     else

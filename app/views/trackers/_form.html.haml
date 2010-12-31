@@ -4,8 +4,11 @@
   = form.label :title, "Titre"
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
 %p
-  = form.label :category, "Catégorie"
+  = form.label :category_id, "Catégorie"
   = form.collection_select :category_id, Category.all, :id, :title
+%p
+  = form.label :assigned_to_user_id, "Responsable"
+  = form.collection_select :assigned_to_user_id, Account.admin, :id, :login, :include_blank => true
 %p
   = form.label :wiki_body, "Description détaillée"
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'

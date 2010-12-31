@@ -25,7 +25,7 @@ class Tracker < Content
   belongs_to :assigned_to_user, :class_name => "User"
   belongs_to :category
 
-  attr_accessible :title, :wiki_body, :category_id
+  attr_accessible :title, :wiki_body, :category_id, :assigned_to_user_id
 
   validates :title,     :presence => { :message => "Le titre est obligatoire" }
   validates :wiki_body, :presence => { :message => "Veuillez décrire cette entrée du suivi" }
