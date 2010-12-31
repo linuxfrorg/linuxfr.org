@@ -139,7 +139,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list (~> 0.1)
-  albino (~> 1.0)
+  albino (~> 1.1)
   annotate
   canable (~> 0.1)
   compass (~> 0.10)
