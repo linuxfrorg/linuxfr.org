@@ -25,6 +25,7 @@ describe News do
     User.delete_all
     Account.delete_all
     News.delete_all
+    Paragraph.delete_all
   end
 
   context "when created in redaction" do
