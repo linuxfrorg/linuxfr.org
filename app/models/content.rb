@@ -7,10 +7,9 @@ class Content < ActiveRecord::Base
   include Canable::Ables
 
   has_one :node, :as => :content, :dependent => :destroy, :inverse_of => :content
-  has_one :user, :through => :node
   has_many :comments, :through => :node
 
-  delegate :score, :to => :node
+  delegate :score, :user, :to => :node
 
   scope :with_node_ordered_by, lambda {|order| joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
 

@@ -3,5 +3,5 @@
   = render 'nodes'
 
 =h1 "#{@user.name} a écrit #{pluralize @nodes.total_entries, "journal"}"
-- feed "Flux Atom des journaux de #{@user.name}"
+- feed "Flux Atom des journaux de #{@user.name}", "/users/#{@user.cached_slug}.atom"
 = paginated_nodes @nodes

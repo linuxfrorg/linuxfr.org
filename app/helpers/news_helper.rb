@@ -12,11 +12,13 @@ module NewsHelper
   end
 
   def news_posted_by(news)
-    (posted_by(news, news.user ? nil : news.author_name) + moderated_by(news)).html_safe
+    (posted_by(news, news.node.user_id ? nil : news.author_name) + moderated_by(news)).html_safe
   end
 
   def moderated_by(news)
-    news.moderator ? " Modéré par #{link_to news.moderator.name, news.moderator}.".html_safe : ""
+    return "" unless news.moderator_id
+    moderator = User.where(:id => news.moderator_id).select([:name, :cached_slug]).first
+    " Modéré par #{link_to moderator.name, moderator}.".html_safe
   end
 
 end

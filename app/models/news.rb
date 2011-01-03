@@ -214,7 +214,7 @@ class News < Content
   end
 
   def votable_by?(account)
-    super(account) || (account && account.amr? && !draft? && self.user != account.user)
+    super(account) || (account && account.amr? && !draft? && self.node.user_id != account.user_id)
   end
 
 ### Locks ###

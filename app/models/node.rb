@@ -135,7 +135,8 @@ class Node < ActiveRecord::Base
   end
 
   def popular_tags(nb=7)
-    Tag.joins(:taggings).
+    Tag.select([:name]).
+        joins(:taggings).
         where("taggings.node_id" => self.id).
         group("tags.id").
         order("COUNT(tags.id) DESC").

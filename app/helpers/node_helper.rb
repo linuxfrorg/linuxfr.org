@@ -77,7 +77,7 @@ module NodeHelper
     user ||= current_user if content.new_record?
     user_link = 'Anonyme'
     if user
-      user_link  = link_to(user.name, user, :rel => 'author')
+      user_link  = link_to(user.name, "/users/#{user.cached_slug}", :rel => 'author')
       user_infos = []
       user_infos << link_to("page perso", user.homesite)             if user.homesite.present?
       user_infos << link_to("jabber id", "xmpp://" + user.jabber_id) if user.jabber_id.present?

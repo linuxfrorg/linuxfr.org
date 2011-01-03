@@ -11,7 +11,7 @@
           Tags :
           %ul.tag_cloud
             = list_of tags do |tag|
-              = link_to tag.name, public_tag_path(tag.name), :rel => 'tag'
+              = link_to tag.name, "/tags/#{tag.name}/public", :rel => 'tag'
   .figures
     %figure.score
       = record.score
