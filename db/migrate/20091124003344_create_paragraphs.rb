@@ -8,7 +8,7 @@ class CreateParagraphs < ActiveRecord::Migration
       t.text :body
       t.text :wiki_body
     end
-    add_index :paragraphs, [:news_id, :second_part, :position]
+    add_index :paragraphs, [:news_id, :second_part, :position], :name => "index_paragraphs_on_news_id_and_more"
   end
 
   def self.down

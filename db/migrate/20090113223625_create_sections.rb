@@ -1,9 +1,9 @@
 class CreateSections < ActiveRecord::Migration
   def self.up
     create_table :sections do |t|
-      t.string :state, :null => false, :default => 'published'
-      t.string :title
-      t.string :cached_slug
+      t.string :state, :null => false, :limit => 10, :default => 'published'
+      t.string :title, :null => false, :limit => 32
+      t.string :cached_slug,           :limit => 32
 
       # Image
       t.string   :image_file_name

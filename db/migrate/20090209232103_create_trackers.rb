@@ -1,14 +1,14 @@
 class CreateTrackers < ActiveRecord::Migration
   def self.up
     create_table :trackers do |t|
-      t.string :state, :null => false, :default => 'opened'
-      t.string :title
-      t.string :cached_slug
+      t.string :state, :null => false, :limit => 10, :default => 'opened'
+      t.string :title, :null => false, :limit => 64
+      t.string :cached_slug,           :limit => 64
+      t.references :category
+      t.references :assigned_to_user
       t.text :body
       t.text :wiki_body
       t.text :truncated_body
-      t.references :category
-      t.references :assigned_to_user
       t.timestamps
     end
     add_index :trackers, :state

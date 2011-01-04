@@ -1,12 +1,12 @@
 class CreatePosts < ActiveRecord::Migration
   def self.up
     create_table :posts do |t|
-      t.string :title
-      t.string :cached_slug
+      t.references :forum
+      t.string :title,       :limit => 64, :null => false
+      t.string :cached_slug, :limit => 64
       t.text :body
       t.text :wiki_body
       t.text :truncated_body
-      t.references :forum
       t.timestamps
     end
     add_index :posts, :cached_slug

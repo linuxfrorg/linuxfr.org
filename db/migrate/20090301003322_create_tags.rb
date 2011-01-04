@@ -1,7 +1,7 @@
 class CreateTags < ActiveRecord::Migration
   def self.up
     create_table :tags do |t|
-      t.string :name
+      t.string :name, :null => false, :limit => 64
       t.integer :taggings_count, :default => 0, :null => false
     end
     add_index :tags, :name
