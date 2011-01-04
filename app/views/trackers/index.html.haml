@@ -2,8 +2,9 @@
 - feed "Flux Atom du suivi"
 - feed "Flux Atom des commentaires", "/suivi/comments.atom"
 
-%p
-  = link_to "Proposer une entrée", "/suivi/nouveau"
+%nav.toolbox
+  .new_content
+    = link_to "Proposer une entrée", "/suivi/nouveau"
 
 #contents
   - if @trackers.empty?
