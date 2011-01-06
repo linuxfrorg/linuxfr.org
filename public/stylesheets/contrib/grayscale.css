@@ -584,7 +584,7 @@ li.comment {
 	margin: 0 -10px 0 -15px;
 	padding: 28px 23px 28px 28px;
 	background: url('/images/contrib/grayscale/comments/hautgauche.png') top left no-repeat, url('/images/contrib/grayscale/comments/basgauche.png') bottom left no-repeat, url('/images/contrib/grayscale/comments/hautdroite.png') top right no-repeat,
-	url('comments/basdroite.png') bottom right no-repeat, url('/images/contrib/grayscale/comments/milieugauche.png') top left repeat-y, url('/images/contrib/grayscale/comments/milieudroite.png') top right repeat-y,
+	url('/images/contrib/grayscale/comments/basdroite.png') bottom right no-repeat, url('/images/contrib/grayscale/comments/milieugauche.png') top left repeat-y, url('/images/contrib/grayscale/comments/milieudroite.png') top right repeat-y,
 	url('/images/contrib/grayscale/comments/hautcentre.png') top left repeat-x, url('/images/contrib/grayscale/comments/bascentre.png') bottom left repeat-x !important;
 }
 
