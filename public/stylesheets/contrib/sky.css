@@ -1,0 +1,96 @@
+/**
+ * Author: Benjamin Verhaeghe
+ * License: CC-by-sa - http://creativecommons.org/licenses/by-sa/3.0/deed.fr
+ */
+
+/* Layout */
+body, nav, header, aside, figure, section, footer, article { margin: 0; padding: 5px; display: block; }
+#branding  { float: left; clear: left; width: 211px; }
+#sidebar   { float: left; clear: left; width: 225px; }
+#container { width: 1000px; margin-left: 225px; }
+#bigfooter { clear: both; margin-bottom: 20px; }
+#site      { background-color: transparent;     
+    font-family:                        "Liberation Serif", serif;
+    font-weight:                        normal;
+    font-style:                         italic;
+    src:                                url('/fonts/LiberationSerif-Italic.ttf')}
+#sidebar   { background-color: white; 
+border: 2px solid black;
+}
+
+#container { background-color: transparent; color: white; text-align: center}
+#bigfooter { 
+   background-color:                   #b2d1ff;/*bleu gris*/
+    background-image:                   url(/images/contrib/sky/text_com_ciel.jpg);
+ } 
+
+body
+{
+    position:                           absolute;
+    top:                                0;
+    left:                               0;
+    right:                              0;
+    border-width:                       0;
+    background-color:                   #b2d1ff;/*bleu gris*/
+    background-image:                   url(/images/contrib/sky/ciel04bis.jpg);
+    background-repeat:                  repeat-y;
+    margin:                             60px 3% 3ex 3%;
+    padding:                            0;
+}
+
+/* Logo */
+#branding h1 { display: block; width: 201px; height: 186px;}
+#branding h1 a { display: block; text-indent: -9999em; width: 75%; height: 100%; }
+
+/* Nav */
+#site ul { display: inline; width: 100%; }
+#site li { display: inline; width:80px; padding: 5px 10px; list-style: none; 
+ line-height:24px; /*hauteur de l'image de fond*/
+ background:transparent url(/images/contrib/sky/bg_button.gif) repeat-x;
+ color:#DCDCDC;
+ text-decoration:none;
+ text-align:center; repeat-x;
+ margin: 0px;
+}
+#site li:hover { background-color: transparent; background:white url(/images/contrib/sky/bg_button_h.gif) repeat-x;
+ color:transparent;
+ }
+#site form { float: right; }
+
+/* Footer */
+#bigfooter > div { display: inline-block; height: 100%; width: 24%; vertical-align: top; }
+#bigfooter li:hover { background-color: #3399ff; } /* bleu clair*/
+
+/* Contenus */
+#container article { background-color: transparent; border: 1px solid; -moz-border-radius: 15px; margin: 10px; padding: 0px; }
+#container article header, #container article footer { background-color: transparent; padding: 1px 5px:; }
+#container article header { -moz-border-radius-topleft: 15px; -moz-border-radius-topright: 15px; }
+#container article footer { -moz-border-radius-bottomleft: 15px; -moz-border-radius-bottomright: 15px; }
+#container article figure { float: left; }
+
+/* Diffs */
+ins.diffins, ins.diffmod { background-color: #3f3; }
+del.diffdel, del.diffmod { background-color: #f33; }
+
+/* Comments */
+.comment { border: 1px solid black;}
+.new-comment h3 { border: 1px solid red; }
+.fold { display:none; }
+.avatar { float:left; margin: 5px 10px; }
+
+/* Toolbar */
+#toolbar { position: fixed; overflow: hidden; bottom: 0; left: 20px; right: 20px; padding: 2px; color: white; background-color: transparent; border: 1px solid #baa;filter:alpha(opacity=75);
+opacity: 0.75;
+-moz-opacity:0.75;}
+#toolbar-items { float: right; }
+
+/* Divers et variés */
+a img { border: none; }
+#sidebar .login p {    font-family:                        "Linux Libertine";
+    font-style:                         normal;
+    font-weight:                        normal;
+    src:                                url('/fonts/LinLibertine.ttf'); 
+font-size: 60%}
+#tracker .fix a, #tracker .invalid a, .tracker.fix a, .tracker.invalid a { text-decoration: line-through; }
+.misspelled { border-bottom:1px dashed red; }
+
