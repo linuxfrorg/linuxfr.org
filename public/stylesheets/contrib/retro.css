@@ -1,0 +1,392 @@
+/**
+ * Author: Yellowiscool
+ * License: AGPL - http://www.gnu.org/licenses/agpl.html
+ */
+
+/* Layout */
+body, nav, header, aside, figure, section, footer, article { margin: 0; padding: 0; display: block; }
+/*#branding  { float: left; clear: left; width: 211px; }*/
+/*#sidebar   { background-color: #cfc; }
+/*#container { background-color: #ffd; }*/
+
+/* Général */
+body
+{
+background:#F5F5F5 url(/images/contrib/retro/fond_body.png) repeat -18px 0;
+color:black;
+padding:0;
+font-family: "DejaVu Sans", "Bitstream Vera Sans", "Lucida Grande", "Lucida Sans", Verdana, sans-serif;
+}
+a, #container article header a, #container .comment .meta a { color:#36598E; }
+a:hover, #container article header a:hover, #container .comment .meta a:hover { color:#0056D9; }
+h1, h2, h3, h4, h5, h6 { color: #554922; }
+
+/* Logo */
+#branding h1 { display: block; font-size:1em; width: 201px; height: 186px; margin:0 0 0 1.5em; border-radius:2em; -moz-border-radius:2em; -webkit-border-radius:2em; background:black;}
+#branding h1 a { display: block; text-indent: -9999em; width: 100%; height: 100%; }
+
+/* Nav */
+#site { background:url(/images/contrib/retro/fond_site.png) repeat-x; min-height:34px;}
+#site .go_to_content { display:none; }
+#site a { font-weight:bold; text-decoration:none; font-size:15px; }
+#site a:hover { text-decoration:underline; }
+#site ul { display: inline; width: 100%; line-height:16px; vertical-align:middle; padding-left:0.5em; }
+#site li { display: inline; list-style: none; }
+#site ul li::after { content: " :: "; color: #36598E; font-weight:bold;}
+#site ul li:last-child::after, #site ul li.last::after { content: ""; }
+#site form { float: right; color: #36598E; }
+#site form label{ font-weight: bold; }
+#site form #query { background: rgba(255, 255, 255, 0.5); color:#36598E; border: 1px solid #545454; }
+#site form #search_submit { display:none; }
+
+/* Side Bar */
+#sidebar { float: left; clear: left; width: 201px; margin-top:1.8em;}
+#sidebar header { background: url(/images/contrib/retro/fond_header.png) repeat-x 0 3em; }
+#sidebar { background:url(/images/contrib/retro/fond_sidebar.png) repeat-y 4em; }
+#sidebar .box { margin:1.4em -1.5em 0 1.5em; background:#cac1a5; padding:0.5em 1em 0.5em 1em; border-radius:2em; -moz-border-radius:2em; -webkit-border-radius:2em; text-align:center; color:black;}
+#sidebar .box ul { padding-left:0; padding-top:0.8em; font-size:0.8em;}
+#sidebar .box li { list-style:none; margin-bottom:0.5em;}
+#sidebar .box h1 { font-size:1.4em; color:#554922; }
+#sidebar .box h1 a  { text-decoration:none; color:#554922; }
+#sidebar .box p { font-size: 0.8em; }
+#sidebar .login li:last-child { margin-top:1.5em; }
+
+/* Contenus */
+#container { margin:2em 3em 0 260px; padding-left:2em;}
+#container > h1 { text-align:center; font-size:2.5em; margin-top:0;}
+
+
+#container article { background: url(/images/contrib/retro/fond_header.png) repeat-x 0 3em; padding-right:3em; margin:2em -3em 3em 0; position:relative; }
+#container article header { background:#F5F5F5 url(/images/contrib/retro/fond_article.png) repeat-x; border-radius:2.5em 3.5em 0 0; -moz-border-radius:2.5em 3.5em 0 0; -webkit-border-radius:2.5em 3.5em 0 0; font-size:0.8em; min-height:68px; }
+#container article header h1 { margin:0 1em 0 1em; padding-top:0.5em; font-size:1.65em; max-height:1.2em; overflow:hidden; color:#554922;}
+#container article header h1 a, #container .comment h2 a { text-decoration:none; color:#554922; }
+#container article header h1 a:hover, #container .comment h2 a:hover { text-decoration:underline; color:#805230; }
+#container article header h1 a:first-child:after { content: " ::"; color:#554922; font-weight:bold;}
+#container article header .meta { padding:0.5em 1em 0 2em; }
+#container article header .tags, #container article header .tag_cloud, #container article header .tags li { display:inline; }
+#container article header .tag_cloud {padding:0; }
+#container article .figures {position:absolute; top:0.3em; right:4.8em;height:5em;min-width:2em;}
+#container article .score { color:#554922; font-weight:bold; font-size:1.35em;line-height:3.3em; margin-left:0.5em; float:right;}
+
+#container article .content, #container article .body, .comment .content, #container form.new_comment, #form_links { background:#F5F5F5; padding:1.3em 2em 0.5em 2.5em; font-size:0.9em; text-align:justify; overflow:hidden;}
+#container .toolbox { font-size: 0.9em; line-height:1.6em;}
+#container .order_navbar ul, #container .order_navbar li { display: inline; padding-left:0;}
+
+/* BigFooter */
+#bigfooter { clear: both; background:url(/images/contrib/retro/fond_footer.png) repeat-x 0 4.5em; min-height:190px; max-height:220px; overflow:hidden; padding-top:4.5em;}
+#bigfooter h1 { color:#36598E; font-size:1.2em; margin-bottom:0;}
+#bigfooter nav, #bigfooter section { display: inline; float: left; overflow: hidden; width: 23%; padding: 0 1% 0 1%; }
+#bigfooter ul { font-size:0.6em; margin-top: 0.5em; margin-bottom:0; padding-left:2em;}
+#bigfooter li { list-style:none; }
+
+/* Diffs */
+ins.diffins, ins.diffmod { background-color: #3f3; }
+del.diffdel, del.diffmod { background-color: #f33; }
+
+/* Avatars */
+.comment .image {position:absolute; top:0.2em; left:0.5em;}
+.comment .image img {height:3.3em; border:2px solid #c2b899;border-radius:0 0 5px 5px;-webkit-border-radius:0 0 5px 5px;-moz-border-radius:0 0 5px 5px;}
+#container article .image { background:#F5F5F5;display:inline-block;}
+#container article .image img { width:4.6em; border:2px solid #c2b899;border-radius:0 0 5px 5px;-webkit-border-radius:0 0 5px 5px;-moz-border-radius:0 0 5px 5px;}
+
+/* Comments */
+.comment { background: url(/images/contrib/retro/fond_header.png) repeat-x 0 2em; padding-right:3em; margin:2em -3em 3em 0; list-style:none; position:relative;}
+.comment .meta {background: #F5F5F5 url(/images/contrib/retro/fond_article.png) repeat-x 0 -3.85em; margin:0; font-size:0.75em; padding:0 1em 0.32em 6.6em;}
+.comment .score {color:#36598E; font-weight:bold; font-size:1.35em; position:relative; bottom:0;}
+.comment .actions {}
+.comment h2 { margin:0; padding:0.5em 1em 0 4.3em; font-size:1.1em; height:1.1em; overflow:hidden; color:#554922;
+	background: #F5F5F5 url(/images/contrib/retro/fond_article.png) repeat-x; border-radius:1.5em 2.5em 0 0; -moz-border-radius:1.5em 2.5em 0 0; -webkit-border-radius:1.5em 2.5em 0 0; }
+.new-comment h3 { border: 1px solid red; }
+.fold { display:none; }
+.threads > .comment {
+	margin-top:3em;
+	margin-bottom:6em;
+}
+.comment.new-comment > .meta {border-bottom:3px solid #ef8b20;}
+.comment.new-comment > footer, .comment.new-comment > .content {background-color:white;border-right:1px solid #ef8b20;}
+
+/* Scores */
+#container article .content, #container article footer, .comment footer, .comment .content { background:#F5F5F5 url(/images/contrib/retro/fond_contenu.png) repeat-y -25px 0; border-right:1px solid #c2b899;}
+#container article footer, .comment footer { border-bottom:2px solid #888069;}
+.comment.new-comment > footer, .comment.new-comment > .content { background-image:url(/images/contrib/retro/fond_contenu_new.png); }
+
+/* C'est beau, c'est trop beau */
+#container article.score0 > .content,	#container article.score0 > footer,		.comment.score0 > .content,		.comment.score0 > footer,
+#container article.score-0 > .content,	#container article.score-0 > footer,	.comment.score-0 > .content,	.comment.score-0 > footer { background-position:-25px 0; }
+#container article.score1 > .content,	#container article.score1 > footer,		.comment.score1 > .content,		.comment.score1 > footer,
+#container article.score-1 > .content,	#container article.score-1 > footer,	.comment.score-1 > .content,	.comment.score-1 > footer { background-position:-24px 0; }
+#container article.score2 > .content,	#container article.score2 > footer,		.comment.score2 > .content,		.comment.score2 > footer,
+#container article.score-2 > .content,	#container article.score-2 > footer,	.comment.score-2 > .content,	.comment.score-2 > footer { background-position:-21px 0; }
+#container article.score3 > .content,	#container article.score3 > footer,		.comment.score3 > .content,		.comment.score3 > footer,
+#container article.score-3 > .content,	#container article.score-3 > footer,	.comment.score-3 > .content,	.comment.score-3 > footer { background-position:-18px 0; }
+#container article.score4 > .content,	#container article.score4 > footer,		.comment.score4 > .content,		.comment.score4 > footer,
+#container article.score-4 > .content,	#container article.score-4 > footer,	.comment.score-4 > .content,	.comment.score-4 > footer { background-position:-14px 0; }
+#container article.score5 > .content,	#container article.score5 > footer,		.comment.score5 > .content,		.comment.score5 > footer,
+#container article.score-5 > .content,	#container article.score-5 > footer,	.comment.score-5 > .content,	.comment.score-5 > footer { background-position:-10px 0; }
+#container article.score6 > .content,	#container article.score6 > footer,		.comment.score6 > .content,		.comment.score6 > footer,
+#container article.score-6 > .content,	#container article.score-6 > footer,	.comment.score-6 > .content,	.comment.score-6 > footer { background-position:-7px 0; }
+#container article.score7 > .content,	#container article.score7 > footer,		.comment.score7 > .content,		.comment.score7 > footer,
+#container article.score-7 > .content,	#container article.score-7 > footer,	.comment.score-7 > .content,	.comment.score-7 > footer { background-position:-3px 0; }
+#container article.score8 > .content,	#container article.score8 > footer,		.comment.score8 > .content,		.comment.score8 > footer,
+#container article.score-8 > .content,	#container article.score-8 > footer,	.comment.score-8 > .content,	.comment.score-8 > footer { background-position:-2px 0; }
+#container article.score9 > .content,	#container article.score9 > footer,		.comment.score9 > .content,		.comment.score9 > footer,
+#container article.score-9 > .content,	#container article.score-9 > footer,	.comment.score-9 > .content,	.comment.score-9 > footer { background-position:0px 0; }
+#container article.score10 > .content,	#container article.score10 > footer,	.comment.score10 > .content,	.comment.score10 > footer,
+#container article.score-10 > .content,	#container article.score-10 > footer,	.comment.score-10 > .content,	.comment.score-10 > footer { background-position:0px 0; }
+
+/* Les scores moches */
+#container article.score-0 > .content,	#container article.score-0 > footer,	.comment.score-0 > .content,	.comment.score-0 > footer,
+#container article.score-1 > .content,	#container article.score-1 > footer,	.comment.score-1 > .content,	.comment.score-1 > footer,
+#container article.score-2 > .content,	#container article.score-2 > footer,	.comment.score-2 > .content,	.comment.score-2 > footer,
+#container article.score-3 > .content,	#container article.score-3 > footer,	.comment.score-3 > .content,	.comment.score-3 > footer,
+#container article.score-4 > .content,	#container article.score-4 > footer,	.comment.score-4 > .content,	.comment.score-4 > footer,
+#container article.score-5 > .content,	#container article.score-5 > footer,	.comment.score-5 > .content,	.comment.score-5 > footer,
+#container article.score-6 > .content,	#container article.score-6 > footer,	.comment.score-6 > .content,	.comment.score-6 > footer,
+#container article.score-7 > .content,	#container article.score-7 > footer,	.comment.score-7 > .content,	.comment.score-7 > footer,
+#container article.score-8 > .content,	#container article.score-8 > footer,	.comment.score-8 > .content,	.comment.score-8 > footer,
+#container article.score-9 > .content,	#container article.score-9 > footer,	.comment.score-9 > .content,	.comment.score-9 > footer,
+#container article.score-10 > .content,	#container article.score-10 > footer,	.comment.score-10 > .content,	.comment.score-10 > footer { background-color:#E0DDD8;background-image:url(/images/contrib/retro/fond_contenu_troll.png);}
+
+/* Footers */
+#container article footer, .comment footer {  background:#F5F5F5 url(/images/contrib/retro/fond_contenu.png) repeat-y -25px 0; font-size:0.8em; padding:0 1em 1em 3em;}
+#container article footer a, #container article footer .tag_in_place, .comment footer a {display:inline-block; padding: 0 0.5em 0 0.5em;}
+#container article footer .vote, .comment footer .vote { display:inline; }
+#container article footer .vote form, .comment footer .vote form { display:inline-block; }
+#container article footer .vote form input[type=submit], .comment footer .vote form input[type=submit] { background:#cac1a5;border:1px solid #cac1a5;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;color:black;}
+#container article footer .vote form input[type=submit]:hover, .comment footer .vote form input[type=submit]:hover { background:#d4d1b6;border-color:#d4d1b6;}
+#container article footer .tag_in_place { display:inline-block;}
+
+/* Toolbar */
+#toolbar {position: fixed; overflow: hidden; bottom: 0; right:1.875em; font-size:0.8em; margin:0; background:#cac1a5; padding:0 1em 0.3em 1em; border-radius:1em 1em 0 0; -moz-border-radius:1em 1em 0 0; -webkit-border-radius:1em 1em 0 0; text-align:center; color:#554922;
+opacity:0.3;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+}
+#toolbar .prev, #toolbar .next { font-weight:bold; font-size:1.35em; text-decoration:none;}
+#toolbar #toolbar_threshold {padding-left:2em;font-size:0.8em;}
+#toolbar:hover {
+opacity:1;
+}
+
+/* New comment */
+.markItUp { border:2px solid #554922; }
+fieldset {border:none;}
+
+/* Divers et variés */
+a img { border: none; }
+#tracker .fix a, #tracker .invalid a, .tracker.fix a, .tracker.invalid a { text-decoration: line-through; }
+.misspelled { border-bottom:1px dashed red; }
+.banner, .notice { text-align:center; border-bottom:2px solid #cac1a5; padding-bottom:0.2em; margin-bottom:1em; font-size:110%;}
+table#my_comments, table#my_posts { background:#F5F5F5; padding:1em;font-size:0.8em;}
+
+/* mark.css */
+.markItUp {
+  width: 700px;
+  margin: 5px 0 5px 0;
+  border: 5px solid #f5f5f5;
+}
+/* line 6, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .markItUp a:link,
+.markItUp .markItUp a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+/* line 10, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpContainer {
+  border: 1px solid #3c769d;
+  background: white url(/images/markitup/bg-container.png) repeat-x top left;
+  padding: 5px 5px 2px 5px;
+  font: 11px Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* line 16, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpEditor {
+  font: 12px "Courier New", Courier, monospace;
+  padding: 5px 5px 5px 35px;
+  border: 3px solid #3c769d;
+  width: 643px;
+  height: 320px;
+  background-image: url(/images/markitup/bg-editor-markdown.png);
+  background-repeat: no-repeat;
+  /* clear: both */
+  display: block;
+  line-height: 18px;
+  overflow: auto;
+}
+
+/* line 29, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpPreviewFrame {
+  overflow: auto;
+  background-color: white;
+  border: 1px solid #3c769d;
+  width: 99.9%;
+  height: 300px;
+  margin: 5px 0;
+}
+
+/* line 37, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpFooter {
+  width: 100%;
+  cursor: n-resize;
+}
+
+/* line 41, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpResizeHandle {
+  overflow: hidden;
+  width: 22px;
+  height: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url(/images/markitup/handle.png);
+  cursor: n-resize;
+}
+
+/* line 50, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader {
+  height: 22px;
+}
+/* line 53, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul li {
+  list-style: none;
+  float: left;
+  position: relative;
+}
+/* line 57, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul li ul {
+  display: none;
+}
+/* line 59, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul li:hover > ul {
+  display: block;
+}
+/* line 61, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul a {
+  display: block;
+  width: 16px;
+  height: 16px;
+  text-indent: -10000px;
+  background-repeat: no-repeat;
+  padding: 3px;
+  margin: 0px;
+}
+/* line 69, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul .markItUpDropMenu {
+  background: transparent url(/images/markitup/menu.png) no-repeat 115% 50%;
+  margin-right: 5px;
+}
+/* line 72, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul .markItUpDropMenu li {
+  margin-right: 0px;
+}
+/* line 74, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul .markItUpSeparator {
+  margin: 0 10px;
+  width: 1px;
+  height: 16px;
+  overflow: hidden;
+  background-color: #cccccc;
+}
+/* line 80, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul ul {
+  display: none;
+  position: absolute;
+  top: 18px;
+  left: 0px;
+  background: #f5f5f5;
+  border: 1px solid #3c769d;
+  height: inherit;
+}
+/* line 88, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul ul .markItUpSeparator {
+  width: auto;
+  height: 1px;
+  margin: 0px;
+}
+/* line 92, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul ul li {
+  float: none;
+  border-bottom: 1px solid #3c769d;
+}
+/* line 95, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul ul .markItUpDropMenu {
+  background: #f5f5f5 url(/images/markitup/submenu.png) no-repeat 100% 50%;
+}
+/* line 97, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul ul ul {
+  position: absolute;
+  top: -1px;
+  left: 150px;
+}
+/* line 101, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul ul ul li {
+  float: none;
+}
+/* line 103, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul ul a {
+  display: block;
+  padding-left: 0px;
+  text-indent: 0;
+  width: 120px;
+  padding: 5px 5px 5px 25px;
+  background-position: 2px 50%;
+}
+/* line 110, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul ul a:hover {
+  color: white;
+  background-color: #3c769d;
+}
+
+/* line 115, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .h1 a {
+  background-image: url(/images/markitup/h1.png);
+}
+/* line 117, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .h2 a {
+  background-image: url(/images/markitup/h2.png);
+}
+/* line 119, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .h3 a {
+  background-image: url(/images/markitup/h3.png);
+}
+/* line 121, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .h4 a {
+  background-image: url(/images/markitup/h4.png);
+}
+/* line 123, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .bold a {
+  background-image: url(/images/markitup/bold.png);
+}
+/* line 125, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .italic a {
+  background-image: url(/images/markitup/italic.png);
+}
+/* line 127, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .stroke a {
+  background-image: url(/images/markitup/stroke.png);
+}
+/* line 129, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .list-bullet a {
+  background-image: url(/images/markitup/list-bullet.png);
+}
+/* line 131, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .list-numeric a {
+  background-image: url(/images/markitup/list-numeric.png);
+}
+/* line 133, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .image a {
+  background-image: url(/images/markitup/picture.png);
+}
+/* line 135, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .link a {
+  background-image: url(/images/markitup/link.png);
+}
+/* line 137, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .quotes a {
+  background-image: url(/images/markitup/quotes.png);
+}
+/* line 139, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .code a {
+  background-image: url(/images/markitup/page_white_code.png);
+}
