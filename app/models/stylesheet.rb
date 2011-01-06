@@ -30,7 +30,7 @@ class Stylesheet < Struct.new(:name, :url)
     key = LinuxfrOrg::Application::COOKIE_STORE_KEY
     val = cookies[key]
     Dir.chdir Rails.root.join("public") do
-      timeout 10 do
+      timeout 30 do
         `wkhtmltoimage --crop-h 1024 --cookie '#{key}' '#{val}' '#{url}' #{dst}`
         `mogrify -resize 400x400 #{dst} 2>&1`
       end
