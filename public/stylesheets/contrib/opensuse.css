@@ -5,6 +5,8 @@
  *  basée sur software.opensuse.org et fr.opensuse.org
  *
  * Historique :
+ *   2.5    05/01/2011    - [Yggdras] tribune: marge en pourcent pour board-right
+ *   2.4    31/12/2010    - maj suite aux évolutions du site
  *   2.3    12/12/2010    - Pleins de corrections (toolbar, vignette, note, formulaires)
  *   2.2    04/12/2010    - Réponse à un commentaire (cf https://linuxfr.org/tracker/1189.html)
  *   2.1    30/11/2010    - Corrections après la mise à jour de alpha.linuxfr.org
@@ -192,7 +194,8 @@ aside#sidebar .box > a {
 }
 aside#sidebar img.access {
 	float: right;
-	margin: 0.3em;
+	position: relative;
+	top: -2.5em;
 	width: 1.5em !important;
 	height: 1.5em !important;
 }
@@ -920,6 +923,16 @@ time.norloge {
 }
 div.board > div.inbox > p {
 	padding: 0.25em 0 0.25em;
+	font-size: 0.8em;
+}
+div.board > div.inbox span.board-left {
+	float: left;
+	padding-right: 0.5em;
+	display: block;
+}
+div.board > div.inbox span.board-right {
+	margin-left: 16%;
+	display: block;
 }
 input#board_message {
 	width: 75%;
