@@ -7,7 +7,7 @@ class Stylesheet < Struct.new(:name, :url)
     Dir.chdir(Rails.root.join('public', BASE_DIR)) do
       Dir['*.css'].map do |css|
         Stylesheet.new(css, "/#{BASE_DIR}/#{css}")
-      end
+      end.shuffle
     end
   end
 
