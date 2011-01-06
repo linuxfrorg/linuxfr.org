@@ -1,0 +1,748 @@
+/**
+ * Author: Yggdras
+ * License: CC-by-sa - http://creativecommons.org/licenses/by-sa/3.0/deed.fr
+ */
+
+@import url('/stylesheets/markitup.css');
+@import url('/stylesheets/pygments/colorful.css');
+
+/* Layout */
+body, nav, header, aside, figure, section, footer, article {
+  display: block;
+}
+html {
+  background-color: #F1F1F1;
+}
+body {
+  border: 2px solid #DDDDDD;
+  background-color: white;
+  margin: 15px;
+  margin-bottom: 30px;
+  padding: 0px;
+  color: #000000;
+  font-size: 0.8em;
+  font-family: sans-serif;
+  text-align: justify;
+}
+#branding  {
+  float: left;
+  clear: left;
+  width: 211px;
+}
+#sidebar   {
+  float: left;
+  clear: left;
+  width: 202px;
+  margin-bottom: 5px;
+}
+#container {
+  margin-left: 225px;
+}
+
+/* Logo + barre de gauche */
+#branding h1 {
+  background-repeat: no-repeat;
+  display: block;
+  width: 201px;
+  height: 186px;
+  margin: 0px;
+  margin-top: 3px;
+  padding: 2px;
+  padding-bottom: 5px;
+}
+#branding h1 a {
+  display: block;
+  text-indent: -9999em;
+  width: 100%;
+  height: 100%;
+}
+#sidebar > div  {
+  clear: left;
+  background-color: #E0DDD8;
+  border: 1px solid #BBBBBB;
+  -moz-border-radius: 10px;
+  margin-left: 4px;
+  margin-top: 5px;
+  padding: 5px;
+  font-size: 0.8em;
+}
+#sidebar > div > h1  {
+  display: inline;
+  font-size: 14px;
+  font-weight: bold;
+}
+#sidebar > div > p,
+#sidebar > div > ul {
+  margin: 0px;
+  margin-top: 10px;
+  margin-left: 2px;
+  padding: 0px;
+  padding-left: 8px;
+  border-left:1px solid #AAAAAA;
+}
+#sidebar > div > ul {
+  list-style: none;
+}
+#sidebar > div > ul > li {
+
+}
+
+/* Nav */
+#site {
+  background-color: #EEEAE6;
+  border-top: 1px solid #999999;
+  border-bottom: 1px solid #999999;
+  margin-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow: hidden;
+}
+#site div.go_to_content {
+  display: none;
+}
+#site ul {
+  display: inline-block;
+  margin: 0px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 1em;
+  font-weight: bold;
+}
+#site ul li {
+  display: inline;
+  padding-left: 10px;
+  padding-right: 10px;
+  list-style: none;
+}
+#site form {
+  float: right;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+#site form input#query {
+  border: 1px solid #CCCCCC;
+  height: 1.1em;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#site form input#search_submit {
+  display: inline-block;
+  border: none;
+  background: url('/images/contrib/kaiska/search.png') no-repeat;
+  width: 22px;
+  height: 22px;
+  margin-top: -3px;
+  padding: 0px;
+  text-indent: -1000em;
+  color: #36598E;
+  cursor: pointer;
+}
+#site form input#search_submit:hover {
+  text-decoration: underline;
+}
+body#home-index nav#site a[href="/"],
+body#news-index nav#site a[href="/news"],
+body#diaries-index nav#site a[href="/journaux"],
+body#forums-index nav#site a[href="/forums"],
+body#polls-index nav#site a[href="/sondages"],
+body#wiki_pages-show nav#site a[href="/wiki"],
+body#trackers-index nav#site a[href="/suivi"],
+body#static-show nav#site a[href="/plan"] {
+  color: black;
+}
+
+/* Footer */
+#bigfooter {
+  clear: both;
+}
+#bigfooter nav,
+#bigfooter section {
+  float: left;
+  width: 23%;
+  background-color: #F5F5F5;
+  color: #666666;
+  border: 1px solid #CCCCCC;
+  -moz-border-radius: 10px;
+  margin: 5px;
+  margin-bottom: 30px;
+  padding: 5px;
+}
+nav#last_comments ul {
+  padding-left: 20px;
+}
+#bigfooter ul li {
+}
+
+/* Banner */
+aside.banner {
+  background-color: #FFF2E8;
+  border-bottom: 1px solid #AAAAAA;
+  border-top: 1px solid #AAAAAA;
+  font-size: 10px;
+  font-weight: bold;
+  margin: 10px;
+  margin-top: 0px;
+  margin-bottom: 4px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  text-align: center;
+}
+
+/* Toolbox */
+nav.toolbox div.new_content {
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+nav.toolbox div.new_content a {
+  background-color: #FFFBF7;
+  border: 1px solid #CCCCCC;
+  color: #000000;
+  padding: 3px;
+  max-width: 20em;
+}
+nav.toolbox div.order_navbar {
+  margin-bottom: 6px;
+}
+
+/* Contenus */
+#container > h1 {
+  display: none;
+}
+
+#container div.order_navbar ul {
+  display: inline;
+  padding: 0px;
+}
+#container div.order_navbar ul li {
+  display: inline;
+  padding-right: 5px;
+}
+
+#container article {
+  background-color: #F5F5F5;
+  border: 1px solid #CCCCCC;
+  -moz-border-radius: 10px;
+  margin: 10px;
+  padding: 0px;
+  overflow: hidden;
+}
+#container article header, #container article footer {
+  margin: 0px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#container article header {
+  background-color: #EEEAE6;
+  border: 1px solid #EEEAE6;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  margin: -1px;
+  font-size: 11px;
+  overflow: hidden;
+}
+#container article header h1 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0px;
+}
+#container article header h1 a:link,
+#container article header h1 a:visited,
+#container article header h1 a:active {
+  color: #555522;
+}
+#container article header div.meta {
+  color: #666666;
+}
+#container article header div.meta div.tags {
+  float: right;
+  max-width: 35%;
+}
+#container article header ul.tag_cloud {
+  display: inline;
+  padding: 0;
+}
+#container article header ul.tag_cloud li {
+  display: inline;
+}
+#container article div.content,
+#container article#contents {
+  padding: 10px;
+}
+#container article figure {
+  float: left;
+  margin: 10px;
+}
+#container article figure img.avatar {
+  max-width: 82px;
+  max-height: 82px;
+}
+#container article figure.score {
+  width: 36px;
+  -moz-border-radius: 10px;
+  border: 1px #CCCCCC;
+  background: url('/images/contrib/kaiska/note.png') #DDDDDD;
+  margin: 3px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  float: right;
+}
+#container article div.content > p {
+  margin-top: 0px;
+}
+div.content blockquote {
+  background-color: #FFFBEC;
+  border: 1px solid black;
+  margin-left: 20px;
+  margin-right: 5px;
+  padding-left: 5px;
+}
+div.content blockquote > p:first-child {
+  margin-top: 5px;
+}
+div.content blockquote > p:last-child {
+  margin-bottom: 5px;
+}
+div.content code {
+  display: inline-block;
+  white-space: pre-wrap;
+  background: #EEEAE6;
+  padding: 3px;
+}
+div.content img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+  max-height: 1000px;
+}
+#container article footer {
+  -moz-border-radius-bottomleft: 10px;
+  -moz-border-radius-bottomright: 10px;
+  padding-bottom: 10px;
+}
+#container article footer span.new_comments {
+  background: url('/images/contrib/kaiska/attention.png') no-repeat;
+  padding-left: 18px;
+}
+#container article footer div.tag_in_place {
+  float: right;
+}
+div.ac_results {
+  /* liste des tags possibles */
+  -moz-border-radius: 10px 10px 10px 10px;
+  background-color: #F5F5F5;
+  border: 1px solid #CCCCCC;
+  color: #666666;
+  margin: 5px 5px 30px;
+  padding: 5px;
+}
+div.ac_results ul {
+  margin: 0px;
+  padding: 5px;
+}
+div.ac_results ul li {
+  color: black;
+  list-style: none;
+  cursor: pointer;
+}
+div.ac_results ul li:hover {
+  text-decoration: underline;
+}
+#container article footer div.vote {
+  margin-left: 5px;
+  display: inline;
+}
+#container article footer div.vote form {
+  display: inline;
+}
+#container article footer div.vote form div {
+  display: inline;
+}
+
+/* Sondage */
+ul.poll.current {
+  padding: 0px;
+  margin-top: 0px;
+}
+ul.poll.current li {
+  list-style: none;
+}
+ul.poll.archived li {
+  margin-top: 12px;
+}
+ul.poll li meter {
+  display: block;
+  -moz-border-radius: 10px 10px 10px 10px;
+  background: #EEEAE6;
+  border: 1px solid #CCCCCC;
+  color: black;
+  font-size: 0.7em;
+}
+
+/* Diffs */
+ins.diffins, ins.diffmod {
+  background-color: #3f3;
+}
+del.diffdel, del.diffmod {
+  background-color: #f33;
+}
+
+/* Comments */
+ul.threads {
+  display: inline;
+  list-style: none;
+}
+ul.threads > li.comment {
+  -moz-border-radius: 10px 10px 10px 10px;
+  background: none repeat scroll 0 0 #DAD6D1;
+  border-color: #555522 #CCCCCC;
+  border-style: solid;
+  border-width: 2px 1px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.new-comment > h2 {
+  background-color: #E1DCDC;
+  border: 1px solid #D37537;
+  color: #111111;
+}
+li.comment {
+  overflow: visible;
+}
+li.comment > ul {
+  list-style: none;
+  padding-left: 17px;
+}
+li.comment > h2 {
+  margin: 0 20px 3px 0;
+  padding-left: 1px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  background: none repeat scroll 0 0 #EBE7E2;
+  color: black;
+  font-size: 12px;
+  font-weight: normal;
+  font-weight: bold;
+}
+li.comment > h2 a {
+  color: black;
+}
+li.comment p.meta {
+  margin: 0px;
+}
+li.comment div.content {
+  border-left: 1px solid #AAAAAA;
+  padding-left: 10px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-right: 20px;
+}
+li.comment div.content > p {
+  margin-top: 0px;
+}
+li.comment img.avatar {
+  float: right;
+  margin: 5px 10px;
+  margin-top: -0.8em;
+  max-width: 64px;
+  max-height: 64px;
+}
+li.comment footer {
+/*  clear: both; */
+  padding-bottom: 5px;
+}
+li.comment footer div.vote {
+  display: inline;
+}
+li.comment footer a.action:before {
+  content: "[ ";
+}
+li.comment footer a.action:after {
+  content: " ]";
+}
+div.vote > form.button_to {
+  display: inline;
+}
+div.vote > form.button_to div {
+  display: inline;
+}
+div.vote > form.button_to div input {
+  display: inline-block;
+  border: none;
+  background: none;
+  padding: 0px;
+  color: #36598E;
+  cursor: pointer;
+}
+div.vote > form.button_to div input:hover {
+  text-decoration: underline;
+}
+.fold > p.meta,
+.fold > div.content,
+.fold > footer {
+  display: none;
+}
+
+/* Écriture d'un nouveau contenu */
+form.new_comment,
+form.new_diary,
+form.edit_diary,
+form.new_news,
+form.edit_news,
+form.new_post,
+form.edit_post,
+form.new_poll,
+form.edit_poll,
+form.new_tracker,
+form.edit_tracker,
+form.new_wiki_page,
+form.edit_wiki_page {
+  background-color: #EFEFEF;
+  border: 1px solid #8E8E8E;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+input#comment_title,
+input#diary_title,
+input#news_title,
+input#post_title,
+input#poll_title,
+input#tracker_title,
+input#wiki_page_title {
+  background-color: #FFFBF7;
+  border: 1px solid black;
+  color: #000000;
+  font-size: 12px;
+  width: 80%;
+}
+form > p > label {
+  display: inline-block;
+  min-width: 15%;
+}
+form > p > label[for$="cc_licensed"] {
+  display: inline;
+}
+div.markItUp {
+  width: 100%;
+}
+div.markItUpContainer {
+  padding-right: 11px;
+}
+textarea.markItUpEditor {
+  width: 100%;
+  background-image: none;
+  background-color: #FFFBF7;
+  padding: 0px;
+}
+div#form_links fieldset {
+  border: none;
+}
+div#form_links fieldset label {
+  display: -moz-inline-block;
+  display: inline-block;
+}
+label#label-link-name,
+label#label-link-url {
+  width: 30%;
+}
+label#label-link-lang {
+  width: 10%;
+  max-width: 10em;
+}
+div#form_links fieldset.link {
+  padding: 0px;
+}
+div#form_links fieldset.link input {
+  margin: 0px;
+  background-color: #FFFBF7;
+  border: 1px solid black;
+  width: 30%;
+  size: 0;
+}
+div#form_links fieldset.link input:focus {
+  background-color: #EEEAE6;
+}
+div#form_links fieldset.link select {
+  width: 10%;
+  max-width: 10em;
+}
+textarea#news_message {
+  /* Boite de commentaire pour les modérateurs */
+  width: 100%;
+  background-image: none;
+  background-color: #FFFBF7;
+  padding: 0px;
+  border: 1px solid black;
+}
+
+li#comment_new {
+  list-style: none;
+}
+
+/* Toolbar */
+#toolbar {
+  position: fixed;
+  overflow: hidden;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  padding: 2px;
+  color: #333;
+  background-color: #dfd6d1;
+  border: 1px solid #baa;
+}
+#toolbar-items {
+  float: right;
+}
+
+/* Différentes tables: Tableau de bord, Aide mémoire, Liste des suivis */
+table {
+  border: 0;
+}
+table th {
+  background: #CCCCCC;
+  border-color: white;
+  border-right: 0;
+  border-style: solid;
+  border-width: 1em 0 0;
+  padding: 1em;
+}
+table td {
+  background: #E0DDD8;
+  border: thin solid #BBBBBB;
+}
+
+/* Modification compte utilisateur */
+form.edit_account {
+  
+}
+form.edit_account p {
+  background: #E0DDD8;
+  border: thin solid #BBBBBB;
+  margin: 3px;
+  overflow: hidden;
+}
+form.edit_account p label,
+form.edit_account p i {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+form.edit_account p label {
+  float: left;
+  min-width: 16em;
+}
+form.edit_account p span.help {
+  display: block;
+  padding-left: 10px;
+  font-style: italic;
+}
+form.edit_account p input[type="text"],
+form.edit_account p input[type="email"],
+form.edit_account p input[type="url"],
+form.edit_account p input[type="password"] {
+  border: 1px solid black;
+  background-color: #FFFBF7;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+form.edit_account p input#account_submit {
+}
+
+/* Tribune */
+div#main_board {
+  padding-right: 10px;
+}
+div#main_board div.board p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-align: left;
+}
+div#main_board div.board p span.board-left {
+}
+div#main_board div.board p span.board-left time {
+  font-weight: bold;
+}
+div#main_board div.board p span.board-left b {
+  display: inline-block;
+  width: 130px;
+  border-right: thin black solid;
+  padding-right: 3px;
+  padding-top: 3px;
+  font-weight: normal;
+  text-align: right;
+}
+div#main_board div.board p span.board-right {
+}
+
+/* Tribune modérateur */
+div#moderation_box input#board_message {
+  width: 95%;
+}
+
+/* Langues */
+li.link[lang=cn] { list-style: url('/images/langs/cn.png'); }
+li.link[lang=ct] { list-style: url('/images/langs/ct.png'); }
+li.link[lang=da] { list-style: url('/images/langs/da.png'); }
+li.link[lang=de] { list-style: url('/images/langs/de.png'); }
+li.link[lang=el] { list-style: url('/images/langs/el.png'); }
+li.link[lang=en] { list-style: url('/images/langs/en.png'); }
+li.link[lang=es] { list-style: url('/images/langs/es.png'); }
+li.link[lang=eu] { list-style: url('/images/langs/eu.png'); }
+li.link[lang=fi] { list-style: url('/images/langs/fi.png'); }
+li.link[lang=fr] { list-style: url('/images/langs/fr.png'); }
+li.link[lang=it] { list-style: url('/images/langs/it.png'); }
+li.link[lang=ja] { list-style: url('/images/langs/ja.png'); }
+li.link[lang=ko] { list-style: url('/images/langs/ko.png'); }
+li.link[lang=nl] { list-style: url('/images/langs/nl.png'); }
+li.link[lang=no] { list-style: url('/images/langs/no.png'); }
+li.link[lang=pl] { list-style: url('/images/langs/pl.png'); }
+li.link[lang=pt] { list-style: url('/images/langs/pt.png'); }
+li.link[lang=ru] { list-style: url('/images/langs/ru.png'); }
+li.link[lang=sv] { list-style: url('/images/langs/sv.png'); }
+li.link[lang=xx] { list-style: url('/images/langs/xx.png'); }
+
+div.content a[href^="/wiki/"] {
+  background: url('/images/contrib/kaiska/linuxfr.png') no-repeat;
+  padding-left: 18px;
+}
+div.content a[href^="http://fr.wikipedia.org/"] {
+  background: url('/images/contrib/kaiska/wikipedia.png') no-repeat;
+  padding-left: 18px;
+}
+
+/* Divers et variés */
+a {
+  text-decoration: none;
+}
+a:link {
+  color: #36598E;
+}
+a:visited {
+  color: #B64545;
+}
+a:hover {
+  text-decoration: underline;
+}
+a img {
+  border: none;
+}
+#tracker .fix a,
+#tracker .invalid a,
+.tracker.fix a,
+.tracker.invalid a {
+  text-decoration: line-through;
+}
+.misspelled {
+  border-bottom:1px dashed red;
+}
+
