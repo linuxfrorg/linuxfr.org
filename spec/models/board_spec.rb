@@ -125,10 +125,10 @@ describe Board do
   end
 
   it "should be limited to 100 messages" do
-    250.times do
+    110.times do
       b = Board.new(:object_type => Board.free, :message => "foobar")
       b.user = john
-      b.save.should be_true
+      b.save
     end
     boards = Board.all(Board.free)
     boards.should have(100).items
