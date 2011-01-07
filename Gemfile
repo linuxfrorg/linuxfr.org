@@ -39,6 +39,7 @@ end
 
 group :test do
   gem "factory_girl_rails",    "~>1.0"
+  gem "spork",                 "~>0.8"
   gem "webrat",                "~>0.7"
 end
 
