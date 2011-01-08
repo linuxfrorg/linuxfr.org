@@ -70,6 +70,16 @@ after "deploy:finalize_update", "fs:symlink"
 after "deploy:setup", "fs:create_dirs"
 
 
+# Redis cache
+namespace :cache do
+  desc "Flush the redis cache"
+  task :flush, :roles => :app do
+    run "redis-cli -h #{application} -n 1 flushdb"
+  end
+end
+after "deploy:finalize_update", "cache:flush"
+
+
 # Watch the logs
 namespace :logs do
   desc "Watch jobs log"

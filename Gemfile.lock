@@ -57,7 +57,7 @@ GEM
     haml (3.0.25)
     htmlentities (4.2.3)
     i18n (0.5.0)
-    jslint_on_rails (1.0.4)
+    jslint_on_rails (1.0.5)
     kgio (2.1.1)
     mail (2.2.14)
       activesupport (>= 2.3.6)

@@ -17,7 +17,7 @@ LinuxfrOrg::Application.configure do
   # config.logger = SyslogLogger.new
 
   # Use a different cache store in production
-  config.cache_store = :redis_store, "redis://alpha.linuxfr.org:6379/0/cache"
+  config.cache_store = :redis_store, "redis://alpha.linuxfr.org:6379/1/cache"
 
   # Set the page cache directory
   config.action_controller.page_cache_directory = "#{Rails.public_path}/pages"
