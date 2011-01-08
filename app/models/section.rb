@@ -8,10 +8,6 @@
 #  state              :string(255)     default("published"), not null
 #  title              :string(255)
 #  cached_slug        :string(255)
-#  image_file_name    :string(255)
-#  image_content_type :string(255)
-#  image_file_size    :integer(4)
-#  image_updated_at   :datetime
 #  created_at         :datetime
 #  updated_at         :datetime
 #
@@ -32,9 +28,9 @@ class Section < ActiveRecord::Base
 
 ### Image ###
 
-  has_attached_file :image, :path => ':rails_root/public/images/sections/:id.:extension',
-                            :url  => '/images/sections/:id.:extension'
-  validates_attachment_presence :image, :message => "L'image est obligatoire"
+  def image
+    "/images/sections/#{self.id}.png"
+  end
 
 ### Workflow ###
 

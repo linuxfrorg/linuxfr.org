@@ -9,7 +9,7 @@
   - c.title = capture do
     = render :partial => 'short'
   - c.meta  = news_posted_by(@news)
-  - c.image = link_to(image_tag(@news.section.image.url, :alt => @news.section.title), @news.section)
+  - c.image = link_to(image_tag(@news.section.image, :alt => @news.section.title), @news.section)
   - c.body  = capture do
     #first_part
       = render :partial => 'redaction/paragraphs/paragraph', :collection => @news.paragraphs.in_first_part

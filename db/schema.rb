@@ -229,10 +229,6 @@ ActiveRecord::Schema.define(:version => 20101210181550) do
     t.string   "state",              :default => "published", :null => false
     t.string   "title"
     t.string   "cached_slug"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

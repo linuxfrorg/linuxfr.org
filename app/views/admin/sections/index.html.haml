@@ -16,7 +16,7 @@
         %td
           = link_to section.title, section
         %td
-          = image_tag(section.image.url, :alt => section.title)
+          = image_tag(section.image, :alt => section.title)
         %td
           = section.state == "published" ? "publiée" : "archivée"
         %td

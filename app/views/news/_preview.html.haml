@@ -2,7 +2,7 @@
 = article_for preview do |c|
   - c.title = "#{link_to(preview.section.title, preview.section) if preview.section} #{h preview.title}".html_safe
   - c.meta  = news_posted_by(preview)
-  - c.image = link_to(image_tag(preview.section.image.url, :alt => preview.section.title), preview.section)
+  - c.image = link_to(image_tag(preview.section.image, :alt => preview.section.title), preview.section)
   - c.body  = capture do
     = sanitize(preview.body)
     %ul

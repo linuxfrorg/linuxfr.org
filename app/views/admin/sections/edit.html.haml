@@ -1,3 +1,8 @@
 =h1 "Modifier cette section"
+
+%p
+  L'image associée à cette section est versionnée dans le dépôt git.
+  C'est le fichier <kbd>public/images/sections/#{@section.id}.png</kbd>
+
 = form_for [:admin, @section], :html => { :multipart => true } do |form|
   = render :partial => "admin/sections/form", :locals => { :form => form }
