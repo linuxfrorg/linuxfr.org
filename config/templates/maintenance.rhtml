@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title>Maintenance de LinuxFr.org</title>
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
+  <style type="text/css">
+    div.outer { position: absolute; left: 50%; top: 50%; width: 500px; height: 300px; margin-left: -260px; margin-top: -150px; }
+    .DialogBody { margin: 0; padding: 10px; text-align: left; border: 1px solid #ccc; border-right: 1px solid #999; border-bottom: 1px solid #999; background-color: #fff; }
+    body { background-color: #fff; }
+		div { text-align: center; }
+    p { color: #333; }
+    h1 { color: red; }
+  </style>
+</head>
+
+<body id="maintenance">
+  <div class="outer">
+    <div class="DialogBody">
+      <div style="width: 330px; margin: 0 auto;">
+        <h1>Maintenance</h1>
+        <p>Le site est actuellement en maintenance depuis <%= Time.now.strftime("%H:%M") %> et n'est donc pas accessible.</p>
+        <% if reason %>
+        <p>Raison : <%= reason %>.</p>
+        <% end %>
+        <p>Il devrait revenir <%= deadline || "très rapidement" %>.</p>
+      </div>
+    </div>
+  </div>
+</body>

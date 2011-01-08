@@ -106,4 +106,15 @@ namespace :deploy do
     sleep 1
     run "kill -QUIT #{unicorn_pid}"
   end
+
+  namespace :web do
+    task :disable, :roles => :web, :except => { :no_release => true } do
+      on_rollback { run "rm #{shared_path}/system/maintenance.html" }
+      require 'erb'
+      reason, deadline = ENV['REASON'], ENV['deadline']
+      template = File.read(File.join(File.dirname(__FILE__), "templates", "maintenance.rhtml"))
+      result = ERB.new(template).result(binding)
+      put result, "#{shared_path}/system/maintenance.html", :mode => 0644
+    end
+  end
 end
