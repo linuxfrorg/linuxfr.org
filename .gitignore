@@ -7,6 +7,7 @@ config/*.sphinx.conf
 db/*.sqlite3
 db/sphinx
 log/*.log
+public/assets
 public/board.xml
 public/pages
 public/sitemap*

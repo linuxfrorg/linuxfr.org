@@ -1,0 +1,19 @@
+package_assets: on
+embed_assets: on
+
+javascripts:
+  default:
+    - public/javascripts/jquery-1.4.4.min.js
+    - public/javascripts/jquery.*.js
+    - public/javascripts/rails.js
+    - public/javascripts/markitup-markdown.js
+    - public/javascripts/dlfp.*.js
+    - public/javascripts/application.js
+
+stylesheets:
+  default:
+    - public/stylesheets/application.css
+  mobile:
+    - public/stylesheets/mobile.css
+  print:
+    - public/stylesheets/print.css
