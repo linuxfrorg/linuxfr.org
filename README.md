@@ -25,11 +25,11 @@ you are free to choose your camp.
 
 2) Install rubygems
 
-The rubygems package for debian lenny is too old. You can install it from
-sources, by following the instructions of
-http://railstips.org/blog/archives/2008/11/24/rubygems-yours-mine-and-ours/
+   The rubygems package for debian lenny is too old. You can install it from
+   sources, by following the instructions of
+   http://railstips.org/blog/archives/2008/11/24/rubygems-yours-mine-and-ours/
 
-On later debians, just do:
+   On later debians, just do:
 
     # aptitude install rubygems
 
@@ -72,6 +72,22 @@ If you want the full stack for running LinuxFr.org, you should also look at:
 * [The admin files](http://github.com/nono/admin-linuxfr.org)
 * [The eventmachine chat](http://github.com/nono/Board-LinuxFr.org)
 * [The migration script](http://github.com/nono/migration-linuxfr.org)
+
+
+How to run the specs
+--------------------
+
+1) Be sure that redis is running and create the test database:
+
+    $ rake db:test:prepare
+
+2) Run [spork](https://github.com/timcharper/spork) in background:
+
+    $ spork &
+
+3) And now, just run rspec (and repeat this step until done):
+
+    $ rspec spec
 
 
 Copyright
