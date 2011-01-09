@@ -16,6 +16,7 @@ gem "jammit",                  "~>0.5"
 gem "mysql2",                  "~>0.2"
 gem "nokogiri",                "~>1.4"
 gem "paperclip",               "~>2.3"
+gem "rack-aggregate",          "~>0.1", :require => 'rack/aggregate'
 gem "rdiscount",               "~>1.6"
 gem "redis",                   "~>2.1"
 gem "sanitize",                "~>1.2"

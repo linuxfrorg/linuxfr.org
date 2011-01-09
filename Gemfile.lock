@@ -29,6 +29,7 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     acts_as_list (0.1.2)
+    aggregate (0.2.1)
     albino (1.1)
     annotate (2.4.0)
     arel (2.0.6)
@@ -77,6 +78,9 @@ GEM
       activesupport
     polyglot (0.3.1)
     rack (1.2.1)
+    rack-aggregate (0.1.0)
+      aggregate
+      rack
     rack-mount (0.6.13)
       rack (>= 1.0.0)
     rack-test (0.5.7)
@@ -160,6 +164,7 @@ DEPENDENCIES
   nokogiri (~> 1.4)
   nono-redis-store (~> 1.0)
   paperclip (~> 2.3)
+  rack-aggregate (~> 0.1)
   rails (~> 3.0.3)
   rails3-generators
   rdiscount (~> 1.6)

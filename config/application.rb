@@ -26,5 +26,7 @@ module LinuxfrOrg
 
     COOKIE_STORE_KEY = '_linuxfr.org_session'
     config.session_store :cookie_store, :key => COOKIE_STORE_KEY
+
+    config.middleware.use Rack::Aggregate
   end
 end
