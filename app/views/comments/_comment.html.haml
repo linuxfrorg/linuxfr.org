@@ -6,8 +6,7 @@
   = posted_by(comment)
   Évalué à
   %span.score= comment.score
-%figure.image
-  = avatar_url(comment.user)
+%figure.image= avatar_url(comment.user)
 .content
   - if comment.deleted?
     %em Ce commentaire a été supprimé par l'équipe de modération.

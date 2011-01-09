@@ -1,7 +1,6 @@
 %article{:class => css_class}
   %header
-    %h1
-      = title
+    %h1= title
     .meta
       = meta
       - if record.node.cc_licensed?
@@ -13,11 +12,9 @@
             = list_of tags do |tag|
               = link_to tag.name, "/tags/#{tag.name}/public", :rel => 'tag'
   .figures
-    %figure.score
-      = record.score
+    %figure.score= record.score
     - if image
-      %figure.image
-        = image
+      %figure.image= image
   .content
     = body
   %footer.actions

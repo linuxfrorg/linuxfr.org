@@ -3,22 +3,14 @@
     %a(href="#contents") Aller au contenu
     %a(href="#sidebar") Aller au menu
   %ul
-    %li{:class => ("active" if controller_name == "home")}
-      = link_to "Accueil", '/'
-    %li{:class => ("active" if controller_name == "news" || controller_name == "sections")}
-      = link_to "Dépêches", '/news'
-    %li{:class => ("active" if controller_name == "diaries" || (controller_name == "users" && action_name == "show"))}
-      = link_to "Journaux", '/journaux'
-    %li{:class => ("active" if controller_name == "forums" || controller_name == "posts")}
-      = link_to "Forums", '/forums'
-    %li{:class => ("active" if controller_name == "polls")}
-      = link_to "Sondages", '/sondages'
-    %li{:class => ("active" if controller_name == "wiki_pages" || controller_name == "wiki_versions")}
-      = link_to "Wiki", '/wiki'
-    %li{:class => ("active" if controller_name == "trackers")}
-      = link_to "Suivi", '/suivi'
-    %li{:class => ("active" if current_page?("/plan"))}
-      = link_to "Plan", '/plan'
+    %li{:class => ("active" if controller_name == "home")}= link_to "Accueil", '/'
+    %li{:class => ("active" if controller_name == "news" || controller_name == "sections")}= link_to "Dépêches", '/news'
+    %li{:class => ("active" if controller_name == "diaries" || (controller_name == "users" && action_name == "show"))}= link_to "Journaux", '/journaux'
+    %li{:class => ("active" if controller_name == "forums" || controller_name == "posts")}= link_to "Forums", '/forums'
+    %li{:class => ("active" if controller_name == "polls")}= link_to "Sondages", '/sondages'
+    %li{:class => ("active" if controller_name == "wiki_pages" || controller_name == "wiki_versions")}= link_to "Wiki", '/wiki'
+    %li{:class => ("active" if controller_name == "trackers")}= link_to "Suivi", '/suivi'
+    %li{:class => ("active" if current_page?("/plan"))}= link_to "Plan", '/plan'
   = form_tag '/recherche', :method => :get, :target => "_blank" do
     <label for="query" id="label_query">Recherche :</label>
     <input id="query" name="q" type="search" placeholder="Entrer un mot-clé" />

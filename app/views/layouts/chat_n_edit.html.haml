@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 %html(lang="fr")
   = render 'layouts/head'
-
   %body{body_attr}
     #wrapper
       #top
-        = check_js
-
       - cache "fragments/layouts/site", :expires_in => 30.days do
         = render 'layouts/site'
-
       %section#redaction
-        %section#edition
-          = yield :layout
-        %section#chat
-          = yield :chat
-
+        %section#edition= yield :layout
+        %section#chat= yield :chat
       = include_javascripts :default

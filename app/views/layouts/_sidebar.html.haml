@@ -1,7 +1,5 @@
 %aside#sidebar
-  %header#branding
-    = logo
-
+  %header#branding= logo
   .login.box
     %h1= account_signed_in? ? link_to(current_account.login, current_account.user) : "Se connecter"
     :javascript
