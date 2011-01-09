@@ -1,13 +1,12 @@
 # encoding: UTF-8
 #
 # == Schema Information
-# Schema version: 20090308232205
 #
 # Table name: poll_answers
 #
 #  id         :integer(4)      not null, primary key
 #  poll_id    :integer(4)
-#  answer     :string(255)
+#  answer     :string(128)     not null
 #  votes      :integer(4)      default(0), not null
 #  position   :integer(4)
 #  created_at :datetime

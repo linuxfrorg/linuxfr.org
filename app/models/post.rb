@@ -3,12 +3,12 @@
 # Table name: posts
 #
 #  id             :integer(4)      not null, primary key
-#  title          :string(255)
-#  cached_slug    :string(255)
+#  forum_id       :integer(4)
+#  title          :string(64)      not null
+#  cached_slug    :string(64)
 #  body           :text
 #  wiki_body      :text
 #  truncated_body :text
-#  forum_id       :integer(4)
 #  created_at     :datetime
 #  updated_at     :datetime
 #

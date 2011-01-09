@@ -4,9 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-if Rails.env.development?
-  require 'jslint/tasks'
-  JSLint.config_path = "config/jslint.yml"
-end
-
 LinuxfrOrg::Application.load_tasks

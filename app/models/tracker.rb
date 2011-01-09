@@ -5,14 +5,14 @@
 # Table name: trackers
 #
 #  id                  :integer(4)      not null, primary key
-#  state               :string(255)     default("opened"), not null
-#  title               :string(255)
-#  cached_slug         :string(255)
+#  state               :string(10)      default("opened"), not null
+#  title               :string(64)      not null
+#  cached_slug         :string(64)
+#  category_id         :integer(4)
+#  assigned_to_user_id :integer(4)
 #  body                :text
 #  wiki_body           :text
 #  truncated_body      :text
-#  category_id         :integer(4)
-#  assigned_to_user_id :integer(4)
 #  created_at          :datetime
 #  updated_at          :datetime
 #

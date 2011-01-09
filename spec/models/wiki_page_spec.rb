@@ -3,9 +3,8 @@
 # Table name: wiki_pages
 #
 #  id          :integer(4)      not null, primary key
-#  state       :string(255)     default("public"), not null
-#  title       :string(255)
-#  cached_slug :string(255)
+#  title       :string(64)      not null
+#  cached_slug :string(64)
 #  body        :text
 #  created_at  :datetime
 #  updated_at  :datetime

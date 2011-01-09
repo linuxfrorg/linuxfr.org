@@ -6,9 +6,9 @@
 #
 #  id           :integer(4)      not null, primary key
 #  news_id      :integer(4)      not null
-#  title        :string(255)
-#  url          :string(255)
-#  lang         :string(255)
+#  title        :string(100)     not null
+#  url          :string(255)     not null
+#  lang         :string(2)       not null
 #  locked_by_id :integer(4)
 #  created_at   :datetime
 #  updated_at   :datetime

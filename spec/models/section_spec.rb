@@ -2,12 +2,12 @@
 #
 # Table name: sections
 #
-#  id                 :integer(4)      not null, primary key
-#  state              :string(255)     default("published"), not null
-#  title              :string(255)
-#  cached_slug        :string(255)
-#  created_at         :datetime
-#  updated_at         :datetime
+#  id          :integer(4)      not null, primary key
+#  state       :string(10)      default("published"), not null
+#  title       :string(32)      not null
+#  cached_slug :string(32)
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 require 'spec_helper'

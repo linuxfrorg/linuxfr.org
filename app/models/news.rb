@@ -5,15 +5,15 @@
 # Table name: news
 #
 #  id           :integer(4)      not null, primary key
-#  state        :string(255)     default("draft"), not null
-#  title        :string(255)
-#  cached_slug  :string(255)
-#  body         :text
-#  second_part  :text
+#  state        :string(10)      default("draft"), not null
+#  title        :string(64)      not null
+#  cached_slug  :string(64)
 #  moderator_id :integer(4)
 #  section_id   :integer(4)
-#  author_name  :string(255)     not null
-#  author_email :string(255)     not null
+#  author_name  :string(32)      not null
+#  author_email :string(64)      not null
+#  body         :text
+#  second_part  :text(16777215)
 #  created_at   :datetime
 #  updated_at   :datetime
 #

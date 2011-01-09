@@ -1,12 +1,11 @@
 # encoding: UTF-8
 #
 # == Schema Information
-# Schema version: 20090209225424
 #
 # Table name: categories
 #
 #  id         :integer(4)      not null, primary key
-#  title      :string(255)     not null
+#  title      :string(32)      not null
 #  created_at :datetime
 #  updated_at :datetime
 #

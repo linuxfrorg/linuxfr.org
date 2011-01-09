@@ -1,10 +1,9 @@
 # == Schema Information
-# Schema version: 20090301003336
 #
 # Table name: tags
 #
 #  id             :integer(4)      not null, primary key
-#  name           :string(255)
+#  name           :string(64)      not null
 #  taggings_count :integer(4)      default(0), not null
 #
 

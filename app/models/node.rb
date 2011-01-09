@@ -7,12 +7,12 @@
 #  id                :integer(4)      not null, primary key
 #  content_id        :integer(4)
 #  content_type      :string(255)
-#  score             :integer(4)      default(0)
-#  interest          :integer(4)      default(0)
 #  user_id           :integer(4)
-#  public            :boolean(1)      default(TRUE)
-#  cc_licensed       :boolean(1)      default(FALSE)
-#  comments_count    :integer(4)      default(0)
+#  public            :boolean(1)      default(TRUE), not null
+#  cc_licensed       :boolean(1)      default(FALSE), not null
+#  score             :integer(4)      default(0), not null
+#  interest          :integer(4)      default(0), not null
+#  comments_count    :integer(4)      default(0), not null
 #  last_commented_at :datetime
 #  created_at        :datetime
 #  updated_at        :datetime

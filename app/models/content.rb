@@ -31,7 +31,7 @@ class Content < ActiveRecord::Base
 ### ACL ###
 
   def viewable_by?(account)
-    !deleted? || account.try(:admin?)
+    visible? || account.try(:admin?)
   end
 
   def creatable_by?(account)
@@ -51,7 +51,7 @@ class Content < ActiveRecord::Base
   end
 
   def votable_by?(account)
-    account && !deleted?                       &&
+    account && visible?                        &&
         self.user != account.user              &&
         (Time.now - created_at) < 3.months     &&
         (account.nb_votes > 0 || account.amr?) &&
@@ -59,19 +59,17 @@ class Content < ActiveRecord::Base
   end
 
   def taggable_by?(account)
-    account && !deleted? && viewable_by?(account)
+    account && visible? && viewable_by?(account)
   end
 
 ### Workflow ###
 
   def mark_as_deleted
     node.update_attribute(:public, false)
-    self.state = 'deleted'
-    save
   end
 
-  def deleted?
-    state == 'deleted'
+  def visible?
+    node.public?
   end
 
 ### Interest ###

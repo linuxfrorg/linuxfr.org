@@ -5,6 +5,7 @@
 #  id                   :integer(4)      not null, primary key
 #  user_id              :integer(4)
 #  login                :string(40)      not null
+#  role                 :string(10)      default("moule"), not null
 #  karma                :integer(4)      default(20), not null
 #  nb_votes             :integer(4)      default(0), not null
 #  stylesheet           :string(255)

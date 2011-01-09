@@ -5,13 +5,13 @@
 #  id                :integer(4)      not null, primary key
 #  node_id           :integer(4)
 #  user_id           :integer(4)
-#  state             :string(255)     default("published"), not null
-#  title             :string(255)
+#  state             :string(10)      default("published"), not null
+#  title             :string(32)      not null
+#  score             :integer(4)      default(0), not null
+#  answered_to_self  :boolean(1)      default(FALSE), not null
+#  materialized_path :string(1022)
 #  body              :text
 #  wiki_body         :text
-#  score             :integer(4)      default(0)
-#  answered_to_self  :boolean(1)      default(FALSE)
-#  materialized_path :string(1022)
 #  created_at        :datetime
 #  updated_at        :datetime
 #
