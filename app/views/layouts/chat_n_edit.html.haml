@@ -2,11 +2,10 @@
 %html(lang="fr")
   = render 'layouts/head'
   %body{body_attr}
-    #wrapper
-      #top
-      - cache "fragments/layouts/site", :expires_in => 30.days do
-        = render 'layouts/site'
-      %section#redaction
-        %section#edition= yield :layout
-        %section#chat= yield :chat
-      = include_javascripts :default
+    #top
+    - cache "fragments/layouts/site", :expires_in => 30.days do
+      = render 'layouts/site'
+    %section#redaction
+      %section#edition= yield :layout
+      %section#chat= yield :chat
+    = include_javascripts :default

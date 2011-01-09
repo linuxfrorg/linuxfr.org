@@ -80,32 +80,18 @@ a:hover {text-decoration: underline;}
 .go_to_content {display: none;}
 
 
-/*
- * Here the <div id=wrapper> inside the body is an old-fashion practice 
- * that doesn't allow me to select only the main (body's) elements ie:
- *   · body > nav
- *   · body > aside  
- *   · body > section 
- *   · body > footer
- *
- * It's very anoying especially if you have others block using the same name
- * like "section" for example. It's why I put div#wrapper at some places...
- *
- */
-
-
 /* HEADER
  * ======
  *
  * Ok, it's a <nav> and a search <form>, but where is the <header> block?
  */
-body > div#wrapper > nav {height: 18em; overflow: hidden; background: #eee;}
+body > nav {height: 18em; overflow: hidden; background: #eee;}
 
 /* Fancy macish search box */
-body > div#wrapper > nav > form {text-align: right; margin: .75em 4em 0 0;}
-body > div#wrapper > nav > form > label {display: none;}
-body > div#wrapper > nav > form > input {border:medium none; line-height:1.5em;}
-body > div#wrapper > nav > form > input[type=search] {
+body > nav > form {text-align: right; margin: .75em 4em 0 0;}
+body > nav > form > label {display: none;}
+body > nav > form > input {border:medium none; line-height:1.5em;}
+body > nav > form > input[type=search] {
   width: 12em;
   padding: .3em 2em .2em;
   border-radius: 10px;
@@ -114,16 +100,16 @@ body > div#wrapper > nav > form > input[type=search] {
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.7) inset;
   background: #ddd url(/images/contrib/colors/magnifer.png) no-repeat 5px 3px;
 }
-body > div#wrapper > nav input[type=search]:focus {background-color:#fff;}
-body > div#wrapper > nav > form > input[type=submit] {
+body > nav input[type=search]:focus {background-color:#fff;}
+body > nav > form > input[type=submit] {
   width: 1.5em;
   cursor: pointer;
   margin-left: -2.2em;
   text-indent: -99999px;
   background-color: transparent;
 }
-body > div#wrapper > nav input[type=search]:hover + input[type=submit],
-body > div#wrapper > nav input[type=search]:focus + input[type=submit] {
+body > nav input[type=search]:hover + input[type=submit],
+body > nav input[type=search]:focus + input[type=submit] {
   background: url(/images/contrib/colors/go-next.png) no-repeat right top;
 }
 
@@ -132,9 +118,9 @@ body > div#wrapper > nav input[type=search]:focus + input[type=submit] {
  * ==============
  *
  */
-body > div#wrapper > nav ul {margin: 0; line-height: 3em;}
-body > div#wrapper > nav li {float: left; width: 7em; list-style: none;}
-body > div#wrapper > nav li > a {
+body > nav ul {margin: 0; line-height: 3em;}
+body > nav li {float: left; width: 7em; list-style: none;}
+body > nav li > a {
   color: #fff;
   width: 7em;
   height: 18em;
@@ -143,30 +129,30 @@ body > div#wrapper > nav li > a {
   font-weight: bold;
 }
 li.active ~ li > a {float:left; height: 3em!important;}
-body > div#wrapper > nav li > a:hover {
+body > nav li > a:hover {
   color: #333;
   height: 18em !important;
   text-decoration: none;
 }
-body > div#wrapper > nav li.active > a {
+body > nav li.active > a {
   width: 80em;
   font-size: 2em /* h1 */;
   padding: 4em 0 0 1.75em;
   text-align: left;
 }
-body > div#wrapper > nav li.active > a:hover {
+body > nav li.active > a:hover {
   color: #fff;
   cursor: default;
   text-decoration: none;
 }
-body > div#wrapper > nav li:nth-child(1) > a {background: #666699;}
-body > div#wrapper > nav li:nth-child(2) > a {background: #6666cc;}
-body > div#wrapper > nav li:nth-child(3) > a {background: #6666ff;}
-body > div#wrapper > nav li:nth-child(4) > a {background: #99cc00;}
-body > div#wrapper > nav li:nth-child(5) > a {background: #99cc99;}
-body > div#wrapper > nav li:nth-child(6) > a {background: #ffe900;}
-body > div#wrapper > nav li:nth-child(7) > a {background: #ff9900;}
-body > div#wrapper > nav li:nth-child(8) > a {background: #ff0000;}
+body > nav li:nth-child(1) > a {background: #666699;}
+body > nav li:nth-child(2) > a {background: #6666cc;}
+body > nav li:nth-child(3) > a {background: #6666ff;}
+body > nav li:nth-child(4) > a {background: #99cc00;}
+body > nav li:nth-child(5) > a {background: #99cc99;}
+body > nav li:nth-child(6) > a {background: #ffe900;}
+body > nav li:nth-child(7) > a {background: #ff9900;}
+body > nav li:nth-child(8) > a {background: #ff0000;}
 
 
 /* MENU (aside)
@@ -213,32 +199,32 @@ body /*>*/ aside > div.login > a[href^="https"] {
  * 
  * This has "toolbox" as class... to many <div>s for nothing ;)
  */
-body > div#wrapper > section > nav {height: 6em;}
-body > div#wrapper > section > nav > *:first-child {float: left;}
-body > div#wrapper > section > nav > * {float: right;}
-body > div#wrapper > section > nav ul {float: right; margin-left: .5em;}
-body > div#wrapper > section > nav li {display: inline-block;}
-body > div#wrapper > section > nav li:after {content: " ·";}
-body > div#wrapper > section > nav li:first-child:after {content: " ";}
-body > div#wrapper > section > nav li:last-child:after {content: "";}
+body > section > nav {height: 6em;}
+body > section > nav > *:first-child {float: left;}
+body > section > nav > * {float: right;}
+body > section > nav ul {float: right; margin-left: .5em;}
+body > section > nav li {display: inline-block;}
+body > section > nav li:after {content: " ·";}
+body > section > nav li:first-child:after {content: " ";}
+body > section > nav li:last-child:after {content: "";}
 /* Don't print the last one if there are 3 elements */
-body > div#wrapper > section > nav > div + div + div {display: none;}
+body > section > nav > div + div + div {display: none;}
 /* Hack: if there is only one element, right align. */
-body > div#wrapper > section > nav > *:last-child {float: right;}
+body > section > nav > *:last-child {float: right;}
 
 
 /* MAIN LAYOUT
  * ===========
  */
-body > div#wrapper > section {
+body > section {
   width: 72.9166667% /* 700px */ ;
   margin: 0 6.25% 0 4.1666667% /* 0 60px 0 40px */;
 }
-body > div#wrapper > section ul,
-body > div#wrapper > section ol {margin-left: 3em;}
+body > section ul,
+body > section ol {margin-left: 3em;}
 
 /* Don't print the Heading if its one of the "main" pages */
-body > div#wrapper > section > h1 {display: none;}
+body > section > h1 {display: none;}
 
 /* HACK-HACK-HACK
  *
@@ -252,8 +238,8 @@ body > div#wrapper > section > h1 {display: none;}
  * So this hack adapt the margin the following <div> (sick!) which is a 
  * <article> on some pages (why???) whith the `id` #contents.
  */
-body > div#wrapper > section > #contents {margin-top: 6em;}
-body > div#wrapper > section > nav + #contents {margin-top: 0;}
+body > section > #contents {margin-top: 6em;}
+body > section > nav + #contents {margin-top: 0;}
 
 /* HACK-HACK-HACK
  *
@@ -264,7 +250,7 @@ body > div#wrapper > section > nav + #contents {margin-top: 0;}
  * So if the <h1> is inside the <different>#contents, get rid of the margin 
  * set before. 
  */
-body > div#wrapper > section > #contents > h1 {margin-top: -1.5em;}
+body > section > #contents > h1 {margin-top: -1.5em;}
 
 /* FIXME Don't display the phare for the moment */
 #phare {display: none;}
@@ -276,11 +262,11 @@ body > div#wrapper > section > #contents > h1 {margin-top: -1.5em;}
  * the same function as the one we find in <nav>.
  * And it contains a <p> that is not needed and mess with the margin & font.
  */
-body > div#wrapper > section > footer p {margin: 0;}
-body > div#wrapper > section > nav + footer {margin-top: -6em;}/*<nav> is 6em */
+body > section > footer p {margin: 0;}
+body > section > nav + footer {margin-top: -6em;}/*<nav> is 6em */
 /* I've put a negative margin, so I must assure the section is not overlaped */
-body > div#wrapper > section > div#contents {min-height: 12em;}
-body > div#wrapper > section > footer a {
+body > section > div#contents {min-height: 12em;}
+body > section > footer a {
   padding-left: 18px;
   background: url(/images/contrib/colors/go-top.png) no-repeat left top;
 }
@@ -294,7 +280,7 @@ body > div#wrapper > section > footer a {
  * The Footer is quite ok, except the fact that we have 3 <nav>s
  * and 1 <section> for the same thing...
  */
-body > div#wrapper > footer {
+body > footer {
   clear: both;
   width: 80em;
   display: table;
@@ -302,18 +288,18 @@ body > div#wrapper > footer {
   margin-top: 1.5em;
   background-color: #666699;
 }
-body > div#wrapper > footer > nav,
-body > div#wrapper > footer > section {width: 25% /* 260px */; float: left; min-height: 100%;}
-body > div#wrapper > footer h1 {
+body > footer > nav,
+body > footer > section {width: 25% /* 260px */; float: left; min-height: 100%;}
+body > footer h1 {
   color: #fff;
   font-size: 1.3em;
   margin-left: 1em;
   line-height: 115.3846154% /* 18px */;
   margin-bottom: 1.1538em /* 18px */;
 } 
-body > div#wrapper > footer ul {margin-left: 4.5em /* 54px */;}
-body > div#wrapper > footer a {color: #333;}
-body > div#wrapper > footer a:hover {color: #fff; text-decoration: none;}
+body > footer ul {margin-left: 4.5em /* 54px */;}
+body > footer a {color: #333;}
+body > footer a:hover {color: #fff; text-decoration: none;}
 
 
 /* ARTICLE
