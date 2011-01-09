@@ -178,12 +178,20 @@ aside#sidebar .box h1 {
 aside#sidebar .box > a {
 	padding: 0;
 }
-aside#sidebar img.access {
-	float: right;
-	position: relative;
-	top: -3.5em;
-	width: 1.5em !important;
-	height: 1.5em !important;
+aside#sidebar .insecure, aside#sidebar .secure {
+  display: block;
+  float: right;
+  text-indent: -9999px;
+  position: relative;
+  top: -3.5em;
+  height: 16px;
+  width: 16px;
+}
+aside#sidebar .insecure {
+  background: url(/images/icones/lock-insecure.png) no-repeat;
+}
+aside#sidebar .secure {
+  background: url(/images/icones/lock-secure.png) no-repeat;
 }
 /* texte dans la boite latéral */
 aside#sidebar .box > * {

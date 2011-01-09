@@ -50,6 +50,9 @@ h1, h2, h3, h4, h5, h6 { color: #EA0D3A; }
 #sidebar .box h1 a  { text-decoration:none; color:#FFC9D2; }
 #sidebar .box p { font-size: 0.8em; }
 #sidebar .login li:last-child { margin-top:1.5em; }
+#sidebar .insecure, #sidebar .secure { display: block; text-indent: -9999px; margin: auto; height: 16px; width: 16px; }
+#sidebar .insecure { background: url(/images/icones/lock-insecure.png) no-repeat; }
+#sidebar .secure { background: url(/images/icones/lock-secure.png) no-repeat; }
 
 /* Contenus */
 #container { margin:2em 3em 0 260px; padding-left:2em;}

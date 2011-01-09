@@ -4,9 +4,9 @@
     %h1= account_signed_in? ? link_to(current_account.login, current_account.user) : "Se connecter"
     :javascript
       if (location.protocol == 'http:') {
-        document.write('<a href="https://' + location.hostname + location.pathname + '"><img alt="Accès en clair (http)" class="access" src="/images/icones/lock-insecure.png" /></a>');
+        document.write('<a class="insecure" href="https://' + location.hostname + location.pathname + '">Accès en clair (http)</a>');
       } else {
-        document.write('<img alt="Accès sécurisé (https)" class="access" src="/images/icones/lock-secure.png" />');
+        document.write('<a class="secure">Accès sécurisé (https)</a>');
       }
     - if account_signed_in?
       %p Il vous reste #{current_account.nb_votes} avis

@@ -1,8 +1,16 @@
 #sidebar {
   padding: 10px;
-  img.access {
+  .insecure, .secure {
+    display: block;
     float: right;
-    margin: 5px; }
+    text-indent: -9999px;
+    margin: 5px;
+    height: 16px;
+    width: 16px; }
+  .insecure {
+    background: url(/images/icones/lock-insecure.png) no-repeat; }
+  .secure {
+    background: url(/images/icones/lock-secure.png) no-repeat; }
   .box {
     margin: 15px 0;
     padding: 10px;
