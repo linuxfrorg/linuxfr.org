@@ -125,6 +125,7 @@ h2 { color: #333333; }
 .tracker.fix a { text-decoration: line-through; }
 .tracker.invalid a { text-decoration: line-through; }
 .misspelled { border-bottom: 1px dashed red; }
+form .pot_de_miel { display: none; }
 h1 {
   margin: 0;
   padding: 3px;

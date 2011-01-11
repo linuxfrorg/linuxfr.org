@@ -612,6 +612,9 @@ ul.poll li meter::-webkit-meter-horizontal-even-less-good-value {
 .go_to_content {
   display: none; }
 
+.pot_de_miel {
+  display: none; }
+
 /* les commentaires */
 #comments > p {
   text-align: justify;

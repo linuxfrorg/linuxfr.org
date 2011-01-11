@@ -180,6 +180,7 @@ fieldset {border:none;}
 a img { border: none; }
 #tracker .fix a, #tracker .invalid a, .tracker.fix a, .tracker.invalid a { text-decoration: line-through; }
 .misspelled { border-bottom:1px dashed red; }
+.pot_de_miel { display: none; }
 .banner, .notice { text-align:center; border-bottom:2px solid #cac1a5; padding-bottom:0.2em; margin-bottom:1em; font-size:110%;}
 table#my_comments, table#my_posts { background:#F5F5F5; padding:1em;font-size:0.8em;}
 

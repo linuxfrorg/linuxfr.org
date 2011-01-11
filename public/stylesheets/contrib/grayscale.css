@@ -122,6 +122,9 @@ form input.text, form input.title, form input[type=email], form input[type=text]
 	background-color: white;
 	padding: 5px;
 }
+.pot_de_miel {
+	display: none;
+}
 #form_links select {
 	padding: 4px 5px;
 }

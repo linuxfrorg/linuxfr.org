@@ -494,6 +494,7 @@ section > * > div > table h2 {margin: 0;}
  * alpha.linuxfr.org's theme.
  */
 #toolbar {display: none;}
+.pot_de_miel { display: none; }
 
 /*
  * Notice

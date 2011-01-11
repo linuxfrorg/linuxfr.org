@@ -506,6 +506,9 @@ section#container form.edit_account input[type=password] {
 	width: 50%;
 	display: block;
 }
+.pot_de_miel {
+	display: none;
+}
 
 /* Liens de navigation */
 section#container > nav.toolbox,

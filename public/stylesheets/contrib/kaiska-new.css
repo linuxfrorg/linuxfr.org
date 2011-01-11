@@ -595,6 +595,9 @@ textarea#news_message {
   padding: 0px;
   border: 1px solid black;
 }
+.pot_de_miel {
+  display: none;
+}
 
 li#comment_new {
   list-style: none;

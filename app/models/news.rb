@@ -120,7 +120,7 @@ class News < Content
 
 ### Virtual attributes ###
 
-  attr_accessor   :message, :wiki_body, :wiki_second_part, :editor
+  attr_accessor   :message, :wiki_body, :wiki_second_part, :editor, :pot_de_miel
   attr_accessible :message, :wiki_body, :wiki_second_part
 
   # The body of a news (first and second parts) is duplicated:

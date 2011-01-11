@@ -442,6 +442,9 @@ body .removed {
   color: white;
 }
 
+form .pot_de_miel {
+  display: none;
+}
 /* line 18, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
 form label {
   font-weight: bold;

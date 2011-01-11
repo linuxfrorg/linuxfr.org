@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class NewsController < ApplicationController
+  before_filter :honeypot, :only => [:create]
   before_filter :find_news, :only => [:show, :anonymous]
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
   caches_page :index, :if => Proc.new { |c| c.request.format.atom? }
@@ -42,6 +43,11 @@ class NewsController < ApplicationController
   end
 
 protected
+
+  def honeypot
+    honeypot = params[:news].delete(:pot_de_miel)
+    render :nothing => true if honeypot.present?
+  end
 
   def find_news
     @news = News.find(params[:id])

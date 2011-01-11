@@ -7,6 +7,10 @@
   %p
     = form.label :author_email, "Votre adresse de courriel"
     = form.email_field :author_email, :autocomplete => 'on', :required => 'required'
+  - if @news.new_record?
+    %p.pot_de_miel
+      = form.label :pot_de_miel, "Ne pas remplir ce champ"
+      = form.text_field :pot_de_miel
 %p
   = form.label :title, "Titre de la dépêche"
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
