@@ -43,9 +43,12 @@ class PollsController < ApplicationController
   def vote
     enforce_answer_permission(@poll)
     @answer = @poll.answers.where(:position => params[:position]).first
-    raise ActiveRecord::RecordNotFound unless @answer
-    @answer.vote(request.remote_ip)
-    redirect_to @poll, :notice => "Merci d'avoir voté pour ce sondage"
+    if @answer
+      @answer.vote(request.remote_ip)
+      redirect_to @poll, :notice => "Merci d'avoir voté pour ce sondage"
+    else
+      redirect_to @poll, :alert => "Veuillez choisir une proposition avant de voter"
+    end
   end
 
 protected
