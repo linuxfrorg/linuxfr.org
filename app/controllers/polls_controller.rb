@@ -18,6 +18,7 @@ class PollsController < ApplicationController
 
   def show
     enforce_view_permission(@poll)
+    @poll.state = 'archived' if params.has_key? :results
     redirect_to @poll, :status => 301 if !@poll.friendly_id_status.best?
   end
 

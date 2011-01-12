@@ -35,6 +35,8 @@ gem "rspec-rails",             "~>2.3", :groups => [:development, :test]
 
 group :development do
   gem "annotate"
+  gem "haml-rails"
+  gem "jquery-rails"
   gem "rails3-generators"
   gem "thin"
 end
