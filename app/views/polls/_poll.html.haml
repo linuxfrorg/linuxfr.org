@@ -5,4 +5,4 @@
     - if current_account && current_account.can_update?(poll)
       = link_to("Modifier", edit_moderation_poll_path(poll), :class => 'action')
     - if poll.answerable_by?(request.remote_ip)
-      = link_to("Afficher les résultats", :results => 1)
+      = link_to("Afficher les résultats", :controller => "polls", :action => "show", :id => poll.to_param, :results => 1)
