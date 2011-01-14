@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe DiariesController do
-  include Devise::TestHelpers
-
   before(:each) do
     User.delete_all
     Account.delete_all

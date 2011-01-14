@@ -35,6 +35,8 @@ gem "rspec-rails",             "~>2.3", :groups => [:development, :test]
 
 group :development do
   gem "annotate"
+  gem "autotest"
+  gem "capistrano"
   gem "haml-rails"
   gem "jquery-rails"
   gem "rails3-generators"
@@ -43,6 +45,7 @@ end
 
 group :test do
   gem "factory_girl_rails",    "~>1.0"
+  gem "fuubar",                "~>0.0"
   gem "spork",                 "~>0.8"
   gem "webrat",                "~>0.7"
 end

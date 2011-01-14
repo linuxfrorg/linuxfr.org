@@ -13,6 +13,7 @@ Spork.prefork do
     c.mock_with :rspec
     c.filter_run :focus => true
     c.run_all_when_everything_filtered = true
+    c.include Devise::TestHelpers, :type => :controller
   end
 end
 
