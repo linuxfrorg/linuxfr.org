@@ -3,7 +3,7 @@
     <channel>
         <title>LinuxFr.org</title>
         <description>Les flux RSS ont été remplacés par des flux ATOM</description>
-        <lastBuildDate>Sat, 01 Jan 2011 00:00:01 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 01 Jul 2011 00:00:01 GMT</lastBuildDate>
 		<link>http://linuxfr.org/</link>
         <item>
             <title>Attention, ce flux n'est plus valide</title>
@@ -11,7 +11,7 @@
 				Ce flux RSS a été remplacé par un flux ATOM.
 				Vous êtes encouragés à aller voir le site pour vous abonner au nouveau flux.
 			</description>
-            <pubDate>Sat, 01 Jan 2011 00:00:01 GMT</pubDate>
+            <pubDate>Fri, 01 Jul 2011 00:00:01 GMT</pubDate>
             <link>http://www.linuxfr.org/</link>
         </item>
     </channel>
