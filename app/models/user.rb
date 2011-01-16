@@ -50,25 +50,12 @@ class User < ActiveRecord::Base
 
 ### Avatar ###
 
-  has_attached_file :avatar, :styles      => { :thumbnail => "100x100>" },
-                             :path        => ':rails_root/public/uploads/:id_partition/avatar_:style.:extension',
-                             :url         => '/uploads/:id_partition/avatar_:style.:extension',
-                             :default_url => ':gravatar_url'
-
+  AVATAR_SIZE = 100
   DEFAULT_AVATAR_URL = "http://#{MY_DOMAIN}/images/default-avatar.png"
 
-  Paperclip.interpolates :gravatar_url do |attachment, style|
-    attachment.instance.gravatar_url
-  end
-
-  def gravatar_url
-    "http://www.gravatar.com/avatar/#{gravatar_hash}.jpg?s=100&d=#{CGI::escape DEFAULT_AVATAR_URL}"
-  end
-
-  def avatar_url(style, https)
-    url = avatar.url(style)
-    url = url.gsub("http", "https").sub(/^https:\/\/www/, "https://secure") if https
-    url
-  end
+  has_attached_file :avatar, :styles      => { :thumbnail => "#{AVATAR_SIZE}x#{AVATAR_SIZE}>" },
+                             :path        => ':rails_root/public/uploads/:id_partition/avatar_:style.:extension',
+                             :url         => '/uploads/:id_partition/avatar_:style.:extension',
+                             :default_url => DEFAULT_AVATAR_URL
 
 end

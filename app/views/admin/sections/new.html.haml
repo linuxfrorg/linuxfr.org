@@ -5,5 +5,5 @@
   L'image associée à cette section doit être placée dans le dépôt git
   avec le nom de fichier <kbd>public/images/sections/#{Section.maximum(:id) + 1}.png</kbd>
 
-= form_for [:admin, @section], :html => { :multipart => true } do |form|
+= form_for [:admin, @section] do |form|
   = render :partial => "admin/sections/form", :locals => { :form => form }

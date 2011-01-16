@@ -68,7 +68,7 @@ class Account < ActiveRecord::Base
   end
 
   def gravatar_hash
-    Digest::MD5.hexdigest(email.downcase.strip)[0..31]
+    Digest::MD5.hexdigest(email.downcase.strip)
   end
 
   # First, we try the normal password,

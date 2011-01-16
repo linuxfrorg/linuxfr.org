@@ -91,4 +91,16 @@
                     "<li>G pour aller à la fin de la page</li></ul>"});
         return false;
     });
+
+    /* Gravatars */
+    $('img[data-gravatar]').attr("src", function() {
+        var img  = $(this),
+            hash = img.attr('data-gravatar'),
+            size = img.attr('width'),
+            defa = encodeURIComponent(img.attr('src')),
+            host = location.protocol == 'http:' ? "http://www.gravatar.com" : "https://secure.gravatar.com";
+        img.attr('data-gravatar', null);
+        console.log(img);
+        return host + "/avatar/" + hash + ".jpg?s=" + size + "&d=" + defa;
+    });
 })(jQuery);
