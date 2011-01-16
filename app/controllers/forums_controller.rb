@@ -1,6 +1,8 @@
 class ForumsController < ApplicationController
   before_filter :find_forums
   before_filter :get_order
+  caches_page   :index, :if => Proc.new { |c| c.request.format.atom? }
+  caches_page   :show,  :if => Proc.new { |c| c.request.format.atom? }
 
   def index
     @nodes = Node.public_listing(Post, @order).paginate(:page => params[:page], :per_page => 10)

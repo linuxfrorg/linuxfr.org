@@ -3,6 +3,7 @@ class PollsController < ApplicationController
   before_filter :authenticate_account!, :only => [:new, :create]
   before_filter :find_poll, :only => [:show, :vote]
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
+  caches_page   :index, :if => Proc.new { |c| c.request.format.atom? }
   respond_to :html, :atom
 
   def index

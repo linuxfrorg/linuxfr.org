@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class Moderation::PollsController < ModerationController
   before_filter :find_poll, :except => [:index]
+  after_filter  :expire_cache, :only => [:update, :accept]
 
   def index
     @polls = Poll.draft
@@ -43,4 +44,8 @@ protected
     @poll = Poll.find(params[:id])
   end
 
+  def expire_cache
+    return if @poll.state == "draft"
+    expire_page :controller => '/polls', :action => :index, :format => :atom
+  end
 end

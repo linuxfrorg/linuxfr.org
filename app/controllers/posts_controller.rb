@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_filter :authenticate_account!, :except => [:index, :show]
   before_filter :find_post,  :except => [:new, :create, :index]
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
+  after_filter  :expire_cache, :only => [:create, :update, :destroy]
 
 ### Global ###
 
@@ -73,4 +74,9 @@ protected
     current_account.read(@post.node)
   end
 
+  def expire_cache
+    return if @post.new_record?
+    expire_page :controllers => "forums", :action => :index, :format => :atom
+    expire_page :controllers => "forums", :action => :show, :id => @post.forum.to_param, :format => :atom
+  end
 end

@@ -3,6 +3,9 @@ class WikiPagesController < ApplicationController
   before_filter :authenticate_account!, :except => [:index, :show, :revision, :changes, :pages]
   before_filter :load_wiki_page, :only => [:edit, :update, :destroy, :revision]
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
+  after_filter  :expire_cache, :only => [:create, :update, :destroy]
+  caches_page   :index,   :if => Proc.new { |c| c.request.format.atom? }
+  caches_page   :changes, :if => Proc.new { |c| c.request.format.atom? }
 
   def index
     respond_to do |wants|
@@ -96,4 +99,9 @@ protected
     @wiki_page = WikiPage.find(params[:id])
   end
 
+  def expire_cache
+    return if @wiki_page.new_record?
+    expire_page :action => :index,   :format => :atom
+    expire_page :action => :changes, :format => :atom
+  end
 end

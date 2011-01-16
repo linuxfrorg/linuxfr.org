@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class Moderation::NewsController < ModerationController
   before_filter :find_news, :except => [:index]
-  after_filter  :expire_cache#, :only => [:create, :update, :destroy]
+  after_filter  :expire_cache, :only => [:update, :accept]
 
   def index
     @news  = News.candidate.sorted
@@ -85,7 +85,8 @@ protected
   end
 
   def expire_cache
+    return if @news.state == "candidate"
     expire_page :controller => '/news', :action => :index, :format => :atom
-    expire_action :controller => '/news', :action => :show, :id => @news unless @news.new_record?
+    expire_action :controller => '/news', :action => :show, :id => @news.to_param
   end
 end

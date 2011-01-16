@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   before_filter :authenticate_account!, :except => [:index, :show]
   before_filter :find_node
   before_filter :find_comment, :except => [:index, :new, :answer, :create]
+  after_filter  :expire_cache, :only => [:create]
 
   def index
     @comments = @node.comments.published.all(:order => 'id DESC')
@@ -75,4 +76,7 @@ protected
     @comment = @node.comments.find(params[:id])
   end
 
+  def expire_cache
+    expire_page :controllers => "trackers", :action => :comments, :format => :atom if @comment.content_type == "Tracker"
+  end
 end

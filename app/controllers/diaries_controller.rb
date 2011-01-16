@@ -73,7 +73,8 @@ protected
   end
 
   def expire_cache
+    return if @diary.new_record?
     expire_page :action => :index, :format => :atom
-    expire_action :action => :show, :id => @diary, :user_id => @diary.owner unless @diary.new_record?
+    expire_action :action => :show, :id => @diary, :user_id => @diary.owner
   end
 end
