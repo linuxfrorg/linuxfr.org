@@ -3,7 +3,7 @@ source :rubygems
 gem "rails",                   "~>3.0.3"
 
 gem "acts_as_list",            "~>0.1"
-gem "albino",                  "~>1.1"
+gem "albino",                  "=1.1.1"
 gem "canable",                 "~>0.1"
 gem "compass",                 "~>0.10"
 gem "devise",                  "~>1.1"

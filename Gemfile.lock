@@ -31,9 +31,9 @@ GEM
     activesupport (3.0.3)
     acts_as_list (0.1.2)
     aggregate (0.2.1)
-    albino (1.2.3)
+    albino (1.1.1)
     annotate (2.4.0)
-    arel (2.0.6)
+    arel (2.0.7)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     babosa (0.2.1)
@@ -76,7 +76,7 @@ GEM
       haml (~> 3.0)
       railties (~> 3.0)
     highline (1.6.1)
-    html_truncator (0.1.1)
+    html_truncator (0.1.2)
       nokogiri (~> 1.4)
     htmlentities (4.2.3)
     i18n (0.5.0)
@@ -98,7 +98,7 @@ GEM
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
-    net-ssh (2.0.23)
+    net-ssh (2.0.24)
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
     nokogiri (1.4.4)
@@ -124,7 +124,7 @@ GEM
       activesupport (= 3.0.3)
       bundler (~> 1.0)
       railties (= 3.0.3)
-    rails3-generators (0.17.1)
+    rails3-generators (0.17.2)
       railties (>= 3.0.0)
     railties (3.0.3)
       actionpack (= 3.0.3)
@@ -162,7 +162,7 @@ GEM
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    tzinfo (0.3.23)
+    tzinfo (0.3.24)
     unicorn (3.3.1)
       kgio (~> 2.1)
       rack
@@ -181,7 +181,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list (~> 0.1)
-  albino (~> 1.1)
+  albino (= 1.1.1)
   annotate
   autotest
   canable (~> 0.1)
