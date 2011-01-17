@@ -21,7 +21,7 @@ you are free to choose your camp.
     # aptitude install ruby1.8 ruby1.8-dev irb1.8 libopenssl-ruby1.8
     # aptitude install mysql-server mysql-client libmysql++-dev
     # aptitude install build-essential libxslt1-dev libxml2-dev
-    # aptitude install aspell libaspell-dev aspell-fr
+    # aptitude install imagemagick
 
 2) Install rubygems
 
