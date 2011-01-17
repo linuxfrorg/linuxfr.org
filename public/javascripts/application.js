@@ -103,4 +103,9 @@
         console.log(img);
         return host + "/avatar/" + hash + ".jpg?s=" + size + "&d=" + defa;
     });
+
+    $('#account_user_attributes_avatar').change(function() {
+        var url = window.URL.createObjectURL(this.files[0]);
+        $(this).parents('form').find('.avatar').attr('src', url);
+    });
 })(jQuery);

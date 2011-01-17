@@ -45,7 +45,7 @@
         = avatar_url(@account.user)
       %p
         = u.label :avatar, 'Avatar'
-        = u.file_field :avatar
+        = u.file_field :avatar, :accept => "image/*"
     %p
       %label.factice Sûr de vos modifications ?
       = f.submit "Enregistrer"
