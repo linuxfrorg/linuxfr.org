@@ -100,11 +100,11 @@
             defa = encodeURIComponent(img.attr('src')),
             host = location.protocol == 'http:' ? "http://www.gravatar.com" : "https://secure.gravatar.com";
         img.attr('data-gravatar', null);
-        console.log(img);
         return host + "/avatar/" + hash + ".jpg?s=" + size + "&d=" + defa;
     });
 
     $('#account_user_attributes_avatar').change(function() {
+        if (window.URL === undefined) return ;
         var url = window.URL.createObjectURL(this.files[0]);
         $(this).parents('form').find('.avatar').attr('src', url);
     });
