@@ -107,9 +107,9 @@ namespace :deploy do
     run "cd #{current_path} && bundle exec unicorn -c config/unicorn.rb -E #{rails_env} -D"
   end
 
-  task :stop, :rules => :app do
-    set :unicorn_pid, capture("cat #{shared_path}/pids/unicorn.pid").chomp
-    run "kill -QUIT #{unicorn_pid}"
+  task :stop, :roles => :app do
+    set :unicorn_pidfile, "#{shared_path}/pids/unicorn.pid"
+    run "if [ -e #{unicorn_pidfile} ] ; then kill -QUIT `cat #{unicorn_pidfile}` ; fi"
   end
 
   task :restart, :roles => :app, :except => { :no_release => true }  do
@@ -117,6 +117,13 @@ namespace :deploy do
     run "kill -USR2 #{unicorn_pid}"
     sleep 1
     run "kill -QUIT #{unicorn_pid}"
+  end
+
+  task :cold, :roles => :app do
+    stop
+    update
+    migrate
+    start
   end
 
   namespace :web do
@@ -130,3 +137,5 @@ namespace :deploy do
     end
   end
 end
+before "deploy:cold", "deploy:web:disable"
+after  "deploy:cold", "deploy:web:enable"
