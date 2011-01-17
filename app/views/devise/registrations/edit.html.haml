@@ -9,14 +9,6 @@
     %p
       = f.label :email, 'Adresse de courriel'
       = f.email_field :email
-    %p
-      = f.label :password, 'Nouveau mot de passe'
-      = f.password_field :password
-      %span.help
-        laissez ce champ vide si vous ne souhaitez pas changer de mot de passe
-    %p
-      = f.label :password_confirmation, 'Confirmation du mot de passe'
-      = f.password_field :password_confirmation
     = f.fields_for :user do |u|
       %p
         = u.label :name, "Prénom et nom"
@@ -29,10 +21,31 @@
         %span.prefix xmpp://
         = u.text_field :jabber_id, :placeholder => "me@example.net"
     %p
+      = f.label :password, 'Nouveau mot de passe'
+      = f.password_field :password
+      %span.help
+        laissez ce champ vide si vous ne souhaitez pas changer de mot de passe
+    %p
+      = f.label :password_confirmation, 'Confirmation du mot de passe'
+      = f.password_field :password_confirmation
+    %p
       = f.label :current_password, 'Mot de passe actuel'
       = f.password_field :current_password
       %span.help
         votre mot de passe actuel est nécessaire pour valider ce changement
+    %p
+      %label.factice Sûr de vos modifications ?
+      = f.submit "Enregistrer"
+
+  %h2 Changer d'avatar
+  = form_for @account, :url => registration_path(:account), :html => { :method => :put, :multipart => true } do |f|
+    = messages_on_error @account
+    = f.fields_for :user do |u|
+      %figure.image
+        = avatar_url(@account.user)
+      %p
+        = u.label :avatar, 'Avatar'
+        = u.file_field :avatar
     %p
       %label.factice Sûr de vos modifications ?
       = f.submit "Enregistrer"

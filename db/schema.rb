@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101210181550) do
+ActiveRecord::Schema.define(:version => 20110116221207) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -284,17 +284,14 @@ ActiveRecord::Schema.define(:version => 20101210181550) do
   add_index "trackers", ["state"], :name => "index_trackers_on_state"
 
   create_table "users", :force => true do |t|
-    t.string   "name",                :limit => 32
-    t.string   "homesite",            :limit => 100
-    t.string   "jabber_id",           :limit => 32
-    t.string   "cached_slug",         :limit => 32
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.string   "name",          :limit => 32
+    t.string   "homesite",      :limit => 100
+    t.string   "jabber_id",     :limit => 32
+    t.string   "cached_slug",   :limit => 32
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "gravatar_hash",       :limit => 32
+    t.string   "gravatar_hash", :limit => 32
+    t.string   "avatar"
   end
 
   add_index "users", ["cached_slug"], :name => "index_users_on_cached_slug"

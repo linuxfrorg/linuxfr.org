@@ -125,6 +125,7 @@ class Account < ActiveRecord::Base
     if params[:password].blank?
       params.delete(:password)
       params.delete(:password_confirmation) if params[:password_confirmation].blank?
+      return update_attributes(params)
     end
 
     result = if valid_password?(current_password)

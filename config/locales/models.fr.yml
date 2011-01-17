@@ -23,3 +23,8 @@ fr:
       user: utilisateur
       wikipage: page de wiki
       wikiversion: version
+
+  errors:
+    messages:
+      carrierwave_processing_error: "n'a pu être traité"
+      carrierwave_integrity_error: "n'est pas un type de fichier autorisé"

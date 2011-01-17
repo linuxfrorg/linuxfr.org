@@ -8,13 +8,13 @@ db/*.sqlite3
 db/sphinx
 log/*.log
 public/assets
+public/avatars
 public/board.xml
 public/pages
 public/sitemap*
 public/stylesheets/application.css
 public/stylesheets/print.css
 public/system
-public/uploads
 tmp/
 webrat.log
 REVISION
