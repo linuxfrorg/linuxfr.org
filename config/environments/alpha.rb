@@ -26,6 +26,8 @@ LinuxfrOrg::Application.configure do
   # In production, Apache or nginx will already do this
   config.serve_static_assets = false
 
+  ENV['RAILS_ASSET_ID'] = `git log -1 --pretty=format:"%h" public`
+
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "static.#{MY_DOMAIN}"
 

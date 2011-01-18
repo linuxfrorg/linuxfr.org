@@ -6,7 +6,7 @@ config/secret.yml
 config/*.sphinx.conf
 db/*.sqlite3
 db/sphinx
-log/*.log
+log
 public/assets
 public/avatars
 public/board.xml
@@ -15,7 +15,7 @@ public/sitemap*
 public/stylesheets/application.css
 public/stylesheets/print.css
 public/system
-tmp/
+tmp
 webrat.log
 REVISION
 LATER
