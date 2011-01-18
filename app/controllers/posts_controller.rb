@@ -76,7 +76,7 @@ protected
 
   def expire_cache
     return if @post.new_record?
-    expire_page :controllers => "forums", :action => :index, :format => :atom
-    expire_page :controllers => "forums", :action => :show, :id => @post.forum.to_param, :format => :atom
+    expire_page :controller => "forums", :action => :index, :format => :atom
+    expire_page :controller => "forums", :action => :show, :id => @post.forum.to_param, :format => :atom
   end
 end

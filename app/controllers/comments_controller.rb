@@ -77,6 +77,6 @@ protected
   end
 
   def expire_cache
-    expire_page :controllers => "trackers", :action => :comments, :format => :atom if @comment.content_type == "Tracker"
+    expire_page :controller => "trackers", :action => :comments, :format => :atom if @comment.content_type == "Tracker"
   end
 end
