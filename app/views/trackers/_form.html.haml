@@ -1,4 +1,4 @@
-= messages_on_error @tracker
+= messages_on_error form.object
 
 %p
   = form.label :title, "Titre"
@@ -7,11 +7,15 @@
   = form.label :category_id, "Catégorie"
   = form.collection_select :category_id, Category.all, :id, :title
 %p
-  = form.label :assigned_to_user_id, "Responsable"
-  = form.collection_select :assigned_to_user_id, Account.admin, :id, :login, :include_blank => true
-%p
   = form.label :wiki_body, "Description détaillée"
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
+- if form.object.persisted?
+  %p
+    = form.label :state, "État"
+    = form.select :state, Tracker::States.invert
+  %p
+    = form.label :assigned_to_user_id, "Responsable"
+    = form.collection_select :assigned_to_user_id, Account.admin, :id, :login, :include_blank => true
 %p
   = form.submit "Prévisualiser", :id => "tracker_preview"
   = form.submit "Soumettre" if @preview_mode || @tracker.persisted?

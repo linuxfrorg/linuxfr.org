@@ -1,15 +1,12 @@
 #contents
   =h1 "Modifier une entrée dans le suivi"
 
-  = button_to "Supprimer", @tracker, :method => :delete, :confirm => "Êtes-vous sûr de vouloir supprimer cette entrée du tracker ?"
-
   = render "preview", :preview => @tracker if @preview_mode
 
   %h2 Édition
   = form_for @tracker do |form|
-    %p
-      = form.label :state, "État"
-      = form.select :state, Tracker::States.invert
     = render form
+
+  = button_to "Supprimer", @tracker, :method => :delete, :confirm => "Êtes-vous sûr de vouloir supprimer cette entrée du tracker ?"
 
   = render 'shared/wiki_help'

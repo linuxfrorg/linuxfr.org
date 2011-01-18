@@ -1,12 +1,12 @@
 #contents
   =h1 "Éditer un journal"
 
-  = button_to "Supprimer", [@diary.owner, @diary], :method => :delete, :confirm => "Êtes-vous sûr de vouloir supprimer ce journal ?"
-
   = render "preview", :preview => @diary if @preview_mode
 
   %h2 Édition
   = form_for [@diary.owner, @diary] do |form|
     = render form
+
+  = button_to "Supprimer", [@diary.owner, @diary], :method => :delete, :confirm => "Êtes-vous sûr de vouloir supprimer ce journal ?"
 
   = render 'shared/wiki_help'
