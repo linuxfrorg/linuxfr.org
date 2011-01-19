@@ -13,7 +13,7 @@
   - else
     = sanitize comment.body
 %footer.actions
-  = link_to "Répondre", "/nodes/#{comment.node_id}/comments/#{comment.id}/answer", :class => 'action'
+  = link_to "Répondre", "/nodes/#{comment.node_id}/comments/#{comment.id}/answer#new_comment", :class => 'action'
   - if current_account && current_account.can_vote?(comment)
     %div.vote
       Ce commentaire est-il #{button_to "pertinent", "/nodes/#{comment.node_id}/comments/#{comment.id}/relevance/for", :remote => true, :disabled => comment.score >= 10}
