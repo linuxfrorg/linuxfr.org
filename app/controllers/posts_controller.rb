@@ -62,12 +62,9 @@ class PostsController < ApplicationController
 protected
 
   def find_post
-    @post  = Post.find(params[:id], :scope => params[:forum_id])
-    @forum = @post.forum
-  rescue ActiveRecord::RecordNotFound
     @forum = Forum.find(params[:forum_id])
-    @post  = Post.find(params[:id], :scope => @forum.to_param)
-    redirect_to [@forum, @post], :status => 301
+    @post  = @forum.posts.find(params[:id])
+    redirect_to [@forum, @post], :status => 301 if !@forum.friendly_id_status.best? || !@post.friendly_id_status.best?
   end
 
   def marked_as_read

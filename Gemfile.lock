@@ -65,8 +65,8 @@ GEM
       railties (>= 3.0.0)
     french_rails (0.2.5)
       rails (~> 3.0.0)
-    friendly_id (3.1.8)
-      babosa (~> 0.2.0)
+    friendly_id (3.2.0)
+      babosa (~> 0.2.1)
     fuubar (0.0.3)
       rspec (~> 2.0)
       rspec-instafail (~> 0.1.4)
@@ -176,7 +176,7 @@ GEM
       rack-test (>= 0.5.3)
     will_paginate (3.0.pre2)
     yajl-ruby (0.7.9)
-    yui-compressor (0.9.1)
+    yui-compressor (0.9.3)
 
 PLATFORMS
   ruby
