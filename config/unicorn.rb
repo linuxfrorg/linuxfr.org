@@ -1,4 +1,4 @@
-# unicorn -c config/unicorn.rb -E production -D
+# bundle exec unicorn -c config/unicorn.rb -E production -D
 
 # Environment variables
 rails_env = ENV['RAILS_ENV'] || 'production'
@@ -25,6 +25,11 @@ pid "#{shared}/pids/unicorn.pid"
 # Listen on a Unix data socket
 listen "#{shared}/tmp/sockets/#{rails_env}.sock"
 
+
+# See http://unicorn.bogomips.org/Sandbox.html
+before_exec do |server|
+  ENV["BUNDLE_GEMFILE"] = "#{cap_root}/current/Gemfile"
+end
 
 before_fork do |server, worker|
   # There's no need for the master process to hold a connection

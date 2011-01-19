@@ -139,3 +139,4 @@ namespace :deploy do
 end
 before "deploy:cold", "deploy:web:disable"
 after  "deploy:cold", "deploy:web:enable"
+after  "deploy:symlink", "deploy:cleanup"
