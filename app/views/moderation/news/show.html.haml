@@ -5,20 +5,49 @@
     = render 'vote'
     = render 'board'
 
-= article_for @news do |c|
-  - c.title = capture do
-    = render :partial => 'short'
-  - c.meta  = news_posted_by(@news)
-  - c.image = link_to(image_tag(@news.section.image, :alt => @news.section.title), @news.section)
-  - c.body  = capture do
-    #first_part
-      = render :partial => 'redaction/paragraphs/paragraph', :collection => @news.paragraphs.in_first_part
-    %ul#links
-      = render :partial => 'redaction/links/link', :collection => @news.links
-    %p.new_link{'data-url' => new_redaction_news_link_path(:news_id => @news)}
-      %button Ajouter un lien
-    #second_part
-      = render :partial => 'redaction/paragraphs/paragraph', :collection => @news.paragraphs.in_second_part
+- if @news.paragraphs.any?
+  = article_for @news do |c|
+    - c.title = capture do
+      = render :partial => 'short'
+    - c.meta  = news_posted_by(@news)
+    - c.image = link_to(image_tag(@news.section.image, :alt => @news.section.title), @news.section)
+    - c.body  = capture do
+      #first_part
+        = render :partial => 'redaction/paragraphs/paragraph', :collection => @news.paragraphs.in_first_part
+      %ul#links
+        = render :partial => 'redaction/links/link', :collection => @news.links
+      %p.new_link{'data-url' => new_redaction_news_link_path(:news_id => @news)}
+        %button Ajouter un lien
+      #second_part
+        = render :partial => 'redaction/paragraphs/paragraph', :collection => @news.paragraphs.in_second_part
+- else
+  %h2 Dépêche importée !
+  = form_for [:moderation, @news] do |form|
+    %p
+      = form.label :title, "Titre de la dépêche"
+      = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
+    %p
+      = form.label :section_id, "Section de la dépêche"
+      = form.collection_select :section_id, Section.published, :id, :title
+    %p
+      = form.label :body, "Contenu de la dépêche (<strong>HTML, pas de syntaxe wiki</strong>)"
+      = form.text_area :body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
+    #form_links
+      %fieldset
+        %label#label-link-name Nom du lien
+        %label#label-link-url URL
+        %label#label-link-lang langue
+        %label#label-link-actions actions
+      = form.fields_for :links do |lform|
+        %fieldset.link
+          = lform.text_field :title
+          = lform.url_field :url
+          = lform.select :lang, Lang.all
+    %p
+      = form.label :second_part, "Seconde partie"
+      = form.text_area :second_part, :spellcheck => 'true', :class => 'markItUp'
+    %p
+      = form.submit "Enregistrer"
 
 = button_to "Supprimer tous les locks", clear_locks_moderation_news_path(@news), :class => 'ajax'
 

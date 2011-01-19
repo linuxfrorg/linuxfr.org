@@ -39,7 +39,7 @@
                 url: form.attr('action'),
                 type: "post",
                 data: form.serialize(),
-                dataType: 'script',
+                dataType: "text",
                 success: function() {
                     base.element.trigger("in_place:result");
                     base.element.click(base.editForm);
