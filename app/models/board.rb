@@ -7,9 +7,9 @@ class Board
   NB_MSG_PER_CHAN = 100
 
   SANITIZE_CONFIG = {
-    :elements   => %w(a b i u s strong em code),
-    :attributes => { 'a' => ['href'] },
-    :protocols  => { 'a' => {'href' => ['ftp', 'http', 'https', 'mailto', :relative] } }
+    :elements     => %w(a b i u s strong em code),
+    :attributes   => { 'a' => ['href'] },
+    :protocols    => { 'a' => {'href' => ['ftp', 'http', 'https', 'mailto', :relative] } }
   }
 
 ### Constructors and attributes ###
@@ -75,7 +75,9 @@ class Board
   end
 
   def sanitize_message
-    @message = Sanitize.clean(@message[0,500], SANITIZE_CONFIG).html_safe
+    @message = @message[0, 500]
+    Sanitize.clean!(@message, SANITIZE_CONFIG)
+    @message = @message.html_safe
   end
 
   def rendered
