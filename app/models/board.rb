@@ -6,12 +6,6 @@ class Board
 
   NB_MSG_PER_CHAN = 100
 
-  SANITIZE_CONFIG = {
-    :elements     => %w(a b i u s strong em code),
-    :attributes   => { 'a' => ['href'] },
-    :protocols    => { 'a' => {'href' => ['ftp', 'http', 'https', 'mailto', :relative] } }
-  }
-
 ### Constructors and attributes ###
 
   attr_accessor :id, :kind, :user_name, :user_url, :user_agent
@@ -74,14 +68,32 @@ class Board
     true
   end
 
-  def sanitize_message
-    @message = @message[0, 500]
-    Sanitize.clean!(@message, SANITIZE_CONFIG)
-    @message = @message.html_safe
-  end
-
   def rendered
     BoardsController.new.render_to_string(:partial => "board", :locals => {:board => self})
+  end
+
+### Sanitizing messages ###
+
+  include ActionView::Helpers::TagHelper
+  include ActionView::Helpers::TextHelper
+
+  def sanitize_message
+    doc = Nokogiri::HTML::Document.new
+    doc.encoding = "utf-8"
+    node = Nokogiri::HTML::DocumentFragment.new(doc)
+    inner_sanitize(node, @message[0, 500])
+    @message = auto_link(node.to_s, :urls) { "[URL]" }
+  end
+
+  def inner_sanitize(parent, str)
+    until str.empty?
+      left, tag, str = str.partition(/<\s*(b|i|u|s|strong|em|code)\s*>(.*)<\s*\/\1\s*>/)
+      parent.add_child Nokogiri::XML::Text.new(left, parent)
+      return if tag.empty?
+      node = Nokogiri::XML::Node.new($1, parent)
+      parent.add_child node
+      inner_sanitize(node, $2)
+    end
   end
 
 ### Pubsub keys ###

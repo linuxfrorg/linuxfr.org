@@ -167,6 +167,36 @@ describe Board do
     @msg.should  =~ /foobar/
   end
 
+  context "Sanitizing messages" do
+    let(:board) { Board.new }
+
+    it "escapes tags (escape the allowed ones)" do
+      str = '<p>foo</p> <script type="javascript">alert("foo");</script> <blink>bar'
+      board.message = str
+      board.sanitize_message
+      board.message.should == str.gsub('<', '&lt;').gsub('>', '&gt;')
+    end
+
+    it "keeps the allowed tags" do
+      str = "<b>foo</b> <code>bar</code> <u><s>baz <i>qux</i></s> quux</u>"
+      board.message = str
+      board.sanitize_message
+      board.message.should == str
+    end
+
+    it "links automatically URL" do
+      board.message = "<b>foo</b> http://linuxfr.org/"
+      board.sanitize_message
+      board.message.should == '<b>foo</b> <a href="http://linuxfr.org/">[URL]</a>'
+    end
+
+    it "let us play with ducks" do
+      board.message = "NoNo< --> \\_o< p4n!"
+      board.sanitize_message
+      board.message.should == "NoNo&lt; --&gt; \\_o&lt; p4n!"
+    end
+  end
+
   context "ActiveModel Lint tests" do
     require 'test/unit/assertions'
     require 'active_model/lint'

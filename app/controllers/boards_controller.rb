@@ -15,7 +15,6 @@ class BoardsController < ApplicationController
     board = Board.new(params[:board])
     board.user       = current_account.user
     enforce_create_permission(board)
-    board.message    = board_auto_link(board.message)
     board.user_agent = request.user_agent
     board.save
     respond_to do |wants|
@@ -25,11 +24,6 @@ class BoardsController < ApplicationController
   end
 
 protected
-
-  def board_auto_link(msg)
-    # Hack! Prevent the returned string to be html_safe by concatening ""
-    "" + self.class.helpers.auto_link(msg, :all) { "[URL]" }
-  end
 
   def verify_referer_or_authenticity_token
     request.referer =~ /^https?:\/\/#{MY_DOMAIN}\// or verify_authenticity_token
