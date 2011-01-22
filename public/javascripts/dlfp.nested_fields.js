@@ -32,6 +32,9 @@
         base.add_item = function() {
             var last = base.element.children('.' + base.nested + ':last');
             var fset = $('<fieldset/>', {"class": base.nested});
+            if (last.length == 0) {
+                last = base.element.children('fieldset:first')
+            }
             last.after(fset);
             for (var i in base.attributes) {
                 var name = base.parent + '[' + base.nested + 's_attributes][' + base.counter + '][' + i + ']';
