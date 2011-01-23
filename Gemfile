@@ -8,7 +8,6 @@ gem "canable",                 "~>0.1"
 gem "carrierwave",             "~>0.5"
 gem "compass",                 "~>0.10"
 gem "devise",                  "~>1.1"
-gem "erubis",                  "~>2.6"
 gem "french_rails",            "~>0.2"
 gem "friendly_id",             "~>3.1"
 gem "haml",                    "~>3.0"
@@ -18,7 +17,6 @@ gem "jammit",                  "~>0.5"
 gem "mini_magick",             "~>3.2"
 gem "mysql2",                  "~>0.2"
 gem "nokogiri",                "~>1.4"
-gem "rack-aggregate",          "~>0.1", :require => 'rack/aggregate'
 gem "rdiscount",               "~>1.6"
 gem "redis",                   "~>2.1"
 gem "sanitize",                "~>2.0"
@@ -29,7 +27,6 @@ gem "state_machine",           "~>0.9"
 # gem "thinking-sphinx",       "~>1.3", :require => "thinking_sphinx"
 # gem "ts-datetime-delta",     "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
 gem "will_paginate",           ">=3.0.pre2"
-gem "yajl-ruby",               "~>0.7", :require => "yajl"
 
 # Rspec-rails must be in development for rake stats and in test for normal stuff
 gem "rspec-rails",             "~>2.3", :groups => [:development, :test]

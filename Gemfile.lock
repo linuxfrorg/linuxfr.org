@@ -30,7 +30,6 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     acts_as_list (0.1.2)
-    aggregate (0.2.1)
     albino (1.1.1)
     annotate (2.4.0)
     arel (2.0.7)
@@ -48,7 +47,7 @@ GEM
       net-ssh-gateway (>= 1.0.0)
     carrierwave (0.5.1)
       activesupport (~> 3.0)
-    closure-compiler (0.3.3)
+    closure-compiler (1.0.0)
     compass (0.10.6)
       haml (>= 3.0.4)
     daemons (1.1.0)
@@ -82,7 +81,7 @@ GEM
       nokogiri (~> 1.4)
     htmlentities (4.2.3)
     i18n (0.5.0)
-    jammit (0.5.4)
+    jammit (0.6.0)
       closure-compiler (>= 0.1.0)
       yui-compressor (>= 0.9.1)
     jquery-rails (0.2.6)
@@ -102,7 +101,7 @@ GEM
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
-    net-ssh (2.0.24)
+    net-ssh (2.1.0)
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
     nokogiri (1.4.4)
@@ -110,9 +109,6 @@ GEM
       redis (>= 2.0.0)
     polyglot (0.3.1)
     rack (1.2.1)
-    rack-aggregate (0.1.0)
-      aggregate
-      rack
     rack-mount (0.6.13)
       rack (>= 1.0.0)
     rack-test (0.5.7)
@@ -175,7 +171,6 @@ GEM
       rack (>= 1.0)
       rack-test (>= 0.5.3)
     will_paginate (3.0.pre2)
-    yajl-ruby (0.7.9)
     yui-compressor (0.9.3)
 
 PLATFORMS
@@ -191,7 +186,6 @@ DEPENDENCIES
   carrierwave (~> 0.5)
   compass (~> 0.10)
   devise (~> 1.1)
-  erubis (~> 2.6)
   factory_girl_rails (~> 1.0)
   french_rails (~> 0.2)
   friendly_id (~> 3.1)
@@ -206,7 +200,6 @@ DEPENDENCIES
   mysql2 (~> 0.2)
   nokogiri (~> 1.4)
   nono-redis-store (~> 1.0)
-  rack-aggregate (~> 0.1)
   rails (~> 3.0.3)
   rails3-generators
   rdiscount (~> 1.6)
@@ -221,4 +214,3 @@ DEPENDENCIES
   unicorn (~> 3.0)
   webrat (~> 0.7)
   will_paginate (>= 3.0.pre2)
-  yajl-ruby (~> 0.7)
