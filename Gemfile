@@ -1,6 +1,7 @@
 source :rubygems
 
 gem "rails",                   "~>3.0.3"
+gem "mail",                    "~> 2.2.15"
 
 gem "acts_as_list",            "~>0.1"
 gem "albino",                  "=1.1.1"
