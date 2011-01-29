@@ -12,7 +12,7 @@ gem "devise",                  "~>1.1"
 gem "french_rails",            "~>0.2"
 gem "friendly_id",             "~>3.1"
 gem "haml",                    "~>3.0"
-gem "html_truncator",          "~>0.1"
+gem "html_truncator",          "~>0.2"
 gem "htmlentities",            "~>4.2"
 gem "jammit",                  "~>0.5"
 gem "mini_magick",             "~>3.2"
@@ -44,6 +44,7 @@ end
 
 group :test do
   gem "factory_girl_rails",    "~>1.0"
+  gem "faker",                 "~>0.9"
   gem "fuubar",                "~>0.0"
   gem "spork",                 "~>0.8"
   gem "webrat",                "~>0.7"

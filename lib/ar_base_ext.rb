@@ -8,7 +8,7 @@ class ActiveRecord::Base
     method = "truncate_#{attr}".to_sym
     before_save method
     define_method method do
-      send("truncated_#{attr}=", HTML_Truncator.truncate(send(attr), nb_words, "[...](suite)")) if send("#{attr}_changed?")
+      send("truncated_#{attr}=", HTML_Truncator.truncate(send(attr), nb_words, :ellipsis => "[...](suite)")) if send("#{attr}_changed?")
     end
   end
 
