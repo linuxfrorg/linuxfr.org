@@ -1,6 +1,6 @@
 %ul.poll.archived
   = list_of poll.answers do |answer|
-    #{sanitize answer.answer} :
+    #{answer.answer} :
     %meter(style="width: #{answer.percent}%;" min="0" max="100" value="#{answer.percent}")
       = answer.votes
     (#{answer.percent} %)

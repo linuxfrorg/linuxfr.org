@@ -31,7 +31,7 @@ describe Comment do
 
   it "wikifies the body" do
     comment = Factory(:comment, :wiki_body => "_it_ et **gras**")
-    comment.body.should == "<p><em>it</em> et <strong>gras</strong></p>\n"
+    comment.body.should == "<p><em>it</em> et <strong>gras</strong></p>"
   end
 
   context "in a simple thread" do

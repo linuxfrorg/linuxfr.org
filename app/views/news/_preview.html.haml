@@ -4,7 +4,7 @@
   - c.meta  = news_posted_by(preview)
   - c.image = link_to(image_tag(preview.section.image, :alt => preview.section.title), preview.section)
   - c.body  = capture do
-    = sanitize(preview.body)
+    = preview.body
     %ul
       = render preview.links
-    = sanitize(preview.second_part)
+    = preview.second_part

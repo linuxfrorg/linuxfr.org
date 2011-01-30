@@ -150,6 +150,9 @@ class News < Content
     self.second_part = wikify(wiki_second_part)
   end
 
+  sanitize_attr :body
+  sanitize_attr :second_part
+
   after_create :create_parts
   def create_parts
     paragraphs.create(:second_part => false, :wiki_body => wiki_body)        unless wiki_body.blank?

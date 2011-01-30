@@ -19,6 +19,7 @@ class PollAnswer < ActiveRecord::Base
   acts_as_list :scope => :poll
 
   attr_accessible :answer
+  sanitize_attr :answer
 
   validates :answer, :presence => { :message => "La description de la réponse ne peut pas être vide" }
 

@@ -56,6 +56,8 @@ class WikiPage < Content
     self.body = wikify(txt)
   end
 
+  sanitize_attr :body
+
   after_save :create_new_version
   def create_new_version
     message ||= "révision n°#{versions.count + 1}"

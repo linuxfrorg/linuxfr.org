@@ -11,7 +11,7 @@
   - if comment.deleted?
     %em Ce commentaire a été supprimé par l'équipe de modération.
   - else
-    = sanitize comment.body
+    = comment.body
 %footer.actions
   = link_to "Répondre", "/nodes/#{comment.node_id}/comments/#{comment.id}/answer#new_comment", :class => 'action'
   - if current_account && current_account.can_vote?(comment)

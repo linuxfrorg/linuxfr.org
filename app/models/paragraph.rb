@@ -93,6 +93,8 @@ class Paragraph < ActiveRecord::Base
     self.body = wikify(wiki_body).gsub(/<\/?p>/, '')
   end
 
+  sanitize_attr :body
+
 ### Chat ###
 
   after_create :announce_create

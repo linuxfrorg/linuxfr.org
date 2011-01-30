@@ -12,12 +12,10 @@ module LinuxfrOrg
   class Application < Rails::Application
     config.generators do |g|
       g.template_engine  :haml
-      g.integration_tool :rspec
       g.test_framework   :rspec, :fixture_replacement => :factory_girl
     end
 
     config.after_initialize do
-      ActionView::Base.sanitized_allowed_attributes.merge %w(id data-id data-after)
       ActiveSupport::XmlMini.backend = "Nokogiri"
     end
 
