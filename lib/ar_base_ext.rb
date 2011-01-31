@@ -42,7 +42,7 @@ class ActiveRecord::Base
     define_method method do
       send("truncated_#{attr}=", HTML_Truncator.truncate(send(attr), nb_words, :ellipsis => "[...](suite)")) if send("#{attr}_changed?")
     end
-    define_method attr do
+    define_method "truncated_#{attr}" do
       self[attr].html_safe
     end
   end
