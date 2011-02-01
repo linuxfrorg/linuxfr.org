@@ -18,7 +18,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    DEFAULT_AVATAR_URL + '?' + ENV['RAILS_ASSET_ID']
+    DEFAULT_AVATAR_URL + '?' + ENV['RAILS_ASSET_ID'].to_s
   end
 
   def extension_white_list
