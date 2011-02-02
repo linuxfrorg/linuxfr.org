@@ -122,15 +122,15 @@ ActiveRecord::Schema.define(:version => 20110116221207) do
   add_index "links", ["news_id"], :name => "index_links_on_news_id"
 
   create_table "news", :force => true do |t|
-    t.string   "state",        :limit => 10,       :default => "draft", :null => false
-    t.string   "title",        :limit => 64,                            :null => false
+    t.string   "state",        :limit => 10,         :default => "draft", :null => false
+    t.string   "title",        :limit => 64,                              :null => false
     t.string   "cached_slug",  :limit => 64
     t.integer  "moderator_id"
     t.integer  "section_id"
-    t.string   "author_name",  :limit => 32,                            :null => false
-    t.string   "author_email", :limit => 64,                            :null => false
+    t.string   "author_name",  :limit => 32,                              :null => false
+    t.string   "author_email", :limit => 64,                              :null => false
     t.text     "body"
-    t.text     "second_part",  :limit => 16777215
+    t.text     "second_part",  :limit => 2147483647
     t.datetime "created_at"
     t.datetime "updated_at"
   end

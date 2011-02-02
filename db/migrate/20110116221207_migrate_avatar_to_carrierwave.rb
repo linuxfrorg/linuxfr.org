@@ -1,17 +1,21 @@
 class MigrateAvatarToCarrierwave < ActiveRecord::Migration
   def self.up
-    add_column :users, :avatar, :string
-    remove_column :users, :avatar_file_name
-    remove_column :users, :avatar_content_type
-    remove_column :users, :avatar_file_size
-    remove_column :users, :avatar_updated_at
+    change_table :users do |t|
+      t.string :avatar
+      t.remove :avatar_file_name
+      t.remove :avatar_content_type
+      t.remove :avatar_file_size
+      t.remove :avatar_updated_at
+    end
   end
 
   def self.down
-    add_column :users, :avatar_updated_at
-    add_column :users, :avatar_file_size
-    add_column :users, :avatar_content_type
-    add_column :users, :avatar_file_name
-    remove_column :users, :avatar
+    change_table :users do |t|
+      t.string :avatar_updated_at
+      t.string :avatar_file_size
+      t.string :avatar_content_type
+      t.string :avatar_file_name
+      t.remove :avatar
+    end
   end
 end
