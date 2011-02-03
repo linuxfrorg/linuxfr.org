@@ -8,7 +8,7 @@ class VotesController < ApplicationController
     @node.vote_for(current_account) if @node.content.votable_by?(current_account)
     respond_to do |wants|
       wants.html { redirect_to_content @node.content }
-      wants.js   { render :text => "Merci pour votre vote" }
+      wants.json { render :json => "Merci pour votre vote".to_json }
     end
   end
 
@@ -16,7 +16,7 @@ class VotesController < ApplicationController
     @node.vote_against(current_account) if @node.content.votable_by?(current_account)
     respond_to do |wants|
       wants.html { redirect_to_content @node.content }
-      wants.js   { render :text => "Merci pour votre vote" }
+      wants.json { render :json => "Merci pour votre vote".to_json }
     end
   end
 

@@ -1,4 +1,13 @@
 (function($) {
+    $.ajaxSettings.dataType = "json";
+
+    $('form[data-remote]').live('ajax:success', function(e, data) {
+        if (data) {
+            jQuery.noticeAdd({text: data});
+        }
+        $(this).parent().hide();
+    });
+
     $(".markItUp").markItUp(markItUpSettings);
 
     $("a.hit_counter[data-hit]").each(function() {
