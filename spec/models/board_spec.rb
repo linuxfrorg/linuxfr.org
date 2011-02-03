@@ -195,6 +195,12 @@ describe Board do
       board.sanitize_message
       board.message.should == "NoNo&lt; --&gt; \\_o&lt; p4n!"
     end
+
+    it "doesn't bug on multiple tags" do
+      board.message = "<b>foo</b> bar <b>baz</b>"
+      board.sanitize_message
+      board.message.should == "<b>foo</b> bar <b>baz</b>"
+    end
   end
 
   context "ActiveModel Lint tests" do

@@ -87,7 +87,7 @@ class Board
 
   def inner_sanitize(parent, str)
     until str.empty?
-      left, tag, str = str.partition(/<\s*(b|i|u|s|strong|em|code)\s*>(.*)<\s*\/\1\s*>/)
+      left, tag, str = str.partition(/<\s*(b|i|u|s|strong|em|code)\s*>(.*?)<\s*\/\1\s*>/)
       parent.add_child Nokogiri::XML::Text.new(left, parent)
       return if tag.empty?
       node = Nokogiri::XML::Node.new($1, parent)
