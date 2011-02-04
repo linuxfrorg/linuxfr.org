@@ -1,7 +1,6 @@
 source :rubygems
 
-gem "rails",                   "=3.0.4.rc1"
-gem "mail",                    "~> 2.2.15"
+gem "rails",                   "=3.0.4"
 
 gem "acts_as_list",            "~>0.1"
 gem "albino",                  "=1.1.1"
@@ -30,7 +29,9 @@ gem "state_machine",           "~>0.9"
 gem "will_paginate",           ">=3.0.pre2"
 
 # Rspec-rails must be in development for rake stats and in test for normal stuff
-gem "rspec-rails",             "~>2.3", :groups => [:development, :test]
+group :development, :test do
+  gem "rspec-rails",           "~>2.5"
+end
 
 group :development do
   gem "annotate"
