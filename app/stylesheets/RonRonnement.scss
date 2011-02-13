@@ -2,30 +2,8 @@
 /* Copyright 2010 Nicolas Schoonbroodt (css) <nicolas@elsewhere.be>      */
 /* Distributed under GNU AGPL v3 License                                 */
 
-@import 'http://alpha.linuxfr.org/stylesheets/markitup.css';
-
-/* Color constants */
-/* TODO reorganiser */
-$C_CLAIR: #E9E6E4;
-$C_BANDEAU: #4C575F !default;
-$C_FONCE: #93877B;
-$C_INTER: #A99C90;
-$C_BAS_FOND: #E4E4E4;
-$C_FOOT: #D4D1CF;
-$C_MIBLANC_MIFOOT: #E9E8E7;
-$C_CONTAINER: #F9F9F9;
-$C_MENU: #7F6E60;
-
-/*$C_BD1: #F9DEE8;
-$C_BD2: #F1ABC5;
-$C_BD3: #E978A3;
-$C_BD4: #E14E85;
-$C_BD5: #D91C64;*/
-$C_BD1: transparentize($C_BANDEAU, 0.84);
-$C_BD2: transparentize($C_BANDEAU, 0.67);
-$C_BD3: transparentize($C_BANDEAU, 0.50);
-$C_BD4: transparentize($C_BANDEAU, 0.33);
-$C_BD5: transparentize($C_BANDEAU, 0.17);
+@import 'markitup';
+@import 'colors';
 
 /* Pixel size constants */
 $PX_MARGE_GAUCHE: 42px;
@@ -208,10 +186,20 @@ input[type='submit'] {
 		font-weight: inherit;
 	}
 
-	/* le cadena */
-	.access {
+	/* le cadenas */
+	.insecure, .secure {
+		display: block;
 		float: right;
-		border: none;
+		text-indent: -9999em;
+		margin: 5px;
+		height: 16px;
+		width: 16px;
+	}
+	.insecure {
+		background: url(/images/icones/lock-insecure.png) no-repeat;
+	}
+	.secure {
+		background: url(/images/icones/lock-secure.png) no-repeat;
 	}
 
 	/* image DLFP */
@@ -298,7 +286,7 @@ input[type='submit'] {
 
 		li {
 			display: inline;
-			padding: none;
+			padding: 0;
 			list-style: none;
 
 			&:after {
@@ -313,7 +301,10 @@ input[type='submit'] {
 	/* boite de recherche */
 	form {
 		label {
-			display: none;
+			float: left;
+			text-indent: -9998em;
+			overflow: hidden;
+			text-align: left;
 		}
 		input#search_submit {
 			width: 0px;
@@ -381,7 +372,6 @@ input[type='submit'] {
 	}
 
 	nav, section {
-		float:center;
 		display: inline-block;
 		padding: 5px 0px 30px 0px; 
 		vertical-align: top;
@@ -457,7 +447,7 @@ input[type='submit'] {
 #phare article {
 	/* enleve la liste des liens de la boite d'en-tete pour ne garder que le contenu "texte" de l'article, pour gain de place. */
 	.content ul {
-	display: none;
+		display: none;
 	}
 
 	border: solid $BORDER_PHARE $C_BANDEAU;
@@ -557,6 +547,7 @@ article {
 		float: right;
 		width: $RAY_CONTAINER + $BORDER_CONTENT;
 		height: 31px;
+		margin: 0;
 		border-left-width: 15px;
 		border-top-width: 0px;
 		border-bottom-width: 0px;
@@ -571,10 +562,10 @@ article {
 	}
 	.score {
 		background: $C_BAS_FOND;
-		-moz-border-image: url("http://linuxfr.indefero.net/p/concours-yoda222/source/tree/master/coin-transparent.png") 0 0 0 15;
-		-o-border-image: url("http://linuxfr.indefero.net/p/concours-yoda222/source/tree/master/coin-transparent.png") 0 0 0 15;
-		-webkit-border-image: url("http://linuxfr.indefero.net/p/concours-yoda222/source/tree/master/coin-transparent.png") 0 0 0 15;
-		-khtml-border-image: url("http://linuxfr.indefero.net/p/concours-yoda222/source/tree/master/coin-transparent.png") 0 0 0 15;
+		-moz-border-image:    url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+		-o-border-image:      url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+		-webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+		-khtml-border-image:  url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
 		text-align: center;
 		line-height: 31px;
 		font-weight: bold;
@@ -583,12 +574,12 @@ article {
 	.datePourCss {
 		display: block !important;
 		background: $C_BANDEAU;
+		-moz-border-image:    url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+		-o-border-image:      url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+		-webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+		-khtml-border-image:  url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
 		color: white;
-		-moz-border-image: url("http://linuxfr.indefero.net/p/concours-yoda222/source/tree/master/coin-transparent.png") 0 0 0 15;
-		-o-border-image: url("http://linuxfr.indefero.net/p/concours-yoda222/source/tree/master/coin-transparent.png") 0 0 0 15;
-		-webkit-border-image: url("http://linuxfr.indefero.net/p/concours-yoda222/source/tree/master/coin-transparent.png") 0 0 0 15;
-		-khtml-border-image: url("http://linuxfr.indefero.net/p/concours-yoda222/source/tree/master/coin-transparent.png") 0 0 0 15;
-		padding: none;
+		padding: 0;
 		margin-bottom: 2px;
 
 		.jour {
@@ -674,6 +665,9 @@ footer.actions .action {
 		font-size: inherit; // tu va la prendre ta putain de taille ? /o\
 	}
 }
+.ac_loading {
+	background: white url('/images/ajax-loader.gif') right center no-repeat;
+}
 .ac_results {
 	background-color: $C_CLAIR;
 	border: solid 1px $C_INTER;
@@ -694,6 +688,13 @@ footer.actions .action {
 		}
 	}
 }
+.ac_odd {
+	background-color: #eeeeee;
+}
+.ac_over {
+	background-color: #0a246a;
+	color: white;
+}
 .tags {
 	display: block;
 	font-size: small;
@@ -702,7 +703,7 @@ footer.actions .action {
 		display: inline;
 		li {
 			display: inline;
-			padding: none;
+			padding: 0;
 			list-style: none;
 			&:after {
 				content: ", ";
@@ -747,20 +748,20 @@ footer.actions .action {
 		&[title="Définition Wikipédia"] {
 			padding-left: 3px;
 			border-left: 16px;
-			-moz-border-image: url('http://fr.wikipedia.org/favicon.ico') 0 0 0 16;
-			-o-border-image: url('http://fr.wikipedia.org/favicon.ico') 0 0 0 16;
-			-webkit-border-image: url('http://fr.wikipedia.org/favicon.ico') 0 0 0 16;
-			-khtml-border-image: url('http://fr.wikipedia.org/favicon.ico') 0 0 0 16;
-			border-image: url('http://fr.wikipedia.org/favicon.ico') 0 0 0 16;
+			-moz-border-image:    url('/images/icones/wikipedia.ico') 0 0 0 16;
+			-o-border-image:      url('/images/icones/wikipedia.ico') 0 0 0 16;
+			-webkit-border-image: url('/images/icones/wikipedia.ico') 0 0 0 16;
+			-khtml-border-image:  url('/images/icones/wikipedia.ico') 0 0 0 16;
+			border-image:         url('/images/icones/wikipedia.ico') 0 0 0 16;
 		}
 		&[title="Lien interne du wiki LinuxFr.org"] {
 			padding-left: 3px;
 			border-left: 16px;
-			-moz-border-image: url('http://alpha.linuxfr.org/favicon.png') 0 0 0 32;
-			-o-border-image: url('http://alpha.linuxfr.org/favicon.png') 0 0 0 32;
-			-webkit-border-image: url('http://alpha.linuxfr.org/favicon.png') 0 0 0 32;
-			-khtml-border-image: url('http://alpha.linuxfr.org/favicon.png') 0 0 0 32;
-			border-image: url('http://alpha.linuxfr.org/favicon.png') 0 0 0 32;
+			-moz-border-image:    url('/favicon.png') 0 0 0 32;
+			-o-border-image:      url('/favicon.png') 0 0 0 32;
+			-webkit-border-image: url('/favicon.png') 0 0 0 32;
+			-khtml-border-image:  url('/favicon.png') 0 0 0 32;
+			border-image:         url('/favicon.png') 0 0 0 32;
 		}
 	}
 }
@@ -800,7 +801,7 @@ a.scroll {
 		display: inline;
 		li {
 			display: inline;
-			padding: none;
+			padding: 0;
 			list-style: none;
 			&:after {
 				content: " · ";
@@ -824,8 +825,38 @@ a.scroll {
 .notice {
 	text-align: center;
 	background-color: $C_BD1;
-	border: solid 1px $C_BD3;
+	border: 1px solid $C_BD3;
 	margin-bottom: 10px;
+}
+.notice-wrap {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	width: 250px;
+	z-index: 9999;
+}
+.notice-item {
+	height: 60px;
+	background: #333333;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	color: #eeeeee;
+	padding: 6px 6px 0 6px;
+	font-family: lucida Grande;
+	font-size: 11px;
+	border: 2px solid #999999;
+	display: block;
+	position: relative;
+	margin: 0 0 12px 0;
+}
+.notice-item-close {
+	position: absolute;
+	font-family: Arial;
+	font-size: 12px;
+	font-weight: bold;
+	right: 6px;
+	top: 6px;
+	cursor: pointer;
 }
 
 /* sondage */
@@ -852,8 +883,14 @@ ul.poll {
 	}
 }
 
-/* TODO si tu trouve un moyen de les mettre joliement, sinon utiliser votre navigateur et votre clavier, les gens */
 .go_to_content {
+	float: left;
+	text-indent: -9998em;
+	overflow: hidden;
+	text-align: left;
+}
+
+.pot_de_miel {
 	display: none;
 }
 
@@ -896,11 +933,11 @@ ul.threads {
 li.comment {
 	font-size: small;
 	> h2 {
-		display: block-inline;
 		font-size: medium;
 		margin-bottom: 0px;
 		margin-top: 10px;
 		background: $C_CLAIR;
+		clear: right;
 	}
 	> p.meta {
 		margin-top: 0px;
@@ -938,7 +975,7 @@ li.new-comment {
 
 /* extrait de pigments */
 code {
-	display: block-inline;
+	display: inline-block;
 	font-size: medium;
 	white-space: pre-wrap;
 	&[class] {
@@ -1012,27 +1049,26 @@ code {
 }
 
 /* Langues */
-/* a rendre dynamique http/https */
-li.link[lang=cn] { list-style: url('http://alpha.linuxfr.org/images/langs/cn.png'); }
-li.link[lang=ct] { list-style: url('http://alpha.linuxfr.org/images/langs/ct.png'); }
-li.link[lang=da] { list-style: url('http://alpha.linuxfr.org/images/langs/da.png'); }
-li.link[lang=de] { list-style: url('http://alpha.linuxfr.org/images/langs/de.png'); }
-li.link[lang=el] { list-style: url('http://alpha.linuxfr.org/images/langs/el.png'); }
-li.link[lang=en] { list-style: url('http://alpha.linuxfr.org/images/langs/en.png'); }
-li.link[lang=es] { list-style: url('http://alpha.linuxfr.org/images/langs/es.png'); }
-li.link[lang=eu] { list-style: url('http://alpha.linuxfr.org/images/langs/eu.png'); }
-li.link[lang=fi] { list-style: url('http://alpha.linuxfr.org/images/langs/fi.png'); }
-li.link[lang=fr] { list-style: url('http://alpha.linuxfr.org/images/langs/fr.png'); }
-li.link[lang=it] { list-style: url('http://alpha.linuxfr.org/images/langs/it.png'); }
-li.link[lang=ja] { list-style: url('http://alpha.linuxfr.org/images/langs/ja.png'); }
-li.link[lang=ko] { list-style: url('http://alpha.linuxfr.org/images/langs/ko.png'); }
-li.link[lang=nl] { list-style: url('http://alpha.linuxfr.org/images/langs/nl.png'); }
-li.link[lang=no] { list-style: url('http://alpha.linuxfr.org/images/langs/no.png'); }
-li.link[lang=pl] { list-style: url('http://alpha.linuxfr.org/images/langs/pl.png'); }
-li.link[lang=pt] { list-style: url('http://alpha.linuxfr.org/images/langs/pt.png'); }
-li.link[lang=ru] { list-style: url('http://alpha.linuxfr.org/images/langs/ru.png'); }
-li.link[lang=sv] { list-style: url('http://alpha.linuxfr.org/images/langs/sv.png'); }
-li.link[lang=xx] { list-style: url('http://alpha.linuxfr.org/images/langs/xx.png'); }
+li.link[lang=cn] { list-style: url('/images/langs/cn.png'); }
+li.link[lang=ct] { list-style: url('/images/langs/ct.png'); }
+li.link[lang=da] { list-style: url('/images/langs/da.png'); }
+li.link[lang=de] { list-style: url('/images/langs/de.png'); }
+li.link[lang=el] { list-style: url('/images/langs/el.png'); }
+li.link[lang=en] { list-style: url('/images/langs/en.png'); }
+li.link[lang=es] { list-style: url('/images/langs/es.png'); }
+li.link[lang=eu] { list-style: url('/images/langs/eu.png'); }
+li.link[lang=fi] { list-style: url('/images/langs/fi.png'); }
+li.link[lang=fr] { list-style: url('/images/langs/fr.png'); }
+li.link[lang=it] { list-style: url('/images/langs/it.png'); }
+li.link[lang=ja] { list-style: url('/images/langs/ja.png'); }
+li.link[lang=ko] { list-style: url('/images/langs/ko.png'); }
+li.link[lang=nl] { list-style: url('/images/langs/nl.png'); }
+li.link[lang=no] { list-style: url('/images/langs/no.png'); }
+li.link[lang=pl] { list-style: url('/images/langs/pl.png'); }
+li.link[lang=pt] { list-style: url('/images/langs/pt.png'); }
+li.link[lang=ru] { list-style: url('/images/langs/ru.png'); }
+li.link[lang=sv] { list-style: url('/images/langs/sv.png'); }
+li.link[lang=xx] { list-style: url('/images/langs/xx.png'); }
 
 /* Tribune */
 body#boards-show {
@@ -1171,6 +1207,10 @@ input#stylesheet {
 	width: 70%;
 }
 
+.fieldWithErrors input {
+	border: 1px solid red;
+}
+
 /* url dans les depeches */
 div#form_links {
 	fieldset {
@@ -1304,6 +1344,13 @@ body#trackers-index #contents table {
 		}
 	}
 	a[href] { @include lien_standard; }
+}
+#tracker, .tracker {
+	.fix, .invalid {
+		a {
+			text-decoration: line-through;
+		}
+	}
 }
 
 /* page d'historique de wiki */

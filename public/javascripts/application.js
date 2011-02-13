@@ -76,7 +76,7 @@
     $('.tag_in_place').live('in_place:form', function() {
         $('input.autocomplete').each(function() {
             var input = $(this);
-            input.autocomplete(input.attr('data-url'), {multiple: true, multipleSeparator: ' '});
+            input.autocomplete(input.attr('data-url'), {multiple: true, multipleSeparator: ' ', dataType: 'text'});
         });
     }).live('in_place:result', function() {
         $.noticeAdd({text: "Tags ajoutés"});
