@@ -1,0 +1,1367 @@
+/* Copyright 2010 Eve Schoonbroodt (design) http://www.studiomagenta.be/ */
+/* Copyright 2010 Nicolas Schoonbroodt (css) <nicolas@elsewhere.be>      */
+/* Distributed under GNU AGPL v3 License                                 */
+
+@import 'http://alpha.linuxfr.org/stylesheets/markitup.css';
+
+/* Color constants */
+/* TODO reorganiser */
+$C_CLAIR: #E9E6E4;
+$C_BANDEAU: #4C575F !default;
+$C_FONCE: #93877B;
+$C_INTER: #A99C90;
+$C_BAS_FOND: #E4E4E4;
+$C_FOOT: #D4D1CF;
+$C_MIBLANC_MIFOOT: #E9E8E7;
+$C_CONTAINER: #F9F9F9;
+$C_MENU: #7F6E60;
+
+/*$C_BD1: #F9DEE8;
+$C_BD2: #F1ABC5;
+$C_BD3: #E978A3;
+$C_BD4: #E14E85;
+$C_BD5: #D91C64;*/
+$C_BD1: transparentize($C_BANDEAU, 0.84);
+$C_BD2: transparentize($C_BANDEAU, 0.67);
+$C_BD3: transparentize($C_BANDEAU, 0.50);
+$C_BD4: transparentize($C_BANDEAU, 0.33);
+$C_BD5: transparentize($C_BANDEAU, 0.17);
+
+/* Pixel size constants */
+$PX_MARGE_GAUCHE: 42px;
+$PX_MARGE_DROITE: 30px;
+$PX_TOP: 16px;
+$PX_BANDEAU: 7px;
+$PX_BRANDING_TOP: 34px;
+$PX_BRANDING_LARG: 201px;
+$PX_SHADOW: 12px;
+$PX_SITE_MARGE_TOP: 40px;
+$PX_SITE_PAD_DROIT: 42px;
+$PX_CONT_TOP: 34px;
+
+$PX_MARGE_GAUCHE_SHA: 50px;
+$PX_MARGE_DROITE_SHA: 38px;
+/* pas de px ici pour faire plaisir a webkit */
+$PX_SEP_FOND: 134px;
+$PX_SEP_FOND_webkit: 134;
+$PX_PAD_NODE: 34px;
+
+$RAY_SIDEBAR: 42px;
+$RAY_CONTAINER: 62px;
+$RAY_CONTAINER_PLUS_1: 63px;
+$RAY_FOOT: 7px;
+$RAY_NODE: 6px;
+
+$PC_FOOT_MARG: 0.7%;
+$PC_FOOT_WIDTH: 23%;
+
+/* = PAD_NODE + RAY_CONTAINER */
+$BOX_TRANSLATION: $PX_PAD_NODE + $RAY_CONTAINER;
+$BORDER_CONTENT: 1px;
+$BORDER_PHARE: 2px;
+$fleche_offset_vertical: -30px;
+
+/* un lien bleu/rouge visité normal */
+@mixin lien_standard {
+	color: #0000EE;
+	font-weight: inherit;
+	&:hover {
+		text-decoration: inherit;
+	}
+	&:visited {
+		color: #551A8B;
+	}
+}
+
+html {
+	background: white;
+	background: -moz-linear-gradient(top,
+		white $PX_SEP_FOND,
+		$C_BAS_FOND $PX_SEP_FOND
+	);
+	background: -o-linear-gradient(top,
+		white $PX_SEP_FOND,
+		$C_BAS_FOND $PX_SEP_FOND
+	);
+	background: -webkit-gradient(linear,
+		center top,
+		center $PX_SEP_FOND_webkit,
+		from(white),
+		color-stop(99%, white),
+		color-stop(100%, $C_BAS_FOND),
+		to($C_BAS_FOND)
+	);
+	background: -khtml-gradient(linear,
+		center top,
+		center $PX_SEP_FOND_webkit,
+		from(white),
+		color-stop(99%, white),
+		color-stop(100%, $C_BAS_FOND),
+		to($C_BAS_FOND)
+	);
+	background: linear-gradient(top,
+		white $PX_SEP_FOND,
+		$C_BAS_FOND $PX_SEP_FOND
+	);
+
+	font-family: Freesans, "Free Helvetian", "URW Nimbus Sans L", "Nimbus Sans L", NimbusSanL, URWNimbusSanL, Swiss, "Swiss 721 SWA", "Swiss 721 BT", "Swiss 721", Helvetica, Helvetic, Helv, "Arial Unicode MS", Arial, sans-serif ;
+
+	padding: 0px $PX_MARGE_DROITE 0px $PX_MARGE_GAUCHE;
+}
+
+body {
+	/* si gradient ko p. ex. opera */
+	background: $C_CLAIR;
+	/* le gradient change en fct de la longueur de la page, c'est pas ce que je voulait, mais c'est intéressant aussi
+	   on peut en déduire directement le temps de travail qu'on va perder à troller */
+	background: -moz-linear-gradient(right 183deg, $C_INTER 45%, $C_CONTAINER 80%);
+	background: -o-linear-gradient(right 183deg, $C_INTER 45%, $C_CONTAINER 80%);
+	background: -webkit-gradient(linear,
+		right top,
+		left 140,
+		from($C_INTER),
+		color-stop(45%, $C_INTER),
+		color-stop(90%, $C_CONTAINER),
+		to($C_CONTAINER)
+	);
+	background: -khtml-gradient(linear,
+		right top,
+		left 140,
+		from($C_INTER),
+		color-stop(45%, $C_INTER),
+		color-stop(90%, $C_CONTAINER),
+		to($C_CONTAINER)
+	);
+	background: linear-gradient(right 183deg, $C_INTER 45%, $C_CONTAINER 80%);
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: $PX_TOP;
+
+	-moz-box-shadow: 5px 0px 10px #ccc, -5px 0px 10px #ccc;
+	-webkit-box-shadow: 5px 0px 5px #ccc, -5px 0px 5px #ccc;
+	-khtml-box-shadow: 5px 0px 5px #ccc, -5px 0px 5px #ccc;
+	box-shadow: 5px 0px 5px #ccc, -5px 0px 5px #ccc;
+}
+
+a {
+	color: inherit;
+	font-size: inherit;
+	text-decoration: none;
+	font-weight: bold;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+button,
+#news_preview, #news_submit,
+#diary_preview, #diary_submit,
+#comment_preview, #comment_submit,
+#tracker_preview, #tracker_submit,
+#wiki_preview, #wiki_submit,
+#poll_preview, #poll_submit,
+#post_preview, #post_submit,
+#comments > p:first-child,
+.toolbox .new_content,
+input[type='submit'] {
+	color: black;
+	background-color: $C_CLAIR;
+	border: 1px solid $C_INTER;
+	font-size: medium;
+	padding-left: 5px;
+	padding-right: 5px;
+
+	a {
+		font-weight: normal;
+		&:hover {
+		text-decoration: none;
+		}
+	}
+	&:hover {
+		background-color: $C_INTER;
+		border: 1px solid $C_FONCE;
+	}
+}
+
+#top {
+	background: $C_BANDEAU;
+	height: $PX_BANDEAU;
+}
+
+#sidebar {
+	float: left;
+	margin-top: $PX_BRANDING_TOP;
+	left: $PX_MARGE_GAUCHE_SHA;
+	width: $PX_BRANDING_LARG;
+	text-align: left;
+	font-size: small;
+	background: $C_CLAIR;
+
+
+	-moz-border-radius-bottomright: $RAY_SIDEBAR;
+	-webkit-border-bottom-right-radius: $RAY_SIDEBAR;
+	-khtml-border-bottom-right-radius: $RAY_SIDEBAR;
+	border-bottom-right-radius: $RAY_SIDEBAR;
+
+	a {
+		font-weight: inherit;
+	}
+
+	/* le cadena */
+	.access {
+		float: right;
+		border: none;
+	}
+
+	/* image DLFP */
+	#branding h1 {
+		display: block;
+		height: 186px;
+
+		a {
+			display: block;
+			/* chiffre magique qui marche sous firefox et opera */
+			margin-top: -17px;
+			text-indent: -9999em;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	/* Les boîtes login, wiki, moderation */
+	.box {
+		min-height:110px;
+		border-bottom: 1px solid $C_INTER;
+		padding: 0px 3px 10px 5px;
+
+		/* juste une ligne devant les listes */
+		ul {
+			padding-left: 0px;
+		}
+		li {
+			list-style: none;
+			margin-left: 5px;
+			padding-left: 5px;
+			border-left: solid 1px $C_INTER;
+		}
+
+		> a {
+			display: block;
+			padding-left: 5px;
+			padding-bottom: 5px;
+		}
+
+		/* pas de ligne sous la dernière boite */
+		&:last-child {
+			border-bottom: none;
+			padding-bottom: $RAY_SIDEBAR;
+		}
+
+		/* rotation du titre de la boîte */
+		h1:first-of-type {
+			display: inline;
+			text-align: center;
+			font-size: small;
+			color: white;
+			background: $C_FONCE;
+			max-width: 80%;
+			padding: 4px 10px 4px 10px;
+
+			-webkit-transform-origin: left top;
+			-khtml-transform-origin: left top;
+			-moz-transform-origin: left top;
+			-o-transform-origin: left top;
+			-webkit-transform: rotate(-90deg) translate(-100%, -100%) translate(3px, -5px);
+			-khtml-transform: rotate(-90deg) translate(-100%, -100%) translate(3px, -5px);
+			-moz-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
+			-o-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
+		}
+	}
+}
+
+/* menu du haut */
+#site {
+	position: absolute;
+	top: $PX_SITE_MARGE_TOP;
+	right: $PX_MARGE_DROITE_SHA;
+	display: block;
+	text-align: right;
+	text-transform: uppercase;
+	font-size: small;
+	color: $C_MENU;
+
+	ul {
+		display: inline;
+		width: 100%;
+		padding-right: $PX_SITE_PAD_DROIT;
+
+		li {
+			display: inline;
+			padding: none;
+			list-style: none;
+
+			&:after {
+				content: " | ";
+			}
+			&:last-child:after {
+				content: "";
+			}
+		}
+	}
+
+	/* boite de recherche */
+	form {
+		label {
+			display: none;
+		}
+		input#search_submit {
+			width: 0px;
+			position: absolute;
+			visibility: hidden; /* TODO la recherche ne marche pas avec opera */
+		}
+		display: block;
+		background: $C_FONCE;
+		padding-left: $PX_SITE_PAD_DROIT;
+		padding-right: $PX_SITE_PAD_DROIT;
+		width: 180px;
+		margin-left: auto;
+		margin-right: 0px;
+
+		-moz-border-radius-bottomleft: $RAY_SIDEBAR;
+		-webkit-border-bottom-left-radius: $RAY_SIDEBAR;
+		-khtml-border-bottom-left-radius: $RAY_SIDEBAR;
+		border-bottom-left-radius: $RAY_SIDEBAR;
+
+		height: 29px;
+		line-height: 29px;
+		text-align: center;
+
+		input#query {
+			background: $C_CLAIR;
+		}
+	}
+}
+
+/* pied de page derniers commentaires, … */
+#bigfooter{
+	clear: both;
+	width: 100%;
+	display: block;
+	margin-top: 0px;
+	background: $C_CLAIR;
+	background: -moz-linear-gradient(top,
+		$C_FOOT 0%,
+		white 100%
+	);
+	background: -o-linear-gradient(top,
+		$C_FOOT 0%,
+		white 100%
+	);
+	background: -webkit-gradient(linear,
+		center top,
+		center bottom,
+		from($C_FOOT),
+		to(white)
+	);
+	background: -khtml-gradient(linear,
+		center top,
+		center bottom,
+		from($C_FOOT),
+		to(white)
+	);
+	background: linear-gradient(top,
+		$C_FOOT 0%,
+		white 100%
+	);
+	padding: 0px 0px 0px 0px;
+
+	a {
+		font-size: small;
+	}
+
+	nav, section {
+		float:center;
+		display: inline-block;
+		padding: 5px 0px 30px 0px; 
+		vertical-align: top;
+		width: $PC_FOOT_WIDTH;
+		margin: 0px $PC_FOOT_MARG 0 $PC_FOOT_MARG;
+		background: $C_FOOT;
+		background: -moz-linear-gradient(top,
+			$C_FOOT 0%,
+			$C_MIBLANC_MIFOOT 50%,
+			$C_FOOT 100%
+		);
+		background: -o-linear-gradient(top,
+			$C_FOOT 0%,
+			$C_MIBLANC_MIFOOT 50%,
+			$C_FOOT 100%
+		);
+		background: -webkit-gradient(linear,
+			center top,
+			center bottom,
+			from($C_FOOT),
+			color-stop(50%, $C_MIBLANC_MIFOOT),
+			to($C_FOOT));
+		background: -khtml-gradient(linear,
+			center top,
+			center bottom,
+			from($C_FOOT),
+			color-stop(50%, $C_MIBLANC_MIFOOT),
+			to($C_FOOT));
+		background: linear-gradient(top,
+			$C_FOOT 0%,
+			$C_MIBLANC_MIFOOT 50%,
+			$C_FOOT 100%
+		);
+		min-height: 330px;
+
+		-moz-border-radius-bottomright: $RAY_FOOT;
+		-webkit-border-bottom-right-radius: $RAY_FOOT;
+		-khtml-border-bottom-right-radius: $RAY_FOOT;
+		border-bottom-right-radius: $RAY_FOOT;
+		-moz-border-radius-bottomleft: $RAY_FOOT;
+		-webkit-border-bottom-left-radius: $RAY_FOOT;
+		-khtml-border-bottom-left-radius: $RAY_FOOT;
+		border-bottom-left-radius: $RAY_FOOT;
+
+		h1 {
+			font-size: medium;
+			padding: 0px 3px 3px 3px;
+			border-bottom: 2px solid $C_BANDEAU;
+		}
+	}
+}
+
+#container {
+	display: block;
+	margin-left: $PX_BRANDING_LARG;
+	background: $C_CONTAINER;
+	-moz-border-radius-topleft: $RAY_CONTAINER;
+	-webkit-border-top-left-radius: $RAY_CONTAINER;
+	-khtml-border-top-left-radius: $RAY_CONTAINER;
+	border-top-left-radius: $RAY_CONTAINER;
+
+	padding: 40px $RAY_CONTAINER 10px 40px;
+	margin-top: $PX_CONT_TOP;
+	margin-bottom: 0px;
+
+/* le titre de la page est déjà contenu dans la barre du navigateur, l'url du navigateur, ... */
+	> h1:first-of-type {
+		display: none;
+	}
+}
+
+/* article titre */
+#phare article {
+	/* enleve la liste des liens de la boite d'en-tete pour ne garder que le contenu "texte" de l'article, pour gain de place. */
+	.content ul {
+	display: none;
+	}
+
+	border: solid $BORDER_PHARE $C_BANDEAU;
+
+	/* comme le bord est plus grand, translation légèrement suppérieur */
+	.score, .datePourCss {
+		width: $RAY_CONTAINER + $BORDER_PHARE;
+		-moz-transform: translate($BOX_TRANSLATION + $BORDER_PHARE, $fleche_offset_vertical);
+		-webkit-transform: translate($BOX_TRANSLATION + $BORDER_PHARE, $fleche_offset_vertical);
+		-khtml-transform: translate($BOX_TRANSLATION + $BORDER_PHARE, $fleche_offset_vertical);
+		-o-transform: translate($BOX_TRANSLATION + $BORDER_PHARE, $fleche_offset_vertical);
+	}
+
+}
+
+/* information générale, "publicité" (genre fosdem p. ex.) */
+.banner {
+	display: block;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: $C_BD2;
+	border-top: solid 2px $C_BANDEAU;
+	border-bottom: solid 2px $C_BANDEAU;
+	padding: 5px;
+}
+
+/* contenu du site (hors commentaire) */
+article,
+ul.threads > li.comment,
+.markdown_cheatsheet,
+#contents > form,
+form#new_post,
+body#users-comments #contents > ul > li,
+body#comments-create #contents > ul > li#comment_new,
+body#comments-show #contents > ul > li.comment,
+body#wiki_pages-revision #contents,
+body#dashboard-index #contents table,
+body#trackers-index #contents table,
+body#redaction-index #container > div,
+body#boards-show #contents,
+body#stylesheets-edit #contents,
+body#wiki_pages-changes #contents,
+body#admin-index #container > ul,
+#redaction #chat {
+	display: block;
+	background: white;
+
+	padding: 10px $PX_PAD_NODE 10px $PX_PAD_NODE;
+
+	-moz-border-radius: $RAY_NODE;
+	-webkit-border-radius: $RAY_NODE;
+	-khtml-border-radius: $RAY_NODE;
+	border-radius: $RAY_NODE;
+
+	border: solid $BORDER_CONTENT $C_INTER;
+
+	margin-bottom: 15px;
+	font-size: small;
+}
+/* reset pour form css, sinon une boite par css */
+#stylesheets-edit #contents > form {
+	display: inherit;
+	background: inherit;
+	padding: 2px 0 2px 0;
+	-moz-border-radius: none;
+	-webkit-border-radius: none;
+	-khtml-border-radius: none;
+	border-radius: none;
+	border: none;
+	margin-bottom: 0;
+	font-size: inherit;
+}
+
+article {
+	header {
+		> h1:first-of-type > a:first-of-type:after {
+			content: " :";
+		}
+	}
+	.content {
+		padding-top: 5px;
+		padding-bottom: 5px;
+
+		> p:first-child {
+			margin-top: 0px;
+		}
+		> p:last-child {
+			margin-bottom: 0px;
+		}
+	}
+	.meta {
+		color: $C_INTER;
+	}
+	.score, .datePourCss {
+		display: block;
+		float: right;
+		width: $RAY_CONTAINER + $BORDER_CONTENT;
+		height: 31px;
+		border-left-width: 15px;
+		border-top-width: 0px;
+		border-bottom-width: 0px;
+		border-right-width: 0px;
+		font-size: medium;
+		clear: right;
+		/* the translation should be the exact sum of padding and margin of all elements to the right */
+		-moz-transform: translate($BOX_TRANSLATION + $BORDER_CONTENT, $fleche_offset_vertical);
+		-webkit-transform: translate($BOX_TRANSLATION + $BORDER_CONTENT, $fleche_offset_vertical);
+		-khtml-transform: translate($BOX_TRANSLATION + $BORDER_CONTENT, $fleche_offset_vertical);
+		-o-transform: translate($BOX_TRANSLATION + $BORDER_CONTENT, $fleche_offset_vertical);
+	}
+	.score {
+		background: $C_BAS_FOND;
+		-moz-border-image: url("http://linuxfr.indefero.net/p/concours-yoda222/source/tree/master/coin-transparent.png") 0 0 0 15;
+		-o-border-image: url("http://linuxfr.indefero.net/p/concours-yoda222/source/tree/master/coin-transparent.png") 0 0 0 15;
+		-webkit-border-image: url("http://linuxfr.indefero.net/p/concours-yoda222/source/tree/master/coin-transparent.png") 0 0 0 15;
+		-khtml-border-image: url("http://linuxfr.indefero.net/p/concours-yoda222/source/tree/master/coin-transparent.png") 0 0 0 15;
+		text-align: center;
+		line-height: 31px;
+		font-weight: bold;
+		margin-top: 2px;
+	}
+	.datePourCss {
+		display: block !important;
+		background: $C_BANDEAU;
+		color: white;
+		-moz-border-image: url("http://linuxfr.indefero.net/p/concours-yoda222/source/tree/master/coin-transparent.png") 0 0 0 15;
+		-o-border-image: url("http://linuxfr.indefero.net/p/concours-yoda222/source/tree/master/coin-transparent.png") 0 0 0 15;
+		-webkit-border-image: url("http://linuxfr.indefero.net/p/concours-yoda222/source/tree/master/coin-transparent.png") 0 0 0 15;
+		-khtml-border-image: url("http://linuxfr.indefero.net/p/concours-yoda222/source/tree/master/coin-transparent.png") 0 0 0 15;
+		padding: none;
+		margin-bottom: 2px;
+
+		.jour {
+			padding-left: 8px;
+			float: left;
+			line-height: 31px;
+			font-weight: bold;
+			margin-right: 3px;
+		}
+		.mois, .annee {
+			text-align: left;
+			font-size: x-small;
+			padding-left: 10px;
+			clear: right;
+		}
+		.mois {
+			padding-top: 3px;
+			margin-bottom: -1px;
+			padding-bottom: 0px;
+			vertical-align: bottom;
+		}
+		.annee {
+			padding-top: 0px;
+			margin-top: -1px;
+			padding-bottom: 3px;
+			vertical-align: top;
+		}
+	}
+
+	.image {
+		float: left;
+		margin: 10px;
+		margin-top: 10px;
+
+		img {
+			border: none;
+		}
+	}
+
+	h1 {
+		border-left: solid 6px $C_BANDEAU;
+		padding-left: 13px;
+		text-align: left;
+		font-size: large;
+		margin-top: 8px;
+		margin-bottom: 2px;
+	}
+}
+
+/* ajout d'un caractère de couleur changeante devant "lire la suite" */
+.read, .no_comments, .new_comments, .not_read {
+	a:before {
+		content: "+ "; // espace fine après le +
+		font-size: medium;
+		font-weight: bold;
+	}
+}
+.new_comments, .not_read {
+	a:before {
+		color: $C_BANDEAU;
+	}
+}
+
+.read, .no_comments {
+	color: $C_INTER;
+}
+.new_comments a {
+	color: $C_INTER;
+}
+
+footer.actions .action {
+	color: $C_INTER;
+}
+
+/* parti de la base de yggdras pour la partie sur les tags */
+.tag_in_place {
+	float: right;
+	color: $C_INTER;
+	a {
+		color: $C_INTER;
+	}
+	input[type='submit'] {
+		font-size: inherit; // tu va la prendre ta putain de taille ? /o\
+	}
+}
+.ac_results {
+	background-color: $C_CLAIR;
+	border: solid 1px $C_INTER;
+
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	margin: 5px 5px 30px;
+	padding: 5px;
+
+	ul {
+		margin: 0px;
+		padding: 5px;
+		li {
+			list-style: none;
+			cursor: pointer;
+		}
+	}
+}
+.tags {
+	display: block;
+	font-size: small;
+
+	ul {
+		display: inline;
+		li {
+			display: inline;
+			padding: none;
+			list-style: none;
+			&:after {
+				content: ", ";
+			}
+
+			&:last-child:after, .last:after {
+				content: "";
+			}	
+		}
+	}
+}
+
+.vote {
+	color: $C_INTER;
+	font-style: italic;
+	font-size: x-small;
+
+	form, form div {
+		display: inline;
+	}
+	.button_to {
+		input {
+			padding: 0px;
+			display: inline;
+			font-style: italic;
+			font-size: x-small;
+			color: $C_INTER;
+			border-style: none;
+			background-color: transparent;
+		}
+		div:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+/* concerne tout ce qui est contenu : article, commentaire */
+.content {
+	text-align: justify;
+	a[href] {
+		@include lien_standard;
+		&[title="Définition Wikipédia"] {
+			padding-left: 3px;
+			border-left: 16px;
+			-moz-border-image: url('http://fr.wikipedia.org/favicon.ico') 0 0 0 16;
+			-o-border-image: url('http://fr.wikipedia.org/favicon.ico') 0 0 0 16;
+			-webkit-border-image: url('http://fr.wikipedia.org/favicon.ico') 0 0 0 16;
+			-khtml-border-image: url('http://fr.wikipedia.org/favicon.ico') 0 0 0 16;
+			border-image: url('http://fr.wikipedia.org/favicon.ico') 0 0 0 16;
+		}
+		&[title="Lien interne du wiki LinuxFr.org"] {
+			padding-left: 3px;
+			border-left: 16px;
+			-moz-border-image: url('http://alpha.linuxfr.org/favicon.png') 0 0 0 32;
+			-o-border-image: url('http://alpha.linuxfr.org/favicon.png') 0 0 0 32;
+			-webkit-border-image: url('http://alpha.linuxfr.org/favicon.png') 0 0 0 32;
+			-khtml-border-image: url('http://alpha.linuxfr.org/favicon.png') 0 0 0 32;
+			border-image: url('http://alpha.linuxfr.org/favicon.png') 0 0 0 32;
+		}
+	}
+}
+
+blockquote {
+	border-left: 3px solid $C_BANDEAU;
+	border-bottom: 1px solid $C_CLAIR;
+	margin: 10px 0px 10px 10px;
+	padding-left: 5px;
+	padding-right: 0px;
+
+	> p:first-child {
+		padding-top: 5px;
+	}
+}
+
+/* tri, proposition de dépeche, choix de page */
+.toolbox, .scroll {
+	display: block;
+	margin: 10px 0px 15px 0px;
+	font-size: small;
+	color: $C_INTER;
+}
+a.scroll {
+	margin: 0px;
+}
+.toolbox {
+	.new_content {
+		float: right;
+		text-align: right;
+		font-size: medium;
+	}
+	a:hover {
+		text-decoration: none;
+	}
+	.order_navbar ul {
+		display: inline;
+		li {
+			display: inline;
+			padding: none;
+			list-style: none;
+			&:after {
+				content: " · ";
+			}
+			&:last-child:after, .last:after {
+				content: "";
+			}
+		}
+	}
+	/* pour ne pas afficher les pages en haut */
+	.pagination {
+		display: none;
+	}
+}
+/* pour les afficher en bas */
+#container > .toolbox:last-of-type .pagination {
+	display: inherit;
+}
+
+/* message à caractère informatif */
+.notice {
+	text-align: center;
+	background-color: $C_BD1;
+	border: solid 1px $C_BD3;
+	margin-bottom: 10px;
+}
+
+/* sondage */
+ul.poll {
+	.current {
+		padding: 0px;
+		margin-top: 0px;
+		li {
+			list-style: none;
+		}
+	}
+	li meter {
+		display: block;
+		background: $C_BD2;
+		border-top: 1px solid $C_BANDEAU;
+		border-bottom: 1px solid $C_BANDEAU;
+		font-size: x-small;
+	}
+	li meter::-webkit-meter-horizontal-bar,
+	li meter::-webkit-meter-horizontal-optimum-value,
+	li meter::-webkit-meter-horizontal-suboptimal-value,
+	li meter::-webkit-meter-horizontal-even-less-good-value {
+		background: $C_BD2;
+	}
+}
+
+/* TODO si tu trouve un moyen de les mettre joliement, sinon utiliser votre navigateur et votre clavier, les gens */
+.go_to_content {
+	display: none;
+}
+
+/* les commentaires */
+#comments > p {
+	text-align: justify;
+	color: $C_INTER;
+	font-size: small;
+	margin: 5px 0px 5px 0px;
+	&:first-child {
+		display: table;
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 5px;
+		padding-right: 5px;
+		border: 1px solid $C_INTER;
+		background-color: $C_CLAIR;
+		font-size: medium;
+		a:hover {
+			text-decoration: none;
+		}
+	}
+}
+body#comments-show #contents > ul,
+body#comments-create #contents > ul,
+body#users-comments #contents > ul,
+ul.threads {
+	padding: 0px;
+	list-style: none;
+	/* premier d'un thread */
+	> li.comment {
+		/* voir ^article$ */
+		padding-top: 0px;
+		padding-left: 1.25em;
+		padding-right: 5px;
+	}
+}
+
+li.comment {
+	font-size: small;
+	> h2 {
+		display: block-inline;
+		font-size: medium;
+		margin-bottom: 0px;
+		margin-top: 10px;
+		background: $C_CLAIR;
+	}
+	> p.meta {
+		margin-top: 0px;
+		margin-bottom: 3px;
+		color: $C_INTER;
+	}
+	img.avatar {
+		float: right;
+		margin: 0px 5px 5px 10px;
+	}
+	.content {
+		border-left: 1px solid $C_INTER;
+		padding-left: 5px;
+		margin-bottom: 5px;
+	}
+	> ul {
+		list-style: none;
+		margin-left: 1.25em;
+		padding-left: 0px;
+	}
+	&.fold > figure,
+	&.fold > .content,
+	&.fold > .actions {
+		display: none;
+	}
+}
+li.new-comment {
+	> h2 {
+		border: 1px solid $C_BD4;
+	}
+	.content {
+		border-left: 1px solid $C_BD4;
+	}
+}
+
+/* extrait de pigments */
+code {
+	display: block-inline;
+	font-size: medium;
+	white-space: pre-wrap;
+	&[class] {
+		display: block;
+		margin: 10px 0px 10px 10px;
+		padding-left: 5px;
+		padding-right: 0px;
+		border-left: 3px solid $C_BANDEAU;
+		border-bottom: 1px solid $C_CLAIR;
+	}
+	.hll { background-color: #ffffcc }
+	.c { color: #888888 } /* Comment */
+	.err { color: #a61717; background-color: #e3d2d2 } /* Error */
+	.k { color: #008800; font-weight: bold } /* Keyword */
+	.cm { color: #888888 } /* Comment.Multiline */
+	.cp { color: #cc0000; font-weight: bold } /* Comment.Preproc */
+	.c1 { color: #888888 } /* Comment.Single */
+	.cs { color: #cc0000; font-weight: bold; background-color: #fff0f0 } /* Comment.Special */
+	.gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+	.ge { font-style: italic } /* Generic.Emph */
+	.gr { color: #aa0000 } /* Generic.Error */
+	.gh { color: #303030 } /* Generic.Heading */
+	.gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+	.go { color: #888888 } /* Generic.Output */
+	.gp { color: #555555 } /* Generic.Prompt */
+	.gs { font-weight: bold } /* Generic.Strong */
+	.gu { color: #606060 } /* Generic.Subheading */
+	.gt { color: #aa0000 } /* Generic.Traceback */
+	.kc { color: #008800; font-weight: bold } /* Keyword.Constant */
+	.kd { color: #008800; font-weight: bold } /* Keyword.Declaration */
+	.kn { color: #008800; font-weight: bold } /* Keyword.Namespace */
+	.kp { color: #008800 } /* Keyword.Pseudo */
+	.kr { color: #008800; font-weight: bold } /* Keyword.Reserved */
+	.kt { color: #888888; font-weight: bold } /* Keyword.Type */
+	.m { color: #0000DD; font-weight: bold } /* Literal.Number */
+	.s { color: #dd2200; background-color: #fff0f0 } /* Literal.String */
+	.na { color: #336699 } /* Name.Attribute */
+	.nb { color: #003388 } /* Name.Builtin */
+	.nc { color: #bb0066; font-weight: bold } /* Name.Class */
+	.no { color: #003366; font-weight: bold } /* Name.Constant */
+	.nd { color: #555555 } /* Name.Decorator */
+	.ne { color: #bb0066; font-weight: bold } /* Name.Exception */
+	.nf { color: #0066bb; font-weight: bold } /* Name.Function */
+	.nl { color: #336699; font-style: italic } /* Name.Label */
+	.nn { color: #bb0066; font-weight: bold } /* Name.Namespace */
+	.py { color: #336699; font-weight: bold } /* Name.Property */
+	.nt { color: #bb0066; font-weight: bold } /* Name.Tag */
+	.nv { color: #336699 } /* Name.Variable */
+	.ow { color: #008800 } /* Operator.Word */
+	.w { color: #bbbbbb } /* Text.Whitespace */
+	.mf { color: #0000DD; font-weight: bold } /* Literal.Number.Float */
+	.mh { color: #0000DD; font-weight: bold } /* Literal.Number.Hex */
+	.mi { color: #0000DD; font-weight: bold } /* Literal.Number.Integer */
+	.mo { color: #0000DD; font-weight: bold } /* Literal.Number.Oct */
+	.sb { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Backtick */
+	.sc { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Char */
+	.sd { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Doc */
+	.s2 { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Double */
+	.se { color: #0044dd; background-color: #fff0f0 } /* Literal.String.Escape */
+	.sh { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Heredoc */
+	.si { color: #3333bb; background-color: #fff0f0 } /* Literal.String.Interpol */
+	.sx { color: #22bb22; background-color: #f0fff0 } /* Literal.String.Other */
+	.sr { color: #008800; background-color: #fff0ff } /* Literal.String.Regex */
+	.s1 { color: #dd2200; background-color: #fff0f0 } /* Literal.String.Single */
+	.ss { color: #aa6600; background-color: #fff0f0 } /* Literal.String.Symbol */
+	.bp { color: #003388 } /* Name.Builtin.Pseudo */
+	.vc { color: #336699 } /* Name.Variable.Class */
+	.vg { color: #dd7700 } /* Name.Variable.Global */
+	.vi { color: #3333bb } /* Name.Variable.Instance */
+	.il { color: #0000DD; font-weight: bold } /* Literal.Number.Integer.Long */
+}
+
+/* Langues */
+/* a rendre dynamique http/https */
+li.link[lang=cn] { list-style: url('http://alpha.linuxfr.org/images/langs/cn.png'); }
+li.link[lang=ct] { list-style: url('http://alpha.linuxfr.org/images/langs/ct.png'); }
+li.link[lang=da] { list-style: url('http://alpha.linuxfr.org/images/langs/da.png'); }
+li.link[lang=de] { list-style: url('http://alpha.linuxfr.org/images/langs/de.png'); }
+li.link[lang=el] { list-style: url('http://alpha.linuxfr.org/images/langs/el.png'); }
+li.link[lang=en] { list-style: url('http://alpha.linuxfr.org/images/langs/en.png'); }
+li.link[lang=es] { list-style: url('http://alpha.linuxfr.org/images/langs/es.png'); }
+li.link[lang=eu] { list-style: url('http://alpha.linuxfr.org/images/langs/eu.png'); }
+li.link[lang=fi] { list-style: url('http://alpha.linuxfr.org/images/langs/fi.png'); }
+li.link[lang=fr] { list-style: url('http://alpha.linuxfr.org/images/langs/fr.png'); }
+li.link[lang=it] { list-style: url('http://alpha.linuxfr.org/images/langs/it.png'); }
+li.link[lang=ja] { list-style: url('http://alpha.linuxfr.org/images/langs/ja.png'); }
+li.link[lang=ko] { list-style: url('http://alpha.linuxfr.org/images/langs/ko.png'); }
+li.link[lang=nl] { list-style: url('http://alpha.linuxfr.org/images/langs/nl.png'); }
+li.link[lang=no] { list-style: url('http://alpha.linuxfr.org/images/langs/no.png'); }
+li.link[lang=pl] { list-style: url('http://alpha.linuxfr.org/images/langs/pl.png'); }
+li.link[lang=pt] { list-style: url('http://alpha.linuxfr.org/images/langs/pt.png'); }
+li.link[lang=ru] { list-style: url('http://alpha.linuxfr.org/images/langs/ru.png'); }
+li.link[lang=sv] { list-style: url('http://alpha.linuxfr.org/images/langs/sv.png'); }
+li.link[lang=xx] { list-style: url('http://alpha.linuxfr.org/images/langs/xx.png'); }
+
+/* Tribune */
+body#boards-show {
+	#sidebar, #bigfooter, .scroll {
+		display: none;
+	}
+	#container {
+		margin-left: 0px;
+		font-size: small;
+		text-align: justify;
+	}
+}
+#main_board {
+	/* on sait qu'on est sur la tribune si on y est */
+	h1 {
+		display: none;
+	}
+	/* version xml et avertissement */
+	> a:first-of-type,
+	> p:first-of-type {
+	color: $C_INTER;
+	}
+}
+.norloge {
+	font-weight: bold;
+	color: black;
+	font-family: monospace;
+	font-size: 11px;
+	&:before { content: "["; }
+	&:after { content: "]"; }
+}
+/* Ligne de tribune */
+p.chat {
+	margin: 3px 0px 0px 0px;
+	/* pseudo */
+	span > b:first-of-type {
+		color: $C_FONCE;
+		font-family: monospace;
+		font-size: 11px;
+	}
+	border-top: 1px solid transparent;
+	border-bottom: 1px solid transparent;
+	margin-top: 0px;
+	margin-bottom: -2px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+@mixin board_highlight {
+	background: $C_BD1;
+	border-top: 1px solid $C_BANDEAU !important;
+	border-bottom: 1px solid $C_BANDEAU !important;
+}
+.highlighted {
+	@include board_highlight;
+}
+
+.board-right {
+	a {
+		font-size: small;
+		text-transform: lowercase;
+		@include lien_standard;
+		font-weight: bold;
+	}
+	.totoz {
+		color: #2EA4FF; 
+	}
+}
+
+#boards-show #container .inbox {
+	p.chat {
+		clear: both;
+	}
+
+	.board-left {
+		display: block;
+		float: left;
+		width: 160px;
+		border-top: 1px solid transparent;
+		border-bottom: 1px solid transparent;
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+	.board-right {
+		display: block;
+		margin-left: 160px;
+		border-top: 1px solid transparent;
+		border-bottom: 1px solid transparent;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		&:before {
+			content: "- ";
+			font-weight: bold;
+		}
+		time {
+			color: #0000EE;
+		margin-top: 0px;
+		margin-bottom: 0px;
+		}
+	}
+	.myPost {
+		color: #CC0000;
+		font-weight: bold;
+	}
+}
+
+/* Proposition de contenu */
+#wiki_help {
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
+	background: $C_CONTAINER;
+	border-collapse: collapse;
+
+	tr {
+		width: 100%;
+		border-bottom: 1px solid $C_INTER;
+		&:last-of-type { border-bottom: none; }
+
+		td {
+			width: 50%;
+			border-right: 1px solid $C_INTER;
+			padding: 4px 0px;
+			&:last-of-type { border-right: none; }
+		}
+	}
+}
+
+input#news_title,
+input#comment_title,
+input#diary_title,
+input#tracker_title,
+input#post_title,
+input#poll_title,
+input#wiki_page_title,
+input#stylesheet {
+	width: 70%;
+}
+
+/* url dans les depeches */
+div#form_links {
+	fieldset {
+		border: none;
+		label {
+			display: inline-block;
+		}
+	}
+	label#label-link-name,
+	label#label-link-url {
+		width: 30%;
+	}
+	.link {
+		padding-top: 2px;
+		padding-bottom: 2px;
+	}
+	.link input {
+		width: 30%;
+	}
+	label#label-link-lang {
+		width: 10%;
+	}
+	.link select {
+		min-width: 10%;
+		max-width: 20%;
+	}
+	.link .remove {
+		font-size: small;
+	}
+}
+
+#news_message {
+	width: 100%;
+}
+
+/* Moderation */
+/* TODO styler "ajouter un lien" */
+#moderation_box .board input#board_message {
+	display: block;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+body#news-show #redaction .score,
+body#news-show #redaction .datePourCss {
+	-moz-transform: translate(0px, 0px);
+	-webkit-transform: translate(0px, 0px);
+	-khtml-transform: translate(0px, 0px);
+	-o-transform: translate(0px, 0px);
+}
+#redaction #edition {
+	margin-top: 40px + 29px;
+	padding-left: 3px;
+	padding-right: 3px;
+	float: left;
+	width: 60%;
+}
+#redaction #chat {
+	margin-top: 40px + 29px;
+	padding-left: 3px;
+	padding-right: 3px;
+	float: right;
+	width: 38%;
+
+	.inbox {
+		p {
+			margin: 2px 0px;
+		}
+		p.edition, p.locking {
+			&:before {
+				content: "Δ ";
+				color: orange;
+			}
+		}
+		p.creation {
+			&:before {
+				content: "+ ";
+				color: lime;
+			}
+		}
+	}
+}
+#news_board .board #board_message {
+	width: 95%;
+	margin-top: 5px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#news_vote div .button_to,
+#news_vote div .button_to div {
+	display: inline;
+}
+
+div#toolbar {
+	position: fixed;
+	bottom: 0;
+	overflow: hidden;
+	left: $PX_MARGE_GAUCHE + 8px;	// 8px pour l'ombre ?
+	right: $PX_MARGE_DROITE + 8px;
+	background: $C_CONTAINER;
+	border: 1px solid $C_INTER;
+	color: $C_FONCE;
+	font-size: x-small;
+	
+	#toolbar_items {
+		float: right;
+	}
+	#toolbar_threeshold {
+		float: left;
+	}
+}
+
+/* tableau de bord et tracker */
+body#dashboard-index #contents table,
+body#trackers-index #contents table {
+	border-collapse: collapse;
+	padding: 0px;
+
+	th {
+		background: $C_CLAIR;
+	}
+	tr {
+		width: 100%;
+		border-bottom: 1px solid $C_INTER;
+		&:last-of-type { border-bottom: none; }
+
+		td, th {
+			border-right: 1px solid $C_INTER;
+			&:last-of-type { border-right: none; }
+		}
+	}
+	a[href] { @include lien_standard; }
+}
+
+/* page d'historique de wiki */
+body#wiki_pages-revision {
+	#contents {
+		pre {
+			width: 100%;
+			white-space: pre-wrap;
+		}
+		ins {
+			text-decoration: none;
+			background: lime;
+		}
+		del {
+			text-decoration: line-through;
+			background: red;
+		}
+		nav ul {
+			display: inline;
+			li {
+				display: inline;
+				// TODO il reste un bug sur la première révision d'un doc
+				&:last-of-type {
+					float: right;
+					&:after {
+						content: " »";
+					}
+				}
+				&:first-of-type {
+					float: left;
+					&:before {
+						content: "« ";
+					}
+					// reset du précédent si un seul élément dans la liste
+					// part du principe qu'on sera plus souvent à la dernière révision qu'à la première
+					&:after {
+						content: "";
+					}
+				}
+			}
+		}
+	}
+}
+
+/* avatar un poil plus petit */
+img.avatar {
+	max-width: 64px;
+	max-height: 64px;
+}
+
+body#static-show #contents,
+body#sections-index #contents,
+body#admin-index #container > ul,
+body#wiki_pages-changes #contents {
+	a[href] {
+		@include lien_standard;
+	}
+}
+img, textarea {
+	max-width: 100%;
+}

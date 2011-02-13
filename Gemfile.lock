@@ -48,8 +48,6 @@ GEM
     carrierwave (0.5.1)
       activesupport (~> 3.0)
     closure-compiler (1.0.0)
-    compass (0.10.6)
-      haml (>= 3.0.4)
     daemons (1.1.0)
     devise (1.1.5)
       bcrypt-ruby (~> 2.1.2)
@@ -186,7 +184,6 @@ DEPENDENCIES
   canable (~> 0.1)
   capistrano
   carrierwave (~> 0.5)
-  compass (~> 0.10)
   devise (~> 1.1)
   factory_girl_rails (~> 1.0)
   faker (~> 0.9)

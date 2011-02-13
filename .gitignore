@@ -12,8 +12,6 @@ public/avatars
 public/board.xml
 public/pages
 public/sitemap*
-public/stylesheets/application.css
-public/stylesheets/print.css
 public/system
 tmp
 webrat.log
