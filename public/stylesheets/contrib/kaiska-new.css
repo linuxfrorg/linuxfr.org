@@ -598,6 +598,9 @@ textarea#news_message {
 .pot_de_miel {
   display: none;
 }
+.datePourCss {
+    display: none;
+}
 
 li#comment_new {
   list-style: none;

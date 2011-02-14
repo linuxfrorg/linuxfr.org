@@ -513,6 +513,7 @@ article .score, article .datePourCss {
   float: right;
   width: 63px;
   height: 31px;
+  margin: 0;
   border-left-width: 15px;
   border-top-width: 0px;
   border-bottom-width: 0px;

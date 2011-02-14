@@ -68,8 +68,11 @@ module NodeHelper
     end
   end
 
-  def pubdate_for(content)
-    (content.created_at || Time.now).iso8601
+  def date_pour_css(content)
+    date_time = content.node.try(:created_at) || Time.now
+    content_tag(:div, date_time.day, :class => "jour") +
+    content_tag(:div, date_time.strftime("%b"), :class => "mois") +
+    content_tag(:div, date_time.year, :class => "annee")
   end
 
   def posted_by(content, user_link=nil)
@@ -87,7 +90,7 @@ module NodeHelper
     date_time  ||= Time.now
     date         = content_tag(:span, "le #{date_time.to_s(:date)}", :class => "date")
     time         = content_tag(:span,  "à #{date_time.to_s(:time)}", :class => "time")
-    published_at = content_tag(:time, date + " " + time, :datetime => pubdate_for(content), :pubdate => "pubdate")
+    published_at = content_tag(:time, date + " " + time, :datetime => date_time.iso8601, :pubdate => "pubdate")
     "Posté par #{user_link} #{published_at}.".html_safe
   end
 

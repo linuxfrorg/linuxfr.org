@@ -403,6 +403,9 @@ section#container form.edit_account input[type=password] {
 .pot_de_miel {
 	display: none;
 }
+.datePourCss {
+    display: none;
+}
 
 /* Liens de navigation */
 section#container > nav.toolbox,

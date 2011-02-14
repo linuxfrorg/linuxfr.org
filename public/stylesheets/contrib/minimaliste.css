@@ -459,6 +459,9 @@ https://alpha.linuxfr.org/suivi/logo-dans-le-css-et-pas-dans-le-html
 .pot_de_miel {
 	display: none;
 	}
+.datePourCss {
+    display: none;
+    }
 #form_links {
 	margin-top: 5em;
 	}

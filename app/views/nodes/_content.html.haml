@@ -13,6 +13,7 @@
               = link_to tag.name, "/tags/#{tag.name}/public", :rel => 'tag'
   .figures
     %figure.score= record.score
+    %figure.datePourCss= date_pour_css(record)
     - if image
       %figure.image= image
   .content

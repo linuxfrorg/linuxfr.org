@@ -94,4 +94,5 @@ font-size: 60%}
 #tracker .fix a, #tracker .invalid a, .tracker.fix a, .tracker.invalid a { text-decoration: line-through; }
 .misspelled { border-bottom:1px dashed red; }
 .pot_de_miel { display: none; }
+.datePourCss { display: none; }
 
