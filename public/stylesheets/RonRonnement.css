@@ -431,11 +431,8 @@ input[type='submit'] {
   #phare article .content ul {
     display: none; }
   #phare article .score, #phare article .datePourCss {
-    width: 64px;
-    -moz-transform: translate(98px, -30px);
-    -webkit-transform: translate(98px, -30px);
-    -khtml-transform: translate(98px, -30px);
-    -o-transform: translate(98px, -30px); }
+    right: -98px;
+    width: 64px; }
 
 /* information générale, "publicité" (genre fosdem p. ex.) */
 .banner {
@@ -494,16 +491,18 @@ article header > h1:first-of-type > a:first-of-type:after {
   content: " :"; }
 article .content {
   padding-top: 5px;
-  padding-bottom: 5px; }
+  padding-bottom: 5px;
+  min-height: 70px; }
   article .content > p:first-child {
     margin-top: 0px; }
   article .content > p:last-child {
     margin-bottom: 0px; }
 article .meta {
   color: #a99c90; }
+article .figures {
+  position: relative; }
 article .score, article .datePourCss {
   display: block;
-  float: right;
   width: 63px;
   height: 31px;
   margin: 0;
@@ -512,12 +511,9 @@ article .score, article .datePourCss {
   border-bottom-width: 0px;
   border-right-width: 0px;
   font-size: medium;
-  clear: right;
   /* the translation should be the exact sum of padding and margin of all elements to the right */
-  -moz-transform: translate(97px, -30px);
-  -webkit-transform: translate(97px, -30px);
-  -khtml-transform: translate(97px, -30px);
-  -o-transform: translate(97px, -30px); }
+  position: absolute;
+  right: -97px; }
 article .score {
   background: #e4e4e4;
   -moz-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
@@ -537,7 +533,11 @@ article .datePourCss {
   -khtml-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
   color: white;
   padding: 0;
-  margin-bottom: 2px; }
+  margin-bottom: 2px;
+  -moz-transform: translate(0px, -30px);
+  -webkit-transform: translate(0px, -30px);
+  -khtml-transform: translate(0px, -30px);
+  -o-transform: translate(0px, -30px); }
   article .datePourCss .jour {
     padding-left: 8px;
     float: left;
