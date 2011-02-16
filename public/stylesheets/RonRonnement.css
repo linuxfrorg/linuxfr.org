@@ -358,7 +358,8 @@ input[type='submit'] {
       float: left;
       text-indent: -9998em;
       overflow: hidden;
-      text-align: left; }
+      text-align: left;
+      width: 0px; }
     #site form input#search_submit {
       width: 0px;
       position: absolute;
