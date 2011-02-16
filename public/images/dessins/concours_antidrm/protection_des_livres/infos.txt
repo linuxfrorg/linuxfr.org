@@ -1,0 +1,5 @@
+Auteur : goeb
+
+Version web (basse résolution) : protection_des_livres_small.png
+En version 300 dpi : protection_des_livres_300dpi.png
+Sous licence CC BY-SA : licence.html

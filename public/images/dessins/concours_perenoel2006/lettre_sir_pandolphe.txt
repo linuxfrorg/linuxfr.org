@@ -1,0 +1,48 @@
+pandolphe AT pandolphe-vision.net
+Licences : CC-BY-SA-fr, LAL, GFDL
+
+Cher père noel,
+
+Je t'aurais bien demandé un ordinateur dernier cri, mais je n'en ai
+pas vraiment besoin.
+
+Certes, ce brave ordinateur soufflera ses 7 bougies juste après ton
+passage, mais il fonctionne, et je l'aime bien.
+C'est un ibm T22, trouvé d'occasion. On est depuis 2 ans ensemble. Il
+sait se faire discret (2,3 kgs) et il me quitte pas.
+
+Les ordinateurs sont ma passion depuis tout jeune, tu sais ! Mais
+depuis quelques temps, ils semblaient avoir perdu de leur intérêt.
+Sans créativité, l'aspect sécuritaire avant tout, les logiciels
+payants, la lenteur, les plantages, ...
+
+Pourquoi aimer cette machine ? Car elle m'a redonné goût à 
+l'informatique, elle et Linux. Depuis 6 mois sous Ubuntu, le pc
+retrouve jeunesse et vivacité, et moi sérénité.
+
+Tout redevient magique : une communauté prête à renseigner, c'est
+rapide et ca plante pas. Plein de nouveautés (comme un bureau en cube,
+XGL) et surtout, des outils agréables à utiliser au quotidien.
+
+
+Un tel cadeau, faut le faire partager. Alors, dans mon IUT, avec un
+ami, on organise une Install Party pour les étudiants
+(http://installparty.lannion.free.fr) juste avant ton passage. On te
+raccontera si ca à marché, quand tu viendras nous voir, à la fin du
+mois.
+
+
+Père noel, s'il te plaît, partage aussi cette richesse ! Installe des
+logiciels libres dans les ordinateurs que tu vas offrir, le 24
+décembre. Preche la bonne parole ! Tes cadeaux n'en seront que plus
+beaux.
+
+
+Prends soin de toi.
+
+
+Un ami,
+Ben (qui, malgré ses 18 ans, croit dur comme fer au Pere Noël, ainsi
+qu'aux logiciels libres)
+
+PS : Si tu as une formule magique pour eradiquer mes pixels morts ;-)

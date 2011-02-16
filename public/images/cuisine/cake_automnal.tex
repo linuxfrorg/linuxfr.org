@@ -1,0 +1,53 @@
+\documentclass[a4paper]{recipe}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[frenchb]{babel}
+
+\newcommand{\bsi}[2]{%
+  \fontencoding{T1}\fontfamily{pbs}\fontseries{xl}\fontshape{n}%
+  \fontsize{#1}{#2}\selectfont}
+
+\renewcommand{\inghead}{\textbf{Ingrédients}:\ }
+\renewcommand{\rechead}{\centering\bsi{24pt}{30pt}}
+
+\makeatletter
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{3em}{0em}}
+\makeatother
+
+\thispagestyle{empty} 
+
+\begin{document}
+Recette libre d'Étienne Loks distribuée sous licence WTFPL
+\recipe{Cake automnal}
+\ingred{250 grammes de farine;
+150 grammes de sucre non raffiné;
+150 grammes de beurre salé\footnote{car vous n'avez pas de beurre doux
+chez vous};
+3 \oe ufs;
+1 sachet de levure chimique;
+50 grammes de poudre d'amande;
+3-4 figues moelleuses;
+une petite poignée de cerneaux de noix;
+une petite poignée de graines de tournesol;
+des pistaches non salées\footnote{si comme moi vous n'avez pas oublié
+de les acheter};
+une demi-poire;
+}
+
+Faire fondre le beurre. Travailler au fouet le beurre fondu et le sucre
+jusqu'à ce que le mélange blanchisse\footnote{comme dans toute recette
+de cuisine comprendre : jusqu'à ce que vous en ayez marre car cela ne
+blanchira pas}. Incorporer les \oe ufs un à un puis la farine, la
+levure et la poudre d'amande. Une fois le mélange homogène ajoutez les
+figues découpées en morceaux, les cerneaux de noix un peu cassés\footnote{
+résistez à l'envie d'ajouter du chèvre}, la poire découpée\footnote{
+résistez à l'envie d'ajouter du bleu - oui je suis plus
+cake salé que cake sucré à la base}, les graines de tournesols et les
+pistaches. Mettez tout fruit sec (ou pas) hors de votre portée, le
+cake est déjà trop riche. Beurrez le moule à cake, versez la pâte,
+cuire environ 45 minutes (en vérifiant la cuisson avec le couteau).
+
+
+\end{document}
+
