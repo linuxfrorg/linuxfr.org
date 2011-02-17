@@ -328,6 +328,7 @@ input[type='submit'] {
 			text-indent: -9998em;
 			overflow: hidden;
 			text-align: left;
+            width: 0px;
 		}
 		input#search_submit {
 			width: 0px;
@@ -477,11 +478,8 @@ input[type='submit'] {
 
 	/* comme le bord est plus grand, translation légèrement suppérieur */
 	.score, .datePourCss {
+		right: -$BOX_TRANSLATION - $BORDER_PHARE;
 		width: $RAY_CONTAINER + $BORDER_PHARE;
-		-moz-transform: translate($BOX_TRANSLATION + $BORDER_PHARE, $fleche_offset_vertical);
-		-webkit-transform: translate($BOX_TRANSLATION + $BORDER_PHARE, $fleche_offset_vertical);
-		-khtml-transform: translate($BOX_TRANSLATION + $BORDER_PHARE, $fleche_offset_vertical);
-		-o-transform: translate($BOX_TRANSLATION + $BORDER_PHARE, $fleche_offset_vertical);
 	}
 
 }
@@ -554,6 +552,7 @@ article {
 	.content {
 		padding-top: 5px;
 		padding-bottom: 5px;
+        min-height: 70px;
 
 		> p:first-child {
 			margin-top: 0px;
@@ -565,9 +564,11 @@ article {
 	.meta {
 		color: $C_INTER;
 	}
+    .figures {
+        position: relative;
+    }
 	.score, .datePourCss {
 		display: block;
-		float: right;
 		width: $RAY_CONTAINER + $BORDER_CONTENT;
 		height: 31px;
 		margin: 0;
@@ -576,12 +577,9 @@ article {
 		border-bottom-width: 0px;
 		border-right-width: 0px;
 		font-size: medium;
-		clear: right;
 		/* the translation should be the exact sum of padding and margin of all elements to the right */
-		-moz-transform: translate($BOX_TRANSLATION + $BORDER_CONTENT, $fleche_offset_vertical);
-		-webkit-transform: translate($BOX_TRANSLATION + $BORDER_CONTENT, $fleche_offset_vertical);
-		-khtml-transform: translate($BOX_TRANSLATION + $BORDER_CONTENT, $fleche_offset_vertical);
-		-o-transform: translate($BOX_TRANSLATION + $BORDER_CONTENT, $fleche_offset_vertical);
+        position: absolute;
+		right: -$BOX_TRANSLATION - $BORDER_CONTENT;
 	}
 	.score {
 		background: $C_BAS_FOND;
@@ -604,6 +602,10 @@ article {
 		color: white;
 		padding: 0;
 		margin-bottom: 2px;
+        -moz-transform: translate(0px, $fleche_offset_vertical);
+        -webkit-transform: translate(0px, $fleche_offset_vertical);
+        -khtml-transform: translate(0px, $fleche_offset_vertical);
+        -o-transform: translate(0px, $fleche_offset_vertical);
 
 		.jour {
 			padding-left: 8px;
