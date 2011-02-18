@@ -1279,12 +1279,10 @@ div#form_links {
 	margin-right: auto;
 }
 
-body#news-show #redaction .score,
-body#news-show #redaction .datePourCss {
-	-moz-transform: translate(0px, 0px);
-	-webkit-transform: translate(0px, 0px);
-	-khtml-transform: translate(0px, 0px);
-	-o-transform: translate(0px, 0px);
+body#news-show #redaction {
+	.score, .datePourCss {right: 0px;}
+	.score {top: 31px;}
+	.datePourCss {top: 0px;}
 }
 #redaction #edition {
 	margin-top: 40px + 29px;
