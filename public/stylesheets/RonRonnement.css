@@ -1301,12 +1301,12 @@ div#form_links .link .remove {
   margin-left: auto;
   margin-right: auto; }
 
-body#news-show #redaction .score,
+body#news-show #redaction .score, body#news-show #redaction .datePourCss {
+  right: 0px; }
+body#news-show #redaction .score {
+  top: 31px; }
 body#news-show #redaction .datePourCss {
-  -moz-transform: translate(0px, 0px);
-  -webkit-transform: translate(0px, 0px);
-  -khtml-transform: translate(0px, 0px);
-  -o-transform: translate(0px, 0px); }
+  top: 0px; }
 
 #redaction #edition {
   margin-top: 69px;
