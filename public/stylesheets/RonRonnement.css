@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* Copyright 2010 Eve Schoonbroodt (design) http://www.studiomagenta.be/ */
 /* Copyright 2010 Nicolas Schoonbroodt (css) <nicolas@elsewhere.be>      */
 /* Distributed under GNU AGPL v3 License                                 */
@@ -432,7 +431,7 @@ input[type='submit'] {
   #phare article .content ul {
     display: none; }
   #phare article .score, #phare article .datePourCss {
-    right: -98px;
+    right: -64px;
     width: 64px; }
 
 /* information générale, "publicité" (genre fosdem p. ex.) */
@@ -488,91 +487,89 @@ body#admin-index #container > ul,
   margin-bottom: 0;
   font-size: inherit; }
 
-article header > h1:first-of-type > a:first-of-type:after {
-  content: " :"; }
-article .content {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  min-height: 70px; }
-  article .content > p:first-child {
-    margin-top: 0px; }
-  article .content > p:last-child {
-    margin-bottom: 0px; }
-article .meta {
-  color: #a99c90; }
-article .figures {
+article {
   position: relative; }
-article .score, article .datePourCss {
-  display: block;
-  width: 63px;
-  height: 31px;
-  margin: 0;
-  border-left-width: 15px;
-  border-top-width: 0px;
-  border-bottom-width: 0px;
-  border-right-width: 0px;
-  font-size: medium;
-  /* the translation should be the exact sum of padding and margin of all elements to the right */
-  position: absolute;
-  right: -97px; }
-article .score {
-  background: #e4e4e4;
-  -moz-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-  -o-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-  -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-  -khtml-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-  text-align: center;
-  line-height: 31px;
-  font-weight: bold;
-  margin-top: 2px; }
-article .datePourCss {
-  display: block !important;
-  background: #4c575f;
-  -moz-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-  -o-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-  -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-  -khtml-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-  color: white;
-  padding: 0;
-  margin-bottom: 2px;
-  -moz-transform: translate(0px, -30px);
-  -webkit-transform: translate(0px, -30px);
-  -khtml-transform: translate(0px, -30px);
-  -o-transform: translate(0px, -30px); }
-  article .datePourCss .jour {
-    padding-left: 8px;
-    float: left;
+  article header > h1:first-of-type > a:first-of-type:after {
+    content: " :"; }
+  article .content {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    min-height: 70px; }
+    article .content > p:first-child {
+      margin-top: 0px; }
+    article .content > p:last-child {
+      margin-bottom: 0px; }
+  article .meta {
+    color: #a99c90; }
+  article .score, article .datePourCss {
+    display: block;
+    width: 63px;
+    height: 31px;
+    margin: 0;
+    border-left-width: 15px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    font-size: medium;
+    /* the translation should be the exact sum of padding and margin of all elements to the right */
+    position: absolute;
+    right: -63px; }
+  article .score {
+    background: #e4e4e4;
+    -moz-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -o-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -khtml-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    text-align: center;
     line-height: 31px;
     font-weight: bold;
-    margin-right: 3px; }
-  article .datePourCss .mois, article .datePourCss .annee {
+    margin-top: 2px;
+    top: 50px; }
+  article .datePourCss {
+    display: block !important;
+    background: #4c575f;
+    -moz-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -o-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -khtml-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    color: white;
+    padding: 0;
+    margin-bottom: 2px;
+    top: 20px; }
+    article .datePourCss .jour {
+      padding-left: 8px;
+      float: left;
+      line-height: 31px;
+      font-weight: bold;
+      margin-right: 3px; }
+    article .datePourCss .mois, article .datePourCss .annee {
+      text-align: left;
+      font-size: x-small;
+      padding-left: 10px;
+      clear: right; }
+    article .datePourCss .mois {
+      padding-top: 3px;
+      margin-bottom: -1px;
+      padding-bottom: 0px;
+      vertical-align: bottom; }
+    article .datePourCss .annee {
+      padding-top: 0px;
+      margin-top: -1px;
+      padding-bottom: 3px;
+      vertical-align: top; }
+  article .image {
+    float: left;
+    margin: 10px;
+    margin-top: 10px; }
+    article .image img {
+      border: none; }
+  article h1 {
+    border-left: solid 6px #4c575f;
+    padding-left: 13px;
     text-align: left;
-    font-size: x-small;
-    padding-left: 10px;
-    clear: right; }
-  article .datePourCss .mois {
-    padding-top: 3px;
-    margin-bottom: -1px;
-    padding-bottom: 0px;
-    vertical-align: bottom; }
-  article .datePourCss .annee {
-    padding-top: 0px;
-    margin-top: -1px;
-    padding-bottom: 3px;
-    vertical-align: top; }
-article .image {
-  float: left;
-  margin: 10px;
-  margin-top: 10px; }
-  article .image img {
-    border: none; }
-article h1 {
-  border-left: solid 6px #4c575f;
-  padding-left: 13px;
-  text-align: left;
-  font-size: large;
-  margin-top: 8px;
-  margin-bottom: 2px; }
+    font-size: large;
+    margin-top: 8px;
+    margin-bottom: 2px; }
 
 /* ajout d'un caractère de couleur changeante devant "lire la suite" */
 .read a:before, .no_comments a:before, .new_comments a:before, .not_read a:before {
