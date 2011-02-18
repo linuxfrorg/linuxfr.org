@@ -167,6 +167,8 @@ body {
   padding-top: 16px;
   border-style: solid;
   border-width: 0 11px 0 11px;
+  /* for old browsers */
+  border-color: #e4e4e4;
   -moz-border-image: url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
   -o-border-image: url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
   -webkit-border-image: url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
