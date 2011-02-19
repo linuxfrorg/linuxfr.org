@@ -10,9 +10,9 @@ set :deploy_via, :remote_cache
 default_run_options[:pty] = true # Temporary hack
 
 
-# We have two environments: alpha and production.
+# We have two environments: alpha and prod.
 # To make a deploy, precise on which environment, like this:
-#   $ cap env:production deploy
+#   $ cap env:prod deploy
 namespace :env do
   desc "Alpha environment"
   task :alpha do
@@ -22,8 +22,8 @@ namespace :env do
   end
 
   desc "Production"
-  task :production do
-    set :vserver,   "web"
+  task :prod do
+    set :vserver,   "prod"
     set :user,      "linuxfr"
     set :rails_env, :production
   end
@@ -38,13 +38,13 @@ namespace :env do
   end
 end
 after "env:alpha", "env:common"
-after "env:production", "env:common"
+after "env:prod", "env:common"
 
 
 # Check that we have invoked an environment before deploying
 before :deploy do
   unless exists?(:deploy_to)
-    raise "Please invoke me like `cap env:<server> deploy` where <server> is production or alpha"
+    raise "Please invoke me like `cap env:<server> deploy` where <server> is prod or alpha"
   end
 end
 
@@ -57,10 +57,12 @@ namespace :fs do
     symlinks.each do |symlink|
       run "ln -nfs #{shared_path}/#{symlink} #{release_path}/#{symlink}"
     end
+    run "ln -nfs ~/historique #{release_path}/public/images/"
   end
 
   desc "[internal] Create the shared directories"
   task :create_dirs, :roles => :app do
+    run "mkdir -p #{shared_path}/config"
     run "mkdir -p #{shared_path}/public/avatars"
     run "mkdir -p #{shared_path}/public/pages"
     run "mkdir -p #{shared_path}/tmp/sass-cache"
