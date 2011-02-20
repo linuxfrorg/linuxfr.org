@@ -900,6 +900,10 @@ footer.actions {
   padding-bottom: 5px;
 }
 
+footer.actions .tag_in_place {
+  display: inline;
+}
+
 .threads ul {
   margin: -10px 0 0px -25px;
 }
