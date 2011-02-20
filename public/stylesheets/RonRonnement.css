@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Copyright 2010 Eve Schoonbroodt (design) http://www.studiomagenta.be/ */
 /* Copyright 2010 Nicolas Schoonbroodt (css) <nicolas@elsewhere.be>      */
 /* Distributed under GNU AGPL v3 License                                 */
@@ -1314,6 +1315,8 @@ body#news-show #redaction .datePourCss {
   padding-right: 3px;
   float: left;
   width: 60%; }
+  #redaction #edition .paragraph {
+    margin-bottom: 15px; }
 
 #redaction #chat {
   margin-top: 69px;

@@ -1290,6 +1290,10 @@ body#news-show #redaction {
 	padding-right: 3px;
 	float: left;
 	width: 60%;
+
+	.paragraph {
+		margin-bottom: 15px;
+	}
 }
 #redaction #chat {
 	margin-top: 40px + 29px;
