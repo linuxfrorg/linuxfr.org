@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @post.forum_id = params[:forum_id]
-    enforce_view_permission(@post)
+    enforce_create_permission(@post)
   end
 
   def create

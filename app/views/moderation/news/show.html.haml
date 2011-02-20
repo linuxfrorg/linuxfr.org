@@ -30,7 +30,7 @@
       = form.label :section_id, "Section de la dépêche"
       = form.collection_select :section_id, Section.published, :id, :title
     %p
-      = form.label :body, "Contenu de la dépêche (<strong>HTML, pas de syntaxe wiki</strong>)"
+      = form.label :body, "Contenu de la dépêche (<strong>HTML, pas de syntaxe wiki</strong>)".html_safe
       = form.text_area :body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
     #form_links
       %fieldset
