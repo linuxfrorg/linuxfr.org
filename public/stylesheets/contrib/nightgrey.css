@@ -933,7 +933,7 @@ footer.actions {
   margin-top: -10px;
 }
 
-.comment .new_comment h3 {
+.comment.new-comment h2 {
   border: 1px solid red;
 }
 .comment .content {
