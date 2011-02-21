@@ -191,7 +191,7 @@ button,
 #wiki_preview, #wiki_submit,
 #poll_preview, #poll_submit,
 #post_preview, #post_submit,
-#comments > p:first-child,
+#comments p#send-comment,
 .toolbox .new_content,
 input[type='submit'] {
   color: black;
@@ -208,7 +208,7 @@ input[type='submit'] {
   #wiki_preview a, #wiki_submit a,
   #poll_preview a, #poll_submit a,
   #post_preview a, #post_submit a,
-  #comments > p:first-child a,
+  #comments p#send-comment a,
   .toolbox .new_content a,
   input[type='submit'] a {
     font-weight: normal; }
@@ -220,7 +220,7 @@ input[type='submit'] {
     #wiki_preview a:hover, #wiki_submit a:hover,
     #poll_preview a:hover, #poll_submit a:hover,
     #post_preview a:hover, #post_submit a:hover,
-    #comments > p:first-child a:hover,
+    #comments p#send-comment a:hover,
     .toolbox .new_content a:hover,
     input[type='submit'] a:hover {
       text-decoration: none; }
@@ -232,7 +232,7 @@ input[type='submit'] {
   #wiki_preview:hover, #wiki_submit:hover,
   #poll_preview:hover, #poll_submit:hover,
   #post_preview:hover, #post_submit:hover,
-  #comments > p:first-child:hover,
+  #comments p#send-comment:hover,
   .toolbox .new_content:hover,
   input[type='submit']:hover {
     background-color: #a99c90;
@@ -799,18 +799,19 @@ ul.poll li meter::-webkit-meter-horizontal-even-less-good-value {
   color: #a99c90;
   font-size: small;
   margin: 5px 0px 5px 0px; }
-  #comments > p:first-child {
-    display: table;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 5px;
-    padding-right: 5px;
-    border: 1px solid #a99c90;
-    background-color: #e9e6e4;
-    font-size: medium; }
-    #comments > p:first-child a:hover {
-      text-decoration: none; }
+
+#comments #send-comment {
+  display: table;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: 1px solid #a99c90;
+  background-color: #e9e6e4;
+  font-size: medium; }
+  #comments #send-comment a:hover {
+    text-decoration: none; }
 
 body#comments-show #contents > ul,
 body#comments-create #contents > ul,
