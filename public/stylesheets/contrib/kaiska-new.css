@@ -496,7 +496,7 @@ div.vote > form.button_to div input:hover {
   text-decoration: underline;
 }
 .fold > p.meta,
-.fold > .figures,
+.fold > figure,
 .fold > div.content,
 .fold > footer {
   display: none;
