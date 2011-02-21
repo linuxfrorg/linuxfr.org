@@ -19,7 +19,6 @@ class CommentsController < ApplicationController
   def new
     @comment = @node.comments.build
     enforce_create_permission(@comment)
-    @comment.default_score
   rescue Canable::Transgression
     flash[:alert] = "Impossible de commenter un contenu vieux de plus de 3 mois"
     redirect_to_content @node.content
@@ -28,7 +27,7 @@ class CommentsController < ApplicationController
   def answer
     new
     @comment.parent_id = params[:id]
-    render :new
+    render :new if current_account.can_create?(@comment)
   end
 
   def create
@@ -36,6 +35,7 @@ class CommentsController < ApplicationController
     enforce_create_permission(@comment)
     @comment.attributes = params[:comment]
     @comment.user = current_account.user
+    @comment.default_score
     if !preview_mode && @comment.save
       flash[:notice] = "Votre commentaire a bien été posté"
       redirect_to_content @node.content

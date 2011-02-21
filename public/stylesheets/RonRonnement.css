@@ -730,6 +730,12 @@ a.scroll {
   display: inherit; }
 
 /* message à caractère informatif */
+.alert {
+  text-align: center;
+  background-color: #faa;
+  border: 1px solid red;
+  margin-bottom: 10px; }
+
 .notice {
   text-align: center;
   background-color: rgba(76, 87, 95, 0.16);

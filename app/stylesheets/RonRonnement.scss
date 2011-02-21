@@ -846,6 +846,12 @@ a.scroll {
 }
 
 /* message à caractère informatif */
+.alert {
+	text-align: center;
+	background-color: #faa;
+	border: 1px solid red;
+	margin-bottom: 10px;
+}
 .notice {
 	text-align: center;
 	background-color: $C_BD1;
