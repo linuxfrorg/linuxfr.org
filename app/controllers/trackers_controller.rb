@@ -3,9 +3,6 @@ class TrackersController < ApplicationController
   before_filter :authenticate_account!, :except => [:index, :show, :comments]
   before_filter :load_tracker, :only => [:show, :edit, :update, :destroy]
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
-  after_filter  :expire_cache, :only => [:create, :update, :destroy]
-  caches_page   :index,    :if => Proc.new { |c| c.request.format.atom? }
-  caches_page   :comments, :if => Proc.new { |c| c.request.format.atom? }
 
   def index
     @trackers = Tracker.sorted.opened
@@ -75,9 +72,5 @@ protected
 
   def load_tracker
     @tracker = Tracker.find(params[:id])
-  end
-
-  def expire_cache
-    expire_page :action => :index, :format => :atom
   end
 end
