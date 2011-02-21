@@ -9,7 +9,7 @@ atom_feed do |feed|
 
   @nodes.each do |node|
     post = node.content
-    feed.entry(post, :url => url_for([post.forum, post])) do |entry|
+    feed.entry(post, :url => forum_post_url(:forum_id => post.forum, :id => post)) do |entry|
       entry.title(post.title)
       entry.content(post.body, :type => 'html')
       entry.author do |author|
