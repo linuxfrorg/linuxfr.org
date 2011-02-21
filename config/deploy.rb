@@ -58,6 +58,7 @@ namespace :fs do
       run "ln -nfs #{shared_path}/#{symlink} #{release_path}/#{symlink}"
     end
     run "ln -nfs ~/historique #{release_path}/public/images/"
+    run "ln -nfs ~/load #{release_path}/public/images/"
   end
 
   desc "[internal] Create the shared directories"

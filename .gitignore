@@ -10,11 +10,12 @@ log
 public/assets
 public/avatars
 public/board.xml
+public/images/historique
+public/images/load
 public/pages
 public/sitemap*
 public/system
 tmp
 webrat.log
 REVISION
-LATER
 TODO

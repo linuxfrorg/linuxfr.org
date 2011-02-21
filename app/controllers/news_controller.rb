@@ -4,7 +4,7 @@ class NewsController < ApplicationController
   before_filter :find_news, :only => [:show, :anonymous]
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
   caches_page :index, :if => Proc.new { |c| c.request.format.atom? }
-  caches_action :show, :unless => :account_signed_in?, :expires_in => 1.hour
+  caches_action :show, :unless => :account_signed_in?, :expires_in => 10.minutes
   respond_to :html, :atom
 
   def index
