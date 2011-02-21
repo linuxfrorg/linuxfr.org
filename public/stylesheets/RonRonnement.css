@@ -1362,7 +1362,8 @@ div#toolbar {
 body#dashboard-index #contents table,
 body#trackers-index #contents table {
   border-collapse: collapse;
-  padding: 0px; }
+  padding: 0px;
+  clear: right; }
   body#dashboard-index #contents table th,
   body#trackers-index #contents table th {
     background: #e9e6e4; }

@@ -1355,6 +1355,7 @@ body#dashboard-index #contents table,
 body#trackers-index #contents table {
 	border-collapse: collapse;
 	padding: 0px;
+	clear: right;
 
 	th {
 		background: $C_CLAIR;

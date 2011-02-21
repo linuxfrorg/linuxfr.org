@@ -7,6 +7,7 @@
   = form_for [@forum, @post] do |form|
     = render form
 
-  = button_to "Supprimer", [@post.forum, @post], :method => :delete, :confirm => "Êtes-vous sûr de vouloir supprimer ce post ?"
+  - if current_account && current_account.can_destroy?(@post)
+    = button_to "Supprimer", [@post.forum, @post], :method => :delete, :confirm => "Êtes-vous sûr de vouloir supprimer ce post ?"
 
   = render 'shared/wiki_help'

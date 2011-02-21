@@ -3,6 +3,7 @@
 - feed "Flux Atom des commentaires", "/suivi/comments.atom"
 
 %nav.toolbox
+  %h2 <strong>#{@trackers.length}</strong> entrées ouvertes sur un total de #{Tracker.count}
   .new_content
     = link_to "Proposer une entrée", "/suivi/nouveau"
 
@@ -20,6 +21,7 @@
         %th Envoyé par
         %th Catégorie
         %th Score
+        %th Commentaires
         - if current_account && current_account.can_update?(@trackers.first)
           %th Actions
       - @trackers.each do |tracker|
@@ -31,5 +33,6 @@
           %td= tracker.reported_by
           %td= tracker.category_title
           %td= tracker.score
+          %td= tracker.comments.count
           - if current_account && current_account.can_update?(tracker)
             %td= link_to "Modifier", "/suivi/#{tracker.to_param}/modifier"
