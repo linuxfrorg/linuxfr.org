@@ -59,7 +59,7 @@ class Moderation::NewsController < ModerationController
       @news.refuse!
       notif = NewsNotifications.refuse_with_message(@news, params[:message], params[:template])
       notif.deliver if notif
-      redirect_to @news
+      redirect_to '/'
     elsif @news.unlocked?
       @boards = Board.all(Board.news, @news.id)
     else

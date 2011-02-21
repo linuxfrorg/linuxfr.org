@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @post.attributes = params[:post]
     @post.owner_id = current_account.user_id
     if !preview_mode && @post.save
-      redirect_to forum_posts_url(:forum_id => @post.forum_id), :notice => "Votre message a bien été créé"
+      redirect_to forum_posts_url(:forum_id => @post.forum), :notice => "Votre message a bien été créé"
     else
       @post.node = Node.new
       render :new
