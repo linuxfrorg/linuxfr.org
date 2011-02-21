@@ -1,7 +1,145 @@
 /* Copyright 2010 Eve Schoonbroodt (design) http://www.studiomagenta.be/ */
 /* Copyright 2010 Nicolas Schoonbroodt (css) <nicolas@elsewhere.be>      */
 /* Distributed under GNU AGPL v3 License                                 */
-@import '/stylesheets/markitup.css';
+.markItUp {
+  width: 700px;
+  margin: 5px 0 5px 0;
+  border: 5px solid #f5f5f5; }
+  .markItUp .markItUp a:link,
+  .markItUp .markItUp a:visited {
+    color: black;
+    text-decoration: none; }
+
+.markItUpContainer {
+  border: 1px solid #3c769d;
+  background: white url(/images/markitup/bg-container.png) repeat-x top left;
+  padding: 5px 5px 2px 5px;
+  font: 11px Verdana, Arial, Helvetica, sans-serif; }
+
+.markItUpEditor {
+  font: 12px "Courier New", Courier, monospace;
+  padding: 5px 5px 5px 35px;
+  border: 3px solid #3c769d;
+  width: 643px;
+  height: 320px;
+  background-image: url(/images/markitup/bg-editor-markdown.png);
+  background-repeat: no-repeat;
+  /* clear: both */
+  display: block;
+  line-height: 18px;
+  overflow: auto; }
+
+.markItUpPreviewFrame {
+  overflow: auto;
+  background-color: white;
+  border: 1px solid #3c769d;
+  width: 99.9%;
+  height: 300px;
+  margin: 5px 0; }
+
+.markItUpFooter {
+  width: 100%;
+  cursor: n-resize; }
+
+.markItUpResizeHandle {
+  overflow: hidden;
+  width: 22px;
+  height: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url(/images/markitup/handle.png);
+  cursor: n-resize; }
+
+.markItUpHeader {
+  height: 22px; }
+  .markItUpHeader ul li {
+    list-style: none;
+    float: left;
+    position: relative; }
+    .markItUpHeader ul li ul {
+      display: none; }
+    .markItUpHeader ul li:hover > ul {
+      display: block; }
+  .markItUpHeader ul a {
+    display: block;
+    width: 16px;
+    height: 16px;
+    text-indent: -10000px;
+    background-repeat: no-repeat;
+    padding: 3px;
+    margin: 0px; }
+  .markItUpHeader ul .markItUpDropMenu {
+    background: transparent url(/images/markitup/menu.png) no-repeat 115% 50%;
+    margin-right: 5px; }
+    .markItUpHeader ul .markItUpDropMenu li {
+      margin-right: 0px; }
+  .markItUpHeader ul .markItUpSeparator {
+    margin: 0 10px;
+    width: 1px;
+    height: 16px;
+    overflow: hidden;
+    background-color: #cccccc; }
+  .markItUpHeader ul ul {
+    display: none;
+    position: absolute;
+    top: 18px;
+    left: 0px;
+    background: #f5f5f5;
+    border: 1px solid #3c769d;
+    height: inherit; }
+    .markItUpHeader ul ul .markItUpSeparator {
+      width: auto;
+      height: 1px;
+      margin: 0px; }
+    .markItUpHeader ul ul li {
+      float: none;
+      border-bottom: 1px solid #3c769d; }
+    .markItUpHeader ul ul .markItUpDropMenu {
+      background: #f5f5f5 url(/images/markitup/submenu.png) no-repeat 100% 50%; }
+    .markItUpHeader ul ul ul {
+      position: absolute;
+      top: -1px;
+      left: 150px; }
+      .markItUpHeader ul ul ul li {
+        float: none; }
+    .markItUpHeader ul ul a {
+      display: block;
+      padding-left: 0px;
+      text-indent: 0;
+      width: 120px;
+      padding: 5px 5px 5px 25px;
+      background-position: 2px 50%; }
+      .markItUpHeader ul ul a:hover {
+        color: white;
+        background-color: #3c769d; }
+
+.markItUp .h1 a {
+  background-image: url(/images/markitup/h1.png); }
+.markItUp .h2 a {
+  background-image: url(/images/markitup/h2.png); }
+.markItUp .h3 a {
+  background-image: url(/images/markitup/h3.png); }
+.markItUp .h4 a {
+  background-image: url(/images/markitup/h4.png); }
+.markItUp .bold a {
+  background-image: url(/images/markitup/bold.png); }
+.markItUp .italic a {
+  background-image: url(/images/markitup/italic.png); }
+.markItUp .stroke a {
+  background-image: url(/images/markitup/stroke.png); }
+.markItUp .list-bullet a {
+  background-image: url(/images/markitup/list-bullet.png); }
+.markItUp .list-numeric a {
+  background-image: url(/images/markitup/list-numeric.png); }
+.markItUp .image a {
+  background-image: url(/images/markitup/picture.png); }
+.markItUp .link a {
+  background-image: url(/images/markitup/link.png); }
+.markItUp .quotes a {
+  background-image: url(/images/markitup/quotes.png); }
+.markItUp .code a {
+  background-image: url(/images/markitup/page_white_code.png); }
+
 /* Color constants */
 /* TODO reorganiser */
 /*$C_BD1: #F9DEE8;
@@ -14,32 +152,27 @@ $C_BD5: #D91C64;*/
 /* = PAD_NODE + RAY_CONTAINER */
 /* un lien bleu/rouge visité normal */
 html {
-  background: white;
-  background: -moz-linear-gradient(top, white 134px, #e4e4e4 134px);
-  background: -o-linear-gradient(top, white 134px, #e4e4e4 134px);
-  background: -webkit-gradient(linear, center top, center 134, from(white), color-stop(99%, white), color-stop(100%, #e4e4e4), to(#e4e4e4));
-  background: -khtml-gradient(linear, center top, center 134, from(white), color-stop(99%, white), color-stop(100%, #e4e4e4), to(#e4e4e4));
-  background: linear-gradient(top, white 134px, #e4e4e4 134px);
+  background: #e4e4e4;
+  background-image: url("/images/contrib/RonRonnement/background_html.png");
+  background-repeat: repeat-x;
+  background-position: top;
   font-family: Freesans, "Free Helvetian", "URW Nimbus Sans L", "Nimbus Sans L", NimbusSanL, URWNimbusSanL, Swiss, "Swiss 721 SWA", "Swiss 721 BT", "Swiss 721", Helvetica, Helvetic, Helv, "Arial Unicode MS", Arial, sans-serif;
-  padding: 0px 30px 0px 42px; }
+  padding: 0px 19px 0px 31px; }
 
 body {
   /* si gradient ko p. ex. opera */
-  background: #e9e6e4;
-  /* le gradient change en fct de la longueur de la page, c'est pas ce que je voulait, mais c'est intéressant aussi
-     on peut en déduire directement le temps de travail qu'on va perder à troller */
-  background: -moz-linear-gradient(right 183deg, #a99c90 45%, #f9f9f9 80%);
-  background: -o-linear-gradient(right 183deg, #a99c90 45%, #f9f9f9 80%);
-  background: -webkit-gradient(linear, right top, left 140, from(#a99c90), color-stop(45%, #a99c90), color-stop(90%, #f9f9f9), to(#f9f9f9));
-  background: -khtml-gradient(linear, right top, left 140, from(#a99c90), color-stop(45%, #a99c90), color-stop(90%, #f9f9f9), to(#f9f9f9));
-  background: linear-gradient(right 183deg, #a99c90 45%, #f9f9f9 80%);
+  background: #e4e4e4;
   margin-top: 0px;
   margin-bottom: 0px;
   padding-top: 16px;
-  -moz-box-shadow: 5px 0px 10px #cccccc, -5px 0px 10px #cccccc;
-  -webkit-box-shadow: 5px 0px 5px #cccccc, -5px 0px 5px #cccccc;
-  -khtml-box-shadow: 5px 0px 5px #cccccc, -5px 0px 5px #cccccc;
-  box-shadow: 5px 0px 5px #cccccc, -5px 0px 5px #cccccc; }
+  border-style: solid;
+  border-width: 0 11px 0 11px;
+  /* for old browsers */
+  border-color: #e4e4e4;
+  -moz-border-image: url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
+  -o-border-image: url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
+  -webkit-border-image: url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
+  -khtml-border-image: url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch; }
 
 a {
   color: inherit;
@@ -57,7 +190,7 @@ button,
 #wiki_preview, #wiki_submit,
 #poll_preview, #poll_submit,
 #post_preview, #post_submit,
-#comments > p:first-child,
+#comments p#send-comment,
 .toolbox .new_content,
 input[type='submit'] {
   color: black;
@@ -74,7 +207,7 @@ input[type='submit'] {
   #wiki_preview a, #wiki_submit a,
   #poll_preview a, #poll_submit a,
   #post_preview a, #post_submit a,
-  #comments > p:first-child a,
+  #comments p#send-comment a,
   .toolbox .new_content a,
   input[type='submit'] a {
     font-weight: normal; }
@@ -86,7 +219,7 @@ input[type='submit'] {
     #wiki_preview a:hover, #wiki_submit a:hover,
     #poll_preview a:hover, #poll_submit a:hover,
     #post_preview a:hover, #post_submit a:hover,
-    #comments > p:first-child a:hover,
+    #comments p#send-comment a:hover,
     .toolbox .new_content a:hover,
     input[type='submit'] a:hover {
       text-decoration: none; }
@@ -98,7 +231,7 @@ input[type='submit'] {
   #wiki_preview:hover, #wiki_submit:hover,
   #poll_preview:hover, #poll_submit:hover,
   #post_preview:hover, #post_submit:hover,
-  #comments > p:first-child:hover,
+  #comments p#send-comment:hover,
   .toolbox .new_content:hover,
   input[type='submit']:hover {
     background-color: #a99c90;
@@ -120,7 +253,7 @@ input[type='submit'] {
   -webkit-border-bottom-right-radius: 42px;
   -khtml-border-bottom-right-radius: 42px;
   border-bottom-right-radius: 42px;
-  /* le cadena */
+  /* le cadenas */
   /* image DLFP */
   /* Les boîtes login, wiki, moderation */ }
   #sidebar a {
@@ -128,7 +261,7 @@ input[type='submit'] {
   #sidebar .insecure, #sidebar .secure {
     display: block;
     float: right;
-    text-indent: -9999px;
+    text-indent: -9999em;
     margin: 5px;
     height: 16px;
     width: 16px; }
@@ -193,7 +326,7 @@ input[type='submit'] {
   text-align: right;
   text-transform: uppercase;
   font-size: small;
-  color: #7f6e60;
+  color: #4c575f;
   /* boite de recherche */ }
   #site ul {
     display: inline;
@@ -201,7 +334,7 @@ input[type='submit'] {
     padding-right: 42px; }
     #site ul li {
       display: inline;
-      padding: none;
+      padding: 0;
       list-style: none; }
       #site ul li:after {
         content: " | "; }
@@ -223,7 +356,11 @@ input[type='submit'] {
     line-height: 29px;
     text-align: center; }
     #site form label {
-      display: none; }
+      float: left;
+      text-indent: -9998em;
+      overflow: hidden;
+      text-align: left;
+      width: 0px; }
     #site form input#search_submit {
       width: 0px;
       position: absolute;
@@ -248,7 +385,6 @@ input[type='submit'] {
   #bigfooter a {
     font-size: small; }
   #bigfooter nav, #bigfooter section {
-    float: center;
     display: inline-block;
     padding: 5px 0px 30px 0px;
     vertical-align: top;
@@ -297,11 +433,8 @@ input[type='submit'] {
   #phare article .content ul {
     display: none; }
   #phare article .score, #phare article .datePourCss {
-    width: 64px;
-    -moz-transform: translate(98px, -30px);
-    -webkit-transform: translate(98px, -30px);
-    -khtml-transform: translate(98px, -30px);
-    -o-transform: translate(98px, -30px); }
+    right: -64px;
+    width: 64px; }
 
 /* information générale, "publicité" (genre fosdem p. ex.) */
 .banner {
@@ -356,87 +489,89 @@ body#admin-index #container > ul,
   margin-bottom: 0;
   font-size: inherit; }
 
-article header > h1:first-of-type > a:first-of-type:after {
-  content: " :"; }
-article .content {
-  padding-top: 5px;
-  padding-bottom: 5px; }
-  article .content > p:first-child {
-    margin-top: 0px; }
-  article .content > p:last-child {
-    margin-bottom: 0px; }
-article .meta {
-  color: #a99c90; }
-article .score, article .datePourCss {
-  display: block;
-  float: right;
-  width: 63px;
-  height: 31px;
-  border-left-width: 15px;
-  border-top-width: 0px;
-  border-bottom-width: 0px;
-  border-right-width: 0px;
-  font-size: medium;
-  clear: right;
-  /* the translation should be the exact sum of padding and margin of all elements to the right */
-  -moz-transform: translate(97px, -30px);
-  -webkit-transform: translate(97px, -30px);
-  -khtml-transform: translate(97px, -30px);
-  -o-transform: translate(97px, -30px); }
-article .score {
-  background: #e4e4e4;
-  -moz-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-  -o-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-  -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-  -khtml-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-  text-align: center;
-  line-height: 31px;
-  font-weight: bold;
-  margin-top: 2px; }
-article .datePourCss {
-  display: block !important;
-  background: #009f95;
-  color: white;
-  -moz-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-  -o-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-  -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-  -khtml-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-  padding: none;
-  margin-bottom: 2px; }
-  article .datePourCss .jour {
-    padding-left: 8px;
-    float: left;
+article {
+  position: relative; }
+  article header > h1:first-of-type > a:first-of-type:after {
+    content: " :"; }
+  article .content {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    min-height: 70px; }
+    article .content > p:first-child {
+      margin-top: 0px; }
+    article .content > p:last-child {
+      margin-bottom: 0px; }
+  article .meta {
+    color: #a99c90; }
+  article .score, article .datePourCss {
+    display: block;
+    width: 63px;
+    height: 31px;
+    margin: 0;
+    border-left-width: 15px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    font-size: medium;
+    /* the translation should be the exact sum of padding and margin of all elements to the right */
+    position: absolute;
+    right: -63px; }
+  article .score {
+    background: #e4e4e4;
+    -moz-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -o-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -khtml-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    text-align: center;
     line-height: 31px;
     font-weight: bold;
-    margin-right: 3px; }
-  article .datePourCss .mois, article .datePourCss .annee {
+    margin-top: 2px;
+    top: 50px; }
+  article .datePourCss {
+    display: block !important;
+    background: #009f95;
+    -moz-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -o-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -khtml-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    color: white;
+    padding: 0;
+    margin-bottom: 2px;
+    top: 20px; }
+    article .datePourCss .jour {
+      padding-left: 8px;
+      float: left;
+      line-height: 31px;
+      font-weight: bold;
+      margin-right: 3px; }
+    article .datePourCss .mois, article .datePourCss .annee {
+      text-align: left;
+      font-size: x-small;
+      padding-left: 10px;
+      clear: right; }
+    article .datePourCss .mois {
+      padding-top: 3px;
+      margin-bottom: -1px;
+      padding-bottom: 0px;
+      vertical-align: bottom; }
+    article .datePourCss .annee {
+      padding-top: 0px;
+      margin-top: -1px;
+      padding-bottom: 3px;
+      vertical-align: top; }
+  article .image {
+    float: left;
+    margin: 10px;
+    margin-top: 10px; }
+    article .image img {
+      border: none; }
+  article h1 {
+    border-left: solid 6px #009f95;
+    padding-left: 13px;
     text-align: left;
-    font-size: x-small;
-    padding-left: 10px;
-    clear: right; }
-  article .datePourCss .mois {
-    padding-top: 3px;
-    margin-bottom: -1px;
-    padding-bottom: 0px;
-    vertical-align: bottom; }
-  article .datePourCss .annee {
-    padding-top: 0px;
-    margin-top: -1px;
-    padding-bottom: 3px;
-    vertical-align: top; }
-article .image {
-  float: left;
-  margin: 10px;
-  margin-top: 10px; }
-  article .image img {
-    border: none; }
-article h1 {
-  border-left: solid 6px #009f95;
-  padding-left: 13px;
-  text-align: left;
-  font-size: large;
-  margin-top: 8px;
-  margin-bottom: 2px; }
+    font-size: large;
+    margin-top: 8px;
+    margin-bottom: 2px; }
 
 /* ajout d'un caractère de couleur changeante devant "lire la suite" */
 .read a:before, .no_comments a:before, .new_comments a:before, .not_read a:before {
@@ -465,6 +600,9 @@ footer.actions .action {
   .tag_in_place input[type='submit'] {
     font-size: inherit; }
 
+.ac_loading {
+  background: white url("/images/ajax-loader.gif") right center no-repeat; }
+
 .ac_results {
   background-color: #e9e6e4;
   border: solid 1px #a99c90;
@@ -481,6 +619,13 @@ footer.actions .action {
       list-style: none;
       cursor: pointer; }
 
+.ac_odd {
+  background-color: #eeeeee; }
+
+.ac_over {
+  background-color: #0a246a;
+  color: white; }
+
 .tags {
   display: block;
   font-size: small; }
@@ -488,7 +633,7 @@ footer.actions .action {
     display: inline; }
     .tags ul li {
       display: inline;
-      padding: none;
+      padding: 0;
       list-style: none; }
       .tags ul li:after {
         content: ", "; }
@@ -525,11 +670,11 @@ footer.actions .action {
     .content a[href][title="Définition Wikipédia"] {
       padding-left: 3px;
       border-left: 16px;
-      -moz-border-image: url("http://fr.wikipedia.org/favicon.ico") 0 0 0 16;
-      -o-border-image: url("http://fr.wikipedia.org/favicon.ico") 0 0 0 16;
-      -webkit-border-image: url("http://fr.wikipedia.org/favicon.ico") 0 0 0 16;
-      -khtml-border-image: url("http://fr.wikipedia.org/favicon.ico") 0 0 0 16;
-      border-image: url("http://fr.wikipedia.org/favicon.ico") 0 0 0 16; }
+      -moz-border-image: url("/images/icones/wikipedia.ico") 0 0 0 16;
+      -o-border-image: url("/images/icones/wikipedia.ico") 0 0 0 16;
+      -webkit-border-image: url("/images/icones/wikipedia.ico") 0 0 0 16;
+      -khtml-border-image: url("/images/icones/wikipedia.ico") 0 0 0 16;
+      border-image: url("/images/icones/wikipedia.ico") 0 0 0 16; }
     .content a[href][title="Lien interne du wiki LinuxFr.org"] {
       padding-left: 3px;
       border-left: 16px;
@@ -570,7 +715,7 @@ a.scroll {
     display: inline; }
     .toolbox .order_navbar ul li {
       display: inline;
-      padding: none;
+      padding: 0;
       list-style: none; }
       .toolbox .order_navbar ul li:after {
         content: " · "; }
@@ -587,8 +732,38 @@ a.scroll {
 .notice {
   text-align: center;
   background-color: rgba(0, 159, 149, 0.16);
-  border: solid 1px rgba(0, 159, 149, 0.5);
+  border: 1px solid rgba(0, 159, 149, 0.5);
   margin-bottom: 10px; }
+
+.notice-wrap {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 250px;
+  z-index: 9999; }
+
+.notice-item {
+  height: 60px;
+  background: #333333;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  color: #eeeeee;
+  padding: 6px 6px 0 6px;
+  font-family: lucida Grande;
+  font-size: 11px;
+  border: 2px solid #999999;
+  display: block;
+  position: relative;
+  margin: 0 0 12px 0; }
+
+.notice-item-close {
+  position: absolute;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  right: 6px;
+  top: 6px;
+  cursor: pointer; }
 
 /* sondage */
 ul.poll .current {
@@ -608,9 +783,11 @@ ul.poll li meter::-webkit-meter-horizontal-suboptimal-value,
 ul.poll li meter::-webkit-meter-horizontal-even-less-good-value {
   background: rgba(0, 159, 149, 0.33); }
 
-/* TODO si tu trouve un moyen de les mettre joliement, sinon utiliser votre navigateur et votre clavier, les gens */
 .go_to_content {
-  display: none; }
+  float: left;
+  text-indent: -9998em;
+  overflow: hidden;
+  text-align: left; }
 
 .pot_de_miel {
   display: none; }
@@ -621,18 +798,19 @@ ul.poll li meter::-webkit-meter-horizontal-even-less-good-value {
   color: #a99c90;
   font-size: small;
   margin: 5px 0px 5px 0px; }
-  #comments > p:first-child {
-    display: table;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 5px;
-    padding-right: 5px;
-    border: 1px solid #a99c90;
-    background-color: #e9e6e4;
-    font-size: medium; }
-    #comments > p:first-child a:hover {
-      text-decoration: none; }
+
+#comments #send-comment {
+  display: table;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: 1px solid #a99c90;
+  background-color: #e9e6e4;
+  font-size: medium; }
+  #comments #send-comment a:hover {
+    text-decoration: none; }
 
 body#comments-show #contents > ul,
 body#comments-create #contents > ul,
@@ -653,11 +831,11 @@ ul.threads {
 li.comment {
   font-size: small; }
   li.comment > h2 {
-    display: block-inline;
     font-size: medium;
     margin-bottom: 0px;
     margin-top: 10px;
-    background: #e9e6e4; }
+    background: #e9e6e4;
+    clear: right; }
   li.comment > p.meta {
     margin-top: 0px;
     margin-bottom: 3px;
@@ -683,7 +861,7 @@ li.new-comment .content {
 
 /* extrait de pigments */
 code {
-  display: block-inline;
+  display: inline-block;
   font-size: medium;
   white-space: pre-wrap;
   /* Comment */
@@ -912,7 +1090,6 @@ code {
     font-weight: bold; }
 
 /* Langues */
-/* a rendre dynamique http/https */
 li.link[lang=cn] {
   list-style: url("/images/langs/cn.png"); }
 
@@ -1010,7 +1187,7 @@ p.chat {
   margin-bottom: -2px;
   padding-top: 0px;
   padding-bottom: 0px; }
-  p.chat span > b:first-of-type {
+  p.chat .board-left > b:first-of-type {
     color: #93877b;
     font-family: monospace;
     font-size: 11px; }
@@ -1038,14 +1215,14 @@ p.chat {
 #boards-show #container .inbox .board-left {
   display: block;
   float: left;
-  width: 160px;
+  width: 180px;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   margin-top: 0px;
   margin-bottom: 0px; }
 #boards-show #container .inbox .board-right {
   display: block;
-  margin-left: 160px;
+  margin-left: 180px;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   margin-top: 0px;
@@ -1090,6 +1267,9 @@ input#wiki_page_title,
 input#stylesheet {
   width: 70%; }
 
+.fieldWithErrors input {
+  border: 1px solid red; }
+
 /* url dans les depeches */
 div#form_links fieldset {
   border: none; }
@@ -1122,12 +1302,12 @@ div#form_links .link .remove {
   margin-left: auto;
   margin-right: auto; }
 
-body#news-show #redaction .score,
+body#news-show #redaction .score, body#news-show #redaction .datePourCss {
+  right: 0px; }
+body#news-show #redaction .score {
+  top: 31px; }
 body#news-show #redaction .datePourCss {
-  -moz-transform: translate(0px, 0px);
-  -webkit-transform: translate(0px, 0px);
-  -khtml-transform: translate(0px, 0px);
-  -o-transform: translate(0px, 0px); }
+  top: 0px; }
 
 #redaction #edition {
   margin-top: 69px;
@@ -1135,6 +1315,8 @@ body#news-show #redaction .datePourCss {
   padding-right: 3px;
   float: left;
   width: 60%; }
+  #redaction #edition .paragraph {
+    margin-bottom: 15px; }
 
 #redaction #chat {
   margin-top: 69px;
@@ -1165,8 +1347,8 @@ div#toolbar {
   position: fixed;
   bottom: 0;
   overflow: hidden;
-  left: 50px;
-  right: 38px;
+  left: 39px;
+  right: 27px;
   background: #f9f9f9;
   border: 1px solid #a99c90;
   color: #93877b;
@@ -1180,7 +1362,8 @@ div#toolbar {
 body#dashboard-index #contents table,
 body#trackers-index #contents table {
   border-collapse: collapse;
-  padding: 0px; }
+  padding: 0px;
+  clear: right; }
   body#dashboard-index #contents table th,
   body#trackers-index #contents table th {
     background: #e9e6e4; }
@@ -1209,6 +1392,9 @@ body#trackers-index #contents table {
     body#dashboard-index #contents table a[href]:visited,
     body#trackers-index #contents table a[href]:visited {
       color: #551A8B; }
+
+#tracker .fix a, #tracker .invalid a, .tracker .fix a, .tracker .invalid a {
+  text-decoration: line-through; }
 
 /* page d'historique de wiki */
 body#wiki_pages-revision #contents pre {
