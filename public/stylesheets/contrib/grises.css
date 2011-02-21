@@ -1,0 +1,1433 @@
+@charset "utf-8";
+/** linuxfr.css
+ *
+ * CSS aux couleurs du grises pour linuxfr.org
+ *  basée sur opensuse.linux.fr software.opensuse.org et fr.opensuse.org
+ *
+ * Historique :
+ *   2.6    20/02/2011    - [Bench] couleurs grises au lieu de vertes
+ *   2.5    05/01/2011    - [Yggdras] tribune: marge en pourcent pour board-right
+ *   2.4    31/12/2010    - maj suite aux évolutions du site
+ *   2.3    12/12/2010    - Pleins de corrections (toolbar, vignette, note, formulaires)
+ *   2.2    04/12/2010    - Réponse à un commentaire (cf https://linuxfr.org/tracker/1189.html)
+ *   2.1    30/11/2010    - Corrections après la mise à jour de alpha.linuxfr.org
+ *   2.0    10/10/2010    - Départ de zero.
+ *                        - Nouvelle couleurs du site opensuse.org
+ *                        - Version pour linuxfr en ruby.
+ *   1.3    25/10/2009    - Ajout d'un logo dans le style d'opensuse.
+ *                        - funbanner plus large pour la banniere hadopi.
+ *   1.2    12/10/2009    Ajout d'un style pour les hr dans leftbox et leftcol.
+ *   1.1    12/10/2009    - [eggman] Correction pour p.commentsbody :
+ *                                   le style n'était pas pris en compte.
+ *                        - [eggman] Reduction pour la taille des input text.
+ *                        - Ajout d'une taille en pourcentage pour les textarea.
+ *                        - [eggman] Plus d'espace entre les commentaires.
+ *                        - [eggman] Passage du padding de 0.5em 1% a 0.7em 1%.
+ *                        - [Octabrain] Ajout de -webkit-border-radius.
+ *                        - [Cyrille Pontvieux] Ajout de border-radius.
+ *   1.0    11/10/2009    Publication
+ *
+ * Benoît Monin
+ *
+ * CC-BY-SA
+ * Cette création est mise à disposition selon le Contrat
+ * Attribution-ShareAlike 2.0 France disponible en ligne
+ * http://creativecommons.org/licenses/by-sa/2.0/fr/
+ */
+
+/* RAZ des styles */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, input,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+/* Corps de la page */
+body {
+	background: #F6F6F6;
+	color: #444444;
+	font-family: sans-serif;
+	font-size: 0.85em;
+	margin: 0 auto;
+	min-width: 55em;
+}
+
+/* Styles globaux pour les liens */
+a:link,
+a:visited {
+	color: #006699;
+	text-decoration: none;
+}
+a:hover,
+a:active {
+	color: #444444;
+	text-decoration: underline;
+}
+
+/* Bandeau de navigation en haut */
+nav#site {
+	display: block;
+	margin-bottom: 2.5em;
+	background-color: #444444;
+	background: -moz-linear-gradient(top, #555555, #333333);
+	background: -webkit-gradient(linear, left top, left bottom, from(#555555), to(#333333));
+	color: #FFFFFF;
+	font-weight:bold;
+	font-size: 0.85em;
+}
+	nav#site .go_to_content {
+		display: none;
+	}
+	nav#site ul {
+		display: inline-block;
+		list-style: none;
+		padding: 0.7em 0 0.7em 2%;
+		width: 70%;
+	}
+	nav#site ul li {
+		display: inline;
+	}
+	nav#site ul li:after {
+		content: "|";
+		color: #555555;
+		padding: 0 0.75em;
+	}
+	nav#site ul li:last-child:after, nav#site ul li.last:after {
+		content: "";
+		padding: 0;
+	}
+	nav#site a:link,
+	nav#site a:visited {
+		color: #FFFFFF;
+		text-decoration: none;
+	}
+	nav#site a:hover {
+		color: #AAAAAA;
+	}
+	nav#site form {
+		float: right;
+		margin: 0.35em 2% 0 0;
+		width: 25%;
+		display: block;
+		text-align: right;
+	}
+	nav#site input[type=submit] {
+	    display : none
+	}
+	nav#site input#query {
+		border: thin solid #2E2E2E;
+		-moz-border-radius: 0.4em;
+		-webkit-border-radius: 0.4em;
+		border-radius: 0.4em;
+		background-color: #EEEEEE;
+		color: #444444;
+		padding: 0.25em;
+		width: 50%;
+		max-width: 13em;
+	}
+	nav#site input#query:focus {
+		background-color: #F6F6F6;
+		color: #000000;
+	}
+
+/* la barre latéral */
+aside#sidebar {
+	display: inline;
+	float: left;
+	overflow: hidden;
+	width: 20%;
+	margin: 0 1%;
+}
+
+/* les boites de la barre latéral */
+aside#sidebar .box {
+	margin: 1.5em 1%;
+	padding-bottom: 0.25em;
+	border: thin solid;
+	border-color: #DDDDDD #CCCCCC #BBBBBB;
+	background: #FEFEFE;
+	-moz-box-shadow: 0 0.125em 0.375em #CCCCCC;
+	-webkit-box-shadow: 0 0.125em 0.375em #CCCCCC;
+	box-shadow: 0 0.125em 0.375em #CCCCCC;
+	-moz-border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
+	font-size: 0.8em;
+}
+/* titre de la boite latéral */
+aside#sidebar .box h1 {
+	border-bottom: thin solid #DDDDDD;
+	padding: 0.4em 1%;
+	margin-bottom: 0.5em;
+	background-color: #F4F4F4;
+	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	-moz-border-radius: 0.5em 0.5em 0 0;
+	-webkit-border-top-left-radius: 0.5em;
+	-webkit-border-top-right-radius: 0.5em;
+	-webkit-border-bottom-right-radius: 0;
+	-webkit-border-bottom-left-radius: 0;
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	display: block;
+}
+/* icone https */
+aside#sidebar .insecure, aside#sidebar .secure {
+  display: block;
+  float: right;
+  text-indent: -9999px;
+  position: relative;
+  top: -2.5em;
+  height: 16px;
+  width: 16px;
+}
+aside#sidebar .insecure {
+  background: url(/images/icones/lock-insecure.png) no-repeat;
+}
+aside#sidebar .secure {
+  background: url(/images/icones/lock-secure.png) no-repeat;
+}
+/* texte dans la boite latéral */
+aside#sidebar .box > * {
+	padding: 0.1em 1%;
+}
+aside#sidebar .box input[type=text],
+aside#sidebar .box input[type=password] {
+	border: thin solid #999999;
+	margin-bottom: 1em;
+	padding: 0.2em 2%;
+	background-color: #F9F9F9;
+	display: block;
+	width: 95%;
+	color: #006699;
+}
+aside#sidebar .box input[type=text]:focus,
+aside#sidebar .box input[type=password]:focus {
+	color: #000000;
+	border-color: #444444;
+	background-color: #FEFEFE;
+	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	box-shadow: 0 0.1em 0.3em #CCCCCC;
+}
+aside#sidebar .box input[type=submit] {
+	border: thin solid #999999;
+	margin: 1em 0;
+	padding: 0.3em;
+	background-color: #F4F4F4;
+	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	-moz-border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
+	color: #444444;
+	text-align: center;
+}
+aside#sidebar .box input[type=submit]:hover {
+	background-color: #8ABC00;
+	background: -moz-linear-gradient(top, #999999, #444444);
+	background: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#444444));
+	border-color: #006699;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+aside#sidebar .box ul {
+	list-style: none;
+}
+
+/* liste des forums */
+aside#sidebar div.forum {
+	margin: 0 1%;
+}
+aside#sidebar div.forum h2 {
+	font-weight: normal;
+}
+
+/* le logo */
+header#branding > h1 {
+	margin-bottom: 2em;
+	height: 15em;
+	background-image: url(/images/contrib/grises/linuxfr-logo.png) !important;
+	background-position:center center;
+	background-repeat:no-repeat;
+	-moz-background-size: contain;
+	-webkit-background-size: contain;
+	-o-background-size: contain;
+	background-size: contain;
+}
+header#branding > h1 > a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	color: transparent;
+}
+/* le contenu du site */
+section#container {
+	margin: 0 0 0 22%;
+	text-align: justify;
+	display: block;
+	width: 77%;
+}
+section#container > * {
+	max-width: 80em;
+	margin: 0 auto;
+}
+section#container > section,
+section#container > aside {
+	display: block;
+}
+
+/* message important en haut de la page */
+section#container div.notice,
+section#container > aside.banner {
+	margin: 1em auto;
+	border: thin dotted #444444;
+	padding: 0.5em 0;
+	background: #F0F0F0;
+	font-weight: bold;
+	text-align: center;
+}
+
+/* Titre de la page */
+section#container > h1,
+section#container > div > h1 {
+	color: #444444;
+	font-size: 2.5em;
+	text-align: center;
+	max-width: 32em;
+	margin: 1em auto;
+}
+
+/* sous-titre */
+section#container > h2,
+section#container > div > h2,
+section#container > div > div > h2 {
+	color: #444444;
+	font-size: 1.25em;
+	max-width: 64em;
+	margin: 0.5em auto;
+}
+/* tableau de bord directement dans la partie centrale */
+section#container table {
+	background: #FEFEFE;
+	text-align: left;
+	border-collapse:collapse;
+	border: none;
+	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	box-shadow: 0 0.1em 0.3em #CCCCCC;
+	margin:0.5em auto;
+	width:100%;
+}
+section#container table th {
+	border: thin solid #BBBBBB;
+	background-color: #F4F4F4;
+	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	padding: 0.2em;
+}
+section#container table td {
+	border: thin solid #CCCCCC;
+	padding: 0.2em;
+}
+/* les formulaires */
+section#container input,
+section#container button,
+section#container select,
+section#container textarea,
+section#redaction input,
+section#redaction button,
+section#redaction select,
+section#redaction textarea {
+	margin: 0.5em;
+	color: #006699;
+	border: thin solid #999999;
+	background-color: #F9F9F9;
+	padding: 0.1em 0;
+}
+section#container textarea,
+section#redaction textarea {
+	width: 100%;
+	margin: 0.5em auto;
+}
+section#container select,
+section#redaction select {
+	padding: 0;
+}
+section#container input:focus,
+section#container button:focus,
+section#container select:focus,
+section#container textarea:focus,
+section#redaction input:focus,
+section#redaction button:focus,
+section#redaction select:focus,
+section#redaction textarea:focus {
+	color: #000000;
+	border-color: #444444;
+	background-color: #FEFEFE;
+	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	box-shadow: 0 0.1em 0.3em #CCCCCC;
+}
+section#container button,
+section#container input[type=submit],
+section#redaction button,
+section#redaction input[type=submit] {
+	padding: 0.25em;
+	background-color: #F4F4F4;
+	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	-moz-border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
+	color: #444444;
+	text-align: center;
+}
+section#container button:hover,
+section#container input[type=submit]:hover,
+section#redaction button:hover,
+section#redaction input[type=submit]:hover {
+	background-color: #8ABC00;
+	background: -moz-linear-gradient(top, #999999, #444444);
+	background: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#444444));
+	border-color: #006699;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+/* Nouvelle dépêche : les liens */
+div#form_links {
+	margin: 2em 0;
+	border: thin solid;
+	border-color: #DDDDDD #CCCCCC #BBBBBB;
+	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	box-shadow: 0 0.1em 0.3em #CCCCCC;
+	background-color: #FEFEFE;
+	-moz-border-radius: 0.4em;
+	-webkit-border-radius: 0.4em;
+	border-radius: 0.4em;
+}
+div#form_links fieldset {
+	padding: 0.5em 0;
+}
+div#form_links fieldset:first-child {
+	background-color: #F4F4F4;
+	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	-moz-border-radius: 0.4em 0.4em 0 0;
+	-webkit-border-top-left-radius: 0.4em;
+	-webkit-border-top-right-radius: 0.4em;
+	-webkit-border-bottom-right-radius: 0;
+	-webkit-border-bottom-left-radius: 0;
+	border-top-left-radius: 0.4em;
+	border-top-right-radius: 0.4em;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+div#form_links fieldset.link {
+	border-top: thin solid #DDDDDD;
+	background: #FEFEFE;
+}
+div#form_links fieldset:last-child {
+	border-top: thin solid #DDDDDD;
+	background-color: #F4F4F4;
+	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	-moz-border-radius: 0 0 0.5em 0.5em;
+	-webkit-border-top-left-radius: 0;
+	-webkit-border-top-right-radius: 0;
+	-webkit-border-bottom-right-radius: 0.5em;
+	-webkit-border-bottom-left-radius: 0.5em;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0.5em;
+	border-bottom-left-radius: 0.5em;
+}
+div#form_links label {
+	display:inline-block;
+	text-align: center;
+	margin: 0 0 0 1%;
+}
+div#form_links label#label-link-name,
+div#form_links label#label-link-url {
+	width: 33%;
+}
+div#form_links label#label-link-lang,
+div#form_links label#label-link-actions {
+	width:13%;
+}
+div#form_links input {
+	width: 33%;
+	margin: 0 0 0 1%;
+}
+div#form_links select,
+div#form_links button {
+	margin: 0 0 0 1%;
+	width: 13%;
+}
+/* mdp et mail utilisateur */
+section#container form.edit_account input[type=text],
+section#container form.edit_account input[type=url],
+section#container form.edit_account input[type=email],
+section#container form.edit_account input[type=password] {
+	width: 50%;
+	display: block;
+}
+.pot_de_miel {
+	display: none;
+}
+.datePourCss {
+	display: none;
+}
+
+/* Liens de navigation */
+section#container > nav.toolbox,
+div#contents > div.pagination,
+body#comments-show > section#container > p {
+	margin: 2em auto;
+	display: block;
+	font-size: 0.8em;
+	max-width: 100em;
+}
+section#container > nav.toolbox ul {
+	display: inline;
+	list-style: none;
+}
+section#container > nav.toolbox li {
+	display: inline;
+}
+
+/* l'article */
+article {
+	margin-bottom: 1em;
+	border: thin solid;
+	border-color: #DDDDDD #CCCCCC #BBBBBB;
+	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	box-shadow: 0 0.1em 0.3em #CCCCCC;
+	background-color: #FEFEFE;
+	-moz-border-radius: 0.4em;
+	-webkit-border-radius: 0.4em;
+	border-radius: 0.4em;
+	display: block;
+}
+
+/* en-tête de l'article */
+article header {
+	border-bottom: thin solid #DDDDDD;
+	padding: 0.5em 0.75em;
+	background-color: #F4F4F4;
+	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	-moz-border-radius: 0.4em 0.4em 0 0;
+	-webkit-border-top-left-radius: 0.4em;
+	-webkit-border-top-right-radius: 0.4em;
+	-webkit-border-bottom-right-radius: 0;
+	-webkit-border-bottom-left-radius: 0;
+	border-top-left-radius: 0.4em;
+	border-top-right-radius: 0.4em;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	display: block;
+}
+	/* titre de l'article */
+	article header h1 {
+		font-size: 1.25em;
+		display: inline;
+		color: #444444;
+	}
+	article header h1 a:link,
+	article header h1 a:visited {
+		color: #444444;
+	}
+	/* Info complémentaires dans l'en-tête */
+	article header div.meta {
+		font-size: 0.8em;
+	}
+	article header ul,
+	article header li {
+		display: inline;
+		list-style: none;
+	}
+
+/*le score de l'article */
+article > div.figures > figure.score {
+	font-weight: bold;
+	background: #4C7C00;
+	background: -moz-linear-gradient(top, #999999, #666666);
+	background: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#666666));
+	color: #FEFEFE;
+	padding: 1.2em 0 0;
+	margin: 1em 0.75em 0.5em;
+	-moz-border-radius: 0.4em;
+	-webkit-border-radius: 0.4em;
+	border-radius: 0.5em;
+	float: left;
+	display: block;
+	width: 3.5em;
+	height: 2.3em;
+	text-align: center;
+}
+/*la vignette de l'article */
+article > div.figures > figure.image {
+	float: left;
+	margin: 1em 0.75em 0.5em;
+	width: auto !important;
+	height: 3.5em !important;
+}
+/* On force la taille de l'image : ce serait mieux avec du svg */
+article > div.figures > figure.image img {
+	width: auto !important;
+	height: auto !important;
+	max-height: 3.5em !important;
+}
+
+/* Styles pour le contenu de l'article et des commentaires */
+article div.content,
+article div.body {
+	padding: 0.5em 0.75em;
+	color: #000000;
+	min-height: 4.5em;
+}
+article div h1,
+article > h1 {
+	padding: 0.5em 0.75em;
+	font-size: 1.5em;
+	color: #444444;
+}
+article div h2,
+div.content h2,
+table#wiki_help h2 {
+	padding: 0.4em 0.75em 0;
+	font-size: 1.4em;
+	color: #444444;
+}
+article div h3,
+div.content h3,
+table#wiki_help h3 {
+	padding: 0.3em 0.75em 0;
+	font-size: 1.2em;
+	color: #444444;
+}
+article div h4,
+div.content h4,
+table#wiki_help h4 {
+	padding: 0.2em 0.75em 0;
+	font-size: 1.1em;
+	color: #444444;
+}
+article div h5,
+div.content h5 {
+	padding: 0.1em 0.75em 0;
+	font-size: 1em;
+	font-weight: normal;
+	color: #444444;
+}
+article div ul,
+div.content ul {
+	list-style: disc inside;
+	padding: 0.5em 0.75em;
+}
+article div ol,
+div.content ol {
+	list-style: decimal inside;
+	padding: 0.5em 0.75em;
+}
+article div blockquote,
+div.content blockquote {
+	font-style: italic;
+	margin: 0.5em 0 0.5em 4em;
+	color: #444444;
+}
+article div pre,
+div.content pre {
+	white-space: pre-wrap;
+	min-width: 55em;
+}
+
+/* Lien d'article */
+article li.link {
+	padding-left: 3em;
+}
+/* drapeau du lien */
+article li.link img {
+	width: 1.25em !important;
+	height: 0.8em !important;
+}
+article a:link,
+article a:visited {
+	color: #006699;
+	text-decoration: none;
+}
+article a:hover {
+	color: #444444;
+	text-decoration: underline;
+}
+
+/* uniquement pour le sondage en cours */
+article.poll div.content ul {
+	list-style: none;
+}
+article.poll div.content form {
+	margin-left: 5em;
+}
+
+/* uniquement pour les resultats de sondages */
+article.poll div.content ul.poll {
+	list-style: disc outside none;
+	margin-left: 5em;
+}
+.poll li {
+	margin-bottom: 0.5em;
+}
+.poll meter {
+	display: block;
+	border: thin solid #DDDDDD;
+	background: #F0F0F0;
+	color: #444444;
+	text-align: right;
+}
+
+/* Le pied de l'article */
+article > footer {
+	padding: 0.5em 0.75em;
+	display: block;
+	font-size: 0.8em;
+	border-top: thin solid #DDDDDD;
+	background-color: #F4F4F4;
+	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	-moz-border-radius: 0 0 0.5em 0.5em;
+	-webkit-border-top-left-radius: 0;
+	-webkit-border-top-right-radius: 0;
+	-webkit-border-bottom-right-radius: 0.5em;
+	-webkit-border-bottom-left-radius: 0.5em;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0.5em;
+	border-bottom-left-radius: 0.5em;
+}
+article > footer > div {
+	display: inline;
+}
+
+/* Les boutons de vote pour l'article et le commentaire */
+div.vote,
+div.vote form.button_to,
+div.vote form.button_to div {
+	display: inline;
+}
+div.vote {
+	margin-left: 0.3em;
+}
+section#container div.vote input {
+	border: thin solid transparent;
+	background: none;
+	color: #006699;
+	margin:0;
+	padding:0;
+}
+section#container div.vote input:hover {
+	border: thin solid transparent;
+	background: none;
+	color: #444444;
+	cursor: pointer;
+}
+/* Tout les commentaires */
+div#comments {
+	margin: 4em auto;
+}
+
+/* texte au dessus des commentaires */
+div#comments > p {
+	margin: 1em auto;
+	text-align: center;
+}
+
+/* les fils de commentaires */
+div#comments ul.threads {
+	margin: 4em auto;
+	list-style: none;
+}
+div#contents > ul {
+	list-style: none;
+}
+
+/* Un fil de discussion de commentaires */
+div#comments > ul > li,
+div#contents > ul > li {
+	margin: 0 0 1em 0;
+	border: thin solid;
+	padding: 0.7em;
+	border-color: #DDDDDD #CCCCCC #BBBBBB;
+	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-moz-border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
+	background-color: #FEFEFE;
+	color: #000000;
+	font-size: 1em;
+}
+/* Decalage a droite pour les reponses */
+div#comments li > ul {
+	padding-left: 1.5em;
+	list-style: none;
+}
+
+/* le titre du commentaire */
+li.comment > h2 {
+	margin-top: 0.5em;
+	padding: 0.2em 0.5em;
+	background-color: #F4F4F4;
+	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	border-bottom:thin solid #DDDDDD;
+	color: #444444;
+	font-size: 1em;
+	font-weight: bold;
+}
+li.comment > h2 a:link,
+li.comment > h2 a:visited {
+	color: #444444;
+	text-decoration: none;
+}
+li.comment > h2 a:hover {
+	text-decoration: underline;
+}
+
+/* en-tête et pied de page du commentaire */
+li.comment > p.meta,
+li.comment > footer.actions {
+	color: #444444;
+	font-size: 0.8em;
+	padding: 0.5em 0 0.5em 0.875em;
+	display: block;
+}
+/* l'avatar */
+li.comment > figure.image {
+	display: inline;
+	float: left;
+	padding: 0 0.5em 0 1em;
+}
+li.comment > figure.image img {
+	width: 3em !important;
+	height: 3em !important;
+}
+
+/* le commentaire */
+li.comment > div.content {
+	padding: 0 0 0 1em;
+	min-height: 3em;
+	border-left: thin solid #CCCCCC;
+}
+
+/* Style de titre pour les nouveaux commentaires */
+li.new-comment > h2 {
+	margin-top: 0.5em;
+	padding: 0.2em 0.5em;
+	background-color: #777777;
+	background: -moz-linear-gradient(top, #888888, #666666);
+	background: -webkit-gradient(linear, left top, left bottom, from(#888888), to(#666666));
+	border-bottom:thin solid #666666;
+	color: #FFFFFF;
+	font-size: 1em;
+	font-weight: bold;
+}
+li.new-comment > h2 a:link,
+li.new-comment > h2 a:visited {
+	color: #FFFFFF;
+}
+
+/* Commentaire replié */
+li.fold > p.meta,
+li.fold > figure.image,
+li.fold > div.content,
+li.fold > footer.actions {
+	display: none;
+}
+
+/* le lien retour en haut de page */
+section#container > footer {
+	display: block;
+	font-size: 0.8em;
+	max-width: 100em;
+	margin: 2em auto;
+}
+
+/* le pied de page */
+footer#bigfooter {
+	display: inline;
+	float: left;
+	border-top: thin dotted #999999;
+	width: 90%;
+	margin: 3em 5% 0;
+	padding-bottom: 5em;
+	font-size: 0.8em;
+}
+/* les 4 listes du pied de page */
+footer#bigfooter nav,
+footer#bigfooter section {
+	display: inline;
+	float: left;
+	overflow: hidden;
+	width: 23%;
+	margin: 1em 1%;
+	color: #666666;
+}
+/* Le contenu du pied de page */
+footer#bigfooter h1 {
+	font-size: 1.25em;
+	margin: 0 0 0.5em 0;
+}
+footer#bigfooter ul {
+	list-style: none;
+}
+
+/* La tribune de modération */
+section#edition,
+section#chat {
+	display: inline;
+	overflow: hidden;
+	text-align: justify;
+}
+section#edition {
+	float: left;
+	margin: 1em 1%;
+	width: 58%;
+}
+section#chat {
+	float:left;
+	margin: 1em 1% 1em 0;
+	width: 39%;
+}
+section#chat input[type=text] {
+	width: 64%;
+}
+section#chat h1 {
+	color: #444444;
+	font-size: 1.5em;
+	padding: 0.75em 0 0.5em;
+}
+
+/* Les tribunes */
+time.norloge {
+	font-weight: bold;
+}
+div.board > div.inbox > p {
+	padding: 0.25em 0 0.25em;
+	font-size: 0.8em;
+}
+div.board > div.inbox span.board-left {
+	float: left;
+	padding-right: 0.5em;
+	display: block;
+}
+div.board > div.inbox span.board-right {
+	margin-left: 16%;
+	display: block;
+}
+input#board_message {
+	width: 75%;
+}
+
+/* Revision de wiki */
+body#wiki_pages-revision div#contents > h2 {
+	border-top: thin solid #DDDDDD;
+	border-left: thin solid #DDDDDD;
+	border-right: thin solid #DDDDDD;
+	padding: 0.4em 0.5em 0;
+	margin: 0;
+	background-color: #F4F4F4;
+	background: -moz-linear-gradient(top, #F9F9F9, #F4F4F4);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F4F4F4));
+	-moz-border-radius: 0.4em 0.4em 0 0;
+	-webkit-border-top-left-radius: 0.4em;
+	-webkit-border-top-right-radius: 0.4em;
+	-webkit-border-bottom-right-radius: 0;
+	-webkit-border-bottom-left-radius: 0;
+	border-top-left-radius: 0.4em;
+	border-top-right-radius: 0.4em;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	box-shadow: 0 0.1em 0.3em #CCCCCC;
+}
+body#wiki_pages-revision div#contents > h2 > a {
+	color: #444444;
+}
+body#wiki_pages-revision div#contents > h3 {
+	border-left: thin solid #DDDDDD;
+	border-right: thin solid #DDDDDD;
+	border-bottom: thin solid #DDDDDD;
+	padding: 0 0.75em 0.5em;
+	background-color: #F4F4F4;
+	background: -moz-linear-gradient(top, #F4F4F4, #F0F0F0);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F4F4F4), to(#F0F0F0));
+	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	box-shadow: 0 0.1em 0.3em #CCCCCC;
+	font-size: 0.8em;
+	font-weight: normal;
+}
+body#wiki_pages-revision div#contents > pre {
+	white-space:pre-wrap;
+	background-color: #FFFFFF;
+	color: #000000;
+	padding: 0.25em;
+	border-left: thin solid #CCCCCC;
+	border-right: thin solid #CCCCCC;
+	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	box-shadow: 0 0.1em 0.3em #CCCCCC;
+}
+body#wiki_pages-revision pre > del {
+	background-color: #FFDDDD;
+}
+body#wiki_pages-revision pre > ins {
+	background-color: #DDFFDD;
+	text-decoration: none;
+}
+body#wiki_pages-revision div#contents > nav {
+	border: thin solid;
+	border-color: #DDDDDD #CCCCCC #BBBBBB;
+	padding: 0.5em 0.75em;
+	background-color: #F4F4F4;
+	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	-moz-border-radius: 0 0 0.5em 0.5em;
+	-webkit-border-top-left-radius: 0;
+	-webkit-border-top-right-radius: 0;
+	-webkit-border-bottom-right-radius: 0.5em;
+	-webkit-border-bottom-left-radius: 0.5em;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0.5em;
+	border-bottom-left-radius: 0.5em;
+	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	box-shadow: 0 0.1em 0.3em #CCCCCC;
+	display: block;
+}
+body#wiki_pages-revision div#contents > nav > ul {
+	list-style: none;
+	font-size: 0.8em;
+}
+body#wiki_pages-revision div#contents > nav > ul > li {
+	display: inline;
+	padding-right: 1.5em;
+}
+
+/* la toolbar */
+div#toolbar {
+	position: fixed;
+	overflow: hidden;
+	bottom: 0;
+	left: 1.25%;
+	width: 19.4%;
+	border-top: thin solid #DDDDDD;
+	border-left: thin solid #CCCCCC;
+	border-right: thin solid #CCCCCC;
+	padding: 0.5em 0 0.25em;
+	-moz-box-shadow: 0 0.125em 0.375em #CCCCCC;
+	-webkit-box-shadow: 0 0.125em 0.375em #CCCCCC;
+	box-shadow: 0 0.125em 0.375em #CCCCCC;
+	-moz-border-radius: 0.5em 0.5em 0 0;
+	-webkit-border-top-left-radius: 0.5em;
+	-webkit-border-top-right-radius: 0.5em;
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
+	background-color: #FEFEFE;
+	color: #444444;
+	font-size: 0.8em;
+	
+}
+div#toolbar > span {
+	display: block;
+	margin: 0 0.3em;
+}
+
+/* linux sait faire ! */
+body#static-show div.body > a > img {
+	width: 100% !important;
+	height: 100% !important;
+	margin-top: 3em;
+}
+
+/* Autosatisfaction récursive */
+body#comments-create div#contents > img {
+	height: auto !important;
+	max-width: 100%;
+}
+
+/* l'éditeur markdown */
+.markItUpContainer {
+	margin-bottom: 1em;
+	border: thin solid;
+	border-color: #DDDDDD #CCCCCC #BBBBBB;
+	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-moz-border-radius: 0.4em;
+	-webkit-border-radius: 0.4em;
+	border-radius: 0.4em;
+}
+
+.markItUpHeader {
+	border-bottom: thin solid #DDDDDD;
+	padding: 0.5em 1%;
+	height: 1.2em;
+	background-color: #F4F4F4;
+	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	-moz-border-radius: 0.4em 0.4em 0 0;
+	-webkit-border-top-left-radius: 0.4em;
+	-webkit-border-top-right-radius: 0.4em;
+	-webkit-border-bottom-right-radius: 0;
+	-webkit-border-bottom-left-radius: 0;
+	border-top-left-radius: 0.4em;
+	border-top-right-radius: 0.4em;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.markItUpEditor,
+section#container .markItUpEditor {
+	width: 100%;
+	height: 20em;
+	display: block;
+	overflow: auto;
+	border: none;
+	background-color: #FCFCFC;
+	color: #006699;
+	padding: 0;
+	margin: 0;
+}
+.markItUpEditor:focus,
+section#container .markItUpEditor:focus {
+	background-color: #FFFFFF;
+	color: #000000;
+}
+
+.markItUpFooter {
+	padding: 0.5em 0;
+	border-top: thin solid #DDDDDD;
+	background-color: #F4F4F4;
+	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	-moz-border-radius: 0 0 0.5em 0.5em;
+	-webkit-border-top-left-radius: 0;
+	-webkit-border-top-right-radius: 0;
+	-webkit-border-bottom-right-radius: 0.5em;
+	-webkit-border-bottom-left-radius: 0.5em;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0.5em;
+	border-bottom-left-radius: 0.5em;
+}
+
+.markItUpResizeHandle {
+	overflow: hidden;
+	width: 20%;
+	height: 0.5em;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url(/images/markitup/handle.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	cursor: s-resize;
+}
+
+.markItUpHeader ul li {
+	list-style: none;
+	float: left;
+	position: relative;
+}
+.markItUpHeader ul li ul {
+	display: none;
+}
+.markItUpHeader ul li:hover > ul {
+	display: block;
+}
+.markItUpHeader ul a {
+	display: block;
+	width: 1.2em;
+	height: 1.2em;
+	text-indent: -1000em;
+	background-repeat: no-repeat;
+	background-position: center center;
+	-moz-background-size: 100%;
+	-webkit-background-size: 100%;
+	-o-background-size: 100%;
+	background-size: 100%;
+	margin: 0 0.3em;
+}
+.markItUpHeader ul .markItUpSeparator {
+	margin: 0 1em;
+	width: 0;
+	height: 1.2em;
+	overflow: hidden;
+	border-left: thin solid #CCCCCC;
+}
+.markItUp .h1 a {
+	background-image: url(/images/markitup/h1.png);
+}
+.markItUp .h2 a {
+	background-image: url(/images/markitup/h2.png);
+}
+.markItUp .h3 a {
+	background-image: url(/images/markitup/h3.png);
+}
+.markItUp .h4 a {
+	background-image: url(/images/markitup/h4.png);
+}
+.markItUp .bold a {
+	background-image: url(/images/markitup/bold.png);
+}
+.markItUp .italic a {
+	background-image: url(/images/markitup/italic.png);
+}
+.markItUp .stroke a {
+	background-image: url(/images/markitup/stroke.png);
+}
+.markItUp .list-bullet a {
+	background-image: url(/images/markitup/list-bullet.png);
+}
+.markItUp .list-numeric a {
+	background-image: url(/images/markitup/list-numeric.png);
+}
+.markItUp .image a {
+	background-image: url(/images/markitup/picture.png);
+}
+.markItUp .link a {
+	background-image: url(/images/markitup/link.png);
+}
+.markItUp .quotes a {
+	background-image: url(/images/markitup/quotes.png);
+}
+.markItUp .code a {
+	background-image: url(/images/markitup/page_white_code.png);
+}
+
+/* coloration syntaxique : repris de la css linuxfr */
+.hll {
+	background-color: #ffffcc;
+}
+.c {
+	color: #808080;
+}
+.err {
+	color: #F00000;
+	background-color: #F0A0A0;
+}
+.k {
+	color: #008000;
+	font-weight: bold;
+}
+.o {
+	color: #303030;
+}
+.cm {
+	color: #808080;
+}
+.cp {
+	color: #507090;
+}
+.c1 {
+	color: #808080;
+}
+.cs {
+	color: #cc0000;
+	font-weight: bold;
+}
+.gd {
+	color: #A00000;
+}
+.ge {
+	font-style: italic;
+}
+.gr {
+	color: #FF0000;
+}
+.gh {
+	color: #000080;
+	font-weight: bold;
+}
+.gi {
+	color: #00A000;
+}
+.go {
+	color: #808080;
+}
+.gp {
+	color: #c65d09;
+	font-weight: bold;
+}
+.gs {
+	font-weight: bold;
+}
+.gu {
+	color: #800080;
+	font-weight: bold;
+}
+.gt {
+	color: #0040D0;
+}
+.kc, .kd, .kn {
+	color: #008000;
+	font-weight: bold;
+}
+.kp {
+	color: #003080;
+	font-weight: bold;
+}
+.kr {
+	color: #008000;
+	font-weight: bold;
+}
+.kt {
+	color: #303090;
+	font-weight: bold;
+}
+.m {
+	color: #6000E0;
+	font-weight: bold;
+}
+.s {
+	background-color: #fff0f0;
+}
+.na {
+	color: #0000C0;
+}
+.nb {
+	color: #007020;
+}
+.nc {
+	color: #B00060;
+	font-weight: bold;
+}
+.no {
+	color: #003060;
+	font-weight: bold;
+}
+.nd {
+	color: #505050;
+	font-weight: bold;
+}
+.ni {
+	color: #800000;
+	font-weight: bold;
+}
+.ne {
+	color: #F00000;
+	font-weight: bold;
+}
+.nf {
+	color: #0060B0;
+	font-weight: bold;
+}
+.nl {
+	color: #907000;
+	font-weight: bold;
+}
+.nn {
+	color: #0e84b5;
+	font-weight: bold;
+}
+.nt {
+	color: #007000;
+}
+.nv {
+	color: #906030;
+}
+.ow {
+	color: #000000;
+	font-weight: bold;
+}
+.w {
+	color: #bbbbbb;
+}
+.mf {
+	color: #6000E0;
+	font-weight: bold;
+}
+.mh {
+	color: #005080;
+	font-weight: bold;
+}
+.mi {
+	color: #0000D0;
+	font-weight: bold;
+}
+.mo {
+	color: #4000E0;
+	font-weight: bold;
+}
+.sb {
+	background-color: #fff0f0;
+}
+.sc {
+	color: #0040D0;
+}
+.sd {
+	color: #D04020;
+}
+.s2 {
+	background-color: #fff0f0;
+}
+.se {
+	color: #606060;
+	font-weight: bold;
+	background-color: #fff0f0;
+}
+.sh {
+	background-color: #fff0f0;
+}
+.si {
+	background-color: #e0e0e0;
+}
+.sx {
+	color: #D02000;
+	background-color: #fff0f0;
+}
+.sr {
+	color: #000000;
+	background-color: #fff0ff;
+}
+.s1 {
+	background-color: #fff0f0;
+}
+.ss {
+	color: #A06000;
+}
+.bp {
+	color: #007020;
+}
+.vc {
+	color: #306090;
+}
+.vg {
+	color: #d07000;
+	font-weight: bold;
+}
+.vi {
+	color: #3030B0;
+}
+.il {
+	color: #0000D0;
+	font-weight: bold;
+}
