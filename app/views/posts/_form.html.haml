@@ -5,7 +5,7 @@
   = form.select :forum_id, forums_select_list, { :include_blank => true }, { :required => "required" }
 %p
   = form.label :title, "Sujet du message"
-  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
+  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true', :maxlength => 100
 %p
   = form.label :wiki_body, "Message complet"
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'

@@ -5,7 +5,7 @@
     = messages_on_error @account
     %p
       = f.label :login, "Identifiant"
-      = f.text_field :login, :required => 'required'
+      = f.text_field :login, :required => 'required', :maxlength => 40
     %p
       = f.label :email, "Adresse de courriel"
       = f.email_field :email, :required => "required"

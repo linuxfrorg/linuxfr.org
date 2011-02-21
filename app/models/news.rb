@@ -38,11 +38,14 @@ class News < Content
   scope :draft,     where(:state => "draft")
   scope :candidate, where(:state => "candidate")
 
-  validates :title,        :presence => { :message => "Le titre est obligatoire" }
+  validates :title,        :presence => { :message => "Le titre est obligatoire" },
+                           :length   => { :maximum => 100, :message => "Le titre est trop long" }
   validates :body,         :presence => { :message => "Nous n'acceptons pas les dépêches vides" }
   validates :section,      :presence => { :message => "Veuillez choisir une section pour cette dépêche" }
-  validates :author_name,  :presence => { :message => "Veuillez entrer votre nom" }
-  validates :author_email, :presence => { :message => "Veuillez entrer votre adresse email" }
+  validates :author_name,  :presence => { :message => "Veuillez entrer votre nom" },
+                           :length   => { :maximum => 32, :message => "Le nom de l'auteur est trop long" }
+  validates :author_email, :presence => { :message => "Veuillez entrer votre adresse email" },
+                           :length   => { :maximum => 64, :message => "L'adresse email de l'auteur est trop longue" }
 
 ### SEO ###
 

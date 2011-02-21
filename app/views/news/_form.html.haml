@@ -3,17 +3,17 @@
 - unless current_account
   %p
     = form.label :author_name, "Votre nom"
-    = form.text_field :author_name, :autocomplete => 'on', :required => 'required'
+    = form.text_field :author_name, :autocomplete => 'on', :required => 'required', :maxlength => 32
   %p
     = form.label :author_email, "Votre adresse de courriel"
-    = form.email_field :author_email, :autocomplete => 'on', :required => 'required'
+    = form.email_field :author_email, :autocomplete => 'on', :required => 'required', :maxlength => 64
   - if @news.new_record?
     %p.pot_de_miel
       = form.label :pot_de_miel, "Ne pas remplir ce champ"
       = form.text_field :pot_de_miel
 %p
   = form.label :title, "Titre de la dépêche"
-  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
+  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true', :maxlength => 100
 %p
   = form.label :section_id, "Section de la dépêche"
   = form.collection_select :section_id, Section.published, :id, :title

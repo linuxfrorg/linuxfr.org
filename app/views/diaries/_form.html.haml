@@ -2,7 +2,7 @@
 
 %p
   = form.label :title, "Sujet du journal"
-  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
+  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true', :maxlength => 100
 %p
   = form.label :wiki_body, "Journal complet"
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'

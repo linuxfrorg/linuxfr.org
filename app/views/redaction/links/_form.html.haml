@@ -6,7 +6,7 @@
     = form.label :url, 'URL'
     = form.label :lang, 'Langue'
   %p.link
-    = form.text_field :title
+    = form.text_field :title, :maxlength => 100
     = form.url_field :url
     = form.select :lang, Lang.all
     = form.submit "OK"

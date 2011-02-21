@@ -2,7 +2,7 @@
 
 %p
   = form.label :title, 'Titre'
-  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
+  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true', :maxlength => 32
 %p
   = form.label :state, 'Status'
   = form.radio_button :state, "published"

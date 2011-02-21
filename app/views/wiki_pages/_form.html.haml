@@ -3,7 +3,7 @@
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
 %p
   = form.label :message, "Log des modifications"
-  = form.text_field :message, :autocomplete => 'off', :spellcheck => 'true'
+  = form.text_field :message, :autocomplete => 'off', :spellcheck => 'true', :maxlength => 250
 %p
   = form.submit "Prévisualiser", :id => "wiki_preview"
   = form.submit (form.object.new_record? ? "Créer" : "Mettre à jour") if @preview_mode

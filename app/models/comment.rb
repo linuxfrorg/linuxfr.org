@@ -34,7 +34,8 @@ class Comment < ActiveRecord::Base
   scope :on_dashboard, published.where(:answered_to_self => false).order('created_at DESC')
   scope :footer,       published.order('created_at DESC').limit(12)
 
-  validates :title,     :presence => { :message => "Le titre est obligatoire" }
+  validates :title,     :presence => { :message => "Le titre est obligatoire" },
+                        :length   => { :maximum => 100, :message => "Le titre est trop long" }
   validates :wiki_body, :presence => { :message => "Vous ne pouvez pas poster un commentaire vide" }
 
   wikify_attr :body

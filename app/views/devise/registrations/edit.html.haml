@@ -12,14 +12,14 @@
     = f.fields_for :user do |u|
       %p
         = u.label :name, "Prénom et nom"
-        = u.text_field :name
+        = u.text_field :name, :maxlength => 32
       %p
         = u.label :homesite, 'Site web personnel'
-        = u.url_field :homesite
+        = u.url_field :homesite, :maxlength => 100
       %p
         = u.label :jabber_id, 'Jabber ID'
         %span.prefix xmpp://
-        = u.text_field :jabber_id, :placeholder => "me@example.net"
+        = u.text_field :jabber_id, :placeholder => "me@example.net", :maxlength => 32
     %p
       = f.label :password, 'Nouveau mot de passe'
       = f.password_field :password

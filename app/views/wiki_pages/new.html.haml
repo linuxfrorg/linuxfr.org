@@ -7,7 +7,7 @@
     = messages_on_error @wiki_page
     %p
       = form.label :title, "Titre"
-      = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
+      = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true', :maxlength => 100
     = render form
 
   = render 'shared/wiki_help'
