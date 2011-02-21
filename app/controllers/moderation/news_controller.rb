@@ -55,6 +55,7 @@ class Moderation::NewsController < ModerationController
   def refuse
     enforce_refuse_permission(@news)
     if params[:message]
+      @news.moderator_id = current_user.id
       @news.refuse!
       notif = NewsNotifications.refuse_with_message(@news, params[:message], params[:template])
       notif.deliver if notif
