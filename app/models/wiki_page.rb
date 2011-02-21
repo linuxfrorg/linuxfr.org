@@ -52,7 +52,7 @@ class WikiPage < Content
   before_validation :wikify_body
   def wikify_body
     return unless wiki_body
-    txt = wiki_body.gsub(/\[\[\[(\w+)\]\]\]/, '[\1](/wiki/\1 "Lien interne du wiki LinuxFr.org")')
+    txt = wiki_body.gsub(/\[\[\[([\w\-]+)\]\]\]/, '[\1](/wiki/\1 "Lien interne du wiki LinuxFr.org")')
     self.body = wikify(txt)
   end
 

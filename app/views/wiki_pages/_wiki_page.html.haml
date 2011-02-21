@@ -1,4 +1,5 @@
 = article_for wiki_page do |c|
+  - c.meta  = ""
   - c.title = "#{link_to "Wiki", "/wiki"} #{link_to wiki_page.title, wiki_page}".html_safe
   - c.body  = wiki_page.body
   - if current_account && current_account.can_update?(wiki_page)
