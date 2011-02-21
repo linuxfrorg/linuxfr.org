@@ -1134,7 +1134,7 @@ body#boards-show {
 p.chat {
 	margin: 3px 0px 0px 0px;
 	/* pseudo */
-	span > b:first-of-type {
+	.board-left > b:first-of-type {
 		color: $C_FONCE;
 		font-family: monospace;
 		font-size: 11px;
@@ -1175,7 +1175,7 @@ p.chat {
 	.board-left {
 		display: block;
 		float: left;
-		width: 160px;
+		width: 180px;
 		border-top: 1px solid transparent;
 		border-bottom: 1px solid transparent;
 		margin-top: 0px;
@@ -1183,7 +1183,7 @@ p.chat {
 	}
 	.board-right {
 		display: block;
-		margin-left: 160px;
+		margin-left: 180px;
 		border-top: 1px solid transparent;
 		border-bottom: 1px solid transparent;
 		margin-top: 0px;
