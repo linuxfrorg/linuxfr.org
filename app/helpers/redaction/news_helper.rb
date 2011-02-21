@@ -1,2 +1,0 @@
-module Redaction::NewsHelper
-end

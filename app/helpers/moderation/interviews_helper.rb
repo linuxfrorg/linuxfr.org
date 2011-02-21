@@ -1,2 +1,0 @@
-module Moderation::InterviewsHelper
-end

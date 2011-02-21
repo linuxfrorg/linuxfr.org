@@ -1,4 +1,4 @@
-module Redaction::ParagraphsHelper
+module ParagraphsHelper
 
   def paragraph_attr(para)
     ret = {}
