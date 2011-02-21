@@ -27,6 +27,7 @@ class LFMarkdown < Markdown
 
   def to_html
     process_wikipedia_links
+    process_newlines
     extract_code
     ret = fix_heading_levels(super)
     ret = process_code(ret)
@@ -40,6 +41,14 @@ protected
 
   def process_wikipedia_links
     @text.gsub!(WP_LINK_REGEXP, '[\1](http://fr.wikipedia.org/wiki/\1 "Définition Wikipédia")')
+  end
+
+  # Code taken from http://github.github.com/github-flavored-markdown/
+  def process_newlines
+    # in very clear cases, let newlines become <br /> tags
+    @text.gsub!(/^[\w\<][^\n]*\n+/) do |x|
+      x =~ /\n{2}/ ? x : (x.strip!; x << "  \n")
+    end
   end
 
   def fix_heading_levels(str)

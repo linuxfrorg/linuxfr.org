@@ -27,6 +27,11 @@ describe LFMarkdown do
     html.should == "<p>foo_bar_baz</p>\n"
   end
 
+  it "handles single line breaks" do
+    html = LFMarkdown.new("foo\nbar\n\nbaz").to_html
+    html.should == "<p>foo<br/>\nbar</p>\n\n<p>baz</p>\n"
+  end
+
   it "accepts heading levels from <h2> to <h5>" do
     md = LFMarkdown.new <<EOS
 Title 1
