@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
-    <channel>
-        <title>LinuxFr.org</title>
-        <description>Les flux RSS ont été remplacés par des flux ATOM</description>
-        <lastBuildDate>Fri, 01 Jul 2011 00:00:01 GMT</lastBuildDate>
+	<channel>
+		<title>LinuxFr.org</title>
+		<description>Les flux RSS ont été remplacés par des flux ATOM</description>
+		<lastBuildDate>Fri, 01 Jul 2011 00:00:01 GMT</lastBuildDate>
 		<link>http://linuxfr.org/</link>
-        <item>
-            <title>Attention, ce flux n'est plus valide</title>
-			<description>
-				Ce flux RSS a été remplacé par un flux ATOM.
-				Vous êtes encouragés à aller voir le site pour vous abonner au nouveau flux.
-			</description>
-            <pubDate>Fri, 01 Jul 2011 00:00:01 GMT</pubDate>
-            <link>http://www.linuxfr.org/</link>
-        </item>
-    </channel>
+			<item>
+				<title>Attention, ce flux n'est plus valide</title>
+				<description>
+					Ce flux RSS a été remplacé par un flux ATOM.
+					Vous êtes encouragés à aller voir &lt;a href="http://linuxfr.org/plan"&gt;le site&lt;/a&gt; pour vous abonner au nouveau flux.
+				</description>
+				<pubDate>Fri, 01 Jul 2011 00:00:01 GMT</pubDate>
+				<link>http://www.linuxfr.org/</link>
+			</item>
+	</channel>
 </rss>
