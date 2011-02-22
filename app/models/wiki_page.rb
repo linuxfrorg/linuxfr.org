@@ -105,7 +105,7 @@ class WikiPage < Content
 ### Interest ###
 
   def self.interest_coefficient
-    5
+    4
   end
 
 end
