@@ -201,4 +201,8 @@ class Account < ActiveRecord::Base
     save
   end
 
+  def nb_votes
+    [self["nb_votes"], 0].max
+  end
+
 end
