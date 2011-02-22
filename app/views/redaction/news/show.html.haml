@@ -22,3 +22,5 @@
 = button_to "Soumettre la dépêche", submit_redaction_news_path(@news)
 - if current_account.amr?
   = button_to "Supprimer tous les locks", clear_locks_moderation_news_path(@news), :class => 'ajax'
+
+= render 'shared/wiki_help'
