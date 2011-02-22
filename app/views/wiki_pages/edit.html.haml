@@ -7,6 +7,7 @@
     = messages_on_error @wiki_page
     = render form
 
-  = button_to "Supprimer", [@wiki_page], :method => :delete, :confirm => "Êtes-vous sûr de vouloir supprimer cette page de wiki ?"
+  - if current_account && current_account.can_destroy?(@wiki_page)
+    = button_to "Supprimer", [@wiki_page], :method => :delete, :confirm => "Êtes-vous sûr de vouloir supprimer cette page de wiki ?"
 
   = render 'shared/wiki_help'
