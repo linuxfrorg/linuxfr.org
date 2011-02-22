@@ -1121,6 +1121,10 @@ body#boards-show {
 	> p:first-of-type {
 	color: $C_INTER;
 	}
+	/* totoz links */
+	a:hover {
+		cursor: pointer;
+	}
 }
 .norloge {
 	font-weight: bold;

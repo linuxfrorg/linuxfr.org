@@ -729,6 +729,12 @@ a.scroll {
   display: inherit; }
 
 /* message à caractère informatif */
+.alert {
+  text-align: center;
+  background-color: #faa;
+  border: 1px solid red;
+  margin-bottom: 10px; }
+
 .notice {
   text-align: center;
   background-color: rgba(224, 109, 8, 0.16);
@@ -1160,12 +1166,15 @@ body#boards-show #container {
 
 #main_board {
   /* on sait qu'on est sur la tribune si on y est */
-  /* version xml et avertissement */ }
+  /* version xml et avertissement */
+  /* totoz links */ }
   #main_board h1 {
     display: none; }
   #main_board > a:first-of-type,
   #main_board > p:first-of-type {
     color: #a99c90; }
+  #main_board a:hover {
+    cursor: pointer; }
 
 .norloge {
   font-weight: bold;
