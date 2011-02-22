@@ -28,7 +28,7 @@
         %tr{:class => tracker.state}
           %td= link_to tracker.id, tracker
           %td= link_to tracker.title, tracker
-          %td= tracker.created_at
+          %td= tracker.created_at.to_s(:posted)
           %td= tracker.assigned_to
           %td= tracker.reported_by
           %td= tracker.category_title
