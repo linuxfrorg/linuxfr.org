@@ -65,7 +65,7 @@
             if (base.totoz_type == 'popup') {
                 this.innerHTML = this.innerHTML.replace(/\[:([^\]]+)\]/g, '<span class="totoz" data-totoz-name="$1">$&</span>');
             } else if (base.totoz_type == 'inline') {
-                this.innerHTML = this.innerHTML.replace(/\[:([^\]]+)\]/g, '<img class="totoz" alt="$&" src="' + base.totoz_url + '$1.gif" style="vertical-align: top; background-color: transparent"/>');
+                this.innerHTML = this.innerHTML.replace(/\[:([^\]]+)\]/g, '<img class="totoz" alt="$&" title="$&" src="' + base.totoz_url + '$1.gif" style="vertical-align: top; background-color: transparent"/>');
             }
         };
 
@@ -81,14 +81,14 @@
         }
 
         base.createTotoz = function(e) {
-            var totozId = this.getAttribute("data-totoz-name");
+            var totozName = this.getAttribute("data-totoz-name");
+            var totozId = encodeURIComponent(totozName).replace(/%/g, '');
             var totoz = base.totoz.find("#totoz-" + totozId).first();
             if (totoz.size() == 0) {
                 totoz = $('<div id="totoz-' + totozId + '" class="totozimg"></div>')
                             .css('display', 'none')
                             .css('position', 'absolute')
-                            .css('opacity', '0.7')
-                            .append('<img src="' + base.totoz_url + totozId + '.gif"/>');
+                            .append('<img src="' + base.totoz_url + totozName + '.gif"/>');
                 base.totoz.append(totoz);
             }
             // Position où afficher l'image
@@ -102,7 +102,7 @@
         }
 
         base.destroyTotoz = function() {
-            var totozId = this.getAttribute("data-totoz-name");
+            var totozId = encodeURIComponent(this.getAttribute("data-totoz-name")).replace(/%/g, '');
             var totoz = base.totoz.find("#totoz-" + totozId).first();
             totoz.css('display', 'none');
         }
