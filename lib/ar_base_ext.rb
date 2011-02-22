@@ -11,7 +11,7 @@ class ActiveRecord::Base
                     h1 h2 h3 h4 h5 h6 hr i img ins kbd li mark meter ol p pre
                     q s samp small span strong sub sup time ul var wbr),
     :attributes => {
-      :all         => ['data-after', 'data-id', 'id', 'title'],
+      :all         => ['data-after', 'data-id', 'id', 'title', 'class'],
       'a'          => ['href'],
       'blockquote' => ['cite'],
       'img'        => ['alt', 'height', 'src', 'width'],
