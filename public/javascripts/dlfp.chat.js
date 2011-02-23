@@ -55,9 +55,17 @@
 
         base.norloge = function() {
             var time = $(this).text();
-            base.input.val(function(index,value) {
-                return  time + ' ' + value;
-            }).focus();
+            var value = base.input.val();
+            var range = base.input.caret();
+
+            if (range.start == undefined) {
+                range.start = 0;
+                range.end = 0;
+            }
+
+            base.input.val(value.substr(0, range.start) + time + ' ' + value.substr(range.end, value.length));
+            base.input.caret(range.start + time.length + 1);
+            base.input.focus();
         };
 
         base.norlogize = function() {
