@@ -156,7 +156,7 @@ ActiveRecord::Schema.define(:version => 20110223220302) do
   end
 
   add_index "nodes", ["content_id", "content_type"], :name => "index_nodes_on_content_id_and_content_type", :unique => true
-  add_index "nodes", ["content_type", "public"], :name => "index_nodes_on_content_type_and_public"
+  add_index "nodes", ["content_type", "public", "interest"], :name => "index_nodes_on_content_type_and_public_and_interest"
   add_index "nodes", ["public", "created_at"], :name => "index_nodes_on_public_and_created_at"
   add_index "nodes", ["public", "interest"], :name => "index_nodes_on_public_and_interest"
   add_index "nodes", ["public", "last_commented_at"], :name => "index_nodes_on_public_and_last_commented_at"
