@@ -69,6 +69,7 @@ protected
   end
 
   def add_toc_content(str)
+    return str if toc_content.blank?
     "<h2 id=\"sommaire\">Sommaire</h2>\n" + toc_content.force_encoding("UTF-8") + str
   end
 

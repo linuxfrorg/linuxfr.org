@@ -109,7 +109,7 @@ class Comment < ActiveRecord::Base
 
   before_create :default_score
   def default_score
-    self.score = Math.log10(user.account.karma).to_i - 1
+    self.score = Math.log10([user.account.karma, 0.1].max).to_i - 1
   end
 
   def nb_answers
