@@ -5,6 +5,8 @@
     %ul.threads
       %li.comment{comment_attr(@comment.parent)}
         = render @comment.parent
+  - else
+    = render @comment.node.content
 
   = render "preview", :preview => @comment if @preview_mode
 
