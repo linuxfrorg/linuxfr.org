@@ -10,7 +10,7 @@
             base.cursor    = base.findCursor();
             base.sleepTime = 500;
 
-            board.find('p').click(base.norloge);
+            board.find('.board-left .norloge').click(base.norloge);
             board.find('form').submit(base.postMessage);
 
             base.totoz_type = $.cookie('totoz-type'); // popup or inline. if null, no totoz
@@ -54,7 +54,7 @@
         };
 
         base.norloge = function() {
-            var time = $(this).find('.norloge').text();
+            var time = $(this).text();
             base.input.val(function(index,value) {
                 return  time + ' ' + value;
             }).focus();
