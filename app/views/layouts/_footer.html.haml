@@ -3,7 +3,7 @@
     %h1 Derniers commentaires
     %ul
       - @last_comments.each do |comment|
-        %td= link_to comment.title, url_for_content(comment.node.content) + "#comment-#{comment.id}"
+        %li= link_to comment.title, url_for_content(comment.node.content) + "#comment-#{comment.id}"
   %nav#popular_tags
     %h1 Tags populaires
     %ul.tag_cloud
