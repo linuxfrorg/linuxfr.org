@@ -5,6 +5,10 @@
  *  basée sur software.opensuse.org et fr.opensuse.org
  *
  * Historique :
+ *   2.6    23/02/2011    - [Axioplase] espaces autour des paragraphes, symboles
+ *                          autour des "sections" dans les titres de contenu,
+ *                          première lettre des contenus est plus grosse,
+ *                          meilleure visualisation des nouveaux commentaires.
  *   2.5    05/01/2011    - [Yggdras] tribune: marge en pourcent pour board-right
  *   2.4    31/12/2010    - maj suite aux évolutions du site
  *   2.3    12/12/2010    - Pleins de corrections (toolbar, vignette, note, formulaires)
@@ -660,6 +664,11 @@ article div pre,
 div.content pre {
 	white-space: pre-wrap;
 	min-width: 55em;
+}
+
+div.content p {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 /* Lien d'article */
@@ -1436,3 +1445,15 @@ section#container .markItUpEditor:focus {
 	color: #0000D0;
 	font-weight: bold;
 }
+
+
+ {
+padding: 0.5em
+}
+
+#container h1 > a:first-child::before { content: "「 "}
+#container h1 > a::after { content: " 」"}
+#container h1 > a:last-child::after { content: ""; }
+
+#contents > * > * > p:first-child:first-letter { font-size: 200%; vertical-align: middle; }
+li.new-comment  > * > .title { color: #99DD00 !important; }
