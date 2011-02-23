@@ -71,7 +71,7 @@ module NodeHelper
   def date_pour_css(content)
     date_time = content.node.try(:created_at) || Time.now
     content_tag(:div, date_time.day, :class => "jour") +
-    content_tag(:div, date_time.strftime("%b"), :class => "mois") +
+    content_tag(:div, I18n.l(date_time, :format => "%b"), :class => "mois") +
     content_tag(:div, date_time.year, :class => "annee")
   end
 

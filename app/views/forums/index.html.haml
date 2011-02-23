@@ -1,7 +1,7 @@
 - content_for :column do
   = render 'box'
 
-=h1 "Liste des forums"
+=h1 "Les forums"
 - feed "Flux Atom des forums"
 - new_content_link = link_to("Poster dans les forums", "/posts/nouveau") if current_account
 = paginated_nodes @nodes, new_content_link
