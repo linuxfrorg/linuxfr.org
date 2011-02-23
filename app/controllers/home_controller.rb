@@ -5,7 +5,7 @@ class HomeController < ApplicationController
 
   def index
     @types  = current_account.try(:types_on_home)
-    @types  = %w(News Poll) if @types.empty?
+    @types  = %w(News Poll) if @types.blank?
     @order  = params[:order]
     @order  = "interest" unless VALID_ORDERS.include?(@order)
     @ppp    = News.ppp
