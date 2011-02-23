@@ -4,6 +4,7 @@ gem "rails",                   "=3.0.4"
 
 gem "acts_as_list",            "~>0.1"
 gem "albino",                  "=1.1.1"
+gem "bitfields",               "~>0.3"
 gem "canable",                 "~>0.1"
 gem "carrierwave",             "~>0.5"
 gem "devise",                  "~>1.1"

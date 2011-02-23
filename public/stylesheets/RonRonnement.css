@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Copyright 2010 Eve Schoonbroodt (design) http://www.studiomagenta.be/ */
 /* Copyright 2010 Nicolas Schoonbroodt (css) <nicolas@elsewhere.be>      */
 /* Distributed under GNU AGPL v3 License                                 */
@@ -789,7 +790,7 @@ ul.poll li meter::-webkit-meter-horizontal-suboptimal-value,
 ul.poll li meter::-webkit-meter-horizontal-even-less-good-value {
   background: rgba(76, 87, 95, 0.33); }
 
-.go_to_content {
+.factice, .go_to_content {
   float: left;
   text-indent: -9998em;
   overflow: hidden;

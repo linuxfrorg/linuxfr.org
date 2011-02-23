@@ -37,6 +37,7 @@ GEM
       ZenTest (>= 4.4.1)
     babosa (0.2.2)
     bcrypt-ruby (2.1.4)
+    bitfields (0.3.0)
     builder (2.1.2)
     canable (0.1.1)
     capistrano (2.5.19)
@@ -181,6 +182,7 @@ DEPENDENCIES
   albino (= 1.1.1)
   annotate
   autotest
+  bitfields (~> 0.3)
   canable (~> 0.1)
   capistrano
   carrierwave (~> 0.5)

@@ -4,10 +4,12 @@ class HomeController < ApplicationController
                         :cache_path => Proc.new {|c| "home/#{c.params[:order]}/#{c.params[:page]}" }
 
   def index
+    @types  = current_account.try(:types_on_home)
+    @types  = %w(News Poll) if @types.empty?
     @order  = params[:order]
     @order  = "interest" unless VALID_ORDERS.include?(@order)
     @ppp    = News.ppp
     @banner = Banner.random
-    @nodes  = Node.visible.paginate(:page => params[:page], :per_page => 10, :order => "#{@order} DESC")
+    @nodes  = Node.public_listing(@types, @order).paginate(:page => params[:page], :per_page => 10)
   end
 end
