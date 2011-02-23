@@ -163,7 +163,7 @@
                     method  = 'on_' + message.kind;
                     if (base[method]) {
                         base.inbox.prepend(message.msg)
-                                  .children('p:first').click(base.norloge);
+                                  .children('p:first .board-left .norloge').click(base.norloge);
                         base[method](message.msg);
                     }
                     base.inbox.find('.board-right:first').each(base.norlogize);
