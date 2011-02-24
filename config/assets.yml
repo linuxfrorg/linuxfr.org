@@ -4,7 +4,7 @@ javascript_compressor: closure
 
 javascripts:
   default:
-    - public/javascripts/jquery-1.5.js
+    - public/javascripts/jquery-1.5.1.js
     - public/javascripts/jquery.*.js
     - public/javascripts/rails.js
     - public/javascripts/markitup-markdown.js
