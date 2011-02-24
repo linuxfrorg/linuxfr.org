@@ -1308,11 +1308,14 @@ div#form_links .link .remove {
 
 /* Moderation */
 /* TODO styler "ajouter un lien" */
+#moderation_box.box li {
+  list-style: disc inside; }
 #moderation_box .board input#board_message {
   display: block;
   width: 95%;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  margin-bottom: 5px; }
 
 body#news-show #redaction .score, body#news-show #redaction .datePourCss {
   right: 0px; }
@@ -1349,7 +1352,8 @@ body#news-show #redaction .datePourCss {
   width: 95%;
   margin-top: 5px;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  margin-bottom: 5px; }
 
 #news_vote div .button_to,
 #news_vote div .button_to div {
@@ -1371,6 +1375,9 @@ div#toolbar {
     float: left; }
 
 /* tableau de bord et tracker */
+body#trackers-index .toolbox .new_content {
+  margin-bottom: 10px; }
+
 body#dashboard-index #contents table,
 body#trackers-index #contents table {
   border-collapse: collapse;

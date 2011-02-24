@@ -1285,11 +1285,18 @@ div#form_links {
 
 /* Moderation */
 /* TODO styler "ajouter un lien" */
-#moderation_box .board input#board_message {
-	display: block;
-	width: 95%;
-	margin-left: auto;
-	margin-right: auto;
+#moderation_box {
+	&.box li {
+		list-style: disc inside;
+	}
+
+	.board input#board_message {
+		display: block;
+		width: 95%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 5px;
+	}
 }
 
 body#news-show #redaction {
@@ -1338,6 +1345,7 @@ body#news-show #redaction {
 	margin-top: 5px;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 5px;
 }
 #news_vote div .button_to,
 #news_vote div .button_to div {
@@ -1364,6 +1372,9 @@ div#toolbar {
 }
 
 /* tableau de bord et tracker */
+body#trackers-index .toolbox .new_content {
+	margin-bottom: 10px;
+}
 body#dashboard-index #contents table,
 body#trackers-index #contents table {
 	border-collapse: collapse;
