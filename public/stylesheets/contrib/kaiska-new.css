@@ -311,6 +311,7 @@ div.content blockquote {
   margin-left: 20px;
   margin-right: 5px;
   padding-left: 5px;
+  padding-right: 5px;
 }
 div.content blockquote > p:first-child {
   margin-top: 5px;
