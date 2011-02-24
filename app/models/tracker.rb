@@ -76,10 +76,6 @@ class Tracker < Content
     assigned_to_user.try(:name) || 'Personne'
   end
 
-  def reported_by
-    user.try(:name) || "Pierre Tramo"
-  end
-
 ### ACL ###
 
   def creatable_by?(account)

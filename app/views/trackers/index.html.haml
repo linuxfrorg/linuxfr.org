@@ -30,7 +30,7 @@
           %td= link_to tracker.title, tracker
           %td= tracker.created_at.to_s(:posted)
           %td= tracker.assigned_to
-          %td= tracker.reported_by
+          %td= tracker.user ? link_to(tracker.user.name, tracker.user) : "Anonyme"
           %td= tracker.category_title
           %td= tracker.score
           %td= tracker.comments.count
