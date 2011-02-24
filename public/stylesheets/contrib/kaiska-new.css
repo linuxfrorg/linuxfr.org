@@ -703,6 +703,9 @@ div#main_board div.board p span.board-left b {
 }
 div#main_board div.board p span.board-right {
 }
+div#main_board div.board .highlighted {
+  background: #cae0eb;
+}
 
 /* Tribune modérateur */
 div#moderation_box input#board_message {
