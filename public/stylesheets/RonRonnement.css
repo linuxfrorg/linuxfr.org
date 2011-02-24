@@ -660,7 +660,10 @@ footer.actions .action {
 
 /* concerne tout ce qui est contenu : article, commentaire */
 .content {
-  text-align: justify; }
+  text-align: justify;
+  word-wrap: break-word; }
+  .content img {
+    max-width: 100%; }
   .content a[href] {
     color: #0000EE;
     font-weight: inherit; }

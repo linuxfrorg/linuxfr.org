@@ -767,6 +767,10 @@ footer.actions .action {
 /* concerne tout ce qui est contenu : article, commentaire */
 .content {
 	text-align: justify;
+	word-wrap: break-word;
+	img {
+		max-width: 100%;
+	}
 	a[href] {
 		@include lien_standard;
 		&[title="Définition Wikipédia"] {
