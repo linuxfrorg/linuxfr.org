@@ -684,6 +684,8 @@ footer.actions .action {
       -webkit-border-image: url("/favicon.png") 0 0 0 32;
       -khtml-border-image: url("/favicon.png") 0 0 0 32;
       border-image: url("/favicon.png") 0 0 0 32; }
+  .content .content li {
+    list-style-position: inside; }
 
 blockquote {
   border-left: 3px solid #4c575f;
@@ -1098,64 +1100,64 @@ code {
 
 /* Langues */
 li.link[lang=cn] {
-  list-style: url("/images/langs/cn.png"); }
+  list-style-image: url("/images/langs/cn.png"); }
 
 li.link[lang=ct] {
-  list-style: url("/images/langs/ct.png"); }
+  list-style-image: url("/images/langs/ct.png"); }
 
 li.link[lang=da] {
-  list-style: url("/images/langs/da.png"); }
+  list-style-image: url("/images/langs/da.png"); }
 
 li.link[lang=de] {
-  list-style: url("/images/langs/de.png"); }
+  list-style-image: url("/images/langs/de.png"); }
 
 li.link[lang=el] {
-  list-style: url("/images/langs/el.png"); }
+  list-style-image: url("/images/langs/el.png"); }
 
 li.link[lang=en] {
-  list-style: url("/images/langs/en.png"); }
+  list-style-image: url("/images/langs/en.png"); }
 
 li.link[lang=es] {
-  list-style: url("/images/langs/es.png"); }
+  list-style-image: url("/images/langs/es.png"); }
 
 li.link[lang=eu] {
-  list-style: url("/images/langs/eu.png"); }
+  list-style-image: url("/images/langs/eu.png"); }
 
 li.link[lang=fi] {
-  list-style: url("/images/langs/fi.png"); }
+  list-style-image: url("/images/langs/fi.png"); }
 
 li.link[lang=fr] {
-  list-style: url("/images/langs/fr.png"); }
+  list-style-image: url("/images/langs/fr.png"); }
 
 li.link[lang=it] {
-  list-style: url("/images/langs/it.png"); }
+  list-style-image: url("/images/langs/it.png"); }
 
 li.link[lang=ja] {
-  list-style: url("/images/langs/ja.png"); }
+  list-style-image: url("/images/langs/ja.png"); }
 
 li.link[lang=ko] {
-  list-style: url("/images/langs/ko.png"); }
+  list-style-image: url("/images/langs/ko.png"); }
 
 li.link[lang=nl] {
-  list-style: url("/images/langs/nl.png"); }
+  list-style-image: url("/images/langs/nl.png"); }
 
 li.link[lang=no] {
-  list-style: url("/images/langs/no.png"); }
+  list-style-image: url("/images/langs/no.png"); }
 
 li.link[lang=pl] {
-  list-style: url("/images/langs/pl.png"); }
+  list-style-image: url("/images/langs/pl.png"); }
 
 li.link[lang=pt] {
-  list-style: url("/images/langs/pt.png"); }
+  list-style-image: url("/images/langs/pt.png"); }
 
 li.link[lang=ru] {
-  list-style: url("/images/langs/ru.png"); }
+  list-style-image: url("/images/langs/ru.png"); }
 
 li.link[lang=sv] {
-  list-style: url("/images/langs/sv.png"); }
+  list-style-image: url("/images/langs/sv.png"); }
 
 li.link[lang=xx] {
-  list-style: url("/images/langs/xx.png"); }
+  list-style-image: url("/images/langs/xx.png"); }
 
 /* Tribune */
 body#boards-show #sidebar, body#boards-show #bigfooter, body#boards-show .scroll {
