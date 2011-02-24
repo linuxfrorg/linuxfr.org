@@ -82,7 +82,7 @@ class Board
     doc.encoding = "utf-8"
     node = Nokogiri::HTML::DocumentFragment.new(doc)
     inner_sanitize(node, @message[0, 500])
-    @message = auto_link(node.to_s, :urls) { "[URL]" }
+    @message = auto_link(node.to_s, :urls) { "[url]" }
   end
 
   def inner_sanitize(parent, str)
