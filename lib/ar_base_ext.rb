@@ -32,7 +32,7 @@ class ActiveRecord::Base
       send("#{attr}=", @@sanitizer.clean(self[attr]))
     end
     define_method attr do
-      self[attr].html_safe
+      self[attr].to_s.html_safe
     end
   end
 
