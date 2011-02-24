@@ -5,7 +5,7 @@ atom_feed do |feed|
 
   @trackers.each do |tracker|
     feed.entry(tracker) do |entry|
-      entry.title(tracker.title)
+      entry.title("#{tracker.category.title} : #{tracker.title}")
       entry.content(tracker.body, :type => 'html')
       entry.author do |author|
         author.name(tracker.user.name)
