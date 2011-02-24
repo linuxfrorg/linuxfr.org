@@ -1447,10 +1447,6 @@ section#container .markItUpEditor:focus {
 }
 
 
- {
-padding: 0.5em
-}
-
 #container h1 > a:first-child::before { content: "「 "}
 #container h1 > a::after { content: " 」"}
 #container h1 > a:last-child::after { content: ""; }
