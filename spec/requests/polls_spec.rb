@@ -6,6 +6,7 @@ describe "Polls" do
     Account.delete_all
     Node.delete_all
     Poll.delete_all
+    Comment.delete_all
   end
 
   let(:account) { Factory.create(:account) }

@@ -7,6 +7,7 @@ describe "Homepage" do
     Node.delete_all
     User.delete_all
     Account.delete_all
+    Comment.delete_all
   end
 
   let!(:account) { Factory.create(:account) }

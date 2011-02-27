@@ -30,7 +30,7 @@ module NodeHelper
     yield cp
     cp.meta ||= posted_by(record)
     cp.body ||= (ContentPresenter.collection? ?
-                 record.truncated_body.sub("[...](suite)", " " + link_to("(...)", url_for_content(record))) :
+                 record.truncated_body.sub("[...](suite)", " " + link_to("(...)", path_for_content(record))) :
                  record.body)
     render 'nodes/content', cp.to_hash
   end
@@ -42,7 +42,7 @@ module NodeHelper
   end
 
   def link_to_content(content)
-    link_to content.title, url_for_content(content)
+    link_to content.title, path_for_content(content)
   end
 
   def paginated_nodes(nodes, link=nil)
@@ -95,7 +95,7 @@ module NodeHelper
   end
 
   def read_it(content)
-    link = link_to_unless_current("Lire la suite", url_for_content(content)) { "" }
+    link = link_to_unless_current("Lire la suite", path_for_content(content)) { "" }
     nb_comments = pluralize(content.node.try(:comments_count), "commentaire")
     if current_account
       status = content.node.read_status(current_account)

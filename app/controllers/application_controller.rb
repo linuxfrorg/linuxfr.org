@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   before_filter :seo_filter
-  helper_method :mobile?, :url_for_content, :current_user
+  helper_method :mobile?, :url_for_content, :path_for_content, :current_user
 
   VALID_ORDERS = %w(created_at score interest last_commented_at)
 
@@ -32,13 +32,18 @@ protected
     redirect_to url_for_content(content)
   end
 
-  def url_for_content(content)
+  def url_for_content(content, only_path=false)
+    opts = { :routing_type => (only_path ? :path : :url) }
     case content
-    when Diary then content.new_record? ? "/journaux" : url_for([content.owner, content])
-    when News  then content.new_record? ? "/news" : url_for(content)
-    when Post  then url_for([content.forum, content])
-               else url_for(content)
+    when Diary then content.new_record? ? "/journaux" : polymorphic_url([content.owner, content], opts)
+    when News  then content.new_record? ? "/news" : polymorphic_url(content, opts)
+    when Post  then polymorphic_url([content.forum, content], opts)
+               else polymorphic_url(content, opts)
     end
+  end
+
+  def path_for_content(content)
+    url_for_content(content, true)
   end
 
   def preview_mode

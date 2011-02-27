@@ -187,7 +187,7 @@ describe Board do
     it "links automatically URL" do
       board.message = "<b>foo</b> http://linuxfr.org/"
       board.sanitize_message
-      board.message.should == '<b>foo</b> <a href="http://linuxfr.org/">[URL]</a>'
+      board.message.should == '<b>foo</b> <a href="http://linuxfr.org/">[url]</a>'
     end
 
     it "let us play with ducks" do

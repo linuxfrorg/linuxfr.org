@@ -9,6 +9,7 @@ describe "Posts" do
     Post.delete_all
     Forum.delete_all
     Node.delete_all
+    Comment.delete_all
   end
 
   after(:each)  { Warden.test_reset! }

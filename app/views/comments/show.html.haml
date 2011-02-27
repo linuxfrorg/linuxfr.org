@@ -1,5 +1,5 @@
 %p
-  = link_to "Retourner au contenu associé", url_for_content(@comment.content)
+  = link_to "Retourner au contenu associé", path_for_content(@comment.content)
 
 - if current_account
   - if current_account.can_update?(@comment)

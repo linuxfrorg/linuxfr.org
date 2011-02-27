@@ -7,6 +7,7 @@ describe "Wiki" do
     User.delete_all
     Account.delete_all
     Node.delete_all
+    Comment.delete_all
   end
 
   after(:each)  { Warden.test_reset! }
@@ -15,7 +16,7 @@ describe "Wiki" do
   let!(:wiki)   { Factory.create(:wiki) }
 
   it "can be listed and showed" do
-    get "/"
+    get "/wiki/pages"
     assert_response :success
     response.should contain(wiki.title)
     click_link wiki.title

@@ -16,7 +16,7 @@
       - answer = comment.last_answer
       %tr
         %td #{translate_content_type comment.content_type} : #{link_to_content comment.content}
-        %td= link_to comment.title, url_for_content(comment.node.content) + "#comment-#{comment.id}"
+        %td= link_to comment.title, path_for_content(comment.node.content) + "#comment-#{comment.id}"
         %td= comment.created_at.to_s(:posted)
         %td= comment.score
         %td= comment.nb_answers
