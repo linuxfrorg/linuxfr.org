@@ -208,11 +208,11 @@ class News < Content
   end
 
   def acceptable_by?(account)
-    account && (account.moderator? || account.admin?) && score > News.accept_threshold
+    account && (account.admin? || (account.moderator? && acceptable_by?))
   end
 
   def refusable_by?(account)
-    account && (account.moderator? || account.admin?) && score < News.refuse_threshold
+    account && (account.admin? || (account.moderator? && refusable?))
   end
 
   def pppable_by?(account)
@@ -221,6 +221,14 @@ class News < Content
 
   def votable_by?(account)
     super(account) || (account && account.amr? && !draft? && self.node.user_id != account.user_id)
+  end
+
+  def acceptable?
+    score > News.accept_threshold
+  end
+
+  def refusable?
+    score < News.refuse_threshold
   end
 
 ### Locks ###

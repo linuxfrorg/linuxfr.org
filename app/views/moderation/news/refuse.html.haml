@@ -10,12 +10,12 @@
     = select_tag :template, options_from_collection_for_select(Response.all, 'id', 'title')
   %div
     = label_tag :message, 'Message personnalisé qui sera ajouté dans le corps du mail'
-    = text_area_tag :message
+    = text_area_tag :message, '', :cols => 120, :rows => 10
   = submit_tag "Refuser"
 
 %h2 Utiliser un mail de refus personnalisé
 = form_tag refuse_moderation_news_path(@news) do
-  = text_area_tag :message
+  = text_area_tag :message, '', :cols => 120, :rows => 10
   = submit_tag "Refuser"
 
 %h2 Utiliser le mail de refus en anglais
