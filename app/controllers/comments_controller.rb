@@ -1,8 +1,8 @@
 # encoding: UTF-8
 class CommentsController < ApplicationController
   before_filter :authenticate_account!, :except => [:index, :show]
-  before_filter :find_node
-  before_filter :find_comment, :except => [:index, :new, :answer, :create]
+  before_filter :find_node, :except => [:templeet]
+  before_filter :find_comment, :except => [:index, :new, :answer, :create, :templeet]
 
   def index
     @comments = @node.comments.published.all(:order => 'id DESC')
@@ -64,6 +64,11 @@ class CommentsController < ApplicationController
     @comment.mark_as_deleted
     flash[:notice] = "Votre commentaire a bien été supprimé"
     redirect_to_content @node.content
+  end
+
+  def templeet
+    comment = Comment.find(params[:id])
+    redirect_to [comment.node, comment], :status => :moved_permanently
   end
 
 protected

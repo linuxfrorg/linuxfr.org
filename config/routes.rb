@@ -42,6 +42,7 @@ LinuxfrOrg::Application.routes.draw do
 
   # Nodes
   get "/tableau-de-bord" => "dashboard#index", :as => :dashboard
+  get "/comments/:id(,:d)(.html)" => "comments#templeet"
   resources :nodes, :only => [] do
     resources :comments do
       get :answer, :on => :member
