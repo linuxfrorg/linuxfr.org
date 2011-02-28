@@ -142,8 +142,8 @@ class News < Content
 
   before_validation :put_paragraphs_together, :on => :update
   def put_paragraphs_together
-    self.wiki_body        = paragraphs.in_first_part.map(&:wiki_body).join
-    self.wiki_second_part = paragraphs.in_second_part.map(&:wiki_body).join
+    self.wiki_body        = paragraphs.in_first_part.map(&:wiki_body).join("\n\n")
+    self.wiki_second_part = paragraphs.in_second_part.map(&:wiki_body).join("\n\n")
   end
 
   before_validation :wikify_fields
