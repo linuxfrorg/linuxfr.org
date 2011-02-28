@@ -22,6 +22,7 @@ class NewsController < ApplicationController
   end
 
   def show
+    redirect_to [:redaction, @news] if @news.draft?
   end
 
   def new
