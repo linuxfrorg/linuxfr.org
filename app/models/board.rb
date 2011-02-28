@@ -118,8 +118,12 @@ class Board
   end
 
   def self.all(object_type, object_id=nil)
+    limit(0, object_type, object_id)
+  end
+
+  def self.limit(max, object_type, object_id=nil)
     key = chan_key(object_type, object_id)
-    ids = $redis.lrange(key, 0, -1)
+    ids = $redis.lrange(key, 0, max-1)
     boards = []
     ids.each do |i|
       vals = $redis.hgetall("boards/msg/#{i}")

@@ -9,5 +9,5 @@
       = list_of(@candidate_news) do |news|
         = link_to news.title, [:moderation, news]
   = link_to pluralize(Poll.draft.count, "sondage"), moderation_polls_path
-  - @boards = Board.all(Board.amr)
+  - @boards ||= Board.limit(12, Board.amr)
   = render 'boards/boards'
