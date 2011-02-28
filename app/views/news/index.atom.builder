@@ -8,8 +8,8 @@ atom_feed(:root_url => news_index_url) do |feed|
   feed.icon("/favicon.png")
 
   @nodes.map(&:content).each do |news|
-    feed.entry(news) do |entry|
-      entry.title(news.title, :published => news.node.created_at)
+    feed.entry(news, :published => news.node.created_at) do |entry|
+      entry.title(news.title)
       first  = content_tag(:div, news.body)
       links  = content_tag(:ul, news.links.map.with_index do |l,i|
                  content_tag(:li, "lien n°#{i+1} : ".html_safe + link_to(l.title, l.url))
