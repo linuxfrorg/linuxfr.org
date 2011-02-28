@@ -157,7 +157,7 @@ html {
   background-image: url("/images/contrib/RonRonnement/background_html.png");
   background-repeat: repeat-x;
   background-position: top;
-  font-family: Freesans, "Free Helvetian", "URW Nimbus Sans L", "Nimbus Sans L", NimbusSanL, URWNimbusSanL, Swiss, "Swiss 721 SWA", "Swiss 721 BT", "Swiss 721", Helvetica, Helvetic, Helv, "Arial Unicode MS", Arial, sans-serif;
+  font-family: sans-serif;
   padding: 0px 19px 0px 31px; }
 
 body {
@@ -761,7 +761,7 @@ a.scroll {
   -webkit-border-radius: 6px;
   color: #eeeeee;
   padding: 6px 6px 0 6px;
-  font-family: lucida Grande;
+  font-family: lucida Grande, sans-serif;
   font-size: 11px;
   border: 2px solid #999999;
   display: block;
@@ -770,7 +770,7 @@ a.scroll {
 
 .notice-item-close {
   position: absolute;
-  font-family: Arial;
+  font-family: sans-serif;
   font-size: 12px;
   font-weight: bold;
   right: 6px;
