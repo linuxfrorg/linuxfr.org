@@ -161,6 +161,7 @@ html {
   padding: 0px 19px 0px 31px; }
 
 body {
+  color: #000;
   /* si gradient ko p. ex. opera */
   background: #e4e4e4;
   margin-top: 0px;
