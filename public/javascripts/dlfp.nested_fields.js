@@ -20,7 +20,10 @@
                 id: "add_" + base.nested,
                 text: "Ajouter un " + base.text
             })}));
-            $('#add_' + base.nested).click(function() { base.add_item(); });
+            $('#add_' + base.nested).click(function() {
+                base.add_item();
+                return false;
+            });
         };
 
         base.bind_item = function(item) {
