@@ -32,6 +32,11 @@ describe LFMarkdown do
     html.should == "<p>foo_bar_baz</p>\n"
   end
 
+  it "handles single line breaks" do
+    html = LFMarkdown.new("foo\nbar\n\nbaz").to_html
+    html.should == "<p>foo<br/>\nbar</p>\n\n<p>baz</p>\n"
+  end
+
   it "accepts heading levels from <h2> to <h5>" do
     md = LFMarkdown.new <<EOS
 Title 1
@@ -55,7 +60,7 @@ class Ruby
 end
 ```
 EOS
-    md.to_html.should == "<p>Mon joli code :\n<pre><code class=\"ruby\"><span class=\"k\">class</span> <span class=\"nc\">Ruby</span>\n<span class=\"k\">end</span></code></pre></p>\n"
+    md.to_html.should == "<p>Mon joli code :<br/>\n<pre><code class=\"ruby\"><span class=\"k\">class</span> <span class=\"nc\">Ruby</span>\n<span class=\"k\">end</span></code></pre></p>\n"
   end
 
   it "accepts code with utf-8 encoding" do

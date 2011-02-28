@@ -26,8 +26,9 @@ class LFMarkdown < Markdown
   end
 
   def to_html
-    process_wikipedia_links
     extract_code
+    process_wikipedia_links
+    process_newlines
     ret = fix_heading_levels(super)
     ret = process_code(ret)
     ret = add_toc_content(ret) if @generate_toc
@@ -40,6 +41,13 @@ protected
 
   def process_wikipedia_links
     @text.gsub!(WP_LINK_REGEXP, '[\1](http://fr.wikipedia.org/wiki/\1 "Définition Wikipédia")')
+  end
+
+  # Code taken from http://github.com/github-flavored-markdown/
+  def process_newlines
+    @text.gsub!(/(\A|^$\n)(^\w[^\n]*\n)(^\w[^\n]*$)+/m) do |x|
+      x.gsub(/^(.+)$/, "\\1  ")
+    end
   end
 
   def fix_heading_levels(str)
