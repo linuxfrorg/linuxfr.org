@@ -50,6 +50,15 @@
       %label.factice Sûr de vos modifications ?
       = f.submit "Enregistrer"
 
+  %h2 Options
+  = form_for @account, :url => registration_path(:account), :html => { :method => :put } do |f|
+    %p
+      = f.check_box :hide_avatar
+      = f.label :hide_avatar, "Ne pas afficher les avatars sur le site"
+    %p
+      %label.factice Sûr de vos modifications ?
+      = f.submit "Enregistrer"
+
   %h2 Choisir les contenus affichés sur la page d'accueil
   = form_for @account, :url => registration_path(:account), :html => { :method => :put } do |f|
     %p
