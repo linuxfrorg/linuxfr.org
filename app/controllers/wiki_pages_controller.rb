@@ -4,8 +4,8 @@ class WikiPagesController < ApplicationController
   before_filter :load_wiki_page, :only => [:edit, :update, :destroy, :revision]
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
   after_filter  :expire_cache, :only => [:create, :update, :destroy]
-  caches_page   :index,   :if => Proc.new { |c| c.request.format.atom? }
-  caches_page   :changes, :if => Proc.new { |c| c.request.format.atom? }
+  caches_page   :index,   :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
+  caches_page   :changes, :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
 
   def index
     respond_to do |wants|
