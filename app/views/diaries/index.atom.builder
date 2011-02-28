@@ -1,4 +1,4 @@
-atom_feed do |feed|
+atom_feed(:root_url => diaries_url) do |feed|
   if @user
     feed.title("LinuxFr.org : les journaux de #{@user.name}")
   else

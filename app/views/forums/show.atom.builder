@@ -1,4 +1,4 @@
-atom_feed do |feed|
+atom_feed(:root_url => forum_url(@forum)) do |feed|
   feed.title("LinuxFr.org : le forum #{@forum.title}")
   feed.updated(@posts.first.try :created_at)
   feed.icon("/favicon.png")

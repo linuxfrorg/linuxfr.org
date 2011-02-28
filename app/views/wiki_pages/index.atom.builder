@@ -1,4 +1,4 @@
-atom_feed do |feed|
+atom_feed(:root_url => wiki_pages_url) do |feed|
   feed.title("LinuxFr.org : le wiki")
   feed.updated(@wiki_pages.first.try :updated_at)
   feed.icon("/favicon.png")

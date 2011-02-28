@@ -1,4 +1,4 @@
-atom_feed do |feed|
+atom_feed(:root_url => trackers_url) do |feed|
   feed.title("LinuxFr.org : les commentaires du suivi")
   feed.updated(@comments.last.try :created_at)
   feed.icon("/favicon.png")

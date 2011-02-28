@@ -1,4 +1,4 @@
-atom_feed do |feed|
+atom_feed(:root_url => section_url(@section)) do |feed|
   feed.title("LinuxFr.org : les dépêches de #{@section.title}")
   feed.updated(@news.first.try :updated_at)
   feed.icon("/favicon.png")
