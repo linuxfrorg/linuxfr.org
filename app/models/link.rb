@@ -35,12 +35,7 @@ class Link < ActiveRecord::Base
 
   def self.hit(id)
     url = $redis.get("links/#{id}/url")
-    if url.blank?
-      l = Link.find(id)
-      return nil unless l
-      url = l.url
-      $redis.set("links/#{id}/url", url)
-    end
+    return nil if url.blank?
     $redis.incr("links/#{id}/hits")
     url
   end
@@ -57,6 +52,11 @@ class Link < ActiveRecord::Base
       self.locked_by_id = nil
       save
     end
+  end
+
+  after_save :save_url_in_redis
+  def save_url_in_redis
+    $redis.set("links/#{self.id}/url", url)
   end
 
 ### Chat ###
