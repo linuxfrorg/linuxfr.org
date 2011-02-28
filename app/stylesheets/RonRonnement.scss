@@ -920,6 +920,13 @@ ul.poll {
 	}
 }
 
+.anchor {
+		color: #aaa;
+		&:hover {
+				color: #333;
+		}
+}
+
 .factice, .go_to_content {
 	float: left;
 	text-indent: -9998em;

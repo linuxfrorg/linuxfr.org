@@ -795,6 +795,11 @@ ul.poll li meter::-webkit-meter-horizontal-suboptimal-value,
 ul.poll li meter::-webkit-meter-horizontal-even-less-good-value {
   background: rgba(76, 87, 95, 0.33); }
 
+.anchor {
+  color: #aaa; }
+  .anchor:hover {
+    color: #333; }
+
 .factice, .go_to_content {
   float: left;
   text-indent: -9998em;
