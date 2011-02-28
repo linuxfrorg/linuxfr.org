@@ -32,7 +32,7 @@ class NewsNotifications < ActionMailer::Base
   end
 
   def refuse_en(news)
-    send_email "New rejected:", news
+    send_email "Rejected news:", news
   end
 
 protected
