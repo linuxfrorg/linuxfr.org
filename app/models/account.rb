@@ -209,15 +209,16 @@ class Account < ActiveRecord::Base
 ### Preferences ###
 
   include Bitfields
-  bitfield :preferences, 1  => :hide_avatar,
-                         2  => :news_on_home,
-                         4  => :diaries_on_home,
-                         8  => :posts_on_home,
-                         16 => :polls_on_home,
-                         32 => :wiki_pages_on_home,
-                         64 => :trackers_on_home,
+  bitfield :preferences,   1 => :hide_avatar,
+                           2 => :news_on_home,
+                           4 => :diaries_on_home,
+                           8 => :posts_on_home,
+                          16 => :polls_on_home,
+                          32 => :wiki_pages_on_home,
+                          64 => :trackers_on_home,
+                         128 => :sort_by_date_on_home,
                          :scopes => false
-  attr_accessible :hide_avatar, :news_on_home, :diaries_on_home, :posts_on_home, :polls_on_home, :wiki_pages_on_home, :trackers_on_home
+  attr_accessible :hide_avatar, :news_on_home, :diaries_on_home, :posts_on_home, :polls_on_home, :wiki_pages_on_home, :trackers_on_home, :sort_by_date_on_home
 
   def types_on_home
     %w(News Diary Post Poll WikiPage Tracker).select do |type|

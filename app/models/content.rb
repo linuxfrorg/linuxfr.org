@@ -75,7 +75,7 @@ class Content < ActiveRecord::Base
 ### Interest ###
 
   def self.interest_coefficient
-    3
+    2
   end
 
 ### Sitemap ###

@@ -261,10 +261,4 @@ class News < Content
     self.id == $redis.get("news/ppp").to_i
   end
 
-### Interest ###
-
-  def self.interest_coefficient
-    4
-  end
-
 end
