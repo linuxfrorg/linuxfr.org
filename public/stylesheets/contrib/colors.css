@@ -486,7 +486,16 @@ section > * > div > table {line-height: 3em;}
 section > * > div > table tr {border-bottom: 1px dotted #ccc;}
 section > * > div > table h2 {margin: 0;}
 
-
+/* Comments */
+.comment > footer * {display: inline-block;}
+.comment > footer input { /* link-like */
+  border: 0; 
+  color: #6666cc;
+  font-size: 1em;
+  background: transparent;
+  text-transform: capitalize;
+}
+.comment > footer input:hover {cursor: pointer; text-decoration: underline;}
 
 /* FIXME: Not implemented
  * 
