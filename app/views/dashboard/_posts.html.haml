@@ -16,6 +16,6 @@
       %tr
         %td= post.forum.title
         %td= link_to post.title, [post.forum, post]
-        %td= node.score
-        %td= node.comments.count
-        %td= post.created_at.to_s(:posted)
+        %td.number= node.score
+        %td.number= node.comments.count
+        %td.date= post.created_at.to_s(:posted)

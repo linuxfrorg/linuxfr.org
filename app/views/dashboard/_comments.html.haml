@@ -10,14 +10,18 @@
       %th Sujet du commentaire
       %th Date
       %th Note
-      %th Nb de réponses
+      %th <abbr title="Nb de réponses">Rép.</abbr>
       %th Dernière réponse
     - @comments.each do |comment|
       - answer = comment.last_answer
       %tr
         %td #{translate_content_type comment.content_type} : #{link_to_content comment.content}
         %td= link_to comment.title, path_for_content(comment.node.content) + "#comment-#{comment.id}"
-        %td= comment.created_at.to_s(:posted)
-        %td= comment.score
-        %td= comment.nb_answers
-        %td= answer && answer.created_at.to_s(:posted)
+        %td.date= comment.created_at.to_s(:posted)
+        %td.number= comment.score
+        - if answer
+          - klass = answer.read_by?(current_account) ? "thread-read" : "thread-new-comments"
+          %td.number{:class => klass}= comment.nb_answers
+        - else
+          %td.thread-no-comments.number 0
+        %td.date= answer ? answer.created_at.to_s(:posted) : "&nbsp;".html_safe

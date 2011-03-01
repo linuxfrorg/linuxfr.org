@@ -922,10 +922,12 @@ ul.poll {
 }
 
 .anchor {
-		color: #aaa;
-		&:hover {
-				color: #333;
-		}
+	float: right;
+	margin-right: 3px;
+	color: #aaa;
+	&:hover {
+		color: #333;
+	}
 }
 
 .factice, .go_to_content {
@@ -1399,11 +1401,16 @@ body#trackers-index #contents table {
 		width: 100%;
 		border-bottom: 1px solid $C_INTER;
 		&:last-of-type { border-bottom: none; }
-
-		td, th {
-			border-right: 1px solid $C_INTER;
-			&:last-of-type { border-right: none; }
-		}
+	}
+	td, th {
+		border-right: 1px solid $C_INTER;
+		&:last-of-type { border-right: none; }
+		&.date { white-space: nowrap; }
+		&.number { text-align: right; padding-right: 2px; }
+	}
+	.thread-new-comments {
+		background: url("/images/icones/attention.png") no-repeat 2px center;
+		padding: auto 20px 2px;
 	}
 	a[href] { @include lien_standard; }
 }

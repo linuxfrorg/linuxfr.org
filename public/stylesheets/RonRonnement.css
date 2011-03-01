@@ -797,6 +797,8 @@ ul.poll li meter::-webkit-meter-horizontal-even-less-good-value {
   background: rgba(76, 87, 95, 0.33); }
 
 .anchor {
+  float: right;
+  margin-right: 3px;
   color: #aaa; }
   .anchor:hover {
     color: #333; }
@@ -1401,14 +1403,27 @@ body#trackers-index #contents table {
     body#dashboard-index #contents table tr:last-of-type,
     body#trackers-index #contents table tr:last-of-type {
       border-bottom: none; }
-    body#dashboard-index #contents table tr td, body#dashboard-index #contents table tr th,
-    body#trackers-index #contents table tr td,
-    body#trackers-index #contents table tr th {
-      border-right: 1px solid #a99c90; }
-      body#dashboard-index #contents table tr td:last-of-type, body#dashboard-index #contents table tr th:last-of-type,
-      body#trackers-index #contents table tr td:last-of-type,
-      body#trackers-index #contents table tr th:last-of-type {
-        border-right: none; }
+  body#dashboard-index #contents table td, body#dashboard-index #contents table th,
+  body#trackers-index #contents table td,
+  body#trackers-index #contents table th {
+    border-right: 1px solid #a99c90; }
+    body#dashboard-index #contents table td:last-of-type, body#dashboard-index #contents table th:last-of-type,
+    body#trackers-index #contents table td:last-of-type,
+    body#trackers-index #contents table th:last-of-type {
+      border-right: none; }
+    body#dashboard-index #contents table td.date, body#dashboard-index #contents table th.date,
+    body#trackers-index #contents table td.date,
+    body#trackers-index #contents table th.date {
+      white-space: nowrap; }
+    body#dashboard-index #contents table td.number, body#dashboard-index #contents table th.number,
+    body#trackers-index #contents table td.number,
+    body#trackers-index #contents table th.number {
+      text-align: right;
+      padding-right: 2px; }
+  body#dashboard-index #contents table .thread-new-comments,
+  body#trackers-index #contents table .thread-new-comments {
+    background: url("/images/icones/attention.png") no-repeat 2px center;
+    padding: auto 20px 2px; }
   body#dashboard-index #contents table a[href],
   body#trackers-index #contents table a[href] {
     color: #0000EE;

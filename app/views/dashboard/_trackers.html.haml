@@ -16,6 +16,6 @@
       %tr
         %td= tracker.category.title
         %td= link_to tracker.title, tracker
-        %td= node.score
-        %td= node.comments.count
-        %td= tracker.created_at.to_s(:posted)
+        %td.number= node.score
+        %td.number= node.comments.count
+        %td.date= tracker.created_at.to_s(:posted)
