@@ -15,20 +15,22 @@
 # The wiki have pages, with the content that can't go anywhere else.
 #
 class WikiPage < Content
+  RESERVED_WORDS = %w(index nouveau modifications pages)
   has_many :versions, :class_name => 'WikiVersion',
                       :dependent  => :destroy,
                       :order      => 'version DESC',
                       :inverse_of => :wiki_page
-
-  validates :title, :presence => { :message => "Le titre est obligatoire" },
-                    :length   => { :maximum => 100, :message => "Le titre est trop long" }
-  validates :body,  :presence => { :message => "Le corps est obligatoire" }
+  reserved = RESERVED_WORDS + RESERVED_WORDS.map(&:capitalize) + RESERVED_WORDS.map(&:upcase)
+  validates :title, :presence  => { :message => "Le titre est obligatoire" },
+                    :length    => { :maximum => 100, :message => "Le titre est trop long" },
+                    :exclusion => { :in => reserved, :message => "Ce titre est réservé pour une page spéciale" }
+  validates :body,  :presence  => { :message => "Le corps est obligatoire" }
 
   scope :sorted, order('created_at DESC')
 
 ### SEO ###
 
-  has_friendly_id :title, :use_slug => true, :reserved_words => %w(index nouveau modifications pages)
+  has_friendly_id :title, :use_slug => true, :reserved_words => RESERVED_WORDS
 
   def normalize_friendly_id(string)
     string.to_ascii.word_chars.clean.truncate_bytes(150).with_separators.to_s
