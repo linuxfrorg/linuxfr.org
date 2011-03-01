@@ -32,7 +32,7 @@
           %td= tracker.assigned_to
           %td= tracker.user ? link_to(tracker.user.name, tracker.user) : "Anonyme"
           %td= tracker.category_title
-          %td= tracker.score
-          %td= tracker.comments.count
+          %td.number= tracker.score
+          %td.number= tracker.comments.count
           - if current_account && current_account.can_update?(tracker)
             %td= link_to "Modifier", "/suivi/#{tracker.to_param}/modifier"

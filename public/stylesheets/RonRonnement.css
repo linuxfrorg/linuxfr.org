@@ -752,11 +752,11 @@ a.scroll {
   position: fixed;
   top: 20px;
   right: 20px;
-  width: 250px;
+  width: 280px;
   z-index: 9999; }
 
 .notice-item {
-  height: 60px;
+  min-height: 60px;
   background: #333333;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
@@ -768,6 +768,11 @@ a.scroll {
   display: block;
   position: relative;
   margin: 0 0 12px 0; }
+  .notice-item ul {
+    padding: 0; }
+  .notice-item li {
+    text-align: left;
+    list-style: disc inside; }
 
 .notice-item-close {
   position: absolute;
