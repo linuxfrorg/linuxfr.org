@@ -31,5 +31,10 @@
   - else
     - if @news.acceptable? && current_account.can_accept?(@news)
       = button_to "Publier", accept_moderation_news_path(@news)
-    - if @news.refusable? && current_account.can_refuse?(@news)
+    - elsif @news.refusable? && current_account.can_refuse?(@news)
       = button_to "Refuser", refuse_moderation_news_path(@news)
+    - else current_account.admin?
+      %button#admin_49_3 49.3
+      #buttons_49_3(style="display: none;")
+        = button_to "Publier", accept_moderation_news_path(@news)
+        = button_to "Refuser", refuse_moderation_news_path(@news)

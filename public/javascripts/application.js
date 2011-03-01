@@ -117,4 +117,11 @@
         var url = window.URL.createObjectURL(this.files[0]);
         $(this).parents('form').find('.avatar').attr('src', url);
     });
+
+    /* Admins */
+    $("#admin_49_3").click(function() {
+        $("#admin_49_3").hide();
+        $("#buttons_49_3").show();
+        return false;
+    });
 })(jQuery);

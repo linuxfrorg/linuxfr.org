@@ -15,7 +15,8 @@
 
 %h2 Utiliser un mail de refus personnalisé
 = form_tag refuse_moderation_news_path(@news) do
-  = text_area_tag :message, '', :cols => 120, :rows => 10
+  %div
+    = text_area_tag :message, '', :cols => 120, :rows => 10
   = submit_tag "Refuser"
 
 %h2 Utiliser le mail de refus en anglais
