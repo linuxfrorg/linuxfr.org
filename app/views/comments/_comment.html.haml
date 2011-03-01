@@ -1,8 +1,8 @@
 %h2
   = link_to "[^]", "#comment-#{comment.parent_id}", :title => "Aller au commentaire parent", :class => "parent" unless comment.root?
+  %a(href="#comment-#{comment.id}" class="anchor") #
   = ' '
   = link_to comment.title, "/nodes/#{comment.node_id}/comments/#{comment.id}", :class => "title"
-  %a(href="#comment-#{comment.id}" class="anchor") #
 %p.meta
   = posted_by(comment)
   Évalué à

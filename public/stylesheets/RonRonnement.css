@@ -802,8 +802,6 @@ ul.poll li meter::-webkit-meter-horizontal-even-less-good-value {
   background: rgba(76, 87, 95, 0.33); }
 
 .anchor {
-  float: right;
-  margin-right: 3px;
   color: #aaa; }
   .anchor:hover {
     color: #333; }

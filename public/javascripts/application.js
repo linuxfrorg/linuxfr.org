@@ -64,7 +64,7 @@
             $('#comments .new-comment').toolbar('Nouveaux commentaires', {folding: '#comments .comment'});
         }
         if ($('#contents .node').length > 1) {
-            $('#contents .new-node').toolbar('Contenus pas encore visités');
+            $('#contents .new-node').toolbar('Contenus jamais visités');
         }
     }
 
