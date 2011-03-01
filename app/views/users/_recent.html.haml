@@ -1,6 +1,11 @@
 #user_recent_contents.box
   %h1= @user.name
   %p Compte créé le #{l @user.created_at.to_date}
+  - if current_account && current_account.admin? && @user.account
+    %ul
+      %li Courriel : #{@user.account.email}
+      %li Karma : #{@user.account.karma}
+      %li Rôle : #{@user.account.role}
   %ul
     %li= link_to "Derniers journaux", user_path(@user)
     %li= link_to "Dernières dépêches", news_user_path(@user)
