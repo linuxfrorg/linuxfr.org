@@ -220,7 +220,7 @@ class News < Content
   end
 
   def votable_by?(account)
-    super(account) || (account && account.amr? && !draft? && self.node.user_id != account.user_id)
+    super(account) || (account && account.amr? && candidate? && self.node.user_id != account.user_id)
   end
 
   def acceptable?
