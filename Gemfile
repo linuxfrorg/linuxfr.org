@@ -3,7 +3,7 @@ source :rubygems
 gem "rails",                   "=3.0.5"
 
 gem "acts_as_list",            "~>0.1"
-gem "albino",                  "=1.1.1"
+gem "albino",                  "~>1.3"
 gem "bitfields",               "~>0.3"
 gem "canable",                 "~>0.1"
 gem "carrierwave",             "~>0.5"
@@ -20,7 +20,7 @@ gem "nokogiri",                "~>1.4"
 gem "rdiscount",               "~>1.6"
 gem "redis",                   "~>2.1"
 gem "sanitize",                "~>2.0"
-gem "sitemap_generator",       "~>1.3"
+gem "sitemap_generator",       "~>1.4"
 gem "simple_autocomplete",     "~>0.3"
 gem "state_machine",           "~>0.9"
 # TODO Rails3
