@@ -4,8 +4,7 @@
   %body{body_attr}
     #top
     = render 'layouts/site'
-    - unless mobile?
-      = render 'layouts/sidebar'
+    = render 'layouts/sidebar'
     %section#container
       - [:alert, :notice].each do |type|
         - if flash[type]
@@ -13,7 +12,6 @@
       = yield :layout
       %footer
         %p= link_to "Revenir en haut de page", '#top', :class => 'scroll'
-    - unless mobile?
-      - cache "fragments/layouts/footer", :expires_in => 1.minute do
-        = render 'layouts/footer'
+    - cache "fragments/layouts/footer", :expires_in => 1.minute do
+      = render 'layouts/footer'
     = include_javascripts :default

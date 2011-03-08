@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   before_filter :seo_filter
-  helper_method :mobile?, :url_for_content, :path_for_content, :current_user
+  helper_method :url_for_content, :path_for_content, :current_user
 
   VALID_ORDERS = %w(created_at score interest last_commented_at)
 
@@ -20,10 +20,6 @@ protected
     @last_comments = Comment.footer.select([:id, :node_id, :title])
     @popular_tags  = Tag.footer.select([:name])
     @friend_sites  = FriendSite.scoped.select([:url, :title])
-  end
-
-  def mobile?
-    request.subdomains.first == 'm'
   end
 
 ### Content ###
