@@ -27,10 +27,11 @@
     });
 
     /* Force people to preview their modified contents */
-    $("textarea").change(function() {
+    $("textarea").keypress(function(event) {
         $(this).parents("form")
                .find("input[value=Prévisualiser]")
                .next("input[type=submit]").hide();
+        $(this).unbind(event);
     });
 
     /* Add/Remove dynamically links in the news form. */
