@@ -208,7 +208,7 @@ class News < Content
   end
 
   def acceptable_by?(account)
-    account && (account.admin? || (account.moderator? && acceptable_by?))
+    account && (account.admin? || (account.moderator? && acceptable?))
   end
 
   def refusable_by?(account)

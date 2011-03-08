@@ -6,6 +6,9 @@
     - cache "fragments/layouts/site", :expires_in => 30.days do
       = render 'layouts/site'
     %section#redaction
+      - [:alert, :notice].each do |type|
+        - if flash[type]
+          %div(class=type)= flash[type]
       %section#edition= yield :layout
       %section#chat= yield :chat
     = include_javascripts :default

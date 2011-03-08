@@ -76,6 +76,7 @@
     $('.tag_in_place').live('in_place:form', function() {
         $('input.autocomplete').each(function() {
             var input = $(this);
+            input.focus();
             input.autocomplete(input.attr('data-url'), {multiple: true, multipleSeparator: ' ', dataType: 'text'});
         });
     }).live('in_place:result', function() {

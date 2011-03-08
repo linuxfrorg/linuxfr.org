@@ -18,7 +18,7 @@ module NewsHelper
   def moderated_by(news)
     return "" unless news.moderator_id
     moderator = User.where(:id => news.moderator_id).select([:name, :cached_slug]).first
-    " Modéré par #{link_to moderator.name, moderator}.".html_safe
+    " Modéré par #{link_to moderator.name, moderator}.".html_safe if moderator
   end
 
 end

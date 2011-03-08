@@ -6,7 +6,7 @@ atom_feed(:root_url => section_url(@section)) do |feed|
   @news.each do |news|
     feed.entry(news) do |entry|
       entry.title(news.title)
-      entry.content(news.wikified_body, :type => 'html')
+      entry.content(news.body, :type => 'html')
       entry.author do |author|
         author.name(news.user.name)
       end

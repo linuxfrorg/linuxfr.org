@@ -5,6 +5,6 @@ class RedactionController < ApplicationController
     @boards = Board.all(Board.writing)
     @board  = @boards.build
     enforce_view_permission(@board)
-    @news   = News.draft.sorted.all(:limit => 3)
+    @news   = News.draft.sorted
   end
 end
