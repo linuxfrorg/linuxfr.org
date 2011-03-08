@@ -19,6 +19,8 @@
     %meta(name="author" content=@author)
   %meta(name="description" content=@description)
   %meta(name="keywords" content="#{@keywords.join ', '}")
+  - if @dont_index
+    %meta(name="robots" content="noindex, nofollow")
   <!--[if IE]><script src="/javascripts/html5.js"></script><![endif]-->
   <!--[if lt IE 9]><script src="/javascripts/IE9.js"></script><![endif]-->
   - @feeds.each do |link,title|

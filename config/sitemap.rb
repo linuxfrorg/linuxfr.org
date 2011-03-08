@@ -30,7 +30,7 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
     sitemap.add section_path(section), :priority => 0.6, :changefreq => 'daily'
   end
   sitemap.add news_index_path, :priority => 0.7, :changefreq => 'hourly'
-  Node.public_listing(News, "id").find_each do |node|
+  Node.sitemap(News).find_each do |node|
     news = node.content
     sitemap.add news_path(news), :priority => 1.0, :changefreq => news.changefreq, :lastmod => news.lastmod
   end
@@ -40,7 +40,7 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
     sitemap.add user_path(user), :priority => 0.5, :changefreq => 'weekly'
   end
   sitemap.add diaries_path, :priority => 0.6, :changefreq => 'hourly'
-  Node.public_listing(Diary, "id").find_each do |node|
+  Node.sitemap(Diary).find_each do |node|
     diary = node.content
     next if diary.owner.nil?
     sitemap.add user_diary_path(:user_id => diary.owner, :id => diary), :priority => 0.8, :changefreq => diary.changefreq, :lastmod => diary.lastmod
@@ -51,7 +51,7 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   Forum.find_each do |forum|
     sitemap.add forum_path(forum), :priority => 0.3, :changefreq => 'daily'
   end
-  Node.public_listing(Post, "id").find_each do |node|
+  Node.sitemap(Post).find_each do |node|
     post = node.content
     sitemap.add forum_post_path(:forum_id => post.forum, :id => post), :priority => 0.5, :changefreq => post.changefreq, :lastmod => post.lastmod
   end
@@ -65,12 +65,12 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
     sitemap.add poll_path(poll), :priority => 0.3, :changefreq => 'yearly', :lastmod => poll.lastmod
   end
   sitemap.add trackers_path, :priority => 0.2, :changefreq => 'weekly'
-  Node.public_listing(Tracker, "id").find_each do |node|
+  Node.sitemap(Tracker).find_each do |node|
     tracker = node.content
     sitemap.add tracker_path(tracker), :priority => 0.2, :changefreq => tracker.changefreq, :lastmod => tracker.lastmod
   end
   sitemap.add wiki_pages_path, :priority => 0.8, :changefreq => 'daily'
-  Node.public_listing(WikiPage, "id").find_each do |node|
+  Node.sitemap(WikiPage).find_each do |node|
     wiki_page = node.content
     sitemap.add wiki_page_path(wiki_page), :priority => 0.8, :changefreq => wiki_page.changefreq, :lastmod => wiki_page.lastmod
   end

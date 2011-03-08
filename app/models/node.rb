@@ -33,6 +33,7 @@ class Node < ActiveRecord::Base
   scope :by_date, order('created_at DESC')
   scope :on_dashboard, lambda {|type| public_listing(type, "created_at") }
   scope :published_on, lambda {|d| where(:created_at => (d...d+1.day)) }
+  scope :sitemap, lambda {|types| public_listing(types, "id").where("score > 0") }
   scope :public_listing, lambda {|types,order|
     types = types.to_s if types === Class
     visible.where(:content_type => types).order("#{order} DESC")
