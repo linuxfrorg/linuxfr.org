@@ -83,7 +83,7 @@ class Tracker < Content
   end
 
   def updatable_by?(account)
-    account && (account.moderator? || account.admin?)
+    account && (account.moderator? || account.admin? || account.user_id == node.user_id)
   end
 
   def destroyable_by?(account)
