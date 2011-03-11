@@ -7,12 +7,9 @@ class TrackersController < ApplicationController
   def index
     @attrs    = {"state" => "opened"}.merge(params[:tracker] || {})
     @tracker  = Tracker.new(@attrs)
+    @tracker.state = @attrs["state"]
     @trackers = Tracker.scoped
-    if @attrs["state"].blank?
-      @tracker.state = ""
-    else
-      @trackers = @trackers.where(:state => @tracker.state)
-    end
+    @trackers = @trackers.where(:state       => @tracker.state)       if @attrs["state"].present?
     @trackers = @trackers.where(:category_id => @tracker.category_id) if @attrs["category_id"].present?
     if @attrs["assigned_to_user_id"] == 0
       @trackers = @trackers.where(:assigned_to_user_id => nil)
