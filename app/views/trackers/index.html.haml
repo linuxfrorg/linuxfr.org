@@ -3,9 +3,23 @@
 - feed "Flux Atom des commentaires", "/suivi/comments.atom"
 
 %nav.toolbox
-  %h2 <strong>#{@trackers.length}</strong> entrées ouvertes sur un total de #{Tracker.count}
+  %h2 <strong>#{Tracker.opened.count}</strong> entrées ouvertes sur un total de #{Tracker.count}
   .new_content
     = link_to "Proposer une entrée", "/suivi/nouveau"
+
+= form_for @tracker, :url => trackers_path, :html => { :method => :get } do |f|
+  %h2 Filtrer les entrées du suivi
+  %p
+    = f.label :state, "État : "
+    = f.select :state, Tracker::States.invert, :include_blank => true
+  %p
+    = f.label :category_id, "Catégorie : "
+    = f.collection_select :category_id, Category.all, :id, :title, :include_blank => true
+  %p
+    = f.label :assigned_to_user_id, "Assigné à : "
+    = f.collection_select :assigned_to_user_id, Account.admin, :id, :login, :include_blank => true
+  %p
+    = submit_tag "Filtrer"
 
 #contents
   - if @trackers.empty?
@@ -20,6 +34,7 @@
         %th Affecté à
         %th Envoyé par
         %th Catégorie
+        %th État
         %th Score
         %th Commentaires
         - if current_account && current_account.can_update?(@trackers.first)
@@ -32,6 +47,7 @@
           %td= tracker.assigned_to
           %td= tracker.user ? link_to(tracker.user.name, tracker.user) : "Anonyme"
           %td= tracker.category_title
+          %td= tracker.state_name
           %td.number= tracker.score
           %td.number= tracker.comments.count
           - if current_account && current_account.can_update?(tracker)

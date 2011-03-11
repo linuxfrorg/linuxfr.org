@@ -5,7 +5,20 @@ class TrackersController < ApplicationController
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
 
   def index
-    @trackers = Tracker.sorted.opened
+    @attrs    = {"state" => "opened"}.merge(params[:tracker] || {})
+    @tracker  = Tracker.new(@attrs)
+    @trackers = Tracker.scoped
+    if @attrs["state"].blank?
+      @tracker.state = ""
+    else
+      @trackers = @trackers.where(:state => @tracker.state)
+    end
+    @trackers = @trackers.where(:category_id => @tracker.category_id) if @attrs["category_id"].present?
+    if @attrs["assigned_to_user_id"] == 0
+      @trackers = @trackers.where(:assigned_to_user_id => nil)
+    elsif @attrs["assigned_to_user_id"].present?
+      @trackers = @trackers.where(:assigned_to_user_id => @tracker.assigned_to_user_id)
+    end
     respond_to do |wants|
       wants.html
       wants.atom

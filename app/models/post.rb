@@ -26,8 +26,6 @@ class Post < Content
                          :length   => { :maximum => 100, :message => "Le titre est trop long" }
   validates :wiki_body, :presence => { :message => "Vous ne pouvez pas poster un journal vide" }
 
-  scope :sorted, order('created_at DESC')
-
   wikify_attr   :body
   truncate_attr :body
 

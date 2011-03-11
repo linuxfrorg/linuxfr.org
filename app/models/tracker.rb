@@ -31,7 +31,6 @@ class Tracker < Content
                         :length   => { :maximum => 100, :message => "Le titre est trop long" }
   validates :wiki_body, :presence => { :message => "Veuillez décrire cette entrée du suivi" }
 
-  scope :sorted, order("created_at DESC")
   scope :opened, where(:state => "opened")
 
   wikify_attr   :body

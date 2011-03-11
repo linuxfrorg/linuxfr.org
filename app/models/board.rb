@@ -110,7 +110,7 @@ class Board
 
   def load(values)
     @kind       = values['kind']
-    @message    = values['msg'].html_safe
+    @message    = values['msg'].to_s.html_safe
     @user_agent = values['ua']
     @user_name  = values['user']
     @user_url   = values['url']

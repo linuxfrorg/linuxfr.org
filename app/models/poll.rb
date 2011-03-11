@@ -22,7 +22,6 @@ class Poll < Content
 
   validates :title, :presence => { :message => "La question est obligatoire" }
 
-  scope :sorted,    order('created_at DESC')
   scope :draft,     where(:state => "draft")
   scope :published, where(:state => "published")
   scope :archived,  where(:state => "archived")
