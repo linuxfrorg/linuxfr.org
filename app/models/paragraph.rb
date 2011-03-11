@@ -34,6 +34,8 @@ class Paragraph < ActiveRecord::Base
 
   # Split body in paragraphs, but preserve code!
   def split_body
+    return [] if wiki_body.blank?
+
     parts   = []
     codemap = {}
     str = wiki_body.gsub(/^``` ?(.+?)\r?\n(.+?)\r?\n```\r?$/m) do
@@ -82,7 +84,7 @@ class Paragraph < ActiveRecord::Base
       self.locked_by_id = nil
       save
     end
-    news.body = '' # Force the news to save even if no fields have changed
+    news.body_will_change!
     news.save
   end
 
