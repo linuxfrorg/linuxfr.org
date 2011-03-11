@@ -77,4 +77,9 @@ protected
   def store_location!(scope)
     session[:"#{scope}_return_to"] = url_for() if request && request.get?
   end
+
+  def handle_unverified_request
+    Rails.logger.info "CSRF protection for #{request.remote_ip}: #{form_authenticity_token} // #{params[request_forgery_protection_token]} // #{request.headers['X-CSRF-Token']}"
+    super
+  end
 end
