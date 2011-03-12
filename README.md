@@ -10,44 +10,58 @@ Install
 -------
 
 The following instructions will help you to install the Rails part of
-LinuxFr.org on a debian box.
+LinuxFr.org on a Debian box.
 
-1) First install the debian packages:
+1) First install the Debian packages:
 
+    (become root, you should probably remove any preexisting ruby1.8 installation)
     # aptitude install ruby1.9.1-full
     # aptitude install mysql-server mysql-client libmysql++-dev
     # aptitude install build-essential libxslt1-dev libxml2-dev
     # aptitude install imagemagick
 
-2) Configure the database:
+2) Install some gems:
+
+    # gem install bundler rake
+    (could be gem1.9.1 instead of gem, installation should be in /var/lib/gems/1.9.1 by default)
+
+3) Configure the database:
 
     # mysql -p -u root
     <enter your root password for mysql>
     > CREATE DATABASE linuxfr_rails;
     > GRANT ALL PRIVILEGES ON linuxfr_rails.* TO "linuxfr_rails"@"localhost";
+    > QUIT;
+    (return to user)
 
-3) Install and start redis:
+4) Install and start redis:
 
-    $ wget "http://redis.googlecode.com/files/redis-2.2.0-rc4.tar.gz"
-    $ tar xvzf redis-2.2.0-rc4.tar.gz
-    $ cd redis-2.2.0-rc4
+    $ wget "http://redis.googlecode.com/files/redis-2.2.1.tar.gz"
+    $ tar xzf redis-2.2.1.tar.gz
+    $ cd redis-2.2.1
     $ make
-    $ ./redis-server redis.conf
+    (optional, takes about ten minutes, $ make test )
+    $ src/redis-server redis.conf
 
-4) Clone the repository, configure and install gems:
+5) Clone the repository, configure and install gems:
 
     $ git clone git://github.com/nono/linuxfr.org.git
     $ cd linuxfr.org
     $ cp config/database.yml{.sample,}
     $ cp config/secret.yml{.sample,}
-    $ gem install bundler rake
-    $ bundle install
+    (become root)
+    # bundle install
+    (probably /var/lib/gems/1.9.1/bin/bundle if not in your PATH)
+    (return to user)
     $ rake db:setup
+    (probably /var/lib/gems/1.9.1/bin/rake if not in your PATH)
 
-5) Let's run it:
+6) Let's run it:
 
     $ bundle exec rails server thin
+    (probably /var/lib/gems/1.9.1/bin/bundle if not in your PATH)
     $ firefox http://127.0.0.1:3000/
+    (did you mean iceweasel?)
 
 
 See also
