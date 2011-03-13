@@ -5,7 +5,7 @@ atom_feed(:root_url => trackers_url) do |feed|
 
   @comments.each do |comment|
     tracker = comment.node.content
-    feed.entry(comment, :url => "/suivi/#{tracker.to_param}#comment-#{comment.id}") do |entry|
+    feed.entry(comment, :url => "http://#{MY_DOMAIN}/suivi/#{tracker.to_param}#comment-#{comment.id}") do |entry|
       entry.title("##{tracker.id} : #{comment.title}")
       title = content_tag(:h2, "Entrée du suivi : #{tracker.title}")
       entry.content(title + comment.body, :type => 'html')
