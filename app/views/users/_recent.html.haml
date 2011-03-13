@@ -1,6 +1,8 @@
 #user_recent_contents.box
   %h1= @user.name
   %p Compte créé le #{l @user.created_at.to_date}
+  - unless @user.account && @user.account.active?
+    %p Compte fermé
   - if current_account && current_account.admin? && @user.account
     %ul
       %li Courriel : #{@user.account.email}
