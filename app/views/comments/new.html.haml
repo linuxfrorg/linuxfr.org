@@ -2,6 +2,8 @@
   =h1 "Écrire un commentaire"
 
   - if @comment.parent
+    %p
+      = link_to "Retourner au contenu associé", path_for_content(@comment.content)
     %ul.threads
       %li.comment{comment_attr(@comment.parent)}
         = render @comment.parent
