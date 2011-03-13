@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :seo_filter
   helper_method :url_for_content, :path_for_content, :current_user
 
-  VALID_ORDERS = %w(created_at score interest last_commented_at)
+  VALID_ORDERS = %w(created_at score interest last_commented_at comments_count)
 
 protected
 

@@ -6,9 +6,16 @@ class TrackersController < ApplicationController
 
   def index
     @attrs    = {"state" => "opened"}.merge(params[:tracker] || {})
+    @order    = params[:order]
+    @order    = "created_at" unless VALID_ORDERS.include?(@order)
+    @trackers = Tracker.scoped
+    if @order == "created_at"
+      @trackers = @trackers.order("#{@order} DESC")
+    else
+      @trackers = @trackers.joins(:node).order("nodes.#{@order} DESC")
+    end
     @tracker  = Tracker.new(@attrs)
     @tracker.state = @attrs["state"]
-    @trackers = Tracker.scoped
     @trackers = @trackers.where(:state       => @tracker.state)       if @attrs["state"].present?
     @trackers = @trackers.where(:category_id => @tracker.category_id) if @attrs["category_id"].present?
     if @attrs["assigned_to_user_id"] == 0

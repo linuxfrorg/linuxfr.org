@@ -19,6 +19,9 @@
     = f.label :assigned_to_user_id, "Assigné à : "
     = f.collection_select :assigned_to_user_id, Account.admin, :id, :login, :include_blank => true
   %p
+    = label_tag :order, "Trier par : "
+    = select_tag :order, options_for_select({ "Date" => "created_at", "Note" => "score", "Nombre de commentaires" => "comments_count", "Dernier commentaire" => "last_commented_at" }, @order)
+  %p
     = submit_tag "Filtrer"
 
 #contents
