@@ -1419,8 +1419,8 @@ body#trackers-index #contents table {
 	}
 	a[href] { @include lien_standard; }
 }
-#tracker, .tracker {
-	.fix, .invalid {
+#tracker, #my_trackers, .tracker {
+	.fixed, .invalid {
 		a {
 			text-decoration: line-through;
 		}

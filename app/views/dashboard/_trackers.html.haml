@@ -8,14 +8,16 @@
     %tr
       %th Catégorie
       %th Sujet
+      %th État
       %th Note
       %th Nombre de commentaires
       %th Date du message
     - @trackers.each do |node|
       - tracker = node.content
-      %tr
+      %tr{:class => tracker.state}
         %td= tracker.category.title
         %td= link_to tracker.title, tracker
+        %td= tracker.state_name
         %td.number= node.score
         %td.number= node.comments.count
         %td.date= tracker.created_at.to_s(:posted)

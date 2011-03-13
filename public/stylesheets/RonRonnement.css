@@ -655,8 +655,7 @@ footer.actions .action {
     font-size: x-small;
     color: #a99c90;
     border-style: none;
-    background-color: transparent;
-    cursor: pointer; }
+    background-color: transparent; }
   .vote .button_to div:hover {
     text-decoration: underline; }
 
@@ -1439,7 +1438,7 @@ body#trackers-index #contents table {
     body#trackers-index #contents table a[href]:visited {
       color: #551A8B; }
 
-#tracker .fix a, #tracker .invalid a, .tracker .fix a, .tracker .invalid a {
+#tracker .fixed a, #tracker .invalid a, #my_trackers .fixed a, #my_trackers .invalid a, .tracker .fixed a, .tracker .invalid a {
   text-decoration: line-through; }
 
 /* page d'historique de wiki */
