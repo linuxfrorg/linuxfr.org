@@ -1,0 +1,8 @@
+=h1 "Administration"
+%ul
+  %li Environnement : #{Rails.env}
+  %li Rails root : #{Rails.root}
+  %li Révision git : #{`git log -1 --pretty=format:"%h"`}
+  %li PID : #{Process.pid}
+  %li Connexion Redis : #{$redis.__id__} #{$redis.inspect}
+  %li Connexion MySQL : #{ActiveRecord::Base.connection.__id__} #{ActiveRecord::Base.connection.inspect}

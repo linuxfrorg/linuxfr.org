@@ -3,4 +3,7 @@ class AdminController < ApplicationController
 
   def index
   end
+
+  def debug
+  end
 end
