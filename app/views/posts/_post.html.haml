@@ -1,4 +1,4 @@
 = article_for post do |c|
-  - c.title = "#{link_to post.forum.title, post.forum} #{link_to post.title, [post.forum, post]}".html_safe
+  - c.title = "#{link_to "Forum #{post.forum.title}", post.forum} #{link_to post.title, [post.forum, post]}".html_safe
   - if current_account && current_account.can_update?(post)
     - c.actions = link_to("Modifier", "/forums/#{post.forum.to_param}/posts/#{post.to_param}/modifier", :class => 'action')
