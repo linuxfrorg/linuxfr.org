@@ -89,6 +89,7 @@ LinuxfrOrg::Application.routes.draw do
     resources :news, :except => [:new, :destroy] do
       post :submit, :on => :member
       resources :links, :only => [:new]
+      resources :paragraphs, :only => [:create]
     end
     resources :links, :only => [:create, :edit, :update]
     resources :paragraphs, :only => [:show, :edit, :update]

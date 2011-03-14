@@ -18,9 +18,11 @@
       %button Ajouter un lien
     #second_part
       = render :partial => 'redaction/paragraphs/paragraph', :collection => @news.paragraphs.in_second_part
+    %p.new_paragraph
+      = button_to "Ajouter un paragraphe", redaction_news_paragraphs_path(:news_id => @news), :remote => true
 
 = button_to "Soumettre la dépêche", submit_redaction_news_path(@news)
 - if current_account.amr?
-  = button_to "Supprimer tous les locks", clear_locks_moderation_news_path(@news), :class => 'ajax'
+  = button_to "Supprimer tous les locks", clear_locks_moderation_news_path(@news)
 
 = render 'shared/wiki_help'
