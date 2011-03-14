@@ -259,6 +259,7 @@ input[type='submit'] {
 			margin-left: 5px;
 			padding-left: 5px;
 			border-left: solid 1px $C_INTER;
+			&.forum span { font-weight: bold; }
 		}
 
 		> a {

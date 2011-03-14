@@ -1,6 +1,11 @@
 #forum_box.box
   %h1 Forums
   %ul
-    - @forums.each do |forum|
+    - @forums.group_by(&:first_level).each do |title,forums|
       %li.forum
-        = link_to forum.title, forum
+        %span
+          = title
+        %ul
+          - forums.each do |forum|
+            %li
+              = link_to forum.second_level, forum

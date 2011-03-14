@@ -35,4 +35,14 @@ class Forum < ActiveRecord::Base
     1
   end
 
+### Presentation ###
+
+  def first_level
+    title.split('.').first
+  end
+
+  def second_level
+    title.split('.').second
+  end
+
 end
