@@ -3,9 +3,9 @@
   %p
     Nombres n de modérateurs : #{Account.amr.count}
     %br
-    Seuil d'acceptation (n/5) : &gt; #{News.accept_threshold}
+    Seuil d'acceptation (n/6) : &gt; #{News.accept_threshold}
     %br
-    Seuil de refus (n/4) : &lt; #{News.refuse_threshold}
+    Seuil de refus (n/5) : &lt; #{News.refuse_threshold}
   %p
     %strong Pour :
     = @news.node.voters_for

@@ -183,11 +183,11 @@ class News < Content
 ### ACL ###
 
   def self.accept_threshold
-    Account.amr.count / 5
+    Account.amr.count / 6
   end
 
   def self.refuse_threshold
-    -Account.amr.count / 4
+    -Account.amr.count / 5
   end
 
   def viewable_by?(account)
