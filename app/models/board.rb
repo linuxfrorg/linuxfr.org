@@ -143,7 +143,7 @@ class Board
   def viewable_by?(account)
     return false unless account
     case @object_type
-    when Board.news    then account.amr?
+    when Board.news    then news.updatable_by?(account)
     when Board.amr     then account.amr?
     when Board.writing then account.can_post_on_board?
     when Board.free    then true
@@ -153,6 +153,10 @@ class Board
 
   def creatable_by?(account)
     account.can_post_on_board? && viewable_by?(account)
+  end
+
+  def news
+    News.find(@object_id) if @object_type == Board.news
   end
 
 ### Types ###
