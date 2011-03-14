@@ -1423,10 +1423,6 @@ body#trackers-index #contents table {
     body#trackers-index #contents table th.number {
       text-align: right;
       padding-right: 2px; }
-  body#dashboard-index #contents table .thread-new-comments,
-  body#trackers-index #contents table .thread-new-comments {
-    background: url("/images/icones/attention.png") no-repeat 2px center;
-    padding: auto 20px 2px; }
   body#dashboard-index #contents table a[href],
   body#trackers-index #contents table a[href] {
     color: #0000EE;

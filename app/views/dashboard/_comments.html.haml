@@ -19,9 +19,8 @@
         %td= link_to comment.title, path_for_content(comment.node.content) + "#comment-#{comment.id}"
         %td.date= comment.created_at.to_s(:posted)
         %td.number= comment.score
-        - if answer
-          - klass = answer.read_by?(current_account) ? "thread-read" : "thread-new-comments"
-          %td.number{:class => klass}= comment.nb_answers
-        - else
-          %td.thread-no-comments.number 0
+        %td.number
+          - if answer && !answer.read_by?(current_account)
+            = image_tag "icones/attention.png", :alt => "Nouveaux commentaires !", :class => "thread-new-comments"
+          = comment.nb_answers
         %td.date= answer ? answer.created_at.to_s(:posted) : "&nbsp;".html_safe

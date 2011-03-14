@@ -1413,10 +1413,6 @@ body#trackers-index #contents table {
 		&.date { white-space: nowrap; }
 		&.number { text-align: right; padding-right: 2px; }
 	}
-	.thread-new-comments {
-		background: url("/images/icones/attention.png") no-repeat 2px center;
-		padding: auto 20px 2px;
-	}
 	a[href] { @include lien_standard; }
 }
 #tracker, #my_trackers, .tracker {
