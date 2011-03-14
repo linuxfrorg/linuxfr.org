@@ -40,6 +40,7 @@ class CommentsController < ApplicationController
       flash[:notice] = "Votre commentaire a bien été posté"
       redirect_to_content @node.content
     else
+      @comment.valid?
       render :new
     end
   end

@@ -9,7 +9,8 @@ class ActiveRecord::Base
     :output => :xhtml,
     :elements => %w(a abbr b blockquote br cite code dd del dfn div dl dt em
                     h1 h2 h3 h4 h5 h6 hr i img ins kbd li mark meter ol p pre
-                    q s samp small span strong sub sup time ul var wbr),
+                    q s samp small span strong sub sup table tbody td tfooter
+                    th thead tr time ul var video wbr),
     :attributes => {
       :all         => ['data-after', 'data-id', 'id', 'title', 'class'],
       'a'          => ['href'],

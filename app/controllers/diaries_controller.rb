@@ -29,6 +29,7 @@ class DiariesController < ApplicationController
       redirect_to [@diary.owner, @diary], :notice => "Votre journal a bien été créé"
     else
       @diary.node = Node.new
+      @diary.valid?
       render :new
     end
   end

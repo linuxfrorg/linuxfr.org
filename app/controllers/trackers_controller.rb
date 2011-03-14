@@ -55,6 +55,7 @@ class TrackersController < ApplicationController
       redirect_to @tracker, :notice => "Votre entrée a bien été créée dans le suivi"
     else
       @tracker.node = Node.new
+      @tracker.valid?
       render :new
     end
   end

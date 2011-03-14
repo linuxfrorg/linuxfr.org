@@ -1,4 +1,3 @@
-- preview.valid?
 = article_for preview do |c|
   - c.title = "#{link_to "Sondage", "/sondages"} #{link_to preview.title, "#"}".html_safe
   - c.body  = render("answers_current", :poll => preview)

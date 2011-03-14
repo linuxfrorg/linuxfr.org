@@ -42,6 +42,7 @@ class WikiPagesController < ApplicationController
       redirect_to @wiki_page, :notice => "Nouvelle page de wiki créée"
     else
       @wiki_page.node = Node.new
+      @wiki_page.valid?
       render :new
     end
   end

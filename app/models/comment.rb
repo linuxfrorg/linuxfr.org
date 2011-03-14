@@ -107,7 +107,7 @@ class Comment < ActiveRecord::Base
 
 ### Calculations ###
 
-  before_create :default_score
+  before_validation :default_score, :on => :create
   def default_score
     self.score = Math.log10([user.account.karma, 0.1].max).to_i - 1
   end
