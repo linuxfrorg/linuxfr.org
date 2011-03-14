@@ -18,6 +18,7 @@ class ActiveRecord::Base
       'img'        => ['alt', 'height', 'src', 'width'],
       'q'          => ['cite'],
       'time'       => ['datetime', 'pubdate'],
+      'video'      => ['src']
     },
     :protocols => {
       'a'          => {'href' => ['ftp', 'http', 'https', 'irc', 'mailto', 'xmpp', :relative]},
