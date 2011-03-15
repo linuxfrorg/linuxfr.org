@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110223220302) do
+ActiveRecord::Schema.define(:version => 20110315174225) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -125,8 +125,8 @@ ActiveRecord::Schema.define(:version => 20110223220302) do
 
   create_table "news", :force => true do |t|
     t.string   "state",        :limit => 10,       :default => "draft", :null => false
-    t.string   "title",        :limit => 100,                           :null => false
-    t.string   "cached_slug",  :limit => 105
+    t.string   "title",        :limit => 160,                           :null => false
+    t.string   "cached_slug",  :limit => 165
     t.integer  "moderator_id"
     t.integer  "section_id"
     t.string   "author_name",  :limit => 32,                            :null => false
