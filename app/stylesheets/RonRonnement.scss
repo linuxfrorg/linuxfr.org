@@ -775,14 +775,11 @@ footer.actions .action {
 	}
 	a[href] {
 		@include lien_standard;
-		&[title="Définition Wikipédia"] {
-			padding-left: 3px;
-			border-left: 16px;
-			-moz-border-image:    url('/images/icones/wikipedia.ico') 0 0 0 16;
-			-o-border-image:      url('/images/icones/wikipedia.ico') 0 0 0 16;
-			-webkit-border-image: url('/images/icones/wikipedia.ico') 0 0 0 16;
-			-khtml-border-image:  url('/images/icones/wikipedia.ico') 0 0 0 16;
-			border-image:         url('/images/icones/wikipedia.ico') 0 0 0 16;
+		&[title="Définition Wikipédia"]:after {
+			content: "\A0W";
+			font-family: serif;			
+			font-size: 6pt;
+			vertical-align: super;
 		}
 		&[title="Lien interne du wiki LinuxFr.org"] {
 			padding-left: 3px;
