@@ -71,6 +71,7 @@ class TrackersController < ApplicationController
     if !preview_mode && @tracker.save
       redirect_to trackers_url, :notice => "Entrée du suivi modifiée"
     else
+      flash.now[:alert] = "Impossible d'enregistrer cette entrée de suivi" if @tracker.invalid?
       render :edit
     end
   end

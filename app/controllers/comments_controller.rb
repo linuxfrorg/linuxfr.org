@@ -56,6 +56,7 @@ class CommentsController < ApplicationController
       flash[:notice] = "Votre commentaire a bien été modifié"
       redirect_to_content @node.content
     else
+      flash.now[:alert] = "Impossible d'enregistrer ce commentaire" if @comment.invalid?
       render :edit
     end
   end

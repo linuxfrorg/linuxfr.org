@@ -59,6 +59,7 @@ class WikiPagesController < ApplicationController
     if !preview_mode && @wiki_page.save
       redirect_to @wiki_page, :notice => "Modification enregistrée"
     else
+      flash.now[:alert] = "Impossible d'enregistrer cette page de wiki" if @wiki_page.invalid?
       render :edit
     end
   end

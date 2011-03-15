@@ -51,6 +51,7 @@ class DiariesController < ApplicationController
     if !preview_mode && @diary.save
       redirect_to [@user, @diary], :notice => "Votre journal a bien été modifié"
     else
+      flash.now[:alert] = "Impossible d'enregistrer ce journal" if @diary.invalid?
       render :edit
     end
   end
