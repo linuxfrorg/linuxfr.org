@@ -4,6 +4,16 @@ This is an automatic message.
 
 LinuxFr.org is a French speaking only web site.
 
+The proposed news was:
+
+<%= @news.wiki_body %>
+
+<%- @news.links.each do |link| %>
+* <%= link.title %> - <%= link.url %>
+<%- end -%>
+
+<%= @news.wiki_second_part %>
+
 Regards,
 
 -- 

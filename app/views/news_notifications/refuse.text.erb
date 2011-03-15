@@ -1,4 +1,14 @@
 <%= @message %>
 
+Pour rappel, le contenu de la dépêche est copié ci-dessous :
+
+<%= @news.wiki_body %>
+
+<%- @news.links.each do |link| %>
+* <%= link.title %> - <%= link.url %>
+<%- end -%>
+
+<%= @news.wiki_second_part %>
+
 -- 
 L'équipe de modération.

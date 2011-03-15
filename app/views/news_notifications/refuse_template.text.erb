@@ -8,6 +8,17 @@ Cependant, nous tenons à vous remercier de l'avoir proposée, et vous
 encourageons à en proposer d'autres.
 
 <%= @message -%>
+
+Pour rappel, le contenu de la dépêche est copié ci-dessous :
+
+<%= @news.wiki_body %>
+
+<%- @news.links.each do |link| %>
+* <%= link.title %> - <%= link.url %>
+<%- end -%>
+
+<%= @news.wiki_second_part %>
+
 Cordialement,
 
 -- 

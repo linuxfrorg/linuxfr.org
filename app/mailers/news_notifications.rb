@@ -13,6 +13,8 @@ class NewsNotifications < ActionMailer::Base
   def self.refuse_with_message(news, message, template)
     if template
       refuse_template news, message, template
+    elsif message == 'no'
+      nil
     elsif message == 'en'
       refuse_en news
     elsif message.present?
@@ -21,17 +23,20 @@ class NewsNotifications < ActionMailer::Base
   end
 
   def refuse(news, message)
+    @news    = news
     @message = message
     send_email "Dépêche refusée :", news
   end
 
   def refuse_template(news, message, template)
+    @news    = news
     @message = message.present? ? "Le modérateur a tenu a rajouté : #{message}\n\n" : ""
     @response= Response.find(template)
     send_email "Dépêche refusée :", news
   end
 
   def refuse_en(news)
+    @news = news
     send_email "Rejected news:", news
   end
 
