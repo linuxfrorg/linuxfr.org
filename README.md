@@ -95,4 +95,10 @@ Copyright
 
 The code is licensed as GNU AGPLv3. See the LICENSE file for the full license.
 
+The [default avatar](http://linuxfr.org/images/default-avatar.png) is a modified
+[Tux](http://en.wikipedia.org/wiki/Tux).
+
+[Iconic icons](http://somerandomdude.com/projects/iconic/) are licenced
+[CC by-sa 3.0](http://creativecommons.org/licenses/by-sa/3.0/us/).
+
 Copyright (c) 2011 Bruno Michel <NoNo@linuxfr.org>

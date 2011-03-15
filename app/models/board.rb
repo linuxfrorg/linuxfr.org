@@ -121,6 +121,10 @@ class Board
     limit(0, object_type, object_id)
   end
 
+  def self.last(object_type, object_id=nil)
+    limit(1, object_type, object_id).first
+  end
+
   def self.limit(max, object_type, object_id=nil)
     key = chan_key(object_type, object_id)
     ids = $redis.lrange(key, 0, max-1)

@@ -7,6 +7,12 @@
   - else
     %ul
       = list_of(@candidate_news) do |news|
+        - if news.node.board_status(current_account) != :read
+          = image_tag "icones/chat.png", :alt => "Nouveaux !"
+        - if news.acceptable?
+          = image_tag "icones/check.png", :alt => "Acceptable"
+        - elsif news.refusable?
+          = image_tag "icones/x.png", :alt => "Refusable"
         = link_to news.title, [:moderation, news]
   = link_to pluralize(Poll.draft.count, "sondage"), moderation_polls_path
   - @boards ||= Board.limit(12, Board.amr)

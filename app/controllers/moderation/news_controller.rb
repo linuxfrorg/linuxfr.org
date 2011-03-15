@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class Moderation::NewsController < ModerationController
   before_filter :find_news, :except => [:index]
+  after_filter  :marked_as_read, :only => [:show]
   after_filter  :expire_cache, :only => [:update, :accept]
 
   def index
@@ -87,6 +88,10 @@ protected
 
   def find_news
     @news = News.find(params[:id])
+  end
+
+  def marked_as_read
+    current_account.read(@news.node)
   end
 
   def expire_cache

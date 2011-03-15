@@ -127,6 +127,16 @@ class Node < ActiveRecord::Base
     return :read
   end
 
+  def board_status(account)
+    r = Node.last_reading(self.id, account.id) if account
+    b = Board.last(content_type, content_id)
+    Rails.logger.info ">>> self.id = #{self.id} // account.id = #{account.id}"
+    Rails.logger.info ">>> r = #{r} // b = #{b.created_at}"
+    return :not_read  if r.nil?
+    return :new_board if b && r < b.created_at
+    return :read
+  end
+
 ### Tags ###
 
   def set_taglist(list, user_id)
