@@ -6,7 +6,7 @@
 #  node_id           :integer(4)
 #  user_id           :integer(4)
 #  state             :string(10)      default("published"), not null
-#  title             :string(100)     not null
+#  title             :string(160)     not null
 #  score             :integer(4)      default(0), not null
 #  answered_to_self  :boolean(1)      default(FALSE), not null
 #  materialized_path :string(1022)

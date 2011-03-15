@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110315175711) do
+ActiveRecord::Schema.define(:version => 20110315222615) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20110315175711) do
     t.integer  "node_id"
     t.integer  "user_id"
     t.string   "state",             :limit => 10,   :default => "published", :null => false
-    t.string   "title",             :limit => 100,                           :null => false
+    t.string   "title",             :limit => 160,                           :null => false
     t.integer  "score",                             :default => 0,           :null => false
     t.boolean  "answered_to_self",                  :default => false,       :null => false
     t.string   "materialized_path", :limit => 1022
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(:version => 20110315175711) do
   add_index "comments", ["user_id", "state", "created_at"], :name => "index_comments_on_user_id_and_state_and_created_at"
 
   create_table "diaries", :force => true do |t|
-    t.string   "title",          :limit => 100, :null => false
-    t.string   "cached_slug",    :limit => 105
+    t.string   "title",          :limit => 160, :null => false
+    t.string   "cached_slug",    :limit => 165
     t.integer  "owner_id"
     t.text     "body"
     t.text     "wiki_body"
@@ -208,8 +208,8 @@ ActiveRecord::Schema.define(:version => 20110315175711) do
 
   create_table "posts", :force => true do |t|
     t.integer  "forum_id"
-    t.string   "title",          :limit => 100, :null => false
-    t.string   "cached_slug",    :limit => 105
+    t.string   "title",          :limit => 160, :null => false
+    t.string   "cached_slug",    :limit => 165
     t.text     "body"
     t.text     "wiki_body"
     t.text     "truncated_body"

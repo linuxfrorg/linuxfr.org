@@ -4,8 +4,8 @@
 #
 #  id             :integer(4)      not null, primary key
 #  forum_id       :integer(4)
-#  title          :string(100)     not null
-#  cached_slug    :string(105)
+#  title          :string(160)     not null
+#  cached_slug    :string(165)
 #  body           :text
 #  wiki_body      :text
 #  truncated_body :text
