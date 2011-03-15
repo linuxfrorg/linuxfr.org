@@ -23,3 +23,8 @@
 = form_tag refuse_moderation_news_path(@news) do
   = hidden_field_tag :message, 'en'
   = submit_tag "Refuser"
+
+%h2 Ne pas envoyer de mail (spam)
+= form_tag refuse_moderation_news_path(@news) do
+  = hidden_field_tag :message, 'no'
+  = submit_tag "Refuser"
