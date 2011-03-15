@@ -24,6 +24,8 @@ class CreateAccounts < ActiveRecord::Migration
     add_index :accounts, :email,                :unique => true
     add_index :accounts, :confirmation_token,   :unique => true
     add_index :accounts, :reset_password_token, :unique => true
+
+    execute "ALTER TABLE accounts CHANGE login login varchar(40) COLLATE utf8_bin NOT NULL;"
   end
 
   def self.down
