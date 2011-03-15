@@ -20,6 +20,8 @@
         %button Ajouter un lien
       #second_part
         = render :partial => 'redaction/paragraphs/paragraph', :collection => @news.paragraphs.in_second_part
+      %p.new_paragraph
+        = button_to "Ajouter un paragraphe", redaction_news_paragraphs_path(:news_id => @news), :remote => true
 - else
   %h2 Dépêche importée !
   = form_for [:moderation, @news] do |form|
