@@ -5,8 +5,8 @@
 # Table name: wiki_pages
 #
 #  id          :integer(4)      not null, primary key
-#  title       :string(64)      not null
-#  cached_slug :string(64)
+#  title       :string(100)     not null
+#  cached_slug :string(105)
 #  body        :text
 #  created_at  :datetime
 #  updated_at  :datetime

@@ -6,8 +6,8 @@
 #
 #  id                  :integer(4)      not null, primary key
 #  state               :string(10)      default("opened"), not null
-#  title               :string(64)      not null
-#  cached_slug         :string(64)
+#  title               :string(100)     not null
+#  cached_slug         :string(105)
 #  category_id         :integer(4)
 #  assigned_to_user_id :integer(4)
 #  body                :text

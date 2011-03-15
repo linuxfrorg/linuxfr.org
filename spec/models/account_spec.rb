@@ -26,6 +26,7 @@
 #  last_sign_in_ip      :string(255)
 #  created_at           :datetime
 #  updated_at           :datetime
+#  preferences          :integer(4)      default(0), not null
 #
 
 require 'spec_helper'

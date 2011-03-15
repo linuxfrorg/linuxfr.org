@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110315174225) do
+ActiveRecord::Schema.define(:version => 20110315175711) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -294,6 +294,7 @@ ActiveRecord::Schema.define(:version => 20110315174225) do
     t.datetime "updated_at"
     t.string   "gravatar_hash", :limit => 32
     t.string   "avatar"
+    t.string   "signature"
   end
 
   add_index "users", ["cached_slug"], :name => "index_users_on_cached_slug"

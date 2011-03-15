@@ -2,15 +2,16 @@
 #
 # Table name: users
 #
-#  id                  :integer(4)      not null, primary key
-#  name                :string(32)
-#  homesite            :string(100)
-#  jabber_id           :string(32)
-#  cached_slug         :string(32)
-#  avatar              :string(255)
-#  gravatar_hash       :string(32)
-#  created_at          :datetime
-#  updated_at          :datetime
+#  id            :integer(4)      not null, primary key
+#  name          :string(32)
+#  homesite      :string(100)
+#  jabber_id     :string(32)
+#  cached_slug   :string(32)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  gravatar_hash :string(32)
+#  avatar        :string(255)
+#  signature     :string(255)
 #
 
 
@@ -26,7 +27,7 @@ class User < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy, :include => :tag
   has_many :tags, :through => :taggings, :uniq => true
 
-  attr_accessible :name, :homesite, :jabber_id, :avatar
+  attr_accessible :name, :homesite, :jabber_id, :avatar, :signature
 
 ### SEO ###
 

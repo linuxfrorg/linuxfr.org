@@ -1005,6 +1005,14 @@ li.comment {
 		border-left: 1px solid $C_INTER;
 		padding-left: 5px;
 		margin-bottom: 5px;
+		.signature {
+			color: #999;
+			font-size: 11px;
+			&:before {
+				white-space: pre-line;
+				content: "-- \a";
+			}
+		}
 	}
 	> ul {
 		list-style: none;
