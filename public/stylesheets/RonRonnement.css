@@ -657,7 +657,8 @@ footer.actions .action {
     font-size: x-small;
     color: #a99c90;
     border-style: none;
-    background-color: transparent; }
+    background-color: transparent;
+    cursor: pointer; }
   .vote .button_to div:hover {
     text-decoration: underline; }
 
