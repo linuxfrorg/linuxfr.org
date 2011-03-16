@@ -7,6 +7,7 @@ describe "Diaries" do
   before(:each) do
     User.delete_all
     Account.delete_all
+    News.delete_all
     Node.delete_all
     Diary.delete_all
     Comment.delete_all

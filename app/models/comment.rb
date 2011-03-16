@@ -31,7 +31,7 @@ class Comment < ActiveRecord::Base
 
   scope :published,    where(:state => 'published')
   scope :under,        lambda { |path| where("materialized_path LIKE ?", "#{path}_%") }
-  scope :on_dashboard, published.where(:answered_to_self => false).order('created_at DESC')
+  scope :on_dashboard, published.order('created_at DESC')
   scope :footer,       published.order('created_at DESC').limit(12)
 
   validates :title,     :presence => { :message => "Le titre est obligatoire" },
