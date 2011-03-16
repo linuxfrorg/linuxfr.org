@@ -14,7 +14,7 @@
     = form.label :state, "État"
     = form.select :state, Tracker::States.invert
   %p
-    = form.label :assigned_to_user_id, "Responsable"
+    = form.label :assigned_to_user_id, "Assigné à"
     = form.collection_select :assigned_to_user_id, Account.admin, :id, :login, :include_blank => true
 %p
   = form.submit "Prévisualiser", :id => "tracker_preview"
