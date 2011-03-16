@@ -905,7 +905,7 @@ a.scroll {
 
 /* sondage */
 ul.poll {
-	.current {
+	&.current {
 		padding: 0px;
 		margin-top: 0px;
 		li {

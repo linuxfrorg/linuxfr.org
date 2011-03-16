@@ -784,10 +784,10 @@ a.scroll {
   cursor: pointer; }
 
 /* sondage */
-ul.poll .current {
+ul.poll.current {
   padding: 0px;
   margin-top: 0px; }
-  ul.poll .current li {
+  ul.poll.current li {
     list-style: none; }
 ul.poll li meter {
   display: block;

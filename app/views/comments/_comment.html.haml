@@ -13,8 +13,9 @@
     %em Ce commentaire a été supprimé par l'équipe de modération.
   - else
     = comment.body
-    %p.signature
-      = comment.user.try(:signature)
+    - if comment.user.try(:signature).present?
+      %p.signature
+        = comment.user.try(:signature)
 %footer.actions
   = link_to "Répondre", "/nodes/#{comment.node_id}/comments/#{comment.id}/answer#new_comment", :class => 'action'
   - if current_account && current_account.can_vote?(comment)
