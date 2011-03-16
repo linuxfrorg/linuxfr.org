@@ -7,11 +7,14 @@ class ApplicationController < ActionController::Base
   helper_method :url_for_content, :path_for_content, :current_user
 
   VALID_ORDERS = %w(created_at score interest last_commented_at comments_count)
+  REVISION     = `git rev-parse HEAD`.chomp
 
 protected
 
   def seo_filter
     request.session_options[:secure] = request.ssl?
+    headers["X-Served-By"] = Process.pid.to_s
+    headers["X-Revision"]  = REVISION
     @title         = %w(LinuxFr.org)
     @author        = nil
     @keywords      = %w(Linux Logiciel Libre GNU Free Software Actualité Forum Communauté)
