@@ -4,7 +4,6 @@ class Admin::ForumsController < AdminController
 
   def index
     @forums = Forum.sorted.all
-    #@posts = Post.paginate :page => params[:page], :per_page => 10
   end
 
   def new

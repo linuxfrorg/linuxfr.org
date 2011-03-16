@@ -14,6 +14,7 @@ gem "haml",                    "~>3.0"
 gem "html_truncator",          "~>0.2"
 gem "htmlentities",            "~>4.2"
 gem "jammit",                  "~>0.5"
+gem "kaminari",                "~>0.10"
 gem "mini_magick",             "~>3.2"
 gem "mysql2",                  "~>0.2"
 gem "nokogiri",                "~>1.4"
@@ -26,7 +27,6 @@ gem "state_machine",           "~>0.9"
 # TODO Rails3
 # gem "thinking-sphinx",       "~>1.3", :require => "thinking_sphinx"
 # gem "ts-datetime-delta",     "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
-gem "will_paginate",           ">=3.0.pre2"
 
 # Rspec-rails must be in development for rake stats and in test for normal stuff
 group :development, :test do

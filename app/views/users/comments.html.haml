@@ -3,11 +3,11 @@
   = render 'nodes'
 
 #contents
-  =h1 "#{@user.name} a écrit #{pluralize @comments.total_entries, "commentaire"}"
+  =h1 "#{@user.name} a écrit #{pluralize @comments.total_count, "commentaire"}"
   - feed "Flux Atom des commentaires de #{@user.name}"
-  = will_paginate @comments
+  = paginate @comments
   %ul
     - @comments.each do |comment|
       %li.comment(id="comment-#{comment.id}")
         = render comment
-  = will_paginate @comments
+  = paginate @comments

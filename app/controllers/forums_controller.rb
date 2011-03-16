@@ -5,7 +5,7 @@ class ForumsController < ApplicationController
   caches_page   :show,  :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
 
   def index
-    @nodes = Node.public_listing(Post, @order).paginate(:page => params[:page], :per_page => 10)
+    @nodes = Node.public_listing(Post, @order).page(params[:page])
     respond_to do |wants|
       wants.html
       wants.atom
@@ -15,7 +15,7 @@ class ForumsController < ApplicationController
   def show
     @forum = Forum.find(params[:id])
     redirect_to(@forum, :status => 301) and return if !@forum.friendly_id_status.best?
-    @posts = @forum.posts.with_node_ordered_by(@order).paginate(:page => params[:page], :per_page => 10)
+    @posts = @forum.posts.with_node_ordered_by(@order).page(params[:page])
     respond_to do |wants|
       wants.html
       wants.atom

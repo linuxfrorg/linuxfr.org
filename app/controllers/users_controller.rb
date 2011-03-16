@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
   def comments
     redirect_to comments_user_path(@user), :status => 301 and return if !@user.friendly_id_status.best?
-    @comments = @user.comments.published.order('created_at DESC').paginate(:page => params[:page], :per_page => 20)
+    @comments = @user.comments.published.order('created_at DESC').page(params[:page])
     respond_to do |wants|
       wants.html
       wants.atom { render 'comments/index' }
@@ -53,7 +53,7 @@ protected
   def find_nodes(klass)
     @order = params[:order]
     @order = "created_at" unless VALID_ORDERS.include?(@order)
-    @nodes = Node.public_listing(klass, @order).where("nodes.user_id" => @user.id).paginate(:page => params[:page], :per_page => 10)
+    @nodes = Node.public_listing(klass, @order).where("nodes.user_id" => @user.id).page(params[:page])
   end
 
 end

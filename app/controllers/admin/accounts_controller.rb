@@ -3,7 +3,7 @@ class Admin::AccountsController < AdminController
   before_filter :load_account, :only => [:update, :destroy]
 
   def index
-    @accounts = Account.paginate(:per_page => 20, :page => params[:page], :order => "created_at DESC")
+    @accounts = Account.order("created_at DESC").page(params[:page])
   end
 
   def update

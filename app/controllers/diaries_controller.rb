@@ -12,7 +12,7 @@ class DiariesController < ApplicationController
   def index
     @order = params[:order]
     @order = "created_at" unless VALID_ORDERS.include?(@order)
-    @nodes = Node.public_listing(Diary, @order).paginate(:page => params[:page], :per_page => 10)
+    @nodes = Node.public_listing(Diary, @order).page(params[:page])
     respond_with(@nodes)
   end
 

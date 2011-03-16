@@ -3,10 +3,10 @@
   - feed "Flux Atom des derniers changements du wiki"
 
   %nav.toolbox
-    = will_paginate @versions
+    = paginate @versions
   %ul.changes
     - list_of(@versions) do |v|
       = link_to v.wiki_page.title, v.wiki_page
       = link_to "(révision #{v.version})", revision_wiki_page_path(v.wiki_page.friendly_id, v.version)
   %nav.toolbox
-    = will_paginate @versions
+    = paginate @versions

@@ -11,6 +11,6 @@ class HomeController < ApplicationController
     @order  = default unless VALID_ORDERS.include?(@order)
     @ppp    = News.ppp
     @banner = Banner.random
-    @nodes  = Node.public_listing(@types, @order).paginate(:page => params[:page], :per_page => 10)
+    @nodes  = Node.public_listing(@types, @order).page(params[:page])
   end
 end

@@ -78,7 +78,7 @@ class WikiPagesController < ApplicationController
   end
 
   def changes
-    @versions = WikiVersion.order("created_at DESC").joins(:wiki_page).paginate(:page => params[:page], :per_page => 30)
+    @versions = WikiVersion.order("created_at DESC").joins(:wiki_page).page(params[:page])
     respond_to do |wants|
       wants.html
       wants.atom
@@ -88,7 +88,7 @@ class WikiPagesController < ApplicationController
   def pages
     @order = params[:order]
     @order = "created_at" unless VALID_ORDERS.include?(@order)
-    @nodes = Node.public_listing(WikiPage, @order).paginate(:page => params[:page], :per_page => 10)
+    @nodes = Node.public_listing(WikiPage, @order).page(params[:page])
   end
 
 protected

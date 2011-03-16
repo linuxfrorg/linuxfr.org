@@ -39,6 +39,8 @@ class Node < ActiveRecord::Base
     visible.where(:content_type => types).order("#{order} DESC")
   }
 
+  paginates_per 15
+
 ### Interest ###
 
   after_create :compute_interest

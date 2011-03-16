@@ -23,31 +23,29 @@ class TagsController < ApplicationController
 
   # Show all the nodes tagged by the current user
   def index
-    @nodes = Node.paginate(:select => "DISTINCT nodes.*",
-                           :joins => [:taggings],
-                           :conditions => {"taggings.user_id" => current_account.user_id,
-                                           "nodes.public"     => true},
-                           :order => @order,
-                           :page => params[:page],
-                           :per_page => 15)
+    @nodes = Node.visible.
+                  joins(:taggings).
+                  where(:taggings => { :user_id => current_account.user_id }).
+                  order(@order).
+                  group("nodes.id").
+                  page(params[:page])
   end
 
   # Show all the nodes tagged with the given tag by the current user
   def show
-    @nodes = Node.paginate(:select => "DISTINCT nodes.*",
-                           :joins => [:taggings],
-                           :conditions => {"taggings.user_id" => current_account.user_id,
-                                           "taggings.tag_id"  => @tag.id,
-                                           "nodes.public"     => true},
-                           :order => @order,
-                           :page => params[:page],
-                           :per_page => 15)
+    @nodes = Node.visible.
+                  joins(:taggings).
+                  where(:taggings => { :user_id => current_account.user_id }).
+                  where(:taggings => { :tag_id  => @tag.id }).
+                  order(@order).
+                  group("nodes.id").
+                  page(params[:page])
   end
 
   # Show all the nodes tagged with the given tag
   def public
     @order = (params[:order] || "created_at") + " DESC"
-    @nodes = @tag.nodes.where("nodes.public" => true).paginate(:page => params[:page], :per_page => 15, :order => @order)
+    @nodes = @tag.nodes.where("nodes.public" => true).order(@order).page(params[:page])
   end
 
 protected
