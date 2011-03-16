@@ -45,6 +45,7 @@ protected
 
   # Code taken from http://github.com/github-flavored-markdown/
   def process_newlines
+    @text.gsub!("\r", "")
     @text.gsub!(/(\A|^$\n)(^\w[^\n]*\n)(^\w[^\n]*$)+/m) do |x|
       x.gsub(/^(.+)$/, "\\1  ")
     end
