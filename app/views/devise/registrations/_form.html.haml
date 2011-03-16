@@ -1,0 +1,35 @@
+= form_for @account, :url => registration_path(:account), :html => { :method => :put } do |f|
+  = messages_on_error @account
+  %p
+    = f.label :email, 'Adresse de courriel'
+    = f.email_field :email
+  = f.fields_for :user do |u|
+    %p
+      = u.label :name, "Prénom et nom"
+      = u.text_field :name, :maxlength => 32
+    %p
+      = u.label :homesite, 'Site web personnel'
+      = u.url_field :homesite, :maxlength => 100
+    %p
+      = u.label :jabber_id, 'Jabber ID'
+      %span.prefix xmpp:
+      = u.text_field :jabber_id, :placeholder => "me@example.net", :maxlength => 32
+    %p
+      = u.label :signature, "Signature"
+      = u.text_field :signature, :maxlength => 250, :size => 100
+  %p
+    = f.label :password, 'Nouveau mot de passe'
+    = f.password_field :password
+    %span.help
+      laissez ce champ vide si vous ne souhaitez pas changer de mot de passe
+  %p
+    = f.label :password_confirmation, 'Confirmation du mot de passe'
+    = f.password_field :password_confirmation
+  %p
+    = f.label :current_password, 'Mot de passe actuel'
+    = f.password_field :current_password
+    %span.help
+      votre mot de passe actuel est nécessaire pour valider ce changement
+  %p
+    %label.factice Sûr de vos modifications ?
+    = f.submit "Enregistrer"

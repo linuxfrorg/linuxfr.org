@@ -1,0 +1,35 @@
+%h2 Options
+= form_for @account, :url => registration_path(:account), :html => { :method => :put } do |f|
+  %p
+    = f.check_box :hide_avatar
+    = f.label :hide_avatar, "Ne pas afficher les avatars sur le site"
+  %p
+    %label.factice Sûr de vos modifications ?
+    = f.submit "Enregistrer"
+
+%h2 Choisir les contenus affichés sur la page d'accueil
+= form_for @account, :url => registration_path(:account), :html => { :method => :put } do |f|
+  %p
+    = f.check_box :news_on_home
+    = f.label :news_on_home, "Dépêches"
+  %p
+    = f.check_box :diaries_on_home
+    = f.label :diaries_on_home, "Journaux"
+  %p
+    = f.check_box :posts_on_home
+    = f.label :posts_on_home, "Forums"
+  %p
+    = f.check_box :polls_on_home
+    = f.label :polls_on_home, "Sondages"
+  %p
+    = f.check_box :wiki_pages_on_home
+    = f.label :wiki_pages_on_home, "Wiki"
+  %p
+    = f.check_box :trackers_on_home
+    = f.label :trackers_on_home, "Suivi"
+  %p
+    = f.check_box :sort_by_date_on_home
+    = f.label :sort_by_date_on_home, "Trier par ordre antéchronologique"
+  %p
+    %label.factice Sûr de vos modifications ?
+    = f.submit "Enregistrer"
