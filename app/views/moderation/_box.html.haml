@@ -9,6 +9,8 @@
       = list_of(@candidate_news) do |news|
         - if news.node.board_status(current_account) != :read
           = image_tag "icones/chat.png", :alt => "Nouveaux !"
+        - if !news.node.vote_by?(current_account.id)
+          = image_tag "icones/bolt.png", :alt => "Pas de vote"
         - if news.acceptable?
           = image_tag "icones/check.png", :alt => "Acceptable"
         - elsif news.refusable?
