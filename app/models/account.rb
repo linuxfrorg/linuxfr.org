@@ -188,6 +188,10 @@ class Account < ActiveRecord::Base
     node.read_by(self.id)
   end
 
+  def viewable_by?(account)
+    account && (account.admin? || account.moderator? || account.id == self.id)
+  end
+
 ### Karma ###
 
   def daily_karma

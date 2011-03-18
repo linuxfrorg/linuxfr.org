@@ -3,11 +3,13 @@
   %p Compte créé le #{l @user.created_at.to_date}
   - unless @user.account && @user.account.active?
     %p Compte fermé
-  - if current_account && current_account.admin? && @user.account
+  - if @user.account && @user.account.viewable_by?(current_account)
     %ul
       %li Courriel : #{@user.account.email}
-      %li Karma : #{@user.account.karma}
       %li Rôle : #{@user.account.role}
+      - if current_account.amr?
+        %li Karma : #{@user.account.karma}
+      %li Dernière connexion : #{l @user.account.current_sign_in_at}
   %ul
     %li= link_to "Derniers journaux", user_path(@user)
     %li= link_to "Dernières dépêches", news_user_path(@user)
