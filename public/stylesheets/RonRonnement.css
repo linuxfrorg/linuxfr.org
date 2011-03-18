@@ -480,6 +480,10 @@ body#admin-index #container > ul,
   margin-bottom: 15px;
   font-size: small; }
 
+body#dashboard-index #contents table,
+body#trackers-index #contents table {
+  display: inline-block; }
+
 /* reset pour form css, sinon une boite par css */
 #stylesheets-edit #contents > form {
   display: inherit;
