@@ -459,6 +459,14 @@ li.comment div.content {
 li.comment div.content > p {
   margin-top: 0px;
 }
+li.comment div.content .signature {
+  color: #777777;
+  font-size: 90%;
+}
+li.comment div.content .signature:before {
+  content: "-- \A";
+  white-space: pre-line;
+}
 li.comment img.avatar {
   float: right;
   margin: 5px 10px;
