@@ -894,7 +894,6 @@ li.new-comment .content {
 
 /* extrait de pigments */
 code {
-  display: inline-block;
   font-size: medium;
   white-space: pre-wrap;
   /* Comment */
