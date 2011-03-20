@@ -5,10 +5,11 @@ class SectionsController < ApplicationController
   end
 
   def show
+    @section  = Section.find(params[:id])
+    redirect_to @section, :status => 301 and return if !@section.friendly_id_status.best?
     @sections = Section.published
     @order    = params[:order]
     @order    = "created_at" unless VALID_ORDERS.include?(@order)
-    @section  = Section.find(params[:id])
     @news     = @section.news.with_node_ordered_by(@order).page(params[:page])
     respond_to do |wants|
       wants.html
