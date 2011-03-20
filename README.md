@@ -63,6 +63,14 @@ LinuxFr.org on a Debian box.
     $ firefox http://127.0.0.1:3000/
     (did you mean iceweasel?)
 
+7) Create an admin account:
+    Create an account
+    Get confirmation link in the console and confirm the account
+    (Get password in the console)
+    Give admin role to this account
+    mysql> UPDATE accounts SET role='admin' WHERE login='xxxxxx';
+    Reload the page on the site, you should be admin.
+
 
 See also
 --------
