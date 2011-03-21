@@ -764,9 +764,13 @@ footer.actions .action {
 			border-style: none;
 			background-color: transparent;
 			cursor: pointer;
-		}
-		div:hover {
-			text-decoration: underline;
+			&:hover {
+				text-decoration: underline;
+			}
+			&[disabled='disabled'] {
+				cursor: default;
+				&:hover { text-decoration: none; }
+			}
 		}
 	}
 }

@@ -663,8 +663,12 @@ footer.actions .action {
     border-style: none;
     background-color: transparent;
     cursor: pointer; }
-  .vote .button_to div:hover {
-    text-decoration: underline; }
+    .vote .button_to input:hover {
+      text-decoration: underline; }
+    .vote .button_to input[disabled='disabled'] {
+      cursor: default; }
+      .vote .button_to input[disabled='disabled']:hover {
+        text-decoration: none; }
 
 /* concerne tout ce qui est contenu : article, commentaire */
 .content {
