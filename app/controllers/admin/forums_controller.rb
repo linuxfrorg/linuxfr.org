@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class Admin::ForumsController < AdminController
-  before_filter :find_forum, :only => [:edit, :update, :destroy]
+  before_filter :find_forum, :only => [:edit, :update, :archive, :destroy]
 
   def index
     @forums = Forum.sorted.all
@@ -33,6 +33,11 @@ class Admin::ForumsController < AdminController
       flash.now[:alert] = "Impossible d'enregistrer ce forum"
       render :edit
     end
+  end
+
+  def archive
+    @forum.archive
+    redirect_to admin_forums_url, :notice => "Forum archivé"
   end
 
   def destroy

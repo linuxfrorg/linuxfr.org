@@ -29,6 +29,13 @@ class Forum < ActiveRecord::Base
 
   has_friendly_id :title, :use_slug => true, :reserved_words => %w(index nouveau)
 
+### Workflow ###
+
+  state_machine :state, :initial => :active do
+    event :reopen  do transition :archived => :active end
+    event :archive do transition :active => :archived end
+  end
+
 ### Interest ###
 
   def self.interest_coefficient
