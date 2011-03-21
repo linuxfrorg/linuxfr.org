@@ -20,7 +20,7 @@ class WikiPagesController < ApplicationController
     redirect_to @wiki_page, :status => 301 if !@wiki_page.friendly_id_status.best?
   rescue ActiveRecord::RecordNotFound
     if current_account
-      redirect_to new_wiki_page_url(:title => params[:id].titleize)
+      redirect_to new_wiki_page_url(:title => params[:id])
     else
       render :not_found
     end
