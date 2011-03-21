@@ -221,8 +221,17 @@ class Account < ActiveRecord::Base
                           32 => :wiki_pages_on_home,
                           64 => :trackers_on_home,
                          128 => :sort_by_date_on_home,
+                         256 => :hide_signature,
                          :scopes => false
-  attr_accessible :hide_avatar, :news_on_home, :diaries_on_home, :posts_on_home, :polls_on_home, :wiki_pages_on_home, :trackers_on_home, :sort_by_date_on_home
+  attr_accessible :hide_avatar,
+                  :news_on_home,
+                  :diaries_on_home,
+                  :posts_on_home,
+                  :polls_on_home,
+                  :wiki_pages_on_home,
+                  :trackers_on_home,
+                  :sort_by_date_on_home,
+                  :hide_signature
 
   def types_on_home
     %w(News Diary Post Poll WikiPage Tracker).select do |type|

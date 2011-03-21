@@ -13,7 +13,7 @@
     %em Ce commentaire a été supprimé par l'équipe de modération.
   - else
     = comment.body
-    - if comment.user.try(:signature).present?
+    - if comment.user.try(:signature).present? && !current_account.try(:hide_signature?)
       %p.signature
         = comment.user.try(:signature)
 %footer.actions
