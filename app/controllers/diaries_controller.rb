@@ -3,7 +3,7 @@ class DiariesController < ApplicationController
   before_filter :authenticate_account!, :except => [:index, :show]
   before_filter :find_diary, :except => [:index, :new, :create]
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
-  after_filter  :expire_cache, :only => [:create, :update, :destroy]
+  after_filter  :expire_cache, :only => [:create, :update, :destroy, :move]
   caches_page   :index, :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
   respond_to :html, :atom
 
@@ -49,7 +49,7 @@ class DiariesController < ApplicationController
     enforce_update_permission(@diary)
     @diary.attributes = params[:diary]
     if !preview_mode && @diary.save
-      redirect_to [@user, @diary], :notice => "Votre journal a bien été modifié"
+      redirect_to [@user, @diary], :notice => "Le journal a bien été modifié"
     else
       flash.now[:alert] = "Impossible d'enregistrer ce journal" if @diary.invalid?
       render :edit
@@ -59,7 +59,24 @@ class DiariesController < ApplicationController
   def destroy
     enforce_destroy_permission(@diary)
     @diary.mark_as_deleted
-    redirect_to diaries_url, :notice => "Votre journal a bien été supprimé"
+    redirect_to diaries_url, :notice => "Le journal a bien été supprimé"
+  end
+
+  def move
+    enforce_destroy_permission(@diary)
+    @post = Post.new(params[:post])
+    @post.title = @diary.title
+    @post.wiki_body = @diary.wiki_body
+    if @post.save
+      node = @post.node
+      node.attributes = @diary.node.attributes.except("id", "content_id", "content_type")
+      node.save
+      @diary.mark_as_deleted
+      redirect_to diaries_url, :notice => "Le journal a bien été déplacé vers les forums"
+    else
+      flash.now[:alert] = "Impossible de déplacer ce journal. Avez-vous bien choisi un forum ?"
+      render :edit
+    end
   end
 
 protected
