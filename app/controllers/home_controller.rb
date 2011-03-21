@@ -11,6 +11,7 @@ class HomeController < ApplicationController
     @order  = default unless VALID_ORDERS.include?(@order)
     @ppp    = News.ppp
     @banner = Banner.random
+    @poll   = Poll.current
     @nodes  = Node.public_listing(@types, @order).page(params[:page])
   end
 end
