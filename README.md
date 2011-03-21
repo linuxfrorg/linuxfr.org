@@ -64,6 +64,7 @@ LinuxFr.org on a Debian box.
     (did you mean iceweasel?)
 
 7) Create an admin account:
+
     Create an account
     Get confirmation link in the console and confirm the account
     (Get password in the console)

@@ -44,8 +44,8 @@ GEM
     capistrano (2.5.20)
       highline
       highline
-      net-scp (>= 1.0.0)
       net-scp
+      net-scp (>= 1.0.0)
       net-sftp
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
@@ -161,7 +161,7 @@ GEM
     simple_autocomplete (0.3.8)
     sitemap_generator (1.4.0)
     spork (0.8.4)
-    state_machine (0.9.4)
+    state_machine (0.10.0)
     subexec (0.0.4)
     thin (1.2.8)
       daemons (>= 1.0.9)
@@ -211,6 +211,7 @@ DEPENDENCIES
   mysql2 (~> 0.2)
   nokogiri (~> 1.4)
   nono-redis-store (~> 1.0)
+  posix-spawn (= 0.3.3)
   rails (= 3.0.5)
   rails3-generators
   rdiscount (~> 1.6)
