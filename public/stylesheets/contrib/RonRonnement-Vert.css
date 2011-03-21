@@ -675,7 +675,7 @@ footer.actions .action {
       -webkit-border-image: url("/images/icones/wikipedia.ico") 0 0 0 16;
       -khtml-border-image: url("/images/icones/wikipedia.ico") 0 0 0 16;
       border-image: url("/images/icones/wikipedia.ico") 0 0 0 16; }
-    .content a[href][title="Lien interne du wiki LinuxFr.org"] {
+    .content a[href][title="Lien du wiki interne LinuxFr.org"] {
       padding-left: 3px;
       border-left: 16px;
       -moz-border-image: url("/favicon.png") 0 0 0 32;

@@ -27,6 +27,7 @@ class LFMarkdown < Markdown
 
   def to_html
     extract_code
+    process_internal_wiki_links
     process_wikipedia_links
     process_newlines
     ret = fix_heading_levels(super)
@@ -37,7 +38,12 @@ class LFMarkdown < Markdown
 
 protected
 
+  LF_LINK_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /\[\[\[([ \.:\-\w]+)\]\]\]/ : /\[\[\[([ \.:\-\p{Word}]+)\]\]\]/
   WP_LINK_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /\[\[([ \.:\-\w]+)\]\]/ : /\[\[([ \.:\-\p{Word}]+)\]\]/
+
+  def process_internal_wiki_links
+    @text.gsub!(LF_LINK_REGEXP, '[\1](/wiki/\1 "Lien du wiki interne LinuxFr.org")')
+  end
 
   def process_wikipedia_links
     @text.gsub!(WP_LINK_REGEXP, '[\1](http://fr.wikipedia.org/wiki/\1 "Définition Wikipédia")')

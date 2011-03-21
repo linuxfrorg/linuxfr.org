@@ -12,6 +12,11 @@ describe LFMarkdown do
     html.should == "<p><a href=\"http://pierre.tramo.name/\">http://pierre.tramo.name/</a></p>\n"
   end
 
+  it "transforms [[[]]] to internal wiki links" do
+    html = LFMarkdown.new("[[[Linux]]]").to_html
+    html.should == "<p><a href=\"/wiki/Linux\" title=\"Lien du wiki interne LinuxFr.org\">Linux</a></p>\n"
+  end
+
   it "transforms [[]] to wikipedia links" do
     html = LFMarkdown.new("[[Linux]]").to_html
     html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Linux\" title=\"Définition Wikipédia\">Linux</a></p>\n"

@@ -52,13 +52,7 @@ class WikiPage < Content
   attr_accessor   :wiki_body, :message, :user_id
   attr_accessible :wiki_body, :message
 
-  before_validation :wikify_body
-  def wikify_body
-    return unless wiki_body
-    txt = wiki_body.gsub(/\[\[\[([\w\-]+)\]\]\]/, '[\1](/wiki/\1 "Lien interne du wiki LinuxFr.org")')
-    self.body = wikify(txt)
-  end
-
+  wikify_attr   :body
   sanitize_attr :body
 
   after_save :create_new_version

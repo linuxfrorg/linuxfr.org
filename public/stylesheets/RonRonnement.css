@@ -688,7 +688,7 @@ footer.actions .action {
       font-family: serif;
       font-size: 6pt;
       vertical-align: super; }
-    .content a[href][title="Lien interne du wiki LinuxFr.org"] {
+    .content a[href][title="Lien du wiki interne LinuxFr.org"] {
       padding-left: 3px;
       border-left: 16px;
       -moz-border-image: url("/favicon.png") 0 0 0 32;
