@@ -5,11 +5,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :seo_filter
   helper_method :url_for_content, :path_for_content, :current_user
+  rescue_from Canable::Transgression, :with => :error_403
 
   VALID_ORDERS = %w(created_at score interest last_commented_at comments_count)
   REVISION     = `git rev-parse HEAD`.chomp
 
 protected
+
+  def error_403
+    render :file => "#{Rails.public_path}/errors/403.html", :status => 403, :layout => false
+  end
 
   def seo_filter
     request.session_options[:secure] = request.ssl?
