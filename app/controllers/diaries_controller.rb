@@ -62,6 +62,22 @@ class DiariesController < ApplicationController
     redirect_to diaries_url, :notice => "Le journal a bien été supprimé"
   end
 
+  def convert
+    enforce_update_permission(@diary)
+    @news = News.new(:title => @diary.title, :wiki_body => @diary.wiki_body, :section_id => Section.where(:title => "LinuxFR").first.id)
+    @news.author_name  = @diary.owner.try(:name)
+    @news.author_email = @diary.owner.try(:account).try(:email)
+    if @news.save
+      @news.node.update_attribute(:cc_licenced => true) if @diary.node.cc_licensed?
+      @news.links.create :title => "Journal à l'origine de la dépêche", :url => "#{MY_DOMAIN}/users/#{@diary.owner.to_param}/journaux/#{@diary.to_param}", :lang => "fr"
+      @news.submit!
+      redirect_to [:moderation, @news]
+    else
+      flash.now[:alert] = "Impossible de proposer ce journal en dépêche"
+      render :edit
+    end
+  end
+
   def move
     enforce_destroy_permission(@diary)
     @post = Post.new(params[:post])

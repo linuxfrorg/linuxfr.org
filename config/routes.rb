@@ -14,6 +14,7 @@ LinuxfrOrg::Application.routes.draw do
   # Diaries & Users
   resources :users, :only => [:show] do
     resources :journaux, :controller => "diaries", :as => "diaries", :except => [:index, :new, :create] do
+      post :convert, :on => :member
       post :move, :on => :member
     end
     get :news, :on => :member
