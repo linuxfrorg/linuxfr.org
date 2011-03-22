@@ -39,4 +39,8 @@ class Section < ActiveRecord::Base
     event :archive do transition :published => :archived end
   end
 
+  def self.default
+    where(:title => "LinuxFR").first
+  end
+
 end

@@ -64,7 +64,7 @@ class DiariesController < ApplicationController
 
   def convert
     enforce_update_permission(@diary)
-    @news = News.new(:title => @diary.title, :wiki_body => @diary.wiki_body, :section_id => Section.where(:title => "LinuxFR").first.id)
+    @news = News.new(:title => @diary.title, :wiki_body => @diary.wiki_body, :section_id => Section.default.id)
     @news.author_name  = @diary.owner.try(:name)
     @news.author_email = @diary.owner.try(:account).try(:email)
     if @news.save
