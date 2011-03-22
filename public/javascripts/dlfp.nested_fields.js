@@ -43,7 +43,7 @@
                 var name = base.parent + '[' + base.nested + 's_attributes][' + base.counter + '][' + i + ']';
                 var type = base.attributes[i];
                 if (typeof(type) === "string") {
-                    elem = $('<input/>', {name: name, type: type, size: 30})
+                    elem = $('<input/>', {name: name, type: type, size: 30, autocomplete: "off"})
                 } else {
                     elem = $('<select/>', {name: name});
                     for (var j in type) {

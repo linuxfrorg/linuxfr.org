@@ -21,6 +21,7 @@
                 var form = base.element.find('form');
                 form.submit(function() {
                     base.submitForm(base.creation ? old : '');
+                    return false;
                 });
                 form.find('.cancel').click(function() {
                     base.element.html(old);

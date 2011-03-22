@@ -6,7 +6,7 @@
     = form.label :url, 'URL'
     = form.label :lang, 'Langue'
   %p.link
-    = form.text_field :title, :maxlength => 100
-    = form.url_field :url
+    = form.text_field :title, :maxlength => 100, :autocomplete => "off"
+    = form.url_field :url, :autocomplete => "off"
     = form.select :lang, Lang.all
     = form.submit "OK"
