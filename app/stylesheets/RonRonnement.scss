@@ -1171,7 +1171,7 @@ body#boards-show {
 	&:after { content: "]"; }
 }
 /* Ligne de tribune */
-p.chat {
+.chat {
 	margin: 3px 0px 0px 0px;
 	/* pseudo */
 	.board-left > b:first-of-type {

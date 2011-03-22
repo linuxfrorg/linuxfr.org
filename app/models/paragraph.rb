@@ -92,7 +92,7 @@ class Paragraph < ActiveRecord::Base
 
   before_save :wikify_body
   def wikify_body
-    self.body = wikify(wiki_body).gsub(/<\/?p>/, '')
+    self.body = wikify(wiki_body)
   end
 
   sanitize_attr :body

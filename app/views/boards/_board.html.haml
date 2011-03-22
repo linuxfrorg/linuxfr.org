@@ -1,4 +1,4 @@
-%p{:id => "board-#{board.id}", :class => board.kind}
+= content_tag(board.kind == "chat" ? "p" : "div", :id => "board-#{board.id}", :class => board.kind) do
   %span{:class => "board-left", :title => board.user_agent}
     = content_tag(:time, board.created_at.to_s(:norloge), :class => "norloge", :datetime => board.created_at.iso8601)
     %b= board.user_link

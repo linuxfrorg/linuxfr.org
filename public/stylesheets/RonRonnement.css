@@ -1217,7 +1217,7 @@ body#boards-show #container {
     content: "]"; }
 
 /* Ligne de tribune */
-p.chat {
+.chat {
   margin: 3px 0px 0px 0px;
   /* pseudo */
   border-top: 1px solid transparent;
@@ -1226,7 +1226,7 @@ p.chat {
   margin-bottom: -2px;
   padding-top: 0px;
   padding-bottom: 0px; }
-  p.chat .board-left > b:first-of-type {
+  .chat .board-left > b:first-of-type {
     color: #93877b;
     font-family: monospace;
     font-size: 11px; }

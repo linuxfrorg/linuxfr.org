@@ -32,7 +32,7 @@
         };
 
         base.findCursor = function() {
-            var first = base.inbox.find("p:first");
+            var first = base.inbox.children().first();
             if (first.length > 0) {
                 var id = first[0].id;
                 return (id.slice(0,6) == "board-") ? id.slice(6) : null;
@@ -158,12 +158,12 @@
                     existing = $("#board_" + message.id);
                     // Anti-duplicate protection
                     if (existing.length > 0) {
-                        return ;
+                        continue ;
                     }
                     method  = 'on_' + message.kind;
                     if (base[method]) {
                         base.inbox.prepend(message.msg)
-                                  .find('p:first .board-left .norloge').click(base.norloge);
+                                  .find('.board-left:first .norloge').click(base.norloge);
                         base[method](message.msg);
                     }
                     base.inbox.find('.board-right:first').each(base.norlogize);
@@ -192,7 +192,7 @@
 
         /* Callback for locking */
         base.on_locking = function(message) {
-            var el = base.inbox.find("p:first");
+            var el = base.inbox.children().first();
             el.find(".clear").each(function() {
                 $('.locked').removeClass('locked');
                 $.noticeAdd({text: message});
@@ -209,10 +209,11 @@
 
         /* Callback for creation */
         base.on_creation = function(message) {
-            var el = base.inbox.find("p:first");
+            var el = base.inbox.children().first();
             el.find(".link").each(function() {
                 var id = $(this).attr('data-id');
-                var html = '<li id="link_' + id +
+                var html = '<li class="link" id="link_' + id +
+                           '" lang="' + $(this).find('a').attr('hreflang') +
                            '" data-url="/redaction/links/' + id +
                            '/modifier">' + $(this).html() + '</li>';
                 $('#links').append(html);
@@ -231,7 +232,7 @@
 
         /* Callback for edition */
         base.on_edition = function(message) {
-            var el = base.inbox.find("p:first");
+            var el = base.inbox.children().first();
             el.find(".news").each(function() {
                 $('#news_header').html($(this).clone());
             });
@@ -245,7 +246,7 @@
 
         /* Callback for deletion */
         base.on_deletion = function(message) {
-            var el = base.inbox.find("p:first");
+            var el = base.inbox.children().first();
             el.find(".link").each(function() {
                 $('#link_' + $(this).attr('data-id')).remove();
             });
