@@ -32,6 +32,8 @@ describe News do
   context "when created in redaction" do
     let(:news) { News.create_for_redaction(Factory.create :writer_account) }
 
+    before(:all) { Factory.create(:default_section) }
+
     it "has two paragraphs, one in each part" do
       news.should have(2).paragraphs
       news.paragraphs.in_first_part.should have(1).item

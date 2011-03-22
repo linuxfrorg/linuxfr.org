@@ -1,3 +1,5 @@
+# Encoding: utf-8
+#
 require 'spec_helper'
 
 describe DiariesController do
@@ -20,9 +22,8 @@ describe DiariesController do
     before(:each) { diary.mark_as_deleted }
 
     it "doesn't show the deleted diary" do
-      expect do
-        get :show, :user_id => owner.to_param, :id => diary.to_param
-      end.to raise_error Canable::Transgression
+      get :show, :user_id => owner.to_param, :id => diary.to_param
+      response.should contain("Accès interdit à cette page !")
     end
   end
 end

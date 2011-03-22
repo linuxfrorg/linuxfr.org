@@ -1,4 +1,5 @@
-#poll_box.box
-  %h1 Sondage
-  %h2= @poll.title
-  = render("polls/answers_#{poll_current_or_archived @poll}", :poll => @poll)
+- if @poll
+  #poll_box.box
+    %h1 Sondage
+    %h2= @poll.title
+    = render("polls/answers_#{poll_current_or_archived @poll}", :poll => @poll)

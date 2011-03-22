@@ -53,7 +53,7 @@ describe "Diaries" do
     fill_in :diary_wiki_body, :with => body
     click_button "Prévisualiser"
     click_button "Poster le journal"
-    response.should contain("Votre journal a bien été modifié")
+    response.should contain("Le journal a bien été modifié")
     response.should contain(body)
   end
 end
