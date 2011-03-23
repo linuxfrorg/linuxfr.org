@@ -21,7 +21,7 @@ class LFMarkdown < Markdown
     @filter_html   = true
     @autolink      = true
     @codemap       = {}
-    @generate_toc  = text.length > 12_000
+    @generate_toc  = text.length > 20_000  # See https://github.com/rtomayko/rdiscount/issues/36
     super(text.dup, *extensions)
   end
 
