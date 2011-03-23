@@ -3,5 +3,5 @@ Factory.define :section do |f|
 end
 
 Factory.define :default_section, :class => "section" do |f|
-  f.title "LinuxFR"
+  f.title "LinuxFr.org"
 end
