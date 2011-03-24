@@ -119,7 +119,7 @@ class Poll < Content
 ### Interest ###
 
   def self.interest_coefficient
-    20
+    12
   end
 
 end
