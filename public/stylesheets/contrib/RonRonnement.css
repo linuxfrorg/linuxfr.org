@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Copyright 2010 Eve Schoonbroodt (design) http://www.studiomagenta.be/ */
 /* Copyright 2010 Nicolas Schoonbroodt (css) <nicolas@elsewhere.be>      */
 /* Distributed under GNU AGPL v3 License                                 */
@@ -156,10 +157,11 @@ html {
   background-image: url("/images/contrib/RonRonnement/background_html.png");
   background-repeat: repeat-x;
   background-position: top;
-  font-family: Freesans, "Free Helvetian", "URW Nimbus Sans L", "Nimbus Sans L", NimbusSanL, URWNimbusSanL, Swiss, "Swiss 721 SWA", "Swiss 721 BT", "Swiss 721", Helvetica, Helvetic, Helv, "Arial Unicode MS", Arial, sans-serif;
+  font-family: sans-serif;
   padding: 0px 19px 0px 31px; }
 
 body {
+  color: #000;
   /* si gradient ko p. ex. opera */
   background: #e4e4e4;
   margin-top: 0px;
@@ -293,6 +295,8 @@ input[type='submit'] {
       margin-left: 5px;
       padding-left: 5px;
       border-left: solid 1px #a99c90; }
+      #sidebar .box li.forum span {
+        font-weight: bold; }
     #sidebar .box > a {
       display: block;
       padding-left: 5px;
@@ -476,6 +480,10 @@ body#admin-index #container > ul,
   margin-bottom: 15px;
   font-size: small; }
 
+body#dashboard-index #contents table,
+body#trackers-index #contents table {
+  display: inline-block; }
+
 /* reset pour form css, sinon une boite par css */
 #stylesheets-edit #contents > form {
   display: inherit;
@@ -653,13 +661,21 @@ footer.actions .action {
     font-size: x-small;
     color: #a99c90;
     border-style: none;
-    background-color: transparent; }
-  .vote .button_to div:hover {
-    text-decoration: underline; }
+    background-color: transparent;
+    cursor: pointer; }
+    .vote .button_to input:hover {
+      text-decoration: underline; }
+    .vote .button_to input[disabled='disabled'] {
+      cursor: default; }
+      .vote .button_to input[disabled='disabled']:hover {
+        text-decoration: none; }
 
 /* concerne tout ce qui est contenu : article, commentaire */
 .content {
-  text-align: justify; }
+  text-align: justify;
+  word-wrap: break-word; }
+  .content img {
+    max-width: 100%; }
   .content a[href] {
     color: #0000EE;
     font-weight: inherit; }
@@ -667,14 +683,11 @@ footer.actions .action {
       text-decoration: inherit; }
     .content a[href]:visited {
       color: #551A8B; }
-    .content a[href][title="Définition Wikipédia"] {
-      padding-left: 3px;
-      border-left: 16px;
-      -moz-border-image: url("/images/icones/wikipedia.ico") 0 0 0 16;
-      -o-border-image: url("/images/icones/wikipedia.ico") 0 0 0 16;
-      -webkit-border-image: url("/images/icones/wikipedia.ico") 0 0 0 16;
-      -khtml-border-image: url("/images/icones/wikipedia.ico") 0 0 0 16;
-      border-image: url("/images/icones/wikipedia.ico") 0 0 0 16; }
+    .content a[href][title="Définition Wikipédia"]:after {
+      content: "\A0W";
+      font-family: serif;
+      font-size: 6pt;
+      vertical-align: super; }
     .content a[href][title="Lien du wiki interne LinuxFr.org"] {
       padding-left: 3px;
       border-left: 16px;
@@ -683,6 +696,8 @@ footer.actions .action {
       -webkit-border-image: url("/favicon.png") 0 0 0 32;
       -khtml-border-image: url("/favicon.png") 0 0 0 32;
       border-image: url("/favicon.png") 0 0 0 32; }
+  .content .content li {
+    list-style-position: inside; }
 
 blockquote {
   border-left: 3px solid #d40050;
@@ -761,10 +776,15 @@ a.scroll {
   display: block;
   position: relative;
   margin: 0 0 12px 0; }
+  .notice-item ul {
+    padding: 0; }
+  .notice-item li {
+    text-align: left;
+    list-style: disc inside; }
 
 .notice-item-close {
   position: absolute;
-  font-family: Arial;
+  font-family: sans-serif;
   font-size: 12px;
   font-weight: bold;
   right: 6px;
@@ -772,10 +792,10 @@ a.scroll {
   cursor: pointer; }
 
 /* sondage */
-ul.poll .current {
+ul.poll.current {
   padding: 0px;
   margin-top: 0px; }
-  ul.poll .current li {
+  ul.poll.current li {
     list-style: none; }
 ul.poll li meter {
   display: block;
@@ -789,7 +809,7 @@ ul.poll li meter::-webkit-meter-horizontal-suboptimal-value,
 ul.poll li meter::-webkit-meter-horizontal-even-less-good-value {
   background: rgba(212, 0, 80, 0.33); }
 
-.go_to_content {
+.factice, .go_to_content {
   float: left;
   text-indent: -9998em;
   overflow: hidden;
@@ -853,6 +873,12 @@ li.comment {
     border-left: 1px solid #a99c90;
     padding-left: 5px;
     margin-bottom: 5px; }
+    li.comment .content .signature {
+      color: #999;
+      font-size: 11px; }
+      li.comment .content .signature:before {
+        white-space: pre-line;
+        content: "-- \a"; }
   li.comment > ul {
     list-style: none;
     margin-left: 1.25em;
@@ -1097,64 +1123,64 @@ code {
 
 /* Langues */
 li.link[lang=cn] {
-  list-style: url("/images/langs/cn.png"); }
+  list-style-image: url("/images/langs/cn.png"); }
 
 li.link[lang=ct] {
-  list-style: url("/images/langs/ct.png"); }
+  list-style-image: url("/images/langs/ct.png"); }
 
 li.link[lang=da] {
-  list-style: url("/images/langs/da.png"); }
+  list-style-image: url("/images/langs/da.png"); }
 
 li.link[lang=de] {
-  list-style: url("/images/langs/de.png"); }
+  list-style-image: url("/images/langs/de.png"); }
 
 li.link[lang=el] {
-  list-style: url("/images/langs/el.png"); }
+  list-style-image: url("/images/langs/el.png"); }
 
 li.link[lang=en] {
-  list-style: url("/images/langs/en.png"); }
+  list-style-image: url("/images/langs/en.png"); }
 
 li.link[lang=es] {
-  list-style: url("/images/langs/es.png"); }
+  list-style-image: url("/images/langs/es.png"); }
 
 li.link[lang=eu] {
-  list-style: url("/images/langs/eu.png"); }
+  list-style-image: url("/images/langs/eu.png"); }
 
 li.link[lang=fi] {
-  list-style: url("/images/langs/fi.png"); }
+  list-style-image: url("/images/langs/fi.png"); }
 
 li.link[lang=fr] {
-  list-style: url("/images/langs/fr.png"); }
+  list-style-image: url("/images/langs/fr.png"); }
 
 li.link[lang=it] {
-  list-style: url("/images/langs/it.png"); }
+  list-style-image: url("/images/langs/it.png"); }
 
 li.link[lang=ja] {
-  list-style: url("/images/langs/ja.png"); }
+  list-style-image: url("/images/langs/ja.png"); }
 
 li.link[lang=ko] {
-  list-style: url("/images/langs/ko.png"); }
+  list-style-image: url("/images/langs/ko.png"); }
 
 li.link[lang=nl] {
-  list-style: url("/images/langs/nl.png"); }
+  list-style-image: url("/images/langs/nl.png"); }
 
 li.link[lang=no] {
-  list-style: url("/images/langs/no.png"); }
+  list-style-image: url("/images/langs/no.png"); }
 
 li.link[lang=pl] {
-  list-style: url("/images/langs/pl.png"); }
+  list-style-image: url("/images/langs/pl.png"); }
 
 li.link[lang=pt] {
-  list-style: url("/images/langs/pt.png"); }
+  list-style-image: url("/images/langs/pt.png"); }
 
 li.link[lang=ru] {
-  list-style: url("/images/langs/ru.png"); }
+  list-style-image: url("/images/langs/ru.png"); }
 
 li.link[lang=sv] {
-  list-style: url("/images/langs/sv.png"); }
+  list-style-image: url("/images/langs/sv.png"); }
 
 li.link[lang=xx] {
-  list-style: url("/images/langs/xx.png"); }
+  list-style-image: url("/images/langs/xx.png"); }
 
 /* Tribune */
 body#boards-show #sidebar, body#boards-show #bigfooter, body#boards-show .scroll {
@@ -1187,7 +1213,7 @@ body#boards-show #container {
     content: "]"; }
 
 /* Ligne de tribune */
-p.chat {
+.chat {
   margin: 3px 0px 0px 0px;
   /* pseudo */
   border-top: 1px solid transparent;
@@ -1196,7 +1222,7 @@ p.chat {
   margin-bottom: -2px;
   padding-top: 0px;
   padding-bottom: 0px; }
-  p.chat .board-left > b:first-of-type {
+  .chat .board-left > b:first-of-type {
     color: #93877b;
     font-family: monospace;
     font-size: 11px; }
@@ -1305,11 +1331,14 @@ div#form_links .link .remove {
 
 /* Moderation */
 /* TODO styler "ajouter un lien" */
+#moderation_box.box li {
+  list-style: disc inside; }
 #moderation_box .board input#board_message {
   display: block;
   width: 95%;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  margin-bottom: 5px; }
 
 body#news-show #redaction .score, body#news-show #redaction .datePourCss {
   right: 0px; }
@@ -1346,7 +1375,8 @@ body#news-show #redaction .datePourCss {
   width: 95%;
   margin-top: 5px;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  margin-bottom: 5px; }
 
 #news_vote div .button_to,
 #news_vote div .button_to div {
@@ -1368,6 +1398,9 @@ div#toolbar {
     float: left; }
 
 /* tableau de bord et tracker */
+body#trackers-index .toolbox .new_content {
+  margin-bottom: 10px; }
+
 body#dashboard-index #contents table,
 body#trackers-index #contents table {
   border-collapse: collapse;
@@ -1383,14 +1416,23 @@ body#trackers-index #contents table {
     body#dashboard-index #contents table tr:last-of-type,
     body#trackers-index #contents table tr:last-of-type {
       border-bottom: none; }
-    body#dashboard-index #contents table tr td, body#dashboard-index #contents table tr th,
-    body#trackers-index #contents table tr td,
-    body#trackers-index #contents table tr th {
-      border-right: 1px solid #a99c90; }
-      body#dashboard-index #contents table tr td:last-of-type, body#dashboard-index #contents table tr th:last-of-type,
-      body#trackers-index #contents table tr td:last-of-type,
-      body#trackers-index #contents table tr th:last-of-type {
-        border-right: none; }
+  body#dashboard-index #contents table td, body#dashboard-index #contents table th,
+  body#trackers-index #contents table td,
+  body#trackers-index #contents table th {
+    border-right: 1px solid #a99c90; }
+    body#dashboard-index #contents table td:last-of-type, body#dashboard-index #contents table th:last-of-type,
+    body#trackers-index #contents table td:last-of-type,
+    body#trackers-index #contents table th:last-of-type {
+      border-right: none; }
+    body#dashboard-index #contents table td.date, body#dashboard-index #contents table th.date,
+    body#trackers-index #contents table td.date,
+    body#trackers-index #contents table th.date {
+      white-space: nowrap; }
+    body#dashboard-index #contents table td.number, body#dashboard-index #contents table th.number,
+    body#trackers-index #contents table td.number,
+    body#trackers-index #contents table th.number {
+      text-align: right;
+      padding-right: 2px; }
   body#dashboard-index #contents table a[href],
   body#trackers-index #contents table a[href] {
     color: #0000EE;
@@ -1402,7 +1444,7 @@ body#trackers-index #contents table {
     body#trackers-index #contents table a[href]:visited {
       color: #551A8B; }
 
-#tracker .fix a, #tracker .invalid a, .tracker .fix a, .tracker .invalid a {
+#tracker .fixed a, #tracker .invalid a, #my_trackers .fixed a, #my_trackers .invalid a, .tracker .fixed a, .tracker .invalid a {
   text-decoration: line-through; }
 
 /* page d'historique de wiki */
@@ -1429,11 +1471,6 @@ body#wiki_pages-revision #contents nav ul {
         content: "« "; }
       body#wiki_pages-revision #contents nav ul li:first-of-type:after {
         content: ""; }
-
-/* avatar un poil plus petit */
-img.avatar {
-  max-width: 64px;
-  max-height: 64px; }
 
 body#static-show #contents a[href],
 body#sections-index #contents a[href],
