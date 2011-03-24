@@ -665,6 +665,10 @@ div.content ol {
 	list-style: decimal inside;
 	padding: 0.5em 0.75em;
 }
+article li p:first-child,
+div.content li p:first-child {
+    display: inline;
+}
 article div blockquote,
 div.content blockquote {
 	font-style: italic;
