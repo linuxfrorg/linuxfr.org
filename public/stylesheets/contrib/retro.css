@@ -97,6 +97,8 @@ del.diffdel, del.diffmod { background-color: #f33; }
 .comment .meta {background: #F5F5F5 url(/images/contrib/retro/fond_article.png) repeat-x 0 -3.85em; margin:0; font-size:0.75em; padding:0 1em 0.32em 6.6em;}
 .comment .score {color:#36598E; font-weight:bold; font-size:1.35em; position:relative; bottom:0;}
 .comment .actions {}
+.comment .content .signature { color: #999; font-size: 11px; }
+.comment .content .signature:before { white-space: pre-line; content: "-- \a"; }
 .comment h2 { margin:0; padding:0.5em 1em 0 4.3em; font-size:1.1em; height:1.1em; overflow:hidden; color:#554922;
 	background: #F5F5F5 url(/images/contrib/retro/fond_article.png) repeat-x; border-radius:1.5em 2.5em 0 0; -moz-border-radius:1.5em 2.5em 0 0; -webkit-border-radius:1.5em 2.5em 0 0; }
 .new-comment h3 { border: 1px solid red; }

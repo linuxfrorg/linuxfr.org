@@ -844,6 +844,16 @@ li.comment > figure.image img {
 	height: 3em !important;
 }
 
+/* la signature */
+li.comment .content .signature {
+	color: #999;
+	font-size: 11px;
+}
+li.comment .content .signature:before {
+	white-space: pre-line;
+	content: "-- \a";
+}
+
 /* le commentaire */
 li.comment > div.content {
 	padding: 0 0 0 1em;

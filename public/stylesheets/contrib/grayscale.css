@@ -656,6 +656,14 @@ li.comment {
 	border-left: 1px solid lightgrey;
 	margin: -6px 0 10px 0;
 }
+.comment .content .signature {
+	color: #999;
+	font-size: 11px;
+}
+.comment .content .signature:before {
+	white-space: pre-line;
+	content: "-- \a";
+}
 pre {
 	margin: 10px 0;
 	padding-left: 10px;
