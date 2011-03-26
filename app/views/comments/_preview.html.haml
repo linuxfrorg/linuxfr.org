@@ -10,8 +10,9 @@
       = avatar_url(current_user)
     .content
       = preview.body
-      %p.signature
-        = current_user.signature
+      - if current_user.signature.present? && !current_account.try(:hide_signature?)
+        %p.signature
+          = current_user.signature
     %footer.actions
       &nbsp;
 

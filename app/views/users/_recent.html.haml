@@ -4,12 +4,13 @@
   - unless @user.account && @user.account.active?
     %p Compte fermé
   - if @user.account && @user.account.viewable_by?(current_account)
+    - a = @user.account
     %ul
-      %li Courriel : #{@user.account.email}
-      %li Rôle : #{@user.account.role}
+      %li Courriel : #{a.email}
+      %li Rôle : #{a.role}
       - if current_account.amr?
-        %li Karma : #{@user.account.karma}
-      %li Dernière connexion : #{l @user.account.current_sign_in_at}
+        %li Karma : #{a.karma}
+      %li Dernière connexion : #{a.current_sign_in_at  ? l(@user.account.current_sign_in_at) : "-"}
   %ul
     %li= link_to "Derniers journaux", user_path(@user)
     %li= link_to "Dernières dépêches", news_user_path(@user)
