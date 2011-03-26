@@ -25,4 +25,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
+  def resize_and_pad(width, height, background=:transparent, gravity='Center')
+    super(width, height, background, gravity) do |img|
+      return img unless img["format"] == "GIF"
+      nb_frames = img["%n"].to_i
+      if nb_frames > 1
+        img.run_command("convert", img.path + "[0]", img.path)
+      end
+      img
+    end
+  end
+
 end
