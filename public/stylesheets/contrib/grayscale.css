@@ -6,11 +6,7 @@
 
 @font-face {
 	font-family: Megalopolis;
-	src: url(/fonts/MEgalopolisExtra.otf) format("opentype");
-	/*
-	src: url('megalopolis.eot');
-	src: local('MEgalopolis Extra'), url('megalopolis.otf') format("opentype");
-	*/
+	src: url('/fonts/MEgalopolisExtra.otf') format("opentype");
 }
 
 /* line 14, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */

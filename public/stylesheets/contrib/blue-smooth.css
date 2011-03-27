@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: Megalopolis;
-  src: url(/fonts/MEgalopolisExtra.otf) format("opentype");
+  src: url('/fonts/MEgalopolisExtra.otf') format("opentype");
 }
 
 /* Contenu par défaut */
