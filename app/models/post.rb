@@ -21,6 +21,8 @@ class Post < Content
 
   attr_accessible :title, :wiki_body, :forum_id
 
+  scope :with_node_ordered_by, lambda {|order| joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
+
   validates :forum,     :presence => { :message => "Vous devez choisir un forum" }
   validates :title,     :presence => { :message => "Le titre est obligatoire" },
                          :length   => { :maximum => 100, :message => "Le titre est trop long" }

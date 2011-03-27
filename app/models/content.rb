@@ -9,9 +9,9 @@ class Content < ActiveRecord::Base
   has_one :node, :as => :content, :dependent => :destroy, :inverse_of => :content
   has_many :comments, :through => :node
 
-  delegate :score, :user, :to => :node
+  # /!\ No scope here /!\
 
-  scope :with_node_ordered_by, lambda {|order| joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
+  delegate :score, :user, :to => :node
 
 ### License ###
 
