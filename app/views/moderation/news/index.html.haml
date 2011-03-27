@@ -1,9 +1,23 @@
-=h1 "Nouvelles dépêches"
+=h1 "Modération"
 
-- content_for :column do
-  = render 'moderation/polls/box'
-
+%h2 Nouvelles dépêches
 - if @news.empty?
   Aucune dépêche dans la file de modération.
 - else
-  = render @news
+  %ul
+    = list_of(@news) do |news|
+      = link_to news.title, [:moderation, news]
+
+%h2 15 dernières dépêches refusées
+%ul
+  = list_of(@refused) do |news|
+    = link_to news.title, [:moderation, news]
+
+%h2
+  = link_to "Sondages", moderation_polls_path
+- if @polls.empty?
+  %p Aucune proposition
+- else
+  %ul
+    = list_of(@polls) do |poll|
+      = link_to poll.title, [:moderation, poll]

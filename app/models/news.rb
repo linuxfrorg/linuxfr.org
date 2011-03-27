@@ -37,6 +37,7 @@ class News < Content
   scope :sorted,    order("created_at DESC")
   scope :draft,     where(:state => "draft")
   scope :candidate, where(:state => "candidate")
+  scope :refused,   where(:state => "refused")
   scope :with_node_ordered_by, lambda {|order| joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
 
   validates :title,        :presence => { :message => "Le titre est obligatoire" },

@@ -5,9 +5,10 @@ class Moderation::NewsController < ModerationController
   after_filter  :expire_cache, :only => [:update, :accept]
 
   def index
-    @news   = News.candidate.sorted
-    @polls  = Poll.draft
-    @boards = Board.all(Board.amr)
+    @news    = News.candidate.sorted
+    @refused = News.refused.sorted.limit(15)
+    @polls   = Poll.draft
+    @boards  = Board.all(Board.amr)
   end
 
   def show

@@ -1,9 +1,0 @@
-#polls_box.box
-  %h1 Sondages
-  %p
-    - if @polls.empty?
-      Aucune proposition
-    - else
-      %ul
-        - @polls.each do |poll|
-          %li= link_to poll.title, [:moderation, poll]
