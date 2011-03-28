@@ -2,8 +2,8 @@
 #
 class TagsController < ApplicationController
   before_filter :authenticate_account!, :except => [:public]
-  before_filter :find_node, :only => [:new, :create]
-  before_filter :find_tag,  :only => [:show, :public, :update]
+  before_filter :find_node, :only => [:new, :create, :update, :destroy]
+  before_filter :find_tag,  :only => [:show, :public, :hide, :update]
   before_filter :get_order, :only => [:index, :show]
   before_filter :user_tags, :only => [:index, :show]
 
@@ -18,8 +18,25 @@ class TagsController < ApplicationController
   def create
     current_account.tag(@node, params[:tags])
     respond_to do |wants|
+     wants.js   { render :nothing => true }
      wants.html { redirect_to_content @node.content }
-     wants.js { render :nothing => true }
+    end
+  end
+
+  def update
+    @node.taggings.create(:tag_id => @tag.id, :user_id => current_account.user_id)
+    respond_to do |wants|
+     wants.js   { render :nothing => true }
+     wants.html { redirect_to_content @node.content }
+    end
+  end
+
+  def destroy
+    @tag = Tag.where(:name => params[:id]).first
+    @node.taggings.where(:tag_id => @tag.id, :user_id => current_account.user_id).delete_all if @tag
+    respond_to do |wants|
+     wants.js   { render :nothing => true }
+     wants.html { redirect_to_content @node.content }
     end
   end
 
@@ -50,7 +67,7 @@ class TagsController < ApplicationController
     @nodes = @tag.nodes.where("nodes.public" => true).order(@order).page(params[:page])
   end
 
-  def update
+  def hide
     enforce_update_permission(@tag)
     @tag.toggle!("public")
     redirect_to :back, :notice => "La visibilité du tag a bien été modifiée"

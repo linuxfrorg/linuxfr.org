@@ -5,11 +5,16 @@
       = meta
       - if record.node.cc_licensed?
         = link_to "Licence CC by-sa", 'http://creativecommons.org/licenses/by-sa/3.0/deed.fr', :rel => 'license'
-      - unless (tags = record.node.popular_tags.all).empty?
+      - unless tags.empty?
         %div.tags
           Tags :
           %ul.tag_cloud
             = list_of tags do |tag|
+              - if current_account
+                - if tag.tagged_by_current
+                  = button_to "Supprimer", node_tag_path(:node_id => record.node.id, :id => tag), :method => "delete", :remote => true, :class => "remove_tag"
+                - else
+                  = button_to "Ajouter", node_tag_path(:node_id => record.node.id, :id => tag), :method => "put", :remote => true, :class => "add_tag"
               = link_to tag.name, "/tags/#{tag.name}/public", :rel => 'tag'
   .figures
     %figure.score(title="Note de ce contenu")= record.score

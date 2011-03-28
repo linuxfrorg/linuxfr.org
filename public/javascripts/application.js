@@ -74,6 +74,7 @@
     $('#redaction .link').editionInPlace();
     $('#redaction .new_link').creationInPlace();
 
+    /* Tags */
     $('.tag_in_place').live('in_place:form', function() {
         $('input.autocomplete').each(function() {
             var input = $(this);
@@ -83,6 +84,10 @@
     }).live('in_place:result', function() {
         $.noticeAdd({text: "Tags ajoutés"});
     }).editionInPlace();
+    $('.add_tag, .remove_tag').click(function() {
+        this.disabled = "disabled";
+        $(this).blur();
+    });
 
     /* Hotkeys */
     $(document)

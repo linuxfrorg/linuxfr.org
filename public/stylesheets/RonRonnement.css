@@ -647,6 +647,23 @@ footer.actions .action {
         content: ", "; }
       .tags ul li:last-child:after, .tags ul li .last:after {
         content: ""; }
+      .tags ul li form {
+        display: inline-block; }
+      .tags ul li .add_tag, .tags ul li .remove_tag {
+        display: inline-block;
+        text-indent: -9998em;
+        height: 20px;
+        width: 12px;
+        padding: 0;
+        border: none; }
+      .tags ul li .add_tag {
+        background: url(/images/icones/tag.png) no-repeat 0 6px; }
+        .tags ul li .add_tag[disabled] {
+          background: url(/images/icones/tagged.png) no-repeat 0 6px; }
+      .tags ul li .remove_tag {
+        background: url(/images/icones/x.png) no-repeat 0 6px; }
+        .tags ul li .remove_tag[disabled] {
+          display: none; }
 
 .vote {
   color: #a99c90;
@@ -661,14 +678,16 @@ footer.actions .action {
     font-size: x-small;
     color: #a99c90;
     border-style: none;
-    background-color: transparent;
-    cursor: pointer; }
-    .vote .button_to input:hover {
-      text-decoration: underline; }
-    .vote .button_to input[disabled='disabled'] {
-      cursor: default; }
-      .vote .button_to input[disabled='disabled']:hover {
-        text-decoration: none; }
+    background-color: transparent; }
+
+.button_to input {
+  cursor: pointer; }
+  .button_to input:hover {
+    text-decoration: underline; }
+  .button_to input[disabled] {
+    cursor: default; }
+    .button_to input[disabled]:hover {
+      text-decoration: none; }
 
 /* concerne tout ce qui est contenu : article, commentaire */
 .content {

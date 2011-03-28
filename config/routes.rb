@@ -51,12 +51,13 @@ LinuxfrOrg::Application.routes.draw do
       get :answer, :on => :member
       post "/relevance/:action" => "relevances#index", :as => :relevance, :on => :member
     end
-    resources :tags, :only => [:new, :create]
+    resources :tags, :only => [:new, :create, :update, :destroy]
     post "/vote/:action" => "votes#index", :as => :vote, :on => :member
   end
-  resources :tags, :only => [:index, :show, :update] do
+  resources :tags, :only => [:index, :show] do
     get :autocomplete, :on => :collection
     get :public, :on => :member
+    post :hide, :on => :member
   end
 
   # Boards

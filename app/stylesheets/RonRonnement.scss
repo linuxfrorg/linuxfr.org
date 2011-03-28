@@ -738,10 +738,27 @@ footer.actions .action {
 			&:after {
 				content: ", ";
 			}
-
 			&:last-child:after, .last:after {
 				content: "";
-			}	
+			}
+
+			form { display: inline-block; }
+			.add_tag, .remove_tag {
+				display: inline-block;
+				text-indent: -9998em;
+				height: 20px;
+				width: 12px;
+				padding: 0;
+				border: none;
+			}
+			.add_tag  {
+				background: url(/images/icones/tag.png) no-repeat 0 6px;
+				&[disabled] { background: url(/images/icones/tagged.png) no-repeat 0 6px; }
+			}
+			.remove_tag {
+				background: url(/images/icones/x.png) no-repeat 0 6px;
+				&[disabled] { display: none; }
+			}
 		}
 	}
 }
@@ -763,14 +780,19 @@ footer.actions .action {
 			color: $C_INTER;
 			border-style: none;
 			background-color: transparent;
-			cursor: pointer;
-			&:hover {
-				text-decoration: underline;
-			}
-			&[disabled='disabled'] {
-				cursor: default;
-				&:hover { text-decoration: none; }
-			}
+		}
+	}
+}
+
+.button_to {
+	input {
+		cursor: pointer;
+		&:hover {
+			text-decoration: underline;
+		}
+		&[disabled] {
+			cursor: default;
+			&:hover { text-decoration: none; }
 		}
 	}
 }

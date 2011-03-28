@@ -1,7 +1,7 @@
 # encoding: UTF-8
 module NodeHelper
 
-  ContentPresenter = Struct.new(:record, :title, :meta, :image, :body, :actions, :css_class) do
+  ContentPresenter = Struct.new(:record, :title, :meta, :tags, :image, :body, :actions, :css_class) do
     def to_hash
       attrs = members.map(&:to_sym)
       Hash[*attrs.zip(values).flatten(1)]
@@ -29,10 +29,25 @@ module NodeHelper
     cp.css_class << 'new-node' if current_account && record.node.read_status(current_account) == :not_read
     yield cp
     cp.meta ||= posted_by(record)
+    cp.tags ||= tags_for(record.node)
     cp.body ||= (ContentPresenter.collection? ?
                  record.truncated_body.sub("[...](suite)", " " + link_to("(...)", path_for_content(record))) :
                  record.body)
     render 'nodes/content', cp.to_hash
+  end
+
+  def tags_for(node)
+    if current_account
+      tags  = current_account.user.taggings.
+                                   where(:node_id => node.id).
+                                   order("created_at DESC").
+                                   map(&:tag).each {|t| t.tagged_by_current = true }
+    end
+    if tags.present?
+      tags += node.popular_tags.where("tags.id NOT IN (?)", tags.map(&:id)).all
+    else
+      node.popular_tags.all
+    end
   end
 
   def editable_field(record, field)
