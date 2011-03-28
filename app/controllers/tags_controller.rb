@@ -1,7 +1,9 @@
+# Encoding: utf-8
+#
 class TagsController < ApplicationController
   before_filter :authenticate_account!, :except => [:public]
   before_filter :find_node, :only => [:new, :create]
-  before_filter :find_tag,  :only => [:show, :public]
+  before_filter :find_tag,  :only => [:show, :public, :update]
   before_filter :get_order, :only => [:index, :show]
   before_filter :user_tags, :only => [:index, :show]
 
@@ -46,6 +48,12 @@ class TagsController < ApplicationController
   def public
     @order = (params[:order] || "created_at") + " DESC"
     @nodes = @tag.nodes.where("nodes.public" => true).order(@order).page(params[:page])
+  end
+
+  def update
+    enforce_update_permission(@tag)
+    @tag.toggle!("public")
+    redirect_to :back, :notice => "La visibilité du tag a bien été modifiée"
   end
 
 protected

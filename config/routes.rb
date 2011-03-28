@@ -54,7 +54,7 @@ LinuxfrOrg::Application.routes.draw do
     resources :tags, :only => [:new, :create]
     post "/vote/:action" => "votes#index", :as => :vote, :on => :member
   end
-  resources :tags, :only => [:index, :show] do
+  resources :tags, :only => [:index, :show, :update] do
     get :autocomplete, :on => :collection
     get :public, :on => :member
   end

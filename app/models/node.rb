@@ -150,6 +150,7 @@ class Node < ActiveRecord::Base
 
   def popular_tags(nb=7)
     Tag.select([:name]).
+        where(:public => true).
         joins(:taggings).
         where("taggings.node_id" => self.id).
         group("tags.id").

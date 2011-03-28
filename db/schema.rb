@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110315222615) do
+ActiveRecord::Schema.define(:version => 20110328202625) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -255,17 +255,19 @@ ActiveRecord::Schema.define(:version => 20110315222615) do
     t.datetime "created_at"
   end
 
+  add_index "taggings", ["created_at", "tag_id"], :name => "index_taggings_on_created_at_and_tag_id"
   add_index "taggings", ["node_id"], :name => "index_taggings_on_node_id"
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
   add_index "taggings", ["user_id"], :name => "index_taggings_on_user_id"
 
   create_table "tags", :force => true do |t|
-    t.string  "name",           :limit => 64,                :null => false
-    t.integer "taggings_count",               :default => 0, :null => false
+    t.string  "name",           :limit => 64,                   :null => false
+    t.integer "taggings_count",               :default => 0,    :null => false
+    t.boolean "public",                       :default => true, :null => false
   end
 
-  add_index "tags", ["name"], :name => "index_tags_on_name"
-  add_index "tags", ["taggings_count"], :name => "index_tags_on_taggings_count"
+  add_index "tags", ["name"], :name => "index_tags_on_name", :unique => true
+  add_index "tags", ["public", "taggings_count"], :name => "index_tags_on_public_and_taggings_count"
 
   create_table "trackers", :force => true do |t|
     t.string   "state",               :limit => 10,  :default => "opened", :null => false

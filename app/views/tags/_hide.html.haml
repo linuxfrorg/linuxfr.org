@@ -1,0 +1,7 @@
+- if current_account && current_account.can_update?(@tag)
+  - if @tag.public?
+    %p Ce tag est actuellement visible.
+    = button_to "Cacher ce tag", tag_path(@tag), :method => :put
+  - else
+    %p Ce tag est actuellement caché.
+    = button_to "Rendre à nouveau visible ce tag", tag_path(@tag), :method => :put
