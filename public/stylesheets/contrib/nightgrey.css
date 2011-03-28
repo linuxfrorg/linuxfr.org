@@ -883,6 +883,10 @@ article ul.tag_cloud li {
   display: inline;
 }
 
+article ul.tag_cloud li form {
+  display: none;
+}
+
 article .content {
   background: #E0D8D0;
   padding: 5px 10px;

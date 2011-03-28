@@ -647,6 +647,23 @@ footer.actions .action {
         content: ", "; }
       .tags ul li:last-child:after, .tags ul li .last:after {
         content: ""; }
+      .tags ul li form {
+        display: inline-block; }
+      .tags ul li .add_tag, .tags ul li .remove_tag {
+        display: inline-block;
+        text-indent: -9998em;
+        height: 20px;
+        width: 12px;
+        padding: 0;
+        border: none; }
+      .tags ul li .add_tag {
+        background: url(/images/icones/tag.png) no-repeat 0 6px; }
+        .tags ul li .add_tag[disabled] {
+          background: url(/images/icones/tagged.png) no-repeat 0 6px; }
+      .tags ul li .remove_tag {
+        background: url(/images/icones/x.png) no-repeat 0 6px; }
+        .tags ul li .remove_tag[disabled] {
+          display: none; }
 
 .vote {
   color: #a99c90;
@@ -760,17 +777,17 @@ a.scroll {
   position: fixed;
   top: 20px;
   right: 20px;
-  width: 250px;
+  width: 280px;
   z-index: 9999; }
 
 .notice-item {
-  height: 60px;
+  min-height: 60px;
   background: #333333;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   color: #eeeeee;
   padding: 6px 6px 0 6px;
-  font-family: lucida Grande;
+  font-family: lucida Grande, sans-serif;
   font-size: 11px;
   border: 2px solid #999999;
   display: block;
@@ -808,6 +825,11 @@ ul.poll li meter::-webkit-meter-horizontal-optimum-value,
 ul.poll li meter::-webkit-meter-horizontal-suboptimal-value,
 ul.poll li meter::-webkit-meter-horizontal-even-less-good-value {
   background: rgba(93, 0, 74, 0.33); }
+
+.anchor {
+  color: #aaa; }
+  .anchor:hover {
+    color: #333; }
 
 .factice, .go_to_content {
   float: left;
@@ -893,7 +915,6 @@ li.new-comment .content {
 
 /* extrait de pigments */
 code {
-  display: inline-block;
   font-size: medium;
   white-space: pre-wrap;
   /* Comment */
@@ -1234,7 +1255,6 @@ body#boards-show #container {
 
 .board-right a {
   font-size: small;
-  text-transform: lowercase;
   color: #0000EE;
   font-weight: inherit;
   font-weight: bold; }

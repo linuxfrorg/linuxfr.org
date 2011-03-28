@@ -506,6 +506,11 @@ section > * > div > table h2 {margin: 0;}
 .pot_de_miel { display: none; }
 .datePourCss { display: none; }
 
+#container header li .add_tag,
+#container header li .remove_tag {
+	display: none;
+}
+
 /*
  * Notice
  */

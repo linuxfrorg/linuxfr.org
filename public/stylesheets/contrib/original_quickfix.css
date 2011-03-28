@@ -774,6 +774,11 @@ footer.actions:before {
   border: 1px solid red;
 }
 
+#container header li .add_tag,
+#container header li .remove_tag {
+	display: none;
+}
+
 /* line 4, ../../app/stylesheets/partials/_forms.scss */
 .vote form {
   display: inline-block;

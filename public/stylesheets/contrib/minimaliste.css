@@ -292,6 +292,7 @@ https://alpha.linuxfr.org/suivi/logo-dans-le-css-et-pas-dans-le-html
 #container .meta a:hover, #container .meta a:active {color: #353535;}
 
 /* tags du contenu */
+#container header li .add_tag, #container header li .remove_tag { display: none; }
 /*
 #container .node .tags {
 	display: inline;

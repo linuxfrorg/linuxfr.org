@@ -675,6 +675,30 @@ a[title='Aller au commentaire parent'], .folding {
 li > h2 > a {
 	text-decoration: none;
 }
+/* Les tags */
+#container header li .add_tag, #container header li .remove_tag {
+	display: block;
+	float: left;
+	clear: left;
+	text-indent: -9998em;
+	height: 14px;
+	width: 12px;
+	margin: 0;
+	border: none;
+}
+#container header li .add_tag {
+	background: url(/images/icones/tag.png) no-repeat 0 2px;
+}
+#container header li .add_tag[disabled] {
+	background: url(/images/icones/tagged.png) no-repeat 0 2px;
+}
+#container header li .remove_tag {
+	background: url(/images/icones/x.png) no-repeat 0 2px;
+}
+#container header li .remove_tag[disabled] {
+	display: none;
+}
+
 .tag_in_place {
 	display: inline;
 }

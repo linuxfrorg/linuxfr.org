@@ -1160,6 +1160,10 @@ div#contents ul.threads li.comment footer.actions a.action
   color:black;
 }
 
+#container header li .add_tag,
+#container header li .remove_tag {
+	display: none;
+}
 
 article footer.actions .vote,
 div#comments ul.threads li.comment footer.actions .vote,

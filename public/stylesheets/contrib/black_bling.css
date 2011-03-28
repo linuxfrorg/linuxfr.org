@@ -648,6 +648,30 @@ article > footer > div {
 	display: inline;
 }
 
+/* Les tags */
+#container header li .add_tag, #container header li .remove_tag {
+	display: block;
+	float: left;
+	clear: left;
+	text-indent: -9998em;
+	height: 12px;
+	width: 12px;
+	margin: 0;
+	border: none;
+}
+#container header li .add_tag {
+	background: url(/images/icones/tag.png) no-repeat;
+}
+#container header li .add_tag[disabled] {
+	background: url(/images/icones/tagged.png) no-repeat;
+}
+#container header li .remove_tag {
+	background: url(/images/icones/x.png) no-repeat;
+}
+#container header li .remove_tag[disabled] {
+	display: none;
+}
+
 /* Les boutons de vote pour l'article et le commentaire */
 div.vote,
 div.vote form.button_to,

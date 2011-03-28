@@ -189,6 +189,8 @@ a img { border: none; }
 .datePourCss { display: none; }
 .banner, .notice { text-align:center; border-bottom:2px solid #D60948; padding-bottom:0.2em; margin-bottom:1em; font-size:110%;}
 table#my_comments, table#my_posts { background:#080000; padding:1em;font-size:0.8em;}
+#container header li .add_tag, #container header li .remove_tag { display: none; }
+
 
 /* mark.css */
 .markItUp {

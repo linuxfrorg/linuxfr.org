@@ -279,6 +279,9 @@ nav.toolbox div.order_navbar {
 #container article header ul.tag_cloud li {
   display: inline;
 }
+#container article header ul.tag_cloud li form {
+  display: none;
+}
 #container article div.content,
 #container article#contents {
   padding: 10px;

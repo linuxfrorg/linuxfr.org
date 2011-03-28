@@ -95,4 +95,8 @@ font-size: 60%}
 .misspelled { border-bottom:1px dashed red; }
 .pot_de_miel { display: none; }
 .datePourCss { display: none; }
+#container header li .add_tag,
+#container header li .remove_tag {
+	display: none;
+}
 
