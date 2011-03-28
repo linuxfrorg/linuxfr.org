@@ -25,9 +25,9 @@ protected
     @keywords      = %w(Linux Logiciel Libre GNU Free Software Actualité Forum Communauté)
     @description   = "L'actualité de Linux et du Logiciel Libre"
     @feeds         = {}
-    @last_comments = Comment.footer.select([:id, :node_id, :title])
-    @popular_tags  = Tag.footer.select([:name])
-    @friend_sites  = FriendSite.scoped.select([:url, :title])
+    @last_comments = Comment.footer
+    @popular_tags  = Tag.footer
+    @friend_sites  = FriendSite.select([:url, :title])
   end
 
 ### Content ###

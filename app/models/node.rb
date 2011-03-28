@@ -153,6 +153,7 @@ class Node < ActiveRecord::Base
         joins(:taggings).
         where("taggings.node_id" => self.id).
         group("tags.id").
+        having("COUNT(tags.id) > 1").
         order("COUNT(tags.id) DESC").
         limit(nb)
   end

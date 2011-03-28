@@ -13,5 +13,12 @@ class Tag < ActiveRecord::Base
 
   validates :name, :presence => true, :uniqueness => true
 
-  scope :footer, order('taggings_count DESC').limit(12)
+  scope :footer, lambda {
+    select([:name]).joins(:taggings).
+                    where("created_at > ?", 2.month.ago).
+                    group(:tag_id).
+                    order("COUNT(*) DESC").
+                    limit(12)
+  }
+
 end

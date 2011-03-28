@@ -32,7 +32,7 @@ class Comment < ActiveRecord::Base
   scope :published,    where(:state => 'published')
   scope :under,        lambda { |path| where("materialized_path LIKE ?", "#{path}_%") }
   scope :on_dashboard, published.order('created_at DESC')
-  scope :footer,       published.order('created_at DESC').limit(12)
+  scope :footer,       published.order('created_at DESC').limit(12).select([:id, :node_id, :title])
 
   validates :title,     :presence => { :message => "Le titre est obligatoire" },
                         :length   => { :maximum => 100, :message => "Le titre est trop long" }
