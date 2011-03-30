@@ -135,6 +135,11 @@ LinuxfrOrg::Application.routes.draw do
     resources :pages, :except => [:show]
   end
 
+  # Statistics
+  controller :statistics do
+    get "/statistiques/tracker" => :tracker
+  end
+
   # Static pages
   controller :static do
     get "/proposer-un-contenu" => :submit_content, :as => :submit_content
