@@ -134,6 +134,7 @@ class Board
       next if vals.nil?
       b = Board.new
       b.id = i.to_i
+      b.object_type = object_type
       b.load(vals)
       boards << b
     end
