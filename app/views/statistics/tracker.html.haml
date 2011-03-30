@@ -19,7 +19,7 @@
       La moitié des entrées fermées ont été traitées en moins de #{@stats.median_time} jours.
     %p
       Fermeture des entrées du suivi par les admins :
-    %ul
+    %ol
       = list_of(@stats.good_workers) do |worker|
         = link_to(worker["name"], "/users/#{worker["name"]}") + " : #{worker["cnt"]}"
 
@@ -49,9 +49,9 @@
     %table
       %tr
         %th Mois
-        %th Entrées restantes/ouvertes
+        %th Entrées restantes/Nouvelles entrées
         %th Total ouvertes
-        %th Entrées fermées/invalidées
+        %th Entrées corrigées/invalidées
       - total = 0
       - @stats.by_month.sort.each do |month|
         - opened  = month[1]["opened"]  || 0
