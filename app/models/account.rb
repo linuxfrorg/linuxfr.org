@@ -14,7 +14,6 @@
 #  old_password         :string(20)
 #  email                :string(255)     default(""), not null
 #  encrypted_password   :string(128)     default(""), not null
-#  password_salt        :string(255)     default(""), not null
 #  confirmation_token   :string(255)
 #  confirmed_at         :datetime
 #  confirmation_sent_at :datetime
@@ -54,6 +53,19 @@ class Account < ActiveRecord::Base
 
   scope :unconfirmed, where(:confirmed_at => nil)
 
+### Validation ###
+
+  validates :login, :presence   => { :message => "Veuillez choisir un pseudo"},
+                    :uniqueness => { :message => "Ce pseudo est déjà pris" }
+
+  EMAIL_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /^.+@.+\.\w{2,4}$/i : /^[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}$/i
+  validates :email, :presence   => { :message => "Veuillez remplir l'adresse de courriel" },
+                    :uniqueness => { :message => "Cette adresse de courriel est déjà utilisée", :case_sensitive => false, :allow_blank => true },
+                    :format     => { :message => "L'adresse de courriel n'est pas valide", :with => EMAIL_REGEXP, :allow_blank => true }
+
+  validates :password, :presence     => { :message => "Le mot de passe est absent", :on => :create },
+                       :confirmation => { :message => "La confirmation du mot de passe ne correspond pas au mot de passe" }
+
 ### Authentication ###
 
   devise :registerable, :database_authenticatable, :confirmable, :recoverable, :rememberable, :trackable
@@ -87,19 +99,6 @@ class Account < ActiveRecord::Base
     false
   end
 
-### Validation ###
-
-  validates :login, :presence   => { :message => "Veuillez choisir un pseudo"},
-                    :uniqueness => { :message => "Ce pseudo est déjà pris" }
-
-  EMAIL_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /^.+@.+\.\w{2,4}$/i : /^[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}$/i
-  validates :email, :presence   => { :message => "Veuillez remplir l'adresse de courriel" },
-                    :uniqueness => { :message => "Cette adresse de courriel est déjà utilisée", :case_sensitive => false, :allow_blank => true },
-                    :format     => { :message => "L'adresse de courriel n'est pas valide", :with => EMAIL_REGEXP, :allow_blank => true }
-
-  validates :password, :presence     => { :message => "Le mot de passe est absent", :on => :create },
-                       :confirmation => { :message => "La confirmation du mot de passe ne correspond pas au mot de passe" }
-
 ### Password ###
 
   before_validation :generate_a_password, :on => :create
@@ -107,17 +106,6 @@ class Account < ActiveRecord::Base
     chars = [*'A'..'Z'] + [*'a'..'z'] + [*'1'..'9'] + %w(- + ! ? : $ % &)
     pass  = chars.sample(8).join
     self.password = self.password_confirmation = pass
-  end
-
-  # Try to import the password from templeet
-  def self.try_import_old_password(credentials)
-    login      = credentials[:login]
-    password   = credentials[:password]
-    account    = Account.where(:login => login).where("ENCRYPT(?, old_password) = old_password", password).first
-    return unless account
-    account.password = account.password_confirmation = password
-    account.old_password = nil
-    account.save
   end
 
   def update_with_password(params={})
@@ -162,22 +150,16 @@ class Account < ActiveRecord::Base
     admin? || moderator? || reviewer?
   end
 
-  def active?
+  def active_for_authentication?
     super && role != 'inactive'
   end
 
   alias :destroy :inactivate!
 
-  def self.send_reset_password_instructions(attributes={})
-    user = find_or_initialize_with_error_by(:email, attributes[:email], :not_found)
-    user.send_reset_password_instructions if user.persisted? && user.active?
-    user
-  end
-
 ### Actions ###
 
   def can_post_on_board?
-    active?
+    active_for_authentication?
   end
 
   def tag(node, tags)

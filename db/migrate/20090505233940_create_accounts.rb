@@ -15,6 +15,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.recoverable
       t.rememberable
       t.trackable
+      t.encryptable
       t.timestamps
     end
 

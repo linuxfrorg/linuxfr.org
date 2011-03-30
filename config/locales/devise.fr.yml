@@ -25,6 +25,7 @@ fr:
       confirmed: "Votre compte a été confirmé avec succès."
     registrations:
       signed_up: "Vous vous êtes inscrit avec succès. Vous allez recevoir les instructions de confirmation par courriel."
+      inactive_signed_up: "Vous vous êtes inscrit avec succès. Mais vous ne pouvez pas vous connecter car votre compte est inactif."
       updated: "Vous avez mis à jour votre compte avec succès."
       destroyed: "Au revoir. Votre compte a été fermé avec succès. Nous espérons vous revoir bientôt."
     unlocks:

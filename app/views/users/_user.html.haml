@@ -3,7 +3,7 @@
     = link_to user.name, user, :class => 'fn url'
   %figure.image
     = avatar_url(user)
-  - unless user.account && user.account.active?
+  - unless user.account && user.account.active_for_authentication?
     %p
       Compte fermé
   - if user.homesite
