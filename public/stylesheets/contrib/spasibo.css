@@ -799,3 +799,5 @@ ul.threads > li.even {
  #container > h1:first-child, #container > div.notice:first-child + h1, #branding > h1, .go_to_content, #site>form, .datePourCss {
 	display: none;
 }
+
+@import url(/stylesheets/statistics.css);

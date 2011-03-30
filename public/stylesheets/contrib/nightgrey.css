@@ -1290,3 +1290,5 @@ div.vote, div.vote form.button_to, div.vote form.button_to div {
 .vg { color: #d07000; font-weight: bold; }
 .vi { color: #3030B0; }
 .il { color: #0000D0; font-weight: bold; }
+
+@import url(/stylesheets/statistics.css);

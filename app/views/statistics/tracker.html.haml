@@ -1,128 +1,82 @@
-#contents
+#contents.statistics
   =h1 "Statistiques sur le système de suivi"
-
-  - colors = { "misc"=>"green", "opened"=>"red", "fixed"=> "green", "invalid"=>"olive", "monthnew"=>"red", "remaining"=>"darkred", "monthfixed"=>"green", "monthinvalid"=>"darkgreen" }
+  - width_factor = 60
 
   .body
-    %p= "Ces statistiques ne prennent en compte que le système de suivi, et pas les demandes envoyées par courriel, messagerie instantanée, lettres d'avocat, kernel panic et autres erreurs Nginx."
-
-    %strong= "Statistiques mises à jour le #{h Time.now}"
-
-    %p= "#{h @states["opened"]} entrées ouvertes, #{h @states["invalid"]} invalides et #{h @states["fixed"]} fermées (total #{h @states["total"]}) envoyées par #{h @distinct_users[0]["cnt"]} visiteurs (en groupant les anonymes), avec #{h @max_entries_by_user[0]["cnt"]} entrées pour le visiteur le plus actif."
-
-    %p= "Le temps moyen de résolution est de #{h @avg_time[0]["avg"]} jours."
-
-    - if (@median_time[0]!=nil)
-      %p= "La moitié des entrées fermées ont été traitées en moins de #{h @median_time[0]["duration"]} jours."
-
-    %p= "Fermeture des entrées du suivi par les admins"
-
+    %p
+      Ces statistiques ne prennent en compte que le système de suivi, et pas les demandes envoyées par courriel, messagerie instantanée, lettres d'avocat, kernel panic et autres erreurs Nginx.
+    %strong
+      Statistiques mises à jour le #{l Time.now}
+    %p
+      #{@stats.states["opened"]} entrées ouvertes,
+      #{@stats.states["invalid"]} invalides et
+      #{@stats.states["fixed"]} fermées (total #{@stats.states["total"]})
+      envoyées par #{@stats.distinct_users} visiteurs (en groupant les anonymes),
+      avec #{@stats.max_entries_by_user} entrées pour le visiteur le plus actif.
+    %p
+      Le temps moyen de résolution est de #{@stats.average_time} jours.
+    %p
+      La moitié des entrées fermées ont été traitées en moins de #{@stats.median_time} jours.
+    %p
+      Fermeture des entrées du suivi par les admins :
     %ul
-      - @good_workers.each do |worker|
-        %ol
-          %a(title="#{worker["name"]}" href="/users/#{worker["name"]}")#{worker["name"]}
-          = ": #{worker["cnt"]}"
+      = list_of(@stats.good_workers) do |worker|
+        = link_to(worker["name"], "/users/#{worker["name"]}") + " : #{worker["cnt"]}"
 
-    %h2= "Entrées classées par année"
-
-    %p= "État des entrées dans le système de suivi (classées par date d'ouverture)"
-
-    %ul
-      %li
-        ouvertes
-        %div(style="width:50px; background-color: #{colors["opened"]}") &nbsp;
-      %li
-        corrigées
-        %div(style="width:50px; background-color: #{colors["fixed"]}") &nbsp;
-      %li
-        invalidées
-        %div(style="width:50px; background-color: #{colors["invalid"]}") &nbsp;
-
+    %h2 Entrées classées par année
+    %p
+      État des entrées dans le système de suivi (classées par date d'ouverture)
     %table
       %tr
         %th Année
-        %th Entrées
+        %th Entrées ouvertes
+        %th Entrées corrigée
+        %th Entrées invalidées
         %th Total
-      - oldyear=''
-      - @by_year.each do |year|
+      - @stats.by_year.each do |year,states|
         %tr
+          %td= year
           %td
-            - if (oldyear != year["year"])
-              = year["year"]
-            - oldyear = year["year"]
+            %meter.opened(style="width:#{width_factor / 3 * states["opened"]}px;")= states["opened"]
           %td
-            %div(style="width:#{40*year["cnt"]}px; background-color: #{colors[year["state"]]}; color: darkgray;")
-              #{year["cnt"]}
-          %td #{year["cnt"]}
+            %meter.fixed(style="width:#{width_factor / 3 * states["fixed"]}px;")= states["fixed"]
+          %td
+            %meter.invalid(style="width:#{width_factor / 3 * states["invalid"]}px;")= states["invalid"]
+          %td.total= states.values.sum
 
-    %h2= "Évolution du nombre d'entrées dans le système de suivi (dernière mise à jour)"
-
-    %ul
-      %li
-        entrées ouvertes restantes
-        %div(style="width:50px; background-color: #{colors["remaining"]}") &nbsp;
-      %li
-        nouvelles entrées du mois
-        %div(style="width:50px; background-color: #{colors["monthnew"]}") &nbsp;
-      %li
-        entrées corrigées ce mois
-        %div(style="width:50px; background-color: #{colors["monthfixed"]}") &nbsp;
-      %li
-        entrées invalidées ce mois
-        %div(style="width:50px; background-color: #{colors["monthinvalid"]}") &nbsp;
-
+    %h2
+      Évolution du nombre d'entrées dans le système de suivi
     %table
       %tr
         %th Mois
         %th Entrées restantes/ouvertes
         %th Total ouvertes
         %th Entrées fermées/invalidées
-      
-      - oldmonth = ''
       - total = 0
-      - @by_month.each do |month|
-        - if (month[1]["opened"] == nil)
-          - opened = 0
-        - else
-          - opened = month[1]["opened"]
-        - if (month[1]["fixed"] == nil)
-          - fixed = 0
-        - else
-          - fixed = month[1]["fixed"]
-        - if (month[1]["invalid"] == nil)
-          - invalid = 0
-        - else
-          - invalid = month[1]["invalid"]
+      - @stats.by_month.sort.each do |month|
+        - opened  = month[1]["opened"]  || 0
+        - fixed   = month[1]["fixed"]   || 0
+        - invalid = month[1]["invalid"] || 0
         %tr
           %td
-            - if (oldmonth != month[0])
-              = month[0]
-            - oldmonth = month[0]
+            = month[0].sub(/(\d{4})(\d{2})/, '\2 \1')
           %td
-            %div(style="width:#{40*total}px; background-color: #{colors["remaining"]}; color: darkgray;")
-              #{total}
-            %div(style="width:#{40*opened}px; background-color: #{colors["monthnew"]}; color: darkgray;")
-              #{opened}
+            %meter.remaining(style="width:#{width_factor / 2 * total}px;")= total
+            %meter.month_new(style="width:#{width_factor / 2 * opened}px;")= opened
           %td
-            - total = total + opened - fixed - invalid
-            #{total}
+            = total = total + opened - fixed - invalid
           %td
-            %div(style="width:#{40*fixed}px; background-color: #{colors["monthfixed"]}; color: darkgray;")
-              #{fixed}
-            %div(style="width:#{40*invalid}px; background-color: #{colors["monthinvalid"]}; color: darkgray;")
-              #{invalid}
+            %meter.month_fixed(style="width:#{width_factor / 2 * fixed}px;")= fixed
+            %meter.month_invalid(style="width:#{width_factor / 2 * invalid}px;")= invalid
 
-    %h2= "État des entrées dans le système de suivi par catégorie"
-
+    %h2
+      État des entrées dans le système de suivi par catégorie
     %table
       %tr
         %th Catégorie
-        %th Entrées
-        %th Total
-      - @by_category.each do |category|
+        %th Nombre d'entrées
+      - @stats.by_category.each do |category|
         %tr
-          %td #{category["name"]}
+          %td= category["name"]
           %td
-            %div(style="width:#{40*category["cnt"]}px; background-color: #{colors["misc"]}; color: darkgray;")
-              #{category["cnt"]}
-          %td #{category["cnt"]}
+            %meter.category(style="width: #{width_factor * category["cnt"]}px;")= category["cnt"]

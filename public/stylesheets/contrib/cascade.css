@@ -1476,3 +1476,5 @@ section#container .markItUpEditor:focus {
 	color: #0000D0;
 	font-weight: bold;
 }
+
+@import url(/stylesheets/statistics.css);

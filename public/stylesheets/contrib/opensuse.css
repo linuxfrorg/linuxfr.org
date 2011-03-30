@@ -1492,3 +1492,5 @@ section#container .markItUpEditor:focus {
 
 #contents > * > * > p:first-child:first-letter { font-size: 200%; vertical-align: middle; }
 li.new-comment  > * > .title { color: #99DD00 !important; }
+
+@import url(/stylesheets/statistics.css);

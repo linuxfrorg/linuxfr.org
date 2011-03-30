@@ -1,0 +1,17 @@
+.statistics {
+	meter {
+		display: block;
+		background: $C_BD2;
+		border-top: 1px solid $C_BANDEAU;
+		border-bottom: 1px solid $C_BANDEAU;
+		font-size: x-small;
+		&.category { background-color: green; }
+		&.opened { background-color: red; }
+		&.fixed { background-color: green; }
+		&.invalid { background-color: olive; }
+		&.month_new { background-color: red; }
+		&.remaining { background-color: darkred; }
+		&.month_fixed { background-color: green; }
+		&.month_invalid { background-color: darkgreen; }
+	}
+}

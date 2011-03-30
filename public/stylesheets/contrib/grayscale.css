@@ -2321,3 +2321,5 @@ input:not([type="radio"]) {
 	font-size: 2em;
 	color: grey;
 }
+
+@import url(/stylesheets/statistics.css);

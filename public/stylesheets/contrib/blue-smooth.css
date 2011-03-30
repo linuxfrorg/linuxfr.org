@@ -2078,3 +2078,5 @@ table#wiki_help tbody tr td
   border-style:solid;
   border-color:#C0C4C8;
 }
+
+@import url(/stylesheets/statistics.css);

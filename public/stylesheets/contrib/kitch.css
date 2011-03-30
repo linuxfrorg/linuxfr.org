@@ -402,3 +402,5 @@ table#my_comments, table#my_posts { background:#080000; padding:1em;font-size:0.
 .markItUp .code a {
   background-image: url(/images/markitup/page_white_code.png);
 }
+
+@import url(/stylesheets/statistics.css);

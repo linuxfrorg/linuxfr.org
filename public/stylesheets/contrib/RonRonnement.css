@@ -148,6 +148,29 @@ $C_BD2: #F1ABC5;
 $C_BD3: #E978A3;
 $C_BD4: #E14E85;
 $C_BD5: #D91C64;*/
+.statistics meter {
+  display: block;
+  background: rgba(76, 87, 95, 0.33);
+  border-top: 1px solid #4c575f;
+  border-bottom: 1px solid #4c575f;
+  font-size: x-small; }
+  .statistics meter.category {
+    background-color: green; }
+  .statistics meter.opened {
+    background-color: red; }
+  .statistics meter.fixed {
+    background-color: green; }
+  .statistics meter.invalid {
+    background-color: olive; }
+  .statistics meter.month_new {
+    background-color: red; }
+  .statistics meter.remaining {
+    background-color: darkred; }
+  .statistics meter.month_fixed {
+    background-color: green; }
+  .statistics meter.month_invalid {
+    background-color: darkgreen; }
+
 /* Pixel size constants */
 /* pas de px ici pour faire plaisir a webkit */
 /* = PAD_NODE + RAY_CONTAINER */
