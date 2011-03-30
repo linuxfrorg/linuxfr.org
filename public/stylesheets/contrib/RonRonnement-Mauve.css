@@ -1532,5 +1532,9 @@ body#wiki_pages-changes #contents a[href] {
   body#wiki_pages-changes #contents a[href]:visited {
     color: #551A8B; }
 
-img, textarea {
+textarea {
   max-width: 100%; }
+
+img {
+  max-width: 100%;
+  border: none; }

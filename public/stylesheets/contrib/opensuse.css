@@ -745,7 +745,6 @@ article > footer > div {
 #container header li .add_tag, #container header li .remove_tag {
 	display: block;
 	float: left;
-	clear: left;
 	text-indent: -9998em;
 	height: 12px;
 	width: 12px;

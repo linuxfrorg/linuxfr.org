@@ -594,8 +594,6 @@ article {
     float: left;
     margin: 10px;
     margin-top: 10px; }
-    article .image img {
-      border: none; }
   article h1 {
     border-left: solid 6px #4c575f;
     padding-left: 13px;
@@ -1534,5 +1532,9 @@ body#wiki_pages-changes #contents a[href] {
   body#wiki_pages-changes #contents a[href]:visited {
     color: #551A8B; }
 
-img, textarea {
+textarea {
   max-width: 100%; }
+
+img {
+  max-width: 100%;
+  border: none; }
