@@ -37,11 +37,11 @@
         %tr
           %td= year
           %td
-            %meter.opened(style="width:#{width_factor / 3 * states["opened"]}px;")= states["opened"]
+            %meter.opened(style="width:#{states["opened"]}px;")= states["opened"]
           %td
-            %meter.fixed(style="width:#{width_factor / 3 * states["fixed"]}px;")= states["fixed"]
+            %meter.fixed(style="width:#{states["fixed"]}px;")= states["fixed"]
           %td
-            %meter.invalid(style="width:#{width_factor / 3 * states["invalid"]}px;")= states["invalid"]
+            %meter.invalid(style="width:#{states["invalid"]}px;")= states["invalid"]
           %td.total= states.values.sum
 
     %h2
@@ -53,7 +53,7 @@
         %th Total ouvertes
         %th Entrées fermées/invalidées
       - total = 0
-      - @stats.by_month.sort.reverse.each do |month|
+      - @stats.by_month.sort.each do |month|
         - opened  = month[1]["opened"]  || 0
         - fixed   = month[1]["fixed"]   || 0
         - invalid = month[1]["invalid"] || 0
@@ -61,13 +61,13 @@
           %td
             = month[0].sub(/(\d{4})(\d{2})/, '\2 \1')
           %td
-            %meter.remaining(style="width:#{width_factor / 2 * total}px;")= total
-            %meter.month_new(style="width:#{width_factor / 2 * opened}px;")= opened
+            %meter.remaining(style="width:#{width_factor / 4 * total}px;")= total
+            %meter.month_new(style="width:#{width_factor / 4 * opened}px;")= opened
           %td
             = total = total + opened - fixed - invalid
           %td
-            %meter.month_fixed(style="width:#{width_factor / 2 * fixed}px;")= fixed
-            %meter.month_invalid(style="width:#{width_factor / 2 * invalid}px;")= invalid
+            %meter.month_fixed(style="width:#{width_factor / 4 * fixed}px;")= fixed
+            %meter.month_invalid(style="width:#{width_factor / 4 * invalid}px;")= invalid
 
     %h2
       État des entrées dans le système de suivi par catégorie

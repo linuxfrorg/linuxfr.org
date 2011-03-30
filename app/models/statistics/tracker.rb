@@ -61,12 +61,14 @@ class Statistics::Tracker
     entries = select_all("SELECT state, SUBSTRING(created_at+0,1,6) AS created, SUBSTRING(updated_at+0,1,6) AS updated FROM trackers")
     entries.each do |entry|
       @by_month[entry["created"]] ||= {}
-      @by_month[entry["created"]][entry["state"]] ||= 0
-      @by_month[entry["created"]][entry["state"]]  += 1
+      @by_month[entry["created"]]["opened"] ||= 0
+      @by_month[entry["created"]]["opened"]  += 1
 
-      @by_month[entry["updated"]] ||= {}
-      @by_month[entry["updated"]][entry["state"]] ||= 0
-      @by_month[entry["updated"]][entry["state"]]  += 1
+      if entry["state"] != "opened"
+        @by_month[entry["updated"]] ||= {}
+        @by_month[entry["updated"]][entry["state"]] ||= 0
+        @by_month[entry["updated"]][entry["state"]]  += 1
+      end
     end
 
     @by_month
