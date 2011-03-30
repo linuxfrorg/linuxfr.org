@@ -1,6 +1,6 @@
 #contents.statistics
   =h1 "Statistiques sur le système de suivi"
-  - width_factor = 60
+  - width_factor = 12
 
   .body
     %p
@@ -53,7 +53,7 @@
         %th Total ouvertes
         %th Entrées fermées/invalidées
       - total = 0
-      - @stats.by_month.sort.each do |month|
+      - @stats.by_month.sort.reverse.each do |month|
         - opened  = month[1]["opened"]  || 0
         - fixed   = month[1]["fixed"]   || 0
         - invalid = month[1]["invalid"] || 0
