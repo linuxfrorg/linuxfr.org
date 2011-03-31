@@ -2,11 +2,11 @@ module UsersHelper
 
   def avatar_url(user)
     return '' if user.nil?
-    return '' if current_account && current_account.hide_avatar?
-    url = user.avatar.url
+    # return '' if current_account && current_account.hide_avatar?
+    url = user.avatar.url.sub(/\.\w+$/, '_1.gif')
     options = { :class => "avatar", :alt => "Avatar de #{user.name}", :width => AvatarUploader::AVATAR_SIZE, :height => AvatarUploader::AVATAR_SIZE }
     if user.avatar.blank?
-      options['data-gravatar'] = user.gravatar_hash
+      # options['data-gravatar'] = user.gravatar_hash
       url.sub!(/^http:/, 'https:') if request.ssl?
     end
     image_tag(url, options)
