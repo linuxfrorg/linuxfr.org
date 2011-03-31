@@ -169,7 +169,7 @@ $C_BD5: #D91C64;*/
   .statistics meter.month_fixed {
     background-color: green; }
   .statistics meter.month_invalid {
-    background-color: darkgreen; }
+    background-color: olive; }
 
 /* Pixel size constants */
 /* pas de px ici pour faire plaisir a webkit */
