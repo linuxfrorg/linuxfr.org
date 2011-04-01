@@ -3,11 +3,12 @@
   - if @news.empty?
     Aucune dépêche.
   - else
+    = link_to "Afficher toutes les dépêches", "/redaction/news"
     %ul
       = list_of @news do |n|
         = link_to n.title, [:redaction, n]
-    = link_to "Afficher toutes les dépêches", "/redaction/news"
   = button_to "Commencer une nouvelle dépêche", "/redaction/news"
+  (sous licence CC by-sa)
 
 #main_board
   =h1 "Tribune rédacteurs"
