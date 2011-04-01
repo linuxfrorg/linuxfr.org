@@ -137,7 +137,7 @@ LinuxfrOrg::Application.routes.draw do
 
   # Statistics
   controller :statistics do
-    get "/statistiques/tracker" => :tracker
+    get "/statistiques/:action"
   end
 
   # Static pages

@@ -5,4 +5,9 @@ class StatisticsController < ApplicationController
     @stats = Statistics::Tracker.new
   end
 
+  def prizes
+    @month = params[:month]
+    @stats = Statistics::Prizes.new(@month)
+  end
+
 end

@@ -14,4 +14,10 @@
 		&.month_fixed { background-color: green; }
 		&.month_invalid { background-color: olive; }
 	}
+
+	span.score {
+		color: "#333";
+		&:before { content: " ["; }
+		&:after  { content: "] "; }
+	}
 }

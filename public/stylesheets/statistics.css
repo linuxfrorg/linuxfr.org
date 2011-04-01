@@ -20,3 +20,9 @@
     background-color: green; }
   .statistics meter.month_invalid {
     background-color: olive; }
+  .statistics span.score {
+    color: "#333"; }
+    .statistics span.score:before {
+      content: " ["; }
+    .statistics span.score:after {
+      content: "] "; }
