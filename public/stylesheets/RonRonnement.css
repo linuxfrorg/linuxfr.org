@@ -864,7 +864,8 @@ ul.poll li meter::-webkit-meter-horizontal-even-less-good-value {
   float: left;
   text-indent: -9998em;
   overflow: hidden;
-  text-align: left; }
+  text-align: left;
+  width: 100px; }
 
 .pot_de_miel {
   display: none; }
