@@ -25,6 +25,7 @@ class Tracker < Content
   belongs_to :assigned_to_user, :class_name => "User"
   belongs_to :category
 
+  attr_accessor :pot_de_miel
   attr_accessible :title, :wiki_body, :category_id, :assigned_to_user_id
 
   validates :title,     :presence => { :message => "Le titre est obligatoire" },

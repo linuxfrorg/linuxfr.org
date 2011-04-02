@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class TrackersController < ApplicationController
-  before_filter :authenticate_account!, :except => [:index, :show, :comments]
+  before_filter :honeypot, :only => [:create]
+  before_filter :authenticate_account!, :only => [:edit, :update, :destroy]
   before_filter :load_tracker, :only => [:show, :edit, :update, :destroy]
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
 
@@ -43,12 +44,10 @@ class TrackersController < ApplicationController
 
   def new
     @tracker = Tracker.new
-    enforce_create_permission(@tracker)
   end
 
   def create
     @tracker = Tracker.new
-    enforce_create_permission(@tracker)
     @tracker.attributes = params[:tracker]
     @tracker.owner_id = current_user.try(:id)
     if !preview_mode && @tracker.save
@@ -83,6 +82,11 @@ class TrackersController < ApplicationController
   end
 
 protected
+
+  def honeypot
+    honeypot = params[:tracker].delete(:pot_de_miel)
+    render :nothing => true if honeypot.present?
+  end
 
   def marked_as_read
     current_account.read(@tracker.node)

@@ -6,6 +6,10 @@
 %p
   = form.label :category_id, "Catégorie"
   = form.collection_select :category_id, Category.all, :id, :title
+- if @tracker.new_record?
+  %p.pot_de_miel
+    = form.label :pot_de_miel, "Ne pas remplir ce champ"
+    = form.text_field :pot_de_miel
 %p
   = form.label :wiki_body, "Description détaillée"
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
