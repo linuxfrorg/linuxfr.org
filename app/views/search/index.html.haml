@@ -7,5 +7,5 @@
     %div
       %h2 Résultats
       - @results.each do |result|
-        = highlight(render(result), @query, :highlighter => '<mark>\1</mark>').html_safe
+        = highlight(render(result), @query, :highlighter => '<mark class="highlight">\1</mark>').html_safe
       - paginate @results

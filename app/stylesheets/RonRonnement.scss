@@ -954,6 +954,12 @@ ul.poll {
 	}
 }
 
+.misspelled {
+	color: inherit;
+	background-color: inherit;
+    border-bottom: 1px dashed red;
+}
+
 .anchor {
 	color: #aaa;
 	&:hover {

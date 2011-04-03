@@ -18,7 +18,7 @@ LinuxFr.org on a Debian box.
     # aptitude install ruby1.9.1-full
     # aptitude install mysql-server mysql-client libmysql++-dev
     # aptitude install build-essential libxslt1-dev libxml2-dev
-    # aptitude install imagemagick
+    # aptitude install imagemagick hunspell hunspell-fr
 
 2) Install some gems:
 

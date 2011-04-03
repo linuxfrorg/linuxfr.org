@@ -9,7 +9,7 @@
     %figure.image
       = avatar_url(current_user)
     .content
-      = preview.body
+      = spellcheck(preview.body)
       - if current_user.signature.present? && !current_account.try(:hide_signature?)
         %p.signature
           = current_user.signature

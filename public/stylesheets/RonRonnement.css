@@ -855,6 +855,11 @@ ul.poll li meter::-webkit-meter-horizontal-suboptimal-value,
 ul.poll li meter::-webkit-meter-horizontal-even-less-good-value {
   background: rgba(76, 87, 95, 0.33); }
 
+.misspelled {
+  color: inherit;
+  background-color: inherit;
+  border-bottom: 1px dashed red; }
+
 .anchor {
   color: #aaa; }
   .anchor:hover {

@@ -2,4 +2,4 @@
   - c.title = "Journal : #{preview.title}"
   - c.title = "#{link_to "Journal", "/journaux"} #{link_to preview.title, "#"}".html_safe
   - c.image = avatar_url(current_user)
-  - c.body  = preview.body
+  - c.body  = spellcheck(preview.body)

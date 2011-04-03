@@ -3,7 +3,7 @@
   - c.meta  = news_posted_by(preview)
   - c.image = link_to(image_tag(preview.section.image, :alt => preview.section.title), preview.section)
   - c.body  = capture do
-    = preview.body
+    = spellcheck(preview.body)
     %ul
       = render preview.links
-    = preview.second_part
+    = spellcheck(preview.second_part)
