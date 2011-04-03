@@ -11,14 +11,18 @@
       #{@stats.states["opened"]} entrées ouvertes,
       #{@stats.states["invalid"]} invalides et
       #{@stats.states["fixed"]} fermées (total #{@stats.states["total"]})
-      envoyées par #{@stats.distinct_users} visiteurs (en groupant les anonymes),
-      avec #{@stats.max_entries_by_user} entrées pour le visiteur le plus actif.
+      envoyées par #{@stats.distinct_users} visiteurs (en groupant les anonymes).
     %p
       Le temps moyen de résolution est de #{@stats.average_time} jours.
     %p
       La moitié des entrées fermées ont été traitées en moins de #{@stats.median_time} jours.
-    %p
-      Fermeture des entrées du suivi par les admins :
+
+    %h2 Utilisateurs ayant ouvert le plus grand nombre d'entrées
+    %ol
+      = list_of(@stats.top_reporters) do |user|
+        = link_to(user["name"], "/users/#{user["name"]}") + " : #{user["cnt"]}"
+
+    %h2 Nombre d'entrées fermées par les admins
     %ol
       = list_of(@stats.good_workers) do |worker|
         = link_to(worker["name"], "/users/#{worker["name"]}") + " : #{worker["cnt"]}"

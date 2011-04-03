@@ -33,8 +33,8 @@ class Statistics::Tracker
     count "SELECT COUNT(DISTINCT(user_id)) AS cnt FROM nodes WHERE content_type='Tracker'"
   end
 
-  def max_entries_by_user
-    count "SELECT COUNT(*) AS cnt FROM nodes WHERE content_type='Tracker' GROUP BY user_id ORDER BY cnt DESC LIMIT 1"
+  def top_reporters
+    select_all "SELECT name, COUNT(*) AS cnt FROM nodes JOIN users ON nodes.user_id = users.id WHERE nodes.content_type = 'Tracker' GROUP BY user_id ORDER BY cnt DESC LIMIT 10"
   end
 
   def good_workers
