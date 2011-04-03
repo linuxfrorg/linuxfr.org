@@ -90,7 +90,7 @@
         base.go_to_alt_current = function() {
             if (base.nb_alt_items === 0) { return ; }
             var item = base.alt_items[base.alt_current - 1];
-            var pos = $(item).offset().top;
+            var pos = $(item).parents('article').offset().top;
             $('html,body').animate({scrollTop: pos}, 500);
             $('#toolbar_current_alt_item').text(base.alt_current);
             return false;
