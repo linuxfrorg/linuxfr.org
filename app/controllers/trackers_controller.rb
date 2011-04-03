@@ -61,7 +61,7 @@ class TrackersController < ApplicationController
 
   def edit
     enforce_update_permission(@tracker)
-    @tracker.assigned_to_user = current_user
+    @tracker.assigned_to_user ||= current_user
   end
 
   def update
