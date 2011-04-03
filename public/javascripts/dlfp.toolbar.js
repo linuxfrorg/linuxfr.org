@@ -15,17 +15,17 @@
         };
 
         base.create = function() {
-            var t = '<div id="toolbar"><span id="toolbar_items">{toolbar.text} : ' +
-                    '  <span id="toolbar_current_item">{toolbar.current}</span> / ' +
-                    '  <span id="toolbar_nb_items">{toolbar.nb_items}</span> ' +
+            var t = '<div id="toolbar"><span id="toolbar_items">{text} : ' +
+                    '  <span id="toolbar_current_item">{current}</span> / ' +
+                    '  <span id="toolbar_nb_items">{nb_items}</span> ' +
                     '  <a href="#" accesskey="<" class="prev">&lt;</a> | ' +
                     '  <a href="#" accesskey=">" class="next">&gt;</a>' +
                     '</span><span id="toolbar_threshold">Seuil : ' +
-                    '  <a href="#" class="change">{toolbar.threshold}</a>' +
+                    '  <a href="#" class="change">{threshold}</a>' +
                     '</span></div>';
-            $('body').append($.nano(t, {toolbar: base}));
-            $('#toolbar .prev').click(base.prev_item);
-            $('#toolbar .next').click(base.next_item);
+            $('body').append($.nano(t, base));
+            $('#toolbar_items .prev').click(base.prev_item);
+            $('#toolbar_items .next').click(base.next_item);
             $('#toolbar .change').click(base.change_threshold);
             /* Use the '<' and '>' to navigate in the items */
             $(document).bind('keypress', '<',       function() { return base.prev_item(); })
@@ -52,6 +52,47 @@
             var pos = $(item).offset().top;
             $('html,body').animate({scrollTop: pos}, 500);
             $('#toolbar_current_item').text(base.current);
+            return false;
+        };
+
+        base.additional = function(alt_items, alt_text) {
+            base.alt_text = alt_text;
+            base.alt_items = alt_items;
+            base.nb_alt_items = alt_items.length;
+            base.alt_current = 0;
+            var t = '<span id="toolbar_alt_items">{alt_text} : ' +
+                    '  <span id="toolbar_current_alt_item">{alt_current}</span> / ' +
+                    '  <span id="toolbar_nb_alt_items">{nb_alt_items}</span> ' +
+                    '  <a href="#" accesskey="[" class="prev">[</a> | ' +
+                    '  <a href="#" accesskey="]" class="next">]</a>' +
+                    '</span>';
+            $("#toolbar").prepend($.nano(t, base));
+            $('#toolbar_alt_items .prev').click(base.alt_prev_item);
+            $('#toolbar_alt_items .next').click(base.alt_next_item);
+            $(document).bind('keypress', '[',       function() { return base.alt_prev_item(); })
+                       .bind('keypress', ']',       function() { return base.alt_next_item(); })
+                       .bind('keypress', 'h',       function() { return base.alt_prev_item(); })
+                       .bind('keypress', 'l',       function() { return base.alt_next_item(); });
+        };
+
+        base.alt_next_item = function() {
+            base.alt_current += 1;
+            if (base.alt_current > base.nb_alt_items) { base.alt_current -= base.nb_alt_items; }
+            return base.go_to_alt_current();
+        };
+
+        base.alt_prev_item = function() {
+            base.alt_current -= 1;
+            if (base.alt_current <= 0) { base.alt_current += base.nb_alt_items; }
+            return base.go_to_alt_current();
+        };
+
+        base.go_to_alt_current = function() {
+            if (base.nb_alt_items === 0) { return ; }
+            var item = base.alt_items[base.alt_current - 1];
+            var pos = $(item).offset().top;
+            $('html,body').animate({scrollTop: pos}, 500);
+            $('#toolbar_current_alt_item').text(base.alt_current);
             return false;
         };
 
@@ -100,6 +141,6 @@
     };
 
     $.fn.toolbar = function(text, options){
-        new $.Toolbar($(this), text, options);
+        return new $.Toolbar($(this), text, options);
     };
 })(jQuery);

@@ -2079,4 +2079,13 @@ table#wiki_help tbody tr td
   border-color:#C0C4C8;
 }
 
+.misspelled {
+	color: inherit;
+	background-color: inherit;
+	border-bottom: 1px dashed red;
+}
+.pot_de_miel {
+	display: none;
+}
+
 @import url(/stylesheets/statistics.css);

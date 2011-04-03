@@ -806,7 +806,7 @@ a.scroll {
   position: fixed;
   top: 20px;
   right: 20px;
-  width: 280px;
+  width: 320px;
   z-index: 9999; }
 
 .notice-item {
@@ -1449,6 +1449,9 @@ div#toolbar {
   font-size: x-small; }
   div#toolbar #toolbar_items {
     float: right; }
+  div#toolbar #toolbar_alt_items {
+    float: right;
+    margin-left: 20px; }
   div#toolbar #toolbar_threeshold {
     float: left; }
 

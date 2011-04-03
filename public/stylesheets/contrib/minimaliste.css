@@ -457,6 +457,11 @@ https://alpha.linuxfr.org/suivi/logo-dans-le-css-et-pas-dans-le-html
 .fold > h2 a:hover, .fole > h2 a:active {color: #353535;}
 
 /* dépêche */
+.misspelled {
+	color: inherit;
+	background-color: inherit;
+	border-bottom: 1px dashed red;
+}
 .pot_de_miel {
 	display: none;
 	}

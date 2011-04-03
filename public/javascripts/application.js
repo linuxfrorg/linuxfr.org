@@ -61,11 +61,11 @@
 
     /* Show the toolbar */
     if ($('body').hasClass('logged')) {
-        if ($('#comments').length > 0) {
+        if ($('#comments').length) {
             $('#comments .new-comment').toolbar('Nouveaux commentaires', {folding: '#comments .comment'});
-        }
-        if ($('#contents .node').length > 1) {
-            $('#contents .new-node').toolbar('Contenus jamais visités');
+        } else if ($('#contents .node').length) {
+            $('#contents .new-node').toolbar('Contenus jamais visités')
+                                    .additional($('#contents .new_comments'), 'Contenus lus avec + de commentaires');
         }
     }
 
@@ -101,8 +101,10 @@
     })
     .bind('keypress', 'shift+?', function() {
         $.noticeAdd({text: "Raccourcis clavier :<ul><li>? pour l'aide</li>" +
-                    "<li>&lt; pour le commentaire/contenu précédent</li>" +
-                    "<li>&gt; pour le commentaire/contenu suivant</li>" +
+                    "<li>&lt; pour le commentaire/contenu non-lu précédent</li>" +
+                    "<li>&gt; pour le commentaire/contenu non-lu suivant</li>" +
+                    "<li>[ pour le contenu avec commentaire précédent</li>" +
+                    "<li>] pour le contenu avec commentaire suivant</li>" +
                     "<li>g pour aller au début de la page</li>" +
                     "<li>G pour aller à la fin de la page</li></ul>"});
         return false;

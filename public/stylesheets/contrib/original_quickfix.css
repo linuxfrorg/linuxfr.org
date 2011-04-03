@@ -442,6 +442,11 @@ body .removed {
   color: white;
 }
 
+.misspelled {
+	color: inherit;
+	background-color: inherit;
+	border-bottom: 1px dashed red;
+}
 form .pot_de_miel {
   display: none;
 }

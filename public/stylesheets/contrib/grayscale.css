@@ -118,6 +118,11 @@ form input.text, form input.title, form input[type=email], form input[type=text]
 	background-color: white;
 	padding: 5px;
 }
+.misspelled {
+	color: inherit;
+	background-color: inherit;
+	border-bottom: 1px dashed red;
+}
 .pot_de_miel {
 	display: none;
 }

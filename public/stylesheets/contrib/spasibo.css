@@ -800,4 +800,13 @@ ul.threads > li.even {
 	display: none;
 }
 
+.misspelled {
+	color: inherit;
+	background-color: inherit;
+	border-bottom: 1px dashed red;
+}
+.pot_de_miel {
+	display: none;
+}
+
 @import url(/stylesheets/statistics.css);

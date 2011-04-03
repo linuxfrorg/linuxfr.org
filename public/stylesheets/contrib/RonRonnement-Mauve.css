@@ -600,8 +600,6 @@ article {
     float: left;
     margin: 10px;
     margin-top: 10px; }
-    article .image img {
-      border: none; }
   article h1 {
     border-left: solid 6px #5d004a;
     padding-left: 13px;
@@ -707,14 +705,16 @@ footer.actions .action {
     font-size: x-small;
     color: #a99c90;
     border-style: none;
-    background-color: transparent;
-    cursor: pointer; }
-    .vote .button_to input:hover {
-      text-decoration: underline; }
-    .vote .button_to input[disabled='disabled'] {
-      cursor: default; }
-      .vote .button_to input[disabled='disabled']:hover {
-        text-decoration: none; }
+    background-color: transparent; }
+
+.button_to input {
+  cursor: pointer; }
+  .button_to input:hover {
+    text-decoration: underline; }
+  .button_to input[disabled] {
+    cursor: default; }
+    .button_to input[disabled]:hover {
+      text-decoration: none; }
 
 /* concerne tout ce qui est contenu : article, commentaire */
 .content {
@@ -806,7 +806,7 @@ a.scroll {
   position: fixed;
   top: 20px;
   right: 20px;
-  width: 280px;
+  width: 320px;
   z-index: 9999; }
 
 .notice-item {
@@ -855,6 +855,11 @@ ul.poll li meter::-webkit-meter-horizontal-suboptimal-value,
 ul.poll li meter::-webkit-meter-horizontal-even-less-good-value {
   background: rgba(93, 0, 74, 0.33); }
 
+.misspelled {
+  color: inherit;
+  background-color: inherit;
+  border-bottom: 1px dashed red; }
+
 .anchor {
   color: #aaa; }
   .anchor:hover {
@@ -864,7 +869,8 @@ ul.poll li meter::-webkit-meter-horizontal-even-less-good-value {
   float: left;
   text-indent: -9998em;
   overflow: hidden;
-  text-align: left; }
+  text-align: left;
+  width: 100px; }
 
 .pot_de_miel {
   display: none; }
@@ -1443,6 +1449,9 @@ div#toolbar {
   font-size: x-small; }
   div#toolbar #toolbar_items {
     float: right; }
+  div#toolbar #toolbar_alt_items {
+    float: right;
+    margin-left: 20px; }
   div#toolbar #toolbar_threeshold {
     float: left; }
 

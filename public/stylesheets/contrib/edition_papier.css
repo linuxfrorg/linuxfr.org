@@ -400,6 +400,11 @@ section#container form.edit_account input[type=password] {
 	width: 50%;
 	display: block;
 }
+.misspelled {
+	color: inherit;
+	background-color: inherit;
+	border-bottom: 1px dashed red;
+}
 .pot_de_miel {
 	display: none;
 }
