@@ -88,15 +88,16 @@ class Account < ActiveRecord::Base
   # but, if it fails, we also try the old_password from before the migration
   # and if this old_password is good, we migrate to the new password encryption.
   def valid_password?(incoming_password)
-    return true if super(incoming_password)
-    return false if incoming_password.blank? || old_password.blank?
-    if incoming_password.crypt(old_password) == old_password
+    if encrypted_password.present?
+      super(incoming_password)
+    else
+      return false if incoming_password.blank? || old_password.blank?
+      return false if incoming_password.crypt(old_password) != old_password
       self.password = self.password_confirmation = incoming_password
       self.old_password = nil
       save(:validate => false)
-      return true
+      true
     end
-    false
   end
 
 ### Password ###

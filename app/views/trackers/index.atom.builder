@@ -8,7 +8,7 @@ atom_feed(:root_url => trackers_url) do |feed|
       entry.title("#{tracker.category.title} : #{tracker.title}")
       entry.content(tracker.body, :type => 'html')
       entry.author do |author|
-        author.name(tracker.user.name)
+        author.name(tracker.user.try(:name) || 'Anonyme')
       end
     end
   end
