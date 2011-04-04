@@ -61,6 +61,7 @@ GEM
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
     diff-lcs (1.1.2)
+    differ (0.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     eventmachine (0.12.10)
@@ -206,6 +207,7 @@ DEPENDENCIES
   capistrano
   carrierwave (~> 0.5)
   devise (~> 1.2)
+  differ (~> 0.1)
   factory_girl_rails (~> 1.0)
   faker (~> 0.9)
   french_rails (~> 0.2)
