@@ -1,5 +1,6 @@
 require "digest/md5"
 require "not"
+require "resolvers"
 require "htmldiff"
 require "ar_base_ext"
 require "friendly_id/active_record"
