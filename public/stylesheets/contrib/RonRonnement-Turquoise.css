@@ -849,6 +849,7 @@ ul.poll li meter {
   background: rgba(0, 159, 149, 0.33);
   border-top: 1px solid #009f95;
   border-bottom: 1px solid #009f95;
+  white-space: nowrap;
   font-size: x-small; }
 ul.poll li meter::-webkit-meter-horizontal-bar,
 ul.poll li meter::-webkit-meter-horizontal-optimum-value,

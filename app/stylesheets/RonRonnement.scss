@@ -945,6 +945,7 @@ ul.poll {
 		background: $C_BD2;
 		border-top: 1px solid $C_BANDEAU;
 		border-bottom: 1px solid $C_BANDEAU;
+		white-space: nowrap;
 		font-size: x-small;
 	}
 	li meter::-webkit-meter-horizontal-bar,

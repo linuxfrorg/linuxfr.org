@@ -1490,6 +1490,6 @@ section#container .markItUpEditor:focus {
 #container h1 > a:last-child::after { content: ""; }
 
 #contents > * > * > p:first-child:first-letter { font-size: 200%; vertical-align: middle; }
-li.new-comment  > * > .title { color: #99DD00 !important; }
+li.new-comment  > * > .title { color: #00BBFF !important; }
 
 @import url(/stylesheets/statistics.css);
