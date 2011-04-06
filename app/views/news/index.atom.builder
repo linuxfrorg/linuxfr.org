@@ -1,4 +1,4 @@
-atom_feed(:root_url => news_index_url) do |feed|
+atom_feed(:root_url => news_index_url, "xmlns:wfw" => "http://wellformedweb.org/CommentAPI/") do |feed|
   if @user
     feed.title("LinuxFr.org : les dépêches de #{@user.name}")
   else
@@ -20,6 +20,7 @@ atom_feed(:root_url => news_index_url) do |feed|
       entry.author do |author|
         author.name(news.author_name)
       end
+      entry.wfw :commentRss, "http://#{MY_DOMAIN}/nodes/#{news.node.id}/comments.atom"
     end
   end
 end

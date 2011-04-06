@@ -10,6 +10,7 @@ atom_feed(:root_url => polls_url) do |feed|
       entry.author do |author|
         author.name(poll.node.user.name)
       end
+      entry.wfw :commentRss, "http://#{MY_DOMAIN}/nodes/#{poll.node.id}/comments.atom"
     end
   end
 end

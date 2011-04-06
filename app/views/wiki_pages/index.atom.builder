@@ -10,6 +10,7 @@ atom_feed(:root_url => wiki_pages_url) do |feed|
       entry.author do |author|
         author.name(page.node.user.try :name)
       end
+      entry.wfw :commentRss, "http://#{MY_DOMAIN}/nodes/#{page.node.id}/comments.atom"
     end
   end
 end

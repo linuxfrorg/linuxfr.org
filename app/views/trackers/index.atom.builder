@@ -11,5 +11,6 @@ atom_feed(:root_url => trackers_url) do |feed|
         author.name(tracker.user.try(:name) || 'Anonyme')
       end
     end
+    entry.wfw :commentRss, "http://#{MY_DOMAIN}/nodes/#{tracker.node.id}/comments.atom"
   end
 end

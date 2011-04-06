@@ -14,6 +14,7 @@ atom_feed(:root_url => diaries_url) do |feed|
       entry.author do |author|
         author.name(diary.owner.name)
       end
+      entry.wfw :commentRss, "http://#{MY_DOMAIN}/nodes/#{diary.node.id}/comments.atom"
     end
   end
 end

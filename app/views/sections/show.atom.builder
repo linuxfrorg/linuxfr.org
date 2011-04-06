@@ -10,6 +10,7 @@ atom_feed(:root_url => section_url(@section)) do |feed|
       entry.author do |author|
         author.name(news.user.name)
       end
+      entry.wfw :commentRss, "http://#{MY_DOMAIN}/nodes/#{news.node.id}/comments.atom"
     end
   end
 end

@@ -15,6 +15,7 @@ atom_feed(:root_url => forums_url) do |feed|
       entry.author do |author|
         author.name(post.user.name)
       end
+      entry.wfw :commentRss, "http://#{MY_DOMAIN}/nodes/#{node.id}/comments.atom"
     end
   end
 end
