@@ -1,4 +1,4 @@
-atom_feed(:root_url => trackers_url) do |feed|
+atom_feed(:root_url => trackers_url, "xmlns:wfw" => "http://wellformedweb.org/CommentAPI/") do |feed|
   feed.title("LinuxFr.org : les entrées du suivi")
   feed.updated(@trackers.first.try :created_at)
   feed.icon("/favicon.png")
@@ -10,7 +10,7 @@ atom_feed(:root_url => trackers_url) do |feed|
       entry.author do |author|
         author.name(tracker.user.try(:name) || 'Anonyme')
       end
+      entry.wfw :commentRss, "http://#{MY_DOMAIN}/nodes/#{tracker.node.id}/comments.atom"
     end
-    entry.wfw :commentRss, "http://#{MY_DOMAIN}/nodes/#{tracker.node.id}/comments.atom"
   end
 end
