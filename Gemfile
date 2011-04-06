@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "rails",                   "=3.0.5"
+gem "rails",                   "=3.0.6"
 
 gem "acts_as_list",            "~>0.1"
 gem "albino",                  "~>1.3"
