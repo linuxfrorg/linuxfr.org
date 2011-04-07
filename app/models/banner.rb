@@ -16,7 +16,7 @@ class Banner < ActiveRecord::Base
     nb = $redis.llen("banners")
     return nil if nb == 0
     id = $redis.lindex("banners", rand(nb))
-    Banner.find(id).content
+    Banner.find(id).try(:content)
   end
 
   after_create :index_banners
