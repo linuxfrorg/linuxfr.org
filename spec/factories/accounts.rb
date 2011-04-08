@@ -2,8 +2,11 @@ Factory.define :account do |f|
   f.login "ptramo"
   f.role  "moule"
   f.email "ptramo@dlfp.org"
-  f.old_password "xPYiaHploF546" # I<3J2EE
   f.after_build { |a| a.skip_confirmation! }
+  f.after_create do |a|
+    a.password = a.password_confirmation = 'I<3J2EE'
+    a.save
+  end
 end
 
 Factory.define :anonymous_account, :class => 'account' do |f|

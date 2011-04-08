@@ -12,7 +12,6 @@
 #  old_password         :string(20)
 #  email                :string(255)     default(""), not null
 #  encrypted_password   :string(128)     default(""), not null
-#  password_salt        :string(255)     default(""), not null
 #  confirmation_token   :string(255)
 #  confirmed_at         :datetime
 #  confirmation_sent_at :datetime
@@ -38,5 +37,9 @@ describe Account do
 
   it "is valid" do
     Factory.build(:account).should be_valid
+  end
+
+  it "has a valid password" do
+    Factory.create(:account).should be_valid_password('I<3J2EE')
   end
 end
