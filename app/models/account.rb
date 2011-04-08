@@ -101,14 +101,17 @@ class Account < ActiveRecord::Base
   end
 
 ### Password ###
-
-  before_validation :generate_a_password, :on => :create
-  def generate_a_password
-    chars = [*'A'..'Z'] + [*'a'..'z'] + [*'1'..'9'] + %w(- + ! ? : $ % &)
-    pass  = chars.sample(8).join
-    self.password = self.password_confirmation = pass
+  
+  if Rails.env.test?
+    before_validation :generate_a_password, :on => :create
+    def generate_a_password
+      chars = [*'A'..'Z'] + [*'a'..'z'] + [*'1'..'9'] + %w(- + ! ? : $ % &)
+      pass  = chars.sample(8).join
+      self.password ||= pass
+      self.password_confirmation ||= self.password
+    end
   end
-
+  
   def update_with_password(params={})
     current_password = params.delete(:current_password)
 
