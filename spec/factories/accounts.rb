@@ -6,6 +6,14 @@ Factory.define :account do |f|
   f.after_build { |a| a.skip_confirmation! }
 end
 
+Factory.define :moule_account, :class => 'account' do |f|
+  f.login "ptramo"
+  f.role  "moule"
+  f.email "ptramo@dlfp.org"
+  f.password 'I<3J2EE'
+  f.after_build { |a| a.skip_confirmation! }
+end
+
 Factory.define :anonymous_account, :class => 'account' do |f|
   f.login "anonyme"
   f.role  "inactive"
