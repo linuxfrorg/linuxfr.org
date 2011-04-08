@@ -40,7 +40,7 @@ describe Account do
   end
   
   it "has a valid password" do
-    Factory.build(:moule_account).should be_valid_password('I<3J2EE')
+    Factory.create(:moule_account).should be_valid_password('I<3J2EE')
   end
   
 end
