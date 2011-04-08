@@ -48,8 +48,7 @@
             %meter.invalid(style="width:#{states["invalid"]}px;")= states["invalid"]
           %td.total= states.values.sum
 
-    %h2
-      Évolution du nombre d'entrées dans le système de suivi
+    %h2 Évolution du nombre d'entrées dans le système de suivi
     %table
       %tr
         %th Mois
@@ -73,8 +72,7 @@
             %meter.month_fixed(style="width:#{width_factor / 4 * fixed}px;")= fixed
             %meter.month_invalid(style="width:#{width_factor / 4 * invalid}px;")= invalid
 
-    %h2
-      État des entrées dans le système de suivi par catégorie
+    %h2 État des entrées dans le système de suivi par catégorie
     %table
       %tr
         %th Catégorie
@@ -84,3 +82,8 @@
           %td= category["name"]
           %td
             %meter.category(style="width: #{width_factor * category["cnt"]}px;")= category["cnt"]
+
+    %h2 Statistiques Ohloh
+    %script(src="http://www.ohloh.net/p/488790/widgets/project_languages.js")
+    %script(src="http://www.ohloh.net/p/488790/widgets/project_basic_stats.js")
+    %script(src="http://www.ohloh.net/p/488790/widgets/project_cocomo.js")
