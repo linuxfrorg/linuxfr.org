@@ -64,8 +64,8 @@
         if ($('#comments').length) {
             $('#comments .new-comment').toolbar('Nouveaux commentaires', {folding: '#comments .comment'});
         } else if ($('#contents .node').length) {
-            $('#contents .new-node').toolbar('Contenus jamais visités')
-                                    .additional($('#contents .new_comments'), 'Contenus lus avec + de commentaires');
+            $('#phare .new-node, #contents .new-node').toolbar('Contenus jamais visités')
+                                                      .additional($('#phare .new_comments, #contents .new_comments'), 'Contenus lus avec + de commentaires');
         }
     }
 
