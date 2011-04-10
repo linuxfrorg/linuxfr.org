@@ -39,7 +39,7 @@ class Statistics::Users
   end
 
   def nb_authors
-    select_all "SELECT DISTINCT(user_id) AS cnt, content_type FROM nodes JOIN users ON nodes.user_id = users.id WHERE users.updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) GROUP BY content_type"
+    select_all "SELECT COUNT(DISTINCT(user_id)) AS cnt, content_type FROM nodes JOIN users ON nodes.user_id = users.id WHERE users.updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) GROUP BY content_type"
   end
 
   def filled(field)
