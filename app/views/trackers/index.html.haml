@@ -40,8 +40,7 @@
         %th État
         %th Note
         %th Commentaires
-        - if current_account && current_account.can_update?(@trackers.first)
-          %th Actions
+        %th Actions
       - @trackers.each do |tracker|
         %tr{:class => tracker.state}
           %td= link_to tracker.id, tracker
@@ -53,5 +52,8 @@
           %td= tracker.state_name
           %td.number= tracker.score
           %td.number= tracker.comments.count
-          - if current_account && current_account.can_update?(tracker)
-            %td= link_to "Modifier", "/suivi/#{tracker.to_param}/modifier"
+          %td
+            - if current_account && current_account.can_update?(tracker)
+              = link_to "Modifier", "/suivi/#{tracker.to_param}/modifier"
+            - else
+              &nbsp;
