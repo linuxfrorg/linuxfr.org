@@ -10,4 +10,8 @@ class StatisticsController < ApplicationController
     @stats = Statistics::Prizes.new(@month)
   end
 
+  def users
+    @stats = Statistics::Users.new
+  end
+
 end

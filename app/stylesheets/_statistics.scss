@@ -13,6 +13,11 @@
 		&.remaining { background-color: darkred; }
 		&.month_fixed { background-color: green; }
 		&.month_invalid { background-color: olive; }
+		&.misc { background-color: green; }
+		&.account { background-color: olive; }
+		&.accountrecent { background-color: green; }
+		&.accountinactive { background-color: darkred; }
+		&.accountrecentinactive { background-color: red; }
 	}
 
 	span.score {

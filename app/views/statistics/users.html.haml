@@ -1,0 +1,149 @@
+#contents.statistics
+  =h1 "Statistiques sur les utilisateurs"
+  - width_factor = 8
+
+  .body
+    %strong
+      Statistiques mises à jour le #{l Time.now}
+
+    %p Sommaire
+    %ul
+      %li= link_to("Général","#stats_general")
+      %li= link_to("Contenus","#stats_contenus")
+      %li= link_to("Informations personnelles","#stats_infosperso")
+      %li= link_to("Utilisation des fonctionnalités","#stats_fonctionnalites")
+      %li= link_to("Karma des utilisateurs","#stats_karma")
+      %li= link_to("Utilisateurs avec privilèges","#stats_privileges")
+      %li= link_to("Style (CSS)","#stats_css")
+      %li= link_to("Ancienneté des comptes","#stats_anciennete")
+      %li= link_to("Statut des comptes utilisateurs","#stats_state")
+
+  %h2#stats_general Général
+
+  %ul
+    %li
+      #{@stats.nbusers} utilisateurs ayant ou ayant eu des comptes
+    %li
+      #{@stats.nbaccounts} comptes utilisateur
+    %li
+      #{@stats.nbrecentlyusedaccounts} comptes utilisateur valides et utilisés au cours des 3 derniers mois avec #{@stats.novisit["avg"]} jours de moyenne sans visite et #{@stats.novisit["stddev"]} jours d'écart-type
+    %li
+      #{@stats.nbwaitingaccounts} en attente
+    %li
+      #{@stats.nbclosedaccounts} fermés
+
+  %h2#stats_contenus Contenus
+
+  %p Sur #{@stats.nbrecentlyusedaccounts} comptes utilisateur valides et utilisés au cours des 3 derniers mois&nbsp;:
+
+  %ul
+    - content = { "Diary" => "de journaux", "News" => "de dépêches", "Poll" => "de sondages", "Post" => "d'entrées de forum", "Tracker" => "d'entrée dans le suivi", "WikiPage" => "de pages dans le wiki"}
+    = list_of(@stats.nbauthors) do |authors|
+      = "#{authors["content_type"]} : #{authors["cnt"]} auteur(s) #{content[authors["content_type"]]} (#{@stats.pctrecent(authors["cnt"])}%)"
+
+  %h2#stats_infosperso Informations personnelles
+  %p Sur #{@stats.nbrecentlyusedaccounts} comptes utilisateur valides et utilisés au cours des 3 derniers mois&nbsp;:
+
+  %ul
+    %li
+      #{@stats.filledsite} ont indiqué un site personnel (#{@stats.pctrecent(@stats.filledsite)}%).
+    %li
+      #{@stats.filledjabber} ont saisi un identifiant Jabber/XMPP (#{@stats.pctrecent(@stats.filledjabber)}%).
+    %li
+      #{@stats.filledsignature} ont défini une signature (#{@stats.pctrecent(@stats.filledsignature)}%).
+    %li
+      #{@stats.filledavatar} ont fourni un avatar (#{@stats.pctrecent(@stats.filledavatar)}%).
+
+  %h2#stats_fonctionnalites Utilisation des fonctionnalités
+
+  %p Sur #{@stats.nbrecentlyusedaccounts} comptes utilisateur valides et utilisés au cours des 3 derniers mois&nbsp;:
+
+  %ul
+    %li #{@stats.preferences("1")} ont demandé à ne pas voir les avatars (#{@stats.pctrecent(@stats.preferences("1"))}%).
+    %li #{@stats.preferences("2")} ont demandé à voir les dépêches en page d'accueil (#{@stats.pctrecent(@stats.preferences("2"))}%).
+    %li #{@stats.preferences("4")} ont demandé à voir les journaux en page d'accueil (#{@stats.pctrecent(@stats.preferences("4"))}%).
+    %li #{@stats.preferences("8")} ont demandé à voir les entrées de forum en page d'accueil (#{@stats.pctrecent(@stats.preferences("8"))}%).
+    %li #{@stats.preferences("16")} ont demandé à voir les sondages en page d'accueil (#{@stats.pctrecent(@stats.preferences("16"))}%).
+    %li #{@stats.preferences("32")} ont demandé à voir les pages wiki en page d'accueil (#{@stats.pctrecent(@stats.preferences("32"))}%).
+    %li #{@stats.preferences("64")} ont demandé à voir les entrées du suivi en page d'accueil (#{@stats.pctrecent(@stats.preferences("64"))}%).
+    %li #{@stats.preferences("128")} ont demandé le tri chronologique des élements en page d'accueil (#{@stats.pctrecent(@stats.preferences("128"))}%).
+    %li #{@stats.preferences("256")} ont demandé à ne pas voir les signatures(#{@stats.pctrecent(@stats.preferences("256"))}%).
+
+  %p Ces fonctionnalités peuvent être modifiées sur #{ link_to("la page des préférences","/compte/modifier") }.
+
+  %h2#stats_karma Karma des utilisateurs
+
+  %table
+    %tr
+      %th Karma
+      %th Nombre d'utilisateurs
+    - @stats.bykarma.each do |karma|
+      %tr
+        %td
+          -if (karma["sign"]==-1)
+            ="]#{"%d" % -10**(karma["k"]+1)},#{"%d" % -10**(karma["k"])}]"
+          -elsif (karma["sign"]==1)
+            ="[#{"%d" % 10**karma["k"]},#{"%d" % 10**(karma["k"]+1)}["
+          -else
+            =0
+        %td
+          %meter.misc(style="width: #{width_factor * karma["cnt"]}px;")= karma["cnt"]
+
+  %h2#stats_privileges Utilisateurs avec privilèges
+
+  %p= link_to("Voir l'équipe du site","/team")
+
+  %h2#stats_css Style (CSS)
+
+  %p= link_to("Changer de style","/stylesheet/modifier")
+
+  %p Sur #{@stats.nbrecentlyusedaccounts} comptes utilisateur valides et utilisés au cours des 3 derniers mois&nbsp;:
+
+  %table
+    %tr
+      %th Feuille de style
+      %th Nombre d'utilisateurs
+    - @stats.bystyle.each do |style|
+      %tr
+        %td
+          = "#{style["stylesheet"]}"
+        %td
+          %meter.misc(style="width: #{width_factor * style["cnt"]}px;")= style["cnt"]
+
+  %h2#stats_anciennete Ancienneté des comptes
+
+  %p Sur #{@stats.nbrecentlyusedaccounts} comptes utilisateur valides et utilisés au cours des 3 derniers mois&nbsp;:
+
+  %table
+    %tr
+      %th Année
+      %th Nombre d'utilisateurs
+    - @stats.byyear.each do |year|
+      %tr
+        %td
+          = "#{year["year"]}"
+        %td
+          %meter.misc(style="width: #{width_factor * year["cnt"]}px;")= year["cnt"]
+
+  %h2#stats_state Statut des comptes utilisateurs
+
+  %p Statut des comptes utilisateurs par tranche de 2500
+
+  %table
+    %tr
+      %th Tranche
+      %th Nombre de comptes
+    - oldslot=''
+    - @stats.bystate.each do |slot|
+      %tr
+        %td
+          - if (slot["slot"]!=oldslot)
+            = "#{slot["slot"]}"
+          - oldslot=slot["slot"]
+        %td
+          - c="account"
+          - if (slot["recent"]==1)
+            - c+="recent"
+          - if (slot["inactive"]==1)
+            - c+="inactive"
+          %meter(class="#{c}" style="width: #{width_factor * slot["cnt"]}px;")= slot["cnt"]
