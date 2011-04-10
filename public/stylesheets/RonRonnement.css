@@ -224,6 +224,9 @@ a {
   a:hover {
     text-decoration: underline; }
 
+meter {
+  white-space: nowrap; }
+
 button,
 #news_preview, #news_submit,
 #diary_preview, #diary_submit,
@@ -376,14 +379,14 @@ input[type='submit'] {
     display: inline;
     width: 100%;
     padding-right: 42px; }
-    #site ul li {
-      display: inline;
-      padding: 0;
-      list-style: none; }
-      #site ul li:after {
-        content: " | "; }
-      #site ul li:last-child:after {
-        content: ""; }
+  #site li {
+    display: inline;
+    padding: 0;
+    list-style: none; }
+    #site li:after {
+      content: " | "; }
+    #site li:last-child:after {
+      content: ""; }
   #site form {
     display: block;
     background: #a99c90;
@@ -859,7 +862,6 @@ ul.poll li meter {
   background: rgba(76, 87, 95, 0.33);
   border-top: 1px solid #4c575f;
   border-bottom: 1px solid #4c575f;
-  white-space: nowrap;
   font-size: x-small; }
 ul.poll li meter::-webkit-meter-horizontal-bar,
 ul.poll li meter::-webkit-meter-horizontal-optimum-value,

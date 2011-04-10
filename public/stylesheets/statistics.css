@@ -20,6 +20,16 @@
     background-color: green; }
   .statistics meter.month_invalid {
     background-color: olive; }
+  .statistics meter.misc {
+    background-color: green; }
+  .statistics meter.account {
+    background-color: olive; }
+  .statistics meter.accountrecent {
+    background-color: green; }
+  .statistics meter.accountinactive {
+    background-color: darkred; }
+  .statistics meter.accountrecentinactive {
+    background-color: red; }
   .statistics span.score {
     color: "#333"; }
     .statistics span.score:before {

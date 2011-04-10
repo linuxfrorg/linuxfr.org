@@ -10,72 +10,70 @@ class Statistics::Users
   end
 
   def pctrecent(value)
-    "%.0f" % (100.0*value/nbrecentlyusedaccounts)
+    "%.0f" % (100.0 * value / nb_recently_used_accounts)
   end
 
-  def nbusers
+  def nb_users
     count "SELECT COUNT(*) AS cnt FROM users"
   end
 
-  def nbaccounts
+  def nb_accounts
     count "SELECT COUNT(*) AS cnt FROM accounts"
   end
 
-  def nbrecentlyusedaccounts
-    count "SELECT COUNT(*) AS cnt FROM users WHERE updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY);"
+  def nb_recently_used_accounts
+    count "SELECT COUNT(*) AS cnt FROM users WHERE updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY)"
   end
 
-  def nbwaitingaccounts
-    count "SELECT COUNT(*) AS cnt FROM accounts WHERE confirmed_at IS NULL;"
+  def nb_waiting_accounts
+    count "SELECT COUNT(*) AS cnt FROM accounts WHERE confirmed_at IS NULL"
   end
 
-  def nbclosedaccounts
-    count "SELECT COUNT(*) AS cnt FROM accounts WHERE role='inactive';"
+  def nb_closed_accounts
+    count "SELECT COUNT(*) AS cnt FROM accounts WHERE role='inactive'"
   end
 
-  def novisit
-    rows = select_all "SELECT IFNULL(ROUND(AVG(TO_DAYS(CURRENT_TIMESTAMP)-TO_DAYS(updated_at)),1),0) AS avg, IFNULL(ROUND(SQRT(VAR_POP(TO_DAYS(CURRENT_TIMESTAMP)-TO_DAYS(updated_at))),1),0) AS stddev FROM users WHERE updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY);"
+  def no_visit
+    rows = select_all "SELECT IFNULL(ROUND(AVG(TO_DAYS(CURRENT_TIMESTAMP)-TO_DAYS(updated_at)),1),0) AS avg, IFNULL(ROUND(SQRT(VAR_POP(TO_DAYS(CURRENT_TIMESTAMP)-TO_DAYS(updated_at))),1),0) AS stddev FROM users WHERE updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY)"
     novisit = rows.first
   end
 
-  def nbauthors
-    select_all "SELECT DISTINCT(user_id) AS cnt,content_type FROM nodes,users WHERE nodes.user_id=users.id AND users.updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) GROUP BY content_type;"
+  def nb_authors
+    select_all "SELECT DISTINCT(user_id) AS cnt, content_type FROM nodes JOIN users ON nodes.user_id = users.id WHERE users.updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) GROUP BY content_type"
   end
 
-  def filledsite
-    count "SELECT COUNT(*) AS cnt FROM users WHERE homesite IS NOT NULL AND updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY);"
+  def filled(field)
+    count "SELECT COUNT(*) AS cnt FROM users WHERE #{field} IS NOT NULL AND updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY)"
   end
 
-  def filledjabber
-    count "SELECT COUNT(*) AS cnt FROM users WHERE jabber_id IS NOT NULL AND updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY);"
+  def preferences(field)
+    count "SELECT COUNT(*) AS cnt FROM accounts JOIN users ON users.id = accounts.user_id WHERE #{Account.bitfield_sql field => true} AND users.updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY)"
   end
 
-  def filledsignature
-    count "SELECT COUNT(*) AS cnt FROM users WHERE signature IS NOT NULL AND updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY);"
+  def accounts_with_no_contents
+    no_contents_sql = Account.bitfield_sql(:news_on_home => false, :diaries_on_home => false, :posts_on_home => false, :polls_on_home => false, :wiki_pages_on_home => false, :trackers_on_home => false)
+    count "SELECT COUNT(*) AS cnt FROM accounts JOIN users ON users.id = accounts.user_id WHERE #{no_contents_sql} AND users.updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY)"
   end
 
-  def filledavatar
-    count "SELECT COUNT(*) AS cnt FROM users WHERE avatar IS NOT NULL AND updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY);"
+  def on_home(content_type)
+    cnt  = preferences("#{content_type.tableize}_on_home".to_sym)
+    cnt += accounts_with_no_contents if HomeController::DEFAULT_TYPES.include?(content_type)
+    cnt
   end
 
-  def preferences(value)
-    count "SELECT COUNT(*) AS cnt FROM accounts WHERE (preferences&"+value+")="+value+" AND preferences<>0 AND updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY);"
+  def by_karma
+    select_all "SELECT SIGN(karma) AS sign, FLOOR(LOG10(ABS(karma)+1E-99)) as k, COUNT(*) AS cnt FROM accounts JOIN users ON users.id = accounts.user_id WHERE karma IS NOT NULL AND users.updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) GROUP BY sign,k ORDER BY sign ASC, sign*k ASC"
   end
 
-  def bykarma
-    select_all "SELECT SIGN(karma) AS sign, FLOOR(LOG10(ABS(karma)+1E-99)) as k, COUNT(*) AS cnt FROM accounts WHERE karma IS NOT NULl AND updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) GROUP BY sign,k ORDER BY sign ASC, sign*k ASC;"
+  def by_style
+    select_all "SELECT TRIM(stylesheet) AS stylesheet, COUNT(*) AS cnt FROM accounts JOIN users ON users.id = accounts.user_id WHERE users.updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) GROUP BY stylesheet HAVING cnt > 2 ORDER BY cnt DESC"
   end
 
-  def bystyle
-    select_all "SELECT TRIM(stylesheet),COUNT(*) AS cnt FROM accounts WHERE updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) GROUP BY stylesheet HAVING cnt > 2 ORDER BY cnt DESC;"
+  def by_year
+    select_all "SELECT YEAR(accounts.created_at) AS year, COUNT(*) AS cnt FROM accounts JOIN users ON users.id = accounts.user_id WHERE users.updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) GROUP BY year ORDER BY year ASC"
   end
 
-  def byyear
-    select_all "SELECT YEAR(created_at) AS year,COUNT(*) AS cnt FROM accounts WHERE updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) GROUP BY year ORDER BY year ASC;"
+  def by_state
+    select_all "SELECT user_id DIV 2500 AS slot, COUNT(*) AS cnt, (role='inactive') AS inactive, (updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY)) AS recent FROM accounts GROUP BY slot,inactive,recent ORDER BY slot ASC, inactive ASC, recent ASC"
   end
-
-  def bystate
-    select_all "SELECT user_id DIV 2500 AS slot,COUNT(*) AS cnt,(role='inactive') AS inactive, (updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY)) AS recent FROM accounts GROUP BY slot,inactive,recent ORDER BY slot ASC,inactive ASC,recent ASC;"
-  end
-
 end

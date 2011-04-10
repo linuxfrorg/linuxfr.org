@@ -161,6 +161,8 @@ a {
 	}
 }
 
+meter { white-space: nowrap; }
+
 button,
 #news_preview, #news_submit,
 #diary_preview, #diary_submit,
@@ -313,19 +315,13 @@ input[type='submit'] {
 		display: inline;
 		width: 100%;
 		padding-right: $PX_SITE_PAD_DROIT;
-
-		li {
-			display: inline;
-			padding: 0;
-			list-style: none;
-
-			&:after {
-				content: " | ";
-			}
-			&:last-child:after {
-				content: "";
-			}
-		}
+	}
+	li {
+		display: inline;
+		padding: 0;
+		list-style: none;
+		&:after { content: " | "; }
+		&:last-child:after { content: ""; }
 	}
 
 	/* boite de recherche */
@@ -398,9 +394,7 @@ input[type='submit'] {
 	);
 	padding: 0px 0px 0px 0px;
 
-	a {
-		font-size: small;
-	}
+	a { font-size: small; }
 
 	nav, section {
 		display: inline-block;
@@ -488,7 +482,6 @@ input[type='submit'] {
 		right: -$RAY_CONTAINER - $BORDER_PHARE;
 		width: $RAY_CONTAINER + $BORDER_PHARE;
 	}
-
 }
 
 /* information générale, "publicité" (genre fosdem p. ex.) */
@@ -945,7 +938,6 @@ ul.poll {
 		background: $C_BD2;
 		border-top: 1px solid $C_BANDEAU;
 		border-bottom: 1px solid $C_BANDEAU;
-		white-space: nowrap;
 		font-size: x-small;
 	}
 	li meter::-webkit-meter-horizontal-bar,

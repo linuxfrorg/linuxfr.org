@@ -170,6 +170,16 @@ $C_BD5: #D91C64;*/
     background-color: green; }
   .statistics meter.month_invalid {
     background-color: olive; }
+  .statistics meter.misc {
+    background-color: green; }
+  .statistics meter.account {
+    background-color: olive; }
+  .statistics meter.accountrecent {
+    background-color: green; }
+  .statistics meter.accountinactive {
+    background-color: darkred; }
+  .statistics meter.accountrecentinactive {
+    background-color: red; }
 .statistics span.score {
   color: "#333"; }
   .statistics span.score:before {
@@ -213,6 +223,9 @@ a {
   font-weight: bold; }
   a:hover {
     text-decoration: underline; }
+
+meter {
+  white-space: nowrap; }
 
 button,
 #news_preview, #news_submit,
@@ -366,14 +379,14 @@ input[type='submit'] {
     display: inline;
     width: 100%;
     padding-right: 42px; }
-    #site ul li {
-      display: inline;
-      padding: 0;
-      list-style: none; }
-      #site ul li:after {
-        content: " | "; }
-      #site ul li:last-child:after {
-        content: ""; }
+  #site li {
+    display: inline;
+    padding: 0;
+    list-style: none; }
+    #site li:after {
+      content: " | "; }
+    #site li:last-child:after {
+      content: ""; }
   #site form {
     display: block;
     background: #93877b;
@@ -849,7 +862,6 @@ ul.poll li meter {
   background: rgba(136, 0, 56, 0.33);
   border-top: 1px solid #880038;
   border-bottom: 1px solid #880038;
-  white-space: nowrap;
   font-size: x-small; }
 ul.poll li meter::-webkit-meter-horizontal-bar,
 ul.poll li meter::-webkit-meter-horizontal-optimum-value,

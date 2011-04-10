@@ -3,9 +3,11 @@ class HomeController < ApplicationController
                         :expires_in => 5.minutes,
                         :cache_path => Proc.new {|c| "home/#{c.params[:order]}/#{c.params[:page]}" }
 
+  DEFAULT_TYPES = %w(News Poll)
+
   def index
     @types  = current_account.try(:types_on_home)
-    @types  = %w(News Poll) if @types.blank?
+    @types  = DEFAULT_TYPES if @types.blank?
     default = current_account.try(:sort_by_date_on_home) ? "created_at" : "interest"
     @order  = params[:order]
     @order  = default unless VALID_ORDERS.include?(@order)
