@@ -172,7 +172,7 @@ GEM
     simple_autocomplete (0.3.8)
     sitemap_generator (1.5.2)
     spork (0.8.4)
-    state_machine (0.10.2)
+    state_machine (0.10.3)
     subexec (0.0.4)
     thin (1.2.11)
       daemons (>= 1.0.9)

@@ -3,7 +3,6 @@
 
   = render "preview", :preview => @wiki_page if @preview_mode
 
-  - @wiki_page.valid?
   = form_for @wiki_page do |form|
     = messages_on_error @wiki_page
     %p
