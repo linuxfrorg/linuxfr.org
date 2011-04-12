@@ -1,6 +1,6 @@
 #contents.statistics
   =h1 "Statistiques sur les utilisateurs"
-  - width_factor = 0.5
+  - width_factor = 0.4
 
   .body
     %strong
@@ -140,4 +140,4 @@
             - c = "recent"
           - if slot["inactive"] == 1
             - c = "inactive"
-          %meter(class="account#{c}" style="width: #{(width_factor * slot["cnt"] / 3.0).to_i}px;")= slot["cnt"]
+          %meter(class="account#{c}" style="width: #{(width_factor * slot["cnt"]).to_i}px;")= slot["cnt"]
