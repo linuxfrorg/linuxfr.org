@@ -43,7 +43,7 @@ class Statistics::Users
   end
 
   def filled(field)
-    count "SELECT COUNT(*) AS cnt FROM users WHERE #{field} IS NOT NULL AND updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY)"
+    count "SELECT COUNT(*) AS cnt FROM users WHERE #{field} IS NOT NULL AND #{field}<>'' AND updated_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY)"
   end
 
   def preferences(field)

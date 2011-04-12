@@ -1,6 +1,6 @@
 #contents.statistics
   =h1 "Statistiques sur les utilisateurs"
-  - width_factor = 8
+  - width_factor = 0.5
 
   .body
     %strong
@@ -83,7 +83,7 @@
           -else
             0
         %td
-          %meter.misc(style="width: #{karma["cnt"]}px;")= karma["cnt"]
+          %meter.misc(style="width: #{(width_factor * karma["cnt"]).to_i}px;")= karma["cnt"]
 
   %h2#stats_privileges Utilisateurs avec privilèges
   %p
@@ -102,7 +102,7 @@
         %td
           = (style["stylesheet"] || "Feuille de style par défaut").sub("/stylesheets/contrib/", "")
         %td
-          %meter.misc(style="width: #{style["cnt"]}px;")= style["cnt"]
+          %meter.misc(style="width: #{(width_factor * style["cnt"]).to_i}px;")= style["cnt"]
 
   %h2#stats_anciennete Ancienneté des comptes
   %p
@@ -116,11 +116,14 @@
         %td
           = year["year"]
         %td
-          %meter.misc(style="width: #{year["cnt"]}px;")= year["cnt"]
+          %meter.misc(style="width: #{(width_factor * year["cnt"]).to_i}px;")= year["cnt"]
 
   %h2#stats_state Statut des comptes utilisateurs
-  %p
-    Statut des comptes utilisateurs par tranche de 2500
+  %p Statut des comptes utilisateurs par tranche de 2500
+  %meter(class="accountrecent" style="width: 250px;") comptes récemment utilisés
+  %meter(class="accountinactive" style="width: 250px;") comptes fermés
+  %meter(class="accountrecentinactive" style="width: 250px;") comptes fermés récemment utilisés
+  %meter(class="account" style="width: 250px;") autres comptes
   %table
     %tr
       %th Tranche
@@ -135,6 +138,6 @@
         %td
           - if slot["recent"] == 1
             - c = "recent"
-          - elsif slot["inactive"] == 1
+          - if slot["inactive"] == 1
             - c = "inactive"
-          %meter(class="account#{c}" style="width: #{slot["cnt"] / 3}px;")= slot["cnt"]
+          %meter(class="account#{c}" style="width: #{(width_factor * slot["cnt"] / 3.0).to_i}px;")= slot["cnt"]
