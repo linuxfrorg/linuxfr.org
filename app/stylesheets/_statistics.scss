@@ -25,4 +25,9 @@
 		&:before { content: " ["; }
 		&:after  { content: "] "; }
 	}
+
+	.top_or_flop {
+		float: left;
+		width: 48%;
+	}
 }

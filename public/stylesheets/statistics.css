@@ -36,3 +36,6 @@
       content: " ["; }
     .statistics span.score:after {
       content: "] "; }
+.statistics .top_or_flop {
+  float: left;
+  width: 48%; }

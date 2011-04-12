@@ -14,4 +14,8 @@ class StatisticsController < ApplicationController
     @stats = Statistics::Users.new
   end
 
+  def top
+    @stats = Statistics::Tops.new
+  end
+
 end

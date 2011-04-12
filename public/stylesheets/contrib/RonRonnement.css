@@ -186,6 +186,9 @@ $C_BD5: #D91C64;*/
     content: " ["; }
   .statistics span.score:after {
     content: "] "; }
+.statistics .top_or_flop {
+  float: left;
+  width: 48%; }
 
 /* Pixel size constants */
 /* pas de px ici pour faire plaisir a webkit */
