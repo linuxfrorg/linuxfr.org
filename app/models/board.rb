@@ -56,6 +56,9 @@ class Board
   def save
     return false if @message.blank?
     sanitize_message unless @message.html_safe?
+    @user_agent = h @user_agent
+    @user_name  = h @user_name
+    @user_url   = h @user_url
     @id = $redis.incr("boards/id")
     @created_at = Time.now
     $redis.hmset("boards/msg/#{@id}", :kind, @kind, :msg, @message, :ua, @user_agent, :user, @user_name, :url, @user_url, :date, @created_at.to_i)
