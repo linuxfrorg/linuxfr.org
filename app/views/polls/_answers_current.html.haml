@@ -1,4 +1,4 @@
-= form_tag "/sondages/#{poll.new_record? ? 0 : poll.to_param}/vote", :html => { :id => "#{dom_id poll}#{id_suffix}" } do
+= form_tag "/sondages/#{poll.new_record? ? 0 : poll.to_param}/vote", :id => "#{dom_id poll}#{id_suffix}" do
   %ul.poll.current
     = list_of poll.answers do |answer|
       = radio_button_tag :position, answer.position, false, :id => "position_#{answer.position}#{id_suffix}"
