@@ -13,7 +13,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.database_authenticatable :encryptor => :sha1, :null => false
       t.confirmable
       t.recoverable
-      t.rememberable
+      t.rememberable(:use_salt => false)
       t.trackable
       t.encryptable
       t.timestamps
