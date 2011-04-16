@@ -10,7 +10,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.string   :old_password, :limit => 20
 
       # Devise
-      t.authenticatable :encryptor => :sha1, :null => false
+      t.database_authenticatable :encryptor => :sha1, :null => false
       t.confirmable
       t.recoverable
       t.rememberable
