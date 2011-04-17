@@ -27,29 +27,3 @@
         %ol
           = list_of @stats.top_authors(Diary, 15, false) do |user, score|
             = link_to_user_with_score(user, score)
-
-    %section
-      %h2 Nombre de réponses dans les forums
-      .top_or_flop
-        %h3 Sur les 3 derniers mois
-        %ol
-          = list_of @stats.top_commenters(Post, 15, true) do |user, score|
-            = link_to_user_with_score(user, score)
-      .top_or_flop
-        %h3 Depuis le début du site
-        %ol
-          = list_of @stats.top_commenters(Post, 15, false) do |user, score|
-            = link_to_user_with_score(user, score)
-
-    %section
-      %h2 Nombre de réponses sur le suivi
-      .top_or_flop
-        %h3 Sur les 3 derniers mois
-        %ol
-          = list_of @stats.top_commenters(Tracker, 15, true) do |user, score|
-            = link_to_user_with_score(user, score)
-      .top_or_flop
-        %h3 Depuis le début du site
-        %ol
-          = list_of @stats.top_commenters(Tracker, 15, false) do |user, score|
-            = link_to_user_with_score(user, score)
