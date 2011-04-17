@@ -1547,6 +1547,13 @@ body#wiki_pages-revision #contents nav ul {
       body#wiki_pages-revision #contents nav ul li:first-of-type:after {
         content: ""; }
 
+body#sections-index .body {
+  overflow: hidden; }
+  body#sections-index .body .section {
+    float: left;
+    width: 120px;
+    height: 120px; }
+
 body#static-show #contents a[href],
 body#sections-index #contents a[href],
 body#admin-index #container > ul a[href],

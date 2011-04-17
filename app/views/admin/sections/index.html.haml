@@ -20,5 +20,5 @@
         %td
           = section.state == "published" ? "publiée" : "archivée"
         %td
-          = link_to "Changer le logo", edit_admin_section_path(section)
+          = link_to "Modifier", edit_admin_section_path(section)
           = button_to "Archiver", [:admin, section], :method => :delete, :confirm => "Archiver la section ?"

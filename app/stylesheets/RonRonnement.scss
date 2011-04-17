@@ -1496,6 +1496,15 @@ body#wiki_pages-revision {
 	}
 }
 
+body#sections-index .body {
+	overflow: hidden;
+	.section {
+		float: left;
+		width:  120px;
+		height: 120px;
+	}
+}
+
 body#static-show #contents,
 body#sections-index #contents,
 body#admin-index #container > ul,
