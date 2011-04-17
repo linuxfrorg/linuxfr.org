@@ -1,28 +1,39 @@
 /**
  * Auteur : Bruno ARLIGUY / http://arliguy.net
  * Licence : domaine public
- * Créée le : 28 février 2010
+ * Créée le : 28 février 2011
  * Notes :
  *  - CSS pour linuxFR.org
  *  - L'icône du badge des nouveaux commentaires vient de http://glyphish.com
  *  - Les icônes des drapeaux pays viennent de http://www.famfamfam.com
  * Versions :
- *  - 2010.02.28 : * version initiale
+ *  - 2011.02.28 : * version initiale
  *
- *  - 2010.03.02 : * correction affichage dans barre d'icônes du mode édition pour webkit
+ *  - 2011.03.02 : * correction affichage dans barre d'icônes du mode édition pour webkit
  *                 * espacement des titres dans les pages d'éditions
  *                 * encadrement de l'aide-mémoire markdown dans les pages d'éditions
  *                 * amélioration de la présentation du tableau des liens dans l'édition d'une dépêche
  *                 * amélioration de la présentation du formulaire d'édition du compte
  *
- *  - 2010.03.09 : * changement de l'affichage de la note des contenus pour éviter les chevauchements et compatibilité FF4
+ *  - 2011.03.09 : * changement de l'affichage de la note des contenus pour éviter les chevauchements et compatibilité FF4
  *                 * déplacement du badge pour les contenus avec de nouveaux commentaires : il est déplacé au niveau de la note
  *
- *  - 2010.03.10 : * ajout des icônes pour les drapeaux correspondants aux langues
+ *  - 2011.03.10 : * ajout des icônes pour les drapeaux correspondants aux langues
  *                 * retour des arrondis sur le cadre des notes
  *                 * ajustement de l'emplacement des titres des contenus pour qu'ils soient visibles 
  *                   quand on navigue entre nouveaux (touches j/k ou par interface utilisateur)
+ *
+ *  - 2011.03.14 : * support des entrées avec nouveau contenu dans le tableau de bord
+ *
+ *  - 2011.03.18 : * support des signatures
+ *                 * prise en compte du changement dans la pagination
+ *
+ *  - 2011.04.14 : * changement des dates de version de "2010" à "2011"
+ *                 * ajout gestion de toolbar_alt_items
  **/
+
+@import "./spasibo-mobile.css" screen and (max-width: 1024px);
+@import url(/stylesheets/statistics.css);
 
 html,body,div,span,object,iframe,
 h1,h2,h3,h4,h5,h6,
@@ -147,7 +158,6 @@ body {
 
 #sidebar .box > h1 {
 	font-size: 1em;
-	background-color: green;
 	background-color: #D6DBDF;
 	padding: .5em;
 }
@@ -243,6 +253,14 @@ aside.banner {
 .meta {
 	font-size: .8em;
 	font-style: italic;
+}
+
+.signature {
+	font-size: .8em;
+}
+.signature:before {
+	content: "--";
+	display: block;
 }
 
 .figures {
@@ -361,17 +379,23 @@ pre:before {
 	font-size: .8em;
 }
 
-.pagination > a[class] {
-	display: inline !important;
+.pagination > span.page {
+	display: none;
 }
 
-.pagination > em:before {
+.pagination > span.current:before {
 	content: "Page : ";
 }
 
-.pagination > em {
-	padding-left: 2em;
-	padding-right: 2em;
+.pagination > span.current {
+	display: inline;
+}
+
+.pagination > span.prev {
+	padding-right: 1em;
+}
+.pagination > span.next {
+	padding-left: 1em;
 }
 
 #static-submit_content h1, #comments-answer h1, #diaries-new h1, #polls-new h1, #trackers-new h1, #wiki_pages-new h1, #stylesheets-edit h1, #dashboard-index h1, #registrations-edit h1{
@@ -626,11 +650,11 @@ footer.actions .vote input[value=inutile], #registrations-edit input[value="Ferm
 	line-height: 1em;
 }
 
-#toolbar_items, #toolbar_threshold {
+#toolbar_alt_items, #toolbar_items, #toolbar_threshold {
 	font-size: x-small;
 }
 
-#toolbar_threshold {
+#toolbar_items, #toolbar_threshold {
 	margin-left: 1em;
 }
 
@@ -792,9 +816,15 @@ ul.threads > li.even {
 	float: left;
 }
 
+td.thread-new-comments {
+	background-color: #007000;
+	color: #FFFFFF;
+}
+
+
 /* Le contenu à cacher */
 
-#comments-answer footer.actions, #last_comments, #popular_tags, .pagination > a, .pagination > .gap, figure.image, img.avatar,
+#comments-answer footer.actions, #last_comments, #popular_tags, figure.image, img.avatar,
  nav.toolbox > .new_content, nav.toolbox > .order_navbar, .tags, footer.actions > .tag_in_place, article.node > header > h1 > a:first-child,
  #container > h1:first-child, #container > div.notice:first-child + h1, #branding > h1, .go_to_content, #site>form, .datePourCss {
 	display: none;
@@ -809,4 +839,8 @@ ul.threads > li.even {
 	display: none;
 }
 
-@import url(/stylesheets/statistics.css);
+/* http://linuxfr.org/suivi/mise-%C3%A0-jour-css-spasibo */
+body {
+	letter-spacing: inherit;
+	font-family: Ubuntu, Verdana, "DejaVu Sans", "Bitstream Vera Sans", Geneva, sans-serif;
+}
