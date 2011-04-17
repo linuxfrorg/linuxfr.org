@@ -48,7 +48,6 @@
           %td= tracker.created_at.to_s(:posted)
           %td= tracker.assigned_to
           %td= tracker.user ? link_to(tracker.user.name, tracker.user) : "Anonyme"
-          %td= tracker.category_title
           %td= link_to tracker.category_title, "/suivi?tracker[category_id]=#{tracker.category_id}"
           %td= tracker.state_name
           %td.number= tracker.score
