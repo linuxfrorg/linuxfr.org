@@ -4,7 +4,7 @@
     %tbody
       %tr
         %td Caractères spéciaux à copier/coller
-        %td æ Æ à À â Â ä Ä<br/>ç Ç<br/>€ é É è È ê Ê ë Ë<br/>î Î ï Ï<br/>œ Œ ô Ô ö Ö<br/>ù Ù û Û ü Ü<br/>ÿ Ÿ<br/>¹ ² ³ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹ ⁰<br/>½ «  » ~ # @ … ‰ € – —
+        %td æ Æ à À â Â ä Ä<br/>ç Ç<br/>€ é É è È ê Ê ë Ë<br/>î Î ï Ï<br/>œ Œ ô Ô ö Ö<br/>ù Ù û Û ü Ü<br/>¹ ² ³ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹ ⁰<br/>½ «  » ~ # @ … ‰ € – —
       %tr
         %td _italique_
         %td <em>italique</em>
@@ -18,11 +18,11 @@
         %td &gt; citation
         %td <blockquote>citation</blockquote>
       %tr
-        %td * Liste à puces<br/>* Deuxième élément
-        %td &#8226; Liste à puces<br/>&#8226; Deuxième élément
+        %td * Liste à puces<br/>* Deuxième élément<br/>&nbsp;&nbsp;* indentation avec 2 espaces au début
+        %td <ul><li>Liste à puces</li><li>Deuxième élément<ul><li>2 espaces au début</li></ul></li></ul>
       %tr
         %td 1. Liste numérotée<br/>1. Deuxième élément
-        %td 1. Liste numérotée<br/>2. Deuxième élément
+        %td <ol><li>Liste numérotée</li><li>Deuxième élément</li></ol>
       %tr
         %td [Kernel](http://www.kernel.org/)
         %td <a href="http://www.kernel.org/">Kernel</a>
@@ -33,14 +33,8 @@
         %td [[[Wiki]]] interne
         %td <a href="/wiki/Wiki">Wiki</a> interne
       %tr
-        %td # Titre de section #
-        %td <h2>Titre de section</h2>
-      %tr
-        %td ## Sous-titre ##
-        %td <h3>Sous-titre</h3>
-      %tr
-        %td ### Intertitre ###
-        %td <h4>Intertitre</h4>
+        %td # Titre de section #<br/><br/>## Sous-titre ##<br/><br/>### Intertitre ###
+        %td <h2>Titre de section</h2><h3>Sous-titre</h3><h4>Intertitre</h4>
       %tr
         %td ```ruby<br/># Du code avec coloration syntaxique<br/>class Ruby<br/>end<br/>```
         %td
@@ -49,4 +43,4 @@
             <span class="k">class</span> <span class="nc">Ruby</span>
             <span class="k">end</span>
             </code></pre>
-  %p Vous pouvez également consulter <a href="http://daringfireball.net/projects/markdown/syntax">http://daringfireball.net/projects/markdown/syntax</a>
+  %p Vous pouvez également consulter <a href="http://daringfireball.net/projects/markdown/syntax">http://daringfireball.net/projects/markdown/syntax</a> et l'<a href="/wiki/Aide-Edition" title="Lien du wiki interne LinuxFr.org">aide à l'édition</a> sur le wiki.
