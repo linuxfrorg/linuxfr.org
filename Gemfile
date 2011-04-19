@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "rails",                   "=3.0.6"
+gem "rails",                   "=3.0.7"
 
 gem "acts_as_list",            "~>0.1"
 gem "albino",                  "~>1.3"
@@ -16,7 +16,7 @@ gem "html_spellchecker",       "~>0.1"
 gem "html_truncator",          "~>0.2"
 gem "htmlentities",            "~>4.3"
 gem "jammit",                  "~>0.6"
-gem "kaminari",                "~>0.10"
+gem "kaminari",                "~>0.11"
 gem "mini_magick",             "~>3.2"
 gem "mysql2",                  "~>0.2"
 gem "nokogiri",                "~>1.4"
