@@ -10,6 +10,7 @@ atom_feed(:root_url => trackers_url, "xmlns:wfw" => "http://wellformedweb.org/Co
       entry.author do |author|
         author.name(tracker.user.try(:name) || 'Anonyme')
       end
+      entry.category(:term => tracker.category.title)
       entry.wfw :commentRss, "http://#{MY_DOMAIN}/nodes/#{tracker.node.id}/comments.atom"
     end
   end
