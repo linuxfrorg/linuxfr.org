@@ -24,7 +24,7 @@ describe LFMarkdown do
 
   it "transforms [[]] to wikipedia links, even with spaces and accents" do
     html = LFMarkdown.new("[[Paul Erdős]]").to_html
-    html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Paul%20Erd%C5%91s\" title=\"Définition Wikipédia\">Paul Erdős</a></p>\n"
+    html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Paul Erdős\" title=\"Définition Wikipédia\">Paul Erdős</a></p>\n"
   end
 
   it "transforms [[]] to wikipedia links even for categories (with : . and -)" do

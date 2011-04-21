@@ -20,7 +20,7 @@ gem "kaminari",                "~>0.11"
 gem "mini_magick",             "~>3.2"
 gem "mysql2",                  "~>0.2"
 gem "nokogiri",                "~>1.4"
-gem "rdiscount",               "~>1.6"
+gem "redcarpet",               "~>1.10"
 gem "hiredis",                 "~>0.3"
 gem "redis",                   "~>2.2", :require => ["redis/connection/hiredis", "redis"]
 gem "sanitize",                "~>2.0"

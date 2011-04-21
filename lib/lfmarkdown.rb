@@ -1,5 +1,5 @@
 # encoding: UTF-8
-require "rdiscount"
+require "redcarpet"
 require "digest/sha1"
 
 # LinuxFr Flavored Markdown
@@ -13,15 +13,18 @@ require "digest/sha1"
 #  * PHP Markdown Extra-style tables are supported
 #  * and some other extensions listed on http://www.pell.portland.or.us/~orc/Code/discount/#Language+extensions
 #
-class LFMarkdown < Markdown
+class LFMarkdown < Redcarpet
 
   def initialize(text, *extensions)
     text         ||= ''
     @filter_styles = true
     @filter_html   = true
     @autolink      = true
+    @tables        = true
+    @strikethrough = true
+    @hard_wrap     = true
     @codemap       = {}
-    @generate_toc  = text.length > 20_000  # See https://github.com/rtomayko/rdiscount/issues/36
+    @generate_toc  = text.length > 5_000
     super(text.dup, *extensions)
   end
 
@@ -29,7 +32,6 @@ class LFMarkdown < Markdown
     extract_code
     process_internal_wiki_links
     process_wikipedia_links
-    process_newlines
     ret = fix_heading_levels(super)
     ret = process_code(ret)
     ret = add_toc_content(ret) if @generate_toc
@@ -47,14 +49,6 @@ protected
 
   def process_wikipedia_links
     @text.gsub!(WP_LINK_REGEXP, '[\1](http://fr.wikipedia.org/wiki/\1 "Définition Wikipédia")')
-  end
-
-  # Code taken from http://github.com/github-flavored-markdown/
-  def process_newlines
-    @text.gsub!("\r", "")
-    @text.gsub!(/(\A|^$\n)(^\w[^\n]*\n)(^\w[^\n]*$)+/m) do |x|
-      x.gsub(/^(.+)$/, "\\1  ")
-    end
   end
 
   def fix_heading_levels(str)

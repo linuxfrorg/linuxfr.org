@@ -11,7 +11,7 @@ class LFSanitizer
                     th thead tr time ul var video wbr),
     :attributes => {
       :all         => ['data-after', 'data-id', 'id', 'title', 'class'],
-      'a'          => ['href'],
+      'a'          => ['href', 'name'],
       'blockquote' => ['cite'],
       'img'        => ['alt', 'height', 'src', 'width'],
       'q'          => ['cite'],
