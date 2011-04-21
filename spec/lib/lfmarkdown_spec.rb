@@ -32,6 +32,11 @@ describe LFMarkdown do
     html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Fichier:HTML5-logo.svg\" title=\"Définition Wikipédia\">Fichier:HTML5-logo.svg</a></p>\n"
   end
 
+  it "transforms [[]] to wikipedia links, even with parenthesis" do
+    html = LFMarkdown.new("[[Pogo_(danse)]]").to_html
+    html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Pogo_%28danse%29\" title=\"Définition Wikipédia\">Pogo_(danse)</a></p>\n"
+  end
+
   it "leaves underscored words unchanged" do
     html = LFMarkdown.new("foo_bar_baz").to_html
     html.should == "<p>foo_bar_baz</p>\n"
