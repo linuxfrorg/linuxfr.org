@@ -12,6 +12,7 @@ class Redaction::ParagraphsController < RedactionController
       paragraphs = @news.paragraphs.in_second_part
     end
     paragraphs.create(:wiki_body => "Vous pouvez éditer ce paragraphe en cliquant dessus", :user => current_user)
+    render :nothing => true
   end
 
   def show

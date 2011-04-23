@@ -7,16 +7,16 @@ class RelevancesController < ApplicationController
   def for
     @comment.vote_for(current_account) if @comment.votable_by?(current_account)
     respond_to do |wants|
+      wants.json { render :json => { :notice => "Merci pour votre vote" } }
       wants.html { redirect_to :back }
-      wants.json { render :json => "Merci pour votre vote".to_json }
     end
   end
 
   def against
     @comment.vote_against(current_account) if @comment.votable_by?(current_account)
     respond_to do |wants|
+      wants.json { render :json => { :notice => "Merci pour votre vote" } }
       wants.html { redirect_to :back }
-      wants.json { render :json => "Merci pour votre vote".to_json }
     end
   end
 

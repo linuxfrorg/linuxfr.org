@@ -1,9 +1,7 @@
 (function($) {
-    $.ajaxSettings.dataType = "json";
-
-    $('form[data-remote]').live('ajax:success', function(e, data) {
-        if (data) {
-            jQuery.noticeAdd({text: data});
+    $('body').delegate('form[data-remote]', 'ajax:success', function(e, data) {
+        if (data && data.notice) {
+            jQuery.noticeAdd({text: data.notice});
         }
         $(this).parent().hide();
     });
@@ -73,15 +71,16 @@
     $('.edition_in_place').editionInPlace();
     $('#redaction .link').editionInPlace();
     $('#redaction .new_link').creationInPlace();
+    $('#redaction .new_paragraph').bind('ajax:success', false);
 
     /* Tags */
-    $('.tag_in_place').live('in_place:form', function() {
+    $('.tag_in_place').bind('in_place:form', function() {
         $('input.autocomplete').each(function() {
             var input = $(this);
             input.autocomplete(input.attr('data-url'), {multiple: true, multipleSeparator: ' ', dataType: 'text'});
             input.focus();
         });
-    }).live('in_place:result', function() {
+    }).bind('in_place:result', function() {
         $.noticeAdd({text: "Tags ajoutés"});
     }).editionInPlace();
     $('.add_tag, .remove_tag').click(function() {

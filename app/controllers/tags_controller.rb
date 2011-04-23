@@ -18,7 +18,7 @@ class TagsController < ApplicationController
   def create
     current_account.tag(@node, params[:tags])
     respond_to do |wants|
-     wants.js   { render :nothing => true }
+     wants.json { render :json => { :notice => "Tags ajoutés" } }
      wants.html { redirect_to_content @node.content }
     end
   end
@@ -26,7 +26,7 @@ class TagsController < ApplicationController
   def update
     @node.taggings.create(:tag_id => @tag.id, :user_id => current_account.user_id)
     respond_to do |wants|
-     wants.js   { render :nothing => true }
+     wants.json { render :json => { :notice => "Tag ajouté" } }
      wants.html { redirect_to_content @node.content }
     end
   end
@@ -35,7 +35,7 @@ class TagsController < ApplicationController
     @tag = Tag.where(:name => params[:id]).first
     @node.taggings.where(:tag_id => @tag.id, :user_id => current_account.user_id).delete_all if @tag
     respond_to do |wants|
-     wants.js   { render :nothing => true }
+     wants.json { render :json => { :notice => "Tag enlevé" } }
      wants.html { redirect_to_content @node.content }
     end
   end

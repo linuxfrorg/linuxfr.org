@@ -120,7 +120,9 @@ module NodeHelper
     end
     ret = content_tag(:span, "#{link} (#{nb_comments}#{visit}).".html_safe, :class => status)
     if [:no_comments, :new_comments, :read].include?(status)
-      ret += button_to("Oublier", reading_path(:id => node.id), :method => :delete, :class => "unread")
+      ret += content_tag(:span, :class => "action") do
+        button_to("Oublier", reading_path(:id => node.id), :method => :delete, :remote => true, :class => "unread")
+      end
     end
     ret
   end
