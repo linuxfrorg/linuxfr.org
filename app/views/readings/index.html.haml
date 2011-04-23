@@ -1,0 +1,4 @@
+=h1 "Les derniers contenus que j'ai lu"
+= paginated_section @nodes do
+  #contents
+    = render @nodes.map(&:content)

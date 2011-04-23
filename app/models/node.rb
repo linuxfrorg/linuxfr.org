@@ -111,6 +111,11 @@ class Node < ActiveRecord::Base
 
 ### Readings ###
 
+  def self.readings_of(account_id)
+    ids = $redis.keys("readings/*/#{account_id}").map {|x| x.scan(/\/(\d+)\//).first.first }
+    where(:id => ids)
+  end
+
   def read_by(account_id)
     $redis.set("readings/#{self.id}/#{account_id}", Time.now.to_i)
     $redis.expire("readings/#{self.id}/#{account_id}", 7776000) # 3 months

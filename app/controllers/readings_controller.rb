@@ -5,6 +5,9 @@ class ReadingsController < ApplicationController
   before_filter :find_node, :only => [:destroy]
 
   def index
+    @order = params[:order]
+    @order = "created_at" unless VALID_ORDERS.include?(@order)
+    @nodes = Node.readings_of(current_account.id).order("#{@order} DESC").page(params[:page])
   end
 
   def destroy
