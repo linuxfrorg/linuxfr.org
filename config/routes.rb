@@ -49,11 +49,12 @@ LinuxfrOrg::Application.routes.draw do
   resources :nodes, :only => [] do
     resources :comments do
       get :answer, :on => :member
-      post "/relevance/:action" => "relevances#index", :as => :relevance, :on => :member
+      post "/relevance/:action", :controller => "relevances", :as => :relevance, :on => :member
     end
     resources :tags, :only => [:new, :create, :update, :destroy]
-    post "/vote/:action" => "votes#index", :as => :vote, :on => :member
+    post "/vote/:action", :controller => "votes", :as => :vote, :on => :member
   end
+  resources :readings, :only => [:index, :destroy]
   resources :tags, :only => [:index, :show] do
     get :autocomplete, :on => :collection
     get :public, :on => :member

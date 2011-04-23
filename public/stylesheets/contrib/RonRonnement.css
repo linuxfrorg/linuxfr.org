@@ -642,6 +642,16 @@ article {
 
 footer.actions .action {
   color: #a99c90; }
+footer.actions form, footer.actions form div {
+  display: inline; }
+footer.actions .button_to input {
+  padding: 0px;
+  display: inline;
+  color: #a99c90;
+  font-size: inherit;
+  font-weight: bold;
+  border-style: none;
+  background-color: transparent; }
 
 /* parti de la base de yggdras pour la partie sur les tags */
 .tag_in_place {

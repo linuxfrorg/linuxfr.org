@@ -116,6 +116,10 @@ class Node < ActiveRecord::Base
     $redis.expire("readings/#{self.id}/#{account_id}", 7776000) # 3 months
   end
 
+  def unread_by(account_id)
+    $redis.del("readings/#{self.id}/#{account_id}")
+  end
+
   def self.last_reading(node_id, account_id)
     time = $redis.get("readings/#{node_id}/#{account_id}")
     time && Time.at(time.to_i)

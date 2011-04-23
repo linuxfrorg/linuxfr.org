@@ -671,8 +671,24 @@ article {
 	color: $C_INTER;
 }
 
-footer.actions .action {
-	color: $C_INTER;
+footer.actions {
+	.action {
+		color: $C_INTER;
+	}
+	form, form div {
+		display: inline;
+	}
+	.button_to {
+		input {
+			padding: 0px;
+			display: inline;
+			color: $C_INTER;
+			font-size: inherit;
+			font-weight: bold;
+			border-style: none;
+			background-color: transparent;
+		}
+	}
 }
 
 /* parti de la base de yggdras pour la partie sur les tags */

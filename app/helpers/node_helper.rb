@@ -104,10 +104,11 @@ module NodeHelper
   end
 
   def read_it(content)
+    node = content.node
     link = link_to_unless_current("Lire la suite", path_for_content(content)) { "" }
-    nb_comments = content_tag(:span, pluralize(content.node.try(:comments_count), "commentaire"), :class => "nb_comments")
+    nb_comments = content_tag(:span, pluralize(node.try(:comments_count), "commentaire"), :class => "nb_comments")
     if current_account
-      status = content.node.read_status(current_account)
+      status = node.read_status(current_account)
       visit  = case status
                when :not_read     then ", non visité"
                when :new_comments then ", Nouveaux !"
@@ -115,9 +116,13 @@ module NodeHelper
                end
       visit  = content_tag(:span, visit, :class => "visit")
     else
-      status = "anonymous_reader"
+      status = :anonymous_reader
     end
-    content_tag(:span, "#{link} (#{nb_comments}#{visit}).".html_safe, :class => status)
+    ret = content_tag(:span, "#{link} (#{nb_comments}#{visit}).".html_safe, :class => status)
+    if [:no_comments, :new_comments, :read].include?(status)
+      ret += button_to("Oublier", reading_path(:id => node.id), :method => :delete, :class => "unread")
+    end
+    ret
   end
 
   def translate_content_type(content_type)
