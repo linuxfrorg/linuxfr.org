@@ -9,7 +9,10 @@
         document.write('<a class="secure">Accès sécurisé (https)</a>');
       }
     - if account_signed_in?
-      %p Il vous reste #{current_account.nb_votes} avis
+      %p
+        Il vous reste
+        %span#nb_votes #{current_account.nb_votes}
+        avis
       %ul
         %li= link_to "Proposer un contenu", '/proposer-un-contenu'
         %li= link_to "Mon tableau de bord", '/tableau-de-bord'

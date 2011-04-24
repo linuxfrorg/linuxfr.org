@@ -3,6 +3,9 @@
         if (data && data.notice) {
             jQuery.noticeAdd({text: data.notice});
         }
+        if (data && data.nb_votes) {
+            $("#nb_votes").text(data.nb_votes);
+        }
         if (!$(this).data('hidden')) {
             $(this).parent().hide();
         }
