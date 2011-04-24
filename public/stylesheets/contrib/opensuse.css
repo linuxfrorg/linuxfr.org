@@ -792,6 +792,25 @@ section#container div.vote input:hover {
 	color: #669900;
 	cursor: pointer;
 }
+/* Le bouton oublier */
+.action form.button_to,
+.action form.button_to div {
+	display: inline;
+}
+section#container .action form.button_to input {
+	border: thin solid transparent;
+	background: none;
+	color: #006699;
+	margin:0;
+	padding:0;
+}
+section#container .action form.button_to input:hover {
+	border: thin solid transparent;
+	background: none;
+	color: #669900;
+	cursor: pointer;
+	text-decoration: underline;
+}
 /* Tout les commentaires */
 div#comments {
 	margin: 4em auto;

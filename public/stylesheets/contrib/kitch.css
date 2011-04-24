@@ -158,10 +158,10 @@ del.diffdel, del.diffmod { background-color: #f33; }
 /* Footers */
 #container article footer, .comment footer {  background:#080000 url(/images/contrib/kitch/fond_contenu.png) repeat-y -25px 0; font-size:0.8em; padding:0 1em 1em 3em;}
 #container article footer a, #container article footer .tag_in_place, .comment footer a {display:inline-block; padding: 0 0.5em 0 0.5em;}
-#container article footer .vote, .comment footer .vote { display:inline; }
-#container article footer .vote form, .comment footer .vote form { display:inline-block; }
-#container article footer .vote form input[type=submit], .comment footer .vote form input[type=submit] { background:#D60948;border:1px solid #D60948;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;color:black;}
-#container article footer .vote form input[type=submit]:hover, .comment footer .vote form input[type=submit]:hover { background:#FF775F;border-color:#FF775F;}
+#container article footer .vote, #container article footer span.action, .comment footer .vote { display:inline; }
+#container article footer .vote form, #container article footer span.action form, .comment footer .vote form { display:inline-block; }
+#container article footer .vote form input[type=submit], #container article footer span.action input, .comment footer .vote form input[type=submit] { background:#D60948;border:1px solid #D60948;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;color:black;}
+#container article footer .vote form input[type=submit]:hover, #container article footer span.action input:hover, .comment footer .vote form input[type=submit]:hover { background:#FF775F;border-color:#FF775F;}
 #container article footer .tag_in_place { display:inline-block;}
 
 /* Toolbar */

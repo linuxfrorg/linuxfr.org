@@ -694,6 +694,20 @@ section#container div.vote input {
 	outline-width: 0;
 }
 
+/* Le bouton oublier */
+.action form.button_to,
+.action form.button_to div {
+	display: inline;
+}
+section#container .action form.button_to input {
+	border-width: 0;
+	background: #000000;
+	margin: 0;
+	padding: 0;
+	outline-width: 0;
+	text-decoration: underline;
+}
+
 /* Tout les commentaires */
 div#comments {
 	margin: 4em auto;

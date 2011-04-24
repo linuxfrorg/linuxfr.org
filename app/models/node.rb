@@ -113,7 +113,7 @@ class Node < ActiveRecord::Base
 
   def self.readings_of(account_id)
     ids = $redis.keys("readings/*/#{account_id}").map {|x| x.scan(/\/(\d+)\//).first.first }
-    where(:id => ids)
+    visible.where(:id => ids)
   end
 
   def read_by(account_id)

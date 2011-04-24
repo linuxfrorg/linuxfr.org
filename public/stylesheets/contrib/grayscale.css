@@ -707,7 +707,7 @@ li > h2 > a {
 .tag_in_place {
 	display: inline;
 }
-.action, .vote > form > div > input {
+.action, .vote > form > div > input, input.unread {
 	-webkit-transition-property: color;
 	-webkit-transition-duration: 0.15s;
 	-moz-transition-duration: 0.15s;
@@ -728,6 +728,12 @@ li > h2 > a {
 }
 .action:hover {
 	color: black;
+}
+.action .button_to, .action .button_to div {
+	display: inline;
+}
+.action .button_to input.unread {
+	border: none;
 }
 .comment .action:hover {
 	color: grey;

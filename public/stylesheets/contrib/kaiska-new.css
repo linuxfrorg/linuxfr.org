@@ -490,13 +490,13 @@ li.comment footer a.action:before {
 li.comment footer a.action:after {
   content: " ]";
 }
-div.vote > form.button_to {
+div.vote > form.button_to, span.action > form.button_to {
   display: inline;
 }
-div.vote > form.button_to div {
+div.vote > form.button_to div, span.action > form.button_to div {
   display: inline;
 }
-div.vote > form.button_to div input {
+div.vote > form.button_to div input, span.action > form.button_to div input {
   display: inline-block;
   border: none;
   background: none;
@@ -504,7 +504,7 @@ div.vote > form.button_to div input {
   color: #36598E;
   cursor: pointer;
 }
-div.vote > form.button_to div input:hover {
+div.vote > form.button_to div input:hover, span.action > form.button_to div input:hover {
   text-decoration: underline;
 }
 .fold > p.meta,

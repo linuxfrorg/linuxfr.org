@@ -610,19 +610,19 @@ footer.actions > .new_comments:before, footer.actions > .not_read:after {
 	z-index: 15;
 }
 
-footer.actions .vote {
+footer.actions .vote, footer.actions span.action {
 	font-size: .8em;
 }
 
-footer.actions .vote {
+footer.actions .vote, footer.actions span.action {
 	display: inline;
 }
 
-footer.actions .vote * {
+footer.actions .vote *, footer.actions span.action * {
 	display: inline;
 }
 
-footer.actions .vote input[value=pertinent], #comment_preview, #news_preview, button, #account_submit, #stylesheets-edit input[type=submit] {
+footer.actions .vote input[value=pertinent], #comment_preview, #news_preview, button, #account_submit, #stylesheets-edit input[type=submit], footer.actions input.unread {
 	border: solid 1px green;
 	background-color: #007000;
 	color: #FFFFFF;

@@ -825,7 +825,7 @@ footer.actions:before {
   border: 1px solid red;
 }
 
-.vote form {
+.vote form, .action form.button_to {
   display: inline-block;
 }
 
@@ -960,11 +960,11 @@ footer.actions .tag_in_place {
   height: 3.5em !important;
 }
 
-footer .vote {
+footer .vote, footer span.action {
   margin-left: 5px;
 }
 
-div.vote input {
+div.vote input, span.action input {
     background: none repeat scroll 0 0 transparent;
     border: thin solid transparent;
     color: #605C50;
@@ -972,7 +972,8 @@ div.vote input {
     cursor: pointer;
 }
 
-div.vote, div.vote form.button_to, div.vote form.button_to div {
+div.vote, div.vote form.button_to, div.vote form.button_to div,
+span.action, span.action form.button_to, span.action form.button_to div {
   display: inline;
 }
 
