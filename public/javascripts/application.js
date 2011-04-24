@@ -3,7 +3,9 @@
         if (data && data.notice) {
             jQuery.noticeAdd({text: data.notice});
         }
-        $(this).parent().hide();
+        if (!$(this).data('hidden')) {
+            $(this).parent().hide();
+        }
     });
 
     $(".markItUp").markItUp(markItUpSettings);
@@ -84,8 +86,9 @@
         $.noticeAdd({text: "Tags ajoutés"});
     }).editionInPlace();
     $('.add_tag, .remove_tag').click(function() {
-        this.disabled = "disabled";
-        $(this).blur();
+        $(this).blur().parents('form').data({ hidden: "true" });
+    }).parents('form').bind('ajax:success', function() {
+        $(this).find('input').attr({ disabled: "disabled" });
     });
 
     /* Hotkeys */
