@@ -1,6 +1,12 @@
 Bienvenue <%= @resource.email %> !
 
+<% if @resource.password %>
 Votre mot de passe est : <%= @resource.password %>
+<% else %>
+Votre mot de passe vous a été envoyé lors d'un précédent courriel.
+En cas de problème, vous pouvez demander à changer de mot de passe sur
+<%= url_for new_password_url(@resource) %>
+<% end %>
 
 Vous pouvez confirmer la création de votre compte en suivant ce lien :
 
