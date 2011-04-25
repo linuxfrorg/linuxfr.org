@@ -15,22 +15,24 @@
                 $.noticeAdd({text: "Désolé, quelqu'un est déjà en train de modifier cet élément."});
                 return false;
             }
-            var old = base.element.html();
+            base.old = base.element.html();
             base.element.unbind('click');
             base.element.load(base.url, function() {
                 var form = base.element.find('form');
                 form.submit(function() {
-                    base.submitForm(base.creation ? old : '');
+                    base.submitForm(base.creation ? base.old : '');
                     return false;
                 });
-                form.find('.cancel').click(function() {
-                    base.element.html(old);
-                    base.element.click(base.editForm);
-                    return false;
-                });
+                form.find('.cancel').click(base.reset);
                 form.find('textarea, input')[0].select();
-                base.element.trigger("in_place:form");
+                base.element.trigger("in_place:form", base);
             });
+            return false;
+        };
+
+        base.reset = function() {
+            base.element.html(base.old);
+            base.element.click(base.editForm);
             return false;
         };
 
@@ -42,7 +44,7 @@
                 data: form.serialize(),
                 dataType: "text",
                 success: function() {
-                    base.element.trigger("in_place:result");
+                    base.element.trigger("in_place:result", base);
                     base.element.click(base.editForm);
                 }
             });

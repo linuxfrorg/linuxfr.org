@@ -85,8 +85,9 @@
             input.autocomplete(input.attr('data-url'), {multiple: true, multipleSeparator: ' ', dataType: 'text'});
             input.focus();
         });
-    }).bind('in_place:result', function() {
+    }).bind('in_place:result', function(evt, edit_in_place) {
         $.noticeAdd({text: "Tags ajoutés"});
+        edit_in_place.reset();
     }).editionInPlace();
     $('.add_tag, .remove_tag').click(function() {
         $(this).blur().parents('form').data({ hidden: "true" });
