@@ -1,12 +1,17 @@
 fr:
   errors:
     messages:
+      expired: "a expiré, veuillez en demander un nouveau"
       not_found: "pas trouvé"
-      already_confirmed: "était déjà confirmé"
+      already_confirmed: "était déjà confirmé, veuillez essayer de vous connecter"
       not_locked: "n'était pas verrouillé"
+      not_saved:
+        one: "Ce %{resource} n'a pu être enregistré à cause d'une erreur :"
+        other: "Ce %{resource} n'a pu être enregistré à cause de %{count} erreurs :"
 
   devise:
     failure:
+      already_authenticated: "Vous n'avez pas les droits suffisants pour accéder à cette partie du site."
       unauthenticated: "Vous devez vous connecter ou vous inscrire avant de poursuivre."
       unconfirmed: "Vous devez confirmer votre compte avant de poursuivre."
       locked: "Votre compte a été verrouillé."
