@@ -26,10 +26,10 @@
       %ul
         %li= link_to "Pas de compte ? S'inscrire !", '/compte/inscription'
         %li= link_to "Proposer un contenu", '/proposer-un-contenu'
+  = yield :column
   - if current_account && (current_account.writer? || current_account.amr?)
     = render 'redaction/box'
   - if current_account && current_account.amr?
     = render 'moderation/box'
   - if current_account && current_account.admin?
     = render 'admin/box'
-  = yield :column
