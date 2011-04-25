@@ -5,6 +5,7 @@
 #  id             :integer(4)      not null, primary key
 #  name           :string(64)      not null
 #  taggings_count :integer(4)      default(0), not null
+#  public         :boolean(1)      default(TRUE), not null
 #
 
 class Tag < ActiveRecord::Base
@@ -23,6 +24,17 @@ class Tag < ActiveRecord::Base
                     order("COUNT(*) DESC").
                     limit(12)
   }
+
+### Near tags ###
+
+  def near_tags
+    Tag.find_by_sql <<-EOS
+        SELECT t.name, COUNT(tg.id) AS cnt
+          FROM tags t JOIN taggings tg ON t.id = tg.tag_id
+         WHERE tg.node_id IN (SELECT DISTINCT node_id FROM taggings WHERE tag_id = #{self.id}) AND t.id != #{self.id}
+      GROUP BY tg.tag_id ORDER BY cnt DESC LIMIT 10
+    EOS
+  end
 
 ### Visibility ###
 

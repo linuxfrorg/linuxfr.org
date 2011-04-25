@@ -1,0 +1,6 @@
+- cache "fragments/near_tags/#{@tag.name}", :expires => 1.day do
+  #near_tags_box.box
+    %h1 Les tags connexes
+    %ul
+      = list_of(@tag.near_tags) do |tag|
+        = link_to tag.name, tag_path(tag.name)
