@@ -14,6 +14,9 @@ atom_feed(:root_url => diaries_url, "xmlns:wfw" => "http://wellformedweb.org/Com
       entry.author do |author|
         author.name(diary.owner.name)
       end
+      diary.node.popular_tags.each do |tag|
+        entry.category(:term => tag.name)
+      end
       entry.wfw :commentRss, "http://#{MY_DOMAIN}/nodes/#{diary.node.id}/comments.atom"
     end
   end
