@@ -21,6 +21,9 @@ atom_feed(:root_url => news_index_url, "xmlns:wfw" => "http://wellformedweb.org/
         author.name(news.author_name)
       end
       entry.category(:term => news.section.title)
+      news.node.popular_tags.each do |tag|
+        entry.category(:term => tag.name)
+      end
       entry.wfw :commentRss, "http://#{MY_DOMAIN}/nodes/#{news.node.id}/comments.atom"
     end
   end
