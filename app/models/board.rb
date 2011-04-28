@@ -79,13 +79,14 @@ class Board
 
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::SanitizeHelper
 
   def sanitize_message
     doc = Nokogiri::HTML::Document.new
     doc.encoding = "utf-8"
     node = Nokogiri::HTML::DocumentFragment.new(doc)
     inner_sanitize(node, @message[0, 500])
-    @message = auto_link(node.to_s, :urls) { "[url]" }.html_safe
+    @message = sanitize(auto_link(node.to_s, :urls) { "[url]" })
   end
 
   def inner_sanitize(parent, str)
