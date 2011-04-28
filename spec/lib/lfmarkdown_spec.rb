@@ -34,7 +34,7 @@ describe LFMarkdown do
 
   it "transforms [[]] to wikipedia links, even with parenthesis" do
     html = LFMarkdown.new("[[Pogo_(danse)]]").to_html
-    html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Pogo_%28danse%29\" title=\"Définition Wikipédia\">Pogo_(danse)</a></p>\n"
+    html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Pogo_(danse)\" title=\"Définition Wikipédia\">Pogo_(danse)</a></p>\n"
   end
 
   it "leaves underscored words unchanged" do

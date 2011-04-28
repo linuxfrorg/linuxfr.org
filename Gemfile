@@ -18,7 +18,7 @@ gem "htmlentities",            "~>4.3"
 gem "jammit",                  "~>0.6"
 gem "kaminari",                "~>0.12"
 gem "mini_magick",             "~>3.2"
-gem "mysql2",                  "~>0.2"
+gem "mysql2",                  "~>0.2.7" # TODO mysql2 0.3.x for Rails 3.1
 gem "nokogiri",                "~>1.4"
 gem "redcarpet",               "~>1.11"
 gem "hiredis",                 "~>0.3"
@@ -39,7 +39,7 @@ end
 
 group :development do
   gem "annotate"
-  gem "autotest"
+  gem "autotest-standalone"
   gem "capistrano"
   gem "haml-rails"
   gem "jquery-rails"

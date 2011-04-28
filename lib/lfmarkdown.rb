@@ -23,6 +23,7 @@ class LFMarkdown < Redcarpet
     @tables        = true
     @strikethrough = true
     @hard_wrap     = true
+    @strict        = true # XXX temporary
     @codemap       = {}
     @generate_toc  = text.length > 5_000
     super(text.dup, *extensions)
@@ -50,7 +51,7 @@ protected
   def process_wikipedia_links
     @text.gsub!(WP_LINK_REGEXP) do
       word = $1
-      escaped = word.gsub("(", "%28").gsub(")", "%29")
+      escaped = word.gsub(/\(|\)/) {|x| "\\#{x}" }
       "[#{word}](http://fr.wikipedia.org/wiki/#{escaped} \"Définition Wikipédia\")"
     end
   end
