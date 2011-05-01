@@ -16,16 +16,16 @@ require "digest/sha1"
 class LFMarkdown < Redcarpet
 
   def initialize(text, *extensions)
-    text         ||= ''
-    @filter_styles = true
-    @filter_html   = true
-    @autolink      = true
-    @tables        = true
-    @strikethrough = true
-    @hard_wrap     = true
-    @strict        = true # XXX temporary
-    @codemap       = {}
-    @generate_toc  = text.length > 5_000
+    text            ||= ''
+    @filter_styles    = true
+    @filter_html      = true
+    @autolink         = true
+    @tables           = true
+    @strikethrough    = true
+    @hard_wrap        = true
+    @no_intraemphasis = true
+    @codemap          = {}
+    @generate_toc     = text.length > 5_000
     super(text.dup, *extensions)
   end
 

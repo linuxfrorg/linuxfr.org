@@ -81,17 +81,19 @@ class Board
   include ActionView::Helpers::TextHelper
   include ActionView::Helpers::SanitizeHelper
 
+  ALLOWED_TAGS = %w(b i u s strong em code)
+
   def sanitize_message
     doc = Nokogiri::HTML::Document.new
     doc.encoding = "utf-8"
     node = Nokogiri::HTML::DocumentFragment.new(doc)
     inner_sanitize(node, @message[0, 500])
-    @message = sanitize(auto_link(node.to_s, :urls) { "[url]" })
+    @message = sanitize(auto_link(node.to_s, :urls) { "[url]" }, :tags => ALLOWED_TAGS + ['a'])
   end
 
   def inner_sanitize(parent, str)
     until str.empty?
-      left, tag, str = str.partition(/<\s*(b|i|u|s|strong|em|code)\s*>(.*?)<\s*\/\1\s*>/)
+      left, tag, str = str.partition(/<\s*(#{ALLOWED_TAGS.join('|')})\s*>(.*?)<\s*\/\1\s*>/)
       parent.add_child Nokogiri::XML::Text.new(left, parent)
       return if tag.empty?
       node = Nokogiri::XML::Node.new($1, parent)
