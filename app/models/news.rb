@@ -223,7 +223,7 @@ class News < Content
   end
 
   def votable_by?(account)
-    super(account) || (account && account.amr? && candidate? && self.node.user_id != account.user_id)
+    super(account) || (account && account.amr? && candidate? && !submitted_by?(account))
   end
 
   def acceptable?
@@ -232,6 +232,10 @@ class News < Content
 
   def refusable?
     score < News.refuse_threshold
+  end
+
+  def submitted_by?(account)
+    self.node.user_id == account.user_id
   end
 
 ### Locks ###

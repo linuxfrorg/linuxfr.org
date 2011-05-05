@@ -21,8 +21,8 @@
     .new_paragraph
       = button_to "Ajouter un paragraphe", redaction_news_paragraphs_path(:news_id => @news), :remote => true
 
-= button_to "Soumettre la dépêche", submit_redaction_news_path(@news)
-- if current_account.amr?
+- if current_account.amr? || @news.submitted_by?(current_account)
+  = button_to "Soumettre la dépêche", submit_redaction_news_path(@news)
   = button_to "Supprimer tous les locks", clear_locks_moderation_news_path(@news)
 
 = render 'shared/wiki_help'
