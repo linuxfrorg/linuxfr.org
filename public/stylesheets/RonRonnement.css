@@ -545,7 +545,7 @@ body#trackers-index #contents table {
 
 article {
   position: relative; }
-  article header > h1:first-of-type > a:first-of-type:after {
+  article header .topic:after {
     content: " :"; }
   article .content {
     padding-top: 5px;

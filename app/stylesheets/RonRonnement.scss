@@ -550,7 +550,7 @@ body#trackers-index #contents table {
 article {
 	position: relative;
 	header {
-		> h1:first-of-type > a:first-of-type:after {
+		.topic:after {
 			content: " :";
 		}
 	}
