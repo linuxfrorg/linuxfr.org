@@ -1,5 +1,5 @@
 = article_for poll do |c|
-  - c.title = "#{link_to "Sondage", "/sondages"} #{link_to poll.title, poll}".html_safe
+  - c.title = "#{link_to "Sondage", "/sondages", :class => "topic"} #{link_to poll.title, poll}".html_safe
   - c.body  = render("polls/answers_#{poll_current_or_archived poll}", :poll => poll, :id_suffix => "")
   - c.actions = capture do
     - if current_account && current_account.can_update?(poll)
