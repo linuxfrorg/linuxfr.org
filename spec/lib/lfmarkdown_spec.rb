@@ -59,7 +59,16 @@ Title 2
 
 text
 EOS
-    md.to_html.should == "<h2>Title 1</h2>\n\n<h3>Title 2</h3>\n\n<h4>Title 3</h4>\n\n<p>text</p>\n"
+    expected = <<EOS
+<a name="toc_0"></a><h2>Title 1</h2>
+
+<a name="toc_1"></a><h3>Title 2</h3>
+
+<a name="toc_2"></a><h4>Title 3</h4>
+
+<p>text</p>
+EOS
+    md.to_html.should == expected
   end
 
   it "colorizes code enclosed in ```" do

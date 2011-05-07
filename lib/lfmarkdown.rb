@@ -24,8 +24,9 @@ class LFMarkdown < Redcarpet
     @strikethrough    = true
     @hard_wrap        = true
     @no_intraemphasis = true
+    @xhtml            = true
+    @generate_toc     = true
     @codemap          = {}
-    @generate_toc     = text.length > 5_000
     super(text.dup, *extensions)
   end
 
@@ -35,7 +36,7 @@ class LFMarkdown < Redcarpet
     process_wikipedia_links
     ret = fix_heading_levels(super)
     ret = process_code(ret)
-    ret = add_toc_content(ret) if @generate_toc
+    ret = add_toc_content(ret) if text.length > 5_000
     ret
   end
 
