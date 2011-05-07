@@ -297,6 +297,12 @@ input[type='submit'] {
 			-moz-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
 			-o-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
 		}
+
+        span.score {
+            color: "#333";
+            &:before { content: " ["; }
+            &:after  { content: "] "; }
+        }
 	}
 }
 

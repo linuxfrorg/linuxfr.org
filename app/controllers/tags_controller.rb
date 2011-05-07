@@ -90,7 +90,7 @@ protected
   end
 
   def user_tags
-    @tags = current_user.tags.order("taggings_count DESC")
+    @tags = current_user.tags.order("name ASC")
   end
 
 end

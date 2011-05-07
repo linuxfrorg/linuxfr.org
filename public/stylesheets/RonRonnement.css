@@ -366,6 +366,12 @@ input[type='submit'] {
       -khtml-transform: rotate(-90deg) translate(-100%, -100%) translate(3px, -5px);
       -moz-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
       -o-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px); }
+    #sidebar .box span.score {
+      color: "#333"; }
+      #sidebar .box span.score:before {
+        content: " ["; }
+      #sidebar .box span.score:after {
+        content: "] "; }
 
 /* menu du haut */
 #site {

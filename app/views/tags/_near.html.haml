@@ -3,4 +3,5 @@
     %h1 Les tags connexes
     %ul
       = list_of(@tag.near_tags) do |tag|
+        %span.score{ :title => pluralize(tag.cnt, "contenu commun", "contenus communs") }= tag.cnt
         = link_to tag.name, tag_path(tag.name)
