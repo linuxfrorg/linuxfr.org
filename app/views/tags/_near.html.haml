@@ -4,4 +4,4 @@
     %ul
       = list_of(@tag.near_tags) do |tag|
         %span.score{ :title => pluralize(tag.cnt, "contenu commun", "contenus communs") }= tag.cnt
-        = link_to tag.name, tag_path(tag.name)
+        = link_to tag.name, on_public ? public_tag_path(tag.name) : tag_path(tag.name)
