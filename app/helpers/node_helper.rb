@@ -120,7 +120,7 @@ module NodeHelper
       status = :anonymous_reader
     end
     ret = content_tag(:span, "#{link} (#{nb_comments}#{visit}).".html_safe, :class => status)
-    if [:no_comments, :new_comments, :read].include?(status) || current_page?(path)
+    if [:no_comments, :new_comments, :read].include?(status) || (content.persisted? && current_page?(path))
       ret += content_tag(:span, :class => "action") do
         button_to("Oublier", reading_path(:id => node.id), :method => :delete, :remote => true, :class => "unread")
       end
