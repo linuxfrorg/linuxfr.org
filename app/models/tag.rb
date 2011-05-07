@@ -19,7 +19,7 @@ class Tag < ActiveRecord::Base
   scope :footer, lambda {
     select([:name]).joins(:taggings).
                     where(:public => true).
-                    where("created_at > ?", 2.month.ago).
+                    where("created_at > ?", 1.month.ago).
                     group(:tag_id).
                     order("COUNT(*) DESC").
                     limit(12)

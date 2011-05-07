@@ -19,7 +19,7 @@ class BoardsController < ApplicationController
     board.user_agent = request.user_agent
     board.save
     respond_to do |wants|
-      wants.html { redirect_to :back }
+      wants.html { redirect_to :back rescue redirect_to root_url }
       wants.js   { render :nothing => true }
     end
   end

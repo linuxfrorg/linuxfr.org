@@ -71,6 +71,8 @@ class TagsController < ApplicationController
     enforce_update_permission(@tag)
     @tag.toggle!("public")
     redirect_to :back, :notice => "La visibilité du tag a bien été modifiée"
+  rescue
+    redirect_to root_url
   end
 
 protected
