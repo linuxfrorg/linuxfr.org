@@ -6,7 +6,7 @@ class ReadingsController < ApplicationController
 
   def index
     @order = params[:order]
-    @order = "created_at" unless VALID_ORDERS.include?(@order)
+    @order = "last_commented_at" unless VALID_ORDERS.include?(@order)
     @nodes = Node.readings_of(current_account.id).order("#{@order} DESC").page(params[:page])
   end
 

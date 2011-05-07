@@ -85,7 +85,8 @@ protected
   end
 
   def get_order
-    @order = (params[:order] ? "nodes.#{params[:order]}" : "taggings.created_at") + " DESC"
+    default = current_account.try(:sort_by_date_on_home) ? "taggings.created_at" : "nodes.interest"
+    @order = (params[:order] ? "nodes.#{params[:order]}" : default) + " DESC"
   end
 
   def user_tags
