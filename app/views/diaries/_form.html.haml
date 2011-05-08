@@ -12,4 +12,4 @@
     = form.label :cc_licensed, 'Je place ce document sous licence Creative Commons Paternité-Partage des Conditions Initiales à l\'Identique 3.0 (<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.fr">licence CC by-sa</a>)'.html_safe
 %p
   = form.submit "Prévisualiser", :id => "diary_preview"
-  = form.submit "Poster le journal" if @preview_mode
+  = form.submit "Poster le journal", :disable_with => "Enregistrement en cours" if @preview_mode

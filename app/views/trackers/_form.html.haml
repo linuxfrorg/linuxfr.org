@@ -22,4 +22,4 @@
     = form.collection_select :assigned_to_user_id, Account.admin, :id, :login, :include_blank => true
 %p
   = form.submit "Prévisualiser", :id => "tracker_preview"
-  = form.submit "Soumettre" if @preview_mode || @tracker.persisted?
+  = form.submit "Soumettre", :disable_with => "Enregistrement en cours" if @preview_mode || @tracker.persisted?
