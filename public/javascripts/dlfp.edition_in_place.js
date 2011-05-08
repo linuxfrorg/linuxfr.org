@@ -6,7 +6,7 @@
         base.element.data("EditionInPlace", base);
 
         base.init = function() {
-            base.url = base.element.attr('data-url') || (document.location.pathname + '/modifier');
+            base.url = base.element.data('url') || (document.location.pathname + '/modifier');
             base.element.click(base.editForm);
         };
 

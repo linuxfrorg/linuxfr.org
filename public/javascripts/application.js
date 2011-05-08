@@ -14,7 +14,7 @@
     $(".markItUp").markItUp(markItUpSettings);
 
     $("a.hit_counter[data-hit]").each(function() {
-        this.href = "/redirect/" + $(this).attr('data-hit');
+        this.href = "/redirect/" + $(this).data('hit');
     });
 
     /* Ready to moule */
@@ -82,7 +82,7 @@
     $('.tag_in_place').bind('in_place:form', function() {
         $('input.autocomplete').each(function() {
             var input = $(this);
-            input.autocomplete(input.attr('data-url'), {multiple: true, multipleSeparator: ' ', dataType: 'text'});
+            input.autocomplete(input.data('url'), {multiple: true, multipleSeparator: ' ', dataType: 'text'});
             input.focus();
         });
     }).bind('in_place:result', function(evt, edit_in_place) {
@@ -119,11 +119,11 @@
     /* Gravatars */
     $('img[data-gravatar]').attr("src", function() {
         var img  = $(this),
-            hash = img.attr('data-gravatar'),
+            hash = img.data('gravatar'),
             size = img.attr('width'),
             defa = encodeURIComponent(img.attr('src')),
             host = location.protocol == 'http:' ? "http://www.gravatar.com" : "https://secure.gravatar.com";
-        img.attr('data-gravatar', null);
+        img.data({ 'gravatar': null });
         return host + "/avatar/" + hash + ".jpg?s=" + size + "&d=" + defa;
     });
 

@@ -6,7 +6,7 @@
             var board      = $(element);
             base.input     = board.find('input[type=text]');
             base.inbox     = board.find('.inbox');
-            base.chan      = board.attr('data-chat');
+            base.chan      = board.data('chat');
             base.cursor    = base.findCursor();
             base.sleepTime = 500;
 
@@ -198,11 +198,11 @@
                 $.noticeAdd({text: message});
             });
             el.find(".link").each(function() {
-                var id = $(this).attr('data-id');
+                var id = $(this).data('id');
                 $('#link_' + id).addClass('locked');
             });
             el.find(".paragraph").each(function() {
-                var id = $(this).attr('data-id');
+                var id = $(this).data('id');
                 $('#paragraph_' + id).addClass('locked');
             });
         };
@@ -211,7 +211,7 @@
         base.on_creation = function(message) {
             var el = base.inbox.children().first();
             el.find(".link").each(function() {
-                var id = $(this).attr('data-id');
+                var id = $(this).data('id');
                 var html = '<li class="link" id="link_' + id +
                            '" lang="' + $(this).find('a').attr('hreflang') +
                            '" data-url="/redaction/links/' + id +
@@ -220,8 +220,8 @@
                 $('#link_' + id).editionInPlace();
             });
             el.find(".paragraph").each(function() {
-                var id = $(this).attr('data-id');
-                var after = $(this).attr('data-after');
+                var id = $(this).data('id');
+                var after = $(this).data('after');
                 var html = '<div id="paragraph_' + id +
                            '" data-url="/redaction/paragraphs/' + id +
                            '/modifier">' + $(this).html() + '</div>';
@@ -237,10 +237,10 @@
                 $('#news_header').html($(this).clone());
             });
             el.find(".link").each(function() {
-                $('#link_' + $(this).attr('data-id')).html($(this).html());
+                $('#link_' + $(this).data('id')).html($(this).html());
             });
             el.find(".paragraph").each(function() {
-                $('#paragraph_' + $(this).attr('data-id')).html($(this).html());
+                $('#paragraph_' + $(this).data('id')).html($(this).html());
             });
         };
 
@@ -248,10 +248,10 @@
         base.on_deletion = function(message) {
             var el = base.inbox.children().first();
             el.find(".link").each(function() {
-                $('#link_' + $(this).attr('data-id')).remove();
+                $('#link_' + $(this).data('id')).remove();
             });
             el.find(".paragraph").each(function() {
-                $('#paragraph_' + $(this).attr('data-id')).remove();
+                $('#paragraph_' + $(this).data('id')).remove();
             });
         };
 
