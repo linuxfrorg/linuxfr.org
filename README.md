@@ -34,6 +34,9 @@ LinuxFr.org on a Debian box.
     > QUIT;
     (return to user)
 
+    Statistics need time zone at SQL level. You'll need to population time_zone* tables.
+    # mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -p -u root mysql
+
 4) Install and start redis:
 
     $ wget "http://redis.googlecode.com/files/redis-2.2.1.tar.gz"

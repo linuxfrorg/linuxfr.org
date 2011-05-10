@@ -1,0 +1,72 @@
+#contents.statistics
+  =h1 "Statistiques sur la modération"
+  - width_factor = 8
+
+  .body
+    %strong
+      Statistiques mises à jour le #{l Time.now}
+
+    %p
+      Voir aussi #{link_to("les règles de modération","/regles_de_moderation")}
+
+    %p
+      Critères de modération d'une dépêche&nbsp;:
+      %ul
+        %li +1 par avis positif et -1 par avis négatif
+        %li Seuil d'acceptation = #{News.accept_threshold}
+        %li Seuil de refus = #{News.refuse_threshold}
+
+    %h2 Jour de modération
+
+    %p
+      %table
+      %tr
+        %th Jour
+        %th Nombre de dépêches modérées
+      - @stats.by_day.each do |day|
+        %tr
+          %td
+            = day["day"]
+          %td
+            %meter.misc(style="width: #{(width_factor * day["cnt"]).to_i}px;")= day["cnt"]
+
+    %h2 Temps de modération
+
+    %p
+      Temps moyen passé entre la création d'une dépêche (temps d'édition compris) et sa modération finale&nbsp;:
+      %ul
+      - @stats.average_time.each do |avg|
+        - if (avg["cnt"]>0)
+          %li
+            #{avg["year"]}&nbsp;: #{(avg["duration"]/(avg["cnt"]*3600)).to_i} heures (entre #{(avg["min"]/60).to_i}min et #{(avg["max"]/3600).to_i}h)
+
+    -# TODO Temps médian... un peu pénible à calculer...
+
+    %h2 Équipe de modération
+    %p Sur les 31 derniers jours&nbsp;:
+
+    %p Modérateurs actuels
+
+    %ol
+      = list_of(@stats.top_am_last_month) do |user|
+        = link_to(user["name"], "/users/#{user["name"]}") + " : #{user["cnt"]} modérations"
+
+    -# %p Relecteurs actuels
+    -# %p Pseudo	Nom affiché		Éditions	Nb dépêches	Avis
+    -# %p TODO un peu de REDIS...
+
+    %p Depuis Epoch ou le début des données :
+
+    %p Modérateurs actuels
+    %ol
+      = list_of(@stats.top_am_last_month) do |user|
+        = link_to(user["name"], "/users/#{user["name"]}") + " : #{user["cnt"]} modérations"
+
+    -# %p Relecteurs actuels
+    -# %p Pseudo	Nom affiché		Éditions	Nb dépêches	Avis
+    -# %p TODO un peu de REDIS...
+
+    %p Membre passé ou présent de l'équipe de modération
+    %ol
+      = list_of(@stats.top_all) do |user|
+        = link_to(user["name"], "/users/#{user["name"]}") + " : #{user["cnt"]} modérations"

@@ -18,4 +18,8 @@ class StatisticsController < ApplicationController
     @stats = Statistics::Tops.new
   end
 
+  def moderation
+    @stats = Statistics::Moderation.new
+  end
+
 end
