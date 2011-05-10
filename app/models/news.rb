@@ -187,8 +187,8 @@ class News < Content
     word = value > 0 ? "pour" : "contre"
     who  = account.login
     if value.abs == 2
-      $redis.srem("news/#{self.id}/pour", 1, who)
-      $redis.srem("news/#{self.id}/contre", 1, who)
+      $redis.srem("news/#{self.id}/pour", who)
+      $redis.srem("news/#{self.id}/contre", who)
     else
       $redis.incr("users/#{who}/nb_votes")
       key = "users/#{who}/nb_votes/#{Day.today.yday}"
@@ -200,11 +200,11 @@ class News < Content
   end
 
   def voters_for
-    $redis.lrange("news/#{self.id}/pour", 0, -1).to_sentence
+    $redis.smembers("news/#{self.id}/pour").to_sentence
   end
 
   def voters_against
-    $redis.lrange("news/#{self.id}/contre", 0, -1).to_sentence
+    $redis.smembers("news/#{self.id}/contre").to_sentence
   end
 
 ### ACL ###
