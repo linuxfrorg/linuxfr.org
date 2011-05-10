@@ -81,26 +81,7 @@ class Node < ActiveRecord::Base
     Account.decrement_counter(:nb_votes, account.id) unless account.amr?
     connection.update_sql("UPDATE nodes SET score=score + #{value} WHERE id=#{self.id}")
     compute_interest
-    vote_on_candidate_news(value, account) if content_type == "News" && content.candidate?
-  end
-
-  def vote_on_candidate_news(value, account)
-    word = value > 0 ? "pour" : "contre"
-    who  = account.login
-    if value.abs == 2
-      $redis.lrem("nodes/#{self.id}/pour", 1, who)
-      $redis.lrem("nodes/#{self.id}/contre", 1, who)
-    end
-    $redis.rpush("nodes/#{self.id}/#{word}", who)
-    Board.create_for(content, :user => account.user, :kind => "vote", :message => "#{who} a voté #{word}")
-  end
-
-  def voters_for
-    $redis.lrange("nodes/#{self.id}/pour", 0, -1).to_sentence
-  end
-
-  def voters_against
-    $redis.lrange("nodes/#{self.id}/contre", 0, -1).to_sentence
+    content.vote_on_candidate(value, account) if content_type == "News" && content.candidate?
   end
 
 ### Comments ###

@@ -183,6 +183,30 @@ class News < Content
     super attrs, replace_existing
   end
 
+  def vote_on_candidate(value, account)
+    word = value > 0 ? "pour" : "contre"
+    who  = account.login
+    if value.abs == 2
+      $redis.srem("news/#{self.id}/pour", 1, who)
+      $redis.srem("news/#{self.id}/contre", 1, who)
+    else
+      $redis.incr("users/#{who}/nb_votes")
+      key = "users/#{who}/nb_votes/#{Day.today.yday}"
+      $redis.incr(key)
+      $redis.expire(key, 2678400) # 31 days
+    end
+    $redis.sadd("news/#{self.id}/#{word}", who)
+    Board.create_for(self, :user => account.user, :kind => "vote", :message => "#{who} a voté #{word}")
+  end
+
+  def voters_for
+    $redis.lrange("news/#{self.id}/pour", 0, -1).to_sentence
+  end
+
+  def voters_against
+    $redis.lrange("news/#{self.id}/contre", 0, -1).to_sentence
+  end
+
 ### ACL ###
 
   def self.accept_threshold

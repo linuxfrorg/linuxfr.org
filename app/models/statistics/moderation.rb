@@ -28,4 +28,12 @@ class Statistics::Moderation
   def top_am
     top_amr "AND (role='moderator' OR role='admin')"
   end
+
+  def nb_votes(login)
+    $redis.get("users/#{login}/nb_votes").to_i
+  end
+
+  def nb_votes_last_month(login)
+    $redis.keys("users/#{login}/nb_votes/*").map {|k| $redis.get(k).to_i }.sum
+  end
 end

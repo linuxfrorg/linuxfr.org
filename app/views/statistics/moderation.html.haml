@@ -42,24 +42,36 @@
     %h4 Modérateurs actuels
     %ol
       = list_of(@stats.top_am_last_month) do |user|
-        = link_to(user["login"], "/users/#{user["login"]}") + " : #{pluralize user["cnt"], "modération"}"
+        = link_to user["login"], "/users/#{user["login"]}"
+        = " : #{pluralize user["cnt"], "modération"} et "
+        = pluralize @stats.nb_votes_last_month(user["login"]), "vote"
 
-    -# %h4 Relecteurs actuels
-    -# %p Pseudo	Nom affiché		Éditions	Nb dépêches	Avis
-    -# %p TODO un peu de REDIS...
+    %h4 Relecteurs actuels
+    %ol
+      = list_of(Account.reviewer) do |user|
+        = link_to user["login"], "/users/#{user["login"]}"
+        = " : "
+        = pluralize @stats.nb_votes_last_month(user["login"]), "vote"
 
     %h3 Depuis Epoch ou le début des données
 
     %h4 Modérateurs actuels
     %ol
       = list_of(@stats.top_am_last_month) do |user|
-        = link_to(user["login"], "/users/#{user["login"]}") + " : #{pluralize user["cnt"], "modération"}"
+        = link_to user["login"], "/users/#{user["login"]}"
+        = " : #{pluralize user["cnt"], "modération"} et "
+        = pluralize @stats.nb_votes(user["login"]), "vote"
 
-    -# %h4 Relecteurs actuels
-    -# %p Pseudo	Nom affiché		Éditions	Nb dépêches	Avis
-    -# %p TODO un peu de REDIS...
+    %h4 Relecteurs actuels
+    %ol
+      = list_of(Account.reviewer) do |user|
+        = link_to user["login"], "/users/#{user["login"]}"
+        = " : "
+        = pluralize @stats.nb_votes(user["login"]), "vote"
 
     %h4 Membre passé ou présent de l'équipe de modération
     %ol
       = list_of(@stats.top_amr) do |user|
-        = link_to(user["login"], "/users/#{user["login"]}") + " : #{pluralize user["cnt"], "modération"}"
+        = link_to user["login"], "/users/#{user["login"]}"
+        = " : #{pluralize user["cnt"], "modération"} et "
+        = pluralize @stats.nb_votes(user["login"]), "vote"

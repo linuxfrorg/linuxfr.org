@@ -8,10 +8,10 @@
     Seuil de refus (n/5) : &lt; #{News.refuse_threshold}
   %p
     %strong Pour :
-    = @news.node.voters_for
+    = @news.voters_for
   %p
     %strong Contre :
-    = @news.node.voters_against
+    = @news.voters_against
   - if current_account.can_vote?(@news)
     %div
       = button_to "Pour", "/nodes/#{@news.node.id}/vote/for", :remote => true
