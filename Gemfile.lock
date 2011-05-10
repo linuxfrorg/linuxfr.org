@@ -125,7 +125,7 @@ GEM
     nono-redis-store (1.0.0)
       redis (>= 2.0.0)
     open4 (1.0.1)
-    orm_adapter (0.0.4)
+    orm_adapter (0.0.5)
     polyglot (0.3.1)
     posix-spawn (0.3.6)
     rack (1.2.2)
