@@ -57,7 +57,7 @@
 
     %h4 Modérateurs actuels
     %ol
-      = list_of(@stats.top_am_last_month) do |user|
+      = list_of(@stats.top_am) do |user|
         = link_to user["login"], "/users/#{user["login"]}"
         = " : #{pluralize user["cnt"], "modération"} et "
         = pluralize @stats.nb_votes(user["login"]), "vote"

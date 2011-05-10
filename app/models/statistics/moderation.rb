@@ -21,12 +21,24 @@ class Statistics::Moderation
     select_all "SELECT login, moderator_id, COUNT(*) AS cnt FROM nodes,news,accounts WHERE moderator_id IS NOT NULL AND content_id=news.id AND content_type='News' AND moderator_id=accounts.user_id #{sql_criterion} GROUP BY moderator_id ORDER BY LOWER(login) ASC;"
   end
 
-  def top_am_last_month
-    top_amr "AND (role='moderator' OR role='admin') AND nodes.created_at >= DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 31 DAY)"
-  end
-
   def top_am
     top_amr "AND (role='moderator' OR role='admin')"
+  end
+
+  def top_am_last_month
+    select_all <<EOS
+      SELECT login, user_id, cnt
+        FROM accounts
+   LEFT JOIN (
+              SELECT moderator_id, COUNT(*) AS cnt
+                FROM nodes
+                JOIN news ON nodes.content_id = news.id AND nodes.content_type='News'
+               WHERE nodes.created_at >= '#{31.days.ago.to_s :db}'
+               GROUP BY moderator_id
+             ) AS j ON moderator_id = accounts.user_id
+       WHERE (role='moderator' OR role='admin')
+    ORDER BY LOWER(login) ASC
+EOS
   end
 
   def nb_votes(login)
