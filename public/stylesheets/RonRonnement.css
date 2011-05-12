@@ -180,6 +180,18 @@ $C_BD5: #D91C64;*/
     background-color: darkred; }
   .statistics meter.accountrecentinactive {
     background-color: red; }
+  .statistics meter.contentdiary {
+    background-color: pink; }
+  .statistics meter.contentpost {
+    background-color: orangered; }
+  .statistics meter.contentnews {
+    background-color: green; }
+  .statistics meter.contenttracker {
+    background-color: lightblue; }
+  .statistics meter.contentpoll {
+    background-color: olive; }
+  .statistics meter.contentwikipage {
+    background-color: orange; }
 .statistics span.score {
   color: "#333"; }
   .statistics span.score:before {

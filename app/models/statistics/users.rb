@@ -1,13 +1,4 @@
-class Statistics::Users
-
-  def select_all(sql)
-    ActiveRecord::Base.connection.select_all(sql)
-  end
-
-  def count(sql, field="cnt")
-    rows = select_all(sql)
-    rows.any? ? rows.first[field] : 0
-  end
+class Statistics::Users < Statistics::Statistics
 
   def pctrecent(value)
     "%.0f" % (100.0 * value / nb_recently_used_accounts)

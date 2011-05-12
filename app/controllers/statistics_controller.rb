@@ -22,4 +22,12 @@ class StatisticsController < ApplicationController
     @stats = Statistics::Moderation.new
   end
 
+  def moderation
+    @stats = Statistics::Moderation.new
+  end
+
+  def contents
+    @stats = Statistics::Contents.new
+  end
+
 end

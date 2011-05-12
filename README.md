@@ -58,6 +58,7 @@ LinuxFr.org on a Debian box.
     (return to user)
     $ rake db:setup
     (probably /var/lib/gems/1.9.1/bin/rake if not in your PATH)
+    (if you're updating, you'll need an other step: redis-cli flushdb)
 
 6) Let's run it:
 

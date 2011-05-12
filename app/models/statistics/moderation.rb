@@ -1,13 +1,4 @@
-class Statistics::Moderation
-
-  def select_all(sql)
-    ActiveRecord::Base.connection.select_all(sql)
-  end
-
-  def count(sql, field="cnt")
-    rows = select_all(sql)
-    rows.any? ? rows.first[field] : 0
-  end
+class Statistics::Moderation < Statistics::Statistics
 
   def by_day
     select_all "SELECT DAYNAME(CONVERT_TZ(created_at,'+00:00','Europe/Paris')) AS d, WEEKDAY(CONVERT_TZ(created_at,'+00:00','Europe/Paris')) AS day, COUNT(*) AS cnt FROM nodes WHERE content_type='News' GROUP BY d ORDER BY day ASC;"
