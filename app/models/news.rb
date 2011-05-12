@@ -191,7 +191,7 @@ class News < Content
       $redis.srem("news/#{self.id}/contre", who)
     else
       $redis.incr("users/#{who}/nb_votes")
-      key = "users/#{who}/nb_votes/#{Day.today.yday}"
+      key = "users/#{who}/nb_votes/#{Date.today.yday}"
       $redis.incr(key)
       $redis.expire(key, 2678400) # 31 days
     end
