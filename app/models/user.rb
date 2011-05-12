@@ -37,6 +37,10 @@ class User < ActiveRecord::Base
     account ? account.login : name
   end
 
+  def name=(name)
+    super name.present? ? name : account.login
+  end
+
 ### Sphinx ####
 
 # TODO Thinking Sphinx
