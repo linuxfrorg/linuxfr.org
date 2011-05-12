@@ -18,6 +18,12 @@
 		&.accountrecent { background-color: green; }
 		&.accountinactive { background-color: darkred; }
 		&.accountrecentinactive { background-color: red; }
+        &.contentdiary { background-color: pink; }
+        &.contentpost { background-color: orangered; }
+        &.contentnews { background-color: green; }
+        &.contenttracker { background-color: lightblue; }
+        &.contentpoll { background-color: olive; }
+        &.contentwikipage { background-color: orange; }
 	}
 
 	span.score {

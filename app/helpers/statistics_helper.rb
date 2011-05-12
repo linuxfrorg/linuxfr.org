@@ -12,4 +12,8 @@ module StatisticsHelper
       link_to(user.name, user)
   end
 
+  def day_name(i)
+    I18n.translate(:'date.day_names')[i.to_i]
+  end
+
 end

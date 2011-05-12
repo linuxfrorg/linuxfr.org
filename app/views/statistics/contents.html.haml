@@ -1,6 +1,6 @@
 #contents.statistics
   =h1 "Statistiques sur les contenus et les commentaires"
-  - width_factor = 8
+  - width_factor = 0.1
 
   .body
     %strong
@@ -8,7 +8,7 @@
 
     %h2 Contenus
       
-    %p Répartition par type des #{@stats.contents["Total"]} contenus&nbsp;:
+    %h3 Répartition par type des #{@stats.contents["Total"]} contenus
     %ul
       %li #{@stats.contents["Diary"]} journaux
       %li #{@stats.contents["Post"]} entrées de forums
@@ -17,7 +17,7 @@
       %li #{@stats.contents["Poll"]} sondages
       %li #{@stats.contents["WikiPage"]} pages de wiki
 
-    %p Répartition temporelle des #{@stats.contents["Total"]} contenus&nbsp;:
+    %h3 Répartition temporelle des #{@stats.contents["Total"]} contenus
      
     %meter(class="contentdiary" style="width: 250px;") journaux
     %meter(class="contentpost" style="width: 250px;") entrées de journaux
@@ -25,18 +25,17 @@
     %meter(class="contenttracker" style="width: 250px;") entrées dans le système de suivi
     %meter(class="contentpoll" style="width: 250px;") sondages
     %meter(class="contentwikipage" style="width: 250px;") pages wiki
+
     %table
       %tr
         %th Année
         %th Contenus
       - @stats.contents_by_year.each do |year,content|
         %tr
-          %td
-            = year
+          %td= year
           %td
             - content.each do |type,cnt|
-              - if (cnt>0)
-                %meter(class="content#{type.downcase()}" style="width: #{(width_factor * cnt).to_i}px;")= cnt
+              %meter(class="content#{type.downcase()}" style="width: #{(width_factor * cnt).to_i}px;")= cnt
 
     %table
       %tr
@@ -44,12 +43,10 @@
         %th Contenus
       - @stats.contents_by_month.each do |month,content|
         %tr
-          %td
-            = month.sub(/(\d{4})(\d{2})/, '\2 \1')
+          %td= month.sub(/(\d{4})(\d{2})/, '\2 \1')
           %td
             - content.each do |type,cnt|
-              - if (cnt>0)
-                %meter(class="content#{type.downcase}" style="width: #{(width_factor * cnt).to_i}px;")= cnt
+              %meter(class="content#{type.downcase}" style="width: #{(width_factor * cnt * 30).to_i}px;")= cnt
 
     %table
       %tr
@@ -57,21 +54,19 @@
         %th Nombre de contenus
       - @stats.contents_by_day.each do |day|
         %tr
+          %td= day_name day["day"]
           %td
-            = day["d"]
-          %td
-            %meter.misc(style="width: #{(width_factor * day["cnt"]).to_i}px;")= day["cnt"]
+            %meter.misc(style="width: #{(width_factor * day["cnt"] / 3).to_i}px;")= day["cnt"]
 
     %table
       %tr
         %th Années
         %th Taille moyenne des dépêches (en octets, mise en forme comprise)
-      - @stats.news_size.each do |month,size|
+      - @stats.news_size.each do |entry|
         %tr
+          %td= entry["year"]
           %td
-            = year
-          %td
-            = size
+            %meter.misc(style="width: #{(width_factor * entry["cnt"]).to_i}px;")= entry["cnt"]
 
     -# TODO REDIS %p Nombre de clics moyen par lien sur les dépêches acceptées
     -# Année	Nombre de clics moyen	Total
@@ -83,7 +78,7 @@
 
     %h2 Commentaires
 
-    %p Répartition par type des #{@stats.comments["Total"]} commentaires&nbsp;:
+    %h3 Répartition par type des #{@stats.comments["Total"]} commentaires
     %ul
       %li #{@stats.comments["Diary"]} dans les journaux
       %li #{@stats.comments["Post"]} dans les forums
@@ -98,12 +93,10 @@
         %th Commentaires
       - @stats.comments_by_year.each do |year,comment|
         %tr
-          %td
-            = year
+          %td= year
           %td
             - comment.each do |type,cnt|
-              - if (cnt>0)
-                %meter(class="content#{type.downcase()}" style="width: #{(width_factor * cnt).to_i}px;")= cnt
+              %meter(class="content#{type.downcase()}" style="width: #{(width_factor * cnt / 10).to_i}px;")= cnt
 
     %table
       %tr
@@ -111,12 +104,10 @@
         %th Commentaires
       - @stats.comments_by_month.each do |month,comment|
         %tr
-          %td
-            = month.sub(/(\d{4})(\d{2})/, '\2 \1')
+          %td= month.sub(/(\d{4})(\d{2})/, '\2 \1')
           %td
             - comment.each do |type,cnt|
-              - if (cnt>0)
-                %meter(class="content#{type.downcase}" style="width: #{(width_factor * cnt).to_i}px;")= cnt
+              %meter(class="content#{type.downcase}" style="width: #{(width_factor * cnt).to_i}px;")= cnt
 
     %table
       %tr
@@ -124,9 +115,8 @@
         %th Nombre de commentaires
       - @stats.comments_by_day.each do |day|
         %tr
+          %td= day_name day["day"]
           %td
-            = day["d"]
-          %td
-            %meter.misc(style="width: #{(width_factor * day["cnt"]).to_i}px;")= day["cnt"]
+            %meter.misc(style="width: #{(width_factor * day["cnt"] / 30).to_i}px;")= day["cnt"]
 
     -# TODO REDIS %h2 Notes sur les contenus

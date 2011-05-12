@@ -21,8 +21,7 @@
         %th Nombre de dépêches modérées
       - @stats.by_day.each do |day|
         %tr
-          %td
-            = I18n.translate(:'date.day_names')[day["day"].to_i]
+          %td= day_name day["day"]
           %td
             %meter.misc(style="width: #{(width_factor * day["cnt"]).to_i}px;")= day["cnt"]
 
@@ -30,9 +29,9 @@
     %p
       Temps moyen passé entre la création d'une dépêche (temps d'édition compris) et sa modération finale&nbsp;:
     %ul
-    - @stats.average_time.each do |avg|
-      %li
-        #{avg["year"]}&nbsp;: #{(avg["duration"]/(avg["cnt"]*3600)).to_i} heures (entre #{(avg["min"]/60).to_i}min et #{(avg["max"]/3600).to_i}h)
+      - @stats.average_time.each do |avg|
+        %li
+          #{avg["year"]}&nbsp;: #{(avg["duration"]/(avg["cnt"]*3600)).to_i} heures (entre #{(avg["min"]/60).to_i}min et #{(avg["max"]/3600).to_i}h)
 
     -# TODO Temps médian... un peu pénible à calculer...
 
