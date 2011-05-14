@@ -180,6 +180,17 @@ class Comment < ActiveRecord::Base
     state == 'deleted'
   end
 
+### Statistics ###
+
+  after_create :compute_stats
+  def compute_stats
+    ctype = node.content_type
+    today = Date.today
+    $redis.incr "stats/comments/year/#{today.year}/#{ctype}"
+    $redis.incr "stats/comments/month/#{today.strftime "%Y%m"}/#{ctype}"
+    $redis.incr "stats/comments/wday/#{(today.wday - 1) % 7}"
+  end
+
 ### Presentation ###
 
   def user_name

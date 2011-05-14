@@ -113,10 +113,10 @@
       %tr
         %th Jour
         %th Nombre de commentaires
-      - @stats.comments_by_day.each do |day|
+      - @stats.comments_by_day.each do |day,cnt|
         %tr
-          %td= day_name day["day"]
+          %td= day_name day
           %td
-            %meter.misc(style="width: #{(width_factor * day["cnt"] / 30).to_i}px;")= day["cnt"]
+            %meter.misc(style="width: #{(width_factor * cnt / 30).to_i}px;")= cnt
 
     -# TODO REDIS %h2 Notes sur les contenus
