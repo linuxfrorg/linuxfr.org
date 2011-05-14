@@ -43,6 +43,7 @@ group :development do
   gem "capistrano"
   gem "haml-rails"
   gem "jquery-rails"
+  gem "pry"
   gem "rails3-generators"
   gem "thin"
 end
