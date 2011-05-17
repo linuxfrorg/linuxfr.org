@@ -184,6 +184,7 @@ class Comment < ActiveRecord::Base
 
   after_create :compute_stats
   def compute_stats
+    return unless node
     ctype = node.content_type
     today = Date.today
     $redis.incr "stats/comments/year/#{today.year}/#{ctype}"

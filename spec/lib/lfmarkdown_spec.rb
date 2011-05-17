@@ -47,7 +47,7 @@ describe LFMarkdown do
     html.should == "<p>foo<br/>\nbar</p>\n\n<p>baz</p>\n"
   end
 
-  it "accepts heading levels from <h2> to <h5>" do
+  it "accepts heading levels from <h2> to <h4>" do
     md = LFMarkdown.new <<EOS
 Title 1
 =======
@@ -60,11 +60,11 @@ Title 2
 text
 EOS
     expected = <<EOS
-<a name="toc_0"></a><h2>Title 1</h2>
+<h2 id="toc_0">Title 1</h2>
 
-<a name="toc_1"></a><h3>Title 2</h3>
+<h3 id="toc_1">Title 2</h3>
 
-<a name="toc_2"></a><h4>Title 3</h4>
+<h4 id="toc_2">Title 3</h4>
 
 <p>text</p>
 EOS
