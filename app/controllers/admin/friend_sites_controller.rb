@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class Admin::FriendSitesController < AdminController
   before_filter :find_friend_site, :except => [:index, :new, :create]
+  after_filter  :expire_cache,     :except => [:index, :new, :edit]
 
   def index
     @friend_sites = FriendSite.all
@@ -56,4 +57,7 @@ protected
     @friend_site = FriendSite.find(params[:id])
   end
 
+  def expire_cache
+    expire_fragment "fragments/layouts/friends_and_links"
+  end
 end
