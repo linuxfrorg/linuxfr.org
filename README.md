@@ -103,7 +103,7 @@ How to run the specs
     $ rspec spec
 
 
-Copyright
+Copyheart
 ---------
 
 The code is licensed as GNU AGPLv3. See the LICENSE file for the full license.
@@ -114,4 +114,4 @@ The [default avatar](http://linuxfr.org/images/default-avatar.png) is a modified
 [Iconic icons](http://somerandomdude.com/projects/iconic/) are licenced
 [CC by-sa 3.0](http://creativecommons.org/licenses/by-sa/3.0/us/).
 
-Copyright (c) 2011 Bruno Michel <NoNo@linuxfr.org>
+♡2011 by Bruno Michel. Copying is an act of love. Please copy and share.
