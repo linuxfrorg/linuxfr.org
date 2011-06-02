@@ -77,15 +77,6 @@ class Moderation::NewsController < ModerationController
     redirect_to [:moderation, @news], :notice => "Cette dépêche est maintenant affichée en phare"
   end
 
-  def clear_locks
-    enforce_update_permission(@news)
-    @news.clear_locks(current_user)
-    respond_to do |wants|
-      wants.html { redirect_to :back }
-      wants.js   { render :nothing => true }
-    end
-  end
-
 protected
 
   def find_news

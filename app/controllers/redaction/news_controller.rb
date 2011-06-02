@@ -46,6 +46,15 @@ class Redaction::NewsController < RedactionController
     end
   end
 
+  def clear_locks
+    enforce_update_permission(@news)
+    @news.clear_locks(current_user)
+    respond_to do |wants|
+      wants.html { redirect_to :back }
+      wants.js   { render :nothing => true }
+    end
+  end
+
 protected
 
   def load_news

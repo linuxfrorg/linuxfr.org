@@ -93,6 +93,7 @@ LinuxfrOrg::Application.routes.draw do
   namespace :redaction do
     resources :news, :except => [:new, :destroy] do
       post :submit, :on => :member
+      post :clear_locks, :on => :member
       resources :links, :only => [:new]
       resources :paragraphs, :only => [:create]
     end
@@ -107,7 +108,6 @@ LinuxfrOrg::Application.routes.draw do
       post :accept, :on => :member
       post :refuse, :on => :member
       post :ppp, :on => :member
-      post :clear_locks, :on => :member
     end
     resources :sondages, :controller => "polls", :as => "polls", :except => [:new, :create, :destroy] do
       post :refuse, :on => :member
