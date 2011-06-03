@@ -8,7 +8,7 @@
       Compte fermé
   - if user.homesite
     %p
-      Site personnel : #{link_to user.homesite, user.homesite, :class => 'url'}
+      Site personnel&nbsp;: #{link_to user.homesite, user.homesite, :class => 'url'}
   - if user.jabber_id
     %p
-      Jabber ID : #{link_to 'xmpp:' + user.jabber_id, 'xmpp:' + user.jabber_id, :class => 'url'}
+      Jabber ID&nbsp;: #{link_to 'xmpp:' + user.jabber_id, 'xmpp:' + user.jabber_id, :class => 'url'}

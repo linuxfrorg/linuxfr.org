@@ -1,16 +1,16 @@
 #news_vote
   %h1 Votes
   %p
-    Nombres n de modérateurs : #{Account.amr.count}
+    Nombres n de modérateurs&nbsp;: #{Account.amr.count}
     %br
-    Seuil d'acceptation (n/6) : &gt; #{News.accept_threshold}
+    Seuil d'acceptation (n/6)&nbsp;: &gt; #{News.accept_threshold}
     %br
-    Seuil de refus (n/5) : &lt; #{News.refuse_threshold}
+    Seuil de refus (n/5)&nbsp;: &lt; #{News.refuse_threshold}
   %p
-    %strong Pour :
+    %strong Pour&nbsp;:
     = @news.voters_for
   %p
-    %strong Contre :
+    %strong Contre&nbsp;:
     = @news.voters_against
   - if current_account.can_vote?(@news)
     %div

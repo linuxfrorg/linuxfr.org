@@ -37,7 +37,7 @@
   %ul
     - content = { "Diary" => "de journaux", "News" => "de dépêches", "Poll" => "de sondages", "Post" => "d'entrées de forum", "Tracker" => "d'entrée dans le suivi", "WikiPage" => "de pages dans le wiki"}
     = list_of(@stats.nb_authors) do |authors|
-      #{translate_content_type authors["content_type"]} : #{authors["cnt"]} auteur(s) #{content[authors["content_type"]]} (#{@stats.pctrecent(authors["cnt"])}%)
+      #{translate_content_type authors["content_type"]}&nbsp;: #{authors["cnt"]} auteur(s) #{content[authors["content_type"]]} (#{@stats.pctrecent(authors["cnt"])}%)
 
   %h2#stats_infosperso Informations personnelles
   %p

@@ -7,7 +7,7 @@
     Pour en choisir une, cliquer simplement sur son nom.
 
   %p
-    Votre feuille de style actuelle est : #{@current || "celle par défaut"}.
+    Votre feuille de style actuelle est&nbsp;: #{@current || "celle par défaut"}.
 
   = form_tag "/stylesheet" do
     - @stylesheets.each do |css|

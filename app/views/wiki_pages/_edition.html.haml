@@ -7,7 +7,7 @@
     Modifié le
     = l edition.versions.first.created_at.to_date
   %p
-    Les dernières modifications :
+    Les dernières modifications&nbsp;:
   %ul
     = list_of(edition.versions) do |v|
-      = link_to "#{v.user.try :name} : #{v.message}", "/wiki/#{edition.to_param}/revisions/#{v.version}"
+      = link_to "#{v.user.try :name}&nbsp;: #{v.message}".html_safe, "/wiki/#{edition.to_param}/revisions/#{v.version}"

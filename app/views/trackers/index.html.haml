@@ -10,16 +10,16 @@
 = form_for @tracker, :url => trackers_path, :html => { :method => :get } do |f|
   %h2 Filtrer les entrées du suivi
   %p
-    = f.label :state, "État : "
+    = f.label :state, "État&nbsp;: ".html_safe
     = f.select :state, Tracker::States.invert, :include_blank => true
   %p
-    = f.label :category_id, "Catégorie : "
+    = f.label :category_id, "Catégorie&nbsp;: ".html_safe
     = f.collection_select :category_id, Category.all, :id, :title, :include_blank => true
   %p
-    = f.label :assigned_to_user_id, "Assigné à : "
+    = f.label :assigned_to_user_id, "Assigné à&nbsp;: ".html_safe
     = f.collection_select :assigned_to_user_id, Account.admin, :id, :name, :include_blank => true
   %p
-    = label_tag :order, "Trier par : "
+    = label_tag :order, "Trier par&nbsp;: ".html_safe
     = select_tag :order, options_for_select({ "Date d'ouverture" => "created_at", "Note" => "score", "Nombre de commentaires" => "comments_count", "Dernier commentaire" => "last_commented_at" }, @order)
   %p
     = submit_tag "Filtrer"

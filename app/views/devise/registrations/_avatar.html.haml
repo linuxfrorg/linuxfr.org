@@ -8,7 +8,7 @@
       = u.label :avatar, 'Avatar'
       = u.file_field :avatar, :accept => "image/*"
     %p
-      = u.label :remote_avatar_url, 'Je préfère que mon avatar soit téléchargé depuis cette URL : '
+      = u.label :remote_avatar_url, 'Je préfère que mon avatar soit téléchargé depuis cette URL&nbsp;: '.html_safe
       = u.url_field :remote_avatar_url
     %p
       = u.check_box :remove_avatar

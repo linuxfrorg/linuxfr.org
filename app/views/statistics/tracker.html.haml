@@ -20,12 +20,12 @@
     %h2 Utilisateurs ayant ouvert le plus grand nombre d'entrées
     %ol
       = list_of(@stats.top_reporters) do |user|
-        = link_to(user["name"], "/users/#{user["name"]}") + " : #{user["cnt"]}"
+        = link_to(user["name"], "/users/#{user["name"]}") + "&nbsp;: #{user["cnt"]}".html_safe
 
     %h2 Nombre d'entrées fermées par les admins
     %ol
       = list_of(@stats.good_workers) do |worker|
-        = link_to(worker["name"], "/users/#{worker["name"]}") + " : #{worker["cnt"]}"
+        = link_to(worker["name"], "/users/#{worker["name"]}") + "&nbsp;: #{worker["cnt"]}".html_safe
 
     %h2 Entrées classées par année
     %p

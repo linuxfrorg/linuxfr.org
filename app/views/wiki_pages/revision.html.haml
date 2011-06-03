@@ -4,7 +4,7 @@
   %h2
     = link_to @wiki_page.title, @wiki_page
   %h3
-    #{@version.user.try :name} : #{@version.message}
+    #{@version.user.try :name}&nbsp;: #{@version.message}
   %pre
     = Differ.diff_by_char(h(@version.body), h(@was)).to_s.html_safe
 

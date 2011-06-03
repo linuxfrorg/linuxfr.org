@@ -6,11 +6,11 @@
   - if @user.account && @user.account.viewable_by?(current_account)
     - a = @user.account
     %ul
-      %li Courriel : #{a.email}
-      %li Rôle : #{a.role}
+      %li Courriel&nbsp;: #{a.email}
+      %li Rôle&nbsp;: #{a.role}
       - if current_account.amr?
-        %li Karma : #{a.karma}
-      %li Dernière connexion : #{a.current_sign_in_at  ? l(@user.account.current_sign_in_at) : "-"}
+        %li Karma&nbsp;: #{a.karma}
+      %li Dernière connexion&nbsp;: #{a.current_sign_in_at ? l(@user.account.current_sign_in_at) : "-"}
   %ul
     %li= link_to "Derniers journaux", user_path(@user)
     %li= link_to "Dernières dépêches", news_user_path(@user)
