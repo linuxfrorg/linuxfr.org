@@ -1,5 +1,5 @@
 - if @poll
   #poll_box.box
     %h1 Sondage
-    %h2= @poll.title
+    %h2= link_to @poll.title, @poll
     = render("polls/answers_#{poll_current_or_archived @poll}", :poll => @poll, :id_suffix => "_sidebar")
