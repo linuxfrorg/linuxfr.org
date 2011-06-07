@@ -106,7 +106,8 @@ module NodeHelper
   def read_it(content)
     node = content.node
     path = path_for_content(content)
-    link = link_to_unless_current("Lire la suite", path) { "" }
+    link = link_to_unless_current("Lire la suite", path, :itemprop => "url") { "" }
+    ret  = tag(:meta, :itemprop => "interactionCount", :content => "UserComments:#{node.try(:comments_count)}")
     nb_comments = content_tag(:span, pluralize(node.try(:comments_count), "commentaire"), :class => "nb_comments")
     if current_account
       status = node.read_status(current_account)
@@ -119,7 +120,7 @@ module NodeHelper
     else
       status = :anonymous_reader
     end
-    ret = content_tag(:span, "#{link} (#{nb_comments}#{visit}).".html_safe, :class => status)
+    ret += content_tag(:span, "#{link} (#{nb_comments}#{visit}).".html_safe, :class => status)
     if [:no_comments, :new_comments, :read].include?(status) || (content.persisted? && current_page?(path))
       ret += content_tag(:span, :class => "action") do
         button_to("Oublier", reading_path(:id => node.id), :method => :delete, :remote => true, :class => "unread")
