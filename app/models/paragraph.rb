@@ -24,8 +24,7 @@ class Paragraph < ActiveRecord::Base
 
   belongs_to :news
 
-  attr_accessor   :user, :after, :already_split
-  attr_accessible :user, :after, :already_split, :wiki_body, :second_part, :news_id
+  attr_accessor :user, :after, :already_split
 
   scope :in_first_part,  where(:second_part => false).order("position ASC")
   scope :in_second_part, where(:second_part => true ).order("position ASC")
@@ -60,7 +59,9 @@ class Paragraph < ActiveRecord::Base
     sentences = split_body
     self.wiki_body = sentences.pop
     sentences.each do |body|
-      news.paragraphs.create(:wiki_body => body, :second_part => second_part, :already_split => true)
+      news.paragraphs.create :wiki_body     => body,
+                             :second_part   => second_part,
+                             :already_split => true
     end
   end
 
@@ -69,8 +70,11 @@ class Paragraph < ActiveRecord::Base
     sentences = split_body
     self.wiki_body = sentences.shift
     sentences.reverse.each_with_index do |body,i|
-      p = news.paragraphs.create(:wiki_body => body, :second_part => second_part, :already_split => true, :user => user, :after => self.id)
-      p.insert_at(position + 1)
+      news.paragraphs.create :wiki_body     => body,
+                             :second_part   => second_part,
+                             :already_split => true, :user => user,
+                             :after         => self.id,
+                             :position      => position + 1
     end
   end
 

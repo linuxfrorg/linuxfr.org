@@ -28,7 +28,7 @@ class Redaction::ParagraphsController < RedactionController
   end
 
   def update
-    @paragraph.attributes = params[:paragraph]
+    @paragraph.wiki_body = params[:paragraph][:wiki_body]
     @paragraph.update_by(current_user)
     render :nothing => true
   end
