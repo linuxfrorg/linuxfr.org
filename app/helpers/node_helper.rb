@@ -31,7 +31,7 @@ module NodeHelper
     cp.meta ||= posted_by(record)
     cp.tags ||= tags_for(record.node)
     cp.body ||= (ContentPresenter.collection? ?
-                 record.truncated_body.sub("[...](suite)", " " + link_to("(...)", path_for_content(record))) :
+                 record.truncated_body.sub("[...](suite)", " " + link_to("(...)", path_for_content(record))).html_safe :
                  record.body)
     render 'nodes/content', cp.to_hash
   end
