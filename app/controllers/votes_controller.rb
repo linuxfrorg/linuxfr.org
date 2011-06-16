@@ -5,17 +5,27 @@ class VotesController < ApplicationController
   before_filter :load_node
 
   def for
-    @node.vote_for(current_account) if @node.content.votable_by?(current_account)
+    if @node.content.votable_by?(current_account)
+      @node.vote_for(current_account)
+      notice = "Merci pour votre vote"
+    else
+      notice = "Vote impossible"
+    end
     respond_to do |wants|
-      wants.json { render :json => { :notice => "Merci pour votre vote", :nb_votes => current_account.nb_votes } }
+      wants.json { render :json => { :notice => notice, :nb_votes => current_account.nb_votes } }
       wants.html { redirect_to_content @node.content }
     end
   end
 
   def against
-    @node.vote_against(current_account) if @node.content.votable_by?(current_account)
+    if @node.content.votable_by?(current_account)
+      @node.vote_against(current_account)
+      notice = "Merci pour votre vote"
+    else
+      notice = "Vote impossible"
+    end
     respond_to do |wants|
-      wants.json { render :json => { :notice => "Merci pour votre vote", :nb_votes => current_account.nb_votes } }
+      wants.json { render :json => { :notice => notice, :nb_votes => current_account.nb_votes } }
       wants.html { redirect_to_content @node.content }
     end
   end

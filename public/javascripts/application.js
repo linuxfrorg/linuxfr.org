@@ -3,7 +3,7 @@
         if (data && data.notice) {
             jQuery.noticeAdd({text: data.notice});
         }
-        if (data && data.nb_votes) {
+        if (data && data.nb_votes >= 0) {
             $("#nb_votes").text(data.nb_votes);
         }
         if (!$(this).data('hidden')) {
