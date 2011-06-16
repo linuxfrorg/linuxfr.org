@@ -234,6 +234,10 @@ class News < Content
     account && (account.moderator? || account.admin?)
   end
 
+  def commentable_by?(account)
+    super(account) && published?
+  end
+
   def acceptable_by?(account)
     account && (account.admin? || (account.moderator? && acceptable?))
   end
