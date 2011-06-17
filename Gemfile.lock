@@ -157,7 +157,6 @@ GEM
     rdoc (3.6.1)
     redcarpet (1.17.1)
     redis (2.2.1)
-    rinku (1.2.0)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
@@ -242,7 +241,6 @@ DEPENDENCIES
   rails3-generators
   redcarpet (~> 1.11)
   redis (~> 2.2)
-  rinku (~> 1.2)
   rspec-rails (~> 2.5)
   sanitize (~> 2.0)
   sass (~> 3.1)
