@@ -89,7 +89,7 @@ after "deploy:finalize_update", "assets:precache"
 namespace :cache do
   desc "Flush the redis cache"
   task :flush, :roles => :app do
-    run "redis-cli -h #{application} -n 1 flushdb"
+    run "redis-cli -n 1 flushdb"
   end
 end
 after "deploy:finalize_update", "cache:flush"
