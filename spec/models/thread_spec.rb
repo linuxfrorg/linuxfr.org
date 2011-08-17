@@ -5,7 +5,7 @@ describe Thread do
     Comment.delete_all
     User.delete_all
     Account.delete_all
-    @user_id = Factory(:user).id
+    @user_id = FactoryGirl.create(:user).id
     @node_id = 1
   end
 
@@ -17,7 +17,7 @@ describe Thread do
 
   context "when there is only one comment" do
     it "contains the comment" do
-      @root = Factory(:comment, :user_id => @user_id, :node_id => @node_id)
+      @root = FactoryGirl.create(:comment, :user_id => @user_id, :node_id => @node_id)
       threads = Threads.all(@node_id)
       threads.size.should == 1
       threads.first.comment.should == @root
@@ -27,13 +27,13 @@ describe Thread do
 
   context "in a simple discussion" do
     before :each do
-      @root_one   = Factory(:comment, :user_id => @user_id, :node_id => @node_id)
-      @root_two   = Factory(:comment, :user_id => @user_id, :node_id => @node_id)
-      @parent_one = Factory(:comment, :user_id => @user_id, :node_id => @node_id, :parent_id => @root_one.id)
-      @child_one  = Factory(:comment, :user_id => @user_id, :node_id => @node_id, :parent_id => @parent_one.id)
-      @child_two  = Factory(:comment, :user_id => @user_id, :node_id => @node_id, :parent_id => @parent_one.id)
-      @parent_two = Factory(:comment, :user_id => @user_id, :node_id => @node_id, :parent_id => @root_one.id)
-      @child_three= Factory(:comment, :user_id => @user_id, :node_id => @node_id, :parent_id => @parent_one.id)
+      @root_one   = FactoryGirl.create(:comment, :user_id => @user_id, :node_id => @node_id)
+      @root_two   = FactoryGirl.create(:comment, :user_id => @user_id, :node_id => @node_id)
+      @parent_one = FactoryGirl.create(:comment, :user_id => @user_id, :node_id => @node_id, :parent_id => @root_one.id)
+      @child_one  = FactoryGirl.create(:comment, :user_id => @user_id, :node_id => @node_id, :parent_id => @parent_one.id)
+      @child_two  = FactoryGirl.create(:comment, :user_id => @user_id, :node_id => @node_id, :parent_id => @parent_one.id)
+      @parent_two = FactoryGirl.create(:comment, :user_id => @user_id, :node_id => @node_id, :parent_id => @root_one.id)
+      @child_three= FactoryGirl.create(:comment, :user_id => @user_id, :node_id => @node_id, :parent_id => @parent_one.id)
     end
 
     it "is created with every comment" do

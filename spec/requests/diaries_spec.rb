@@ -15,9 +15,9 @@ describe "Diaries" do
 
   after(:each)  { Warden.test_reset! }
 
-  let(:account) { Factory.create(:account) }
-  let(:modero)  { Factory.create(:moderator).account }
-  let!(:diary)  { Factory.create(:diary) }
+  let(:account) { FactoryGirl.create(:normal_account) }
+  let(:modero)  { FactoryGirl.create(:moderator).account }
+  let!(:diary)  { FactoryGirl.create(:diary) }
 
   it "can be listed and showed" do
     get diaries_path

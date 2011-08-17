@@ -9,8 +9,8 @@ describe "Polls" do
     Comment.delete_all
   end
 
-  let(:account) { Factory.create(:account) }
-  let!(:poll)   { Factory.create(:poll) }
+  let(:account) { FactoryGirl.create(:normal_account) }
+  let!(:poll)   { FactoryGirl.create(:poll) }
 
   it "can be listed and showed" do
     get polls_path

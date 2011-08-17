@@ -10,7 +10,7 @@ describe "Homepage" do
     Comment.delete_all
   end
 
-  let!(:account) { Factory.create(:account) }
+  let!(:account) { FactoryGirl.create(:normal_account) }
 
   it "works for anonymous" do
     get '/'

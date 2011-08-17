@@ -30,9 +30,9 @@ describe News do
   end
 
   context "when created in redaction" do
-    let(:news) { News.create_for_redaction(Factory.create :writer_account) }
+    let(:news) { News.create_for_redaction(FactoryGirl.create :writer_account) }
 
-    before(:all) { Factory.create(:default_section) }
+    before(:all) { FactoryGirl.create(:default_section) }
 
     it "has two paragraphs, one in each part" do
       news.should have(2).paragraphs
@@ -49,7 +49,7 @@ describe News do
     it "has an updated body when a paragraph is added" do
       para = news.paragraphs.first
       para.wiki_body = "Paragraphe un\n\nparagraphe deux\n"
-      para.update_by(Factory.create :moderator)
+      para.update_by(FactoryGirl.create :moderator)
       news.should have(3).paragraphs
       news.paragraphs.in_first_part.should have(2).item
       news.body =~ /Paragraphe un<\/p>.*<p>paragraphe deux/

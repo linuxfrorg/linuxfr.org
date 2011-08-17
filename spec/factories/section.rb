@@ -1,7 +1,9 @@
-Factory.define :section do |f|
-  f.title "Articles"
-end
+FactoryGirl.define do
+  factory :section do
+    title "Articles"
+  end
 
-Factory.define :default_section, :class => "section" do |f|
-  f.title "LinuxFr.org"
+  factory :default_section, :class => Section do
+    title "LinuxFr.org"
+  end
 end

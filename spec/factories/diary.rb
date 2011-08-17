@@ -1,5 +1,7 @@
-Factory.define :diary do |f|
-  f.title "Mon journal"
-  f.wiki_body "Cher journal, mon clavier s'est blo"
-  f.association :owner, :factory => :writer
+FactoryGirl.define do
+  factory :diary do
+    title "Mon journal"
+    wiki_body "Cher journal, mon clavier s'est blo"
+    association :owner, :factory => :writer
+  end
 end

@@ -1,10 +1,10 @@
 source :rubygems
 
-gem "rails",                   "=3.0.9"
+gem "rails",                   "=3.0.10"
 
 gem "acts_as_list",            "~>0.1"
 gem "albino",                  "~>1.3"
-gem "bitfields",               "~>0.3"
+gem "bitfields",               "~>0.4"
 gem "canable",                 "~>0.1"
 gem "carrierwave",             "~>0.5"
 gem "devise",                  "~>1.3"
@@ -17,25 +17,25 @@ gem "html_truncator",          "~>0.2"
 gem "htmlentities",            "~>4.3"
 gem "jammit",                  "~>0.6"
 gem "kaminari",                "~>0.12"
-gem "mini_magick",             "~>3.2"
+gem "mini_magick",             "~>3.3"
 gem "mysql2",                  "~>0.2.7" # TODO mysql2 0.3.x for Rails 3.1
 gem "nokogiri",                "~>1.4"
 gem "rinku",                   "~>1.2"
-gem "redcarpet",               "~>1.11"
+gem "redcarpet",               "~>1.17"
 gem "hiredis",                 "~>0.3"
 gem "redis",                   "~>2.2", :require => ["redis/connection/hiredis", "redis"]
 gem "sanitize",                "~>2.0"
 gem "sass",                    "~>3.1"
-gem "sitemap_generator",       "~>1.5"
+gem "sitemap_generator",       "~>2.0"
 gem "simple_autocomplete",     "~>0.3"
-gem "state_machine",           "~>0.10"
+gem "state_machine",           "~>1.0"
 # TODO Rails3
 # gem "thinking-sphinx",       "~>1.3", :require => "thinking_sphinx"
 # gem "ts-datetime-delta",     "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
 
 # Rspec-rails must be in development for rake stats and in test for normal stuff
 group :development, :test do
-  gem "rspec-rails",           "~>2.5"
+  gem "rspec-rails",           "~>2.6"
 end
 
 group :development do
@@ -50,7 +50,7 @@ group :development do
 end
 
 group :test do
-  gem "factory_girl_rails",    "~>1.0"
+  gem "factory_girl_rails",    "~>1.1"
   gem "faker",                 "~>0.9"
   gem "fuubar",                "~>0.0"
   gem "spork",                 "~>0.8"

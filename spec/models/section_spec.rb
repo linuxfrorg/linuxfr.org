@@ -13,7 +13,7 @@
 require 'spec_helper'
 
 describe Section do
-  subject { Factory.new(:section) }
+  subject { FactoryGirl.build(:section) }
 
   it { should be_valid }
 

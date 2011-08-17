@@ -14,9 +14,9 @@ describe "Posts" do
 
   after(:each)  { Warden.test_reset! }
 
-  let(:account) { Factory.create(:account) }
-  let(:modero)  { Factory.create(:moderator).account }
-  let!(:post)   { Factory.create(:post) }
+  let(:account) { FactoryGirl.create(:normal_account) }
+  let(:modero)  { FactoryGirl.create(:moderator).account }
+  let!(:post)   { FactoryGirl.create(:post) }
   let(:forum)   { post.forum }
 
   it "can be listed and showed" do

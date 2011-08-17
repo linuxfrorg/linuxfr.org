@@ -12,8 +12,8 @@ describe "Wiki" do
 
   after(:each)  { Warden.test_reset! }
 
-  let(:account) { Factory.create(:account) }
-  let!(:wiki)   { Factory.create(:wiki) }
+  let(:account) { FactoryGirl.create(:normal_account) }
+  let!(:wiki)   { FactoryGirl.create(:wiki) }
 
   it "can be listed and showed" do
     get "/wiki/pages"

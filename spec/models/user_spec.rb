@@ -23,7 +23,7 @@ describe User do
   end
 
   it "has an account" do
-    user = Factory(:user)
+    user = FactoryGirl.create(:user)
     user.account.should be
   end
 end

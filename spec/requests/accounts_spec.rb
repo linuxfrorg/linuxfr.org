@@ -6,7 +6,7 @@ describe "Accounts" do
     Account.delete_all
   end
 
-  let!(:account) { Factory.create(:account) }
+  let!(:account) { FactoryGirl.create(:normal_account) }
 
   it "should authenticate use successfully" do
     get new_account_session_path

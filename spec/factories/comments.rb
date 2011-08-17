@@ -1,6 +1,8 @@
 # encoding: UTF-8
-Factory.define :comment do |f|
-  f.association :user
-  f.sequence(:title)     { |n| "Ceci est le #{n}ème commentaire" }
-  f.sequence(:wiki_body) { |n| "Ceci est le #{n}ème commentaire" }
+FactoryGirl.define do
+  factory :comment do
+    user
+    sequence(:title)     { |n| "Ceci est le #{n}ème commentaire" }
+    sequence(:wiki_body) { |n| "Ceci est le #{n}ème commentaire" }
+  end
 end

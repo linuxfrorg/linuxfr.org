@@ -7,9 +7,9 @@ describe "Relevance" do
     $redis.flushdb
   end
 
-  let(:account) { Factory(:account) }
-  let(:writer)  { Factory(:writer) }
-  let(:comment) { Factory(:comment, :user_id => writer.id) }
+  let(:account) { FactoryGirl.create(:normal_account) }
+  let(:writer)  { FactoryGirl.create(:writer) }
+  let(:comment) { FactoryGirl.create(:comment, :user_id => writer.id) }
 
   it "creates an instance when an account votes for a comment" do
     comment.vote_for(account)

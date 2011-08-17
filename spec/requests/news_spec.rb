@@ -15,13 +15,13 @@ describe "News" do
   end
 
   let!(:section) do
-    Factory(:section).tap do |sect|
+    FactoryGirl.create(:section).tap do |sect|
       sect.stub(:image).and_return(double('image', :url => ''))
     end
   end
 
   it "can be listed" do
-    news = Factory.create(:news, :section_id => section.id)
+    news = FactoryGirl.create(:news, :section_id => section.id)
     news.should be_valid
     get news_index_path
     assert_response :success

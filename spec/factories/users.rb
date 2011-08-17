@@ -1,32 +1,34 @@
 # encoding: UTF-8
-Factory.define :user do |f|
-  f.name      "Pierre Tramo"
-  f.homesite  "http://java.sun.com/javaee/"
-  f.jabber_id "pierre.tramo@dlfp.org"
-  f.association :account
-end
+FactoryGirl.define do
+  factory :user do
+    name      "Pierre Tramo"
+    homesite  "http://java.sun.com/javaee/"
+    jabber_id "pierre.tramo@dlfp.org"
+    association :account, :factory => :normal_account
+  end
 
-Factory.define :anonymous, :class => "user" do |f|
-  f.name "Anonyme"
-  f.association :account, :factory => :anonymous_account
-end
+  factory :anonymous, :class => User do
+    name "Anonyme"
+    association :account, :factory => :anonymous_account
+  end
 
-Factory.define :writer, :class => "user" do |f|
-  f.name "Lionel Allorge"
-  f.association :account, :factory => :writer_account
-end
+  factory :writer, :class => User do
+    name "Lionel Allorge"
+    association :account, :factory => :writer_account
+  end
 
-Factory.define :reviewer, :class => "user" do |f|
-  f.name "Pierre Jarillon"
-  f.association :account, :factory => :reviewer_account
-end
+  factory :reviewer, :class => User do
+    name "Pierre Jarillon"
+    association :account, :factory => :reviewer_account
+  end
 
-Factory.define :moderator, :class => "user" do |f|
-  f.name "Florent Zara"
-  f.association :account, :factory => :moderator_account
-end
+  factory :moderator, :class => User do
+    name "Florent Zara"
+    association :account, :factory => :moderator_account
+  end
 
-Factory.define :admin, :class => "user" do |f|
-  f.name "Benoît Sibaud"
-  f.association :account, :factory => :admin_account
+  factory :admin, :class => User do
+    name "Benoît Sibaud"
+    association :account, :factory => :admin_account
+  end
 end

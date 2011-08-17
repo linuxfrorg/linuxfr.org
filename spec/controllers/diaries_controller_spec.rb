@@ -10,7 +10,7 @@ describe DiariesController do
     Diary.delete_all
   end
 
-  let(:diary) { Factory.create(:diary) }
+  let(:diary) { FactoryGirl.create(:diary) }
   let(:owner) { diary.owner }
 
   it "shows the diary" do

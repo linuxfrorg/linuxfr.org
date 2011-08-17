@@ -26,25 +26,25 @@ describe Comment do
   end
 
   it "is valid" do
-    Factory.build(:comment).should be_valid
+    FactoryGirl.build(:comment).should be_valid
   end
 
   it "wikifies the body" do
-    comment = Factory(:comment, :wiki_body => "_it_ et **gras**")
+    comment = FactoryGirl.create(:comment, :wiki_body => "_it_ et **gras**")
     comment.body.should == "<p><em>it</em> et <strong>gras</strong></p>"
   end
 
   context "in a simple thread" do
     before :each do
-      @user = Factory(:user)
-      @modo = Factory(:moderator)
-      @root_one   = Factory(:comment, :id => 1,:user_id => @user.id)
-      @root_two   = Factory(:comment, :id => 2,:user_id => @user.id)
-      @parent_one = Factory(:comment, :id => 3,:user_id => @modo.id, :parent_id => @root_one.id)
-      @child_one  = Factory(:comment, :id => 4,:user_id => @user.id, :parent_id => @parent_one.id)
-      @child_two  = Factory(:comment, :id => 5,:user_id => @user.id, :parent_id => @parent_one.id)
-      @parent_two = Factory(:comment, :id => 6,:user_id => @user.id, :parent_id => @root_one.id)
-      @child_three= Factory(:comment, :id => 7,:user_id => @modo.id, :parent_id => @parent_one.id)
+      @user = FactoryGirl.create(:user)
+      @modo = FactoryGirl.create(:moderator)
+      @root_one   = FactoryGirl.create(:comment, :id => 1,:user_id => @user.id)
+      @root_two   = FactoryGirl.create(:comment, :id => 2,:user_id => @user.id)
+      @parent_one = FactoryGirl.create(:comment, :id => 3,:user_id => @modo.id, :parent_id => @root_one.id)
+      @child_one  = FactoryGirl.create(:comment, :id => 4,:user_id => @user.id, :parent_id => @parent_one.id)
+      @child_two  = FactoryGirl.create(:comment, :id => 5,:user_id => @user.id, :parent_id => @parent_one.id)
+      @parent_two = FactoryGirl.create(:comment, :id => 6,:user_id => @user.id, :parent_id => @root_one.id)
+      @child_three= FactoryGirl.create(:comment, :id => 7,:user_id => @modo.id, :parent_id => @parent_one.id)
     end
 
     it "has 2 roots" do

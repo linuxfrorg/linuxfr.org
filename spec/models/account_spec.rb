@@ -36,10 +36,10 @@ describe Account do
   end
 
   it "is valid" do
-    Factory.build(:account).should be_valid
+    FactoryGirl.build(:normal_account).should be_valid
   end
 
   it "has a valid password" do
-    Factory.create(:account).should be_valid_password('I<3J2EE')
+    FactoryGirl.create(:normal_account).should be_valid_password('I<3J2EE')
   end
 end

@@ -1,3 +1,5 @@
-Factory.define :forum do |f|
-  f.title "LinuxFr.bugs"
+FactoryGirl.define do
+  factory :forum do
+    title "LinuxFr.bugs"
+  end
 end

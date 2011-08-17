@@ -7,8 +7,8 @@ describe "Vote" do
     $redis.flushdb
   end
 
-  let(:account) { Factory(:account) }
-  let(:node)    { Factory(:diary).node }
+  let(:account) { FactoryGirl.create(:normal_account) }
+  let(:node)    { FactoryGirl.create(:diary).node }
 
   it "creates a new instance when an account votes for a node" do
     node.vote_for(account)

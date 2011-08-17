@@ -13,7 +13,7 @@
 require 'spec_helper'
 
 describe Poll do
-  let(:poll) { Factory.create(:poll) }
+  let(:poll) { FactoryGirl.create(:poll) }
 
   it "can be archived" do
     poll.state_name.should == :published
