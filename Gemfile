@@ -42,6 +42,7 @@ group :development do
   gem "annotate"
   gem "autotest-standalone"
   gem "capistrano"
+  gem "capistrano_colors"
   gem "haml-rails"
   gem "jquery-rails"
   gem "pry"

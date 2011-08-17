@@ -1,4 +1,5 @@
 require 'bundler/capistrano'
+require 'capistrano_colors'
 
 # Common options
 set :use_sudo,   false
