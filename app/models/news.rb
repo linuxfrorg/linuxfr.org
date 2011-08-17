@@ -90,6 +90,8 @@ class News < Content
 
   def submit_and_notify(user)
     submit!
+    node.created_at = DateTime.now
+    node.save
     message = "<b>La dépêche a été soumise à la modération</b>"
     Board.create_for(self, :user => user, :kind => "submission", :message => message)
   end
