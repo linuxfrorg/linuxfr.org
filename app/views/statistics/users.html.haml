@@ -132,12 +132,9 @@
     - @stats.by_state.each do |slot|
       %tr
         %td
-          - if slot["slot"] != oldslot
-            = slot["slot"]
-            - oldslot = slot["slot"]
+          = oldslot = slot["slot"] if slot["slot"] != oldslot
         %td
-          - if slot["recent"] == 1
-            - c = "recent"
-          - if slot["inactive"] == 1
-            - c = "inactive"
+          - c = ""
+          - c += "recent"   if slot["recent"] == 1
+          - c += "inactive" if slot["inactive"] == 1
           %meter(class="account#{c}" style="width: #{(width_factor * slot["cnt"]).to_i}px;")= slot["cnt"]

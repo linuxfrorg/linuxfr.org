@@ -65,6 +65,6 @@ class Statistics::Users < Statistics::Statistics
   end
 
   def by_state
-    select_all "SELECT user_id DIV 2500 AS slot, COUNT(*) AS cnt, (role='inactive') AS inactive, (current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY)) AS recent FROM accounts GROUP BY slot,inactive,recent ORDER BY slot ASC, inactive ASC, recent ASC"
+    select_all "SELECT user_id DIV 2500 AS slot, COUNT(*) AS cnt, (role='inactive') AS inactive, IFNULL(current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY),0) AS recent FROM accounts GROUP BY slot,inactive,recent ORDER BY slot ASC, inactive ASC, recent ASC"
   end
 end
