@@ -366,6 +366,14 @@ input[type='submit'] {
       -khtml-transform: rotate(-90deg) translate(-100%, -100%) translate(3px, -5px);
       -moz-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
       -o-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px); }
+  #sidebar #logout {
+    border: 0;
+    font-family: sans-serif;
+    font-size: small;
+    padding: 0px;
+    margin-left: -3px; }
+    #sidebar #logout:hover {
+      background-color: #e9e6e4; }
 
 /* menu du haut */
 #site {

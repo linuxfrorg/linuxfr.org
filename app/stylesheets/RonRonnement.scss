@@ -95,7 +95,7 @@ html {
 		);
 	}
 
-	font-family: sans-serif ;
+	font-family: sans-serif;
 
 	padding: 0px $PX_MARGE_DROITE 0px $PX_MARGE_GAUCHE;
 }
@@ -304,6 +304,15 @@ input[type='submit'] {
             &:after  { content: "] "; }
         }
 	}
+
+    #logout {
+        border: 0;
+	    font-family: sans-serif;
+        font-size: small;
+        padding: 0px;
+        margin-left: -3px;
+        &:hover { background-color: $C_CLAIR; }
+    }
 }
 
 /* menu du haut */
