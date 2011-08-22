@@ -1,5 +1,7 @@
+=h1 @comment.title
+
 %p
-  = link_to "Retourner au contenu associé", path_for_content(@comment.content)
+  = link_to "Retourner au contenu associé (#{translate_content_type @comment.content_type} : #{@comment.content.title})", path_for_content(@comment.content)
 
 - if current_account
   - if current_account.can_update?(@comment)
