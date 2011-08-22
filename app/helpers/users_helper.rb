@@ -6,8 +6,7 @@ module UsersHelper
     url = user.avatar.url
     options = {
       :class  => "avatar",
-      :title  => "Avatar de #{user.name}",
-      :alt    => "Avatar de #{user.name}",
+      :alt    => "",
       :width  => AvatarUploader::AVATAR_SIZE,
       :height => AvatarUploader::AVATAR_SIZE
     }
