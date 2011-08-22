@@ -157,6 +157,24 @@ class Account < ActiveRecord::Base
 
   alias :destroy :inactivate!
 
+  def inactive_message
+    if role == 'inactive'
+      :closed
+    else
+      super
+    end
+  end
+
+  def self.send_reset_password_instructions(attributes={})
+    recoverable = find_or_initialize_with_errors(reset_password_keys, attributes, :not_found)
+    if recoverable.role == 'inactive'
+      recoverable.errors[:base] << I18n.t("devise.failure.closed")
+    elsif recoverable.persisted?
+      recoverable.send_reset_password_instructions
+    end
+    recoverable
+  end
+
 ### Actions ###
 
   def can_post_on_board?
