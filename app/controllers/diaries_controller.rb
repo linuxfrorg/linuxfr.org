@@ -68,7 +68,7 @@ class DiariesController < ApplicationController
     @news.author_name  = @diary.owner.try(:name)
     @news.author_email = @diary.owner.try(:account).try(:email)
     if @news.save
-      @news.node.update_attribute(:cc_licenced => true) if @diary.node.cc_licensed?
+      @news.node.update_attribute(:cc_licenced, true) if @diary.node.cc_licensed?
       @news.links.create :title => "Journal à l'origine de la dépêche", :url => "#{MY_DOMAIN}/users/#{@diary.owner.to_param}/journaux/#{@diary.to_param}", :lang => "fr"
       @news.submit!
       if current_account.amr?
