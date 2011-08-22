@@ -19,7 +19,7 @@ module ApplicationHelper
     @author      = content.node.user.try(:name)
     @keywords    = content.node.popular_tags.map &:name
     @description = content.title
-    @dont_index  = content.node.score < 0
+    @dont_index  = true if content.node.score < 0
   end
 
 end
