@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  caches_action :index, :unless     => :account_signed_in?,
+  caches_action :index, :unless     => Proc.new {|c| c.account_signed_in? || c.dont_index? },
                         :expires_in => 5.minutes,
                         :cache_path => Proc.new {|c| "home/#{c.params[:order]}/#{c.params[:page]}" }
 

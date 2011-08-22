@@ -28,6 +28,11 @@ protected
     @last_comments = Comment.footer
     @popular_tags  = Tag.footer
     @friend_sites  = FriendSite.select([:url, :title])
+    @dont_index    = request.headers["User-Agent"] =~ /AppEngine-Google/i
+  end
+
+  def dont_index?
+    !!@dont_index
   end
 
 ### Content ###
