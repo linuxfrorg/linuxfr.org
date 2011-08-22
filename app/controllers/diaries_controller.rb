@@ -71,7 +71,11 @@ class DiariesController < ApplicationController
       @news.node.update_attribute(:cc_licenced => true) if @diary.node.cc_licensed?
       @news.links.create :title => "Journal à l'origine de la dépêche", :url => "#{MY_DOMAIN}/users/#{@diary.owner.to_param}/journaux/#{@diary.to_param}", :lang => "fr"
       @news.submit!
-      redirect_to [:moderation, @news]
+      if current_account.amr?
+        redirect_to [:moderation, @news]
+      else
+        redirect_to "/", :notice => "Merci d'avoir proposé ce journal en dépêche"
+      end
     else
       flash.now[:alert] = "Impossible de proposer ce journal en dépêche"
       render :edit
