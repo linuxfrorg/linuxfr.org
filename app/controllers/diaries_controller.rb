@@ -88,10 +88,14 @@ class DiariesController < ApplicationController
     @post.title = @diary.title
     @post.wiki_body = @diary.wiki_body
     if @post.save
+      # Note: the 2 nodes are swapped so that all references to the diairy
+      # (comments, tags, etc.) are moved to the post.
       node = @post.node
-      node.attributes = @diary.node.attributes.except("id", "content_id", "content_type")
+      node.attributes = @diary.node.attributes.except("id").merge(:content_type => "XXX", :public => false)
       node.save
-      @diary.mark_as_deleted
+      @diary.node.update_attributes(:content_type => "Post", :content_id => @post.id)
+      node.content_type = "Diary"
+      node.save
       redirect_to diaries_url, :notice => "Le journal a bien été déplacé vers les forums"
     else
       flash.now[:alert] = "Impossible de déplacer ce journal. Avez-vous bien choisi un forum ?"
