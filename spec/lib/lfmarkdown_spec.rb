@@ -37,6 +37,11 @@ describe LFMarkdown do
     html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Pogo_(danse)\" title=\"Définition Wikipédia\">Pogo_(danse)</a></p>\n"
   end
 
+  it "transforms [[]] to wikipedia links, even with quote" do
+    html = LFMarkdown.new("[[Loi d'Okun]]").to_html
+    html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Loi d'Okun\" title=\"Définition Wikipédia\">Loi d'Okun</a></p>\n"
+  end
+
   it "leaves underscored words unchanged" do
     html = LFMarkdown.new("foo_bar_baz").to_html
     html.should == "<p>foo_bar_baz</p>\n"

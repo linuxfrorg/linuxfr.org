@@ -43,8 +43,8 @@ class LFMarkdown < Redcarpet
 
 protected
 
-  LF_LINK_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /\[\[\[([ \.:\-\w]+)\]\]\]/ : /\[\[\[([ \.:\-\p{Word}]+)\]\]\]/
-  WP_LINK_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /\[\[([ \.:\-\(\)\w]+)\]\]/ : /\[\[([ \.:\-\(\)\p{Word}]+)\]\]/
+  LF_LINK_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /\[\[\[([ '\.:\-\w]+)\]\]\]/ : /\[\[\[([ '\.:\-\p{Word}]+)\]\]\]/
+  WP_LINK_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /\[\[([ '\.:\-\(\)\w]+)\]\]/ : /\[\[([ '\.:\-\(\)\p{Word}]+)\]\]/
 
   def process_internal_wiki_links
     @text.gsub!(LF_LINK_REGEXP, '[\1](/wiki/\1 "Lien du wiki interne LinuxFr.org")')
@@ -53,7 +53,7 @@ protected
   def process_wikipedia_links
     @text.gsub!(WP_LINK_REGEXP) do
       word = $1
-      escaped = word.gsub(/\(|\)/) {|x| "\\#{x}" }
+      escaped = word.gsub(/\(|\)|'/) {|x| "\\#{x}" }
       "[#{word}](http://fr.wikipedia.org/wiki/#{escaped} \"Définition Wikipédia\")"
     end
   end
