@@ -92,4 +92,13 @@ EOS
     expect { md.to_html }.to_not raise_exception
     md.to_html.encoding.should == Encoding.find("utf-8")
   end
+
+  it 'accepts \" in code ' do
+    md = LFMarkdown.new <<EOS
+```perl
+"Ceci \\" ne fonctionne pas"
+```
+EOS
+    md.to_html.should =~ /Ceci \\&quot; ne/
+  end
 end
