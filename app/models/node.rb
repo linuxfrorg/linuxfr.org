@@ -112,11 +112,14 @@ class Node < ActiveRecord::Base
   end
 
   def read_status(account)
+    return @read_status if @read_status
     r = Node.last_reading(self.id, account.id) if account
-    return :not_read     if r.nil?
-    return :no_comments  if last_commented_at.nil?
-    return :new_comments if r < last_commented_at
-    return :read
+    @read_status = case
+                   when r.nil?                 then :not_read
+                   when last_commented_at.nil? then :no_comments
+                   when r >= last_commented_at then :read
+                   else comments.where("created_at > ?", r).count
+                   end
   end
 
   def board_status(account)

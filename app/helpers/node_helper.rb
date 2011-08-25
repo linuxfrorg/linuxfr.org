@@ -112,9 +112,9 @@ module NodeHelper
     if current_account
       status = node.read_status(current_account)
       visit  = case status
-               when :not_read     then ", non visité"
-               when :new_comments then ", Nouveaux !"
-               else                    ", déjà visité"
+               when :not_read then ", non visité"
+               when Integer   then ", #{pluralize status, "nouveau", "nouveaux"} !"
+               else                ", déjà visité"
                end
       visit  = content_tag(:span, visit, :class => "visit")
     else
