@@ -773,7 +773,10 @@ footer.actions .button_to input {
 /* concerne tout ce qui est contenu : article, commentaire */
 .content {
   text-align: justify;
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto; }
   .content img {
     max-width: 100%; }
   .content a[href] {
