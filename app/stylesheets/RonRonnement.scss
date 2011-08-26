@@ -97,7 +97,7 @@ html {
 
 	font-family: sans-serif;
 
-	padding: 0px $PX_MARGE_DROITE 0px $PX_MARGE_GAUCHE;
+	padding: 0 $PX_MARGE_DROITE 0 $PX_MARGE_GAUCHE;
 }
 
 body {
@@ -128,8 +128,8 @@ body {
 	);
 	background: linear-gradient(right 183deg, $C_INTER 45%, $C_CONTAINER 80%);
     }
-	margin-top: 0px;
-	margin-bottom: 0px;
+	margin-top: 0;
+	margin-bottom: 0;
 	padding-top: $PX_TOP;
 
 	@if $IMAGE {
@@ -143,10 +143,10 @@ body {
 		-webkit-border-image: url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
 		-khtml-border-image:  url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
 	} @else {
-		-moz-box-shadow: 5px 0px 10px #ccc, -5px 0px 10px #ccc;
-		-webkit-box-shadow: 5px 0px 5px #ccc, -5px 0px 5px #ccc;
-		-khtml-box-shadow: 5px 0px 5px #ccc, -5px 0px 5px #ccc;
-		box-shadow: 5px 0px 5px #ccc, -5px 0px 5px #ccc;
+		-moz-box-shadow: 5px 0 10px #ccc, -5px 0 10px #ccc;
+		-webkit-box-shadow: 5px 0 5px #ccc, -5px 0 5px #ccc;
+		-khtml-box-shadow: 5px 0 5px #ccc, -5px 0 5px #ccc;
+		box-shadow: 5px 0 5px #ccc, -5px 0 5px #ccc;
 	}
 }
 
@@ -252,11 +252,11 @@ input[type='submit'] {
 	.box {
 		min-height:110px;
 		border-bottom: 1px solid $C_INTER;
-		padding: 0px 3px 10px 5px;
+		padding: 0 3px 10px 5px;
 
 		/* juste une ligne devant les listes */
 		ul {
-			padding-left: 0px;
+			padding-left: 0;
 		}
 		li {
 			list-style: none;
@@ -292,10 +292,12 @@ input[type='submit'] {
 			-khtml-transform-origin: left top;
 			-moz-transform-origin: left top;
 			-o-transform-origin: left top;
+			transform-origin: left top;
 			-webkit-transform: rotate(-90deg) translate(-100%, -100%) translate(3px, -5px);
 			-khtml-transform: rotate(-90deg) translate(-100%, -100%) translate(3px, -5px);
 			-moz-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
 			-o-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
+			transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
 		}
 
         span.score {
@@ -309,7 +311,7 @@ input[type='submit'] {
         border: 0;
 	    font-family: sans-serif;
         font-size: small;
-        padding: 0px;
+        padding: 0;
         margin-left: -3px;
         &:hover { background-color: $C_CLAIR; }
     }
@@ -328,7 +330,6 @@ input[type='submit'] {
 
 	ul {
 		display: inline;
-		width: 100%;
 		padding-right: $PX_SITE_PAD_DROIT;
 	}
 	li {
@@ -346,10 +347,10 @@ input[type='submit'] {
 			text-indent: -9998em;
 			overflow: hidden;
 			text-align: left;
-            width: 0px;
+            width: 0;
 		}
 		input#search_submit {
-			width: 0px;
+			width: 0;
 			position: absolute;
 			visibility: hidden; /* TODO la recherche ne marche pas avec opera */
 		}
@@ -359,7 +360,7 @@ input[type='submit'] {
 		padding-right: $PX_SITE_PAD_DROIT;
 		width: 180px;
 		margin-left: auto;
-		margin-right: 0px;
+		margin-right: 0;
 
 		-moz-border-radius-bottomleft: $RAY_SIDEBAR;
 		-webkit-border-bottom-left-radius: $RAY_SIDEBAR;
@@ -381,7 +382,7 @@ input[type='submit'] {
 	clear: both;
 	width: 100%;
 	display: block;
-	margin-top: 0px;
+	margin-top: 0;
 	background: $C_CLAIR;
 	background: -moz-linear-gradient(top,
 		$C_FOOT 0%,
@@ -407,16 +408,16 @@ input[type='submit'] {
 		$C_FOOT 0%,
 		white 100%
 	);
-	padding: 0px 0px 0px 0px;
+	padding: 0;
 
 	a { font-size: small; }
 
 	nav, section {
 		display: inline-block;
-		padding: 5px 0px 30px 0px; 
+		padding: 5px 0 30px 0; 
 		vertical-align: top;
 		width: $PC_FOOT_WIDTH;
-		margin: 0px $PC_FOOT_MARG 0 $PC_FOOT_MARG;
+		margin: 0 $PC_FOOT_MARG 0 $PC_FOOT_MARG;
 		background: $C_FOOT;
 		background: -moz-linear-gradient(top,
 			$C_FOOT 0%,
@@ -458,7 +459,7 @@ input[type='submit'] {
 
 		h1 {
 			font-size: medium;
-			padding: 0px 3px 3px 3px;
+			padding: 0 3px 3px 3px;
 			border-bottom: 2px solid $C_BANDEAU;
 		}
 	}
@@ -475,7 +476,7 @@ input[type='submit'] {
 
 	padding: 40px $RAY_CONTAINER 10px 40px;
 	margin-top: $PX_CONT_TOP;
-	margin-bottom: 0px;
+	margin-bottom: 0;
 
 /* le titre de la page est déjà contenu dans la barre du navigateur, l'url du navigateur, ... */
 	> h1:first-of-type {
@@ -575,10 +576,10 @@ article {
         min-height: 70px;
 
 		> p:first-child {
-			margin-top: 0px;
+			margin-top: 0;
 		}
 		> p:last-child {
-			margin-bottom: 0px;
+			margin-bottom: 0;
 		}
 	}
 	.meta {
@@ -590,9 +591,9 @@ article {
 		height: 31px;
 		margin: 0;
 		border-left-width: 15px;
-		border-top-width: 0px;
-		border-bottom-width: 0px;
-		border-right-width: 0px;
+		border-top-width: 0;
+		border-bottom-width: 0;
+		border-right-width: 0;
 		font-size: medium;
 		/* the translation should be the exact sum of padding and margin of all elements to the right */
         position: absolute;
@@ -638,11 +639,11 @@ article {
 		.mois {
 			padding-top: 3px;
 			margin-bottom: -1px;
-			padding-bottom: 0px;
+			padding-bottom: 0;
 			vertical-align: bottom;
 		}
 		.annee {
-			padding-top: 0px;
+			padding-top: 0;
 			margin-top: -1px;
 			padding-bottom: 3px;
 			vertical-align: top;
@@ -695,7 +696,7 @@ footer.actions {
 	}
 	.button_to {
 		input {
-			padding: 0px;
+			padding: 0;
 			display: inline;
 			color: $C_INTER;
 			font-size: inherit;
@@ -732,7 +733,7 @@ footer.actions {
 	padding: 5px;
 
 	ul {
-		margin: 0px;
+		margin: 0;
 		padding: 5px;
 		li {
 			list-style: none;
@@ -795,7 +796,7 @@ footer.actions {
 	}
 	.button_to {
 		input {
-			padding: 0px;
+			padding: 0;
 			display: inline;
 			font-style: italic;
 			font-size: x-small;
@@ -852,9 +853,9 @@ footer.actions {
 blockquote {
 	border-left: 3px solid $C_BANDEAU;
 	border-bottom: 1px solid $C_CLAIR;
-	margin: 10px 0px 10px 10px;
+	margin: 10px 0 10px 10px;
 	padding-left: 5px;
-	padding-right: 0px;
+	padding-right: 0;
 
 	> p:first-child {
 		padding-top: 5px;
@@ -864,12 +865,12 @@ blockquote {
 /* tri, proposition de dépeche, choix de page */
 .toolbox, .scroll {
 	display: block;
-	margin: 10px 0px 15px 0px;
+	margin: 10px 0 15px 0;
 	font-size: small;
 	color: $C_INTER;
 }
 a.scroll {
-	margin: 0px;
+	margin: 0;
 }
 .toolbox {
 	.new_content {
@@ -927,6 +928,7 @@ a.scroll {
 .notice-item {
 	min-height: 60px;
 	background: #333333;
+	border-radius: 6px;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
 	color: #eeeeee;
@@ -958,8 +960,8 @@ a.scroll {
 /* sondage */
 ul.poll {
 	&.current {
-		padding: 0px;
-		margin-top: 0px;
+		padding: 0;
+		margin-top: 0;
 		li {
 			list-style: none;
 		}
@@ -1009,7 +1011,7 @@ ul.poll {
 	text-align: justify;
 	color: $C_INTER;
 	font-size: small;
-	margin: 5px 0px 5px 0px;
+	margin: 5px 0 5px 0;
 }
 #comments #send-comment {
 	display: table;
@@ -1029,12 +1031,12 @@ body#comments-show #contents > ul,
 body#comments-create #contents > ul,
 body#users-comments #contents > ul,
 ul.threads {
-	padding: 0px;
+	padding: 0;
 	list-style: none;
 	/* premier d'un thread */
 	> li.comment {
 		/* voir ^article$ */
-		padding-top: 0px;
+		padding-top: 0;
 		padding-left: 1.25em;
 		padding-right: 5px;
 	}
@@ -1044,19 +1046,19 @@ li.comment {
 	font-size: small;
 	> h2 {
 		font-size: medium;
-		margin-bottom: 0px;
+		margin-bottom: 0;
 		margin-top: 10px;
 		background: $C_CLAIR;
 		clear: right;
 	}
 	> p.meta {
-		margin-top: 0px;
+		margin-top: 0;
 		margin-bottom: 3px;
 		color: $C_INTER;
 	}
 	img.avatar {
 		float: right;
-		margin: 0px 5px 5px 10px;
+		margin: 0 5px 5px 10px;
 	}
 	.content {
 		border-left: 1px solid $C_INTER;
@@ -1074,7 +1076,7 @@ li.comment {
 	> ul {
 		list-style: none;
 		margin-left: 1.25em;
-		padding-left: 0px;
+		padding-left: 0;
 	}
 	&.fold > figure,
 	&.fold > .content,
@@ -1097,9 +1099,9 @@ code {
 	white-space: pre-wrap;
 	&[class] {
 		display: block;
-		margin: 10px 0px 10px 10px;
+		margin: 10px 0 10px 10px;
 		padding-left: 5px;
-		padding-right: 0px;
+		padding-right: 0;
 		border-left: 3px solid $C_BANDEAU;
 		border-bottom: 1px solid $C_CLAIR;
 	}
@@ -1193,7 +1195,7 @@ body#boards-show {
 		display: none;
 	}
 	#container {
-		margin-left: 0px;
+		margin-left: 0;
 		font-size: small;
 		text-align: justify;
 	}
@@ -1223,7 +1225,7 @@ body#boards-show {
 }
 /* Ligne de tribune */
 .chat {
-	margin: 3px 0px 0px 0px;
+	margin: 3px 0 0 0;
 	/* pseudo */
 	.board-left > b:first-of-type {
 		color: $C_FONCE;
@@ -1232,10 +1234,10 @@ body#boards-show {
 	}
 	border-top: 1px solid transparent;
 	border-bottom: 1px solid transparent;
-	margin-top: 0px;
+	margin-top: 0;
 	margin-bottom: -2px;
-	padding-top: 0px;
-	padding-bottom: 0px;
+	padding-top: 0;
+	padding-bottom: 0;
 }
 @mixin board_highlight {
 	background: $C_BD1;
@@ -1268,24 +1270,24 @@ body#boards-show {
 		width: 180px;
 		border-top: 1px solid transparent;
 		border-bottom: 1px solid transparent;
-		margin-top: 0px;
-		margin-bottom: 0px;
+		margin-top: 0;
+		margin-bottom: 0;
 	}
 	.board-right {
 		display: block;
 		margin-left: 180px;
 		border-top: 1px solid transparent;
 		border-bottom: 1px solid transparent;
-		margin-top: 0px;
-		margin-bottom: 0px;
+		margin-top: 0;
+		margin-bottom: 0;
 		&:before {
 			content: "- ";
 			font-weight: bold;
 		}
 		time {
 			color: #0000EE;
-		margin-top: 0px;
-		margin-bottom: 0px;
+		margin-top: 0;
+		margin-bottom: 0;
 		}
 	}
 	.myPost {
@@ -1310,7 +1312,7 @@ body#boards-show {
 		td {
 			width: 50%;
 			border-right: 1px solid $C_INTER;
-			padding: 4px 0px;
+			padding: 4px 0;
 			&:last-of-type { border-right: none; }
 		}
 	}
@@ -1383,9 +1385,9 @@ div#form_links {
 }
 
 body#news-show #redaction {
-	.score, .datePourCss {right: 0px;}
-	.score {top: 31px;}
-	.datePourCss {top: 0px;}
+	.score, .datePourCss { right: 0; }
+	.score { top: 31px; }
+	.datePourCss { top: 0; }
 }
 #redaction #edition {
 	margin-top: 40px + 29px;
@@ -1407,7 +1409,7 @@ body#news-show #redaction {
 
 	.inbox {
 		p {
-			margin: 2px 0px;
+			margin: 2px 0;
 		}
 		p.edition, p.locking {
 			&:before {
@@ -1458,7 +1460,7 @@ body#trackers-index .toolbox .new_content {
 body#dashboard-index #contents table,
 body#trackers-index #contents table {
 	border-collapse: collapse;
-	padding: 0px;
+	padding: 0;
 	clear: right;
 
 	th {
