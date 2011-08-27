@@ -111,13 +111,13 @@ module NodeHelper
     nb_comments = content_tag(:span, pluralize(node.try(:comments_count), "commentaire"), :class => "nb_comments")
     if current_account
       status = node.read_status(current_account)
-      status = :new_comments if Integer === status
       visit  = case status
                when :not_read then ", non visité"
                when Integer   then ", #{pluralize status, "nouveau", "nouveaux"} !"
                else                ", déjà visité"
                end
       visit  = content_tag(:span, visit, :class => "visit")
+      status = :new_comments if Integer === status
     else
       status = :anonymous_reader
     end
