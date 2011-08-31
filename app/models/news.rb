@@ -23,6 +23,8 @@
 # that will be reviewed and moderated by the LinuxFr.org team.
 #
 class News < Content
+  set_table_name "news"
+
   belongs_to :section
   belongs_to :moderator, :class_name => "User"
   has_many :links, :dependent => :destroy, :inverse_of => :news
@@ -178,11 +180,11 @@ class News < Content
 
 ### Associated node ###
 
-  def create_node(attrs={}, replace_existing=true)
+  def create_node(attrs={})
     account = Account.find_by_email(author_email)
-    self.owner_id = account.try(:user_id)
+    self.tmp_owner_id = account.try(:user_id)
     attrs[:public] = false
-    super attrs, replace_existing
+    super attrs
   end
 
   def vote_on_candidate(value, account)

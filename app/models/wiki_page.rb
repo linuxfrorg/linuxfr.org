@@ -15,6 +15,8 @@
 # The wiki have pages, with the content that can't go anywhere else.
 #
 class WikiPage < Content
+  set_table_name "wiki_pages"
+
   RESERVED_WORDS = %w(index nouveau modifications pages)
   has_many :versions, :class_name => 'WikiVersion',
                       :dependent  => :destroy,
@@ -63,9 +65,9 @@ class WikiPage < Content
 
 ### Associated node ###
 
-  def create_node(attrs={}, replace_existing=true)
+  def create_node(attrs={})
     self.cc_licensed = true
-    self.owner_id = user_id
+    self.tmp_owner_id = user_id
     super
   end
 

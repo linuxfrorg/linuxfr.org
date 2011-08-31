@@ -49,7 +49,7 @@ class TrackersController < ApplicationController
   def create
     @tracker = Tracker.new
     @tracker.attributes = params[:tracker]
-    @tracker.owner_id = current_user.try(:id)
+    @tracker.tmp_owner_id = current_user.try(:id)
     if !preview_mode && @tracker.save
       redirect_to @tracker, :notice => "Votre entrée a bien été créée dans le suivi"
     else

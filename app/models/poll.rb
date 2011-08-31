@@ -11,6 +11,8 @@
 #
 
 class Poll < Content
+  set_table_name "polls"
+
   has_many :answers, :class_name => 'PollAnswer',
                      :dependent  => :destroy,
                      :order      => 'position',
@@ -28,9 +30,9 @@ class Poll < Content
 
 ### Associated node ###
 
-  def create_node(attrs={}, replace_existing=true)
+  def create_node(attrs={})
     attrs[:public] = false
-    super attrs, replace_existing
+    super attrs
   end
 
 ### SEO ###

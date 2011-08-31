@@ -18,6 +18,8 @@
 # informations, discussions and trolls.
 #
 class Diary < Content
+  set_table_name "diaries"
+
   belongs_to :owner, :class_name => 'User'
 
   attr_accessible :title, :wiki_body

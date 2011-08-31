@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "rails",                   "=3.0.10"
+gem "rails",                   "~>3.1.0"
 
 gem "acts_as_list",            "~>0.1"
 gem "albino",                  "~>1.3"
@@ -18,7 +18,7 @@ gem "htmlentities",            "~>4.3"
 gem "jammit",                  "~>0.6"
 gem "kaminari",                "~>0.12"
 gem "mini_magick",             "~>3.3"
-gem "mysql2",                  "~>0.2.7" # TODO mysql2 0.3.x for Rails 3.1
+gem "mysql2",                  "~>0.3"
 gem "nokogiri",                "~>1.4"
 gem "rinku",                   "~>1.2"
 gem "redcarpet",               "~>1.17"

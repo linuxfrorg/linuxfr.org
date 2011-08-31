@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     @post = Post.new
     enforce_create_permission(@post)
     @post.attributes = params[:post]
-    @post.owner_id = current_account.user_id
+    @post.tmp_owner_id = current_account.user_id
     if !preview_mode && @post.save
       redirect_to forum_posts_url(:forum_id => @post.forum), :notice => "Votre message a bien été créé"
     else

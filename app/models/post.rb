@@ -17,6 +17,8 @@
 # The users post them for seeking help.
 #
 class Post < Content
+  set_table_name "posts"
+
   belongs_to :forum
 
   attr_accessible :title, :wiki_body, :forum_id

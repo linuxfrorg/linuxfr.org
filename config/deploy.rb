@@ -20,6 +20,7 @@ namespace :env do
     set :vserver,   "alpha"
     set :user,      "alpha"
     set :rails_env, :alpha
+    set :branch,    "rails31"
   end
 
   desc "Production"
