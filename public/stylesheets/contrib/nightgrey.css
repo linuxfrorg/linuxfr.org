@@ -946,6 +946,16 @@ footer.actions .tag_in_place {
   margin-top: -10px;
 }
 
+/* la signature */
+li.comment .content .signature {
+	color: #999;
+	font-size: 11px;
+}
+li.comment .content .signature:before {
+	white-space: pre-line;
+	content: "-- \a";
+}
+
 .comment.new-comment h2 {
   border: 1px solid red;
 }
