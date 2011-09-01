@@ -20,4 +20,8 @@ LinuxfrOrg::Application.configure do
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
+
+  # Assets
+  config.assets.compress = false
+  config.assets.debug = true
 end

@@ -1,18 +1,16 @@
 # The contrib stylesheets.
 #
-class Stylesheet < Struct.new(:name, :url)
-  BASE_DIR = "stylesheets/contrib"
+class Stylesheet < Struct.new(:name, :url, :image)
+  BASE_DIR = "app/assets/stylesheets/contrib"
 
   def self.all
-    Dir.chdir(Rails.root.join('public', BASE_DIR)) do
-      Dir['*.css'].map do |css|
-        Stylesheet.new(css, "/#{BASE_DIR}/#{css}")
+    Dir.chdir(Rails.root.join(BASE_DIR)) do
+      Dir['*css'].map do |scss|
+        css = scss.sub(/.scss$/, '')
+        png = "/stylesheets/contrib/#{css.sub 'css', 'png'}"
+        Stylesheet.new(css, "/assets/contrib/#{css}", png)
       end.shuffle
     end
-  end
-
-  def image
-    url.sub(/css$/, 'png')
   end
 
   def self.temporary(account, url, &blk)

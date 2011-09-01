@@ -33,6 +33,14 @@ gem "state_machine",           "~>1.0"
 # gem "thinking-sphinx",       "~>1.3", :require => "thinking_sphinx"
 # gem "ts-datetime-delta",     "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
 
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails',            "~>3.1"
+  gem 'coffee-rails',          "~>3.1"
+  gem 'uglifier'
+end
+
 # Rspec-rails must be in development for rake stats and in test for normal stuff
 group :development, :test do
   gem "rspec-rails",           "~>2.6"
@@ -60,5 +68,5 @@ end
 
 group :production do
   gem "unicorn",               "~>3.5"
-  gem "nono-redis-store",      "~>1.0"
+  gem "redis-store",           "~>1.0"
 end

@@ -26,16 +26,33 @@ LinuxfrOrg::Application.configure do
   # In production, Apache or nginx will already do this
   config.serve_static_assets = false
 
-  ENV['RAILS_ASSET_ID'] = `git log -1 --pretty=format:"%h" public`
-
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "static.#{MY_DOMAIN}"
+
+  # Compress JavaScripts and CSS
+  config.assets.compress = true
+
+  # Don't fallback to assets pipeline if a precompiled asset is missed
+  config.assets.compile = false
+
+  # Generate digests for assets URLs
+  config.assets.digest = true
+
+  # Defaults to Rails.root.join("public/assets")
+  # config.assets.manifest = YOUR_PATH
+
+  # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
+  # config.assets.precompile += %w( search.js )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => MY_DOMAIN }
   config.action_mailer.delivery_method     = :sendmail
   config.action_mailer.sendmail_settings   = { :location  => "/usr/sbin/sendmail" }
+
+  # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
+  # the I18n.default_locale when a translation can not be found)
+  config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify

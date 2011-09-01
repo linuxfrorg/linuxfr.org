@@ -1,3 +1,5 @@
+@import 'contrib/grayscale';
+
 #top, #container > h1, .link, #sidebar, #bigfooter, #toolbar, #comments > p, body:not(#wiki_pages-changes) .toolbox, #site form,
 body:not(#posts-new):not(#posts-create) footer > p, body:not(#posts-new):not(#posts-create) section#container > p, .banner, .notice, #contents > h1 {
 	display: none !important;
