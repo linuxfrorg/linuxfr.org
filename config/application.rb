@@ -31,10 +31,9 @@ module LinuxfrOrg
     COOKIE_STORE_KEY = 'linuxfr.org_session'
     config.session_store :cookie_store, :key => COOKIE_STORE_KEY
 
-    # Enable the asset pipeline
     config.assets.enabled = true
-
-    # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    config.assets.precompile += %w(mobile.css print.css)
+    config.assets.precompile += Dir["#{Rails.root.join 'app/assets/stylesheets/contrib'}/*"]
   end
 end

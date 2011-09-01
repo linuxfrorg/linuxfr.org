@@ -1,6 +1,8 @@
 require 'bundler/capistrano'
 require 'capistrano_colors'
 
+load 'deploy/assets'
+
 # Common options
 set :use_sudo,   false
 set :scm,        :git
@@ -74,17 +76,6 @@ namespace :fs do
 end
 after "deploy:finalize_update", "fs:symlink"
 after "deploy:setup", "fs:create_dirs"
-
-
-# Assets are packaged by jammit
-namespace :assets do
-  desc "Bundle and minify the JS and CSS files"
-  task :precache, :roles => :web, :except => { :no_release => true } do
-    run_locally "jammit"
-    top.upload "public/assets", "#{release_path}/public", :via => :scp, :recursive => true
-  end
-end
-after "deploy:finalize_update", "assets:precache"
 
 
 # Redis cache
