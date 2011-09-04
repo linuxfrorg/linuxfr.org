@@ -1,55 +1,48 @@
 (($) ->
 
-  $.EditionInPlace = (element, creation, options) ->
-    base = this
-    base.creation = creation
-    base.element = $(element)
-    base.element.data "EditionInPlace", base
-    base.init = ->
-      base.url = base.element.data("url") or (document.location.pathname + "/modifier")
-      base.element.click base.editForm
+  class EditionInPlace
+    constructor: (@el, creation: @creation) ->
+      @el.data "EditionInPlace", this
+      @url = @el.data("url") or (document.location.pathname + "/modifier")
+      @el.click @editForm
 
-    base.editForm = ->
-      if base.element.hasClass("locked")
+    editForm: =>
+      if @el.hasClass("locked")
         $.noticeAdd text: "Désolé, quelqu'un est déjà en train de modifier cet élément."
         return false
-      base.old = base.element.html()
-      base.element.unbind "click"
-      base.element.load base.url, ->
-        form = base.element.find("form")
-        form.submit ->
-          base.submitForm (if base.creation then base.old else "")
-          false
-        form.find(".cancel").click base.reset
+      @old = @el.html()
+      @el.unbind "click"
+      @el.load @url, =>
+        form = @el.find("form")
+        form.submit @submitForm
+        form.find(".cancel").click @reset
         form.find("textarea, input")[0].select()
-        base.element.trigger "in_place:form", base
+        @el.trigger "in_place:form", this
       false
 
-    base.reset = ->
-      base.element.html base.old
-      base.element.click base.editForm
+    reset: =>
+      @el.html(if @creation then @old else "")
+      @el.click @editForm
       false
 
-    base.submitForm = (content) ->
-      form = base.element.find("form")
+    submitForm: (content) =>
+      form = @el.find("form")
       $.ajax
         url: form.attr("action")
         type: "post"
         data: form.serialize()
         dataType: "text"
-        success: ->
-          base.element.trigger "in_place:result", base
-          base.element.click base.editForm
-      base.element.html content
-      base.element.click base.editForm
+        success: =>
+          @el.trigger "in_place:result", this
+          @el.click @editForm
+      @el.html @old
+      @el.click @editForm
       false
 
-    base.init()
-
   $.fn.editionInPlace = ->
-    @each -> new $.EditionInPlace(this, false)
+    @each -> new EditionInPlace($(this), creation: false)
 
   $.fn.creationInPlace = ->
-    @each -> new $.EditionInPlace(this, true)
+    @each -> new EditionInPlace($(this), creation: true)
 
 ) window.jQuery
