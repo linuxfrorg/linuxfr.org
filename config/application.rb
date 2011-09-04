@@ -34,6 +34,8 @@ module LinuxfrOrg
     config.assets.enabled = true
     config.assets.version = '1.0'
     config.assets.precompile += %w(mobile.css print.css)
-    config.assets.precompile += Dir["#{Rails.root.join 'app/assets/stylesheets/contrib'}/*"]
+    Dir.chdir(Rails.root.join "app/assets/stylesheets") do
+      config.assets.precompile += Dir["contrib/*"]
+    end
   end
 end

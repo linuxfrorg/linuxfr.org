@@ -18,7 +18,7 @@ var miu = {
     }
 };
 
-var markItUpSettings = {
+window.markItUpSettings = {
     previewParserPath:    '',
     onTab: { keepDefault: true },
     onShiftEnter: { keepDefault: false, openWith: '\n\n' },
