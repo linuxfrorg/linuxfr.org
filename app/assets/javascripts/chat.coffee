@@ -11,7 +11,7 @@
       @board.find("form").submit @postMessage
       @totoz_type = $.cookie("totoz-type")
       @totoz_url = $.cookie("totoz-url") or "http://sfw.totoz.eu/gif/"
-      @norloge right  for right in @board.find(".board-right")
+      @norlogize right  for right in @board.find(".board-right")
       @board.find("time").live("mouseenter", @highlitizer).live("mouseleave", @deshighlitizer)
       if @totoz_type == "popup"
         @totoz = @board.append($("<div id=\"les-totoz\"/>")).find("#les-totoz")
@@ -43,12 +43,12 @@
       @input.caret range.start + time.length + 1
       @input.focus()
 
-    norlogize: ->
-      @innerHTML = @innerHTML.replace(/[0-2][0-9]:[0-6][0-9](:[0-6][0-9])?([⁰¹²³⁴⁵⁶⁷⁸⁹]+|[:\^][0-9]+)?/g, "<time>$&</time>")
+    norlogize: (x) ->
+      x.innerHTML = x.innerHTML.replace(/[0-2][0-9]:[0-6][0-9](:[0-6][0-9])?([⁰¹²³⁴⁵⁶⁷⁸⁹]+|[:\^][0-9]+)?/g, "<time>$&</time>")
       if @totoz_type == "popup"
-        @innerHTML = @innerHTML.replace(/\[:([^\]]+)\]/g, "<span class=\"totoz\" data-totoz-name=\"$1\">$&</span>")
+        x.innerHTML = x.innerHTML.replace(/\[:([^\]]+)\]/g, "<span class=\"totoz\" data-totoz-name=\"$1\">$&</span>")
       else if @totoz_type == "inline"
-        @innerHTML = @innerHTML.replace(/\[:([^\]]+)\]/g, "<img class=\"totoz\" alt=\"$&\" title=\"$&\" src=\"#{@totoz_url}$1.gif\" style=\"vertical-align: top; background-color: transparent\"/>")
+        x.innerHTML = x.innerHTML.replace(/\[:([^\]]+)\]/g, "<img class=\"totoz\" alt=\"$&\" title=\"$&\" src=\"#{@totoz_url}$1.gif\" style=\"vertical-align: top; background-color: transparent\"/>")
 
     highlitizer: (event) =>
       time = $(event.target).text()

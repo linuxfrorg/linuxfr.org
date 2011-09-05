@@ -7,7 +7,7 @@
   .new_content
     = link_to "Proposer une entrée", "/suivi/nouveau"
 
-= form_for @tracker, :url => trackers_path, :html => { :method => :get } do |f|
+= form_for @tracker, :url => trackers_path, :method => :get do |f|
   %h2 Filtrer les entrées du suivi
   %p
     = f.label :state, "État&nbsp;: ".html_safe

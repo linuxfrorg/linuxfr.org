@@ -1,5 +1,5 @@
 %h2 Changer d'avatar
-= form_for @account, :url => registration_path(:account), :html => { :method => :put, :multipart => true } do |f|
+= form_for @account, :url => registration_path(:account), :method => :put do |f|
   = messages_on_error @account
   = f.fields_for :user do |u|
     %figure.image

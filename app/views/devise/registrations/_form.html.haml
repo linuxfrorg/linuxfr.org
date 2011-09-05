@@ -1,4 +1,4 @@
-= form_for @account, :url => registration_path(:account), :html => { :method => :put } do |f|
+= form_for @account, :url => registration_path(:account), :method => :put do |f|
   = messages_on_error @account
   %p
     = f.label :email, 'Adresse de courriel'
