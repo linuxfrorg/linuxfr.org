@@ -15,17 +15,15 @@ gem "haml",                    "~>3.1"
 gem "html_spellchecker",       "~>0.1"
 gem "html_truncator",          "~>0.2"
 gem "htmlentities",            "~>4.3"
-gem 'jquery-rails',            "~>1.0"
 gem "kaminari",                "~>0.12"
 gem "mini_magick",             "~>3.3"
 gem "mysql2",                  "~>0.3"
-gem "nokogiri",                "~>1.4"
+gem "nokogiri",                "~>1.5"
 gem "rinku",                   "~>1.2"
 gem "redcarpet",               "~>1.17"
 gem "hiredis",                 "~>0.3"
 gem "redis",                   "~>2.2", :require => ["redis/connection/hiredis", "redis"]
 gem "sanitize",                "~>2.0"
-gem "sass",                    "~>3.1"
 gem "sitemap_generator",       "~>2.0"
 gem "simple_autocomplete",     "~>0.3"
 gem "state_machine",           "~>1.0"
@@ -36,9 +34,10 @@ gem "state_machine",           "~>1.0"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',            "~>3.1"
-  gem 'coffee-rails',          "~>3.1"
-  gem 'uglifier'
+  gem "jquery-rails",          "~>1.0"
+  gem "sass-rails",            "~>3.1"
+  gem "coffee-rails",          "~>3.1"
+  gem "uglifier"
 end
 
 # Rspec-rails must be in development for rake stats and in test for normal stuff
@@ -53,7 +52,6 @@ group :development do
   gem "capistrano_colors"
   gem "haml-rails"
   gem "pry"
-  gem "rails3-generators"
   gem "thin"
 end
 
@@ -66,6 +64,6 @@ group :test do
 end
 
 group :production do
-  gem "unicorn",               "~>3.5"
+  gem "unicorn",               "~>4.0"
   gem "redis-store",           "~>1.0"
 end

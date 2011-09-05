@@ -4,6 +4,7 @@ require 'rails'
 require 'active_record/railtie'
 require 'action_controller/railtie'
 require 'action_mailer/railtie'
+require "sprockets/railtie"
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -32,7 +33,8 @@ module LinuxfrOrg
     config.session_store :cookie_store, :key => COOKIE_STORE_KEY
 
     config.assets.enabled = true
-    config.assets.version = '1.0'
+    config.assets.version = "1.0"
+    config.assets.js_compressor = :uglifier
     config.assets.precompile += %w(mobile.css print.css)
     Dir.chdir(Rails.root.join "app/assets/stylesheets") do
       config.assets.precompile += Dir["contrib/*"]
