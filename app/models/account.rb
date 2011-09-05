@@ -140,7 +140,6 @@ class Account < ActiveRecord::Base
   state_machine :role, :initial => :moule do
     event :inactivate            do transition all                 => :inactive  end
     event :reactivate            do transition :inactive           => :moule     end
-    event :give_writer_rights    do transition [:moule, :reviewer] => :writer    end
     event :give_reviewer_rights  do transition all - :inactive     => :reviewer  end
     event :give_moderator_rights do transition [:reviewer, :admin] => :moderator end
     event :give_admin_rights     do transition :moderator          => :admin     end

@@ -1,5 +1,5 @@
 class RedactionController < ApplicationController
-  before_filter :writer_required
+  before_filter :authenticate_account!
   append_view_path NoNamespaceResolver.new
 
   def index

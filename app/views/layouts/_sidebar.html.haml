@@ -27,9 +27,9 @@
         %li= link_to "Pas de compte&nbsp;? S'inscrire&nbsp;!".html_safe, '/compte/inscription'
         %li= link_to "Proposer un contenu", '/proposer-un-contenu'
   = yield :column
-  - if current_account && (current_account.writer? || current_account.amr?)
+  - if current_account
     = render 'redaction/box'
-  - if current_account && current_account.amr?
-    = render 'moderation/box'
-  - if current_account && current_account.admin?
-    = render 'admin/box'
+    - if current_account.amr?
+      = render 'moderation/box'
+    - if current_account.admin?
+      = render 'admin/box'

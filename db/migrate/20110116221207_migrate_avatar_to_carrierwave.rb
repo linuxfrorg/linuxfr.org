@@ -1,6 +1,6 @@
 class MigrateAvatarToCarrierwave < ActiveRecord::Migration
   def self.up
-    change_table :users do |t|
+    change_table :users, :bulk => true do |t|
       t.string :avatar
       t.remove :avatar_file_name
       t.remove :avatar_content_type
@@ -10,7 +10,7 @@ class MigrateAvatarToCarrierwave < ActiveRecord::Migration
   end
 
   def self.down
-    change_table :users do |t|
+    change_table :users, :bulk => true do |t|
       t.string :avatar_updated_at
       t.string :avatar_file_size
       t.string :avatar_content_type
