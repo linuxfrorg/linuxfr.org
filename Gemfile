@@ -52,6 +52,7 @@ group :development do
   gem "capistrano"
   gem "capistrano_colors"
   gem "haml-rails"
+  gem "letter_opener"
   gem "pry"
   gem "thin"
 end
