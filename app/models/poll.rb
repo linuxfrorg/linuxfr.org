@@ -78,23 +78,23 @@ class Poll < Content
 ### ACL ###
 
   def viewable_by?(account)
-    %w(published archived).include?(state) || (account && account.amr?)
+    %w(published archived).include?(state) || account.amr?
   end
 
   def updatable_by?(account)
-    account && account.amr?
+    account.amr?
   end
 
   def destroyable_by?(account)
-    account && account.admin?
+    account.admin?
   end
 
   def acceptable_by?(account)
-    account && account.amr?
+    account.amr?
   end
 
   def refusable_by?(account)
-    account && account.amr?
+    account.amr?
   end
 
   def answerable_by?(ip)

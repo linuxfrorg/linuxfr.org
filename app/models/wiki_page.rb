@@ -85,19 +85,19 @@ class WikiPage < Content
 ### ACL ###
 
   def creatable_by?(account)
-    account && account.karma > 0
+    account.karma > 0
   end
 
   def updatable_by?(account)
-    account
+    account.karma > 0
   end
 
   def destroyable_by?(account)
-    account && account.amr?
+    account.amr?
   end
 
   def commentable_by?(account)
-    account && viewable_by?(account)
+    viewable_by?(account)
   end
 
 ### Interest ###

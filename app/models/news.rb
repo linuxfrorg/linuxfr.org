@@ -225,17 +225,12 @@ class News < Content
     published? || (account && draft?) || account.try(:amr?)
   end
 
-  def creatable_by?(account)
-    true
-  end
-
   def updatable_by?(account)
-    return false unless account
     published? ? (account.moderator? || account.admin?) : viewable_by?(account)
   end
 
   def destroyable_by?(account)
-    account && (account.moderator? || account.admin?)
+    account.moderator? || account.admin?
   end
 
   def commentable_by?(account)
@@ -243,19 +238,19 @@ class News < Content
   end
 
   def acceptable_by?(account)
-    account && (account.admin? || (account.moderator? && acceptable?))
+    account.admin? || (account.moderator? && acceptable?)
   end
 
   def refusable_by?(account)
-    account && (account.admin? || (account.moderator? && refusable?))
+    account.admin? || (account.moderator? && refusable?)
   end
 
   def pppable_by?(account)
-    account && (account.moderator? || account.admin?) && published?
+    (account.moderator? || account.admin?) && published?
   end
 
   def votable_by?(account)
-    super(account) || (account && account.amr? && candidate? && !submitted_by?(account))
+    super(account) || (account.amr? && candidate? && !submitted_by?(account))
   end
 
   def acceptable?

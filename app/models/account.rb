@@ -189,7 +189,7 @@ class Account < ActiveRecord::Base
   end
 
   def viewable_by?(account)
-    account && (account.admin? || account.moderator? || account.id == self.id)
+    account.admin? || account.moderator? || account.id == self.id
   end
 
 ### Karma ###

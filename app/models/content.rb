@@ -35,31 +35,30 @@ class Content < ActiveRecord::Base
   end
 
   def creatable_by?(account)
-    account
+    true
   end
 
   def updatable_by?(account)
-    account
+    true
   end
 
   def destroyable_by?(account)
-    account
+    true
   end
 
   def commentable_by?(account)
-    account && viewable_by?(account) && (Time.now - node.created_at) < 3.months
+    viewable_by?(account) && (Time.now - node.created_at) < 3.months
   end
 
   def votable_by?(account)
-    account && visible?                        &&
-        self.user != account.user              &&
+    visible? && self.user != account.user      &&
         (Time.now - created_at) < 3.months     &&
         (account.nb_votes > 0 || account.amr?) &&
         !node.vote_by?(account.id)
   end
 
   def taggable_by?(account)
-    account && visible? && viewable_by?(account)
+    visible? && viewable_by?(account)
   end
 
 ### Workflow ###

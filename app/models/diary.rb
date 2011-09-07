@@ -49,15 +49,15 @@ class Diary < Content
 ### ACL ###
 
   def creatable_by?(account)
-    account && account.karma > 0
+    account.karma > 0
   end
 
   def updatable_by?(account)
-    account && (account.moderator? || account.admin?)
+    account.moderator? || account.admin?
   end
 
   def destroyable_by?(account)
-    account && (account.moderator? || account.admin?)
+    account.moderator? || account.admin?
   end
 
 end

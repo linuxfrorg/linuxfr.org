@@ -39,7 +39,7 @@ class Tag < ActiveRecord::Base
 ### Visibility ###
 
   def updatable_by?(account)
-    account && (account.moderator? || account.admin?)
+    account.moderator? || account.admin?
   end
 
   def to_param
