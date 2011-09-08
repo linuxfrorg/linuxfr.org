@@ -12,7 +12,8 @@
       @totoz_type = $.cookie("totoz-type")
       @totoz_url = $.cookie("totoz-url") or "http://sfw.totoz.eu/gif/"
       @norlogize right  for right in @board.find(".board-right")
-      @board.find("time").live("mouseenter", @highlitizer).live("mouseleave", @deshighlitizer)
+      @board.delegate("time", "mouseenter", @highlitizer)
+            .delegate("time", "mouseleave", @deshighlitizer)
       if @totoz_type == "popup"
         @totoz = @board.append($("<div id=\"les-totoz\"/>")).find("#les-totoz")
         @board.find(".totoz").live("mouseenter", @createTotoz).live("mouseleave", @destroyTotoz)
