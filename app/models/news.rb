@@ -102,7 +102,7 @@ class News < Content
     author.give_karma(50) if author
     message = "<b>La dépêche a été publiée</b>"
     Board.create_for(self, :user => moderator, :kind => "moderation", :message => message)
-    $redis.publish "news", {:title => title, :slug => cached_slug}.to_json
+    $redis.publish "news", {:id => self.id, :title => title, :slug => cached_slug}.to_json
   end
 
   def be_refused
