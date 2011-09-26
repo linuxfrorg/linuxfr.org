@@ -97,20 +97,21 @@
       items = $(@options.folding)
       items.find(".folding").remove()
       for i in items
-        item = $(i)
-        score = parseInt(item.find(".score:first").text(), 10)
-        link = item.children("h2").prepend('<a href="#" class="folding" title="Plier">[-]</a>').children(".folding")
-        fold = (b) ->
-          if b
-            item.addClass "fold"
-            link.text("[+]").attr "title", "Déplier"
-          else
-            item.removeClass "fold"
-            link.text("[-]").attr "title", "Plier"
-        link.click ->
-          fold link.text() == "[-]"
-          false
-        fold score < @threshold
+        do (i) ->
+          item = $(i)
+          score = parseInt(item.find(".score:first").text(), 10)
+          link = item.children("h2").prepend('<a href="#" class="folding" title="Plier">[-]</a>').children(".folding")
+          fold = (b) ->
+            if b
+              item.addClass "fold"
+              link.text("[+]").attr "title", "Déplier"
+            else
+              item.removeClass "fold"
+              link.text("[-]").attr "title", "Plier"
+          link.click ->
+            fold link.text() == "[-]"
+            false
+          fold score < @threshold
 
   Toolbar.defaultOptions =
     folding: null
