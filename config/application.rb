@@ -4,9 +4,14 @@ require 'rails'
 require 'active_record/railtie'
 require 'action_controller/railtie'
 require 'action_mailer/railtie'
+require "sprockets/railtie"
 
-# Auto-require default libraries and those for the current Rails environment.
-Bundler.require(:default, Rails.env) if defined?(Bundler)
+if defined?(Bundler)
+  # If you precompile assets before deploying to production, use this line
+  Bundler.require *Rails.groups(:assets => %w(development test))
+  # If you want your assets lazily compiled in production, use this line
+  # Bundler.require(:default, :assets, Rails.env)
+end
 
 module LinuxfrOrg
   class Application < Rails::Application
@@ -26,5 +31,13 @@ module LinuxfrOrg
 
     COOKIE_STORE_KEY = 'linuxfr.org_session'
     config.session_store :cookie_store, :key => COOKIE_STORE_KEY
+
+    config.assets.enabled = true
+    config.assets.version = "1.0"
+    config.assets.js_compressor = :uglifier
+    config.assets.precompile += %w(mobile.css print.css)
+    Dir.chdir(Rails.root.join "app/assets/stylesheets") do
+      config.assets.precompile += Dir["contrib/*"].map {|s| s.sub /.scss$/, '' }
+    end
   end
 end

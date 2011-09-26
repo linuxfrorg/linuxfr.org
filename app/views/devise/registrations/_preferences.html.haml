@@ -1,5 +1,5 @@
 %h2 Options
-= form_for @account, :url => registration_path(:account), :html => { :method => :put } do |f|
+= form_for @account, :url => registration_path(:account), :method => :put do |f|
   = f.fields_for :user do |u|
     %p
       = u.label :name, "Prénom et nom"
@@ -25,7 +25,7 @@
     = f.submit "Enregistrer"
 
 %h2 Choisir les contenus affichés sur la page d'accueil
-= form_for @account, :url => registration_path(:account), :html => { :method => :put } do |f|
+= form_for @account, :url => registration_path(:account), :method => :put do |f|
   %p
     = f.check_box :news_on_home
     = f.label :news_on_home, "Dépêches"

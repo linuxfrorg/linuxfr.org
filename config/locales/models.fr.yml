@@ -1,28 +1,28 @@
 fr:
   activerecord:
     models:
-      account: compte
-      banner: bannière
-      category: catégorie
-      comment: commentaire
-      content: contenu
-      diary: journal
-      forum: forum
-      friend_site: site ami
-      link: lien
-      news: dépêche
-      node: nœud
-      page: page
-      paragraph: paragraphe
-      poll: sondage
-      poll_answer: réponse
-      post: message
-      response: réponse
-      section: section
-      tracker: entrée du suivi
-      user: utilisateur
-      wikipage: page de wiki
-      wikiversion: version
+      account: "compte"
+      banner: "bannière"
+      category: "catégorie"
+      comment: "commentaire"
+      content: "contenu"
+      diary: "journal"
+      forum: "forum"
+      friend_site: "site ami"
+      link: "lien"
+      news: "dépêche"
+      node: "nœud"
+      page: "page"
+      paragraph: "paragraphe"
+      poll: "sondage"
+      poll_answer: "réponse"
+      post: "message"
+      response: "réponse"
+      section: "section"
+      tracker: "entrée du suivi"
+      user: "utilisateur"
+      wikipage: "page de wiki"
+      wikiversion: "version"
 
   errors:
     messages:

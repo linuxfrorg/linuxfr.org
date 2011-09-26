@@ -8,6 +8,10 @@ LinuxfrOrg::Application.configure do
   # and recreated between test runs.  Don't rely on the data there!
   config.cache_classes = true
 
+  # Configure static asset server for tests with Cache-Control for performance
+  config.serve_static_assets = true
+  config.static_cache_control = "public, max-age=3600"
+
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
@@ -34,4 +38,7 @@ LinuxfrOrg::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # Allow pass debug_assets=true as a query parameter to load pages with unpackaged assets
+  config.assets.allow_debugging = true
 end

@@ -17,6 +17,8 @@
 # The users post them for seeking help.
 #
 class Post < Content
+  set_table_name "posts"
+
   belongs_to :forum
 
   attr_accessible :title, :wiki_body, :forum_id
@@ -50,11 +52,11 @@ class Post < Content
 ### ACL ###
 
   def updatable_by?(account)
-    account && (node.user_id == account.user_id || account.moderator? || account.admin?)
+    node.user_id == account.user_id || account.moderator? || account.admin?
   end
 
   def destroyable_by?(account)
-    account && (account.moderator? || account.admin?)
+    account.moderator? || account.admin?
   end
 
 end

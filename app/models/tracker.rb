@@ -22,6 +22,8 @@
 # They can also suggest improvements here.
 #
 class Tracker < Content
+  set_table_name "trackers"
+
   belongs_to :assigned_to_user, :class_name => "User"
   belongs_to :category
 
@@ -78,20 +80,16 @@ class Tracker < Content
 
 ### ACL ###
 
-  def creatable_by?(account)
-    true
-  end
-
   def updatable_by?(account)
-    account && (account.moderator? || account.admin? || account.user_id == node.user_id)
+    account.moderator? || account.admin? || account.user_id == node.user_id
   end
 
   def destroyable_by?(account)
-    account && (account.moderator? || account.admin?)
+    account.moderator? || account.admin?
   end
 
   def commentable_by?(account)
-    account && viewable_by?(account)
+    viewable_by?(account)
   end
 
 end

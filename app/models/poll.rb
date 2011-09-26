@@ -11,6 +11,8 @@
 #
 
 class Poll < Content
+  set_table_name "polls"
+
   has_many :answers, :class_name => 'PollAnswer',
                      :dependent  => :destroy,
                      :order      => 'position',
@@ -28,9 +30,9 @@ class Poll < Content
 
 ### Associated node ###
 
-  def create_node(attrs={}, replace_existing=true)
+  def create_node(attrs={})
     attrs[:public] = false
-    super attrs, replace_existing
+    super attrs
   end
 
 ### SEO ###
@@ -76,23 +78,23 @@ class Poll < Content
 ### ACL ###
 
   def viewable_by?(account)
-    %w(published archived).include?(state) || (account && account.amr?)
+    %w(published archived).include?(state) || account.amr?
   end
 
   def updatable_by?(account)
-    account && account.amr?
+    account.amr?
   end
 
   def destroyable_by?(account)
-    account && account.admin?
+    account.admin?
   end
 
   def acceptable_by?(account)
-    account && account.amr?
+    account.amr?
   end
 
   def refusable_by?(account)
-    account && account.amr?
+    account.amr?
   end
 
   def answerable_by?(ip)

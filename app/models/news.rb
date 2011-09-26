@@ -23,6 +23,8 @@
 # that will be reviewed and moderated by the LinuxFr.org team.
 #
 class News < Content
+  set_table_name "news"
+
   belongs_to :section
   belongs_to :moderator, :class_name => "User"
   has_many :links, :dependent => :destroy, :inverse_of => :news
@@ -179,11 +181,11 @@ class News < Content
 
 ### Associated node ###
 
-  def create_node(attrs={}, replace_existing=true)
+  def create_node(attrs={})
     account = Account.find_by_email(author_email)
-    self.owner_id = account.try(:user_id)
+    self.tmp_owner_id = account.try(:user_id)
     attrs[:public] = false
-    super attrs, replace_existing
+    super attrs
   end
 
   def vote_on_candidate(value, account)
@@ -221,20 +223,15 @@ class News < Content
   end
 
   def viewable_by?(account)
-    published? || (account && draft? && account.writer?) || account.try(:amr?)
-  end
-
-  def creatable_by?(account)
-    true
+    published? || (account && draft?) || account.try(:amr?)
   end
 
   def updatable_by?(account)
-    return false unless account
     published? ? (account.moderator? || account.admin?) : viewable_by?(account)
   end
 
   def destroyable_by?(account)
-    account && (account.moderator? || account.admin?)
+    account.moderator? || account.admin?
   end
 
   def commentable_by?(account)
@@ -242,19 +239,19 @@ class News < Content
   end
 
   def acceptable_by?(account)
-    account && (account.admin? || (account.moderator? && acceptable?))
+    account.admin? || (account.moderator? && acceptable?)
   end
 
   def refusable_by?(account)
-    account && (account.admin? || (account.moderator? && refusable?))
+    account.admin? || (account.moderator? && refusable?)
   end
 
   def pppable_by?(account)
-    account && (account.moderator? || account.admin?) && published?
+    (account.moderator? || account.admin?) && published?
   end
 
   def votable_by?(account)
-    super(account) || (account && account.amr? && candidate? && !submitted_by?(account))
+    super(account) || (account.amr? && candidate? && !submitted_by?(account))
   end
 
   def acceptable?

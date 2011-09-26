@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "rails",                   "=3.0.10"
+gem "rails",                   "~>3.1.0"
 
 gem "acts_as_list",            "~>0.1"
 gem "albino",                  "~>1.3"
@@ -15,23 +15,31 @@ gem "haml",                    "~>3.1"
 gem "html_spellchecker",       "~>0.1"
 gem "html_truncator",          "~>0.2"
 gem "htmlentities",            "~>4.3"
-gem "jammit",                  "~>0.6"
 gem "kaminari",                "~>0.12"
 gem "mini_magick",             "~>3.3"
-gem "mysql2",                  "~>0.2.7" # TODO mysql2 0.3.x for Rails 3.1
-gem "nokogiri",                "~>1.4"
+gem "mysql2",                  "~>0.3"
+gem "nokogiri",                "~>1.5"
 gem "rinku",                   "~>1.2"
 gem "redcarpet",               "~>1.17"
 gem "hiredis",                 "~>0.3"
 gem "redis",                   "~>2.2", :require => ["redis/connection/hiredis", "redis"]
 gem "sanitize",                "~>2.0"
-gem "sass",                    "~>3.1"
 gem "sitemap_generator",       "~>2.0"
 gem "simple_autocomplete",     "~>0.3"
 gem "state_machine",           "~>1.0"
 # TODO Rails3
 # gem "thinking-sphinx",       "~>1.3", :require => "thinking_sphinx"
 # gem "ts-datetime-delta",     "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem "jquery-rails",          "~>1.0"
+  gem "sass-rails",            "~>3.1"
+  gem "coffee-rails",          "~>3.1"
+  gem "therubyracer",          "~>0.9", :require => 'v8'
+  gem "uglifier"
+end
 
 # Rspec-rails must be in development for rake stats and in test for normal stuff
 group :development, :test do
@@ -44,9 +52,8 @@ group :development do
   gem "capistrano"
   gem "capistrano_colors"
   gem "haml-rails"
-  gem "jquery-rails"
+  gem "letter_opener"
   gem "pry"
-  gem "rails3-generators"
   gem "thin"
 end
 
@@ -59,6 +66,6 @@ group :test do
 end
 
 group :production do
-  gem "unicorn",               "~>3.5"
-  gem "nono-redis-store",      "~>1.0"
+  gem "unicorn",               "~>4.0"
+  gem "redis-store",           "~>1.0"
 end

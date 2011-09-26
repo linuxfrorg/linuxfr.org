@@ -45,13 +45,7 @@ class Board
 
 ### Save boards ###
 
-  def self.chan_key(object_type, object_id)
-    ["boards/chans",  object_type.downcase, object_id].compact.join('/')
-  end
-
-  def chan_key
-    self.class.chan_key(@object_type, @object_id)
-  end
+  include ERB::Util
 
   def save
     return false if @message.blank?
@@ -71,14 +65,20 @@ class Board
     true
   end
 
+  def self.chan_key(object_type, object_id)
+    ["boards/chans",  object_type.downcase, object_id].compact.join('/')
+  end
+
+  def chan_key
+    self.class.chan_key(@object_type, @object_id)
+  end
+
   def rendered
     BoardsController.new.render_to_string(:partial => "board", :locals => {:board => self})
   end
 
 ### Sanitizing messages ###
 
-  include ActionView::Helpers::TagHelper
-  include ActionView::Helpers::TextHelper
   include ActionView::Helpers::SanitizeHelper
 
   ALLOWED_TAGS = %w(b i u s strong em code)

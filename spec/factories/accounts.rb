@@ -19,7 +19,7 @@ FactoryGirl.define do
 
     factory :writer_account do
       login "LionelAllorge"
-      role  "writer"
+      role  "moule"
     end
 
     factory :reviewer_account do

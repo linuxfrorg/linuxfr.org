@@ -4,8 +4,8 @@
   - if current_account && current_account.stylesheet.present?
     = stylesheet_link_tag current_account.stylesheet, :media => "screen, projection"
   - else
-    = include_stylesheets :default, :media => "screen, projection"
-  = include_stylesheets :print, :media => "print"
+    = stylesheet_link_tag 'application', :media => "screen, projection"
+  = stylesheet_link_tag 'print', :media => "print"
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
   -# TODO Thinking Sphinx compatible with Rails3
     <link rel="search" type="application/opensearchdescription+xml" title="Recherche LinuxFr.org" href="/opensearch.xml" />
