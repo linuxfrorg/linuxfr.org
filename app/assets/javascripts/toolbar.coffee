@@ -97,7 +97,7 @@
       items = $(@options.folding)
       items.find(".folding").remove()
       for i in items
-        do (i) ->
+        do (i) =>
           item = $(i)
           score = parseInt(item.find(".score:first").text(), 10)
           link = item.children("h2").prepend('<a href="#" class="folding" title="Plier">[-]</a>').children(".folding")
