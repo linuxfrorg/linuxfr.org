@@ -177,7 +177,7 @@ class Account < ActiveRecord::Base
 ### Actions ###
 
   def can_post_on_board?
-    active_for_authentication?
+    active_for_authentication? && !blacklisted?
   end
 
   def tag(node, tags)
@@ -208,6 +208,21 @@ class Account < ActiveRecord::Base
 
   def nb_votes
     [self["nb_votes"], 0].max
+  end
+
+### Blacklist for the board ###
+
+  def blacklisted?
+    $redis.exists("blacklist/#{self.id}")
+  end
+
+  def blacklist(nb_days)
+    $redis.set("blacklist/#{self.id}", 1)
+    $redis.expire("blacklist/#{self.id}", nb_days * 86400)
+  end
+
+  def can_blacklist?
+    moderator? || admin?
   end
 
 ### Preferences ###
