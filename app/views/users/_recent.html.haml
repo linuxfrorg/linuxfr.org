@@ -18,6 +18,11 @@
         %li= button_to "2 jours", moderation_blacklist_index_path(:nb_days => 2, :account_id => @user.account.id), :remote => true
         %li= button_to "une semaine", moderation_blacklist_index_path(:nb_days => 7, :account_id => @user.account.id), :remote => true
         %li= button_to "un mois", moderation_blacklist_index_path(:nb_days => 30, :account_id => @user.account.id), :remote => true
+      - if @user.account.logs.any?
+        %h2 Historique
+        %ul
+          = list_of(@user.account.logs) do |log|
+            #{l log.created_at} - #{log.description}
   %ul
     %li= link_to "Derniers journaux", user_path(@user)
     %li= link_to "Dernières dépêches", news_user_path(@user)

@@ -44,6 +44,7 @@
 class Account < ActiveRecord::Base
   include Canable::Cans
 
+  has_many :logs
   belongs_to :user, :inverse_of => :account
   accepts_nested_attributes_for :user, :reject_if => :all_blank
 
@@ -120,6 +121,7 @@ class Account < ActiveRecord::Base
 
     result = if valid_password?(current_password)
       update_attributes(params)
+      logs.create(:description => "Mot de passe modifié")
     else
       self.errors.add(:current_password, "Mot de passe invalide")
       self.attributes = params
@@ -143,6 +145,11 @@ class Account < ActiveRecord::Base
     event :give_reviewer_rights  do transition all - :inactive     => :reviewer  end
     event :give_moderator_rights do transition [:reviewer, :admin] => :moderator end
     event :give_admin_rights     do transition :moderator          => :admin     end
+    after_transition :do => :log_role
+  end
+
+  def log_role
+    logs.create(:description => "Changement de rôle : #{role_was} → #{role}")
   end
 
   # An AMR is someone who is either an admin, a moderator or a reviewer
@@ -219,6 +226,7 @@ class Account < ActiveRecord::Base
   def blacklist(nb_days)
     $redis.set("blacklist/#{self.id}", 1)
     $redis.expire("blacklist/#{self.id}", nb_days * 86400)
+    logs.create(:description => "Interdiction de tribune pour #{nb_days} jours")
   end
 
   def can_blacklist?
