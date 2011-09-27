@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110926220039) do
+ActiveRecord::Schema.define(:version => 20110927231326) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(:version => 20110926220039) do
     t.integer  "account_id"
     t.string   "description"
     t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "logs", ["account_id"], :name => "index_logs_on_account_id"

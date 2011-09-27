@@ -113,7 +113,7 @@ LinuxfrOrg::Application.routes.draw do
       post :refuse, :on => :member
       post :accept, :on => :member
     end
-    resources :blacklist, :only => [:create]
+    resources :plonk, :only => [:create]
   end
 
   # Admin

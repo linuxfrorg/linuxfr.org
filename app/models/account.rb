@@ -43,6 +43,7 @@
 #
 class Account < ActiveRecord::Base
   include Canable::Cans
+  include ActionView::Helpers::TextHelper
 
   has_many :logs
   belongs_to :user, :inverse_of => :account
@@ -184,7 +185,7 @@ class Account < ActiveRecord::Base
 ### Actions ###
 
   def can_post_on_board?
-    active_for_authentication? && !blacklisted?
+    active_for_authentication? && !plonked?
   end
 
   def tag(node, tags)
@@ -196,7 +197,7 @@ class Account < ActiveRecord::Base
   end
 
   def viewable_by?(account)
-    account.admin? || account.moderator? || account.id == self.id
+    account && (account.admin? || account.moderator? || account.id == self.id)
   end
 
 ### Karma ###
@@ -217,19 +218,19 @@ class Account < ActiveRecord::Base
     [self["nb_votes"], 0].max
   end
 
-### Blacklist for the board ###
+### Plonk for the board ###
 
-  def blacklisted?
-    $redis.exists("blacklist/#{self.id}")
+  def plonked?
+    $redis.exists("plonk/#{self.id}")
   end
 
-  def blacklist(nb_days)
-    $redis.set("blacklist/#{self.id}", 1)
-    $redis.expire("blacklist/#{self.id}", nb_days * 86400)
-    logs.create(:description => "Interdiction de tribune pour #{nb_days} jours")
+  def plonk(nb_days, user_id)
+    $redis.set("plonk/#{self.id}", 1)
+    $redis.expire("plonk/#{self.id}", nb_days * 86400)
+    logs.create(:description => "Interdiction de tribune pour #{pluralize nb_days, "jour"}", :user_id => user_id)
   end
 
-  def can_blacklist?
+  def can_plonk?
     moderator? || admin?
   end
 
