@@ -10,13 +10,14 @@
       @board.find(".board-left .norloge").click @norloge
       @board.find("form").submit @postMessage
       @totoz_type = $.cookie("totoz-type")
-      @totoz_url = $.cookie("totoz-url") or "http://sfw.totoz.eu/gif/"
+      @totoz_url  = $.cookie("totoz-url") or "http://sfw.totoz.eu/gif/"
       @norlogize right  for right in @board.find(".board-right")
       @board.delegate("time", "mouseenter", @highlitizer)
             .delegate("time", "mouseleave", @deshighlitizer)
       if @totoz_type == "popup"
         @totoz = @board.append($("<div id=\"les-totoz\"/>")).find("#les-totoz")
-        @board.find(".totoz").live("mouseenter", @createTotoz).live("mouseleave", @destroyTotoz)
+        @board.delegate(".totoz", "mouseenter", @createTotoz)
+              .delegate(".totoz", "mouseleave", @destroyTotoz)
       @poll()
 
     findCursor: ->
@@ -59,7 +60,7 @@
       @inbox.find("time.highlighted").removeClass "highlighted"
 
     createTotoz: (event) =>
-      totozName = @getAttribute("data-totoz-name")
+      totozName = event.target.getAttribute("data-totoz-name")
       totozId = encodeURIComponent(totozName).replace(/%/g, "")
       totoz = @totoz.find("#totoz-" + totozId).first()
       if totoz.size() == 0
@@ -71,8 +72,8 @@
       [x, y] = [offset.left, offset.top]
       totoz.css "z-index": "15", display: "block", top: y + 20, left: x + 20
 
-    destroyTotoz: =>
-      totozId = encodeURIComponent(@getAttribute("data-totoz-name")).replace(/%/g, "")
+    destroyTotoz: (event) =>
+      totozId = encodeURIComponent(event.target.getAttribute("data-totoz-name")).replace(/%/g, "")
       totoz = @totoz.find("#totoz-" + totozId).first()
       totoz.css display: "none"
 
@@ -109,7 +110,7 @@
           if this[method]
             @inbox.prepend(message.msg).find(".board-left:first .norloge").click @norloge
             this[method] message.msg
-          @inbox.find(".board-right:first").each @norlogize
+          @norlogize right for right in @inbox.find(".board-right:first")
 
     on_chat: ->
 
