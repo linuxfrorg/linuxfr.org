@@ -1,6 +1,7 @@
 = form_tag "/sondages/#{poll.new_record? ? 0 : poll.to_param}/vote", :id => "#{dom_id poll}#{id_suffix}" do
   %ul.poll.current
-    = list_of poll.answers do |answer|
-      = radio_button_tag :position, answer.position, false, :id => "position_#{answer.position}#{id_suffix}"
-      = label_tag "position_#{answer.position}#{id_suffix}", answer.answer
+    - poll.answers.each_with_index do |answer,index|
+      %li
+        = radio_button_tag :position, answer.position, false, :id => "position_#{index}#{id_suffix}"
+        = label_tag "position_#{index}#{id_suffix}", answer.answer
   = submit_tag "Voter" if poll.published?
