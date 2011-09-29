@@ -1,15 +1,11 @@
 @charset "utf-8";
-/** cascade.css
+/** cascade-alternative.css
  *
- * CSS pour linuxfr.org RoR
- *  Un mélange de mes autres css avec les couleurs du site en templeet
+ * CSS pour linuxfr.org 
+ * Modification de la très belle css cascade de Benoît Monin
  *
  * Historique :
- *   1.1    05/01/2011    - [Yggdras] tribune: marge en pourcent pour board-right
- *                        - [Yggdras] mise en avant du lien new_content
- *   1.0    31/12/2010    - première version
- *
- * Benoît Monin
+ *   1.0    23/02/2011    - première version
  *
  * CC-BY-SA
  * Cette création est mise à disposition selon le Contrat
@@ -62,7 +58,7 @@ a:active {
 /* Bandeau de navigation en haut */
 nav#site {
 	display: block;
-	margin: 1.5em 0 3.5em;
+	margin: 1.5em 0 1.5em;
 	font-weight: bold;
 }
 	nav#site .go_to_content {
@@ -72,7 +68,6 @@ nav#site {
 		background: #EEEAE6;
 		background: -moz-linear-gradient(top, #F6F2EE, #E6E2DE);
 		background: -webkit-gradient(linear, left top, left bottom, from(#F6F2EE), to(#E6E2DE));
-		display: block;
 		list-style: none;
 		padding: 0.75em 0.5em;
 		width: 68%;
@@ -86,6 +81,7 @@ nav#site {
 		-moz-box-shadow: 0 0.125em 0.375em #CCCCCC;
 		-webkit-box-shadow: 0 0.125em 0.375em #CCCCCC;
 		box-shadow: 0 0.125em 0.375em #CCCCCC;
+		float: left;
 	}
 	nav#site ul li {
 		display: inline;
@@ -108,7 +104,7 @@ nav#site {
 		width: 25%;
 		display: block;
 		text-align: center;
-		padding: 0.5em 0;
+		padding: 0.4em 0;
 		background: #EEEAE6;
 		background: -moz-linear-gradient(top, #F6F2EE, #E6E2DE);
 		background: -webkit-gradient(linear, left top, left bottom, from(#F6F2EE), to(#E6E2DE));
@@ -156,7 +152,6 @@ aside#sidebar {
 	float: left;
 	width: 20%;
 	margin: 0 1%;
-	position: relative;
 	top: -4.5em;
 	color: #333333;
 }
@@ -264,7 +259,6 @@ aside#sidebar div.forum h2 {
 
 /* le logo */
 header#branding > h1 {
-	margin: 0 1% 4em;
 	height: 15em;
 	background-color: #E0DDD8;
 	background-position: center center;
@@ -307,7 +301,7 @@ section#phare > article {
 	-moz-box-shadow: 0 0.1em 0.3em #AAAAAA;
 	-webkit-box-shadow: 0 0.1em 0.3em #AAAAAA;
 	box-shadow: 0 0.1em 0.3em #AAAAAA;
-	margin: 4em 0;
+	margin: 0;
 }
 
 /* message important en haut de la page */
@@ -331,10 +325,7 @@ section#container > aside.banner {
 /* Titre de la page */
 section#container > h1,
 section#container > div > h1 {
-	color: #666666;
-	font-size: 2.5em;
-	text-align: center;
-	margin: 1em auto;
+	display: none;
 }
 
 /* sous-titre */
@@ -895,9 +886,7 @@ li.comment > footer.actions {
 }
 /* l'avatar */
 li.comment > figure.image {
-	display: inline;
-	float: left;
-	padding: 0 0.5em 0 1em;
+	display: none;
 }
 li.comment > figure.image img {
 	width: 3em !important;
@@ -1501,4 +1490,4 @@ section#container .markItUpEditor:focus {
 	font-weight: bold;
 }
 
-@import url(/stylesheets/statistics.css);
+@import '../common/statistics';

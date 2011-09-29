@@ -33,7 +33,7 @@
  **/
 
 @import "./spasibo-mobile.css" screen and (max-width: 1024px);
-@import url(/stylesheets/statistics.css);
+@import '../common/statistics';
 
 html,body,div,span,object,iframe,
 h1,h2,h3,h4,h5,h6,

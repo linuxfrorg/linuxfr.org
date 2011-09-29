@@ -1,10 +1,12 @@
+@charset "UTF-8";
 /**
  * Author: Yggdras
  * License: CC-by-sa - http://creativecommons.org/licenses/by-sa/3.0/deed.fr
  */
 
-@import url('/stylesheets/markitup.css');
-@import url('/stylesheets/pygments/colorful.css');
+@import '../common/markitup';
+@import '../common/statistics';
+@import '../pygments/colorful';
 
 /* Layout */
 body, nav, header, aside, figure, section, footer, article {
@@ -782,5 +784,3 @@ a img {
   background-color: inherit;
   border-bottom:1px dashed red;
 }
-
-@import url(/stylesheets/statistics.css);

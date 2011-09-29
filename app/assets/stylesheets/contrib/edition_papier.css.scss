@@ -1,34 +1,15 @@
 @charset "utf-8";
-/** opensuse.css
+/** edition_papier.css
  *
- * CSS aux couleurs du site opensuse.org pour linuxfr.org
- *  basée sur software.opensuse.org et fr.opensuse.org
+ * Si linuxfr était un quotidien classique ?
  *
  * Historique :
- *   2.6    23/02/2011    - [Axioplase] espaces autour des paragraphes, symboles
- *                          autour des "sections" dans les titres de contenu,
- *                          première lettre des contenus est plus grosse,
- *                          meilleure visualisation des nouveaux commentaires.
- *   2.5    05/01/2011    - [Yggdras] tribune: marge en pourcent pour board-right
- *   2.4    31/12/2010    - maj suite aux évolutions du site
- *   2.3    12/12/2010    - Pleins de corrections (toolbar, vignette, note, formulaires)
- *   2.2    04/12/2010    - Réponse à un commentaire (cf https://linuxfr.org/tracker/1189.html)
- *   2.1    30/11/2010    - Corrections après la mise à jour de alpha.linuxfr.org
- *   2.0    10/10/2010    - Départ de zero.
- *                        - Nouvelle couleurs du site opensuse.org
- *                        - Version pour linuxfr en ruby.
- *   1.3    25/10/2009    - Ajout d'un logo dans le style d'opensuse.
- *                        - funbanner plus large pour la banniere hadopi.
- *   1.2    12/10/2009    Ajout d'un style pour les hr dans leftbox et leftcol.
- *   1.1    12/10/2009    - [eggman] Correction pour p.commentsbody :
- *                                   le style n'était pas pris en compte.
- *                        - [eggman] Reduction pour la taille des input text.
- *                        - Ajout d'une taille en pourcentage pour les textarea.
- *                        - [eggman] Plus d'espace entre les commentaires.
- *                        - [eggman] Passage du padding de 0.5em 1% a 0.7em 1%.
- *                        - [Octabrain] Ajout de -webkit-border-radius.
- *                        - [Cyrille Pontvieux] Ajout de border-radius.
- *   1.0    11/10/2009    Publication
+ *   1.4    05/01/2011    - [Yggdras] tribune: marge en pourcent pour board-right
+ *   1.3    31/12/2010    - maj suite aux évolutions du site
+ *   1.2    12/12/2010    - Pleins de corrections (toolbar, vignette, note, formulaires)
+ *   1.1    04/12/2010    - [patrick_g] restylage titre "LINUXFR.ORG" et accueil
+ *                        - Réponse à un commentaire (cf https://linuxfr.org/tracker/1189.html)
+ *   1.0    30/11/2010    - première version
  *
  * Benoît Monin
  *
@@ -57,95 +38,105 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 
 /* Corps de la page */
 body {
-	background: #F6F6F6;
-	color: #444444;
-	font-family: sans-serif;
+	background: #FFFFFF;
+	color: #000000;
+	font-family: serif;
 	font-size: 0.85em;
 	margin: 0 auto;
 	min-width: 55em;
+	max-width: 85em;
+}
+
+/* Tout les formulaires en serif */
+fieldset, form, label, legend, input, select, button {
+	font-family: serif;
 }
 
 /* Styles globaux pour les liens */
 a:link,
 a:visited {
-	color: #006699;
-	text-decoration: none;
+	text-decoration: underline;
 }
 a:hover,
 a:active {
-	color: #669900;
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 /* Bandeau de navigation en haut */
 nav#site {
 	display: block;
-	margin-bottom: 2.5em;
-	background-color: #444444;
-	background: -moz-linear-gradient(top, #555555, #333333);
-	background: -webkit-gradient(linear, left top, left bottom, from(#555555), to(#333333));
-	color: #FFFFFF;
 	font-weight:bold;
-	font-size: 0.85em;
+	width: 77%;
+	margin-bottom: 2.5em;
+	padding: 0.75em 0 0.75em 23%;
+	background-color: #F6F6F6;
+	background-image: url("/images/contrib/edition_papier/filigrane.png");
+	background-position: bottom left;
+	-moz-background-size: 20% auto;
+	-webkit-background-size: 20% auto;
+	-o-background-size: 20% auto;
+	background-size: 20% auto;
+	background-repeat: no-repeat;
 }
 	nav#site .go_to_content {
 		display: none;
 	}
 	nav#site ul {
-		display: inline-block;
+		display:block;
 		list-style: none;
-		padding: 0.7em 0 0.7em 2%;
-		width: 70%;
-	}
-	nav#site ul li {
-		display: inline;
-	}
-	nav#site ul li:after {
-		content: "|";
-		color: #555555;
-		padding: 0 0.75em;
-	}
-	nav#site ul li:last-child:after, nav#site ul li.last:after {
-		content: "";
-		padding: 0;
+		font-size: 1.5em;
+		line-height: 1.125em;
+		height: 9em;
+		overflow: hidden;
+		background-image: url("/images/contrib/edition_papier/titre.png");
+		background-position: center 75%;
+		-moz-background-size: 42% auto;
+		-webkit-background-size: 42% auto;
+		-o-background-size: 42% auto;
+		background-size: 42% auto;
+		background-repeat: no-repeat;
 	}
 	nav#site a:link,
 	nav#site a:visited {
-		color: #FFFFFF;
 		text-decoration: none;
 	}
 	nav#site a:hover {
-		color: #669900;
+		text-decoration: underline;
 	}
 	nav#site form {
-		float: right;
-		margin: 0.35em 2% 0 0;
-		width: 25%;
 		display: block;
 		text-align: right;
+		float: right;
+		position: relative;
+		top: -13.5em;
+		left: -1em;
+	}
+	label#label_query {
+		display: none;
 	}
 	nav#site input[type=submit] {
-		border: thin solid transparent;
-		background: transparent;
-		font-weight:bold;
+		border: thin solid #999999;
+		background: #F6F6F6;
+		color: #666666;
+		padding: 0.15em 0.25em;
 	}
 	nav#site input[type=submit]:hover {
-		color: #669900;
+		border: thin solid #000000;
+		background: #FEFEFE;
+		color: #000000;
 		cursor: pointer;
 	}
 	nav#site input#query {
-		border: thin solid #2E2E2E;
-		-moz-border-radius: 0.4em;
-		-webkit-border-radius: 0.4em;
-		border-radius: 0.4em;
-		background-color: #EEEEEE;
-		color: #444444;
-		padding: 0.25em;
+		border: thin solid #999999;
+		background-color: #F6F6F6;
+		color: #666666;
+		padding: 0.25em 0;
 		width: 50%;
 		max-width: 13em;
 	}
 	nav#site input#query:focus {
-		background-color: #F6F6F6;
+		border: thin solid #000000;
+		background-color: #FEFEFE;
 		color: #000000;
 	}
 
@@ -153,43 +144,21 @@ nav#site {
 aside#sidebar {
 	display: inline;
 	float: left;
-	overflow: hidden;
 	width: 20%;
-	margin: 0 1%;
+	margin: 1em 1%;
 }
-
 /* les boites de la barre latéral */
 aside#sidebar .box {
-	margin: 1.5em 1%;
-	padding-bottom: 0.25em;
-	border: thin solid;
-	border-color: #DDDDDD #CCCCCC #BBBBBB;
-	background: #FEFEFE;
-	-moz-box-shadow: 0 0.125em 0.375em #CCCCCC;
-	-webkit-box-shadow: 0 0.125em 0.375em #CCCCCC;
-	box-shadow: 0 0.125em 0.375em #CCCCCC;
-	-moz-border-radius: 0.5em;
-	-webkit-border-radius: 0.5em;
-	border-radius: 0.5em;
+	margin: 1em 1% 0;
+	padding-bottom: 1em;
 	font-size: 0.8em;
+	overflow: hidden;
+	border-bottom: thin solid #DDDDDD;
 }
 /* titre de la boite latéral */
 aside#sidebar .box h1 {
-	border-bottom: thin solid #DDDDDD;
 	padding: 0.4em 1%;
 	margin-bottom: 0.5em;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
-	-moz-border-radius: 0.5em 0.5em 0 0;
-	-webkit-border-top-left-radius: 0.5em;
-	-webkit-border-top-right-radius: 0.5em;
-	-webkit-border-bottom-right-radius: 0;
-	-webkit-border-bottom-left-radius: 0;
-	border-top-left-radius: 0.5em;
-	border-top-right-radius: 0.5em;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
 	display: block;
 }
 /* icone https */
@@ -220,36 +189,25 @@ aside#sidebar .box input[type=password] {
 	background-color: #F9F9F9;
 	display: block;
 	width: 95%;
-	color: #006699;
+	color: #444444;
 }
 aside#sidebar .box input[type=text]:focus,
 aside#sidebar .box input[type=password]:focus {
 	color: #000000;
-	border-color: #669900;
+	border-color: #000000;
 	background-color: #FEFEFE;
-	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	box-shadow: 0 0.1em 0.3em #CCCCCC;
 }
 aside#sidebar .box input[type=submit] {
 	border: thin solid #999999;
 	margin: 1em 0;
-	padding: 0.3em;
+	padding: 0.2em;
 	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
-	-moz-border-radius: 0.5em;
-	-webkit-border-radius: 0.5em;
-	border-radius: 0.5em;
 	color: #444444;
-	text-align: center;
 }
 aside#sidebar .box input[type=submit]:hover {
-	background-color: #8ABC00;
-	background: -moz-linear-gradient(top, #96C800, #7DAF00);
-	background: -webkit-gradient(linear, left top, left bottom, from(#96C800), to(#7DAF00));
-	border-color: #006699;
-	color: #FFFFFF;
+	background-color: #FEFEFE;
+	border-color: #000000;
+	color: #000000;
 	cursor: pointer;
 }
 aside#sidebar .box ul {
@@ -265,16 +223,16 @@ aside#sidebar div.forum h2 {
 }
 
 /* le logo */
+header#branding {
+	position: absolute;
+	top: 1em;
+	width: 20%;
+	min-width: 11em;
+	max-width: 17em;
+}
 header#branding > h1 {
-	margin-bottom: 2em;
-	height: 15em;
-	background-image: url(/images/contrib/opensuse/logo.png) !important;
-	background-position:center center;
-	background-repeat:no-repeat;
-	-moz-background-size: contain;
-	-webkit-background-size: contain;
-	-o-background-size: contain;
-	background-size: contain;
+	height: 14em;
+	background-image: none !important;
 }
 header#branding > h1 > a {
 	display: block;
@@ -282,29 +240,36 @@ header#branding > h1 > a {
 	height: 100%;
 	color: transparent;
 }
+
 /* le contenu du site */
 section#container {
-	margin: 0 0 0 22%;
+	margin-left: 22%;
+	padding-left: 1%;
 	text-align: justify;
 	display: block;
-	width: 77%;
-}
-section#container > * {
-	max-width: 80em;
-	margin: 0 auto;
+	width: 76%;
+	border-left: thin solid #DDDDDD;
 }
 section#container > section,
 section#container > aside {
 	display: block;
 }
 
+/* L'article phare */
+section#phare {
+	font-size: 1.15em;
+	background: none repeat scroll 0 0 #FEFEFE;
+	border-bottom: thin solid #FEFEFE;
+	margin: 3.5em 0;
+}
+
 /* message important en haut de la page */
 section#container div.notice,
 section#container > aside.banner {
 	margin: 1em auto;
-	border: thin dotted #669900;
 	padding: 0.5em 0;
-	background: #F0F0F0;
+	background: #000000;
+	color: #FFFFFF;
 	font-weight: bold;
 	text-align: center;
 }
@@ -312,10 +277,8 @@ section#container > aside.banner {
 /* Titre de la page */
 section#container > h1,
 section#container > div > h1 {
-	color: #669900;
-	font-size: 2.5em;
+	font-size: 2.9em;
 	text-align: center;
-	max-width: 32em;
 	margin: 1em auto;
 }
 
@@ -323,32 +286,24 @@ section#container > div > h1 {
 section#container > h2,
 section#container > div > h2,
 section#container > div > div > h2 {
-	color: #669900;
-	font-size: 1.25em;
-	max-width: 64em;
+	font-size: 1.5em;
 	margin: 0.5em auto;
 }
+
 /* tableau de bord directement dans la partie centrale */
 section#container table {
-	background: #FEFEFE;
 	text-align: left;
 	border-collapse:collapse;
 	border: none;
-	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	box-shadow: 0 0.1em 0.3em #CCCCCC;
 	margin:0.5em auto;
 	width:100%;
 }
 section#container table th {
 	border: thin solid #BBBBBB;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
 	padding: 0.2em;
 }
 section#container table td {
-	border: thin solid #CCCCCC;
+	border: thin solid #DDDDDD;
 	padding: 0.2em;
 }
 /* les formulaires */
@@ -361,7 +316,7 @@ section#redaction button,
 section#redaction select,
 section#redaction textarea {
 	margin: 0.5em;
-	color: #006699;
+	color: #444444;
 	border: thin solid #999999;
 	background-color: #F9F9F9;
 	padding: 0.1em 0;
@@ -376,31 +331,21 @@ section#redaction select {
 	padding: 0;
 }
 section#container input:focus,
-section#container button:focus,
 section#container select:focus,
 section#container textarea:focus,
 section#redaction input:focus,
-section#redaction button:focus,
 section#redaction select:focus,
 section#redaction textarea:focus {
 	color: #000000;
-	border-color: #669900;
+	border-color: #000000;
 	background-color: #FEFEFE;
-	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	box-shadow: 0 0.1em 0.3em #CCCCCC;
 }
 section#container button,
 section#container input[type=submit],
 section#redaction button,
 section#redaction input[type=submit] {
-	padding: 0.25em;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
-	-moz-border-radius: 0.5em;
-	-webkit-border-radius: 0.5em;
-	border-radius: 0.5em;
+	padding: 0.1em 0.25em;
+	background-color: #F9F9F9;
 	color: #444444;
 	text-align: center;
 }
@@ -408,61 +353,17 @@ section#container button:hover,
 section#container input[type=submit]:hover,
 section#redaction button:hover,
 section#redaction input[type=submit]:hover {
-	background-color: #8ABC00;
-	background: -moz-linear-gradient(top, #96C800, #7DAF00);
-	background: -webkit-gradient(linear, left top, left bottom, from(#96C800), to(#7DAF00));
-	border-color: #006699;
-	color: #FFFFFF;
+	background-color: #FEFEFE;
+	border-color: #000000;
+	color: #000000;
 	cursor: pointer;
 }
 /* Nouvelle dépêche : les liens */
 div#form_links {
 	margin: 2em 0;
-	border: thin solid;
-	border-color: #DDDDDD #CCCCCC #BBBBBB;
-	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	box-shadow: 0 0.1em 0.3em #CCCCCC;
-	background-color: #FEFEFE;
-	-moz-border-radius: 0.4em;
-	-webkit-border-radius: 0.4em;
-	border-radius: 0.4em;
 }
 div#form_links fieldset {
 	padding: 0.5em 0;
-}
-div#form_links fieldset:first-child {
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
-	-moz-border-radius: 0.4em 0.4em 0 0;
-	-webkit-border-top-left-radius: 0.4em;
-	-webkit-border-top-right-radius: 0.4em;
-	-webkit-border-bottom-right-radius: 0;
-	-webkit-border-bottom-left-radius: 0;
-	border-top-left-radius: 0.4em;
-	border-top-right-radius: 0.4em;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
-}
-div#form_links fieldset.link {
-	border-top: thin solid #DDDDDD;
-	background: #FEFEFE;
-}
-div#form_links fieldset:last-child {
-	border-top: thin solid #DDDDDD;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
-	-moz-border-radius: 0 0 0.5em 0.5em;
-	-webkit-border-top-left-radius: 0;
-	-webkit-border-top-right-radius: 0;
-	-webkit-border-bottom-right-radius: 0.5em;
-	-webkit-border-bottom-left-radius: 0.5em;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0.5em;
-	border-bottom-left-radius: 0.5em;
 }
 div#form_links label {
 	display:inline-block;
@@ -473,18 +374,23 @@ div#form_links label#label-link-name,
 div#form_links label#label-link-url {
 	width: 33%;
 }
-div#form_links label#label-link-lang,
+div#form_links label#label-link-lang {
+	width:11%;
+}
 div#form_links label#label-link-actions {
-	width:13%;
+	width:15%;
 }
 div#form_links input {
 	width: 33%;
 	margin: 0 0 0 1%;
 }
-div#form_links select,
+div#form_links select {
+	margin: 0 0 0 1%;
+	width: 11%;
+}
 div#form_links button {
 	margin: 0 0 0 1%;
-	width: 13%;
+	width: 15%;
 }
 /* mdp et mail utilisateur */
 section#container form.edit_account input[type=text],
@@ -503,7 +409,7 @@ section#container form.edit_account input[type=password] {
 	display: none;
 }
 .datePourCss {
-	display: none;
+    display: none;
 }
 
 /* Liens de navigation */
@@ -514,6 +420,7 @@ body#comments-show > section#container > p {
 	display: block;
 	font-size: 0.8em;
 	max-width: 100em;
+	color: #555555;
 }
 section#container > nav.toolbox ul {
 	display: inline;
@@ -525,50 +432,32 @@ section#container > nav.toolbox li {
 
 /* l'article */
 article {
-	margin-bottom: 1em;
-	border: thin solid;
-	border-color: #DDDDDD #CCCCCC #BBBBBB;
-	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	box-shadow: 0 0.1em 0.3em #CCCCCC;
-	background-color: #FEFEFE;
-	-moz-border-radius: 0.4em;
-	-webkit-border-radius: 0.4em;
-	border-radius: 0.4em;
+	margin-bottom: 2em;
 	display: block;
 }
 
 /* en-tête de l'article */
 article header {
-	border-bottom: thin solid #DDDDDD;
+	background-color: #F0F0F0;
 	padding: 0.5em 0.75em;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
-	-moz-border-radius: 0.4em 0.4em 0 0;
-	-webkit-border-top-left-radius: 0.4em;
-	-webkit-border-top-right-radius: 0.4em;
-	-webkit-border-bottom-right-radius: 0;
-	-webkit-border-bottom-left-radius: 0;
-	border-top-left-radius: 0.4em;
-	border-top-right-radius: 0.4em;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
 	display: block;
 }
 	/* titre de l'article */
 	article header h1 {
 		font-size: 1.25em;
 		display: inline;
-		color: #444444;
 	}
 	article header h1 a:link,
 	article header h1 a:visited {
-		color: #444444;
+		text-decoration: none;
+	}
+	article header h1 a:hover {
+		text-decoration: underline;
 	}
 	/* Info complémentaires dans l'en-tête */
 	article header div.meta {
 		font-size: 0.8em;
+		font-style: italic;
 	}
 	article header ul,
 	article header li {
@@ -579,20 +468,14 @@ article header {
 /*le score de l'article */
 article > div.figures > figure.score {
 	font-weight: bold;
-	background: #4C7C00;
-	background: -moz-linear-gradient(top, #669900, #336600);
-	background: -webkit-gradient(linear, left top, left bottom, from(#669900), to(#336600));
-	color: #FEFEFE;
 	padding: 1.2em 0 0;
 	margin: 1em 0.75em 0.5em;
-	-moz-border-radius: 0.4em;
-	-webkit-border-radius: 0.4em;
-	border-radius: 0.5em;
 	float: left;
 	display: block;
 	width: 3.5em;
 	height: 2.3em;
 	text-align: center;
+	background-color: #F6F6F6;
 }
 /*la vignette de l'article */
 article > div.figures > figure.image {
@@ -612,42 +495,36 @@ article > div.figures > figure.image img {
 article div.content,
 article div.body {
 	padding: 0.5em 0.75em;
-	color: #000000;
 	min-height: 4.5em;
 }
 article div h1,
 article > h1 {
 	padding: 0.5em 0.75em;
 	font-size: 1.5em;
-	color: #669900;
 }
 article div h2,
 div.content h2,
 table#wiki_help h2 {
 	padding: 0.4em 0.75em 0;
 	font-size: 1.4em;
-	color: #669900;
 }
 article div h3,
 div.content h3,
 table#wiki_help h3 {
 	padding: 0.3em 0.75em 0;
 	font-size: 1.2em;
-	color: #669900;
 }
 article div h4,
 div.content h4,
 table#wiki_help h4 {
 	padding: 0.2em 0.75em 0;
 	font-size: 1.1em;
-	color: #669900;
 }
 article div h5,
 div.content h5 {
 	padding: 0.1em 0.75em 0;
 	font-size: 1em;
 	font-weight: normal;
-	color: #669900;
 }
 article div ul,
 div.content ul {
@@ -659,15 +536,10 @@ div.content ol {
 	list-style: decimal inside;
 	padding: 0.5em 0.75em;
 }
-article li p:first-child,
-div.content li p:first-child {
-    display: inline;
-}
 article div blockquote,
 div.content blockquote {
 	font-style: italic;
 	margin: 0.5em 0 0.5em 4em;
-	color: #444444;
 }
 article div pre,
 div.content pre {
@@ -675,12 +547,7 @@ div.content pre {
 	min-width: 55em;
 }
 
-div.content p {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-/* Lien d'article */
+/* lien d'article */
 article li.link {
 	padding-left: 3em;
 }
@@ -691,12 +558,10 @@ article li.link img {
 }
 article a:link,
 article a:visited {
-	color: #006699;
-	text-decoration: none;
+	text-decoration: underline;
 }
 article a:hover {
-	color: #669900;
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 /* uniquement pour le sondage en cours */
@@ -717,9 +582,7 @@ article.poll div.content ul.poll {
 }
 .poll meter {
 	display: block;
-	border: thin solid #DDDDDD;
-	background: #F0F0F0;
-	color: #444444;
+	background: #DDDDDD;
 	text-align: right;
 }
 
@@ -728,19 +591,7 @@ article > footer {
 	padding: 0.5em 0.75em;
 	display: block;
 	font-size: 0.8em;
-	border-top: thin solid #DDDDDD;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
-	-moz-border-radius: 0 0 0.5em 0.5em;
-	-webkit-border-top-left-radius: 0;
-	-webkit-border-top-right-radius: 0;
-	-webkit-border-bottom-right-radius: 0.5em;
-	-webkit-border-bottom-left-radius: 0.5em;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0.5em;
-	border-bottom-left-radius: 0.5em;
+	font-style: italic;
 }
 article > footer > div {
 	display: inline;
@@ -748,25 +599,6 @@ article > footer > div {
 
 /* Les tags */
 #container header li .add_tag, #container header li .remove_tag {
-	display: block;
-	float: left;
-	text-indent: -9998em;
-	height: 12px;
-	width: 12px;
-	margin: 0;
-	border: none;
-	border-radius: 0;
-}
-#container header li .add_tag, #container header li .add_tag:hover {
-	background: url(/images/icones/tag.png) no-repeat;
-}
-#container header li .add_tag[disabled] {
-	background: url(/images/icones/tagged.png) no-repeat;
-}
-#container header li .remove_tag, #container header li .remove_tag:hover {
-	background: url(/images/icones/x.png) no-repeat;
-}
-#container header li .remove_tag[disabled] {
 	display: none;
 }
 
@@ -780,37 +612,37 @@ div.vote {
 	margin-left: 0.3em;
 }
 section#container div.vote input {
-	border: thin solid transparent;
-	background: none;
-	color: #006699;
+	border: none;
+	background: #FFFFFF;
 	margin:0;
 	padding:0;
+	font-style: italic;
+	color: #000000;
 }
 section#container div.vote input:hover {
-	border: thin solid transparent;
-	background: none;
-	color: #669900;
+	background: #F2F2F2;
 	cursor: pointer;
 }
+
 /* Le bouton oublier */
 .action form.button_to,
 .action form.button_to div {
 	display: inline;
 }
 section#container .action form.button_to input {
-	border: thin solid transparent;
-	background: none;
-	color: #006699;
+	border: none;
+	background: #FFFFFF;
 	margin:0;
 	padding:0;
-}
-section#container .action form.button_to input:hover {
-	border: thin solid transparent;
-	background: none;
-	color: #669900;
-	cursor: pointer;
+	font-style: italic;
+	color: #000000;
 	text-decoration: underline;
 }
+section#container .action form.button_to input:hover {
+	background: #F2F2F2;
+	cursor: pointer;
+}
+
 /* Tout les commentaires */
 div#comments {
 	margin: 4em auto;
@@ -832,22 +664,17 @@ div#contents > ul {
 }
 
 /* Un fil de discussion de commentaires */
-div#comments > ul > li,
+div#comments ul > li,
 div#contents > ul > li {
-	margin: 0 0 1em 0;
-	border: thin solid;
-	padding: 0.7em;
-	border-color: #DDDDDD #CCCCCC #BBBBBB;
-	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	box-shadow: 0 0.1em 0.3em #CCCCCC;
-	-moz-border-radius: 0.5em;
-	-webkit-border-radius: 0.5em;
-	border-radius: 0.5em;
-	background-color: #FEFEFE;
-	color: #000000;
+	margin-bottom: 1em;
 	font-size: 1em;
 }
+
+/* Séparation entre groupe de commentaires */
+div#comments > ul > li {
+	margin-bottom: 3em;
+}
+
 /* Decalage a droite pour les reponses */
 div#comments li > ul {
 	padding-left: 1.5em;
@@ -858,17 +685,12 @@ div#comments li > ul {
 li.comment > h2 {
 	margin-top: 0.5em;
 	padding: 0.2em 0.5em;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
-	border-bottom:thin solid #DDDDDD;
-	color: #444444;
 	font-size: 1em;
 	font-weight: bold;
+	background: #F0F0F0;
 }
 li.comment > h2 a:link,
 li.comment > h2 a:visited {
-	color: #444444;
 	text-decoration: none;
 }
 li.comment > h2 a:hover {
@@ -878,11 +700,19 @@ li.comment > h2 a:hover {
 /* en-tête et pied de page du commentaire */
 li.comment > p.meta,
 li.comment > footer.actions {
-	color: #444444;
 	font-size: 0.8em;
-	padding: 0.5em 0 0.5em 0.875em;
+	font-style: italic;
+	padding-left: 0.875em;
 	display: block;
 }
+li.comment > p.meta {
+	background: #F0F0F0;
+	margin-bottom: 0.5em;
+}
+li.comment > footer.actions {
+	padding: 0.5em 0 0.5em 0.875em;
+}
+
 /* l'avatar */
 li.comment > figure.image {
 	display: inline;
@@ -908,28 +738,21 @@ li.comment .content .signature:before {
 li.comment > div.content {
 	padding: 0 0 0 1em;
 	min-height: 3em;
-	border-left: thin solid #CCCCCC;
+	border-left: thin solid #EEEEEE;
 }
 
 /* Style de titre pour les nouveaux commentaires */
-li.new-comment > h2 {
-	margin-top: 0.5em;
-	padding: 0.2em 0.5em;
-	background-color: #777777;
-	background: -moz-linear-gradient(top, #888888, #666666);
-	background: -webkit-gradient(linear, left top, left bottom, from(#888888), to(#666666));
-	border-bottom:thin solid #666666;
-	color: #FFFFFF;
-	font-size: 1em;
-	font-weight: bold;
-}
-li.new-comment > h2 a:link,
-li.new-comment > h2 a:visited {
-	color: #FFFFFF;
+li.new-comment > h2,
+li.new-comment > p.meta {
+	background: #E0E0E0;
 }
 
 /* Commentaire replié */
-li.fold > p.meta,
+li.fold > h2,
+li.fold > p.meta {
+	color: #555555;
+}
+
 li.fold > figure.image,
 li.fold > div.content,
 li.fold > footer.actions {
@@ -942,16 +765,17 @@ section#container > footer {
 	font-size: 0.8em;
 	max-width: 100em;
 	margin: 2em auto;
+	color: #555555;
 }
 
 /* le pied de page */
 footer#bigfooter {
 	display: inline;
 	float: left;
-	border-top: thin dotted #999999;
-	width: 90%;
-	margin: 3em 5% 0;
-	padding-bottom: 5em;
+	border-top: medium solid #DDDDDD;
+	width: 100%;
+	margin-top: 3em;
+	padding-bottom: 4em;
 	font-size: 0.8em;
 }
 /* les 4 listes du pied de page */
@@ -962,15 +786,6 @@ footer#bigfooter section {
 	overflow: hidden;
 	width: 23%;
 	margin: 1em 1%;
-	color: #666666;
-}
-/* Le contenu du pied de page */
-footer#bigfooter h1 {
-	font-size: 1.25em;
-	margin: 0 0 0.5em 0;
-}
-footer#bigfooter ul {
-	list-style: none;
 }
 
 /* La tribune de modération */
@@ -983,18 +798,19 @@ section#chat {
 section#edition {
 	float: left;
 	margin: 1em 1%;
-	width: 58%;
+	padding-right: 1%;
+	width: 57%;
+	border-right: thin solid #DDDDDD;
 }
 section#chat {
 	float:left;
 	margin: 1em 1% 1em 0;
-	width: 39%;
+	width: 38%;
 }
 section#chat input[type=text] {
 	width: 64%;
 }
 section#chat h1 {
-	color: #669900;
 	font-size: 1.5em;
 	padding: 0.75em 0 0.5em;
 }
@@ -1013,7 +829,7 @@ div.board > div.inbox span.board-left {
 	display: block;
 }
 div.board > div.inbox span.board-right {
-	margin-left: 16%;
+	margin-left: 20%;
 	display: block;
 }
 input#board_message {
@@ -1022,54 +838,32 @@ input#board_message {
 
 /* Revision de wiki */
 body#wiki_pages-revision div#contents > h2 {
-	border-top: thin solid #DDDDDD;
-	border-left: thin solid #DDDDDD;
-	border-right: thin solid #DDDDDD;
 	padding: 0.4em 0.5em 0;
 	margin: 0;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F4F4F4);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F4F4F4));
-	-moz-border-radius: 0.4em 0.4em 0 0;
-	-webkit-border-top-left-radius: 0.4em;
-	-webkit-border-top-right-radius: 0.4em;
-	-webkit-border-bottom-right-radius: 0;
-	-webkit-border-bottom-left-radius: 0;
-	border-top-left-radius: 0.4em;
-	border-top-right-radius: 0.4em;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
-	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	box-shadow: 0 0.1em 0.3em #CCCCCC;
+	background-color: #F0F0F0;
+	font-size: 1.25em;
+	font-weight: bold;
 }
-body#wiki_pages-revision div#contents > h2 > a {
-	color: #444444;
+body#wiki_pages-revision div#contents > h2 > a:link,
+body#wiki_pages-revision div#contents > h2 > a:visited {
+	text-decoration: none;
+}
+body#wiki_pages-revision div#contents > h2 > a:hover,
+body#wiki_pages-revision div#contents > h2 > a:active {
+	text-decoration: underline;
 }
 body#wiki_pages-revision div#contents > h3 {
-	border-left: thin solid #DDDDDD;
-	border-right: thin solid #DDDDDD;
-	border-bottom: thin solid #DDDDDD;
-	padding: 0 0.75em 0.5em;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F4F4F4, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F4F4F4), to(#F0F0F0));
-	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	box-shadow: 0 0.1em 0.3em #CCCCCC;
+	padding: 0 1.25em 0.5em;
+	background-color: #F0F0F0;
 	font-size: 0.8em;
 	font-weight: normal;
+	font-style: italic;
 }
 body#wiki_pages-revision div#contents > pre {
 	white-space:pre-wrap;
 	background-color: #FFFFFF;
 	color: #000000;
 	padding: 0.25em;
-	border-left: thin solid #CCCCCC;
-	border-right: thin solid #CCCCCC;
-	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	box-shadow: 0 0.1em 0.3em #CCCCCC;
 }
 body#wiki_pages-revision pre > del {
 	background-color: #FFDDDD;
@@ -1079,25 +873,9 @@ body#wiki_pages-revision pre > ins {
 	text-decoration: none;
 }
 body#wiki_pages-revision div#contents > nav {
-	border: thin solid;
-	border-color: #DDDDDD #CCCCCC #BBBBBB;
 	padding: 0.5em 0.75em;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
-	-moz-border-radius: 0 0 0.5em 0.5em;
-	-webkit-border-top-left-radius: 0;
-	-webkit-border-top-right-radius: 0;
-	-webkit-border-bottom-right-radius: 0.5em;
-	-webkit-border-bottom-left-radius: 0.5em;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0.5em;
-	border-bottom-left-radius: 0.5em;
-	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	box-shadow: 0 0.1em 0.3em #CCCCCC;
 	display: block;
+	font-style: italic;
 }
 body#wiki_pages-revision div#contents > nav > ul {
 	list-style: none;
@@ -1113,28 +891,16 @@ div#toolbar {
 	position: fixed;
 	overflow: hidden;
 	bottom: 0;
-	left: 1.25%;
-	width: 19.4%;
-	border-top: thin solid #DDDDDD;
-	border-left: thin solid #CCCCCC;
-	border-right: thin solid #CCCCCC;
-	padding: 0.5em 0 0.25em;
-	-moz-box-shadow: 0 0.125em 0.375em #CCCCCC;
-	-webkit-box-shadow: 0 0.125em 0.375em #CCCCCC;
-	box-shadow: 0 0.125em 0.375em #CCCCCC;
-	-moz-border-radius: 0.5em 0.5em 0 0;
-	-webkit-border-top-left-radius: 0.5em;
-	-webkit-border-top-right-radius: 0.5em;
-	border-top-left-radius: 0.5em;
-	border-top-right-radius: 0.5em;
-	background-color: #FEFEFE;
+	width: 100%;
+	min-width: 55em;
+	max-width: 85em;
+	padding: 0.15em 0;
+	background: #F6F6F6;
 	color: #444444;
-	font-size: 0.8em;
-	
 }
 div#toolbar > span {
-	display: block;
 	margin: 0 0.3em;
+	font-size: 0.8em;
 }
 
 /* linux sait faire ! */
@@ -1153,32 +919,14 @@ body#comments-create div#contents > img {
 /* l'éditeur markdown */
 .markItUpContainer {
 	margin-bottom: 1em;
-	border: thin solid;
-	border-color: #DDDDDD #CCCCCC #BBBBBB;
-	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	box-shadow: 0 0.1em 0.3em #CCCCCC;
-	-moz-border-radius: 0.4em;
-	-webkit-border-radius: 0.4em;
-	border-radius: 0.4em;
+	border: thin solid #999999;
 }
 
 .markItUpHeader {
 	border-bottom: thin solid #DDDDDD;
 	padding: 0.5em 1%;
 	height: 1.2em;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
-	-moz-border-radius: 0.4em 0.4em 0 0;
-	-webkit-border-top-left-radius: 0.4em;
-	-webkit-border-top-right-radius: 0.4em;
-	-webkit-border-bottom-right-radius: 0;
-	-webkit-border-bottom-left-radius: 0;
-	border-top-left-radius: 0.4em;
-	border-top-right-radius: 0.4em;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
+	background-color: #F0F0F0;
 }
 
 .markItUpEditor,
@@ -1188,8 +936,8 @@ section#container .markItUpEditor {
 	display: block;
 	overflow: auto;
 	border: none;
-	background-color: #FCFCFC;
-	color: #006699;
+	background-color: #F9F9F9;
+	color: #444444;
 	padding: 0;
 	margin: 0;
 }
@@ -1202,18 +950,7 @@ section#container .markItUpEditor:focus {
 .markItUpFooter {
 	padding: 0.5em 0;
 	border-top: thin solid #DDDDDD;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
-	-moz-border-radius: 0 0 0.5em 0.5em;
-	-webkit-border-top-left-radius: 0;
-	-webkit-border-top-right-radius: 0;
-	-webkit-border-bottom-right-radius: 0.5em;
-	-webkit-border-bottom-left-radius: 0.5em;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0.5em;
-	border-bottom-left-radius: 0.5em;
+	background-color: #F0F0F0;
 }
 
 .markItUpResizeHandle {
@@ -1508,12 +1245,4 @@ section#container .markItUpEditor:focus {
 	font-weight: bold;
 }
 
-
-#container h1 > a:first-child::before { content: "「 "}
-#container h1 > a::after { content: " 」"}
-#container h1 > a:last-child::after { content: ""; }
-
-#contents > * > * > p:first-child:first-letter { font-size: 200%; vertical-align: middle; }
-li.new-comment  > * > .title { color: #99DD00 !important; }
-
-@import url(/stylesheets/statistics.css);
+@import '../common/statistics';

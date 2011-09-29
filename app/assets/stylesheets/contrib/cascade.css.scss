@@ -1,35 +1,13 @@
 @charset "utf-8";
-/** linuxfr.css
+/** cascade.css
  *
- * CSS aux couleurs du grises pour linuxfr.org
- *  basée sur opensuse.linux.fr software.opensuse.org et fr.opensuse.org
+ * CSS pour linuxfr.org RoR
+ *  Un mélange de mes autres css avec les couleurs du site en templeet
  *
  * Historique :
- *   2.7    23/02/2011    - [Axioplase] espaces autour des paragraphes, symboles
- *                          autour des "sections" dans les titres de contenu,
- *                          première lettre des contenus est plus grosse,
- *                          meilleure visualisation des nouveaux commentaires.
- *   2.6    20/02/2011    - [Bench] couleurs grises au lieu de vertes
- *   2.5    05/01/2011    - [Yggdras] tribune: marge en pourcent pour board-right
- *   2.4    31/12/2010    - maj suite aux évolutions du site
- *   2.3    12/12/2010    - Pleins de corrections (toolbar, vignette, note, formulaires)
- *   2.2    04/12/2010    - Réponse à un commentaire (cf https://linuxfr.org/tracker/1189.html)
- *   2.1    30/11/2010    - Corrections après la mise à jour de alpha.linuxfr.org
- *   2.0    10/10/2010    - Départ de zero.
- *                        - Nouvelle couleurs du site opensuse.org
- *                        - Version pour linuxfr en ruby.
- *   1.3    25/10/2009    - Ajout d'un logo dans le style d'opensuse.
- *                        - funbanner plus large pour la banniere hadopi.
- *   1.2    12/10/2009    Ajout d'un style pour les hr dans leftbox et leftcol.
- *   1.1    12/10/2009    - [eggman] Correction pour p.commentsbody :
- *                                   le style n'était pas pris en compte.
- *                        - [eggman] Reduction pour la taille des input text.
- *                        - Ajout d'une taille en pourcentage pour les textarea.
- *                        - [eggman] Plus d'espace entre les commentaires.
- *                        - [eggman] Passage du padding de 0.5em 1% a 0.7em 1%.
- *                        - [Octabrain] Ajout de -webkit-border-radius.
- *                        - [Cyrille Pontvieux] Ajout de border-radius.
- *   1.0    11/10/2009    Publication
+ *   1.1    05/01/2011    - [Yggdras] tribune: marge en pourcent pour board-right
+ *                        - [Yggdras] mise en avant du lien new_content
+ *   1.0    31/12/2010    - première version
  *
  * Benoît Monin
  *
@@ -58,89 +36,117 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 
 /* Corps de la page */
 body {
-	background: #F6F6F6;
-	color: #444444;
+	background: #FFFFFF;
+	color: #666666;
 	font-family: sans-serif;
 	font-size: 0.85em;
 	margin: 0 auto;
 	min-width: 55em;
+	max-width: 85em;
 }
 
 /* Styles globaux pour les liens */
-a:link,
+a:link {
+	color: #36598E;
+	text-decoration: none;
+}
 a:visited {
-	color: #006699;
+	color: #B64545;
 	text-decoration: none;
 }
 a:hover,
 a:active {
-	color: #444444;
 	text-decoration: underline;
 }
 
 /* Bandeau de navigation en haut */
 nav#site {
 	display: block;
-	margin-bottom: 2.5em;
-	background-color: #444444;
-	background: -moz-linear-gradient(top, #555555, #333333);
-	background: -webkit-gradient(linear, left top, left bottom, from(#555555), to(#333333));
-	color: #FFFFFF;
-	font-weight:bold;
-	font-size: 0.85em;
+	margin: 1.5em 0 3.5em;
+	font-weight: bold;
 }
 	nav#site .go_to_content {
 		display: none;
 	}
 	nav#site ul {
-		display: inline-block;
+		background: #EEEAE6;
+		background: -moz-linear-gradient(top, #F6F2EE, #E6E2DE);
+		background: -webkit-gradient(linear, left top, left bottom, from(#F6F2EE), to(#E6E2DE));
+		display: block;
 		list-style: none;
-		padding: 0.7em 0 0.7em 2%;
-		width: 70%;
+		padding: 0.75em 0.5em;
+		width: 68%;
+		margin-left: 1%;
+		text-align: center;
+		-moz-border-radius: 0.5em;
+		-webkit-border-radius: 0.5em;
+		border-radius: 0.5em;
+		border: thin solid;
+		border-color: #DDDDDD #CCCCCC #BBBBBB;
+		-moz-box-shadow: 0 0.125em 0.375em #CCCCCC;
+		-webkit-box-shadow: 0 0.125em 0.375em #CCCCCC;
+		box-shadow: 0 0.125em 0.375em #CCCCCC;
 	}
 	nav#site ul li {
 		display: inline;
 	}
 	nav#site ul li:after {
 		content: "|";
-		color: #555555;
+		color: #CCC8C4;
 		padding: 0 0.75em;
 	}
 	nav#site ul li:last-child:after, nav#site ul li.last:after {
 		content: "";
 		padding: 0;
 	}
-	nav#site a:link,
 	nav#site a:visited {
-		color: #FFFFFF;
-		text-decoration: none;
-	}
-	nav#site a:hover {
-		color: #AAAAAA;
+		color: #36598E;
 	}
 	nav#site form {
-		float: right;
-		margin: 0.35em 2% 0 0;
+		margin-left: 74%;
+		margin-top: 1.25em;
 		width: 25%;
 		display: block;
-		text-align: right;
+		text-align: center;
+		padding: 0.5em 0;
+		background: #EEEAE6;
+		background: -moz-linear-gradient(top, #F6F2EE, #E6E2DE);
+		background: -webkit-gradient(linear, left top, left bottom, from(#F6F2EE), to(#E6E2DE));
+		-moz-border-radius: 0.5em;
+		-webkit-border-radius: 0.5em;
+		border-radius: 0.5em;
+		border: thin solid;
+		border-color: #DDDDDD #CCCCCC #BBBBBB;
+		-moz-box-shadow: 0 0.125em 0.375em #CCCCCC;
+		-webkit-box-shadow: 0 0.125em 0.375em #CCCCCC;
+		box-shadow: 0 0.125em 0.375em #CCCCCC;
+	}
+	label#label_query {
+		display: none;
 	}
 	nav#site input[type=submit] {
-	    display : none
+		border: thin solid transparent;
+		background: transparent;
+		font-weight:bold;
+		color: #36598E;
+	}
+	nav#site input[type=submit]:hover {
+		color: #B64545;
+		cursor: pointer;
 	}
 	nav#site input#query {
-		border: thin solid #2E2E2E;
+		border: thin solid #DDD9D5;
 		-moz-border-radius: 0.4em;
 		-webkit-border-radius: 0.4em;
 		border-radius: 0.4em;
-		background-color: #EEEEEE;
-		color: #444444;
+		background-color: #FFFBF6;
+		color: #666666;
 		padding: 0.25em;
 		width: 50%;
 		max-width: 13em;
 	}
 	nav#site input#query:focus {
-		background-color: #F6F6F6;
+		background-color: #FFFFFF;
 		color: #000000;
 	}
 
@@ -148,9 +154,11 @@ nav#site {
 aside#sidebar {
 	display: inline;
 	float: left;
-	overflow: hidden;
 	width: 20%;
 	margin: 0 1%;
+	position: relative;
+	top: -4.5em;
+	color: #333333;
 }
 
 /* les boites de la barre latéral */
@@ -158,33 +166,31 @@ aside#sidebar .box {
 	margin: 1.5em 1%;
 	padding-bottom: 0.25em;
 	border: thin solid;
-	border-color: #DDDDDD #CCCCCC #BBBBBB;
-	background: #FEFEFE;
-	-moz-box-shadow: 0 0.125em 0.375em #CCCCCC;
-	-webkit-box-shadow: 0 0.125em 0.375em #CCCCCC;
-	box-shadow: 0 0.125em 0.375em #CCCCCC;
+	border-color: #CCCCCC #BBBBBB #AAAAAA;
+	background: #E0DDD8;
+	-moz-box-shadow: 0 0.125em 0.375em #BBBBBB;
+	-webkit-box-shadow: 0 0.125em 0.375em #BBBBBB;
+	box-shadow: 0 0.125em 0.375em #BBBBBB;
 	-moz-border-radius: 0.5em;
 	-webkit-border-radius: 0.5em;
 	border-radius: 0.5em;
 	font-size: 0.8em;
+	overflow: hidden;
 }
 /* titre de la boite latéral */
 aside#sidebar .box h1 {
-	border-bottom: thin solid #DDDDDD;
+	border-bottom: thin solid #BBBBBB;
 	padding: 0.4em 1%;
 	margin-bottom: 0.5em;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	background-color: #D0CDC8;
+	background: -moz-linear-gradient(top, #D8D5D0, #C8C5C0);
+	background: -webkit-gradient(linear, left top, left bottom, from(#D8D5D0), to(#C8C5C0));
+	color: #555522;
 	-moz-border-radius: 0.5em 0.5em 0 0;
 	-webkit-border-top-left-radius: 0.5em;
 	-webkit-border-top-right-radius: 0.5em;
-	-webkit-border-bottom-right-radius: 0;
-	-webkit-border-bottom-left-radius: 0;
 	border-top-left-radius: 0.5em;
 	border-top-right-radius: 0.5em;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
 	display: block;
 }
 /* icone https */
@@ -212,27 +218,22 @@ aside#sidebar .box input[type=password] {
 	border: thin solid #999999;
 	margin-bottom: 1em;
 	padding: 0.2em 2%;
-	background-color: #F9F9F9;
+	background-color: #F0EDE8;
 	display: block;
 	width: 95%;
-	color: #006699;
+	color: #36598E;
 }
 aside#sidebar .box input[type=text]:focus,
 aside#sidebar .box input[type=password]:focus {
 	color: #000000;
-	border-color: #444444;
-	background-color: #FEFEFE;
-	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
-	box-shadow: 0 0.1em 0.3em #CCCCCC;
+	border-color: #36598E;
+	background-color: #FFFFFF;
 }
 aside#sidebar .box input[type=submit] {
 	border: thin solid #999999;
 	margin: 1em 0;
 	padding: 0.3em;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	background-color: #F0EDE8;
 	-moz-border-radius: 0.5em;
 	-webkit-border-radius: 0.5em;
 	border-radius: 0.5em;
@@ -240,15 +241,17 @@ aside#sidebar .box input[type=submit] {
 	text-align: center;
 }
 aside#sidebar .box input[type=submit]:hover {
-	background-color: #8ABC00;
-	background: -moz-linear-gradient(top, #999999, #444444);
-	background: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#444444));
-	border-color: #006699;
-	color: #FFFFFF;
+	background-color: #EEE1D7;
+	background: -moz-linear-gradient(top, #FFF2E8, #DDD0D6);
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFF2E8), to(#DDD0D6));
+	border-color: #36598E;
 	cursor: pointer;
 }
 aside#sidebar .box ul {
 	list-style: none;
+}
+aside#sidebar .box a:visited {
+	color: #36598E;
 }
 
 /* liste des forums */
@@ -261,15 +264,24 @@ aside#sidebar div.forum h2 {
 
 /* le logo */
 header#branding > h1 {
-	margin-bottom: 2em;
+	margin: 0 1% 4em;
 	height: 15em;
-	background-image: url(/images/contrib/grises/linuxfr-logo.png) !important;
-	background-position:center center;
+	background-color: #E0DDD8;
+	background-position: center center;
 	background-repeat:no-repeat;
-	-moz-background-size: contain;
-	-webkit-background-size: contain;
-	-o-background-size: contain;
-	background-size: contain;
+	-moz-background-size: 90% auto;
+	-webkit-background-size: 90% auto;
+	-o-background-size: 90% auto;
+	background-size: 90% auto;
+	border: thin solid;
+	border-color: #CCCCCC #BBBBBB #AAAAAA;
+	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-moz-border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
+	overflow: hidden;
 }
 header#branding > h1 > a {
 	display: block;
@@ -284,33 +296,44 @@ section#container {
 	display: block;
 	width: 77%;
 }
-section#container > * {
-	max-width: 80em;
-	margin: 0 auto;
-}
 section#container > section,
 section#container > aside {
 	display: block;
+}
+
+/* L'article phare */
+section#phare > article {
+	border-color: #BBBBBB #AAAAAA #999999;
+	-moz-box-shadow: 0 0.1em 0.3em #AAAAAA;
+	-webkit-box-shadow: 0 0.1em 0.3em #AAAAAA;
+	box-shadow: 0 0.1em 0.3em #AAAAAA;
+	margin: 4em 0;
 }
 
 /* message important en haut de la page */
 section#container div.notice,
 section#container > aside.banner {
 	margin: 1em auto;
-	border: thin dotted #444444;
 	padding: 0.5em 0;
-	background: #F0F0F0;
 	font-weight: bold;
 	text-align: center;
+	border: thin solid;
+	border-color: #BBBBBB #AAAAAA #999999;
+	background: #FFF2E8;
+	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-moz-border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
 }
 
 /* Titre de la page */
 section#container > h1,
 section#container > div > h1 {
-	color: #444444;
+	color: #666666;
 	font-size: 2.5em;
 	text-align: center;
-	max-width: 32em;
 	margin: 1em auto;
 }
 
@@ -318,14 +341,13 @@ section#container > div > h1 {
 section#container > h2,
 section#container > div > h2,
 section#container > div > div > h2 {
-	color: #444444;
+	color: #990033;
 	font-size: 1.25em;
-	max-width: 64em;
 	margin: 0.5em auto;
 }
 /* tableau de bord directement dans la partie centrale */
 section#container table {
-	background: #FEFEFE;
+	background: #F5F5F5;
 	text-align: left;
 	border-collapse:collapse;
 	border: none;
@@ -337,9 +359,9 @@ section#container table {
 }
 section#container table th {
 	border: thin solid #BBBBBB;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	background: #EEEAE6;
+	background: -moz-linear-gradient(top, #F6F2EE, #E6E2DE);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F6F2EE), to(#E6E2DE));
 	padding: 0.2em;
 }
 section#container table td {
@@ -356,9 +378,9 @@ section#redaction button,
 section#redaction select,
 section#redaction textarea {
 	margin: 0.5em;
-	color: #006699;
+	color: #36598E;
 	border: thin solid #999999;
-	background-color: #F9F9F9;
+	background-color: #F0EDE8;
 	padding: 0.1em 0;
 }
 section#container textarea,
@@ -379,8 +401,8 @@ section#redaction button:focus,
 section#redaction select:focus,
 section#redaction textarea:focus {
 	color: #000000;
-	border-color: #444444;
-	background-color: #FEFEFE;
+	border-color: #36598E;
+	background-color: #FFFFFF;
 	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
 	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
 	box-shadow: 0 0.1em 0.3em #CCCCCC;
@@ -390,9 +412,7 @@ section#container input[type=submit],
 section#redaction button,
 section#redaction input[type=submit] {
 	padding: 0.25em;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	background-color: #F0EDE8;
 	-moz-border-radius: 0.5em;
 	-webkit-border-radius: 0.5em;
 	border-radius: 0.5em;
@@ -403,11 +423,10 @@ section#container button:hover,
 section#container input[type=submit]:hover,
 section#redaction button:hover,
 section#redaction input[type=submit]:hover {
-	background-color: #8ABC00;
-	background: -moz-linear-gradient(top, #999999, #444444);
-	background: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#444444));
-	border-color: #006699;
-	color: #FFFFFF;
+	background-color: #EEE1D7;
+	background: -moz-linear-gradient(top, #FFF2E8, #DDD0D6);
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFF2E8), to(#DDD0D6));
+	border-color: #36598E;
 	cursor: pointer;
 }
 /* Nouvelle dépêche : les liens */
@@ -418,7 +437,7 @@ div#form_links {
 	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
 	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
 	box-shadow: 0 0.1em 0.3em #CCCCCC;
-	background-color: #FEFEFE;
+	background-color: #F5F5F5;
 	-moz-border-radius: 0.4em;
 	-webkit-border-radius: 0.4em;
 	border-radius: 0.4em;
@@ -427,35 +446,27 @@ div#form_links fieldset {
 	padding: 0.5em 0;
 }
 div#form_links fieldset:first-child {
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	background: #EEEAE6;
+	background: -moz-linear-gradient(top, #F6F2EE, #E6E2DE);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F6F2EE), to(#E6E2DE));
 	-moz-border-radius: 0.4em 0.4em 0 0;
 	-webkit-border-top-left-radius: 0.4em;
 	-webkit-border-top-right-radius: 0.4em;
-	-webkit-border-bottom-right-radius: 0;
-	-webkit-border-bottom-left-radius: 0;
 	border-top-left-radius: 0.4em;
 	border-top-right-radius: 0.4em;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
 }
 div#form_links fieldset.link {
 	border-top: thin solid #DDDDDD;
-	background: #FEFEFE;
+	background: #F5F5F5;
 }
 div#form_links fieldset:last-child {
 	border-top: thin solid #DDDDDD;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	background: #E6E2DE;
+	background: -moz-linear-gradient(top, #EEEAE6, #DEDAD6);
+	background: -webkit-gradient(linear, left top, left bottom, from(#EEEAE6), to(#DEDAD6));
 	-moz-border-radius: 0 0 0.5em 0.5em;
-	-webkit-border-top-left-radius: 0;
-	-webkit-border-top-right-radius: 0;
 	-webkit-border-bottom-right-radius: 0.5em;
 	-webkit-border-bottom-left-radius: 0.5em;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
 	border-bottom-right-radius: 0.5em;
 	border-bottom-left-radius: 0.5em;
 }
@@ -463,23 +474,29 @@ div#form_links label {
 	display:inline-block;
 	text-align: center;
 	margin: 0 0 0 1%;
+	font-weight: bold;
 }
 div#form_links label#label-link-name,
 div#form_links label#label-link-url {
 	width: 33%;
 }
-div#form_links label#label-link-lang,
+div#form_links label#label-link-lang {
+	width:11%;
+}
 div#form_links label#label-link-actions {
-	width:13%;
+	width:15%;
 }
 div#form_links input {
 	width: 33%;
 	margin: 0 0 0 1%;
 }
-div#form_links select,
+div#form_links select {
+	margin: 0 0 0 1%;
+	width: 11%;
+}
 div#form_links button {
 	margin: 0 0 0 1%;
-	width: 13%;
+	width: 15%;
 }
 /* mdp et mail utilisateur */
 section#container form.edit_account input[type=text],
@@ -498,17 +515,16 @@ section#container form.edit_account input[type=password] {
 	display: none;
 }
 .datePourCss {
-	display: none;
+    display: none;
 }
 
 /* Liens de navigation */
 section#container > nav.toolbox,
 div#contents > div.pagination,
 body#comments-show > section#container > p {
-	margin: 2em auto;
+	margin: 2.5em 1em;
 	display: block;
 	font-size: 0.8em;
-	max-width: 100em;
 }
 section#container > nav.toolbox ul {
 	display: inline;
@@ -516,6 +532,13 @@ section#container > nav.toolbox ul {
 }
 section#container > nav.toolbox li {
 	display: inline;
+}
+
+/* Proposer un contenu */
+div.new_content {
+	font-size: 1.1em;
+	font-weight: bold;
+	margin-bottom: 0.25em;
 }
 
 /* l'article */
@@ -526,44 +549,42 @@ article {
 	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
 	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
 	box-shadow: 0 0.1em 0.3em #CCCCCC;
-	background-color: #FEFEFE;
-	-moz-border-radius: 0.4em;
-	-webkit-border-radius: 0.4em;
-	border-radius: 0.4em;
+	background-color: #F5F5F5;
+	-moz-border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
 	display: block;
 }
 
 /* en-tête de l'article */
 article header {
 	border-bottom: thin solid #DDDDDD;
-	padding: 0.5em 0.75em;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
-	-moz-border-radius: 0.4em 0.4em 0 0;
-	-webkit-border-top-left-radius: 0.4em;
-	-webkit-border-top-right-radius: 0.4em;
-	-webkit-border-bottom-right-radius: 0;
-	-webkit-border-bottom-left-radius: 0;
-	border-top-left-radius: 0.4em;
-	border-top-right-radius: 0.4em;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
+	padding: 0.5em 0.75em 0.25em;
+	background: #EEEAE6;
+	background: -moz-linear-gradient(top, #F6F2EE, #E6E2DE);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F6F2EE), to(#E6E2DE));
+	-moz-border-radius: 0.5em 0.5em 0 0;
+	-webkit-border-top-left-radius: 0.5em;
+	-webkit-border-top-right-radius: 0.5em;
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
 	display: block;
+	color: #555522;
 }
 	/* titre de l'article */
 	article header h1 {
 		font-size: 1.25em;
 		display: inline;
-		color: #444444;
+		color: #555522;
 	}
 	article header h1 a:link,
 	article header h1 a:visited {
-		color: #444444;
+		color: #555522;
 	}
 	/* Info complémentaires dans l'en-tête */
 	article header div.meta {
 		font-size: 0.8em;
+		font-style: italic;
 	}
 	article header ul,
 	article header li {
@@ -574,15 +595,19 @@ article header {
 /*le score de l'article */
 article > div.figures > figure.score {
 	font-weight: bold;
-	background: #4C7C00;
-	background: -moz-linear-gradient(top, #999999, #666666);
-	background: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#666666));
-	color: #FEFEFE;
+	background-color: #EEE1D7;
+	color: #555522;
+	background: -moz-linear-gradient(top, #FFF2E8, #DDD0D6);
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFF2E8), to(#DDD0D6));
 	padding: 1.2em 0 0;
 	margin: 1em 0.75em 0.5em;
-	-moz-border-radius: 0.4em;
-	-webkit-border-radius: 0.4em;
-	border-radius: 0.5em;
+	-moz-border-radius: 0.4em 0.4em 0 0.4em;
+	-webkit-border-top-left-radius: 0.4em;
+	-webkit-border-top-right-radius: 0.4em;
+	-webkit-border-bottom-left-radius: 0.4em;
+	border-top-left-radius: 0.4em;
+	border-top-right-radius: 0.4em;
+	border-bottom-left-radius: 0.4em;
 	float: left;
 	display: block;
 	width: 3.5em;
@@ -614,35 +639,35 @@ article div h1,
 article > h1 {
 	padding: 0.5em 0.75em;
 	font-size: 1.5em;
-	color: #444444;
+	color: #990033;
 }
 article div h2,
 div.content h2,
 table#wiki_help h2 {
 	padding: 0.4em 0.75em 0;
 	font-size: 1.4em;
-	color: #444444;
+	color: #990033;
 }
 article div h3,
 div.content h3,
 table#wiki_help h3 {
 	padding: 0.3em 0.75em 0;
 	font-size: 1.2em;
-	color: #444444;
+	color: #990033;
 }
 article div h4,
 div.content h4,
 table#wiki_help h4 {
 	padding: 0.2em 0.75em 0;
 	font-size: 1.1em;
-	color: #444444;
+	color: #990033;
 }
 article div h5,
 div.content h5 {
 	padding: 0.1em 0.75em 0;
 	font-size: 1em;
 	font-weight: normal;
-	color: #444444;
+	color: #990033;
 }
 article div ul,
 div.content ul {
@@ -662,17 +687,12 @@ article div blockquote,
 div.content blockquote {
 	font-style: italic;
 	margin: 0.5em 0 0.5em 4em;
-	color: #444444;
+	color: #333333;
 }
 article div pre,
 div.content pre {
 	white-space: pre-wrap;
 	min-width: 55em;
-}
-
-div.content p {
-  margin-top: 1em;
-  margin-bottom: 1em;
 }
 
 /* Lien d'article */
@@ -683,15 +703,6 @@ article li.link {
 article li.link img {
 	width: 1.25em !important;
 	height: 0.8em !important;
-}
-article a:link,
-article a:visited {
-	color: #006699;
-	text-decoration: none;
-}
-article a:hover {
-	color: #444444;
-	text-decoration: underline;
 }
 
 /* uniquement pour le sondage en cours */
@@ -712,30 +723,28 @@ article.poll div.content ul.poll {
 }
 .poll meter {
 	display: block;
-	border: thin solid #DDDDDD;
-	background: #F0F0F0;
+	border: thin solid #CCCCCC;
+	background: #F0EDE8;
 	color: #444444;
 	text-align: right;
 }
 
 /* Le pied de l'article */
 article > footer {
-	padding: 0.5em 0.75em;
+	padding: 0.25em 0.75em;
 	display: block;
 	font-size: 0.8em;
+	font-style: italic;
 	border-top: thin solid #DDDDDD;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
-	-moz-border-radius: 0 0 0.5em 0.5em;
-	-webkit-border-top-left-radius: 0;
-	-webkit-border-top-right-radius: 0;
-	-webkit-border-bottom-right-radius: 0.5em;
-	-webkit-border-bottom-left-radius: 0.5em;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0.5em;
-	border-bottom-left-radius: 0.5em;
+	background: #E6E2DE;
+	color: #555522;
+	background: -moz-linear-gradient(top, #EEEAE6, #DEDAD6);
+	background: -webkit-gradient(linear, left top, left bottom, from(#EEEAE6), to(#DEDAD6));
+	-moz-border-radius: 0 0 0.625em 0.625em;
+	-webkit-border-bottom-right-radius: 0.625em;
+	-webkit-border-bottom-left-radius: 0.625em;
+	border-bottom-right-radius: 0.625em;
+	border-bottom-left-radius: 0.625em;
 }
 article > footer > div {
 	display: inline;
@@ -745,6 +754,7 @@ article > footer > div {
 #container header li .add_tag, #container header li .remove_tag {
 	display: block;
 	float: left;
+	clear: left;
 	text-indent: -9998em;
 	height: 12px;
 	width: 12px;
@@ -777,14 +787,15 @@ div.vote {
 section#container div.vote input {
 	border: thin solid transparent;
 	background: none;
-	color: #006699;
+	color: #36598E;
 	margin:0;
 	padding:0;
+	font-style: italic;
 }
 section#container div.vote input:hover {
 	border: thin solid transparent;
 	background: none;
-	color: #444444;
+	color: #B64545;
 	cursor: pointer;
 }
 /* Le bouton oublier */
@@ -795,18 +806,17 @@ section#container div.vote input:hover {
 section#container .action form.button_to input {
 	border: thin solid transparent;
 	background: none;
-	color: #006699;
+	color: #36598E;
 	margin:0;
 	padding:0;
+	font-style: italic;
 }
 section#container .action form.button_to input:hover {
 	border: thin solid transparent;
 	background: none;
-	color: #444444;
+	color: #B64545;
 	cursor: pointer;
-	text-decoration: underline;
 }
-
 /* Tout les commentaires */
 div#comments {
 	margin: 4em auto;
@@ -832,32 +842,35 @@ div#comments > ul > li,
 div#contents > ul > li {
 	margin: 0 0 1em 0;
 	border: thin solid;
-	padding: 0.7em;
-	border-color: #DDDDDD #CCCCCC #BBBBBB;
+	padding: 0.25em 0.75em;
+	border-color: #CCCCCC #BBBBBB #AAAAAA;
 	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
 	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
 	box-shadow: 0 0.1em 0.3em #CCCCCC;
 	-moz-border-radius: 0.5em;
 	-webkit-border-radius: 0.5em;
 	border-radius: 0.5em;
-	background-color: #FEFEFE;
+	background-color: #DAD6D1;
 	color: #000000;
 	font-size: 1em;
 }
 /* Decalage a droite pour les reponses */
 div#comments li > ul {
-	padding-left: 1.5em;
+	padding-left: 1.75em;
 	list-style: none;
 }
 
 /* le titre du commentaire */
 li.comment > h2 {
-	margin-top: 0.5em;
+	margin: 0.5em 0;
 	padding: 0.2em 0.5em;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
-	border-bottom:thin solid #DDDDDD;
+	background-color: #EBE7E2;
+	background: -moz-linear-gradient(top, #F3EFEA, #E3DFDA);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F3EFEA), to(#E3DFDA));
+	-moz-border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
+	border-bottom: thin solid #BBBBBB;
 	color: #444444;
 	font-size: 1em;
 	font-weight: bold;
@@ -876,8 +889,9 @@ li.comment > p.meta,
 li.comment > footer.actions {
 	color: #444444;
 	font-size: 0.8em;
-	padding: 0.5em 0 0.5em 0.875em;
+	padding: 0 0 0.5em 0.875em;
 	display: block;
+	font-style: italic;
 }
 /* l'avatar */
 li.comment > figure.image {
@@ -903,25 +917,25 @@ li.comment .content .signature:before {
 /* le commentaire */
 li.comment > div.content {
 	padding: 0 0 0 1em;
-	min-height: 3em;
-	border-left: thin solid #CCCCCC;
+	min-height: 3.5em;
+	border-left: thin solid #BBBBBB;
 }
 
 /* Style de titre pour les nouveaux commentaires */
 li.new-comment > h2 {
 	margin-top: 0.5em;
 	padding: 0.2em 0.5em;
-	background-color: #777777;
-	background: -moz-linear-gradient(top, #888888, #666666);
-	background: -webkit-gradient(linear, left top, left bottom, from(#888888), to(#666666));
-	border-bottom:thin solid #666666;
-	color: #FFFFFF;
+	background-color: #7B7772;
+	background: -moz-linear-gradient(top, #837F7A, #736F6A);
+	background: -webkit-gradient(linear, left top, left bottom, from(#837F7A), to(#736F6A));
+	border-bottom: thin solid #AAAAAA;
+	color: #EEEEEE;
 	font-size: 1em;
 	font-weight: bold;
 }
 li.new-comment > h2 a:link,
 li.new-comment > h2 a:visited {
-	color: #FFFFFF;
+	color: #EEEEEE;
 }
 
 /* Commentaire replié */
@@ -936,7 +950,6 @@ li.fold > footer.actions {
 section#container > footer {
 	display: block;
 	font-size: 0.8em;
-	max-width: 100em;
 	margin: 2em auto;
 }
 
@@ -944,11 +957,18 @@ section#container > footer {
 footer#bigfooter {
 	display: inline;
 	float: left;
-	border-top: thin dotted #999999;
-	width: 90%;
-	margin: 3em 5% 0;
-	padding-bottom: 5em;
+	border: thin solid;
+	border-color: #DDDDDD #CCCCCC #BBBBBB;
+	width: 98%;
+	margin: 3em 1% 5em;
 	font-size: 0.8em;
+	background-color: #EEEAE6;
+	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
+	box-shadow: 0 0.1em 0.3em #CCCCCC;
+	-moz-border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
 }
 /* les 4 listes du pied de page */
 footer#bigfooter nav,
@@ -964,6 +984,7 @@ footer#bigfooter section {
 footer#bigfooter h1 {
 	font-size: 1.25em;
 	margin: 0 0 0.5em 0;
+	background-color: #DEDAD6;
 }
 footer#bigfooter ul {
 	list-style: none;
@@ -985,12 +1006,13 @@ section#chat {
 	float:left;
 	margin: 1em 1% 1em 0;
 	width: 39%;
+	color: #222222;
 }
 section#chat input[type=text] {
 	width: 64%;
 }
 section#chat h1 {
-	color: #444444;
+	color: #990033;
 	font-size: 1.5em;
 	padding: 0.75em 0 0.5em;
 }
@@ -1000,7 +1022,8 @@ time.norloge {
 	font-weight: bold;
 }
 div.board > div.inbox > p {
-	padding: 0.25em 0 0.25em;
+	padding-top: 0.25em;
+	color: #222222;
 	font-size: 0.8em;
 }
 div.board > div.inbox span.board-left {
@@ -1009,13 +1032,12 @@ div.board > div.inbox span.board-left {
 	display: block;
 }
 div.board > div.inbox span.board-right {
-	margin-left: 16%;
+	margin-left: 20%;
 	display: block;
 }
 input#board_message {
 	width: 75%;
 }
-
 /* Revision de wiki */
 body#wiki_pages-revision div#contents > h2 {
 	border-top: thin solid #DDDDDD;
@@ -1023,33 +1045,29 @@ body#wiki_pages-revision div#contents > h2 {
 	border-right: thin solid #DDDDDD;
 	padding: 0.4em 0.5em 0;
 	margin: 0;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F4F4F4);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F4F4F4));
+	background: #EEEAE6;
+	background: -moz-linear-gradient(top, #F6F2EE, #EEEAE6);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F6F2EE), to(#EEEAE6));
 	-moz-border-radius: 0.4em 0.4em 0 0;
 	-webkit-border-top-left-radius: 0.4em;
 	-webkit-border-top-right-radius: 0.4em;
-	-webkit-border-bottom-right-radius: 0;
-	-webkit-border-bottom-left-radius: 0;
 	border-top-left-radius: 0.4em;
 	border-top-right-radius: 0.4em;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
 	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
 	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
 	box-shadow: 0 0.1em 0.3em #CCCCCC;
 }
 body#wiki_pages-revision div#contents > h2 > a {
-	color: #444444;
+	color: #555522;
 }
 body#wiki_pages-revision div#contents > h3 {
 	border-left: thin solid #DDDDDD;
 	border-right: thin solid #DDDDDD;
 	border-bottom: thin solid #DDDDDD;
 	padding: 0 0.75em 0.5em;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F4F4F4, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F4F4F4), to(#F0F0F0));
+	background: #EEEAE6;
+	background: -moz-linear-gradient(top, #EEEAE6, #E6E2DE);
+	background: -webkit-gradient(linear, left top, left bottom, from(#EEEAE6), to(#E6E2DE));
 	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
 	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
 	box-shadow: 0 0.1em 0.3em #CCCCCC;
@@ -1058,7 +1076,7 @@ body#wiki_pages-revision div#contents > h3 {
 }
 body#wiki_pages-revision div#contents > pre {
 	white-space:pre-wrap;
-	background-color: #FFFFFF;
+	background-color: #F5F5F5;
 	color: #000000;
 	padding: 0.25em;
 	border-left: thin solid #CCCCCC;
@@ -1068,26 +1086,23 @@ body#wiki_pages-revision div#contents > pre {
 	box-shadow: 0 0.1em 0.3em #CCCCCC;
 }
 body#wiki_pages-revision pre > del {
-	background-color: #FFDDDD;
+	background-color: #F5CCCC;
 }
 body#wiki_pages-revision pre > ins {
-	background-color: #DDFFDD;
+	background-color: #CCF5CC;
 	text-decoration: none;
 }
 body#wiki_pages-revision div#contents > nav {
 	border: thin solid;
 	border-color: #DDDDDD #CCCCCC #BBBBBB;
 	padding: 0.5em 0.75em;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	background: #E6E2DE;
+	color: #555522;
+	background: -moz-linear-gradient(top, #EEEAE6, #DEDAD6);
+	background: -webkit-gradient(linear, left top, left bottom, from(#EEEAE6), to(#DEDAD6));
 	-moz-border-radius: 0 0 0.5em 0.5em;
-	-webkit-border-top-left-radius: 0;
-	-webkit-border-top-right-radius: 0;
 	-webkit-border-bottom-right-radius: 0.5em;
 	-webkit-border-bottom-left-radius: 0.5em;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
 	border-bottom-right-radius: 0.5em;
 	border-bottom-left-radius: 0.5em;
 	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
@@ -1109,28 +1124,18 @@ div#toolbar {
 	position: fixed;
 	overflow: hidden;
 	bottom: 0;
-	left: 1.25%;
-	width: 19.4%;
-	border-top: thin solid #DDDDDD;
-	border-left: thin solid #CCCCCC;
-	border-right: thin solid #CCCCCC;
-	padding: 0.5em 0 0.25em;
-	-moz-box-shadow: 0 0.125em 0.375em #CCCCCC;
-	-webkit-box-shadow: 0 0.125em 0.375em #CCCCCC;
-	box-shadow: 0 0.125em 0.375em #CCCCCC;
-	-moz-border-radius: 0.5em 0.5em 0 0;
-	-webkit-border-top-left-radius: 0.5em;
-	-webkit-border-top-right-radius: 0.5em;
-	border-top-left-radius: 0.5em;
-	border-top-right-radius: 0.5em;
-	background-color: #FEFEFE;
+	left: 0;
+	width: 100%;
+	background: #EEEAE6;
+	background: -moz-linear-gradient(top, #F6F2EE, #E6E2DE);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F6F2EE), to(#E6E2DE));
+	border-top: thin solid #BBBBBB;
 	color: #444444;
-	font-size: 0.8em;
-	
+	text-align: center;
 }
 div#toolbar > span {
-	display: block;
-	margin: 0 0.3em;
+	font-size: 0.8em;
+	margin: 0 3em;
 }
 
 /* linux sait faire ! */
@@ -1154,27 +1159,23 @@ body#comments-create div#contents > img {
 	-moz-box-shadow: 0 0.1em 0.3em #CCCCCC;
 	-webkit-box-shadow: 0 0.1em 0.3em #CCCCCC;
 	box-shadow: 0 0.1em 0.3em #CCCCCC;
-	-moz-border-radius: 0.4em;
-	-webkit-border-radius: 0.4em;
-	border-radius: 0.4em;
+	-moz-border-radius: 0.5em;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
 }
 
 .markItUpHeader {
 	border-bottom: thin solid #DDDDDD;
 	padding: 0.5em 1%;
 	height: 1.2em;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
-	-moz-border-radius: 0.4em 0.4em 0 0;
-	-webkit-border-top-left-radius: 0.4em;
-	-webkit-border-top-right-radius: 0.4em;
-	-webkit-border-bottom-right-radius: 0;
-	-webkit-border-bottom-left-radius: 0;
-	border-top-left-radius: 0.4em;
-	border-top-right-radius: 0.4em;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
+	background: #EEEAE6;
+	background: -moz-linear-gradient(top, #F6F2EE, #E6E2DE);
+	background: -webkit-gradient(linear, left top, left bottom, from(#F6F2EE), to(#E6E2DE));
+	-moz-border-radius: 0.5em 0.5em 0 0;
+	-webkit-border-top-left-radius: 0.5em;
+	-webkit-border-top-right-radius: 0.5em;
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
 }
 
 .markItUpEditor,
@@ -1184,8 +1185,8 @@ section#container .markItUpEditor {
 	display: block;
 	overflow: auto;
 	border: none;
-	background-color: #FCFCFC;
-	color: #006699;
+	background-color: #F5F5F5;
+	color: #36598E;
 	padding: 0;
 	margin: 0;
 }
@@ -1198,16 +1199,12 @@ section#container .markItUpEditor:focus {
 .markItUpFooter {
 	padding: 0.5em 0;
 	border-top: thin solid #DDDDDD;
-	background-color: #F4F4F4;
-	background: -moz-linear-gradient(top, #F9F9F9, #F0F0F0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#F0F0F0));
+	background: #E6E2DE;
+	background: -moz-linear-gradient(top, #EEEAE6, #DEDAD6);
+	background: -webkit-gradient(linear, left top, left bottom, from(#EEEAE6), to(#DEDAD6));
 	-moz-border-radius: 0 0 0.5em 0.5em;
-	-webkit-border-top-left-radius: 0;
-	-webkit-border-top-right-radius: 0;
 	-webkit-border-bottom-right-radius: 0.5em;
 	-webkit-border-bottom-left-radius: 0.5em;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
 	border-bottom-right-radius: 0.5em;
 	border-bottom-left-radius: 0.5em;
 }
@@ -1504,12 +1501,4 @@ section#container .markItUpEditor:focus {
 	font-weight: bold;
 }
 
-
-#container h1 > a:first-child::before { content: "「 "}
-#container h1 > a::after { content: " 」"}
-#container h1 > a:last-child::after { content: ""; }
-
-#contents > * > * > p:first-child:first-letter { font-size: 200%; vertical-align: middle; }
-li.new-comment  > * > .title { color: #00BBFF !important; }
-
-@import url(/stylesheets/statistics.css);
+@import '../common/statistics';

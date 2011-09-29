@@ -1,9 +1,9 @@
 .statistics {
 	meter {
 		display: block;
-		background: $C_BD2;
-		border-top: 1px solid $C_BANDEAU;
-		border-bottom: 1px solid $C_BANDEAU;
+		background: #F1ABC5;
+		border-top: 1px solid #4C575F;
+		border-bottom: 1px solid #4C575F;
 		font-size: x-small;
 		&.category { background-color: green; }
 		&.opened { background-color: red; }
