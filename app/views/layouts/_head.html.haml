@@ -15,7 +15,7 @@
   %meta(name="keywords" content="#{@keywords.join ', '}")
   - if @dont_index
     %meta(name="robots" content="noindex, nofollow")
-  <!--[if IE]><script src="/javascripts/html5.js"></script><![endif]-->
-  <!--[if lt IE 9]><script src="/javascripts/IE9.js"></script><![endif]-->
+  <!--[if IE]>#{javascript_include_tag "html5"}</script><![endif]-->
+  <!--[if lt IE 9]>#{javascript_include_tag "IE9"}</script><![endif]-->
   - @feeds.each do |link,title|
     = auto_discovery_link_tag :atom, link, { :title => title }
