@@ -30,6 +30,7 @@ window.markItUpSettings = {
         { separator: '---------------' },
         { name: 'Bold', key: 'B', openWith: '**', closeWith: '**', className: 'bold' },
         { name: 'Italic', key: 'I', openWith: '_', closeWith: '_', className: 'italic' },
+        { name: 'Stroke', key: 'S', openWith: '~~', closeWith: '~~', className: 'stroke' },
         { separator: '---------------' },
         { name: 'Bulleted List', openWith: '- ', className: 'list-bullet'},
         { name: 'Numeric List', className: 'list-numeric', openWith: function(m) { return m.line + '. '; } },
