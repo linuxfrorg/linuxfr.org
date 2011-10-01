@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110927231326) do
+ActiveRecord::Schema.define(:version => 20111001231930) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
-    t.string   "login",                :limit => 40,                       :null => false
+    t.string   "login",                :limit => 40,                         :null => false
     t.string   "role",                 :limit => 10,  :default => "visitor", :null => false
-    t.integer  "karma",                               :default => 20,      :null => false
-    t.integer  "nb_votes",                            :default => 0,       :null => false
+    t.integer  "karma",                               :default => 20,        :null => false
+    t.integer  "nb_votes",                            :default => 0,         :null => false
     t.string   "stylesheet"
     t.string   "old_password",         :limit => 20
-    t.string   "email",                               :default => "",      :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "",      :null => false
+    t.string   "email",                               :default => "",        :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "",        :null => false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20110927231326) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "preferences",                         :default => 0,       :null => false
+    t.integer  "preferences",                         :default => 0,         :null => false
   end
 
   add_index "accounts", ["confirmation_token"], :name => "index_accounts_on_confirmation_token", :unique => true
