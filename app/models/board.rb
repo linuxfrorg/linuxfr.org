@@ -1,3 +1,5 @@
+require 'iconv'
+
 # It's the famous board, from DaCode (then templeet), boosted to store
 # additional messages about redaction & moderation (votes, locks...)
 #
@@ -50,7 +52,8 @@ class Board
   def save
     return false if @message.blank?
     sanitize_message unless @message.html_safe?
-    @user_agent = h @user_agent
+    ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
+    @user_agent = ic.iconv(h @user_agent)
     @user_name  = h @user_name
     @user_url   = h @user_url
     @id = $redis.incr("boards/id")
