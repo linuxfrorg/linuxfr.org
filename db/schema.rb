@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20110927231326) do
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
     t.string   "login",                :limit => 40,                       :null => false
-    t.string   "role",                 :limit => 10,  :default => "moule", :null => false
+    t.string   "role",                 :limit => 10,  :default => "visitor", :null => false
     t.integer  "karma",                               :default => 20,      :null => false
     t.integer  "nb_votes",                            :default => 0,       :null => false
     t.string   "stylesheet"

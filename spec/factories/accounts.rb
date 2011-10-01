@@ -5,7 +5,7 @@ FactoryGirl.define do
 
     factory :normal_account do
       login "ptramo"
-      role  "moule"
+      role  "visitor"
       after_create do |a|
         a.password = a.password_confirmation = 'I<3J2EE'
         a.save
@@ -19,7 +19,7 @@ FactoryGirl.define do
 
     factory :writer_account do
       login "LionelAllorge"
-      role  "moule"
+      role  "visitor"
     end
 
     factory :reviewer_account do

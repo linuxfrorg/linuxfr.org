@@ -7,7 +7,7 @@
 #  id                   :integer(4)      not null, primary key
 #  user_id              :integer(4)
 #  login                :string(40)      not null
-#  role                 :string(10)      default("moule"), not null
+#  role                 :string(10)      default("visitor"), not null
 #  karma                :integer(4)      default(20), not null
 #  nb_votes             :integer(4)      default(0), not null
 #  stylesheet           :string(255)
@@ -140,9 +140,9 @@ class Account < ActiveRecord::Base
   scope :admin,     where(:role => "admin")
   scope :amr,       where(:role => %w[admin moderator reviewer])
 
-  state_machine :role, :initial => :moule do
+  state_machine :role, :initial => :visitor do
     event :inactivate            do transition all                 => :inactive  end
-    event :reactivate            do transition :inactive           => :moule     end
+    event :reactivate            do transition :inactive           => :visitor   end
     event :give_reviewer_rights  do transition all - :inactive     => :reviewer  end
     event :give_moderator_rights do transition [:reviewer, :admin] => :moderator end
     event :give_admin_rights     do transition :moderator          => :admin     end
