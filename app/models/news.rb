@@ -33,6 +33,10 @@ class News < Content
     :reject_if => proc { |attrs| attrs['title'].blank? && attrs['url'].blank? }
   accepts_nested_attributes_for :paragraphs, :allow_destroy => true,
     :reject_if => proc { |attrs| attrs['body'].blank? }
+  has_many :versions, :class_name => 'NewsVersion',
+                      :dependent  => :destroy,
+                      :order      => 'version DESC',
+                      :inverse_of => :news
 
   attr_accessible :title, :section_id, :author_name, :author_email, :links_attributes, :paragraphs_attributes
 
@@ -177,6 +181,16 @@ class News < Content
     return unless editor
     message = NewsController.new.render_to_string(:partial => 'board', :locals => {:action => 'dépêche modifiée :', :news => self})
     Board.create_for(self, :user => editor, :kind => "edition", :message => message)
+  end
+
+  after_save :create_new_version
+  def create_new_version
+    versions.create(:user_id     => (editor || account).try(:id),
+                    :title       => title,
+                    :body        => body,
+                    :second_part => second_part,
+                    :links       => links.map(&:to_s).join("\n"),
+                    :message     => "révision n°#{versions.count + 1}")
   end
 
 ### Associated node ###

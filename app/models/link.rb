@@ -59,6 +59,12 @@ class Link < ActiveRecord::Base
     $redis.set("links/#{self.id}/url", url)
   end
 
+### Presentation ###
+
+  def to_s
+    "[#{lang}] #{title} : #{url}"
+  end
+
 ### Chat ###
 
   after_create :announce_create

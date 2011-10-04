@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111001231930) do
+ActiveRecord::Schema.define(:version => 20111004212141) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -149,6 +149,20 @@ ActiveRecord::Schema.define(:version => 20111001231930) do
   add_index "news", ["cached_slug"], :name => "index_news_on_cached_slug"
   add_index "news", ["section_id"], :name => "index_news_on_section_id"
   add_index "news", ["state"], :name => "index_news_on_state"
+
+  create_table "news_version", :force => true do |t|
+    t.integer  "news_id"
+    t.integer  "user_id"
+    t.integer  "version"
+    t.string   "message"
+    t.string   "title"
+    t.text     "body"
+    t.text     "second_part"
+    t.text     "links"
+    t.datetime "created_at"
+  end
+
+  add_index "news_version", ["news_id", "version"], :name => "index_news_version_on_news_id_and_version"
 
   create_table "nodes", :force => true do |t|
     t.integer  "content_id"
