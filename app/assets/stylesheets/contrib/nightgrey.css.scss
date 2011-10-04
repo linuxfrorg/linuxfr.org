@@ -973,6 +973,12 @@ li.comment .content .signature:before {
 .comment .content {
   border-left: 1px dotted #6A6A6A;
   padding: 0 50px 0 5px;
+  list-style-type: disc;
+  
+  li {
+      margin-left: 40px;
+      list-style-type: disc;
+  }
 }
 .comment .avatar {
   float: right;
