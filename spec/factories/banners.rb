@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: banners
+#
+#  id      :integer(4)      not null, primary key
+#  title   :string(255)
+#  content :text
+#
+
 # encoding: UTF-8
 FactoryGirl.define do
   factory :banner do

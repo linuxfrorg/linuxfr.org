@@ -2,13 +2,13 @@
 #
 # == Schema Information
 #
-# Table name: accounts
+# Table name: logs
 #
-#  id                   :integer(4)      not null, primary key
-#  account_id           :integer(4)
-#  description          :string(255)
-#  user_id              :integer(4)
-#  created_at           :datetime
+#  id          :integer(4)      not null, primary key
+#  account_id  :integer(4)
+#  description :string(255)
+#  created_at  :datetime
+#  user_id     :integer(4)
 #
 
 # The Log class is here to keep some facts about accounts like plonks.
