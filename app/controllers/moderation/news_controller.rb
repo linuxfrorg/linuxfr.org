@@ -35,7 +35,7 @@ class Moderation::NewsController < ModerationController
     @news.body = params[:news].delete(:body) if params[:news].has_key?(:body)
     @news.second_part = params[:news].delete(:second_part) if params[:news].has_key?(:second_part)
     @news.attributes = params[:news]
-    @news.editor = current_user
+    @news.editor = current_account
     @news.save
     respond_to do |wants|
       wants.js { render :nothing => true }

@@ -54,6 +54,13 @@ class Link < ActiveRecord::Base
     end
   end
 
+  after_save :create_new_version
+  def create_new_version
+    news.editor = user.try(:account)
+    news.put_paragraphs_together
+    news.create_new_version
+  end
+
   after_save :save_url_in_redis
   def save_url_in_redis
     $redis.set("links/#{self.id}/url", url)

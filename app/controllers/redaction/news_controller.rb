@@ -22,6 +22,11 @@ class Redaction::NewsController < RedactionController
     end
   end
 
+  def revision
+    @version  = @news.versions.find_by_version!(params[:revision])
+    @previous = @version.higher_item || NewsVersion.new
+  end
+
   def edit
     respond_to do |wants|
       wants.js { render :partial => 'form' }
@@ -30,7 +35,7 @@ class Redaction::NewsController < RedactionController
 
   def update
     @news.attributes = params[:news]
-    @news.editor = current_user
+    @news.editor = current_account
     @news.save
     respond_to do |wants|
       wants.js { render :nothing => true }

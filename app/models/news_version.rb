@@ -1,3 +1,20 @@
+# encoding: UTF-8
+#
+# == Schema Information
+#
+# Table name: news_versions
+#
+#  id          :integer(4)      not null, primary key
+#  news_id     :integer(4)
+#  user_id     :integer(4)
+#  version     :integer(4)
+#  title       :string(255)
+#  body        :text
+#  second_part :text
+#  links       :text
+#  created_at  :datetime
+#
+
 class NewsVersion < ActiveRecord::Base
   belongs_to :news
   belongs_to :user
@@ -11,4 +28,13 @@ class NewsVersion < ActiveRecord::Base
     raise ActiveRecordError.new "On ne modifie pas les anciennes versions !"
   end
 
+### Presentation ###
+
+  def message
+    "Révision n°#{self.id}"
+  end
+
+  def author_name
+    user.try :name
+  end
 end

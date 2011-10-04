@@ -31,4 +31,8 @@ class WikiVersion < ActiveRecord::Base
   def message
     read_attribute(:message) || "Révision n°#{self.id}"
   end
+
+  def author_name
+    user.try :name
+  end
 end

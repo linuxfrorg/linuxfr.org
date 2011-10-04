@@ -129,6 +129,7 @@ class News < Content
     news.cc_licensed = true
     news.author_name  = account.name
     news.author_email = account.email
+    news.editor = account
     news.save
     news
   end
@@ -180,24 +181,26 @@ class News < Content
   def announce_modification
     return unless editor
     message = NewsController.new.render_to_string(:partial => 'board', :locals => {:action => 'dépêche modifiée :', :news => self})
-    Board.create_for(self, :user => editor, :kind => "edition", :message => message)
+    Board.create_for(self, :account => editor.user, :kind => "edition", :message => message)
   end
 
   after_save :create_new_version
   def create_new_version
-    versions.create(:user_id     => (editor || account).try(:id),
+    versions.create(:user_id     => (editor || author_account).try(:id),
                     :title       => title,
-                    :body        => body,
-                    :second_part => second_part,
-                    :links       => links.map(&:to_s).join("\n"),
-                    :message     => "révision n°#{versions.count + 1}")
+                    :body        => wiki_body,
+                    :second_part => wiki_second_part,
+                    :links       => links.map(&:to_s).join("\n"))
   end
 
 ### Associated node ###
 
+  def author_account
+    Account.find_by_email(author_email)
+  end
+
   def create_node(attrs={})
-    account = Account.find_by_email(author_email)
-    self.tmp_owner_id = account.try(:user_id)
+    self.tmp_owner_id = author_account.try(:user_id)
     attrs[:public] = false
     super attrs
   end

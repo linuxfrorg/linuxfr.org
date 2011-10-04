@@ -150,11 +150,10 @@ ActiveRecord::Schema.define(:version => 20111004212141) do
   add_index "news", ["section_id"], :name => "index_news_on_section_id"
   add_index "news", ["state"], :name => "index_news_on_state"
 
-  create_table "news_version", :force => true do |t|
+  create_table "news_versions", :force => true do |t|
     t.integer  "news_id"
     t.integer  "user_id"
     t.integer  "version"
-    t.string   "message"
     t.string   "title"
     t.text     "body"
     t.text     "second_part"
@@ -162,7 +161,7 @@ ActiveRecord::Schema.define(:version => 20111004212141) do
     t.datetime "created_at"
   end
 
-  add_index "news_version", ["news_id", "version"], :name => "index_news_version_on_news_id_and_version"
+  add_index "news_versions", ["news_id", "version"], :name => "index_news_versions_on_news_id_and_version"
 
   create_table "nodes", :force => true do |t|
     t.integer  "content_id"

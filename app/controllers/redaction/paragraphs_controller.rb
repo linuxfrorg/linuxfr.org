@@ -5,6 +5,7 @@ class Redaction::ParagraphsController < RedactionController
 
   def create
     @news = News.find(params[:news_id])
+    @news.editor = current_account
     enforce_update_permission(@news)
     if @news.paragraphs.in_first_part.count == 0
       paragraphs = @news.paragraphs.in_first_part

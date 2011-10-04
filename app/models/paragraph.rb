@@ -81,6 +81,7 @@ class Paragraph < ActiveRecord::Base
 ### Behaviour ###
 
   def update_by(user)
+    news.editor = user.account
     if wiki_body.blank?
       destroy
     else

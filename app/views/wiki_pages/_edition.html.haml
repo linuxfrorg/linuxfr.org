@@ -10,4 +10,4 @@
     Les dernières modifications&nbsp;:
   %ul
     = list_of(edition.versions) do |v|
-      = link_to "#{v.user.try :name}&nbsp;: #{v.message}".html_safe, "/wiki/#{edition.to_param}/revisions/#{v.version}"
+      = link_to "#{v.author_name}&nbsp;: #{v.message}".html_safe, "/wiki/#{edition.to_param}/revisions/#{v.version}"
