@@ -8,7 +8,7 @@ atom_feed(:root_url => section_url(@section), "xmlns:wfw" => "http://wellformedw
       entry.title(news.title)
       entry.content(news.body, :type => 'html')
       entry.author do |author|
-        author.name(news.user.name)
+        author.name(news.author_name)
       end
       entry.wfw :commentRss, "http://#{MY_DOMAIN}/nodes/#{news.node.id}/comments.atom"
     end
