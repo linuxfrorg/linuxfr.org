@@ -1,3 +1,5 @@
+# encoding: UTF-8
+#
 # == Schema Information
 #
 # Table name: banners
@@ -7,7 +9,6 @@
 #  content :text
 #
 
-# encoding: UTF-8
 FactoryGirl.define do
   factory :banner do
     title   "RMLL 2010"

@@ -1,3 +1,5 @@
+# encoding: UTF-8
+#
 # == Schema Information
 #
 # Table name: comments
@@ -16,7 +18,6 @@
 #  updated_at        :datetime
 #
 
-# encoding: UTF-8
 FactoryGirl.define do
   factory :comment do
     user

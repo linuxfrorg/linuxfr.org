@@ -78,10 +78,19 @@ protected
       if code.lines.all? { |line| line =~ /\A\r?\n\Z/ || line =~ /^(    |\t)/ }
         code.gsub!(/^(    |\t)/m, '')
       end
-      output = Albino.new(code, lang).colorize(:P => "nowrap").html_safe
+      output = colorize_code(code, lang)
       data.gsub!(id) { "<pre><code class=\"#{lang}\">#{output}</code></pre>" }
     end
     data
+  end
+
+  def colorize_code(code, lang)
+    Albino.new(code, lang).colorize(:P => "nowrap").html_safe
+  rescue Albino::ShellArgumentError
+    raise if lang == "text"
+    code = lang + code
+    lang = "text"
+    retry
   end
 
   def add_toc_content(str)

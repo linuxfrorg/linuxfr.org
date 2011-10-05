@@ -1,15 +1,13 @@
 class SessionsController < ApplicationController
   include Devise::Controllers::InternalHelpers
 
-  prepend_before_filter :require_no_authentication, :only => [:new, :create]
-  skip_before_filter    :verify_authenticity_token, :only => [:new, :create]
+  prepend_before_filter :allow_params_authentication!, :only => [:create]
+  prepend_before_filter :require_no_authentication,    :only => [:new, :create]
+  skip_before_filter    :verify_authenticity_token,    :only => [:new, :create]
 
-  # GET /account/sign_in
   def new
-    render :new
   end
 
-  # POST /account/sign_in
   def create
     cookies.permanent[:https] = { :value => "1", :secure => false } if request.ssl?
     @account = warden.authenticate!(:scope => :account, :recall => "#{controller_path}#new")
@@ -19,7 +17,6 @@ class SessionsController < ApplicationController
     redirect_to '/'
   end
 
-  # GET /account/sign_out
   def destroy
     cookies.delete :https
     sign_out :account

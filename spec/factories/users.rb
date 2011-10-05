@@ -1,3 +1,5 @@
+# encoding: UTF-8
+#
 # == Schema Information
 #
 # Table name: users
@@ -14,7 +16,6 @@
 #  signature     :string(255)
 #
 
-# encoding: UTF-8
 FactoryGirl.define do
   factory :user do
     name      "Pierre Tramo"
