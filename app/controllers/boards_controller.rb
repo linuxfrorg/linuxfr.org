@@ -8,13 +8,12 @@ class BoardsController < ApplicationController
 
   def show
     @boards = Board.all(Board.free)
-    @board  = @boards.build
     respond_with(@boards)
   end
 
   def create
     board = Board.new(params[:board])
-    board.user       = current_account.user
+    board.user = current_account.user
     enforce_create_permission(board)
     board.user_agent = request.user_agent
     board.save

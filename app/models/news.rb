@@ -170,7 +170,7 @@ class News < Content
     paragraphs.create(:second_part => false, :wiki_body => wiki_body)        unless wiki_body.blank?
     paragraphs.create(:second_part => true,  :wiki_body => wiki_second_part) unless wiki_second_part.blank?
     return if message.blank?
-    Board.create_for(self, :user => author_name, :message => message)
+    Board.new(:object_type => Board.news, :object_id => self.id, :message => message, :user_name => author_name).save
   end
 
   after_update :announce_modification
