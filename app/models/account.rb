@@ -185,7 +185,7 @@ class Account < ActiveRecord::Base
 ### Actions ###
 
   def can_post_on_board?
-    active_for_authentication? && !plonked?
+    active_for_authentication? && !plonked? && karma > 0
   end
 
   def tag(node, tags)
