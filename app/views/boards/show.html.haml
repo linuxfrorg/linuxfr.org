@@ -10,10 +10,10 @@
     verront leurs comptes supprimés. Les propos tenus ici sont publiés
     sous la responsabilité de leurs auteurs respectifs.
   %p
-    Les totoz, vous les préférez :
-    %a{:onclick => "$.cookie('totoz-type', 'popup', {path: '/board', expires: new Date('01/01/2042')});" } en popup,
-    %a{:onclick => "$.cookie('totoz-type', 'inline', {path: '/board', expires: new Date('01/01/2042')});" } en ligne
+    Vous pouvez choisir le type d'affichage pour les photos&nbsp;:
+    %a{:onclick => "$.cookie('totoz-type', 'popup', {path: '/board', expires: new Date('01/01/2042')});" } en surimpression,
+    %a{:onclick => "$.cookie('totoz-type', 'inline', {path: '/board', expires: new Date('01/01/2042')});" } insérées avec le texte
     ou
-    %a{:onclick => "$.cookie('totoz-type', null, {path: '/board'});" } en chauve
+    %a{:onclick => "$.cookie('totoz-type', null, {path: '/board'});" } sans
   #contents
     = render 'boards'
