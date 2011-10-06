@@ -2,7 +2,7 @@
 
 - content_for :chat do
   #redaction_board
-    = render 'board'
+    = render 'board', :boards => @boards
     = render 'editions', :news => @news
 
 = article_for @news do |c|

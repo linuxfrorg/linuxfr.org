@@ -10,8 +10,7 @@ class Board
 
 ### Constructors and attributes ###
 
-  attr_accessor :id, :kind, :user_name, :user_url, :user_agent
-  attr_accessor :object_type, :object_id, :message, :created_at
+  attr_accessor :id, :user_name, :user_url, :user_agent, :object_type, :object_id, :message, :created_at
 
   def user=(user)
     if user.respond_to?(:account)
@@ -27,7 +26,6 @@ class Board
   end
 
   def initialize(params={})
-    @kind        = "chat"
     @object_type = Board.free
     @object_type = params[:object_type] unless params[:object_type].blank?
     @object_id   = params[:object_id]   unless params[:object_id].blank?
@@ -40,7 +38,6 @@ class Board
     b.object_id   = content.id
     b.message = attrs[:message].html_safe
     b.user = attrs[:user]
-    b.kind = attrs[:kind]
     b.save
     b
   end
@@ -58,18 +55,18 @@ class Board
     @user_url   = h @user_url
     @id = $redis.incr("boards/id")
     @created_at = Time.now
-    $redis.hmset("boards/msg/#{@id}", :kind, @kind, :msg, @message, :ua, @user_agent, :user, @user_name, :url, @user_url, :date, @created_at.to_i)
+    $redis.hmset("boards/msg/#{@id}", :msg, @message, :ua, @user_agent, :user, @user_name, :url, @user_url, :date, @created_at.to_i)
     $redis.lpush(chan_key, @id)
     $redis.lrange(chan_key, NB_MSG_PER_CHAN, -1).each do |i|
       $redis.del "boards/msg/#{i}"
     end
     $redis.ltrim(chan_key, 0, NB_MSG_PER_CHAN - 1)
-    $redis.publish("b/#{private_key}/#{@id}/#{@kind}", rendered)
+    Push.create(meta, :kind => :chat, :message => rendered)
     true
   end
 
   def self.chan_key(object_type, object_id)
-    ["boards/chans",  object_type.downcase, object_id].compact.join('/')
+    ["boards/chans", object_type.downcase, object_id].compact.join('/')
   end
 
   def chan_key
@@ -77,7 +74,7 @@ class Board
   end
 
   def rendered
-    BoardsController.new.render_to_string(:partial => "board", :locals => {:board => self})
+    BoardsController.new.render_to_string(:partial => "board", :board => self)
   end
 
 ### Sanitizing messages ###
@@ -106,20 +103,9 @@ class Board
     end
   end
 
-### Pubsub keys ###
-
-  class << self
-    attr_accessor :secret
-  end
-
-  def private_key
-    Digest::SHA1.hexdigest("#{@object_type}/#{@object_id}/#{self.class.secret}")
-  end
-
 ### Retrieve boards ###
 
   def load(values)
-    @kind       = values['kind']
     @message    = values['msg'].to_s.html_safe
     @user_agent = values['ua']
     @user_name  = values['user']
@@ -174,6 +160,22 @@ class Board
     News.find(@object_id) if @object_type == Board.news
   end
 
+  def norloge
+    if object_type == Board.writing
+      created_at.to_date
+    else
+      created_at.to_s(:norloge)
+    end
+  end
+
+  def meta
+    if object_type == Board.new
+      news
+    else
+      Board.allocate.tap {|b| b.id = object_type }
+    end
+  end
+
 ### Types ###
 
   # There are several boards:
@@ -186,14 +188,6 @@ class Board
   TYPES.each do |t|
     (class << self; self; end).send(:define_method, t.downcase) { t }
   end
-
-### Kinds ###
-
-  # A message in a board can be of several kinds.
-  # The most common are the 'chat' ones (ie a user chats on a board).
-  # But there are also other kinds for more internal usages.
-  # For example, locking a paragraph is posted in a board with the 'locking' type.
-  KINDS = %w(chat indication vote submission moderation locking creation edition deletion)
 
 ### ActiveModel ###
 

@@ -76,23 +76,17 @@ class Link < ActiveRecord::Base
 
   after_create :announce_create
   def announce_create
-    return unless user
-    message = Redaction::LinksController.new.render_to_string(:partial => 'board', :locals => {:action => 'lien ajouté', :link => self})
-    Board.create_for(news, :user => user, :kind => "creation", :message => message)
+    Push.create(news, as_json.merge(:kind => :add_link))
   end
 
   after_update :announce_update
   def announce_update
-    return unless user
-    message = Redaction::LinksController.new.render_to_string(:partial => 'board', :locals => {:action => 'lien modifié', :link => self})
-    Board.create_for(news, :user => user, :kind => "edition", :message => message)
+    Push.create(news, as_json.merge(:kind => :update_link))
   end
 
   before_destroy :announce_destroy
   def announce_destroy
-    return unless user
-    message = Redaction::LinksController.new.render_to_string(:partial => 'board', :locals => {:action => 'lien supprimé', :link => self})
-    Board.create_for(news, :user => user, :kind => "deletion", :message => message)
+    Push.create(news, :id => self.id, :kind => :remove_link)
   end
 
   def lock_by(user)
@@ -100,8 +94,7 @@ class Link < ActiveRecord::Base
     return false if locked?
     self.locked_by_id = user.id
     save
-    message = "<span class=\"link\" data-id=\"#{self.id}\">#{user.name} édite le lien #{title}</span>"
-    Board.create_for(news, :user => user, :kind => "locking", :message => message)
+    Push.create(news, :id => self.id, :username => user.name, :kind => :lock_link)
     true
   end
 

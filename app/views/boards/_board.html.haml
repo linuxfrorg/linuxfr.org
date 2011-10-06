@@ -1,7 +1,5 @@
-= content_tag(board.kind == "chat" ? "p" : "div", :id => "board-#{board.id}", :class => board.kind) do
+%p.chat{:id => "board-#{board.id}"}
   %span{:class => "board-left", :title => board.user_agent}
-    - if board.object_type == Board.writing
-      = content_tag(:time, board.created_at.to_date, :class => "norloge", :datetime => board.created_at.iso8601)
-    = content_tag(:time, board.created_at.to_s(:norloge), :class => "norloge", :datetime => board.created_at.iso8601)
+    %time.norloge{:datetime => board.created_at.iso8601}= board.norloge
     %b= board.user_link
   %span{:class => "board-right"}= board.message

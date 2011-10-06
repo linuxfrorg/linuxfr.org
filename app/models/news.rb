@@ -98,27 +98,23 @@ class News < Content
     submit!
     node.created_at = DateTime.now
     node.save
-    message = "<b>La dépêche a été soumise à la modération</b>"
-    Board.create_for(self, :user => user, :kind => "submission", :message => message)
+    Push.create(self, :kind => :submit, :username => user.name)
   end
 
   def publish
     node.make_visible
     author = Account.find_by_email(author_email)
     author.give_karma(50) if author
-    message = "<b>La dépêche a été publiée</b>"
-    Board.create_for(self, :user => moderator, :kind => "moderation", :message => message)
+    Push.create(self, :kind => :publish, :username => moderator.name)
     $redis.publish "news", {:id => self.id, :title => title, :slug => cached_slug}.to_json
   end
 
   def be_refused
-    message = "<b>La dépêche a été refusée</b>"
-    Board.create_for(self, :user => moderator, :kind => "moderation", :message => message)
+    Push.create(self, :kind => :refuse, :username => moderator.name)
   end
 
   def deletion
-    message = "<b>La dépêche a été supprimée</b>"
-    Board.create_for(self, :user => moderator, :kind => "moderation", :message => message)
+    Push.create(self, :kind => :delete, :username => moderator.name)
   end
 
   def self.create_for_redaction(account)
@@ -174,14 +170,12 @@ class News < Content
     paragraphs.create(:second_part => false, :wiki_body => wiki_body)        unless wiki_body.blank?
     paragraphs.create(:second_part => true,  :wiki_body => wiki_second_part) unless wiki_second_part.blank?
     return if message.blank?
-    Board.create_for(self, :user => author_name, :kind => "indication", :message => message)
+    Board.create_for(self, :user => author_name, :message => message)
   end
 
   after_update :announce_modification
   def announce_modification
-    return unless editor
-    message = NewsController.new.render_to_string(:partial => 'board', :locals => {:action => 'dépêche modifiée :', :news => self})
-    Board.create_for(self, :account => editor.user, :kind => "edition", :message => message)
+    Push.create(self, :kind => :update, :title => title, :section => { :id => section.id, :title => section.title })
   end
 
   after_save :create_new_version
@@ -218,7 +212,7 @@ class News < Content
       $redis.expire(key, 2678400) # 31 days
     end
     $redis.sadd("news/#{self.id}/#{word}", who)
-    Board.create_for(self, :user => account.user, :kind => "vote", :message => "#{who} a voté #{word}")
+    Push.create(self, :kind => :vote, :word => word, :username => who)
   end
 
   def voters_for
@@ -294,8 +288,7 @@ class News < Content
   def clear_locks(user)
     links.each {|l| l.locked_by_id = nil; l.save }
     paragraphs.each {|p| p.locked_by_id = nil; p.save }
-    message = "<span class=\"clear\">#{user.name} a supprimé tous les locks</span>"
-    Board.create_for(self, :user => user, :kind => "locking", :message => message)
+    Push.create(self, :kind => :clear_locks, :username => user.name)
   end
 
 ### PPP ###

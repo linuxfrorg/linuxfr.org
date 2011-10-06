@@ -17,5 +17,4 @@
           = image_tag "/images/icones/x.png", :alt => "Refusable", :title => "La dépêche est refusable"
         = link_to news.title, [:moderation, news]
   = link_to pluralize(Poll.draft.count, "sondage"), moderation_polls_path
-  - @boards ||= Board.limit(12, Board.amr)
-  = render 'boards/boards'
+  = render 'boards/boards', :boards => Board.limit(12, Board.amr)

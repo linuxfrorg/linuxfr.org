@@ -20,8 +20,6 @@
 # A paragraph can be split in several if it has a blank line in its body.
 #
 class Paragraph < ActiveRecord::Base
-  include ERB::Util
-
   belongs_to :news
 
   attr_accessor :user, :after, :already_split
@@ -72,7 +70,8 @@ class Paragraph < ActiveRecord::Base
     sentences.reverse.each_with_index do |body,i|
       news.paragraphs.create :wiki_body     => body,
                              :second_part   => second_part,
-                             :already_split => true, :user => user,
+                             :already_split => true,
+                             :user          => user,
                              :after         => self.id,
                              :position      => position + 1
     end
@@ -106,26 +105,17 @@ class Paragraph < ActiveRecord::Base
 
   after_create :announce_create
   def announce_create
-    return unless user
-    message = Redaction::ParagraphsController.new.render_to_string(:partial => 'board', :locals => {:action => 'paragraphe ajouté', :paragraph => self})
-    Board.create_for(news, :user => user, :kind => "creation", :message => message)
-    self.user = nil
+    Push.create(news, :id => self.id, :after => after, :kind => :add_paragraph)
   end
 
   after_update :announce_update
   def announce_update
-    return unless user
-    message = Redaction::ParagraphsController.new.render_to_string(:partial => 'board', :locals => {:action => 'paragraphe modifié', :paragraph => self})
-    Board.create_for(news, :user => user, :kind => "edition", :message => message)
-    self.user = nil
+    Push.create(news, :id => self.id, :after => after, :kind => :update_paragraph)
   end
 
   before_destroy :announce_destroy
   def announce_destroy
-    return unless user
-    message = Redaction::ParagraphsController.new.render_to_string(:partial => 'board', :locals => {:action => 'paragraphe supprimé', :paragraph => self})
-    Board.create_for(news, :user => user, :kind => "deletion", :message => message)
-    self.user = nil
+    Push.create(news, :id => self.id, :kind => :remove_paragraph)
   end
 
   # Warning, acts_as_list also declares a before_destroy callback,
@@ -138,8 +128,7 @@ class Paragraph < ActiveRecord::Base
     return false if locked?
     self.locked_by_id = user.id
     save
-    message = "<span class=\"paragraph\" data-id=\"#{self.id}\">#{user.name} édite le paragraphe #{html_escape wiki_body[0,20]}</span>"
-    Board.create_for(news, :user => user, :kind => "locking", :message => message)
+    Push.create(news, :id => self.id, :username => user.name, :kind => :lock_paragraph)
     true
   end
 
