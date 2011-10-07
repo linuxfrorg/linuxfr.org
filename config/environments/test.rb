@@ -40,5 +40,5 @@ LinuxfrOrg::Application.configure do
   config.active_support.deprecation = :stderr
 
   # Allow pass debug_assets=true as a query parameter to load pages with unpackaged assets
-  config.assets.allow_debugging = true
+  config.assets.allow_debugging = false
 end
