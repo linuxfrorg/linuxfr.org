@@ -135,6 +135,7 @@ class Account < ActiveRecord::Base
 
 ### Role ###
 
+  scope :active,    where('role != inactive')
   scope :reviewer,  where(:role => "reviewer")
   scope :moderator, where(:role => "moderator")
   scope :admin,     where(:role => "admin")

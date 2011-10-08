@@ -103,8 +103,7 @@ class News < Content
 
   def publish
     node.make_visible
-    author = Account.find_by_email(author_email)
-    author.give_karma(50) if author
+    author_account.try(:give_karma, 50)
     Push.create(self, :kind => :publish, :username => moderator.name)
     $redis.publish "news", {:id => self.id, :title => title, :slug => cached_slug}.to_json
   end
@@ -190,7 +189,7 @@ class News < Content
 ### Associated node ###
 
   def author_account
-    Account.find_by_email(author_email)
+    Account.active.find_by_email(author_email)
   end
 
   def create_node(attrs={})
