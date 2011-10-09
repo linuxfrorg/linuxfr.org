@@ -51,7 +51,7 @@ class Board
   end
 
   def push
-    rendered = BoardsController.new.render_to_string(:partial => "board", :board => self)
+    rendered = BoardsController.new.render_to_string(:partial => "board", :locals => { :board => self })
     Push.create(meta, :kind => :chat, :message => rendered)
   end
 

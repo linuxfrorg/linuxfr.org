@@ -5,8 +5,6 @@
       @input = @board.find("input[type=text]")
       @inbox = @board.find(".inbox")
       @chan = @board.data("chat")
-      @cursor = @findCursor()
-      @sleepTime = 500
       @board.find(".board-left .norloge").click @norloge
       @board.find("form").submit @postMessage
       @totoz_type = $.cookie("totoz-type")
@@ -18,14 +16,7 @@
         @totoz = @board.append($("<div id=\"les-totoz\"/>")).find("#les-totoz")
         @board.delegate(".totoz", "mouseenter", @createTotoz)
               .delegate(".totoz", "mouseleave", @destroyTotoz)
-      @poll()
-
-    findCursor: ->
-      first = @inbox.children().first()
-      if first.length > 0
-        id = first[0].id
-        return id.slice 6  if id.slice(0, 6) == "board-"
-      null
+      @start()
 
     postMessage: (event) =>
       form = $(event.target)
@@ -77,42 +68,28 @@
       totoz = @totoz.find("#totoz-" + totozId).first()
       totoz.css display: "none"
 
-    poll: =>
-      args = {}
-      args.cursor = @cursor  if @cursor
-      $.ajax
-        url: "/b/" + @chan
-        type: "GET"
-        dataType: "json"
-        data: $.param(args)
-        success: @onSuccess
-        error: @onError
-
-    onSuccess: (response) =>
+    start: =>
       try
-        @newMessages response
-        @sleepTime = 500
-        setTimeout @poll, 0
-      catch e
-        @onError()
+        source = new EventSource("/b/#{@chan}")
+        source.addEventListener "message", @onSuccess
+        source.addEventListener "error",   @onError
+      catch err
+        console.log err
 
-    onError: =>
-      @sleepTime *= 2
-      setTimeout @poll, @sleepTime
+    onSuccess: (e) =>
+      message  = $.parseJSON e.data
+      console.log message
+      existing = $("#board_" + message.id)
+      return  if existing.length > 0
+      method = "on_" + message.kind
+      this[method] message.message  if this[method]
 
-    newMessages: (messages) ->
-      if messages
-        @cursor = messages[messages.length - 1].id
-        for message in messages
-          existing = $("#board_" + message.id)
-          continue  if existing.length > 0
-          method = "on_" + message.kind
-          if this[method]
-            @inbox.prepend(message.msg).find(".board-left:first .norloge").click @norloge
-            this[method] message.msg
-          @norlogize right for right in @inbox.find(".board-right:first")
+    onError: (e) =>
+      @start() if e.eventPhase == EventSource.CLOSED
 
-    on_chat: ->
+    on_chat: (msg) ->
+      @inbox.prepend(msg).find(".board-left:first .norloge").click @norloge
+      @norlogize right for right in @inbox.find(".board-right:first")
 
     on_indication: ->
 
