@@ -91,7 +91,6 @@ class News < Content
 
     after_transition :on => :accept, :do => :publish
     after_transition :on => :refuse, :do => :be_refused
-    after_transition :on => :delete, :do => :deletion
   end
 
   def submit_and_notify(user)
@@ -110,10 +109,6 @@ class News < Content
 
   def be_refused
     Push.create(self, :kind => :refuse, :username => moderator.name)
-  end
-
-  def deletion
-    Push.create(self, :kind => :delete, :username => moderator.name)
   end
 
   def self.create_for_redaction(account)

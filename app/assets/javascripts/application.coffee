@@ -1,19 +1,19 @@
-//= require jquery
-//= require jquery_ujs
-//= require jquery.autocomplete
-//= require jquery.caret-range
-//= require jquery.cookie
-//= require jquery.hotkeys
-//= require jquery.notice
-//= require jquery.markitup
-//= require markitup-markdown
-//= require_tree .
+#= require jquery
+#= require jquery_ujs
+#= require jquery.autocomplete
+#= require jquery.caret-range
+#= require jquery.cookie
+#= require jquery.hotkeys
+#= require jquery.notice
+#= require jquery.markitup
+#= require markitup-markdown
+#= require_tree .
 
 (($) ->
 
   $("body").delegate "form[data-remote]", "ajax:success", (e, data) ->
     jQuery.noticeAdd text: data.notice  if data and data.notice
-    $("#nb_votes").text data.nb_votes  if data and data.nb_votes >= 0
+    $("#nb_votes").text data.nb_votes   if data and data.nb_votes
     $(this).parent().hide()  unless $(this).data("hidden")
 
   $(".markItUp").markItUp window.markItUpSettings
@@ -24,6 +24,7 @@
   # Ready to moule
   $("input[autofocus=autofocus]").focus()
   $(".board").chat()
+  $("#news_revisions").redaction()
 
   # Animate the scrolling to a fragment
   $("a.scroll").click ->

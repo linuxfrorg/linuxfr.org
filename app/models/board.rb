@@ -153,7 +153,7 @@ class Board
   end
 
   def meta
-    if object_type == Board.new
+    if object_type == Board.news
       news
     else
       Board.allocate.tap {|b| b.id = object_type }

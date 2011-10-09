@@ -1,5 +1,5 @@
 - board = boards.build
-.board{'data-chat' => Push.private_key(board.meta)}
+.board{'data-chan' => Push.private_key(board.meta)}
   - if current_account && current_account.can_post_on_board?
     = render 'boards/form', :form => board
   .inbox

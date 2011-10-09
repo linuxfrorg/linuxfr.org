@@ -1,10 +1,12 @@
+#= require push
+
 (($) ->
 
   class Chat
     constructor: (@board) ->
       @input = @board.find("input[type=text]")
       @inbox = @board.find(".inbox")
-      @chan = @board.data("chat")
+      @chan = @board.data("chan")
       @board.find(".board-left .norloge").click @norloge
       @board.find("form").submit @postMessage
       @totoz_type = $.cookie("totoz-type")
@@ -16,7 +18,13 @@
         @totoz = @board.append($("<div id=\"les-totoz\"/>")).find("#les-totoz")
         @board.delegate(".totoz", "mouseenter", @createTotoz)
               .delegate(".totoz", "mouseleave", @destroyTotoz)
-      @start()
+      $.push(@chan).on("chat", @onChat).start()
+
+    onChat: (msg) =>
+      existing = $("#board_" + msg.id)
+      return  if existing.length > 0
+      @inbox.prepend(msg.message).find(".board-left:first .norloge").click @norloge
+      @norlogize right for right in @inbox.find(".board-right:first")
 
     postMessage: (event) =>
       form = $(event.target)
@@ -68,89 +76,7 @@
       totoz = @totoz.find("#totoz-" + totozId).first()
       totoz.css display: "none"
 
-    start: =>
-      try
-        source = new EventSource("/b/#{@chan}")
-        source.addEventListener "message", @onSuccess
-        source.addEventListener "error",   @onError
-      catch err
-        console.log err
-
-    onSuccess: (e) =>
-      message  = $.parseJSON e.data
-      console.log message
-      existing = $("#board_" + message.id)
-      return  if existing.length > 0
-      method = "on_" + message.kind
-      this[method] message.message  if this[method]
-
-    onError: (e) =>
-      @start() if e.eventPhase == EventSource.CLOSED
-
-    on_chat: (msg) ->
-      @inbox.prepend(msg).find(".board-left:first .norloge").click @norloge
-      @norlogize right for right in @inbox.find(".board-right:first")
-
-    on_indication: ->
-
-    on_vote: ->
-
-    on_submission: (message) ->
-      $.noticeAdd text: message, stay: true
-
-    on_moderation: (message) ->
-      $.noticeAdd text: message, stay: true
-
-    on_locking: (message) ->
-      el = @inbox.children().first()
-      for clear in el.find(".clear")
-        $(".locked").removeClass "locked"
-        $.noticeAdd text: message
-
-      for link in el.find(".link")
-        id = $(link).data("id")
-        $("#link_" + id).addClass "locked"
-
-      for p in el.find(".paragraph")
-        id = $(p).data("id")
-        $("#paragraph_" + id).addClass "locked"
-
-    on_creation: (message) ->
-      el = @inbox.children().first()
-      for link in el.find(".link")
-        id = $(link).data("id")
-        html = "<li class=\"link\" id=\"link_#{id}\" lang=\"" +
-               $(link).find("a").attr("hreflang") +
-               "\" data-url=\"/redaction/links/#{id}/modifier\">#{$(link).html()}</li>"
-        $("#links").append html
-        $("#link_" + id).editionInPlace()
-
-      for p in el.find(".paragraph")
-        id = $(p).data("id")
-        after = $(p).data("after")
-        html = "<div id=\"paragraph_#{id}\" data-url=\"/redaction/paragraphs/#{id}/modifier\">" +
-               $(p).html() + "</div>"
-        $("#paragraph_" + after).after html
-        $("#paragraph_" + id).editionInPlace()
-
-    on_edition: (message) ->
-      el = @inbox.children().first()
-      for news in el.find(".news")
-        $("#news_header").html $(news).clone()
-
-      for link in el.find(".link")
-        $("#link_" + $(link).data("id")).html $(link).html()
-
-      for p in el.find(".paragraph")
-        $("#paragraph_" + $(p).data("id")).html $(p).html()
-
-    on_deletion: (message) ->
-      el = @inbox.children().first()
-      for link in el.find(".link")
-        $("#link_" + $(link).data("id")).remove()
-      for p in el.find(".paragraph")
-        $("#paragraph_" + $(p).data("id")).remove()
-
   $.fn.chat = ->
     @each -> new Chat($(this))
+
 ) window.jQuery
