@@ -7,7 +7,6 @@ load 'deploy/assets'
 set :use_sudo,   false
 set :scm,        :git
 set :repository, "git://github.com/nono/linuxfr.org.git"
-set :branch,     "master"
 set :deploy_via, :remote_cache
 
 default_run_options[:pty] = true # Temporary hack
@@ -21,14 +20,15 @@ namespace :env do
   task :alpha do
     set :vserver,   "alpha"
     set :user,      "alpha"
+    set :branch,    $1 if `git branch` =~ /\* (\S+)\s/m
     set :rails_env, :alpha
-    set :branch,    "rails31"
   end
 
   desc "Production"
   task :prod do
     set :vserver,   "prod"
     set :user,      "linuxfr"
+    set :branch,    "master"
     set :rails_env, :production
   end
 
