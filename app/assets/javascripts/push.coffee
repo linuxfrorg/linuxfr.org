@@ -3,26 +3,32 @@
   class Push
     constructor: (@chan) ->
       @callbacks = {}
+      @started = false
 
     on: (kind, callback) ->
       @callbacks[kind] = callback
       @
 
     start: ->
-      source = new EventSource("/b/#{@chan}")
-      source.addEventListener "message", @onMessage
-      source.addEventListener "error",   @onError
+      if not @started
+        source = new EventSource("/b/#{@chan}")
+        source.addEventListener "message", @onMessage
+        source.addEventListener "error",   @onError
+        @started = true
 
     onMessage: (e) =>
       try
         msg = $.parseJSON e.data
+        console.log msg
         fn  = @callbacks[msg.kind]
         fn msg  if fn?
       catch err
         console.log err  if window.console
 
     onError: (e) =>
-      @start()  if e.eventPhase == EventSource.CLOSED
+      if e.eventPhase == EventSource.CLOSED
+        @started = false
+        @start()
 
   pushs  = []
   $.push = (chan) ->

@@ -52,7 +52,7 @@
     %p
       = form.submit "Enregistrer"
 
-= button_to "Supprimer tous les locks", clear_locks_redaction_news_path(@news), :class => 'ajax'
+= button_to "Supprimer tous les verrous", clear_locks_redaction_news_path(@news)
 
 %p Pour ajouter une note des modérateurs, commencez simplement une ligne par <code>NdM :</code>.
 = render 'shared/wiki_help'

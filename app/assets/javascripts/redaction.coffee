@@ -4,7 +4,6 @@
 
   class Redaction
     constructor: (chan) ->
-      console.log "new Redaction: #{chan}"
       push = $.push chan
       for name, fn of @ when name.slice(0, 2) == "on"
         kind = name.replace(/[A-Z]/g, "_$&").toLowerCase().slice(3)
@@ -12,77 +11,67 @@
       push.start()
 
     onSubmit: (msg) ->
-      $.noticeAdd text: msg.message, stay: true
+      $.noticeAdd text: "#{msg.username} a soumis la dépêche", stay: true
 
     onPublish: (msg) ->
-      $.noticeAdd text: msg.message, stay: true
+      $.noticeAdd text: "La dépêche a été acceptée par #{msg.username}", stay: true
 
     onRefuse: (msg) ->
-      $.noticeAdd text: msg.message, stay: true
+      $.noticeAdd text: "La dépêche a été refusée par #{msg.username}", stay: true
 
-    onUpdate: ->
-    onVote: ->
-    onClearLocks: ->
+    onUpdate: (msg) ->
+      $("#news_header .title").text msg.title
+      $("#news_header .topic").text msg.section.title
+      $("#edition figure.image img").attr src: "/images/sections/#{msg.section.id}.png"
 
-    onAddLink: ->
-    onUpdateLink: ->
-    onRemoveLink: ->
-    onLockLink: ->
+    onVote: (msg) ->
+      $.noticeAdd text: "#{msg.username} a voté #{msg.word}"
 
-    onAddParagraph: ->
-    onUpdateParagraph: ->
-    onRemoveParagraph: ->
-    onLockParagraph: ->
+    onClearLocks: (msg) ->
+      $(".locked").removeClass "locked"
+      $.noticeAdd text: "Tous les verrous ont été supprimés"
 
-    onLocking: (msg) ->
-      el = @inbox.children().first()
-      for clear in el.find(".clear")
-        $(".locked").removeClass "locked"
-        $.noticeAdd text: message
+    htmlForLink: (msg) ->
+      """
+      <li class="link" id="link_#{msg.id}" lang="#{msg.lang}" data-url="/redaction/links/#{msg.id}/modifier">
+        <a href="#{msg.url}" class="hit_counter">#{msg.title}</a> (0 clic)
+      </li>
+      """
 
-      for link in el.find(".link")
-        id = $(link).data("id")
-        $("#link_" + id).addClass "locked"
+    onAddLink: (msg) =>
+      $("#links").append @htmlForLink(msg)
+      $("#link_#{msg.id}").editionInPlace()
 
-      for p in el.find(".paragraph")
-        id = $(p).data("id")
-        $("#paragraph_" + id).addClass "locked"
+    onUpdateLink: (msg) =>
+      $("#link_#{msg.id}").replaceWith @htmlForLink(msg)
+      $("#link_#{msg.id}").removeClass "locked"
 
-    onCreation: (msg) ->
-      el = @inbox.children().first()
-      for link in el.find(".link")
-        id = $(link).data("id")
-        html = "<li class=\"link\" id=\"link_#{id}\" lang=\"" +
-               $(link).find("a").attr("hreflang") +
-               "\" data-url=\"/redaction/links/#{id}/modifier\">#{$(link).html()}</li>"
-        $("#links").append html
-        $("#link_" + id).editionInPlace()
+    onRemoveLink: (msg) ->
+      $("#link_#{msg.id}").remove()
 
-      for p in el.find(".paragraph")
-        id = $(p).data("id")
-        after = $(p).data("after")
-        html = "<div id=\"paragraph_#{id}\" data-url=\"/redaction/paragraphs/#{id}/modifier\">" +
-               $(p).html() + "</div>"
-        $("#paragraph_" + after).after html
-        $("#paragraph_" + id).editionInPlace()
+    onLockLink: (msg) ->
+      $("#link_#{msg.id}").addClass "locked"
 
-    onEdition: (msg) ->
-      el = @inbox.children().first()
-      for news in el.find(".news")
-        $("#news_header").html $(news).clone()
+    htmlForPara: (msg) ->
+      """
+      <div id="paragraph_#{msg.id}" data-url="/redaction/paragraphs/#{msg.id}/modifier">
+        #{msg.body}
+      </div>
+      """
 
-      for link in el.find(".link")
-        $("#link_" + $(link).data("id")).html $(link).html()
+    onAddParagraph: (msg) =>
+      $("#paragraph_#{msg.after}").after @htmlForPara(msg)
+      $("#paragraph_#{msg.id}").editionInPlace()
 
-      for p in el.find(".paragraph")
-        $("#paragraph_" + $(p).data("id")).html $(p).html()
+    onUpdateParagraph: (msg) =>
+      $("#paragraph_#{msg.id}").replaceWith @htmlForPara(msg)
+      $("#paragraph_#{msg.id}").removeClass "locked"
 
-    onDeletion: (msg) ->
-      el = @inbox.children().first()
-      for link in el.find(".link")
-        $("#link_" + $(link).data("id")).remove()
-      for p in el.find(".paragraph")
-        $("#paragraph_" + $(p).data("id")).remove()
+    onRemoveParagraph: (msg) ->
+      $("#paragraph_#{msg.id}").remove()
+
+    onLockParagraph: (msg) ->
+      $("#paragraph_#{msg.id}").addClass "locked"
 
   $.fn.redaction = ->
     @each ->

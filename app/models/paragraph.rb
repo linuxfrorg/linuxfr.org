@@ -105,12 +105,12 @@ class Paragraph < ActiveRecord::Base
 
   after_create :announce_create
   def announce_create
-    Push.create(news, :id => self.id, :after => after, :kind => :add_paragraph)
+    Push.create(news, :id => self.id, :kind => :add_paragraph, :body => body, :after => after)
   end
 
   after_update :announce_update
   def announce_update
-    Push.create(news, :id => self.id, :after => after, :kind => :update_paragraph)
+    Push.create(news, :id => self.id, :kind => :update_paragraph, :body => body)
   end
 
   before_destroy :announce_destroy

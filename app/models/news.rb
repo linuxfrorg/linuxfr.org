@@ -280,8 +280,8 @@ class News < Content
   end
 
   def clear_locks(user)
-    links.each {|l| l.locked_by_id = nil; l.save }
-    paragraphs.each {|p| p.locked_by_id = nil; p.save }
+    connection.update_sql "UPDATE links SET locked_by_id=NULL WHERE news_id=#{self.id}"
+    connection.update_sql "UPDATE paragraphs SET locked_by_id=NULL WHERE news_id=#{self.id}"
     Push.create(self, :kind => :clear_locks, :username => user.name)
   end
 
