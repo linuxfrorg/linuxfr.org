@@ -11,10 +11,10 @@
 
     start: ->
       if not @started
+        @started = true
         source = new EventSource("/b/#{@chan}")
         source.addEventListener "message", @onMessage
         source.addEventListener "error",   @onError
-        @started = true
 
     onMessage: (e) =>
       try

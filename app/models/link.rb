@@ -92,8 +92,7 @@ class Link < ActiveRecord::Base
   def lock_by(user)
     return true  if locked_by_id == user.id
     return false if locked?
-    self.locked_by_id = user.id
-    save
+    connection.update_sql "UPDATE links SET locked_by_id=#{user.id} WHERE id=#{self.id}"
     Push.create(news, :id => self.id, :username => user.name, :kind => :lock_link)
     true
   end

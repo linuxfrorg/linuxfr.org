@@ -67,13 +67,13 @@ class Paragraph < ActiveRecord::Base
   def split_on_update
     sentences = split_body
     self.wiki_body = sentences.shift
-    sentences.reverse.each_with_index do |body,i|
+    sentences.inject(self) do |para,body|
       news.paragraphs.create :wiki_body     => body,
                              :second_part   => second_part,
                              :already_split => true,
                              :user          => user,
-                             :after         => self.id,
-                             :position      => position + 1
+                             :after         => para.id,
+                             :position      => para.position + 1
     end
   end
 
@@ -126,8 +126,7 @@ class Paragraph < ActiveRecord::Base
   def lock_by(user)
     return true  if locked_by_id == user.id
     return false if locked?
-    self.locked_by_id = user.id
-    save
+    connection.update_sql "UPDATE links SET locked_by_id=#{user.id} WHERE id=#{self.id}"
     Push.create(news, :id => self.id, :username => user.name, :kind => :lock_paragraph)
     true
   end
