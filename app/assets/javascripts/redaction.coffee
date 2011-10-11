@@ -31,10 +31,15 @@
       $(".locked").removeClass "locked"
       $.noticeAdd text: "Tous les verrous ont été supprimés"
 
+    innerHtmlForLink: (msg) ->
+      """
+      <a href="#{msg.url}" class="hit_counter">#{msg.title}</a> (0 clic)
+      """
+
     htmlForLink: (msg) ->
       """
       <li class="link" id="link_#{msg.id}" lang="#{msg.lang}" data-url="/redaction/links/#{msg.id}/modifier">
-        <a href="#{msg.url}" class="hit_counter">#{msg.title}</a> (0 clic)
+        #{innerHtmlForLink msg}
       </li>
       """
 
@@ -43,8 +48,9 @@
       $("#link_#{msg.id}").editionInPlace()
 
     onUpdateLink: (msg) =>
-      $("#link_#{msg.id}").replaceWith @htmlForLink(msg)
-      $("#link_#{msg.id}").removeClass "locked"
+      $("#link_#{msg.id}").html(@innerHtmlForLink msg)
+                          .attr(lang: msg.lang)
+                          .removeClass "locked"
 
     onRemoveLink: (msg) ->
       $("#link_#{msg.id}").remove()
@@ -64,8 +70,8 @@
       $("#paragraph_#{msg.id}").editionInPlace()
 
     onUpdateParagraph: (msg) =>
-      $("#paragraph_#{msg.id}").replaceWith @htmlForPara(msg)
-      $("#paragraph_#{msg.id}").removeClass "locked"
+      $("#paragraph_#{msg.id}").html(msg.body)
+                               .removeClass "locked"
 
     onRemoveParagraph: (msg) ->
       $("#paragraph_#{msg.id}").remove()
