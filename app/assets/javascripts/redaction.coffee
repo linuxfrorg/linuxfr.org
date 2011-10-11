@@ -19,17 +19,29 @@
     onRefuse: (msg) ->
       $.noticeAdd text: "La dépêche a été refusée par #{msg.username}", stay: true
 
-    onUpdate: (msg) ->
-      $("#news_header .title").text msg.title
-      $("#news_header .topic").text msg.section.title
-      $("#edition figure.image img").attr src: "/images/sections/#{msg.section.id}.png"
-
     onVote: (msg) ->
       $.noticeAdd text: "#{msg.username} a voté #{msg.word}"
 
     onClearLocks: (msg) ->
       $(".locked").removeClass "locked"
       $.noticeAdd text: "Tous les verrous ont été supprimés"
+
+    onUpdate: (msg) ->
+      $("#news_header .title").text msg.title
+      $("#news_header .topic").text msg.section.title
+      $("#edition figure.image img").attr src: "/images/sections/#{msg.section.id}.png"
+
+    liForRevision: (msg) ->
+      parts = window.location.pathname.split("/")
+      slug  = parts[parts.length - 1]
+      """
+      <li><a href="/redaction/news#{slug}/revision/#{msg.id}">
+        #{msg.username}&nbsp;: #{msg.message}
+      </a></li>
+      """
+
+    onRevision: (msg) =>
+      $("#news_revisions ul").prepend @liForRevision(msg)
 
     innerHtmlForLink: (msg) ->
       """

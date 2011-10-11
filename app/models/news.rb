@@ -174,11 +174,12 @@ class News < Content
 
   after_save :create_new_version
   def create_new_version
-    versions.create(:user_id     => (editor || author_account).try(:id),
-                    :title       => title,
-                    :body        => wiki_body,
-                    :second_part => wiki_second_part,
-                    :links       => links.map(&:to_s).join("\n"))
+    v = versions.create(:user_id     => (editor || author_account).try(:id),
+                       :title       => title,
+                       :body        => wiki_body,
+                       :second_part => wiki_second_part,
+                       :links       => links.map(&:to_s).join("\n"))
+    Push.create(self, :kind => :revision, :id => v.id, :message => v.message, :username => v.author_name)
   end
 
 ### Associated node ###
