@@ -1,20 +1,24 @@
 #contents
-  =h1 @news.title
+  =link_to h1(@news.title), [@news.draft? ? :redaction : :moderation, @news]
 
   %h2
     #{@version.author_name}&nbsp;: #{@version.message} (#{l @version.created_at})
-  %h3 Titre
-  %pre
-    = Differ.diff_by_char(h(@version.title), h(@previous.title)).to_s.html_safe
-  %h3 Première partie
-  %pre
-    = Differ.diff_by_char(h(@version.body), h(@previous.body)).to_s.html_safe
-  %h3 Liens
-  %pre
-    = Differ.diff_by_char(h(@version.links), h(@previous.links)).to_s.html_safe
-  %h3 Seconde partie
-  %pre
-    = Differ.diff_by_char(h(@version.second_part), h(@previous.second_part)).to_s.html_safe
+  - if @version.title != @previous.title
+    %h3 Titre
+    %pre
+      = Differ.diff_by_char(h(@version.title), h(@previous.title)).to_s.html_safe
+  - if @version.body != @previous.body
+    %h3 Première partie
+    %pre
+      = Differ.diff_by_char(h(@version.body), h(@previous.body)).to_s.html_safe
+  - if @version.links != @previous.links
+    %h3 Liens
+    %pre
+      = Differ.diff_by_line(h(@version.links), h(@previous.links)).to_s.html_safe
+  - if @version.second_part != @previous.second_part
+    %h3 Seconde partie
+    %pre
+      = Differ.diff_by_char(h(@version.second_part), h(@previous.second_part)).to_s.html_safe
 
   %nav
     %ul
@@ -22,4 +26,3 @@
         %li= link_to "Précédente révision", revision_redaction_news_path(@news.friendly_id, @version.higher_item.version)
       - if @version.lower_item
         %li= link_to "Révision suivante", revision_redaction_news_path(@news.friendly_id, @version.lower_item.version)
-      %li= link_to "Retourner à la dépêche", [@news.draft? ? :redaction : :moderation, @news]

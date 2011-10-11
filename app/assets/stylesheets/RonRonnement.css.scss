@@ -526,6 +526,7 @@ body#users-comments #contents > ul > li,
 body#comments-create #contents > ul > li#comment_new,
 body#comments-show #contents > ul > li.comment,
 body#wiki_pages-revision #contents,
+body#news-revision #contents,
 body#dashboard-index #contents table,
 body#trackers-index #contents table,
 body#redaction-index #container > div,
@@ -1268,7 +1269,6 @@ body#news-show #redaction {
   float: right;
   width: 38%;
 
-  p.chat { background-color: #ffb; }
   .inbox {
     p {
       margin: 2px 0;
@@ -1350,6 +1350,7 @@ body#trackers-index #contents table {
 }
 
 /* page d'historique de wiki */
+body#news-revision,
 body#wiki_pages-revision {
   #contents {
     pre {

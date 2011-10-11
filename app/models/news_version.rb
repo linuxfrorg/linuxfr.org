@@ -31,7 +31,7 @@ class NewsVersion < ActiveRecord::Base
 ### Presentation ###
 
   def message
-    "Révision n°#{self.id}"
+    "Révision n°#{self.version}"
   end
 
   def author_name
