@@ -70,6 +70,9 @@
     onLockLink: (msg) ->
       $("#link_#{msg.id}").addClass "locked"
 
+    onUnlockLink: (msg) ->
+      $("#link_#{msg.id}").removeClass "locked"
+
     htmlForPara: (msg) ->
       """
       <div id="paragraph_#{msg.id}" data-url="/redaction/paragraphs/#{msg.id}/modifier">
@@ -90,6 +93,9 @@
 
     onLockParagraph: (msg) ->
       $("#paragraph_#{msg.id}").addClass "locked"
+
+    onUnlockParagraph: (msg) ->
+      $("#paragraph_#{msg.id}").removeClass "locked"
 
   $.fn.redaction = ->
     @each ->

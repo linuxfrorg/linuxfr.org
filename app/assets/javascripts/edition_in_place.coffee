@@ -20,8 +20,14 @@
         @el.trigger "in_place:form", this
       false
 
-    reset: =>
-      @el.html(if @creation then @old else "")
+    reset: (event) =>
+      url = $(event.target).data("url")
+      if url?
+        $.ajax
+          url: url
+          type: "post"
+          data: @el.find('input[name="authenticity_token"]').serialize()
+      @el.html @old
       @el.click @editForm
       false
 

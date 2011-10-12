@@ -34,6 +34,11 @@ class Redaction::ParagraphsController < RedactionController
     render :nothing => true
   end
 
+  def unlock
+    @paragraph.unlock
+    render :nothing => true
+  end
+
 protected
 
   def find_paragraph

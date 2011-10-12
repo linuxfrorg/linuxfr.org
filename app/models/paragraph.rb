@@ -101,7 +101,7 @@ class Paragraph < ActiveRecord::Base
 
   sanitize_attr :body
 
-### Chat ###
+### Push ###
 
   after_create :announce_create
   def announce_create
@@ -123,12 +123,19 @@ class Paragraph < ActiveRecord::Base
   # So do NOT move this line upper in this file.
   acts_as_list :scope => :news
 
+### Lock ###
+
   def lock_by(user)
     return true  if locked_by_id == user.id
     return false if locked?
-    connection.update_sql "UPDATE links SET locked_by_id=#{user.id} WHERE id=#{self.id}"
+    connection.update_sql "UPDATE paragraphs SET locked_by_id=#{user.id} WHERE id=#{self.id}"
     Push.create(news, :id => self.id, :username => user.name, :kind => :lock_paragraph)
     true
+  end
+
+  def unlock
+    connection.update_sql "UPDATE paragraphs SET locked_by_id=NULL WHERE id=#{self.id}"
+    Push.create(news, :id => self.id, :kind => :unlock_paragraph)
   end
 
   def locked?

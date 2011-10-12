@@ -98,8 +98,12 @@ LinuxfrOrg::Application.routes.draw do
       resources :links, :only => [:new]
       resources :paragraphs, :only => [:create]
     end
-    resources :links, :only => [:create, :edit, :update]
-    resources :paragraphs, :only => [:show, :edit, :update]
+    resources :links, :only => [:create, :edit, :update] do
+      post :unlock, :on => :member
+    end
+    resources :paragraphs, :only => [:show, :edit, :update] do
+      post :unlock, :on => :member
+    end
   end
 
   # Moderation

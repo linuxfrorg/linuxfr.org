@@ -72,7 +72,7 @@ class Link < ActiveRecord::Base
     "[#{lang}] #{title} : #{url}"
   end
 
-### Chat ###
+### Push ###
 
   after_create :announce_create
   def announce_create
@@ -89,12 +89,19 @@ class Link < ActiveRecord::Base
     Push.create(news, :id => self.id, :kind => :remove_link)
   end
 
+### Lock ###
+
   def lock_by(user)
     return true  if locked_by_id == user.id
     return false if locked?
     connection.update_sql "UPDATE links SET locked_by_id=#{user.id} WHERE id=#{self.id}"
     Push.create(news, :id => self.id, :username => user.name, :kind => :lock_link)
     true
+  end
+
+  def unlock
+    connection.update_sql "UPDATE links SET locked_by_id=NULL WHERE id=#{self.id}"
+    Push.create(news, :id => self.id, :kind => :unlock_link)
   end
 
   def locked?
