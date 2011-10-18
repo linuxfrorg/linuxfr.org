@@ -172,6 +172,8 @@ class News < Content
     Push.create(self, :kind => :update, :title => title, :section => { :id => section.id, :title => section.title })
   end
 
+### Versioning ###
+
   after_save :create_new_version
   def create_new_version
     v = versions.create(:user_id     => (editor || author_account).try(:id),
@@ -180,6 +182,13 @@ class News < Content
                        :second_part => wiki_second_part,
                        :links       => links.map(&:to_s).join("\n"))
     Push.create(self, :kind => :revision, :id => v.id, :message => v.message, :username => v.author_name)
+  end
+
+  def attendees
+    User.joins(:news_versions).
+         where("news_versions.news_id" => self.id).
+         group("users.id").
+         select("users.*")
   end
 
 ### Associated node ###

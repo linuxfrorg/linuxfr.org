@@ -4,6 +4,7 @@
   #redaction_board
     = render 'vote'
     = render 'board'
+    = render 'attendees', :attendees => @news.attendees
     = render 'editions', :news => @news
 
 - if @news.paragraphs.any?

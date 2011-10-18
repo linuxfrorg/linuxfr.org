@@ -1,0 +1,6 @@
+#news_attendees
+  %h1
+    Participants
+  %ul
+    = list_of(attendees) do |a|
+      = link_to a.name, a
