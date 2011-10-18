@@ -76,12 +76,12 @@ class Link < ActiveRecord::Base
 
   after_create :announce_create
   def announce_create
-    Push.create(news, as_json.merge(:kind => :add_link))
+    Push.create(news, as_json.merge(:kind => :add_link, :nb_clicks => 0))
   end
 
   after_update :announce_update
   def announce_update
-    Push.create(news, as_json.merge(:kind => :update_link))
+    Push.create(news, as_json.merge(:kind => :update_link, :nb_clicks => nb_clicks))
   end
 
   before_destroy :announce_destroy

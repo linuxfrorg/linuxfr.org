@@ -9,5 +9,6 @@
     = form.text_field :title, :maxlength => 100, :autocomplete => "off"
     = form.url_field :url, :autocomplete => "off"
     = form.select :lang, Lang.all
-    %button.cancel{'data-url' => unlock_redaction_link_path(@link)} Annuler
+    - if @link.persisted?
+      %button.cancel{'data-url' => unlock_redaction_link_path(@link)} Annuler
     = form.submit "OK"

@@ -45,13 +45,13 @@
 
     innerHtmlForLink: (msg) ->
       """
-      <a href="#{msg.url}" class="hit_counter">#{msg.title}</a> (0 clic)
+      <a href="/redirect/#{msg.id}" class="hit_counter">#{msg.title}</a> (#{msg.nb_clicks} clic#{if msg.nb_clicks > 1 then 's' else ''})
       """
 
     htmlForLink: (msg) ->
       """
       <li class="link" id="link_#{msg.id}" lang="#{msg.lang}" data-url="/redaction/links/#{msg.id}/modifier">
-        #{innerHtmlForLink msg}
+        #{@innerHtmlForLink msg}
       </li>
       """
 
