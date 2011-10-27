@@ -1,7 +1,7 @@
 - if current_account && current_account.can_update?(@tag)
   - if @tag.public?
-    %p Ce tag est actuellement visible.
+    %p Le tag #{@tag.name} est actuellement visible.
     = button_to "Cacher ce tag", hide_tag_path(@tag)
   - else
-    %p Ce tag est actuellement caché.
+    %p Le tag #{@tag.name} est actuellement caché.
     = button_to "Rendre à nouveau visible ce tag", hide_tag_path(@tag)
