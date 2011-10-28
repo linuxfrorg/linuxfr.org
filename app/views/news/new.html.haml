@@ -1,6 +1,12 @@
 #contents
   =h1 "Proposer une dépêche"
 
+  - if (news = News.draft).any?
+    %p Les dépêches suivantes sont déjà en cours de rédaction :
+    %ul
+      = list_of(news) do |news|
+        = link_to news.title, [:redaction, news]
+
   = render "preview", :preview => @news if @preview_mode
 
   = form_for setup_news(@news), :url => '/news' do |form|

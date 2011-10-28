@@ -1,4 +1,7 @@
 #redaction_box.box
   %h1 Rédaction
-  = link_to "#{pluralize News.draft.count, 'dépêche'} en cours de rédaction", '/redaction/news'
   = link_to "Tribune de rédaction", '/redaction'
+  - if (news = News.draft).any?
+    %ul
+      = list_of(news) do |news|
+        = link_to news.title, [:redaction, news]
