@@ -9,5 +9,9 @@
   - if @wiki_page.home_page?
     - feed "Flux Atom du wiki", "/wiki.atom"
 
+  - if !@wiki_page.visible?
+    .alert
+      %strong Cette page a été supprimée.
+
   = render @wiki_page
   = render @wiki_page.node
