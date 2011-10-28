@@ -109,7 +109,11 @@ class Comment < ActiveRecord::Base
 
   before_validation :default_score, :on => :create
   def default_score
-    self.score = Math.log10([user.account.karma, 0.1].max).to_i - 1
+    if user.account.karma > 0
+      self.score = Math.log10(user.account.karma).to_i - 1
+    else
+      self.score = [-2 + user.account.karma/30, -10].max
+    end
   end
 
   def nb_answers
