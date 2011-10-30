@@ -91,9 +91,9 @@ module NodeHelper
     if user
       user_link  = link_to(user.name, "/users/#{user.cached_slug}", :rel => 'author')
       user_infos = []
-      user_infos << link_to("page perso", user.homesite)             if user.homesite.present?
+      user_infos << link_to("page perso", user.homesite)           if user.homesite.present?
       user_infos << link_to("jabber id", "xmpp:" + user.jabber_id) if user.jabber_id.present?
-      user_link += (" (" + user_infos.join(', ') + ")").html_safe    if user_infos.any?
+      user_link += " (" + safe_join(user_infos, ', ') + ")"        if user_infos.any?
     end
     date_time    = content.is_a?(Comment) ? content.created_at : content.node.try(:created_at)
     date_time  ||= Time.now

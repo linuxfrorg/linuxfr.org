@@ -2,9 +2,9 @@ module PollsHelper
 
   def poll_body(poll)
     content_tag(:ul) do
-      poll.answers.map do |answer|
+      safe_join poll.answers.map do |answer|
         content_tag(:li, answer.answer)
-      end.join.html_safe
+      end
     end
   end
 
