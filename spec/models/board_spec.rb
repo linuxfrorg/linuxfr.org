@@ -1,9 +1,10 @@
+# encoding: utf-8
+
 require 'spec_helper'
 
 describe Board do
   before(:each) do
     $redis.flushdb
-    Board.secret = "this is secret!"
   end
 
   let(:john) do
@@ -15,14 +16,13 @@ describe Board do
   let(:news) do
     news = News.new
     news.stub(:id).and_return(123)
+    News.stub(:find).with(123).and_return(news)
     news
   end
 
   it "can be initialized" do
     b = Board.new
     b.should respond_to(:id)
-    b.should respond_to(:kind)
-    b.kind.should == "chat"
     b.object_type.should == Board.free
     b.object_id.should be_nil
     b.message.should be_nil
@@ -47,15 +47,8 @@ describe Board do
     Board.chan_key(Board.free, nil).should == "boards/chans/free"
     b = Board.new(:object_type => Board.free)
     b.chan_key.should == "boards/chans/free"
-    b = Board.new(:object_type => Board.news, :object_id => 123)
+    b = Board.new(:object_type => Board.news, :object_id => news.id)
     b.chan_key.should == "boards/chans/news/123"
-  end
-
-  it "has a private_key that depends of the secret" do
-    b = Board.new(:object_type => Board.news, :object_id => 123)
-    b.private_key.should_not == Digest::SHA1.hexdigest("News/123/")
-    Board.secret = nil
-    b.private_key.should == Digest::SHA1.hexdigest("News/123/")
   end
 
   it "can construct the user_link" do
@@ -67,25 +60,23 @@ describe Board do
   end
 
   it "can't be possible to save a blank message" do
-    b = Board.new(:object_type => Board.news, :object_id => 123, :message => "")
+    b = Board.new(:object_type => Board.news, :object_id => news.id, :message => "")
     b.user = john
     b.save.should be_false
-    b = Board.new(:object_type => Board.news, :object_id => 123)
+    b = Board.new(:object_type => Board.news, :object_id => news.id)
     b.user = john
     b.save.should be_false
   end
 
   it "can be saved and retrieved" do
-    b = Board.new(:object_type => Board.news, :object_id => 123, :message => "foobar")
+    b = Board.new(:object_type => Board.news, :object_id => news.id, :message => "foobar")
     b.user = john
-    b.kind = "submission"
     b.user_agent = "console"
     b.save.should be_true
-    boards = Board.all(Board.news, 123)
+    boards = Board.all(Board.news, news.id)
     boards.should have(1).item
     board = boards.first
     board.id.should > 0
-    board.kind.should == "submission"
     board.message.should == "foobar"
     board.user_agent.should == "console"
     board.user_name.should == "john"
@@ -95,24 +86,11 @@ describe Board do
     board.created_at.should <= Time.now
   end
 
-  it "has a special constructor for a board relative to a content" do
-    b = Board.create_for(news, :user => john, :kind => "vote", :message => "foobar")
-    b.object_type.should == Board.news
-    b.object_id.should == news.id
-    b.kind.should == "vote"
-    b.user_name.should == "john"
-    boards = Board.all(Board.news, news.id)
-    boards.should have(1).item
-    board = boards.first
-    board.kind.should == "vote"
-    board.message.should == "foobar"
-    board.user_name.should == "john"
-  end
-
   it "is sorted from the more recent to the older" do
     5.times do
       b = Board.new(:object_type => Board.free, :message => "foobar")
       b.user = john
+      b.user_agent = "console"
       b.save.should be_true
     end
     boards = Board.all(Board.free)
@@ -128,6 +106,7 @@ describe Board do
     110.times do
       b = Board.new(:object_type => Board.free, :message => "foobar")
       b.user = john
+      b.user_agent = "console"
       b.save
     end
     boards = Board.all(Board.free)
@@ -136,70 +115,37 @@ describe Board do
     $redis.llen("boards/chans/free").should == 100
   end
 
-  it "publish to redis" do
-    b = Board.new(:object_type => Board.free, :message => "foobar")
-    b.user = john
-    id = $redis.get("boards/id").to_i + 1
-
-    t1 = Thread.new do
-      Thread.stop
-      b.save
-    end
-
-    t1.join(1)
-
-    t2 = Thread.new do
-      r = Redis.new
-      r.subscribe "b/#{b.private_key}/#{id}/chat" do |on|
-        on.message do |chan,msg|
-          @chan, @msg = chan, msg
-          r.unsubscribe
-        end
-        t1.run
-      end
-    end
-
-    t1.join(1)
-    t2.join(1)
-
-    @chan.should == "b/#{b.private_key}/#{id}/chat"
-    @msg.should  =~ /john-doe/
-    @msg.should  =~ /foobar/
-  end
-
   context "Sanitizing messages" do
     let(:board) { Board.new }
 
     it "escapes tags (escape the allowed ones)" do
       str = '<p>foo</p> <script type="javascript">alert("foo");</script> <blink>bar'
-      board.message = str
-      board.sanitize_message
-      board.message.should == str.gsub('<', '&lt;').gsub('>', '&gt;')
+      sanitized = board.sanitize_message(str)
+      sanitized.should == str.gsub('<', '&lt;').gsub('>', '&gt;')
     end
 
     it "keeps the allowed tags" do
       str = "<b>foo</b> <code>bar</code> <u><s>baz <i>qux</i></s> quux</u>"
-      board.message = str
-      board.sanitize_message
-      board.message.should == str
+      sanitized = board.sanitize_message(str)
+      sanitized.should == str
     end
 
     it "links automatically URL" do
-      board.message = "<b>foo</b> http://linuxfr.org/"
-      board.sanitize_message
-      board.message.should == '<b>foo</b> <a href="http://linuxfr.org/">[url]</a>'
+      str = "<b>foo</b> http://linuxfr.org/"
+      sanitized = board.sanitize_message(str)
+      sanitized.should == '<b>foo</b> <a href="http://linuxfr.org/">[url]</a>'
     end
 
     it "let us play with ducks" do
-      board.message = "NoNo< --> \\_o< p4n!"
-      board.sanitize_message
-      board.message.should == "NoNo&lt; --&gt; \\_o&lt; p4n!"
+      str = "NoNo< --> \\_o< p4n!"
+      sanitized = board.sanitize_message(str)
+      sanitized.should == "NoNo&lt; --&gt; \\_o&lt; p4n!"
     end
 
     it "doesn't bug on multiple tags" do
-      board.message = "<b>foo</b> bar <b>baz</b>"
-      board.sanitize_message
-      board.message.should == "<b>foo</b> bar <b>baz</b>"
+      str = "<b>foo</b> bar <b>baz</b>"
+      sanitized = board.sanitize_message(str)
+      sanitized.should == "<b>foo</b> bar <b>baz</b>"
     end
   end
 
