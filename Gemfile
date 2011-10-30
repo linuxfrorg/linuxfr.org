@@ -53,7 +53,7 @@ group :development do
   gem "capistrano_colors"
   gem "haml-rails"
   gem "letter_opener"
-  gem "pry"
+  gem "pry-rails"
   gem "thin"
 end
 
