@@ -2,7 +2,7 @@
   =h1 "Proposer une dépêche"
 
   - if (news = News.draft).any?
-    %p Les dépêches suivantes sont déjà en cours de rédaction :
+    %p Les dépêches suivantes sont déjà en cours de rédaction. Vous pouvez y contribuer directement si vous le souhaitez :
     %ul
       = list_of(news) do |news|
         = link_to news.title, [:redaction, news]
