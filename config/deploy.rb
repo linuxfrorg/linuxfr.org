@@ -97,19 +97,6 @@ namespace :logs do
 end
 
 
-# Assets: add a rule for static pages
-namespace :assets do
-  desc "Create a symlink for application.css (used by static pages)"
-  task :static, :roles => :web, :except => { :no_release => true } do
-    %w(application.css grayscale.css spasibo.css spasibo-mobile.css).each do |asset|
-      file = capture "cd #{shared_path}/assets && ruby -ryaml -e 'p YAML.load_file(\"manifest.yml\")[\"#{asset}\"]'"
-      run "cd #{shared_path}/assets && ln -sf #{file.chomp} #{asset}"
-    end
-  end
-end
-after "assets:precompile", "assets:static"
-
-
 # The hard-core deployment rules
 namespace :deploy do
   task :start, :roles => :app do
