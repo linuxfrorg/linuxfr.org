@@ -16,6 +16,7 @@ module StaticHelper
   end
 
   def helper_responses_list
-    content_tag(:ul, safe_join(Response.all.map { |r| content_tag(:li, content_tag(:pre, r.content)) }))
+    responses = Response.all.map { |r| content_tag(:li, content_tag(:pre, r.content)) }
+    content_tag(:ul, responses.join.html_safe)
   end
 end
