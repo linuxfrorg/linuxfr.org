@@ -37,17 +37,17 @@ module NodeHelper
   end
 
   def tags_for(node)
+    tags = []
+    all_tags = node.popular_tags
     if current_account
-      tags  = current_account.user.taggings.
+      tags += current_account.user.taggings.
                                    where(:node_id => node.id).
                                    order("created_at DESC").
                                    map(&:tag).each {|t| t.tagged_by_current = true }
+      all_tags = node.tags.select([:name]) if current_account.amr?
     end
-    if tags.present?
-      tags += node.popular_tags.where("tags.id NOT IN (?)", tags.map(&:id)).all
-    else
-      node.popular_tags.all
-    end
+    all_tags = all_tags.where("tags.id NOT IN (?)", tags.map(&:id)) unless tags.empty?
+    tags += all_tags.all
   end
 
   def link_to_content(content)

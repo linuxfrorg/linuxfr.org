@@ -23,7 +23,7 @@ class Comment < ActiveRecord::Base
   include Canable::Ables
 
   belongs_to :user
-  belongs_to :node, :touch => :last_commented_at, :counter_cache => :comments_count
+  belongs_to :node, :counter_cache => :comments_count
 
   delegate :content, :content_type, :to => :node
 
@@ -59,6 +59,11 @@ class Comment < ActiveRecord::Base
     return true if account.nil?
     r = Node.last_reading(node_id, account.id)
     r && r >= created_at
+  end
+
+  before_create :touch_node
+  def touch_node
+    node.touch(:last_commented_at)
   end
 
 ### Threads ###
