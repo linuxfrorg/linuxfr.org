@@ -38,13 +38,14 @@ module NodeHelper
 
   def tags_for(node)
     tags = []
+    all_tags = node.popular_tags
     if current_account
       tags += current_account.user.taggings.
                                    where(:node_id => node.id).
                                    order("created_at DESC").
                                    map(&:tag).each {|t| t.tagged_by_current = true }
+      all_tags = node.tags.select([:name]) if current_account.amr?
     end
-    all_tags = current_account.amr? ? node.tags.select([:name]) : node.popular_tags
     all_tags = all_tags.where("tags.id NOT IN (?)", tags.map(&:id)) unless tags.empty?
     tags += all_tags.all
   end
