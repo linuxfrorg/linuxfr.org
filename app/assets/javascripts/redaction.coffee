@@ -57,7 +57,7 @@
 
     onAddLink: (msg) =>
       $("#links").append @htmlForLink(msg)
-      $("#link_#{msg.id}").editionInPlace()
+      $("#link_#{msg.id}").lockableEditionInPlace()
 
     onUpdateLink: (msg) =>
       $("#link_#{msg.id}").html(@innerHtmlForLink msg)
@@ -81,8 +81,11 @@
       """
 
     onAddParagraph: (msg) =>
-      $("#paragraph_#{msg.after}").after @htmlForPara(msg)
-      $("#paragraph_#{msg.id}").editionInPlace()
+      if msg.after
+        $("#paragraph_#{msg.after}").after @htmlForPara(msg)
+      else
+        $("##{msg.part}").append @htmlForPara(msg)
+      $("#paragraph_#{msg.id}").lockableEditionInPlace()
 
     onUpdateParagraph: (msg) =>
       $("#paragraph_#{msg.id}").html(msg.body)

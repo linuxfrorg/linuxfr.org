@@ -13,13 +13,8 @@ class Redaction::NewsController < RedactionController
 
   def show
     @boards = Board.all(Board.news, @news.id)
-    respond_to do |wants|
-      wants.html {
-        redirect_to [:redaction, @news], :status => 301 and return if !@news.friendly_id_status.best?
-        render :show, :layout => 'chat_n_edit'
-      }
-      wants.js { render :partial => 'short' }
-    end
+    redirect_to [:redaction, @news], :status => 301 and return if !@news.friendly_id_status.best?
+    render :show, :layout => 'chat_n_edit'
   end
 
   def revision
@@ -28,18 +23,14 @@ class Redaction::NewsController < RedactionController
   end
 
   def edit
-    respond_to do |wants|
-      wants.js { render :partial => 'form' }
-    end
+    render :partial => 'form'
   end
 
   def update
     @news.attributes = params[:news]
     @news.editor = current_account
     @news.save
-    respond_to do |wants|
-      wants.js { render :nothing => true }
-    end
+    render :partial => 'short'
   end
 
   def submit
@@ -55,8 +46,8 @@ class Redaction::NewsController < RedactionController
     enforce_update_permission(@news)
     @news.clear_locks(current_user)
     respond_to do |wants|
+      wants.json { render :json => { :notice => "Les verrous ont été supprimés" } }
       wants.html { redirect_to :back }
-      wants.js   { render :nothing => true }
     end
   end
 

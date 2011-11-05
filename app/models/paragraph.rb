@@ -105,7 +105,7 @@ class Paragraph < ActiveRecord::Base
 
   after_create :announce_create
   def announce_create
-    Push.create(news, :id => self.id, :kind => :add_paragraph, :body => body, :after => after)
+    Push.create(news, :id => self.id, :kind => :add_paragraph, :body => body, :after => after, :part => part)
   end
 
   after_update :announce_update
@@ -146,5 +146,9 @@ class Paragraph < ActiveRecord::Base
 
   def part
     second_part ? 'second_part' : 'first_part'
+  end
+
+  def locker
+    User.find(locked_by_id).name
   end
 end

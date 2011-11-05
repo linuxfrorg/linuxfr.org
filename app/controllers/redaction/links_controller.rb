@@ -1,3 +1,5 @@
+# encoding: UTF-8
+#
 class Redaction::LinksController < RedactionController
   before_filter :new_link,  :only   => [:new, :create]
   before_filter :find_link, :except => [:new, :create]
@@ -10,21 +12,21 @@ class Redaction::LinksController < RedactionController
     @link.attributes = params[:link]
     @link.user = current_user
     @link.save
-    render :nothing => true
+    render :partial => 'button'
   end
 
   def edit
     if @link.lock_by(current_user)
       render :partial => 'form'
     else
-      render @link
+      render :status => :forbidden, :text => "Désolé, #{@link.locker} est déjà en train de modifier ce lien !"
     end
   end
 
   def update
     @link.attributes = params[:link]
     @link.update_by(current_user)
-    render :nothing => true
+    render @link
   end
 
   def unlock

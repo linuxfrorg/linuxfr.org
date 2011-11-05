@@ -24,14 +24,14 @@ class Redaction::ParagraphsController < RedactionController
     if @paragraph.lock_by(current_user)
       render :partial => 'form'
     else
-      render @paragraph
+      render :status => :forbidden, :text => "Désolé, #{@paragraph.locker} déjà en train de modifier ce paragraphe !"
     end
   end
 
   def update
     @paragraph.wiki_body = params[:paragraph][:wiki_body]
     @paragraph.update_by(current_user)
-    render :nothing => true
+    render @paragraph
   end
 
   def unlock

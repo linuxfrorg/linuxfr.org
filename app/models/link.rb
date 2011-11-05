@@ -107,4 +107,10 @@ class Link < ActiveRecord::Base
   def locked?
     !!locked_by_id
   end
+
+### Presentation ###
+
+  def locker
+    User.find(locked_by_id).name
+  end
 end

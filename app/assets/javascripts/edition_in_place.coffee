@@ -1,54 +1,53 @@
 (($) ->
 
   class EditionInPlace
-    constructor: (@el, creation: @creation) ->
-      @el.data "EditionInPlace", this
+    constructor: (@el) ->
       @url = @el.data("url") or (document.location.pathname + "/modifier")
-      @el.click @editForm
+      @el.click @loadForm
 
-    editForm: =>
-      if @el.hasClass("locked")
-        $.noticeAdd text: "Désolé, quelqu'un est déjà en train de modifier cet élément."
-        return false
-      @old = @el.html()
+    loadForm: =>
       @el.unbind "click"
-      @el.load @url, =>
-        form = @el.find("form")
-        form.submit @submitForm
-        form.find(".cancel").click @reset
-        form.find("textarea, input")[0].select()
-        @el.trigger "in_place:form", this
+      @old = @el.html()
+      @xhr = $.ajax(url: @url, type: "get").fail(@cantEdit).done(@showForm)
       false
+
+    cantEdit: =>
+      @el.trigger "in_place:cant_edit", @xhr
+      @el.click @loadForm
+      @xhr = null
+
+    showForm: =>
+      form = @el.html(@xhr.responseText).find("form")
+      form.find(".cancel").click @reset
+      form.find("textarea, input, select")[0].select()
+      form.submit @submitForm
+      @el.trigger "in_place:form", @xhr
+      @xhr = null
 
     reset: (event) =>
-      url = $(event.target).data("url")
-      if url?
-        $.ajax
-          url: url
-          type: "post"
-          data: @el.find('input[name="authenticity_token"]').serialize()
       @el.html @old
-      @el.click @editForm
+      @el.click @loadForm
+      @el.trigger "in_place:reset", event
       false
 
-    submitForm: (content) =>
+    submitForm: =>
       form = @el.find("form")
-      $.ajax
-        url: form.attr("action")
-        type: "post"
-        data: form.serialize()
-        dataType: "text"
-        success: =>
-          @el.trigger "in_place:result", this
-          @el.click @editForm
-      @el.html @old
-      @el.click @editForm
+      url  = form.attr("action")
+      data = form.serialize()
+      @xhr = $.ajax(url: url, type: "post", data: data).fail(@error).done(@success)
       false
+
+    error: =>
+      @el.trigger "in_place:error", @xhr
+      @xhr = null
+
+    success: =>
+      @el.html @xhr.responseText
+      @el.click @loadForm
+      @el.trigger "in_place:success", @xhr
+      @xhr = null
 
   $.fn.editionInPlace = ->
-    @each -> new EditionInPlace($(this), creation: false)
-
-  $.fn.creationInPlace = ->
-    @each -> new EditionInPlace($(this), creation: true)
+    @each -> new EditionInPlace($(this))
 
 ) window.jQuery

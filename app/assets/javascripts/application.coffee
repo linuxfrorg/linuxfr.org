@@ -12,7 +12,7 @@
 (($) ->
 
   $("body").delegate "form[data-remote]", "ajax:success", (e, data) ->
-    jQuery.noticeAdd text: data.notice  if data and data.notice
+    $.noticeAdd text: data.notice  if data and data.notice
     $("#nb_votes").text data.nb_votes   if data and data.nb_votes
     $(this).parent().hide()  unless $(this).data("hidden")
 
@@ -74,9 +74,9 @@
 
   # Redaction
   $(".edition_in_place").editionInPlace()
-  $("#redaction .link").editionInPlace()
-  $("#redaction .new_link").creationInPlace()
+  $("#redaction .new_link").editionInPlace()
   $("#redaction .new_paragraph").bind "ajax:success", false
+  $("#redaction .link, #redaction .paragraph").lockableEditionInPlace()
 
   # Tags
   $(".tag_in_place").bind("in_place:form", ->
@@ -84,9 +84,8 @@
       input = $(this)
       input.autocomplete input.data("url"), multiple: true, multipleSeparator: " ", dataType: "text"
       input.focus()
-  ).bind("in_place:result", (evt, edit_in_place) ->
+  ).bind("in_place:success", ->
     $.noticeAdd text: "Tags ajoutés"
-    edit_in_place.reset()
   ).editionInPlace()
   $(".add_tag, .remove_tag").click(->
     $(this).blur().parents("form").data hidden: "true"

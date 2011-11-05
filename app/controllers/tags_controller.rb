@@ -17,9 +17,10 @@ class TagsController < ApplicationController
 
   def create
     current_account.tag(@node, params[:tags])
-    respond_to do |wants|
-     wants.json { render :json => { :notice => "Tags ajoutés" } }
-     wants.html { redirect_to_content @node.content }
+    if request.xhr?
+      render :partial => 'link'
+    else
+      redirect_to_content @node.content
     end
   end
 
