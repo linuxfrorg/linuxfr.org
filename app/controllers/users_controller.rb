@@ -35,6 +35,7 @@ class UsersController < ApplicationController
 
   def comments
     redirect_to comments_user_path(@user), :status => 301 and return if !@user.friendly_id_status.best?
+    @dont_index = params.has_key?(:page)
     @comments = @user.comments.published.order('created_at DESC').page(params[:page])
     respond_to do |wants|
       wants.html
