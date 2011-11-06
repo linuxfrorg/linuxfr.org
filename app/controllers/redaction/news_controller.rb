@@ -42,15 +42,6 @@ class Redaction::NewsController < RedactionController
     end
   end
 
-  def clear_locks
-    enforce_update_permission(@news)
-    @news.clear_locks(current_user)
-    respond_to do |wants|
-      wants.json { render :json => { :notice => "Les verrous ont été supprimés" } }
-      wants.html { redirect_to :back }
-    end
-  end
-
 protected
 
   def load_news

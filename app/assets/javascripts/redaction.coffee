@@ -22,10 +22,6 @@
     onVote: (msg) ->
       $.noticeAdd text: "#{msg.username} a voté #{msg.word}"
 
-    onClearLocks: (msg) ->
-      $(".locked").removeClass "locked"
-      $.noticeAdd text: "Tous les verrous ont été supprimés"
-
     onUpdate: (msg) ->
       $("#news_header .title").text msg.title
       $("#news_header .topic").text msg.section.title
@@ -62,16 +58,9 @@
     onUpdateLink: (msg) =>
       $("#link_#{msg.id}").html(@innerHtmlForLink msg)
                           .attr(lang: msg.lang)
-                          .removeClass "locked"
 
     onRemoveLink: (msg) ->
       $("#link_#{msg.id}").remove()
-
-    onLockLink: (msg) ->
-      $("#link_#{msg.id}").addClass "locked"
-
-    onUnlockLink: (msg) ->
-      $("#link_#{msg.id}").removeClass "locked"
 
     htmlForPara: (msg) ->
       """
@@ -89,16 +78,9 @@
 
     onUpdateParagraph: (msg) =>
       $("#paragraph_#{msg.id}").html(msg.body)
-                               .removeClass "locked"
 
     onRemoveParagraph: (msg) ->
       $("#paragraph_#{msg.id}").remove()
-
-    onLockParagraph: (msg) ->
-      $("#paragraph_#{msg.id}").addClass "locked"
-
-    onUnlockParagraph: (msg) ->
-      $("#paragraph_#{msg.id}").removeClass "locked"
 
   $.fn.redaction = ->
     @each ->

@@ -8,7 +8,6 @@
 #  news_id      :integer(4)      not null
 #  position     :integer(4)
 #  second_part  :boolean(1)
-#  locked_by_id :integer(4)
 #  body         :text
 #  wiki_body    :text
 #
@@ -85,7 +84,7 @@ class Paragraph < ActiveRecord::Base
       destroy
     else
       self.user = user
-      self.locked_by_id = nil
+      $redis.del lock_key
       save
     end
     news.body_will_change!
@@ -125,21 +124,24 @@ class Paragraph < ActiveRecord::Base
 
 ### Lock ###
 
+  def lock_key
+    "locks/#{news.id}/p/#{self.id}"
+  end
+
   def lock_by(user)
-    return true  if locked_by_id == user.id
-    return false if locked?
-    connection.update_sql "UPDATE paragraphs SET locked_by_id=#{user.id} WHERE id=#{self.id}"
-    Push.create(news, :id => self.id, :username => user.name, :kind => :lock_paragraph)
+    locker_id = $redis.get(lock_key)
+    return locker_id == user.id if locker_id
+    $redis.set lock_key, user.id
+    $redis.expire lock_key, 1200
     true
   end
 
   def unlock
-    connection.update_sql "UPDATE paragraphs SET locked_by_id=NULL WHERE id=#{self.id}"
-    Push.create(news, :id => self.id, :kind => :unlock_paragraph)
+    $redis.del lock_key
   end
 
   def locked?
-    !!locked_by_id
+    !!$redis.get(lock_key)
   end
 
 ### Presentation ###
@@ -149,6 +151,6 @@ class Paragraph < ActiveRecord::Base
   end
 
   def locker
-    User.find(locked_by_id).name
+    User.find($redis.get lock_key).name
   end
 end

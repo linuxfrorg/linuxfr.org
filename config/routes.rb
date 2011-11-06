@@ -94,7 +94,6 @@ LinuxfrOrg::Application.routes.draw do
     resources :news, :except => [:new, :destroy] do
       get "/revisions/:revision" => :revision, :as => :revision, :on => :member
       post :submit, :on => :member
-      post :clear_locks, :on => :member
       resources :links, :only => [:new]
       resources :paragraphs, :only => [:create]
     end

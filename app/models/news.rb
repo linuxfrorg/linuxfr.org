@@ -289,12 +289,6 @@ class News < Content
     true
   end
 
-  def clear_locks(user)
-    connection.update_sql "UPDATE links SET locked_by_id=NULL WHERE news_id=#{self.id}"
-    connection.update_sql "UPDATE paragraphs SET locked_by_id=NULL WHERE news_id=#{self.id}"
-    Push.create(self, :kind => :clear_locks, :username => user.name)
-  end
-
 ### PPP ###
 
   def self.ppp

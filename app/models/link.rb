@@ -9,7 +9,6 @@
 #  title        :string(100)     not null
 #  url          :string(255)     not null
 #  lang         :string(2)       not null
-#  locked_by_id :integer(4)
 #  created_at   :datetime
 #  updated_at   :datetime
 #
@@ -49,7 +48,7 @@ class Link < ActiveRecord::Base
       destroy
     else
       self.user = user
-      self.locked_by_id = nil
+      $redis.del lock_key
       save
     end
   end
@@ -91,26 +90,29 @@ class Link < ActiveRecord::Base
 
 ### Lock ###
 
+  def lock_key
+    "locks/#{news.id}/l/#{self.id}"
+  end
+
   def lock_by(user)
-    return true  if locked_by_id == user.id
-    return false if locked?
-    connection.update_sql "UPDATE links SET locked_by_id=#{user.id} WHERE id=#{self.id}"
-    Push.create(news, :id => self.id, :username => user.name, :kind => :lock_link)
+    locker_id = $redis.get(lock_key)
+    return locker_id == user.id if locker_id
+    $redis.set lock_key, user.id
+    $redis.expire lock_key, 300
     true
   end
 
   def unlock
-    connection.update_sql "UPDATE links SET locked_by_id=NULL WHERE id=#{self.id}"
-    Push.create(news, :id => self.id, :kind => :unlock_link)
+    $redis.del lock_key
   end
 
   def locked?
-    !!locked_by_id
+    !!$redis.get(lock_key)
   end
 
 ### Presentation ###
 
   def locker
-    User.find(locked_by_id).name
+    User.find($redis.get lock_key).name
   end
 end

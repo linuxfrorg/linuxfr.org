@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111004212141) do
+ActiveRecord::Schema.define(:version => 20111105235215) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -112,11 +112,10 @@ ActiveRecord::Schema.define(:version => 20111004212141) do
   add_index "friend_sites", ["position"], :name => "index_friend_sites_on_position"
 
   create_table "links", :force => true do |t|
-    t.integer  "news_id",                     :null => false
-    t.string   "title",        :limit => 100, :null => false
-    t.string   "url",                         :null => false
-    t.string   "lang",         :limit => 2,   :null => false
-    t.integer  "locked_by_id"
+    t.integer  "news_id",                   :null => false
+    t.string   "title",      :limit => 100, :null => false
+    t.string   "url",                       :null => false
+    t.string   "lang",       :limit => 2,   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -196,10 +195,9 @@ ActiveRecord::Schema.define(:version => 20111004212141) do
   add_index "pages", ["slug"], :name => "index_pages_on_slug"
 
   create_table "paragraphs", :force => true do |t|
-    t.integer "news_id",      :null => false
+    t.integer "news_id",     :null => false
     t.integer "position"
     t.boolean "second_part"
-    t.integer "locked_by_id"
     t.text    "body"
     t.text    "wiki_body"
   end
