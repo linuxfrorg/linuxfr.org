@@ -1,3 +1,5 @@
+#= require eventsource
+
 (($) ->
 
   class Push
@@ -19,7 +21,7 @@
     onMessage: (e) =>
       try
         msg = $.parseJSON e.data
-        console.log msg
+        if console? then console.log msg else alert msg
         fn  = @callbacks[msg.kind]
         fn msg  if fn?
       catch err
