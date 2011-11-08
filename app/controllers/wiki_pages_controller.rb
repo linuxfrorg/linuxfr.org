@@ -71,6 +71,7 @@ class WikiPagesController < ApplicationController
   end
 
   def revision
+    @dont_index = true
     enforce_view_permission(@wiki_page)
     @version = @wiki_page.versions.find_by_version!(params[:revision])
     previous = @version.higher_item
@@ -78,6 +79,7 @@ class WikiPagesController < ApplicationController
   end
 
   def changes
+    @dont_index = true
     @versions = WikiVersion.order("created_at DESC").joins(:wiki_page).page(params[:page])
     respond_to do |wants|
       wants.html
