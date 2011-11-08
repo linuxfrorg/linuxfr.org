@@ -253,6 +253,10 @@ class News < Content
     super(account) && published?
   end
 
+  def taggable_by?(account)
+    super(account) || (account.amr? && candidate?)
+  end
+
   def acceptable_by?(account)
     account.admin? || (account.moderator? && acceptable?)
   end
