@@ -18,4 +18,4 @@
           = button_to "&uarr;".html_safe, higher_admin_friend_site_path(site)
           = button_to "&darr;".html_safe, lower_admin_friend_site_path(site)
           = link_to "Modifier", edit_admin_friend_site_path(site)
-          = button_to "Supprimer", [:admin, site], :method => :delete, :confirm => "Supprimer le site ami ?"
+          = button_to "Supprimer", [:admin, site], :method => :delete, :confirm => "Supprimer le site ami ?", :class => "delete_button"

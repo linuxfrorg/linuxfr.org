@@ -18,7 +18,7 @@
       %td= account.inactive? ? "Inactif" : "Actif"
       %td= account.created_at.to_s(:posted)
       %td
-        = button_to("Activer",   [:admin, account], :method => :put) if account.inactive? && account.user_id != 1
-        = button_to("Suspendre", [:admin, account], :method => :put) if !account.inactive?
+        = button_to("Activer",   [:admin, account], :method => :put, :class => "ok_button")     if account.inactive? && account.user_id != 1
+        = button_to("Suspendre", [:admin, account], :method => :put, :class => "delete_button") if !account.inactive?
 
 = paginate @accounts

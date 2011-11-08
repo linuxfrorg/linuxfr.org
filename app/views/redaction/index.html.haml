@@ -7,7 +7,7 @@
     %ul
       = list_of @news do |n|
         = link_to n.title, [:redaction, n]
-  = button_to "Commencer une nouvelle dépêche", "/redaction/news"
+  = button_to "Commencer une nouvelle dépêche", "/redaction/news", :class => "create_news"
   (sous licence CC by-sa)
 
 #main_board

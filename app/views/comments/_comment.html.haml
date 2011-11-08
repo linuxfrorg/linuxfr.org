@@ -20,5 +20,5 @@
   = link_to "Répondre", "/nodes/#{comment.node_id}/comments/#{comment.id}/answer#new_comment", :class => 'action'
   - if current_account && current_account.can_vote?(comment)
     %div.vote
-      Ce commentaire est-il #{button_to "pertinent", "/nodes/#{comment.node_id}/comments/#{comment.id}/relevance/for", :remote => true, :disabled => comment.score >= 10}
-      ou #{button_to "inutile", "/nodes/#{comment.node_id}/comments/#{comment.id}/relevance/against", :remote => true, :disabled => comment.score <= -10} ?
+      Ce commentaire est-il #{button_to "pertinent", "/nodes/#{comment.node_id}/comments/#{comment.id}/relevance/for", :remote => true, :disabled => comment.score >= 10, :class => "relevant"}
+      ou #{button_to "inutile", "/nodes/#{comment.node_id}/comments/#{comment.id}/relevance/against", :remote => true, :disabled => comment.score <= -10, :class => "useless"} ?

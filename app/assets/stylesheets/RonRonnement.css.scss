@@ -184,16 +184,72 @@ input[type='submit'] {
   font-size: medium;
   padding-left: 5px;
   padding-right: 5px;
+  margin: 3px;
 
   a {
     font-weight: normal;
-    &:hover {
-    text-decoration: none;
-    }
+    &:hover { text-decoration: none; }
   }
   &:hover {
     background-color: $C_INTER;
     border: 1px solid $C_FONCE;
+    text-decoration: none;
+  }
+}
+
+input[type='submit'] {
+  padding-left: 20px;
+  background: url("/images/icones/check.png") no-repeat 2px 2px $C_CLAIR;
+  &:hover { background-color: $C_FONCE; }
+  &#logout, &.unread, &.relevant, &.useless { background: $C_CLAIR; }
+}
+
+button, input[type='submit'] {
+  &.publish_news, &.ok_button {
+    padding-left: 20px;
+    background: url("/images/icones/check.png") no-repeat 3px 3px $C_CLAIR;
+    &:hover { background-color: $C_FONCE; }
+  }
+  &.refuse_news, &.delete_button, &.cancel {
+    padding-left: 20px;
+    background: url("/images/icones/x_red.png") no-repeat 4px 4px $C_CLAIR;
+    &:hover { background-color: $C_FONCE; }
+  }
+  &.ppp_news {
+    padding-left: 20px;
+    background: url("/images/icones/pin.png") no-repeat 3px 3px $C_CLAIR;
+    &:hover { background-color: $C_FONCE; }
+  }
+  &.submit_board {
+    padding-left: 20px;
+    background: url("/images/icones/chat.png") no-repeat 2px 2px $C_CLAIR;
+    &:hover { background-color: $C_FONCE; }
+  }
+  &.submit_news {
+    padding-left: 20px;
+    background: url("/images/icones/check_alt.png") no-repeat 2px 2px $C_CLAIR;
+    &:hover { background-color: $C_FONCE; }
+    margin-bottom: 15px;
+  }
+  &.add_para, &.add_link, &.create_news {
+    padding-left: 20px;
+    background: url("/images/icones/plus.png") no-repeat 2px 2px $C_CLAIR;
+    &:hover { background-color: $C_FONCE; }
+  }
+  &.vote_for {
+    padding-left: 20px;
+    background: url("/images/icones/arrow_up.png") no-repeat 2px 2px $C_CLAIR;
+    &:hover { background-color: $C_FONCE; }
+  }
+  &.vote_against {
+    padding-left: 20px;
+    background: url("/images/icones/arrow_down.png") no-repeat 2px 2px $C_CLAIR;
+    &:hover { background-color: $C_FONCE; }
+  }
+  &#admin_49_3, &.archive_button {
+    padding-left: 20px;
+    background: url("/images/icones/fork.png") no-repeat 2px 3px $C_CLAIR;
+    &:hover { background-color: $C_FONCE; }
   }
 }
 

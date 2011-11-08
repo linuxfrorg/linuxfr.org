@@ -8,6 +8,6 @@
     = render form
 
   - if current_account && current_account.can_destroy?(@wiki_page)
-    = button_to "Supprimer", [@wiki_page], :method => :delete, :confirm => "Êtes-vous sûr de vouloir supprimer cette page de wiki ?"
+    = button_to "Supprimer", [@wiki_page], :method => :delete, :confirm => "Êtes-vous sûr de vouloir supprimer cette page de wiki ?", :class => "delete_button"
 
   = render 'shared/wiki_help'
