@@ -48,6 +48,9 @@
       """
       <li class="link" id="link_#{msg.id}" lang="#{msg.lang}" data-url="/redaction/links/#{msg.id}/modifier">
         #{@innerHtmlForLink msg}
+        <div class="actions">
+          <button class="edit">Modifier</button>
+        </div>
       </li>
       """
 
@@ -66,6 +69,9 @@
       """
       <div id="paragraph_#{msg.id}" data-url="/redaction/paragraphs/#{msg.id}/modifier">
         #{msg.body}
+        <div class="actions">
+          <button class="edit">Modifier</button>
+        </div>
       </div>
       """
 

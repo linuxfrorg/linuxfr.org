@@ -1,19 +1,22 @@
 (($) ->
 
   class EditionInPlace
-    constructor: (@el) ->
+    constructor: (@el, @edit) ->
       @url = @el.data("url") or (document.location.pathname + "/modifier")
-      @el.click @loadForm
+      @button().click @loadForm
+
+    button: ->
+      if @edit then @el.find(@edit) else @el
 
     loadForm: =>
-      @el.unbind "click"
+      @button().unbind "click"
       @old = @el.html()
       @xhr = $.ajax(url: @url, type: "get").fail(@cantEdit).done(@showForm)
       false
 
     cantEdit: =>
       @el.trigger "in_place:cant_edit", @xhr
-      @el.click @loadForm
+      @button().click @loadForm
       @xhr = null
 
     showForm: =>
@@ -26,7 +29,7 @@
 
     reset: (event) =>
       @el.html @old
-      @el.click @loadForm
+      @button().click @loadForm
       @el.trigger "in_place:reset", event
       false
 
@@ -43,11 +46,11 @@
 
     success: =>
       @el.html @xhr.responseText
-      @el.click @loadForm
+      @button().click @loadForm
       @el.trigger "in_place:success", @xhr
       @xhr = null
 
-  $.fn.editionInPlace = ->
-    @each -> new EditionInPlace($(this))
+  $.fn.editionInPlace = (edit_selector) ->
+    @each -> new EditionInPlace($(this), edit_selector)
 
 ) window.jQuery

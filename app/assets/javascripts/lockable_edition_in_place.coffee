@@ -10,6 +10,6 @@
       $.ajax url: self.data("cancel"), type: "post", data: self.data("token")
     ).bind("in_place:cant_edit", (event, xhr) ->
       $.noticeAdd text: xhr.responseText
-    ).editionInPlace()
+    ).editionInPlace("button.edit")
 
 ) window.jQuery
