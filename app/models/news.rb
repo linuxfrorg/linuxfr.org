@@ -115,7 +115,7 @@ class News < Content
     news = News.new
     news.title = "Nouvelle dépêche #{News.maximum :id}"
     news.section = Section.default
-    news.wiki_body = news.wiki_second_part = "Vous pouvez éditer cette partie en cliquant dessus !"
+    news.wiki_body = news.wiki_second_part = "Vous pouvez éditer cette partie en cliquant sur le crayon !"
     news.cc_licensed = true
     news.author_name  = account.name
     news.author_email = account.email
