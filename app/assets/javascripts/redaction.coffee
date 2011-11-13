@@ -31,7 +31,7 @@
       parts = window.location.pathname.split("/")
       slug  = parts[parts.length - 1]
       """
-      <li><a href="/redaction/news#{slug}/revision/#{msg.id}">
+      <li><a href="/redaction/news/#{slug}/revisions/#{msg.version}">
         #{msg.username}&nbsp;: #{msg.message}
       </a></li>
       """
