@@ -7,7 +7,7 @@ gem "albino",                  "~>1.3"
 gem "bitfields",               "~>0.4"
 gem "canable",                 "~>0.1"
 gem "carrierwave",             "~>0.5"
-gem "devise",                  "~>1.4"
+gem "devise",                  "~>1.5"
 gem "differ",                  "~>0.1"
 gem "french_rails",            "~>0.2"
 gem "friendly_id",             "~>3.2"
@@ -26,7 +26,7 @@ gem "redis",                   "~>2.2", :require => ["redis/connection/hiredis",
 gem "sanitize",                "~>2.0"
 gem "sitemap_generator",       "~>2.0"
 gem "simple_autocomplete",     "~>0.3"
-gem "state_machine",           "~>1.0"
+gem "state_machine",           "~>1.1"
 # TODO Rails3
 # gem "thinking-sphinx",       "~>1.3", :require => "thinking_sphinx"
 # gem "ts-datetime-delta",     "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
@@ -38,6 +38,7 @@ group :assets do
   gem "sass-rails",            "~>3.1"
   gem "coffee-rails",          "~>3.1"
   gem "therubyracer",          "~>0.9", :require => 'v8'
+  gem "libv8",                 "=3.3.10.2"  # Bundler says it can't find libv8-3.3.10.3...
   gem "uglifier"
 end
 
