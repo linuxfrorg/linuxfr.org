@@ -1000,17 +1000,18 @@ ul.poll {
       list-style: none;
     }
   }
-  li meter {
+  meter {
     display: block;
     background: $C_BD2;
     border-top: 1px solid $C_BANDEAU;
     border-bottom: 1px solid $C_BANDEAU;
     font-size: x-small;
+    -webkit-appearance: none;
   }
-  li meter::-webkit-meter-horizontal-bar,
-  li meter::-webkit-meter-horizontal-optimum-value,
-  li meter::-webkit-meter-horizontal-suboptimal-value,
-  li meter::-webkit-meter-horizontal-even-less-good-value {
+  meter::-webkit-meter-bar,
+  meter::-webkit-meter-optimum-value,
+  meter::-webkit-meter-suboptimal-value,
+  meter::-webkit-meter-even-less-good-value {
     background: $C_BD2;
   }
 }

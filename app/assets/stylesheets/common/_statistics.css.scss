@@ -1,29 +1,32 @@
 .statistics {
 	meter {
 		display: block;
-		background: #F1ABC5;
 		border-top: 1px solid #4C575F;
 		border-bottom: 1px solid #4C575F;
 		font-size: x-small;
-		&.category { background-color: green; }
-		&.opened { background-color: red; }
-		&.fixed { background-color: green; }
-		&.invalid { background-color: olive; }
-		&.month_new { background-color: red; }
-		&.remaining { background-color: darkred; }
-		&.month_fixed { background-color: green; }
-		&.month_invalid { background-color: olive; }
-		&.misc { background-color: green; }
-		&.account { background-color: olive; }
-		&.accountrecent { background-color: green; }
-		&.accountinactive { background-color: darkred; }
-		&.accountrecentinactive { background-color: red; }
-        &.contentdiary { background-color: pink; }
-        &.contentpost { background-color: orangered; }
-        &.contentnews { background-color: green; }
-        &.contenttracker { background-color: lightblue; }
-        &.contentpoll { background-color: olive; }
-        &.contentwikipage { background-color: orange; }
+		background: #F1ABC5;
+        &::-webkit-meter-bar { background: #F1ABC5; }
+        -webkit-appearance: none;
+		&.category , &.category::-webkit-meter-bar { background-color: green; }
+		&.opened , &.opened::-webkit-meter-bar { background-color: red; }
+		&.fixed , &.fixed::-webkit-meter-bar { background-color: green; }
+		&.invalid , &.invalid::-webkit-meter-bar { background-color: olive; }
+		&.month_new , &.month_new::-webkit-meter-bar { background-color: red; }
+		&.remaining , &.remaining::-webkit-meter-bar { background-color: darkred; }
+		&.month_fixed , &.month_fixed::-webkit-meter-bar { background-color: green; }
+		&.month_invalid , &.month_invalid::-webkit-meter-bar { background-color: olive; }
+		&.misc , &.misc::-webkit-meter-bar { background-color: green; }
+		&.account , &.account::-webkit-meter-bar { background-color: olive; }
+		&.accountrecent , &.accountrecent::-webkit-meter-bar { background-color: green; }
+		&.accountinactive , &.accountinactive::-webkit-meter-bar { background-color: darkred; }
+		&.accountrecentinactive , &.accountrecentinactive::-webkit-meter-bar { background-color: red; }
+        &.contentdiary , &.contentdiary::-webkit-meter-bar { background-color: pink; }
+        &.contentpost , &.contentpost::-webkit-meter-bar { background-color: orangered; }
+        &.contentnews , &.contentnews::-webkit-meter-bar { background-color: green; }
+        &.contenttracker , &.contenttracker::-webkit-meter-bar { background-color: lightblue; }
+        &.contentpoll , &.contentpoll::-webkit-meter-bar { background-color: olive; }
+        &.contentwikipage , &.contentwikipage::-webkit-meter-bar { background-color: orange; }
+
 	}
 
 	span.score {
