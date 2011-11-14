@@ -1,6 +1,8 @@
 require 'bundler/capistrano'
 require 'capistrano_colors'
 
+# Assets
+set :public_children, %w(images)
 load 'deploy/assets'
 
 # Common options
@@ -9,7 +11,7 @@ set :scm,        :git
 set :repository, "git://github.com/nono/linuxfr.org.git"
 set :deploy_via, :remote_cache
 
-default_run_options[:pty] = true # Temporary hack
+default_run_options[:pty] = true
 
 
 # We have two environments: alpha and prod.
@@ -42,7 +44,7 @@ namespace :env do
   end
 end
 after "env:alpha", "env:common"
-after "env:prod", "env:common"
+after "env:prod",  "env:common"
 
 
 # Check that we have invoked an environment before deploying
