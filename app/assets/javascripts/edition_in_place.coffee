@@ -45,7 +45,7 @@
       @xhr = null
 
     success: =>
-      @el.html @xhr.responseText
+      @el = $(@xhr.responseText).replaceAll @el
       @button().click @loadForm
       @el.trigger "in_place:success", @xhr
       @xhr = null

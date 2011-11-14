@@ -1315,7 +1315,7 @@ body#news-show #redaction {
   width: 60%;
   .paragraph { margin-bottom: 15px; }
 }
-#redaction .paragraph, #redaction .link {
+#redaction .edition_in_place, #redaction .paragraph, #redaction .link {
   padding-left: 30px;
   position: relative;
   .edit { background: url("/images/icones/pen.png") no-repeat 2px 2px $C_CLAIR; }
