@@ -24,7 +24,7 @@ gem "redcarpet",               "~>1.17"
 gem "hiredis",                 "~>0.3"
 gem "redis",                   "~>2.2", :require => ["redis/connection/hiredis", "redis"]
 gem "sanitize",                "~>2.0"
-gem "sitemap_generator",       "~>2.0"
+gem "sitemap_generator",       "~>2.1"
 gem "simple_autocomplete",     "~>0.3"
 gem "state_machine",           "~>1.1"
 # TODO Rails3
@@ -38,7 +38,6 @@ group :assets do
   gem "sass-rails",            "~>3.1"
   gem "coffee-rails",          "~>3.1"
   gem "therubyracer",          "~>0.9", :require => 'v8'
-  gem "libv8",                 "=3.3.10.2"  # Bundler says it can't find libv8-3.3.10.3...
   gem "uglifier"
 end
 
