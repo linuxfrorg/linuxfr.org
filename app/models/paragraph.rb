@@ -130,7 +130,7 @@ class Paragraph < ActiveRecord::Base
 
   def lock_by(user)
     locker_id = $redis.get(lock_key)
-    return locker_id == user.id if locker_id
+    return locker_id.to_i == user.id if locker_id
     $redis.set lock_key, user.id
     $redis.expire lock_key, 1200
     true
