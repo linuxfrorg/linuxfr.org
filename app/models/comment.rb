@@ -63,7 +63,7 @@ class Comment < ActiveRecord::Base
 
   before_create :touch_node
   def touch_node
-    node.touch(:last_commented_at)
+    node.touch(:last_commented_at) if node
   end
 
 ### Threads ###
