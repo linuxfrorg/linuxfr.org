@@ -12,20 +12,16 @@ Install
 The following instructions will help you to install the Rails part of
 LinuxFr.org on a Debian box.
 
-1) First install the Debian packages:
+1) First install some Debian packages:
 
-    (become root, you should probably remove any preexisting ruby1.8 installation)
-    # aptitude install ruby1.9.1-full
     # aptitude install mysql-server mysql-client libmysql++-dev
-    # aptitude install build-essential libxslt1-dev libxml2-dev
-    # aptitude install imagemagick hunspell hunspell-fr
+    # aptitude install build-essential openssl libreadline6 libreadline6-dev
+    # aptitude install curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev
+    # aptitude install libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev bison
+    # aptitude install libxslt-dev autoconf libc6-dev ncurses-dev automake libtool
+    # aptitude install imagemagick hunspell hunspell-fr subversion
 
-2) Install some gems:
-
-    # gem install bundler rake
-    (could be gem1.9.1 instead of gem, installation should be in /var/lib/gems/1.9.1 by default)
-
-3) Configure the database:
+2) Configure the database:
 
     # mysql -p -u root
     <enter your root password for mysql>
@@ -37,14 +33,20 @@ LinuxFr.org on a Debian box.
     Statistics need time zone at SQL level. You'll need to population time_zone* tables.
     # mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -p -u root mysql
 
-4) Install and start redis:
+3) Install and start redis:
 
-    $ wget "http://redis.googlecode.com/files/redis-2.2.1.tar.gz"
-    $ tar xzf redis-2.2.1.tar.gz
-    $ cd redis-2.2.1
+    $ wget "http://redis.googlecode.com/files/redis-2.4.2.tar.gz"
+    $ tar xzf redis-2.4.2.tar.gz
+    $ cd redis-2.4.2
     $ make
     (optional, takes about ten minutes, $ make test )
     $ src/redis-server redis.conf
+
+4) Install RVM (more details on https://rvm.beginrescueend.com/rvm/install/):
+
+    $ bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+
+   And follow the instructions.
 
 5) Clone the repository, configure and install gems:
 
@@ -52,29 +54,24 @@ LinuxFr.org on a Debian box.
     $ cd linuxfr.org
     $ cp config/database.yml{.sample,}
     $ cp config/secret.yml{.sample,}
-    (become root)
-    # bundle install
-    (probably /var/lib/gems/1.9.1/bin/bundle if not in your PATH)
-    (return to user)
+    $ gem install bundler rake
+    $ bundle install
     $ rake db:setup
-    (probably /var/lib/gems/1.9.1/bin/rake if not in your PATH)
     (if you're updating, you'll need an other step: redis-cli flushdb)
 
 6) Let's run it:
 
     $ bundle exec rails server thin
-    (probably /var/lib/gems/1.9.1/bin/bundle if not in your PATH)
-    $ firefox http://127.0.0.1:3000/
-    (did you mean iceweasel?)
+    $ x-www-browser http://127.0.0.1:3000/
 
 7) Create an admin account:
 
-    Create an account
-    Get confirmation link in the console and confirm the account
-    (Get password in the console)
-    Give admin role to this account
-    mysql> UPDATE accounts SET role='admin' WHERE login='xxxxxx';
-    Reload the page on the site, you should be admin.
+* Create an account
+* Get confirmation link in the console and confirm the account
+* Get password in the console
+* Give admin role to this account with
+  `mysql> UPDATE accounts SET role='admin' WHERE login='xxxxxx';`
+* Reload the page on the site, you should be admin.
 
 
 See also
@@ -82,9 +79,10 @@ See also
 
 If you want the full stack for running LinuxFr.org, you should also look at:
 
-* [The admin files](http://github.com/nono/admin-linuxfr.org)
-* [The eventmachine chat](http://github.com/nono/Board-LinuxFr.org)
-* [The migration script](http://github.com/nono/migration-linuxfr.org)
+* [The admin files](https://github.com/nono/admin-linuxfr.org)
+* [The board daemon](https://github.com/nono/board-sse-linuxfr.org)
+* [The share daemon](https://github.com/nono/share-LinuxFr.org)
+* [The migration script](https://github.com/nono/migration-linuxfr.org)
 
 
 How to run the specs
