@@ -4,7 +4,7 @@ class Moderation::PollsController < ModerationController
   after_filter  :expire_cache, :only => [:update, :accept]
 
   def index
-    @polls = Poll.draft
+    @polls = Poll.draft.order("id DESC")
   end
 
   def show
