@@ -44,6 +44,7 @@
         = link_to user["login"], "/users/#{user["login"]}"
         = " : #{pluralize user["cnt"], "modération"} et "
         = pluralize @stats.nb_votes_last_month(user["login"]), "vote"
+        = pluralize @stats.nb_editions_last_month(user["user_id"]), "édition"
 
     %h4 Relecteurs actuels
     %ol
@@ -51,6 +52,7 @@
         = link_to user["login"], "/users/#{user["login"]}"
         = " : "
         = pluralize @stats.nb_votes_last_month(user["login"]), "vote"
+        = pluralize @stats.nb_editions_last_month(user["user_id"]), "édition"
 
     %h3 Depuis Epoch ou le début des données
 

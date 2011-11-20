@@ -23,7 +23,7 @@ class Statistics::Moderation < Statistics::Statistics
         WHERE nodes.content_id = news.id
           AND nodes.content_type='News'
           AND nodes.created_at >= DATE('2011-01-01 00:00:001')
-     ORDER BY year;"
+     ORDER BY year
     EOS
   end
 
@@ -59,6 +59,10 @@ class Statistics::Moderation < Statistics::Statistics
        WHERE (role='moderator' OR role='admin')
     ORDER BY LOWER(login) ASC
     EOS
+  end
+
+  def nb_editions_last_month(user_id)
+    count "SELECT COUNT(*) AS cnt FROM news_versions WHERE user_id=#{user_id} AND created_at >= '#{31.days.ago.to_s :db}'"
   end
 
   def nb_votes(login)
