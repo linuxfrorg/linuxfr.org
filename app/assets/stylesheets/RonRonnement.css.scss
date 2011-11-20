@@ -168,13 +168,6 @@ a {
 meter { white-space: nowrap; }
 
 button,
-#news_preview, #news_submit,
-#diary_preview, #diary_submit,
-#comment_preview, #comment_submit,
-#tracker_preview, #tracker_submit,
-#wiki_preview, #wiki_submit,
-#poll_preview, #poll_submit,
-#post_preview, #post_submit,
 #comments p#send-comment,
 .toolbox .new_content,
 input[type='submit'] {
@@ -197,7 +190,7 @@ input[type='submit'] {
   }
 }
 
-input[type='submit'] {
+form input[type='submit'] {
   padding-left: 20px;
   background: url("/images/icones/check.png") no-repeat 2px 2px $C_CLAIR;
   &:hover { background-color: $C_FONCE; }
@@ -244,6 +237,11 @@ button, input[type='submit'] {
   &.vote_against {
     padding-left: 20px;
     background: url("/images/icones/arrow_down.png") no-repeat 2px 2px $C_CLAIR;
+    &:hover { background-color: $C_FONCE; }
+  }
+  &.plonk {
+    padding-left: 20px;
+    background: url("/images/icones/denied.png") no-repeat 2px 2px $C_CLAIR;
     &:hover { background-color: $C_FONCE; }
   }
   &#admin_49_3, &.archive_button {
