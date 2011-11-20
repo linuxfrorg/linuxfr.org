@@ -192,7 +192,7 @@ input[type='submit'] {
 
 form input[type='submit'] {
   padding-left: 20px;
-  background: url("/images/icones/check.png") no-repeat 2px 2px $C_CLAIR;
+  background: url("/images/icones/check.png") no-repeat 3px 3px $C_CLAIR;
   &:hover { background-color: $C_FONCE; }
   &#logout, &.unread, &.relevant, &.useless { background: $C_CLAIR; }
 }
