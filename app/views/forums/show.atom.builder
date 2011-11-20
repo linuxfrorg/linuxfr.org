@@ -4,9 +4,10 @@ atom_feed(:root_url => forum_url(@forum), "xmlns:wfw" => "http://wellformedweb.o
   feed.icon("/favicon.png")
 
   @posts.each do |post|
+    url = url_for([@forum, post])
     feed.entry([@forum, post], :id => "tag:linuxfr.org,2005:ForumPost/#{post.id}") do |entry|
       entry.title(post.title)
-      entry.content(post.body, :type => 'html')
+      entry.content(post.body + atom_comments_link(url), :type => 'html')
       entry.author do |author|
         author.name(post.user.name)
       end

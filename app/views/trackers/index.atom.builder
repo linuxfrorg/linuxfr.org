@@ -1,3 +1,4 @@
+# encoding: utf-8
 atom_feed(:root_url => trackers_url, "xmlns:wfw" => "http://wellformedweb.org/CommentAPI/") do |feed|
   feed.title("LinuxFr.org : les entrées du suivi")
   feed.updated(@trackers.first.try :created_at)
@@ -6,7 +7,7 @@ atom_feed(:root_url => trackers_url, "xmlns:wfw" => "http://wellformedweb.org/Co
   @trackers.each do |tracker|
     feed.entry(tracker) do |entry|
       entry.title("#{tracker.category.title} : #{tracker.title}")
-      entry.content(tracker.body, :type => 'html')
+      entry.content(tracker.body + atom_comments_link(url_for tracker), :type => 'html')
       entry.author do |author|
         author.name(tracker.user.try(:name) || 'Anonyme')
       end

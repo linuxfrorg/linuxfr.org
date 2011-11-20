@@ -6,7 +6,7 @@ atom_feed(:root_url => wiki_pages_url, "xmlns:wfw" => "http://wellformedweb.org/
   @wiki_pages.each do |page|
     feed.entry(page) do |entry|
       entry.title(page.title)
-      entry.content(page.body, :type => 'html')
+      entry.content(page.body + atom_comments_link(url_for page), :type => 'html')
       entry.author do |author|
         author.name(page.node.user.try :name)
       end

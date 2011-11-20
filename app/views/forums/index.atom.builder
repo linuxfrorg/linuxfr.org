@@ -9,9 +9,10 @@ atom_feed(:root_url => forums_url, "xmlns:wfw" => "http://wellformedweb.org/Comm
 
   @nodes.each do |node|
     post = node.content
-    feed.entry(post, :url => forum_post_url(:forum_id => post.forum, :id => post)) do |entry|
+    url  = forum_post_url(:forum_id => post.forum, :id => post)
+    feed.entry(post, :url => url) do |entry|
       entry.title(post.title)
-      entry.content(post.body, :type => 'html')
+      entry.content(post.body + atom_comments_link(url), :type => 'html')
       entry.author do |author|
         author.name(post.user.name)
       end

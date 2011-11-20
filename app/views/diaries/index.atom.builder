@@ -8,9 +8,10 @@ atom_feed(:root_url => diaries_url, "xmlns:wfw" => "http://wellformedweb.org/Com
   feed.icon("/favicon.png")
 
   @nodes.map(&:content).each do |diary|
-    feed.entry(diary, :url => polymorphic_url([diary.owner, diary])) do |entry|
+    url = polymorphic_url([diary.owner, diary])
+    feed.entry(diary, :url => url) do |entry|
       entry.title(diary.title)
-      entry.content(diary.body, :type => 'html')
+      entry.content(diary.body + atom_comments_link(url), :type => 'html')
       entry.author do |author|
         author.name(diary.owner.name)
       end

@@ -1,3 +1,4 @@
+# encoding: utf-8
 atom_feed(:root_url => news_index_url, "xmlns:wfw" => "http://wellformedweb.org/CommentAPI/") do |feed|
   if @user
     feed.title("LinuxFr.org : les dépêches de #{@user.name}")
@@ -16,7 +17,8 @@ atom_feed(:root_url => news_index_url, "xmlns:wfw" => "http://wellformedweb.org/
                                   link_to(l.title, "http://#{MY_DOMAIN}/redirect/#{l.id}", :title => l.url, :hreflang => l.lang))
                end.join.html_safe)
       second = content_tag(:div, news.second_part)
-      entry.content(first + links + second, :type => 'html')
+      comments = atom_comments_link(url_for news)
+      entry.content(first + links + second + comments, :type => 'html')
       entry.author do |author|
         author.name(news.author_name)
       end
