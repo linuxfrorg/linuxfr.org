@@ -42,8 +42,9 @@
     %ol
       = list_of(@stats.top_am_last_month) do |user|
         = link_to user["login"], "/users/#{user["login"]}"
-        = " : #{pluralize user["cnt"], "modération"} et "
+        = " : #{pluralize user["cnt"], "modération"}, "
         = pluralize @stats.nb_votes_last_month(user["login"]), "vote"
+        et
         = pluralize @stats.nb_editions_last_month(user["user_id"]), "édition"
 
     %h4 Relecteurs actuels
@@ -52,6 +53,7 @@
         = link_to user["login"], "/users/#{user["login"]}"
         = " : "
         = pluralize @stats.nb_votes_last_month(user["login"]), "vote"
+        et
         = pluralize @stats.nb_editions_last_month(user["user_id"]), "édition"
 
     %h3 Depuis Epoch ou le début des données
