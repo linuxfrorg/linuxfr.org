@@ -29,7 +29,8 @@ class WikiVersion < ActiveRecord::Base
 ### Presentation ###
 
   def message
-    read_attribute(:message) || "Révision n°#{self.id}"
+    msg = read_attribute(:message)
+    msg.blank? ? "Révision n°#{self.id}" : msg
   end
 
   def author_name
