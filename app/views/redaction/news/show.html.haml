@@ -26,4 +26,10 @@
 - if current_account.amr? || @news.submitted_by?(current_account)
   = button_to "Soumettre la dépêche", submit_redaction_news_path(@news), :class => "submit_news"
 
+%article
+  %strong Attention :
+  pour éviter les conflits, une seule personne à la fois peut éditer un paragraphe donné.
+  En pratique, cela veut dire qu'un verrou est posé sur le paragraphe dès qu'une personne passe en mode édition pour ce paragraphe.
+  Le verrou est relaché quand la personne a fini de modifier le paragraphe ou expirera au bout de 20 minutes.
+
 = render 'shared/wiki_help'
