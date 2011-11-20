@@ -41,11 +41,11 @@
         %tr
           %td= year
           %td
-            %meter.opened(style="width:#{states["opened"]}px;")= states["opened"]
+            .stat.opened(style="width:#{states["opened"]}px;")= states["opened"]
           %td
-            %meter.fixed(style="width:#{states["fixed"]}px;")= states["fixed"]
+            .stat.fixed(style="width:#{states["fixed"]}px;")= states["fixed"]
           %td
-            %meter.invalid(style="width:#{states["invalid"]}px;")= states["invalid"]
+            .stat.invalid(style="width:#{states["invalid"]}px;")= states["invalid"]
           %td.total= states.values.sum
 
     %h2 Évolution du nombre d'entrées dans le système de suivi
@@ -64,13 +64,13 @@
           %td
             = month[0].sub(/(\d{4})(\d{2})/, '\2 \1')
           %td
-            %meter.remaining(style="width:#{width_factor / 4 * total}px;")= total
-            %meter.month_new(style="width:#{width_factor / 4 * opened}px;")= opened
+            .stat.remaining(style="width:#{width_factor / 4 * total}px;")= total
+            .stat.month_new(style="width:#{width_factor / 4 * opened}px;")= opened
           %td
             = total = total + opened - fixed - invalid
           %td
-            %meter.month_fixed(style="width:#{width_factor / 4 * fixed}px;")= fixed
-            %meter.month_invalid(style="width:#{width_factor / 4 * invalid}px;")= invalid
+            .stat.month_fixed(style="width:#{width_factor / 4 * fixed}px;")= fixed
+            .stat.month_invalid(style="width:#{width_factor / 4 * invalid}px;")= invalid
 
     %h2 État des entrées dans le système de suivi par catégorie
     %table
@@ -81,7 +81,7 @@
         %tr
           %td= category["name"]
           %td
-            %meter.category(style="width: #{width_factor * category["cnt"]}px;")= category["cnt"]
+            .stat.category(style="width: #{width_factor * category["cnt"]}px;")= category["cnt"]
 
     %h2 Statistiques Ohloh
     %script(src="http://www.ohloh.net/p/488790/widgets/project_languages.js")

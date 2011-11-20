@@ -23,7 +23,7 @@
         %tr
           %td= day_name day["day"]
           %td
-            %meter.misc(style="width: #{(width_factor * day["cnt"]).to_i}px;")= day["cnt"]
+            .stat.misc(style="width: #{(width_factor * day["cnt"]).to_i}px;")= day["cnt"]
 
     %h2 Temps de modération
     %p

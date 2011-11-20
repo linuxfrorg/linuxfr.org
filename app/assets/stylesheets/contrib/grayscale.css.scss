@@ -23,7 +23,7 @@ small, strike, strong, sub, sup, tt, var,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, meter, aside, footer, header {
+article, .result, aside, footer, header {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -1479,7 +1479,7 @@ article ul.tag_cloud li {
 }
 
 /* line 44, ../../app/stylesheets/partials/_contents.scss */
-.poll meter {
+.poll .result {
 	display: block;
 	margin: 5px 0;
 	padding-left: 5px;

@@ -19,12 +19,12 @@
 
     %h3 Répartition temporelle des #{@stats.contents["Total"]} contenus
      
-    %meter(class="contentdiary" style="width: 250px;") journaux
-    %meter(class="contentpost" style="width: 250px;") entrées de forums
-    %meter(class="contentnews" style="width: 250px;") dépêches
-    %meter(class="contenttracker" style="width: 250px;") entrées dans le système de suivi
-    %meter(class="contentpoll" style="width: 250px;") sondages
-    %meter(class="contentwikipage" style="width: 250px;") pages wiki
+    .stat(class="contentdiary" style="width: 250px;") journaux
+    .stat(class="contentpost" style="width: 250px;") entrées de forums
+    .stat(class="contentnews" style="width: 250px;") dépêches
+    .stat(class="contenttracker" style="width: 250px;") entrées dans le système de suivi
+    .stat(class="contentpoll" style="width: 250px;") sondages
+    .stat(class="contentwikipage" style="width: 250px;") pages wiki
 
     %table
       %tr
@@ -35,7 +35,7 @@
           %td= year
           %td
             - content.each do |type,cnt|
-              %meter(class="content#{type.downcase()}" style="width: #{(width_factor * cnt).to_i}px;")= cnt
+              .stat(class="content#{type.downcase()}" style="width: #{(width_factor * cnt).to_i}px;")= cnt
 
     %table
       %tr
@@ -46,7 +46,7 @@
           %td= month.sub(/(\d{4})(\d{2})/, '\2 \1')
           %td
             - content.each do |type,cnt|
-              %meter(class="content#{type.downcase}" style="width: #{(width_factor * cnt * 30).to_i}px;")= cnt
+              .stat(class="content#{type.downcase}" style="width: #{(width_factor * cnt * 30).to_i}px;")= cnt
 
     %table
       %tr
@@ -56,7 +56,7 @@
         %tr
           %td= day_name day["day"]
           %td
-            %meter.misc(style="width: #{(width_factor * day["cnt"] / 3).to_i}px;")= day["cnt"]
+            .stat.misc(style="width: #{(width_factor * day["cnt"] / 3).to_i}px;")= day["cnt"]
 
     %table
       %tr
@@ -66,7 +66,7 @@
         %tr
           %td= entry["year"]
           %td
-            %meter.misc(style="width: #{(width_factor * entry["cnt"]).to_i}px;")= entry["cnt"]
+            .stat.misc(style="width: #{(width_factor * entry["cnt"]).to_i}px;")= entry["cnt"]
 
     -# TODO REDIS %p Nombre de clics moyen par lien sur les dépêches acceptées
     -# Année	Nombre de clics moyen	Total
@@ -96,7 +96,7 @@
           %td= year
           %td
             - comment.each do |type,cnt|
-              %meter(class="content#{type.downcase()}" style="width: #{(width_factor * cnt / 10).to_i}px;")= cnt
+              .stat(class="content#{type.downcase()}" style="width: #{(width_factor * cnt / 10).to_i}px;")= cnt
 
     %table
       %tr
@@ -107,7 +107,7 @@
           %td= month.sub(/(\d{4})(\d{2})/, '\2 \1')
           %td
             - comment.each do |type,cnt|
-              %meter(class="content#{type.downcase}" style="width: #{(width_factor * cnt).to_i}px;")= cnt
+              .stat(class="content#{type.downcase}" style="width: #{(width_factor * cnt).to_i}px;")= cnt
 
     %table
       %tr
@@ -117,6 +117,6 @@
         %tr
           %td= day_name day
           %td
-            %meter.misc(style="width: #{(width_factor * cnt / 30).to_i}px;")= cnt
+            .stat.misc(style="width: #{(width_factor * cnt / 30).to_i}px;")= cnt
 
     -# TODO REDIS %h2 Notes sur les contenus

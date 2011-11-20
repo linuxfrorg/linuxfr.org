@@ -165,8 +165,6 @@ a {
   }
 }
 
-meter { white-space: nowrap; }
-
 button,
 #comments p#send-comment,
 .toolbox .new_content,
@@ -998,19 +996,11 @@ ul.poll {
       list-style: none;
     }
   }
-  meter {
-    display: block;
+  .result {
     background: $C_BD2;
     border-top: 1px solid $C_BANDEAU;
     border-bottom: 1px solid $C_BANDEAU;
     font-size: x-small;
-    -webkit-appearance: none;
-  }
-  meter::-webkit-meter-bar,
-  meter::-webkit-meter-optimum-value,
-  meter::-webkit-meter-suboptimal-value,
-  meter::-webkit-meter-even-less-good-value {
-    background: $C_BD2;
   }
 }
 

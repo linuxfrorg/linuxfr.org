@@ -392,7 +392,7 @@ ul.poll.current li {
 ul.poll.archived li {
   margin-top: 12px;
 }
-ul.poll li meter {
+ul.poll li .result {
   display: block;
   -moz-border-radius: 10px 10px 10px 10px;
   background: #EEEAE6;

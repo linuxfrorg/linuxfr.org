@@ -1341,7 +1341,7 @@ li#comment_new
 }
 
 /* line 44, ../../app/stylesheets/partials/_contents.scss */
-#polls meter, .poll meter {
+#polls .result, .poll .result {
   display: block;
   margin: 0 0 0 10px;
   background: -moz-linear-gradient(#A0B0C0, #A8B8C8) #A0A8B0;

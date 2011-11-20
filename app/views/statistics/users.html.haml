@@ -83,7 +83,7 @@
           -else
             0
         %td
-          %meter.misc(style="width: #{(width_factor * karma["cnt"]).to_i}px;")= karma["cnt"]
+          .stat.misc(style="width: #{(width_factor * karma["cnt"]).to_i}px;")= karma["cnt"]
 
   %h2#stats_privileges Utilisateurs avec privilèges
   %p
@@ -102,7 +102,7 @@
         %td
           = (style["stylesheet"] || "Feuille de style par défaut").sub("/stylesheets/contrib/", "")
         %td
-          %meter.misc(style="width: #{(width_factor * style["cnt"]).to_i}px;")= style["cnt"]
+          .stat.misc(style="width: #{(width_factor * style["cnt"]).to_i}px;")= style["cnt"]
 
   %h2#stats_anciennete Ancienneté des comptes
   %p
@@ -116,14 +116,14 @@
         %td
           = year["year"]
         %td
-          %meter.misc(style="width: #{(width_factor * year["cnt"]).to_i}px;")= year["cnt"]
+          .stat.misc(style="width: #{(width_factor * year["cnt"]).to_i}px;")= year["cnt"]
 
   %h2#stats_state Statut des comptes utilisateurs
   %p Statut des comptes utilisateurs par tranche de 2500
-  %meter(class="accountrecent" style="width: 250px;") comptes récemment utilisés
-  %meter(class="accountinactive" style="width: 250px;") comptes fermés
-  %meter(class="accountrecentinactive" style="width: 250px;") comptes fermés récemment utilisés
-  %meter(class="account" style="width: 250px;") autres comptes
+  .stat(class="accountrecent" style="width: 250px;") comptes récemment utilisés
+  .stat(class="accountinactive" style="width: 250px;") comptes fermés
+  .stat(class="accountrecentinactive" style="width: 250px;") comptes fermés récemment utilisés
+  .stat(class="account" style="width: 250px;") autres comptes
   %table
     %tr
       %th Tranche
@@ -137,4 +137,4 @@
           - c = ""
           - c += "recent"   if slot["recent"] == 1
           - c += "inactive" if slot["inactive"] == 1
-          %meter(class="account#{c}" style="width: #{(width_factor * slot["cnt"]).to_i}px;")= slot["cnt"]
+          .stat(class="account#{c}" style="width: #{(width_factor * slot["cnt"]).to_i}px;")= slot["cnt"]
