@@ -4,6 +4,8 @@
 
 %nav.toolbox
   %h2 <strong>#{Tracker.opened.count}</strong> entrées ouvertes sur un total de #{Tracker.count}
+  .follow_feed
+    = link_to "Flux Atom du suivi", "/suivi.atom"
   .new_content
     = link_to "Proposer une entrée", "/suivi/nouveau"
 

@@ -166,8 +166,10 @@ a {
 }
 
 button,
-#comments p#send-comment,
 .toolbox .new_content,
+.toolbox .follow_feed,
+#comments #follow-feed,
+#comments #send-comment,
 input[type='submit'] {
   color: black;
   background-color: $C_CLAIR;
@@ -197,56 +199,55 @@ form input[type='submit'] {
 
 button, input[type='submit'] {
   &.publish_news, &.ok_button {
-    padding-left: 20px;
     background: url("/images/icones/check.png") no-repeat 3px 3px $C_CLAIR;
-    &:hover { background-color: $C_FONCE; }
   }
   &.refuse_news, &.delete_button, &.cancel {
-    padding-left: 20px;
     background: url("/images/icones/x_red.png") no-repeat 4px 4px $C_CLAIR;
-    &:hover { background-color: $C_FONCE; }
   }
   &.ppp_news {
-    padding-left: 20px;
     background: url("/images/icones/pin.png") no-repeat 3px 3px $C_CLAIR;
-    &:hover { background-color: $C_FONCE; }
   }
   &.submit_board {
-    padding-left: 20px;
     background: url("/images/icones/chat.png") no-repeat 2px 2px $C_CLAIR;
-    &:hover { background-color: $C_FONCE; }
   }
   &.submit_news {
-    padding-left: 20px;
     background: url("/images/icones/check_alt.png") no-repeat 2px 2px $C_CLAIR;
-    &:hover { background-color: $C_FONCE; }
     margin-bottom: 15px;
   }
   &.add_para, &.add_link, &.create_news {
-    padding-left: 20px;
     background: url("/images/icones/plus.png") no-repeat 2px 2px $C_CLAIR;
-    &:hover { background-color: $C_FONCE; }
   }
   &.vote_for {
-    padding-left: 20px;
     background: url("/images/icones/arrow_up.png") no-repeat 2px 2px $C_CLAIR;
-    &:hover { background-color: $C_FONCE; }
   }
   &.vote_against {
-    padding-left: 20px;
     background: url("/images/icones/arrow_down.png") no-repeat 2px 2px $C_CLAIR;
-    &:hover { background-color: $C_FONCE; }
   }
   &.plonk {
-    padding-left: 20px;
     background: url("/images/icones/denied.png") no-repeat 2px 2px $C_CLAIR;
-    &:hover { background-color: $C_FONCE; }
   }
   &#admin_49_3, &.archive_button {
-    padding-left: 20px;
     background: url("/images/icones/target.png") no-repeat 2px 2px $C_CLAIR;
-    &:hover { background-color: $C_FONCE; }
   }
+}
+
+.toolbox .new_content,
+.toolbox .follow_feed,
+#comments #follow-feed,
+#comments #send-comment {
+  display: inline-block;
+  padding: 2px 5px 0 25px;
+  margin: 5px 10px 3px 0;
+}
+.toolbox .new_content {
+  background: url("/images/icones/pen.png") no-repeat 2px 2px $C_CLAIR;
+}
+.toolbox .follow_feed,
+#comments #follow-feed {
+  background: url("/images/icones/rss.png") no-repeat 2px 2px $C_CLAIR;
+}
+#comments #send-comment {
+  background: url("/images/icones/chat.png") no-repeat 2px 2px $C_CLAIR;
 }
 
 #top {
@@ -905,10 +906,8 @@ a.scroll {
   margin: 0;
 }
 .toolbox {
-  .new_content {
+  .follow_feed, .new_content {
     float: right;
-    text-align: right;
-    font-size: medium;
   }
   a:hover {
     text-decoration: none;
@@ -1012,20 +1011,6 @@ ul.poll {
   color: $C_INTER;
   font-size: small;
   margin: 5px 0 5px 0;
-}
-#comments #send-comment {
-  display: table;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 5px;
-  padding-right: 5px;
-  border: 1px solid $C_INTER;
-  background-color: $C_CLAIR;
-  font-size: medium;
-  a:hover {
-    text-decoration: none;
-  }
 }
 body#comments-show #contents > ul,
 body#comments-create #contents > ul,
