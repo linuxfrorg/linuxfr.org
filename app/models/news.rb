@@ -242,7 +242,7 @@ class News < Content
   end
 
   def updatable_by?(account)
-    published? ? (account.moderator? || account.admin?) : viewable_by?(account)
+    published? ? account.amr? : viewable_by?(account)
   end
 
   def destroyable_by?(account)
