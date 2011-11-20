@@ -1,4 +1,4 @@
-= form_tag "/board", :class => 'chat', :authenticity_token => false do
+= form_tag "/board", :class => 'chat' do
   = hidden_field :board, :object_type, :value => form.object_type
   = hidden_field :board, :object_id, :value => form.object_id
   = text_field :board, :message, :value => '', :size => 80, :autocomplete => 'off', :required => 'required', :spellcheck => 'true', :autofocus => (form.object_type == Board.free)
