@@ -912,17 +912,16 @@ a.scroll {
   a:hover {
     text-decoration: none;
   }
-  .order_navbar ul {
-    display: inline;
-    li {
+  .order_navbar {
+    padding-top: 8px;
+    ul {
       display: inline;
-      padding: 0;
-      list-style: none;
-      &:after {
-        content: " · ";
-      }
-      &:last-child:after, .last:after {
-        content: "";
+      li {
+        display: inline;
+        padding: 0;
+        list-style: none;
+        &:after { content: " · "; }
+        &:last-child:after, .last:after { content: ""; }
       }
     }
   }
