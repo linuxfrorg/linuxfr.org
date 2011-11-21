@@ -1,5 +1,6 @@
 #comments
-  - feed "Flux Atom des commentaires #{node.content.title}", "/nodes/#{node.id}/comments.atom"
+  - feed_of_comments_url = "/nodes/#{node.id}/comments.atom"
+  - feed "Flux Atom des commentaires #{node.content.title}", feed_of_comments_url
   - unless node.threads.empty?
     %ul.threads
       - node.threads.each do |thread|
@@ -7,7 +8,7 @@
   %p#send-comment
     = link_to "Envoyer un commentaire", "/nodes/#{node.id}/comments/nouveau"
   %p#follow-feed
-    = link_to "Suivre le flux des commentaires"
+    = link_to "Suivre le flux des commentaires", feed_of_comments_url
   %p
     %strong Note :
     les commentaires appartiennent à ceux qui les ont postés. Nous n'en sommes pas responsables.
