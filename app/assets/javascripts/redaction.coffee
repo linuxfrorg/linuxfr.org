@@ -67,7 +67,7 @@
 
     htmlForPara: (msg) ->
       """
-      <div id="paragraph_#{msg.id}" data-url="/redaction/paragraphs/#{msg.id}/modifier">
+      <div id="paragraph_#{msg.id}" class="paragraph #{msg.part}" data-url="/redaction/paragraphs/#{msg.id}/modifier">
         #{msg.body}
         <div class="actions">
           <button class="edit">Modifier</button>
@@ -83,6 +83,7 @@
       $("#paragraph_#{msg.id}").lockableEditionInPlace()
 
     onUpdateParagraph: (msg) =>
+      console.log "onUpdateParagraph", msg
       $("#paragraph_#{msg.id}").html(msg.body)
 
     onRemoveParagraph: (msg) ->

@@ -21,7 +21,6 @@
     onMessage: (e) =>
       try
         msg = $.parseJSON e.data
-        console.log msg  if console?
         fn  = @callbacks[msg.kind]
         fn msg  if fn?
       catch err
