@@ -161,11 +161,7 @@ class Board
   end
 
   def norloge
-    if object_type == Board.writing
-      created_at.to_date
-    else
-      created_at.to_s(:norloge)
-    end
+    created_at.to_s(object_type == Board.writing ? :norloge2 : :norloge)
   end
 
 ### Types ###
