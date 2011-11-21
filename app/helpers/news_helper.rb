@@ -21,4 +21,10 @@ module NewsHelper
     " Modéré par #{link_to moderator.name, moderator}.".html_safe if moderator
   end
 
+  def link_attr(link)
+    attrs = { :lang => link.lang }
+    attrs["data-url"] = edit_redaction_link_path(link) if link.persisted?
+    attrs
+  end
+
 end
