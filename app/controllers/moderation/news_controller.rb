@@ -25,9 +25,7 @@ class Moderation::NewsController < ModerationController
 
   def edit
     enforce_update_permission(@news)
-    respond_to do |wants|
-      wants.js { render :partial => 'form' }
-    end
+    render :partial => 'form'
   end
 
   def update
@@ -37,9 +35,10 @@ class Moderation::NewsController < ModerationController
     @news.attributes = params[:news]
     @news.editor = current_account
     @news.save
-    respond_to do |wants|
-      wants.js { render :nothing => true }
-      wants.html { redirect_to @news, :notice => "Modification enregistrée" }
+    if request.xhr?
+      render :partial => 'short'
+    else
+      redirect_to @news, :notice => "Modification enregistrée"
     end
   end
 

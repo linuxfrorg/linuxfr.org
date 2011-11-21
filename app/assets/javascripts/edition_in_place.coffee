@@ -11,7 +11,7 @@
     loadForm: =>
       @button().unbind "click"
       @old = @el.html()
-      @xhr = $.ajax(url: @url, type: "get").fail(@cantEdit).done(@showForm)
+      @xhr = $.ajax(url: @url, type: "get", dataType: "html").fail(@cantEdit).done(@showForm)
       false
 
     cantEdit: =>
@@ -37,7 +37,7 @@
       form = @el.find("form")
       url  = form.attr("action")
       data = form.serialize()
-      @xhr = $.ajax(url: url, type: "post", data: data).fail(@error).done(@success)
+      @xhr = $.ajax(url: url, type: "post", data: data, dataType: "html").fail(@error).done(@success)
       false
 
     error: =>
