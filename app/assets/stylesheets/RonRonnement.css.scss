@@ -190,7 +190,7 @@ input[type='submit'] {
   }
 }
 
-form input[type='submit'] {
+form input[type='submit'], form button {
   padding-left: 20px;
   background: url("/images/icones/check.png") no-repeat 3px 3px $C_CLAIR;
   &:hover { background-color: $C_FONCE; }
