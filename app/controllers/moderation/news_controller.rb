@@ -76,6 +76,10 @@ class Moderation::NewsController < ModerationController
     redirect_to [:moderation, @news], :notice => "Cette dépêche est maintenant affichée en phare"
   end
 
+  def vote
+    render :partial => "vote"
+  end
+
 protected
 
   def find_news

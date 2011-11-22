@@ -216,7 +216,7 @@ class News < Content
       $redis.expire(key, 2678400) # 31 days
     end
     $redis.sadd("news/#{self.id}/#{word}", who)
-    Push.create(self, :kind => :vote, :word => word, :username => who)
+    Push.create(self, :news_id => self.id, :kind => :vote, :word => word, :username => who)
   end
 
   def voters_for

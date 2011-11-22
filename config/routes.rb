@@ -112,6 +112,7 @@ LinuxfrOrg::Application.routes.draw do
       post :accept, :on => :member
       post :refuse, :on => :member
       post :ppp, :on => :member
+      get :vote, :on => :member
     end
     resources :sondages, :controller => "polls", :as => "polls", :except => [:new, :create, :destroy] do
       post :refuse, :on => :member

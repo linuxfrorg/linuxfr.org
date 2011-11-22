@@ -21,6 +21,7 @@
 
     onVote: (msg) ->
       $.noticeAdd text: "#{msg.username} a voté #{msg.word}"
+      $("#news_vote").load "/moderation/news/#{msg.news_id}/vote"
 
     onUpdate: (msg) ->
       $("#news_header .title").text msg.title
