@@ -27,9 +27,7 @@
         console.log err  if window.console
 
     onError: (e) =>
-      if e.eventPhase == EventSource.CLOSED
-        @started = false
-        @start()
+      console.log "onError", e  if window.console
 
   pushs  = []
   $.push = (chan) ->
