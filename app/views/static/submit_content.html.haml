@@ -16,6 +16,13 @@
       %p
         = link_to "Je souhaite proposer une dépêche", "/news/nouveau"
 
+    .authenticated_only
+      %h2 L'espace de rédaction
+      %p
+        Il est également possible de proposer des sujets de dépêches et de les rédiger collaborativement sur l'espace de rédaction.
+      %p
+        = link_to "Je souhaite participer à l'écriture collaborative d'une dépêche", "/redaction"
+
     %p
       %strong Note :
       -if account_signed_in?
