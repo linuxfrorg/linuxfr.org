@@ -72,7 +72,7 @@ class Board
 
   def clean
     @message    = sanitize_message @message
-    @user_agent = h @user_agent.encode(Encoding::UTF_8)
+    @user_agent = h @user_agent.to_s.encode(Encoding::UTF_8)
     @user_name  = h @user_name
     @user_url   = h @user_url
   end
