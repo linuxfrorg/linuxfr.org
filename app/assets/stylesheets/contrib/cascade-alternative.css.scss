@@ -660,6 +660,11 @@ div.content h5 {
 	font-weight: normal;
 	color: #990033;
 }
+div.content p {
+  margin:1em 0;
+  &:first-child { margin-top: 0; }
+  &:last-child { margin-bottom: 0; }
+}
 article div ul,
 div.content ul {
 	list-style: disc inside;
