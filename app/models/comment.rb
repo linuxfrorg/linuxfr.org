@@ -140,7 +140,7 @@ class Comment < ActiveRecord::Base
   end
 
   def updatable_by?(account)
-    account.moderator? || account.admin?
+    account.moderator? || account.admin? || self.user == account.user
   end
 
   def destroyable_by?(account)

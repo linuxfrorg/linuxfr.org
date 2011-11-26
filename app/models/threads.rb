@@ -20,7 +20,7 @@ class Threads
 
   # Return the threads with all the comments for the given node
   def self.all(node_id)
-    comments = Comment.select([:id, :node_id, :user_id, :state, :title, :body, :score, :materialized_path, :created_at]).
+    comments = Comment.select([:id, :node_id, :user_id, :state, :title, :body, :score, :materialized_path, :created_at, :updated_at]).
                        where(:node_id => node_id).
                        where("materialized_path IS NOT NULL").
                        order('materialized_path ASC').
