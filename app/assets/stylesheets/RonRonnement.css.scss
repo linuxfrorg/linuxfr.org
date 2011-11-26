@@ -358,10 +358,10 @@ button, input[type='submit'] {
     }
 
     span.score {
-      color: "#333";
+      color: #333;
       &:before { content: " ["; }
       &:after  { content: "] "; }
-      }
+    }
   }
 
   #logout {
@@ -612,10 +612,10 @@ body#trackers-index #contents table {
   display: inherit;
   background: inherit;
   padding: 2px 0 2px 0;
-  -moz-border-radius: none;
-  -webkit-border-radius: none;
-  -khtml-border-radius: none;
-  border-radius: none;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -khtml-border-radius: 0;
+  border-radius: 0;
   border: none;
   margin-bottom: 0;
   font-size: inherit;
