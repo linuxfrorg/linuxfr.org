@@ -70,6 +70,7 @@ LinuxFr.org on a Debian box.
 * Get confirmation link in the console and confirm the account
 * Get password in the console
 * Give admin role to this account with
+  `mysql linuxfr_rails`
   `mysql> UPDATE accounts SET role='admin' WHERE login='xxxxxx';`
 * Reload the page on the site, you should be admin.
 

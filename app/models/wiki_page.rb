@@ -59,7 +59,7 @@ class WikiPage < Content
 
   after_save :create_new_version
   def create_new_version
-    self.message = "révision n°#{versions.count + 1}" if self.message.empty?
+    self.message = "révision n°#{versions.count + 1}" if message.blank?
     versions.create(:user_id => user_id, :body => wiki_body, :message => message)
   end
 

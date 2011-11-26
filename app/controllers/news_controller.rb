@@ -26,7 +26,7 @@ class NewsController < ApplicationController
   end
 
   def new
-    redirect_to root_url, :alert => "Désolé, il n'est pas possible de proposer une dépêche en l'absence de sections" if Section.blank?
+    redirect_to root_url, :alert => "Désolé, il n'est pas possible de proposer une dépêche en l'absence de sections" if Section.first
     @news = News.new
   end
 
