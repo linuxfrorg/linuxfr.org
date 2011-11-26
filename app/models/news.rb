@@ -282,7 +282,7 @@ class News < Content
   end
 
   def submitted_by?(account)
-    self.node.user_id == account.user_id
+    node.user_id == account.user_id
   end
 
 ### Locks ###

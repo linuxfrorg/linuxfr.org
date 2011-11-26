@@ -140,7 +140,7 @@ class Comment < ActiveRecord::Base
   end
 
   def updatable_by?(account)
-    account.moderator? || account.admin? || self.user == account.user
+    account.moderator? || account.admin? || user_id == account.user_id
   end
 
   def destroyable_by?(account)
@@ -148,7 +148,7 @@ class Comment < ActiveRecord::Base
   end
 
   def votable_by?(account)
-    !deleted? && self.user != account.user     &&
+    !deleted? && user_id != account.user_id    &&
         (Time.now - created_at) < 3.months     &&
         (account.nb_votes > 0 || account.amr?) &&
         !vote_by?(account.id)

@@ -748,6 +748,7 @@ article {
 footer.actions {
   .action {
     color: $C_INTER;
+    margin-right: 10px;
   }
   form, form div {
     display: inline;
@@ -880,10 +881,6 @@ footer.actions {
   }
   .content li {
     list-style-position: inside;
-  }
-
-  span.update {
-    color: gray;
   }
 }
 
