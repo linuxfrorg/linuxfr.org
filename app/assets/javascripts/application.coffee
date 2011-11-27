@@ -63,6 +63,13 @@ langs =
 
 $("#form_links").nested_fields "news", "link", "lien", title: "text", url: "url", lang: langs
 
+# Toolbar preferences
+$("#account_visible_toolbar")
+  .prop("checked", Toolbar.storage.visible != "false")
+  .click ->
+    Toolbar.storage.visible = $(@).is(":checked")
+    true
+
 # Show the toolbar
 if $("body").hasClass("logged")
   if $("#comments").length

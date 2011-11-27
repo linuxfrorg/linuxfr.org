@@ -21,6 +21,9 @@
     = f.check_box :hide_signature
     = f.label :hide_signature, "Ne pas afficher les signatures"
   %p
+    = check_box_tag :account_visible_toolbar, 1, true
+    = f.label :visible_toolbar, "Afficher la toolbar dans ce navigateur"
+  %p
     %label.factice Sûr de vos modifications ?
     = f.submit "Enregistrer"
 
