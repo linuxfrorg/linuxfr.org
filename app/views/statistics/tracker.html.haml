@@ -13,9 +13,9 @@
       #{@stats.states["fixed"]} fermées (total #{@stats.states["total"]})
       envoyées par #{@stats.distinct_users} visiteurs (en groupant les anonymes).
     %p
-      Le temps moyen de résolution est de #{@stats.average_time} jours.
+      Le temps moyen de résolution est de #{pluralize @stats.average_time, "jour"}.
     %p
-      La moitié des entrées fermées ont été traitées en moins de #{@stats.median_time} jours.
+      La moitié des entrées fermées ont été traitées en moins de #{pluralize @stats.median_time, "jour"}.
 
     %h2 Utilisateurs ayant ouvert le plus grand nombre d'entrées
     %ol

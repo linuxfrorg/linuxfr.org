@@ -12,12 +12,12 @@ class Statistics::Tracker < Statistics::Statistics
   end
 
   def median_time
-    median = ((states["total"] - states["opened"]) / 2.0).ceil
-    count "SELECT ROUND((UNIX_TIMESTAMP(updated_at) - UNIX_TIMESTAMP(created_at)) / 86400) AS duration FROM trackers WHERE state='fixed' ORDER BY duration ASC LIMIT #{median},1", "duration"
+    median = states["fixed"] / 2
+    count("SELECT UNIX_TIMESTAMP(updated_at) - UNIX_TIMESTAMP(created_at) AS duration FROM trackers WHERE state='fixed' ORDER BY duration DESC LIMIT #{median},1", "duration").to_i / 86400
   end
 
   def average_time
-    count "SELECT IFNULL(ROUND(AVG(UNIX_TIMESTAMP(updated_at) - UNIX_TIMESTAMP(created_at)) / 86400),0) AS avg FROM trackers WHERE state='fixed'", "avg"
+    count("SELECT AVG(UNIX_TIMESTAMP(updated_at) - UNIX_TIMESTAMP(created_at)) AS avg FROM trackers WHERE state='fixed'", "avg").to_i / 86400
   end
 
   def distinct_users
