@@ -100,7 +100,18 @@ $(document).bind("keypress", "g", ->
   $("html,body").animate scrollTop: $("body").attr("scrollHeight"), 500
   false
 ).bind "keypress", "shift+?", ->
-  $.noticeAdd text: "Raccourcis clavier :<ul><li>? pour l'aide</li>" + "<li>&lt; pour le commentaire/contenu non-lu précédent</li>" + "<li>&gt; pour le commentaire/contenu non-lu suivant</li>" + "<li>[ pour le contenu avec commentaire précédent</li>" + "<li>] pour le contenu avec commentaire suivant</li>" + "<li>g pour aller au début de la page</li>" + "<li>G pour aller à la fin de la page</li></ul>"
+  $.noticeAdd 
+    text: """
+      Raccourcis clavier : <ul>
+      <li>? pour l'aide</li>
+      <li>&lt; pour le commentaire/contenu non-lu précédent</li>
+      <li>&gt; pour le commentaire/contenu non-lu suivant</li>
+      <li>[ pour le contenu avec commentaire précédent</li>
+      <li>] pour le contenu avec commentaire suivant</li>
+      <li>g pour aller au début de la page</li>
+      <li>G pour aller à la fin de la page</li></ul>
+      """
+    stay: true
   false
 
 # Gravatars
