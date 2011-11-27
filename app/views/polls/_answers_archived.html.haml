@@ -4,3 +4,6 @@
     .result(style="width: #{answer.percent}%;" value="#{answer.votes}")
       = answer.votes
     (#{answer.percent} %)
+%p.total_votes
+  Total :
+  = pluralize poll.total_votes, "vote"

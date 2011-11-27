@@ -4,4 +4,7 @@
       %li
         = radio_button_tag :position, answer.position, false, :id => "position_#{index}#{id_suffix}"
         = label_tag "position_#{index}#{id_suffix}", answer.answer
+  %p.total_votes
+    Total :
+    = pluralize poll.total_votes, "vote"
   = submit_tag "Voter" if poll.published?
