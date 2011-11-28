@@ -5,18 +5,17 @@ $ = window.jQuery
 class Push
   constructor: (@chan) ->
     @callbacks = {}
-    @started = false
 
   on: (kind, callback) ->
     @callbacks[kind] = callback
     @
 
   start: ->
-    if not @started
-      @started = true
+    setTimeout( =>
       source = new EventSource("/b/#{@chan}")
       source.addEventListener "message", @onMessage
       source.addEventListener "error",   @onError
+    , 5000)
 
   onMessage: (e) =>
     try
