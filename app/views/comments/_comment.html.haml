@@ -5,11 +5,11 @@
   = link_to comment.title, "/nodes/#{comment.node_id}/comments/#{comment.id}", :class => "title"
 %p.meta
   = posted_by(comment)
-  Évalué à
-  %span.score= comment.score
+  Évalué à&nbsp;
+  %span.score>= comment.score
   \.
   - if comment.created_at != comment.updated_at
-    %span.update
+    %span.update>
       Dernière modification : le #{comment.updated_at.to_s :posted}
 %figure.image= avatar_url(comment.user)
 .content
