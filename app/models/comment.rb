@@ -104,10 +104,17 @@ class Comment < ActiveRecord::Base
 
   def answer_to_self?
     return false if root?
-    ret = Comment.where(:node_id => node_id, :user_id => user_id).
-                  where("LOCATE(materialized_path, ?) > 0", self.materialized_path).
-                  where("id != ?", self.id).
-                  exists?
+    Comment.where(:node_id => node_id, :user_id => user_id).
+            where("LOCATE(materialized_path, ?) > 0", materialized_path).
+            where("id != ?", self.id).
+            exists?
+  end
+
+  def children?
+    Comment.where(:node_id => node_id, :user_id => user_id).
+            where("materialized_path LIKE '#{materialized_path}%'").
+            where("id != ?", self.id).
+            exists?
   end
 
 ### Calculations ###
@@ -140,7 +147,8 @@ class Comment < ActiveRecord::Base
   end
 
   def updatable_by?(account)
-    account.moderator? || account.admin? || user_id == account.user_id
+    account.moderator? || account.admin? ||
+      (user_id == account.user_id && created_at >= 5.minutes.ago && !children?)
   end
 
   def destroyable_by?(account)
