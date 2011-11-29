@@ -5,7 +5,7 @@ atom_feed(:root_url => polls_url, "xmlns:wfw" => "http://wellformedweb.org/Comme
 
   @polls.each do |poll|
     feed.entry(poll, :published => poll.node.created_at) do |entry|
-      url = url_for(poll)
+      url = poll_url(poll)
       entry.title(poll.title)
       entry.content(poll_body(poll) + atom_comments_link(url), :type => 'html')
       entry.author do |author|
