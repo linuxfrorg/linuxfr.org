@@ -18,7 +18,7 @@ class Push
         source = new EventSource("/b/#{@chan}")
         source.addEventListener "message", @onMessage
         source.addEventListener "error",   @onError
-      , 3000)
+      , 5000)
 
   onMessage: (e) =>
     try
