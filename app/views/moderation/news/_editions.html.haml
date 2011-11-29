@@ -5,4 +5,4 @@
     Les dernières modifications&nbsp;:
   %ul
     = list_of(news.versions) do |v|
-      = link_to "#{v.author_name}&nbsp;: #{v.message}".html_safe, "/redaction/news/#{news.to_param}/revisions/#{v.version}"
+      = link_to "#{v.author_name}&nbsp;: #{v.message} - #{l v.created_at}".html_safe, "/redaction/news/#{news.to_param}/revisions/#{v.version}"

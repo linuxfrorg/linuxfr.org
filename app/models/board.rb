@@ -161,7 +161,8 @@ class Board
   end
 
   def norloge
-    created_at.to_s(object_type == Board.writing ? :norloge2 : :norloge)
+    short = [Board.free, Board.amr].include?(object_type)
+    created_at.to_s(short ? :norloge : :norloge2)
   end
 
 ### Types ###
