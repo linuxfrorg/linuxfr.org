@@ -13,10 +13,10 @@ class Toolbar
   create: ->
     if @visible
       $("body").append """
-                       <div id="toolbar"><span id="toolbar_items">#{@text} : 
-                         <span id="toolbar_current_item">#{@current}</span> / 
+                       <div id="toolbar"><span id="toolbar_items">#{@text} :
+                         <span id="toolbar_current_item">#{@current}</span> /
                          <span id="toolbar_nb_items">#{@nb_items}</span>
-                         <a href="#" accesskey="<" class="prev">&lt;</a> | 
+                         <a href="#" accesskey="<" class="prev">&lt;</a> |
                          <a href="#" accesskey=">" class="next">&gt;</a>
                        </span><span id="toolbar_threshold">Seuil :
                          <a href="#" class="change">#{@threshold}</a>
@@ -54,9 +54,9 @@ class Toolbar
     if @visible
       $("#toolbar").prepend """
                             <span id="toolbar_alt_items">#{@alt_text} :
-                              <span id="toolbar_current_alt_item">#{@alt_current}</span> / 
-                              <span id="toolbar_nb_alt_items">#{@nb_alt_items}</span> 
-                              <a href="#" accesskey="[" class="prev">[</a> | 
+                              <span id="toolbar_current_alt_item">#{@alt_current}</span> /
+                              <span id="toolbar_nb_alt_items">#{@nb_alt_items}</span>
+                              <a href="#" accesskey="[" class="prev">[</a> |
                               <a href="#" accesskey="]" class="next">]</a>
                             </span>
                             """
