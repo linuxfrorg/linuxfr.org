@@ -3,5 +3,5 @@
   = form.collection_select :section_id, Section.published, :id, :title
   = form.label :title, "Titre"
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true', :maxlength => 100
-  %button.cancel Annuler
+  %button.cancel(type="button") Annuler
   = form.submit "OK"

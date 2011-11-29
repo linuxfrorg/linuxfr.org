@@ -10,5 +10,5 @@
     = form.url_field :url, :autocomplete => "off"
     = form.select :lang, Lang.all
     - if @link.persisted?
-      %button.cancel{'data-url' => unlock_redaction_link_path(@link)} Annuler
+      %button.cancel{'data-url' => unlock_redaction_link_path(@link), :type => "button"} Annuler
     = form.submit "OK"
