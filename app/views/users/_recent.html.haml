@@ -8,8 +8,7 @@
     %ul
       %li Courriel&nbsp;: #{a.email}
       %li Rôle&nbsp;: #{a.role}
-      - if current_account.amr?
-        %li Karma&nbsp;: #{a.karma}
+      %li Karma&nbsp;: #{a.karma}
       %li Dernière connexion&nbsp;: #{a.current_sign_in_at ? l(@user.account.current_sign_in_at) : "-"}
     - if current_account.can_plonk?
       %h2 Interdire de tribune
