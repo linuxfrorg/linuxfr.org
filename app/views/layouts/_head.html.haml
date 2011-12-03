@@ -7,7 +7,8 @@
     = stylesheet_link_tag 'application', :media => "screen, projection"
   = stylesheet_link_tag 'print', :media => "print"
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
-  <link rel="publisher" href="https://plus.google.com/116704247328760228227" />
+  - if @google_plus
+    <link rel="publisher" href="https://plus.google.com/116704247328760228227" />
   -# TODO Thinking Sphinx compatible with Rails3
     <link rel="search" type="application/opensearchdescription+xml" title="Recherche LinuxFr.org" href="/opensearch.xml" />
   - if @author
