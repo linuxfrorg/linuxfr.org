@@ -1,7 +1,7 @@
 %ul.poll.archived
   = list_of poll.answers do |answer|
     #{answer.answer} :
-    .result(style="width: #{answer.percent}%;" value="#{answer.votes}")
+    .result(style="width: #{answer.percent}%;")
       = answer.votes
     (#{answer.percent} %)
 %p.total_votes
