@@ -129,6 +129,7 @@ class Paragraph < ActiveRecord::Base
   end
 
   def lock_by(user)
+    return false if news.locked_for_reorg?
     locker_id = $redis.get(lock_key)
     return locker_id.to_i == user.id if locker_id
     $redis.set lock_key, user.id
@@ -144,6 +145,10 @@ class Paragraph < ActiveRecord::Base
     !!$redis.get(lock_key)
   end
 
+  def locked_by?(user_id)
+    $redis.get(lock_key).to_i == user_id
+  end
+
 ### Presentation ###
 
   def part
@@ -151,6 +156,6 @@ class Paragraph < ActiveRecord::Base
   end
 
   def locker
-    User.find($redis.get lock_key).name
+    news.locker || User.find($redis.get lock_key).name
   end
 end

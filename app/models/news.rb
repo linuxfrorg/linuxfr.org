@@ -295,8 +295,8 @@ class News < Content
   end
 
   def lock_by(user)
-    return false if links.any? { |l| l.locked? }
-    return false if paragraphs.any? { |p| p.locked? }
+    return false if links.any?      { |l| l.locked? && !l.locked_by?(user.id) }
+    return false if paragraphs.any? { |p| p.locked? && !p.locked_by?(user.id) }
     locker_id = $redis.get(lock_key)
     return locker_id.to_i == user.id if locker_id
     $redis.set lock_key, user.id
@@ -304,11 +304,24 @@ class News < Content
     true
   end
 
+  def unlock
+    $redis.del lock_key
+  end
+
+  def locked_for_reorg?
+    !!$redis.get(lock_key)
+  end
+
   def unlocked?
     return false if $redis.get lock_key
     return false if links.any? { |l| l.locked? }
     return false if paragraphs.any? { |p| p.locked? }
     true
+  end
+
+  def locker
+    locker_id = $redis.get lock_key
+    User.find(locker_id).name if locker_id
   end
 
 ### PPP ###

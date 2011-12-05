@@ -47,6 +47,7 @@ class Redaction::NewsController < RedactionController
     @news.attributes = params[:news]
     @news.create_parts
     @news.save
+    @news.unlock
     redirect_to [@news.draft? ? :redaction : :moderation, @news]
   end
 

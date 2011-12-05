@@ -95,6 +95,7 @@ class Link < ActiveRecord::Base
   end
 
   def lock_by(user)
+    return false if news.locked_for_reorg?
     locker_id = $redis.get(lock_key)
     return locker_id == user.id if locker_id
     $redis.set lock_key, user.id
@@ -108,6 +109,10 @@ class Link < ActiveRecord::Base
 
   def locked?
     !!$redis.get(lock_key)
+  end
+
+  def locked_by?(user_id)
+    $redis.get(lock_key) == user_id
   end
 
 ### Presentation ###
