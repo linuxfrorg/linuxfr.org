@@ -95,6 +95,7 @@ class Paragraph < ActiveRecord::Base
 
   before_save :wikify_body
   def wikify_body
+    self.wiki_body.chomp!
     self.body = wikify(wiki_body)
   end
 
