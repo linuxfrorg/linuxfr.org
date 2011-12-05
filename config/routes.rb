@@ -14,13 +14,17 @@ LinuxfrOrg::Application.routes.draw do
   # Diaries & Users
   resources :users, :only => [:show] do
     resources :journaux, :controller => "diaries", :as => "diaries", :except => [:index, :new, :create] do
-      post :convert, :on => :member
-      post :move, :on => :member
+      member do
+        post :convert
+        post :move
+      end
     end
-    get :news, :on => :member
-    get :posts, :on => :member
-    get :suivi, :on => :member
-    get :comments, :on => :member
+    member do
+      get :news
+      get :posts
+      get :suivi
+      get :comments
+    end
   end
   resources :journaux, :controller => "diaries", :as => "diaries", :only => [:index, :new, :create]
 
@@ -32,15 +36,19 @@ LinuxfrOrg::Application.routes.draw do
 
   # Other contents
   resources :sondages, :controller => "polls", :as => "polls", :except => [:edit, :update, :destroy] do
-    post :vote, :on => :member
+    member { post :vote }
   end
   resources :suivi, :controller => "trackers", :as => "trackers" do
-    get :comments, :on => :collection
+    collection { get :comments }
   end
   resources :wiki, :controller => "wiki_pages", :as => "wiki_pages" do
-    get "pages" => :pages, :on => :collection
-    get "modifications" => :changes, :on => :collection
-    get "/revisions/:revision" => :revision, :as => :revision, :on => :member
+    collection do
+      get "pages" => :pages
+      get "modifications" => :changes
+    end
+    member do
+      get "/revisions/:revision" => :revision, :as => :revision
+    end
   end
 
   # Nodes
@@ -48,17 +56,25 @@ LinuxfrOrg::Application.routes.draw do
   get "/comments/:id(,:d)(.html)" => "comments#templeet"
   resources :nodes, :only => [] do
     resources :comments do
-      get :answer, :on => :member
-      post "/relevance/:action", :controller => "relevances", :as => :relevance, :on => :member
+      member do
+        get :answer
+        post "/relevance/:action", :controller => "relevances", :as => :relevance
+      end
     end
     resources :tags, :only => [:new, :create, :update, :destroy]
-    post "/vote/:action", :controller => "votes", :as => :vote, :on => :member
+    member do
+      post "/vote/:action", :controller => "votes", :as => :vote
+    end
   end
   resources :readings, :only => [:index, :destroy]
   resources :tags, :only => [:index, :show] do
-    get :autocomplete, :on => :collection
-    get :public, :on => :member
-    post :hide, :on => :member
+    collection do
+      get :autocomplete
+    end
+    member do
+      get :public
+      post :hide
+    end
   end
 
   # Boards
@@ -92,16 +108,20 @@ LinuxfrOrg::Application.routes.draw do
   get "/redaction" => "redaction#index"
   namespace :redaction do
     resources :news, :except => [:new, :destroy] do
-      get "/revisions/:revision" => :revision, :as => :revision, :on => :member
-      post :submit, :on => :member
+      member do
+        get "/revisions/:revision" => :revision, :as => :revision
+        post :submit
+        get :reorganize
+        put :reorganized
+      end
       resources :links, :only => [:new]
       resources :paragraphs, :only => [:create]
     end
     resources :links, :only => [:create, :edit, :update] do
-      post :unlock, :on => :member
+      member { post :unlock }
     end
     resources :paragraphs, :only => [:show, :edit, :update] do
-      post :unlock, :on => :member
+      member { post :unlock }
     end
   end
 
@@ -109,14 +129,18 @@ LinuxfrOrg::Application.routes.draw do
   get "/moderation" => "moderation#index"
   namespace :moderation do
     resources :news, :except => [:new, :create, :destroy] do
-      post :accept, :on => :member
-      post :refuse, :on => :member
-      post :ppp, :on => :member
-      get :vote, :on => :member
+      member do
+        post :accept
+        post :refuse
+        post :ppp
+        get :vote
+      end
     end
     resources :sondages, :controller => "polls", :as => "polls", :except => [:new, :create, :destroy] do
-      post :refuse, :on => :member
-      post :accept, :on => :member
+      member do
+        post :refuse
+        post :accept
+      end
     end
     resources :plonk, :only => [:create]
   end
@@ -129,15 +153,17 @@ LinuxfrOrg::Application.routes.draw do
     resources :reponses, :controller => "responses", :as => "responses", :except => [:show]
     resources :sections, :except => [:show]
     resources :forums, :except => [:show] do
-      post :archive, :on => :member
+      member { post :archive }
     end
     resources :categories, :except => [:show]
     resources :bannieres, :controller => "banners", :as => "banners", :except => [:show]
     resource :logo, :only => [:show, :create]
     resource :stylesheet, :only => [:show, :create]
     resources :sites_amis, :controller => "friend_sites", :as => "friend_sites", :except => [:show] do
-      post :lower,  :on => :member
-      post :higher, :on => :member
+      member do
+        post :lower
+        post :higher
+      end
     end
     resources :pages, :except => [:show]
   end

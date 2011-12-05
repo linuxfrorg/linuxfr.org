@@ -170,6 +170,7 @@ button,
 .toolbox .follow_feed,
 #comments #follow-feed,
 #comments #send-comment,
+#redaction .reorganize,
 input[type='submit'] {
   color: black;
   background-color: $C_CLAIR;
@@ -197,11 +198,21 @@ form input[type='submit'], button {
   &#logout, &.unread, &.relevant, &.useless { background: $C_CLAIR; }
 }
 
+#redaction .reorganize {
+  float: left;
+  font-weight: normal;
+  height: 21px;
+  padding: 0 3px 0 20px;
+  margin-right: 10px;
+  background: url("/images/icones/loop.png") no-repeat 2px 2px $C_CLAIR;
+  &:hover { background-color: $C_FONCE; }
+}
+
 button, input[type='submit'] {
   &.publish_news, &.ok_button {
     background: url("/images/icones/check.png") no-repeat 3px 3px $C_CLAIR;
   }
-  &.refuse_news, &.delete_button, &.cancel {
+  &.refuse_news, &.delete_button, &.cancel, &.remove {
     background: url("/images/icones/x_red.png") no-repeat 4px 4px $C_CLAIR;
   }
   &.ppp_news {

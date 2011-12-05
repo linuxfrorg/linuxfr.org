@@ -1,0 +1,37 @@
+- title @news.title
+
+- content_for :chat do
+  #redaction_board
+    = render 'board', :boards => @boards
+    = render 'attendees', :attendees => @news.attendees
+    = render 'editions', :news => @news
+
+%article
+  = form_for @news, :url => reorganized_redaction_news_path(@news) do |form|
+    %p
+      = form.label :section_id, "Section"
+      = form.collection_select :section_id, Section.published, :id, :title
+    %p
+      = form.label :title, "Titre"
+      = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true', :maxlength => 100
+    %p
+      = form.label :wiki_body, "Contenu de la dépêche"
+      = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
+    #form_links
+      %fieldset
+        %label#label-link-name Nom du lien
+        %label#label-link-url URL
+        %label#label-link-lang langue
+        %label#label-link-actions actions
+      = form.fields_for :links do |lform|
+        %fieldset.link
+          = lform.text_field :title
+          = lform.url_field :url
+          = lform.select :lang, Lang.all
+    %p
+      = form.label :wiki_second_part, "Seconde partie"
+      = form.text_area :wiki_second_part, :spellcheck => 'true', :class => 'markItUp'
+    %p
+      = form.submit "OK"
+
+= render 'shared/wiki_help'

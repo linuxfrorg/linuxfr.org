@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class Redaction::NewsController < RedactionController
   before_filter :load_news, :except => [:index, :create]
+  before_filter :load_board, :only => [:show, :reorganize]
 
   def index
     @news = News.draft.sorted
@@ -12,7 +13,6 @@ class Redaction::NewsController < RedactionController
   end
 
   def show
-    @boards = Board.all(Board.news, @news.id)
     redirect_to [:redaction, @news], :status => 301 and return if !@news.friendly_id_status.best?
     render :show, :layout => 'chat_n_edit'
   end
@@ -33,6 +33,23 @@ class Redaction::NewsController < RedactionController
     render :partial => 'short'
   end
 
+  def reorganize
+    if @news.lock_by(current_user)
+      @news.put_paragraphs_together
+      render :reorganize, :layout => "chat_n_edit"
+    else
+      render :status => :forbidden, :text => "Désolé, un verrou a déjà été posé sur cette dépêche !"
+    end
+  end
+
+  def reorganized
+    @news.paragraphs.delete_all
+    @news.attributes = params[:news]
+    @news.create_parts
+    @news.save
+    redirect_to [@news.draft? ? :redaction : :moderation, @news]
+  end
+
   def submit
     if @news.unlocked?
       @news.submit_and_notify(current_user)
@@ -47,6 +64,10 @@ protected
   def load_news
     @news = News.find(params[:id])
     enforce_update_permission(@news)
+  end
+
+  def load_board
+    @boards = Board.all(Board.news, @news.id)
   end
 
 end

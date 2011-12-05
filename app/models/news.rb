@@ -153,7 +153,7 @@ class News < Content
   def wikify_fields
     return if wiki_body.blank?
     self.body        = wikify(wiki_body).gsub(/^<p>NdM/, '<p><abbr title="Note des modérateurs">NdM</abbr>')
-    self.second_part = wikify(wiki_second_part)
+    self.second_part = wikify(wiki_second_part).gsub(/^<p>NdM/, '<p><abbr title="Note des modérateurs">NdM</abbr>')
   end
 
   sanitize_attr :body
@@ -163,7 +163,10 @@ class News < Content
   def create_parts
     paragraphs.create(:second_part => false, :wiki_body => wiki_body)        unless wiki_body.blank?
     paragraphs.create(:second_part => true,  :wiki_body => wiki_second_part) unless wiki_second_part.blank?
-    return if message.blank?
+  end
+
+  after_create :announce_message, :unless => Proc.new { |news| news.message.blank? }
+  def announce_message
     Board.new(:object_type => Board.news, :object_id => self.id, :message => message, :user_name => author_name).save
   end
 
@@ -287,7 +290,22 @@ class News < Content
 
 ### Locks ###
 
+  def lock_key
+    "locks/#{self.id}/reorganize"
+  end
+
+  def lock_by(user)
+    return false if links.any? { |l| l.locked? }
+    return false if paragraphs.any? { |p| p.locked? }
+    locker_id = $redis.get(lock_key)
+    return locker_id.to_i == user.id if locker_id
+    $redis.set lock_key, user.id
+    $redis.expire lock_key, 1800
+    true
+  end
+
   def unlocked?
+    return false if $redis.get lock_key
     return false if links.any? { |l| l.locked? }
     return false if paragraphs.any? { |p| p.locked? }
     true
