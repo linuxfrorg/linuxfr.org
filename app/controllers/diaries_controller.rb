@@ -108,6 +108,9 @@ protected
   def find_diary
     @user  = User.find(params[:user_id])
     @diary = @user.diaries.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    diary = User.find(1).diaries.find(params[:id])
+    redirect_to [diary.owner, diary]
   end
 
   def marked_as_read
