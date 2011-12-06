@@ -64,7 +64,10 @@ class DiariesController < ApplicationController
 
   def convert
     enforce_update_permission(@diary)
-    @news = News.new(:title => @diary.title, :wiki_body => @diary.wiki_body, :section_id => Section.default.id)
+    @news = News.new :title            => @diary.title,
+                     :wiki_body        => "**TODO** insérer une synthèse du journal\n\nNdM : merci à #{@diary.owner.try(:name)} pour son journal.",
+                     :wiki_second_part => @diary.wiki_body,
+                     :section_id       => Section.default.id
     @news.author_name  = @diary.owner.try(:name)
     @news.author_email = @diary.owner.try(:account).try(:email)
     if @news.save
