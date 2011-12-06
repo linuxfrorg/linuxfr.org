@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ctran/annotate_models.git
-  revision: ab62e8c131c9a67d687fa23ed5ee05c3bf450852
+  revision: a709a87dc08c5c3cee31ece0e698c4cbea400b31
   specs:
     annotate (2.4.1.beta1)
 
@@ -130,7 +130,7 @@ GEM
     mini_magick (3.3)
       subexec (~> 0.1.0)
     multi_json (1.0.4)
-    mysql2 (0.3.10)
+    mysql2 (0.3.11)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
