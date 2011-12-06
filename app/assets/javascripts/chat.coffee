@@ -45,7 +45,7 @@ class Chat
     @input.focus()
 
   norlogize: (x) ->
-    r = /(\d\d\/\d\d\/\d\d )?[0-2][0-9]:[0-6][0-9](:[0-6][0-9])?([⁰¹²³⁴⁵⁶⁷⁸⁹]+|[:\^][0-9]+)?/g
+    r = /(\d{4}-\d{2}-\d{2} )?\d{2}:\d{2}(:\d{2})?([⁰¹²³⁴⁵⁶⁷⁸⁹]+|[:\^]\d+)?/g
     x.innerHTML = x.innerHTML.replace(r, "<time>$&</time>")
     if @totoz_type == "popup"
       x.innerHTML = x.innerHTML.replace(/\[:([^\]]+)\]/g, "<span class=\"totoz\" data-totoz-name=\"$1\">$&</span>")

@@ -3,7 +3,7 @@ date_formats = {
   :date      => '%d/%m/%y',
   :posted    => '%d/%m/%y à %H:%M',
   :norloge   => '%H:%M:%S',
-  :norloge2  => '%d/%m/%y %H:%M:%S',
+  :norloge2  => '%Y-%m-%d %H:%M:%S',
   :timestamp => '%Y%m%d%H%M%S'
 }
 
