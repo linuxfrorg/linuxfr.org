@@ -4,12 +4,12 @@
 #
 # Table name: paragraphs
 #
-#  id           :integer(4)      not null, primary key
-#  news_id      :integer(4)      not null
-#  position     :integer(4)
-#  second_part  :boolean(1)
-#  body         :text
-#  wiki_body    :text
+#  id          :integer(4)      not null, primary key
+#  news_id     :integer(4)      not null
+#  position    :integer(4)
+#  second_part :boolean(1)
+#  body        :text
+#  wiki_body   :text
 #
 
 # A paragraph is a block of text from a news, with wiki syntax.

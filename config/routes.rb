@@ -95,14 +95,14 @@ LinuxfrOrg::Application.routes.draw do
   }
   resource :stylesheet, :only => [:edit, :create, :destroy]
 
-  # Search
-  # TODO Thinking Sphinx compatible with Rails3
-  #controller :search do
-  #  get "/recherche" => :index, :as => :search
-  #  get "/recherche/:type" => :type, :as => :search_by_type
-  #  get "/recherche/:type/:facet" => :facet, :as => :search_by_facet
-  #end
-  get "/recherche" => "search#google", :as => :search
+  # OAuth
+  namespace :auth do
+    resources :client_applications
+    get  "oauth/authorize"    => "oauth#authorize"
+    post "oauth/authorized"   => "oauth#authorized"
+    post "oauth/access_token" => "oauth#access_token"
+    get  "oauth/user"         => "oauth#user"
+  end
 
   # Redaction
   get "/redaction" => "redaction#index"
@@ -167,6 +167,15 @@ LinuxfrOrg::Application.routes.draw do
     end
     resources :pages, :except => [:show]
   end
+
+  # Search
+  # TODO Thinking Sphinx compatible with Rails3
+  #controller :search do
+  #  get "/recherche" => :index, :as => :search
+  #  get "/recherche/:type" => :type, :as => :search_by_type
+  #  get "/recherche/:type/:facet" => :facet, :as => :search_by_facet
+  #end
+  get "/recherche" => "search#google", :as => :search
 
   # Statistics
   controller :statistics do

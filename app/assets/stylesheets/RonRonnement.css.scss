@@ -166,6 +166,7 @@ a {
 }
 
 button,
+.edit_client_app,
 .toolbox .new_content,
 .toolbox .follow_feed,
 #comments #follow-feed,
@@ -212,7 +213,7 @@ button, input[type='submit'] {
   &.publish_news, &.ok_button {
     background: url("/images/icones/check.png") no-repeat 3px 3px $C_CLAIR;
   }
-  &.refuse_news, &.delete_button, &.cancel, &.remove {
+  &.refuse_news, &.delete_button, &.cancel, &.remove, &.refuse_oauth {
     background: url("/images/icones/x_red.png") no-repeat 4px 4px $C_CLAIR;
   }
   &.ppp_news {
@@ -242,6 +243,7 @@ button, input[type='submit'] {
   }
 }
 
+.edit_client_app,
 .toolbox .new_content,
 .toolbox .follow_feed,
 #comments #follow-feed,
@@ -250,6 +252,7 @@ button, input[type='submit'] {
   padding: 2px 5px 0 25px;
   margin: 5px 10px 3px 0;
 }
+.edit_client_app,
 .toolbox .new_content {
   background: url("/images/icones/pen.png") no-repeat 2px 2px $C_CLAIR;
 }
@@ -593,6 +596,7 @@ body#wiki_pages-revision #contents,
 body#news-revision #contents,
 body#dashboard-index #contents table,
 body#trackers-index #contents table,
+body#client_applications-index table,
 body#redaction-index #container > div,
 body#boards-show #contents,
 body#stylesheets-edit #contents,
@@ -613,10 +617,6 @@ body#admin-index #container > ul,
 
   margin-bottom: 15px;
   font-size: small;
-}
-body#dashboard-index #contents table,
-body#trackers-index #contents table {
-  display: inline-block;
 }
 /* reset pour form css, sinon une boite par css */
 #stylesheets-edit #contents > form {
@@ -1382,8 +1382,14 @@ body#trackers-index .toolbox .new_content {
   margin-bottom: 10px;
 }
 body#dashboard-index #contents table,
-body#trackers-index #contents table {
+body#trackers-index #contents table,
+body#client_applications-index table {
+  display: inline-block;
   border-collapse: collapse;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -khtml-border-radius: 0;
+  border-radius: 0;
   padding: 0;
   clear: right;
 
@@ -1402,6 +1408,9 @@ body#trackers-index #contents table {
     &.number { text-align: right; padding-right: 2px; }
   }
   a[href] { @include lien_standard; }
+}
+body#client_applications-index td {
+  padding: 5px;
 }
 #tracker, #my_trackers, .tracker {
   .fixed, .invalid {

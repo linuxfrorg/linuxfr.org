@@ -1,0 +1,9 @@
+=h1 "Application client #{@client_application.name}"
+
+%ul
+  %li Nom de l'application : <strong>#{@client_application.name}</strong>
+  %li App_id : <var>#{@client_application.app_id}</var>
+  %li App_secret : <var>#{@client_application.app_secret}</var>
+
+%p
+  = link_to "Revenir à la liste des applications", auth_client_applications_path

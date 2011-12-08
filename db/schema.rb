@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111105235215) do
+ActiveRecord::Schema.define(:version => 20111207205902) do
+
+  create_table "access_grants", :force => true do |t|
+    t.integer  "account_id"
+    t.integer  "client_application_id"
+    t.string   "code"
+    t.string   "access_token"
+    t.string   "refresh_token"
+    t.datetime "access_token_expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "access_grants", ["account_id", "code"], :name => "index_access_grants_on_account_id_and_code"
+  add_index "access_grants", ["client_application_id"], :name => "index_access_grants_on_client_application_id"
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -54,6 +68,15 @@ ActiveRecord::Schema.define(:version => 20111105235215) do
 
   create_table "categories", :force => true do |t|
     t.string   "title",      :limit => 32, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "client_applications", :force => true do |t|
+    t.integer  "account_id"
+    t.string   "name"
+    t.string   "app_id",     :limit => 32
+    t.string   "app_secret", :limit => 32
     t.datetime "created_at"
     t.datetime "updated_at"
   end

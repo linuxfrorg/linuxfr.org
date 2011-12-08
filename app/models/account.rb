@@ -45,6 +45,8 @@ class Account < ActiveRecord::Base
   include Canable::Cans
   include ActionView::Helpers::TextHelper
 
+  has_many :client_applications
+  has_many :access_grants, :dependent => :delete_all
   has_many :logs
   belongs_to :user, :inverse_of => :account
   accepts_nested_attributes_for :user, :reject_if => :all_blank
