@@ -52,7 +52,6 @@ class Content < ActiveRecord::Base
 
   def votable_by?(account)
     visible? && self.user != account.user      &&
-        (Time.now - created_at) < 3.months     &&
         (account.nb_votes > 0 || account.amr?) &&
         !node.vote_by?(account.id)
   end
