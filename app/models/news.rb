@@ -177,7 +177,7 @@ class News < Content
 
 ### Versioning ###
 
-  after_save :create_new_version, :if => Proc.new { |news| news.body_changed? || news.title_changed? }
+  after_save :create_new_version, :if => Proc.new { |news| news.body_changed? || news.second_part_changed? || news.title_changed? }
   def create_new_version
     v = versions.create(:user_id    => (editor || author_account).try(:id),
                        :title       => title,
