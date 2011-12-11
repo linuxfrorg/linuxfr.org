@@ -1,0 +1,168 @@
+<h2>Principes généraux</h2>
+
+<p>
+	LinuxFr.org expose une API Rest au format JSON dont l'authentification
+	repose sur OAuth2. Celle-ci est en cours de développement et ne propose
+	pour le moment qu'une seule méthode qui permet de s'authentifier sur un
+	site externe avec son compte LinuxFr.org. Si vous avez des besoins
+	particuliers pour cette API qui ne sont pas encore implémentés, n'hésitez
+	pas à <a href="/suivi/nouveau">créer une entrée dans le suivi</a>.
+</p>
+
+
+
+<h2>OAuth2</h2>
+
+<p>
+	<a href="http://oauth.net/2/">OAuth2</a> est un protocole qui permet à des
+	applications externes de demander l'autorisation d'accéder à des
+	informations privées d'un utilisateur avec un compte LinuxFr.org et de
+	faire des actions en son nom. L'utilisateur n'a pas besoin de fournir son
+	mot de passe au site externe et reste maître des autorisations qu'il a
+	fournies.
+</p>
+
+<p>
+	Si vous êtes un développeur d'applications web et que vous souhaitez
+	utiliser l'API de LinuxFr.org, la première chose à faire est d'
+	<a href="/auth/client_applications">enregistrer votre application</a>.
+	Vous obtiendrez ainsi un <var>App_id</var> et un <var>App_secret</var>
+	qui vous serviront lors des échanges OAuth. Le <var>App_secret</var> doit,
+	comme son nom l'indique, rester secret.
+</p>
+
+<p>
+	OAuth fonctionne avec un principe de jetons. Quand une application web
+	souhaite accéder aux données confidentielles de l'utilisateur, il va
+	demander à l'utilisateur un jeton d'autorisation qui sera délivré par
+	LinuxFr.org, puis il pourra utiliser ce jeton pour accéder aux
+	informations.
+</p>
+
+
+
+<h2>Obtention d'un jeton d'autorisation</h2>
+
+<h3>Redirection de l'utilisateur vers LinuxFr.org</h3>
+
+<p>
+	La première étape consiste à envoyer l'utilisateur sur LinuxFr.org pour
+	qu'il puisse accepter ou refuser de donner l'autorisation.
+</p>
+<pre>
+GET https://linuxfr.org/auth/oauth/authorize
+</pre>
+
+<h4>Paramètres</h4>
+<dl>
+	<dt><var>client_id</var</dt>
+	<dd>
+		Chaîne de caractères obligatoire - L'identifiant de l'application lors
+		de l'inscription sur LinuxFr.org (<var>App_id</var>).
+	</dd>
+	<dt>redirect_uri</dt>
+	<dd>
+		Chaîne de caractères obligatoire - L'URL vers laquelle sera redirigé
+		l'utilisateur après l'autorisation.
+	</dd>
+</dl>
+
+
+<h3>L'utilisateur revient sur le site</h3>
+
+<p>
+	Si l'utilisateur accepte l'autorisation, il est renvoyé sur le site
+	d'origine avec un <var>code</var> temporaire. Le site peut alors échanger
+	ce code contre le jeton d'autorisation.
+</p>
+<pre>
+GET https://linuxfr.org/auth/oauth/access_token
+</pre>
+
+<h4>Paramètres</h4>
+<dl>
+	<dt><var>client_id</var</dt>
+	<dd>
+		Chaîne de caractères obligatoire - L'identifiant de l'application lors
+		de l'inscription sur LinuxFr.org (<var>App_id</var>).
+	</dd>
+	<dt><var>client_secret</var</dt>
+	<dd>
+		Chaîne de caractères obligatoire - Le secret de l'application lors
+		de l'inscription sur LinuxFr.org (<var>App_secret</var>).
+	</dd>
+	<dt><var>code</var></dt>
+	<dd>
+		Chaîne de caractères obligatoire - Le code reçu à l'étape 1.
+	</dd>
+</dl>
+
+<h4>Réponse</h4>
+<dl>
+	<dt><var>access_token</var</dt>
+	<dd>
+		Chaîne de caractères - Le jeton d'autorisation, également appelé
+		<var>bearer_token</var>.
+	</dd>
+</dl>
+
+
+
+<h2>Méthodes d'API</h2>
+
+<h3>Authentification</h3>
+
+<p>
+	Une fois le <var>bearer_token</var> obtenu, il est possible d'accéder
+	aux informations suivantes de l'utilisateur :
+</p>
+<ul>
+	<li>son login</li>
+	<li>son adresse email</li>
+	<li>la date de création de son compte.</li>
+</ul>
+
+<pre>
+GET https://linuxfr.org/auth/oauth/user
+</pre>
+
+<h4>Paramètres</h4>
+<dl>
+	<dt><var>bearer_token</var</dt>
+	<dd>Chaîne de caractères obligatoire - Le jeton d'autorisation.</dd>
+</dl>
+
+<h4>Réponse</h4>
+<dl>
+	<dt><var>login</var</dt>
+	<dd>
+		Chaîne de caractères - L'identifiant du compte utilisateur sur
+		LinuxFr.org.
+	</dd>
+	<dt><var>email</var</dt>
+	<dd>
+		Chaîne de caractères - L'adresse email de l'utilisateur (note :
+		elle a déjà été validée à l'inscription sur LinuxFr.org et il n'est
+		donc pas souhaitable de revalider cette adresse email).
+	</dd>
+	<dt><var>created_at</var</dt>
+	<dd>
+		Chaîne de caractères - La date de création du compte, format ISO.
+	</dd>
+</dl>
+
+<h4>Exemple de réponse</h4>
+<pre>
+{"created_at":"2004-07-21T20:23:47+02:00","email":"nono@linuxfr.org","login":"NoNo"}
+</pre>
+
+<h4>Bibliothèques</h4>
+
+<p>
+	<a href="https://github.com/intridea/omniauth">Omniauth</a> est un gem
+	Ruby qui permet d'authentifier des utilisateurs à partir d'applications
+	web distantes. Il possède une stratégie d'authentification pour
+	LinuxFr.org :
+	<a href="https://github.com/nono/omniauth-linuxfr.org">omniauth-linuxfr.org</a>.
+</p>
+
