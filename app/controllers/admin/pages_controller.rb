@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class Admin::PagesController < AdminController
   before_filter :find_page, :only => [:edit, :update, :destroy]
-  after_filter :expire_cache, :only => [:create, :update]
+  after_filter :expire_cache, :only => [:update]
 
   def index
     @pages = Page.all
@@ -46,7 +46,6 @@ protected
   end
 
   def expire_cache
-    expire_fragment "fragments/layouts/friends_and_links"
     expire_action :controller => '/static', :action => :show, :id => @page
   end
 end
