@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ctran/annotate_models.git
-  revision: a709a87dc08c5c3cee31ece0e698c4cbea400b31
+  revision: 672a22abf6165d6cc1dfb4d29dff5839f88af769
   specs:
     annotate (2.4.1.beta1)
 
@@ -88,7 +88,7 @@ GEM
     ffi (1.0.11)
     french_rails (0.2.7)
       rails (~> 3.0)
-    friendly_id (3.3.0.1)
+    friendly_id (3.3.1)
       babosa (~> 0.3.0)
     fuubar (0.0.6)
       rspec (~> 2.0)
