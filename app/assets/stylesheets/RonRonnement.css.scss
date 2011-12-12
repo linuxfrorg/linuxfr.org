@@ -1001,6 +1001,7 @@ a.scroll {
 
 /* sondage */
 ul.poll {
+  word-wrap: normal;
   &.current {
     padding: 0;
     margin-top: 0;
