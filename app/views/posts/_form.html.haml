@@ -9,6 +9,10 @@
 %p
   = form.label :wiki_body, "Message complet"
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
+- if form.object.new_record?
+  %p
+    = label_tag :tags
+    = text_field_tag :tags, nil, :class => 'autocomplete', 'data-url' => autocomplete_tags_path, :value => params[:tags], :size => 100
 %p
   = form.submit "Prévisualiser", :id => "post_preview"
   = form.submit "Poster le message", :disable_with => "Enregistrement en cours" if @preview_mode

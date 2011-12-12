@@ -35,12 +35,15 @@
   = form.label :wiki_second_part, "Seconde partie"
   = form.text_area :wiki_second_part, :spellcheck => 'true', :class => 'markItUp'
 %p
-  = form.check_box :cc_licensed
-  = form.label :cc_licensed, 'Je place ce document sous licence Creative Commons Paternité-Partage des Conditions Initiales à l\'Identique 3.0 (<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.fr">licence CC by-sa</a>)'.html_safe
+  = label_tag :tags
+  = text_field_tag :tags, nil, :class => 'autocomplete', 'data-url' => autocomplete_tags_path, :value => params[:tags], :size => 100
 %p
   = form.label :message, "Si vous le souhaitez, vous pouvez laisser un message à l'équipe de modération"
   <br/>
-  = form.text_area :message, :spellcheck => 'true'
+  = form.text_area :message, :spellcheck => 'true', :rows => 2
+%p
+  = form.check_box :cc_licensed
+  = form.label :cc_licensed, 'Je place ce document sous licence Creative Commons Paternité-Partage des Conditions Initiales à l\'Identique 3.0 (<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.fr">licence CC by-sa</a>)'.html_safe
 %p
   = form.submit "Prévisualiser", :id =>  "news_preview"
   = form.submit "Soumettre cette dépêche", :disable_with => "Enregistrement en cours" if @preview_mode

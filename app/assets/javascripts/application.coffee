@@ -86,11 +86,14 @@ $("#redaction .new_paragraph").on "ajax:success", false
 $("#redaction .link, #redaction .paragraph").lockableEditionInPlace()
 
 # Tags
-$(".tag_in_place").on("in_place:form", ->
-  $("input.autocomplete").each ->
+$.fn.autocompleter = () ->
+  @each ->
     input = $(@)
     input.autocomplete input.data("url"), multiple: true, multipleSeparator: " ", dataType: "text"
-    input.focus()
+  @
+$("input#tags").autocompleter()
+$(".tag_in_place").on("in_place:form", ->
+  $("input.autocomplete").autocompleter().focus()
 ).on("in_place:success", ->
   $.noticeAdd text: "Tags ajoutés"
 ).editionInPlace()

@@ -8,6 +8,9 @@
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
 - if form.object.new_record?
   %p
+    = label_tag :tags
+    = text_field_tag :tags, nil, :class => 'autocomplete', 'data-url' => autocomplete_tags_path, :value => params[:tags], :size => 100
+  %p
     = form.check_box :cc_licensed
     = form.label :cc_licensed, 'Je place ce document sous licence Creative Commons Paternité-Partage des Conditions Initiales à l\'Identique 3.0 (<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.fr">licence CC by-sa</a>)'.html_safe
 %p

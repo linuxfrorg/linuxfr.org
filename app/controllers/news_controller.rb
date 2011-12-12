@@ -36,6 +36,7 @@ class NewsController < ApplicationController
     @news.author_name  = current_account.name  if current_account
     @news.author_email = current_account.email if current_account
     if !preview_mode && @news.save
+      current_account.tag(@news.node, params[:tags])
       @news.submit!
       redirect_to news_index_url, :notice => "Votre proposition de dépêche a bien été soumise, et sera modérée dans les heures ou jours à venir"
     else

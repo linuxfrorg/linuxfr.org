@@ -192,7 +192,7 @@ class Account < ActiveRecord::Base
   end
 
   def tag(node, tags)
-    node.set_taglist(tags, user_id)
+    node.set_taglist(tags, user_id) unless tags.blank?
   end
 
   def read(node)
