@@ -14,11 +14,11 @@ class Push
   start: ->
     if not @started
       @started = true
-      setTimeout( =>
+      $(window).load =>
         source = new EventSource("/b/#{@chan}")
         source.addEventListener "message", @onMessage
         source.addEventListener "error",   @onError
-      , 6000)
+        $(window).unload -> source.close()
 
   onMessage: (e) =>
     try
