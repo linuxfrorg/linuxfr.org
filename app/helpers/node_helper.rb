@@ -88,10 +88,9 @@ module NodeHelper
     content_tag(:div, date_time.year, :class => "annee")
   end
 
-  def posted_by(content, user_link=nil)
+  def posted_by(content, user_link='Anonyme')
     user   = content.user
     user ||= current_user if content.new_record?
-    user_link = 'Anonyme'
     if user
       user_link  = link_to(user.name, "/users/#{user.cached_slug}", :rel => 'author')
       user_infos = []
