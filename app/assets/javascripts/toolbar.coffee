@@ -7,6 +7,7 @@ class Toolbar
     @options  = $.extend({}, Toolbar.defaultOptions, options)
     @visible  = (Toolbar.storage.visible or @options.visible) != "false"
     @threshold = Toolbar.storage.threshold or @options.thresholds[0]
+    @hiding()
     @folding()
     @create()
 
@@ -94,26 +95,52 @@ class Toolbar
     @folding()
     false
 
+  hiding: ->
+    return  unless @options.folding?
+    items = $(@options.folding)
+    for i in items
+      do (i) =>
+        item  = $(i)
+        score = parseInt(item.find(".score:first").text(), 10)
+        where = item.children("h2").children(".anchor")
+        close = $('<a href="#" class="close" title="Cacher le fil de discussion">⊠</a>').insertBefore(where)
+        close.after(' ')
+        hide = (b) ->
+          if b
+            item.addClass "fold"
+            close.text("⊡").attr "title", "Réafficher le fil de discussion"
+            item.children("ul").hide()
+          else
+            item.removeClass "fold"
+            close.text("⊠").attr "title", "Cacher le fil de discussion"
+            item.children("ul").show()
+        close.click ->
+          hide close.text() == "⊠"
+          false
+
   folding: ->
     return  unless @options.folding?
     items = $(@options.folding)
     items.find(".folding").remove()
     for i in items
       do (i) =>
-        item = $(i)
+        item  = $(i)
         score = parseInt(item.find(".score:first").text(), 10)
-        link = item.children("h2").prepend('<a href="#" class="folding" title="Plier">[-]</a>').children(".folding")
-        fold = (b) ->
-          if b
-            item.addClass "fold"
-            link.text("[+]").attr "title", "Déplier"
-          else
-            item.removeClass "fold"
-            link.text("[-]").attr "title", "Plier"
-        link.click ->
-          fold link.text() == "[-]"
-          false
-        fold score < @threshold
+        if score < @threshold
+          where = item.children("h2").children(".anchor")
+          link = $('<a href="#" class="folding" title="Plier">⊟</a>').insertBefore(where)
+          link.after(' ')
+          fold = (b) ->
+            if b
+              item.addClass "fold"
+              link.text("⊞").attr "title", "Déplier"
+            else
+              item.removeClass "fold"
+              link.text("⊟").attr "title", "Plier"
+          link.click ->
+            fold link.text() == "⊟"
+            false
+          fold true
 
 Toolbar.storage = window["localStorage"] or {}
 
