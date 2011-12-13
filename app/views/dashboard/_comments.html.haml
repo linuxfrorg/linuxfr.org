@@ -27,6 +27,6 @@
         %td.number= comment.score
         %td.number
           - if answer && !answer.read_by?(current_account)
-            = image_tag "/images/icones/chat.png", :alt => "Nouveaux commentaires !", :class => "thread-new-comments"
+            = image_tag "/images/icones/comment.png", :alt => "Nouveaux commentaires !", :class => "thread-new-comments"
           = comment.nb_answers
         %td.date= answer ? answer.created_at.to_s(:posted) : "&nbsp;".html_safe
