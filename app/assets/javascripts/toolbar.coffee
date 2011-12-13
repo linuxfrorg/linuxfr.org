@@ -81,7 +81,7 @@ class Toolbar
   go_to_alt_current: ->
     return  if @nb_alt_items == 0
     item = @alt_items[@alt_current - 1]
-    pos = $(item).parents("article").offset().top
+    pos = $(item).offset().top
     $("html,body").animate scrollTop: pos, 500
     $("#toolbar_current_alt_item").text @alt_current  if @visible
     false
