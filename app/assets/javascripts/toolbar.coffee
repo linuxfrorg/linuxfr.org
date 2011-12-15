@@ -53,14 +53,14 @@ class Toolbar
     @nb_alt_items = @alt_items.length
     @alt_current = 0
     if @visible
-      $("#toolbar").prepend """
-                            <span id="toolbar_alt_items">#{@alt_text} :
-                              <span id="toolbar_current_alt_item">#{@alt_current}</span> /
-                              <span id="toolbar_nb_alt_items">#{@nb_alt_items}</span>
-                              <a href="#" accesskey="[" class="prev">[</a> |
-                              <a href="#" accesskey="]" class="next">]</a>
-                            </span>
-                            """
+      $("#toolbar_items").after """
+                                <span id="toolbar_alt_items">#{@alt_text} :
+                                  <span id="toolbar_current_alt_item">#{@alt_current}</span> /
+                                  <span id="toolbar_nb_alt_items">#{@nb_alt_items}</span>
+                                  <a href="#" accesskey="[" class="prev">[</a> |
+                                  <a href="#" accesskey="]" class="next">]</a>
+                                </span>
+                                """
       $("#toolbar_alt_items .prev").click @alt_prev_item
       $("#toolbar_alt_items .next").click @alt_next_item
     $(document).bind("keypress", "[", @alt_prev_item)
