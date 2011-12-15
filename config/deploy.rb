@@ -90,15 +90,6 @@ end
 after "deploy:finalize_update", "cache:flush"
 
 
-# Watch the logs
-namespace :logs do
-  desc "Watch jobs log"
-  task :default do
-    run "tail -f #{current_path}/log/#{rails_env}.log"
-  end
-end
-
-
 # The hard-core deployment rules
 namespace :deploy do
   task :start, :roles => :app do
