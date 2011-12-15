@@ -1,4 +1,4 @@
-<h2 id="aide-gagnants">Gagnants et prix</h2>
+<h2 id="aide-gagnants">Gagnants et prix <a class="anchor" href="#aide-gagnants">¶</a></h2>
 
 <p>
 	Vous pouvez gagner des livres des éditions <a href="http://www.editions-eyrolles.com/Recherche/?q=linux">Eyrolles</a>,
@@ -9,7 +9,7 @@
 </p>
 
 
-<h2 id="aide-authentification">Visiteur (non) authentifié, ou pourquoi ouvrir un compte&nbsp;?</h2>
+<h2 id="aide-authentification">Visiteur (non) authentifié, ou pourquoi ouvrir un compte&nbsp;? <a href="#aide-authentification" class="anchor">¶</a></h2>
 
 <p>
 	Pour passer du statut de visiteur non authentifié à celui de visiteur authentifié,
@@ -35,7 +35,7 @@
 </ul>
 
 
-<h2 id="aide-toolbar">Barre d'outils</h2>
+<h2 id="aide-toolbar">Barre d'outils <a href="#aide-toolbar" class="anchor">¶</a></h2>
 
 <p>La barre d'outils (<i>toolbar</i>) du site n'est que pour les visiteurs authentifiés.</p>
 <p>Elle permet&nbsp;:</p>
@@ -43,11 +43,12 @@
 	<li>d'adapter le seuil de visualisation des commentaires (à -42 vous aurez tout, même les commentaires les plus mal notés)</li>
 	<li>d'enrouler / dérouler un commentaire avec une élégante petite case [-] ou [+]. C'est notamment utile pour les commentaires masqués à cause du seuil de visualisation, pour éviter d'avoir à ouvrir un nouvel onglet/une nouvelle page pour tout de même lire le commentaire</li>
 	<li>de bénéficier d'une navigation rapide à la souris, en cliquant sur &lt; # &gt;, de nouveau commentaire en nouveau commentaire, pour ne pas user la molette de votre souris</li>
-	<li>de bénéficier d'une navigation rapide au clavier, avec les touches &lt; et &gt;, de nouveau commentaire en nouveau commentaire, pour ne pas lâcher votre clavier des mains pour utiliser une souris</li>
+	<li>de bénéficier d'une navigation rapide au clavier, avec les touches &lt; et &gt; (j et k fonctionnent aussi), de nouveau commentaire en nouveau commentaire, et pour les nouveaux commentaires sur les contenus [ et ] (h et l fonctionnent aussi), pour ne pas lâcher votre clavier des mains pour utiliser une souris</li>
+        <li>de retourner en haut de la page en appuyant sur g ou en bas de la page avec G</li> 
 </ul>
+<p>L'aide mémoire des raccourcis clavier est disponible en appuyant sur la touche ?.
 
-
-<h2 id="aide-boiteperso">Boîte d'identification personnelle</h2>
+<h2 id="aide-boiteperso">Boîte d'identification personnelle <a href="#aide-boiteperso" class="anchor">¶</a></h2>
 
 <p>Une boîte d'identification personnelle apparaît sur chaque page sous le logo. Elle contient différentes informations :</p>
 <ul>
@@ -58,7 +59,7 @@
 <p><i>Note</i> : Le nombre d'avis auquel vous avez droit peut évoluer.</p>
 
 
-<h2 id="aide-note">Notes sur les contenus</h2>
+<h2 id="aide-note">Notes sur les contenus <a href="#aide-note" class="anchor">¶</a></h2>
 
 <p>
 	Les contenus du site (dépêches, journaux, forums, sondages, système de suivi, propositions d'entretien, etc.)
@@ -95,7 +96,7 @@
 </ul>
 
 
-<h2 id="aide-fermercompte">Fermer son compte</h2>
+<h2 id="aide-fermercompte">Fermer son compte <a href="#aide-fermercompte" class="anchor">¶</a></h2>
 
 <p>
 	La «&nbsp;fermeture du compte&nbsp;» consiste en une invalidation du compte, qui devient inutilisable.
@@ -107,7 +108,7 @@
 </p>
 <p>
 	Si vous souhaitez ne plus faire apparaître votre pseudo/login pour les mêmes raisons,
-	<a href="mailto:administrateurs@linuxfr.org">envoyez une demande aux administrateurs</a> de fermeture d'un compte avec anonymisation
+	<a href="mailto:team@linuxfr.org">envoyez une demande aux administrateurs</a> de fermeture d'un compte avec anonymisation
 	(tous les contenus et commentaires associés seront affectés à Anonyme).
 	Cette dernière opération est définitive.
 </p>
@@ -120,3 +121,118 @@
 	La «&nbsp;purge du compte&nbsp;» consiste à totalement supprimer le compte et à anonymiser ou supprimer tous les contenus associés.
 	Seuls les administrateurs peuvent réaliser cette opération, définitive par nature.
 </p>
+
+<h2 id="aide-certificatssl">Certificat SSL/TLS et alertes dans les navigateurs <a href="#aide-certificatssl" class="anchor">¶</a></h2>
+
+<p>SSL/TLS est un protocole de sécurisation des échanges sur le web. Lorsque vous accédez à une page du site dont l'adresse commence par https://linuxfr.org (la partie importante est le <b>s</b> de http<b>s</b>), votre navigateur web utilise le protocole SSL/TLS pour discuter avec le site LinuxFr.org. SSL/TLS repose sur l'utilisation de certificat, pour qu'un site prouve, autant que possible, qu'il est bien celui qu'il prétend être et pour éviter que l'utilisateur ne soit leurré.</p>
+
+<p>LinuxFr.org utilise un certificat SSL/TLS fourni par CAcert, une autorité de certification basée sur une communauté. Malheureusement, le certificat racine de l'autorité CAcert n'est pas inclus par défaut notamment dans les navigateurs les plus utilisés (dont Mozilla Firefox).</p>
+
+<p>Si vous n'avez pas rajouté le certificat racine de CAcert dans votre navigateur manuellement ou via les dépôts de votre distribution GNU/Linux, il est possible que votre navigateur affiche une alerte de sécurité lors de la visite d'une page https.</p>
+
+<img alt="Capture avec Firefox 3.5 sans certificat racine" src="/images/https_firefox_3_5_sans_root_cert.png" />
+
+<p>Pour que votre navigateur puisse vérifier son authenticité, il doit disposer du certificat racine de l'autorité de certification CAcert. Si ce n'est pas le cas du vôtre, vous devez en premier lieu ajouter le [certificat racine](http://www.cacert.org/index.php?id=3) au trousseau de votre navigateur en cliquant sur le lien 'Root Certificate (PEM Format)', en cochant au moins la case « Ce certificat peut identifier des sites Web. » et en vérifiant l'empreinte numérique SHA1.</p>
+
+<p>Empreinte numérique SHA1 CAcert&nbsp;:<br/>
+<b>13:5C:EC:36:F4:9C:B8:E9:3B:1A:B2:70:CD:80:88:46:76:CE:8F:33</b></p>
+
+<img alt="Capture avec Firefox 3.5 avec certificat racine" src="/images/https_firefox_3_5_root_cert.png" />
+
+<p>Une fois ce certificat intégré à votre trousseau, votre navigateur devrait accepter le certificat LinuxFr.org.</p>
+
+<p>Empreinte numérique SHA1 LinuxFr.org&nbsp;:<br/>
+<b>65:66:48:8F:BE:91:B8:00:52:02:C8:CB:2E:CC:86:5A:37:58:1F:C8</b></p>
+
+<h2 id="aide-autrecertificatssl">Pourquoi ne prenez pas un certificat SSL/TLS gratuit ou payant de chez Machin qui est par défaut dans un navigateur&nbsp;? <a href="#aide-autrecertificatssl" class="anchor">¶</a></h2>
+
+<p>La gratuité n'est pas le critère principal dans le choix de CAcert. CAcert est une autorité de certification basée sur une communauté (community driven non-Profit Certificate Authority), qui propose à la fois du centralisé et du décentralisé (réseau de confiance), qui <a href="http://www.cacert.org/src-lic.php">publie son code sous licence libre</a>. De plus nous avons eu des échos positifs sur CAcert et nous avons déjà discuté avec certains de leurs admins.</p>
+
+<p>Être reconnue par défaut par les navigateurs est un plus, mais si on se limite à ce critère, on encourage un oligopole d'autorités de confiance, dont certaines ont déjà fait montre de pratiques plus que discutables (liste non exhaustive)&nbsp;:</p>
+<ul>
+
+<li><a href="http://blog.mozilla.com/security/2011/08/29/fraudulent-google-com-certificate/">Mozilla Security&nbsp;: Fraudulent *.google.com Certificate [DigiNotar, Iran]</a> (2011)</li>
+
+<li><a href="http://www.zdnet.fr/actualites/des-certificats-ssl-frauduleux-de-comodo-autorisent-des-attaques-contre-les-webmails-39759360.htm">ZdNet&nbsp;: «&nbsp;Des certificats SSL frauduleux de Comodo autorisent des attaques contre les Webmails&nbsp;»</a> (2011)</li>
+
+<li><a href="http://www.rue89.com/2011/03/18/tunisie-microsoft-complice-de-la-censure-numerique-par-ben-ali-195693">Rue89&nbsp;: «&nbsp;Tunisie&nbsp;: Microsoft complice de la censure numérique par Ben Ali&nbsp;»</a> (2011)</li>
+
+<li>les résultats de l'<a href="http://www.eff.org/observatory">observatoire SSL de l'Electronic Frontier Foundation</a> présentés à Defcon 2010 et au CCC 2010</li>
+
+<li><a href="http://en.wikipedia.org/wiki/VeriSign#Controversies">Page wikipédia Controverses autour de Verisign</a></li>
+
+<li><a href="/2004/02/27/15556.html">DLFP&nbsp;:&nbsp;«&nbsp;Verisign attaque l'ICANN&nbsp;»</a> (2004)</li>
+
+<li><a href="/2003/10/04/14186.html">DLFP&nbsp;: «&nbsp;ICANN vs. Verisign&nbsp;?&nbsp;»</a> (2003)</li>
+
+<li><a href="/2003/09/23/14033.html">DLFP&nbsp;: «&nbsp;VeriSign refuse d'obtempérer&nbsp;»</a> (2003)</li>
+
+<li><a href="/2003/09/21/14008.html">DLFP&nbsp;: «&nbsp;L'ICANN et l'IAB somment Verisign de suspendre leur service de redirection&nbsp;»</a> (2003)</li>
+
+<li><a href="/2003/09/17/13947.html">DLFP&nbsp;: «&nbsp;VeriSign détruit l'un des fondements d'Internet&nbsp;»</a> (2003)</li>
+
+</ul>
+
+<h2 id="aide-karma">Système de karma <a href="#aide-karma" class="anchor">¶</a></h2>
+
+
+<p>Le karma est une note interne qui détermine le nombre d'avis journaliers et la possibilité d'écrire sur le site.</p>
+
+<p>L'influence de différentes actions sur le karma&nbsp;:</p>
+<ul>
+<li>Karma par défaut&nbsp;: 20</li>
+<li>Note «&nbsp;pertinent&nbsp;»&nbsp;: +1</li>
+<li>Note «&nbsp;inutile&nbsp;»&nbsp;: -1</li>
+<li>Dépêche publiée&nbsp;: +50 (pour l'auteur)</li>
+</ul>
+
+<p>Le karma augmente donc lorsque l'on reçoit des notes «&nbsp;pertinent&nbsp;» (quelque soit le type de contenu noté) ou que l'on publie des dépêches.</p>
+
+<p>Le nombre d'avis quotidiens est déterminé à partir du karma. La formule est min(3 + karma / 10, 100). (<a href="https://github.com/nono/linuxfr.org/blob/master/app/models/account.rb">source</a>).</p>
+
+<p>Le score de base des commentaires dépend du karma. La formule est E( log10( karma ) ) - 1, où E() est la partie entière inférieure si le karma est strictement positif. Et c'est max(-10, -2 + E(karma/30)) pour un karma négatif ou nul. Avec un karma à 0, ça donne un score de -2. (<a href="https://github.com/nono/linuxfr.org/blob/master/app/models/comment.rb">source</a>)</p>
+
+<p>Pour pouvoir écrire un journal, dans le wiki ou sur la tribune, il faut avoir un karma supérieur strictement à 0. (sources <a href="https://github.com/nono/linuxfr.org/blob/master/app/models/diary.rb">journal</a>, <a href="https://github.com/nono/linuxfr.org/blob/master/app/models/wiki_page.rb">wiki</a>, <a href="https://github.com/nono/linuxfr.org/blob/master/app/models/account.rb">tribune</a>).</p>
+
+
+<h2 id="aide-role">À quoi correspond le rôle sur la page d'un utilisateur&nbsp;? <a href="#aide-role" class="anchor">¶</a></h2>
+
+<p>Les différents rôles sont&nbsp;:</p>
+
+<ul>
+<li>admin&nbsp;: les <a href="/team">admins</a></li>
+<li>inactive&nbsp;: les comptes fermés</li>
+<li>moderator&nbsp;: les <a href="/team">modérateurs</a></li>
+<li>reviewer&nbsp;: les <a href="/team">relecteurs</a></li>
+<li>visitor&nbsp;: les visiteurs, tous ceux qui ne sont pas dans une catégorie précédente</li>
+</ul>
+
+<h2 id="aide-cookies">Quels sont les cookies utilisés par le site&nbsp;? <a href="#aide-cookies" class="anchor">¶</a></h2>
+
+<p>Le site utilise actuellement les cookies suivant&nbsp;:</p>
+
+<ul>
+<li>remember_account_token
+<ul><li>durée&nbsp;: courte (deux semaines)</li>
+<li>usage&nbsp;: cookie de session sur le site</li>
+<li>concerne&nbsp;: les utilisateurs authentifiés</li>
+</ul>
+</li><li>https
+<ul><li>durée&nbsp;: permanent (jusqu'en 2031)</li>
+<li>usage&nbsp;: sa présence indiquant que l'ensemble des accès au site doivent se faire en HTTPS</li>
+<li>concerne&nbsp;: les utilisateurs authentifiés en HTTPS</li>
+</ul>
+</li><li>linuxfr.org_session
+<ul>
+<li>durée&nbsp;: temporaire pour la durée de la session de navigation</li>
+<li>usage&nbsp;: cookie de session sur le site (utilisable uniquement sur les accès HTTPS si le cookie https précédent existe)</li>
+<li>concerne&nbsp;: les utilisateurs authentifiés</li>
+</ul>
+</li><li>totoz-type
+<ul>
+<li>durée&nbsp;: cookie permanent (jusqu'en 2042)</li>
+<li>usage&nbsp;: choisir le type d'affichage des images dans la tribune (en surimpression, insérées dans le texte, et sans images en l'absence du cookie)</li>
+<li>concerne&nbsp;: les visiteurs de la tribune</li>
+</ul>
+</li>
+</ul>

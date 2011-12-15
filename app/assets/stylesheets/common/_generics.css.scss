@@ -5,7 +5,9 @@
 }
 
 .anchor {
-  color: #aaa;
+  &, &:visited {
+    color: #aaa;
+  }
   &:hover {
     color: #333;
   }
