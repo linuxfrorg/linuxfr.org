@@ -103,19 +103,19 @@ class Toolbar
         item  = $(i)
         score = parseInt(item.find(".score:first").text(), 10)
         where = item.children("h2").children(".anchor")
-        close = $('<a href="#" class="close" title="Cacher le fil de discussion">⊠</a>').insertBefore(where)
+        close = $('<a href="#" class="close" title="Cacher le fil de discussion">[-]</a>').insertBefore(where)
         close.after(' ')
         hide = (b) ->
           if b
             item.addClass "fold"
-            close.text("⊡").attr "title", "Réafficher le fil de discussion"
+            close.text("[+]").attr "title", "Réafficher le fil de discussion"
             item.children("ul").hide()
           else
             item.removeClass "fold"
-            close.text("⊠").attr "title", "Cacher le fil de discussion"
+            close.text("[-]").attr "title", "Cacher le fil de discussion"
             item.children("ul").show()
         close.click ->
-          hide close.text() == "⊠"
+          hide close.text() == "[-]"
           false
 
   folding: ->
@@ -127,20 +127,13 @@ class Toolbar
         item  = $(i)
         score = parseInt(item.find(".score:first").text(), 10)
         if score < @threshold
+          item.addClass "fold"
           where = item.children("h2").children(".anchor")
-          link = $('<a href="#" class="folding" title="Plier">⊟</a>').insertBefore(where)
-          link.after(' ')
-          fold = (b) ->
-            if b
-              item.addClass "fold"
-              link.text("⊞").attr "title", "Déplier"
-            else
-              item.removeClass "fold"
-              link.text("⊟").attr "title", "Plier"
-          link.click ->
-            fold link.text() == "⊟"
+          link = $('<a href="#" class="folding" title="Plier">[+]</a>').insertBefore(where)
+          link.after(' ').click ->
+            item.removeClass "fold"
+            link.remove()
             false
-          fold true
 
 Toolbar.storage = window["localStorage"] or {}
 
