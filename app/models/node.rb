@@ -92,8 +92,12 @@ class Node < ActiveRecord::Base
 
 ### Readings ###
 
+  def self.readings_keys_of(account_id)
+    $redis.keys("readings/*/#{account_id}")
+  end
+
   def self.readings_of(account_id)
-    ids = $redis.keys("readings/*/#{account_id}").map {|x| x.scan(/\/(\d+)\//).first.first }
+    ids = readings_keys_of(account_id).map {|x| x.scan(/\/(\d+)\//).first.first }
     visible.where(:id => ids)
   end
 
@@ -104,6 +108,11 @@ class Node < ActiveRecord::Base
 
   def unread_by(account_id)
     $redis.del("readings/#{self.id}/#{account_id}")
+  end
+
+  def self.unread_all_by(account_id)
+    keys = readings_keys_of(account_id)
+    $redis.del(*keys) if keys.present?
   end
 
   def self.last_reading(node_id, account_id)

@@ -18,6 +18,11 @@ class ReadingsController < ApplicationController
     end
   end
 
+  def destroy_all
+    Node.unread_all_by(current_account.id)
+    redirect_to readings_path
+  end
+
 protected
 
   def find_node

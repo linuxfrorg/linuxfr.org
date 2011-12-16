@@ -67,6 +67,7 @@ LinuxfrOrg::Application.routes.draw do
     end
   end
   resources :readings, :only => [:index, :destroy]
+  delete "readings" => "readings#destroy_all"
   resources :tags, :only => [:index, :show] do
     collection do
       get :autocomplete
