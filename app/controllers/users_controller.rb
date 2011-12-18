@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_filter :find_user
 
   def show
-    redirect_to @user, :status => 301 and return if !@user.friendly_id_status.best?
+    path = user_path(@user)
+    redirect_to path, :status => 301 and return if request.path != path
     find_nodes(Diary)
     respond_to do |wants|
       wants.html
@@ -11,7 +12,8 @@ class UsersController < ApplicationController
   end
 
   def news
-    redirect_to news_user_path(@user), :status => 301 and return if !@user.friendly_id_status.best?
+    path = news_user_path(@user)
+    redirect_to path, :status => 301 and return if request.path != path
     find_nodes(News)
     respond_to do |wants|
       wants.html
@@ -20,7 +22,8 @@ class UsersController < ApplicationController
   end
 
   def posts
-    redirect_to posts_user_path(@user), :status => 301 and return if !@user.friendly_id_status.best?
+    path = posts_user_path(@user)
+    redirect_to path, :status => 301 and return if request.path != path
     find_nodes(Post)
     respond_to do |wants|
       wants.html
@@ -29,12 +32,14 @@ class UsersController < ApplicationController
   end
 
   def suivi
-    redirect_to suivi_user_path(@user), :status => 301 and return if !@user.friendly_id_status.best?
+    path = suivi_user_path(@user)
+    redirect_to path, :status => 301 and return if request.path != path
     find_nodes(Tracker)
   end
 
   def comments
-    redirect_to comments_user_path(@user), :status => 301 and return if !@user.friendly_id_status.best?
+    path = comments_user_path(@user)
+    redirect_to path, :status => 301 and return if request.path != path
     @dont_index = true
     @comments = @user.comments.published.order('created_at DESC').page(params[:page])
     respond_to do |wants|

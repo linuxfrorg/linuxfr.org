@@ -32,7 +32,8 @@ class User < ActiveRecord::Base
 
 ### SEO ###
 
-  has_friendly_id :login, :use_slug => true, :allow_nil => true, :reserved_words => %w(index nouveau)
+  extend FriendlyId
+  friendly_id :login
 
   def login
     account ? account.login : name

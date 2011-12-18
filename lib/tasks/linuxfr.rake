@@ -4,8 +4,7 @@ namespace :linuxfr do
     :delete_avatars_cache,
     :delete_old_passive_accounts,
     :daily_karma,
-    'sitemap:refresh',
-    'friendly_id:remove_old_slugs'
+    'sitemap:refresh'
   ]
 
   desc "New day => update karma and give new votes"

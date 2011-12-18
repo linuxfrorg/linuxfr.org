@@ -9,7 +9,8 @@ class Redaction::NewsController < RedactionController
 
   def create
     @news = News.create_for_redaction(current_account)
-    redirect_to [:redaction, @news]
+    path = redaction_news_path(@news)
+    redirect_to path, :status => 301 if request.path != path
   end
 
   def show

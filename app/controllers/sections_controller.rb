@@ -6,7 +6,8 @@ class SectionsController < ApplicationController
 
   def show
     @section  = Section.find(params[:id])
-    redirect_to @section, :status => 301 and return if !@section.friendly_id_status.best?
+    path = section_path(@section)
+    redirect_to path, :status => 301 and return if request.path != path
     @sections = Section.published
     @order    = params[:order]
     @order    = "created_at" unless VALID_ORDERS.include?(@order)

@@ -12,6 +12,6 @@
     %nav
       %ul
         - if @version.higher_item
-          %li= link_to "Précédente révision", revision_wiki_page_path(@wiki_page.friendly_id, @version.higher_item.version)
+          %li= link_to "Précédente révision", revision_wiki_page_path(@wiki_page.cached_slug, @version.higher_item.version)
         - if @version.lower_item
-          %li= link_to "Révision suivante", revision_wiki_page_path(@wiki_page.friendly_id, @version.lower_item.version)
+          %li= link_to "Révision suivante", revision_wiki_page_path(@wiki_page.cached_slug, @version.lower_item.version)

@@ -24,7 +24,8 @@ class Section < ActiveRecord::Base
 
 ### SEO ###
 
-  has_friendly_id :title, :use_slug => true, :reserved_words => %w(index nouveau)
+  extend FriendlyId
+  friendly_id
 
 ### Image ###
 

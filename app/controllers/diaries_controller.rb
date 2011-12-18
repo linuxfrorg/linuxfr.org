@@ -39,7 +39,8 @@ class DiariesController < ApplicationController
 
   def show
     enforce_view_permission(@diary)
-    redirect_to [@user, @diary], :status => 301 if !@diary.friendly_id_status.best?
+    path = user_diary_path(@user, @diary)
+    redirect_to path, :status => 301 if request.path != path
   end
 
   def edit

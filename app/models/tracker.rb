@@ -41,7 +41,8 @@ class Tracker < Content
 
 ### SEO ###
 
-  has_friendly_id :title, :use_slug => true, :reserved_words => %w(index nouveau comments)
+  extend FriendlyId
+  friendly_id :title, :reserved_words => %w(index nouveau modifier comments)
 
 ### Sphinx ####
 
