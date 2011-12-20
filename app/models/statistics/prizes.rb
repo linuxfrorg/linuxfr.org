@@ -10,7 +10,7 @@ class Statistics::Prizes
   end
 
   def current_month
-    @current_month ||= @month.beginning_of_month .. @month.end_of_month
+    @current_month ||= @month.beginning_of_month .. @month.next_month.beginning_of_month
   end
 
   def best_score(type, nb)
