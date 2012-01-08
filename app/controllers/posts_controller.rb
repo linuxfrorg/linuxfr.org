@@ -38,6 +38,7 @@ class PostsController < ApplicationController
   def show
     enforce_view_permission(@post)
     redirect_to [@forum, @post], :status => 301 if !@post.friendly_id_status.best?
+    flash.now[:alert] = "Attention, ce post a été supprimé et n'est visible que par les admins" unless @post.visible?
   end
 
   def edit
