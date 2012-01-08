@@ -45,7 +45,7 @@ class Statistics::Moderation < Statistics::Statistics
     top_amr "AND (role='moderator' OR role='admin')"
   end
 
-  def top_am_last_month
+  def top_am_x_days(nbdays)
     select_all <<-EOS
       SELECT login, user_id, cnt
         FROM accounts
@@ -53,7 +53,7 @@ class Statistics::Moderation < Statistics::Statistics
               SELECT moderator_id, COUNT(*) AS cnt
                 FROM nodes
                 JOIN news ON nodes.content_id = news.id AND nodes.content_type='News'
-               WHERE nodes.created_at >= '#{31.days.ago.to_s :db}'
+               WHERE nodes.created_at >= '#{nbdays.days.ago.to_s :db}'
                GROUP BY moderator_id
              ) AS j ON moderator_id = accounts.user_id
        WHERE (role='moderator' OR role='admin')
@@ -61,8 +61,8 @@ class Statistics::Moderation < Statistics::Statistics
     EOS
   end
 
-  def nb_editions_last_month(user_id)
-    count "SELECT COUNT(*) AS cnt FROM news_versions WHERE user_id=#{user_id} AND created_at >= '#{31.days.ago.to_s :db}'"
+  def nb_editions_x_days(user_id,nbdays)
+    count "SELECT COUNT(*) AS cnt FROM news_versions WHERE user_id=#{user_id} AND created_at >= '#{nbdays.days.ago.to_s :db}'"
   end
 
   def nb_votes(login)
@@ -72,4 +72,9 @@ class Statistics::Moderation < Statistics::Statistics
   def nb_votes_last_month(login)
     $redis.keys("users/#{login}/nb_votes/*").map {|k| $redis.get(k).to_i }.sum
   end
+
+  def moderated_news(nbdays)
+    count "SELECT COUNT(*) AS cnt FROM news WHERE (state='published' OR state='refused') AND created_at >= '#{nbdays.days.ago.to_s :db}'"
+  end
+
 end

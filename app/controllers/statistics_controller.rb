@@ -30,4 +30,8 @@ class StatisticsController < ApplicationController
     @stats = Statistics::Contents.new
   end
 
+  def comments
+    @stats = Statistics::Comments.new
+  end
+
 end

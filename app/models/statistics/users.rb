@@ -29,8 +29,16 @@ class Statistics::Users < Statistics::Statistics
     novisit = rows.first
   end
 
-  def nb_authors
+  def nb_content_authors
     select_all "SELECT COUNT(DISTINCT(accounts.user_id)) AS cnt, content_type FROM nodes JOIN accounts ON nodes.user_id = accounts.user_id WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY content_type"
+  end
+
+  def nb_comment_authors
+    select_all "SELECT COUNT(DISTINCT(accounts.user_id)) AS cnt FROM comments JOIN accounts ON comments.user_id = accounts.user_id WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive';"
+  end
+
+  def nb_tag_authors
+    select_all "SELECT COUNT(DISTINCT(accounts.user_id)) AS cnt FROM taggings JOIN accounts ON taggings.user_id = accounts.user_id WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive';"
   end
 
   def filled(field)

@@ -1,0 +1,84 @@
+#comments.statistics
+  =h1 "Statistiques sur les commentaires"
+  - width_stats = 400
+
+  .body
+    %strong
+      Statistiques mises à jour le #{l Time.now}
+
+    - if @stats.comments["Total"] == 0
+      Aucun commentaire
+    - else
+      %ul
+        %li=link_to("par type","#type")
+        %li=link_to("par an","#annee")
+        %li=link_to("par mois","#mois")
+        %li=link_to("par jour de la semaine","#jour")
+
+      - if @stats.comments["Total"] > 1
+        %h2#type Répartition par type des #{@stats.comments["Total"]} commentaires
+      - else
+        %h2#type Répartition par type
+      %ul
+        %li #{@stats.comments["Diary"].to_i} dans les journaux
+        %li #{@stats.comments["Post"].to_i} dans les forums
+        %li #{@stats.comments["News"].to_i} dans les dépêches
+        %li #{@stats.comments["Tracker"].to_i} dans le système de suivi
+        %li #{@stats.comments["Poll"].to_i} dans les sondages
+        %li #{@stats.comments["WikiPage"].to_i} dans les pages de wiki
+
+      - if @stats.comments["Total"] > 1
+        %h2#annee Répartition annuelle des #{@stats.comments["Total"]} commentaires
+      - else
+        %h2#annee Répartition annuelle
+      %table
+        -maxval=@stats.comments_by_year.values.max {|a,b| a.values.max <=> b.values.max}.values.max
+        %tr
+          %th Année
+          %th Type
+          %th Commentaires
+        - @stats.comments_by_year.each do |year,comment|
+          - newyear=true
+          - comment.each do |type,cnt|
+            %tr
+              -if newyear==true
+                %td{'class'=>'stat','rowspan'=>comment.size()}= year
+                -newyear=false
+              %td
+                .stat(class="content#{type.downcase()}" style="width: 100px;") #{translate_content_type(type)}
+              %td
+                .stat(class="content#{type.downcase()}" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
+
+      - if @stats.comments["Total"] > 1
+        %h2#mois Répartition mensuelle des #{@stats.comments["Total"]} commentaires
+      - else
+        %h2#mois Répartition mensuelle
+      %table
+        -maxval=@stats.comments_by_month.values.max {|a,b| a.values.max <=> b.values.max}.values.max
+        %tr
+          %th Mois
+          %th Type
+          %th Commentaires
+        - @stats.comments_by_month.each do |month,comment|
+          - newyear=true
+          - comment.each do |type,cnt|
+            %tr
+              -if newyear==true
+                %td{'class'=>'stat','rowspan'=>comment.size()}= month.sub(/(\d{4})(\d{2})/, '\2 \1')
+                -newyear=false
+              %td
+                .stat(class="content#{type.downcase()}" style="width: 100px;") #{translate_content_type(type)}
+              %td
+                .stat(class="content#{type.downcase()}" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
+
+      %h2#jour Répartition des commentaires par jour de la semaine
+      - maxval = @stats.comments_by_day.values.max
+      %table
+        %tr
+          %th Jour
+          %th Nombre de commentaires
+        - @stats.comments_by_day.each do |day,cnt|
+          %tr
+            %td= day_name day
+            %td
+              .stat.misc(style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt

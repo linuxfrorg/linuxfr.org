@@ -1,6 +1,6 @@
 #contents.statistics
   =h1 "Statistiques sur la modération"
-  - width_factor = 0.1
+  - width_stats = 400
 
   .body
     %strong
@@ -14,67 +14,152 @@
       %li Seuil d'acceptation = #{News.accept_threshold}
       %li Seuil de refus = #{News.refuse_threshold}
 
-    %h2 Jour de modération
-    %table
-      %tr
-        %th Jour
-        %th Nombre de dépêches modérées
-      - @stats.by_day.each do |day|
+    - if @stats.by_day.size() > 0
+      - maxval = @stats.by_day.map {|a| a["cnt"] }.max
+      %h2 Jour de modération
+      %table
         %tr
-          %td= day_name day["day"]
-          %td
-            .stat.misc(style="width: #{(width_factor * day["cnt"]).to_i}px;")= day["cnt"]
+          %th Jour
+          %th Nombre de dépêches modérées
+        - @stats.by_day.each do |day|
+          %tr
+            %td= day_name day["day"]
+            %td
+              .stat.misc(style="width: #{(width_stats * day["cnt"] / maxval).to_i}px;")= day["cnt"]
 
-    %h2 Temps de modération
-    %p
-      Temps moyen passé entre la création d'une dépêche (temps d'édition compris) et sa modération finale&nbsp;:
-    %ul
-      - @stats.average_time.each do |avg|
-        %li
-          #{avg["year"]}&nbsp;: #{(avg["duration"]/(avg["cnt"]*3600)).to_i} heures (entre #{(avg["min"]/60).to_i}min et #{(avg["max"]/3600).to_i}h)
+      %h2 Temps de modération
+      %p
+        Temps moyen passé entre la création d'une dépêche (temps d'édition compris) et sa modération finale&nbsp;:
+      %ul
+        - @stats.average_time.each do |avg|
+          %li
+            - if avg["cnt"] > 0
+              #{avg["year"]}&nbsp;: #{(avg["duration"]/(avg["cnt"]*3600)).to_i} heures (entre #{(avg["min"]/60).to_i}min et #{(avg["max"]/3600).to_i}h)
+            - else
+              aucune information disponible
 
     -# TODO Temps médian... un peu pénible à calculer...
 
     %h2 Équipe de modération
-    %h3 Sur les 31 derniers jours
+    %ul
+      %li=link_to("Sur les 7 derniers jours", "#moderation7")
+      %li=link_to("Sur les 31 derniers jours", "#moderation31")
+      %li=link_to("Depuis Epoch ou le début des données", "#moderationEpoch")
 
-    %h4 Modérateurs actuels
-    %ol
-      = list_of(@stats.top_am_last_month) do |user|
-        = link_to user["login"], "/users/#{user["login"]}"
-        = " : #{pluralize user["cnt"], "modération"}, "
-        = pluralize @stats.nb_votes_last_month(user["login"]), "vote"
-        et
-        = pluralize @stats.nb_editions_last_month(user["user_id"]), "édition"
+    %h3#moderation7 Sur les 7 derniers jours
 
-    %h4 Relecteurs actuels
-    %ol
-      = list_of(Account.reviewer) do |user|
-        = link_to user["login"], "/users/#{user["login"]}"
-        = " : "
-        = pluralize @stats.nb_votes_last_month(user["login"]), "vote"
-        et
-        = pluralize @stats.nb_editions_last_month(user["user_id"]), "édition"
+    %p Il y a eu #{pluralize @stats.moderated_news(7), "dépêche modérée", "dépêches modérées"} (acceptation ou rejet) sur la période.
 
-    %h3 Depuis Epoch ou le début des données
+    - if @stats.top_am_x_days(7).size() > 0
+      %h4 Modérateurs actuels (#{@stats.top_am_x_days(7).size()})
+      %table
+        %tr
+          %tr
+            %th
+            %th Modérations
+            %th Éditions
+        - @stats.top_am_x_days(7).each do |user|
+          %tr
+            %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
+            %td{'class'=>'stat'}= user["cnt"].to_i
+            %td{'class'=>'stat'}= @stats.nb_editions_x_days(user["user_id"],7)
+    - else
+      %h4 Pas de modérateurs actuellement
 
-    %h4 Modérateurs actuels
-    %ol
-      = list_of(@stats.top_am) do |user|
-        = link_to user["login"], "/users/#{user["login"]}"
-        = " : #{pluralize user["cnt"], "modération"} et "
-        = pluralize @stats.nb_votes(user["login"]), "vote"
+    - if Account.reviewer.size() > 0
+      %h4 Relecteurs actuels (#{Account.reviewer.size()})
+      %table
+        %tr
+          %tr
+            %th
+            %th Votes
+            %th Éditions
+        - Account.reviewer.each do |user|
+          %tr
+            %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
+            %td{'class'=>'stat'}= user["login"].to_i
+            %td{'class'=>'stat'}= @stats.nb_editions_x_days(user["user_id"],7)
+    - else
+      %h4 Pas de relecteurs actuellement
 
-    %h4 Relecteurs actuels
-    %ol
-      = list_of(Account.reviewer) do |user|
-        = link_to user["login"], "/users/#{user["login"]}"
-        = " : "
-        = pluralize @stats.nb_votes(user["login"]), "vote"
+    %h3#moderation31 Sur les 31 derniers jours
 
-    %h4 Membre passé ou présent de l'équipe de modération
-    %ol
-      = list_of(@stats.top_amr) do |user|
-        = link_to user["login"], "/users/#{user["login"]}"
-        = " : #{pluralize user["cnt"], "modération"} et "
-        = pluralize @stats.nb_votes(user["login"]), "vote"
+    %p Il y a eu #{pluralize @stats.moderated_news(31), "dépêche modérée", "dépêches modérées"} (acceptation ou rejet) sur la période.
+
+    - if @stats.top_am_x_days(31).size() > 0
+      %h4 Modérateurs actuels (#{@stats.top_am_x_days(31).size()})
+      %table
+        %tr
+          %tr
+            %th &nbsp;
+            %th Modérations
+            %th Votes
+            %th Éditions
+        - @stats.top_am_x_days(31).each do |user|
+          %tr
+            %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
+            %td{'class'=>'stat'}= user["cnt"].to_i
+            %td{'class'=>'stat'}= @stats.nb_votes_last_month(user["login"])
+            %td{'class'=>'stat'}= @stats.nb_editions_x_days(user["user_id"],31)
+    - else
+      %h4 Pas de modérateurs actuellement
+
+    - if Account.reviewer.size() > 0
+      %h4 Relecteurs actuels (#{Account.reviewer.size()})
+      %table
+        %tr
+          %th &nbsp;
+          %th Votes
+          %th Éditions
+        - Account.reviewer.each do |user|
+          %tr
+            %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
+            %td{'class'=>'stat'}= user["login"].to_i
+            %td{'class'=>'stat'}= @stats.nb_editions_x_days(user["user_id"],31)
+    - else
+      %h4 Pas de relecteurs actuellement
+
+    %h3#moderationEpoch Depuis Epoch ou le début des données
+
+    - if @stats.top_am.size() > 0
+      %h4 Modérateurs actuels (#{@stats.top_am.size()})
+      %table
+        %tr
+          %th &nbsp;
+          %th Modérations
+          %th Votes
+        - @stats.top_am.each do |user|
+          %tr
+            %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
+            %td{'class'=>'stat'}= user["cnt"].to_i
+            %td{'class'=>'stat'}= @stats.nb_votes(user["login"])
+    - else
+      %h4 Pas encore de modérateurs
+
+    - if Account.reviewer.size() > 0
+      %h4 Relecteurs actuels (#{Account.reviewer.size()})
+      %table
+        %tr
+          %th
+          %th Votes
+        - Account.reviewer.each do |user|
+          %tr
+            %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
+            %td{'class'=>'stat'}= user["login"].to_i
+    - else
+      %h4 Pas encore de relecteurs
+
+    - if @stats.top_amr.size() > 0
+      %h4 Membre passé ou présent de l'équipe de modération (#{@stats.top_amr.size()})
+      %table
+        %tr
+          %th
+          %th Modérations
+          %th Votes
+        - @stats.top_amr.each do |user|
+          %tr
+            %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
+            %td{'class'=>'stat'}= user["cnt"].to_i
+            %td{'class'=>'stat'}= @stats.nb_votes(user["login"])
+    - else
+      %h4 Pas encore d'équipe de modération

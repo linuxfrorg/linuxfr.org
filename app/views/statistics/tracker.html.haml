@@ -1,89 +1,116 @@
 #contents.statistics
   =h1 "Statistiques sur le système de suivi"
-  - width_factor = 8
+  - width_stats = 400
 
   .body
     %p
       Ces statistiques ne prennent en compte que le système de suivi, et pas les demandes envoyées par courriel, messagerie instantanée, lettres d'avocat, kernel panic et autres erreurs Nginx.
     %strong
       Statistiques mises à jour le #{l Time.now}
+
     %p
-      #{@stats.states["opened"]} entrées ouvertes,
-      #{@stats.states["invalid"]} invalides et
-      #{@stats.states["fixed"]} fermées (total #{@stats.states["total"]})
-      envoyées par #{@stats.distinct_users} visiteurs (en groupant les anonymes).
+      #{pluralize @stats.states["opened"], "entrée ouverte", "entrées ouvertes" },
+      #{pluralize @stats.states["invalid"], "invalide"} et
+      #{pluralize @stats.states["fixed"], "fermée"}, total #{pluralize @stats.states["total"], "envoyée"}
+      par #{pluralize @stats.distinct_users, "visiteur"} (en groupant les anonymes).
     %p
       Le temps moyen de résolution est de #{pluralize @stats.average_time, "jour"}.
     %p
       La moitié des entrées fermées ont été traitées en moins de #{pluralize @stats.median_time, "jour"}.
 
-    %h2 Utilisateurs ayant ouvert le plus grand nombre d'entrées
-    %ol
-      = list_of(@stats.top_reporters) do |user|
-        = link_to(user["name"], "/users/#{user["name"]}") + "&nbsp;: #{user["cnt"]}".html_safe
-
-    %h2 Nombre d'entrées fermées par les admins
-    %ol
-      = list_of(@stats.good_workers) do |worker|
-        = link_to(worker["name"], "/users/#{worker["name"]}") + "&nbsp;: #{worker["cnt"]}".html_safe
-
-    %h2 Entrées classées par année
-    %p
-      État des entrées dans le système de suivi (classées par date d'ouverture)
-    %table
-      %tr
-        %th Année
-        %th Entrées ouvertes
-        %th Entrées corrigées
-        %th Entrées invalidées
-        %th Total
-      - @stats.by_year.each do |year,states|
+    - if @stats.top_reporters.size() > 0
+      - maxval = @stats.top_reporters.map {|a| a["cnt"] }.max
+      %h2#nbouvertes Utilisateurs ayant ouvert le plus grand nombre d'entrées
+      %table
         %tr
-          %td= year
-          %td
-            .stat.opened(style="width:#{states["opened"]}px;")= states["opened"]
-          %td
-            .stat.fixed(style="width:#{states["fixed"]}px;")= states["fixed"]
-          %td
-            .stat.invalid(style="width:#{states["invalid"]}px;")= states["invalid"]
-          %td.total= states.values.sum
+          %th Personne
+          %th Entrées ouvertes
+        - @stats.top_reporters.each do |user|
+          %tr
+            %td{'class'=>'stat'}
+              =link_to(user["name"], "/users/#{user["name"]}")
+            %td
+              .stat.misc(style="width: #{(width_stats * user["cnt"] / maxval).to_i}px;")= user["cnt"]
 
-    %h2 Évolution du nombre d'entrées dans le système de suivi
-    %table
-      %tr
-        %th Mois
-        %th Entrées restantes/Nouvelles entrées
-        %th Total ouvertes
-        %th Entrées corrigées/invalidées
-      - total = 0
-      - @stats.by_month.sort.each do |month|
-        - opened  = month[1]["opened"]  || 0
-        - fixed   = month[1]["fixed"]   || 0
-        - invalid = month[1]["invalid"] || 0
+    - if @stats.good_workers.size() > 0
+      - maxval = @stats.good_workers.map {|a| a["cnt"] }.max
+      %h2#nbfermees Nombre d'entrées fermées par les admins
+      %table
         %tr
-          %td
-            = month[0].sub(/(\d{4})(\d{2})/, '\2 \1')
-          %td
-            .stat.remaining(style="width:#{width_factor / 4 * total}px;")= total
-            .stat.month_new(style="width:#{width_factor / 4 * opened}px;")= opened
-          %td
-            = total = total + opened - fixed - invalid
-          %td
-            .stat.month_fixed(style="width:#{width_factor / 4 * fixed}px;")= fixed
-            .stat.month_invalid(style="width:#{width_factor / 4 * invalid}px;")= invalid
+          %th Personne
+          %th Entrées fermées
+        - @stats.good_workers.each do |worker|
+          %tr
+            %td{'class'=>'stat'}
+              = link_to(worker["name"], "/users/#{worker["name"]}")
+            %td
+              .stat.misc(style="width: #{(width_stats * worker["cnt"] / maxval).to_i}px;")= worker["cnt"]
 
-    %h2 État des entrées dans le système de suivi par catégorie
-    %table
-      %tr
-        %th Catégorie
-        %th Nombre d'entrées
-      - @stats.by_category.each do |category|
+    - if @stats.by_year.size() > 0
+      %h2#an Entrées classées par année
+      %p
+        État des entrées dans le système de suivi (classées par date d'ouverture)
+      %table
         %tr
-          %td= category["name"]
-          %td
-            .stat.category(style="width: #{width_factor * category["cnt"]}px;")= category["cnt"]
+          %th Année
+          %th Entrées ouvertes
+          %th Entrées corrigées
+          %th Entrées invalidées
+          %th Total
+        - @stats.by_year.each do |year,states|
+          %tr
+            %td{'class'=>'stat'}= year
+            %td
+              .stat.opened(style="width:#{width_stats * states["opened"] / maxval / 3}px;")= states["opened"]
+            %td
+              .stat.fixed(style="width:#{width_stats * states["fixed"] / maxval / 3}px;")= states["fixed"]
+            %td
+              .stat.invalid(style="width:#{width_stats * states["invalid"] / maxval / 3}px;")= states["invalid"]
+            %td.total= states.values.sum
 
-    %h2 Statistiques Ohloh
+    -if @stats.states["total"] > 0
+      %h2#mois Évolution du nombre d'entrées dans le système de suivi
+      - maxval = @stats.by_month.values.max {|a,b| a.values.max <=> b.values.max}.values.max
+      %table
+        %tr
+          %th Mois
+          %th Entrées restantes
+          %th Nouvelles entrées
+          %th Total ouvertes
+          %th Entrées corrigées
+          %th Entrées invalidées
+        - total = 0
+        - @stats.by_month.sort.each do |month|
+          - opened  = month[1]["opened"]  || 0
+          - fixed   = month[1]["fixed"]   || 0
+          - invalid = month[1]["invalid"] || 0
+          %tr
+            %td{'class'=>'stat'}
+              = month[0].sub(/(\d{4})(\d{2})/, '\2 \1')
+            %td
+              .stat.remaining(style="width:#{width_stats * total / maxval / 4}px;")= total
+            %td
+              .stat.month_new(style="width:#{width_stats * opened / maxval / 4}px;")= opened
+            %td
+              = total = total + opened - fixed - invalid
+            %td
+              .stat.month_fixed(style="width:#{width_stats * fixed / maxval / 4}px;")= fixed
+            %td
+              .stat.month_invalid(style="width:#{width_stats * invalid / maxval / 4}px;")= invalid
+
+      %h2#categorie État des entrées dans le système de suivi par catégorie
+      - maxval = @stats.by_category.max {|a,b| a["cnt"] <=> b["cnt"]}["cnt"]
+      %table
+        %tr
+          %th Catégorie
+          %th Nombre d'entrées
+        - @stats.by_category.each do |category|
+          %tr
+            %td{'class'=>'stat'}= category["name"]
+            %td
+              .stat.category(style="width: #{width_stats * category["cnt"] / maxval}px;")= category["cnt"]
+
+    %h2#ohloh Statistiques Ohloh
     %script(src="http://www.ohloh.net/p/488790/widgets/project_languages.js")
     %script(src="http://www.ohloh.net/p/488790/widgets/project_basic_stats.js")
     %script(src="http://www.ohloh.net/p/488790/widgets/project_cocomo.js")

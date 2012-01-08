@@ -1,122 +1,129 @@
 #contents.statistics
-  =h1 "Statistiques sur les contenus et les commentaires"
-  - width_factor = 0.1
+  =h1 "Statistiques sur les contenus"
+  - width_stats = 400
 
   .body
     %strong
       Statistiques mises à jour le #{l Time.now}
 
-    %h2 Contenus
-      
-    %h3 Répartition par type des #{@stats.contents["Total"]} contenus
     %ul
-      %li #{@stats.contents["Diary"]} journaux
-      %li #{@stats.contents["Post"]} entrées de forums
-      %li #{@stats.contents["News"]} dépêches dont #{@stats.news["draft"]} en rédaction, #{@stats.news["candidate"]} en modération, #{@stats.news["published"]} publiées, #{@stats.news["refused"]} refusées. Publiées sous #{@stats.nb_news_authors} noms par #{@stats.nb_news_accounts} utilisateurs.
-      %li #{@stats.contents["Tracker"]} entrées dans le système de suivi
-      %li #{@stats.contents["Poll"]} sondages
-      %li #{@stats.contents["WikiPage"]} pages de wiki
+      %li=link_to("par type","#type")
+      %li=link_to("par an","#annee")
+      %li=link_to("par mois","#mois")
+      %li=link_to("par jour de la semaine","#jour")
+      %li=link_to("par taille","#taille")
+      %li=link_to("par licence","#licence")
 
-    %h3 Répartition temporelle des #{@stats.contents["Total"]} contenus
-     
-    .stat(class="contentdiary" style="width: 250px;") journaux
-    .stat(class="contentpost" style="width: 250px;") entrées de forums
-    .stat(class="contentnews" style="width: 250px;") dépêches
-    .stat(class="contenttracker" style="width: 250px;") entrées dans le système de suivi
-    .stat(class="contentpoll" style="width: 250px;") sondages
-    .stat(class="contentwikipage" style="width: 250px;") pages wiki
+    - if @stats.contents["Total"] > 1
+      %h2#type Répartition par type des #{@stats.contents["Total"]} contenus
+    - else
+      %h2#type Répartition par type
+    %ul
+      %li #{pluralize @stats.contents["Diary"], "journal", "journaux"}
+      %li #{pluralize @stats.contents["Post"], "entrée"} de forums
+      %li #{pluralize @stats.contents["News"], "dépêche"} dont #{@stats.news["draft"]} en rédaction, #{@stats.news["candidate"]} en modération, #{pluralize @stats.news["published"], "publiée"}, #{pluralize @stats.news["refused"], "refusée"}
+      - if @stats.contents["News"].to_i > 0
+        = ". Publication sous #{pluralize @stats.nb_news_authors, "nom"} par #{pluralize @stats.nb_news_accounts, "utilisateur"}."
+      %li #{pluralize @stats.contents["Tracker"], "entrée"} dans le système de suivi
+      %li #{pluralize @stats.contents["Poll"], "sondage"}
+      %li #{pluralize @stats.contents["WikiPage"], "page"} de wiki
+
+    - if @stats.contents["Total"] > 1
+      %h2#annee Répartition annuelle des #{@stats.contents["Total"]} contenus
+    - else
+      %h2#annee Répartition annuelle
 
     %table
+      - maxval = @stats.contents_by_year.values.map(&:values).flatten.max
       %tr
         %th Année
+        %th Type
         %th Contenus
       - @stats.contents_by_year.each do |year,content|
-        %tr
-          %td= year
-          %td
-            - content.each do |type,cnt|
-              .stat(class="content#{type.downcase()}" style="width: #{(width_factor * cnt).to_i}px;")= cnt
+        - newyear = true
+        - content.each do |type,cnt|
+          %tr
+            - if newyear
+              %td{'class' => 'stat','rowspan' => content.size()}= year
+              - newyear = false
+            %td
+              .stat(class="content#{type.downcase()}" style="width: 100px;") #{translate_content_type(type)}
+            %td
+              .stat(class="content#{type.downcase()}" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
+
+    - if @stats.contents["Total"] > 1
+      %h2#mois Répartition mensuelle des #{@stats.contents["Total"]} contenus
+    - else
+      %h2#mois Répartition mensuelle
 
     %table
+      - maxval = @stats.contents_by_month.values.map(&:values).flatten.max
       %tr
         %th Mois
         %th Contenus
       - @stats.contents_by_month.each do |month,content|
-        %tr
-          %td= month.sub(/(\d{4})(\d{2})/, '\2 \1')
-          %td
-            - content.each do |type,cnt|
-              .stat(class="content#{type.downcase}" style="width: #{(width_factor * cnt * 30).to_i}px;")= cnt
+        - newyear = true
+        - content.each do |type,cnt|
+          %tr
+            -if newyear
+              %td{'class'=>'stat','rowspan'=>content.size()}= month.sub(/(\d{4})(\d{2})/, '\2 \1')
+              - newyear = false
+            %td
+              .stat(class="content#{type.downcase()}" style="width: 100px;") #{translate_content_type(type)}
+            %td
+              .stat(class="content#{type.downcase}" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
 
-    %table
-      %tr
-        %th Jour
-        %th Nombre de contenus
-      - @stats.contents_by_day.each do |day|
+    %h2#jour Répartition des contenus par jour de la semaine
+    - if @stats.contents["Total"] > 1
+      - maxval = @stats.contents_by_day.map {|a| a["cnt"] }.max
+      %table
         %tr
-          %td= day_name day["day"]
-          %td
-            .stat.misc(style="width: #{(width_factor * day["cnt"] / 3).to_i}px;")= day["cnt"]
+          %th Jour
+          %th Nombre de contenus
+        - @stats.contents_by_day.each do |day|
+          %tr
+            %td= day_name day["day"]
+            %td
+              .stat.misc(style="width: #{(width_stats * day["cnt"] / maxval).to_i}px;")= day["cnt"]
+    - else
+      Aucun contenu
 
-    %table
-      %tr
-        %th Années
-        %th Taille moyenne des dépêches (en octets, mise en forme comprise)
-      - @stats.news_size.each do |entry|
+    %h2#taille Évolution de la taille moyenne des dépêches
+    - if @stats.news["published"] > 0
+      - maxval = @stats.news_size.map {|a| a["cnt"] }.max
+      %table
+      %table
         %tr
-          %td= entry["year"]
-          %td
-            .stat.misc(style="width: #{(width_factor * entry["cnt"]).to_i}px;")= entry["cnt"]
+          %th Années
+          %th Taille moyenne des dépêches (en octets, mise en forme comprise)
+        - @stats.news_size.each do |entry|
+          %tr
+            %td= entry["year"]
+            %td
+              .stat.misc(style="width: #{(width_stats * entry["cnt"] / maxval).to_i}px;")= entry["cnt"]
+    - else
+      Aucune dépêche publiée
+
+    %h2#licence Évolution du pourcentage de contenus sous licence CC By-Sa
+    - if @stats.contents_by_license.size() > 0
+      %table
+        %th Année
+        %th Type
+        %th Pourcentage de dépêches et journaux sous licence Creative Commons By-Sa
+        - @stats.contents_by_license.each do |year,content|
+          - newyear = true
+          - content.each do |type,cnt|
+            %tr
+              - if newyear
+                %td{'class'=>'stat','rowspan'=>content.size()}= year
+                - newyear = false
+              %td
+                .stat(class="content#{type.downcase()}" style="width: 100px;") #{translate_content_type(type)}
+              %td
+                .stat(class="content#{type.downcase()}" style="width: #{(width_stats * cnt / 100).to_i}px;")= cnt
 
     -# TODO REDIS %p Nombre de clics moyen par lien sur les dépêches acceptées
     -# Année	Nombre de clics moyen	Total
     -# 2000	857 857
-
-    -# TODO chiant et pas très utile %p Nombre de liens avec compteur de clics sur les dépêches acceptées
-    -# Année	Nombre de liens	Total
-    -# 2000	1643 1643
-
-    %h2 Commentaires
-
-    %h3 Répartition par type des #{@stats.comments["Total"]} commentaires
-    %ul
-      %li #{@stats.comments["Diary"]} dans les journaux
-      %li #{@stats.comments["Post"]} dans les forums
-      %li #{@stats.comments["News"]} dans les dépêches
-      %li #{@stats.comments["Tracker"]} dans le système de suivi
-      %li #{@stats.comments["Poll"]} dans les sondages
-      %li #{@stats.comments["WikiPage"]} dans les pages de wiki
-
-    %table
-      %tr
-        %th Année
-        %th Commentaires
-      - @stats.comments_by_year.each do |year,comment|
-        %tr
-          %td= year
-          %td
-            - comment.each do |type,cnt|
-              .stat(class="content#{type.downcase()}" style="width: #{(width_factor * cnt / 10).to_i}px;")= cnt
-
-    %table
-      %tr
-        %th Mois
-        %th Commentaires
-      - @stats.comments_by_month.each do |month,comment|
-        %tr
-          %td= month.sub(/(\d{4})(\d{2})/, '\2 \1')
-          %td
-            - comment.each do |type,cnt|
-              .stat(class="content#{type.downcase}" style="width: #{(width_factor * cnt).to_i}px;")= cnt
-
-    %table
-      %tr
-        %th Jour
-        %th Nombre de commentaires
-      - @stats.comments_by_day.each do |day,cnt|
-        %tr
-          %td= day_name day
-          %td
-            .stat.misc(style="width: #{(width_factor * cnt / 30).to_i}px;")= cnt
 
     -# TODO REDIS %h2 Notes sur les contenus

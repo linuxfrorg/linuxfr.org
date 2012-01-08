@@ -69,51 +69,16 @@ class Statistics::Contents < Statistics::Statistics
     select_all "SELECT YEAR(created_at) AS year,ROUND(AVG(LENGTH(body)+LENGTH(second_part))) AS cnt FROM news GROUP BY year ORDER BY year"
   end
 
-  def comments
-    return @comments if @comments
+  def contents_by_license
+    return @contents_by_license if @contents_by_license
 
-    @comments = contents_hash
-    by_type = select_all("SELECT content_type, COUNT(*) AS cnt FROM comments,nodes WHERE comments.node_id=nodes.id GROUP BY content_type")
-    by_type.each { |comment| @comments[comment["content_type"]] = comment["cnt"] }
-    @comments["Total"] = @comments.values.sum
-
-    @comments
-  end
-
-  def comments_by_year
-    return @comments_by_year if @comments_by_year
-
-    @comments_by_year = {}
-    $redis.keys("stats/comments/year/*").sort.each do |k|
-      _, _, _, year, type = k.split('/')
-      @comments_by_year[year] ||= contents_hash
-      @comments_by_year[year][type] = $redis.get(k).to_i
+    @contents_by_license = {}
+    entries = select_all "SELECT YEAR(created_at) AS year, content_type, ROUND(AVG(100*cc_licensed)) AS pct FROM nodes WHERE (content_type='News' OR content_type='Diary') GROUP BY year, content_type HAVING year>=2010 ORDER BY year, content_type;"
+    entries.each do |entry|
+      @contents_by_license[entry["year"]] ||= contents_hash
+      @contents_by_license[entry["year"]][entry["content_type"]] = entry["pct"]
     end
 
-    @comments_by_year
-  end
-
-  def comments_by_month
-    return @comments_by_month if @comments_by_month
-
-    @comments_by_month = {}
-    $redis.keys("stats/comments/month/*").sort.each do |k|
-      _, _, _, month, type = k.split('/')
-      @comments_by_month[month] ||= contents_hash
-      @comments_by_month[month][type] = $redis.get(k).to_i
-    end
-
-    @comments_by_month
-  end
-
-  def comments_by_day
-    return @comments_by_wday if @comments_by_wday
-
-    @comments_by_wday = {}
-    $redis.keys("stats/comments/wday/*").each do |k|
-      @comments_by_wday[k.split('/').last] = $redis.get(k).to_i
-    end
-
-    @comments_by_wday
+    @contents_by_license
   end
 end
