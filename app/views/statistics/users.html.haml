@@ -193,7 +193,7 @@
             = (style["stylesheet"] || "Feuille de style par défaut").sub("/stylesheets/contrib/", "")
           %td
             .stat.misc(style="width: #{(width_stats * style["cnt"] / maxval).to_i}px;")= style["cnt"]
-        %td #{@stats.pctrecent(style["cnt"])}
+          %td #{@stats.pctrecent(style["cnt"])}
   - else
     Aucune CSS autre que celle par défaut
 
