@@ -21,9 +21,10 @@
     %ul
       %li #{pluralize @stats.contents["Diary"], "journal", "journaux"}
       %li #{pluralize @stats.contents["Post"], "entrée"} de forums
-      %li #{pluralize @stats.contents["News"], "dépêche"} dont #{@stats.news["draft"]} en rédaction, #{@stats.news["candidate"]} en modération, #{pluralize @stats.news["published"], "publiée"}, #{pluralize @stats.news["refused"], "refusée"}
-      - if @stats.contents["News"].to_i > 0
-        = ". Publication sous #{pluralize @stats.nb_news_authors, "nom"} par #{pluralize @stats.nb_news_accounts, "utilisateur"}."
+      %li
+        #{pluralize @stats.contents["News"], "dépêche"} dont #{@stats.news["draft"]} en rédaction, #{@stats.news["candidate"]} en modération, #{pluralize @stats.news["published"], "publiée"}, #{pluralize @stats.news["refused"], "refusée"}
+        - if @stats.contents["News"].to_i > 0
+          = ". Publication sous #{pluralize @stats.nb_news_authors, "nom"} par #{pluralize @stats.nb_news_accounts, "utilisateur"}."
       %li #{pluralize @stats.contents["Tracker"], "entrée"} dans le système de suivi
       %li #{pluralize @stats.contents["Poll"], "sondage"}
       %li #{pluralize @stats.contents["WikiPage"], "page"} de wiki
