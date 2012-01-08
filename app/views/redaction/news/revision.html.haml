@@ -1,4 +1,11 @@
 #contents
+  %nav
+    %ul
+      - if @version.higher_item
+        %li= link_to "Précédente révision", revision_redaction_news_path(@news.friendly_id, @version.higher_item.version)
+      - if @version.lower_item
+        %li= link_to "Révision suivante", revision_redaction_news_path(@news.friendly_id, @version.lower_item.version)
+
   =link_to h1(@news.title), [@news.draft? ? :redaction : :moderation, @news]
 
   %h2
