@@ -23,6 +23,7 @@ class Statistics::Moderation < Statistics::Statistics
         WHERE nodes.content_id = news.id
           AND nodes.content_type='News'
           AND nodes.created_at >= DATE('2011-01-01 00:00:001')
+     GROUP BY year
      ORDER BY year
     EOS
   end
