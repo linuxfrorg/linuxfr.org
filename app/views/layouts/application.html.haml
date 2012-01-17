@@ -14,4 +14,10 @@
         %p= link_to "Revenir en haut de page", '#top', :class => 'scroll'
     - cache "fragments/layouts/footer", :expires_in => 1.minute do
       = render 'layouts/footer'
+    #sopa-overlay
+      .box
+        .inner
+          %img(src="/images/historique/sopa.png" alt="")
+          %p Œuvre en conformité avec la législation en vigueur <br/> (Stop Online Piracy Act, SOPA, 2012).
+          %p Merci pour votre visite et bon jeu !
     = javascript_include_tag "application"

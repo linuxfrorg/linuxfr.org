@@ -1,0 +1,24 @@
+#sopa-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 90;
+  overflow: hidden;
+  background-color: #000;
+
+  .box {
+    position: absolute;
+    width: 100%;
+  }
+  .inner {
+    width: 500px;
+    margin: 100px auto;
+    text-align: center;
+    color: #fff;
+  }
+}
+
+html { padding: 0 !important; }
+body { margin: 0 !important; border: 0 !important; }
