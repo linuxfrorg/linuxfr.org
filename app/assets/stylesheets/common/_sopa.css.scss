@@ -7,13 +7,14 @@
   z-index: 90;
   overflow: hidden;
   background-color: #000;
+  cursor: pointer;
 
   .box {
     position: absolute;
     width: 100%;
   }
   .inner {
-    width: 500px;
+    width: 480px;
     margin: 100px auto;
     text-align: center;
     color: #fff;
@@ -22,3 +23,5 @@
 
 html { padding: 0 !important; }
 body { margin: 0 !important; border: 0 !important; }
+#sidebar { margin-left: 32px !important; }
+#container { margin-right: 16px !important; }
