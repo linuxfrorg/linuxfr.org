@@ -39,7 +39,8 @@ class TrackersController < ApplicationController
 
   def show
     enforce_view_permission(@tracker)
-    redirect_to @tracker, :status => 301 if !@tracker.friendly_id_status.best?
+    path = tracker_path(@tracker)
+    redirect_to path, :status => 301 if request.path != path
   end
 
   def new

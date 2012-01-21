@@ -35,7 +35,8 @@ class Post < Content
 
 ### SEO ###
 
-  has_friendly_id :title, :use_slug => true, :scope => :forum, :reserved_words => %w(index nouveau)
+  extend FriendlyId
+  friendly_id
 
 ### Sphinx ####
 

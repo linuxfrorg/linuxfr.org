@@ -37,8 +37,9 @@ class PostsController < ApplicationController
 
   def show
     enforce_view_permission(@post)
-    redirect_to [@forum, @post], :status => 301 if !@post.friendly_id_status.best?
     flash.now[:alert] = "Attention, ce post a été supprimé et n'est visible que par les admins" unless @post.visible?
+    path = forum_post_path(@forum, @post)
+    redirect_to path, :status => 301 if request.path != path
   end
 
   def edit
@@ -67,7 +68,8 @@ protected
   def find_post
     @forum = Forum.find(params[:forum_id])
     @post  = @forum.posts.find(params[:id])
-    redirect_to [@forum, @post], :status => 301 if !@forum.friendly_id_status.best? || !@post.friendly_id_status.best?
+    path = forum_post_path(@forum, @post)
+    redirect_to path, :status => 301 if request.path != path
   end
 
   def marked_as_read

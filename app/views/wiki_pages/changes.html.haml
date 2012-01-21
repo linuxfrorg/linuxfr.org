@@ -8,6 +8,6 @@
     = list_of(@versions) do |v|
       #{l v.created_at.to_date} -
       = link_to v.wiki_page.title, v.wiki_page
-      = link_to "(révision #{v.version} par #{v.user.try :name})", revision_wiki_page_path(v.wiki_page.friendly_id, v.version)
+      = link_to "(révision #{v.version} par #{v.user.try :name})", revision_wiki_page_path(v.wiki_page.cached_slug, v.version)
   %nav.toolbox
     = paginate @versions

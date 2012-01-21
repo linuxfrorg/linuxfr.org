@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111207205902) do
+ActiveRecord::Schema.define(:version => 20111218002356) do
 
   create_table "access_grants", :force => true do |t|
     t.integer  "account_id"
@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(:version => 20111207205902) do
     t.datetime "updated_at"
   end
 
+  add_index "client_applications", ["app_id"], :name => "index_client_applications_on_app_id"
+
   create_table "comments", :force => true do |t|
     t.integer  "node_id"
     t.integer  "user_id"
@@ -133,6 +135,19 @@ ActiveRecord::Schema.define(:version => 20111207205902) do
   end
 
   add_index "friend_sites", ["position"], :name => "index_friend_sites_on_position"
+
+  create_table "friendly_id_slugs", :force => true do |t|
+    t.string   "slug",                         :default => "0"
+    t.integer  "sluggable_id",                 :default => 0
+    t.integer  "sequence",                     :default => 1,   :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.string   "scope",          :limit => 40
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], :name => "index_friendly_id_slugs_on_slug_and_sluggable_type", :unique => true
+  add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "links", :force => true do |t|
     t.integer  "news_id",                   :null => false
@@ -278,18 +293,6 @@ ActiveRecord::Schema.define(:version => 20111207205902) do
 
   add_index "sections", ["cached_slug"], :name => "index_sections_on_cached_slug"
   add_index "sections", ["state", "title"], :name => "index_sections_on_state_and_title"
-
-  create_table "slugs", :force => true do |t|
-    t.string   "name"
-    t.integer  "sluggable_id"
-    t.integer  "sequence",                     :default => 1, :null => false
-    t.string   "sluggable_type", :limit => 40
-    t.string   "scope",          :limit => 40
-    t.datetime "created_at"
-  end
-
-  add_index "slugs", ["name", "sluggable_type", "scope", "sequence"], :name => "index_slugs_on_name_and_more", :unique => true
-  add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

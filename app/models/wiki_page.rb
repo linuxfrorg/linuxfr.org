@@ -32,7 +32,8 @@ class WikiPage < Content
 
 ### SEO ###
 
-  has_friendly_id :title, :use_slug => true, :reserved_words => RESERVED_WORDS
+  extend FriendlyId
+  friendly_id :title, :reserved_words => RESERVED_WORDS
 
   def normalize_friendly_id(string)
     string.word_chars.clean.truncate_bytes(150).with_separators.to_s

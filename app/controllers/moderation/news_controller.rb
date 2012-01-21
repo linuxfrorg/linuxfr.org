@@ -16,7 +16,8 @@ class Moderation::NewsController < ModerationController
     @boards = Board.all(Board.news, @news.id)
     respond_to do |wants|
       wants.html {
-        redirect_to [:moderation, @news], :status => 301 and return if !@news.friendly_id_status.best?
+        path = moderation_news_path(@news)
+        redirect_to path, :status => 301 and return if request.path != path
         render :show, :layout => 'chat_n_edit'
       }
       wants.js { render :partial => 'short' }

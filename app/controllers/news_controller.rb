@@ -58,7 +58,8 @@ protected
   def find_news
     @news = News.find(params[:id])
     enforce_view_permission(@news)
-    redirect_to @news, :status => 301 if !@news.friendly_id_status.best?
+    path = news_path(@news)
+    redirect_to path, :status => 301 if request.path != path
   end
 
   def marked_as_read
