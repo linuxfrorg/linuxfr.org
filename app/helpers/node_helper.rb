@@ -22,7 +22,7 @@ module NodeHelper
   def article_for(record)
     cp = ContentPresenter.new
     cp.record = record
-    cp.css_class = %w(node)
+    cp.css_class = %w(node hentry)
     score = [ [record.node.score / 5, -10].max, 10].min
     cp.css_class << "score#{score}"
     cp.css_class << record.class.name.downcase
@@ -102,7 +102,7 @@ module NodeHelper
     date_time  ||= Time.now
     date         = content_tag(:span, "le #{date_time.to_s(:date)}", :class => "date")
     time         = content_tag(:span,  "à #{date_time.to_s(:time)}", :class => "time")
-    published_at = content_tag(:time, date + " " + time, :datetime => date_time.iso8601, :pubdate => "pubdate")
+    published_at = content_tag(:time, date + " " + time, :datetime => date_time.iso8601, :pubdate => "pubdate", :class => "updated")
     "Posté par #{user_link} #{published_at}.".html_safe
   end
 

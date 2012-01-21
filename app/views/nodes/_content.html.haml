@@ -1,6 +1,6 @@
 %article{:class => css_class, :itemscope => true, :itemtype => "http://schema.org/Article"}
   %header
-    %h1(itemprop="name")= title
+    %h1(itemprop="name" class="entry-title")= title
     .meta
       = meta
       - if record.node.cc_licensed?
@@ -22,7 +22,7 @@
     %figure.datePourCss= date_pour_css(record)
     - if image
       %figure.image(itemprop="image")= image
-  .content(itemprop="articleBody")
+  .content(itemprop="articleBody" class="entry-content")
     = body
   %footer.actions
     = read_it(record)
