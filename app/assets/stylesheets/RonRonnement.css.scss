@@ -1308,7 +1308,7 @@ body#redaction-index {
   #container {
     padding: 40px 10px 10px;
     & > div { padding: 10px; }
-    & > footer { clear: right; }
+    & > footer { clear: both; }
   }
 }
 
