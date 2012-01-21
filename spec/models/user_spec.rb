@@ -18,11 +18,6 @@
 require 'spec_helper'
 
 describe User do
-  before(:each) do
-    User.delete_all
-    Account.delete_all
-  end
-
   it "has an account" do
     user = FactoryGirl.create(:user)
     user.account.should be

@@ -2,12 +2,6 @@
 require 'spec_helper'
 
 describe "Vote" do
-  before(:each) do
-    User.delete_all
-    Account.delete_all
-    $redis.flushdb
-  end
-
   let(:account) { FactoryGirl.create(:normal_account) }
   let(:node)    { FactoryGirl.create(:diary).node }
 

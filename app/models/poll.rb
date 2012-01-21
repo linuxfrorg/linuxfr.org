@@ -12,7 +12,7 @@
 #
 
 class Poll < Content
-  set_table_name "polls"
+  self.table_name = "polls"
 
   has_many :answers, :class_name => 'PollAnswer',
                      :dependent  => :destroy,

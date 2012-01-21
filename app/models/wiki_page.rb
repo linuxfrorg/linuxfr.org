@@ -15,7 +15,7 @@
 # The wiki have pages, with the content that can't go anywhere else.
 #
 class WikiPage < Content
-  set_table_name "wiki_pages"
+  self.table_name = "wiki_pages"
 
   RESERVED_WORDS = %w(index nouveau modifications pages)
   has_many :versions, :class_name => 'WikiVersion',
@@ -34,10 +34,6 @@ class WikiPage < Content
 
   extend FriendlyId
   friendly_id :title, :reserved_words => RESERVED_WORDS
-
-  def normalize_friendly_id(string)
-    string.word_chars.clean.truncate_bytes(150).with_separators.to_s
-  end
 
 ### Sphinx ####
 

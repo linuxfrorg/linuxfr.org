@@ -2,11 +2,6 @@
 require 'spec_helper'
 
 describe "Accounts" do
-  before(:each) do
-    User.delete_all
-    Account.delete_all
-  end
-
   let!(:account) { FactoryGirl.create(:normal_account) }
 
   it "should authenticate use successfully" do

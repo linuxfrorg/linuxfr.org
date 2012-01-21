@@ -3,13 +3,6 @@
 require 'spec_helper'
 
 describe DiariesController do
-  before(:each) do
-    User.delete_all
-    Account.delete_all
-    Node.delete_all
-    Diary.delete_all
-  end
-
   let(:diary) { FactoryGirl.create(:diary) }
   let(:owner) { diary.owner }
 

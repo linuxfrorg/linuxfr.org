@@ -22,7 +22,7 @@
 # They can also suggest improvements here.
 #
 class Tracker < Content
-  set_table_name "trackers"
+  self.table_name = "trackers"
 
   belongs_to :assigned_to_user, :class_name => "User"
   belongs_to :category

@@ -3,10 +3,6 @@
 require 'spec_helper'
 
 describe Board do
-  before(:each) do
-    $redis.flushdb
-  end
-
   let(:john) do
     user = stub("John Doe", :to_param => "john-doe")
     user.stub_chain(:account, :login).and_return("john")

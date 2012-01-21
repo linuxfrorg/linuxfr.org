@@ -23,7 +23,7 @@
 # that will be reviewed and moderated by the LinuxFr.org team.
 #
 class News < Content
-  set_table_name "news"
+  self.table_name = "news"
 
   belongs_to :section
   belongs_to :moderator, :class_name => "User"

@@ -62,6 +62,7 @@ GEM
       execjs
     coffee-script-source (1.2.0)
     daemons (1.1.6)
+    database_cleaner (0.7.1)
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -269,6 +270,7 @@ DEPENDENCIES
   capistrano_colors
   carrierwave (~> 0.5)
   coffee-rails (~> 3.2)
+  database_cleaner (~> 0.7)
   devise (~> 1.5)
   differ (~> 0.1)
   factory_girl_rails (~> 1.6)

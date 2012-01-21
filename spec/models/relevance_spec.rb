@@ -2,12 +2,6 @@
 require 'spec_helper'
 
 describe "Relevance" do
-  before(:each) do
-    User.delete_all
-    Account.delete_all
-    $redis.flushdb
-  end
-
   let(:account) { FactoryGirl.create(:normal_account) }
   let(:writer)  { FactoryGirl.create(:writer) }
   let(:comment) { FactoryGirl.create(:comment, :user_id => writer.id) }

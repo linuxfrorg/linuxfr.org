@@ -3,9 +3,6 @@ require 'spec_helper'
 
 describe Thread do
   before(:each) do
-    Comment.delete_all
-    User.delete_all
-    Account.delete_all
     @user_id = FactoryGirl.create(:user).id
     @node_id = 1
   end

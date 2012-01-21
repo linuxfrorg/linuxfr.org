@@ -3,13 +3,6 @@ require 'spec_helper'
 
 describe "News" do
   before(:each) do
-    User.delete_all
-    Account.delete_all
-    Section.delete_all
-    News.delete_all
-    Node.delete_all
-    Comment.delete_all
-    $redis.flushdb
     Lang['fr'] = 'Français'
     Lang['en'] = 'Anglais'
   end

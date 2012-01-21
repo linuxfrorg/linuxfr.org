@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy, :include => :tag
   has_many :tags, :through => :taggings, :uniq => true
 
-  attr_accessible :name, :homesite, :jabber_id, :signature, :avatar, :remove_avatar, :remote_avatar_url
+  attr_accessible :name, :homesite, :jabber_id, :signature, :avatar, :remove_avatar, :remote_avatar_url, :gravatar_hash
 
 ### SEO ###
 

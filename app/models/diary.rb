@@ -19,7 +19,7 @@
 # informations, discussions and trolls.
 #
 class Diary < Content
-  set_table_name "diaries"
+  self.table_name = "diaries"
 
   belongs_to :owner, :class_name => 'User'
 

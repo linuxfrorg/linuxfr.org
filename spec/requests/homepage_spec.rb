@@ -2,15 +2,6 @@
 require 'spec_helper'
 
 describe "Homepage" do
-  before(:each) do
-    News.delete_all
-    Section.delete_all
-    Node.delete_all
-    User.delete_all
-    Account.delete_all
-    Comment.delete_all
-  end
-
   let!(:account) { FactoryGirl.create(:normal_account) }
 
   it "works for anonymous" do

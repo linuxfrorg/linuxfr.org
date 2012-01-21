@@ -18,7 +18,7 @@
 # The users post them for seeking help.
 #
 class Post < Content
-  set_table_name "posts"
+  self.table_name = "posts"
 
   belongs_to :forum
 

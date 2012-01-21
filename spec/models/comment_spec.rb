@@ -20,12 +20,6 @@
 require 'spec_helper'
 
 describe Comment do
-  before(:each) do
-    User.delete_all
-    Account.delete_all
-    Comment.delete_all
-  end
-
   it "is valid" do
     FactoryGirl.build(:comment).should be_valid
   end

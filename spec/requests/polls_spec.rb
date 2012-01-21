@@ -2,14 +2,6 @@
 require 'spec_helper'
 
 describe "Polls" do
-  before(:each) do
-    User.delete_all
-    Account.delete_all
-    Node.delete_all
-    Poll.delete_all
-    Comment.delete_all
-  end
-
   let(:account) { FactoryGirl.create(:normal_account) }
   let!(:poll)   { FactoryGirl.create(:poll) }
 

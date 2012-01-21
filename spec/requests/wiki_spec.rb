@@ -4,13 +4,6 @@ require 'spec_helper'
 describe "Wiki" do
   include Warden::Test::Helpers
 
-  before(:each) do
-    User.delete_all
-    Account.delete_all
-    Node.delete_all
-    Comment.delete_all
-  end
-
   after(:each)  { Warden.test_reset! }
 
   let(:account) { FactoryGirl.create(:normal_account) }

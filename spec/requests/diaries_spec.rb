@@ -4,15 +4,6 @@ require 'spec_helper'
 describe "Diaries" do
   include Warden::Test::Helpers
 
-  before(:each) do
-    User.delete_all
-    Account.delete_all
-    News.delete_all
-    Node.delete_all
-    Diary.delete_all
-    Comment.delete_all
-  end
-
   after(:each)  { Warden.test_reset! }
 
   let(:account) { FactoryGirl.create(:normal_account) }
