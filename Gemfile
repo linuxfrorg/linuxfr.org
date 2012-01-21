@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "rails",                   "~>3.1.3"
+gem "rails",                   "~>3.2.0"
 
 gem "acts_as_list",            "~>0.1"
 gem "albino",                  "~>1.3"
@@ -10,7 +10,7 @@ gem "carrierwave",             "~>0.5"
 gem "devise",                  "~>1.5"
 gem "differ",                  "~>0.1"
 gem "french_rails",            "~>0.2"
-gem "friendly_id",             "4.0.0.beta14"
+gem "friendly_id",             "~>4.0"
 gem "haml",                    "~>3.1"
 gem "html_spellchecker",       "~>0.1"
 gem "html_truncator",          "~>0.3"
