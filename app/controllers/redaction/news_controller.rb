@@ -14,7 +14,6 @@ class Redaction::NewsController < RedactionController
   end
 
   def show
-    redirect_to [:redaction, @news], :status => 301 and return if !@news.friendly_id_status.best?
     render :show, :layout => 'chat_n_edit'
   end
 
