@@ -1,3 +1,4 @@
+# encoding: utf-8
 class BoardsController < ApplicationController
   skip_before_filter :verify_authenticity_token
   before_filter :verify_referer_or_authenticity_token, :only => [:create]

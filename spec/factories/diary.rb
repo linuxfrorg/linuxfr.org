@@ -1,3 +1,4 @@
+# encoding: utf-8
 FactoryGirl.define do
   factory :diary do
     title "Mon journal"

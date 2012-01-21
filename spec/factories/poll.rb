@@ -1,3 +1,4 @@
+# encoding: utf-8
 FactoryGirl.define do
   factory :poll do
     title "Quelle distribution GNU/Linux ?"

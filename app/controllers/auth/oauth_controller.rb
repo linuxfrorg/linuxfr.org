@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Auth::OauthController < ApplicationController
   before_filter :authenticate_account!, :only => [:authorize, :authorized]
   before_filter :find_application, :only => [:authorize, :authorized]

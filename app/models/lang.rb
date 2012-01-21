@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Lang
   def self.all
     keys = $redis.lrange("lang", 0, -1)

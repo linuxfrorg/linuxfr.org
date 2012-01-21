@@ -1,3 +1,4 @@
+# encoding: utf-8
 module AtomHelper
 
   def atom_comments_link(url)

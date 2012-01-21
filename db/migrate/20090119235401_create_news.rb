@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CreateNews < ActiveRecord::Migration
   def self.up
     create_table :news do |t|

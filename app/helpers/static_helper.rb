@@ -1,3 +1,4 @@
+# encoding: utf-8
 module StaticHelper
   def helperify(txt)
     txt.gsub(/\{\{([a-z_]+)\}\}/) { send "helper_#{$1}" }.html_safe

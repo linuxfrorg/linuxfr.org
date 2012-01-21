@@ -1,3 +1,4 @@
+# encoding: utf-8
 class RemovePasswordSaltColumn < ActiveRecord::Migration
   def self.up
     remove_column :accounts, :password_salt

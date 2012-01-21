@@ -1,3 +1,4 @@
+# encoding: utf-8
 class HomeController < ApplicationController
   before_filter :google_plus
   caches_action :index, :unless     => Proc.new {|c| c.account_signed_in? || c.dont_index? },

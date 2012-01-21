@@ -1,3 +1,4 @@
+# encoding: utf-8
 class AddIndexOnRememberToken < ActiveRecord::Migration
   def self.up
     add_index :accounts, :remember_token

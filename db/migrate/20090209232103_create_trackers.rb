@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CreateTrackers < ActiveRecord::Migration
   def self.up
     create_table :trackers do |t|

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CreateWikiVersions < ActiveRecord::Migration
   def self.up
     create_table :wiki_versions do |t|

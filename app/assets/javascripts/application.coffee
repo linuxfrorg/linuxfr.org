@@ -113,7 +113,7 @@ $(document).bind("keypress", "g", ->
   $("html,body").animate scrollTop: $("body").attr("scrollHeight"), 500
   false
 ).bind "keypress", "shift+?", ->
-  $.noticeAdd 
+  $.noticeAdd
     text: """
       Raccourcis clavier : <ul>
       <li>? pour l'aide</li>

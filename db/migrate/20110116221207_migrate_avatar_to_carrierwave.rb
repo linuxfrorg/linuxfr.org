@@ -1,3 +1,4 @@
+# encoding: utf-8
 class MigrateAvatarToCarrierwave < ActiveRecord::Migration
   def self.up
     change_table :users, :bulk => true do |t|

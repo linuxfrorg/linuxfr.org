@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Statistics::Statistics
 
   def select_all(sql)

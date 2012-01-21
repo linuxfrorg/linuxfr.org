@@ -1,3 +1,4 @@
+# encoding: utf-8
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "http://linuxfr.org/"
 
@@ -10,7 +11,7 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   # Usage: sitemap.add path, options
   #        (default options are used if you don't specify)
   #
-  # Defaults: :priority => 0.5, :changefreq => 'weekly', 
+  # Defaults: :priority => 0.5, :changefreq => 'weekly',
   #           :lastmod => Time.now, :host => default_host
 
   # Static pages

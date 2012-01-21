@@ -1,4 +1,4 @@
-# Encoding: utf-8
+# encoding: utf-8
 #
 class ReadingsController < ApplicationController
   before_filter :authenticate_account!

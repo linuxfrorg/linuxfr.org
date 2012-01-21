@@ -1,3 +1,4 @@
+# encoding: utf-8
 class RedactionController < ApplicationController
   before_filter :authenticate_account!
   append_view_path NoNamespaceResolver.new

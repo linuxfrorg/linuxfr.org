@@ -1,3 +1,4 @@
+# encoding: utf-8
 # Content is an abstract class (not mapped to a SQL table).
 # It's use as the base class for each content type.
 # It defines some common methods, particulary for ACL.

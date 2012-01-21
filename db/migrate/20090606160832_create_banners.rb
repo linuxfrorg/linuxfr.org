@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CreateBanners < ActiveRecord::Migration
   def self.up
     create_table :banners do |t|

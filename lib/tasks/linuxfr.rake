@@ -1,3 +1,4 @@
+# encoding: utf-8
 namespace :linuxfr do
   desc "Daily crontab"
   task :daily => [

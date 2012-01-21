@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CreateClientApplications < ActiveRecord::Migration
   def change
     create_table :client_applications do |t|

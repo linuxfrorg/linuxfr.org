@@ -1,3 +1,4 @@
+# encoding: utf-8
 # The contrib stylesheets.
 #
 class Stylesheet < Struct.new(:name, :url, :image)

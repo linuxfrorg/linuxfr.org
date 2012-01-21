@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Statistics::Prizes
   attr_reader :month
 

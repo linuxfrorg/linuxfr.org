@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CreatePollAnswers < ActiveRecord::Migration
   def self.up
     create_table :poll_answers do |t|

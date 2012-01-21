@@ -1,3 +1,4 @@
+# encoding: utf-8
 # Monkey-patching of canable to use current_account instead of current_user
 require 'canable'
 module Canable

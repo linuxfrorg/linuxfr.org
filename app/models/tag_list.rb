@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'shellwords'
 
 # The TagList class is used to convert a string to an array of tags.

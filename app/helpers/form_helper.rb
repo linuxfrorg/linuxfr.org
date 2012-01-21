@@ -1,3 +1,4 @@
+# encoding: utf-8
 module FormHelper
 
   def messages_on_error(object)

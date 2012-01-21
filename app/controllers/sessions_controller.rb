@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SessionsController < ApplicationController
   include Devise::Controllers::InternalHelpers
 

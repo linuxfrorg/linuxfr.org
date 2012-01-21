@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CreateNewsVersion < ActiveRecord::Migration
   def change
     create_table :news_versions do |t|

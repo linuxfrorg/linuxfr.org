@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CreateAccessGrants < ActiveRecord::Migration
   def change
     create_table :access_grants do |t|

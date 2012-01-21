@@ -1,3 +1,4 @@
+# encoding: utf-8
 # A thread is a tree of comments, attached to a node.
 #
 # Note: this class is called Threads (with a 's') and not Thread,

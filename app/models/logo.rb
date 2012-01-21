@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Logo
   Public = Rails.root.join("public")
   Path   = "images/logos"

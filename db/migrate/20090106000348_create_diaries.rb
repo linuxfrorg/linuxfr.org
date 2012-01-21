@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CreateDiaries < ActiveRecord::Migration
   def self.up
     create_table :diaries do |t|

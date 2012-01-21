@@ -1,3 +1,4 @@
+# encoding: utf-8
 # LinuxFr Flavored Truncator
 #
 class LFTruncator < HTML_Truncator

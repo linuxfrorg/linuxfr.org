@@ -1,3 +1,4 @@
+# encoding: utf-8
 class RedactionResolver < ::ActionView::FileSystemResolver
   def initialize
     super("app/views")

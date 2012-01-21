@@ -137,6 +137,7 @@ GEM
     mime-types (1.17.2)
     mini_magick (3.4)
       subexec (~> 0.2.1)
+    mo (0.0.2)
     multi_json (1.0.4)
     multipart-post (1.1.4)
     mysql2 (0.3.11)
@@ -267,7 +268,7 @@ DEPENDENCIES
   capistrano
   capistrano_colors
   carrierwave (~> 0.5)
-  coffee-rails (~> 3.1)
+  coffee-rails (~> 3.2)
   devise (~> 1.5)
   differ (~> 0.1)
   factory_girl_rails (~> 1.1)
@@ -286,6 +287,7 @@ DEPENDENCIES
   kaminari (~> 0.12)
   letter_opener
   mini_magick (~> 3.3)
+  mo
   mysql2 (~> 0.3)
   nokogiri (~> 1.5)
   oauth2 (~> 0.5)
@@ -295,9 +297,9 @@ DEPENDENCIES
   redis (~> 2.2)
   redis-store (~> 1.0)
   rinku (~> 1.2)
-  rspec-rails (~> 2.6)
+  rspec-rails (~> 2.8)
   sanitize (~> 2.0)
-  sass-rails (~> 3.1)
+  sass-rails (~> 3.2)
   simple_autocomplete (~> 0.3)
   sitemap_generator (~> 2.1)
   spork (~> 0.8)

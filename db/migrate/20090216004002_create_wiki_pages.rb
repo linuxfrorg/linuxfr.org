@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CreateWikiPages < ActiveRecord::Migration
   def self.up
     create_table :wiki_pages do |t|

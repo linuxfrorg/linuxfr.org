@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SearchController < ApplicationController
   FACET_BY_TYPE = {
     'News'    => :section,

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class AddPublicToTags < ActiveRecord::Migration
   def self.up
     add_column :tags, :public, :boolean, :default => true, :null => false

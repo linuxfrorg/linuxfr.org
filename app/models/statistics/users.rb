@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Statistics::Users < Statistics::Statistics
 
   def pctrecent(value)

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Auth::ClientApplicationsController < InheritedResources::Base
   before_filter :authenticate_account!
   respond_to :html

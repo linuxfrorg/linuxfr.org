@@ -1,3 +1,4 @@
+# encoding: utf-8
 class RenameMouleInVisitor < ActiveRecord::Migration
   def up
     change_column_default :accounts, :role, 'visitor'

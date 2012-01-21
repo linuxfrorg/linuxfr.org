@@ -1,3 +1,4 @@
+# encoding: utf-8
 FactoryGirl.define do
   factory :wiki, :class => WikiPage do
     title "Historique de LinuxFr.org"

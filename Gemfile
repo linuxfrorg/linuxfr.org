@@ -37,15 +37,15 @@ gem "state_machine",           "~>1.1"
 # in production environments by default.
 group :assets do
   gem "jquery-rails",          "~>1.0"
-  gem "sass-rails",            "~>3.1"
-  gem "coffee-rails",          "~>3.1"
+  gem "sass-rails",            "~>3.2"
+  gem "coffee-rails",          "~>3.2"
   gem "therubyracer",          "~>0.9", :require => 'v8'
   gem "uglifier"
 end
 
 # Rspec-rails must be in development for rake stats and in test for normal stuff
 group :development, :test do
-  gem "rspec-rails",           "~>2.6"
+  gem "rspec-rails",           "~>2.8"
 end
 
 group :development do
@@ -55,6 +55,7 @@ group :development do
   gem "capistrano_colors"
   gem "haml-rails"
   gem "letter_opener"
+  gem "mo"
   gem "pry-rails"
   gem "thin"
 end

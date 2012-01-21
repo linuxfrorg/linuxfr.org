@@ -1,3 +1,4 @@
+# encoding: utf-8
 secrets = YAML.load_file(Rails.root.join('config/secret.yml'))
 
 Push.secret   = secrets['board_secret']

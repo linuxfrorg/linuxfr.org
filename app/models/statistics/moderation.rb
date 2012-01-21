@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Statistics::Moderation < Statistics::Statistics
 
   def by_day

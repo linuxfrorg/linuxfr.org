@@ -1,4 +1,4 @@
-# Encoding: UTF-8
+# encoding: utf-8
 
 # It's the famous board, from DaCode (then templeet), boosted to store
 # additional messages about redaction & moderation (votes, locks...)

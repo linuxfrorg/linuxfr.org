@@ -1,3 +1,4 @@
+# encoding: utf-8
 # bundle exec unicorn -c config/unicorn.rb -E production -D
 
 # Environment variables

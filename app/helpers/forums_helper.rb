@@ -1,3 +1,4 @@
+# encoding: utf-8
 module ForumsHelper
 
   def forums_select_list

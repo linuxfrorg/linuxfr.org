@@ -1,3 +1,4 @@
+# encoding: utf-8
 class DontTruncateTitles < ActiveRecord::Migration
   def self.up
     change_column :comments,   :title,       :string, :limit => 100, :null => false

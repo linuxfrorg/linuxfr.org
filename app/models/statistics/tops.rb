@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Statistics::Tops
 
   def last_three_months

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class RemoveLockedById < ActiveRecord::Migration
   def change
     remove_column :links,      :locked_by_id

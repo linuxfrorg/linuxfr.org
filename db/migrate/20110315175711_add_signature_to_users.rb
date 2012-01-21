@@ -1,3 +1,4 @@
+# encoding: utf-8
 class AddSignatureToUsers < ActiveRecord::Migration
   def self.up
     add_column :users, :signature, :string

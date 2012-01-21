@@ -1,3 +1,4 @@
+# encoding: utf-8
 ##
 # if ''.not.blank?
 # http://blog.jayfields.com/2007/08/ruby-adding-not-method-for-readability.html

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Statistics::Tracker < Statistics::Statistics
 
   def states

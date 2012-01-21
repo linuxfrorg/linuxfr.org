@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CreateLinks < ActiveRecord::Migration
   def self.up
     create_table :links do |t|

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class DontTruncateNewsTitle < ActiveRecord::Migration
   def self.up
     change_column :news, :title,       :string, :limit => 160, :null => false

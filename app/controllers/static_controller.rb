@@ -1,3 +1,4 @@
+# encoding: utf-8
 class StaticController < ApplicationController
   caches_action :show, :unless => :account_signed_in?, :expires_in => 7.days
 

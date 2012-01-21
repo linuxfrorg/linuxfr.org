@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Statistics::Contents < Statistics::Statistics
 
   def contents_hash

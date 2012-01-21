@@ -1,3 +1,4 @@
+# encoding: utf-8
 module StatisticsHelper
 
   def link_to_content_with_score(content, score)

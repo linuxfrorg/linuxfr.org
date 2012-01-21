@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CreateParagraphs < ActiveRecord::Migration
   def self.up
     create_table :paragraphs do |t|

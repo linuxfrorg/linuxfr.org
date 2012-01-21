@@ -1,3 +1,4 @@
+# encoding: utf-8
 class ModerationController < ApplicationController
   before_filter :amr_required
   append_view_path RedactionResolver.new

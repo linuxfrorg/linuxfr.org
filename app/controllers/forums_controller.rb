@@ -1,3 +1,4 @@
+# encoding: utf-8
 class ForumsController < ApplicationController
   before_filter :find_forums
   before_filter :get_order
