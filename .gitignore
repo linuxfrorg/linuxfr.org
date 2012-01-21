@@ -3,9 +3,8 @@
 .sass-cache
 config/database.yml
 config/secret.yml
-config/*.sphinx.conf
 db/*.sqlite3
-db/sphinx
+db/elasticsearch
 log
 public/assets
 public/avatars

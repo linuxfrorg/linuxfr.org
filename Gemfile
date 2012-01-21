@@ -29,9 +29,7 @@ gem "sanitize",                "~>2.0"
 gem "sitemap_generator",       "~>2.1"
 gem "simple_autocomplete",     "~>0.3"
 gem "state_machine",           "~>1.1"
-# TODO Rails3
-# gem "thinking-sphinx",       "~>1.3", :require => "thinking_sphinx"
-# gem "ts-datetime-delta",     "~>1.0", :require => "thinking_sphinx/deltas/datetime_delta"
+gem "tire",                    "~>0.3"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -57,6 +55,7 @@ group :development do
   gem "letter_opener"
   gem "mo"
   gem "pry-rails"
+  gem "springboard"
   gem "thin"
 end
 

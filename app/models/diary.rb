@@ -22,6 +22,7 @@ class Diary < Content
   self.table_name = "diaries"
 
   belongs_to :owner, :class_name => 'User'
+  delegate :name, :to => :owner, :prefix => true
 
   attr_accessible :title, :wiki_body
 
@@ -37,16 +38,16 @@ class Diary < Content
   extend FriendlyId
   friendly_id
 
-### Sphinx ####
+### Search ####
 
-# TODO Thinking Sphinx
-#   define_index do
-#     indexes title, body
-#     indexes owner.name, :as => :user
-#     where "state = 'published'"
-#     set_property :field_weights => { :title => 10, :user => 4, :body => 2 }
-#     set_property :delta => :datetime, :threshold => 75.minutes
-#   end
+  mapping do
+    indexes :id,         :index    => :not_analyzed
+    indexes :title,      :analyzer => 'french', :boost => 100
+    indexes :body,       :analyzer => 'french'
+#     indexes :owner_name, :analyzer => 'keyword', :boost => 10
+#     indexes :tags,       :analyzer => 'keyword', :boost => 5
+    indexes :created_at, :type => 'date', :include_in_all => false
+  end
 
 ### ACL ###
 

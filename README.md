@@ -20,6 +20,7 @@ LinuxFr.org on a Debian box.
     # aptitude install libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev bison
     # aptitude install libxslt-dev autoconf libc6-dev ncurses-dev automake libtool
     # aptitude install imagemagick hunspell hunspell-fr subversion
+    # aptitude install openjdk-6-jdk
 
 2) Configure the database:
 
@@ -66,6 +67,7 @@ LinuxFr.org on a Debian box.
 
 7) Let's run it:
 
+    $ bundle exec springboard -c config/elasticsearch
     $ bundle exec rails server thin
     $ x-www-browser http://127.0.0.1:3000/
 

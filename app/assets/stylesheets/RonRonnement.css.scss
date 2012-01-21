@@ -423,7 +423,7 @@ button, input[type='submit'] {
     input#search_submit {
       width: 0;
       position: absolute;
-      visibility: hidden; /* TODO la recherche ne marche pas avec opera */
+      visibility: hidden;
     }
     display: block;
     background: $C_INTER;
@@ -1279,7 +1279,6 @@ div#form_links {
 }
 
 /* Moderation */
-/* TODO styler "ajouter un lien" */
 #moderation_box {
   &.box li {
     list-style: disc inside;
@@ -1463,7 +1462,6 @@ body#wiki_pages-revision {
       display: inline;
       li {
         display: inline;
-        // TODO il reste un bug sur la première révision d'un doc
         &:last-of-type {
           float: right;
           &:after {

@@ -6,6 +6,7 @@
 class Content < ActiveRecord::Base
   self.abstract_class = true
   include Canable::Ables
+  include Tire::Model::Search
 
   has_one :node, :as => :content, :dependent => :destroy, :inverse_of => :content
   has_many :comments, :through => :node
@@ -13,6 +14,20 @@ class Content < ActiveRecord::Base
   # /!\ No scope here /!\
 
   delegate :score, :user, :to => :node
+
+### Search ###
+
+  after_save    :update_index, :if => :visible?
+  after_destroy :update_index, :if => :visible?
+
+  # See see https://github.com/karmi/tire/issues/48
+  def self.paginate(options = {})
+    page(options[:page]).per(options[:per_page])
+  end
+
+#   def tags
+#     node.tags.pluck(:name)
+#   end
 
 ### License ###
 

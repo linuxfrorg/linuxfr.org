@@ -1,5 +1,0 @@
-%div
-  %h2 Forums
-  %ul
-    = list_of @facets do |facet,count|
-      = link_to "#{facet} (#{count})", search_by_facet_path(:type => 'Post', :facet => facet, :q => @query)
