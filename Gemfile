@@ -61,7 +61,7 @@ group :development do
 end
 
 group :test do
-  gem "factory_girl_rails",    "~>1.1"
+  gem "factory_girl_rails",    "~>1.6"
   gem "faker",                 "~>0.9"
   gem "fuubar",                "~>0.0"
   gem "spork",                 "~>0.8"

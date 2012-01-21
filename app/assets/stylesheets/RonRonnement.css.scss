@@ -1294,6 +1294,24 @@ div#form_links {
   }
 }
 
+body#redaction-index {
+  #candidate_news, #news {
+    width: 30%;
+    float: right;
+    clear: right;
+  }
+  #main_board {
+    float: left;
+    width: 60%;
+    #board_message { max-width: 100%; }
+  }
+  #container {
+    padding: 40px 10px 10px;
+    & > div { padding: 10px; }
+    & > footer { clear: right; }
+  }
+}
+
 body#news-show #redaction {
   .score, .datePourCss { right: 0; }
   .score { top: 31px; }

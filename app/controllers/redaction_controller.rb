@@ -7,6 +7,7 @@ class RedactionController < ApplicationController
     @boards = Board.all(Board.writing)
     @board  = @boards.build
     enforce_view_permission(@board)
-    @news   = News.draft.sorted
+    @drafts = News.draft.sorted
+    @news   = News.candidate.sorted
   end
 end

@@ -1,7 +1,7 @@
 #redaction_box.box
   %h1 Rédaction
   = link_to "Tribune de rédaction", '/redaction'
-  - if (news = News.draft).any?
+  - if (news = News.draft.sorted).any?
     %ul
       = list_of(news) do |news|
         = link_to news.title, [:redaction, news]

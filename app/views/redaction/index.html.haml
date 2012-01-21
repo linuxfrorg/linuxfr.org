@@ -1,15 +1,24 @@
+#main_board
+  =h1 "Tribune rédacteurs"
+  = render 'boards/boards', :boards => @boards
+
+#candidate_news
+  %h1 Dépêches en cours de modération
+  - if @news.empty?
+    Aucune dépêche.
+  - else
+    %ul
+      = list_of @news do |n|
+        = n.title
+
 #news
   %h1 Dépêches en cours de rédaction
-  - if @news.empty?
+  - if @drafts.empty?
     Aucune dépêche.
   - else
     = link_to "Afficher toutes les dépêches", "/redaction/news"
     %ul
-      = list_of @news do |n|
+      = list_of @drafts do |n|
         = link_to n.title, [:redaction, n]
   = button_to "Commencer une nouvelle dépêche", "/redaction/news", :class => "create_news"
   (sous licence CC by-sa)
-
-#main_board
-  =h1 "Tribune rédacteurs"
-  = render 'boards/boards', :boards => @boards

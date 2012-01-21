@@ -271,7 +271,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2)
   devise (~> 1.5)
   differ (~> 0.1)
-  factory_girl_rails (~> 1.1)
+  factory_girl_rails (~> 1.6)
   faker (~> 0.9)
   french_rails (~> 0.2)
   friendly_id (~> 4.0)
