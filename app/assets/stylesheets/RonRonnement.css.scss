@@ -1062,6 +1062,10 @@ li.comment {
     padding-left: 5px;
     margin-bottom: 5px;
   }
+  .deleted {
+    border-left: 2px solid red;
+    font-style: italic;
+  }
   > ul {
     list-style: none;
     margin-left: 1.25em;

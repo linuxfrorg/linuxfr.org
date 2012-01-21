@@ -12,10 +12,11 @@
     %span.update>
       Dernière modification : le #{comment.updated_at.to_s :posted}
 %figure.image= avatar_url(comment.user)
-.content
-  - if comment.deleted?
-    %em Ce commentaire a été supprimé par l'équipe de modération.
-  - else
+- if comment.deleted?
+  .content.deleted
+    %p Ce commentaire a été supprimé par l'équipe de modération.
+- else
+  .content
     = comment.body
     - if comment.user.try(:signature).present? && !current_account.try(:hide_signature?)
       %p.signature
