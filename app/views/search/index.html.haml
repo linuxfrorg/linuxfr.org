@@ -6,5 +6,5 @@
     .results
       %h2 Résultats
       - @contents.each do |result|
-        = render result
-      - paginate @contents
+        = render result.load
+      = paginate @contents

@@ -22,7 +22,6 @@ class Diary < Content
   self.table_name = "diaries"
 
   belongs_to :owner, :class_name => 'User'
-  delegate :name, :to => :owner, :prefix => true
 
   attr_accessible :title, :wiki_body
 
@@ -40,12 +39,12 @@ class Diary < Content
 
 ### Search ####
 
+  index_name 'contents'
   mapping do
     indexes :id,         :index    => :not_analyzed
     indexes :title,      :analyzer => 'french', :boost => 100
     indexes :body,       :analyzer => 'french'
-#     indexes :owner_name, :analyzer => 'keyword', :boost => 10
-#     indexes :tags,       :analyzer => 'keyword', :boost => 5
+    indexes :owner_name, :analyzer => 'keyword', :boost => 10, :as => 'owner.name'
     indexes :created_at, :type => 'date', :include_in_all => false
   end
 

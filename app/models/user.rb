@@ -44,15 +44,6 @@ class User < ActiveRecord::Base
     super name.present? ? name : account.login
   end
 
-### Sphinx ####
-
-# TODO Thinking Sphinx
-#   define_index do
-#     indexes name, homesite, jabber_id
-#     set_property :field_weights => { :name => 5, :homesite => 1, :jabber_id => 1 }
-#     set_property :delta => :datetime, :threshold => 75.minutes
-#   end
-
 ### Avatar ###
 
   mount_uploader :avatar, AvatarUploader

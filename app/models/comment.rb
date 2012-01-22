@@ -41,17 +41,6 @@ class Comment < ActiveRecord::Base
 
   wikify_attr :body
 
-### Sphinx ####
-
-# TODO Thinking Sphinx
-#   define_index do
-#     indexes title, body
-#     indexes user.name, :as => :user
-#     where "state = 'published'"
-#     set_property :field_weights => { :title => 5, :user => 2, :body => 1 }
-#     set_property :delta => :datetime, :threshold => 75.minutes
-#   end
-
 ### Reading status ###
 
   # Returns true if this comment has been read by the given user,

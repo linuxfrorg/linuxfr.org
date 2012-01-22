@@ -43,15 +43,14 @@ class Poll < Content
 
 ### Sphinx ####
 
-# TODO Thinking Sphinx
-#   define_index do
-#     indexes title
-#     indexes user.name, :as => :user
-#     indexes answers.answer, :as => :answers
-#     where "state IN ('published', 'archived')"
-#     set_property :field_weights => { :title => 10, :user => 3, :answers => 4 }
-#     set_property :delta => :datetime, :threshold => 75.minutes
-#   end
+  index_name 'contents'
+  mapping do
+    indexes :id,         :index    => :not_analyzed
+    indexes :title,      :analyzer => 'french', :boost => 100
+    indexes :body,       :analyzer => 'french'
+    indexes :answers,    :analyzer => 'keyword', :as => proc { answers.pluck(:answer) }
+    indexes :created_at, :type => 'date', :include_in_all => false
+  end
 
 ### Workflow ###
 

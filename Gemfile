@@ -29,7 +29,7 @@ gem "sanitize",                "~>2.0"
 gem "sitemap_generator",       "~>2.1"
 gem "simple_autocomplete",     "~>0.3"
 gem "state_machine",           "~>1.1"
-gem "tire",                    "~>0.3"
+gem "tire",                    :git => "https://github.com/karmi/tire.git"
 
 # Gems used only for assets and not required
 # in production environments by default.

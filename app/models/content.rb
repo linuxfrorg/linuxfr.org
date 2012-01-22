@@ -25,10 +25,6 @@ class Content < ActiveRecord::Base
     page(options[:page]).per(options[:per_page])
   end
 
-#   def tags
-#     node.tags.pluck(:name)
-#   end
-
 ### License ###
 
   attr_accessor   :cc_licensed, :tmp_owner_id

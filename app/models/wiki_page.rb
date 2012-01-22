@@ -35,16 +35,16 @@ class WikiPage < Content
   extend FriendlyId
   friendly_id :title, :reserved_words => RESERVED_WORDS
 
-### Sphinx ####
+### Search ####
 
-# TODO Thinking Sphinx
-#   define_index do
-#     indexes title, body
-#     indexes user.name, :as => :user
-#     where "state = 'public'"
-#     set_property :field_weights => { :title => 15, :user => 1, :body => 5 }
-#     set_property :delta => :datetime, :threshold => 75.minutes
-#   end
+  index_name 'contents'
+  mapping do
+    indexes :id,         :index    => :not_analyzed
+    indexes :title,      :analyzer => 'french', :boost => 100
+    indexes :body,       :analyzer => 'french'
+    indexes :owner_name, :analyzer => 'keyword', :boost => 10, :as => 'owner.name'
+    indexes :created_at, :type => 'date', :include_in_all => false
+  end
 
 ### Hey, it's a wiki! ###
 
