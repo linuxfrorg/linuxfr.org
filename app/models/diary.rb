@@ -20,6 +20,7 @@
 #
 class Diary < Content
   self.table_name = "diaries"
+  self.type = "Journal"
 
   belongs_to :owner, :class_name => 'User'
 
@@ -42,9 +43,10 @@ class Diary < Content
   index_name 'contents'
   mapping do
     indexes :id,         :index    => :not_analyzed
-    indexes :title,      :analyzer => 'french', :boost => 100
+    indexes :type,       :analyzer => 'keyword', :as => 'self.class.type'
+    indexes :title,      :analyzer => 'french',  :boost => 100
     indexes :body,       :analyzer => 'french'
-    indexes :owner_name, :analyzer => 'keyword', :boost => 10, :as => 'owner.name'
+    indexes :username,   :analyzer => 'keyword', :boost => 10, :as => 'owner.name'
     indexes :created_at, :type => 'date', :include_in_all => false
   end
 

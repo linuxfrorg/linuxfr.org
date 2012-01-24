@@ -13,6 +13,7 @@
 
 class Poll < Content
   self.table_name = "polls"
+  self.type = "Sondage"
 
   has_many :answers, :class_name => 'PollAnswer',
                      :dependent  => :destroy,
@@ -46,7 +47,8 @@ class Poll < Content
   index_name 'contents'
   mapping do
     indexes :id,         :index    => :not_analyzed
-    indexes :title,      :analyzer => 'french', :boost => 100
+    indexes :type,       :analyzer => 'keyword', :as => 'self.class.type'
+    indexes :title,      :analyzer => 'french',  :boost => 100
     indexes :body,       :analyzer => 'french'
     indexes :answers,    :analyzer => 'keyword', :as => proc { answers.pluck(:answer) }
     indexes :created_at, :type => 'date', :include_in_all => false

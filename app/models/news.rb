@@ -24,6 +24,7 @@
 #
 class News < Content
   self.table_name = "news"
+  self.type = "Dépêche"
 
   belongs_to :section
   belongs_to :moderator, :class_name => "User"
@@ -62,15 +63,17 @@ class News < Content
 
 ### Sphinx ####
 
-# TODO Thinking Sphinx
-#   define_index do
-#     indexes title, body, second_part
-#     indexes author_name, :as => :user
-#     indexes section.title, :as => :section, :facet => true
-#     where "news.state = 'published'"
-#     set_property :field_weights => { :title => 25, :user => 10, :body => 3, :second_part => 2, :section => 4 }
-#     set_property :delta => :datetime, :threshold => 75.minutes
-#   end
+  index_name 'contents'
+  mapping do
+    indexes :id,          :index    => :not_analyzed
+    indexes :type,        :analyzer => 'keyword', :as => 'self.class.type'
+    indexes :title,       :analyzer => 'french',  :boost => 500
+    indexes :body,        :analyzer => 'french',  :boost => 5
+    indexes :second_part, :analyzer => 'french',  :boost => 3
+    indexes :section,     :analyzer => 'keyword', :boost => 50, :as => 'section.title'
+    indexes :username,    :analyzer => 'keyword', :boost => 20, :as => 'user.try(:name)'
+    indexes :created_at,  :type => 'date', :include_in_all => false
+  end
 
 ### Workflow ###
 

@@ -16,6 +16,7 @@
 #
 class WikiPage < Content
   self.table_name = "wiki_pages"
+  self.type = "Page wiki"
 
   RESERVED_WORDS = %w(index nouveau modifications pages)
   has_many :versions, :class_name => 'WikiVersion',
@@ -40,9 +41,10 @@ class WikiPage < Content
   index_name 'contents'
   mapping do
     indexes :id,         :index    => :not_analyzed
-    indexes :title,      :analyzer => 'french', :boost => 100
+    indexes :type,       :analyzer => 'keyword', :as => 'self.class.type'
+    indexes :title,      :analyzer => 'french',  :boost => 100
     indexes :body,       :analyzer => 'french'
-    indexes :owner_name, :analyzer => 'keyword', :boost => 10, :as => 'owner.name'
+    indexes :username,   :analyzer => 'keyword', :boost =>  5, :as => 'user.try(:name)'
     indexes :created_at, :type => 'date', :include_in_all => false
   end
 

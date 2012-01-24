@@ -15,6 +15,8 @@ class Content < ActiveRecord::Base
 
   delegate :score, :user, :to => :node
 
+  class << self; attr_accessor :type; end
+
 ### Search ###
 
   after_save    :update_index, :if => :visible?

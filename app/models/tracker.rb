@@ -23,6 +23,7 @@
 #
 class Tracker < Content
   self.table_name = "trackers"
+  self.type = "Suivi"
 
   belongs_to :assigned_to_user, :class_name => "User"
   belongs_to :category
@@ -46,14 +47,16 @@ class Tracker < Content
 
 ### Sphinx ####
 
-# TODO Thinking Sphinx
-#   define_index do
-#     indexes title, body
-#     indexes user.name, :as => :user
-#     indexes category.title, :as => :category, :facet => true
-#     set_property :field_weights => { :title => 2, :user => 1, :body => 1, :category => 1 }
-#     set_property :delta => :datetime, :threshold => 75.minutes
-#   end
+  index_name 'contents'
+  mapping do
+    indexes :id,         :index    => :not_analyzed
+    indexes :type,       :analyzer => 'keyword', :as => 'self.class.type'
+    indexes :title,      :analyzer => 'french',  :boost => 30
+    indexes :body,       :analyzer => 'french'
+    indexes :category,   :analyzer => 'keyword', :boost => 10, :as => 'category.title'
+    indexes :username,   :analyzer => 'keyword', :boost =>  5, :as => 'user.try(:name)'
+    indexes :created_at, :type => 'date', :include_in_all => false
+  end
 
 ### Workflow ###
 

@@ -19,6 +19,7 @@
 #
 class Post < Content
   self.table_name = "posts"
+  self.type = "Forum"
 
   belongs_to :forum
 
@@ -44,9 +45,11 @@ class Post < Content
   index_name 'contents'
   mapping do
     indexes :id,         :index    => :not_analyzed
-    indexes :title,      :analyzer => 'french', :boost => 100
+    indexes :type,       :analyzer => 'keyword', :as => 'self.class.type'
+    indexes :title,      :analyzer => 'french',  :boost => 30
     indexes :body,       :analyzer => 'french'
-    indexes :owner_name, :analyzer => 'keyword', :boost => 10, :as => 'owner.name'
+    indexes :forum,      :analyzer => 'keyword', :boost => 10, :as => 'forum.title'
+    indexes :username,   :analyzer => 'keyword', :boost =>  5, :as => 'user.try(:name)'
     indexes :created_at, :type => 'date', :include_in_all => false
   end
 

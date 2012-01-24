@@ -1,3 +1,10 @@
+- if @contents.any?
+  %nav.toolbox
+    %h2 Types de contenus
+    %ul
+    = list_of(@contents.facets['types']['terms']) do |facet|
+      #{facet['term']} (#{facet['count']})
+
 #contents
   =h1 "Recherche"
   - if @contents.empty?
