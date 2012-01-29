@@ -10,13 +10,34 @@ class CreateAccounts < ActiveRecord::Migration
       t.string   :stylesheet
       t.string   :old_password, :limit => 20
 
-      # Devise
-      t.database_authenticatable :encryptor => :sha1, :null => false
-      t.confirmable
-      t.recoverable
-      t.rememberable(:use_salt => false)
-      t.trackable
-      t.encryptable
+      ### Devise ###
+
+      # Database authenticatable
+      t.string :email,              :null => false, :default => ""
+      t.string :encrypted_password, :null => false, :default => ""
+
+      # Confirmable
+      t.string   :confirmation_token
+      t.datetime :confirmed_at
+      t.datetime :confirmation_sent_at
+
+      # Recoverable
+      t.string   :reset_password_token
+
+      # Rememberable
+      t.datetime :remember_created_at
+      t.string :remember_token
+
+      # Trackable
+      t.integer  :sign_in_count, :default => 0
+      t.datetime :current_sign_in_at
+      t.datetime :last_sign_in_at
+      t.string   :current_sign_in_ip
+      t.string   :last_sign_in_ip
+
+      # Encrytable
+      t.string :password_salt
+
       t.timestamps
     end
 

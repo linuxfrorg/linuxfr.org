@@ -5,6 +5,7 @@ config/database.yml
 config/secret.yml
 config/*.sphinx.conf
 db/*.sqlite3
+db/elasticsearch
 db/sphinx
 log
 public/assets

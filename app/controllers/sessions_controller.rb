@@ -1,7 +1,5 @@
 # encoding: utf-8
-class SessionsController < ApplicationController
-  include Devise::Controllers::InternalHelpers
-
+class SessionsController < DeviseController
   prepend_before_filter :allow_params_authentication!, :only => [:create]
   prepend_before_filter :require_no_authentication,    :only => [:new, :create]
   skip_before_filter    :verify_authenticity_token,    :only => [:new, :create]
