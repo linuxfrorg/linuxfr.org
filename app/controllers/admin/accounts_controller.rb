@@ -9,10 +9,11 @@ class Admin::AccountsController < AdminController
   def update
     if @account.inactive?
       @account.reactivate!
+      redirect_to admin_accounts_url, :notice => "Compte réactivé"
     else
       @account.inactivate!
+      redirect_to admin_accounts_url, :notice => "Compte désactivé"
     end
-    redirect_to admin_accounts_url, :notice => "Compte activé"
   end
 
   def destroy
