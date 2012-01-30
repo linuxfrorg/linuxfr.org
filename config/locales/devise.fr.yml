@@ -31,13 +31,11 @@ fr:
       confirmed: "Votre compte a été confirmé avec succès."
     registrations:
       signed_up: "Vous vous êtes inscrit avec succès. Vous allez recevoir les instructions de confirmation par courriel."
-      inactive_signed_up: "Vous vous êtes inscrit avec succès. Mais vous ne pouvez pas encore vous connecter car votre compte n'a pas encore été confirmé."
       updated: "Vous avez mis à jour votre compte avec succès."
       destroyed: "Au revoir. Votre compte a été fermé avec succès. Nous espérons vous revoir bientôt."
-      reasons:
-        inactive: 'inactif'
-        unconfirmed: 'non-confirmé'
-        locked: 'bloqué'
+      signed_up_but_unconfirmed: "Un message avec un lien de confirmation a été envoyé à votre addresse de courriel. Veuillez ouvrir le lien pour activer votre compte."
+      signed_up_but_inactive: "Vous vous êtes identifié correctement. Pourtant, nous ne pouvons pas ouvrir votre session tant que votre compte n'aura pas été activé."
+      signed_up_but_locked: "Vous vous êtes identifié correctement. Pourtant, nous ne pouvons pas ouvrir votre session car votre compte est bloqué."
     unlocks:
       send_instructions: "Vous allez recevoir un courriel avec les instructions pour déverrouiller votre compte dans quelques minutes."
       unlocked: "Votre compte a été déverrouillé avec succès. Vous êtes maintenant connecté(e)."

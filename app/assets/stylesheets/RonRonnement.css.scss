@@ -642,7 +642,8 @@ article {
   .content {
     padding-top: 5px;
     padding-bottom: 5px;
-        min-height: 70px;
+    min-height: 70px;
+    line-height: 1.4em;
 
     > p:first-child {
       margin-top: 0;
@@ -665,7 +666,7 @@ article {
     border-right-width: 0;
     font-size: medium;
     /* the translation should be the exact sum of padding and margin of all elements to the right */
-        position: absolute;
+    position: absolute;
     right: -$RAY_CONTAINER - $BORDER_CONTENT;
   }
   .score {
@@ -897,7 +898,6 @@ footer.actions {
 
 blockquote {
   border-left: 3px solid $C_BANDEAU;
-  border-bottom: 1px solid $C_CLAIR;
   margin: 10px 0 10px 10px;
   padding-left: 5px;
   padding-right: 0;
@@ -1089,14 +1089,18 @@ li.new-comment {
 code {
   font-size: medium;
   white-space: pre-wrap;
-  &[class] {
-    display: block;
-    margin: 10px 0 10px 10px;
-    padding-left: 5px;
-    padding-right: 0;
-    border-left: 3px solid $C_BANDEAU;
-    border-bottom: 1px solid $C_CLAIR;
-  }
+  border: 1px solid $C_CLAIR;
+  border-radius: 4px;
+  padding: 1px 4px;
+}
+
+pre code {
+  display: block;
+  margin: 10px 0 10px 10px;
+  padding-left: 5px;
+  padding-right: 0;
+  border-width: 0 0 0 3px;
+  border-color: $C_BANDEAU;
 }
 
 /* Tribune */

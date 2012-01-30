@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111218002356) do
+ActiveRecord::Schema.define(:version => 20120129220039) do
 
   create_table "access_grants", :force => true do |t|
     t.integer  "account_id"
@@ -29,34 +29,33 @@ ActiveRecord::Schema.define(:version => 20111218002356) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
-    t.string   "login",                :limit => 40,                         :null => false
-    t.string   "role",                 :limit => 10,  :default => "visitor", :null => false
-    t.integer  "karma",                               :default => 20,        :null => false
-    t.integer  "nb_votes",                            :default => 0,         :null => false
+    t.string   "login",                  :limit => 40,                         :null => false
+    t.string   "role",                   :limit => 10,  :default => "visitor", :null => false
+    t.integer  "karma",                                 :default => 20,        :null => false
+    t.integer  "nb_votes",                              :default => 0,         :null => false
     t.string   "stylesheet"
-    t.string   "old_password",         :limit => 20
-    t.string   "email",                               :default => "",        :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "",        :null => false
+    t.string   "old_password",           :limit => 20
+    t.string   "email",                                 :default => "",        :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",        :null => false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "reset_password_token"
-    t.string   "remember_token"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       :default => 0
+    t.integer  "sign_in_count",                         :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "preferences",                         :default => 0,         :null => false
+    t.integer  "preferences",                           :default => 0,         :null => false
+    t.datetime "reset_password_sent_at"
   end
 
   add_index "accounts", ["confirmation_token"], :name => "index_accounts_on_confirmation_token", :unique => true
   add_index "accounts", ["email"], :name => "index_accounts_on_email", :unique => true
   add_index "accounts", ["login"], :name => "index_accounts_on_login"
-  add_index "accounts", ["remember_token"], :name => "index_accounts_on_remember_token"
   add_index "accounts", ["reset_password_token"], :name => "index_accounts_on_reset_password_token", :unique => true
   add_index "accounts", ["role"], :name => "index_accounts_on_role"
   add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"
@@ -99,7 +98,7 @@ ActiveRecord::Schema.define(:version => 20111218002356) do
 
   add_index "comments", ["node_id"], :name => "index_comments_on_node_id"
   add_index "comments", ["state", "created_at"], :name => "index_comments_on_state_and_created_at"
-  add_index "comments", ["state", "materialized_path"], :name => "index_comments_on_state_and_materialized_path", :length => {"state"=>10, "materialized_path"=>120}
+  add_index "comments", ["state", "materialized_path"], :name => "index_comments_on_state_and_materialized_path", :length => {"state"=>nil, "materialized_path"=>120}
   add_index "comments", ["user_id", "answered_to_self"], :name => "index_comments_on_user_id_and_answered_to_self"
   add_index "comments", ["user_id", "state", "created_at"], :name => "index_comments_on_user_id_and_state_and_created_at"
 
