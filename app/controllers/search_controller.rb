@@ -18,14 +18,15 @@ class SearchController < ApplicationController
   end
 
   def by_facet
-    @type  = es_facet_to_class(params[:type])
-    @facet = FACET_BY_TYPE[params[:type]]
-    search @type, @facet
+    @type  = params[:type]
+    @facet = FACET_BY_TYPE[es_facet_to_class(params[:type]).name]
+    @value = params[:facet]
+    search @type, @facet, @value
   end
 
 protected
 
-  def search(type=nil, facet_term=nil)
+  def search(type=nil, facet_term=nil, value=nil)
     q = params[:q]
     q = "42" if q.blank?
     per_page = 15
@@ -35,6 +36,7 @@ protected
         boolean do
           must { string q }
           must { string "type:#{type}" } if type
+          must { string "#{facet_term}:#{value}" } if value
         end
       end
       size per_page
