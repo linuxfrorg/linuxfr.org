@@ -172,9 +172,9 @@ LinuxfrOrg::Application.routes.draw do
 
   # Search
   controller :search do
-    get "/recherche"              => :index, :as => :search
-    get "/recherche/:type"        => :type,  :as => :by_type
-    get "/recherche/:type/:facet" => :facet, :as => :by_facet
+    get "/recherche"              => :index,    :as => :search
+    get "/recherche/:type"        => :by_type,  :as => :by_type
+    get "/recherche/:type/:facet" => :by_facet, :as => :by_facet
   end
 
   # Statistics

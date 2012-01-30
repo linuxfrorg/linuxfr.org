@@ -43,11 +43,11 @@ class Diary < Content
   index_name 'contents'
   mapping do
     indexes :id,         :index    => :not_analyzed
-    indexes :type,       :analyzer => 'keyword', :as => 'self.class.type'
-    indexes :title,      :analyzer => 'french',  :boost => 100
-    indexes :body,       :analyzer => 'french'
-    indexes :username,   :analyzer => 'keyword', :boost => 10, :as => 'owner.name'
+    indexes :type,       :as => 'self.class.name'
     indexes :created_at, :type => 'date', :include_in_all => false
+    indexes :username,   :as => 'owner.name',   :boost => 10
+    indexes :title,      :analyzer => 'french', :boost => 100
+    indexes :body,       :analyzer => 'french'
   end
 
 ### ACL ###

@@ -50,12 +50,12 @@ class Tracker < Content
   index_name 'contents'
   mapping do
     indexes :id,         :index    => :not_analyzed
-    indexes :type,       :analyzer => 'keyword', :as => 'self.class.type'
-    indexes :title,      :analyzer => 'french',  :boost => 30
-    indexes :body,       :analyzer => 'french'
-    indexes :category,   :analyzer => 'keyword', :boost => 10, :as => 'category.title'
-    indexes :username,   :analyzer => 'keyword', :boost =>  5, :as => 'user.try(:name)'
+    indexes :type,       :analyzer => 'keyword', :as => 'self.class.name'
     indexes :created_at, :type => 'date', :include_in_all => false
+    indexes :username,   :as => 'user.try(:name)', :boost => 5
+    indexes :category,   :as => 'category.title',  :boost => 10
+    indexes :title,      :analyzer => 'french',    :boost => 30
+    indexes :body,       :analyzer => 'french'
   end
 
 ### Workflow ###
