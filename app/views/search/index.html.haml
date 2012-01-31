@@ -3,7 +3,7 @@
 - if @contents.any?
   %nav.toolbox
     %h2 Types de contenus
-    %ul
+    %ul.facets
       = list_of(@contents.facets['types']['terms']) do |facet|
         - type = es_facet_to_class(facet['term']).type
         = link_to "#{type} (#{facet['count']})", by_type_path(:type => facet['term'], :q => params[:q])

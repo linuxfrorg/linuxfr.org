@@ -924,17 +924,15 @@ a.scroll {
   a:hover {
     text-decoration: none;
   }
-  .order_navbar {
-    padding-top: 10px;
-    ul {
+  .order_navbar { padding-top: 10px; }
+  .order_navbar ul, ul.facets {
+    display: inline;
+    li {
       display: inline;
-      li {
-        display: inline;
-        padding: 0;
-        list-style: none;
-        &:after { content: " · "; }
-        &:last-child:after, .last:after { content: ""; }
-      }
+      padding: 0;
+      list-style: none;
+      &:after { content: " · "; }
+      &:last-child:after, .last:after { content: ""; }
     }
   }
   /* pour ne pas afficher les pages en haut */
