@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(:version => 20120129220039) do
 
   add_index "comments", ["node_id"], :name => "index_comments_on_node_id"
   add_index "comments", ["state", "created_at"], :name => "index_comments_on_state_and_created_at"
-  add_index "comments", ["state", "materialized_path"], :name => "index_comments_on_state_and_materialized_path", :length => {"state"=>nil, "materialized_path"=>120}
+  add_index "comments", ["state", "materialized_path"], :name => "index_comments_on_state_and_materialized_path", :length => {"materialized_path"=>120}
   add_index "comments", ["user_id", "answered_to_self"], :name => "index_comments_on_user_id_and_answered_to_self"
   add_index "comments", ["user_id", "state", "created_at"], :name => "index_comments_on_user_id_and_state_and_created_at"
 
