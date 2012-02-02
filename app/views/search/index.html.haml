@@ -7,5 +7,10 @@
       = list_of(@contents.facets['types']['terms']) do |facet|
         - type = es_facet_to_class(facet['term']).type
         = link_to "#{type} (#{facet['count']})", by_type_path(:type => facet['term'], :q => params[:q])
+    %h2 Filtrer par période temporelle
+    %ul.facets
+      - periods = %w(Semaine Mois Année Intégralité)
+      = list_of(@contents.facets['periods']['ranges']) do |facet|
+        = link_to "#{periods.shift} (#{facet['count']})", :q => params[:q], :start => facet['from'].to_i
 
 = render 'search/results'
