@@ -15,11 +15,12 @@
         = list_of(@results.facets['types']['terms']) do |facet|
           - type = es_facet_to_class(facet['term']).type
           = link_to "#{type} (#{facet['count']})", search_path(params.merge :type => facet['term'])
-    %h2 Filtrer par période temporelle
-    %ul.facets
-      - periods = %w(Semaine Mois Année Intégralité)
-      = list_of(@results.facets['periods']['ranges']) do |facet|
-        = link_to "#{periods.shift} (#{facet['count']})", search_path(params.merge :start => facet['from'].to_i)
+    - unless @start
+      %h2 Filtrer par période temporelle
+      %ul.facets
+        - periods = %w(Semaine Mois Année)
+        = list_of(@results.facets['periods']['ranges']) do |facet|
+          = link_to "#{periods.shift} (#{facet['count']})", search_path(params.merge :start => facet['from'].to_i / 1000)
 
 #results
   - if @results.empty?
