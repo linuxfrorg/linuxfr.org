@@ -1,6 +1,6 @@
 # encoding: utf-8
 module SearchHelper
-  def es_facet_to_class(type)
-    type.capitalize.sub("Wikipage", "WikiPage").constantize
+  def es_type(type)
+    type.singularize.camelize.constantize.type
   end
 end

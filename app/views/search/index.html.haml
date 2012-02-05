@@ -13,8 +13,7 @@
       %h2 Types de contenus
       %ul.facets
         = list_of(@results.facets['types']['terms']) do |facet|
-          - type = es_facet_to_class(facet['term']).type
-          = link_to "#{type} (#{facet['count']})", search_path(params.merge :type => facet['term'])
+          = link_to "#{es_type facet['term']} (#{facet['count']})", search_path(params.merge :type => facet['term'])
     - unless @start
       %h2 Filtrer par période temporelle
       %ul.facets

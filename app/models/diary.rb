@@ -40,13 +40,11 @@ class Diary < Content
 
 ### Search ####
 
-  index_name 'contents'
   mapping do
     indexes :id,         :index    => :not_analyzed
-    indexes :type,       :analyzer => 'keyword', :as => 'self.class.name', :index => 'not_analyzed'
     indexes :created_at, :type => 'date', :include_in_all => false
-    indexes :username,   :as => 'owner.name',   :boost => 10,              :index => 'not_analyzed'
-    indexes :title,      :analyzer => 'french', :boost => 100
+    indexes :username,   :as => 'owner.name',   :boost => 3,               :index => 'not_analyzed'
+    indexes :title,      :analyzer => 'french', :boost => 10
     indexes :body,       :analyzer => 'french'
   end
 
