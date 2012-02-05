@@ -15,6 +15,7 @@ class SearchController < ApplicationController
     @facet   = FACET_BY_TYPE[@type] if @type
     @value   = params[:facet]
     @start   = Time.at(params[:start].to_i).to_date if params[:start].present?
+    @order   = params[:order] == "date"
     @results = search.results
   end
 
@@ -36,6 +37,7 @@ protected
           b.must { |m| m.string "created_at:[#{@start} TO #{Date.tomorrow}]" } if @start
         end
       end
+      s.sort { by :created_at, 'desc' } if @order
       s.size per_page
       s.from (@page - 1) * per_page
       s.facet('periods') { |f| f.range :created_at, periods } unless @start

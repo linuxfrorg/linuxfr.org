@@ -20,6 +20,11 @@
         - periods = %w(Semaine Mois Année)
         = list_of(@results.facets['periods']['ranges']) do |facet|
           = link_to "#{periods.shift} (#{facet['count']})", search_path(params.merge :start => facet['from'].to_i / 1000)
+    .order_navbar
+      %h2 Trier par
+      %ul
+        %li= link_to_unless !@order, "Pertinence", search_path(params.merge :order => nil)
+        %li= link_to_unless  @order, "Date", search_path(params.merge :order => "date")
 
 #results
   - if @results.empty?
