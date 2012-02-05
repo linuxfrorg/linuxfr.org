@@ -1,9 +1,0 @@
-=h1 "Recherche"
-
-- if @contents.any? && @facet
-  %nav.toolbox
-    %ul.facets
-      = list_of(@contents.facets[@facet]['terms']) do |facet|
-        = link_to "#{facet['term']} (#{facet['count']})", by_facet_path(:type => @type, :facet => facet['term'], :q => params[:q])
-
-= render 'search/results'

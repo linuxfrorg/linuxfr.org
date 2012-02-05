@@ -1,16 +1,31 @@
 =h1 "Recherche"
 
-- if @contents.any?
+- if @results.any?
   %nav.toolbox
-    %h2 Types de contenus
-    %ul.facets
-      = list_of(@contents.facets['types']['terms']) do |facet|
-        - type = es_facet_to_class(facet['term']).type
-        = link_to "#{type} (#{facet['count']})", by_type_path(:type => facet['term'], :q => params[:q])
+    - if @value.present?
+      %h2= @value
+    - elsif @facet.present?
+      %h2 Section
+      %ul.facets
+        = list_of(@results.facets[@facet]['terms']) do |facet|
+          = link_to "#{facet['term']} (#{facet['count']})", search_path(params.merge :facet => facet['term'])
+    - elsif @type.blank?
+      %h2 Types de contenus
+      %ul.facets
+        = list_of(@results.facets['types']['terms']) do |facet|
+          - type = es_facet_to_class(facet['term']).type
+          = link_to "#{type} (#{facet['count']})", search_path(params.merge :type => facet['term'])
     %h2 Filtrer par période temporelle
     %ul.facets
       - periods = %w(Semaine Mois Année Intégralité)
-      = list_of(@contents.facets['periods']['ranges']) do |facet|
-        = link_to "#{periods.shift} (#{facet['count']})", :q => params[:q], :start => facet['from'].to_i
+      = list_of(@results.facets['periods']['ranges']) do |facet|
+        = link_to "#{periods.shift} (#{facet['count']})", search_path(params.merge :start => facet['from'].to_i)
 
-= render 'search/results'
+#results
+  - if @results.empty?
+    Pas de résultats.
+  - else
+    .results
+      %h2 Résultats
+      = render @results.map(&:load)
+      = paginate @results

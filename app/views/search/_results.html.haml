@@ -1,8 +1,0 @@
-#contents
-  - if @contents.empty?
-    Pas de résultats.
-  - else
-    .results
-      %h2 Résultats
-      = render @contents.map(&:load)
-      = paginate @contents
