@@ -418,18 +418,26 @@ button, input[type='submit'] {
       text-indent: -9998em;
       overflow: hidden;
       text-align: left;
-            width: 0;
+      width: 0;
+    }
+    input#query {
+      display: block;
+      float: left;
+      background: $C_CLAIR;
     }
     input#search_submit {
-      width: 0;
-      position: absolute;
-      visibility: hidden;
+      background: url('/images/contrib/kaiska/search.png') no-repeat;
+      text-indent: -9998em;
+      border: none;
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
     }
     display: block;
     background: $C_INTER;
     padding-left: $PX_SITE_PAD_DROIT;
-    padding-right: $PX_SITE_PAD_DROIT;
-    width: 180px;
+    padding-right: 0;
+    width: 220px;
     margin-left: auto;
     margin-right: 0;
 
@@ -441,10 +449,6 @@ button, input[type='submit'] {
     height: 29px;
     line-height: 29px;
     text-align: center;
-
-    input#query {
-      background: $C_CLAIR;
-    }
   }
 }
 
