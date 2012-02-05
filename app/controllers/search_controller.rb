@@ -17,6 +17,7 @@ class SearchController < ApplicationController
     @start   = Time.at(params[:start].to_i).to_date if params[:start].present?
     @order   = params[:order] == "date"
     @results = search.results
+    Rails.logger.info search.to_curl
   rescue Tire::Search::SearchRequestFailed
     @query.gsub!(/([+\-&|!\(\){}\[\]^"~*?:\\])/, '\\\1')
     @results = search.results
@@ -31,7 +32,7 @@ protected
       { :from => 1.month.ago },
       { :from => 1.year.ago },
     ]
-    indexes = @type || "diaries,news,polls,posts,trackers,wiki_pages"
+    indexes = @type || "diaries,news,polls,posts,trackers,wiki_pages,pages"
     Tire.search(indexes) do |s|
       s.query do |q|
         q.boolean do |b|
