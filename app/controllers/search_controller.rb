@@ -17,6 +17,9 @@ class SearchController < ApplicationController
     @start   = Time.at(params[:start].to_i).to_date if params[:start].present?
     @order   = params[:order] == "date"
     @results = search.results
+  rescue Tire::Search::SearchRequestFailed
+    @query.gsub!(/([+\-&|!\(\){}\[\]^"~*?:\\])/, '\\\1')
+    @results = search.results
   end
 
 protected
