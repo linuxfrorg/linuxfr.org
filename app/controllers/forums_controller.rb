@@ -15,8 +15,6 @@ class ForumsController < ApplicationController
 
   def show
     @forum = Forum.find(params[:id])
-    path = forum_path(@forum)
-    redirect_to path, :status => 301 and return if request.path != path
     @posts = @forum.posts.with_node_ordered_by(@order).page(params[:page])
     respond_to do |wants|
       wants.html

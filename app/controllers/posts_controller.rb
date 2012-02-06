@@ -38,10 +38,8 @@ class PostsController < ApplicationController
   def show
     enforce_view_permission(@post)
     path = forum_post_path(@forum, @post)
-    redirect_to path, :status => 301 if request.path != path
+    redirect_to path, :status => 301 and return if request.path != path
     flash.now[:alert] = "Attention, ce post a été supprimé et n'est visible que par les admins" unless @post.visible?
-    path = forum_post_path(@forum, @post)
-    redirect_to path, :status => 301 if request.path != path
   end
 
   def edit
