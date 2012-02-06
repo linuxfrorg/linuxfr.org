@@ -42,9 +42,28 @@
 
     %h2 Équipe de modération
     %ul
-      %li=link_to("Sur les 7 derniers jours", "#moderation7")
-      %li=link_to("Sur les 31 derniers jours", "#moderation31")
-      %li=link_to("Depuis Epoch ou le début des données", "#moderationEpoch")
+      %li= link_to("Sur les 7 derniers jours", "#moderation7")
+      %li= link_to("Sur les 31 derniers jours", "#moderation31")
+      %li= link_to("Depuis Epoch ou le début des données", "#moderationEpoch")
+
+    %p Sur l'année, en #{pluralize Date.today.yday, "jour"} :
+    %ul
+      %li
+        - extra = @stats.news_by_day * 365 / Date.today.yday()
+        = "#{pluralize @stats.news_by_day, "dépêche publiée", "dépêches publiées"} (extrapolation annuelle de #{extra} pour un objectif de #{@goals.news_by_year} "
+        - if (extra >= @goals.news_by_year)
+          = image_tag "/images/icones/check.png", :alt => "Objectif atteint", :title => "Objectif atteint"
+        - else
+          = image_tag "/images/icones/x_alt.png", :alt => "Objectif à atteindre", :title => "Objectif à atteindre"
+        \)
+      %li
+        - extra2 = @stats.amr_news_by_day * 365 / Date.today.yday()
+        = "#{pluralize @stats.amr_news_by_day, "dépêche publiée écrite", "dépêches publiées écrites"} par l'équipe du site (extrapolation annuelle de #{extra2} pour un objectif de #{@goals.amr_news_by_year} "
+        - if (extra2 >= @goals.amr_news_by_year)
+          = image_tag "/images/icones/check.png", :alt => "Objectif atteint", :title => "Objectif atteint"
+        - else
+          = image_tag "/images/icones/x_alt.png", :alt => "Objectif à atteindre", :title => "Objectif à atteindre"
+        \)
 
     %h3#moderation7 Sur les 7 derniers jours
 
@@ -54,15 +73,30 @@
       %h4 Modérateurs actuels (#{@stats.top_am_x_days(7).size()})
       %table
         %tr
-          %tr
-            %th
-            %th Modérations
-            %th Éditions
+          %th
+          %th{'colspan'=>'2'} Modération
+          %th{'colspan'=>'2'} Auteur
+        %tr
+          %th
+          %th Modérations
+          %th Éditions
+          %th Dernière dépêche
+          %th Dépêches par semaine
         - @stats.top_am_x_days(7).each do |user|
           %tr
             %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
             %td{'class'=>'stat'}= user["cnt"].to_i
             %td{'class'=>'stat'}= @stats.nb_editions_x_days(user["user_id"],7)
+            - @stats.last_news_at(user["user_id"]).each do |last|
+              %td{'class'=>'stat'}= last["last"]
+            - @stats.news_by_week(user["user_id"]).each do |news|
+              %td{'class'=>'stat'}
+                = "#{news["cnt"]} en #{pluralize news["weeks"], "semaine"}"
+                - if news["cnt"] >= news["weeks"] * @goals.each_amr_news_by_week
+                  = image_tag "/images/icones/check.png", :alt => "Objectif atteint", :title => "Objectif atteint"
+                - else
+                  = image_tag "/images/icones/x_alt.png", :alt => "Objectif à atteindre", :title => "Objectif à atteindre"
+
     - else
       %h4 Pas de modérateurs actuellement
 

@@ -79,4 +79,23 @@ class Statistics::Moderation < Statistics::Statistics
     count "SELECT COUNT(*) AS cnt FROM news WHERE (state='published' OR state='refused') AND created_at >= '#{nbdays.days.ago.to_s :db}'"
   end
 
+  def last_news_at(user_id)
+    select_all <<-EOS
+      SELECT MAX(news.created_at) AS last, TO_DAYS(now())-TO_DAYS(MAX(news.created_at)) AS days FROM news,nodes WHERE nodes.content_type='News' AND news.id=nodes.content_id AND state='published' AND user_id=#{user_id};
+    EOS
+  end
+
+  def news_by_week(user_id)
+    select_all <<-EOS
+      SELECT COUNT(news.created_at) AS cnt, WEEK(now(),3) AS weeks FROM news,nodes WHERE nodes.content_type='News' AND news.id=nodes.content_id AND state='published' AND YEAR(news.created_at)=YEAR(now()) AND user_id=#{user_id};
+    EOS
+  end
+
+  def news_by_day
+    count "SELECT COUNT(*) AS cnt FROM news,nodes WHERE nodes.content_type='News' AND news.id=nodes.content_id AND state='published' AND YEAR(news.created_at)=YEAR(now());"
+  end
+
+  def amr_news_by_day
+    count "SELECT COUNT(*) AS cnt FROM news,nodes,accounts WHERE nodes.content_type='News' AND news.id=nodes.content_id AND state='published' AND YEAR(news.created_at)=YEAR(now()) AND accounts.user_id=nodes.user_id AND (accounts.role='moderator' OR accounts.role='admin');"
+  end
 end

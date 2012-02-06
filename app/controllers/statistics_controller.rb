@@ -20,10 +20,7 @@ class StatisticsController < ApplicationController
 
   def moderation
     @stats = Statistics::Moderation.new
-  end
-
-  def moderation
-    @stats = Statistics::Moderation.new
+    @goals = Statistics::Goals.new
   end
 
   def contents
