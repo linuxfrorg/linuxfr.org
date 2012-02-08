@@ -1,6 +1,6 @@
 %h2
-  = link_to "[^]", "#comment-#{comment.parent_id}", :title => "Aller au commentaire parent", :class => "parent" unless comment.root?
-  %a(href="#comment-#{comment.id}" class="anchor") #
+  = link_to "[^]", "#{path_for_content comment.content}#comment-#{comment.parent_id}", :title => "Aller au commentaire parent", :class => "parent" unless comment.root?
+  = link_to "#", "#{path_for_content comment.content}#comment-#{comment.id}", :title => "Lien direct vers ce commentaire", :class => "anchor"
   = ' '
   = link_to comment.title, "/nodes/#{comment.node_id}/comments/#{comment.id}", :class => "title"
 %p.meta
