@@ -55,7 +55,7 @@ class Redaction::NewsController < RedactionController
   def submit
     if @news.unlocked?
       @news.submit_and_notify(current_user)
-      redirect_to '/redaction', :notice => "Dépêche soumis à la modération"
+      redirect_to '/redaction', :notice => "Dépêche soumise à la modération"
     else
       redirect_to [:redaction, @news], :alert => "Impossible de soumettre la dépêche car quelqu'un est encore en train de la modifier"
     end
