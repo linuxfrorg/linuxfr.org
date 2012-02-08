@@ -47,20 +47,8 @@ class Statistics::Moderation < Statistics::Statistics
     top_amr "AND (role='moderator' OR role='admin')"
   end
 
-  def top_am_x_days(nbdays)
-    select_all <<-EOS
-      SELECT login, user_id, cnt
-        FROM accounts
-   LEFT JOIN (
-              SELECT moderator_id, COUNT(*) AS cnt
-                FROM nodes
-                JOIN news ON nodes.content_id = news.id AND nodes.content_type='News'
-               WHERE nodes.created_at >= '#{nbdays.days.ago.to_s :db}'
-               GROUP BY moderator_id
-             ) AS j ON moderator_id = accounts.user_id
-       WHERE (role='moderator' OR role='admin')
-    ORDER BY LOWER(login) ASC
-    EOS
+  def nb_moderations_x_days(user_id,nbdays)
+    count "SELECT COUNT(*) AS cnt FROM nodes JOIN news ON nodes.content_id = news.id AND nodes.content_type='News' WHERE nodes.created_at >= '#{nbdays.days.ago.to_s :db}' AND user_id=#{user_id}"
   end
 
   def nb_editions_x_days(user_id,nbdays)
@@ -81,7 +69,7 @@ class Statistics::Moderation < Statistics::Statistics
 
   def last_news_at(user_id)
     select_all <<-EOS
-      SELECT MAX(news.created_at) AS last, TO_DAYS(now())-TO_DAYS(MAX(news.created_at)) AS days FROM news,nodes WHERE nodes.content_type='News' AND news.id=nodes.content_id AND state='published' AND user_id=#{user_id};
+      SELECT MAX(DATE(news.created_at)) AS last, TO_DAYS(now())-TO_DAYS(MAX(news.created_at)) AS days FROM news,nodes WHERE nodes.content_type='News' AND news.id=nodes.content_id AND state='published' AND user_id=#{user_id}
     EOS
   end
 

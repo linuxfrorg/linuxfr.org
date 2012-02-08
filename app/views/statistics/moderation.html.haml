@@ -1,3 +1,5 @@
+= javascript_include_tag "sorttable"
+
 #contents.statistics
   =h1 "Statistiques sur la modération"
   - width_stats = 400
@@ -42,8 +44,7 @@
 
     %h2 Équipe de modération
     %ul
-      %li= link_to("Sur les 7 derniers jours", "#moderation7")
-      %li= link_to("Sur les 31 derniers jours", "#moderation31")
+      %li= link_to("Sur les derniers jours", "#moderation")
       %li= link_to("Depuis Epoch ou le début des données", "#moderationEpoch")
 
     %p Sur l'année, en #{pluralize Date.today.yday, "jour"} :
@@ -65,28 +66,30 @@
           = image_tag "/images/icones/x_alt.png", :alt => "Objectif à atteindre", :title => "Objectif à atteindre"
         \)
 
-    %h3#moderation7 Sur les 7 derniers jours
+    %h3#moderation Sur les derniers jours
 
-    %p Il y a eu #{pluralize @stats.moderated_news(7), "dépêche modérée", "dépêches modérées"} (acceptation ou rejet) sur la période.
+    %p Il y a eu #{pluralize @stats.moderated_news(7), "dépêche modérée", "dépêches modérées"} (acceptation ou rejet) sur les 7 derniers jours, et #{pluralize @stats.moderated_news(31), "dépêche modérée", "dépêches modérées"} sur les 31 derniers jours.
 
-    - if @stats.top_am_x_days(7).size() > 0
-      %h4 Modérateurs actuels (#{@stats.top_am_x_days(7).size()})
-      %table
+    - if Account.amr.size > 0
+      %h4 Équipe de modération actuelle (#{Account.amr.size})
+      %table{'class'=>'sortable'}
         %tr
           %th
-          %th{'colspan'=>'2'} Modération
-          %th{'colspan'=>'2'} Auteur
-        %tr
-          %th
-          %th Modérations
-          %th Éditions
+          %th Modérations (7j)
+          %th Modérations (31j)
+          %th Éditions (7j)
+          %th Éditions (31j)
+          %th Votes (31j)
           %th Dernière dépêche
-          %th Dépêches par semaine
-        - @stats.top_am_x_days(7).each do |user|
+          %th Auteur de dépêches
+        - Account.amr.each do |user|
           %tr
             %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
-            %td{'class'=>'stat'}= user["cnt"].to_i
+            %td{'class'=>'stat'}= @stats.nb_moderations_x_days(user["user_id"],7)
+            %td{'class'=>'stat'}= @stats.nb_moderations_x_days(user["user_id"],31)
             %td{'class'=>'stat'}= @stats.nb_editions_x_days(user["user_id"],7)
+            %td{'class'=>'stat'}= @stats.nb_editions_x_days(user["user_id"],31)
+            %td{'class'=>'stat'}= @stats.nb_votes_last_month(user["login"])
             - @stats.last_news_at(user["user_id"]).each do |last|
               %td{'class'=>'stat'}= last["last"]
             - @stats.news_by_week(user["user_id"]).each do |news|
@@ -98,94 +101,13 @@
                   = image_tag "/images/icones/x_alt.png", :alt => "Objectif à atteindre", :title => "Objectif à atteindre"
 
     - else
-      %h4 Pas de modérateurs actuellement
-
-    - if Account.reviewer.size() > 0
-      %h4 Relecteurs actuels (#{Account.reviewer.size()})
-      %table
-        %tr
-          %tr
-            %th
-            %th Votes
-            %th Éditions
-        - Account.reviewer.each do |user|
-          %tr
-            %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
-            %td{'class'=>'stat'}= user["login"].to_i
-            %td{'class'=>'stat'}= @stats.nb_editions_x_days(user["user_id"],7)
-    - else
-      %h4 Pas de relecteurs actuellement
-
-    %h3#moderation31 Sur les 31 derniers jours
-
-    %p Il y a eu #{pluralize @stats.moderated_news(31), "dépêche modérée", "dépêches modérées"} (acceptation ou rejet) sur la période.
-
-    - if @stats.top_am_x_days(31).size() > 0
-      %h4 Modérateurs actuels (#{@stats.top_am_x_days(31).size()})
-      %table
-        %tr
-          %tr
-            %th &nbsp;
-            %th Modérations
-            %th Votes
-            %th Éditions
-        - @stats.top_am_x_days(31).each do |user|
-          %tr
-            %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
-            %td{'class'=>'stat'}= user["cnt"].to_i
-            %td{'class'=>'stat'}= @stats.nb_votes_last_month(user["login"])
-            %td{'class'=>'stat'}= @stats.nb_editions_x_days(user["user_id"],31)
-    - else
-      %h4 Pas de modérateurs actuellement
-
-    - if Account.reviewer.size() > 0
-      %h4 Relecteurs actuels (#{Account.reviewer.size()})
-      %table
-        %tr
-          %th &nbsp;
-          %th Votes
-          %th Éditions
-        - Account.reviewer.each do |user|
-          %tr
-            %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
-            %td{'class'=>'stat'}= user["login"].to_i
-            %td{'class'=>'stat'}= @stats.nb_editions_x_days(user["user_id"],31)
-    - else
-      %h4 Pas de relecteurs actuellement
+      %h4 Pas d'équipe de modération actuellement
 
     %h3#moderationEpoch Depuis Epoch ou le début des données
 
-    - if @stats.top_am.size() > 0
-      %h4 Modérateurs actuels (#{@stats.top_am.size()})
-      %table
-        %tr
-          %th &nbsp;
-          %th Modérations
-          %th Votes
-        - @stats.top_am.each do |user|
-          %tr
-            %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
-            %td{'class'=>'stat'}= user["cnt"].to_i
-            %td{'class'=>'stat'}= @stats.nb_votes(user["login"])
-    - else
-      %h4 Pas encore de modérateurs
-
-    - if Account.reviewer.size() > 0
-      %h4 Relecteurs actuels (#{Account.reviewer.size()})
-      %table
-        %tr
-          %th
-          %th Votes
-        - Account.reviewer.each do |user|
-          %tr
-            %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
-            %td{'class'=>'stat'}= user["login"].to_i
-    - else
-      %h4 Pas encore de relecteurs
-
-    - if @stats.top_amr.size() > 0
-      %h4 Membre passé ou présent de l'équipe de modération (#{@stats.top_amr.size()})
-      %table
+    - if @stats.top_amr.size > 0
+      %h4 Membre passé ou présent de l'équipe de modération (#{@stats.top_amr.size})
+      %table{'class'=>'sortable'}
         %tr
           %th
           %th Modérations

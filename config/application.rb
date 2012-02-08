@@ -36,7 +36,7 @@ module LinuxfrOrg
     config.assets.enabled = true
     config.assets.version = "1.0"
     config.assets.js_compressor = :uglifier
-    config.assets.precompile += %w(IE9.js html5.js)
+    config.assets.precompile += %w(IE9.js html5.js sorttable.js)
     config.assets.precompile += %w(mobile.css print.css)
     Dir.chdir(Rails.root.join "app/assets/stylesheets") do
       config.assets.precompile += Dir["contrib/*"].map {|s| s.sub /.scss$/, '' }
