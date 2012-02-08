@@ -136,4 +136,11 @@ module NodeHelper
   def translate_content_type(content_type)
     t "activerecord.models.#{content_type.downcase}"
   end
+
+  # This variant translates "to news", "to diary", etc. to be included in a
+  # constructed sentance, because "à la dépêche" and "au journal" are not
+  # automatically constructable from the translated model name alone.
+  def translate_to_content_type(content_type)
+    t "activerecord.to_models.#{content_type.downcase}"
+  end
 end
