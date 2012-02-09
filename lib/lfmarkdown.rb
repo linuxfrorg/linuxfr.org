@@ -36,6 +36,7 @@ class LFMarkdown < Redcarpet
     process_internal_wiki_links
     process_wikipedia_links
     ret = fix_heading_levels(super)
+    ret = fix_internal_links(ret)
     ret = process_code(ret)
     ret = add_toc_content(ret) if text.length > 5_000
     ret
@@ -60,6 +61,11 @@ protected
 
   def fix_heading_levels(str)
     str.gsub!(/<(\/?)h(\d)/) { |_| "<#{$1}h#{$2.to_i + 1}" }
+    str
+  end
+
+  def fix_internal_links(str)
+    str.gsub!(/(href|src)="https?:\/\/#{MY_DOMAIN}\//) { |_| "#{$1}=\"/" }
     str
   end
 
