@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
   end
 
   def show
-    enforce_view_permission(@comment)
+    redirect_to "#{url_for_content(@comment.content)}#comment-#{@comment.id}", :status => :moved_permanently
   end
 
   def new
@@ -70,7 +70,7 @@ class CommentsController < ApplicationController
 
   def templeet
     comment = Comment.find(params[:id])
-    redirect_to [comment.node, comment], :status => :moved_permanently
+    redirect_to "#{url_for_content(@comment.content)}#comment-#{@comment.id}", :status => :moved_permanently
   end
 
 protected
