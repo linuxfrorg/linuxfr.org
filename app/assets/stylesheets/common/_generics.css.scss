@@ -4,15 +4,6 @@
   border-bottom: 1px dashed red;
 }
 
-.anchor {
-  &, &:visited {
-    color: #aaa;
-  }
-  &:hover {
-    color: #333;
-  }
-}
-
 .factice, .go_to_content {
   float: left;
   text-indent: -9998em;
