@@ -27,7 +27,14 @@ class LFSanitizer
     })
 
   def self.clean(str)
-    @@sanitizer.clean(str)
+    encode_mb4 @@sanitizer.clean(str)
+  end
+
+  MB4_REGEXP = /[^\u{9}-\u{999}]/ 
+
+  def self.encode_mb4(str)
+    return str unless str.respond_to?(:encoding)
+    str.gsub(MB4_REGEXP) { |c| "&##{c.unpack('U')[0]};" }
   end
 
 end
