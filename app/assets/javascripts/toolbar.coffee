@@ -102,7 +102,7 @@ class Toolbar
       do (i) =>
         item  = $(i)
         score = parseInt(item.find(".score:first").text(), 10)
-        where = item.children("h2").children(".anchor")
+        where = item.children("h2").children(".title")
         close = $('<a href="#" class="close" title="Cacher le fil de discussion">[-]</a>').insertBefore(where)
         close.after(' ')
         hide = (b) ->
@@ -128,7 +128,7 @@ class Toolbar
         score = parseInt(item.find(".score:first").text(), 10)
         if score < @threshold
           item.addClass "fold"
-          where = item.children("h2").children(".anchor")
+          where = item.children("h2").children(".title")
           link = $('<a href="#" class="folding" title="Plier">[+]</a>').insertBefore(where)
           link.after(' ').click ->
             item.removeClass "fold"
