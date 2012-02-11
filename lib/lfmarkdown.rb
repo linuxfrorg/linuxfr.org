@@ -65,7 +65,7 @@ protected
   end
 
   def fix_internal_links(str)
-    str.gsub!(/(href|src)="https?:\/\/#{MY_DOMAIN}\//) { |_| "#{$1}=\"/" }
+    str.gsub!(/(href|src)="https:\/\/#{MY_DOMAIN}\//) { |_| "#{$1}=\"http://#{MY_DOMAIN}/" }
     str
   end
 
