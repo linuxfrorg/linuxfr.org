@@ -55,7 +55,17 @@ protected
     @text.gsub!(WP_LINK_REGEXP) do
       word = $1
       escaped = word.gsub(/\(|\)|'/) {|x| "\\#{x}" }
-      "[#{word}](http://fr.wikipedia.org/wiki/#{escaped} \"Définition Wikipédia\")"
+      tokens = word.split(":")
+      if (tokens.length == 2)
+        case tokens[0]
+          when "en", "es", "eo", "de", "wikt" 
+            "[#{tokens[1]}](http://fr.wikipedia.org/wiki/#{escaped} \"Définition Wikipédia\")"
+          else
+            "[#{word}](http://fr.wikipedia.org/wiki/#{escaped} \"Définition Wikipédia\")"    
+        end
+      else
+        "[#{word}](http://fr.wikipedia.org/wiki/#{escaped} \"Définition Wikipédia\")"
+      end
     end
   end
 
