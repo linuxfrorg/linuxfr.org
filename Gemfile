@@ -70,5 +70,5 @@ end
 
 group :production do
   gem "unicorn",               "~>4.2"
-  gem "redis-store",           "~>1.0"
+  gem "redis-activesupport",   "~>3.2"
 end
