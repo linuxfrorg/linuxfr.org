@@ -45,7 +45,7 @@ class LFMarkdown < Redcarpet
 protected
 
   LF_LINK_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /\[\[\[([ '\.:\-\w]+)\]\]\]/ : /\[\[\[([ '\.:\-\p{Word}]+)\]\]\]/
-  WP_LINK_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /\[\[([ '\.\+:!\-\(\)\w]+)\]\]/ : /\[\[([ '\.\+:!\-\(\)\p{Word}]+)\]\]/
+  WP_LINK_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /\[\[([ '\.+:!\-\(\)\w]+)\]\]/ : /\[\[([ '\.+:!\-\(\)\p{Word}]+)\]\]/
 
   def process_internal_wiki_links
     @text.gsub!(LF_LINK_REGEXP, '[\1](/wiki/\1 "Lien du wiki interne LinuxFr.org")')
@@ -55,17 +55,9 @@ protected
     @text.gsub!(WP_LINK_REGEXP) do
       word = $1
       escaped = word.gsub(/\(|\)|'/) {|x| "\\#{x}" }
-      tokens = word.split(":")
-      if (tokens.length == 2)
-        case tokens[0]
-          when "en", "es", "eo", "de", "wikt" 
-            "[#{tokens[1]}](http://fr.wikipedia.org/wiki/#{escaped} \"Définition Wikipédia\")"
-          else
-            "[#{word}](http://fr.wikipedia.org/wiki/#{escaped} \"Définition Wikipédia\")"    
-        end
-      else
-        "[#{word}](http://fr.wikipedia.org/wiki/#{escaped} \"Définition Wikipédia\")"
-      end
+      parts = word.split(":")
+      parts.shift if %w(en es eo de wikt).include?(parts.first)
+      "[#{parts.join ':'}](http://fr.wikipedia.org/wiki/#{escaped} \"Définition Wikipédia\")"
     end
   end
 
