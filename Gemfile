@@ -22,7 +22,7 @@ gem "mysql2",                  "~>0.3"
 gem "nokogiri",                "~>1.5"
 gem "oauth2",                  "~>0.5"
 gem "rinku",                   "~>1.2"
-gem "redcarpet",               "~>1.17"
+gem "redcarpet",               "~>2.1"
 gem "hiredis",                 "~>0.3"
 gem "redis",                   "~>2.2", :require => ["redis/connection/hiredis", "redis"]
 gem "sanitize",                "~>2.0"

@@ -29,17 +29,17 @@ class ActiveRecord::Base
     end
   end
 
-  def self.wikify_attr(attr, *opts)
+  def self.wikify_attr(attr)
     method = "wikify_#{attr}".to_sym
     before_validation method
     define_method method do
-      send("#{attr}=", wikify(send("wiki_#{attr}"), *opts))
+      send("#{attr}=", wikify(send "wiki_#{attr}"))
     end
     sanitize_attr attr
   end
 
   # Transform wiki syntax to HTML
-  def wikify(txt, *extensions)
-    LFMarkdown.new(txt, *extensions).to_html
+  def wikify(txt)
+    LFMarkdown.render(txt)
   end
 end

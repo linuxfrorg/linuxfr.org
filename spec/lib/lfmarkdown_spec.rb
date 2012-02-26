@@ -1,64 +1,75 @@
 # encoding: UTF-8
 require 'spec_helper'
 
+
 describe LFMarkdown do
   it "accepts simple wiki syntax" do
-    html = LFMarkdown.new("**gras** et _it_").to_html
+    html = LFMarkdown.render("**gras** et _it_")
     html.should == "<p><strong>gras</strong> et <em>it</em></p>\n"
   end
 
+  it "accepts the superscript syntax" do
+    html = LFMarkdown.render("1^er et 2^(ème)")
+    html.should == "<p>1<sup>er</sup> et 2<sup>ème</sup></p>\n"
+  end
+
+  it "accepts the strikethrough syntax" do
+    html = LFMarkdown.render("foo ~~not~~ baz")
+    html.should == "<p>foo <s>not</s> baz</p>\n"
+  end
+
   it "links automatically URL" do
-    html = LFMarkdown.new("http://pierre.tramo.name/").to_html
+    html = LFMarkdown.render("http://pierre.tramo.name/")
     html.should == "<p><a href=\"http://pierre.tramo.name/\">http://pierre.tramo.name/</a></p>\n"
   end
 
   it "transforms [[[]]] to internal wiki links" do
-    html = LFMarkdown.new("[[[Linux]]]").to_html
+    html = LFMarkdown.render("[[[Linux]]]")
     html.should == "<p><a href=\"/wiki/Linux\" title=\"Lien du wiki interne LinuxFr.org\">Linux</a></p>\n"
   end
 
   it "transforms [[]] to wikipedia links" do
-    html = LFMarkdown.new("[[Linux]]").to_html
+    html = LFMarkdown.render("[[Linux]]")
     html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Linux\" title=\"Définition Wikipédia\">Linux</a></p>\n"
   end
 
   it "transforms [[]] to wikipedia links, even with spaces and accents" do
-    html = LFMarkdown.new("[[Paul Erdős]]").to_html
-    html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Paul Erdős\" title=\"Définition Wikipédia\">Paul Erdős</a></p>\n"
+    html = LFMarkdown.render("[[Paul Erdős]]")
+    html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Paul%20Erd%C5%91s\" title=\"Définition Wikipédia\">Paul Erdős</a></p>\n"
   end
 
   it "transforms [[]] to wikipedia links even for categories (with : . and -)" do
-    html = LFMarkdown.new("[[Fichier:HTML5-logo.svg]]").to_html
+    html = LFMarkdown.render("[[Fichier:HTML5-logo.svg]]")
     html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Fichier:HTML5-logo.svg\" title=\"Définition Wikipédia\">Fichier:HTML5-logo.svg</a></p>\n"
   end
 
   it "transforms [[]] to wikipedia links, even with parenthesis" do
-    html = LFMarkdown.new("[[Pogo_(danse)]]").to_html
+    html = LFMarkdown.render("[[Pogo_(danse)]]")
     html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Pogo_(danse)\" title=\"Définition Wikipédia\">Pogo_(danse)</a></p>\n"
   end
 
   it "transforms [[]] to wikipedia links, even with quote" do
-    html = LFMarkdown.new("[[Loi d'Okun]]").to_html
-    html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Loi d'Okun\" title=\"Définition Wikipédia\">Loi d'Okun</a></p>\n"
+    html = LFMarkdown.render("[[Loi d'Okun]]")
+    html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Loi%20d'Okun\" title=\"Définition Wikipédia\">Loi d'Okun</a></p>\n"
   end
 
   it "transforms [[]] to wikipedia links, even with bang" do
-    html = LFMarkdown.new("[[Joomla!]]").to_html
+    html = LFMarkdown.render("[[Joomla!]]")
     html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Joomla!\" title=\"Définition Wikipédia\">Joomla!</a></p>\n"
   end
 
   it "leaves underscored words unchanged" do
-    html = LFMarkdown.new("foo_bar_baz").to_html
+    html = LFMarkdown.render("foo_bar_baz")
     html.should == "<p>foo_bar_baz</p>\n"
   end
 
   it "handles single line breaks" do
-    html = LFMarkdown.new("foo\nbar\n\nbaz").to_html
+    html = LFMarkdown.render("foo\nbar\n\nbaz")
     html.should == "<p>foo<br/>\nbar</p>\n\n<p>baz</p>\n"
   end
 
   it "accepts heading levels from <h2> to <h4>" do
-    md = LFMarkdown.new <<EOS
+    md = LFMarkdown.render <<EOS
 Title 1
 =======
 
@@ -71,44 +82,43 @@ text
 EOS
     expected = <<EOS
 <h2 id="toc_0">Title 1</h2>
-
 <h3 id="toc_1">Title 2</h3>
-
 <h4 id="toc_2">Title 3</h4>
 
 <p>text</p>
 EOS
-    md.to_html.should == expected
+    md.should == expected
   end
 
   it "colorizes code enclosed in ```" do
-    md = LFMarkdown.new <<EOS
+    md = LFMarkdown.render <<EOS
 Mon joli code :
+
 ```ruby
 class Ruby
 end
 ```
 EOS
-    md.to_html.should == "<p>Mon joli code :<br/>\n<pre><code class=\"ruby\"><span class=\"k\">class</span> <span class=\"nc\">Ruby</span>\n<span class=\"k\">end</span>\n</code></pre></p>\n"
+    md.should == "<p>Mon joli code :</p>\n<pre><code class=\"ruby\"><span class=\"k\">class</span> <span class=\"nc\">Ruby</span>\n<span class=\"k\">end</span>\n</code></pre>"
   end
 
   it "accepts code with utf-8 encoding" do
-    md = LFMarkdown.new <<EOS
+    md = LFMarkdown.render <<EOS
 ```bash
 #!/bin/sh
 # héhé
 ```
 EOS
-    expect { md.to_html }.to_not raise_exception
-    md.to_html.encoding.should == Encoding.find("utf-8")
+    expect { md }.to_not raise_exception
+    md.encoding.should == Encoding.find("utf-8")
   end
 
   it 'accepts \" in code ' do
-    md = LFMarkdown.new <<EOS
+    md = LFMarkdown.render <<EOS
 ```perl
 "Ceci \\" ne fonctionne pas"
 ```
 EOS
-    md.to_html.should =~ /Ceci \\&quot; ne/
+    md.should =~ /Ceci \\&quot; ne/
   end
 end
