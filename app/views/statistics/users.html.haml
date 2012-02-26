@@ -164,12 +164,12 @@
         .stat.misc(style="width: #{(width_stats * @stats.preferences(:sort_by_date_on_home) / maxval).to_i}px;")= @stats.preferences(:sort_by_date_on_home)
       %td #{@stats.pctrecent(@stats.preferences :sort_by_date_on_home)}
     %tr
-      %td{'class'=>'stat'} Affichage des signatures
+      %td{'class'=>'stat'} Masquage des signatures
       %td
         .stat.misc(style="width: #{(width_stats * @stats.preferences(:hide_signature) / maxval).to_i}px;")= @stats.preferences(:hide_signature)
       %td #{@stats.pctrecent(@stats.preferences :hide_signature)}
     %tr
-      %td{'class'=>'stat'} Affichage des avatars
+      %td{'class'=>'stat'} Masquage des avatars
       %td
         .stat.misc(style="width: #{(width_stats * @stats.preferences(:hide_avatar) / maxval).to_i}px;")= @stats.preferences(:hide_avatar)
       %td #{@stats.pctrecent(@stats.preferences :hide_avatar)}

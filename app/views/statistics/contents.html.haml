@@ -22,9 +22,9 @@
       %li #{pluralize @stats.contents["Diary"], "journal", "journaux"}
       %li #{pluralize @stats.contents["Post"], "entrée"} de forums
       %li
-        #{pluralize @stats.contents["News"], "dépêche"} dont #{@stats.news["draft"]} en rédaction, #{@stats.news["candidate"]} en modération, #{pluralize @stats.news["published"], "publiée"}, #{pluralize @stats.news["refused"], "refusée"}
+        #{pluralize @stats.contents["News"], "dépêche"} dont #{@stats.news["draft"]} en rédaction, #{@stats.news["candidate"]} en modération, #{pluralize @stats.news["published"], "publiée"}, #{pluralize @stats.news["refused"], "refusée"}.
         - if @stats.contents["News"].to_i > 0
-          = ". Publication sous #{pluralize @stats.nb_news_authors, "nom"} par #{pluralize @stats.nb_news_accounts, "utilisateur"}."
+          = "Publication sous #{pluralize @stats.nb_news_authors, "nom"} par #{pluralize @stats.nb_news_accounts, "utilisateur"}."
       %li #{pluralize @stats.contents["Tracker"], "entrée"} dans le système de suivi
       %li #{pluralize @stats.contents["Poll"], "sondage"}
       %li #{pluralize @stats.contents["WikiPage"], "page"} de wiki
@@ -39,7 +39,7 @@
       %tr
         %th Année
         %th Type
-        %th Contenus
+        %th Contenus publiés
       - @stats.contents_by_year.each do |year,content|
         - newyear = true
         - content.each do |type,cnt|
@@ -53,7 +53,7 @@
               .stat(class="content#{type.downcase()}" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
 
     - if @stats.contents["Total"] > 1
-      %h2#mois Répartition mensuelle des #{@stats.contents["Total"]} contenus
+      %h2#mois Répartition mensuelle des #{@stats.contents["Total"]} contenus publiés
     - else
       %h2#mois Répartition mensuelle
 
@@ -61,7 +61,7 @@
       - maxval = @stats.contents_by_month.values.map(&:values).flatten.max
       %tr
         %th Mois
-        %th Contenus
+        %th Contenus publiés
       - @stats.contents_by_month.each do |month,content|
         - newyear = true
         - content.each do |type,cnt|
@@ -80,7 +80,7 @@
       %table
         %tr
           %th Jour
-          %th Nombre de contenus
+          %th Nombre de contenus publiés
         - @stats.contents_by_day.each do |day|
           %tr
             %td= day_name day["day"]
@@ -89,7 +89,7 @@
     - else
       Aucun contenu
 
-    %h2#taille Évolution de la taille moyenne des dépêches
+    %h2#taille Évolution de la taille moyenne des dépêches publiées
     - if @stats.news["published"] > 0
       - maxval = @stats.news_size.map {|a| a["cnt"] }.max
       %table
