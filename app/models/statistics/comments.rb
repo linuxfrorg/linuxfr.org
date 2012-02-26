@@ -11,7 +11,7 @@ class Statistics::Comments < Statistics::Statistics
     return @comments if @comments
 
     @comments = comments_hash
-    by_type = select_all("SELECT content_type, COUNT(*) AS cnt FROM comments,nodes WHERE comments.node_id=nodes.id AND state='published' GROUP BY content_type")
+    by_type = select_all("SELECT content_type, COUNT(*) AS cnt FROM comments,nodes WHERE comments.node_id=nodes.id GROUP BY content_type")
     by_type.each { |comment| @comments[comment["content_type"]] = comment["cnt"] }
     @comments["Total"] = @comments.values.sum
 
