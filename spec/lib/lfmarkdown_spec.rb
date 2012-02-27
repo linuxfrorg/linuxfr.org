@@ -35,7 +35,7 @@ describe LFMarkdown do
 
   it "transforms [[]] to wikipedia links, even with spaces and accents" do
     html = LFMarkdown.render("[[Paul Erdős]]")
-    html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Paul%20Erd%C5%91s\" title=\"Définition Wikipédia\">Paul Erdős</a></p>\n"
+    html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Paul Erdős\" title=\"Définition Wikipédia\">Paul Erdős</a></p>\n"
   end
 
   it "transforms [[]] to wikipedia links even for categories (with : . and -)" do
@@ -50,7 +50,7 @@ describe LFMarkdown do
 
   it "transforms [[]] to wikipedia links, even with quote" do
     html = LFMarkdown.render("[[Loi d'Okun]]")
-    html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Loi%20d'Okun\" title=\"Définition Wikipédia\">Loi d'Okun</a></p>\n"
+    html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Loi d'Okun\" title=\"Définition Wikipédia\">Loi d'Okun</a></p>\n"
   end
 
   it "transforms [[]] to wikipedia links, even with bang" do

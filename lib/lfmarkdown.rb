@@ -64,13 +64,13 @@ class LFMarkdown < Redcarpet::Render::HTML
   end
 
   def strikethrough(text)
-    "<s>#{ERB::Util.html_escape text}</s>"
+    "<s>#{text}</s>"
   end
 
   def link(link, title, content)
     link.sub!("https://#{MY_DOMAIN}/", "http://#{MY_DOMAIN}/")
     t = " title=\"#{title}\"" unless title.blank?
-    "<a href=\"#{URI.escape link}\"#{t}>#{content}</a>"
+    "<a href=\"#{CGI.escapeHTML link}\"#{t}>#{content}</a>"
   end
 
   def normal_text(text)
