@@ -868,10 +868,6 @@ footer.actions {
 /* concerne tout ce qui est contenu : article, commentaire */
 .content {
   text-align: justify;
-  word-wrap: break-word;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  hyphens: auto;
   img {
     display: block;
     margin: 0 auto;
@@ -1506,6 +1502,8 @@ body#wiki_pages-changes #contents {
     @include lien_standard;
   }
 }
+
+input { font-size: 1em; }
 textarea {
   max-width: 100%;
 }
