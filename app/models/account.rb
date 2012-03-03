@@ -265,4 +265,15 @@ class Account < ActiveRecord::Base
       send "#{type.tableize}_on_home?"
     end
   end
+
+### Stylesheet ###
+
+  before_validation :validate_css
+  def validate_css
+    return if stylesheet.blank?
+    return if stylesheet.starts_with?("http://")
+    return if stylesheet.starts_with?("https://")
+    return if Stylesheet.include?(stylesheet)
+    errors.add(:stylesheet, "Feuille de style non valide")
+  end
 end

@@ -10,8 +10,12 @@ class StylesheetsController < ApplicationController
 
   def create
     @account.stylesheet = params[:stylesheet]
-    @account.save
-    redirect_to edit_stylesheet_url, :notice => "Feuille de style enregistrée"
+    if @account.save
+      msg = { :notice => "Feuille de style enregistrée" }
+    else
+      msg = { :alert => "Cette feuille de style n'est pas valide" }
+    end
+    redirect_to edit_stylesheet_url, msg
   end
 
   def destroy

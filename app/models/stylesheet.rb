@@ -4,6 +4,10 @@
 class Stylesheet < Struct.new(:name, :url, :image)
   BASE_DIR = Rails.root.join("app/assets/stylesheets/contrib")
 
+  def self.include?(css)
+    Dir["#{BASE_DIR.sub '/contrib', ''}/#{css}*css"].any?
+  end
+
   def self.all
     Dir["#{BASE_DIR}/*css"].map do |scss|
       css = File.basename scss.sub(/.scss$/, ''), '.css'
