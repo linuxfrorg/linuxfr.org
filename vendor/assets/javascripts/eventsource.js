@@ -4,86 +4,80 @@
 (function (global) {
 
   function EventTarget() {
-    var listeners = [];
-
-    function lastIndexOf(type, callback) {
-      var i = listeners.length - 1;
-      while (i >= 0 && !(listeners[i].type === type && listeners[i].callback === callback)) {
-        i -= 1;
-      }
-      return i;
-    }
-
-    this.dispatchEvent = function (event) {
-      function a(e) {
-        return function () {
-          throw e;
-        };
-      }
-
-      var type = event.type,
-        candidates = listeners.slice(0),
-        i;
-      for (i = 0; i < candidates.length; i += 1) {
-        if (candidates[i].type === type) {
-          try {
-            candidates[i].callback.call(this, event);
-          } catch (e) {
-            // This identifier is local to the catch clause. But it's not true for IE < 9 ? (so "a" used)
-            setTimeout(a(e), 0);
-          }
-        }
-      }
-    };
-
-    this.addEventListener = function (type, callback) {
-      if (lastIndexOf(type, callback) === -1) {
-        listeners.push({type: type, callback: callback});
-      }
-    };
-
-    this.removeEventListener = function (type, callback) {
-      var i = lastIndexOf(type, callback);
-      if (i !== -1) {
-        listeners.splice(i, 1);
-      }
-    };
-
+    this.listeners = [];
     return this;
   }
 
-  function empty() {}
+  EventTarget.prototype = {
+    dispatchEvent: function (event) {
+      function a(x, type, event) {
+        if (x.type === type) {
+          event.currentTarget = this;
+          event.eventPhase = 2;
+          try {
+            x.callback.call(this, event);
+          } catch (e) {
+            setTimeout(function () {
+              throw e;
+            }, 0);
+          }
+          event.currentTarget = null;
+          event.eventPhase = 2;
+        }
+      }
+      var type = event.type,
+        candidates = this.listeners.slice(0),
+        i;
+      for (i = 0; i < candidates.length; i += 1) {
+        a.call(this, candidates[i], type, event);
+      }
+    },
+    addEventListener: function (type, callback, capture) {
+      capture = Boolean(capture);
+      var listeners = this.listeners,
+        i = listeners.length - 1;
+      while (i >= 0 && !(listeners[i].type === type && listeners[i].callback === callback && listeners[i].capture === capture)) {
+        i -= 1;
+      }
+      if (i === -1) {
+        listeners.push({type: type, callback: callback, capture: capture});
+      }
+    },
+    removeEventListener: function (type, callback, capture) {
+      capture = Boolean(capture);
+      var listeners = this.listeners,
+        i = listeners.length - 1;
+      while (i >= 0 && !(listeners[i].type === type && listeners[i].callback === callback && listeners[i].capture === capture)) {
+        i -= 1;
+      }
+      if (i !== -1) {
+        listeners.splice(i, 1);
+      }
+    }
+  };
 
-  var Transport = null,
-    isOpera = Object.prototype.toString.call(global.opera) === '[object Opera]',
-    supportCORS = true, // anonymous mode at least
-    tmp = global.XMLHttpRequest && (new global.XMLHttpRequest()),
-    nativeProgress = (tmp && ('onprogress' in tmp)),
-    progress = isOpera || nativeProgress,
-    withCredentials = tmp && ('withCredentials' in tmp);
-  tmp = null;
+  // http://blogs.msdn.com/b/ieinternals/archive/2010/04/06/comet-streaming-in-internet-explorer-with-xmlhttprequest-and-xdomainrequest.aspx?PageIndex=1#comments
+  // XDomainRequest does not have a binary interface. To use with non-text, first base64 to string.
+  // http://cometdaily.com/2008/page/3/
+
+  var xhr2 = global.XMLHttpRequest && ('withCredentials' in (new global.XMLHttpRequest())) && !!global.ProgressEvent;
 
   function EventSource(url, options) {
-    function F() {}
-    F.prototype = EventSource.prototype;
-
     url = String(url);
 
-    var that = new F(),
+    var that = this,
       retry = 1000,
       lastEventId = '',
       xhr = null,
       reconnectTimeout = null,
       checkTimeout = null,
-      stop;
+      withCredentials = Boolean(xhr2 && options && options.withCredentials);
 
+    options = null;
     that.url = url;
-    that.withCredentials = !!(options && options.withCredentials && withCredentials);
 
-    that.CONNECTING = 0;
-    that.OPEN = 1;
-    that.CLOSED = 2;
     that.readyState = that.CONNECTING;
+    that.withCredentials = withCredentials;
 
     // Queue a task which, if the readyState is set to a value other than CLOSED,
     // sets the readyState to ... and fires event
@@ -97,11 +91,19 @@
           event.target = that;
           that.dispatchEvent(event);
           if (/^(message|error|open)$/.test(event.type) && typeof that['on' + event.type] === 'function') {
-            // as IE doesn't support getters/setters, we can't implement 'onmessage' via addEventListener/removeEventListener
+            // as IE 8 doesn't support getters/setters, we can't implement 'onmessage' via addEventListener/removeEventListener
             that['on' + event.type](event);
           }
         }
       }, 0);
+    }
+
+    function stop() {
+      if (checkTimeout !== null) {
+        clearTimeout(checkTimeout);
+        checkTimeout = null;
+      }
+      xhr.onload = xhr.onerror = xhr.onprogress = xhr.onreadystatechange = function () {};
     }
 
     function close() {
@@ -118,46 +120,29 @@
       that.readyState = that.CLOSED;
     }
 
-    stop = function () {
-      if (checkTimeout !== null) {
-        clearTimeout(checkTimeout);
-        checkTimeout = null;
-      }
-      if ('\v' === 'v' && global.detachEvent) {
-        global.detachEvent('onunload', close);
-      }
-      xhr.onload = xhr.onerror = xhr.onprogress = xhr.onreadystatechange = empty;
-    };
-
     that.close = close;
 
     EventTarget.call(that);
 
     function openConnection() {
       reconnectTimeout = null;
-      if ('\v' === 'v' && global.attachEvent) {
-        global.attachEvent('onunload', close);
-      }
 
       var offset = 0,
         charOffset = 0,
         opened = false,
+        closed = false,
         buffer = {
           data: '',
           lastEventId: lastEventId,
           name: ''
         };
 
-      xhr = new Transport();
+      xhr = !xhr2 && global.XDomainRequest ? new global.XDomainRequest() : new global.XMLHttpRequest();
 
       // with GET method in FF xhr.onreadystatechange with readyState === 3 doesn't work + POST = no-cache
       xhr.open('POST', url, true);
 
       function onReadyStateChange(readyState) {
-        if (!xhr) {//? strange Opera error
-          return;
-        }
-
         var responseText = '',
           contentType = '',
           i,
@@ -167,15 +152,9 @@
           field,
           value;
 
-        // Opera doesn't fire several readystatechange events while chunked data is coming in
-        // see http://stackoverflow.com/questions/2657450/how-does-gmail-do-comet-on-opera
-        if (checkTimeout === null && !nativeProgress && readyState === 3) {
-          (function loop() {
-            checkTimeout = setTimeout(function () {
-              onReadyStateChange(+xhr.readyState);
-              loop();
-            }, 250);
-          }());
+        // (onreadystatechange can't prevent onload/onerror)
+        if (closed) {
+          return;
         }
 
         try {
@@ -238,9 +217,23 @@
         }
         charOffset = responseText.length;
 
+        if (!global.XDomainRequest && !xhr2) { // Opera < 12
+          // Opera doesn't fire several readystatechange events while chunked data is coming in
+          // see http://stackoverflow.com/questions/2657450/how-does-gmail-do-comet-on-opera
+          if (opened && checkTimeout === null && readyState === 3) {
+            checkTimeout = setTimeout(function () {
+              checkTimeout = null;
+              if (+xhr.readyState === 3) { // xhr.readyState may be changed to 4 in Opera 11.50
+                onReadyStateChange(3); // will setTimeout - setInterval
+              }
+            }, 250);
+          }
+        }
+
         if (readyState === 4) {
           stop();
           xhr = null;
+          closed = true;
           if (opened) {
             // reestablishes the connection
             queue({type: 'error'}, that.CONNECTING);
@@ -253,8 +246,9 @@
         }
       }
 
-      if (xhr.setRequestHeader) { // XDomainRequest doesn't have this method
-        // Chrome bug:
+      if (xhr.setRequestHeader) { // !XDomainRequest
+        // http://dvcs.w3.org/hg/cors/raw-file/tip/Overview.html
+        // Cache-Control is not a simple header
         // Request header field Cache-Control is not allowed by Access-Control-Allow-Headers.
         //xhr.setRequestHeader('Cache-Control', 'no-cache');
 
@@ -262,25 +256,25 @@
         // http://code.google.com/p/chromium/issues/detail?id=71694
         // If you force Chrome to have a whitelisted content-type, either explicitly with setRequestHeader(), or implicitly by sending a FormData, then no preflight is done.
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.setRequestHeader('Accept', 'text/event-stream');
 
-        if (!progress) {
-          //! X-Requested-With header should be allowed for CORS requests
-          xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');// long-polling
-        }
-
-        //  Request header field Last-Event-ID is not allowed by Access-Control-Allow-Headers.
+        // Request header field Last-Event-ID is not allowed by Access-Control-Allow-Headers.
+        // +setRequestHeader shouldn't be used to avoid preflight requests
         //if (lastEventId !== '') {
         //  xhr.setRequestHeader('Last-Event-ID', lastEventId);
         //}
-        xhr.onreadystatechange = function () {
-          onReadyStateChange(+xhr.readyState);
-        };
-
-        xhr.withCredentials = that.withCredentials;
       }
+
+      xhr.onreadystatechange = function () {
+        onReadyStateChange(+this.readyState);
+      };
+
+      xhr.withCredentials = withCredentials;
+
       xhr.onload = xhr.onerror = function () {
         onReadyStateChange(4);
       };
+
       // onprogress fires multiple times while readyState === 3
       xhr.onprogress = function () {
         onReadyStateChange(3);
@@ -297,33 +291,13 @@
   EventSource.OPEN = 1;
   EventSource.CLOSED = 2;
 
-  if (!(global.EventSource && global.EventSource.constructor && global.EventSource.constructor.length > 1)) {
-    if (progress && withCredentials) {
-      Transport = global.XMLHttpRequest;
-    } else {
-      if (global.XDomainRequest) {
-        // http://blogs.msdn.com/b/ieinternals/archive/2010/04/06/comet-streaming-in-internet-explorer-with-xmlhttprequest-and-xdomainrequest.aspx?PageIndex=1#comments
-        // XDomainRequest does not have a binary interface. To use with non-text, first base64 to string.
-        // http://cometdaily.com/2008/page/3/
-        Transport = global.XDomainRequest;
-        nativeProgress = true;
-      } else {
-        if (!isOpera && global.EventSource) {
-          supportCORS = false;
-        } else {
-          supportCORS = withCredentials;
-          Transport = global.XMLHttpRequest || function () {
-            return (new global.ActiveXObject('Microsoft.XMLHTTP'));
-          };
-        }
-      }
-    }
-  }
+  EventSource.prototype = new EventTarget();
+  EventSource.prototype.CONNECTING = EventSource.CONNECTING;
+  EventSource.prototype.OPEN = EventSource.OPEN;
+  EventSource.prototype.CLOSED = EventSource.CLOSED;
 
-  if (Transport) {
-    global.EventSource = EventSource;
-  }
-
-  global.EventSource.supportCORS = supportCORS;
+  //if (!('withCredentials' in global.EventSource.prototype)) { // to detect CORS in FF 11
+  global.EventSource = EventSource;
+  //}
 
 }(this));
