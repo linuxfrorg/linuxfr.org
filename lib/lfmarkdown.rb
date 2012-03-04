@@ -82,8 +82,8 @@ class LFMarkdown < Redcarpet::Render::HTML
 
 protected
 
-  LF_LINK_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /\[\[\[([ '\.:\-\w]+)\]\]\]/ : /\[\[\[([ '\.:\-\p{Word}]+)\]\]\]/
-  WP_LINK_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /\[\[([ '\.+:!\-\(\)\w]+)\]\]/ : /\[\[([ '\.+:!\-\(\)\p{Word}]+)\]\]/
+  LF_LINK_REGEXP = /\[\[\[([ '\.:\-\p{Word}]+)\]\]\]/
+  WP_LINK_REGEXP = /\[\[([ '\.+:!\-\(\)\p{Word}]+)\]\]/
 
   def process_internal_wiki_links(text)
     text.gsub!(LF_LINK_REGEXP, '[\1](/wiki/\1 "Lien du wiki interne LinuxFr.org")')

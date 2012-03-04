@@ -64,7 +64,7 @@ class Account < ActiveRecord::Base
                     :uniqueness => { :message => "Ce pseudo est déjà pris" },
                     :format     => { :message => "Le pseudo n'est pas valide", :with => LOGIN_REGEXP, :allow_blank => true }
 
-  EMAIL_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /^.+@.+\.\w{2,4}$/i : /^[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}$/i
+  EMAIL_REGEXP = /^[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}$/i
   validates :email, :presence   => { :message => "Veuillez remplir l'adresse de courriel" },
                     :uniqueness => { :message => "Cette adresse de courriel est déjà utilisée", :case_sensitive => false, :allow_blank => true },
                     :format     => { :message => "L'adresse de courriel n'est pas valide", :with => EMAIL_REGEXP, :allow_blank => true }

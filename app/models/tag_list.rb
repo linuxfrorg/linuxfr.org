@@ -33,7 +33,7 @@ class TagList < Array
 
 private
 
-  INVALID_CHARS = RUBY_VERSION.starts_with?('1.8') ? /\W/ : /\P{Word}/u
+  INVALID_CHARS = /\P{Word}/u
 
   # Keeps only letters and digits, and remove duplicates
   def clean!
