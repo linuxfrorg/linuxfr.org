@@ -59,8 +59,10 @@ class Account < ActiveRecord::Base
 
 ### Validation ###
 
+  LOGIN_REGEXP = /^[\p{Word}.+\-]+$/
   validates :login, :presence   => { :message => "Veuillez choisir un pseudo"},
-                    :uniqueness => { :message => "Ce pseudo est déjà pris" }
+                    :uniqueness => { :message => "Ce pseudo est déjà pris" },
+                    :format     => { :message => "Le pseudo n'est pas valide", :with => LOGIN_REGEXP, :allow_blank => true }
 
   EMAIL_REGEXP = RUBY_VERSION.starts_with?('1.8') ? /^.+@.+\.\w{2,4}$/i : /^[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}$/i
   validates :email, :presence   => { :message => "Veuillez remplir l'adresse de courriel" },
