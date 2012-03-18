@@ -2,7 +2,7 @@ source :rubygems
 
 gem "rails",                   "~>3.2.2"
 
-gem "acts_as_list",            "~>0.1"
+gem "acts_as_list",            "=0.1.4"  # See https://github.com/swanandp/acts_as_list/issues/31
 gem "albino",                  "~>1.3"
 gem "bitfields",               "~>0.4"
 gem "canable",                 "~>0.1"
@@ -29,7 +29,7 @@ gem "sanitize",                "~>2.0"
 gem "sitemap_generator",       "~>2.1"
 gem "simple_autocomplete",     "~>0.3"
 gem "state_machine",           "~>1.1"
-gem "tire",                    :git => "https://github.com/karmi/tire.git"
+gem "tire",                    "0.4.0.pre"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -43,7 +43,7 @@ end
 
 # Rspec-rails must be in development for rake stats and in test for normal stuff
 group :development, :test do
-  gem "rspec-rails",           "~>2.8"
+  gem "rspec-rails",           "~>2.9"
 end
 
 group :development do
@@ -64,7 +64,7 @@ group :test do
   gem "factory_girl_rails",    "~>1.6"
   gem "faker",                 "~>0.9"
   gem "fuubar",                "~>1.0"
-  gem "spork",                 "~>0.8"
+  gem "spork",                 "~>0.9"
   gem "webrat",                "~>0.7"
 end
 
