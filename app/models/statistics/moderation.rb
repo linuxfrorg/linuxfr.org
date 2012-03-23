@@ -48,7 +48,7 @@ class Statistics::Moderation < Statistics::Statistics
   end
 
   def nb_moderations_x_days(user_id,nbdays)
-    count "SELECT COUNT(*) AS cnt FROM nodes JOIN news ON nodes.content_id = news.id AND nodes.content_type='News' WHERE nodes.created_at >= '#{nbdays.days.ago.to_s :db}' AND moderation_id=#{user_id}"
+    count "SELECT COUNT(*) AS cnt FROM nodes JOIN news ON nodes.content_id = news.id AND nodes.content_type='News' WHERE nodes.created_at >= '#{nbdays.days.ago.to_s :db}' AND moderator_id=#{user_id}"
   end
 
   def nb_editions_x_days(user_id,nbdays)
