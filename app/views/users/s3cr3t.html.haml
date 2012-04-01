@@ -1,0 +1,123 @@
+=h1 "Dossier sur #{@user.name}"
+- a = @user.account
+- w = a.id % 42
+- x = a.id % 69
+- y = 5 * (a.id % 11)
+- z = a.id % 100
+
+%h2 Compte LinuxFr.org
+%ul
+  - if @user == current_user
+    %li Courriel&nbsp;: #{a.email}
+    %li Rôle&nbsp;: #{a.role}
+    %li Karma&nbsp;: #{a.karma}
+  - else
+    %li Courriel&nbsp;: #{a.login}@hotmail.com
+    %li Rôle&nbsp;: #{a.role}
+    %li Karma&nbsp;: #{a.id % 987}
+
+%h2 Actions
+%ul
+  %li
+    %button Plonker
+  %li
+    %button Surveiller
+  %li
+    %button Récupérer les infos depuis facebook
+  %li
+    %button Récupérer les infos depuis google
+
+%h2 Infos confidentielles
+- if @user.comments.count < 25
+  %p Profil incomplet
+- else
+  %ul
+    %li
+      Sexe&nbsp;:
+      = y == 0 ? "Femme" : "Homme"
+    %li
+      Statut marital&nbsp;:
+      - if x < 12
+        célibataire
+      - elsif x < 26
+        marié
+      - elsif x < 36
+        pacsé
+      - elsif x < 42
+        pacsé avec une personne de même sexe
+      - else
+        N/A
+    %li
+      Age&nbsp;:
+      #{y + 10} - #{y + 15} ans
+    %li
+      Appartenance politique&nbsp;:
+      - if w < 10
+        UMP
+      - elsif w < 20
+        Parti Socialiste
+      - elsif w < 25
+        Front de gauche
+      - elsif w < 29
+        Front National
+      - elsif w < 32
+        Modem
+      - elsif w < 34
+        Verts
+      - elsif w < 35
+        Nouveau Parti Anticapitaliste
+      - elsif w < 36
+        Solidarité &amp; Progrès
+      - elsif w < 37
+        Debout la République
+      - elsif w < 38
+        Cap21
+      - else
+        N/A
+    %li
+      Orientation sexuelle&nbsp;:
+      - if x < 6
+        aucune
+      - elsif x < 30
+        hétéro
+      - elsif x < 40
+        homo
+      - elsif x < 41
+        bisexuel
+      - else
+        N/A
+    %li
+      Religion&nbsp;:
+      - if z > 92
+        Islam
+      - elsif z > 90
+        Boudhiste
+      - elsif z > 75
+        Chrétien
+      - elsif z > 74
+        Skippy le Grand Gourou
+      - elsif z > 73
+        Scientologie
+      - elsif z > 71
+        Orthodoxe
+      - elsif z > 70
+        Hindouiste
+      - elsif z > 60
+        Juif
+      - else
+        Athée / pas de religion connue
+    %li
+      D'apparence musulmane&nbsp;:
+      = z > 92 ? "oui" : "non"
+    %li
+      Autres&nbsp;:
+      - if a.moderator?
+        comportement sexiste
+      - elsif @user.id == 3372
+        travaille pour Microsoft
+      - elsif @user.id == 10460
+        activités suspectes depuis une boulangerie
+      - elsif a.karma > 1000
+        suspecté d'être un terroriste
+      - else
+        N/A

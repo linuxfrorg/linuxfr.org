@@ -1,6 +1,7 @@
 # encoding: utf-8
 class UsersController < ApplicationController
   before_filter :find_user
+  before_filter :authenticate_account!, :only => [:s3cr3t]
 
   def show
     path = user_path(@user)
@@ -47,6 +48,9 @@ class UsersController < ApplicationController
       wants.html
       wants.atom { render 'comments/index' }
     end
+  end
+
+  def s3cr3t
   end
 
 protected

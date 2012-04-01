@@ -3,6 +3,9 @@
   %p Compte créé le #{l @user.created_at.to_date}
   - unless @user.account && @user.account.active_for_authentication?
     %p Compte fermé
+  - if @user.account && current_account
+    %ul
+      %li= link_to "Dossier", "/users/#{@user.to_param}/s3cr3t"
   - if @user.account && @user.account.viewable_by?(current_account)
     - a = @user.account
     %ul

@@ -1,0 +1,10 @@
+#s3cr3t_box.box
+  %h1 À surveiller
+  %ul
+    = list_of(Account.order("current_sign_in_at DESC").limit(12)) do |account|
+      - u = account.user
+      = link_to u.name, "/users/#{u.to_param}/s3cr3t"
+
+#pecho_box.box
+  %h1 À pécho
+  %p Aucune cible en vue

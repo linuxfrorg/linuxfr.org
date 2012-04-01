@@ -28,6 +28,7 @@
         %li= link_to "Proposer un contenu", '/proposer-un-contenu'
   = yield :column
   - if current_account
+    = render 'users/box'
     = render 'redaction/box'
     - if current_account.amr?
       = render 'moderation/box'
