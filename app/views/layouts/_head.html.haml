@@ -13,7 +13,6 @@
     %meta(name="author" content=@author)
   %meta(name="description" content=@description)
   %meta(name="keywords" content="#{@keywords.join ', '}")
-  %meta(name="viewport" content="width=device-width")
   - if @dont_index
     %meta(name="robots" content="noindex, nofollow")
   <!--[if IE]>#{javascript_include_tag "html5"}<![endif]-->
