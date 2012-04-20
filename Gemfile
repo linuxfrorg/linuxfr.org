@@ -1,12 +1,12 @@
 source :rubygems
 
-gem "rails",                   "~>3.2.2"
+gem "rails",                   "~>3.2.3"
 
-gem "acts_as_list",            "=0.1.4"  # See https://github.com/swanandp/acts_as_list/issues/31
+gem "acts_as_list",            "~>0.1.6"
 gem "albino",                  "~>1.3"
 gem "bitfields",               "~>0.4"
 gem "canable",                 "~>0.1"
-gem "carrierwave",             "~>0.5"
+gem "carrierwave",             "~>0.6"
 gem "devise",                  "~>2.0"
 gem "differ",                  "~>0.1"
 gem "french_rails",            "~>0.2"
@@ -20,7 +20,7 @@ gem "kaminari",                "~>0.12"
 gem "mini_magick",             "~>3.3"
 gem "mysql2",                  "~>0.3"
 gem "nokogiri",                "~>1.5"
-gem "oauth2",                  "~>0.5"
+gem "oauth2",                  "~>0.6"
 gem "rinku",                   "~>1.2"
 gem "redcarpet",               "~>2.1"
 gem "hiredis",                 "~>0.3"
@@ -29,7 +29,7 @@ gem "sanitize",                "~>2.0"
 gem "sitemap_generator",       "~>2.1"
 gem "simple_autocomplete",     "~>0.3"
 gem "state_machine",           "~>1.1"
-gem "tire",                    "0.4.0.pre"
+gem "tire",                    "~>0.4"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -55,6 +55,7 @@ group :development do
   gem "letter_opener"
   gem "mo"
   gem "pry-rails"
+  gem "quiet_assets"
   gem "springboard"
   gem "thin"
 end
@@ -69,6 +70,6 @@ group :test do
 end
 
 group :production do
-  gem "unicorn",               "~>4.2"
+  gem "unicorn",               "~>4.3"
   gem "redis-activesupport",   "~>3.2"
 end
