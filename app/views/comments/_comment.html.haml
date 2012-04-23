@@ -2,21 +2,21 @@
   = link_to "[^]", "#{path_for_content comment.content}#comment-#{comment.parent_id}", :title => "Aller au commentaire parent", :class => "parent" unless comment.root?
   = link_to "#", "#{path_for_content comment.content}#comment-#{comment.id}", :title => "Lien direct vers ce commentaire", :class => "anchor"
   = ' '
-  = link_to comment.title, "/nodes/#{comment.node_id}/comments/#{comment.id}", :class => "title"
+  = link_to (comment.deleted? ? "Commentaire supprimé" : comment.title), "/nodes/#{comment.node_id}/comments/#{comment.id}", :class => "title"
 %p.meta
   = posted_by(comment)
   - unless defined? hide_content_title
-    En réponse #{translate_to_content_type comment.content_type} #{link_to comment.content.title, path_for_content(comment.content)}.
-  Évalué à&nbsp;
+    En rÃ©ponse #{translate_to_content_type comment.content_type} #{link_to comment.content.title, path_for_content(comment.content)}.
+  ÃvaluÃ© Ã &nbsp;
   %span.score>= comment.score
   \.
   - if comment.created_at != comment.updated_at
     %span.update>
-      Dernière modification : le #{comment.updated_at.to_s :posted}
+      DerniÃ¨re modification : le #{comment.updated_at.to_s :posted}
 %figure.image= avatar_url(comment.user)
 - if comment.deleted?
   .content.deleted
-    %p Ce commentaire a été supprimé par l'équipe de modération.
+    %p Ce commentaire a Ã©tÃ© supprimÃ© par l'Ã©quipe de modÃ©ration.
 - else
   .content
     = comment.body
@@ -24,7 +24,7 @@
       %p.signature
         = comment.user.try(:signature)
 %footer.actions
-  = link_to "Répondre", "/nodes/#{comment.node_id}/comments/#{comment.id}/answer#new_comment", :class => 'action'
+  = link_to "RÃ©pondre", "/nodes/#{comment.node_id}/comments/#{comment.id}/answer#new_comment", :class => 'action'
   - if current_account && current_account.can_update?(comment)
     = link_to "Modifier", "/nodes/#{comment.node_id}/comments/#{comment.id}/modifier", :class => 'action'
   - if current_account && current_account.can_vote?(comment)
