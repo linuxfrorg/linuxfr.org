@@ -10,7 +10,6 @@
 #  karma                :integer(4)      default(20), not null
 #  nb_votes             :integer(4)      default(0), not null
 #  stylesheet           :string(255)
-#  old_password         :string(20)
 #  email                :string(255)     default(""), not null
 #  encrypted_password   :string(128)     default(""), not null
 #  confirmation_token   :string(255)

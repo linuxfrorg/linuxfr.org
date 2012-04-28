@@ -11,7 +11,6 @@
 #  karma                :integer(4)      default(20), not null
 #  nb_votes             :integer(4)      default(0), not null
 #  stylesheet           :string(255)
-#  old_password         :string(20)
 #  email                :string(255)     default(""), not null
 #  encrypted_password   :string(128)     default(""), not null
 #  confirmation_token   :string(255)
@@ -88,22 +87,6 @@ class Account < ActiveRecord::Base
 
   def gravatar_hash
     Digest::MD5.hexdigest(email.downcase.strip)
-  end
-
-  # First, we try the normal password,
-  # but, if it fails, we also try the old_password from before the migration
-  # and if this old_password is good, we migrate to the new password encryption.
-  def valid_password?(incoming_password)
-    if encrypted_password.present?
-      super(incoming_password)
-    else
-      return false if incoming_password.blank? || old_password.blank?
-      return false if incoming_password.crypt(old_password) != old_password
-      self.password = self.password_confirmation = incoming_password
-      self.old_password = nil
-      save(:validate => false)
-      true
-    end
   end
 
 ### Password ###
