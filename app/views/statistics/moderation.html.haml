@@ -29,18 +29,30 @@
             %td
               .stat.misc(style="width: #{(width_stats * day["cnt"] / maxval).to_i}px;")= day["cnt"]
 
-      %h2 Temps de modération
+      %h2 Temps d'édition et de modération
       %p
-        Temps moyen passé entre la création d'une dépêche (temps d'édition compris) et sa modération finale&nbsp;:
-      %ul
+        Temps passé entre la création d'une dépêche (temps d'édition compris) et sa modération finale&nbsp;:
+      %table{'class'=>'sortable'}
+        %tr
+          %th Année
+          %th Médiane (h)
+          %th 95e percentile (h)
+          %th Moyenne (h)
+          %th Écart-type (h)
+          %th Minimum (min)
+          %th Maximum (h)
         - @stats.average_time.each do |avg|
-          %li
-            - if avg["cnt"] > 0
-              #{avg["year"]}&nbsp;: #{(avg["duration"]/(avg["cnt"]*3600)).to_i} heures (entre #{(avg["min"]/60).to_i}min et #{(avg["max"]/3600).to_i}h)
-            - else
-              aucune information disponible
-
-    -# TODO Temps médian... un peu pénible à calculer...
+          - if avg["cnt"] > 0
+            %tr
+              %td{'class'=>'stat'}= avg["year"]
+              %td{'class'=>'stat'}= (@stats.median_time(avg["year"],avg["cnt"],0.50)/3600)
+              %td{'class'=>'stat'}= (@stats.median_time(avg["year"],avg["cnt"],0.95)/3600)
+              %td{'class'=>'stat'}= (avg["duration"]/(avg["cnt"]*3600)).to_i
+              %td{'class'=>'stat'}= (avg["std"]/3600).to_i
+              %td{'class'=>'stat'}= (avg["min"]/60).to_i
+              %td{'class'=>'stat'}= (avg["max"]/3600).to_i
+          - else
+            aucune information disponible
 
     %h2 Équipe de modération
     %ul

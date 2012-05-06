@@ -18,6 +18,7 @@ class Statistics::Moderation < Statistics::Statistics
        SELECT YEAR(CONVERT_TZ(nodes.created_at,'+00:00','Europe/Paris')) AS year,
               COUNT(*) AS cnt,
               SUM(TIMESTAMPDIFF(SECOND,news.created_at,nodes.created_at)) AS duration,
+              STD(TIMESTAMPDIFF(SECOND,news.created_at,nodes.created_at)) AS std,
               MIN(TIMESTAMPDIFF(SECOND,news.created_at,nodes.created_at)) AS min,
               MAX(TIMESTAMPDIFF(SECOND,news.created_at,nodes.created_at)) AS max
          FROM nodes, news
@@ -27,6 +28,10 @@ class Statistics::Moderation < Statistics::Statistics
      GROUP BY year
      ORDER BY year
     EOS
+  end
+
+  def median_time(year, count, percentile)
+    count("SELECT TIMESTAMPDIFF(SECOND,news.created_at,nodes.created_at) AS duration FROM nodes, news WHERE nodes.content_id = news.id AND nodes.content_type='News' AND YEAR(CONVERT_TZ(nodes.created_at,'+00:00','Europe/Paris'))='#{year}' ORDER BY duration LIMIT #{(count*percentile).to_i},1;", "duration")
   end
 
   def top_amr(sql_criterion="")
