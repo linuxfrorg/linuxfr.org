@@ -15,7 +15,7 @@ class TrackersController < ApplicationController
     else
       @trackers = @trackers.joins(:node).order("nodes.#{@order} DESC")
     end
-    @tracker  = Tracker.new(@attrs)
+    @tracker  = Tracker.new(@attrs.except("state"))
     @tracker.state = @attrs["state"]
     @trackers = @trackers.where(:state       => @tracker.state)       if @attrs["state"].present?
     @trackers = @trackers.where(:category_id => @tracker.category_id) if @attrs["category_id"].present?
