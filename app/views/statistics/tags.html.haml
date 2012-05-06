@@ -1,0 +1,94 @@
+#tags.statistics
+  =h1 "Statistiques sur les tags"
+  - width_stats = 400
+
+  .body
+    %strong
+      Statistiques mises à jour le #{l Time.now}
+
+    %ul
+      %li=link_to("général","#general")
+      %li=link_to("par type","#type")
+      %li=link_to("par an","#annee")
+      %li=link_to("par mois","#mois")
+      %li=link_to("par jour de la semaine","#jour")
+
+    %h2#general Général
+
+    %ul
+      %li #{@stats.tags} tags dont #{@stats.public_tags} tags publics
+      %li #{@stats.taggings["Total"]} saisies de tags
+      %li tagués en moyenne #{@stats.avg_taggings_count(1)} fois pour les tags publics et #{@stats.avg_taggings_count(0)} fois pour les tags privés
+      %li le plus tagué l'a été #{@stats.max_taggings_count(1)} fois pour les tags publics et #{@stats.max_taggings_count(0)} fois pour les tags privés
+
+    - if @stats.taggings["Total"] > 1
+      %h2#type Répartition par type des #{@stats.taggings["Total"]} saisies de tags
+    - else
+      %h2#type Répartition par type
+    %ul
+      %li #{@stats.taggings["Diary"].to_i} dans les journaux
+      %li #{@stats.taggings["Post"].to_i} dans les forums
+      %li #{@stats.taggings["News"].to_i} dans les dépêches
+      %li #{@stats.taggings["Tracker"].to_i} dans le système de suivi
+      %li #{@stats.taggings["Poll"].to_i} dans les sondages
+      %li #{@stats.taggings["WikiPage"].to_i} dans les pages de wiki
+
+    - if @stats.taggings["Total"] > 1
+      %h2#annee Répartition annuelle des #{@stats.taggings["Total"]} saisies de tags
+    - else
+      %h2#annee Répartition annuelle
+
+    %table
+      - maxval = @stats.taggings_by_year.values.map(&:values).flatten.max
+      %tr
+        %th Année
+        %th Type
+        %th Tags
+      - @stats.taggings_by_year.each do |year,tag|
+        - newyear = true
+        - tag.each do |type,cnt|
+          %tr
+            - if newyear
+              %td{'class' => 'stat','rowspan' => tag.size()}= year
+              - newyear = false
+            %td
+              .stat(class="content#{type.downcase()}" style="width: 100px;") #{translate_content_type(type)}
+            %td
+              .stat(class="content#{type.downcase()}" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
+
+    - if @stats.taggings["Total"] > 1
+      %h2#mois Répartition mensuelle des #{@stats.taggings["Total"]} saisies de tags
+    - else
+      %h2#mois Répartition mensuelle
+
+    %table
+      - maxval = @stats.taggings_by_month.values.map(&:values).flatten.max
+      %tr
+        %th Mois
+        %th Tags publiés
+      - @stats.taggings_by_month.each do |month,tag|
+        - newyear = true
+        - tag.each do |type,cnt|
+          %tr
+            -if newyear
+              %td{'class'=>'stat','rowspan'=>tag.size()}= month.sub(/(\d{4})(\d{2})/, '\2 \1')
+              - newyear = false
+            %td
+              .stat(class="content#{type.downcase()}" style="width: 100px;") #{translate_content_type(type)}
+            %td
+              .stat(class="content#{type.downcase}" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
+
+    %h2#jour Répartition des saisies de tags par jour de la semaine
+    - if @stats.taggings["Total"] > 1
+      - maxval = @stats.taggings_by_day.map {|a| a["cnt"] }.max
+      %table
+        %tr
+          %th Jour
+          %th Nombre de saisies de tags
+        - @stats.taggings_by_day.each do |day|
+          %tr
+            %td= day_name day["day"]
+            %td
+              .stat.misc(style="width: #{(width_stats * day["cnt"] / maxval).to_i}px;")= day["cnt"]
+    - else
+      Aucune saisie de tag

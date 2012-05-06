@@ -31,4 +31,7 @@ class StatisticsController < ApplicationController
     @stats = Statistics::Comments.new
   end
 
+  def tags
+    @stats = Statistics::Tags.new
+  end
 end
