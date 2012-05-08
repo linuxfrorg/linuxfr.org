@@ -296,12 +296,12 @@
 				// callbacks before insertion
 				prepare(options.beforeInsert);
 				prepare(clicked.beforeInsert);
-				if ((ctrlKey === true && shiftKey === true) || button.multiline === true) {
+				if ((altKey === true && shiftKey === true) || button.multiline === true) {
 					prepare(clicked.beforeMultiInsert);
 				}			
 				$.extend(hash, { line:1 });
 
-				if ((ctrlKey === true && shiftKey === true)) {
+				if (altKey === true && shiftKey === true) {
 					lines = selection.split(/\r?\n/);
 					for (j = 0, n = lines.length, i = 0; i < n; i++) {
 						if ($.trim(lines[i]) !== '') {
@@ -315,7 +315,7 @@
 					string = { block:lines.join('\n')};
 					start = caretPosition;
 					len = string.block.length + (($.browser.opera) ? n-1 : 0);
-				} else if (ctrlKey === true) {
+				} else if (altKey === true) {
 					string = build(selection);
 					start = caretPosition + string.openWith.length;
 					len = string.block.length - string.openWith.length - string.closeWith.length;
@@ -354,7 +354,7 @@
 				$.extend(hash, { line:'', selection:selection });
 
 				// callbacks after insertion
-				if ((ctrlKey === true && shiftKey === true) || button.multiline === true) {
+				if ((altKey === true && shiftKey === true) || button.multiline === true) {
 					prepare(clicked.afterMultiInsert);
 				}
 				prepare(clicked.afterInsert);
@@ -530,7 +530,7 @@
 				ctrlKey = (!(e.altKey && e.ctrlKey)) ? (e.ctrlKey || e.metaKey) : false;
 
 				if (e.type === 'keydown') {
-					if (ctrlKey === true) {
+					if (altKey === true) {
 						li = $('a[accesskey="'+String.fromCharCode(e.keyCode)+'"]', header).parent('li');
 						if (li.length !== 0) {
 							ctrlKey = false;
