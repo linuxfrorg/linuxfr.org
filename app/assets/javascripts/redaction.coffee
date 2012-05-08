@@ -19,6 +19,9 @@ class Redaction
   onRefuse: (msg) ->
     $.noticeAdd text: "La dépêche a été refusée par #{msg.username}", stay: true
 
+  onRewrite: (msg) ->
+    $.noticeAdd text: "La dépêche a été renvoyée dans l'espace de rédaction par #{msg.username}", stay: true
+
   onVote: (msg) ->
     $.noticeAdd text: "#{msg.username} a voté #{msg.word}"
     $("#news_vote").load "/moderation/news/#{msg.news_id}/vote"

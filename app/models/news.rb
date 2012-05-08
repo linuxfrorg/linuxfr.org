@@ -115,13 +115,13 @@ class News < Content
     Push.create(self, :kind => :refuse, :username => moderator.name)
   end
 
-	def be_rewritten
+  def be_rewritten
     Push.create(self, :kind => :rewritten, :username => moderator.name)
-	end
+  end
 
   def self.create_for_redaction(account)
     news = News.new
-    news.title = "Nouvelle dépêche #{(News.maximum :id)+1}"
+    news.title = "Nouvelle dépêche #{News.maximum(:id) + 1}"
     news.section = Section.default
     news.wiki_body = news.wiki_second_part = "Vous pouvez éditer cette partie en cliquant sur le crayon !"
     news.cc_licensed = true
@@ -274,6 +274,10 @@ class News < Content
 
   def refusable_by?(account)
     account.admin? || (account.moderator? && refusable?)
+  end
+
+  def rewritable_by?(account)
+    account.admin?
   end
 
   def pppable_by?(account)

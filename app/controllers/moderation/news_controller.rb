@@ -2,7 +2,7 @@
 class Moderation::NewsController < ModerationController
   before_filter :find_news, :except => [:index]
   after_filter  :marked_as_read, :only => [:show]
-  after_filter  :expire_cache, :only => [:update, :accept, :rewrite]
+  after_filter  :expire_cache, :only => [:update, :accept]
 
   def index
     @news    = News.candidate.sorted
@@ -72,7 +72,7 @@ class Moderation::NewsController < ModerationController
   end
 
   def rewrite
-#    enforce_rewrite_permission(@news)
+    enforce_rewrite_permission(@news)
     if @news.unlocked?
       @news.moderator_id = current_user.id
       @news.rewrite!

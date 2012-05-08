@@ -38,5 +38,5 @@
       #buttons_49_3(style="display: none;")
         = button_to "Publier", accept_moderation_news_path(@news), :class => "publish_news"
         = button_to "Refuser", refuse_moderation_news_path(@news), :class => "refuse_news"
-      -if @news.node.cc_licensed?
+      - if @news.node.cc_licensed?
         = button_to "Re-rédaction", rewrite_moderation_news_path(@news), :class => "rewrite_news"
