@@ -40,6 +40,10 @@ class NewsNotifications < ActionMailer::Base
     send_email "Rejected news:", news
   end
 
+  def rewrite(news)
+    send_email "Dépêche renvoyée en rédaction :", news
+  end
+
 protected
 
   def send_email(subject, news)

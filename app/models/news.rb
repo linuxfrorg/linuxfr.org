@@ -89,10 +89,12 @@ class News < Content
     event :unblock do transition :waiting   => :candidate end
     event :accept  do transition :candidate => :published end
     event :refuse  do transition :candidate => :refused   end
+    event :rewrite do transition :candidate => :draft     end
     event :delete  do transition :published => :deleted   end
 
     after_transition :on => :accept, :do => :publish
     after_transition :on => :refuse, :do => :be_refused
+    after_transition :on => :rewrite, :do => :be_rewritten
   end
 
   def submit_and_notify(user)
@@ -112,6 +114,10 @@ class News < Content
   def be_refused
     Push.create(self, :kind => :refuse, :username => moderator.name)
   end
+
+	def be_rewritten
+    Push.create(self, :kind => :rewritten, :username => moderator.name)
+	end
 
   def self.create_for_redaction(account)
     news = News.new

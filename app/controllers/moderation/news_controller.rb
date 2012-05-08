@@ -2,7 +2,7 @@
 class Moderation::NewsController < ModerationController
   before_filter :find_news, :except => [:index]
   after_filter  :marked_as_read, :only => [:show]
-  after_filter  :expire_cache, :only => [:update, :accept]
+  after_filter  :expire_cache, :only => [:update, :accept, :rewrite]
 
   def index
     @news    = News.candidate.sorted
@@ -68,6 +68,18 @@ class Moderation::NewsController < ModerationController
       @boards = Board.all(Board.news, @news.id)
     else
       redirect_to [:moderation, @news], :alert => "Impossible de modérer la dépêche tant que quelqu'un est train de la modifier"
+    end
+  end
+
+  def rewrite
+#    enforce_rewrite_permission(@news)
+    if @news.unlocked?
+      @news.moderator_id = current_user.id
+      @news.rewrite!
+      NewsNotifications.rewrite(@news).deliver
+      redirect_to @news, :alert => "Dépêche renvoyée en rédaction"
+    else
+      redirect_to [:moderation, @news], :alert => "Impossible de modérer la dépêche tant que quelqu'un est en train de la modifier"
     end
   end
 

@@ -241,6 +241,9 @@ button, input[type='submit'] {
   &#admin_49_3, &.archive_button {
     background: url("/images/icones/target.png") no-repeat 2px 2px $C_CLAIR;
   }
+  &.rewrite_news {
+    background: url("/images/icones/pen.png") no-repeat 2px 2px $C_CLAIR;
+  }
 }
 
 .edit_client_app,

@@ -3,28 +3,28 @@
 - content_for :column do
   = render 'boards/boards', :boards => @boards
 
-%h2 Utiliser un mail de refus type
+%h2 Utiliser un courriel de refus type
 = form_tag refuse_moderation_news_path(@news) do
   %p
     = label_tag :template, 'Modèle'
     = select_tag :template, options_from_collection_for_select(Response.all, 'id', 'title')
   %div
-    = label_tag :message, 'Message personnalisé qui sera ajouté dans le corps du mail'
+    = label_tag :message, 'Message personnalisé qui sera ajouté dans le corps du courriel'
     = text_area_tag :message, '', :cols => 120, :rows => 10
   = submit_tag "Refuser"
 
-%h2 Utiliser un mail de refus personnalisé
+%h2 Utiliser un courriel de refus personnalisé
 = form_tag refuse_moderation_news_path(@news) do
   %div
     = text_area_tag :message, '', :cols => 120, :rows => 10
   = submit_tag "Refuser"
 
-%h2 Utiliser le mail de refus en anglais
+%h2 Utiliser le courriel de refus en anglais
 = form_tag refuse_moderation_news_path(@news) do
   = hidden_field_tag :message, 'en'
   = submit_tag "Refuser"
 
-%h2 Ne pas envoyer de mail (spam)
+%h2 Ne pas envoyer de courriel (spam)
 = form_tag refuse_moderation_news_path(@news) do
   = hidden_field_tag :message, 'no'
   = submit_tag "Refuser"
