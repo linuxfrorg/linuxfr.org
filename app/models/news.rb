@@ -115,7 +115,7 @@ class News < Content
 
   def self.create_for_redaction(account)
     news = News.new
-    news.title = "Nouvelle dépêche #{News.maximum :id}"
+    news.title = "Nouvelle dépêche #{(News.maximum :id)+1}"
     news.section = Section.default
     news.wiki_body = news.wiki_second_part = "Vous pouvez éditer cette partie en cliquant sur le crayon !"
     news.cc_licensed = true
