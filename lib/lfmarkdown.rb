@@ -68,6 +68,7 @@ class LFMarkdown < Redcarpet::Render::HTML
   end
 
   def link(link, title, content)
+    link ||= "#"
     link.sub!("https://#{MY_DOMAIN}/", "http://#{MY_DOMAIN}/")
     t = " title=\"#{title}\"" unless title.blank?
     "<a href=\"#{CGI.escapeHTML link}\"#{t}>#{content}</a>"
