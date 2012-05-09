@@ -8,4 +8,4 @@
         %ul
           - forums.each do |forum|
             %li
-              = link_to forum.second_level, forum
+              = link_to (forum.active? ? forum.second_level : "("+forum.second_level+")" ), forum

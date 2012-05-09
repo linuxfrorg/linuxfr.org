@@ -156,7 +156,10 @@ LinuxfrOrg::Application.routes.draw do
     resources :reponses, :controller => "responses", :as => "responses", :except => [:show]
     resources :sections, :except => [:show]
     resources :forums, :except => [:show] do
-      member { post :archive }
+      member do
+        post :archive
+        post :reopen
+      end
     end
     resources :categories, :except => [:show]
     resources :bannieres, :controller => "banners", :as => "banners", :except => [:show]

@@ -238,7 +238,7 @@ button, input[type='submit'] {
   &.plonk {
     background: url("/images/icones/denied.png") no-repeat 2px 2px $C_CLAIR;
   }
-  &#admin_49_3, &.archive_button {
+  &#admin_49_3, &.archive_button, &.reopen_button {
     background: url("/images/icones/target.png") no-repeat 2px 2px $C_CLAIR;
   }
   &.rewrite_news {

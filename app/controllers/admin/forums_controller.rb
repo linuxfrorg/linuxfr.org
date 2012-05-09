@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class Admin::ForumsController < AdminController
-  before_filter :find_forum, :only => [:edit, :update, :archive, :destroy]
+  before_filter :find_forum, :only => [:edit, :update, :archive, :reopen, :destroy]
 
   def index
     @forums = Forum.sorted.all
@@ -38,6 +38,11 @@ class Admin::ForumsController < AdminController
   def archive
     @forum.archive
     redirect_to admin_forums_url, :notice => "Forum archivé"
+  end
+
+  def reopen
+    @forum.reopen
+    redirect_to admin_forums_url, :notice => "Forum ré-ouvert"
   end
 
   def destroy
