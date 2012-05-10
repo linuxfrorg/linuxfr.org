@@ -29,7 +29,7 @@ class DiariesController < ApplicationController
       current_account.tag(@diary.node, params[:tags])
       redirect_to [@diary.owner, @diary], :notice => "Votre journal a bien été créé"
     else
-      @diary.node = Node.new
+      @diary.node = Node.new(:user_id => current_user.id)
       @diary.valid?
       render :new
     end
