@@ -47,7 +47,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "annotate", :git => "git://github.com/ctran/annotate_models.git"
+  gem "annotate", :github => "ctran/annotate_models"
   gem "autotest-standalone"
   gem "capistrano"
   gem "capistrano_colors"

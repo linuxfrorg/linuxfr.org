@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ctran/annotate_models.git
-  revision: ff1131daee8c03dbcc4966b7914b77a7e3a62f02
+  revision: 18cd39ad01829deba5aa34634b8540d6675ab978
   specs:
     annotate (2.4.1.beta1)
 
@@ -100,7 +100,7 @@ GEM
       railties (~> 3.0)
     has_scope (0.5.1)
     hashr (0.0.21)
-    highline (1.6.11)
+    highline (1.6.12)
     hike (1.2.1)
     hiredis (0.4.5)
     html_spellchecker (0.1.6)
@@ -159,7 +159,7 @@ GEM
     orm_adapter (0.0.7)
     polyglot (0.3.3)
     posix-spawn (0.3.6)
-    pry (0.9.9.4)
+    pry (0.9.9.6)
       coderay (~> 1.0.5)
       method_source (~> 0.7.1)
       slop (>= 2.4.4, < 3)
