@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :find_user
 
   def show
-    path = user_path(@user)
+    path = user_path(:id => @user, :format => params[:format])
     redirect_to path, :status => 301 and return if request.path != path
     find_nodes(Diary)
     respond_to do |wants|
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def news
-    path = news_user_path(@user)
+    path = news_user_path(:id => @user, :format => params[:format])
     redirect_to path, :status => 301 and return if request.path != path
     find_nodes(News)
     respond_to do |wants|
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def posts
-    path = posts_user_path(@user)
+    path = posts_user_path(:id => @user, :format => params[:format])
     redirect_to path, :status => 301 and return if request.path != path
     find_nodes(Post)
     respond_to do |wants|
@@ -33,13 +33,13 @@ class UsersController < ApplicationController
   end
 
   def suivi
-    path = suivi_user_path(@user)
+    path = suivi_user_path(:id => @user, :format => params[:format])
     redirect_to path, :status => 301 and return if request.path != path
     find_nodes(Tracker)
   end
 
   def comments
-    path = comments_user_path(@user)
+    path = comments_user_path(:id => @user, :format => params[:format])
     redirect_to path, :status => 301 and return if request.path != path
     @dont_index = true
     @comments = @user.comments.published.order('created_at DESC').page(params[:page])

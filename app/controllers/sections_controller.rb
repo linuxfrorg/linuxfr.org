@@ -7,7 +7,7 @@ class SectionsController < ApplicationController
 
   def show
     @section  = Section.find(params[:id])
-    path = section_path(@section)
+    path      = section_path(:id => @section, :format => params[:format])
     redirect_to path, :status => 301 and return if request.path != path
     @sections = Section.published
     @order    = params[:order]
