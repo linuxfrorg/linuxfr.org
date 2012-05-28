@@ -3,7 +3,7 @@
     %h1 Mes lectures
     = button_to "Tout oublier", readings_path, :method => :delete, :class => "delete_button"
 
-=h1 "Les derniers contenus que j'ai lu"
+=h1 "Les derniers contenus que j'ai lus"
 = paginated_section @nodes do
   #contents
     = render @nodes.map(&:content)
