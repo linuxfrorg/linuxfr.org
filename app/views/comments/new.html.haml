@@ -7,7 +7,7 @@
     %ul.threads
       %li.comment{comment_attr(@comment.parent)}
         = render @comment.parent
-    - if @comment.parent.try(:score) == -10
+    - if @comment.parent.try(:bound_score) == -10
       .notice
         %strong Do not feed the troll!
   - else

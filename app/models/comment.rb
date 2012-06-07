@@ -159,18 +159,20 @@ class Comment < ActiveRecord::Base
   end
 
   def vote_for(account)
-    vote(account, 1) && Comment.increment_counter(:score, self.id) unless score >= 10
+    vote(account, 1) && Comment.increment_counter(:score, self.id)
   end
 
   def vote_against(account)
-    vote(account, -1) && Comment.decrement_counter(:score, self.id) unless score <= -10
+    vote(account, -1) && Comment.decrement_counter(:score, self.id)
   end
 
   def vote(account, value)
     key = "comments/#{self.id}/votes/#{account.id}"
     return false if $redis.getset(key , value)
     $redis.expire(key, 7776000) # 3 months
-    $redis.incrby("users/#{self.user_id}/diff_karma", value)
+    unless score * (score + value) > 100  # Score is out of the [-10, 10] bounds
+      $redis.incrby("users/#{self.user_id}/diff_karma", value)
+    end
     Account.decrement_counter(:nb_votes, account.id)
     true
   end
@@ -202,6 +204,10 @@ class Comment < ActiveRecord::Base
 
   def user_name
     user.try :name
+  end
+
+  def bound_score
+    [[score, -10].max, 10].min
   end
 
 end

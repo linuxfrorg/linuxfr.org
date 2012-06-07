@@ -24,7 +24,7 @@
         %td #{translate_content_type comment.content_type}&nbsp;: #{link_to_content comment.content}
         %td= link_to comment.title, path_for_content(comment.node.content) + "#comment-#{comment.id}"
         %td.date= comment.created_at.to_s(:posted)
-        %td.number= comment.score
+        %td.number= comment.bound_score
         %td.number
           - if answer && !answer.read_by?(current_account)
             = image_tag "/images/icones/comment.png", :alt => "Nouveaux commentaires !", :class => "thread-new-comments"
