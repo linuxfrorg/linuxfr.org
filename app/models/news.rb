@@ -116,6 +116,8 @@ class News < Content
   end
 
   def be_rewritten
+    %w(pour contre).each {|word| $redis.del("news/#{self.id}/#{word}") }
+    node.update_column(:score, 0)
     Push.create(self, :kind => :rewritten, :username => moderator.name)
   end
 
