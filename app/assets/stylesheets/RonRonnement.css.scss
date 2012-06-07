@@ -354,7 +354,7 @@ button, input[type='submit'] {
 
     /* rotation du titre de la boîte */
     h1:first-of-type {
-      display: inline;
+      display: inline-block;
       text-align: center;
       font-size: small;
       color: white;
