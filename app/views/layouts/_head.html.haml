@@ -2,10 +2,9 @@
   %meta(charset="utf-8")
   %title= @title.join(' - ').html_safe
   - if current_account && current_account.stylesheet.present?
-    = stylesheet_link_tag current_account.stylesheet, :media => "screen, projection"
+    = stylesheet_link_tag current_account.stylesheet, :media => nil
   - else
-    = stylesheet_link_tag 'application', :media => "screen, projection"
-  = stylesheet_link_tag 'print', :media => "print"
+    = stylesheet_link_tag 'application', :media => nil
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
   - if @google_plus
     <link rel="publisher" href="https://plus.google.com/116704247328760228227" />

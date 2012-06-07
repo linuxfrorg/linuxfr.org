@@ -6,19 +6,14 @@
 @import 'common/generics';
 @import 'common/langs';
 @import 'common/markitup';
+@import 'common/print';
 @import 'common/statistics';
 @import 'pygments/colorful';
 
 
-$IMAGE: true;
-
 /* Pixel size constants */
-$PX_MARGE_GAUCHE: 42px;
-$PX_MARGE_DROITE: 30px;
-@if IMAGE {
-  $PX_MARGE_GAUCHE: 31px;
-  $PX_MARGE_DROITE: 19px;
-}
+$PX_MARGE_GAUCHE: 31px;
+$PX_MARGE_DROITE: 19px;
 $PX_TOP: 16px;
 $PX_BANDEAU: 7px;
 $PX_BRANDING_TOP: 34px;
@@ -64,43 +59,10 @@ $fleche_offset_vertical: 30px;
 
 html {
   background: $C_BAS_FOND;
-  @if $IMAGE {
-    background-image: url('/images/contrib/RonRonnement/background_html.png');
-    background-repeat: repeat-x;
-    background-position: top;
-  } @else {
-    background: -moz-linear-gradient(top,
-      white $PX_SEP_FOND,
-      $C_BAS_FOND $PX_SEP_FOND
-    );
-    background: -o-linear-gradient(top,
-      white $PX_SEP_FOND,
-      $C_BAS_FOND $PX_SEP_FOND
-    );
-    background: -webkit-gradient(linear,
-      center top,
-      center $PX_SEP_FOND_webkit,
-      from(white),
-      color-stop(99%, white),
-      color-stop(100%, $C_BAS_FOND),
-      to($C_BAS_FOND)
-    );
-    background: -khtml-gradient(linear,
-      center top,
-      center $PX_SEP_FOND_webkit,
-      from(white),
-      color-stop(99%, white),
-      color-stop(100%, $C_BAS_FOND),
-      to($C_BAS_FOND)
-    );
-    background: linear-gradient(top,
-      white $PX_SEP_FOND,
-      $C_BAS_FOND $PX_SEP_FOND
-    );
-  }
-
+  background-image: url('/images/contrib/RonRonnement/background_html.png');
+  background-repeat: repeat-x;
+  background-position: top;
   font-family: sans-serif;
-
   padding: 0 $PX_MARGE_DROITE 0 $PX_MARGE_GAUCHE;
 }
 
@@ -109,49 +71,19 @@ body {
   color: #000;
   /* si gradient ko p. ex. opera */
   background: $C_BAS_FOND;
-    @if not $IMAGE {
-  /* le gradient change en fct de la longueur de la page, c'est pas ce que je voulait, mais c'est intéressant aussi
-     on peut en déduire directement le temps de travail qu'on va perder à troller */
-  background: -moz-linear-gradient(right 183deg, $C_INTER 45%, $C_CONTAINER 80%);
-  background: -o-linear-gradient(right 183deg, $C_INTER 45%, $C_CONTAINER 80%);
-  background: -webkit-gradient(linear,
-    right top,
-    left 140,
-    from($C_INTER),
-    color-stop(45%, $C_INTER),
-    color-stop(90%, $C_CONTAINER),
-    to($C_CONTAINER)
-  );
-  background: -khtml-gradient(linear,
-    right top,
-    left 140,
-    from($C_INTER),
-    color-stop(45%, $C_INTER),
-    color-stop(90%, $C_CONTAINER),
-    to($C_CONTAINER)
-  );
-  background: linear-gradient(right 183deg, $C_INTER 45%, $C_CONTAINER 80%);
-    }
   margin-top: 0;
   margin-bottom: 0;
   padding-top: $PX_TOP;
 
-  @if $IMAGE {
-    border-style: solid;
-    border-width: 0 11px 0 11px;
-    /* for old browsers */
-    border-color: $C_BAS_FOND;
+  border-style: solid;
+  border-width: 0 11px 0 11px;
+  /* for old browsers */
+  border-color: $C_BAS_FOND;
 
-    -moz-border-image:    url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
-    -o-border-image:      url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
-    -webkit-border-image: url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
-    -khtml-border-image:  url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
-  } @else {
-    -moz-box-shadow: 5px 0 10px #ccc, -5px 0 10px #ccc;
-    -webkit-box-shadow: 5px 0 5px #ccc, -5px 0 5px #ccc;
-    -khtml-box-shadow: 5px 0 5px #ccc, -5px 0 5px #ccc;
-    box-shadow: 5px 0 5px #ccc, -5px 0 5px #ccc;
-  }
+  -moz-border-image:    url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
+  -o-border-image:      url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
+  -webkit-border-image: url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
+  -khtml-border-image:  url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
 }
 
 a {

@@ -1,0 +1,18 @@
+@media print {
+  html { background: none !important; padding: 0 !important; }
+  body { border: none !important; background: none !important; line-height: 1.4; font-family: sans-serif; color: black; background: none; font-size: 10pt; }
+  #container { background: none; margin: 0 !important; padding: 0 !important; }
+  code { font-size: 0.8em; font-family: monospace; }
+  a img { border: none; }
+  a:link, a:visited { background: transparent; font-weight: 700; text-decoration: underline; }
+  blockquote { margin: 1.5em; padding: 1em; font-style: italic; font-size: 0.9em; }
+  #container { margin: 0 !important; }
+  #top, #site, #sidebar, #bigfooter, #toolbar { display: none !important; }
+  #send-comment, #follow-feed { display: none !important; }
+  .toolbox, .hide, .figures, .avatar, .actions, .scroll, .send-comment { display: none !important; }
+  a.close, a.parent, a.anchor { display: none; }
+  .tags ul { display: inline; }
+  .tags ul li { display: inline; list-style: none outside none; }
+  .tags ul li:after { content: ", "; }
+  .tags ul li:last-child:after, .tags ul li .last:after { content: ""; }
+}
