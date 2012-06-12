@@ -1,6 +1,6 @@
 source :rubygems
 
-gem "rails",                   "~>3.2.5"
+gem "rails",                   "~>3.2.6"
 
 gem "acts_as_list",            "~>0.1.6"
 gem "albino",                  "~>1.3"
@@ -47,7 +47,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "annotate", :github => "ctran/annotate_models"
+  gem "annotate",              "2.5.0.pre1"
   gem "autotest-standalone"
   gem "capistrano"
   gem "capistrano_colors"
