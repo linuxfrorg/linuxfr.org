@@ -31,7 +31,7 @@ namespace :env do
   task :prod do
     set :vserver,   "prod"
     set :user,      "linuxfr"
-    set :branch,    "master"
+    set :branch,    "sgl2012"
     set :rails_env, :production
   end
 
