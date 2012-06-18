@@ -13,6 +13,10 @@ class BoardsController < ApplicationController
     respond_with(@boards)
   end
 
+  def sgl
+    @boards = Board.all(Board.sgl)
+  end
+
   def sl
     @boards = Board.all(Board.sgl)
     render :sl, :layout => nil

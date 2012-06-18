@@ -84,7 +84,8 @@ LinuxfrOrg::Application.routes.draw do
     get  "/board/index.xml" => :show, :format => :xml
     get  "/board" => :show
     post "/board" => :create, :as => :board
-    get "/sl" => :sl
+    get "/sl"  => :sl
+    get "/sgl" => :sgl
   end
 
   # Accounts
