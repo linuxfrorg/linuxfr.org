@@ -116,8 +116,7 @@ class News < Content
   end
 
   def be_rewritten
-    %w(pour contre).each {|word| $redis.del("news/#{self.id}/#{word}") }
-    node.update_column(:score, 0)
+    reset_votes
     Push.create(self, :kind => :rewritten, :username => moderator.name)
   end
 
@@ -216,6 +215,8 @@ class News < Content
     super attrs
   end
 
+### Moderators' votes ###
+
   def vote_on_candidate(value, account)
     word = value > 0 ? "pour" : "contre"
     who  = account.login
@@ -238,6 +239,11 @@ class News < Content
 
   def voters_against
     $redis.smembers("news/#{self.id}/contre").to_sentence
+  end
+
+  def reset_votes
+    %w(pour contre).each {|word| $redis.del("news/#{self.id}/#{word}") }
+    node.update_column(:score, 0)
   end
 
 ### ACL ###
@@ -276,6 +282,10 @@ class News < Content
 
   def refusable_by?(account)
     account.admin? || (account.moderator? && refusable?)
+  end
+
+  def resetable_by?(account)
+    account.admin?
   end
 
   def rewritable_by?(account)

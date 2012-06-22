@@ -136,6 +136,7 @@ LinuxfrOrg::Application.routes.draw do
         post :refuse
         post :rewrite
         post :ppp
+        post :reset
         get :vote
       end
     end

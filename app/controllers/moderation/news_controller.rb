@@ -71,6 +71,12 @@ class Moderation::NewsController < ModerationController
     end
   end
 
+  def reset
+    enforce_reset_permission(@news)
+    @news.reset_votes
+    redirect_to [:moderation, @news], :notice => "Votes remis à zéro"
+  end
+
   def rewrite
     enforce_rewrite_permission(@news)
     if @news.unlocked?
