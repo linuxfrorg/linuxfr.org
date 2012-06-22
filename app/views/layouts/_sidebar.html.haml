@@ -8,13 +8,14 @@
       } else {
         document.write('<a class="secure">Accès sécurisé (https)</a>');
       }
+    .new_content
+      = link_to "Proposer un contenu", '/proposer-un-contenu'
     - if account_signed_in?
       %p
         Il vous reste
         %span#nb_votes #{current_account.nb_votes}
         avis
       %ul
-        %li= link_to "Proposer un contenu", '/proposer-un-contenu'
         %li= link_to "Mon tableau de bord", '/tableau-de-bord'
         %li= link_to "Mes contenus taggés", '/tags'
         %li= link_to "Les contenus que j'ai lus", '/readings'
@@ -25,7 +26,6 @@
       = render "sessions/new", :id_suffix => "_sidebar"
       %ul
         %li= link_to "Pas de compte&nbsp;? S'inscrire&nbsp;!".html_safe, '/compte/inscription'
-        %li= link_to "Proposer un contenu", '/proposer-un-contenu'
   = yield :column
   - if current_account
     = render 'redaction/box'

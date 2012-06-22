@@ -99,7 +99,7 @@ a {
 
 button,
 .edit_client_app,
-.toolbox .new_content,
+.new_content,
 .toolbox .follow_feed,
 #comments #follow-feed,
 #comments #send-comment,
@@ -182,7 +182,7 @@ button, input[type='submit'] {
 }
 
 .edit_client_app,
-.toolbox .new_content,
+.new_content,
 .toolbox .follow_feed,
 #comments #follow-feed,
 #comments #send-comment {
@@ -191,7 +191,7 @@ button, input[type='submit'] {
   margin: 5px 10px 3px 0;
 }
 .edit_client_app,
-.toolbox .new_content {
+.new_content {
   background: url("/images/icones/pen.png") no-repeat 2px 2px $C_CLAIR;
 }
 .toolbox .follow_feed,
@@ -323,6 +323,10 @@ button, input[type='submit'] {
     padding: 0;
     margin-left: -3px;
     &:hover { background-color: $C_CLAIR; }
+  }
+
+  .new_content a {
+    font-size: 85%;
   }
 }
 
