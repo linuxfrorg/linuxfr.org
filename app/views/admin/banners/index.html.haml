@@ -19,7 +19,7 @@
           = banner.content
         %td
           = link_to "Modifier", edit_admin_banner_path(banner)
-          = button_to "Supprimer", [:admin, banner], :method => :delete, :confirm => "Supprimer la bannière ?", :class => "delete_button"
+          = button_to "Supprimer", [:admin, banner], :method => :delete, :data => { :confirm => "Supprimer la bannière ?" }, :class => "delete_button"
 
 %p
   = link_to "Ajouter une bannière", new_admin_banner_path

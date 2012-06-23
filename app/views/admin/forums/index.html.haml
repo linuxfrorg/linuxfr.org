@@ -16,7 +16,7 @@
         %td
           = link_to "Modifier", edit_admin_forum_path(forum)
           - if forum.active?
-            = button_to "Archiver", archive_admin_forum_path(forum), :confirm => "Archiver le forum ?", :class => "archive_button"
+            = button_to "Archiver", archive_admin_forum_path(forum), :data => { :confirm => "Archiver le forum ?" }, :class => "archive_button"
           - else
-            = button_to "Ré-ouvrir", reopen_admin_forum_path(forum), :confirm => "Ré-ouvrir le forum ?", :class => "reopen_button"
-          = button_to "Supprimer", [:admin, forum], :method => :delete, :confirm => "Supprimer le forum ?", :class => "delete_button"
+            = button_to "Ré-ouvrir", reopen_admin_forum_path(forum), :data => { :confirm => "Ré-ouvrir le forum ?" }, :class => "reopen_button"
+          = button_to "Supprimer", [:admin, forum], :method => :delete, :data => { :confirm => "Supprimer le forum ?" }, :class => "delete_button"
