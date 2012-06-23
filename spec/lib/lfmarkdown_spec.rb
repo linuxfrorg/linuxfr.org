@@ -58,6 +58,30 @@ describe LFMarkdown do
     html.should == "<p><a href=\"http://fr.wikipedia.org/wiki/Joomla!\" title=\"Définition Wikipédia\">Joomla!</a></p>\n"
   end
 
+  it "transforms https link to http for the local domain" do
+    html = LFMarkdown.render("[foo](https://#{MY_DOMAIN}/bar)")
+    html.should == "<p><a href=\"http://#{MY_DOMAIN}/bar\">foo</a></p>\n"
+  end
+
+  it "doesn't transform https link to http on other domains" do
+    html = LFMarkdown.render("[foo](https://google.com/bar)")
+    html.should == "<p><a href=\"https://google.com/bar\">foo</a></p>\n"
+  end
+
+  it "proxifies image" do
+    html = LFMarkdown.render("![foo](http://fr.wikipedia.org/apple-touch-icon.png)")
+    html.should == "<p><img src=\"/img/d3e752717c3201b2743cd23bd5f21185f747cee1/687474703a2f2f66722e77696b6970656469612e6f72672f6170706c652d746f7563682d69636f6e2e706e67\" alt=\"foo\" /></p>\n"
+  end
+
+  it "doesn't proxify images on the local domain" do
+    html = LFMarkdown.render("![foo](/images/linuxfr2_100.png)")
+    html.should == "<p><img src=\"/images/linuxfr2_100.png\" alt=\"foo\" /></p>\n"
+    html = LFMarkdown.render("![foo](http://#{MY_DOMAIN}/images/linuxfr2_100.png)")
+    html.should == "<p><img src=\"http://#{MY_DOMAIN}/images/linuxfr2_100.png\" alt=\"foo\" /></p>\n"
+    html = LFMarkdown.render("![foo](https://#{MY_DOMAIN}/images/linuxfr2_100.png)")
+    html.should == "<p><img src=\"https://#{MY_DOMAIN}/images/linuxfr2_100.png\" alt=\"foo\" /></p>\n"
+  end
+
   it "leaves underscored words unchanged" do
     html = LFMarkdown.render("foo_bar_baz")
     html.should == "<p>foo_bar_baz</p>\n"
