@@ -1,9 +1,7 @@
 # encoding: UTF-8
+require "image"
 require "albino"
 require "redcarpet"
-require "digest/sha1"
-require "openssl"
-require "uri"
 
 # LinuxFr Flavored Markdown
 #
@@ -72,15 +70,7 @@ class LFMarkdown < Redcarpet::Render::HTML
 
   def image(link, title, alt_text)
     return "" if link.blank?
-    uri = URI.parse(link)
-    if uri.host && uri.host != MY_DOMAIN
-      secret = Rails.application.config.img_secret
-      hmac = OpenSSL::HMAC.hexdigest(OpenSSL::Digest::Digest.new('sha1'), secret, link)
-      enco = link.to_enum(:each_byte).map {|c| "%02x" % c }.join
-      link = "/img/#{hmac}/#{enco}"
-    end
-    t = " title=\"#{title}\"" unless title.blank?
-    "<img src=\"#{CGI.escapeHTML link}\" alt=\"#{CGI.escapeHTML alt_text}\"#{t} />"
+    Image.new(link, title, alt_text).to_html
   end
 
   def link(link, title, content)

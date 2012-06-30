@@ -147,6 +147,7 @@ LinuxfrOrg::Application.routes.draw do
       end
     end
     resources :plonk, :only => [:create]
+    resources :images, :only => [:index, :destroy]
   end
 
   # Admin

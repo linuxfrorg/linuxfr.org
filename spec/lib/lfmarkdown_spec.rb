@@ -70,7 +70,7 @@ describe LFMarkdown do
 
   it "proxifies image" do
     html = LFMarkdown.render("![foo](http://fr.wikipedia.org/apple-touch-icon.png)")
-    html.should == "<p><img src=\"/img/d3e752717c3201b2743cd23bd5f21185f747cee1/687474703a2f2f66722e77696b6970656469612e6f72672f6170706c652d746f7563682d69636f6e2e706e67\" alt=\"foo\" /></p>\n"
+    html.should == "<p><img src=\"//#{IMG_DOMAIN}/img/687474703a2f2f66722e77696b6970656469612e6f72672f6170706c652d746f7563682d69636f6e2e706e67\" alt=\"foo\" /></p>\n"
   end
 
   it "doesn't proxify images on the local domain" do

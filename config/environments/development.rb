@@ -1,7 +1,8 @@
 # encoding: utf-8
 LinuxfrOrg::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
-  MY_DOMAIN = 'dlfp.lo'
+  MY_DOMAIN  = 'dlfp.lo'
+  IMG_DOMAIN = 'dlfp.lo'
 
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
