@@ -7,6 +7,7 @@
 class Image < Struct.new(:link, :title, :alt_text)
   LATEST_KEY = "img/latest"
   NB_IMG_IN_LATEST = 100
+  E403 = "/images/403.png"
 
   def self.latest(nb=NB_IMG_IN_LATEST)
     links = $redis.lrange LATEST_KEY, 0, nb
@@ -15,8 +16,7 @@ class Image < Struct.new(:link, :title, :alt_text)
 
   def self.destroy(encoded_link)
     link = [encoded_link].pack('H*')
-    $redis.lrem LATEST_KEY, 0, link
-    $redis.del link
+    $redis.hset "img/#{link}", "status", "Blocked"
   end
 
   def register_in_redis
@@ -26,9 +26,14 @@ class Image < Struct.new(:link, :title, :alt_text)
     $redis.ltrim LATEST_KEY, 0, NB_IMG_IN_LATEST - 1
   end
 
-  def external_link?
+  def internal_link?
     uri = URI.parse(link)
-    uri.host && uri.host != MY_DOMAIN
+    !uri.host || uri.host == MY_DOMAIN
+  end
+
+  def blacklisted?
+    uri = URI.parse(link)
+    uri.host =~ /^(10|127|169\.254|192\.168)\./
   end
 
   def encoded_link
@@ -36,7 +41,8 @@ class Image < Struct.new(:link, :title, :alt_text)
   end
 
   def src
-    return link unless external_link?
+    return link if internal_link?
+    return E403 if blacklisted?
     register_in_redis
     link = "//#{IMG_DOMAIN}/img/#{encoded_link}"
   end
