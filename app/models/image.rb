@@ -28,7 +28,7 @@ class Image < Struct.new(:link, :title, :alt_text)
 
   def internal_link?
     uri = URI.parse(link)
-    !uri.host || uri.host == MY_DOMAIN
+    !uri.host || uri.host == MY_DOMAIN || uri.host == IMG_DOMAIN
   end
 
   def blacklisted?

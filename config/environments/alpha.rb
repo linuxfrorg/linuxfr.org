@@ -2,7 +2,7 @@
 LinuxfrOrg::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
   MY_DOMAIN = 'alpha.linuxfr.org'
-  IMG_DOMAIN = 'alpha.dlfp.org'
+  IMG_DOMAIN = 'img.alpha.linuxfr.org'
 
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
