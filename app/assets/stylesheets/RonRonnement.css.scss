@@ -1456,3 +1456,18 @@ img {
   max-width: 100%;
   border: none;
 }
+
+.markItUp {
+  border: 1px solid $C_INTER;
+  border-radius: 6px;
+}
+
+.markItUpContainer {
+  border: none;
+  background: none;
+}
+
+.markItUpEditor {
+  background:none;
+  border: 1px solid $C_INTER;
+}
