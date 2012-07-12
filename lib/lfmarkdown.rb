@@ -81,10 +81,11 @@ class LFMarkdown < Redcarpet::Render::HTML
   end
 
   def normal_text(text)
-    text.gsub('« ', '«&nbsp;').
-         gsub(/ ([:;»!?])/, '&nbsp;\1').
-         gsub(' -- ', '—').
-         gsub('...', '…')
+    text.gsub!('« ', '«&nbsp;')
+    text.gsub!(/ ([:;»!?])/, '&nbsp;\1')
+    text.gsub!(' -- ', '—')
+    text.gsub!('...', '…')
+    CGI.escapeHTML text
   end
 
 protected
