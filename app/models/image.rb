@@ -56,8 +56,10 @@ class Image < Struct.new(:link, :title, :alt_text)
   end
 
   def title_attr
-    return "" if title.blank?
-    "title=\"#{CGI.escapeHTML title}\" "
+    parts = [title]
+    parts << "Source : #{link}" unless internal_link?
+    parts.compact!
+    parts.empty? ? "" : "title=\"#{CGI.escapeHTML parts.join(' | ')}\" "
   end
 
   def to_html
