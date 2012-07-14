@@ -40,11 +40,15 @@ class Image < Struct.new(:link, :title, :alt_text)
     link.unpack('H*').first
   end
 
+  def filename
+    File.basename link
+  end
+
   def src
     return link if internal_link?
     return E403 if blacklisted?
     register_in_redis
-    link = "//#{IMG_DOMAIN}/img/#{encoded_link}"
+    link = "//#{IMG_DOMAIN}/img/#{encoded_link}/#{filename}"
   end
 
   def src_attr
