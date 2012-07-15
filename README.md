@@ -109,6 +109,16 @@ How to run the specs
     $ rspec spec
 
 
+How to generate a CSS
+---------------------
+
+CSS are written in sass and compiled with the Rails assets pipeline.
+If you just want to compile a CSS without installing Rails and all its
+dependency, you can install the `sass` gem and launch:
+
+    ./script/compile_sass app/assets/stylesheets/application.css.scss > app.css
+
+
 Copyheart
 ---------
 
