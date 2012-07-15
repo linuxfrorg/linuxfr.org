@@ -537,6 +537,7 @@ ul.threads > li.comment,
 form#new_post,
 body#users-comments #contents > ul > li,
 body#comments-create #contents > ul > li#comment_new,
+body#comments-update #contents > ul > li#comment_new,
 body#comments-show #contents > ul > li.comment,
 body#wiki_pages-revision #contents,
 body#news-revision #contents,
@@ -967,11 +968,13 @@ ul.poll {
 body#comments-show #contents > ul,
 body#comments-create #contents > ul,
 body#users-comments #contents > ul,
+body#comments-update #contents > ul,
 ul.threads {
   padding: 0;
   list-style: none;
   /* premier d'un thread */
-  > li.comment {
+  > li.comment,
+  li#comment_new {
     /* voir ^article$ */
     padding-top: 0;
     padding-left: 1.25em;
