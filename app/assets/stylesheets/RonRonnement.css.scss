@@ -98,25 +98,22 @@ a {
 }
 
 button,
-.edit_client_app,
-.new_content,
-.toolbox .follow_feed,
-#comments #follow-feed,
-#comments #send-comment,
-#redaction .reorganize,
+.edit_client_app a,
+.new_content a,
+.toolbox .follow_feed a,
+#comments #follow-feed a,
+#comments #send-comment a,
+#redaction .reorganize a,
 input[type='submit'] {
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 3px;
+  font-weight: normal;
   color: black;
   background-color: $C_CLAIR;
   border: 1px solid $C_INTER;
   font-size: medium;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 3px;
 
-  a {
-    font-weight: normal;
-    &:hover { text-decoration: none; }
-  }
   &:hover {
     background-color: $C_INTER;
     border: 1px solid $C_FONCE;
@@ -125,19 +122,25 @@ input[type='submit'] {
 }
 
 form input[type='submit'], button {
+  display: block;
   padding-left: 20px;
   background: url("/images/icones/check.png") no-repeat 3px 3px $C_CLAIR;
+  cursor: pointer;
+  &[disabled] { cursor: default; }
   &:hover { background-color: $C_FONCE; }
   &#logout, &.unread, &.relevant, &.useless { background: $C_CLAIR; }
 }
 
-#redaction .reorganize {
+#redaction .reorganize a {
   float: left;
-  font-weight: normal;
   height: 21px;
   padding: 0 3px 0 20px;
   margin-right: 10px;
   background: url("/images/icones/loop.png") no-repeat 2px 2px $C_CLAIR;
+  &:hover { background-color: $C_FONCE; }
+}
+
+button.edit, button.cancel, button#admin_49_3, button.add_link {
   &:hover { background-color: $C_FONCE; }
 }
 
@@ -181,25 +184,31 @@ button, input[type='submit'] {
   }
 }
 
-.edit_client_app,
-.new_content,
-.toolbox .follow_feed,
-#comments #follow-feed,
-#comments #send-comment {
+.edit_client_app a,
+.new_content a,
+.toolbox .follow_feed a,
+#comments #follow-feed a,
+#comments #send-comment a {
   display: inline-block;
   padding: 2px 5px 0 25px;
-  margin: 5px 10px 3px 0;
+  height: 21px;
 }
-.edit_client_app,
-.new_content {
+.edit_client_app a,
+.new_content a {
   background: url("/images/icones/pen.png") no-repeat 2px 2px $C_CLAIR;
 }
-.toolbox .follow_feed,
-#comments #follow-feed {
+.toolbox .follow_feed a,
+#comments #follow-feed a {
   background: url("/images/icones/rss.png") no-repeat 2px 2px $C_CLAIR;
 }
-#comments #send-comment {
+#comments #send-comment a {
   background: url("/images/icones/comment.png") no-repeat 2px 2px $C_CLAIR;
+}
+
+#stylesheets-edit button {
+  padding: 0;
+  background: none;
+  display: block;
 }
 
 #top {
@@ -326,7 +335,7 @@ button, input[type='submit'] {
   }
 
   .new_content a {
-    font-size: 85%;
+    font-size: 115%;
   }
 }
 
@@ -791,19 +800,6 @@ footer.actions {
       color: $C_INTER;
       border-style: none;
       background-color: transparent;
-    }
-  }
-}
-
-.button_to {
-  input {
-    cursor: pointer;
-    &:hover {
-      text-decoration: underline;
-    }
-    &[disabled] {
-      cursor: default;
-      &:hover { text-decoration: none; }
     }
   }
 }
