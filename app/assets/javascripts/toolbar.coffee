@@ -121,7 +121,7 @@ class Toolbar
   folding: ->
     return  unless @options.folding?
     items = $(@options.folding)
-    items.find(".folding").remove()
+    items.find(".folding").click()
     for i in items
       do (i) =>
         item  = $(i)
