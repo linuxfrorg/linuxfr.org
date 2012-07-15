@@ -32,7 +32,6 @@
  *                 * ajout gestion de toolbar_alt_items
  **/
 
-@import "./spasibo-mobile.css" screen and (max-width: 1024px);
 @import '../common/statistics';
 
 html,body,div,span,object,iframe,
@@ -843,4 +842,144 @@ td.thread-new-comments {
 body {
 	letter-spacing: inherit;
 	font-family: Ubuntu, Verdana, "DejaVu Sans", "Bitstream Vera Sans", Geneva, sans-serif;
+}
+
+@media screen and (max-width: 1024px) {
+  body {
+      font-size: 1em;
+  }
+
+  #site {
+      position: inherit;
+  }
+
+  #site > ul {
+      margin-left: auto;
+      margin-right: auto;
+      width: 18em;
+  }
+
+  #site > ul > li {
+      display: inline-block;
+      width: 8em;
+      margin: .4em;	
+      line-height: 1.4em;
+  }
+
+  #site > form {
+      display: block;
+      text-align: right;
+  }
+
+  #site #label_query {
+      color: #252B30;
+  }
+
+  #sidebar {
+      position: inherit;
+      display: block;
+      width: inherit;
+      border: 0px;
+  }
+
+  #sidebar > div {
+      line-height: 1.4em;
+  }
+
+  #site, #sidebar, #container, #bigfooter {
+      width: auto;
+      margin-left: 2em;
+      font-size: 2.4em;
+      max-width: inherit;
+  }
+
+  #news, #main_board {
+      line-height: 1.4em;
+  }
+
+  #contents, #phare, #about_us, #friends {
+      font-size: .8em;
+      line-height: 1.2em;
+  }
+
+  #toolbar {
+      background-color: #ECEAE7;
+      font-size: 1em;
+  }
+
+  #toolbar_items, #toolbar_threshold {
+      font-size: inherit;
+  }
+
+  a.prev, a.next {
+      font-size: 1.4em;
+      position: fixed;
+      left: 0px;
+      height: 49%;
+      width: 3em;
+  }
+
+  a.prev {
+      top:0px;
+      background-color: red;
+  }
+
+  a.next {
+      bottom: 0px;
+      background-color: green;
+  }
+
+  article > header > h1 {
+      line-height: 1.2em;
+  }
+
+  aside.banner {
+      display: none;
+  }
+
+  footer.actions {
+      font-size: 1.2em;
+  }
+
+  article.node {
+      border: 0px;
+      line-height: 1.4em;
+  }
+
+  footer > p > .scroll {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.2em;
+      text-align: center;
+  }
+
+  footer.actions .vote  {
+      color: #252B30;
+      font-size: xx-small;
+      position: relative;
+  }
+
+  footer.actions .vote input[value="pertinent"], footer.actions .vote input[value="inutile"] {
+      font-size: 3em;
+      /*position: absolute;*/
+      top: 0px;
+  }
+
+  footer.actions .vote input[value="pertinent"] {
+      left: 0px;
+          float: left;
+  }
+
+  footer.actions .vote input[value="inutile"] {
+              float: right;
+      right: 0px;
+  }
+
+  footer.actions > a.action {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 5em;
+  }
 }

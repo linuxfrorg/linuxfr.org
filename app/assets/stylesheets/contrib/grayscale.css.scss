@@ -1992,3 +1992,41 @@ input:not([type="radio"]) {
 	font-size: 2em;
 	color: grey;
 }
+
+@media print {
+  #top, #container > h1, .link, #sidebar, #site, #bigfooter, #toolbar, #comments > p, body:not(#wiki_pages-changes) .toolbox,
+  body:not(#posts-new):not(#posts-create) footer > p, body:not(#posts-new):not(#posts-create) section#container > p, .actions, .banner, .notice {
+      display: none !important;
+  }
+  #container > * {
+      margin: 0 !important;
+  }
+  body:not(#posts-new):not(#posts-create) #container, #home-index #container, #news-show #container, #wiki_pages-show #container, #trackers-show #container,
+  #posts-show #container, #polls-show #container, #diaries-show #container {
+      padding: 0 !important;
+  }
+  #news-show article, #wiki_pages-show article, #trackers-show article, #posts-show article, #polls-show article,
+  #diaries-show article {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      background: white !important;
+  }
+  body#trackers-index #container table {
+      background: white !important;
+      padding: 0 !important;
+  }
+  article {
+      background: url('/images/contrib/grayscale/comments/hautcentre.png') top repeat-x !important;
+      margin-bottom: -15px !important;
+  }
+  #static-show article, #phare article, h1 + nav + #contents > article:first-child {
+      margin-top: -15px !important;
+      background: white !important;
+  }
+  body {
+      background: none !important;
+  }
+  #comments {
+      display: none;
+  }
+}
