@@ -1,5 +1,5 @@
 .markItUp {
-  width: 700px;
+  width: auto;
   margin: 5px 0 5px 0;
   border: 5px solid #f5f5f5;
   .markItUp a:link,
@@ -14,11 +14,10 @@
   font: 11px Verdana, Arial, Helvetica, sans-serif; }
 
 .markItUpEditor {
-  font: 12px "Courier New", Courier, monospace;
   padding: 5px 5px 5px 35px;
   border: 3px solid #3c769d;
-  width: 643px;
-  height: 320px;
+  width: 95%;
+  height: 400px;
   color: black;
   background: white url(/images/markitup/bg-editor-markdown.png) no-repeat;
   /* clear: both */
@@ -26,26 +25,12 @@
   line-height: 18px;
   overflow: auto; }
 
-.markItUpPreviewFrame {
-  overflow: auto;
-  background-color: white;
-  border: 1px solid #3c769d;
-  width: 99.9%;
-  height: 300px;
-  margin: 5px 0; }
-
 .markItUpFooter {
   width: 100%;
   cursor: n-resize; }
 
 .markItUpResizeHandle {
-  overflow: hidden;
-  width: 22px;
-  height: 5px;
-  margin-left: auto;
-  margin-right: auto;
-  background-image: url(/images/markitup/handle.png);
-  cursor: n-resize; }
+  display: none; }
 
 .markItUpHeader {
   height: 22px;
