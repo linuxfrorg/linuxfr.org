@@ -1,7 +1,7 @@
 # encoding: UTF-8
 module NodeHelper
 
-  ContentPresenter = Struct.new(:record, :title, :meta, :tags, :image, :body, :actions, :css_class) do
+  ContentPresenter = Struct.new(:record, :title, :meta, :tags, :image, :body, :actions, :css_class, :hidden) do
     def to_hash
       attrs = members.map(&:to_sym)
       Hash[*attrs.zip(values).flatten(1)]
@@ -22,6 +22,7 @@ module NodeHelper
   def article_for(record)
     cp = ContentPresenter.new
     cp.record = record
+    cp.hidden = ContentPresenter.collection? && record.score < 0
     cp.css_class = %w(node hentry)
     score = [ [record.node.score / 5, -10].max, 10].min
     cp.css_class << "score#{score}"
