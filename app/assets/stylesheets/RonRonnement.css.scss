@@ -973,7 +973,8 @@ ul.threads {
   padding: 0;
   list-style: none;
   /* premier d'un thread */
-  > li.comment {
+  > li.comment,
+  li#comment_new {
     /* voir ^article$ */
     padding-top: 0;
     padding-left: 1.25em;
