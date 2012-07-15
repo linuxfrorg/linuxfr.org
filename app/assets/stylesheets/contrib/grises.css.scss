@@ -742,13 +742,18 @@ article > footer > div {
 }
 
 /* Les tags */
+#container header .tags ul {
+  display: inline;
+  li { display: inline; padding: 0 3px; }
+  form { display: inline-block; }
+}
 #container header li .add_tag, #container header li .remove_tag {
 	display: block;
 	float: left;
 	text-indent: -9998em;
 	height: 12px;
 	width: 12px;
-	margin: 0;
+	margin: -3px 0;
 	border: none;
 	border-radius: 0;
 }
