@@ -9,11 +9,6 @@
  * Licence AGPLv3 
  */
 
-@font-face {
-  font-family: Verdana, Arial, Helvetica, sans-serif, monospace;
-  font-size: 9pt
-}
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -231,13 +226,9 @@ body blockquote {
   margin: 10px 0 10px 10px;
   padding-left: 5px;
   padding-right: 0;
-  
+
   p {
       margin-bottom: 8px;
-  }
-  
-  > p:first-child {
-    padding-top: 5px;
   }
 }
 
@@ -1324,4 +1315,451 @@ span.action, span.action form.button_to, span.action form.button_to div {
 .vi { color: #3030B0; }
 .il { color: #0000D0; font-weight: bold; }
 
+.thread li {
+  margin-top:10px
+}
+
+#send-comment , #follow-feed  {
+  text-align:center;
+}
+#send-comment a, #follow-feed a {
+  text-align:center;
+  font-size:medium;
+  background-color:#D0C4C0;
+  color:black;
+  font-weight:bold;
+  border:solid 3px;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.threads ul {
+  padding-left:0;
+}
+
+ul.threads {
+  padding-left:0;
+}
+
+.comment li {
+  padding-left: 10px;
+  margin-left: 3.3em;
+}
+
+#my_comments, #my_posts, #my_trackers, #news ul, #tracker, #contents pre {
+  background-color: #D0C4C0;
+}
+
+body .notice {
+  color:#FFD324;
+}
+
+/* displaying diff in redaction */
+#contents pre {
+  white-space: pre-wrap;
+}
+ins.differ {
+  background-color:green;
+}
+
+del.differ {
+  background-color:red;
+}
+
+#contents nav li {
+  border-radius: 5px;
+  background-color:lightgray;
+  list-style-type: none;
+}
+
+#contents nav li:first-of-type {
+  float:left;
+}
+
+#contents nav li:first-of-type:before {
+  content: " << ";
+}
+
+#contents nav li:last-of-type {
+  float:right;
+}
+
+#contents nav li:last-of-type:after {
+  content: " >> ";
+}
+
+/* Show visited contents and those with new comments */
+.actions .no_comments a:visited, .read a:visited {
+  color: #7a7a7a;
+}
+.actions .no_comments, .read {
+  color: gray;
+}
+
+.statistics {
+  color: lightGray;
+}
+
+.statistics .body a {
+  color: #aaaaaa;
+}
+
+.board-right time {
+  font-style: italic;
+}
+
+.highlighted {
+  background-color: black;
+}
+
+/* chat */
+.board {
+  background-color:#909080;
+  color: gray;
+  border-radius:5px;
+  padding: 5px;
+}
+
+#board_message {
+  color: gray;
+}
+
+#sidebar .box p {
+  margin-top: 0;
+  padding: 0;
+  text-align: left;
+  margin-bottom: 0;
+  border-bottom:0;
+}
+
+
+/*** Dynamic box in the redactions pages ***/
+#redaction .edition_in_place, #redaction .paragraph, #redaction .link {
+  padding-left: 30px;
+position: relative; }
+#redaction .edition_in_place .edit, #redaction .paragraph .edit, #redaction .link .edit {
+background: url("http://linuxfr.org/images/icones/pen.png") no-repeat 2px 2px #e9e6e4; }
+#redaction .edition_in_place .actions, #redaction .paragraph .actions, #redaction .link .actions {
+  position: absolute;
+  top: 0;
+left: 0; }
+#redaction .edition_in_place .actions button, #redaction .paragraph .actions button, #redaction .link .actions button {
+  visibility: hidden;
+  height: 22px;
+  width: 22px;
+text-indent: -9999em; }
+#redaction .edition_in_place:hover .actions button, #redaction .paragraph:hover .actions button, #redaction .link:hover .actions button {
+visibility: visible; }
+#redaction .edition_in_place:hover .actions button:hover, #redaction .paragraph:hover .actions button:hover, #redaction .link:hover .actions button:hover {
+background-color: #93877b; }
+
+/* redaction page */
+#news_header {
+  color:gray;
+}
+
+/* centering images */
+.content img {
+  display: block;
+  margin: 0 auto;
+}
+
+/* displaying less space before list */
+.content p {
+  margin-top: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 0;
+}
+.comment .content li {
+  padding-top: 0;
+  margin-top:0;
+  margin-left:0;
+  padding-left:0.1em;
+}
+.content li:first-of-type {
+  padding-top: 0.75em;
+}
+/* header */
+.content h3 {
+  margin-top: 18px;
+  margin-bottom: -5px;
+  text-indent: 2em;
+}
+
+.content h2 {
+  margin-top: 20px;
+  margin-bottom: -3px;
+  text-indent: 3em;
+}
+
+.content h4 {
+  margin-top: 16px;
+  margin-bottom: -5px;
+  text-indent: 1.5em;
+}
+
+.content h5 {
+  margin-top: 0.5em;
+  margin-bottom: -0.75em;
+}
+
+.content .paragraph {
+  text-align: justify;
+}
+
+/* indent first line */
+
+.content p {
+  text-indent: 1em;
+}
+
+/* remove space after metadata in comments */
+.threads .meta {
+  margin-bottom: 0;
+}
+
+/* markdown box */
+.markItUpButton a {
+  background-position: center;
+}
+.markItUpHeader ul li {
+  background-color:gray;
+  border-radius:5px;
+  margin: 2px;
+}
+
+.markItUp {
+  border:none;
+  border-radius:5px;
+}
+
+#markItUpComment_wiki_body {
+  margin:3px;
+}
+
+.markItUpHeader ul {
+  margin:5px;
+}
+
+.markItUp textarea {
+  margin-top:35px;
+  padding-left: 3px;
+}
+
+.markItUpContainer {
+  border-radius:5px;
+}
+
+/* Format the tableau-de-bord */
+#my_comments th, #my_posts th, #my_trackers th {
+  border-bottom: 1px solid #33332D;
+}
+
+#my_comments, #my_posts, #my_trackers {
+  border-radius: 5px;
+  color: #33332D;
+}
+
+#dashboard-index #my_comments tr td a, #my_posts a, #my_trackers a{
+  color: #6a6a6a;
+}
+
+#dashboard-index #contents {
+  color: lightgray;
+}
+
+#dashboard-index #contents a {
+  color: brown;
+}
+
+#dashboard-index #my_trackers .invalid, #dashboard-index #my_trackers .fixed {
+  text-decoration: line-through;
+}
+
+/* Round comments */
+.threads > li {
+  border-radius: 5px;
+}
+
+.threads h2 {
+  border-radius: 5px;
+}
+
+/* Removing space in list */
+.comment .content ul {
+  margin-left:40px;
+}
+
+/* Aligning poll results */
+.poll .result {
+  font-size: x-small;
+  margin-left: 0;
+}
+
+.poll ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+/* Category images */
+article figure.image {
+  float: right;
+  border: none;
+}
+
+article figure.image img {
+  height: 50px !important;
+  border-radius: 5px;
+}
+
+/* Comments */
+/** Avatar **/
+.threads > li {
+  padding-bottom: 10px;
+}
+.comment .content {
+  overflow: hidden;
+}
+
+/** header **/
+.comment .content h2 {
+  background:inherit;
+  border:none;
+}
+
+/** Contents */
+.thread .content h2 {
+  background-color: inherit;
+  border: none;
+  font-size: large;
+  text-indent: 3em;
+}
+.thread .content h3 {
+  text-indent: 2em;
+  font-size: medium;
+}
+
+/** list **/
+.content > ol >li {
+  list-style-type: decimal !important;
+}
+
+/* Page bottom */
+#bigfooter a {
+  color:lightgray;
+}
+#bigfooter a:visited {
+  color:brown;
+}
+#bigfooter a:hover {
+  color:black;
+}
+
+/* Source code page */
+#contents .body {
+  background-color: #D0C4C0;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* Submit page */
+#static-submit_content .body h2 {
+  color: gray;
+}
+
+/* new comments */
+#comment_new h2 a {
+  color: #403030;
+  font-weight: bolder;
+}
+#comment_new h2 {
+  background: none repeat scroll 0 0 #D0B0A4;
+  border-bottom: 1px solid #C0A094;
+  border-top: 1px solid #E0BCB0;
+  font-size: 1.2em;
+  margin-right: 50px;
+  padding-left: 10px;
+  border-radius: 5px;
+}
+
+#comment_new footer.actions:before {
+  content:none;
+}
+
+li#comment_new {
+  background-color:#D0C4C0;
+  list-style-type:none;
+  padding-left:5px;
+  padding-top:5px;
+  border-radius:10px;
+}
+
+p.meta, .content p {
+  color:black;
+}
+
+/* mardown cheatsheet */
+table#wiki_help {
+  color:lightgray;
+}
+
+#wiki_help td {
+  border: 1px solid lightgray;
+}
+
+/* Avatar size (from Arthur Accroc) */
+article figure.image img {
+  height: 38px !important;
+  max-height: 38px !important;
+  height: auto !important;
+  height: 38px;
+  max-width: 57px !important;
+  width: auto !important;
+  width: 38px;
+}
+
+.comment .avatar {
+  float: right;
+  margin: 0 50px 0 10px;
+  max-height: 3.5em !important;
+  height: auto !important;
+  height: 3.5em;
+  max-width: 5.25em !important;
+  width: auto !important;
+  width: 3.5em;
+}
+
+/* link on dark gray */
+a.scroll:focus, a.scroll:active, .scroll:visited, .page a:visited, .next a:visited, .last a:visited, #comments-create #contents p a:visited, #comments-show #container p a:visited {
+  color:brown;
+}
+
+#comments-create .meta a:visited {
+  color: #6a6a6a;
+}
+
+/* link in edition mode */
+fieldset.link {
+  margin: 0 0 0 5px;
+  padding: 0;
+  border:none;
+}
+
+/* statistics pages */
+.statistics {
+  color:gray;
+}
+
+.statistics h2, .statistics h3 {
+  color:black;
+}
+
+/* deleted comments */
+.deleted {
+  border-left: solid red;
+  font-style:italic;
+  color:gray;
+}
+
 @import '../common/statistics';
+@import '../common/langs';
