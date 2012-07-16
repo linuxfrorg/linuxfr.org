@@ -3,7 +3,13 @@ class Admin::AccountsController < AdminController
   before_filter :load_account, :except => [:index]
 
   def index
-    @accounts = Account.order("created_at DESC").page(params[:page])
+    @date = Date.today
+    accounts = Account
+    if params[:date].present?
+      @date = params[:date]
+      accounts = accounts.where("created_at LIKE ?", "#{@date}%")
+    end
+    @accounts = accounts.order("created_at DESC").page(params[:page])
   end
 
   def password
