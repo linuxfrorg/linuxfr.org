@@ -154,7 +154,11 @@ LinuxfrOrg::Application.routes.draw do
   get "/admin"       => "admin#index"
   get "/admin/debug" => "admin#debug"
   namespace :admin do
-    resources :comptes, :controller => "accounts", :as => "accounts", :only => [:index, :update, :destroy]
+    resources :comptes, :controller => "accounts", :as => "accounts", :only => [:index, :update, :destroy] do
+      member do
+        post :password
+      end
+    end
     resources :reponses, :controller => "responses", :as => "responses", :except => [:show]
     resources :sections, :except => [:show]
     resources :forums, :except => [:show] do

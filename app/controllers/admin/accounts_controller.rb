@@ -1,9 +1,14 @@
 # encoding: UTF-8
 class Admin::AccountsController < AdminController
-  before_filter :load_account, :only => [:update, :destroy]
+  before_filter :load_account, :except => [:index]
 
   def index
     @accounts = Account.order("created_at DESC").page(params[:page])
+  end
+
+  def password
+    @account.send_reset_password_instructions
+    redirect_to admin_accounts_url, :notice => "Instructions pour changer le mot de passe envoyées"
   end
 
   def update
