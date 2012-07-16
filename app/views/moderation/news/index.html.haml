@@ -2,11 +2,19 @@
 
 %h2 Nouvelles dépêches
 - if @news.empty?
-  Aucune dépêche dans la file de modération.
+  %p Aucune dépêche dans la file de modération.
 - else
   %ul
     = list_of(@news) do |news|
       = link_to news.title, [:moderation, news]
+
+%h2 Dépêches en cours de rédaction
+- if @drafts.empty?
+  %p Aucune dépêche en cours de rédaction
+- else
+  %ul
+    = list_of(@drafts) do |news|
+      = link_to news.title, [:redaction, news]
 
 %h2 15 dernières dépêches refusées
 %ul
