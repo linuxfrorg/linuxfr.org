@@ -97,13 +97,15 @@ a {
   }
 }
 
+.button_to { display: inline-block; }
+
 button,
 .edit_client_app a,
 .new_content a,
 .toolbox .follow_feed a,
 #comments #follow-feed a,
 #comments #send-comment a,
-#redaction .reorganize a,
+#redaction a.reorganize,
 input[type='submit'] {
   padding-left: 5px;
   padding-right: 5px;
@@ -131,7 +133,7 @@ form input[type='submit'], button {
   &#logout, &.unread, &.relevant, &.useless { background: $C_CLAIR; }
 }
 
-#redaction .reorganize a {
+#redaction a.reorganize {
   float: left;
   height: 21px;
   padding: 0 3px 0 20px;
@@ -176,7 +178,7 @@ button, input[type='submit'] {
   &#admin_49_3, &.archive_button, &.reopen_button {
     background: url("/images/icones/target.png") no-repeat 2px 2px $C_CLAIR;
   }
-  &.reset_news {
+  &.reset_news, &.reset_password {
     background: url("/images/icones/loop.png") no-repeat 2px 2px $C_CLAIR;
   }
   &.rewrite_news {
@@ -722,6 +724,7 @@ footer.actions {
     display: inline;
   }
   .button_to {
+    float: none;
     input {
       padding: 0;
       display: inline;
@@ -1320,10 +1323,6 @@ body#news-show #redaction {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 5px;
-}
-#news_vote div .button_to,
-#news_vote div .button_to div {
-  display: inline;
 }
 
 div#toolbar {
