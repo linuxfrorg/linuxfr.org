@@ -197,6 +197,10 @@ class Account < ActiveRecord::Base
     [self["nb_votes"], 0].max
   end
 
+  def log_karma(points, who)
+    logs.create(:description => "#{who.login} a donné #{points} points de karma")
+  end
+
 ### Plonk for the board ###
 
   def plonked?

@@ -8,8 +8,10 @@
     %ul
       %li Courriel&nbsp;: #{a.email}
       %li Rôle&nbsp;: #{a.role}
-      %li Karma&nbsp;: #{a.karma}
       %li Dernière connexion&nbsp;: #{a.current_sign_in_at ? l(@user.account.current_sign_in_at) : "-"}
+      %li Karma&nbsp;: #{a.karma}
+    - if current_account.admin?
+      = button_to "+50XP", karma_admin_account_path(@user.account.id)
     - if current_account.can_plonk?
       %h2 Interdire de tribune
       %ul

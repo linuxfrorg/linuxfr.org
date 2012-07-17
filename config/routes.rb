@@ -157,6 +157,7 @@ LinuxfrOrg::Application.routes.draw do
     resources :comptes, :controller => "accounts", :as => "accounts", :only => [:index, :update, :destroy] do
       member do
         post :password
+        post :karma
       end
     end
     resources :reponses, :controller => "responses", :as => "responses", :except => [:show]

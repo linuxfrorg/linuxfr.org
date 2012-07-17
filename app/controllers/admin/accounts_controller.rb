@@ -17,6 +17,13 @@ class Admin::AccountsController < AdminController
     redirect_to admin_accounts_url, :notice => "Instructions pour changer le mot de passe envoyées"
   end
 
+  def karma
+    nb = params[:karma] || 50
+    @account.give_karma nb
+    @account.log_karma nb, current_account
+    redirect_to @account.user
+  end
+
   def update
     if @account.inactive?
       @account.reactivate!
