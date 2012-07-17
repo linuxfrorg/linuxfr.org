@@ -10,7 +10,6 @@
 #  cached_slug   :string(32)
 #  created_at    :datetime
 #  updated_at    :datetime
-#  gravatar_hash :string(32)
 #  avatar        :string(255)
 #  signature     :string(255)
 #

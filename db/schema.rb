@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120428174758) do
+ActiveRecord::Schema.define(:version => 20120717203326) do
 
   create_table "access_grants", :force => true do |t|
     t.integer  "account_id"
@@ -332,13 +332,12 @@ ActiveRecord::Schema.define(:version => 20120428174758) do
   add_index "trackers", ["state"], :name => "index_trackers_on_state"
 
   create_table "users", :force => true do |t|
-    t.string   "name",          :limit => 32
-    t.string   "homesite",      :limit => 100
-    t.string   "jabber_id",     :limit => 32
-    t.string   "cached_slug",   :limit => 32
+    t.string   "name",        :limit => 32
+    t.string   "homesite",    :limit => 100
+    t.string   "jabber_id",   :limit => 32
+    t.string   "cached_slug", :limit => 32
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "gravatar_hash", :limit => 32
     t.string   "avatar"
     t.string   "signature"
   end

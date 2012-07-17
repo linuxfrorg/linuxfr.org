@@ -77,16 +77,7 @@ class Account < ActiveRecord::Base
 
   before_create :create_user
   def create_user
-    self.user_id = User.create(:name => login, :gravatar_hash => gravatar_hash).id
-  end
-
-  after_validation :update_gravatar_hash, :on => :update
-  def update_gravatar_hash
-    user.update_attribute(:gravatar_hash, gravatar_hash) if email_changed?
-  end
-
-  def gravatar_hash
-    Digest::MD5.hexdigest(email.downcase.strip)
+    self.user_id = User.create(:name => login).id
   end
 
 ### Password ###

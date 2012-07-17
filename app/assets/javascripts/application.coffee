@@ -127,17 +127,6 @@ $(document).bind("keypress", "g", ->
     stay: true
   false
 
-# Gravatars
-$(window).load ->
-  $("img[data-gravatar]").attr "src", ->
-    img = $(@)
-    hash = img.data("gravatar")
-    size = img.attr("width")
-    defa = encodeURIComponent(img.attr("src"))
-    host = (if location.protocol == "http:" then "http://www.gravatar.com" else "https://secure.gravatar.com")
-    img.data gravatar: null
-    host + "/avatar/" + hash + ".jpg?s=" + size + "&d=" + defa
-
 $("#account_user_attributes_avatar").change ->
   return  if window.URL?
   url = window.URL.createObjectURL(@files[0])
