@@ -8,17 +8,21 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   process :resize_and_pad => [AVATAR_SIZE, AVATAR_SIZE]
 
+  def base_dir
+    Rails.root.join("uploads")
+  end
+
+  def url
+    super.sub(base_dir.to_s, "//#{IMG_DOMAIN}")
+  end
+
   def store_dir
     partition = ("%09d" % model.id).scan(/\d{3}/).reverse.join("/")
-    "avatars/#{partition}"
+    base_dir.join "avatars/#{partition}"
   end
 
   def filename
     "avatar.#{file.extension}" if original_filename
-  end
-
-  def default_url
-    DEFAULT_AVATAR_URL + '?' + ENV['RAILS_ASSET_ID'].to_s
   end
 
   def extension_white_list

@@ -7,7 +7,7 @@
 /db/elasticsearch
 /log
 /public/assets
-/public/avatars
+/uploads/avatars
 /public/board.xml
 /public/images/historique
 /public/images/load
