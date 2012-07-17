@@ -58,15 +58,11 @@ class User < ActiveRecord::Base
     url
   end
 
-  def custom_avatar_url
-    Image.original_link(self["custom_avatar_url"] || "")
-  end
-
   def avatar_url
     if avatar.present?
       url = avatar.url
-    elsif self["custom_avatar_url"].present?
-      self["custom_avatar_url"]
+    elsif custom_avatar_url.present?
+      custom_avatar_url
     else
       url = AvatarUploader::DEFAULT_AVATAR_URL
     end
