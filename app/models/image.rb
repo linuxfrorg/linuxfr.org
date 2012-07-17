@@ -14,9 +14,16 @@ class Image < Struct.new(:link, :title, :alt_text)
     links.map {|l| Image.new(l, l, l) }
   end
 
+  def self.decoded_link(encoded_link)
+    [encoded_link].pack('H*')
+  end
+
   def self.destroy(encoded_link)
-    link = [encoded_link].pack('H*')
-    $redis.hset "img/#{link}", "status", "Blocked"
+    $redis.hset "img/#{decoded_link}", "status", "Blocked"
+  end
+
+  def self.original_link(link)
+    decoded_link link.split('/')[-2]
   end
 
   def register_in_redis
@@ -44,11 +51,11 @@ class Image < Struct.new(:link, :title, :alt_text)
     File.basename link
   end
 
-  def src
+  def src(type="img")
     return link if internal_link?
     return E403 if blacklisted?
     register_in_redis
-    link = "//#{IMG_DOMAIN}/img/#{encoded_link}/#{filename}"
+    "//#{IMG_DOMAIN}/#{type}/#{encoded_link}/#{filename}"
   end
 
   def src_attr

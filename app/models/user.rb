@@ -3,15 +3,16 @@
 #
 # Table name: users
 #
-#  id            :integer(4)      not null, primary key
-#  name          :string(32)
-#  homesite      :string(100)
-#  jabber_id     :string(32)
-#  cached_slug   :string(32)
-#  created_at    :datetime
-#  updated_at    :datetime
-#  avatar        :string(255)
-#  signature     :string(255)
+#  id                :integer(4)      not null, primary key
+#  name              :string(32)
+#  homesite          :string(100)
+#  jabber_id         :string(32)
+#  cached_slug       :string(32)
+#  created_at        :datetime
+#  updated_at        :datetime
+#  avatar            :string(255)
+#  custom_avatar_url :string(255)
+#  signature         :string(255)
 #
 
 
@@ -28,7 +29,7 @@ class User < ActiveRecord::Base
   has_many :taggings, :dependent => :destroy, :include => :tag
   has_many :tags, :through => :taggings, :uniq => true
 
-  attr_accessible :name, :homesite, :jabber_id, :signature, :avatar, :remove_avatar, :remote_avatar_url
+  attr_accessible :name, :homesite, :jabber_id, :signature, :avatar, :custom_avatar_url
 
 ### SEO ###
 
@@ -47,9 +48,25 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  def custom_avatar_url=(url)
+    if url.present?
+      remove_avatar!
+      self["custom_avatar_url"] = Image.new(url, "", "").src("avatars")
+    else
+      self["custom_avatar_url"] = nil
+    end
+    url
+  end
+
+  def custom_avatar_url
+    Image.original_link(self["custom_avatar_url"] || "")
+  end
+
   def avatar_url
     if avatar.present?
       url = avatar.url
+    elsif self["custom_avatar_url"].present?
+      self["custom_avatar_url"]
     else
       url = AvatarUploader::DEFAULT_AVATAR_URL
     end

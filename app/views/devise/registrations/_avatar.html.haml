@@ -9,10 +9,7 @@
       = u.file_field :avatar, :accept => "image/*"
     %p
       = u.label :custom_avatar_url, 'Je préfère que mon avatar soit téléchargé depuis cette URL&nbsp;: '.html_safe
-      = u.url_field :custom_avatar_url
-    %p
-      = u.check_box :remove_avatar
-      = u.label :remove_avatar, 'Supprimer son avatar'
+      = u.url_field :custom_avatar_url, :value => @account.user.custom_avatar_url
   %p
     %label.factice Sûr de vos modifications ?
     = f.submit "Enregistrer"
