@@ -26,7 +26,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w(jpg jpeg gif png svg)
   end
 
   def resize_and_pad(width, height, background=:transparent, gravity='Center')
