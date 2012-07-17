@@ -1,7 +1,7 @@
 # encoding: utf-8
 module UsersHelper
 
-  def avatar_url(user)
+  def avatar_img(user)
     return '' if user.nil?
     return '' if current_account && current_account.hide_avatar?
     options = {
@@ -10,12 +10,7 @@ module UsersHelper
       :width  => AvatarUploader::AVATAR_SIZE,
       :height => AvatarUploader::AVATAR_SIZE
     }
-    if user.avatar.present?
-      url = user.avatar.url
-    else
-      url = AvatarUploader::DEFAULT_AVATAR_URL
-    end
-    image_tag(url, options)
+    image_tag(user.avatar_url, options)
   end
 
   def homesite_link(user)

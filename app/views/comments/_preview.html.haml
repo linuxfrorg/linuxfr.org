@@ -7,7 +7,7 @@
       Évalué à
       %span.score= preview.score
     %figure.image
-      = avatar_url(current_user)
+      = avatar_img(current_user)
     .content
       = spellcheck(preview.body)
       - if current_user.signature.present? && !current_account.try(:hide_signature?)

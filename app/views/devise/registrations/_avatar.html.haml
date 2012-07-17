@@ -3,13 +3,13 @@
   = messages_on_error @account
   = f.fields_for :user do |u|
     %figure.image
-      = avatar_url(@account.user)
+      = avatar_img(@account.user)
     %p
       = u.label :avatar, 'Avatar'
       = u.file_field :avatar, :accept => "image/*"
     %p
-      = u.label :remote_avatar_url, 'Je préfère que mon avatar soit téléchargé depuis cette URL&nbsp;: '.html_safe
-      = u.url_field :remote_avatar_url
+      = u.label :custom_avatar_url, 'Je préfère que mon avatar soit téléchargé depuis cette URL&nbsp;: '.html_safe
+      = u.url_field :custom_avatar_url
     %p
       = u.check_box :remove_avatar
       = u.label :remove_avatar, 'Supprimer son avatar'

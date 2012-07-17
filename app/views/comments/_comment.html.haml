@@ -13,7 +13,7 @@
   - if comment.created_at != comment.updated_at
     %span.update>
       Dernière modification : le #{comment.updated_at.to_s :posted}
-%figure.image= avatar_url(comment.user)
+%figure.image= avatar_img(comment.user)
 - if comment.deleted?
   .content.deleted
     %p Ce commentaire a été supprimé par l'équipe de modération.

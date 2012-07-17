@@ -47,4 +47,12 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  def avatar_url
+    if avatar.present?
+      url = avatar.url
+    else
+      url = AvatarUploader::DEFAULT_AVATAR_URL
+    end
+  end
+
 end
