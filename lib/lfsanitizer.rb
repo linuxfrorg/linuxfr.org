@@ -16,7 +16,7 @@ class LFSanitizer
       'blockquote' => ['cite'],
       'img'        => ['alt', 'height', 'src', 'width'],
       'q'          => ['cite'],
-      'time'       => ['datetime', 'pubdate'],
+      'time'       => ['datetime'],
       'video'      => ['src']
     },
     :protocols => {

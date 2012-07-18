@@ -104,7 +104,7 @@ module NodeHelper
     date_time  ||= Time.now
     date         = content_tag(:span, "le #{date_time.to_s(:date)}", :class => "date")
     time         = content_tag(:span,  "à #{date_time.to_s(:time)}", :class => "time")
-    published_at = content_tag(:time, date + " " + time, :datetime => date_time.iso8601, :pubdate => "pubdate", :class => "updated")
+    published_at = content_tag(:time, date + " " + time, :datetime => date_time.iso8601, :class => "updated")
     "Posté par #{user_link} #{published_at}.".html_safe
   end
 
