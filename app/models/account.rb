@@ -9,6 +9,8 @@
 #  login                :string(40)      not null
 #  role                 :string(10)      default("visitor"), not null
 #  karma                :integer(4)      default(20), not null
+#  min_karma            :integer(4)      default(20)
+#  max_karma            :integer(4)      default(20)
 #  nb_votes             :integer(4)      default(0), not null
 #  stylesheet           :string(255)
 #  email                :string(255)     default(""), not null
@@ -181,15 +183,25 @@ class Account < ActiveRecord::Base
 
 ### Karma ###
 
+  def update_karma_bounds
+    if karma > max_karma
+      self.max_karma = karma
+    elsif karma < min_karma
+      self.min_karma = karma
+    end
+  end
+
   def daily_karma
     self.karma += $redis.get("users/#{self.user_id}/diff_karma").to_i
     $redis.del("users/#{self.user_id}/diff_karma")
     self.nb_votes = [3 + karma / 10, 100].min
+    update_karma_bounds
     save
   end
 
   def give_karma(points)
     self.karma += points
+    update_karma_bounds
     save
   end
 
