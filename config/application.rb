@@ -40,6 +40,8 @@ module LinuxfrOrg
     config.assets.precompile += %w(mobile.css print.css)
     Dir.chdir(Rails.root.join "app/assets/stylesheets") do
       config.assets.precompile += Dir["contrib/*"].map {|s| s.sub /.scss$/, '' }
+      config.assets.precompile += Dir["common/*"].map {|s| s.sub /.scss$/, '' }
+      config.assets.precompile += Dir["pygments/*"].map {|s| s.sub /.scss$/, '' }
     end
   end
 end
