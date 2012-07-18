@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120717214755) do
+ActiveRecord::Schema.define(:version => 20120718212235) do
 
   create_table "access_grants", :force => true do |t|
     t.integer  "account_id"
@@ -346,9 +346,9 @@ ActiveRecord::Schema.define(:version => 20120717214755) do
   add_index "users", ["cached_slug"], :name => "index_users_on_cached_slug"
 
   create_table "wiki_pages", :force => true do |t|
-    t.string   "title",       :limit => 100, :null => false
+    t.string   "title",       :limit => 100,      :null => false
     t.string   "cached_slug", :limit => 105
-    t.text     "body"
+    t.text     "body",        :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -360,7 +360,7 @@ ActiveRecord::Schema.define(:version => 20120717214755) do
     t.integer  "user_id"
     t.integer  "version"
     t.string   "message"
-    t.text     "body"
+    t.text     "body",         :limit => 16777215
     t.datetime "created_at"
   end
 
