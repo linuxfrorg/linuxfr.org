@@ -79,7 +79,7 @@ class Comment < ActiveRecord::Base
     @parent_id = parent_id
     return if parent_id.blank?
     @parent = Comment.find(parent_id)
-    self.title ||= @parent ? "#{@parent.title.starts_with?('Re:') ? '' : 'Re: '}#{@parent.title}" : ''
+    self.title ||= @parent ? "#{@parent.title.starts_with?('Re&nbsp;:') ? '' : 'Re&nbsp;: '}#{@parent.title}" : ''
   end
 
   attr_reader :parent
