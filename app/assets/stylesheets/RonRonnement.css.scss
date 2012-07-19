@@ -1469,3 +1469,8 @@ img {
   background:none;
   border: 1px solid $C_INTER;
 }
+
+/* Use all the width for the news edit form */
+body#news-show textarea.markItUp {
+  width: 100%;
+}
