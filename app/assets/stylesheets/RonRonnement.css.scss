@@ -1474,3 +1474,8 @@ img {
 body#news-show textarea.markItUp {
   width: 100%;
 }
+
+/* Put the cancel and ok button on the same line in news edit form */
+body#news-show button.cancel {
+  float: left;
+}
