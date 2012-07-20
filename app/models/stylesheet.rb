@@ -5,7 +5,9 @@ class Stylesheet < Struct.new(:name, :url, :image)
   BASE_DIR = Rails.root.join("app/assets/stylesheets/contrib")
 
   def self.include?(css)
-    Dir["#{BASE_DIR.sub '/contrib', ''}/#{css}*css"].any?
+    return true if css == "mobile"
+    css.prepend 'contrib/' unless css.starts_with? 'contrib/'
+    Dir["#{BASE_DIR}/#{css.sub 'contrib/', ''}.css.scss"].any?
   end
 
   def self.all
