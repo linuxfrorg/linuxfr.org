@@ -16,7 +16,10 @@
         %span#nb_votes #{current_account.nb_votes}
         avis
       %ul
-        %li= link_to "Mon tableau de bord", '/tableau-de-bord'
+        %li
+          - if current_account.has_answers?
+            = image_tag "/images/icones/chat.png", :alt => "Nouveaux !", :title => "Vous avez reçu des réponses à vos commentaires"
+          = link_to "Mon tableau de bord", '/tableau-de-bord'
         %li= link_to "Mes contenus taggés", '/tags'
         %li= link_to "Les contenus que j'ai lus", '/readings'
         %li= link_to "Modifier mes préférences", '/compte/modifier'

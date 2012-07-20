@@ -4,6 +4,6 @@
   - if (news = News.draft.sorted).any?
     %ul
       = list_of(news) do |news|
-        = link_to news.title, [:redaction, news]
         - if news.node.board_status(current_account) == :new_board
           = image_tag "/images/icones/chat.png", :alt => "Nouveaux !", :title => "Il y a de l'activité sur cette dépêche"
+        = link_to news.title, [:redaction, news]

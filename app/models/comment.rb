@@ -107,6 +107,23 @@ class Comment < ActiveRecord::Base
             exists?
   end
 
+  def parents
+    Comment.where(:node_id => node_id).
+            where("LOCATE(materialized_path, ?) = 1", materialized_path).
+            where("id != ?", self.id)
+  end
+
+### Notifications ###
+
+  after_create :notify_parents
+  def notify_parents
+    parents.each do |p|
+      next if p.user_id == user_id
+      account = p.user.try(:account)
+      account.notify_answer_on node_id if account
+    end
+  end
+
 ### Calculations ###
 
   before_validation :default_score, :on => :create

@@ -165,6 +165,10 @@ class Account < ActiveRecord::Base
 
 ### Actions ###
 
+  def viewable_by?(account)
+    account && (account.admin? || account.moderator? || account.id == self.id)
+  end
+
   def can_post_on_board?
     active_for_authentication? && !plonked? && karma > 0
   end
@@ -175,10 +179,20 @@ class Account < ActiveRecord::Base
 
   def read(node)
     node.read_by(self.id)
+    $redis.srem "dashboard/#{self.id}", node.id
   end
 
-  def viewable_by?(account)
-    account && (account.admin? || account.moderator? || account.id == self.id)
+  def notify_answer_on(node_id)
+    $redis.sadd "dashboard/#{self.id}", node_id
+    $redis.expire "dashboard/#{self.id}", 86400 * 7  # one week
+  end
+
+  def has_answers?
+    $redis.scard("dashboard/#{self.id}").to_i > 0
+  end
+
+  def reset_answers_notifications
+    $redis.del "dashboard/#{self.id}"
   end
 
 ### Karma ###
