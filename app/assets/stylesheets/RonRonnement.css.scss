@@ -815,7 +815,7 @@ footer.actions {
     margin: 0 auto;
     max-width: 100%;
   }
-  a[href] {
+  a {
     @include lien_standard;
     &[title="Définition Wikipédia"]:after {
       content: "\A0W";
