@@ -1,8 +1,8 @@
 # encoding: UTF-8
 class Moderation::NewsController < ModerationController
   before_filter :find_news, :except => [:index]
-  after_filter  :marked_as_read, :only => [:show]
   after_filter  :expire_cache, :only => [:update, :accept]
+  after_filter  :marked_as_read, :only => [:show, :update, :vote]
 
   def index
     @news    = News.candidate.sorted
@@ -115,4 +115,5 @@ protected
     expire_page :controller => '/news', :action => :index, :format => :atom
     expire_action :controller => '/news', :action => :show, :id => @news.to_param
   end
+
 end

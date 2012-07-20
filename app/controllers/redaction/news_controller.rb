@@ -2,6 +2,7 @@
 class Redaction::NewsController < RedactionController
   before_filter :load_news, :except => [:index, :create]
   before_filter :load_board, :only => [:show, :reorganize]
+  after_filter  :marked_as_read, :only => [:show, :update]
 
   def index
     @news = News.draft.sorted
@@ -71,6 +72,10 @@ protected
 
   def load_board
     @boards = Board.all(Board.news, @news.id)
+  end
+
+  def marked_as_read
+    current_account.read(@news.node)
   end
 
 end
