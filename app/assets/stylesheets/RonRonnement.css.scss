@@ -98,6 +98,7 @@ a {
 }
 
 .button_to { display: inline-block; }
+button { padding-top: 2px; padding-bottom: 2px; }
 
 button,
 .edit_client_app a,
@@ -123,8 +124,13 @@ input[type='submit'] {
   }
 }
 
+#comments #follow-feed,
+#comments #send-comment {
+  display: inline-block;
+}
+
 form input[type='submit'], button {
-  display: block;
+  display: inline-block;
   padding-left: 20px;
   background: url("/images/icones/check.png") no-repeat 3px 3px $C_CLAIR;
   cursor: pointer;
@@ -137,7 +143,7 @@ form input[type='submit'], button {
   float: left;
   height: 21px;
   padding: 0 3px 0 20px;
-  margin-right: 10px;
+  margin: 0 12px;
   background: url("/images/icones/loop.png") no-repeat 2px 2px $C_CLAIR;
   &:hover { background-color: $C_FONCE; }
 }
@@ -161,7 +167,7 @@ button, input[type='submit'] {
   }
   &.submit_news {
     background: url("/images/icones/check_alt.png") no-repeat 2px 2px $C_CLAIR;
-    margin-bottom: 15px;
+    margin: 0 15px 15px;
   }
   &.add_para, &.add_link, &.create_news {
     background: url("/images/icones/plus.png") no-repeat 2px 2px $C_CLAIR;
@@ -1269,6 +1275,7 @@ body#news-show #redaction {
   float: left;
   width: 60%;
   .paragraph { margin-bottom: 15px; }
+  textarea { width: 100%; }
 }
 #redaction .edition_in_place, #redaction .paragraph, #redaction .link {
   padding-left: 30px;
@@ -1299,23 +1306,7 @@ body#news-show #redaction {
   float: right;
   width: 38%;
 
-  .inbox {
-    p {
-      margin: 2px 0;
-    }
-    p.edition, p.locking {
-      &:before {
-        content: "Δ ";
-        color: orange;
-      }
-    }
-    p.creation {
-      &:before {
-        content: "+ ";
-        color: lime;
-      }
-    }
-  }
+  .inbox p { margin: 2px 0; }
 }
 #news_board .board #board_message {
   width: 95%;

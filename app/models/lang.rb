@@ -2,6 +2,7 @@
 class Lang
   def self.all
     keys = $redis.lrange("lang", 0, -1)
+    return [] if keys.empty?
     full = keys.map {|k| "lang/#{k}" }
     vals = $redis.mget(*full)
     vals.zip(keys)
