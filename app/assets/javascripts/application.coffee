@@ -71,7 +71,7 @@ $("#account_visible_toolbar")
     true
 
 # Show the toolbar
-jQuery.fn.reverse = [].reverse;
+$.fn.reverse = [].reverse
 if $("body").hasClass("logged")
   if $("#comments").length
     $("#comments .new-comment")

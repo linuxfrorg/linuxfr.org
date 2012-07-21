@@ -1,7 +1,7 @@
 # encoding: utf-8
 class DashboardController < ApplicationController
   before_filter :authenticate_account!
-  before_filter :reset_notifications
+  before_filter :reset_notifications, :only => [:index]
 
   def index
     @self_answer = params[:self] == "1"
@@ -10,6 +10,10 @@ class DashboardController < ApplicationController
     @posts    = Node.where(:user_id => current_user.id).on_dashboard(Post).limit(10)
     @trackers = Node.where(:user_id => current_user.id).on_dashboard(Tracker).limit(10)
     @news     = News.where(:author_email => current_account.email).candidate
+  end
+
+  def answers
+    render :json => { :node_ids => current_account.answers_node_id }
   end
 
 protected

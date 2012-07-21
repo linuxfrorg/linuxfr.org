@@ -191,6 +191,10 @@ class Account < ActiveRecord::Base
     $redis.scard("dashboard/#{self.id}").to_i > 0
   end
 
+  def answers_node_id
+    $redis.smembers "dashboard/#{self.id}"
+  end
+
   def reset_answers_notifications
     $redis.del "dashboard/#{self.id}"
   end
