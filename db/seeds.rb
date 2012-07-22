@@ -103,4 +103,4 @@ Voici quelques pages qu'il serait intéressant d'avoir :
 EOS
 wp.save
 wp.reload
-wp.node.update_attribute(:user_id, 1)
+wp.node.update_column(:user_id, 1)

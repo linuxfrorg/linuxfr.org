@@ -74,7 +74,7 @@ class DiariesController < ApplicationController
     @news.author_name  = @diary.owner.try(:name)
     @news.author_email = @diary.owner.try(:account).try(:email)
     if @news.save
-      @news.node.update_attribute(:cc_licensed, true) if @diary.node.cc_licensed?
+      @news.node.update_column(:cc_licensed, true) if @diary.node.cc_licensed?
       @news.links.create :title => "Journal à l'origine de la dépêche", :url => "#{MY_DOMAIN}/users/#{@diary.owner.to_param}/journaux/#{@diary.to_param}", :lang => "fr"
       @news.submit!
       if current_account.amr?
@@ -99,7 +99,7 @@ class DiariesController < ApplicationController
       node = @post.node
       node.attributes = @diary.node.attributes.except("id").merge(:content_type => "XXX", :public => false)
       node.save
-      @diary.node.update_attributes(:content_type => "Post", :content_id => @post.id)
+      @diary.node.update_column(:content_type => "Post", :content_id => @post.id)
       node.content_type = "Diary"
       node.save
       redirect_to diaries_url, :notice => "Le journal a bien été déplacé vers les forums"

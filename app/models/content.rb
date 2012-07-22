@@ -77,7 +77,7 @@ class Content < ActiveRecord::Base
 ### Workflow ###
 
   def mark_as_deleted
-    node.update_attribute(:public, false)
+    node.update_column(:public, false)
   end
 
   def visible?

@@ -28,7 +28,7 @@ describe "Relevance" do
   end
 
   it "decrements the number of votes for the account" do
-    account.update_attribute(:nb_votes, 10)
+    account.update_column(:nb_votes, 10)
     comment.vote_for(account)
     account.reload.nb_votes.should == 9
   end

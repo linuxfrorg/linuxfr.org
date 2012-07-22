@@ -34,7 +34,7 @@ class AccessGrant < ActiveRecord::Base
   end
 
   def start_expiry_period!
-    update_attribute(:access_token_expires_at, 2.days.from_now)
+    update_column(:access_token_expires_at, 2.days.from_now)
   end
 
   def self.authenticate(code, application_id)
