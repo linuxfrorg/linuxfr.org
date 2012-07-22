@@ -1460,3 +1460,8 @@ img {
   background:none;
   border: 1px solid $C_INTER;
 }
+
+.markdown_cheatsheet img.markdown {
+  float: left;
+  margin: 12px 25px 0 0;
+}
