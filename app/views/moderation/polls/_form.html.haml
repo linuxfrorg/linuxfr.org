@@ -6,6 +6,8 @@
 %p
   = form.label :wiki_explanations, "Texte descriptif"
   = form.text_area :wiki_explanations, :spellcheck => 'true', :class => 'markItUp'
+%p
+  Réponses possibles
 = form.fields_for :answers do |aform|
   %p
     = aform.text_field :answer
