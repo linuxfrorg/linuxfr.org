@@ -521,7 +521,7 @@ button, input[type='submit'] {
 /* article titre */
 #phare article {
   /* enleve la liste des liens de la boite d'en-tete pour ne garder que le contenu "texte" de l'article, pour gain de place. */
-  .content ul {
+  .content ul.links {
     display: none;
   }
 

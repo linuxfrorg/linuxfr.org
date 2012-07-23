@@ -1,7 +1,10 @@
 =h1 "Éditer un sondage"
 
-= button_to "Publier", accept_moderation_poll_path(@poll), :data => { :confirm => "Publier le sondage ?" }, :class => "ok_button"
-= button_to "Refuser", refuse_moderation_poll_path(@poll), :data => { :confirm => "Refuser le sondage ?" }, :class => "delete_button"
+- if @poll.draft?
+  = button_to "Publier", accept_moderation_poll_path(@poll), :data => { :confirm => "Publier le sondage ?" }, :class => "ok_button"
+  = button_to "Refuser", refuse_moderation_poll_path(@poll), :data => { :confirm => "Refuser le sondage ?" }, :class => "delete_button"
+- else
+  = button_to "Mettre en phare", ppp_moderation_poll_path(@poll), :class => "ppp_poll"
 
 = form_for [:moderation, setup_poll(@poll)] do |form|
   = render form

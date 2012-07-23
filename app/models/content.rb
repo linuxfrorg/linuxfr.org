@@ -13,7 +13,7 @@ class Content < ActiveRecord::Base
 
   # /!\ No scope here /!\
 
-  delegate :score, :user, :to => :node
+  delegate :score, :user, :set_on_ppp, :on_ppp?, :to => :node
 
   class << self; attr_accessor :type; end
 

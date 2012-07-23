@@ -13,7 +13,7 @@ class HomeController < ApplicationController
     default = current_account.try(:sort_by_date_on_home) ? "created_at" : "interest"
     @order  = params[:order]
     @order  = default unless VALID_ORDERS.include?(@order)
-    @ppp    = News.ppp
+    @ppp    = Node.ppp
     @banner = Banner.random
     @poll   = Poll.current
     @nodes  = Node.public_listing(@types, @order).page(params[:page])

@@ -4,6 +4,6 @@
   - c.image = link_to(image_tag(preview.section.image, :alt => preview.section.title), preview.section)
   - c.body  = capture do
     = spellcheck(preview.body)
-    %ul
+    %ul.links
       = render preview.links
     = spellcheck(preview.second_part)

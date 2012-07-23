@@ -38,6 +38,12 @@ class Moderation::PollsController < ModerationController
     end
   end
 
+  def ppp
+    enforce_accept_permission(@poll)
+    @poll.set_on_ppp
+    redirect_to root_url, :notice => "Le sondage a bien été mis en phare"
+  end
+
 protected
 
   def find_poll

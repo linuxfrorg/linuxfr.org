@@ -145,6 +145,7 @@ LinuxfrOrg::Application.routes.draw do
       member do
         post :refuse
         post :accept
+        post :ppp
       end
     end
     resources :plonk, :only => [:create]

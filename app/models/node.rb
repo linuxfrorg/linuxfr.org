@@ -41,6 +41,21 @@ class Node < ActiveRecord::Base
 
   paginates_per 15
 
+### PPP ###
+
+  def self.ppp
+    id = $redis.get("nodes/ppp")
+    find(id).try(:content) if id
+  end
+
+  def set_on_ppp
+    $redis.set("nodes/ppp", self.id)
+  end
+
+  def on_ppp?
+    self.id == $redis.get("nodes/ppp").to_i
+  end
+
 ### Interest ###
 
   after_create :compute_interest

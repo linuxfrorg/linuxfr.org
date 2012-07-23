@@ -6,7 +6,7 @@
     - c.actions = link_to("Modifier", [:moderation, news], :class => 'action')
   - c.body  = capture do
     = news.body
-    %ul
+    %ul.links
       = render news.links.select([:id, :lang, :title, :url])
     - if defined?(with_second_part) && with_second_part
       = news.second_part
