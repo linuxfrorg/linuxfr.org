@@ -1,3 +1,6 @@
 = article_for preview do |c|
   - c.title = "#{link_to "Sondage", "/sondages", :class => "topic"} #{link_to preview.title, "#"}".html_safe
-  - c.body  = render("answers_current", :poll => preview, :id_suffix => "")
+  - c.body  = capture do
+    - if preview.explanations
+      .explanations= preview.explanations
+    = render("answers_current", :poll => preview, :id_suffix => "")

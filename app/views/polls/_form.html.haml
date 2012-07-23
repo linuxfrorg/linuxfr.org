@@ -3,6 +3,9 @@
 %p
   = form.label :title, "Question", :maxlength => 128
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
+%p
+  = form.label :wiki_explanations, "Texte descriptif"
+  = form.text_area :wiki_explanations, :spellcheck => 'true', :class => 'markItUp'
 = form.fields_for :answers do |aform|
   %p
     = aform.text_field :answer, :maxlength => 128

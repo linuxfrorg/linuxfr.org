@@ -3,7 +3,7 @@
     - poll.answers.each_with_index do |answer,index|
       %li
         = radio_button_tag :position, answer.position, false, :id => "position_#{index}#{id_suffix}"
-        = label_tag "position_#{index}#{id_suffix}", answer.answer
+        = label_tag "position_#{index}#{id_suffix}", answer.formatted
   %p.total_votes
     Total :
     = pluralize poll.total_votes, "vote"

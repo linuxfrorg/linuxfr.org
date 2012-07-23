@@ -1,5 +1,8 @@
 = article_for poll do |c|
   - c.title = "#{link_to "Sondage", polls_path, :class => "topic"} #{link_to poll.title, moderation_poll_path(:id => poll)}".html_safe
-  - c.body  = render("polls/answers_current", :poll => poll, :id_suffix => "")
+  - c.body  = capture do
+    - if poll.explanations
+      .explanations= poll.explanations
+    = render("polls/answers_current", :poll => poll, :id_suffix => "")
   - if current_account && current_account.can_update?(@poll)
     - c.actions = link_to("Modifier", edit_moderation_poll_path(:id => @poll), :class => 'action')

@@ -21,10 +21,11 @@ class Poll < Content
                      :inverse_of => :poll
   accepts_nested_attributes_for :answers, :allow_destroy => true, :reject_if => :all_blank
 
-  attr_accessible :title, :answers_attributes
-  sanitize_attr :title
+  attr_accessible :title, :wiki_explanations, :answers_attributes
 
   validates :title, :presence => { :message => "La question est obligatoire" }
+
+  wikify_attr :explanations
 
   scope :draft,     where(:state => "draft")
   scope :published, where(:state => "published")
@@ -45,10 +46,11 @@ class Poll < Content
 ### Search ####
 
   mapping do
-    indexes :id,         :index    => :not_analyzed
-    indexes :created_at, :type => 'date', :include_in_all => false
-    indexes :title,      :analyzer => 'french',  :boost => 10
-    indexes :answers,    :analyzer => 'french', :as => proc { answers.pluck(:answer).join("\n") }
+    indexes :id,           :index    => :not_analyzed
+    indexes :created_at,   :type => 'date', :include_in_all => false
+    indexes :title,        :analyzer => 'french', :boost => 10
+    indexes :explanations, :analyzer => 'french', :boost => 5
+    indexes :answers,      :analyzer => 'french', :as => proc { answers.pluck(:answer).join("\n") }
   end
 
 ### Workflow ###
