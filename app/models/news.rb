@@ -174,6 +174,15 @@ class News < Content
     paragraphs.create(:second_part => true,  :wiki_body => wiki_second_part) unless wiki_second_part.blank?
   end
 
+  def second_part_toc
+    self.wiki_second_part ||= paragraphs.in_second_part.map(&:wiki_body).join("\n\n")
+    toc_for wiki_second_part
+  end
+
+  def announce_toc
+    Push.create(self, :kind => :second_part_toc, :toc => second_part_toc)
+  end
+
   after_create :announce_message, :unless => Proc.new { |news| news.message.blank? }
   def announce_message
     Board.new(:object_type => Board.news, :object_id => self.id, :message => message, :user_name => author_name).save

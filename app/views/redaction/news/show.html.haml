@@ -18,6 +18,8 @@
       = render :partial => 'redaction/links/link', :collection => @news.links
     %p.new_link{'data-url' => new_redaction_news_link_path(:news_id => @news)}
       %button.add_link Ajouter un lien
+    #second_part_toc
+      = @news.second_part_toc
     #second_part
       = render :partial => 'redaction/paragraphs/paragraph', :collection => @news.paragraphs.in_second_part
     .new_paragraph

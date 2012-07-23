@@ -87,11 +87,13 @@ class Redaction
     $("#paragraph_#{msg.id}").lockableEditionInPlace()
 
   onUpdateParagraph: (msg) =>
-    console.log "onUpdateParagraph", msg
     $("#paragraph_#{msg.id}").html(msg.body)
 
   onRemoveParagraph: (msg) ->
     $("#paragraph_#{msg.id}").remove()
+
+  onSecondPartToc: (msg) ->
+    $("#second_part_toc").html(msg.toc)
 
 $.fn.redaction = ->
   @each ->

@@ -43,6 +43,12 @@ class ActiveRecord::Base
     LFMarkdown.render(txt)
   end
 
+  # Generate the Table of contents for this text
+  def toc_for(txt)
+    LFMarkdown.toc(txt)
+  end
+
+  # Transform []() to links on the given text
   def linkify(txt)
     ERB::Util.h(txt).gsub(/\[([^\]]*)\]\(([^)]*)\)/, '<a href="\2">\1</a>').html_safe
   end

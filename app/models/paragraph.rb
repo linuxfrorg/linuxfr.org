@@ -106,16 +106,19 @@ class Paragraph < ActiveRecord::Base
   after_create :announce_create
   def announce_create
     Push.create(news, :id => self.id, :kind => :add_paragraph, :body => body, :after => after, :part => part)
+    news.announce_toc
   end
 
   after_update :announce_update
   def announce_update
     Push.create(news, :id => self.id, :kind => :update_paragraph, :body => body)
+    news.announce_toc
   end
 
   before_destroy :announce_destroy
   def announce_destroy
     Push.create(news, :id => self.id, :kind => :remove_paragraph)
+    news.announce_toc
   end
 
   # Warning, acts_as_list also declares a before_destroy callback,
