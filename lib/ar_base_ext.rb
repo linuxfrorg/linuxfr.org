@@ -45,7 +45,7 @@ class ActiveRecord::Base
 
   # Generate the Table of contents for this text
   def toc_for(txt)
-    LFMarkdown.toc(txt)
+    LFMarkdown.toc(txt).html_safe
   end
 
   # Transform []() to links on the given text
