@@ -811,6 +811,7 @@ footer.actions {
       background-color: transparent;
     }
   }
+  &.done { display: none; }
 }
 
 /* concerne tout ce qui est contenu : article, commentaire */

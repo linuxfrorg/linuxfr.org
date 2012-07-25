@@ -172,7 +172,7 @@ class Comment < ActiveRecord::Base
 ### Votes ###
 
   def vote_by?(account_id)
-    $redis.exists("comments/#{self.id}/votes/#{account_id}")
+    $redis.get("comments/#{self.id}/votes/#{account_id}")
   end
 
   def vote_for(account)
@@ -185,7 +185,7 @@ class Comment < ActiveRecord::Base
 
   def vote(account, value)
     key = "comments/#{self.id}/votes/#{account.id}"
-    return false if $redis.getset(key , value)
+    return false if $redis.getset(key, value)
     $redis.expire(key, 7776000) # 3 months
     unless score * (score + value) > 100  # Score is out of the [-10, 10] bounds
       $redis.incrby("users/#{self.user_id}/diff_karma", value)
