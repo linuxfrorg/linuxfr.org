@@ -3,7 +3,7 @@
 class AvatarUploader < CarrierWave::Uploader::Base
 
   AVATAR_SIZE = 64
-  DEFAULT_AVATAR_URL = "http://#{MY_DOMAIN}/images/default-avatar.png"
+  DEFAULT_AVATAR_URL = "//#{MY_DOMAIN}/images/default-avatar.png"
 
   include CarrierWave::MiniMagick
   process :resize_and_pad => [AVATAR_SIZE, AVATAR_SIZE]
