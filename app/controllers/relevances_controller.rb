@@ -35,6 +35,7 @@ protected
 
   def load_comment
     @comment = Comment.find(params[:id])
+    Rails.logger.info "Relevance on #{params[:id]} #{params[:action]} by #{current_user.id} #{request.remote_ip} at #{Time.now.to_i}"
   end
 
 end
