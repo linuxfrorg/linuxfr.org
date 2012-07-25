@@ -27,7 +27,7 @@ protected
 
   def find_node
     @node = Node.find(params[:id])
-    enforce_tag_permission(@node.content)
+    enforce_view_permission(@node.content)
   end
 
 end
