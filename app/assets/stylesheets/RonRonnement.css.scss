@@ -16,23 +16,16 @@ $PX_MARGE_GAUCHE: 31px;
 $PX_MARGE_DROITE: 19px;
 $PX_TOP: 16px;
 $PX_BANDEAU: 7px;
-$PX_BRANDING_TOP: 34px;
 $PX_BRANDING_LARG: 201px;
-$PX_SHADOW: 12px;
-$PX_SITE_MARGE_TOP: 40px;
 $PX_SITE_PAD_DROIT: 42px;
 $PX_CONT_TOP: 34px;
 
 $PX_MARGE_GAUCHE_SHA: 50px;
 $PX_MARGE_DROITE_SHA: 38px;
-/* pas de px ici pour faire plaisir a webkit */
-$PX_SEP_FOND: 134px;
-$PX_SEP_FOND_webkit: 134;
 $PX_PAD_NODE: 34px;
 
 $RAY_SIDEBAR: 42px;
 $RAY_CONTAINER: 62px;
-$RAY_CONTAINER_PLUS_1: 63px;
 $RAY_FOOT: 7px;
 $RAY_NODE: 6px;
 
@@ -226,22 +219,13 @@ button, input[type='submit'] {
 
 #sidebar {
   float: left;
-  margin-top: $PX_BRANDING_TOP;
   left: $PX_MARGE_GAUCHE_SHA;
   width: $PX_BRANDING_LARG;
   text-align: left;
   font-size: small;
   background: $C_CLAIR;
 
-
-  -moz-border-radius-bottomright: $RAY_SIDEBAR;
-  -webkit-border-bottom-right-radius: $RAY_SIDEBAR;
-  -khtml-border-bottom-right-radius: $RAY_SIDEBAR;
-  border-bottom-right-radius: $RAY_SIDEBAR;
-
-  a {
-    font-weight: inherit;
-  }
+  a { font-weight: inherit; }
 
   /* le cadenas */
   .insecure, .secure {
@@ -331,6 +315,11 @@ button, input[type='submit'] {
       &:before { content: " ["; }
       &:after  { content: "] "; }
     }
+
+    .abusers li {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 
   #logout {
@@ -349,9 +338,6 @@ button, input[type='submit'] {
 
 /* menu du haut */
 #site {
-  position: absolute;
-  top: $PX_SITE_MARGE_TOP;
-  right: $PX_MARGE_DROITE_SHA;
   display: block;
   text-align: right;
   text-transform: uppercase;
@@ -360,7 +346,7 @@ button, input[type='submit'] {
 
   ul {
     display: inline;
-    padding-right: $PX_SITE_PAD_DROIT;
+    padding-left: 0;
   }
   li {
     display: inline;
@@ -372,6 +358,10 @@ button, input[type='submit'] {
 
   /* boite de recherche */
   form {
+    display: inline-block;
+    vertical-align: middle;
+    width: 160px;
+
     label {
       float: left;
       text-indent: -9998em;
@@ -383,6 +373,8 @@ button, input[type='submit'] {
       display: block;
       float: left;
       background: $C_CLAIR;
+      margin-top: 2px;
+      width: 125px;
     }
     input#search_submit {
       background: url('/images/contrib/kaiska/search.png') no-repeat;
@@ -392,31 +384,16 @@ button, input[type='submit'] {
       height: 22px;
       cursor: pointer;
     }
-    display: block;
-    background: $C_INTER;
-    padding-left: $PX_SITE_PAD_DROIT;
-    padding-right: 0;
-    width: 220px;
-    margin-left: auto;
-    margin-right: 0;
-
-    -moz-border-radius-bottomleft: $RAY_SIDEBAR;
-    -webkit-border-bottom-left-radius: $RAY_SIDEBAR;
-    -khtml-border-bottom-left-radius: $RAY_SIDEBAR;
-    border-bottom-left-radius: $RAY_SIDEBAR;
-
-    height: 29px;
-    line-height: 29px;
-    text-align: center;
   }
 }
 
 /* pied de page derniers commentaires, … */
 #bigfooter{
+  display: block;
   clear: both;
   width: 100%;
-  display: block;
   margin-top: 0;
+  padding: 0 0 20px 0;
   background: $C_CLAIR;
   background: -moz-linear-gradient(top,
     $C_FOOT 0%,
@@ -442,7 +419,6 @@ button, input[type='submit'] {
     $C_FOOT 0%,
     white 100%
   );
-  padding: 0;
 
   a { font-size: small; }
 
@@ -482,13 +458,7 @@ button, input[type='submit'] {
     );
     min-height: 330px;
 
-    -moz-border-radius-bottomright: $RAY_FOOT;
-    -webkit-border-bottom-right-radius: $RAY_FOOT;
-    -khtml-border-bottom-right-radius: $RAY_FOOT;
     border-bottom-right-radius: $RAY_FOOT;
-    -moz-border-radius-bottomleft: $RAY_FOOT;
-    -webkit-border-bottom-left-radius: $RAY_FOOT;
-    -khtml-border-bottom-left-radius: $RAY_FOOT;
     border-bottom-left-radius: $RAY_FOOT;
 
     h1 {
@@ -503,14 +473,7 @@ button, input[type='submit'] {
   display: block;
   margin-left: $PX_BRANDING_LARG;
   background: $C_CONTAINER;
-  -moz-border-radius-topleft: $RAY_CONTAINER;
-  -webkit-border-top-left-radius: $RAY_CONTAINER;
-  -khtml-border-top-left-radius: $RAY_CONTAINER;
-  border-top-left-radius: $RAY_CONTAINER;
-
-  padding: 40px $RAY_CONTAINER 10px 40px;
-  margin-top: $PX_CONT_TOP;
-  margin-bottom: 0;
+  padding: 30px $RAY_CONTAINER 10px 40px;
 
   /* le titre de la page est déjà contenu dans la barre du navigateur, l'url du navigateur, ... */
   > h1:first-of-type {
@@ -609,6 +572,10 @@ article {
     min-height: 70px;
     line-height: 1.4em;
 
+    &.hidden {
+      padding: 0;
+      min-height: 0;
+    }
     > p:first-child {
       margin-top: 0;
     }

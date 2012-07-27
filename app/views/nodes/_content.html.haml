@@ -23,7 +23,7 @@
     - if image && !hidden
       %figure.image(itemprop="image")= image
   - if hidden
-    .content &nbsp;
+    .content.hidden &nbsp;
   - else
     .content(itemprop="articleBody" class="entry-content")
       = body
