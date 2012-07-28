@@ -42,7 +42,7 @@ class LFMarkdown < Redcarpet::Render::HTML
     return "" if text.nil? || text.length < 5000
     html_toc = Redcarpet::Markdown.new(Redcarpet::Render::HTML_TOC, PARSER_OPTIONS)
     inner = html_toc.render text
-    "<h2 id=\"sommaire\">Sommaire</h2>\n#{inner}" unless inner.blank?
+    inner.blank? ? "" : "<h2 id=\"sommaire\">Sommaire</h2>\n#{inner}"
   end
 
   def initialize(extensions={})
