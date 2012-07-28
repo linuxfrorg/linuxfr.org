@@ -3,10 +3,10 @@
 #
 # Table name: friend_sites
 #
-#  id       :integer(4)      not null, primary key
+#  id       :integer          not null, primary key
 #  title    :string(255)
 #  url      :string(255)
-#  position :integer(4)
+#  position :integer
 #
 
 class FriendSite < ActiveRecord::Base

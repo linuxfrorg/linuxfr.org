@@ -47,7 +47,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "annotate",              "2.5.0.pre1"
+  gem "annotate"
   gem "autotest-standalone"
   gem "capistrano"
   gem "capistrano_colors"

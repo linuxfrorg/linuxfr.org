@@ -1,14 +1,14 @@
 # encoding: UTF-8
-#
 # == Schema Information
 #
 # Table name: banners
 #
-#  id      :integer(4)      not null, primary key
+#  id      :integer          not null, primary key
 #  title   :string(255)
 #  content :text
 #
 
+#
 class Banner < ActiveRecord::Base
   validates :content, :presence => { :message => "La bannière ne peut être vide !" }
 

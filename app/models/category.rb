@@ -1,15 +1,15 @@
 # encoding: UTF-8
-#
 # == Schema Information
 #
 # Table name: categories
 #
-#  id         :integer(4)      not null, primary key
-#  title      :string(32)      not null
+#  id         :integer          not null, primary key
+#  title      :string(32)       not null
 #  created_at :datetime
 #  updated_at :datetime
 #
 
+#
 # The tracker entries are categorized,
 # for helping users browsing them.
 #

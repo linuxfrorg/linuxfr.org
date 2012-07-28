@@ -1,13 +1,12 @@
 # encoding: utf-8
 # == Schema Information
-# Schema version: 20090301003336
 #
 # Table name: taggings
 #
-#  id         :integer(4)      not null, primary key
-#  tag_id     :integer(4)
-#  node_id    :integer(4)
-#  user_id    :integer(4)
+#  id         :integer          not null, primary key
+#  tag_id     :integer
+#  node_id    :integer
+#  user_id    :integer
 #  created_at :datetime
 #
 

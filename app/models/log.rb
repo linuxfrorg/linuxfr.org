@@ -1,16 +1,16 @@
 # encoding: UTF-8
-#
 # == Schema Information
 #
 # Table name: logs
 #
-#  id          :integer(4)      not null, primary key
-#  account_id  :integer(4)
+#  id          :integer          not null, primary key
+#  account_id  :integer
 #  description :string(255)
 #  created_at  :datetime
-#  user_id     :integer(4)
+#  user_id     :integer
 #
 
+#
 # The Log class is here to keep some facts about accounts like plonks.
 #
 class Log < ActiveRecord::Base

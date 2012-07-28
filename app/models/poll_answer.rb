@@ -1,18 +1,18 @@
 # encoding: UTF-8
-#
 # == Schema Information
 #
 # Table name: poll_answers
 #
-#  id         :integer(4)      not null, primary key
-#  poll_id    :integer(4)
-#  answer     :string(128)     not null
-#  votes      :integer(4)      default(0), not null
-#  position   :integer(4)
+#  id         :integer          not null, primary key
+#  poll_id    :integer
+#  answer     :string(128)      not null
+#  votes      :integer          default(0), not null
+#  position   :integer
 #  created_at :datetime
 #  updated_at :datetime
 #
 
+#
 class PollAnswer < ActiveRecord::Base
   belongs_to :poll
 

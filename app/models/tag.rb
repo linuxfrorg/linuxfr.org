@@ -3,10 +3,10 @@
 #
 # Table name: tags
 #
-#  id             :integer(4)      not null, primary key
-#  name           :string(64)      not null
-#  taggings_count :integer(4)      default(0), not null
-#  public         :boolean(1)      default(TRUE), not null
+#  id             :integer          not null, primary key
+#  name           :string(64)       not null
+#  taggings_count :integer          default(0), not null
+#  public         :boolean          default(TRUE), not null
 #
 
 class Tag < ActiveRecord::Base

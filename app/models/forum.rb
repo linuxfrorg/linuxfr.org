@@ -1,18 +1,18 @@
 # encoding: UTF-8
-#
 # == Schema Information
 #
 # Table name: forums
 #
-#  id          :integer(4)      not null, primary key
-#  state       :string(10)      default("active"), not null
-#  title       :string(32)      not null
+#  id          :integer          not null, primary key
+#  state       :string(10)       default("active"), not null
+#  title       :string(32)       not null
 #  cached_slug :string(32)
-#  position    :integer(4)
+#  position    :integer
 #  created_at  :datetime
 #  updated_at  :datetime
 #
 
+#
 # The forums is the place where the users ask questions and answer them.
 # It'as all about helping each others.
 #

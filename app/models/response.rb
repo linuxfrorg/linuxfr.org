@@ -3,8 +3,8 @@
 #
 # Table name: responses
 #
-#  id      :integer(4)      not null, primary key
-#  title   :string(255)     not null
+#  id      :integer          not null, primary key
+#  title   :string(255)      not null
 #  content :text
 #
 

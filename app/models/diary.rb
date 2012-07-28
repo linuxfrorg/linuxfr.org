@@ -3,10 +3,10 @@
 #
 # Table name: diaries
 #
-#  id             :integer(4)      not null, primary key
-#  title          :string(160)     not null
+#  id             :integer          not null, primary key
+#  title          :string(160)      not null
 #  cached_slug    :string(165)
-#  owner_id       :integer(4)
+#  owner_id       :integer
 #  body           :text
 #  wiki_body      :text
 #  truncated_body :text

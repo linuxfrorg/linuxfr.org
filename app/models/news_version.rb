@@ -1,13 +1,12 @@
 # encoding: UTF-8
-#
 # == Schema Information
 #
 # Table name: news_versions
 #
-#  id          :integer(4)      not null, primary key
-#  news_id     :integer(4)
-#  user_id     :integer(4)
-#  version     :integer(4)
+#  id          :integer          not null, primary key
+#  news_id     :integer
+#  user_id     :integer
+#  version     :integer
 #  title       :string(255)
 #  body        :text
 #  second_part :text
@@ -15,6 +14,7 @@
 #  created_at  :datetime
 #
 
+#
 class NewsVersion < ActiveRecord::Base
   belongs_to :news
   belongs_to :user

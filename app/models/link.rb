@@ -1,18 +1,18 @@
 # encoding: UTF-8
-#
 # == Schema Information
 #
 # Table name: links
 #
-#  id         :integer(4)      not null, primary key
-#  news_id    :integer(4)      not null
-#  title      :string(100)     not null
-#  url        :string(255)     not null
-#  lang       :string(2)       not null
+#  id         :integer          not null, primary key
+#  news_id    :integer          not null
+#  title      :string(100)      not null
+#  url        :string(255)      not null
+#  lang       :string(2)        not null
 #  created_at :datetime
 #  updated_at :datetime
 #
 
+#
 # The news can have some important links.
 # We follow the number of clicks on each of these links.
 #

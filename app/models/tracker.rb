@@ -1,15 +1,14 @@
 # encoding: UTF-8
-#
 # == Schema Information
 #
 # Table name: trackers
 #
-#  id                  :integer(4)      not null, primary key
-#  state               :string(10)      default("opened"), not null
-#  title               :string(100)     not null
+#  id                  :integer          not null, primary key
+#  state               :string(10)       default("opened"), not null
+#  title               :string(100)      not null
 #  cached_slug         :string(105)
-#  category_id         :integer(4)
-#  assigned_to_user_id :integer(4)
+#  category_id         :integer
+#  assigned_to_user_id :integer
 #  body                :text
 #  wiki_body           :text
 #  truncated_body      :text
@@ -17,6 +16,7 @@
 #  updated_at          :datetime
 #
 
+#
 # There are no bugs in LinuxFr.org, but if it would happen,
 # the users can report them in the tracker.
 # They can also suggest improvements here.

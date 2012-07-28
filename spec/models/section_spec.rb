@@ -3,9 +3,9 @@
 #
 # Table name: sections
 #
-#  id          :integer(4)      not null, primary key
-#  state       :string(10)      default("published"), not null
-#  title       :string(32)      not null
+#  id          :integer          not null, primary key
+#  state       :string(10)       default("published"), not null
+#  title       :string(32)       not null
 #  cached_slug :string(32)
 #  created_at  :datetime
 #  updated_at  :datetime

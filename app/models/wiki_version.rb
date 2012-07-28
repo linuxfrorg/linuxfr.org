@@ -1,18 +1,18 @@
 # encoding: UTF-8
-#
 # == Schema Information
 #
 # Table name: wiki_versions
 #
-#  id           :integer(4)      not null, primary key
-#  wiki_page_id :integer(4)
-#  user_id      :integer(4)
-#  version      :integer(4)
+#  id           :integer          not null, primary key
+#  wiki_page_id :integer
+#  user_id      :integer
+#  version      :integer
 #  message      :string(255)
-#  body         :text
+#  body         :text(16777215)
 #  created_at   :datetime
 #
 
+#
 class WikiVersion < ActiveRecord::Base
   belongs_to :wiki_page
   belongs_to :user

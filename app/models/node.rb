@@ -1,23 +1,23 @@
 # encoding: UTF-8
-#
 # == Schema Information
 #
 # Table name: nodes
 #
-#  id                :integer(4)      not null, primary key
-#  content_id        :integer(4)
+#  id                :integer          not null, primary key
+#  content_id        :integer
 #  content_type      :string(255)
-#  user_id           :integer(4)
-#  public            :boolean(1)      default(TRUE), not null
-#  cc_licensed       :boolean(1)      default(FALSE), not null
-#  score             :integer(4)      default(0), not null
-#  interest          :integer(4)      default(0), not null
-#  comments_count    :integer(4)      default(0), not null
+#  user_id           :integer
+#  public            :boolean          default(TRUE), not null
+#  cc_licensed       :boolean          default(FALSE), not null
+#  score             :integer          default(0), not null
+#  interest          :integer          default(0), not null
+#  comments_count    :integer          default(0), not null
 #  last_commented_at :datetime
 #  created_at        :datetime
 #  updated_at        :datetime
 #
 
+#
 # The node is attached to each content.
 # It helps organizing some common stuff between the contents,
 # and facilitates the transformation of one content to another.

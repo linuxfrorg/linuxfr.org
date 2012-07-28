@@ -1,18 +1,17 @@
 # encoding: UTF-8
-#
 # == Schema Information
 #
 # Table name: paragraphs
 #
-#  id           :integer(4)      not null, primary key
-#  news_id      :integer(4)      not null
-#  position     :integer(4)
-#  second_part  :boolean(1)
-#  locked_by_id :integer(4)
-#  body         :text
-#  wiki_body    :text
+#  id          :integer          not null, primary key
+#  news_id     :integer          not null
+#  position    :integer
+#  second_part :boolean
+#  body        :text
+#  wiki_body   :text
 #
 
+#
 require 'spec_helper'
 
 describe Paragraph do

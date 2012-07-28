@@ -1,17 +1,17 @@
 # encoding: UTF-8
-#
 # == Schema Information
 #
 # Table name: paragraphs
 #
-#  id          :integer(4)      not null, primary key
-#  news_id     :integer(4)      not null
-#  position    :integer(4)
-#  second_part :boolean(1)
+#  id          :integer          not null, primary key
+#  news_id     :integer          not null
+#  position    :integer
+#  second_part :boolean
 #  body        :text
 #  wiki_body   :text
 #
 
+#
 # A paragraph is a block of text from a news, with wiki syntax.
 # The paragraph never modifies the body (or wiki_body) of a news,
 # only the news known its state and when to do the synchronization!

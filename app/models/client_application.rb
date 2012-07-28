@@ -3,8 +3,8 @@
 #
 # Table name: client_applications
 #
-#  id         :integer(4)      not null, primary key
-#  account_id :integer(4)
+#  id         :integer          not null, primary key
+#  account_id :integer
 #  name       :string(255)
 #  app_id     :string(32)
 #  app_secret :string(32)

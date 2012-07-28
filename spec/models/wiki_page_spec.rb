@@ -3,10 +3,10 @@
 #
 # Table name: wiki_pages
 #
-#  id          :integer(4)      not null, primary key
-#  title       :string(100)     not null
+#  id          :integer          not null, primary key
+#  title       :string(100)      not null
 #  cached_slug :string(105)
-#  body        :text
+#  body        :text(16777215)
 #  created_at  :datetime
 #  updated_at  :datetime
 #

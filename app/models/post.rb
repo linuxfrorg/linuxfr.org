@@ -3,9 +3,9 @@
 #
 # Table name: posts
 #
-#  id             :integer(4)      not null, primary key
-#  forum_id       :integer(4)
-#  title          :string(160)     not null
+#  id             :integer          not null, primary key
+#  forum_id       :integer
+#  title          :string(160)      not null
 #  cached_slug    :string(165)
 #  body           :text
 #  wiki_body      :text
