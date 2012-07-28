@@ -17,6 +17,7 @@ $PX_MARGE_DROITE: 19px;
 $PX_TOP: 16px;
 $PX_BANDEAU: 7px;
 $PX_BRANDING_LARG: 201px;
+$PX_BRANDING_HEIGHT: 186px;
 $PX_SITE_PAD_DROIT: 42px;
 $PX_CONT_TOP: 34px;
 
@@ -246,7 +247,7 @@ button, input[type='submit'] {
   /* image DLFP */
   #branding h1 {
     display: block;
-    height: 186px;
+    height: $PX_BRANDING_HEIGHT;
 
     a {
       display: block;
@@ -289,7 +290,7 @@ button, input[type='submit'] {
     }
 
     /* rotation du titre de la boîte */
-    h1:first-of-type {
+    h1 {
       display: inline-block;
       text-align: center;
       font-size: small;
@@ -1432,4 +1433,80 @@ img {
 .markdown_cheatsheet img.markdown {
   float: left;
   margin: 12px 25px 0 0;
+}
+
+@media screen and (max-width: 600px) {
+  html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #fff;
+  }
+
+  #top { display: none; }
+  #site { margin: 10px 5px; }
+
+  #sidebar {
+    background: #fff;
+    width: 100%;
+    #branding {
+      float: right;
+      width: $PX_BRANDING_LARG;
+      margin-right: 35px;
+    }
+    .box {
+      min-height: 0;
+      border-bottom: 0;
+      &:last-child { padding-bottom: 0; }
+      h1 {
+        -webkit-transform: none;
+        -khtml-transform: none;
+        -moz-transform: none;
+        -o-transform: none;
+        transform: none;
+        width: 100px;
+        margin: 0 10px;
+      }
+      ul { margin: 5px; }
+    }
+    .box p, .box .new_content, #poll_box, #redaction_box ul, #moderation_box ul, #moderation_box div, #admin_box { display: none; }
+    #new_account_sidebar {
+      p { display: block; margin: 5px 10px; }
+      input[type="text"], input[type="password"] { width: 120px; }
+    }
+  }
+
+  #container {
+    clear: left;
+    margin: 0;
+    padding: 10px;
+    .score, .datePourCss { right: 0 !important; }
+    header {
+      h1 { margin-right: 48px; }
+      time, .tags { display: none; }
+    }
+    .tag_in_place { display: none; }
+    article, li.comment { padding: 10px 15px; }
+  }
+
+  #bigfooter {
+    #last_comments, #popular_tags { display: none; }
+    #friends, #about_us { width: 48%; min-height: 300px; }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #sidebar #branding {
+    width: $PX_BRANDING_LARG / 2;
+    margin-right: 10px;
+    h1 {
+      height: $PX_BRANDING_HEIGHT / 2;
+      background-size: 100%;
+    }
+  }
+
+  #bigfooter {
+    #friends { display: none; }
+    #about_us { width: 100%; margin: 0; min-height: 240px; }
+  }
 }
