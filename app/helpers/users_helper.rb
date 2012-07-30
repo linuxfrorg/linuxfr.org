@@ -21,6 +21,7 @@ module UsersHelper
   end
 
   def jabber_link(user)
+    return unless current_account
     return if user.jabber_id.blank?
     link_to("jabber id", "xmpp:" + user.jabber_id)
   end

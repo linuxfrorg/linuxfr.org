@@ -9,6 +9,6 @@
   - if user.homesite
     %p
       Site personnel&nbsp;: #{link_to user.homesite, user.homesite, :class => 'url me'}
-  - if user.jabber_id
+  - if current_account && user.jabber_id
     %p
       Jabber ID&nbsp;: #{link_to 'xmpp:' + user.jabber_id, 'xmpp:' + user.jabber_id, :class => 'url'}
