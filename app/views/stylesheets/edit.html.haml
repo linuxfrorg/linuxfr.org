@@ -14,6 +14,11 @@
     Pour en choisir une, cliquer simplement sur son nom.
 
   = form_tag "/stylesheet", :method => :put do
+    %input(type="radio" name="css_session" value="all" id="css_session_all" checked)
+    %label(for="css_session_all") Activer cette feuille de style pour toutes les sessions
+    %input(type="radio" name="css_session" value="current" id="css_session_current")
+    %label(for="css_session_current") Activer cette feuille de style uniquement pour la session en cours
+
     - @stylesheets.each do |css|
       %button{ :type => "submit", :name => "stylesheet", :value => css.url, :title => css.name }
         %img{ :src => css.image, :alt => css.name }
