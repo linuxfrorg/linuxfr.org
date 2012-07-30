@@ -980,7 +980,7 @@ li.comment {
     margin-bottom: 5px;
   }
   .deleted {
-    border-left: 2px solid red;
+    border-left: 3px solid red;
     font-style: italic;
   }
   > ul {
@@ -1469,7 +1469,18 @@ img {
       }
       ul { margin: 5px; }
     }
-    .box p, .box .new_content, #poll_box, #redaction_box ul, #moderation_box ul, #moderation_box div, #admin_box { display: none; }
+    .box p, .box .new_content, #poll_box, #redaction_box ul, #moderation_box ul, #admin_box { display: none; }
+    #moderation_box {
+      .inbox {
+        p { display: block; }
+        p + p + p + p { display: none; }
+      }
+      .board input#board_message {
+        float: left;
+        width: 50%;
+        margin: 2px 0 0 8px;
+      }
+    }
     #new_account_sidebar {
       p { display: block; margin: 5px 10px; }
       input[type="text"], input[type="password"] { width: 120px; }
@@ -1486,13 +1497,24 @@ img {
       time, .tags { display: none; }
     }
     .tag_in_place { display: none; }
-    article, li.comment { padding: 10px 15px; }
+    article, ul.threads > li.comment { padding: 10px 15px; }
   }
 
   #bigfooter {
     #last_comments, #popular_tags { display: none; }
     #friends, #about_us { width: 48%; min-height: 300px; }
   }
+
+  li.comment > ul { margin-left: 0.25em; }
+  img.avatar { width: 50px; height: 50px; }
+
+  div#toolbar {
+    left: 20px;
+    right: 20px;
+    font-size: small;
+    .prev, .next { font-size: xx-large; }
+  }
+  #toolbar_alt_items { display: none; }
 }
 
 @media screen and (max-width: 400px) {
@@ -1509,4 +1531,9 @@ img {
     #friends { display: none; }
     #about_us { width: 100%; margin: 0; min-height: 240px; }
   }
+}
+
+@media screen and (max-width: 300px) {
+  img.avatar { display: none; }
+  #toolbar { display: none; }
 }
