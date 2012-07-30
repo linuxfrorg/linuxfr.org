@@ -52,8 +52,10 @@ class Account < ActiveRecord::Base
   belongs_to :user, :inverse_of => :account
   accepts_nested_attributes_for :user, :reject_if => :all_blank
 
+  mount_uploader :uploaded_stylesheet, StylesheetUploader
+
   attr_accessor :remember_me
-  attr_accessible :login, :email, :stylesheet, :password, :password_confirmation, :user_attributes, :remember_me
+  attr_accessible :login, :email, :stylesheet, :uploaded_stylesheet, :password, :password_confirmation, :user_attributes, :remember_me
   delegate :name, :to => :user
 
   scope :unconfirmed, where(:confirmed_at => nil)
@@ -285,5 +287,13 @@ class Account < ActiveRecord::Base
     return if stylesheet.starts_with?("https://")
     return if Stylesheet.include?(stylesheet)
     errors.add(:stylesheet, "Feuille de style non valide")
+  end
+
+  def stylesheet_url
+    case
+    when uploaded_stylesheet.present? then uploaded_stylesheet.url
+    when stylesheet.present?          then stylesheet
+    else 'application'
+    end
   end
 end

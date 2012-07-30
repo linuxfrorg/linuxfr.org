@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120723203008) do
+ActiveRecord::Schema.define(:version => 20120729231333) do
 
   create_table "access_grants", :force => true do |t|
     t.integer  "account_id"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20120723203008) do
     t.datetime "reset_password_sent_at"
     t.integer  "min_karma",                             :default => 20
     t.integer  "max_karma",                             :default => 20
+    t.string   "uploaded_stylesheet"
   end
 
   add_index "accounts", ["confirmation_token"], :name => "index_accounts_on_confirmation_token", :unique => true

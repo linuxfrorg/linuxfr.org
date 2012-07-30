@@ -1,8 +1,8 @@
 %head
   %meta(charset="utf-8")
   %title= @title.join(' - ').html_safe
-  - if current_account && current_account.stylesheet.present?
-    = stylesheet_link_tag current_account.stylesheet, :media => nil
+  - if current_account
+    = stylesheet_link_tag current_account.stylesheet_url, :media => nil
   - else
     = stylesheet_link_tag 'application', :media => nil
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />

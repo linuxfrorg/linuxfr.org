@@ -96,7 +96,7 @@ LinuxfrOrg::Application.routes.draw do
     :sign_up  => "inscription",
     :unlock   => "debloquage"
   }
-  resource :stylesheet, :only => [:edit, :create, :destroy]
+  resource :stylesheet, :only => [:create, :edit, :update, :destroy]
 
   # OAuth
   namespace :auth do

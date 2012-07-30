@@ -75,6 +75,7 @@ namespace :fs do
     run "mkdir -p #{shared_path}/tmp/sass-cache"
     run "mkdir -p #{shared_path}/tmp/sockets"
     run "mkdir -p #{shared_path}/uploads/avatars"
+    run "mkdir -p #{shared_path}/uploads/stylesheets"
   end
 end
 after "deploy:finalize_update", "fs:symlink"
