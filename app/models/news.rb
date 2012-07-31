@@ -30,10 +30,8 @@ class News < Content
   belongs_to :moderator, :class_name => "User"
   has_many :links, :dependent => :destroy, :inverse_of => :news
   has_many :paragraphs, :dependent => :destroy, :inverse_of => :news
-  accepts_nested_attributes_for :links, :allow_destroy => true,
-    :reject_if => proc { |attrs| attrs['title'].blank? && attrs['url'].blank? }
-  accepts_nested_attributes_for :paragraphs, :allow_destroy => true,
-    :reject_if => proc { |attrs| attrs['body'].blank? }
+  accepts_nested_attributes_for :links, :allow_destroy => true
+  accepts_nested_attributes_for :paragraphs, :allow_destroy => true
   has_many :versions, :class_name => 'NewsVersion',
                       :dependent  => :destroy,
                       :order      => 'version DESC',
@@ -137,6 +135,13 @@ class News < Content
 
   attr_accessor   :message, :wiki_body, :wiki_second_part, :editor, :pot_de_miel
   attr_accessible :message, :wiki_body, :wiki_second_part
+
+  before_validation :mark_links_for_destruction
+  def mark_links_for_destruction
+    links.each do |link|
+      link.mark_for_destruction if link.url.blank?
+    end
+  end
 
   # The body of a news (first and second parts) is duplicated:
   # one copy is in the news object itself, the other is shared by several paragraphs.

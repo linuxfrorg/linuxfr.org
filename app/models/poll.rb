@@ -21,7 +21,7 @@ class Poll < Content
                      :dependent  => :destroy,
                      :order      => 'position',
                      :inverse_of => :poll
-  accepts_nested_attributes_for :answers, :allow_destroy => true, :reject_if => :all_blank
+  accepts_nested_attributes_for :answers, :allow_destroy => true
 
   attr_accessible :title, :wiki_explanations, :answers_attributes
 
@@ -32,6 +32,13 @@ class Poll < Content
   scope :draft,     where(:state => "draft")
   scope :published, where(:state => "published")
   scope :archived,  where(:state => "archived")
+
+  before_validation :mark_answers_for_destruction
+  def mark_answers_for_destruction
+    answers.each do |answer|
+      answer.mark_for_destruction if answer.answer.blank?
+    end
+  end
 
 ### Associated node ###
 
