@@ -1435,7 +1435,7 @@ img {
   margin: 12px 25px 0 0;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 600px), handheld {
   html, body {
     margin: 0;
     padding: 0;
@@ -1517,7 +1517,7 @@ img {
   #toolbar_alt_items { display: none; }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 400px), handheld {
   #sidebar #branding {
     width: $PX_BRANDING_LARG / 2;
     margin-right: 10px;
