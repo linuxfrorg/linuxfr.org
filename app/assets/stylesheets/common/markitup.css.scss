@@ -23,7 +23,10 @@
   /* clear: both */
   display: block;
   line-height: 18px;
-  overflow: auto; }
+  overflow: auto;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
 
 .markItUpFooter {
   width: 100%;
