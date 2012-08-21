@@ -46,11 +46,12 @@ class Chat
 
   norlogize: (x) ->
     r = /(\d{4}-\d{2}-\d{2} )?\d{2}:\d{2}(:\d{2})?([⁰¹²³⁴⁵⁶⁷⁸⁹]+|[:\^]\d+)?/g
+    totoz = /\[:([0-9a-zA-Z \*\$@'_-]+)\]/g
     x.innerHTML = x.innerHTML.replace(r, "<time>$&</time>")
     if @totoz_type == "popup"
-      x.innerHTML = x.innerHTML.replace(/\[:([^\]]+)\]/g, "<span class=\"totoz\" data-totoz-name=\"$1\">$&</span>")
+      x.innerHTML = x.innerHTML.replace(totoz, "<span class=\"totoz\" data-totoz-name=\"$1\">$&</span>")
     else if @totoz_type == "inline"
-      x.innerHTML = x.innerHTML.replace(/\[:([^\]]+)\]/g, "<img class=\"totoz\" alt=\"$&\" title=\"$&\" src=\"#{@totoz_url}$1.gif\" style=\"vertical-align: top; background-color: transparent\"/>")
+      x.innerHTML = x.innerHTML.replace(totoz, "<img class=\"totoz\" alt=\"$&\" title=\"$&\" src=\"#{@totoz_url}$1.gif\" style=\"vertical-align: top; background-color: transparent\"/>")
 
   highlitizer: (event) =>
     time = $(event.target).text()
