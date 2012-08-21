@@ -46,7 +46,7 @@ class Chat
 
   norlogize: (x) ->
     r = /(\d{4}-\d{2}-\d{2} )?\d{2}:\d{2}(:\d{2})?([⁰¹²³⁴⁵⁶⁷⁸⁹]+|[:\^]\d+)?/g
-    totoz = /\[:([0-9a-zA-Z \*\$@'_-]+)\]/g
+    totoz = /\[:([0-9a-zA-Z \*\$@':_-]+)\]/g
     x.innerHTML = x.innerHTML.replace(r, "<time>$&</time>")
     if @totoz_type == "popup"
       x.innerHTML = x.innerHTML.replace(totoz, "<span class=\"totoz\" data-totoz-name=\"$1\">$&</span>")
