@@ -40,7 +40,7 @@ GEM
     bitfields (0.4.1)
     builder (3.0.0)
     canable (0.3.0)
-    capistrano (2.13.0)
+    capistrano (2.13.3)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
