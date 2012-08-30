@@ -74,10 +74,10 @@ body {
   /* for old browsers */
   border-color: $C_BAS_FOND;
 
-  -moz-border-image:    url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
-  -o-border-image:      url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
-  -webkit-border-image: url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
-  -khtml-border-image:  url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 stretch;
+  -moz-border-image:    url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 fill stretch;
+  -o-border-image:      url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 fill stretch;
+  -webkit-border-image: url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 fill stretch;
+  -khtml-border-image:  url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 fill stretch;
 }
 
 a {
