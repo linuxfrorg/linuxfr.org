@@ -16,10 +16,11 @@ class SearchController < ApplicationController
     @value   = params[:facet]
     @start   = Time.at(params[:start].to_i).to_date if params[:start].present?
     @order   = params[:order] == "date"
+    @query.gsub!(/([&|!^~\\])/, '\\\1')
     @results = search.results
     Rails.logger.info search.to_curl
   rescue Tire::Search::SearchRequestFailed
-    @query.gsub!(/([+\-&|!\(\){}\[\]^"~*?:\\])/, '\\\1')
+    @query.gsub!(/([+\-\(\){}\[\]"*?:])/, '\\\1')
     @results = search.results
   end
 
