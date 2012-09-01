@@ -58,6 +58,13 @@ class User < ActiveRecord::Base
     url
   end
 
+  before_validation :validate_url
+  def validate_url
+    return if custom_avatar_url.blank?
+    return if custom_avatar_url.starts_with?("//")
+    errors.add(:url, "Adresse de téléchargement d'avatar non valide")
+  end
+
   def avatar_url
     if avatar.present?
       url = avatar.url
