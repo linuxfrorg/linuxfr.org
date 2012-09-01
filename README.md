@@ -62,16 +62,20 @@ LinuxFr.org on a Debian box.
     $ cp config/secret.yml{.sample,}
     $ gem install bundler rake
     $ bundle install
+
+7) Launch elasticsearch:
+    $ bundle exec springboard -c config/elasticsearch
+
+8) Finish to configure:
     $ rake db:setup
     (if you're updating, you'll need an other step: redis-cli flushdb)
 
-7) Let's run it:
+9) Let's run it:
 
-    $ bundle exec springboard -c config/elasticsearch
     $ bundle exec rails server thin
     $ x-www-browser http://127.0.0.1:3000/
 
-8) Create an admin account:
+10) Create an admin account:
 
 * Create an account
 * Get confirmation link in the console and confirm the account
@@ -91,6 +95,8 @@ If you want the full stack for running LinuxFr.org, you should also look at:
 * [The board daemon](https://github.com/nono/board-sse-linuxfr.org)
 * [The share daemon](https://github.com/nono/share-LinuxFr.org)
 * [The migration script](https://github.com/nono/migration-linuxfr.org)
+* [The img daemon](https://github.com/nono/img-LinuxFr.org)
+
 
 
 How to run the specs
