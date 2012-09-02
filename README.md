@@ -64,9 +64,11 @@ LinuxFr.org on a Debian box.
     $ bundle install
 
 7) Launch elasticsearch:
+
     $ bundle exec springboard -c config/elasticsearch
 
 8) Finish to configure:
+
     $ rake db:setup
     (if you're updating, you'll need an other step: redis-cli flushdb)
 
@@ -96,7 +98,6 @@ If you want the full stack for running LinuxFr.org, you should also look at:
 * [The share daemon](https://github.com/nono/share-LinuxFr.org)
 * [The migration script](https://github.com/nono/migration-linuxfr.org)
 * [The img daemon](https://github.com/nono/img-LinuxFr.org)
-
 
 
 How to run the specs
