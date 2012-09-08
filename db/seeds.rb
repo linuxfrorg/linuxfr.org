@@ -23,6 +23,7 @@ Lang['pl'] = 'Polonais'
 Lang['ct'] = 'Catalan'
 Lang['no'] = 'Norvégien'
 Lang['ko'] = 'Coréen'
+Lang['ee'] = 'Estonien'
 Lang['xx'] = '!? hmmm ?!'
 
 # Category
