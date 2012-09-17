@@ -4,6 +4,8 @@ class CommentsController < ApplicationController
   before_filter :find_node, :except => [:templeet]
   before_filter :find_comment, :except => [:index, :new, :answer, :create, :templeet]
 
+  include Notification
+
   def index
     @comments = @node.comments.published.all(:order => 'id DESC')
     respond_to do |wants|
@@ -38,6 +40,7 @@ class CommentsController < ApplicationController
     @comment.default_score
     if !preview_mode && @comment.save
       flash[:notice] = "Votre commentaire a bien été posté"
+      notify("http://#{MY_DOMAIN}/nodes/#{@node.id}/comments.atom")
       redirect_to url_for_content(@node.content) + "#comment-#{@comment.id}"
     else
       @comment.valid?
