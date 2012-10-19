@@ -33,12 +33,12 @@ class Toolbar
 
   next_item: =>
     @current += 1
-    @current -= @nb_items  if @current > @nb_items
+    @current = 1 if @current > @nb_items
     @go_to_current()
 
   prev_item: =>
     @current -= 1
-    @current += @nb_items  if @current <= 0
+    @current = @nb_items  if @current <= 0
     @go_to_current()
 
   go_to_current: ->
@@ -70,12 +70,12 @@ class Toolbar
 
   alt_next_item: =>
     @alt_current += 1
-    @alt_current -= @nb_alt_items  if @alt_current > @nb_alt_items
+    @alt_current = 1  if @alt_current > @nb_alt_items
     @go_to_alt_current()
 
   alt_prev_item: =>
     @alt_current -= 1
-    @alt_current += @nb_alt_items  if @alt_current <= 0
+    @alt_current = @nb_alt_items  if @alt_current <= 0
     @go_to_alt_current()
 
   go_to_alt_current: ->
