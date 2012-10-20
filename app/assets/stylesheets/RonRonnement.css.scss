@@ -12,8 +12,8 @@
 
 
 /* Pixel size constants */
-$PX_MARGE_GAUCHE: 31px;
-$PX_MARGE_DROITE: 19px;
+$PX_MARGE_GAUCHE: 42px;
+$PX_MARGE_DROITE: 30px;
 $PX_TOP: 16px;
 $PX_BANDEAU: 7px;
 $PX_BRANDING_LARG: 201px;
@@ -63,21 +63,14 @@ html {
 body {
   position: relative;
   color: #000;
-  /* si gradient ko p. ex. opera */
-  background: $C_BAS_FOND;
   margin-top: 0;
   margin-bottom: 0;
   padding-top: $PX_TOP;
 
-  border-style: solid;
-  border-width: 0 11px 0 11px;
-  /* for old browsers */
-  border-color: $C_BAS_FOND;
+  box-shadow: 8px 0 8px #999,
+             -8px 0 8px #999;
 
-  -moz-border-image:    url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 fill stretch;
-  -o-border-image:      url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 fill stretch;
-  -webkit-border-image: url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 fill stretch;
-  -khtml-border-image:  url("/images/contrib/RonRonnement/background_body.png") 0 11 0 11 fill stretch;
+  background: #fff;
 }
 
 a {
@@ -214,13 +207,16 @@ button, input[type='submit'] {
 }
 
 #top {
-  background: $C_BANDEAU;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
   height: $PX_BANDEAU;
+  background: $C_BANDEAU;
 }
 
 #sidebar {
   float: left;
-  left: $PX_MARGE_GAUCHE_SHA;
+  margin-top: 36px;
   width: $PX_BRANDING_LARG;
   text-align: left;
   font-size: small;
@@ -340,10 +336,20 @@ button, input[type='submit'] {
 /* menu du haut */
 #site {
   display: block;
+  position: absolute;
+  top: 0;
+  padding-top: 23px;
+  width: 100%;
   text-align: right;
   text-transform: uppercase;
   font-size: small;
   color: $C_MENU;
+
+  background-color: #bdb3aa;
+  background: -moz-linear-gradient(left, #fff, #bdb3aa 50%);
+  background: -webkit-linear-gradient(left, #fff, #bdb3aa 50%);
+  background: -o-linear-gradient(left, #fff, #bdb3aa 50%);
+  background: linear-gradient(to right, #fff, #bdb3aa 50%);
 
   ul {
     display: inline;
@@ -472,7 +478,7 @@ button, input[type='submit'] {
 
 #container {
   display: block;
-  margin-left: $PX_BRANDING_LARG;
+  margin: 36px 0 0 $PX_BRANDING_LARG;
   background: $C_CONTAINER;
   padding: 30px $RAY_CONTAINER 10px 40px;
 
@@ -501,10 +507,12 @@ button, input[type='submit'] {
 /* information générale, "publicité" (genre fosdem p. ex.) */
 .banner {
   display: block;
+  position: relative;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
   background-color: $C_BD2;
+  box-shadow: 0 0 65px #fff inset, 0 0 20px $C_BD2 inset;
   border-top: solid 2px $C_BANDEAU;
   border-bottom: solid 2px $C_BANDEAU;
   padding: 5px;
