@@ -800,6 +800,7 @@ footer.actions {
   }
   a {
     @include lien_standard;
+    border-bottom: 1px solid;
     &[title="Définition Wikipédia"]:after {
       content: "\A0W";
       font-family: serif;
