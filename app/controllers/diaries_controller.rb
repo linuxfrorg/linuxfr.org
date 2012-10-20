@@ -99,7 +99,8 @@ class DiariesController < ApplicationController
       node = @post.node
       node.attributes = @diary.node.attributes.except("id").merge(:content_type => "XXX", :public => false)
       node.save
-      @diary.node.update_column(:content_type => "Post", :content_id => @post.id)
+      @diary.node.update_column :content_type, "Post"
+      @diary.node.update_column :content_id, @post.id
       node.content_type = "Diary"
       node.save
       redirect_to diaries_url, :notice => "Le journal a bien été déplacé vers les forums"
