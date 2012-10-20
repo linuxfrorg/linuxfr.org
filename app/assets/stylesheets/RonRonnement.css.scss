@@ -802,7 +802,7 @@ footer.actions {
     @include lien_standard;
     &[title="Définition Wikipédia"]:after {
       content: "\A0W";
-      font-family: serif;      
+      font-family: serif;
       font-size: 6pt;
       vertical-align: super;
     }
@@ -816,8 +816,8 @@ footer.actions {
       border-image:         url('/favicon.png') 0 0 0 32;
     }
   }
-  .content li {
-    list-style-position: inside;
+  ul {
+    overflow: hidden;
   }
 }
 
