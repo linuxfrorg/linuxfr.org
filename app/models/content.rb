@@ -19,8 +19,13 @@ class Content < ActiveRecord::Base
 
 ### Search ###
 
-  after_save    :update_index, :if => :visible?
-  after_destroy :update_index, :if => :visible?
+  after_save    :update_index
+  after_destroy :update_index
+
+  def update_index
+    return update_elasticsearch_index if visible?
+    index.remove self
+  end
 
   # See see https://github.com/karmi/tire/issues/48
   def self.paginate(options = {})
@@ -78,6 +83,7 @@ class Content < ActiveRecord::Base
 
   def mark_as_deleted
     node.update_column(:public, false)
+    update_index
   end
 
   def visible?
