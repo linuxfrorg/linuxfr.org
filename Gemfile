@@ -56,7 +56,7 @@ group :development do
   gem "mo"
   gem "pry-rails"
   gem "quiet_assets"
-  gem "springboard"
+  gem "desi"
   gem "thin"
 end
 

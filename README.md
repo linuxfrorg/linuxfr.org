@@ -65,7 +65,8 @@ LinuxFr.org on a Debian box.
 
 7) Launch elasticsearch:
 
-    $ bundle exec springboard -c config/elasticsearch
+    $ desi install
+    $ desi start
 
 8) Finish to configure:
 
