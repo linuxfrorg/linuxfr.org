@@ -17,35 +17,33 @@ default_run_options[:pty] = true
 
 # We have two environments: alpha and prod.
 # To make a deploy, precise on which environment, like this:
-#   $ cap env:prod deploy
-namespace :env do
-  desc "Alpha environment"
-  task :alpha do
-    set :vserver,   "alpha"
-    set :user,      "alpha"
-    set :branch,    $1 if `git branch` =~ /\* (\S+)\s/m
-    set :rails_env, :alpha
-  end
-
-  desc "Production"
-  task :prod do
-    set :vserver,   "prod"
-    set :user,      "linuxfr"
-    set :branch,    "master"
-    set :rails_env, :production
-  end
-
-  desc "[internal] Common stuff to alpha and production"
-  task :common do
-    set :application, "#{vserver}.linuxfr.org"
-    set :deploy_to,   "/data/#{vserver}/#{user}/#{rails_env}"
-    server "#{user}@#{application}", :app, :web, :db, :primary => true
-    depend :remote, :file, "#{shared_path}/config/database.yml"
-    depend :remote, :file, "#{shared_path}/config/secret.yml"
-  end
+#   $ cap prod deploy
+desc "Alpha environment"
+task :alpha do
+  set :vserver,   "alpha"
+  set :user,      "alpha"
+  set :branch,    $1 if `git branch` =~ /\* (\S+)\s/m
+  set :rails_env, :alpha
 end
-after "env:alpha", "env:common"
-after "env:prod",  "env:common"
+
+desc "Production"
+task :prod do
+  set :vserver,   "prod"
+  set :user,      "linuxfr"
+  set :branch,    "master"
+  set :rails_env, :production
+end
+
+desc "[internal] Common stuff to alpha and production"
+task :common do
+  set :application, "#{vserver}.linuxfr.org"
+  set :deploy_to,   "/data/#{vserver}/#{user}/#{rails_env}"
+  server "#{user}@#{application}", :app, :web, :db, :primary => true
+  depend :remote, :file, "#{shared_path}/config/database.yml"
+  depend :remote, :file, "#{shared_path}/config/secret.yml"
+end
+after "alpha", "common"
+after "prod",  "common"
 
 
 # Check that we have invoked an environment before deploying
