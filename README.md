@@ -36,9 +36,9 @@ LinuxFr.org on a Debian box.
 
 3) Install and start redis:
 
-    $ wget "http://redis.googlecode.com/files/redis-2.4.2.tar.gz"
-    $ tar xzf redis-2.4.2.tar.gz
-    $ cd redis-2.4.2
+    $ wget "http://redis.googlecode.com/files/redis-2.4.17.tar.gz"
+    $ tar xzf redis-2.4.17.tar.gz
+    $ cd redis-2.4.17
     $ make
     (optional, takes about ten minutes, $ make test )
     $ src/redis-server redis.conf
@@ -63,10 +63,11 @@ LinuxFr.org on a Debian box.
     $ gem install bundler rake
     $ bundle install
 
-7) Launch elasticsearch:
+7) Launch elasticsearch and create indexes:
 
     $ desi install
     $ desi start
+    $ ./script/rails r '[Diary, News, Page, Poll, Post, Tracker, WikiPage].each {|m| m.tire.index.refresh }'
 
 8) Finish to configure:
 
@@ -75,7 +76,7 @@ LinuxFr.org on a Debian box.
 
 9) Let's run it:
 
-    $ bundle exec rails server thin
+    $ ./script/rails server thin
     $ x-www-browser http://127.0.0.1:3000/
 
 10) Create an admin account:
