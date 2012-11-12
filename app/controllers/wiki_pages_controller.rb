@@ -10,7 +10,7 @@ class WikiPagesController < ApplicationController
   def index
     respond_to do |wants|
       wants.html { redirect_to WikiPage.home_page }
-      wants.atom { @wiki_pages = WikiPage.sorted }
+      wants.atom { @wiki_pages = Node.public_listing(WikiPage, "created_at").map(&:content) }
     end
   end
 
