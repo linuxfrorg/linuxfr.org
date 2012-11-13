@@ -1,6 +1,5 @@
 =h1 "Recherche"
 
-
 %nav.toolbox
   .keyword_navbar
     %h2= "Mots clés"
@@ -9,7 +8,7 @@
       = submit_tag "Rechercher", :name => nil, :id => "search_submit"
   .section_navbar
     - if @value.present?
-      %h2= "Section: #{@value}"
+      %h2= "Section : #{@value}"
       %ul.facets
         = link_to "Toutes les sections", search_path(params.merge :facet => nil)
     - elsif @facet.present?
@@ -17,17 +16,17 @@
       %ul.facets
         = list_of(@results.facets[@facet]['terms']) do |facet|
           = link_to "#{facet['term']} (#{facet['count']})", search_path(params.merge :facet => facet['term'])
-  .type_navbar    
+  .type_navbar
     - if @type.blank?
       %h2 Types de contenus
       %ul.facets
         = list_of(@results.facets['types']['terms']) do |facet|
           = link_to "#{es_type facet['term']} (#{facet['count']})", search_path(params.merge :type => facet['term'])
     - else
-      %h2= "Types de contenus: #{es_type @type}" 
+      %h2= "Types de contenus : #{es_type @type}"
       %ul.facets
         %li= link_to "Tous les types", search_path(params.merge :type => nil)
-  .period_navbar    
+  .period_navbar
     - periods = ["Moins d'une semaine", "Moins d'un mois", "Moins d'une année"]
     - if @start.blank?
       %h2 Filtrer par période temporelle
@@ -45,13 +44,11 @@
         %h2 Filtrer par période temporelle: erreur
       %ul.facets
         %li= link_to "Toute la période", search_path(params.merge :start => nil)
-    
   .order_navbar
     %h2 Trier par
     %ul
       %li= link_to_unless !@order, "Pertinence", search_path(params.merge :order => nil)
       %li= link_to_unless  @order, "Date", search_path(params.merge :order => "date")
-
 
 #results
   - if @results.empty?
@@ -59,6 +56,6 @@
     Pas de résultats.
   - else
     .results
-      %h2= "#{@results.length} Résultats"
+      %h2= pluralize @results.length, "résultats"
       = render @results.map(&:load)
       = paginate @results
