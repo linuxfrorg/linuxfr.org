@@ -19,7 +19,7 @@ class Image < Struct.new(:link, :title, :alt_text)
   end
 
   def self.destroy(encoded_link)
-    $redis.hset "img/#{decoded_link}", "status", "Blocked"
+    $redis.hset "img/#{decoded_link encoded_link}", "status", "Blocked"
   end
 
   def self.original_link(link)
