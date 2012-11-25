@@ -12,14 +12,14 @@
       %p
         Les dépêches servent à publier de l'information sur les thèmes principaux de LinuxFr.org, à savoir Linux et les Logiciels Libres.
         D'autres thèmes peuvent être abordés, sous réserve que l'équipe de modération juge qu'ils intéressent suffisament les lecteurs du site.
-        Les dépêches purement commerciales et publicitaires seront rejetées.
+        Les dépêches purement commerciales et publicitaires seront rejetées (voir l'ensemble des #{link_to "règles de modération", "/regles_de_moderation" }).
       %p
         = link_to "Je souhaite proposer une dépêche et la soumettre directement à la modération", "/news/nouveau"
 
     .authenticated_only
       %h2 L'espace de rédaction
       %p
-        Il est également possible de proposer des sujets de dépêches et de les rédiger collaborativement sur l'espace de rédaction.
+        Il est également possible pour les utilisateurs authentifiés de proposer des sujets de dépêches et de les rédiger collaborativement sur l'espace de rédaction.
       %p
         = link_to "Je souhaite participer à l'écriture collaborative d'une dépêche", "/redaction"
 
@@ -49,12 +49,12 @@
       %h2 Les sondages
       %p
         Vous pouvez suggérer un sondage.
-        Si celui-ci retient l'attention de l'équipe de modération, il sera publié.
+        Si celui-ci retient l'attention de l'équipe de modération (voir les #{link_to "règles de modération","/regles_de_moderation"}), il sera publié.
       %p
         = link_to "Je souhaite suggérer un sondage", "/sondages/nouveau"
 
     .authenticated_only
-      %h2 Le suivi
+      %h2 Le suivi des suggestions/bugs
       %p
         Si vous avez rencontré un bug en parcourant le site web LinuxFr.org, c'est le bon endroit pour le remonter.
         Vous pouvez également suggérer des évolutions pour le site.

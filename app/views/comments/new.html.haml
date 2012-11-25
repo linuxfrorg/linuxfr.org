@@ -1,6 +1,9 @@
 #contents
   =h1 "Écrire un commentaire"
 
+  %p
+    Des <a href="/regles_de_moderation">règles de modération</a> sont applicables aux commentaires (et au reste du site).
+
   - if @comment.parent
     %p
       = link_to "Retourner au contenu associé", path_for_content(@comment.content)

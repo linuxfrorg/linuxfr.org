@@ -5,7 +5,10 @@
 #news
   %h1 Dépêches en cours de rédaction
   = button_to "Commencer une nouvelle dépêche", "/redaction/news", :class => "create_news"
-  (sous licence CC by-sa)
+  (sous #{link_to "licence CC by-sa", "http://creativecommons.org/licenses/by-sa/3.0/deed.fr"})
+  %p
+    = link_to "Règles de modération", "/regles_de_moderation"
+
   - if @drafts.empty?
     %p Aucune dépêche.
   - else

@@ -1,6 +1,9 @@
 #contents
   =h1 "Écrire un journal"
 
+  %p
+    Des <a href="/regles_de_moderation">règles de modération</a> sont applicables aux journaux (et au reste du site).
+
   = render "preview", :preview => @diary if @preview_mode
 
   = form_for @diary do |form|

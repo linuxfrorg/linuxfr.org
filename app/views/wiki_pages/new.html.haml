@@ -1,6 +1,9 @@
 #contents
   =h1 "Créer une page de wiki"
 
+  %p
+    Des <a href="/regles_de_moderation">règles de modération</a> sont applicables aux pages wiki (et au reste du site).
+
   = render "preview", :preview => @wiki_page if @preview_mode
 
   = form_for @wiki_page do |form|

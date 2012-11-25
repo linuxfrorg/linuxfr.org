@@ -1,6 +1,9 @@
 #contents
   =h1 "Suggérer un sondage"
 
+  %p
+    Des <a href="/regles_de_moderation">règles de modération</a> sont applicables aux sondages (et au reste du site).
+
   = render "preview", :preview => @poll if @preview_mode
 
   = form_for setup_poll(@poll) do |form|

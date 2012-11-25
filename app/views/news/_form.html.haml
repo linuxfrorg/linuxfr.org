@@ -43,7 +43,7 @@
   = form.text_area :message, :spellcheck => 'true', :rows => 2
 %p
   = form.check_box :cc_licensed
-  = form.label :cc_licensed, 'Je place ce document sous licence Creative Commons Paternité-Partage des Conditions Initiales à l\'Identique 3.0 (<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.fr">licence CC by-sa</a>)'.html_safe
+  = form.label :cc_licensed, 'Je place ce document sous licence Creative Commons Paternité-Partage des Conditions Initiales à l\'Identique 3.0 (<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.fr">licence CC by-sa</a>). Ceci est conseillé, car cela permet l\'édition collaborative de la dépêche si elle doit être complétée.'.html_safe
 %p
   = form.submit "Prévisualiser", :id =>  "news_preview"
   = form.submit "Soumettre cette dépêche", 'data-disable-with' => "Enregistrement en cours" if @preview_mode
