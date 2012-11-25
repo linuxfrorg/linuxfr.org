@@ -4,9 +4,9 @@
     %h1= account_signed_in? ? link_to(current_account.login, current_account.user) : "Se connecter"
     :javascript
       if (location.protocol == 'http:') {
-        document.write('<a class="insecure" href="https://' + location.hostname + location.pathname + '">Accès en clair (http)</a>');
+        document.write('<a class="insecure" title="Accès en clair, non sécurisé" href="https://' + location.hostname + location.pathname + '">Accès en clair (http)</a>');
       } else {
-        document.write('<a class="secure">Accès sécurisé (https)</a>');
+        document.write('<a class="secure" title="Accès sécurisé">Accès sécurisé (https)</a>');
       }
     .new_content
       = link_to "Proposer un contenu", '/proposer-un-contenu'
