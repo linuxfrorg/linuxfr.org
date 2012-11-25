@@ -9,7 +9,7 @@
     %li{:class => ("active" if controller_name == "forums" || controller_name == "posts")}= link_to "Forums", '/forums'
     %li{:class => ("active" if controller_name == "polls")}= link_to "Sondages", '/sondages'
     %li{:class => ("active" if controller_name == "wiki_pages" || controller_name == "wiki_versions")}= link_to "Wiki", '/wiki'
-    %li{:class => ("active" if controller_name == "trackers")}= link_to "Suivi", '/suivi'
+    %li{:class => ("active" if controller_name == "trackers")}= link_to "Suivi", '/suivi', :title => "Suivi des suggestions et des bugs du site"
     %li{:class => ("active" if current_page?("/plan"))}= link_to "Plan", '/plan'
   = form_tag '/recherche', :method => :get do
     <label for="query" id="label_query">Recherche :</label>
