@@ -11,6 +11,9 @@ atom_feed(:root_url => news_index_url, "xmlns:wfw" => "http://wellformedweb.org/
   @nodes.map(&:content).each do |news|
     feed.entry(news, :published => news.node.created_at) do |entry|
       entry.title(news.title)
+      if news.node.cc_licensed
+        entry.rights("Licence CC by-sa http://creativecommons.org/licenses/by-sa/3.0/deed.fr")
+      end
       first  = content_tag(:div, news.body)
       links  = content_tag(:ul, news.links.map.with_index do |l,i|
                  content_tag(:li, "lien n°#{i+1} : ".html_safe +

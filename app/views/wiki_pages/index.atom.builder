@@ -2,6 +2,7 @@ atom_feed(:root_url => wiki_pages_url, "xmlns:wfw" => "http://wellformedweb.org/
   feed.title("LinuxFr.org : le wiki")
   feed.updated(@wiki_pages.first.try :updated_at)
   feed.icon("/favicon.png")
+  feed.rights("Licence CC by-sa http://creativecommons.org/licenses/by-sa/3.0/deed.fr")
 
   @wiki_pages.each do |page|
     feed.entry(page) do |entry|

@@ -11,6 +11,9 @@ atom_feed(:root_url => diaries_url, "xmlns:wfw" => "http://wellformedweb.org/Com
     url = polymorphic_url([diary.owner, diary])
     feed.entry(diary, :url => url) do |entry|
       entry.title(diary.title)
+      if diary.node.cc_licensed
+        entry.rights("Licence CC by-sa http://creativecommons.org/licenses/by-sa/3.0/deed.fr")
+      end
       entry.content(diary.body + atom_comments_link(url), :type => 'html')
       entry.author do |author|
         author.name(diary.owner.name)
