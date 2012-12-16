@@ -1,6 +1,5 @@
 # encoding: utf-8
 require 'bundler/capistrano'
-require 'capistrano_colors'
 
 # Assets
 set :public_children, %w(images)
