@@ -35,7 +35,7 @@ class WikiPagesController < ApplicationController
 
   def create
     @wiki_page = WikiPage.new
-    @wiki_page.title = params[:wiki_page][:title]
+    @wiki_page.title = params[:wiki_page].delete(:title)
     @wiki_page.user_id = current_account.user_id
     @wiki_page.attributes = params[:wiki_page]
     enforce_create_permission(@wiki_page)

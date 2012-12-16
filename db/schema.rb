@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120729231333) do
+ActiveRecord::Schema.define(:version => 20121216160203) do
 
   create_table "access_grants", :force => true do |t|
     t.integer  "account_id"
@@ -205,11 +205,11 @@ ActiveRecord::Schema.define(:version => 20120729231333) do
     t.integer  "content_id"
     t.string   "content_type"
     t.integer  "user_id"
-    t.boolean  "public",            :default => true,  :null => false
-    t.boolean  "cc_licensed",       :default => false, :null => false
-    t.integer  "score",             :default => 0,     :null => false
-    t.integer  "interest",          :default => 0,     :null => false
-    t.integer  "comments_count",    :default => 0,     :null => false
+    t.boolean  "public",            :default => true, :null => false
+    t.boolean  "cc_licensed",       :default => true, :null => false
+    t.integer  "score",             :default => 0,    :null => false
+    t.integer  "interest",          :default => 0,    :null => false
+    t.integer  "comments_count",    :default => 0,    :null => false
     t.datetime "last_commented_at"
     t.datetime "created_at"
     t.datetime "updated_at"

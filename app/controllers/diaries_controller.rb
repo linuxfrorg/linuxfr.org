@@ -18,6 +18,7 @@ class DiariesController < ApplicationController
 
   def new
     @diary = current_user.diaries.build
+    @diary.cc_licensed = true
     enforce_create_permission(@diary)
   end
 

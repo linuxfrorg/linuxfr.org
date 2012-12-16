@@ -8,7 +8,7 @@
 #  content_type      :string(255)
 #  user_id           :integer
 #  public            :boolean          default(TRUE), not null
-#  cc_licensed       :boolean          default(FALSE), not null
+#  cc_licensed       :boolean          default(TRUE), not null
 #  score             :integer          default(0), not null
 #  interest          :integer          default(0), not null
 #  comments_count    :integer          default(0), not null

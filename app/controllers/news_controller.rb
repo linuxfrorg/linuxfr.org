@@ -28,6 +28,7 @@ class NewsController < ApplicationController
   def new
     redirect_to root_url, :alert => "Désolé, il n'est pas possible de proposer une dépêche en l'absence de sections" unless Section.exists?
     @news = News.new
+    @news.cc_licensed = true
   end
 
   def create
