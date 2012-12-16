@@ -50,6 +50,7 @@ end
 group :development do
   gem "annotate"
   gem "autotest-standalone"
+  gem "better_errors"
   gem "capistrano"
   gem "haml-rails"
   gem "letter_opener"
