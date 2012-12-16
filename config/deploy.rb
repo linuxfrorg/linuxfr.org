@@ -1,5 +1,11 @@
 # encoding: utf-8
+
+# Bundler
 require 'bundler/capistrano'
+
+# Maintenance
+require 'capistrano/maintenance'
+set :maintenance_template_path, File.expand_path("../templates/maintenance.rhtml", __FILE__)
 
 # Assets
 set :public_children, %w(images)
@@ -112,17 +118,6 @@ namespace :deploy do
     update
     migrate
     start
-  end
-
-  namespace :web do
-    task :disable, :roles => :web, :except => { :no_release => true } do
-      on_rollback { run "rm #{shared_path}/system/maintenance.html" }
-      require 'erb'
-      reason, deadline = ENV['REASON'], ENV['deadline']
-      template = File.read(File.join(File.dirname(__FILE__), "templates", "maintenance.rhtml"))
-      result = ERB.new(template).result(binding)
-      put result, "#{shared_path}/system/maintenance.html", :mode => 0644
-    end
   end
 end
 before "deploy:cold", "deploy:web:disable"

@@ -52,6 +52,7 @@ group :development do
   gem "autotest-standalone"
   gem "better_errors"
   gem "capistrano"
+  gem "capistrano-maintenance"
   gem "haml-rails"
   gem "letter_opener"
   gem "mo"
