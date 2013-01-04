@@ -14,7 +14,7 @@
   %h3
     #{@version.author_name}&nbsp;: #{@version.message} (#{l @version.created_at})
   %pre
-    = Differ.diff_by_char(h(@version.body), h(@was)).to_s.html_safe
+    = htmldiff @was, @version.body
 
   - if @version.higher_item || @version.lower_item
     %nav
