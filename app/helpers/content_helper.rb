@@ -12,7 +12,7 @@ module ContentHelper
     diff.map do |(op,txt)|
       txt.force_encoding(Encoding::UTF_8)
       unless txt.valid_encoding?
-        txt.force_encoding(Encoding::BINARY)
+        txt.force_encoding(Encoding::ISO8859_1)
         txt = txt.encode(Encoding::UTF_8)
       end
       case op
