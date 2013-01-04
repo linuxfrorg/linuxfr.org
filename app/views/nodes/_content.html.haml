@@ -26,6 +26,8 @@
     .content.hidden &nbsp;
   - else
     .content(itemprop="articleBody" class="entry-content")
+      - if notice
+        .notice= notice
       = body
   %footer.actions
     = read_it(record)

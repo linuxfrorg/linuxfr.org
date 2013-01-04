@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121216160203) do
+ActiveRecord::Schema.define(:version => 20130104215554) do
 
   create_table "access_grants", :force => true do |t|
     t.integer  "account_id"
@@ -20,10 +20,11 @@ ActiveRecord::Schema.define(:version => 20121216160203) do
     t.string   "access_token"
     t.string   "refresh_token"
     t.datetime "access_token_expires_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
+  add_index "access_grants", ["access_token"], :name => "index_access_grants_on_access_token"
   add_index "access_grants", ["account_id", "code"], :name => "index_access_grants_on_account_id_and_code"
   add_index "access_grants", ["client_application_id"], :name => "index_access_grants_on_client_application_id"
 
@@ -78,8 +79,8 @@ ActiveRecord::Schema.define(:version => 20121216160203) do
     t.string   "name"
     t.string   "app_id",     :limit => 32
     t.string   "app_secret", :limit => 32
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   add_index "client_applications", ["app_id"], :name => "index_client_applications_on_app_id"
@@ -105,14 +106,15 @@ ActiveRecord::Schema.define(:version => 20121216160203) do
   add_index "comments", ["user_id", "state", "created_at"], :name => "index_comments_on_user_id_and_state_and_created_at"
 
   create_table "diaries", :force => true do |t|
-    t.string   "title",          :limit => 160, :null => false
-    t.string   "cached_slug",    :limit => 165
+    t.string   "title",             :limit => 160, :null => false
+    t.string   "cached_slug",       :limit => 165
     t.integer  "owner_id"
     t.text     "body"
     t.text     "wiki_body"
     t.text     "truncated_body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "converted_news_id"
   end
 
   add_index "diaries", ["cached_slug"], :name => "index_diaries_on_cached_slug"
@@ -138,11 +140,9 @@ ActiveRecord::Schema.define(:version => 20121216160203) do
   add_index "friend_sites", ["position"], :name => "index_friend_sites_on_position"
 
   create_table "friendly_id_slugs", :force => true do |t|
-    t.string   "slug",                         :default => "0"
-    t.integer  "sluggable_id",                 :default => 0
-    t.integer  "sequence",                     :default => 1,   :null => false
+    t.string   "slug"
+    t.integer  "sluggable_id"
     t.string   "sluggable_type", :limit => 40
-    t.string   "scope",          :limit => 40
     t.datetime "created_at"
   end
 

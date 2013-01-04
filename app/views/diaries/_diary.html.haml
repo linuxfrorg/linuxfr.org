@@ -3,3 +3,5 @@
   - c.image = avatar_img(diary.owner)
   - if current_account && current_account.can_update?(diary)
     - c.actions = link_to("Modifier", edit_user_diary_path(:user_id => diary.owner, :id => diary), :class => 'action')
+  - if diary.converted_news
+    - c.notice = "Ce journal a été promu en dépêche : #{link_to_content diary.converted_news}.".html_safe

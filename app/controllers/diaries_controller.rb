@@ -68,16 +68,7 @@ class DiariesController < ApplicationController
 
   def convert
     enforce_update_permission(@diary)
-    @news = News.new :title            => @diary.title,
-                     :wiki_body        => "**TODO** insérer une synthèse du journal\n\nNdM : merci à #{@diary.owner.try(:name)} pour son journal.",
-                     :wiki_second_part => @diary.wiki_body,
-                     :section_id       => Section.default.id
-    @news.author_name  = @diary.owner.try(:name)
-    @news.author_email = @diary.owner.try(:account).try(:email)
-    if @news.save
-      @news.node.update_column(:cc_licensed, true) if @diary.node.cc_licensed?
-      @news.links.create :title => "Journal à l'origine de la dépêche", :url => "#{MY_DOMAIN}/users/#{@diary.owner.to_param}/journaux/#{@diary.to_param}", :lang => "fr"
-      @news.submit!
+    if @news = @diary.convert
       if current_account.amr?
         redirect_to [:moderation, @news]
       else
@@ -91,19 +82,7 @@ class DiariesController < ApplicationController
 
   def move
     enforce_destroy_permission(@diary)
-    @post = Post.new(params[:post])
-    @post.title = @diary.title
-    @post.wiki_body = @diary.wiki_body
-    if @post.save
-      # Note: the 2 nodes are swapped so that all references to the diairy
-      # (comments, tags, etc.) are moved to the post.
-      node = @post.node
-      node.attributes = @diary.node.attributes.except("id").merge(:content_type => "XXX", :public => false)
-      node.save
-      @diary.node.update_column :content_type, "Post"
-      @diary.node.update_column :content_id, @post.id
-      node.content_type = "Diary"
-      node.save
+    if @diary.move_to_forum
       redirect_to diaries_url, :notice => "Le journal a bien été déplacé vers les forums"
     else
       flash.now[:alert] = "Impossible de déplacer ce journal. Avez-vous bien choisi un forum ?"

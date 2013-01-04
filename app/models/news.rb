@@ -107,6 +107,9 @@ class News < Content
     author_account.try(:give_karma, 50)
     Push.create(self, :kind => :publish, :username => moderator.name)
     $redis.publish "news", {:id => self.id, :title => title, :slug => cached_slug}.to_json
+    if diary_id = $redis.get("convert/#{self.id}")
+      Diary.find(diary_id).update_column(:converted_news_id, self.id)
+    end
   end
 
   def be_refused
