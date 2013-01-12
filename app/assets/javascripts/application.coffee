@@ -77,10 +77,10 @@ if $("body").hasClass("logged")
     $("#comments .new-comment")
       .toolbar("Nouveaux commentaires", folding: "#comments .comment")
       .additional $("#comments .comment").sort((a,b) -> a.id > b.id), "Commentaires par ordre chronologique"
-  else if $("#contents .node").length
-    $("#phare .new-node, #contents .new-node")
+  else if $("main .node").length
+    $("#phare .new-node, main .new-node")
       .toolbar("Contenus jamais visités")
-      .additional $("#phare .new_comments, #contents .new_comments").parents("article").reverse(), "Contenus lus avec + de commentaires"
+      .additional $("#phare .new_comments, main .new_comments").parents("article").reverse(), "Contenus lus avec + de commentaires"
 
 # Redaction
 $(".edition_in_place").editionInPlace()

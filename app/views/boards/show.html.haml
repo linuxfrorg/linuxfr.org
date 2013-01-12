@@ -15,5 +15,5 @@
     %a{:onclick => "$.cookie('totoz-type', 'inline', {path: '/board', expires: new Date('01/01/2042')});" } insérées avec le texte
     ou
     %a{:onclick => "$.cookie('totoz-type', null, {path: '/board'});" } sans
-  #contents
+  %main#contents(role="main")
     = render 'boards', :boards => @boards

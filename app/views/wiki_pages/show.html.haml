@@ -3,7 +3,7 @@
     = render 'changes_box'
   = render 'edition', :edition => @wiki_page
 
-#contents
+%main#contents(role="main")
   - title @wiki_page.title
   - meta_for @wiki_page
   - if @wiki_page.home_page?

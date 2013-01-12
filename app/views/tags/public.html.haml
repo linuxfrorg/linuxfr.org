@@ -5,5 +5,5 @@
 =h1 "Tous les contenus taggés avec #{@tag.name}"
 - link = link_to("Afficher uniquement les contenus que j'ai taggés avec #{@tag.name}", tag_path(@tag.name)) if current_account
 = paginated_section @nodes, link do
-  #contents
+  %main#contents(role="main")
     = render @nodes.map(&:content)

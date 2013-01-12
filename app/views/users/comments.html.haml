@@ -2,7 +2,7 @@
   = render 'recent'
   = render 'nodes'
 
-#contents
+%main#contents(role="main")
   =h1 "#{@user.name} a écrit #{pluralize @comments.total_count, "commentaire"}"
   - feed "Flux Atom des commentaires de #{@user.name}"
   = paginate @comments

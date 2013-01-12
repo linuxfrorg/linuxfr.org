@@ -10,5 +10,5 @@
   %aside.banner
     = @banner
 = paginated_section @nodes, link_to("Proposer une dépêche", "/news/nouveau") do
-  #contents
+  %main#contents(role="main")
     = render @nodes.map(&:content)

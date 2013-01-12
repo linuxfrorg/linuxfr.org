@@ -5,5 +5,5 @@
 
 =h1 "Les derniers contenus que j'ai lus"
 = paginated_section @nodes do
-  #contents
+  %main#contents(role="main")
     = render @nodes.map(&:content)

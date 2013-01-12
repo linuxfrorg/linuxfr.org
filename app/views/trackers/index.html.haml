@@ -26,7 +26,7 @@
   %p
     = submit_tag "Filtrer"
 
-#contents
+%main#contents(role="main")
   - if @trackers.empty?
     %p
       Pas d'entrées dans le suivi

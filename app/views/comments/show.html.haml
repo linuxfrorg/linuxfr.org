@@ -11,7 +11,7 @@
     %p
       = button_to "Supprimer ce commentaire", [@comment.node, @comment], :method => :delete, :data => { :confirm => "Êtes-vous sûr de vouloir supprimer ce commentaire ?" }, :class => "delete_button"
 
-#contents
+%main#contents(role="main")
   %ul.threads
     %li.comment{comment_attr(@comment)}
       = render @comment

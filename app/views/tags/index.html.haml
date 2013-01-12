@@ -4,5 +4,5 @@
 
 =h1 "Tous les contenus que j'ai taggés"
 = paginated_section @nodes do
-  #contents
+  %main#contents(role="main")
     = render @nodes.map(&:content)
