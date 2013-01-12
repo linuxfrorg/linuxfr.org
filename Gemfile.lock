@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/nono/diff_match_patch-ruby.git
-  revision: e97931dddfdc0c9bcc4281f5afe54e080f444a7f
+  revision: acb4147cf0e37d63a7bc8ac0546911af4394b94b
   specs:
     diff_match_patch (0.0.1)
 
@@ -50,7 +50,7 @@ GEM
     boson (1.2.4)
     builder (3.0.4)
     canable (0.3.0)
-    capistrano (2.13.5)
+    capistrano (2.14.1)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
@@ -76,7 +76,7 @@ GEM
       addressable
       boson
       cocaine (= 0.4.2)
-    devise (2.2.0)
+    devise (2.2.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (~> 3.1)
@@ -160,7 +160,7 @@ GEM
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
-    net-ssh (2.6.2)
+    net-ssh (2.6.3)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     nokogiri (1.5.6)
