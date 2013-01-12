@@ -28,7 +28,7 @@ task :alpha do
   set :vserver,   "alpha"
   set :user,      "alpha"
   set :branch,    $1 if `git branch` =~ /\* (\S+)\s/m
-  set :rails_env, :alpha
+  set :rails_env, "alpha"
 end
 
 desc "Production"
@@ -36,7 +36,7 @@ task :prod do
   set :vserver,   "prod"
   set :user,      "linuxfr"
   set :branch,    "master"
-  set :rails_env, :production
+  set :rails_env, "production"
 end
 
 desc "[internal] Common stuff to alpha and production"
