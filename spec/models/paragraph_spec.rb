@@ -57,4 +57,11 @@ EOS
     parts[1].should == "```ruby\ndef foo\n  puts 'foo'\nend\n\nfoo()\n```\n\n"
     parts[2].should == "Un paragraphe\n"
   end
+
+  it "splits text in paragraphs, even when they are some trailing spaces" do
+    parts = Paragraph.new(:wiki_body => "## Title ##\n  Foobar\n  \nbaz\n").split_body
+    parts.should have(2).items
+    parts[0].should == "## Title ##\n  Foobar\n  \n"
+    parts[1].should == "baz\n"
+  end
 end

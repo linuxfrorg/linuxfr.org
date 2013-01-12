@@ -41,8 +41,8 @@ class Paragraph < ActiveRecord::Base
     end
 
     until str.empty?
-      left, sep, str = str.partition(/(\r?\n){2}/)
-      left.sub!(/\A(\r?\n)+/, '')
+      left, sep, str = str.partition(/\r?\n\s{0,3}\r?\n/)
+      left.sub!(/\A(\s{0,3}\r?\n)+/, '')
       codemap.each { |id,code| left.gsub!(id, code) }
       parts << left + sep
     end
