@@ -57,7 +57,7 @@ module NodeHelper
 
   def paginated_nodes(nodes, link=nil)
     paginated_section(nodes, link) do
-      content_tag(:div, render(nodes.map &:content), :id => 'contents')
+      content_tag(:main, render(nodes.map &:content), :id => 'contents', :role => 'main')
     end
   end
 
