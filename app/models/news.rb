@@ -217,7 +217,8 @@ class News < Content
     User.joins(:news_versions).
          where("news_versions.news_id" => self.id).
          group("users.id").
-         select("users.*")
+         select("users.*, COUNT(news_versions.id) AS nb_editions").
+         order("nb_editions DESC")
   end
 
 ### Associated node ###

@@ -3,4 +3,4 @@
     Participants
   %ul
     = list_of(attendees) do |a|
-      = link_to a.name, a
+      = link_to a.name, a, :title => pluralize(a.nb_editions, "édition")
