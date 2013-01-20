@@ -63,6 +63,14 @@ langs =
 
 $("#form_links").nested_fields "news", "link", "lien", title: "text", url: "url", lang: langs
 
+# Mask the contributors if they are too many
+$("article.news .edited_by").each ->
+  nb = @find("a").length
+  if nb > 3
+    was = @html()
+    @html "<a>#{nb} contributeurs</a>"
+    @one "click", => @html was
+
 # Toolbar preferences
 $("#account_visible_toolbar")
   .prop("checked", Toolbar.storage.visible != "false")
