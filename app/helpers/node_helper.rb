@@ -63,7 +63,7 @@ module NodeHelper
 
   def paginated_contents(contents, link=nil)
     paginated_section(contents, link) do
-      content_tag(:div, render(contents), :id => 'contents')
+      content_tag(:main, render(contents), :id => 'contents', :role => 'main')
     end
   end
 
