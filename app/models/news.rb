@@ -221,6 +221,11 @@ class News < Content
          order("nb_editions DESC")
   end
 
+  def edited_by
+    attendees.where("users.id != ?", self.node.user_id).
+              select([:name, :cached_slug])
+  end
+
 ### Associated node ###
 
   def author_account

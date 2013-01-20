@@ -12,7 +12,16 @@ module NewsHelper
   end
 
   def news_posted_by(news)
-    (posted_by(news, news.node.user_id ? nil : news.author_name) + moderated_by(news)).html_safe
+    ( posted_by(news, news.node.user_id ? nil : news.author_name) +
+      edited_by(news) +
+      moderated_by(news)
+    ).html_safe
+  end
+
+  def edited_by(news)
+    return "" if news.edited_by.none?
+    users = news.edited_by.map {|u| link_to u.name, u }.to_sentence
+    " Édité par #{content_tag :span, users.html_safe, :class => "edited_by"}.".html_safe
   end
 
   def moderated_by(news)
