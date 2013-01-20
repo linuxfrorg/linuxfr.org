@@ -296,7 +296,7 @@ class News < Content
   end
 
   def taggable_by?(account)
-    super(account) || (account.amr? && candidate?)
+    super(account) || account.amr?
   end
 
   def acceptable_by?(account)
