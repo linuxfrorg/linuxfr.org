@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :homesite, :jabber_id, :signature, :avatar, :custom_avatar_url
 
+  validates_format_of :homesite, :message => "L'URL du site web personnel n'est pas valide", :with => URI::regexp(%w(http https))
+
 ### SEO ###
 
   extend FriendlyId
