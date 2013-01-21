@@ -78,7 +78,7 @@ class Diary < Content
       $redis.set "convert/#{@news.id}", self.id
       @news.node.update_column(:cc_licensed, true) if node.cc_licensed?
       @news.links.create :title => "Journal à l'origine de la dépêche", :url => "#{MY_DOMAIN}/users/#{owner.to_param}/journaux/#{to_param}", :lang => "fr"
-      @news.submit!
+      @news.submit! unless node.cc_licensed?
       @news
     else
       nil
