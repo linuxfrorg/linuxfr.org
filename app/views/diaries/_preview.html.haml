@@ -1,4 +1,4 @@
 = article_for preview do |c|
-  - c.title = "#{link_to "Journal", "/journaux", :class => "topic"} #{link_to preview.title, "#"}".html_safe
+  - c.title = "#{link_to "Journal", "/journaux", :class => "topic"} #{link_to spellcheck(preview.title), "#"}".html_safe
   - c.image = avatar_img(preview.node.user)
   - c.body  = spellcheck(preview.body)

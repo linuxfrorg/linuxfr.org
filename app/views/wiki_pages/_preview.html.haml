@@ -1,4 +1,4 @@
 = article_for preview do |c|
   - c.meta  = ""
-  - c.title = "#{link_to "Wiki", "/wiki", :class => "topic"} #{h preview.title}".html_safe
+  - c.title = "#{link_to "Wiki", "/wiki", :class => "topic"} #{spellcheck h preview.title}".html_safe
   - c.body  = spellcheck(preview.body)

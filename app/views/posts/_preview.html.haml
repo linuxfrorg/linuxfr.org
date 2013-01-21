@@ -1,3 +1,3 @@
 = article_for preview do |c|
-  - c.title = "#{link_to("Forum #{preview.forum.title}", preview.forum, :class => "topic") if preview.forum} #{link_to preview.title, [preview.forum, preview]}".html_safe
+  - c.title = "#{link_to("Forum #{preview.forum.title}", preview.forum, :class => "topic") if preview.forum} #{link_to spellcheck(preview.title), [preview.forum, preview]}".html_safe
   - c.body  = spellcheck(preview.body)

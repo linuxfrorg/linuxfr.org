@@ -1,5 +1,5 @@
 = article_for preview do |c|
-  - c.title = "#{link_to "Sondage", "/sondages", :class => "topic"} #{link_to preview.title, "#"}".html_safe
+  - c.title = "#{link_to "Sondage", "/sondages", :class => "topic"} #{link_to spellcheck(preview.title), "#"}".html_safe
   - c.body  = capture do
     - if preview.explanations
       .explanations= preview.explanations
