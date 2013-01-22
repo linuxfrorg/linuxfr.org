@@ -41,5 +41,5 @@
         = button_to "Publier", accept_moderation_news_path(@news), :class => "publish_news"
         = button_to "Refuser", refuse_moderation_news_path(@news), :class => "refuse_news"
         = button_to "Revoter", reset_moderation_news_path(@news), :class => "reset_news"
-      - if @news.node.cc_licensed?
-        = button_to "Re-rédaction", rewrite_moderation_news_path(@news), :class => "rewrite_news"
+        - if @news.node.cc_licensed?
+          = button_to "Re-rédaction", rewrite_moderation_news_path(@news), :class => "rewrite_news"

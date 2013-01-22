@@ -312,7 +312,7 @@ class News < Content
   end
 
   def rewritable_by?(account)
-    account.admin?
+    refusable_by? account
   end
 
   def pppable_by?(account)
