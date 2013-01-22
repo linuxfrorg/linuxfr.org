@@ -7,7 +7,7 @@ class NestedFields
   create: ->
     items = @el.children(".#{@nested}")
     @counter = items.length
-    @bind_item item  for item in items
+    @bind_item item, i  for item, i in items
     @el.append $("<fieldset/>", html: $("<button/>",
       type: "button"
       id: "add_#{@nested}"
@@ -15,11 +15,15 @@ class NestedFields
     ))
     $("#add_#{@nested}").click @add_item
 
-  bind_item: (item) ->
+  bind_item: (item, counter) ->
     it = $(item)
-    it.append "<button type=\"button\" class=\"remove\">Supprimer ce #{@text} </button>"
-    it.children(".remove").click ->
-      it.remove()
+    it.append """<button type="button" class="remove">Supprimer ce #{@text} </button>"""
+    it.children(".remove").click =>
+      if counter
+        name = "#{@parent}[#{@nested}s_attributes][#{counter}][_destroy]"
+        it.replaceWith $("<input/>", name: name, type: "hidden", value: 1)
+      else
+        it.remove()
       false
 
   add_item: =>
