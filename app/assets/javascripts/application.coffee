@@ -61,7 +61,8 @@ langs =
   no: "Norvégien"
   ko: "Coréen"
 
-$("#form_links").nested_fields "news", "link", "lien", title: "text", url: "url", lang: langs
+$("#form_links").nested_fields "news", "link", "lien", "fieldset", title: "text", url: "url", lang: langs
+$("#form_answers").nested_fields "poll", "answer", "choix", "p", answer: "text"
 
 # Mask the contributors if they are too many
 $("article.news .edited_by").each ->

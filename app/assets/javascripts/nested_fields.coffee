@@ -1,14 +1,14 @@
 $ = window.jQuery
 
 class NestedFields
-  constructor: (@el, @parent, @nested, @text, @attributes) ->
+  constructor: (@el, @parent, @nested, @text, @tag, @attributes) ->
     @create()
 
   create: ->
     items = @el.children(".#{@nested}")
     @counter = items.length
     @bind_item item, i  for item, i in items
-    @el.append $("<fieldset/>", html: $("<button/>",
+    @el.append $("<#{@tag}/>", html: $("<button/>",
       type: "button"
       id: "add_#{@nested}"
       text: "Ajouter un #{@text}"
@@ -28,8 +28,8 @@ class NestedFields
 
   add_item: =>
     last = @el.children(".#{@nested}:last")
-    last = @el.children("fieldset:first")  if last.length == 0
-    fset = $("<fieldset/>", class: @nested)
+    last = @el.children("#{@tag}:first")  if last.length == 0
+    fset = $("<#{@tag}/>", class: @nested)
     last.after fset
     for i,type of @attributes
       name = "#{@parent}[#{@nested}s_attributes][#{@counter}][#{i}]"
@@ -43,6 +43,6 @@ class NestedFields
     @counter += 1
     false
 
-$.fn.nested_fields = (parent, nested, text, attributes) ->
+$.fn.nested_fields = (parent, nested, text, tag, attributes) ->
   @each ->
-    new NestedFields($(@), parent, nested, text, attributes)
+    new NestedFields($(@), parent, nested, text, tag, attributes)

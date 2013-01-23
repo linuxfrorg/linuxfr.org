@@ -6,11 +6,12 @@
 %p
   = form.label :wiki_explanations, "Texte descriptif"
   = form.text_area :wiki_explanations, :spellcheck => 'true', :class => 'markItUp'
-%p
-  Réponses possibles
-= form.fields_for :answers do |aform|
+#form_answers
   %p
-    = aform.text_field :answer, :maxlength => 128
+    Réponses possibles
+  = form.fields_for :answers do |aform|
+    %p.answer
+      = aform.text_field :answer, :maxlength => 128, :size => 30
 %p
   = form.submit "Prévisualiser", :id => "poll_preview"
   = form.submit "Proposer ce sondage", 'data-disable-with' => "Enregistrement en cours" if @preview_mode
