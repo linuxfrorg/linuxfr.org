@@ -14,6 +14,8 @@
         %td
           = link_to forum.title, forum
         %td
+          = button_to "&uarr;".html_safe, higher_admin_forum_path(forum)
+          = button_to "&darr;".html_safe, lower_admin_forum_path(forum)
           = link_to "Modifier", edit_admin_forum_path(forum)
           - if forum.active?
             = button_to "Archiver", archive_admin_forum_path(forum), :data => { :confirm => "Archiver le forum ?" }, :class => "archive_button"

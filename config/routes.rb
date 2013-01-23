@@ -168,6 +168,8 @@ LinuxfrOrg::Application.routes.draw do
       member do
         post :archive
         post :reopen
+        post :lower
+        post :higher
       end
     end
     resources :categories, :except => [:show]
