@@ -66,7 +66,7 @@ class Redaction::NewsController < RedactionController
 protected
 
   def load_news
-    @news = News.find(params[:id])
+    @news = News.draft.find(params[:id])
     enforce_update_permission(@news)
   end
 
