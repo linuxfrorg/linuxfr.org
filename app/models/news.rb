@@ -238,6 +238,15 @@ class News < Content
     super attrs
   end
 
+  def reassign_to(user_id)
+    user = User.find(user_id)
+    return unless user
+    node.update_column(:user_id, user.id)
+    self.author_name  = user.name
+    self.author_email = user.account.try(:email)
+    save
+  end
+
 ### Moderators' votes ###
 
   def vote_on_candidate(value, account)
@@ -307,12 +316,16 @@ class News < Content
     account.admin? || (account.moderator? && refusable?)
   end
 
-  def resetable_by?(account)
-    account.admin?
-  end
-
   def rewritable_by?(account)
     refusable_by? account
+  end
+
+  def reassignable_by?(account)
+    account.moderator? || account.admin?
+  end
+
+  def resetable_by?(account)
+    account.admin?
   end
 
   def pppable_by?(account)

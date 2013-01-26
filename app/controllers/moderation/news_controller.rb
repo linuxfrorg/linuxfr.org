@@ -72,10 +72,10 @@ class Moderation::NewsController < ModerationController
     end
   end
 
-  def reset
-    enforce_reset_permission(@news)
-    @news.reset_votes
-    redirect_to [:moderation, @news], :notice => "Votes remis à zéro"
+  def reassign
+    enforce_reassign_permission(@news)
+    @news.reassign_to params[:user_id]
+    redirect_to [:moderation, @news], :notice => "L'auteur initial de la dépêche a été changé"
   end
 
   def rewrite
@@ -88,6 +88,12 @@ class Moderation::NewsController < ModerationController
     else
       redirect_to [:moderation, @news], :alert => "Impossible de modérer la dépêche tant que quelqu'un est en train de la modifier"
     end
+  end
+
+  def reset
+    enforce_reset_permission(@news)
+    @news.reset_votes
+    redirect_to [:moderation, @news], :notice => "Votes remis à zéro"
   end
 
   def ppp
