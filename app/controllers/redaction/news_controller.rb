@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class Redaction::NewsController < RedactionController
-  before_filter :load_news, :except => [:index, :create]
+  before_filter :load_news, :except => [:index, :create, :revision, :reorganize, :reorganized]
   before_filter :load_board, :only => [:show, :reorganize]
   after_filter  :marked_as_read, :only => [:show, :update]
 
@@ -20,6 +20,8 @@ class Redaction::NewsController < RedactionController
   end
 
   def revision
+    @news = News.find(params[:id])
+    enforce_show_permission(@news)
     @version  = @news.versions.find_by_version!(params[:revision])
     @previous = @version.higher_item || NewsVersion.new
   end
@@ -36,6 +38,8 @@ class Redaction::NewsController < RedactionController
   end
 
   def reorganize
+    @news = News.find(params[:id])
+    enforce_update_permission(@news)
     if @news.lock_by(current_user)
       @news.put_paragraphs_together
       render :reorganize, :layout => "chat_n_edit"
@@ -45,6 +49,8 @@ class Redaction::NewsController < RedactionController
   end
 
   def reorganized
+    @news = News.find(params[:id])
+    enforce_update_permission(@news)
     @news.paragraphs.delete_all
     @news.attributes = params[:news]
     @news.editor = current_account
