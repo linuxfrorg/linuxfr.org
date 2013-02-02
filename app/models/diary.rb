@@ -85,8 +85,8 @@ class Diary < Content
     end
   end
 
-  def move_to_forum
-    @post = Post.new(params[:post])
+  def move_to_forum(attrs)
+    @post = Post.new(attrs)
     @post.title = title
     @post.wiki_body = wiki_body
     saved = @post.save

@@ -82,7 +82,7 @@ class DiariesController < ApplicationController
 
   def move
     enforce_destroy_permission(@diary)
-    if @diary.move_to_forum
+    if @diary.move_to_forum(params[:post])
       redirect_to diaries_url, :notice => "Le journal a bien été déplacé vers les forums"
     else
       flash.now[:alert] = "Impossible de déplacer ce journal. Avez-vous bien choisi un forum ?"
