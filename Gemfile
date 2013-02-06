@@ -72,6 +72,6 @@ group :test do
 end
 
 group :production do
-  gem "unicorn",               "~>4.3"
+  gem "unicorn",               "~>4.6"
   gem "redis-activesupport",   "~>3.2"
 end
