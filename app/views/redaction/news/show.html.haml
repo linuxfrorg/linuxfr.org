@@ -2,6 +2,8 @@
 
 - content_for :chat do
   #redaction_board
+    %p
+      = link_to "Retourner sur la liste des dépêches en cours de rédaction", '/redaction'
     = render 'board', :boards => @boards
     = render 'attendees', :attendees => @news.attendees
     = render 'editions', :news => @news
