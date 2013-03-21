@@ -7,7 +7,6 @@ class Push < Struct.new(:object, :data)
   end
 
   def publish
-    Rails.logger.info "Push b/#{private_key}/#{next_id}"
     $redis.publish("b/#{private_key}/#{next_id}", data.to_json)
     self
   end

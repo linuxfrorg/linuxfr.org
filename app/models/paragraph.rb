@@ -79,7 +79,8 @@ class Paragraph < ActiveRecord::Base
 ### Behaviour ###
 
   def update_by(user)
-    news.editor = user.account
+    n = news
+    n.editor = user.account
     if wiki_body.blank?
       destroy
     else
@@ -87,8 +88,8 @@ class Paragraph < ActiveRecord::Base
       $redis.del lock_key
       save
     end
-    news.body_will_change!
-    news.save
+    n.body_will_change!
+    n.save
   end
 
 ### Wikify ###
