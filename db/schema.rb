@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130104215554) do
+ActiveRecord::Schema.define(:version => 20130321210304) do
 
   create_table "access_grants", :force => true do |t|
     t.integer  "account_id"
@@ -20,11 +20,10 @@ ActiveRecord::Schema.define(:version => 20130104215554) do
     t.string   "access_token"
     t.string   "refresh_token"
     t.datetime "access_token_expires_at"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "access_grants", ["access_token"], :name => "index_access_grants_on_access_token"
   add_index "access_grants", ["account_id", "code"], :name => "index_access_grants_on_account_id_and_code"
   add_index "access_grants", ["client_application_id"], :name => "index_access_grants_on_client_application_id"
 
@@ -64,8 +63,9 @@ ActiveRecord::Schema.define(:version => 20130104215554) do
   add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"
 
   create_table "banners", :force => true do |t|
-    t.string "title"
-    t.text   "content"
+    t.string  "title"
+    t.text    "content"
+    t.boolean "active",  :default => true
   end
 
   create_table "categories", :force => true do |t|
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(:version => 20130104215554) do
     t.string   "name"
     t.string   "app_id",     :limit => 32
     t.string   "app_secret", :limit => 32
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "client_applications", ["app_id"], :name => "index_client_applications_on_app_id"
@@ -140,9 +140,11 @@ ActiveRecord::Schema.define(:version => 20130104215554) do
   add_index "friend_sites", ["position"], :name => "index_friend_sites_on_position"
 
   create_table "friendly_id_slugs", :force => true do |t|
-    t.string   "slug"
-    t.integer  "sluggable_id"
+    t.string   "slug",                         :default => "0"
+    t.integer  "sluggable_id",                 :default => 0
+    t.integer  "sequence",                     :default => 1,   :null => false
     t.string   "sluggable_type", :limit => 40
+    t.string   "scope",          :limit => 40
     t.datetime "created_at"
   end
 

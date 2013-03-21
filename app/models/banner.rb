@@ -10,6 +10,8 @@
 
 #
 class Banner < ActiveRecord::Base
+  scope :active, where(:active => true)
+
   validates :content, :presence => { :message => "La bannière ne peut être vide !" }
 
   def self.random
@@ -19,11 +21,11 @@ class Banner < ActiveRecord::Base
     Banner.find(id).try(:content)
   end
 
-  after_create :index_banners
+  after_save :index_banners
   after_destroy :index_banners
   def index_banners
     $redis.del("banners")
-    Banner.all.each do |b|
+    Banner.active.each do |b|
       $redis.rpush("banners", b.id)
     end
   end
