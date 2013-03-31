@@ -72,10 +72,10 @@ class DiariesController < ApplicationController
       if current_account.amr?
         redirect_to [:moderation, @news]
       else
-        redirect_to "/", :notice => "Merci d'avoir proposé ce journal en dépêche"
+        redirect_to "/", :notice => "Merci d'avoir proposé ce journal en télégramme"
       end
     else
-      flash.now[:alert] = "Impossible de proposer ce journal en dépêche"
+      flash.now[:alert] = "Impossible de proposer ce journal en télégramme"
       render :edit
     end
   end

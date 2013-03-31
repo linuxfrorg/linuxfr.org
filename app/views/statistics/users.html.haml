@@ -129,7 +129,7 @@
       %th Utilisateurs
       %th Pourcentage des actifs
     %tr
-      %td{'class'=>'stat'} Dépêches en page d'accueil
+      %td{'class'=>'stat'} Télégrammes en page d'accueil
       %td
         .stat.misc(style="width: #{(width_stats * @stats.on_home("News") / maxval).to_i}px;")= @stats.on_home("News")
       %td #{@stats.pctrecent(@stats.on_home("News"))}

@@ -24,7 +24,7 @@
 #
 class News < Content
   self.table_name = "news"
-  self.type = "Dépêche"
+  self.type = "Télégramme"
 
   belongs_to :section
   belongs_to :moderator, :class_name => "User"
@@ -47,8 +47,8 @@ class News < Content
 
   validates :title,        :presence => { :message => "Le titre est obligatoire" },
                            :length   => { :maximum => 100, :message => "Le titre est trop long" }
-  validates :body,         :presence => { :message => "Nous n'acceptons pas les dépêches vides" }
-  validates :section,      :presence => { :message => "Veuillez choisir une section pour cette dépêche" }
+  validates :body,         :presence => { :message => "Nous n'acceptons pas les télégrammes vides" }
+  validates :section,      :presence => { :message => "Veuillez choisir une section pour ce télégramme" }
   validates :author_name,  :presence => { :message => "Veuillez entrer votre nom" },
                            :length   => { :maximum => 32, :message => "Le nom de l'auteur est trop long" }
   validates :author_email, :presence => { :message => "Veuillez entrer votre adresse email" },
@@ -123,7 +123,7 @@ class News < Content
 
   def self.create_for_redaction(account)
     news = News.new
-    news.title = "Nouvelle dépêche #{News.maximum(:id).to_i + 1}"
+    news.title = "Nouveau télégramme #{News.maximum(:id).to_i + 1}"
     news.section = Section.default
     news.wiki_body = news.wiki_second_part = "Vous pouvez éditer cette partie en cliquant sur le crayon !"
     news.cc_licensed = true

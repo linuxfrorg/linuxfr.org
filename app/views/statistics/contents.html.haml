@@ -22,7 +22,7 @@
       %li #{pluralize @stats.contents["Diary"], "journal", "journaux"}
       %li #{pluralize @stats.contents["Post"], "entrée"} de forums
       %li
-        #{pluralize @stats.contents["News"], "dépêche"} dont #{@stats.news["draft"]} en rédaction, #{@stats.news["candidate"]} en modération, #{pluralize @stats.news["published"], "publiée"}, #{pluralize @stats.news["refused"], "refusée"}.
+        #{pluralize @stats.contents["News"], "télégramme"} dont #{@stats.news["draft"]} en rédaction, #{@stats.news["candidate"]} en modération, #{pluralize @stats.news["published"], "publié"}, #{pluralize @stats.news["refused"], "refusé"}.
         - if @stats.contents["News"].to_i > 0
           = "Publication sous #{pluralize @stats.nb_news_authors, "nom"} par #{pluralize @stats.nb_news_accounts, "utilisateur"}."
       %li #{pluralize @stats.contents["Tracker"], "entrée"} dans le système de suivi
@@ -89,28 +89,28 @@
     - else
       Aucun contenu
 
-    %h2#taille Évolution de la taille moyenne des dépêches publiées
+    %h2#taille Évolution de la taille moyenne des télégrammes publiés
     - if @stats.news["published"] > 0
       - maxval = @stats.news_size.map {|a| a["cnt"] }.max
       %table
       %table
         %tr
           %th Années
-          %th Taille moyenne des dépêches (en octets, mise en forme comprise)
+          %th Taille moyenne des télégrammes (en octets, mise en forme comprise)
         - @stats.news_size.each do |entry|
           %tr
             %td= entry["year"]
             %td
               .stat.misc(style="width: #{(width_stats * entry["cnt"] / maxval).to_i}px;")= entry["cnt"]
     - else
-      Aucune dépêche publiée
+      Aucun télégramme publié
 
     %h2#licence Évolution du pourcentage de contenus sous licence CC By-Sa
     - if @stats.contents_by_license.size() > 0
       %table
         %th Année
         %th Type
-        %th Pourcentage de dépêches et journaux sous licence Creative Commons By-Sa
+        %th Pourcentage de télégrammes et journaux sous licence Creative Commons By-Sa
         - @stats.contents_by_license.each do |year,content|
           - newyear = true
           - content.each do |type,cnt|
@@ -123,7 +123,7 @@
               %td
                 .stat(class="content#{type.downcase()}" style="width: #{(width_stats * cnt / 100).to_i}px;")= cnt
 
-    -# TODO REDIS %p Nombre de clics moyen par lien sur les dépêches acceptées
+    -# TODO REDIS %p Nombre de clics moyen par lien sur les télégrammes acceptées
     -# Année	Nombre de clics moyen	Total
     -# 2000	857 857
 

@@ -50,9 +50,9 @@ class Moderation::NewsController < ModerationController
       @news.moderator_id = current_user.id
       @news.accept!
       NewsNotifications.accept(@news).deliver
-      redirect_to @news, :alert => "Dépêche acceptée"
+      redirect_to @news, :alert => "Télégramme accepté"
     else
-      redirect_to [:moderation, @news], :alert => "Impossible de modérer la dépêche tant que quelqu'un est en train de la modifier"
+      redirect_to [:moderation, @news], :alert => "Impossible de modérer le télégramme tant que quelqu'un est en train de la modifier"
     end
   end
 
@@ -68,14 +68,14 @@ class Moderation::NewsController < ModerationController
     elsif @news.unlocked?
       @boards = Board.all(Board.news, @news.id)
     else
-      redirect_to [:moderation, @news], :alert => "Impossible de modérer la dépêche tant que quelqu'un est train de la modifier"
+      redirect_to [:moderation, @news], :alert => "Impossible de modérer le télégramme tant que quelqu'un est train de la modifier"
     end
   end
 
   def reassign
     enforce_reassign_permission(@news)
     @news.reassign_to params[:user_id]
-    redirect_to [:moderation, @news], :notice => "L'auteur initial de la dépêche a été changé"
+    redirect_to [:moderation, @news], :notice => "L'auteur initial du télégramme a été changé"
   end
 
   def rewrite
@@ -84,9 +84,9 @@ class Moderation::NewsController < ModerationController
       @news.moderator_id = current_user.id
       @news.rewrite!
       NewsNotifications.rewrite(@news).deliver
-      redirect_to @news, :alert => "Dépêche renvoyée en rédaction"
+      redirect_to @news, :alert => "Télégramme renvoyé en rédaction"
     else
-      redirect_to [:moderation, @news], :alert => "Impossible de modérer la dépêche tant que quelqu'un est en train de la modifier"
+      redirect_to [:moderation, @news], :alert => "Impossible de modérer le télégramme tant que quelqu'un est en train de la modifier"
     end
   end
 
@@ -99,7 +99,7 @@ class Moderation::NewsController < ModerationController
   def ppp
     enforce_ppp_permission(@news)
     @news.set_on_ppp
-    redirect_to [:moderation, @news], :notice => "Cette dépêche est maintenant affichée en phare"
+    redirect_to [:moderation, @news], :notice => "Ce télégramme est maintenant affiché en phare"
   end
 
   def vote

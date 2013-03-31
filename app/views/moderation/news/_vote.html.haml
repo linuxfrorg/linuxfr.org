@@ -20,14 +20,14 @@
 
   - if @news.published?
     %p
-      %strong Dépêche publiée
+      %strong Télégramme publié
     - if @news.on_ppp?
       %strong Affichée en phare
     - elsif current_account.can_ppp?(@news)
       = button_to "Mettre en phare", ppp_moderation_news_path(@news), :class => "ppp_news"
   - elsif @news.refused?
     %p
-      %strong Dépêche refusée
+      %strong Télégramme refusé
   - else
     - if @news.acceptable? && current_account.can_accept?(@news)
       = button_to "Publier", accept_moderation_news_path(@news), :class => "publish_news"

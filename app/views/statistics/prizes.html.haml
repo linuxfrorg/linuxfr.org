@@ -8,7 +8,7 @@
       = link_to "Mois suivant", :month => @stats.month.next_month.strftime("%m-%Y")
 
   .body
-    %h2 Dépêches
+    %h2 Télégrammes
 
     %div
       %h3 Mieux notées
@@ -59,7 +59,7 @@
     %h2 Les contributeurs les plus prolifiques
 
     %div
-      %h3 Dépêches
+      %h3 Télégrammes
       %ol
         = list_of @stats.top_authors(News, 5) do |user, score|
           = link_to_user_with_score(user, score)

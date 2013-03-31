@@ -5,25 +5,25 @@
   = render 'boards/boards', :boards => @boards
 
 #news
-  %h1 Dépêches en cours de rédaction
-  = button_to "Commencer une nouvelle dépêche", "/redaction/news", :class => "create_news"
+  %h1 Télégrammes en cours de rédaction
+  = button_to "Commencer un nouveau télégramme", "/redaction/news", :class => "create_news"
   (sous #{link_to "licence CC by-sa", "http://creativecommons.org/licenses/by-sa/3.0/deed.fr"})
   %p
     = link_to "Règles de modération", "/regles_de_moderation"
 
   - if @drafts.empty?
-    %p Aucune dépêche.
+    %p Aucun télégramme.
   - else
     %p
-      = link_to "Afficher toutes les dépêches", "/redaction/news"
+      = link_to "Afficher tous les télégrammes", "/redaction/news"
     %ul
       = list_of @drafts do |n|
         = link_to n.title, [:redaction, n]
 
 #candidate_news
-  %h1 Dépêches en cours de modération
+  %h1 Télégrammes en cours de modération
   - if @news.empty?
-    Aucune dépêche.
+    Aucun télégramme.
   - else
     %ul
       = list_of @news do |n|

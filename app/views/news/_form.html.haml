@@ -12,13 +12,13 @@
       = form.label :pot_de_miel, "Ne pas remplir ce champ"
       = form.text_field :pot_de_miel
 %p
-  = form.label :title, "Titre de la dépêche"
+  = form.label :title, "Titre du télégramme"
   = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true', :maxlength => 100
 %p
-  = form.label :section_id, "Section de la dépêche"
+  = form.label :section_id, "Section du télégramme"
   = form.collection_select :section_id, Section.published, :id, :title
 %p
-  = form.label :wiki_body, "Contenu de la dépêche"
+  = form.label :wiki_body, "Contenu du télégramme"
   = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
 #form_links
   %fieldset
@@ -43,7 +43,7 @@
   = form.text_area :message, :spellcheck => 'true', :rows => 2
 %p
   = form.check_box :cc_licensed
-  = form.label :cc_licensed, 'Je place ce document sous licence Creative Commons Paternité-Partage des Conditions Initiales à l\'Identique 3.0 (<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.fr">licence CC by-sa</a>). Ceci est conseillé, car cela permet l\'édition collaborative de la dépêche si elle doit être complétée.'.html_safe
+  = form.label :cc_licensed, 'Je place ce document sous licence Creative Commons Paternité-Partage des Conditions Initiales à l\'Identique 3.0 (<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.fr">licence CC by-sa</a>). Ceci est conseillé, car cela permet l\'édition collaborative du télégramme s\'il doit être complété.'.html_safe
 %p
   = form.submit "Prévisualiser", :id =>  "news_preview"
-  = form.submit "Soumettre cette dépêche", 'data-disable-with' => "Enregistrement en cours" if @preview_mode
+  = form.submit "Soumettre ce télégramme", 'data-disable-with' => "Enregistrement en cours" if @preview_mode

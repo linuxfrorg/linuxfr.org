@@ -26,7 +26,7 @@ class NewsController < ApplicationController
   end
 
   def new
-    redirect_to root_url, :alert => "Désolé, il n'est pas possible de proposer une dépêche en l'absence de sections" unless Section.exists?
+    redirect_to root_url, :alert => "Désolé, il n'est pas possible de proposer un télégramme en l'absence de sections" unless Section.exists?
     @news = News.new
     @news.cc_licensed = true
   end
@@ -39,7 +39,7 @@ class NewsController < ApplicationController
     if !preview_mode && @news.save
       current_account.tag(@news.node, params[:tags]) if current_account
       @news.submit!
-      redirect_to news_index_url, :notice => "Votre proposition de dépêche a bien été soumise, et sera modérée dans les heures ou jours à venir"
+      redirect_to news_index_url, :notice => "Votre proposition de télégramme a bien été soumise, et sera modérée dans les heures ou jours à venir"
     else
       @news.node = Node.new
       @news.valid?

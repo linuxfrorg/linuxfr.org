@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
 	<ShortName>LinuxFr.org</ShortName>
-	<Description>Rechercher des dépêches, journaux et autres contenus sur LinuxFr.org</Description>
-	<Tags>Linux Logiciel Libre Dépêches Journaux Forums Entretiens Sondages Wiki Commentaires</Tags>
+	<Description>Rechercher des télégrammes, journaux et autres contenus sur LinuxFr.org</Description>
+	<Tags>Linux Logiciel Libre Télégrammes Journaux Forums Entretiens Sondages Wiki Commentaires</Tags>
 	<Url type="text/html" template="http://linuxfr.org/recherche?q={searchTerms}"/>
 	<Language>fr-fr</Language>
 	<Image height="32" width="32" type="image/png">http://linuxfr.org/favicon.png</Image>

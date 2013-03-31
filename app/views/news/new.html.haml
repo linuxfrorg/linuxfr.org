@@ -1,12 +1,12 @@
 %main#contents(role="main")
-  =h1 "Proposer une dépêche"
+  =h1 "Proposer un télégramme"
 
   %p
-    Les dépêches proposées sont relues et modérées a priori par l'équipe de LinuxFr.org.
+    Les télégrammes proposés sont relus et modérés a priori par l'équipe de LinuxFr.org.
     La ligne éditoriale est expliquée sur la page «&nbsp;<a href="/regles_de_moderation">Règles de modération</a>&nbsp;».
 
   - if (news = News.draft).any?
-    %p Les dépêches suivantes sont déjà en cours de rédaction. Vous pouvez y contribuer directement si vous le souhaitez :
+    %p Les télégrammes suivants sont déjà en cours de rédaction. Vous pouvez y contribuer directement si vous le souhaitez :
     %ul
       = list_of(news) do |news|
         = link_to news.title, [:redaction, news]

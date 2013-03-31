@@ -4,7 +4,7 @@
     %a(href="#sidebar") Aller au menu
   %ul
     %li{:class => ("active" if controller_name == "home")}= link_to "Accueil", '/', :title => "Page d'accueil du site, personnalisable"
-    %li{:class => ("active" if controller_name == "news" || controller_name == "sections")}= link_to "Dépêches", '/news', :title => "Actualités, événements et autres nouveautés"
+    %li{:class => ("active" if controller_name == "news" || controller_name == "sections")}= link_to "Télégrammes", '/news', :title => "Actualités, événements et autres nouveautés"
     %li{:class => ("active" if controller_name == "diaries" || (controller_name == "users" && action_name == "show"))}= link_to "Journaux", '/journaux', :title => "Journaux personnels de nos visiteurs"
     %li{:class => ("active" if controller_name == "forums" || controller_name == "posts")}= link_to "Forums", '/forums', :title => "Questions/réponses, petites annonces"
     %li{:class => ("active" if controller_name == "polls")}= link_to "Sondages", '/sondages', :title => "Sondages proposées aux visiteurs du site"

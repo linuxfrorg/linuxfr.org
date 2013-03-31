@@ -7,7 +7,7 @@ class NewsNotifications < ActionMailer::Base
           :cc   => "LinuxFr.org <moderateurs@linuxfr.org>"
 
   def accept(news)
-    send_email "Dépêche acceptée :", news
+    send_email "Télégramme accepté :", news
   end
 
   def self.refuse_with_message(news, message, template)
@@ -25,14 +25,14 @@ class NewsNotifications < ActionMailer::Base
   def refuse(news, message)
     @news    = news
     @message = message
-    send_email "Dépêche refusée :", news
+    send_email "Télégramme refusé :", news
   end
 
   def refuse_template(news, message, template)
     @news    = news
     @message = message.present? ? "Le modérateur a tenu à ajouter : #{message}\n\n" : ""
     @response= Response.find(template)
-    send_email "Dépêche refusée :", news
+    send_email "Télégramme refusé :", news
   end
 
   def refuse_en(news)
@@ -41,7 +41,7 @@ class NewsNotifications < ActionMailer::Base
   end
 
   def rewrite(news)
-    send_email "Dépêche renvoyée en rédaction :", news
+    send_email "Télégramme renvoyé en rédaction :", news
   end
 
 protected

@@ -10,7 +10,7 @@
     %p
       Voir aussi #{link_to "les règles de modération", "/regles_de_moderation"}
 
-    %h2 Critères de modération d'une dépêche
+    %h2 Critères de modération d'un télégramme
     %ul
       %li +1 par avis positif et -1 par avis négatif
       %li Seuil d'acceptation = #{News.accept_threshold}
@@ -22,7 +22,7 @@
       %table
         %tr
           %th Jour
-          %th Nombre de dépêches modérées
+          %th Nombre de télégrammes modérés
         - @stats.by_day.each do |day|
           %tr
             %td= day_name day["day"]
@@ -31,7 +31,7 @@
 
       %h2 Temps d'édition et de modération
       %p
-        Temps passé entre la création d'une dépêche (temps d'édition compris) et sa modération finale&nbsp;:
+        Temps passé entre la création d'un télégramme (temps d'édition compris) et sa modération finale&nbsp;:
       %table{'class'=>'sortable'}
         %tr
           %th Année
@@ -63,7 +63,7 @@
     %ul
       %li
         - extra = @stats.news_by_day * 365 / Date.today.yday()
-        = "#{pluralize @stats.news_by_day, "dépêche publiée", "dépêches publiées"} (extrapolation annuelle de #{extra} pour un objectif de #{@goals.news_by_year} "
+        = "#{pluralize @stats.news_by_day, "télégramme publié", "télégrammes publiés"} (extrapolation annuelle de #{extra} pour un objectif de #{@goals.news_by_year} "
         - if (extra >= @goals.news_by_year)
           = image_tag "/images/icones/check.png", :alt => "Objectif atteint", :title => "Objectif atteint"
         - else
@@ -71,7 +71,7 @@
         \)
       %li
         - extra2 = @stats.amr_news_by_day * 365 / Date.today.yday()
-        = "#{pluralize @stats.amr_news_by_day, "dépêche publiée écrite", "dépêches publiées écrites"} par l'équipe du site (extrapolation annuelle de #{extra2} pour un objectif de #{@goals.amr_news_by_year} "
+        = "#{pluralize @stats.amr_news_by_day, "télégramme publié écrit", "télégrammes publiés écrits"} par l'équipe du site (extrapolation annuelle de #{extra2} pour un objectif de #{@goals.amr_news_by_year} "
         - if (extra2 >= @goals.amr_news_by_year)
           = image_tag "/images/icones/check.png", :alt => "Objectif atteint", :title => "Objectif atteint"
         - else
@@ -80,7 +80,7 @@
 
     %h3#moderation Sur les derniers jours
 
-    %p Il y a eu #{pluralize @stats.moderated_news(7), "dépêche modérée", "dépêches modérées"} (acceptation ou rejet) sur les 7 derniers jours, et #{pluralize @stats.moderated_news(31), "dépêche modérée", "dépêches modérées"} sur les 31 derniers jours.
+    %p Il y a eu #{pluralize @stats.moderated_news(7), "télégramme modéré", "télégrammes modérés"} (acceptation ou rejet) sur les 7 derniers jours, et #{pluralize @stats.moderated_news(31), "télégramme modéré", "télégrammes modérés"} sur les 31 derniers jours.
 
     - if Account.amr.size > 0
       %h4 Équipe de modération actuelle (#{Account.amr.size})
@@ -92,8 +92,8 @@
           %th Éditions (7j)
           %th Éditions (31j)
           %th Votes (31j)
-          %th Dernière dépêche
-          %th Auteur de dépêches
+          %th Dernier télégramme
+          %th Auteur de télégrammes
         - Account.amr.each do |user|
           %tr
             %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"

@@ -11,16 +11,16 @@ class Redaction
     push.start()
 
   onSubmit: (msg) ->
-    $.noticeAdd text: "#{msg.username} a soumis la dépêche", stay: true
+    $.noticeAdd text: "#{msg.username} a soumis le télégramme", stay: true
 
   onPublish: (msg) ->
-    $.noticeAdd text: "La dépêche a été acceptée par #{msg.username}", stay: true
+    $.noticeAdd text: "Le télégramme a été accepté par #{msg.username}", stay: true
 
   onRefuse: (msg) ->
-    $.noticeAdd text: "La dépêche a été refusée par #{msg.username}", stay: true
+    $.noticeAdd text: "Le télégramme a été refusé par #{msg.username}", stay: true
 
   onRewrite: (msg) ->
-    $.noticeAdd text: "La dépêche a été renvoyée dans l'espace de rédaction par #{msg.username}", stay: true
+    $.noticeAdd text: "Le télégramme a été renvoyé dans l'espace de rédaction par #{msg.username}", stay: true
 
   onVote: (msg) ->
     $.noticeAdd text: "#{msg.username} a voté #{msg.word}"

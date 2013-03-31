@@ -29,7 +29,7 @@
 
 = link_to "Réorganiser", reorganize_redaction_news_path(@news), :class => "reorganize"
 - if current_account.amr? || @news.submitted_by?(current_account)
-  = button_to "Soumettre la dépêche", submit_redaction_news_path(@news), :class => "submit_news"
+  = button_to "Soumettre le télégramme", submit_redaction_news_path(@news), :class => "submit_news"
 
 %article
   %strong Attention :

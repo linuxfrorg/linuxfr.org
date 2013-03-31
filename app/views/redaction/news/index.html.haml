@@ -1,8 +1,8 @@
-=h1 "Nouvelles dépêches"
+=h1 "Nouveaux télégrammes"
 
 - if @news.empty?
-  Aucune dépêche dans l'espace de rédaction.
+  Aucun télégramme dans l'espace de rédaction.
 - else
   = render @news
 
-= button_to "Commencer une nouvelle dépêche", '/redaction/news', :class => "create_news"
+= button_to "Commencer un nouveau télégramme", '/redaction/news', :class => "create_news"
