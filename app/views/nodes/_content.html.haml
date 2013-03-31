@@ -1,6 +1,7 @@
 %article{:class => css_class, :itemscope => true, :itemtype => "http://schema.org/Article"}
   %header
-    %h1(itemprop="name" class="entry-title")= title
+    %h1(itemprop="name" class="entry-title")
+      %blink= title
     .meta
       = meta
       - if record.node.cc_licensed?
