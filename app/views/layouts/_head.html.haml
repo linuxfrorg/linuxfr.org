@@ -1,12 +1,7 @@
 %head
   %meta(charset="utf-8")
   %title= @title.join(' - ').html_safe
-  - if current_stylesheet
-    = stylesheet_link_tag current_stylesheet, :media => nil
-  - elsif current_account
-    = stylesheet_link_tag current_account.stylesheet_url, :media => nil
-  - else
-    = stylesheet_link_tag 'application', :media => nil
+  = stylesheet_link_tag 'contrib/RonRonnement-Sepia', :media => nil
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
   - if @google_plus
     <link rel="publisher" href="https://plus.google.com/116704247328760228227" />
