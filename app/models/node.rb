@@ -44,7 +44,7 @@ class Node < ActiveRecord::Base
   def self.old_listing(types, order, page)
     day = Date.today - rand(5000).days
     foo = Node.public_listing(types, order).page(page || 0).per(8)
-    bar = Node.where(:created_at => (day...day+7.days)).by_date.limit(7)
+    bar = Node.visible.where(:content_type => types).where(:created_at => (day...day+7.days)).by_date.limit(7)
     nodes = foo.to_a.zip(bar.to_a).flatten.compact
     eval %{
     class <<nodes
