@@ -10,7 +10,7 @@ class NewsController < ApplicationController
   def index
     @order = params[:order]
     @order = "created_at" unless VALID_ORDERS.include?(@order)
-    @nodes = Node.public_listing(News, @order).page(params[:page])
+    @nodes = Node.old_listing(News, @order, params[:page])
     respond_with(@nodes)
   end
 

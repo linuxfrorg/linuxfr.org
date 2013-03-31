@@ -16,7 +16,7 @@ class HomeController < ApplicationController
     @ppp    = Node.ppp
     @banner = Banner.random
     @poll   = Poll.current
-    @nodes  = Node.public_listing(@types, @order).page(params[:page])
+    @nodes  = Node.old_listing(@types, @order, params[:page])
   end
 
 protected

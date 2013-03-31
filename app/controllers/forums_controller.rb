@@ -6,7 +6,7 @@ class ForumsController < ApplicationController
   caches_page   :show,  :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
 
   def index
-    @nodes = Node.public_listing(Post, @order).page(params[:page])
+    @nodes = Node.old_listing(Post, @order, params[:page])
     respond_to do |wants|
       wants.html
       wants.atom
