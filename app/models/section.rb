@@ -30,7 +30,7 @@ class Section < ActiveRecord::Base
 ### Image ###
 
   def image
-    "/images/sections/#{self.id}.png"
+    "/images/contrib/RonRonnement-Sepia/sections/#{self.id}.png"
   end
 
 ### Workflow ###
