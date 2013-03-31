@@ -166,7 +166,7 @@ button, input[type='submit'] {
     background: url("/images/icones/pin.png") no-repeat 3px 3px $C_CLAIR;
   }
   &.submit_board {
-    background: url("/images/icones/chat.png") no-repeat 2px 2px $C_CLAIR;
+    background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat 2px 2px $C_CLAIR;
   }
   &.submit_news {
     background: url("/images/icones/check_alt.png") no-repeat 2px 2px $C_CLAIR;
@@ -198,7 +198,7 @@ button, input[type='submit'] {
     text-indent: -9999em;
   }
   &.rewrite_news {
-    background: url("/images/icones/pen.png") no-repeat 2px 2px $C_CLAIR;
+    background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat 2px 2px $C_CLAIR;
   }
 }
 
@@ -213,14 +213,14 @@ button, input[type='submit'] {
 }
 .edit_client_app a,
 .new_content a {
-  background: url("/images/icones/pen.png") no-repeat 2px 2px $C_CLAIR;
+  background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat 2px 2px $C_CLAIR;
 }
 .toolbox .follow_feed a,
 #comments #follow-feed a {
-  background: url("/images/icones/rss.png") no-repeat 2px 2px $C_CLAIR;
+  background: url("/images/contrib/RonRonnement-Sepia/rss.png") no-repeat 2px 2px $C_CLAIR;
 }
 #comments #send-comment a {
-  background: url("/images/icones/comment.png") no-repeat 2px 2px $C_CLAIR;
+  background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat 2px 2px $C_CLAIR;
 }
 
 #stylesheets-edit button {
@@ -822,11 +822,11 @@ footer.actions {
     &[title="Lien du wiki interne LinuxFr.org"] {
       padding-left: 3px;
       border-left: 16px;
-      -moz-border-image:    url('/favicon.png') 0 0 0 32;
-      -o-border-image:      url('/favicon.png') 0 0 0 32;
-      -webkit-border-image: url('/favicon.png') 0 0 0 32;
-      -khtml-border-image:  url('/favicon.png') 0 0 0 32;
-      border-image:         url('/favicon.png') 0 0 0 32;
+      -moz-border-image:    url('/images/contrib/RonRonnement-Sepia/favicon.png') 0 0 0 32;
+      -o-border-image:      url('/images/contrib/RonRonnement-Sepia/favicon.png') 0 0 0 32;
+      -webkit-border-image: url('/images/contrib/RonRonnement-Sepia/favicon.png') 0 0 0 32;
+      -khtml-border-image:  url('/images/contrib/RonRonnement-Sepia/favicon.png') 0 0 0 32;
+      border-image:         url('/images/contrib/RonRonnement-Sepia/favicon.png') 0 0 0 32;
     }
   }
   ul {
@@ -1267,7 +1267,7 @@ body#news-show #redaction {
 #redaction .edition_in_place, #redaction .paragraph, #redaction .link {
   padding-left: 30px;
   position: relative;
-  .edit { background: url("/images/icones/pen.png") no-repeat 2px 2px $C_CLAIR; }
+  .edit { background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat 2px 2px $C_CLAIR; }
   .actions {
     position: absolute;
     top: 0;
