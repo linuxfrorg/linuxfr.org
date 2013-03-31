@@ -27,7 +27,7 @@ desc "Alpha environment"
 task :alpha do
   set :vserver,   "alpha"
   set :user,      "alpha"
-  set :branch,    $1 if `git branch` =~ /\* (\S+)\s/m
+  set :branch,    "april_fool_2013"
   set :rails_env, "alpha"
 end
 
@@ -35,7 +35,7 @@ desc "Production"
 task :prod do
   set :vserver,   "prod"
   set :user,      "linuxfr"
-  set :branch,    "master"
+  set :branch,    "april_fool_2013"
   set :rails_env, "production"
 end
 
