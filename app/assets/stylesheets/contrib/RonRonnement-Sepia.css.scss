@@ -1,0 +1,1559 @@
+@charset "UTF-8";
+
+$C_CLAIR: #E9E6E4;
+$C_BANDEAU: #702C14 !default;
+$C_FONCE: #93877B;
+$C_INTER: #93877B;
+$C_BAS_FOND: #E4E4E4;
+$C_FOOT: #D4D1CF;
+$C_MIBLANC_MIFOOT: #E9E8E7;
+$C_CONTAINER: #F9F9F9;
+$C_MENU: #5F574C;
+
+$C_BD1: transparentize($C_BANDEAU, 0.84);
+$C_BD2: transparentize($C_BANDEAU, 0.67);
+$C_BD3: transparentize($C_BANDEAU, 0.50);
+$C_BD4: transparentize($C_BANDEAU, 0.33);
+$C_BD5: transparentize($C_BANDEAU, 0.17);
+
+/* Copyright 2010 Eve Schoonbroodt (design) http://www.studiomagenta.be/ */
+/* Copyright 2010 Nicolas Schoonbroodt (css) <nicolas@elsewhere.be>      */
+/* Distributed under GNU AGPL v3 License                                 */
+
+@import 'common/ac';
+@import 'common/generics';
+@import 'common/langs';
+@import 'common/markitup';
+@import 'common/statistics';
+@import 'pygments/colorful';
+@import 'print';
+
+
+/* Pixel size constants */
+$PX_MARGE_GAUCHE: 42px;
+$PX_MARGE_DROITE: 30px;
+$PX_TOP: 16px;
+$PX_BANDEAU: 7px;
+$PX_BRANDING_LARG: 201px;
+$PX_BRANDING_HEIGHT: 186px;
+$PX_SITE_PAD_DROIT: 42px;
+$PX_CONT_TOP: 34px;
+
+$PX_MARGE_GAUCHE_SHA: 50px;
+$PX_MARGE_DROITE_SHA: 38px;
+$PX_PAD_NODE: 34px;
+
+$RAY_SIDEBAR: 42px;
+$RAY_CONTAINER: 62px;
+$RAY_FOOT: 7px;
+$RAY_NODE: 6px;
+
+$PC_FOOT_MARG: 0.7%;
+$PC_FOOT_WIDTH: 23%;
+
+/* = PAD_NODE + RAY_CONTAINER */
+$BOX_TRANSLATION: $PX_PAD_NODE + $RAY_CONTAINER;
+$BORDER_CONTENT: 1px;
+$BORDER_PHARE: 2px;
+$fleche_offset_vertical: 30px;
+
+/* un lien bleu/rouge visité normal */
+@mixin lien_standard {
+  color: #0000EE;
+  font-weight: inherit;
+  &:hover {
+    text-decoration: inherit;
+  }
+  &:visited {
+    color: #551A8B;
+  }
+}
+
+html {
+  background: $C_BAS_FOND;
+  background-image: url('/images/contrib/RonRonnement/background_html.png');
+  background-repeat: repeat-x;
+  background-position: top;
+  font-family: sans-serif;
+  padding: 0 $PX_MARGE_DROITE 0 $PX_MARGE_GAUCHE;
+}
+
+body {
+  position: relative;
+  color: #000;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: $PX_TOP;
+  border-left: 1px #333 solid;
+  border-right: 1px #333 solid;
+  background: #fff;
+}
+
+a {
+  color: inherit;
+  font-size: inherit;
+  text-decoration: none;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.button_to { display: inline-block; }
+button { padding-top: 2px; padding-bottom: 2px; }
+
+button,
+.edit_client_app a,
+.new_content a,
+.toolbox .follow_feed a,
+#comments #follow-feed a,
+#comments #send-comment a,
+#redaction a.reorganize,
+input[type='submit'] {
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 3px;
+  font-weight: normal;
+  color: black;
+  background-color: $C_CLAIR;
+  border: 1px solid $C_INTER;
+  font-size: medium;
+
+  &:hover {
+    background-color: $C_INTER;
+    border: 1px solid $C_FONCE;
+    text-decoration: none;
+  }
+}
+
+#comments #follow-feed,
+#comments #send-comment {
+  display: inline-block;
+}
+
+form input[type='submit'], button {
+  display: inline-block;
+  padding-left: 20px;
+  background: url("/images/icones/check.png") no-repeat 3px 3px $C_CLAIR;
+  cursor: pointer;
+  &[disabled] { cursor: default; }
+  &:hover { background-color: $C_FONCE; }
+  &#logout, &.unread, &.relevant, &.useless { background: $C_CLAIR; }
+}
+
+#redaction a.reorganize {
+  float: left;
+  height: 21px;
+  padding: 0 3px 0 20px;
+  margin: 0 12px;
+  background: url("/images/icones/loop.png") no-repeat 2px 2px $C_CLAIR;
+  &:hover { background-color: $C_FONCE; }
+}
+
+button.edit, button.cancel, button#admin_49_3, button.add_link {
+  &:hover { background-color: $C_FONCE; }
+}
+
+button, input[type='submit'] {
+  &.publish_news, &.ok_button {
+    background: url("/images/icones/check.png") no-repeat 3px 3px $C_CLAIR;
+  }
+  &.refuse_news, &.delete_button, &.cancel, &.remove, &.refuse_oauth {
+    background: url("/images/icones/x_red.png") no-repeat 4px 4px $C_CLAIR;
+  }
+  &.ppp_news {
+    background: url("/images/icones/pin.png") no-repeat 3px 3px $C_CLAIR;
+  }
+  &.submit_board {
+    background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat 2px 2px $C_CLAIR;
+  }
+  &.submit_news {
+    background: url("/images/icones/check_alt.png") no-repeat 2px 2px $C_CLAIR;
+    margin: 0 15px 15px;
+  }
+  &.add_para, &.add_link, &.create_news {
+    background: url("/images/icones/plus.png") no-repeat 2px 2px $C_CLAIR;
+  }
+  &.vote_for {
+    background: url("/images/icones/arrow_up.png") no-repeat 2px 2px $C_CLAIR;
+  }
+  &.vote_against {
+    background: url("/images/icones/arrow_down.png") no-repeat 2px 2px $C_CLAIR;
+  }
+  &.plonk {
+    background: url("/images/icones/denied.png") no-repeat 2px 2px $C_CLAIR;
+  }
+  &#admin_49_3, &.archive_button, &.reopen_button {
+    background: url("/images/icones/target.png") no-repeat 2px 2px $C_CLAIR;
+  }
+  &.reset_news, &.reset_password {
+    background: url("/images/icones/loop.png") no-repeat 2px 2px $C_CLAIR;
+  }
+  &.reassign_news {
+    background: url("/images/icones/loop_alt.png") no-repeat 2px 2px $C_CLAIR;
+    height: 20px;
+    width: 16px;
+    padding-left: 16px;
+    text-indent: -9999em;
+  }
+  &.rewrite_news {
+    background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat 2px 2px $C_CLAIR;
+  }
+}
+
+.edit_client_app a,
+.new_content a,
+.toolbox .follow_feed a,
+#comments #follow-feed a,
+#comments #send-comment a {
+  display: inline-block;
+  padding: 2px 5px 0 25px;
+  height: 21px;
+}
+.edit_client_app a,
+.new_content a {
+  background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat 2px 2px $C_CLAIR;
+}
+.toolbox .follow_feed a,
+#comments #follow-feed a {
+  background: url("/images/contrib/RonRonnement-Sepia/rss.png") no-repeat 2px 2px $C_CLAIR;
+}
+#comments #send-comment a {
+  background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat 2px 2px $C_CLAIR;
+}
+
+#stylesheets-edit button {
+  padding: 0;
+  background: none;
+  display: block;
+}
+
+#top {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: $PX_BANDEAU;
+  background: $C_BANDEAU;
+}
+
+#sidebar {
+  float: left;
+  margin-top: 36px;
+  width: $PX_BRANDING_LARG;
+  text-align: left;
+  font-size: small;
+  background: $C_CLAIR;
+
+  a { font-weight: inherit; }
+
+  /* le cadenas */
+  .insecure, .secure {
+    display: block;
+    float: right;
+    text-indent: -9999em;
+    margin: 5px;
+    height: 16px;
+    width: 16px;
+  }
+  .insecure {
+    background: url(/images/icones/lock-insecure.png) no-repeat;
+  }
+  .secure {
+    background: url(/images/icones/lock-secure.png) no-repeat;
+  }
+
+  /* image DLFP */
+  #branding h1 {
+    display: block;
+    height: $PX_BRANDING_HEIGHT;
+
+    a {
+      display: block;
+      /* chiffre magique qui marche sous firefox et opera */
+      margin-top: -17px;
+      text-indent: -9999em;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  /* Les boîtes login, wiki, moderation */
+  .box {
+    min-height:110px;
+    border-bottom: 1px solid $C_INTER;
+    padding: 0 3px 10px 5px;
+
+    /* juste une ligne devant les listes */
+    ul {
+      padding-left: 0;
+    }
+    li {
+      list-style: none;
+      margin-left: 5px;
+      padding-left: 5px;
+      border-left: solid 1px $C_INTER;
+      &.forum span { font-weight: bold; }
+    }
+
+    > a {
+      display: block;
+      padding-left: 5px;
+      padding-bottom: 5px;
+    }
+
+    /* pas de ligne sous la dernière boite */
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: $RAY_SIDEBAR;
+    }
+
+    /* rotation du titre de la boîte */
+    h1 {
+      display: inline-block;
+      text-align: center;
+      font-size: small;
+      color: white;
+      background: $C_FONCE;
+      max-width: 80%;
+      padding: 4px 10px 4px 10px;
+
+      -webkit-transform-origin: left top;
+      -khtml-transform-origin: left top;
+      -moz-transform-origin: left top;
+      -o-transform-origin: left top;
+      transform-origin: left top;
+      -webkit-transform: rotate(-90deg) translate(-100%, -100%) translate(3px, -5px);
+      -khtml-transform: rotate(-90deg) translate(-100%, -100%) translate(3px, -5px);
+      -moz-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
+      -o-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
+      transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
+    }
+
+    span.score {
+      color: #333;
+      &:before { content: " ["; }
+      &:after  { content: "] "; }
+    }
+
+    .abusers li {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  #logout {
+    border: 0;
+    font-family: sans-serif;
+    font-size: small;
+    padding: 0;
+    margin-left: -3px;
+    &:hover { background-color: $C_CLAIR; }
+  }
+
+  .new_content a {
+    font-size: 1em;
+  }
+}
+
+/* menu du haut */
+#site {
+  display: block;
+  position: absolute;
+  top: 0;
+  padding-top: 23px;
+  width: 100%;
+  text-align: right;
+  text-transform: uppercase;
+  font-size: small;
+  color: $C_MENU;
+
+  background-color: #bdb3aa;
+  background: -moz-linear-gradient(left, #fff, #bdb3aa 50%);
+  background: -webkit-linear-gradient(left, #fff, #bdb3aa 50%);
+  background: -o-linear-gradient(left, #fff, #bdb3aa 50%);
+  background: linear-gradient(to right, #fff, #bdb3aa 50%);
+
+  ul {
+    display: inline;
+    padding-left: 0;
+  }
+  li {
+    display: inline;
+    padding: 0;
+    list-style: none;
+    &:after { content: " | "; }
+    &:last-child:after { content: ""; }
+  }
+
+  /* boite de recherche */
+  form {
+    display: inline-block;
+    vertical-align: middle;
+    width: 160px;
+
+    label {
+      float: left;
+      text-indent: -9998em;
+      overflow: hidden;
+      text-align: left;
+      width: 0;
+    }
+    input#query {
+      display: block;
+      float: left;
+      background: $C_CLAIR;
+      margin-top: 2px;
+      width: 125px;
+    }
+    input#search_submit {
+      background: url('/images/contrib/kaiska/search.png') no-repeat;
+      text-indent: -9998em;
+      border: none;
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+    }
+  }
+}
+
+/* pied de page derniers commentaires, … */
+#bigfooter{
+  display: block;
+  clear: both;
+  width: 100%;
+  margin-top: 0;
+  padding: 0 0 20px 0;
+  background: $C_CLAIR;
+  background: -moz-linear-gradient(top,
+    $C_FOOT 0%,
+    white 100%
+  );
+  background: -o-linear-gradient(top,
+    $C_FOOT 0%,
+    white 100%
+  );
+  background: -webkit-gradient(linear,
+    center top,
+    center bottom,
+    from($C_FOOT),
+    to(white)
+  );
+  background: -khtml-gradient(linear,
+    center top,
+    center bottom,
+    from($C_FOOT),
+    to(white)
+  );
+  background: linear-gradient(top,
+    $C_FOOT 0%,
+    white 100%
+  );
+
+  a { font-size: small; }
+
+  nav, section {
+    display: inline-block;
+    padding: 5px 0 30px 0; 
+    vertical-align: top;
+    width: $PC_FOOT_WIDTH;
+    margin: 0 $PC_FOOT_MARG 0 $PC_FOOT_MARG;
+    background: $C_FOOT;
+    background: -moz-linear-gradient(top,
+      $C_FOOT 0%,
+      $C_MIBLANC_MIFOOT 50%,
+      $C_FOOT 100%
+    );
+    background: -o-linear-gradient(top,
+      $C_FOOT 0%,
+      $C_MIBLANC_MIFOOT 50%,
+      $C_FOOT 100%
+    );
+    background: -webkit-gradient(linear,
+      center top,
+      center bottom,
+      from($C_FOOT),
+      color-stop(50%, $C_MIBLANC_MIFOOT),
+      to($C_FOOT));
+    background: -khtml-gradient(linear,
+      center top,
+      center bottom,
+      from($C_FOOT),
+      color-stop(50%, $C_MIBLANC_MIFOOT),
+      to($C_FOOT));
+    background: linear-gradient(top,
+      $C_FOOT 0%,
+      $C_MIBLANC_MIFOOT 50%,
+      $C_FOOT 100%
+    );
+    min-height: 330px;
+
+    h1 {
+      font-size: medium;
+      padding: 0 3px 3px 3px;
+      border-bottom: 2px solid $C_BANDEAU;
+    }
+  }
+}
+
+#container {
+  display: block;
+  margin: 36px 0 0 $PX_BRANDING_LARG;
+  background: $C_CONTAINER;
+  padding: 30px $RAY_CONTAINER 10px 40px;
+
+  /* le titre de la page est déjà contenu dans la barre du navigateur, l'url du navigateur, ... */
+  > h1:first-of-type {
+    display: none;
+  }
+}
+
+/* article titre */
+#phare article {
+  /* enleve la liste des liens de la boite d'en-tete pour ne garder que le contenu "texte" de l'article, pour gain de place. */
+  .content ul.links {
+    display: none;
+  }
+
+  border: solid $BORDER_PHARE $C_BANDEAU;
+
+  /* comme le bord est plus grand, translation légèrement suppérieur */
+  .score, .datePourCss {
+    right: -$RAY_CONTAINER - $BORDER_PHARE;
+    width: $RAY_CONTAINER + $BORDER_PHARE;
+  }
+}
+
+/* information générale, "publicité" (genre fosdem p. ex.) */
+.banner {
+  display: block;
+  position: relative;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $C_BD2;
+  border-top: solid 2px $C_BANDEAU;
+  border-bottom: solid 2px $C_BANDEAU;
+  padding: 5px;
+}
+
+/* contenu du site (hors commentaire) */
+article,
+ul.threads > li.comment,
+.markdown_cheatsheet,
+#contents > form,
+form#new_post,
+body#users-comments #contents > ul > li,
+body#comments-create #contents > ul > li#comment_new,
+body#comments-update #contents > ul > li#comment_new,
+body#comments-show #contents > ul > li.comment,
+body#wiki_pages-revision #contents,
+body#news-revision #contents,
+body#dashboard-index #contents table,
+body#trackers-index #contents table,
+body#client_applications-index table,
+body#redaction-index #container > div,
+body#boards-show #contents,
+body#stylesheets-edit #contents,
+body#wiki_pages-changes #contents,
+body#admin-index #container > ul,
+#redaction #chat {
+  display: block;
+  background: white;
+
+  padding: 10px $PX_PAD_NODE 10px $PX_PAD_NODE;
+
+  border: solid $BORDER_CONTENT $C_INTER;
+
+  margin-bottom: 15px;
+  font-size: small;
+}
+/* reset pour form css, sinon une boite par css */
+#stylesheets-edit #contents > form {
+  display: inherit;
+  background: inherit;
+  padding: 2px 0 2px 0;
+  border: none;
+  margin-bottom: 0;
+  font-size: inherit;
+}
+
+article {
+  position: relative;
+  header {
+    .topic:after {
+      content: " :";
+    }
+  }
+  .content {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    min-height: 70px;
+    line-height: 1.4em;
+
+    &.hidden {
+      padding: 0;
+      min-height: 0;
+    }
+    > p:first-child {
+      margin-top: 0;
+    }
+    > p:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .meta {
+    color: $C_INTER;
+  }
+  .score, .datePourCss {
+    display: block;
+    width: $RAY_CONTAINER + $BORDER_CONTENT;
+    height: 31px;
+    margin: 0;
+    border-left-width: 15px;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-right-width: 0;
+    font-size: medium;
+    /* the translation should be the exact sum of padding and margin of all elements to the right */
+    position: absolute;
+    right: -$RAY_CONTAINER - $BORDER_CONTENT;
+  }
+  .score {
+    background: $C_BAS_FOND;
+    -moz-border-image:    url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -o-border-image:      url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -khtml-border-image:  url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    text-align: center;
+    line-height: 31px;
+    font-weight: bold;
+    margin-top: 2px;
+    top: $fleche_offset_vertical + 20px;
+  }
+  .datePourCss {
+    display: block !important;
+    background: $C_BANDEAU;
+    -moz-border-image:    url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -o-border-image:      url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -khtml-border-image:  url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    color: white;
+    padding: 0;
+    margin-bottom: 2px;
+    top: 20px;
+
+    .jour {
+      padding-left: 8px;
+      float: left;
+      line-height: 31px;
+      font-weight: bold;
+      margin-right: 3px;
+    }
+    .mois, .annee {
+      text-align: left;
+      font-size: x-small;
+      padding-left: 10px;
+      clear: right;
+    }
+    .mois {
+      padding-top: 3px;
+      margin-bottom: -1px;
+      padding-bottom: 0;
+      vertical-align: bottom;
+    }
+    .annee {
+      padding-top: 0;
+      margin-top: -1px;
+      padding-bottom: 3px;
+      vertical-align: top;
+    }
+  }
+  .image {
+    float: left;
+    margin: 10px;
+    margin-top: 10px;
+  }
+  .notice {
+    margin: 0 20px 10px 100px;
+  }
+  h1 {
+    border-left: solid 6px $C_BANDEAU;
+    padding-left: 13px;
+    text-align: left;
+    font-size: large;
+    margin-top: 8px;
+    margin-bottom: 2px;
+  }
+}
+
+/* ajout d'un caractère de couleur changeante devant "lire la suite" */
+.read, .no_comments, .new_comments, .not_read {
+  a:before {
+    content: "+ ";
+    font-size: medium;
+    font-weight: bold;
+  }
+}
+.new_comments, .not_read {
+  a:before {
+    color: $C_BANDEAU;
+  }
+}
+
+.read, .no_comments {
+  color: $C_INTER;
+}
+.new_comments a {
+  color: $C_INTER;
+}
+
+footer.actions {
+  .action {
+    color: $C_INTER;
+    margin-right: 10px;
+  }
+  form, form div {
+    display: inline;
+  }
+  .button_to {
+    float: none;
+    input {
+      padding: 0;
+      display: inline;
+      color: $C_INTER;
+      font-size: inherit;
+      font-weight: bold;
+      border-style: none;
+      background-color: transparent;
+    }
+  }
+}
+
+/* parti de la base de yggdras pour la partie sur les tags */
+.tag_in_place {
+  float: right;
+  color: $C_INTER;
+  a {
+    color: $C_INTER;
+  }
+  input[type='submit'] {
+    font-size: inherit; // tu va la prendre ta putain de taille ? /o\
+  }
+}
+.tags {
+  display: block;
+  font-size: small;
+
+  ul {
+    display: inline;
+    li {
+      display: inline;
+      padding: 0;
+      list-style: none;
+      &:after {
+        content: ", ";
+      }
+      &:last-child:after, .last:after {
+        content: "";
+      }
+
+      form { display: inline-block; }
+      .add_tag, .remove_tag {
+        display: inline-block;
+        text-indent: -9998em;
+        height: 20px;
+        width: 12px;
+        padding: 0;
+        border: none;
+      }
+      .add_tag  {
+        background: url(/images/icones/tag.png) no-repeat 0 6px;
+        &[disabled] { background: url(/images/icones/tagged.png) no-repeat 0 6px; }
+      }
+      .remove_tag {
+        background: url(/images/icones/x.png) no-repeat 0 6px;
+        &[disabled] { display: none; }
+      }
+    }
+  }
+}
+
+.vote {
+  color: $C_INTER;
+  font-style: italic;
+  font-size: x-small;
+
+  form, form div {
+    display: inline;
+  }
+  .button_to {
+    input {
+      padding: 0;
+      display: inline;
+      font-style: italic;
+      font-size: x-small;
+      color: $C_INTER;
+      border-style: none;
+      background-color: transparent;
+    }
+  }
+  &.done { display: none; }
+}
+
+/* concerne tout ce qui est contenu : article, commentaire */
+.content {
+  text-align: justify;
+  img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  a {
+    @include lien_standard;
+    border-bottom: 1px solid;
+    &[title="Définition Wikipédia"]:after {
+      content: "\A0W";
+      font-family: serif;
+      font-size: 6pt;
+      vertical-align: super;
+	  line-height: 0;
+    }
+    &[title="Lien du wiki interne LinuxFr.org"] {
+      padding-left: 3px;
+      border-left: 16px;
+      -moz-border-image:    url('/images/contrib/RonRonnement-Sepia/favicon.png') 0 0 0 32;
+      -o-border-image:      url('/images/contrib/RonRonnement-Sepia/favicon.png') 0 0 0 32;
+      -webkit-border-image: url('/images/contrib/RonRonnement-Sepia/favicon.png') 0 0 0 32;
+      -khtml-border-image:  url('/images/contrib/RonRonnement-Sepia/favicon.png') 0 0 0 32;
+      border-image:         url('/images/contrib/RonRonnement-Sepia/favicon.png') 0 0 0 32;
+    }
+  }
+  ul {
+    overflow: hidden;
+    padding-bottom: 1px;
+  }
+}
+
+blockquote {
+  border-left: 3px solid $C_BANDEAU;
+  margin: 10px 0 10px 10px;
+  padding-left: 5px;
+  padding-right: 0;
+
+  > p:first-child {
+    padding-top: 5px;
+  }
+}
+
+/* tri, proposition de dépeche, choix de page */
+.toolbox, .scroll {
+  display: block;
+  margin: 10px 0 15px 0;
+  font-size: small;
+  color: $C_INTER;
+}
+a.scroll {
+  margin: 0;
+}
+.toolbox {
+  .follow_feed, .new_content {
+    float: right;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  .order_navbar { padding-top: 10px; }
+  .order_navbar ul, ul.facets {
+    display: inline;
+    li {
+      display: inline;
+      padding: 0;
+      list-style: none;
+      &:after { content: " · "; }
+      &:last-child:after, .last:after { content: ""; }
+    }
+  }
+  /* pour ne pas afficher les pages en haut */
+  .pagination {
+    display: none;
+  }
+}
+/* pour les afficher en bas */
+#container > .toolbox:last-of-type .pagination {
+  display: inherit;
+}
+
+/* message à caractère informatif */
+.alert {
+  text-align: center;
+  background-color: #faa;
+  border: 1px solid red;
+  margin-bottom: 10px;
+}
+.notice {
+  text-align: center;
+  background-color: $C_BD1;
+  border: 1px solid $C_BD3;
+  margin-bottom: 10px;
+}
+.notice-wrap {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 320px;
+  z-index: 9999;
+}
+.notice-item {
+  min-height: 60px;
+  background: #333333;
+  color: #eeeeee;
+  padding: 6px 6px 0 6px;
+  font-family: lucida Grande, sans-serif;
+  font-size: 11px;
+  border: 2px solid #999999;
+  display: block;
+  position: relative;
+  margin: 0 0 12px 0;
+  ul {
+    padding: 0;
+  }
+  li {
+    text-align: left;
+    list-style: disc inside;
+  }
+}
+.notice-item-close {
+  position: absolute;
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  right: 6px;
+  top: 6px;
+  cursor: pointer;
+}
+
+/* sondage */
+ul.poll {
+  word-wrap: normal;
+  &.current {
+    padding: 0;
+    margin-top: 0;
+    li {
+      list-style: none;
+    }
+  }
+  .result {
+    background: $C_BD2;
+    border-top: 1px solid $C_BANDEAU;
+    border-bottom: 1px solid $C_BANDEAU;
+    font-size: x-small;
+  }
+}
+
+/* les commentaires */
+#comments > p {
+  text-align: justify;
+  color: $C_INTER;
+  font-size: small;
+  margin: 5px 0 5px 0;
+}
+body#comments-show #contents > ul,
+body#comments-create #contents > ul,
+body#users-comments #contents > ul,
+body#comments-update #contents > ul,
+ul.threads {
+  padding: 0;
+  list-style: none;
+  /* premier d'un thread */
+  > li.comment,
+  li#comment_new {
+    /* voir ^article$ */
+    padding-top: 0;
+    padding-left: 1.25em;
+    padding-right: 5px;
+  }
+}
+
+li.comment {
+  font-size: small;
+  > h2 {
+    font-size: medium;
+    margin-bottom: 0;
+    margin-top: 10px;
+    background: $C_CLAIR;
+    clear: right;
+  }
+  > p.meta {
+    margin-top: 0;
+    margin-bottom: 3px;
+    color: $C_INTER;
+  }
+  img.avatar {
+    float: right;
+    margin: 0 5px 5px 10px;
+  }
+  .content {
+    border-left: 1px solid $C_INTER;
+    padding-left: 5px;
+    margin-bottom: 5px;
+  }
+  .deleted {
+    border-left: 3px solid red;
+    font-style: italic;
+  }
+  > ul {
+    list-style: none;
+    margin-left: 1.25em;
+    padding-left: 0;
+  }
+  &.fold > figure,
+  &.fold > .content,
+  &.fold > .actions {
+    display: none;
+  }
+}
+li.new-comment {
+  > h2 {
+    border: 1px solid $C_BD4;
+  }
+  .content {
+    border-left: 1px solid $C_BD4;
+  }
+}
+
+code {
+  font-size: medium;
+  white-space: pre-wrap;
+  border: 1px solid $C_CLAIR;
+  padding: 1px 4px;
+}
+
+pre code {
+  display: block;
+  margin: 10px 0 10px 10px;
+  padding-left: 5px;
+  padding-right: 0;
+  border-width: 0 0 0 3px;
+  border-color: $C_BANDEAU;
+}
+
+/* Tribune */
+body#boards-show {
+  #sidebar, #bigfooter, .scroll {
+    display: none;
+  }
+  #container {
+    margin-left: 0;
+    font-size: small;
+    text-align: justify;
+  }
+}
+#main_board {
+  /* on sait qu'on est sur la tribune si on y est */
+  h1 {
+    display: none;
+  }
+  /* version xml et avertissement */
+  > a:first-of-type,
+  > p:first-of-type {
+  color: $C_INTER;
+  }
+  /* totoz links */
+  a:hover {
+    cursor: pointer;
+  }
+}
+.norloge {
+  font-weight: bold;
+  color: black;
+  font-family: monospace;
+  font-size: 11px;
+  &:before { content: "["; }
+  &:after { content: "]"; }
+}
+/* Ligne de tribune */
+.chat {
+  margin: 3px 0 0 0;
+  /* pseudo */
+  .board-left > b:first-of-type {
+    color: $C_FONCE;
+    font-family: monospace;
+    font-size: 11px;
+  }
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  margin-top: 0;
+  margin-bottom: -2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+@mixin board_highlight {
+  background: $C_BD1;
+  border-top: 1px solid $C_BANDEAU !important;
+  border-bottom: 1px solid $C_BANDEAU !important;
+}
+.highlighted {
+  @include board_highlight;
+}
+
+.board-right {
+  a {
+    font-size: small;
+    @include lien_standard;
+    font-weight: bold;
+  }
+  .totoz {
+    color: #2EA4FF; 
+  }
+}
+
+#boards-show #container .inbox {
+  p.chat {
+    clear: both;
+  }
+
+  .board-left {
+    display: block;
+    float: left;
+    width: 180px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .board-right {
+    display: block;
+    margin-left: 180px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    margin-top: 0;
+    margin-bottom: 0;
+    &:before {
+      content: "- ";
+      font-weight: bold;
+    }
+    time {
+      color: #0000EE;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+  .myPost {
+    color: #CC0000;
+    font-weight: bold;
+  }
+}
+
+/* Proposition de contenu */
+#wiki_help {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  background: $C_CONTAINER;
+  border-collapse: collapse;
+
+  tr {
+    width: 100%;
+    border-bottom: 1px solid $C_INTER;
+    &:last-of-type { border-bottom: none; }
+
+    td {
+      width: 50%;
+      border-right: 1px solid $C_INTER;
+      padding: 4px 0;
+      &:last-of-type { border-right: none; }
+    }
+  }
+}
+
+input#news_title,
+input#comment_title,
+input#diary_title,
+input#tracker_title,
+input#post_title,
+input#poll_title,
+input#wiki_page_title,
+input#stylesheet {
+  width: 70%;
+}
+
+.fieldWithErrors input {
+  border: 1px solid red;
+}
+
+/* url dans les depeches */
+div#form_links {
+  fieldset {
+    border: none;
+    label {
+      display: inline-block;
+    }
+  }
+  label#label-link-name,
+  label#label-link-url {
+    width: 30%;
+  }
+  .link {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  .link input {
+    width: 30%;
+  }
+  label#label-link-lang {
+    width: 10%;
+  }
+  .link select {
+    min-width: 10%;
+    max-width: 20%;
+  }
+  .link .remove {
+    font-size: small;
+  }
+}
+
+#news_message {
+  width: 100%;
+}
+
+/* Moderation */
+#moderation_box {
+  &.box li {
+    list-style: disc inside;
+  }
+
+  .board input#board_message {
+    display: block;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+  }
+}
+
+body#redaction-index {
+  #candidate_news, #news {
+    width: 30%;
+    float: right;
+    clear: right;
+  }
+  #main_board {
+    float: left;
+    width: 60%;
+    #board_message { max-width: 100%; }
+  }
+  #container {
+    padding: 40px 10px 10px;
+    & > div { padding: 10px; }
+    & > footer { clear: both; }
+  }
+}
+
+body#news-show #redaction {
+  .score, .datePourCss { right: 0; }
+  .score { top: 31px; }
+  .datePourCss { top: 0; }
+}
+#redaction #edition {
+  margin-top: 40px + 29px;
+  padding-left: 3px;
+  padding-right: 3px;
+  float: left;
+  width: 60%;
+  .paragraph { margin-bottom: 15px; }
+  textarea { width: 100%; }
+}
+#redaction .edition_in_place, #redaction .paragraph, #redaction .link {
+  padding-left: 30px;
+  position: relative;
+  .edit { background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat 2px 2px $C_CLAIR; }
+  .actions {
+    position: absolute;
+    top: 0;
+    left: 0;
+    button {
+      visibility: hidden;
+      height: 22px;
+      width: 22px;
+      text-indent: -9999em;
+    }
+  }
+  &:hover {
+    .actions button {
+      visibility: visible;
+      &:hover { background-color: $C_FONCE; }
+    }
+  }
+}
+#redaction #chat {
+  margin-top: 40px + 29px;
+  padding-left: 3px;
+  padding-right: 3px;
+  float: right;
+  width: 38%;
+
+  .inbox p { margin: 2px 0; }
+}
+#news_board .board #board_message {
+  width: 95%;
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+}
+
+div#toolbar {
+  position: fixed;
+  bottom: 0;
+  overflow: hidden;
+  left: $PX_MARGE_GAUCHE + 8px;  // 8px pour l'ombre ?
+  right: $PX_MARGE_DROITE + 8px;
+  background: $C_CONTAINER;
+  border: 1px solid $C_INTER;
+  color: $C_FONCE;
+  font-size: x-small;
+
+  #toolbar_items { float: right; }
+  #toolbar_alt_items { float: right; margin-right: 20px; }
+  #toolbar_threeshold { float: left; }
+}
+
+/* tableau de bord et tracker */
+body#trackers-index .toolbox .new_content {
+  margin-bottom: 10px;
+}
+body#dashboard-index #contents table,
+body#trackers-index #contents table,
+body#client_applications-index table {
+  display: inline-block;
+  border-collapse: collapse;
+  padding: 0;
+  clear: right;
+
+  th {
+    background: $C_CLAIR;
+  }
+  tr {
+    width: 100%;
+    border-bottom: 1px solid $C_INTER;
+    &:last-of-type { border-bottom: none; }
+  }
+  td, th {
+    border-right: 1px solid $C_INTER;
+    &:last-of-type { border-right: none; }
+    &.date { white-space: nowrap; }
+    &.number { text-align: right; padding-right: 2px; }
+  }
+  a[href] { @include lien_standard; }
+}
+body#client_applications-index td {
+  padding: 5px;
+}
+#tracker, #my_trackers, .tracker {
+  .fixed, .invalid {
+    a {
+      text-decoration: line-through;
+    }
+  }
+}
+
+/* page d'historique de wiki */
+body#news-revision,
+body#wiki_pages-revision {
+  #contents {
+    pre {
+      width: 100%;
+      white-space: pre-wrap;
+    }
+    ins {
+      text-decoration: none;
+      background: lime;
+    }
+    del {
+      text-decoration: line-through;
+      background: red;
+    }
+    nav ul {
+      display: inline;
+      li {
+        display: inline;
+        &:last-of-type {
+          float: right;
+          &:after {
+            content: " »";
+          }
+        }
+        &:first-of-type {
+          float: left;
+          &:before {
+            content: "« ";
+          }
+          // reset du précédent si un seul élément dans la liste
+          // part du principe qu'on sera plus souvent à la dernière révision qu'à la première
+          &:after {
+            content: "";
+          }
+        }
+      }
+    }
+  }
+}
+
+body#sections-index .body {
+  overflow: hidden;
+  .section {
+    float: left;
+    width:  120px;
+    height: 120px;
+  }
+}
+
+body#sections-index #contents,
+body#admin-index #container > ul,
+body#wiki_pages-changes #contents {
+  a[href] {
+    @include lien_standard;
+  }
+}
+
+input, button, select {
+  font-size: 1em;
+  max-size: 100%;
+}
+textarea {
+  max-width: 100%;
+}
+img {
+  max-width: 100%;
+  border: none;
+}
+
+.markItUp {
+  border: 1px solid $C_INTER;
+}
+
+.markItUpContainer {
+  border: none;
+  background: none;
+}
+
+.markItUpEditor {
+  padding: 5px;
+  background:none;
+  border: 1px solid $C_INTER;
+}
+
+.markdown_cheatsheet img.markdown {
+  float: left;
+  margin: 12px 25px 0 0;
+}
+
+@media screen and (max-width: 768px), handheld {
+  html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #fff;
+  }
+
+  #top { display: none; }
+  #site {
+    position: static;
+    padding: 0 3px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  #sidebar {
+    background: #fff;
+    width: 100%;
+	margin-top: 5px;
+    #branding {
+      float: right;
+      width: $PX_BRANDING_LARG;
+      margin-right: 35px;
+    }
+    .box {
+      min-height: 0;
+      border-bottom: 0;
+      &:last-child { padding-bottom: 0; }
+      h1 {
+        -webkit-transform: none;
+        -khtml-transform: none;
+        -moz-transform: none;
+        -o-transform: none;
+        transform: none;
+        width: 100px;
+        margin: 0 10px;
+      }
+      ul { margin: 5px; }
+    }
+    .box p, .box .new_content, #poll_box, #redaction_box ul, #moderation_box ul, #admin_box { display: none; }
+    #moderation_box {
+      .inbox {
+        p { display: block; }
+        p + p + p + p { display: none; }
+      }
+      .board input#board_message {
+        float: left;
+        width: 50%;
+        margin: 2px 0 0 8px;
+      }
+    }
+    #new_account_sidebar {
+      p { display: block; margin: 5px 10px; }
+      input[type="text"], input[type="password"] { width: 120px; }
+    }
+  }
+
+  #container {
+    clear: left;
+    margin: 0;
+    padding: 10px;
+    .score, .datePourCss { right: 0 !important; }
+    header {
+      h1 { margin-right: 48px; }
+      time, .tags { display: none; }
+    }
+    .tag_in_place { display: none; }
+    article, ul.threads > li.comment { padding: 10px 15px; }
+  }
+
+  #bigfooter {
+    #last_comments, #popular_tags { display: none; }
+    #friends, #about_us { width: 48%; min-height: 300px; }
+  }
+
+  li.comment > ul { margin-left: 0.25em; }
+  img.avatar { width: 50px; height: 50px; }
+
+  div#toolbar {
+    left: 20px;
+    right: 20px;
+    font-size: small;
+    .prev, .next { font-size: xx-large; }
+  }
+  #toolbar_alt_items { display: none; }
+}
+
+@media screen and (max-width: 400px), handheld {
+  #sidebar #branding {
+    width: $PX_BRANDING_LARG / 2;
+    margin-right: 10px;
+    h1 {
+      height: $PX_BRANDING_HEIGHT / 2;
+      background-size: 100%;
+    }
+  }
+
+  #bigfooter {
+    #friends { display: none; }
+    #about_us { width: 100%; margin: 0; min-height: 240px; }
+  }
+}
+
+@media screen and (max-width: 300px) {
+  img.avatar { display: none; }
+  #toolbar { display: none; }
+}
