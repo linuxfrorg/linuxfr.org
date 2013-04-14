@@ -194,6 +194,13 @@ LinuxfrOrg::Application.routes.draw do
     get "/statistiques/:action"
   end
 
+  # Badges SGL 2013
+  controller :badges do
+    get  "/solutions-linux-2013/badges.csv" => :index
+    get  "/solutions-linux-2013/badge" => :new
+    post "/solutions-linux-2013/badge" => :create, :as => :badges
+  end
+
   # Static pages
   controller :static do
     get "/proposer-un-contenu" => :submit_content, :as => :submit_content

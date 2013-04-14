@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321210304) do
+ActiveRecord::Schema.define(:version => 20130414173953) do
 
   create_table "access_grants", :force => true do |t|
     t.integer  "account_id"
@@ -61,6 +61,17 @@ ActiveRecord::Schema.define(:version => 20130321210304) do
   add_index "accounts", ["reset_password_token"], :name => "index_accounts_on_reset_password_token", :unique => true
   add_index "accounts", ["role"], :name => "index_accounts_on_role"
   add_index "accounts", ["user_id"], :name => "index_accounts_on_user_id"
+
+  create_table "badges", :force => true do |t|
+    t.string   "title"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "company"
+    t.string   "country"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "banners", :force => true do |t|
     t.string  "title"
