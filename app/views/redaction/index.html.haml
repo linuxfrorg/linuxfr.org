@@ -27,4 +27,6 @@
   - else
     %ul
       = list_of @news do |n|
+        - if n.node.board_status(current_account) == :new_board
+          = image_tag "/images/icones/chat.png", :alt => "Nouveaux !", :title => "Il y a de l'activité sur cette dépêche"
         = n.title
