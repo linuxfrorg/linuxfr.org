@@ -111,6 +111,7 @@ LinuxfrOrg::Application.routes.draw do
   get "/redaction" => "redaction#index"
   namespace :redaction do
     resources :news, :except => [:new, :destroy] do
+      collection { get :moderation }
       member do
         get "/revisions/:revision" => :revision, :as => :revision
         post :submit

@@ -6,6 +6,7 @@
 
 #news
   %h1 Dépêches en cours de rédaction
+  - feed "Flux atom des dépêches en cours de rédaction", "/redaction/news.atom"
   = button_to "Commencer une nouvelle dépêche", "/redaction/news", :class => "create_news"
   (sous #{link_to "licence CC by-sa", "http://creativecommons.org/licenses/by-sa/3.0/deed.fr"})
   %p
@@ -22,6 +23,7 @@
 
 #candidate_news
   %h1 Dépêches en cours de modération
+  - feed "Flux atom des dépêches en cours de modération", "/redaction/news/moderation.atom"
   - if @news.empty?
     Aucune dépêche.
   - else
