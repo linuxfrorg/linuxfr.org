@@ -19,6 +19,8 @@
       = link_to "Afficher toutes les dépêches", "/redaction/news"
     %ul
       = list_of @drafts do |n|
+        - if n.node.board_status(current_account) == :new_board
+          = image_tag "/images/icones/chat.png", :alt => "Nouveaux !", :title => "Il y a de l'activité sur cette dépêche"
         = link_to n.title, [:redaction, n]
 
 #candidate_news
@@ -29,6 +31,4 @@
   - else
     %ul
       = list_of @news do |n|
-        - if n.node.board_status(current_account) == :new_board
-          = image_tag "/images/icones/chat.png", :alt => "Nouveaux !", :title => "Il y a de l'activité sur cette dépêche"
         = n.title
