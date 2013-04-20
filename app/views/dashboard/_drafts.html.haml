@@ -1,0 +1,15 @@
+%h2
+  Vos dépêches dans l'espace de rédaction
+- if @drafts.empty?
+  Vous n'êtes à l'origine d'aucune dépêche dans l'espace de rédaction.
+- else
+  %table#my_drafts
+    %tr
+      %th Section
+      %th Sujet
+      %th Date de création
+    - @news.each do |news|
+      %tr
+        %td= news.section.title
+        %td= news.title
+        %td= l news.created_at

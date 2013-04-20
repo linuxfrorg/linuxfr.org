@@ -10,6 +10,7 @@ class DashboardController < ApplicationController
     @posts    = Node.where(:user_id => current_user.id).on_dashboard(Post).limit(10)
     @trackers = Node.where(:user_id => current_user.id).on_dashboard(Tracker).limit(10)
     @news     = News.where(:author_email => current_account.email).candidate
+    @drafts   = News.where(:author_email => current_account.email).draft
   end
 
   def answers
