@@ -33,11 +33,6 @@ FactoryGirl.define do
     association :account, :factory => :writer_account
   end
 
-  factory :reviewer, :class => User do
-    name "Pierre Jarillon"
-    association :account, :factory => :reviewer_account
-  end
-
   factory :moderator, :class => User do
     name "Florent Zara"
     association :account, :factory => :moderator_account

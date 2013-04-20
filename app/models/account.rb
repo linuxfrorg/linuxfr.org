@@ -38,7 +38,6 @@
 # There are several levels of users:
 #   * anonymous     -> they have no account and can only read public contents
 #   * authenticated -> they can read public contents and submit new ones
-#   * reviewer      -> they can review the news while they are in moderation
 #   * moderator     -> they makes the order and the security ruling
 #   * admin         -> the almighty users
 #
@@ -118,18 +117,16 @@ class Account < ActiveRecord::Base
 ### Role ###
 
   scope :active,    where("role != 'inactive'")
-  scope :reviewer,  where(:role => "reviewer")
   scope :moderator, where(:role => "moderator")
   scope :admin,     where(:role => "admin")
-  scope :amr,       where(:role => %w[admin moderator reviewer])
+  scope :amr,       where(:role => %w[admin moderator])
 
   state_machine :role, :initial => :visitor do
-    event :inactivate            do transition all                 => :inactive  end
-    event :reactivate            do transition :inactive           => :visitor   end
-    event :remove_amr_right      do transition all - :inactive     => :visitor   end
-    event :give_reviewer_rights  do transition all - :inactive     => :reviewer  end
-    event :give_moderator_rights do transition [:reviewer, :admin] => :moderator end
-    event :give_admin_rights     do transition :moderator          => :admin     end
+    event :inactivate            do transition all             => :inactive  end
+    event :reactivate            do transition :inactive       => :visitor   end
+    event :remove_amr_right      do transition all - :inactive => :visitor   end
+    event :give_moderator_rights do transition all - :inactive => :moderator end
+    event :give_admin_rights     do transition all - :inactive => :admin     end
     after_transition :do => :log_role
   end
 
@@ -137,9 +134,9 @@ class Account < ActiveRecord::Base
     logs.create(:description => "Changement de rôle : #{role_was} → #{role}")
   end
 
-  # An AMR is someone who is either an admin, a moderator or a reviewer
+  # An AMR is someone who is either an admin or a moderator
   def amr?
-    admin? || moderator? || reviewer?
+    admin? || moderator?
   end
 
   def active_for_authentication?

@@ -12,10 +12,6 @@ module StaticHelper
     Account.moderator.all.map { |a| user = a.user; link_to user.name, user }.to_sentence
   end
 
-  def helper_reviewer_list
-    Account.reviewer.all.map { |a| user = a.user; link_to user.name, user }.to_sentence
-  end
-
   def helper_responses_list
     responses = Response.all.map { |r| content_tag(:li, content_tag(:pre, r.content)) }
     content_tag(:ul, responses.join.html_safe)

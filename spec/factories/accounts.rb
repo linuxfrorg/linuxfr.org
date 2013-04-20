@@ -52,11 +52,6 @@ FactoryGirl.define do
       role  "visitor"
     end
 
-    factory :reviewer_account do
-      login "jarillon"
-      role  "reviewer"
-    end
-
     factory :moderator_account do
       login "floxy"
       role  "moderator"

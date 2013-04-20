@@ -75,7 +75,7 @@ class News < Content
 
   # The workflow for news is not simple, and can traverse these states:
   #  - draft: the news is the redaction space and its writing is not finished
-  #  - candidate: the news has been submitted and can be examined by reviewers
+  #  - candidate: the news has been submitted and can be examined by moderators
   #  - waiting: the news is in the moderation space, but the votes are blocked (aka 755)
   #  - published: the news is accepted and visible by any visitor
   #  - refused: the news is not good enough and has been refused by a moderator
