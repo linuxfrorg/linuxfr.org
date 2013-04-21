@@ -8,7 +8,7 @@
       %th Section
       %th Sujet
       %th Date de création
-    - @news.each do |news|
+    - @drafts.each do |news|
       %tr
         %td= news.section.title
         %td= news.title
