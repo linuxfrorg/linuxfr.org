@@ -22,8 +22,10 @@ atom_feed(:root_url => news_index_url, "xmlns:wfw" => "http://wellformedweb.org/
       second = content_tag(:div, news.second_part)
       comments = atom_comments_link(news_url news)
       entry.content(first + links + second + comments, :type => 'html')
-      entry.author do |author|
-        author.name(news.author_name)
+      news.attendees.each do |attendee|
+        entry.author do |author|
+          author.name(attendee.name)
+        end
       end
       entry.category(:term => news.section.title)
       news.node.popular_tags.each do |tag|
