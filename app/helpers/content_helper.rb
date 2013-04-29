@@ -7,7 +7,7 @@ module ContentHelper
 
   def htmldiff(was, new)
     dmp = DiffPatchMatch.new
-    diffs = dmp.diff_main(was, new)
+    diffs = dmp.diff_main(was || "", new)
     dmp.diff_cleanupSemantic diffs
     diffs.map do |diff|
       case diff.op
