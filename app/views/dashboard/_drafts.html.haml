@@ -11,5 +11,5 @@
     - @drafts.each do |news|
       %tr
         %td= news.section.title
-        %td= news.title
+        %td= link_to news.title, [:redaction, news]
         %td= l news.created_at
