@@ -320,6 +320,10 @@ class News < Content
     refusable_by? account
   end
 
+  def followupable_by?(account)
+    draft? && account.admin?
+  end
+
   def reassignable_by?(account)
     account.moderator? || account.admin?
   end

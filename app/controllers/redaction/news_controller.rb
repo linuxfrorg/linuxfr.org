@@ -63,6 +63,12 @@ class Redaction::NewsController < RedactionController
     redirect_to [@news.draft? ? :redaction : :moderation, @news]
   end
 
+  def followup
+    enforce_followup_permission(@news)
+    NewsNotifications.followup(@news, params[:message]).deliver
+    redirect_to [:redaction, @news], :notice => "Courriel de relance envoyé"
+  end
+
   def submit
     if @news.unlocked?
       @news.submit_and_notify(current_user)

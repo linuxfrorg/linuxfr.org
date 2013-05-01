@@ -142,6 +142,12 @@ $("#account_user_attributes_avatar").change ->
   url = window.URL.createObjectURL(@files[0])
   $(@).parents("form").find(".avatar").attr "src", url
 
+# Follow-up
+$("#followup").click ->
+  $("#followup").hide()
+  $("#followup_form").show()
+  false
+
 # Admins
 $("#admin_49_3").click ->
   $("#admin_49_3").hide()

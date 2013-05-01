@@ -30,6 +30,16 @@
 = link_to "Réorganiser", reorganize_redaction_news_path(@news), :class => "reorganize"
 - if current_account.amr? || @news.submitted_by?(current_account)
   = button_to "Soumettre la dépêche", submit_redaction_news_path(@news), :class => "submit_news"
+- if current_account.can_followup? @news
+  %button#followup Relancer les rédacteurs
+  #followup_form(style="display: none;")
+    = form_tag followup_redaction_news_path(@news) do
+      %p
+        Vous pouvez envoyer un message de relance aux participants de cette dépêche
+        pour leur demander de finaliser cette dépêche. N'hésitez pas à leur donner
+        des précisions (date de sortie imminente, demande de précisions, etc.).
+      = text_area_tag :message
+      = submit_tag 'Envoyer'
 
 %article
   %strong Attention :

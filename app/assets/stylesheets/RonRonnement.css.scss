@@ -184,6 +184,9 @@ button, input[type='submit'] {
   &.rewrite_news {
     background: url("/images/icones/pen.png") no-repeat 2px 2px $C_CLAIR;
   }
+  &#followup {
+    background: url("/images/icones/at.png") no-repeat 2px 2px $C_CLAIR;
+  }
 }
 
 .edit_client_app a,

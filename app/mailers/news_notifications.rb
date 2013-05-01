@@ -3,11 +3,11 @@
 # This mailer is used to notify news writers when their news are accepted or refused.
 #
 class NewsNotifications < ActionMailer::Base
-  default :from => "LinuxFr.org <moderateurs@linuxfr.org>",
-          :cc   => "LinuxFr.org <moderateurs@linuxfr.org>"
+  MODERATORS = "Equipe de modération LinuxFr.org <moderateurs@linuxfr.org>"
+  EDITORS    = "Equipe de rédaction LinuxFr.org <redacteurs@linuxfr.org>"
 
   def accept(news)
-    send_email "Dépêche acceptée :", news
+    send_moderation_email "Dépêche acceptée :", news
   end
 
   def self.refuse_with_message(news, message, template)
@@ -25,31 +25,46 @@ class NewsNotifications < ActionMailer::Base
   def refuse(news, message)
     @news    = news
     @message = message
-    send_email "Dépêche refusée :", news
+    send_moderation_email "Dépêche refusée :", news
   end
 
   def refuse_template(news, message, template)
     @news    = news
     @message = message.present? ? "Le modérateur a tenu à ajouter : #{message}\n\n" : ""
     @response= Response.find(template)
-    send_email "Dépêche refusée :", news
+    send_moderation_email "Dépêche refusée :", news
   end
 
   def refuse_en(news)
     @news = news
-    send_email "Rejected news:", news
+    send_moderation_email "Rejected news:", news
   end
 
   def rewrite(news)
-    send_email "Dépêche renvoyée en rédaction :", news
+    send_redaction_mail "Dépêche renvoyée en rédaction :", news
+  end
+
+  def followup(news, message)
+    @message = message.present? ? "\n#{message}\n" : ""
+    send_redaction_mail "Relance", news
   end
 
 protected
 
-  def send_email(subject, news)
+  def send_redaction_mail(subject, news)
+    @news = news
+    mail :from    => EDITORS,
+         :to      => EDITORS,
+         :bcc     => news.attendees.map(&:account).compact.map(&:email),
+         :subject => "[LinuxFr.org] #{subject} #{news.title}"
+  end
+
+  def send_moderation_email(subject, news)
     @news = news
     headers["X-Moderator"] = news.moderator.name
-    mail :to      => news.author_email,
+    mail :from    => MODERATORS,
+         :to      => news.author_email,
+         :cc      => MODERATORS,
          :subject => "[LinuxFr.org] #{subject} #{news.title}"
   end
 
