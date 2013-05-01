@@ -38,7 +38,8 @@
 # There are several levels of users:
 #   * anonymous     -> they have no account and can only read public contents
 #   * authenticated -> they can read public contents and submit new ones
-#   * moderator     -> they makes the order and the security ruling
+#   * moderator     -> they make the order and the security ruling
+#   * editor        -> they edit the news in the redaction space
 #   * admin         -> the almighty users
 #
 class Account < ActiveRecord::Base
@@ -118,14 +119,16 @@ class Account < ActiveRecord::Base
 
   scope :active,    where("role != 'inactive'")
   scope :moderator, where(:role => "moderator")
+  scope :editor,    where(:role => "editor")
   scope :admin,     where(:role => "admin")
   scope :amr,       where(:role => %w[admin moderator])
 
   state_machine :role, :initial => :visitor do
     event :inactivate            do transition all             => :inactive  end
     event :reactivate            do transition :inactive       => :visitor   end
-    event :remove_amr_right      do transition all - :inactive => :visitor   end
+    event :remove_all_rights     do transition all - :inactive => :visitor   end
     event :give_moderator_rights do transition all - :inactive => :moderator end
+    event :give_editor_rights    do transition all - :inactive => :editor    end
     event :give_admin_rights     do transition all - :inactive => :admin     end
     after_transition :do => :log_role
   end

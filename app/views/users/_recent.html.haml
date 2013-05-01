@@ -12,6 +12,16 @@
       %li Karma&nbsp;: #{a.karma} (minimum&nbsp;: #{a.min_karma}, maximum&nbsp;: #{a.max_karma})
     - if current_account.admin?
       = button_to "+50XP", karma_admin_account_path(@user.account.id)
+      - if a.editor?
+        = button_to "Retour simple visiteur", admin_account_editor_path(a.id), :method => :delete
+      - elsif a.moderator?
+        = button_to "Retour simple visiteur", admin_account_moderator_path(a.id), :method => :delete
+      - elsif a.admin?
+        = button_to "Retour simple visiteur", admin_account_admin_path(a.id), :method => :delete
+      - else
+        = button_to "→ modérateur", admin_account_moderator_path(a.id)
+        = button_to "→ rédacteur", admin_account_editor_path(a.id)
+        = button_to "→ admin", admin_account_admin_path(a.id)
     - if current_account.can_plonk?
       %h2 Interdire de tribune
       %ul

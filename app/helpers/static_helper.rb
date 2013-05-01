@@ -8,6 +8,10 @@ module StaticHelper
     Account.admin.all.map { |a| user = a.user; link_to user.name, user }.to_sentence
   end
 
+  def helper_editor_list
+    Account.editor.all.map { |a| user = a.user; link_to user.name, user }.to_sentence
+  end
+
   def helper_moderator_list
     Account.moderator.all.map { |a| user = a.user; link_to user.name, user }.to_sentence
   end

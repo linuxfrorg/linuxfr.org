@@ -160,6 +160,9 @@ LinuxfrOrg::Application.routes.draw do
   get "/admin/debug" => "admin#debug"
   namespace :admin do
     resources :comptes, :controller => "accounts", :as => "accounts", :only => [:index, :update, :destroy] do
+      resource :moderator, :only => [:create, :destroy]
+      resource :editor, :only => [:create, :destroy]
+      resource :admin, :only => [:create, :destroy]
       member do
         post :password
         post :karma

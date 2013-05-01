@@ -305,7 +305,7 @@ class News < Content
   end
 
   def taggable_by?(account)
-    super(account) || account.amr?
+    super(account) || account.amr? || account.editor?
   end
 
   def acceptable_by?(account)
@@ -321,11 +321,11 @@ class News < Content
   end
 
   def followupable_by?(account)
-    draft? && account.admin?
+    draft? && (account.editor? || account.admin?)
   end
 
   def reassignable_by?(account)
-    account.moderator? || account.admin?
+    account.editor? || account.amr?
   end
 
   def resetable_by?(account)
