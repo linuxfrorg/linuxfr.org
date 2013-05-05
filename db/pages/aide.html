@@ -186,13 +186,13 @@
 <li>Dépêche publiée&nbsp;: +50 (pour l'auteur)</li>
 </ul>
 
-<p>Le karma augmente donc lorsque l'on reçoit des notes «&nbsp;pertinent&nbsp;» (quelque soit le type de contenu noté) ou que l'on publie des dépêches.</p>
+<p>Le karma augmente donc lorsque l'on reçoit des notes «&nbsp;pertinent&nbsp;» (quel que soit le type de contenu noté) ou que l'on publie des dépêches.</p>
 
 <p>Le nombre d'avis quotidiens est déterminé à partir du karma. La formule est min(3 + karma / 10, 100). (<a href="https://github.com/nono/linuxfr.org/blob/master/app/models/account.rb">source</a>).</p>
 
 <p>Le score de base des commentaires dépend du karma. La formule est E( log10( karma ) ) - 1, où E() est la partie entière inférieure si le karma est strictement positif. Et c'est max(-10, -2 + E(karma/30)) pour un karma négatif ou nul. Avec un karma à 0, ça donne un score de -2. (<a href="https://github.com/nono/linuxfr.org/blob/master/app/models/comment.rb">source</a>)</p>
 
-<p>Pour pouvoir écrire un journal, dans le wiki ou sur la tribune, il faut avoir un karma supérieur strictement à 0. (sources <a href="https://github.com/nono/linuxfr.org/blob/master/app/models/diary.rb">journal</a>, <a href="https://github.com/nono/linuxfr.org/blob/master/app/models/wiki_page.rb">wiki</a>, <a href="https://github.com/nono/linuxfr.org/blob/master/app/models/account.rb">tribune</a>).</p>
+<p>Pour pouvoir écrire un journal, dans le wiki ou sur la tribune, il faut avoir un karma supérieur strictement à 0 (sources <a href="https://github.com/nono/linuxfr.org/blob/master/app/models/diary.rb">journal</a>, <a href="https://github.com/nono/linuxfr.org/blob/master/app/models/wiki_page.rb">wiki</a>, <a href="https://github.com/nono/linuxfr.org/blob/master/app/models/account.rb">tribune</a>).</p>
 
 
 <h2 id="aide-role">À quoi correspond le rôle sur la page d'un utilisateur&nbsp;? <a href="#aide-role" class="anchor">¶</a></h2>
@@ -204,7 +204,7 @@
 <li>inactive&nbsp;: les comptes fermés</li>
 <li>moderator&nbsp;: les <a href="/team">modérateurs</a></li>
 <li>editor&nbsp;: les <a href="/team">rédacteurs</a></li>
-<li>visitor&nbsp;: les visiteurs, tous ceux qui ne sont pas dans une catégorie précédente</li>
+<li>visitor&nbsp;: les visiteurs, tous ceux qui ne sont pas dans une catégorie précédente.</li>
 </ul>
 
 <h2 id="aide-cookies">Quels sont les cookies utilisés par le site&nbsp;? <a href="#aide-cookies" class="anchor">¶</a></h2>
