@@ -66,16 +66,12 @@
         = "#{pluralize @stats.news_by_day, "dépêche publiée", "dépêches publiées"} (extrapolation annuelle de #{extra} pour un objectif de #{@goals.news_by_year} "
         - if (extra >= @goals.news_by_year)
           = image_tag "/images/icones/check.png", :alt => "Objectif atteint", :title => "Objectif atteint"
-        - else
-          = image_tag "/images/icones/x_alt.png", :alt => "Objectif à atteindre", :title => "Objectif à atteindre"
         \)
       %li
         - extra2 = @stats.amr_news_by_day * 365 / Date.today.yday()
         = "#{pluralize @stats.amr_news_by_day, "dépêche publiée écrite", "dépêches publiées écrites"} par l'équipe du site (extrapolation annuelle de #{extra2} pour un objectif de #{@goals.amr_news_by_year} "
         - if (extra2 >= @goals.amr_news_by_year)
           = image_tag "/images/icones/check.png", :alt => "Objectif atteint", :title => "Objectif atteint"
-        - else
-          = image_tag "/images/icones/x_alt.png", :alt => "Objectif à atteindre", :title => "Objectif à atteindre"
         \)
 
     %h3#moderation Sur les derniers jours
@@ -109,8 +105,6 @@
                 = "#{news["cnt"]} en #{pluralize news["weeks"], "semaine"}"
                 - if news["cnt"] >= news["weeks"] * @goals.each_amr_news_by_week
                   = image_tag "/images/icones/check.png", :alt => "Objectif atteint", :title => "Objectif atteint"
-                - else
-                  = image_tag "/images/icones/x_alt.png", :alt => "Objectif à atteindre", :title => "Objectif à atteindre"
 
     - else
       %h4 Pas d'équipe de modération actuellement
@@ -124,10 +118,12 @@
           %th
           %th Modérations
           %th Votes
+          %th Éditions
         - @stats.top_amr.each do |user|
           %tr
             %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
             %td{'class'=>'stat'}= user["cnt"].to_i
             %td{'class'=>'stat'}= @stats.nb_votes(user["login"])
+            %td{'class'=>'stat'}= @stats.nb_editions_x_days(user["login"],31000)
     - else
       %h4 Pas encore d'équipe de modération
