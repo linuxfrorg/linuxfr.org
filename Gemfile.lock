@@ -257,7 +257,7 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     state_machine (1.2.0)
     subexec (0.2.3)
-    therubyracer (0.11.0)
+    therubyracer (0.11.4)
       ref
     thin (1.5.1)
       daemons (>= 1.0.9)
@@ -345,7 +345,7 @@ DEPENDENCIES
   sitemap_generator (~> 2.1)
   spork (~> 0.9)
   state_machine (~> 1.1)
-  therubyracer (~> 0.9)
+  therubyracer (~> 0.11)
   thin
   tire (~> 0.4)
   uglifier
