@@ -124,6 +124,6 @@
             %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
             %td{'class'=>'stat'}= user["cnt"].to_i
             %td{'class'=>'stat'}= @stats.nb_votes(user["login"])
-            %td{'class'=>'stat'}= @stats.nb_editions_x_days(user["login"],31000)
+            %td{'class'=>'stat'}= @stats.nb_editions_x_days(user["moderator_id"])
     - else
       %h4 Pas encore d'équipe de modération
