@@ -52,13 +52,13 @@ class Statistics::Moderation < Statistics::Statistics
     top_amr "AND (role='moderator' OR role='admin')"
   end
 
-  def created_on_the_last_nbdays(nbdays)
+  def created_on_the_last_nbdays(nbdays,prefix="")
     return "1=1" unless nbdays
-    "created_at >= '#{nbdays.days.ago.to_s :db}'"
+    "#{prefix}created_at >= '#{nbdays.days.ago.to_s :db}'"
   end
 
   def nb_moderations_x_days(user_id,nbdays=nil)
-    count "SELECT COUNT(*) AS cnt FROM nodes JOIN news ON nodes.content_id = news.id AND nodes.content_type='News' WHERE #{created_on_the_last_nbdays nbdays} AND moderator_id=#{user_id}"
+    count "SELECT COUNT(*) AS cnt FROM nodes JOIN news ON nodes.content_id = news.id AND nodes.content_type='News' WHERE #{created_on_the_last_nbdays nbdays, "nodes."} AND moderator_id=#{user_id}"
   end
 
   def nb_editions_x_days(user_id,nbdays=nil)
