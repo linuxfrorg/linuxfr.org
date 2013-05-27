@@ -37,8 +37,7 @@ group :assets do
   gem "jquery-rails",          "~>1.0"
   gem "sass-rails",            "~>3.2"
   gem "coffee-rails",          "~>3.2"
-  gem "libv8",                 "~>3.11"
-  gem "therubyracer",          "~>0.11", :require => 'v8'
+  gem "therubyracer",          "~>0.11.4", :require => 'v8'
   gem "uglifier"
 end
 
