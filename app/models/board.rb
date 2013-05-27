@@ -140,6 +140,7 @@ class Board
     when Board.amr     then account.amr?
     when Board.writing then account.can_post_on_board?
     when Board.free    then true
+    when Board.sgl     then account.amr?
                        else false
     end
   end
@@ -161,7 +162,7 @@ class Board
   end
 
   def norloge
-    short = [Board.free, Board.amr].include?(object_type)
+    short = [Board.free, Board.amr, Board.sgl].include?(object_type)
     created_at.to_s(short ? :norloge : :norloge2)
   end
 
@@ -172,7 +173,8 @@ class Board
   #  * the writing board is used for collaborating on the future news
   #  * the AMR board is used by the LinuxFr.org staff
   #  * and one board for each news in moderation.
-  TYPES = %w(Free Writing AMR News)
+  #  * SGL for Solutions GNU/Linux 2012
+  TYPES = %w(Free Writing AMR News SGL)
 
   TYPES.each do |t|
     (class << self; self; end).send(:define_method, t.downcase) { t }

@@ -3,6 +3,7 @@ class BoardsController < ApplicationController
   skip_before_filter :verify_authenticity_token
   before_filter :verify_referer_or_authenticity_token, :only => [:create]
   before_filter :authenticate_account!, :only => :create
+  before_filter :amr_required, :only => :sl
   after_filter :expire_cache, :only => [:create]
   caches_page :show, :if => Proc.new { |c| c.request.format.xml? }
   respond_to :html, :xml
@@ -10,6 +11,15 @@ class BoardsController < ApplicationController
   def show
     @boards = Board.all(Board.free)
     respond_with(@boards)
+  end
+
+  def sgl
+    @boards = Board.all(Board.sgl)
+  end
+
+  def sl
+    @boards = Board.all(Board.sgl)
+    render :sl, :layout => nil
   end
 
   def create

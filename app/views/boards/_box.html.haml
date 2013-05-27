@@ -1,0 +1,6 @@
+#sgl_box.box
+  %h1 Solutions Linux
+  .board
+    = render :partial => 'boards/board', :collection => Board.limit(12, Board.sgl)
+    %p
+      %a(href="/sgl") Afficher tous les messages
