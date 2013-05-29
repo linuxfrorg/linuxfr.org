@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
 
   validates_format_of :homesite, :message => "L'URL du site web personnel n'est pas valide", :with => URI::regexp(%w(http https)), :allow_blank => true
 
+  def self.collective
+    where(name: "Collectif").first
+  end
+
 ### SEO ###
 
   extend FriendlyId

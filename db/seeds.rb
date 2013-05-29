@@ -79,6 +79,9 @@ anon.encrypted_password = "XXX"
 anon.skip_confirmation!
 anon.save
 
+# Collective user
+User.create :name => "Collectif"
+
 # Wiki
 wp = WikiPage.new
 wp.title = WikiPage::HomePage
