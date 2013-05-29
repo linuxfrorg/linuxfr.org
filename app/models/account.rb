@@ -84,6 +84,10 @@ class Account < ActiveRecord::Base
     self.user_id = User.create(:name => login).id
   end
 
+  def self.anonymous
+    where(login: "Anonyme").first
+  end
+
 ### Password ###
 
   before_validation :generate_a_password, :on => :create
