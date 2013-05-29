@@ -116,6 +116,7 @@ LinuxfrOrg::Application.routes.draw do
         get "/revisions/:revision" => :revision, :as => :revision
         post :submit
         post :followup
+        post :reassign
         get :reorganize
         put :reorganized
       end
@@ -138,7 +139,6 @@ LinuxfrOrg::Application.routes.draw do
         post :accept
         post :refuse
         post :rewrite
-        post :reassign
         post :reset
         post :ppp
         get :vote

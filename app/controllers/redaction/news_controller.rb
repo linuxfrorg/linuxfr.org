@@ -44,6 +44,12 @@ class Redaction::NewsController < RedactionController
     render :partial => 'short'
   end
 
+  def reassign
+    enforce_reassign_permission(@news)
+    @news.reassign_to params[:user_id]
+    redirect_to [:redaction, @news], :notice => "L'auteur initial de la dépêche a été changé"
+  end
+
   def reorganize
     if @news.lock_by(current_user)
       @news.put_paragraphs_together

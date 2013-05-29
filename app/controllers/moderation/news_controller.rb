@@ -72,12 +72,6 @@ class Moderation::NewsController < ModerationController
     end
   end
 
-  def reassign
-    enforce_reassign_permission(@news)
-    @news.reassign_to params[:user_id]
-    redirect_to [:moderation, @news], :notice => "L'auteur initial de la dépêche a été changé"
-  end
-
   def rewrite
     enforce_rewrite_permission(@news)
     if @news.unlocked?

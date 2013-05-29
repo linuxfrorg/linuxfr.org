@@ -28,7 +28,7 @@
       = button_to "Ajouter un paragraphe", redaction_news_paragraphs_path(:news_id => @news), :remote => true, :class => "add_para"
 
 = link_to "Réorganiser", reorganize_redaction_news_path(@news), :class => "reorganize"
-- if current_account.amr? || @news.submitted_by?(current_account)
+- if current_account.amr? || current_account.editor? || @news.submitted_by?(current_account)
   = button_to "Soumettre la dépêche", submit_redaction_news_path(@news), :class => "submit_news"
 - if current_account.can_followup? @news
   %button#followup Relancer les rédacteurs

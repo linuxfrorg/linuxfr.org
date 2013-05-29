@@ -5,8 +5,8 @@
     = list_of(attendees) do |a|
       = link_to a.name, a, :title => pluralize(a.nb_editions, "édition")
       - if current_account.can_reassign?(@news)
-        = button_to "Réattribuer", reassign_moderation_news_path(:user_id => a.id), :class => "reassign_news", :title => "Réattribuer la paternité de cette dépêche"
+        = button_to "Réattribuer", reassign_redaction_news_path(:user_id => a.id), :class => "reassign_news", :title => "Réattribuer la paternité de cette dépêche"
     - if current_account.can_reassign?(@news)
       %li
         Collectif
-        = button_to "Réattribuer", reassign_moderation_news_path(:user_id => User.collective.id), :class => "reassign_news", :title => "Réattribuer la paternité de cette dépêche"
+        = button_to "Réattribuer", reassign_redaction_news_path(:user_id => User.collective.id), :class => "reassign_news", :title => "Réattribuer la paternité de cette dépêche"
