@@ -4,8 +4,8 @@
       = link_to spellcheck(preview.title), "#", :class => "title"
     %p.meta
       = posted_by(preview)
-      Évalué à
-      %span.score= preview.score
+      Évalué à&nbsp;
+      %span.score>= preview.bound_score
     %figure.image
       = avatar_img(current_user)
     .content
