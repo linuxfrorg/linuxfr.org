@@ -1,8 +1,8 @@
 # encoding: UTF-8
 class Redaction::NewsController < RedactionController
   skip_before_filter :authenticate_account!, :only => [:index, :moderation]
-  before_filter :load_news, :except => [:index, :moderation, :create, :revision, :reorganize, :reorganized]
-  before_filter :load_news2, :only => [:revision, :reorganize, :reorganized]
+  before_filter :load_news, :except => [:index, :moderation, :create, :revision, :reorganize, :reorganized, :reassign]
+  before_filter :load_news2, :only => [:revision, :reorganize, :reorganized, :reassign]
   before_filter :load_board, :only => [:show, :reorganize]
   after_filter  :marked_as_read, :only => [:show, :update]
   respond_to :html, :atom
@@ -47,7 +47,8 @@ class Redaction::NewsController < RedactionController
   def reassign
     enforce_reassign_permission(@news)
     @news.reassign_to params[:user_id]
-    redirect_to [:redaction, @news], :notice => "L'auteur initial de la dépêche a été changé"
+    namespace = @news.draft? ? :redaction : :moderation
+    redirect_to [namespace, @news], :notice => "L'auteur initial de la dépêche a été changé"
   end
 
   def reorganize
