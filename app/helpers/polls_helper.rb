@@ -14,12 +14,12 @@ module PollsHelper
   end
 
   # Build at least 6 answers for a poll
-  # and always add a blank new answer,
-  # so people without js can add as many asnwers as they want
+  # and always add a new answer if the last is not blank,
+  # so people without js can add as many answers as they want
   # (one new per preview).
   def setup_poll(poll)
-    (poll.answers.size ... 5).each { poll.answers.build }
-    poll.answers.build
+    (poll.answers.size ... 6).each { poll.answers.build }
+    poll.answers.build unless poll.answers.last.answer.blank?
     poll
   end
 

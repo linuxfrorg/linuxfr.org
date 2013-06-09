@@ -35,8 +35,12 @@ class Poll < Content
 
   before_validation :mark_answers_for_destruction
   def mark_answers_for_destruction
-    answers.each do |answer|
-      answer.mark_for_destruction if answer.answer.blank?
+    answers.select {|answer| answer.answer.blank? }.each do |answer|
+      if answer.persisted?
+        answer.mark_for_destruction
+      else
+        answers.delete answer
+      end
     end
   end
 
