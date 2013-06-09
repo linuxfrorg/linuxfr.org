@@ -35,8 +35,10 @@ class Stylesheet < Struct.new(:name, :url, :image)
     val = cookies[key]
     Dir.chdir Rails.root.join("public") do
       timeout 30 do
-        `wkhtmltoimage --crop-h 1024 --cookie '#{key}' '#{val}' '#{url}' #{dst}`
-        `mogrify -resize 400x400 #{dst} 2>&1`
+        cmd = ["phantomjs #{Rails.root}/lib/phantomjs/rasterize.coffee '#{url}' #{dst} '#{key}' '#{val}'",
+               # "wkhtmltoimage --crop-h 1024 --cookie '#{key}' '#{val}' '#{url}' #{dst}",
+               "mogrify -resize 400 -extent 400x400 #{dst} 2>&1"].join(" && ")
+        system cmd
       end
     end
     dst
