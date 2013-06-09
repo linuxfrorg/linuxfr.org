@@ -1,0 +1,39 @@
+// Autocomplete
+@mixin solarized_ac($rebase03,$rebase02,$rebase01,$rebase00,$rebase0,$rebase1,$rebase2,$rebase3) {
+  $C_CLAIR: #E9E6E4 !default;
+  $C_INTER: #A99C90 !default;
+
+  .ac_loading {
+    background: white url('/images/ajax-loader.gif') right center no-repeat;
+  }
+  .ac_results {
+    background-color: $rebase02;
+    border: solid 1px $rebase0;
+
+    -webkit-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    margin: 5px 5px 30px;
+    padding: 5px;
+
+    ul {
+      margin: 0;
+      padding: 5px;
+      li {
+        list-style: none;
+        cursor: pointer;
+      }
+    }
+  }
+  .ac_odd {
+    background-color: $rebase03;
+  }
+  .ac_over {
+    background: $rebase00;
+    color: white;
+    strong {
+      color: white;
+    }
+  }
+}
