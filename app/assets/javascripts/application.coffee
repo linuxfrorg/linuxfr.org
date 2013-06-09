@@ -34,7 +34,7 @@ $("a.scroll").click ->
   false
 
 # Force people to preview their modified contents
-$("textarea").keypress (event) ->
+$("textarea, #form_answers input").keypress (event) ->
   $(@).parents("form").find("input[value=Prévisualiser]").next("input[type=submit]").hide()
   $(@).off event
 
