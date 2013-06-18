@@ -731,8 +731,10 @@ footer.actions {
 }
 
 /* parti de la base de yggdras pour la partie sur les tags */
-.tag_in_place {
+.tag_in_place, .epub {
   float: right;
+  clear: right;
+  margin-bottom: 5px;
   color: $C_INTER;
   a {
     color: $C_INTER;
