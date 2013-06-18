@@ -23,6 +23,7 @@ module NodeHelper
     cp = ContentPresenter.new
     cp.record = record
     cp.hidden = ContentPresenter.collection? && record.score < 0
+    cp.hidden = false if current_account.try(:show_negative_nodes)
     cp.css_class = %w(node hentry)
     score = [ [record.node.score / 5, -10].max, 10].min
     cp.css_class << "score#{score}"

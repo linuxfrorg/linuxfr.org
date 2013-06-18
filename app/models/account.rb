@@ -266,6 +266,7 @@ class Account < ActiveRecord::Base
                           64 => :trackers_on_home,
                          128 => :sort_by_date_on_home,
                          256 => :hide_signature,
+                         512 => :show_negative_nodes,
                          :scopes => false
   attr_accessible :hide_avatar,
                   :news_on_home,
@@ -275,7 +276,8 @@ class Account < ActiveRecord::Base
                   :wiki_pages_on_home,
                   :trackers_on_home,
                   :sort_by_date_on_home,
-                  :hide_signature
+                  :hide_signature,
+                  :show_negative_nodes
 
   def types_on_home
     %w(News Diary Post Poll WikiPage Tracker).select do |type|
