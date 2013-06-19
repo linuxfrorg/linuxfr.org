@@ -379,6 +379,7 @@ div.ac_results ul li:hover {
   text-decoration: underline;
 }
 #container article footer div.vote {
+  font-size: 90%;
   margin-left: 5px;
   display: inline;
 }
@@ -496,6 +497,7 @@ li.comment footer {
   padding-bottom: 5px;
 }
 li.comment footer div.vote {
+  font-size: 85%;
   display: inline;
 }
 li.comment footer a.action:before {
@@ -517,6 +519,7 @@ div.vote > form.button_to div input, span.action > form.button_to div input {
   padding: 0px;
   color: #36598E;
   cursor: pointer;
+  font-size: 100%;
 }
 div.vote > form.button_to div input:hover, span.action > form.button_to div input:hover {
   text-decoration: underline;
