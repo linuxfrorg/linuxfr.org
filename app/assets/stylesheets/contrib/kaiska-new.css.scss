@@ -241,6 +241,7 @@ nav.toolbox div.order_navbar {
   margin: 10px;
   padding: 0px;
   overflow: hidden;
+  position: relative;
 }
 #container article header, #container article footer {
   margin: 0px;
@@ -346,8 +347,15 @@ div.content img {
   background: url('/images/contrib/kaiska/attention.png') no-repeat;
   padding-left: 18px;
 }
+#container article footer div.epub {
+  right: 10px;
+  bottom: 25px;
+  position: absolute;
+}
 #container article footer div.tag_in_place {
-  float: right;
+  right: 10px;
+  bottom: 5px;
+  position: absolute;
 }
 div.ac_results {
   /* liste des tags possibles */
@@ -371,6 +379,7 @@ div.ac_results ul li:hover {
   text-decoration: underline;
 }
 #container article footer div.vote {
+  font-size: 90%;
   margin-left: 5px;
   display: inline;
 }
@@ -464,6 +473,10 @@ li.comment div.content {
 li.comment div.content > p {
   margin-top: 0px;
 }
+li.comment div.content .deleted {
+    border-left: 3px solid red;
+    font-style: italic;
+}
 li.comment div.content .signature {
   color: #777777;
   font-size: 90%;
@@ -484,6 +497,7 @@ li.comment footer {
   padding-bottom: 5px;
 }
 li.comment footer div.vote {
+  font-size: 85%;
   display: inline;
 }
 li.comment footer a.action:before {
@@ -505,6 +519,7 @@ div.vote > form.button_to div input, span.action > form.button_to div input {
   padding: 0px;
   color: #36598E;
   cursor: pointer;
+  font-size: 100%;
 }
 div.vote > form.button_to div input:hover, span.action > form.button_to div input:hover {
   text-decoration: underline;
