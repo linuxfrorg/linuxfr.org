@@ -241,6 +241,7 @@ nav.toolbox div.order_navbar {
   margin: 10px;
   padding: 0px;
   overflow: hidden;
+  position: relative;
 }
 #container article header, #container article footer {
   margin: 0px;
@@ -346,8 +347,15 @@ div.content img {
   background: url('/images/contrib/kaiska/attention.png') no-repeat;
   padding-left: 18px;
 }
+#container article footer div.epub {
+  right: 10px;
+  bottom: 25px;
+  position: absolute;
+}
 #container article footer div.tag_in_place {
-  float: right;
+  right: 10px;
+  bottom: 5px;
+  position: absolute;
 }
 div.ac_results {
   /* liste des tags possibles */
