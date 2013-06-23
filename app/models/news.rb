@@ -183,11 +183,12 @@ class News < Content
   end
 
   def second_part_toc
-    self.wiki_second_part ||= paragraphs.in_second_part.map(&:wiki_body).join("\n\n")
-    toc_for wiki_second_part
+    toc_for second_part
   end
 
+  after_update :announce_toc
   def announce_toc
+    return if second_part.blank?
     Push.create(self, :kind => :second_part_toc, :toc => second_part_toc)
   end
 

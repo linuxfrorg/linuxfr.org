@@ -673,11 +673,11 @@ input, button, select {
             @include accentize($blue, $rebase02);
         }
 
-        #sommaire {
+        .sommaire {
             margin-top: 0.5em;
             margin-left: 80px;
         }
-        #sommaire + ul {
+        .sommaire + ul {
             margin-left: 80px;
         }
 

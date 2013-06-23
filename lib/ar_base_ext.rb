@@ -1,7 +1,9 @@
 # encoding: utf-8
-require 'lfmarkdown'
+require 'html/pipeline'
 require 'lfsanitizer'
 require 'lftruncator'
+
+HTML::Pipeline::LinuxFr::CONTEXT[:host] = MY_DOMAIN
 
 ##
 # Some ActiveRecord::Base extensions
@@ -22,7 +24,8 @@ class ActiveRecord::Base
     method = "truncate_#{attr}".to_sym
     before_save method
     define_method method do
-      send("truncated_#{attr}=", LFTruncator.truncate(send(attr), nb_words)) if send("#{attr}_changed?")
+      return unless send("#{attr}_changed?")
+      send("truncated_#{attr}=", LFTruncator.truncate(send(attr), nb_words))
     end
     define_method "truncated_#{attr}" do
       self["truncated_#{attr}"].html_safe
@@ -40,12 +43,13 @@ class ActiveRecord::Base
 
   # Transform wiki syntax to HTML
   def wikify(txt)
-    LFMarkdown.render(txt)
+    HTML::Pipeline::LinuxFr.render txt
   end
 
-  # Generate the Table of contents for this text
-  def toc_for(txt)
-    LFMarkdown.toc(txt).html_safe
+  # Extract the Table of contents from this html
+  def toc_for(html)
+    doc = Nokogiri::HTML::DocumentFragment.parse html
+    doc.css(".sommaire,.toc,#sommaire,#sommaire+ul").to_html.html_safe
   end
 
   # Transform []() to links on the given text

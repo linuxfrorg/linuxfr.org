@@ -763,7 +763,8 @@ li.link[lang=ru] { list-style: url('/images/langs/ru.png'); }
 li.link[lang=sv] { list-style: url('/images/langs/sv.png'); }
 li.link[lang=xx] { list-style: url('/images/langs/xx.png'); }
 
-div.content a[href^="/wiki/"] {
+div.content a[href^="/wiki/"],
+div.content a[href^="//linuxfr.org/wiki/"] {
   background: url('/images/contrib/kaiska/linuxfr.png') no-repeat;
   padding-left: 18px;
 }
