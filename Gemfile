@@ -11,7 +11,7 @@ gem "diff_match_patch", :github => "nono/diff_match_patch-ruby", :require => "di
 gem "french_rails",            "~>0.2"
 gem "friendly_id",             "~>4.0"
 gem "haml",                    "~>3.1"
-gem "html-pipeline-linuxfr",   "~>0.0.14"
+gem "html-pipeline-linuxfr",   "~>0.14"
 gem "html_spellchecker",       "~>0.1"
 gem "html_truncator",          "~>0.3"
 gem "htmlentities",            "~>4.3"

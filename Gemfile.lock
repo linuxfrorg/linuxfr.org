@@ -114,7 +114,7 @@ GEM
     highline (1.6.19)
     hike (1.2.3)
     hiredis (0.4.5)
-    html-pipeline-linuxfr (0.0.14)
+    html-pipeline-linuxfr (0.14.0)
       activesupport (>= 2)
       escape_utils (~> 0.3)
       nokogiri (~> 1.4)
@@ -331,7 +331,7 @@ DEPENDENCIES
   haml (~> 3.1)
   haml-rails
   hiredis (~> 0.3)
-  html-pipeline-linuxfr (~> 0.0.14)
+  html-pipeline-linuxfr (~> 0.14)
   html_spellchecker (~> 0.1)
   html_truncator (~> 0.3)
   htmlentities (~> 4.3)
