@@ -1,5 +1,8 @@
 # encoding: utf-8
 
+# SSH to the servers
+require 'sushi/ssh'
+
 # Bundler
 require 'bundler/capistrano'
 

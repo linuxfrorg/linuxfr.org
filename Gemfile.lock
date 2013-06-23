@@ -259,6 +259,7 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     state_machine (1.2.0)
     subexec (0.2.3)
+    sushi (0.0.2)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
@@ -347,6 +348,7 @@ DEPENDENCIES
   sitemap_generator (~> 2.1)
   spork (~> 0.9)
   state_machine (~> 1.1)
+  sushi
   therubyracer (~> 0.11.4)
   thin
   tire (~> 0.4)

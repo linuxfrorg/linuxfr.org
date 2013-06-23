@@ -52,12 +52,13 @@ group :development do
   gem "better_errors"
   gem "capistrano"
   gem "capistrano-maintenance"
+  gem "desi"
   gem "haml-rails"
   gem "letter_opener"
   gem "mo"
   gem "pry-rails"
   gem "quiet_assets"
-  gem "desi"
+  gem "sushi"
   gem "thin"
 end
 
