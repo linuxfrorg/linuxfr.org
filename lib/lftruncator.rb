@@ -8,6 +8,7 @@ class LFTruncator < HTML_Truncator
     opts = DEFAULT_OPTIONS.merge(opts)
     doc = Nokogiri::HTML::DocumentFragment.parse(text)
     doc.search("img").remove
+    doc.css(".sommaire,.toc").remove
     doc.truncate(max, opts).first
   end
 
