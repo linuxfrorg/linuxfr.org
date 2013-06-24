@@ -814,7 +814,8 @@ footer.actions {
   a {
     @include lien_standard;
     border-bottom: 1px solid;
-    &[href^="http://fr.wikipedia.org/"]:after {
+    &[href^="http://fr.wikipedia.org/"]:after,
+    &[href^="http://en.wikipedia.org/"]:after {
       content: "\A0W";
       font-family: serif;
       font-size: 6pt;
