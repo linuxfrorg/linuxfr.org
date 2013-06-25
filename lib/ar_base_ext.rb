@@ -1,6 +1,5 @@
 # encoding: utf-8
 require 'html/pipeline'
-require 'lfsanitizer'
 require 'lftruncator'
 
 HTML::Pipeline::LinuxFr::CONTEXT[:host] = MY_DOMAIN
@@ -13,7 +12,7 @@ class ActiveRecord::Base
     method = "sanitize_#{attr}".to_sym
     before_validation method
     define_method method do
-      send("#{attr}=", LFSanitizer.clean(self[attr]))
+      send("#{attr}=", HTML::Pipeline::LinuxFr.sanitize(self[attr]))
     end
     define_method attr do
       self[attr].to_s.html_safe
