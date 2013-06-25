@@ -114,7 +114,7 @@ GEM
     highline (1.6.19)
     hike (1.2.3)
     hiredis (0.4.5)
-    html-pipeline-linuxfr (0.14.3)
+    html-pipeline-linuxfr (0.14.4)
       activesupport (>= 2)
       escape_utils (~> 0.3)
       nokogiri (~> 1.4)
