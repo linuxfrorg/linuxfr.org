@@ -44,18 +44,18 @@ class Link < ActiveRecord::Base
   end
 
   def update_by(user)
+    self.user = user
     if url.blank?
       destroy
     else
-      self.user = user
       $redis.del lock_key
       save
     end
   end
 
-  after_save :create_new_version
+  after_commit :create_new_version
   def create_new_version
-    news.editor = user.try(:account)
+    news.editor ||= user.try(:account)
     news.put_paragraphs_together
     news.create_new_version
   end
