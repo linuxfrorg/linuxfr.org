@@ -223,8 +223,7 @@ class News < Content
   end
 
   def edited_by
-    attendees.where("users.id != ?", self.node.user_id).
-              select([:name, :cached_slug])
+    attendees.where("users.id != ?", node.user_id || 1)
   end
 
 ### Associated node ###
