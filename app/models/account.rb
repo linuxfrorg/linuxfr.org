@@ -138,7 +138,8 @@ class Account < ActiveRecord::Base
   end
 
   def log_role
-    logs.create(:description => "Changement de rôle : #{role_was} → #{role}")
+    roles = previous_changes["role"]
+    logs.create(:description => "Changement de rôle : #{roles.join ' → '}")
   end
 
   # An AMR is someone who is either an admin or a moderator
