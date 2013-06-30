@@ -66,7 +66,6 @@ group :test do
   gem "factory_girl_rails",    "~>1.6"
   gem "faker",                 "~>0.9"
   gem "fuubar",                "~>1.0"
-  gem "spork",                 "~>0.9"
   gem "webrat",                "~>0.7"
 end
 

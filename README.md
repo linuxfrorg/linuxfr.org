@@ -106,17 +106,15 @@ If you want the full stack for running LinuxFr.org, you should also look at:
 How to run the specs
 --------------------
 
-1) Be sure that redis is running and create the test database:
+1) Be sure that redis and ElasticSearch are running
 
-    $ rake db:test:prepare
+2) Create the test database:
 
-2) Run [spork](https://github.com/timcharper/spork) in background:
-
-    $ spork &
+    $ bundle exec rake db:test:prepare
 
 3) And now, just run rspec (and repeat this step until done):
 
-    $ rspec spec
+    $ bundle exec rspec spec
 
 
 How to generate a CSS
