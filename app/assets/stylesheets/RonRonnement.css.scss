@@ -621,10 +621,11 @@ article {
   }
   .score {
     background: $C_BAS_FOND;
-    -moz-border-image:    url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     -o-border-image:      url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     -khtml-border-image:  url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    border-image:         url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+	border-style: solid;
     text-align: center;
     line-height: 31px;
     font-weight: bold;
@@ -634,10 +635,11 @@ article {
   .datePourCss {
     display: block !important;
     background: $C_BANDEAU;
-    -moz-border-image:    url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     -o-border-image:      url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     -khtml-border-image:  url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    border-image:         url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+	border-style: solid;
     color: white;
     padding: 0;
     margin-bottom: 2px;
@@ -826,11 +828,11 @@ footer.actions {
     &[href^="//linuxfr.org/wiki"] {
       padding-left: 3px;
       border-left: 16px;
-      -moz-border-image:    url('/favicon.png') 0 0 0 32;
       -o-border-image:      url('/favicon.png') 0 0 0 32;
       -webkit-border-image: url('/favicon.png') 0 0 0 32;
       -khtml-border-image:  url('/favicon.png') 0 0 0 32;
       border-image:         url('/favicon.png') 0 0 0 32;
+	  border-style: solid;
     }
   }
   ul,ol {
