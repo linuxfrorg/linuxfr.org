@@ -7,7 +7,9 @@ atom_feed(:root_url => section_url(@section), "xmlns:wfw" => "http://wellformedw
   @news.each do |news|
     feed.entry(news) do |entry|
       entry.title(news.title)
-      entry.content(news.body + atom_comments_link(news_url news), :type => 'html')
+      url = news_url news
+      epub = content_tag(:div, link_to("Télécharger ce contenu au format Epub", "#{url}.epub"))
+      entry.content(news.body + epub + atom_comments_link(url), :type => 'html')
       entry.author do |author|
         author.name(news.author_name)
       end

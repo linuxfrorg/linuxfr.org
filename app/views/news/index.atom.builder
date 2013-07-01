@@ -10,6 +10,7 @@ atom_feed(:root_url => news_index_url, "xmlns:wfw" => "http://wellformedweb.org/
 
   @nodes.map(&:content).each do |news|
     feed.entry(news, :published => news.node.created_at) do |entry|
+      url = news_url news
       entry.title(news.title)
       if news.node.cc_licensed
         entry.rights("Licence CC by-sa http://creativecommons.org/licenses/by-sa/3.0/deed.fr")
@@ -20,8 +21,9 @@ atom_feed(:root_url => news_index_url, "xmlns:wfw" => "http://wellformedweb.org/
                                   link_to(l.title, "http://#{MY_DOMAIN}/redirect/#{l.id}", :title => l.url, :hreflang => l.lang))
                end.join.html_safe)
       second = content_tag(:div, news.second_part)
-      comments = atom_comments_link(news_url news)
-      entry.content(first + links + second + comments, :type => 'html')
+      epub = content_tag(:div, link_to("Télécharger ce contenu au format Epub", "#{url}.epub"))
+      comments = atom_comments_link(url)
+      entry.content(first + links + second + epub + comments, :type => 'html')
       news.attendees.each do |attendee|
         entry.author do |author|
           author.name(attendee.name)

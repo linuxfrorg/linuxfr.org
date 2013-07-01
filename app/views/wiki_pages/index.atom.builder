@@ -7,7 +7,9 @@ atom_feed(:root_url => wiki_pages_url, "xmlns:wfw" => "http://wellformedweb.org/
   @wiki_pages.each do |page|
     feed.entry(page) do |entry|
       entry.title(page.title)
-      entry.content(page.body + atom_comments_link(wiki_page_url page), :type => 'html')
+      url = wiki_page_url page
+      epub = content_tag(:div, link_to("Télécharger ce contenu au format Epub", "#{url}.epub"))
+      entry.content(page.body + epub + atom_comments_link(url), :type => 'html')
       entry.author do |author|
         author.name(page.node.user.try :name)
       end

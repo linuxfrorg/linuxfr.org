@@ -14,7 +14,8 @@ atom_feed(:root_url => diaries_url, "xmlns:wfw" => "http://wellformedweb.org/Com
       if diary.node.cc_licensed
         entry.rights("Licence CC by-sa http://creativecommons.org/licenses/by-sa/3.0/deed.fr")
       end
-      entry.content(diary.body + atom_comments_link(url), :type => 'html')
+      epub = content_tag(:div, link_to("Télécharger ce contenu au format Epub", "#{url}.epub"))
+      entry.content(diary.body + epub + atom_comments_link(url), :type => 'html')
       entry.author do |author|
         author.name(diary.owner.name)
       end
