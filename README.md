@@ -51,8 +51,8 @@ LinuxFr.org on a Debian box.
 
 5) Install Ruby with RVM:
 
-    $ rvm install 1.9.3
-    $ rvm use --default 1.9.3
+    $ rvm install 2.0.0
+    $ rvm use --default 2.0.0
 
 6) Clone the repository, configure and install gems:
 
