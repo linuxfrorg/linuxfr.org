@@ -356,10 +356,10 @@ button, input[type='submit'] {
   color: $C_MENU;
 
   background-color: #bdb3aa;
-  background: -moz-linear-gradient(left, #fff, #bdb3aa 50%);
-  background: -webkit-linear-gradient(left, #fff, #bdb3aa 50%);
-  background: -o-linear-gradient(left, #fff, #bdb3aa 50%);
-  background: linear-gradient(to right, #fff, #bdb3aa 50%);
+  background: -moz-linear-gradient(left, #fff, #e7e3e0 201px, #bdb3aa 50%);
+  background: -webkit-linear-gradient(left, #fff, #e7e3e0 201px, #bdb3aa 50%);
+  background: -o-linear-gradient(left, #fff, #e7e3e0 201px, #bdb3aa 50%);
+  background: linear-gradient(to right, #fff, #e7e3e0 201px, #bdb3aa 50%);
 
   ul {
     display: inline;
@@ -441,7 +441,7 @@ button, input[type='submit'] {
 
   nav, section {
     display: inline-block;
-    padding: 5px 0 30px 0; 
+    padding: 5px 0 30px 0;
     vertical-align: top;
     width: $PC_FOOT_WIDTH;
     margin: 0 $PC_FOOT_MARG 0 $PC_FOOT_MARG;
@@ -1114,7 +1114,7 @@ body#boards-show {
     font-weight: bold;
   }
   .totoz {
-    color: #2EA4FF; 
+    color: #2EA4FF;
   }
 }
 
