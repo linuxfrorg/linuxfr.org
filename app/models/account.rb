@@ -301,7 +301,7 @@ class Account < ActiveRecord::Base
     case
     when uploaded_stylesheet.present? then uploaded_stylesheet.url
     when stylesheet.present?          then stylesheet
-    else 'application'
+    else 'contrib/plee_the_bear'
     end
   end
 end
