@@ -4,5 +4,8 @@ Disallow: /nodes
 Disallow: /board
 Disallow: /compte
 Disallow: /redirect
+Disallow: /redaction
+Disallow: /moderation
+Disallow: /admin
 
 Sitemap: http://linuxfr.org/sitemap_index.xml.gz
