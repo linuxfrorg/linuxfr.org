@@ -275,6 +275,7 @@ class News < Content
 
   def reset_votes
     %w(pour contre).each {|word| $redis.del("news/#{self.id}/#{word}") }
+    $redis.keys("nodes/#{node.id}/votes/*").each {|key| $redis.del key }
     node.update_column(:score, 0)
   end
 
