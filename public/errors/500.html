@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+	<meta charset="utf-8">
 	<title>LinuxFr.org &gt;&gt; Erreur 500</title>
 	<link href="/assets/application.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
@@ -11,24 +12,25 @@
 	<nav id="site">
 		<div class="go_to_content"><a href="#container">Aller au contenu</a></div>
 		<ul>
-			<li><a href="/">Accueil</a></li>
-			<li><a href="/news">Dépêches</a></li>
-			<li><a href="/journaux">Journaux</a></li>
-			<li><a href="/forums">Forums</a></li>
-			<li><a href="/sondages">Sondages</a></li>
-			<li><a href="/wiki">Wiki</a></li>
-			<li><a href="/suivi">Suivi</a></li>
-			<li><a href="/plan">Plan</a></li>
+			<li><a href="/" title="Page d&#x27;accueil du site, personnalisable">Accueil</a></li>
+			<li><a href="/news" title="Actualités, événements et autres nouveautés">Dépêches</a></li>
+			<li><a href="/journaux" title="Journaux personnels de nos visiteurs">Journaux</a></li>
+			<li><a href="/forums" title="Questions/réponses, petites annonces">Forums</a></li>
+			<li><a href="/sondages" title="Sondages proposées aux visiteurs du site">Sondages</a></li>
+			<li><a href="/wiki" title="Pages wiki">Wiki</a></li>
+			<li><a href="/suivi" title="Suivi des suggestions et des bugs du site">Suivi</a></li>
+			<li><a href="/plan" title="Plan du site, aide, flux Atom, etc.">Plan</a></li>
 		</ul>
-		<form action="/recherche" method="get">
+		<form accept-charset="UTF-8" action="/recherche" method="get">
+			<label for="query" id="label_query">Recherche :</label>
 			<input id="query" name="q" type="search" placeholder="Entrer un mot-clé" />
-			<input type="submit" value="Rechercher" />
+			<input id="search_submit" title="Rechercher" type="submit" value="Rechercher" />
 		</form>
 	</nav>
 
 	<aside id="sidebar">
 		<header id="branding">
-			<h1 style="background-image: url('/images/logos/linuxfr2_classic.png');" title="Le logo de LinuxFr.org"><a href="/">LinuxFr.org</a></h1>
+			<h1 style="background-image: url('/images/logos/logo-linuxfr-cadre-ombre.png');" title="Le logo de LinuxFr.org"><a href="/">LinuxFr.org</a></h1>
 		</header>
 	</aside>
 
