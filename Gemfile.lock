@@ -76,11 +76,11 @@ GEM
       addressable
       boson
       cocaine (= 0.4.2)
-    devise (2.2.4)
+    devise (3.0.0)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (~> 3.1)
-      warden (~> 1.2.1)
+      railties (>= 3.2.6, < 5)
+      warden (~> 1.2.3)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     escape_utils (0.3.2)
@@ -164,7 +164,7 @@ GEM
     multi_json (1.7.7)
     multi_xml (0.5.4)
     multipart-post (1.2.0)
-    mysql2 (0.3.11)
+    mysql2 (0.3.12)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -238,7 +238,7 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    rspec-core (2.14.2)
+    rspec-core (2.14.3)
     rspec-expectations (2.14.0)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-instafail (0.2.4)
@@ -290,14 +290,14 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.37)
-    uglifier (2.1.1)
+    uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     unicorn (4.6.3)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    warden (1.2.1)
+    warden (1.2.3)
       rack (>= 1.0)
     webrat (0.7.3)
       nokogiri (>= 1.2.0)
@@ -321,7 +321,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2)
   database_cleaner (~> 0.7)
   desi
-  devise (~> 2.0)
+  devise (~> 3.0)
   diff_match_patch!
   factory_girl_rails (~> 1.6)
   faker (~> 0.9)
