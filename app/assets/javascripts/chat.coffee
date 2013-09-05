@@ -62,7 +62,7 @@ class Chat
 
   createTotoz: (event) =>
     totozName = event.target.getAttribute("data-totoz-name")
-    totozId = encodeURIComponent(totozName).replace(/%/g, "")
+    totozId = encodeURIComponent(totozName).replace(/[%']/g, "")
     totoz = @totoz.find("#totoz-" + totozId).first()
     if totoz.size() == 0
       totoz = $("<div id=\"totoz-#{totozId}\" class=\"totozimg\"></div>")
@@ -74,7 +74,7 @@ class Chat
     totoz.css "z-index": "15", display: "block", top: y + 20, left: x + 20
 
   destroyTotoz: (event) =>
-    totozId = encodeURIComponent(event.target.getAttribute("data-totoz-name")).replace(/%/g, "")
+    totozId = encodeURIComponent(event.target.getAttribute("data-totoz-name")).replace(/[%']/g, "")
     totoz = @totoz.find("#totoz-" + totozId).first()
     totoz.css display: "none"
 
