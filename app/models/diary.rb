@@ -45,7 +45,7 @@ class Diary < Content
   mapping do
     indexes :id,         :index    => :not_analyzed
     indexes :created_at, :type => 'date', :include_in_all => false
-    indexes :username,   :as => 'owner.name',   :boost => 3,               :index => 'not_analyzed'
+    indexes :username,   :as => 'owner.name',   :boost => 3
     indexes :title,      :analyzer => 'french', :boost => 10
     indexes :body,       :analyzer => 'french'
   end

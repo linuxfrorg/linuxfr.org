@@ -50,8 +50,8 @@ class Tracker < Content
   mapping do
     indexes :id,         :index    => :not_analyzed
     indexes :created_at, :type => 'date', :include_in_all => false
-    indexes :username,   :as => 'user.try(:name)', :boost => 2,            :index => 'not_analyzed'
-    indexes :category,   :as => 'category.title',  :boost => 6,            :index => 'not_analyzed'
+    indexes :username,   :as => 'user.try(:name)', :boost => 2
+    indexes :category,   :as => 'category.title',  :boost => 6
     indexes :title,      :analyzer => 'french',    :boost => 10
     indexes :body,       :analyzer => 'french'
   end

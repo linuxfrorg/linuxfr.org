@@ -45,8 +45,8 @@ class Post < Content
   mapping do
     indexes :id,         :index    => :not_analyzed
     indexes :created_at, :type => 'date', :include_in_all => false
-    indexes :username,   :as => 'user.try(:name)',           :boost => 2,  :index => 'not_analyzed'
-    indexes :forum,      :as => 'forum.title.tr ".-", "··"', :boost => 5,  :index => 'not_analyzed'
+    indexes :username,   :as => 'user.try(:name)',           :boost => 2
+    indexes :forum,      :as => 'forum.title.tr ".-", "··"', :boost => 5
     indexes :title,      :analyzer => 'french',              :boost => 10
     indexes :body,       :analyzer => 'french'
   end

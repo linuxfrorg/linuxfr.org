@@ -64,8 +64,8 @@ class News < Content
   mapping do
     indexes :id,          :index    => :not_analyzed
     indexes :created_at,  :type => 'date', :include_in_all => false
-    indexes :username,    :as => 'user.try(:name)',           :boost => 6,  :index => 'not_analyzed'
-    indexes :section,     :as => 'section.title.tr ".", "-"', :boost => 12, :index => 'not_analyzed'
+    indexes :username,    :as => 'user.try(:name)',           :boost => 6
+    indexes :section,     :as => 'section.title.tr ".", "-"', :boost => 12
     indexes :title,       :analyzer => 'french',              :boost => 50
     indexes :body,        :analyzer => 'french',              :boost => 5
     indexes :second_part, :analyzer => 'french',              :boost => 3
