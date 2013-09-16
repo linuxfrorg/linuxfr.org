@@ -768,7 +768,8 @@ div.content a[href^="//linuxfr.org/wiki/"] {
   background: url('/images/contrib/kaiska/linuxfr.png') no-repeat;
   padding-left: 18px;
 }
-div.content a[href^="http://fr.wikipedia.org/"] {
+div.content a[href^="http://fr.wikipedia.org/"],
+div.content a[href^="https://fr.wikipedia.org/"] {
   background: url('/images/contrib/kaiska/wikipedia.png') no-repeat;
   padding-left: 18px;
 }
