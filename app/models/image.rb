@@ -59,11 +59,11 @@ class Image < Struct.new(:link, :title, :alt_text)
   end
 
   def src_attr
-    "src=\"#{CGI.escapeHTML src}\""
+    "src=\"#{CGI.escapeHTML src.to_s}\""
   end
 
   def alt_attr
-    "alt=\"#{CGI.escapeHTML alt_text}\""
+    "alt=\"#{CGI.escapeHTML alt_text.to_s}\""
   end
 
   def title_attr
