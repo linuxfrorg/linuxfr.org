@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414173953) do
+ActiveRecord::Schema.define(:version => 20130927091308) do
 
   create_table "access_grants", :force => true do |t|
     t.integer  "account_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130414173953) do
     t.datetime "updated_at"
   end
 
+  add_index "access_grants", ["access_token"], :name => "index_access_grants_on_access_token"
   add_index "access_grants", ["account_id", "code"], :name => "index_access_grants_on_account_id_and_code"
   add_index "access_grants", ["client_application_id"], :name => "index_access_grants_on_client_application_id"
 
@@ -151,11 +152,9 @@ ActiveRecord::Schema.define(:version => 20130414173953) do
   add_index "friend_sites", ["position"], :name => "index_friend_sites_on_position"
 
   create_table "friendly_id_slugs", :force => true do |t|
-    t.string   "slug",                         :default => "0"
-    t.integer  "sluggable_id",                 :default => 0
-    t.integer  "sequence",                     :default => 1,   :null => false
+    t.string   "slug"
+    t.integer  "sluggable_id"
     t.string   "sluggable_type", :limit => 40
-    t.string   "scope",          :limit => 40
     t.datetime "created_at"
   end
 
