@@ -226,6 +226,14 @@ class News < Content
     attendees.where("users.id != ?", node.user_id || 1)
   end
 
+  def reorganize(params)
+    Paragraph.where(news_id: self.id).delete_all
+    self.attributes = params
+    create_parts
+    save
+    unlock
+  end
+
 ### Associated node ###
 
   def author_account

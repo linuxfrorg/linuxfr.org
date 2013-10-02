@@ -61,12 +61,8 @@ class Redaction::NewsController < RedactionController
   end
 
   def reorganized
-    @news.paragraphs.delete_all
-    @news.attributes = params[:news]
     @news.editor = current_account
-    @news.create_parts
-    @news.save
-    @news.unlock
+    @news.reorganize params[:news]
     redirect_to [@news.draft? ? :redaction : :moderation, @news]
   end
 
