@@ -49,7 +49,7 @@ group :development do
   gem "annotate"
   gem "autotest-standalone"
   gem "better_errors"
-  gem "capistrano"
+  gem "capistrano",            "~>2.0"
   gem "capistrano-maintenance"
   gem "desi"
   gem "haml-rails"
