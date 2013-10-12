@@ -27,7 +27,10 @@ class Image < Struct.new(:link, :title, :alt_text)
   end
 
   def register_in_redis
-    return if $redis.exists "img/#{link}"
+    if $redis.exists "img/#{link}"
+      $redis.del "img/err/#{link}"
+      return
+    end
     $redis.hsetnx "img/#{link}", "created_at", Time.now.to_i
     $redis.lpush LATEST_KEY, link
     $redis.ltrim LATEST_KEY, 0, NB_IMG_IN_LATEST - 1
