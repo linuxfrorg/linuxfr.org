@@ -14,8 +14,9 @@
 
 #
 class WikiVersion < ActiveRecord::Base
-  belongs_to :wiki_page
   belongs_to :user
+  belongs_to :wiki_page
+  has_one :node, :through => :wiki_page
 
   acts_as_list :column => 'version', :scope => :wiki_page
 

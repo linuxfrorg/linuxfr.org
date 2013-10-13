@@ -81,7 +81,10 @@ class WikiPagesController < ApplicationController
 
   def changes
     @dont_index = true
-    @versions = WikiVersion.order("created_at DESC").joins(:wiki_page).page(params[:page])
+    @versions = WikiVersion.order("created_at DESC")
+                           .joins(:node)
+                           .where("nodes.public" => true)
+                           .page(params[:page])
     respond_to do |wants|
       wants.html
       wants.atom
