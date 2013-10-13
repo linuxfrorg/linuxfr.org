@@ -1,4 +1,8 @@
 %main#contents(role="main")
+  - if !@wiki_page.visible?
+    .alert
+      %strong Cette page a été supprimée.
+
   - if @version.higher_item || @version.lower_item
     %nav
       %ul
