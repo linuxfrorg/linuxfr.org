@@ -11,7 +11,8 @@ class Chat
     @board.find("form").submit @postMessage
     @totoz_type = $.cookie("totoz-type")
     @totoz_url  = $.cookie("totoz-url") or "http://sfw.totoz.eu/gif/"
-    @norlogize right  for right in @board.find(".board-right")
+    @norlogize      right for right in @board.find(".board-right")
+    @norlogize_left left  for left  in @board.find(".board-left time").get().reverse()
     @board.on("mouseenter", "time", @highlitizer)
           .on("mouseleave", "time", @deshighlitizer)
     if @totoz_type == "popup"
@@ -34,28 +35,60 @@ class Chat
     false
 
   norloge: (event) =>
-    time = $(event.target).text()
+    string = $(event.target).text()
+    index = $(event.target).data("clockIndex")
+    if index > 1 || (index == 1 && @board.find("time[data-clock-time=\"" + $(event.target).data("clockTime") + "\"]").length > 1)
+      switch index
+        when 1 then string += "¹"
+        when 2 then string += "²"
+        when 3 then string += "³"
+        else string += ":" + index
     value = @input.val()
     range = @input.caret()
     unless range.start?
       range.start = 0
       range.end = 0
-    @input.val value.substr(0, range.start) + time + " " + value.substr(range.end, value.length)
+    @input.val value.substr(0, range.start) + string + " " + value.substr(range.end, value.length)
     @input.caret range.start + time.length + 1
     @input.focus()
 
   norlogize: (x) ->
-    r = /(\d{4}-\d{2}-\d{2} )?\d{2}:\d{2}(:\d{2})?([⁰¹²³⁴⁵⁶⁷⁸⁹]+|[:\^]\d+)?/g
+    r = /(\d{4}-\d{2}-\d{2} )?(\d{2}:\d{2}(:\d{2})?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+|[:\^]\d+)?/g
     totoz = /\[:([0-9a-zA-Z \*\$@':_-]+)\]/g
-    x.innerHTML = x.innerHTML.replace(r, "<time>$&</time>")
+    x.innerHTML = x.innerHTML.replace(r, (match, datematch, timematch, minutes, index, offset, s) ->
+      if index != undefined
+        switch index.substr(0, 1)
+          when ":", "^" then index = index.substr(1)
+          when "¹" then index = 1
+          when "²" then index = 2
+          when "³" then index = 3
+          when "⁴" then index = 4
+          when "⁵" then index = 5
+          when "⁶" then index = 6
+          when "⁷" then index = 7
+          when "⁸" then index = 8
+          when "⁹" then index = 9
+          else index = 1
+      else
+        index = 1
+      "<time data-clock-time=\"" + timematch + "\" data-clock-index=\"" + index + "\">" + match + "</time>"
+    )
     if @totoz_type == "popup"
       x.innerHTML = x.innerHTML.replace(totoz, "<span class=\"totoz\" data-totoz-name=\"$1\">$&</span>")
     else if @totoz_type == "inline"
       x.innerHTML = x.innerHTML.replace(totoz, "<img class=\"totoz\" alt=\"$&\" title=\"$&\" src=\"#{@totoz_url}$1.gif\" style=\"vertical-align: top; background-color: transparent\"/>")
 
+  norlogize_left: (x) ->
+    r = /\d{2}:\d{2}:\d{2}/g
+    time = x.innerHTML.replace(r, "$&")
+    index = @board.find(".board-left time[data-clock-time=\"" + time + "\"]").length + 1
+    x.dataset.clockTime = time
+    x.dataset.clockIndex = index
+
   highlitizer: (event) =>
-    time = $(event.target).text()
-    @inbox.find("time").filter(-> $(@).text() == time).addClass "highlighted"
+    time = $(event.target).data("clockTime")
+    index = $(event.target).data("clockIndex");
+    @inbox.find("time[data-clock-time=\"" + time + "\"][data-clock-index=\"" + index + "\"]").addClass "highlighted"
 
   deshighlitizer: =>
     @inbox.find("time.highlighted").removeClass "highlighted"
