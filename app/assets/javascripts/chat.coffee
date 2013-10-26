@@ -25,7 +25,8 @@ class Chat
     existing = $("#board_" + msg.id)
     return  if existing.length > 0
     @inbox.prepend(msg.message).find(".board-left:first .norloge").click @norloge
-    @norlogize right for right in @inbox.find(".board-right:first")
+    @norlogize      right for right in @inbox.find(".board-right:first")
+    @norlogize_left left  for left  in @inbox.find(".board-left time:first")
 
   postMessage: (event) =>
     form = $(event.target)
@@ -37,7 +38,7 @@ class Chat
   norloge: (event) =>
     string = $(event.target).text()
     index = $(event.target).data("clockIndex")
-    if index > 1 || (index == 1 && @board.find("time[data-clock-time=\"" + $(event.target).data("clockTime") + "\"]").length > 1)
+    if index > 1 || (index == 1 && @board.find(".board-left time[data-clock-time=\"" + $(event.target).data("clockTime") + "\"]").length > 1)
       switch index
         when 1 then string += "¹"
         when 2 then string += "²"
@@ -49,7 +50,7 @@ class Chat
       range.start = 0
       range.end = 0
     @input.val value.substr(0, range.start) + string + " " + value.substr(range.end, value.length)
-    @input.caret range.start + time.length + 1
+    @input.caret range.start + string.length + 1
     @input.focus()
 
   norlogize: (x) ->
