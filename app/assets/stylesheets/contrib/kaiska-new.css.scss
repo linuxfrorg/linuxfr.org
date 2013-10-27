@@ -292,6 +292,13 @@ nav.toolbox div.order_navbar {
 #container article#contents {
   padding: 10px;
 }
+#container article div.content .notice {
+  border-left: 3px solid blue;
+  font-style: italic;
+  margin-bottom: 10px;
+  margin-left: 74px;  // largeur de l'avatar (64px) + de son padding (10px)
+  padding-left: 10px;
+}
 #container article figure {
   float: left;
   margin: 10px;
