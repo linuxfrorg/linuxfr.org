@@ -473,9 +473,9 @@ li.comment div.content {
 li.comment div.content > p {
   margin-top: 0px;
 }
-li.comment div.content .deleted {
-    border-left: 3px solid red;
-    font-style: italic;
+li.comment div.content.deleted {
+  border-left: 3px solid red;
+  font-style: italic;
 }
 li.comment div.content .signature {
   color: #777777;
