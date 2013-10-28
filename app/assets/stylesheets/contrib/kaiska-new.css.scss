@@ -268,6 +268,9 @@ nav.toolbox div.order_navbar {
 #container article header h1 a:active {
   color: #555522;
 }
+#container article header h1 .topic:after {
+  content: " -";
+}
 #container article header div.meta {
   color: #666666;
 }
@@ -288,6 +291,13 @@ nav.toolbox div.order_navbar {
 #container article div.content,
 #container article#contents {
   padding: 10px;
+}
+#container article div.content .notice {
+  border-left: 3px solid blue;
+  font-style: italic;
+  margin-bottom: 10px;
+  margin-left: 74px;  // largeur de l'avatar (64px) + de son padding (10px)
+  padding-left: 10px;
 }
 #container article figure {
   float: left;
@@ -473,9 +483,9 @@ li.comment div.content {
 li.comment div.content > p {
   margin-top: 0px;
 }
-li.comment div.content .deleted {
-    border-left: 3px solid red;
-    font-style: italic;
+li.comment div.content.deleted {
+  border-left: 3px solid red;
+  font-style: italic;
 }
 li.comment div.content .signature {
   color: #777777;
