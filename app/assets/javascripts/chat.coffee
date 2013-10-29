@@ -80,9 +80,11 @@ class Chat
       x.innerHTML = x.innerHTML.replace(totoz, "<img class=\"totoz\" alt=\"$&\" title=\"$&\" src=\"#{@totoz_url}$1.gif\" style=\"vertical-align: top; background-color: transparent\"/>")
 
   norlogize_left: (x) ->
-    r = /\d{2}:\d{2}:\d{2}/g
-    time = x.innerHTML.replace(r, "$&")
-    index = @board.find(".board-left time[data-clock-time=\"" + time + "\"]").length + 1
+    r = /((\d{4}-\d{2}-\d{2}) )?(\d{2}:\d{2}:\d{2})/g
+    date = x.innerHTML.replace(r, "$2")
+    time = x.innerHTML.replace(r, "$3")
+    index = @board.find(".board-left time[data-clock-date=\"" + date + "\"][data-clock-time=\"" + time + "\"]").length + 1
+    x.dataset.clockDate = date
     x.dataset.clockTime = time
     x.dataset.clockIndex = index
 
