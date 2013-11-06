@@ -1,13 +1,13 @@
 /.bundle
 /.rvmrc
 /.sass-cache
+/assets_manifest.yml
 /config/database.yml
 /config/secret.yml
 /db/*.sqlite3
 /db/elasticsearch
 /log
 /public/assets
-/uploads/avatars
 /public/board.xml
 /public/images/historique
 /public/images/load
@@ -16,6 +16,6 @@
 /public/system
 /public/tmp
 /tmp
+/uploads
 /webrat.log
 /REVISION
-/TODO
