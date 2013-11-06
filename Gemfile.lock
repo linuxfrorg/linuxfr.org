@@ -230,7 +230,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     redcarpet (3.0.0)
-    redis (2.2.2)
+    redis (3.0.5)
     redis-activesupport (3.2.4)
       activesupport (~> 3.2.0)
       redis-store (~> 1.1.0)
@@ -357,7 +357,7 @@ DEPENDENCIES
   pry-rails
   quiet_assets
   rails (~> 3.2.15)
-  redis (~> 2.2)
+  redis (~> 3.0)
   redis-activesupport (~> 3.2)
   rinku (~> 1.2)
   rspec-rails (~> 2.9)

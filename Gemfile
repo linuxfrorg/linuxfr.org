@@ -23,7 +23,7 @@ gem "nokogiri",                "~>1.6"
 gem "oauth2",                  "~>0.6"
 gem "rinku",                   "~>1.2"
 gem "hiredis",                 "~>0.3"
-gem "redis",                   "~>2.2", :require => ["redis/connection/hiredis", "redis"]
+gem "redis",                   "~>3.0", :require => ["redis/connection/hiredis", "redis"]
 gem "sanitize",                "~>2.0"
 gem "sitemap_generator",       "~>2.1"
 gem "simple_autocomplete",     "~>0.3"
