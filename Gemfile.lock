@@ -80,7 +80,7 @@ GEM
       addressable
       boson
       cocaine (~> 0.5.3)
-    devise (3.1.1)
+    devise (3.2.0)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -331,7 +331,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2)
   database_cleaner (~> 0.7)
   desi
-  devise (~> 3.0)
+  devise (~> 3.1)
   diff_match_patch!
   factory_girl_rails (~> 1.6)
   faker (~> 0.9)
