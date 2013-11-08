@@ -172,7 +172,7 @@ GEM
     multi_json (1.8.2)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
-    mysql2 (0.3.13)
+    mysql2 (0.3.14)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -230,7 +230,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     redcarpet (3.0.0)
-    redis (3.0.5)
+    redis (3.0.6)
     redis-activesupport (3.2.4)
       activesupport (~> 3.2.0)
       redis-store (~> 1.1.0)
@@ -331,7 +331,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2)
   database_cleaner (~> 0.7)
   desi
-  devise (~> 3.1)
+  devise (~> 3.2)
   diff_match_patch!
   factory_girl_rails (~> 1.6)
   faker (~> 0.9)

@@ -2,9 +2,6 @@
 # Use this hook to configure devise mailer, warden hooks and so forth. The first
 # four configuration values can also be set straight in your models.
 Devise.setup do |config|
-  # XXX temporary - see http://blog.plataformatec.com.br/2013/08/devise-3-1-now-with-more-secure-defaults/
-  config.allow_insecure_token_lookup = true
-
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
   config.mailer_sender = "contact@linuxfr.org"
