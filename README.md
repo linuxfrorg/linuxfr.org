@@ -17,10 +17,9 @@ LinuxFr.org on a Debian box.
     # aptitude install mysql-server mysql-client libmysql++-dev
     # aptitude install build-essential openssl libreadline6 libreadline6-dev
     # aptitude install curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev
-    # aptitude install libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev bison
-    # aptitude install libxslt-dev autoconf libc6-dev ncurses-dev automake libtool
-    # aptitude install imagemagick hunspell hunspell-fr subversion
-    # aptitude install openjdk-6-jdk tcl8.5
+    # aptitude install libxml2-dev bison libxslt-dev autoconf libc6-dev
+    # aptitude install ncurses-dev automake libtool imagemagick
+    # aptitude install hunspell hunspell-fr openjdk-6-jdk redis-server
 
 2) Configure the database:
 
@@ -34,27 +33,18 @@ LinuxFr.org on a Debian box.
     Statistics need time zone at SQL level. You'll need to population time_zone* tables.
     # mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -p -u root mysql
 
-3) Install and start redis:
+3) Install RVM (more details on https://rvm.io/rvm/install ):
 
-    $ wget "http://redis.googlecode.com/files/redis-2.4.17.tar.gz"
-    $ tar xzf redis-2.4.17.tar.gz
-    $ cd redis-2.4.17
-    $ make
-    (optional, takes about ten minutes, $ make test )
-    $ src/redis-server redis.conf
-
-4) Install RVM (more details on https://rvm.beginrescueend.com/rvm/install/ ):
-
-    $ bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+    $ curl -L https://get.rvm.io | bash
 
    And follow the instructions.
 
-5) Install Ruby with RVM:
+4) Install Ruby with RVM:
 
     $ rvm install 2.0.0
     $ rvm use --default 2.0.0
 
-6) Clone the repository, configure and install gems:
+5) Clone the repository, configure and install gems:
 
     $ git clone git://github.com/nono/linuxfr.org.git
     $ cd linuxfr.org
@@ -63,23 +53,20 @@ LinuxFr.org on a Debian box.
     $ gem install bundler rake
     $ bundle install
 
-7) Launch elasticsearch and create indexes:
+6) Finish to configure:
 
     $ desi install
     $ desi start
-    $ ./script/rails r '[Diary, News, Page, Poll, Post, Tracker, WikiPage].each {|m| m.tire.index.refresh }'
-
-8) Finish to configure:
-
     $ rake db:setup
     (if you're updating, you'll need an other step: redis-cli flushdb)
+    $ ./script/rails r '[Diary, News, Page, Poll, Post, Tracker, WikiPage].each {|m| m.tire.index.refresh }'
 
-9) Let's run it:
+7) Let's run it:
 
     $ ./script/rails server thin
     $ x-www-browser http://127.0.0.1:3000/
 
-10) Create an admin account:
+8) Create an admin account:
 
 * Create an account
 * Get confirmation link in the console and confirm the account
