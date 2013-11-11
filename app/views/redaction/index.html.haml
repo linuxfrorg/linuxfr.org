@@ -2,7 +2,7 @@
   .notice
     = link_to "Êtes-vous inscrit à la liste de diffusion des rédacteurs ?", "/news/une-liste-de-diffusion-pour-les-redacteurs-de-linuxfr-org"
   =h1 "Tribune rédacteurs"
-  = render 'boards/boards', :boards => @boards
+  = render 'boards/boards', :boards => @boards, :box => false
 
 #news
   %h1 Dépêches en cours de rédaction

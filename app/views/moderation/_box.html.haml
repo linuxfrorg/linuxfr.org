@@ -18,4 +18,4 @@
         = link_to news.title, [:moderation, news]
   %p
     = link_to pluralize(Poll.draft.count, "sondage"), moderation_polls_path
-  = render 'boards/boards', :boards => Board.limit(12, Board.amr)
+  = render 'boards/boards', :boards => Board.limit(12, Board.amr), :box => true

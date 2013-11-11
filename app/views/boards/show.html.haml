@@ -16,4 +16,4 @@
     ou
     %a{:onclick => "$.cookie('totoz-type', null, {path: '/board'});" } sans
   %main#contents(role="main")
-    = render 'boards', :boards => @boards
+    = render 'boards', :boards => @boards, :box => false

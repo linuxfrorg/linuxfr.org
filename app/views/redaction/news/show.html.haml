@@ -4,7 +4,7 @@
   #redaction_board
     %p
       = link_to "Retourner sur la liste des dépêches en cours de rédaction", '/redaction'
-    = render 'board', :boards => @boards
+    = render 'board', :boards => @boards, :box => false
     = render 'attendees', :attendees => @news.attendees
     = render 'editions', :news => @news
 

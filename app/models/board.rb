@@ -51,7 +51,7 @@ class Board
   end
 
   def push
-    rendered = BoardsController.new.render_to_string(:partial => "board", :locals => { :board => self })
+    rendered = BoardsController.new.render_to_string(:partial => "board", :locals => { :board => self, :box => false })
     Push.create(meta, :kind => :chat, :message => rendered)
   end
 
@@ -158,11 +158,6 @@ class Board
     else
       Board.allocate.tap {|b| b.id = object_type }
     end
-  end
-
-  def norloge
-    short = [Board.free, Board.amr].include?(object_type)
-    created_at.to_s(short ? :norloge : :norloge2)
   end
 
 ### Types ###
