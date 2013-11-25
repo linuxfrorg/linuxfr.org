@@ -79,6 +79,7 @@ class Comment < ActiveRecord::Base
     @parent_id = parent_id
     return if parent_id.blank?
     @parent = Comment.find(parent_id)
+    return if @parent.deleted?
     self.title ||= @parent ? "#{@parent.title.starts_with?('Re:') ? '' : 'Re: '}#{@parent.title}" : ''
   end
 
