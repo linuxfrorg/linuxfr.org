@@ -43,6 +43,7 @@ protected
 
   def load_account
     @account = Account.find(params[:id])
+    @account.amr_id = current_user.id
   end
 
 end

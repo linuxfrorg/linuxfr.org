@@ -54,7 +54,7 @@ class Account < ActiveRecord::Base
 
   mount_uploader :uploaded_stylesheet, StylesheetUploader
 
-  attr_accessor :remember_me
+  attr_accessor :remember_me, :amr_id
   attr_accessible :login, :email, :stylesheet, :uploaded_stylesheet, :password, :password_confirmation, :user_attributes, :remember_me
   delegate :name, :to => :user
 
@@ -139,7 +139,7 @@ class Account < ActiveRecord::Base
 
   def log_role
     roles = previous_changes["role"]
-    logs.create(:description => "Changement de rôle : #{roles.join ' → '}")
+    logs.create(:description => "Changement de rôle : #{roles.join ' → '}", :user_id => amr_id)
   end
 
   # An AMR is someone who is either an admin or a moderator
