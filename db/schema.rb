@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130927091308) do
+ActiveRecord::Schema.define(:version => 20131214220512) do
 
   create_table "access_grants", :force => true do |t|
     t.integer  "account_id"
@@ -212,6 +212,7 @@ ActiveRecord::Schema.define(:version => 20130927091308) do
   end
 
   add_index "news_versions", ["news_id", "version"], :name => "index_news_versions_on_news_id_and_version"
+  add_index "news_versions", ["user_id"], :name => "index_news_versions_on_user_id"
 
   create_table "nodes", :force => true do |t|
     t.integer  "content_id"
