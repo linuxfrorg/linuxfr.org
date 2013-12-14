@@ -49,6 +49,7 @@ group :development do
   gem "annotate"
   gem "autotest-standalone"
   gem "better_errors"
+  gem "binding_of_caller"
   gem "capistrano",            "~>2.0"
   gem "capistrano-maintenance"
   gem "desi"

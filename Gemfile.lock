@@ -46,6 +46,8 @@ GEM
     better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bitfields (0.4.3)
     boson (1.2.4)
     builder (3.0.4)
@@ -76,6 +78,7 @@ GEM
     coffee-script-source (1.6.3)
     daemons (1.1.9)
     database_cleaner (0.9.1)
+    debug_inspector (0.0.2)
     desi (0.6.2)
       addressable
       boson
@@ -323,6 +326,7 @@ DEPENDENCIES
   annotate
   autotest-standalone
   better_errors
+  binding_of_caller
   bitfields (~> 0.4)
   canable (~> 0.1)
   capistrano (~> 2.0)
