@@ -27,7 +27,7 @@
           %th Entrées ouvertes
         - @stats.top_reporters.each do |user|
           %tr
-            %td{'class'=>'stat'}
+            %td.stat
               =link_to(user["name"], "/users/#{user["name"]}")
             %td
               .stat.misc(style="width: #{(width_stats * user["cnt"] / maxval).to_i}px;")= user["cnt"]
@@ -41,7 +41,7 @@
           %th Entrées fermées
         - @stats.good_workers.each do |worker|
           %tr
-            %td{'class'=>'stat'}
+            %td.stat
               = link_to(worker["name"], "/users/#{worker["name"]}")
             %td
               .stat.misc(style="width: #{(width_stats * worker["cnt"] / maxval).to_i}px;")= worker["cnt"]
@@ -59,7 +59,7 @@
           %th Total
         - @stats.by_year.each do |year,states|
           %tr
-            %td{'class'=>'stat'}= year
+            %td.stat= year
             %td
               .stat.opened(style="width:#{width_stats * states["opened"] / maxval / 3}px;")= states["opened"]
             %td
@@ -85,7 +85,7 @@
           - fixed   = month[1]["fixed"]   || 0
           - invalid = month[1]["invalid"] || 0
           %tr
-            %td{'class'=>'stat'}
+            %td.stat
               = month[0].sub(/(\d{4})(\d{2})/, '\2 \1')
             %td
               .stat.remaining(style="width:#{width_stats * total / maxval / 4}px;")= total
@@ -106,7 +106,7 @@
           %th Nombre d'entrées
         - @stats.by_category.each do |category|
           %tr
-            %td{'class'=>'stat'}= category["name"]
+            %td.stat= category["name"]
             %td
               .stat.category(style="width: #{width_stats * category["cnt"] / maxval}px;")= category["cnt"]
 

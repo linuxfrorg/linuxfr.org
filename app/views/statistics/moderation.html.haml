@@ -32,7 +32,7 @@
       %h2 Temps d'édition et de modération
       %p
         Temps passé entre la création d'une dépêche (temps d'édition compris) et sa modération finale&nbsp;:
-      %table{'class'=>'sortable'}
+      %table.sortable
         %tr
           %th Année
           %th Médiane (h)
@@ -44,13 +44,13 @@
         - @stats.average_time.each do |avg|
           - if avg["cnt"] > 0
             %tr
-              %td{'class'=>'stat'}= avg["year"]
-              %td{'class'=>'stat'}= (@stats.median_time(avg["year"],avg["cnt"],0.50)/3600)
-              %td{'class'=>'stat'}= (@stats.median_time(avg["year"],avg["cnt"],0.95)/3600)
-              %td{'class'=>'stat'}= (avg["duration"]/(avg["cnt"]*3600)).to_i
-              %td{'class'=>'stat'}= (avg["std"]/3600).to_i
-              %td{'class'=>'stat'}= (avg["min"]/60).to_i
-              %td{'class'=>'stat'}= (avg["max"]/3600).to_i
+              %td.stat= avg["year"]
+              %td.stat= (@stats.median_time(avg["year"],avg["cnt"],0.50)/3600)
+              %td.stat= (@stats.median_time(avg["year"],avg["cnt"],0.95)/3600)
+              %td.stat= (avg["duration"]/(avg["cnt"]*3600)).to_i
+              %td.stat= (avg["std"]/3600).to_i
+              %td.stat= (avg["min"]/60).to_i
+              %td.stat= (avg["max"]/3600).to_i
           - else
             aucune information disponible
 
@@ -80,7 +80,7 @@
 
     - if Account.amr.size > 0
       %h4 Équipe de modération actuelle (#{Account.amr.size})
-      %table{'class'=>'sortable'}
+      %table.sortable
         %tr
           %th
           %th Modérations (7j)
@@ -92,16 +92,16 @@
           %th Auteur de dépêches
         - Account.amr.each do |user|
           %tr
-            %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
-            %td{'class'=>'stat'}= @stats.nb_moderations_x_days(user["user_id"],7)
-            %td{'class'=>'stat'}= @stats.nb_moderations_x_days(user["user_id"],31)
-            %td{'class'=>'stat'}= @stats.nb_editions_x_days(user["user_id"],7)
-            %td{'class'=>'stat'}= @stats.nb_editions_x_days(user["user_id"],31)
-            %td{'class'=>'stat'}= @stats.nb_votes_last_month(user["login"])
+            %td.stat= link_to user["login"], "/users/#{user["login"]}"
+            %td.stat= @stats.nb_moderations_x_days(user["user_id"],7)
+            %td.stat= @stats.nb_moderations_x_days(user["user_id"],31)
+            %td.stat= @stats.nb_editions_x_days(user["user_id"],7)
+            %td.stat= @stats.nb_editions_x_days(user["user_id"],31)
+            %td.stat= @stats.nb_votes_last_month(user["login"])
             - @stats.last_news_at(user["user_id"]).each do |last|
-              %td{'class'=>'stat'}= last["last"]
+              %td.stat= last["last"]
             - @stats.news_by_week(user["user_id"]).each do |news|
-              %td{'class'=>'stat'}
+              %td.stat
                 = "#{news["cnt"]} en #{pluralize news["weeks"], "semaine"}"
                 - if news["cnt"] >= news["weeks"] * @goals.each_amr_news_by_week
                   = image_tag "/images/icones/check.png", :alt => "Objectif atteint", :title => "Objectif atteint"
@@ -113,7 +113,7 @@
 
     - if @stats.top_amr.size > 0
       %h4 Membre passé ou présent de l'équipe de modération (#{@stats.top_amr.size})
-      %table{'class'=>'sortable'}
+      %table.sortable
         %tr
           %th
           %th Modérations
@@ -121,9 +121,9 @@
           %th Éditions
         - @stats.top_amr.each do |user|
           %tr
-            %td{'class'=>'stat'}= link_to user["login"], "/users/#{user["login"]}"
-            %td{'class'=>'stat'}= user["cnt"].to_i
-            %td{'class'=>'stat'}= @stats.nb_votes(user["login"])
-            %td{'class'=>'stat'}= @stats.nb_editions_x_days(user["moderator_id"])
+            %td.stat= link_to user["login"], "/users/#{user["login"]}"
+            %td.stat= user["cnt"].to_i
+            %td.stat= @stats.nb_votes(user["login"])
+            %td.stat= @stats.nb_editions_x_days(user["moderator_id"])
     - else
       %h4 Pas encore d'équipe de modération

@@ -42,7 +42,7 @@
           - comment.each do |type,cnt|
             %tr
               -if newyear==true
-                %td{'class'=>'stat','rowspan'=>comment.size()}= year
+                %td.stat{'rowspan'=>comment.size()}= year
                 -newyear=false
               %td
                 .stat(class="content#{type.downcase()}" style="width: 100px;") #{translate_content_type(type)}
@@ -64,7 +64,7 @@
           - comment.each do |type,cnt|
             %tr
               -if newyear==true
-                %td{'class'=>'stat','rowspan'=>comment.size()}= month.sub(/(\d{4})(\d{2})/, '\2 \1')
+                %td.stat{'rowspan'=>comment.size()}= month.sub(/(\d{4})(\d{2})/, '\2 \1')
                 -newyear=false
               %td
                 .stat(class="content#{type.downcase()}" style="width: 100px;") #{translate_content_type(type)}

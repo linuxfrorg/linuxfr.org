@@ -66,7 +66,7 @@
       %th Pourcentage des actifs
     - @stats.nb_comment_authors.each do |authors|
       %tr
-        %td{'class'=>'stat'} Commentaires
+        %td.stat Commentaires
         %td
           .stat.misc(style="width: #{(width_stats * authors["cnt"] / maxval).to_i}px;")= authors["cnt"]
         %td
@@ -83,7 +83,7 @@
       %th Pourcentage des actifs
     - @stats.nb_tag_authors.each do |authors|
       %tr
-        %td{'class'=>'stat'} Tags
+        %td.stat Tags
         %td
           .stat.misc(style="width: #{(width_stats * authors["cnt"] / maxval).to_i}px;")= authors["cnt"]
         %td
@@ -99,22 +99,22 @@
       %th Utilisateurs
       %th Pourcentage des actifs
     %tr
-      %td{'class'=>'stat'} Site personnel
+      %td.stat Site personnel
       %td
         .stat.misc(style="width: #{(width_stats * @stats.filled("homesite") / maxval).to_i}px;")= @stats.filled("homesite")
       %td #{@stats.pctrecent(@stats.filled("homesite"))}
     %tr
-      %td{'class'=>'stat'} Identifiant Jabber/XMPP
+      %td.stat Identifiant Jabber/XMPP
       %td
         .stat.misc(style="width: #{(width_stats * @stats.filled("jabber_id") / maxval).to_i}px;")= @stats.filled("jabber_id")
       %td #{@stats.pctrecent(@stats.filled("jabber_id"))}
     %tr
-      %td{'class'=>'stat'} Signature
+      %td.stat Signature
       %td
         .stat.misc(style="width: #{(width_stats * @stats.filled("signature") / maxval).to_i}px;")= @stats.filled("signature")
       %td #{@stats.pctrecent(@stats.filled("signature"))}
     %tr
-      %td{'class'=>'stat'} Avatar
+      %td.stat Avatar
       %td
         .stat.misc(style="width: #{(width_stats * @stats.filled("avatar") / maxval).to_i}px;")= @stats.filled("avatar")
       %td #{@stats.pctrecent(@stats.filled("avatar"))}
@@ -129,47 +129,47 @@
       %th Utilisateurs
       %th Pourcentage des actifs
     %tr
-      %td{'class'=>'stat'} Dépêches en page d'accueil
+      %td.stat Dépêches en page d'accueil
       %td
         .stat.misc(style="width: #{(width_stats * @stats.on_home("News") / maxval).to_i}px;")= @stats.on_home("News")
       %td #{@stats.pctrecent(@stats.on_home("News"))}
     %tr
-      %td{'class'=>'stat'} Journaux en page d'accueil
+      %td.stat Journaux en page d'accueil
       %td
         .stat.misc(style="width: #{(width_stats * @stats.on_home("Diary") / maxval).to_i}px;")= @stats.on_home("Diary")
       %td #{@stats.pctrecent(@stats.on_home("Diary"))}
     %tr
-      %td{'class'=>'stat'} Entrées de forum en page d'accueil
+      %td.stat Entrées de forum en page d'accueil
       %td
         .stat.misc(style="width: #{(width_stats * @stats.on_home("Post") / maxval).to_i}px;")= @stats.on_home("Post")
       %td #{@stats.pctrecent(@stats.on_home("Post"))}
     %tr
-      %td{'class'=>'stat'} Sondages en page d'accueil
+      %td.stat Sondages en page d'accueil
       %td
         .stat.misc(style="width: #{(width_stats * @stats.on_home("Poll") / maxval).to_i}px;")= @stats.on_home("Poll")
       %td #{@stats.pctrecent(@stats.on_home("Poll"))}
     %tr
-      %td{'class'=>'stat'} Pages wiki en page d'accueil
+      %td.stat Pages wiki en page d'accueil
       %td
         .stat.misc(style="width: #{(width_stats * @stats.on_home("WikiPage") / maxval).to_i}px;")= @stats.on_home("WikiPage")
       %td #{@stats.pctrecent(@stats.on_home("WikiPage"))}
     %tr
-      %td{'class'=>'stat'} Entrées de suivi en page d'accueil
+      %td.stat Entrées de suivi en page d'accueil
       %td
         .stat.misc(style="width: #{(width_stats * @stats.on_home("Tracker") / maxval).to_i}px;")= @stats.on_home("Tracker")
       %td #{@stats.pctrecent(@stats.on_home("Tracker"))}
     %tr
-      %td{'class'=>'stat'} Tri chronologique en page d'accueil
+      %td.stat Tri chronologique en page d'accueil
       %td
         .stat.misc(style="width: #{(width_stats * @stats.preferences(:sort_by_date_on_home) / maxval).to_i}px;")= @stats.preferences(:sort_by_date_on_home)
       %td #{@stats.pctrecent(@stats.preferences :sort_by_date_on_home)}
     %tr
-      %td{'class'=>'stat'} Masquage des signatures
+      %td.stat Masquage des signatures
       %td
         .stat.misc(style="width: #{(width_stats * @stats.preferences(:hide_signature) / maxval).to_i}px;")= @stats.preferences(:hide_signature)
       %td #{@stats.pctrecent(@stats.preferences :hide_signature)}
     %tr
-      %td{'class'=>'stat'} Masquage des avatars
+      %td.stat Masquage des avatars
       %td
         .stat.misc(style="width: #{(width_stats * @stats.preferences(:hide_avatar) / maxval).to_i}px;")= @stats.preferences(:hide_avatar)
       %td #{@stats.pctrecent(@stats.preferences :hide_avatar)}
@@ -206,7 +206,7 @@
       %th Pourcentage des actifs
     - @stats.by_karma.each do |karma|
       %tr
-        %td{'class'=>'stat'}
+        %td.stat
           -if karma["sign"] == -1
             = "]#{-10 ** (karma["k"] + 1)},#{-10 ** (karma["k"])}]"
           -elsif karma["sign"] == 1
