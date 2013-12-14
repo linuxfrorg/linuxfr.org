@@ -1,4 +1,3 @@
 = form_tag "/nodes/#{@node.id}/tags" do
-  = label_tag :tags
   = text_field_tag :tags, nil, :class => 'autocomplete', 'data-url' => autocomplete_tags_path
   = submit_tag "Tagger"

@@ -1,10 +1,6 @@
 .epub
   = link_to "Epub", "#{path_for_content node.content}.epub", :title => "Télécharger ce contenu au format epub", :class => "action"
-- if current_account
-  - if current_account.can_tag?(node.content)
-    .tag_in_place{"data-url" => "/nodes/#{node.id}/tags/nouveau"}
-      = link_to "Tagger", "/nodes/#{node.id}/tags/nouveau", :class => 'action'
-  - if current_account.can_vote?(node.content)
-    .vote
-      Ce contenu est-il #{button_to "pertinent", "/nodes/#{node.id}/vote/for", :remote => true, :class => "relevant"}
-      ou #{button_to "inutile", "/nodes/#{node.id}/vote/against", :remote => :true, :class => "useless"} ?
+- if current_account && current_account.can_vote?(node.content)
+  .vote
+    Ce contenu est-il #{button_to "pertinent", "/nodes/#{node.id}/vote/for", :remote => true, :class => "relevant"}
+    ou #{button_to "inutile", "/nodes/#{node.id}/vote/against", :remote => :true, :class => "useless"} ?
