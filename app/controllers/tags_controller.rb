@@ -6,6 +6,7 @@ class TagsController < ApplicationController
   before_filter :find_tag,  :only => [:show, :public, :hide, :update]
   before_filter :get_order, :only => [:index, :show]
   before_filter :user_tags, :only => [:index, :show]
+  respond_to :html, :atom
 
   autocomplete_for :tag, :name, :order => "taggings_count DESC"
   alias_method :autocomplete, :autocomplete_for_tag_name
@@ -66,6 +67,7 @@ class TagsController < ApplicationController
   def public
     @order = (params[:order] || "created_at") + " DESC"
     @nodes = @tag.nodes.where("nodes.public" => true).order(@order).page(params[:page])
+    respond_with(@nodes)
   end
 
   def hide
