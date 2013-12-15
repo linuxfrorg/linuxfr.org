@@ -131,6 +131,7 @@ class Comment < ActiveRecord::Base
   def default_score
     if user.account.karma > 0
       self.score = Math.log10(user.account.karma).to_i - 1
+      self.score = [self.score, 1].max if content_type == 'Post'
     else
       self.score = [-2 + user.account.karma/30, -10].max
     end
@@ -211,10 +212,9 @@ class Comment < ActiveRecord::Base
   after_create :compute_stats
   def compute_stats
     return unless node
-    ctype = node.content_type
     today = Date.today
-    $redis.incr "stats/comments/year/#{today.year}/#{ctype}"
-    $redis.incr "stats/comments/month/#{today.strftime "%Y%m"}/#{ctype}"
+    $redis.incr "stats/comments/year/#{today.year}/#{content_type}"
+    $redis.incr "stats/comments/month/#{today.strftime "%Y%m"}/#{content_type}"
     $redis.incr "stats/comments/wday/#{(today.wday - 1) % 7}"
   end
 
