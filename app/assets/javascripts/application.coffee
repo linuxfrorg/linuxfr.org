@@ -88,9 +88,9 @@ if $("body").hasClass("logged")
       .toolbar("Nouveaux commentaires", folding: "#comments .comment")
       .additional $("#comments .comment").sort((a,b) -> a.id > b.id), "Commentaires par ordre chronologique"
   else if $("main .node").length
-    $("#phare .new-node, main .new-node")
+    $("#phare .new-node, main .new-node:not(.ppp)")
       .toolbar("Contenus jamais visités")
-      .additional $("#phare .new_comments, main .new_comments").parents("article").reverse(), "Contenus lus avec + de commentaires"
+      .additional $("#phare .new_comments, main .noide:not(.ppp) .new_comments").parents("article").reverse(), "Contenus lus avec + de commentaires"
 
 # Redaction
 $(".edition_in_place").editionInPlace()
