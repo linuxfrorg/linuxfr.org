@@ -83,7 +83,7 @@ protected
   end
 
   def store_location!(scope)
-    session[:"#{scope}_return_to"] = url_for() if request && request.get?
+    session[:"#{scope}_return_to"] = url_for() if request && request.get? && !request.xhr?
   end
 
   def handle_unverified_request

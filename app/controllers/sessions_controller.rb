@@ -5,6 +5,7 @@ class SessionsController < DeviseController
   skip_before_filter    :verify_authenticity_token,    :only => [:new, :create]
 
   def new
+    session[:account_return_to] ||= url_for('/')
   end
 
   def create
