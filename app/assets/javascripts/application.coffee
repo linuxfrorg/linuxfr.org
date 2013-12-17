@@ -90,7 +90,7 @@ if $("body").hasClass("logged")
   else if $("main .node").length
     $("#phare .new-node, main .new-node:not(.ppp)")
       .toolbar("Contenus jamais visités")
-      .additional $("#phare .new_comments, main .noide:not(.ppp) .new_comments").parents("article").reverse(), "Contenus lus avec + de commentaires"
+      .additional $("#phare .new_comments, main .node:not(.ppp) .new_comments").parents("article").reverse(), "Contenus lus avec + de commentaires"
 
 # Redaction
 $(".edition_in_place").editionInPlace()
