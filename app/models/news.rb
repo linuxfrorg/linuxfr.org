@@ -96,6 +96,8 @@ class News < Content
     submit!
     node.created_at = DateTime.now
     node.save
+    message = "<b>La dépêche a été soumise à la modération</b>"
+    Board.new(:object_type => Board.news, :object_id => self.id, :message => message, :user_name => user.name).save
     Push.create(self, :kind => :submit, :username => user.name)
   end
 
