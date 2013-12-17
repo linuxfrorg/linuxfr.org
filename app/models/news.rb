@@ -76,15 +76,12 @@ class News < Content
   # The workflow for news is not simple, and can traverse these states:
   #  - draft: the news is the redaction space and its writing is not finished
   #  - candidate: the news has been submitted and can be examined by moderators
-  #  - waiting: the news is in the moderation space, but the votes are blocked (aka 755)
   #  - published: the news is accepted and visible by any visitor
   #  - refused: the news is not good enough and has been refused by a moderator
   #  - deleted: the news is a spam or has been unpublished
   #
   state_machine :state, :initial => :draft do
     event :submit  do transition :draft     => :candidate end
-    event :wait    do transition :candidate => :waiting   end
-    event :unblock do transition :waiting   => :candidate end
     event :accept  do transition :candidate => :published end
     event :refuse  do transition :candidate => :refused   end
     event :rewrite do transition :candidate => :draft     end
