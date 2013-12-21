@@ -20,7 +20,6 @@ class Admin::BannersController < AdminController
   end
 
   def edit
-    @preview_mode = true
     @banner = Banner.find(params[:id])
   end
 

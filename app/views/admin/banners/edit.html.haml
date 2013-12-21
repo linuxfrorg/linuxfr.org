@@ -1,8 +1,8 @@
 =h1 "Modifier cette bannière"
+= render :partial => 'warning'
 
-- if @preview_mode
-  %div.banner
-    = @banner.content
+%div.banner
+  = @banner.content
 
 = form_for [:admin, @banner] do |form|
   = render form
