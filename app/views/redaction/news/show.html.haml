@@ -31,8 +31,8 @@
 - if current_account.amr? || current_account.editor? || @news.submitted_by?(current_account)
   = button_to "Soumettre la dépêche", submit_redaction_news_path(@news), :class => "submit_news"
 - if current_account.can_followup? @news
-  %button#followup Relancer les rédacteurs
-  #followup_form(style="display: none;")
+  %button#followup.more Relancer les rédacteurs
+  .more_actions(style="display: none;")
     = form_tag followup_redaction_news_path(@news) do
       %p
         Vous pouvez envoyer un message de relance aux participants de cette dépêche
