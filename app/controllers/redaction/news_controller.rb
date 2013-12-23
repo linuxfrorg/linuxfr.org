@@ -81,6 +81,12 @@ class Redaction::NewsController < RedactionController
     end
   end
 
+  def erase
+    enforce_erase_permission(@news)
+    @news.erase!
+    redirect_to '/redaction', :notice => "Dépêche effacée"
+  end
+
 protected
 
   def load_news

@@ -143,7 +143,7 @@ button, input[type='submit'] {
   &.publish_news, &.ok_button {
     background: url("/images/icones/check.png") no-repeat 3px 3px $C_CLAIR;
   }
-  &.refuse_news, &.delete_button, &.cancel, &.remove, &.refuse_oauth {
+  &.refuse_news, &.delete_button, &.cancel, &.remove, &.refuse_oauth, &.erase_news {
     background: url("/images/icones/x_red.png") no-repeat 4px 4px $C_CLAIR;
   }
   &.ppp_news {

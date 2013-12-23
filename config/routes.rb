@@ -116,6 +116,7 @@ LinuxfrOrg::Application.routes.draw do
         get "/revisions/:revision" => :revision, :as => :revision
         post :submit
         post :followup
+        post :erase
         post :reassign
         get :reorganize
         put :reorganized

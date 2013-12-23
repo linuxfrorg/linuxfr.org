@@ -86,9 +86,10 @@ class News < Content
     event :refuse  do transition :candidate => :refused   end
     event :rewrite do transition :candidate => :draft     end
     event :delete  do transition :published => :deleted   end
+    event :erase   do transition :draft     => :deleted   end
 
-    after_transition :on => :accept, :do => :publish
-    after_transition :on => :refuse, :do => :be_refused
+    after_transition :on => :accept,  :do => :publish
+    after_transition :on => :refuse,  :do => :be_refused
     after_transition :on => :rewrite, :do => :be_rewritten
   end
 
@@ -332,6 +333,10 @@ class News < Content
     draft? && (account.editor? || account.admin?)
   end
 
+  def erasable_by?(account)
+    account.editor? || account.amr? || only_edited_by?(account)
+  end
+
   def reassignable_by?(account)
     account.editor? || account.amr?
   end
@@ -354,6 +359,10 @@ class News < Content
 
   def refusable?
     score < News.refuse_threshold
+  end
+
+  def only_edited_by?(account)
+    submitted_by?(account) && versions.where('user_id != ?', account.user_id).none?
   end
 
   def submitted_by?(account)
