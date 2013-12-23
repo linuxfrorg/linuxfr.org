@@ -165,7 +165,7 @@ button, input[type='submit'] {
   &.vote_against {
     background: url("/images/icones/arrow_down.png") no-repeat 2px 2px $C_CLAIR;
   }
-  &.plonk {
+  &.plonk, &.block {
     background: url("/images/icones/denied.png") no-repeat 2px 2px $C_CLAIR;
   }
   &#admin_49_3, &.archive_button, &.reopen_button {

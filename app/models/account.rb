@@ -239,6 +239,22 @@ class Account < ActiveRecord::Base
     logs.create(:description => "#{who.login} a donné #{points} points de karma")
   end
 
+### Blocked for comments ###
+
+  def blocked?
+    $redis.exists("block/#{self.id}")
+  end
+
+  def block(nb_days, user_id)
+    $redis.set("block/#{self.id}", 1)
+    $redis.expire("block/#{self.id}", nb_days * 86400)
+    logs.create(:description => "Interdiction de poster des commentaires pour #{pluralize nb_days, "jour"}", :user_id => user_id)
+  end
+
+  def can_block?
+    moderator? || admin?
+  end
+
 ### Plonk for the board ###
 
   def plonked?

@@ -20,7 +20,11 @@ class CommentsController < ApplicationController
     @comment = @node.comments.build
     enforce_create_permission(@comment)
   rescue Canable::Transgression
-    flash[:alert] = "Impossible de commenter un contenu vieux de plus de 3 mois"
+    if current_account.blocked?
+      flash[:alert] = "L'équipe de modération a temporairement bloqué vos commentaires sur le site"
+    else
+      flash[:alert] = "Impossible de commenter un contenu vieux de plus de 3 mois"
+    end
     redirect_to_content @node.content
   end
 

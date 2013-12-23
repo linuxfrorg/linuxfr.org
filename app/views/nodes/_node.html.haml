@@ -5,8 +5,9 @@
     %ul.threads
       - node.threads.each do |thread|
         = render 'comments/thread', :thread => thread
-  %p#send-comment
-    = link_to "Envoyer un commentaire", "/nodes/#{node.id}/comments/nouveau"
+  - if !current_account || node.content.commentable_by?(current_account)
+    %p#send-comment
+      = link_to "Envoyer un commentaire", "/nodes/#{node.id}/comments/nouveau"
   %p#follow-feed
     = link_to "Suivre le flux des commentaires", feed_of_comments_url
   %p

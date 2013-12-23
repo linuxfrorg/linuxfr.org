@@ -144,6 +144,6 @@ $("#account_user_attributes_avatar").change ->
 
 # Follow-up, admins, plonk...
 $("button.more").click ->
-  $(@).parent().find('.more_actions').show()
+  $(@).next('.more_actions').show()
   $(@).hide()
   false

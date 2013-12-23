@@ -152,7 +152,7 @@ class Comment < ActiveRecord::Base
   end
 
   def creatable_by?(account)
-    node && node.content && node.content.commentable_by?(account)
+    node && node.content && node.content.commentable_by?(account) && !account.blocked?
   end
 
   def updatable_by?(account)
