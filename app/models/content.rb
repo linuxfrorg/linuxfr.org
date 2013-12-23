@@ -66,7 +66,11 @@ class Content < ActiveRecord::Base
   end
 
   def commentable_by?(account)
-    viewable_by?(account) && (Time.now - node.created_at) < 3.months
+    viewable_by?(account) && !too_old_for_comments?
+  end
+
+  def too_old_for_comments?
+    (Time.now - node.created_at) > 3.months
   end
 
   def votable_by?(account)

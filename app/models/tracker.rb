@@ -90,8 +90,8 @@ class Tracker < Content
     account.moderator? || account.admin?
   end
 
-  def commentable_by?(account)
-    viewable_by?(account)
+  def too_old_for_comments?
+    false
   end
 
 end

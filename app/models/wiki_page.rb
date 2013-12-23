@@ -93,8 +93,8 @@ class WikiPage < Content
     account.amr?
   end
 
-  def commentable_by?(account)
-    viewable_by?(account)
+  def too_old_for_comments?
+    false
   end
 
 ### Interest ###

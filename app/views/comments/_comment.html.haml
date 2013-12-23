@@ -24,7 +24,8 @@
       %p.signature
         = comment.user.try(:signature)
 %footer.actions
-  = link_to "Répondre", "/nodes/#{comment.node_id}/comments/#{comment.id}/answer#new_comment", :class => 'action'
+  -if !comment.node.content.too_old_for_comments?
+    = link_to "Répondre", "/nodes/#{comment.node_id}/comments/#{comment.id}/answer#new_comment", :class => 'action'
   - if current_account && current_account.can_update?(comment)
     = link_to "Modifier", "/nodes/#{comment.node_id}/comments/#{comment.id}/modifier", :class => 'action'
   - if current_account
