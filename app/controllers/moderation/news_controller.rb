@@ -7,7 +7,7 @@ class Moderation::NewsController < ModerationController
   def index
     @news    = News.candidate.sorted
     @drafts  = News.draft.sorted
-    @refused = News.refused.sorted.limit(15)
+    @refused = News.refused.order("updated_at DESC").limit(15)
     @polls   = Poll.draft
     @boards  = Board.all(Board.amr)
   end
