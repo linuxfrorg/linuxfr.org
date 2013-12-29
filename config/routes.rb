@@ -1,6 +1,4 @@
 # encoding: utf-8
-# http://guides.rails.info/routing.html
-# http://yehudakatz.com/2009/12/26/the-rails-3-router-rack-it-up/
 #
 LinuxfrOrg::Application.routes.draw do
   root :to => "home#index"
@@ -22,6 +20,7 @@ LinuxfrOrg::Application.routes.draw do
     end
     member do
       get :news
+      get :journaux
       get :posts
       get :suivi
       get :comments

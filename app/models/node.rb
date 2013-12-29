@@ -35,7 +35,8 @@ class Node < ActiveRecord::Base
   scope :published_on, lambda {|d| where(:created_at => (d...d+1.day)) }
   scope :sitemap, lambda {|types| public_listing(types, "id").where("score > 0") }
   scope :public_listing, lambda {|types,order|
-    types = types.to_s if types === Class
+    types.map!(&:to_s) if types.is_a? Array
+    types = types.to_s if types.is_a? Class
     visible.where(:content_type => types).order("#{order} DESC")
   }
 

@@ -5,10 +5,10 @@ class UsersController < ApplicationController
   def show
     path = user_path(:id => @user, :format => params[:format])
     redirect_to path, :status => 301 and return if request.path != path
-    find_nodes(Diary)
+    find_nodes([News, Diary])
     respond_to do |wants|
       wants.html
-      wants.atom { render 'diaries/index' }
+      wants.atom
     end
   end
 
@@ -19,6 +19,16 @@ class UsersController < ApplicationController
     respond_to do |wants|
       wants.html
       wants.atom { render 'news/index' }
+    end
+  end
+
+  def journaux
+    path = journaux_user_path(:id => @user, :format => params[:format])
+    redirect_to path, :status => 301 and return if request.path != path
+    find_nodes(Diary)
+    respond_to do |wants|
+      wants.html
+      wants.atom { render 'diaries/index' }
     end
   end
 
