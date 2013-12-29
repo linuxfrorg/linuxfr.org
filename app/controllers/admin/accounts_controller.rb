@@ -3,8 +3,11 @@ class Admin::AccountsController < AdminController
   before_filter :load_account, :except => [:index]
 
   def index
-    @date = Date.today
     accounts = Account
+    if params[:login].present?
+      @login = params[:login]
+      accounts = accounts.where("login LIKE ?", "#{@login}%")
+    end
     if params[:date].present?
       @date = params[:date]
       accounts = accounts.where("created_at LIKE ?", "#{@date}%")

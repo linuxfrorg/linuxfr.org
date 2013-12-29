@@ -1,7 +1,8 @@
 =h1 "Les derniers comptes utilisateurs créés"
 
 = form_tag admin_accounts_path, :method => :get do
-  %input(type="date" name="date" value="#{@date}")
+  %input(type="text" name="login" value="#{@login}" placeholder="Filtrer par login")
+  %input(type="date" name="date" value="#{@date}" placeholder="Filtrer par date (YYYY-MM-DD)")
   %input(type="submit" value="Filtrer")
 
 %table
