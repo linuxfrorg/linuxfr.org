@@ -28,7 +28,7 @@
         - @stats.top_reporters.each do |user|
           %tr
             %td.stat
-              =link_to(user["name"], "/users/#{user["name"]}")
+              = link_to(user["name"], "/users/#{user["cached_slug"]}")
             %td
               .stat.misc(style="width: #{(width_stats * user["cnt"] / maxval).to_i}px;")= user["cnt"]
 
@@ -42,7 +42,7 @@
         - @stats.good_workers.each do |worker|
           %tr
             %td.stat
-              = link_to(worker["name"], "/users/#{worker["name"]}")
+              = link_to(worker["name"], "/users/#{worker["cached_slug"]}")
             %td
               .stat.misc(style="width: #{(width_stats * worker["cnt"] / maxval).to_i}px;")= worker["cnt"]
 

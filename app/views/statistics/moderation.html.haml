@@ -92,7 +92,7 @@
           %th Auteur de dépêches
         - Account.amr.each do |user|
           %tr
-            %td.stat= link_to user["login"], "/users/#{user["login"]}"
+            %td.stat= link_to user["login"], user.user
             %td.stat= @stats.nb_moderations_x_days(user["user_id"],7)
             %td.stat= @stats.nb_moderations_x_days(user["user_id"],31)
             %td.stat= @stats.nb_editions_x_days(user["user_id"],7)
@@ -121,7 +121,7 @@
           %th Éditions
         - @stats.top_amr.each do |user|
           %tr
-            %td.stat= link_to user["login"], "/users/#{user["login"]}"
+            %td.stat= link_to user["login"], User.find(user["moderator_id"])
             %td.stat= user["cnt"].to_i
             %td.stat= @stats.nb_votes(user["login"])
             %td.stat= @stats.nb_editions_x_days(user["moderator_id"])

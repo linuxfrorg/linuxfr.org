@@ -26,11 +26,11 @@ class Statistics::Tracker < Statistics::Statistics
   end
 
   def top_reporters
-    select_all "SELECT name, COUNT(*) AS cnt FROM nodes JOIN users ON nodes.user_id = users.id WHERE nodes.content_type = 'Tracker' GROUP BY user_id ORDER BY cnt DESC LIMIT 10"
+    select_all "SELECT name, users.cached_slug, COUNT(*) AS cnt FROM nodes JOIN users ON nodes.user_id = users.id WHERE nodes.content_type = 'Tracker' GROUP BY user_id ORDER BY cnt DESC LIMIT 10"
   end
 
   def good_workers
-    select_all "SELECT name, COUNT(*) AS cnt FROM trackers JOIN users ON trackers.assigned_to_user_id = users.id WHERE (state='fixed' or state='invalid') GROUP BY assigned_to_user_id ORDER BY cnt DESC"
+    select_all "SELECT name, users.cached_slug, COUNT(*) AS cnt FROM trackers JOIN users ON trackers.assigned_to_user_id = users.id WHERE (state='fixed' or state='invalid') GROUP BY assigned_to_user_id ORDER BY cnt DESC"
   end
 
   def by_year
