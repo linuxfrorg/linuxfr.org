@@ -80,6 +80,11 @@ class News < Content
   #  - refused: the news is not good enough and has been refused by a moderator
   #  - deleted: the news is a spam or has been unpublished
   #
+  # news.created_at:  when the news was started
+  # news.updated_at:  when the news was edited for the last time (can also be when the news is refused/deleted)
+  # nodes.created_at: when the news was published (or pushed in moderation if not yet moderated)
+  # nodes.updated_at: when the news was last commented at (among other things)
+  #
   state_machine :state, :initial => :draft do
     event :submit  do transition :draft     => :candidate end
     event :accept  do transition :candidate => :published end
