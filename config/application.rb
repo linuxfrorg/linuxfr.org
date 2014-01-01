@@ -25,6 +25,7 @@ module LinuxfrOrg
 
     config.encoding = "utf-8"
     config.time_zone = 'Paris'
+    I18n.enforce_available_locales = true
 
     config.filter_parameters += [:password, :password_confirmation]
 
