@@ -2,7 +2,7 @@ feed.entry(news, :published => news.node.created_at) do |entry|
   url = news_url news
   entry.title(news.title)
   if news.node.cc_licensed
-    entry.rights("Licence CC by-sa http://creativecommons.org/licenses/by-sa/3.0/deed.fr")
+    entry.rights("Licence CC by-sa #{cc_url news}")
   end
   first  = content_tag(:div, news.body)
   links  = content_tag(:ul, news.links.map.with_index do |l,i|

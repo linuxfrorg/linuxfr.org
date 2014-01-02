@@ -137,6 +137,12 @@ module NodeHelper
     ret
   end
 
+  def cc_url(content)
+    date = content.created_at || Date.today
+    version = date.year < 2014 ? "3.0" : "4.0"
+    "http://creativecommons.org/licenses/by-sa/#{version}/deed.fr"
+  end
+
   def translate_content_type(content_type)
     t "activerecord.models.#{content_type.downcase}"
   end

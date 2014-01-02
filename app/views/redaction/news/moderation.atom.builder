@@ -8,7 +8,7 @@ atom_feed(:root_url => moderation_redaction_news_index_url) do |feed|
     feed.entry(news, :published => news.node.created_at, :url => redaction_url) do |entry|
       entry.title(news.title)
       if news.node.cc_licensed
-        entry.rights("Licence CC by-sa http://creativecommons.org/licenses/by-sa/3.0/deed.fr")
+        entry.rights("Licence CC by-sa http://creativecommons.org/licenses/by-sa/4.0/deed.fr")
       end
       entry.content(" ", :type => 'html')
       entry.author do |author|

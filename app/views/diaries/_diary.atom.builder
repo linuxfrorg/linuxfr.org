@@ -2,7 +2,7 @@ url = polymorphic_url([diary.owner, diary])
 feed.entry(diary, :url => url) do |entry|
   entry.title(diary.title)
   if diary.node.cc_licensed
-    entry.rights("Licence CC by-sa http://creativecommons.org/licenses/by-sa/3.0/deed.fr")
+    entry.rights("Licence CC by-sa #{cc_url diary}")
   end
   epub = content_tag(:div, link_to("Télécharger ce contenu au format Epub", "#{url}.epub"))
   entry.content(diary.body + epub + atom_comments_link(url), :type => 'html')
