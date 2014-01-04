@@ -23,6 +23,10 @@ class StatisticsController < ApplicationController
     @goals = Statistics::Goals.new
   end
 
+  def redaction
+    @stats = Statistics::Redaction.new
+  end
+
   def contents
     @stats = Statistics::Contents.new
   end
