@@ -997,6 +997,7 @@ ul.threads {
 }
 
 li.comment {
+  min-height: 115px;
   font-size: small;
   > h2 {
     font-size: medium;
