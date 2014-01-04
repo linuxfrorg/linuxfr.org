@@ -8,5 +8,6 @@ class RedactionController < ApplicationController
     @board  = @boards.build
     @drafts = News.draft.sorted
     @news   = News.candidate.sorted
+    @stats  = Statistics::Redaction.new
   end
 end

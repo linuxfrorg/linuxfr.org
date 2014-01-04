@@ -4,31 +4,39 @@
   =h1 "Tribune rédacteurs"
   = render 'boards/boards', :boards => @boards, :box => false
 
-#news
-  %h1 Dépêches en cours de rédaction
-  - feed "Flux atom des dépêches en cours de rédaction", "/redaction/news.atom"
-  = button_to "Commencer une nouvelle dépêche", "/redaction/news", :class => "create_news"
-  (sous #{link_to "licence CC by-sa", "http://creativecommons.org/licenses/by-sa/4.0/deed.fr"})
-  %p
-    = link_to "Règles de modération", "/regles_de_moderation"
-
-  - if @drafts.empty?
-    %p Aucune dépêche.
-  - else
+%aside.more
+  #top_redactors
+    %h1 Rédacteurs les plus actifs
+    %ol
+      = list_of @stats.top_month do |stat|
+        [#{stat['cnt']}] #{link_to stat['name'], "/users/#{stat['cached_slug']}"}
     %p
-      = link_to "Afficher toutes les dépêches", "/redaction/news"
-    %ul
-      = list_of @drafts do |n|
-        - if n.node.board_status(current_account) == :new_board
-          = image_tag "/images/icones/chat.png", :alt => "Nouveaux !", :title => "Il y a de l'activité sur cette dépêche"
-        = link_to n.title, [:redaction, n]
+      = link_to "Autres statistiques sur la rédaction", "/statistiques/redaction"
+  #news
+    %h1 Dépêches en cours de rédaction
+    - feed "Flux atom des dépêches en cours de rédaction", "/redaction/news.atom"
+    = button_to "Commencer une nouvelle dépêche", "/redaction/news", :class => "create_news"
+    (sous #{link_to "licence CC by-sa", "http://creativecommons.org/licenses/by-sa/4.0/deed.fr"})
+    %p
+      = link_to "Règles de modération", "/regles_de_moderation"
 
-#candidate_news
-  %h1 Dépêches en cours de modération
-  - feed "Flux atom des dépêches en cours de modération", "/redaction/news/moderation.atom"
-  - if @news.empty?
-    Aucune dépêche.
-  - else
-    %ul
-      = list_of @news do |n|
-        = n.title
+    - if @drafts.empty?
+      %p Aucune dépêche.
+    - else
+      %p
+        = link_to "Afficher toutes les dépêches", "/redaction/news"
+      %ul
+        = list_of @drafts do |n|
+          - if n.node.board_status(current_account) == :new_board
+            = image_tag "/images/icones/chat.png", :alt => "Nouveaux !", :title => "Il y a de l'activité sur cette dépêche"
+          = link_to n.title, [:redaction, n]
+
+  #candidate_news
+    %h1 Dépêches en cours de modération
+    - feed "Flux atom des dépêches en cours de modération", "/redaction/news/moderation.atom"
+    - if @news.empty?
+      Aucune dépêche.
+    - else
+      %ul
+        = list_of @news do |n|
+          = n.title
