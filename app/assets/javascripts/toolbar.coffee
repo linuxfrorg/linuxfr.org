@@ -27,7 +27,7 @@ class Toolbar
       $("#toolbar_items .next").click @next_item
       $("#toolbar .change").click @change_threshold
     $(document).bind("keypress", "<", @prev_item)
-               .bind("keypress", "shift+>", @next_item)
+               .bind("keypress", ">", @next_item)
                .bind("keypress", "k", @prev_item)
                .bind("keypress", "j", @next_item)
 
