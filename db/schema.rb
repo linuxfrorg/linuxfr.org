@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140101172104) do
+ActiveRecord::Schema.define(:version => 20140104182104) do
 
   create_table "access_grants", :force => true do |t|
     t.integer  "account_id"
@@ -194,6 +194,7 @@ ActiveRecord::Schema.define(:version => 20140101172104) do
     t.text     "second_part",  :limit => 2147483647
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "submitted_at"
   end
 
   add_index "news", ["cached_slug"], :name => "index_news_on_cached_slug"
