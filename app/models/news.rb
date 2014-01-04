@@ -100,7 +100,13 @@ class News < Content
     after_transition :on => :rewrite, :do => :be_rewritten
   end
 
+  before_create :reset_submitted_at
+  def reset_submitted_at
+    self.submitted_at = 1.year.from_now
+  end
+
   def submit_and_notify(user)
+    self.submitted_at = DateTime.now
     submit!
     node.created_at = DateTime.now
     node.save

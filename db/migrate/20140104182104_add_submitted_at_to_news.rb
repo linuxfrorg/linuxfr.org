@@ -7,6 +7,9 @@ class AddSubmittedAtToNews < ActiveRecord::Migration
       message = Board.all(Board.news, news.id).detect {|m| m.message == "<b>La dépêche a été soumise à la modération</b>" }
       news.update_column(:submitted_at, message.created_at) if message
     end
+    News.draft.each do |news|
+      news.update_column(:submitted_at, 1.year.from_now)
+    end
   end
 
   def down
