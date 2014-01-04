@@ -15,6 +15,7 @@
 #  second_part  :text(2147483647)
 #  created_at   :datetime
 #  updated_at   :datetime
+#  submitted_at :datetime
 #
 
 #

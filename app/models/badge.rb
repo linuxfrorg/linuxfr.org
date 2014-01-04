@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: badges
+#
+#  id         :integer          not null, primary key
+#  title      :string(255)
+#  first_name :string(255)
+#  last_name  :string(255)
+#  company    :string(255)
+#  country    :string(255)
+#  email      :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require "csv"
 
 class Badge < ActiveRecord::Base

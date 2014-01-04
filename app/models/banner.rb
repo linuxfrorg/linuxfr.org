@@ -6,6 +6,7 @@
 #  id      :integer          not null, primary key
 #  title   :string(255)
 #  content :text
+#  active  :boolean          default(TRUE)
 #
 
 #

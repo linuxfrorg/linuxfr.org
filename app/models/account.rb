@@ -28,6 +28,7 @@
 #  reset_password_sent_at :datetime
 #  min_karma              :integer          default(20)
 #  max_karma              :integer          default(20)
+#  uploaded_stylesheet    :string(255)
 #
 
 #
