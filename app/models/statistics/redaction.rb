@@ -37,9 +37,10 @@ class Statistics::Redaction < Statistics::Statistics
 
   def top_edited(nb_days, limit)
     select_all <<-EOS
-      SELECT users.name, users.cached_slug, COUNT(*) AS cnt
+      SELECT users.name, users.cached_slug, COUNT(DISTINCT news_id) AS cnt
         FROM users
-       WHERE id IN (SELECT DISTINCT user_id FROM news_versions WHERE news_versions.created_at >= '#{nb_days.days.ago.to_s :db}')
+        JOIN news_versions ON users.id = news_versions.user_id
+       WHERE news_versions.created_at >= '#{nb_days.days.ago.to_s :db}'
     GROUP BY users.id
     ORDER BY cnt DESC
        LIMIT #{limit}
