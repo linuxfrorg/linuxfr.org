@@ -17,17 +17,31 @@
 # We follow the number of clicks on each of these links.
 #
 class Link < ActiveRecord::Base
+  PROTOCOLS = HTML::Pipeline::SanitizationFilter::WHITELIST[:protocols]['a']['href'] - [:relative]
+
   belongs_to :news
 
   attr_accessor   :user
   attr_accessible :user, :title, :url, :lang
 
   validates :title, :presence => { :message => "Un lien doit obligatoirement avoir un titre" }
-  validates_format_of :url, :message => "L'URL d'un lien n'est pas valide", :with => URI::regexp(%w(http https))
+  validate  :authorized_protocol
 
-  def url=(url)
-    url = "http://#{url}" if url.present? && url.not.start_with?('http')
-    write_attribute :url, url
+  def url=(raw)
+    return if raw.blank?
+    uri = URI.parse(raw)
+    if uri.scheme.blank?
+      raw = "http://#{raw}"
+      uri = URI.parse(raw)
+    end
+    write_attribute :url, uri.to_s
+  end
+
+  def authorized_protocol
+    uri = URI.parse(url)
+    unless PROTOCOLS.include?(uri.scheme)
+      errors.add(:url, "L'URL d'un lien n'est pas valide")
+    end
   end
 
 ### Behaviour ###

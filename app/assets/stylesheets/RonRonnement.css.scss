@@ -1225,6 +1225,12 @@ div#form_links {
   .link input {
     width: 30%;
   }
+  .field_with_errors {
+	display: inline-block;
+    width: 30%;
+	border: 1px dashed red;
+    input { width: 96%; }
+  }
   label#label-link-lang {
     width: 10%;
   }

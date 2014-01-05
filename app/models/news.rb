@@ -31,7 +31,7 @@ class News < Content
   belongs_to :moderator, :class_name => "User"
   has_many :links, :dependent => :destroy, :inverse_of => :news
   has_many :paragraphs, :dependent => :destroy, :inverse_of => :news
-  accepts_nested_attributes_for :links, :allow_destroy => true
+  accepts_nested_attributes_for :links, :allow_destroy => true, :reject_if => proc { |attrs| attrs['url'].blank? }
   accepts_nested_attributes_for :paragraphs, :allow_destroy => true
   has_many :versions, :class_name => 'NewsVersion',
                       :dependent  => :destroy,
