@@ -1,4 +1,0 @@
-*.jpg diff=exif
-*.png diff=exif
-*.gif diff=exif
-*.bmp diff=exif
