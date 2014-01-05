@@ -1029,6 +1029,7 @@ li.comment {
     margin-left: 1.25em;
     padding-left: 0;
   }
+  &.fold { min-height: 0; }
   &.fold > figure,
   &.fold > .content,
   &.fold > .actions {
