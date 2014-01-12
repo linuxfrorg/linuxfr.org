@@ -30,7 +30,7 @@ class Link < ActiveRecord::Base
   def url=(raw)
     return if raw.blank?
     uri = URI.parse(raw)
-    if uri.host.blank?
+    if uri.scheme.blank? && uri.host.blank?
       raw = "http://#{raw}"
       uri = URI.parse(raw)
     end
