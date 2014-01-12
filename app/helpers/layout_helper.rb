@@ -5,7 +5,6 @@ module LayoutHelper
     classes = []
     classes << 'logged' if current_account
     classes << current_account.role if current_account
-    classes << Rails.env if Rails.env != 'production'
     { :class => classes.join(' '), :id => "#{controller.controller_name}-#{controller.action_name}" }
   end
 

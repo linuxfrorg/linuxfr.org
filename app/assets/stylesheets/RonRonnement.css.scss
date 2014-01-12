@@ -903,6 +903,9 @@ a.scroll {
 }
 
 /* message à caractère informatif */
+#redaction .alert, #redaction .notice {
+  margin-top: 50px;
+}
 .alert {
   text-align: center;
   background-color: #faa;
