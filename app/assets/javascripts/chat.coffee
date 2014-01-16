@@ -54,30 +54,45 @@ class Chat
     @input.focus()
 
   norlogize: (x) ->
-    r = /(\d{4}-\d{2}-\d{2} )?(\d{2}:\d{2}(:\d{2})?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+|[:\^]\d+)?/g
-    totoz = /\[:([0-9a-zA-Z \*\$@':_-]+)\]/g
-    x.innerHTML = x.innerHTML.replace(r, (match, datematch, timematch, minutes, index, offset, s) ->
-      if index != undefined
-        switch index.substr(0, 1)
-          when ":", "^" then index = index.substr(1)
-          when "¹" then index = 1
-          when "²" then index = 2
-          when "³" then index = 3
-          when "⁴" then index = 4
-          when "⁵" then index = 5
-          when "⁶" then index = 6
-          when "⁷" then index = 7
-          when "⁸" then index = 8
-          when "⁹" then index = 9
-          else index = 1
-      else
-        index = 1
-      "<time data-clock-time=\"" + timematch + "\" data-clock-index=\"" + index + "\">" + match + "</time>"
-    )
-    if @totoz_type == "popup"
-      x.innerHTML = x.innerHTML.replace(totoz, "<span class=\"totoz\" data-totoz-name=\"$1\">$&</span>")
-    else if @totoz_type == "inline"
-      x.innerHTML = x.innerHTML.replace(totoz, "<img class=\"totoz\" alt=\"$&\" title=\"$&\" src=\"#{@totoz_url}$1.gif\" style=\"vertical-align: top; background-color: transparent\"/>")
+    $(x).contents().filter(-> @nodeType == 3).each ->
+      r = /(\d{4}-\d{2}-\d{2} )?(\d{2}:\d{2}(:\d{2})?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+|[:\^]\d+)?/g
+      html = ""
+      while matches = r.exec @data
+        [match, datematch, timematch, minutes, index] = matches
+        if index
+          switch index.substr(0, 1)
+            when ":", "^" then index = index.substr(1)
+            when "¹" then index = 1
+            when "²" then index = 2
+            when "³" then index = 3
+            when "⁴" then index = 4
+            when "⁵" then index = 5
+            when "⁶" then index = 6
+            when "⁷" then index = 7
+            when "⁸" then index = 8
+            when "⁹" then index = 9
+            else index = 1
+        else
+          index = 1
+        stop = matches.index
+        html = html + @data.slice(idx, stop) + "<time data-clock-time=\"" + timematch + "\" data-clock-index=\"" + index + "\">" + match + "</time>"
+        idx = r.lastIndex
+      $(@).replaceWith html+@data.slice(idx) if html
+    if @totoz_type == "popup" || @totoz_type == "inline"
+      cfg = @
+      $(x).contents().filter(-> @nodeType == 3).each ->
+        totoz = /\[:([0-9a-zA-Z \*\$@':_-]+)\]/g
+        html = ""
+        while matches = totoz.exec @data
+          [title, name] = matches
+          stop = matches.index
+          html = html + @data.slice(idx, stop) +
+            if cfg.totoz_type == "popup"
+              "<span class=\"totoz\" data-totoz-name=\"#{name}\">#{title}</span>"
+            else if cfg.totoz_type == "inline"
+              "<img class=\"totoz\" alt=\"#{title}\" title=\"#{title}\" src=\"#{cfg.totoz_url}#{name}.gif\" style=\"vertical-align: top; background-color: transparent\"/>"
+          idx = totoz.lastIndex
+        $(@).replaceWith html+@data.slice(idx) if html
 
   norlogize_left: (x) ->
     r = /((\d{4}-\d{2}-\d{2}) )?(\d{2}:\d{2}:\d{2})/g
