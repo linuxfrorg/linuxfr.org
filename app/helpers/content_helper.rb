@@ -2,6 +2,7 @@
 module ContentHelper
 
   def spellcheck(html)
+    html = h html unless html.html_safe?
     HTML_Spellchecker.french.spellcheck(html).html_safe
   end
 
