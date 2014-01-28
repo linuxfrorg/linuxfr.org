@@ -1,5 +1,5 @@
 = article_for tracker do |c|
-  - c.title = "#{link_to "Suivi - #{tracker.category_title}", "/suivi?tracker[category_id]=#{tracker.category_id}", :class => "topic"} #{link_to tracker.title, tracker}".html_safe
+  - c.title = "#{link_to "Suivi - #{tracker.category_title}", "/suivi?tracker%5Bcategory_id%5D=#{tracker.category_id}", :class => "topic"} #{link_to tracker.title, tracker}".html_safe
   - c.meta = capture do
     %span.tracker_id ##{tracker.id}
     = posted_by(tracker)
