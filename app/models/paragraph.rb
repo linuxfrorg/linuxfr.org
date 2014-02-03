@@ -137,11 +137,13 @@ class Paragraph < ActiveRecord::Base
     return locker_id.to_i == user.id if locker_id
     $redis.set lock_key, user.id
     $redis.expire lock_key, 1200
+    Push.create(news, :id => self.id, :kind => :lock_paragraph, :user => { :name => user.name, :avatar => user.avatar_url })
     true
   end
 
   def unlock
     $redis.del lock_key
+    Push.create(news, :id => self.id, :kind => :unlock_paragraph)
   end
 
   def locked?
@@ -150,6 +152,10 @@ class Paragraph < ActiveRecord::Base
 
   def locked_by?(user_id)
     $redis.get(lock_key).to_i == user_id
+  end
+
+  def locked_by
+    $redis.get(lock_key)
   end
 
 ### Presentation ###

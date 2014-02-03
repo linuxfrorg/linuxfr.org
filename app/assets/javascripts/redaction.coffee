@@ -95,6 +95,19 @@ class Redaction
   onSecondPartToc: (msg) ->
     $("#second_part_toc").html(msg.toc)
 
+  onLockParagraph: (msg) ->
+    editing = $ """
+      <img class="editing"
+           id="editing_#{msg.id}"
+           alt="#{msg.user.name} est en train de modifier ce paragraphe"
+           title="#{msg.user.name} est en train de modifier ce paragraphe"
+           src="#{msg.user.avatar}" />
+    """
+    $("#paragraph_#{msg.id} .actions").prepend editing
+
+  onUnlockParagraph: (msg) ->
+    $("#editing_#{msg.id}").remove()
+
 $.fn.redaction = ->
   @each ->
     new Redaction($(@).data("chan"))

@@ -189,6 +189,12 @@ button, input[type='submit'] {
   }
 }
 
+.actions .editing {
+  width: 24px;
+  height: 24px;
+  & + button.edit { display: none; }
+}
+
 .edit_client_app a,
 .new_content a,
 .toolbox .follow_feed a,

@@ -1,4 +1,11 @@
 .paragraph[paragraph]{paragraph_attr(paragraph)}
   = paragraph.body
   .actions
+    - user_id = paragraph.locked_by
+    - if user_id && user_id.to_i != current_account.user_id
+      - u = User.find(user_id)
+      %img.editing{ :id    => "editing_#{paragraph.id}",
+                    :alt   => "#{u.name} est en train de modifier ce paragraphe",
+                    :title => "#{u.name} est en train de modifier ce paragraphe",
+                    :src   => u.avatar_url }
     %button.edit Modifier
