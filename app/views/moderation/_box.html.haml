@@ -14,7 +14,7 @@
         - if news.acceptable?
           = image_tag "/images/icones/check.svg", :alt => "Acceptable", :title => "La dépêche est acceptable", :width => "16px"
         - elsif news.refusable?
-          = image_tag "/images/icones/x.svg", :alt => "Refusable", :title => "La dépêche est refusable", :width => "16px"
+          = image_tag "/images/icones/x_red.svg", :alt => "Refusable", :title => "La dépêche est refusable", :width => "15px"
         = link_to news.title, [:moderation, news]
   %p
     = link_to pluralize(Poll.draft.count, "sondage"), moderation_polls_path
