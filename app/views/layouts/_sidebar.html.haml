@@ -18,7 +18,7 @@
       %ul
         %li
           - if current_account.has_answers?
-            = image_tag "/images/icones/chat.png", :alt => "Nouveaux !", :title => "Vous avez reçu des réponses à vos commentaires"
+            = image_tag "/images/icones/chat.svg", :alt => "Nouveaux !", :title => "Vous avez reçu des réponses à vos commentaires", :width => "16px"
           = link_to "Mon tableau de bord", '/tableau-de-bord'
         %li= link_to "Mes contenus taggés", '/tags'
         %li= link_to "Les contenus que j'ai lus", '/readings'

@@ -8,13 +8,13 @@
     %ul
       = list_of(@candidate_news) do |news|
         - if news.node.board_status(current_account) != :read
-          = image_tag "/images/icones/chat.png", :alt => "Nouveaux !", :title => "Il y a de l'activité sur cette dépêche"
+          = image_tag "/images/icones/chat.svg", :alt => "Nouveaux !", :title => "Il y a de l'activité sur cette dépêche", :width => "16px"
         - if !news.node.vote_by?(current_account.id) && news.node.user_id != current_account.user_id
-          = image_tag "/images/icones/bolt.png", :alt => "Pas de vote", :title => "Tu n'as pas voté sur cette dépêche"
+          = image_tag "/images/icones/bolt.svg", :alt => "Pas de vote", :title => "Tu n'as pas voté sur cette dépêche", :width => "16px"
         - if news.acceptable?
-          = image_tag "/images/icones/check.png", :alt => "Acceptable", :title => "La dépêche est acceptable"
+          = image_tag "/images/icones/check.svg", :alt => "Acceptable", :title => "La dépêche est acceptable", :width => "16px"
         - elsif news.refusable?
-          = image_tag "/images/icones/x.png", :alt => "Refusable", :title => "La dépêche est refusable"
+          = image_tag "/images/icones/x.svg", :alt => "Refusable", :title => "La dépêche est refusable", :width => "16px"
         = link_to news.title, [:moderation, news]
   %p
     = link_to pluralize(Poll.draft.count, "sondage"), moderation_polls_path

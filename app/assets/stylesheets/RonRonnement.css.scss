@@ -119,7 +119,9 @@ input[type='submit'] {
 form input[type='submit'], button {
   display: inline-block;
   padding-left: 20px;
-  background: url("/images/icones/check.png") no-repeat 3px 3px $C_CLAIR;
+  background: no-repeat 3px 3px / 16px $C_CLAIR;
+  background-image: url("/images/icones/check.png");
+  background-image: url("/images/icones/check.svg"), none;
   cursor: pointer;
   &[disabled] { cursor: default; }
   &:hover { background-color: $C_FONCE; }
@@ -130,8 +132,10 @@ form input[type='submit'], button {
   float: left;
   height: 21px;
   padding: 0 3px 0 20px;
-  margin: 0 12px;
-  background: url("/images/icones/loop.png") no-repeat 2px 2px $C_CLAIR;
+  margin: 4px 12px;
+  background: no-repeat 2px 2px / 16px $C_CLAIR;
+  background-image: url("/images/icones/loop.png");
+  background-image: url("/images/icones/loop.svg"), none;
   &:hover { background-color: $C_FONCE; }
 }
 
@@ -141,51 +145,80 @@ button.edit, button.cancel, button#admin_49_3, button.add_link {
 
 button, input[type='submit'] {
   &.publish_news, &.ok_button {
-    background: url("/images/icones/check.png") no-repeat 3px 3px $C_CLAIR;
+    background: no-repeat 3px 3px / 16px $C_CLAIR;
+    background-image: url("/images/icones/check.png");
+    background-image: url("/images/icones/check.svg"), none;
   }
   &.refuse_news, &.delete_button, &.cancel, &.remove, &.refuse_oauth, &.erase_news {
-    background: url("/images/icones/x_red.png") no-repeat 4px 4px $C_CLAIR;
+    background: no-repeat 4px 4px / 14px $C_CLAIR;
+    background-image: url("/images/icones/x_red.png");
+    background-image: url("/images/icones/x_red.svg"), none;
   }
   &.ppp_news {
-    background: url("/images/icones/pin.png") no-repeat 3px 3px $C_CLAIR;
+    background: no-repeat 3px 3px / 16px $C_CLAIR;
+    background-image: url("/images/icones/pin.png");
+    background-image: url("/images/icones/pin.svg"), none;
   }
   &.submit_board {
-    background: url("/images/icones/chat.png") no-repeat 2px 2px $C_CLAIR;
+    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background-image: url("/images/icones/chat.png");
+    background-image: url("/images/icones/chat.svg"), none;
   }
   &.submit_news {
-    background: url("/images/icones/check_alt.png") no-repeat 2px 2px $C_CLAIR;
+    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background-image: url("/images/icones/check_alt.png");
+    background-image: url("/images/icones/check_alt.svg"), none;
     margin: 0 15px 15px;
   }
   &.add_para, &.add_link, &.create_news {
-    background: url("/images/icones/plus.png") no-repeat 2px 2px $C_CLAIR;
+    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background-image: url("/images/icones/plus.png");
+    background-image: url("/images/icones/plus.svg"), none;
   }
   &.vote_for {
-    background: url("/images/icones/arrow_up.png") no-repeat 2px 2px $C_CLAIR;
+    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background-image: url("/images/icones/arrow_up.png");
+    background-image: url("/images/icones/arrow_up.svg"), none;
   }
   &.vote_against {
-    background: url("/images/icones/arrow_down.png") no-repeat 2px 2px $C_CLAIR;
+    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background-image: url("/images/icones/arrow_down.png");
+    background-image: url("/images/icones/arrow_down.svg"), none;
   }
   &.plonk, &.block {
-    background: url("/images/icones/denied.png") no-repeat 2px 2px $C_CLAIR;
+    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background-image: url("/images/icones/denied.png");
+    background-image: url("/images/icones/denied.svg"), none;
   }
   &#admin_49_3, &.archive_button, &.reopen_button {
-    background: url("/images/icones/target.png") no-repeat 2px 2px $C_CLAIR;
+    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background-image: url("/images/icones/target.png");
+    background-image: url("/images/icones/target.svg"), none;
   }
   &.reset_news, &.reset_password {
-    background: url("/images/icones/loop.png") no-repeat 2px 2px $C_CLAIR;
+    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background-image: url("/images/icones/loop.png");
+    background-image: url("/images/icones/loop.svg"), none;
   }
   &.reassign_news {
-    background: url("/images/icones/loop_alt.png") no-repeat 2px 2px $C_CLAIR;
+    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background-image: url("/images/icones/loop_alt.png");
+    background-image: url("/images/icones/loop_alt.svg"), none;
     height: 20px;
     width: 16px;
     padding-left: 16px;
     text-indent: -9999em;
   }
   &.rewrite_news {
-    background: url("/images/icones/pen.png") no-repeat 2px 2px $C_CLAIR;
+    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background-image: url("/images/icones/pen.png");
+    background-image: url("/images/icones/pen.svg"), none;
   }
   &#followup {
-    background: url("/images/icones/at.png") no-repeat 2px 2px $C_CLAIR;
+	height: 23px;
+    background: no-repeat 2px 3px / 16px $C_CLAIR;
+    background-image: url("/images/icones/at.png");
+    background-image: url("/images/icones/at.svg"), none;
   }
 }
 
@@ -206,11 +239,15 @@ button, input[type='submit'] {
 }
 .edit_client_app a,
 .new_content a {
-  background: url("/images/icones/pen.png") no-repeat 2px 2px $C_CLAIR;
+  background: no-repeat 3px 3px / 16px $C_CLAIR;
+  background-image: url("/images/icones/pen.png");
+  background-image: url("/images/icones/pen.svg"), none;
 }
 .toolbox .follow_feed a,
 #comments #follow-feed a {
-  background: url("/images/icones/rss.png") no-repeat 2px 2px $C_CLAIR;
+  background: no-repeat 3px 3px / 16px $C_CLAIR;
+  background-image: url("/images/icones/rss.png");
+  background-image: url("/images/icones/rss.svg"), none;
 }
 #comments #send-comment a {
   background: url("/images/icones/comment.png") no-repeat 2px 2px $C_CLAIR;
@@ -250,10 +287,16 @@ button, input[type='submit'] {
     width: 16px;
   }
   .insecure {
-    background: url(/images/icones/lock-insecure.png) no-repeat;
+    background: no-repeat 2px 2px / 13px 16px $C_CLAIR;
+    background-image: url(/images/icones/lock-insecure.png);
+    background-image: url(/images/icones/lock-insecure.svg), none;
+	height: 20px
   }
   .secure {
-    background: url(/images/icones/lock-secure.png) no-repeat;
+    background: no-repeat 2px 2px / 13px 16px $C_CLAIR;
+    background-image: url(/images/icones/lock-secure.png);
+    background-image: url(/images/icones/lock-secure.svg), none;
+	height: 20px
   }
 
   /* image DLFP */
@@ -788,11 +831,19 @@ footer.actions {
         border: none;
       }
       .add_tag  {
-        background: url(/images/icones/tag.png) no-repeat 0 6px;
-        &[disabled] { background: url(/images/icones/tagged.png) no-repeat 0 6px; }
+        background: no-repeat 1px 4px / 12px white;
+        background-image: url("/images/icones/tag.png");
+        background-image: url("/images/icones/tag.svg"), none;
+        &[disabled] {
+          background: no-repeat 1px 4px / 12px white;
+          background-image: url("/images/icones/tagged.png");
+          background-image: url("/images/icones/tagged.svg"), none;
+	    }
       }
       .remove_tag {
-        background: url(/images/icones/x.png) no-repeat 0 6px;
+        background: no-repeat 0 6px / 11px white;
+        background-image: url("/images/icones/x.png");
+        background-image: url("/images/icones/x.svg"), none;
         &[disabled] { display: none; }
       }
     }
@@ -1306,7 +1357,11 @@ body#news-show #redaction {
 #redaction .edition_in_place, #redaction .paragraph, #redaction .link {
   padding-left: 30px;
   position: relative;
-  .edit { background: url("/images/icones/pen.png") no-repeat 2px 2px $C_CLAIR; }
+  .edit {
+    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background-image: url("/images/icones/pen.png");
+    background-image: url("/images/icones/pen.svg"), none;
+  }
   .actions {
     position: absolute;
     top: 0;
