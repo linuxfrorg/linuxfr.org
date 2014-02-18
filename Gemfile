@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem "rails",                   "~>3.2.16"
+gem "rails",                   "~>3.2.17"
 
 gem "acts_as_list",            "~>0.1.6"
 gem "bitfields",               "~>0.4"
