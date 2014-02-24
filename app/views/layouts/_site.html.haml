@@ -13,5 +13,5 @@
     %li{:class => ("active" if current_page?("/plan"))}= link_to "Plan", '/plan', :title => "Plan du site, aide, flux Atom, etc."
   = form_tag '/recherche', :method => :get do
     <label for="query" id="label_query">Recherche :</label>
-    <input id="query" name="q" type="search" placeholder="Entrer un mot-clé" />
-    = submit_tag "Rechercher", :name => nil, :id => "search_submit", :title => "Rechercher"
+    <input id="query" name="q" type="search" placeholder="Rechercher" />
+    = submit_tag "Rechercher", :name => nil, :id => "search_submit", :title => "Lancer la recherche sur le site"

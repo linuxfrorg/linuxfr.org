@@ -66,10 +66,8 @@ body {
   margin-top: 0;
   margin-bottom: 0;
   padding-top: $PX_TOP;
-
-  box-shadow: 8px 0 8px #999,
-             -8px 0 8px #999;
-
+  border: solid #999;
+  border-width: 0 1px;
   background: #fff;
 }
 
@@ -443,7 +441,9 @@ button, input[type='submit'] {
       width: 125px;
     }
     input#search_submit {
-      background: url('/images/contrib/kaiska/search.png') no-repeat;
+      background: no-repeat 0 / 22px transparent;
+      background-image: url("/images/icones/glass.png");
+      background-image: url("/images/icones/glass.svg"), none;
       text-indent: -9998em;
       border: none;
       width: 22px;
@@ -638,7 +638,8 @@ article {
     padding-top: 5px;
     padding-bottom: 5px;
     min-height: 70px;
-    line-height: 1.4em;
+    font-size: 1.1em;
+    line-height: 1.6em;
 
     &.hidden {
       padding: 0;
@@ -708,7 +709,7 @@ article {
       clear: right;
     }
     .mois {
-      padding-top: 3px;
+      padding-top: 2px;
       margin-bottom: -1px;
       padding-bottom: 0;
       vertical-align: bottom;
@@ -732,7 +733,7 @@ article {
     border-left: solid 6px $C_BANDEAU;
     padding-left: 13px;
     text-align: left;
-    font-size: large;
+    font-size: 1.6em;
     margin-top: 8px;
     margin-bottom: 2px;
   }
@@ -907,6 +908,7 @@ footer.actions {
   ul,ol {
     overflow: hidden;
     padding-bottom: 1px;
+    text-align: left;
   }
 }
 
