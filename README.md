@@ -14,11 +14,11 @@ LinuxFr.org on a Debian box.
 
 1) First install some Debian packages:
 
-    # aptitude install mysql-server mysql-client libmysql++-dev
+    # aptitude install mysql-server mysql-client libmysql++-dev git-core
     # aptitude install build-essential openssl libreadline6 libreadline6-dev
-    # aptitude install curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev
+    # aptitude install curl libcurl4-openssl-dev zlib1g zlib1g-dev libssl-dev
     # aptitude install libxml2-dev bison libxslt-dev autoconf libc6-dev
-    # aptitude install ncurses-dev automake libtool imagemagick
+    # aptitude install ncurses-dev automake libtool imagemagick libyaml-dev
     # aptitude install hunspell hunspell-fr openjdk-6-jdk redis-server
 
 2) Configure the database:
@@ -59,7 +59,7 @@ LinuxFr.org on a Debian box.
     $ desi start
     $ rake db:setup
     (if you're updating, you'll need an other step: redis-cli flushdb)
-    $ ./script/rails r '[Diary, News, Page, Poll, Post, Tracker, WikiPage].each {|m| m.tire.index.refresh }'
+    $ bundle exec rake elasticsearch:import FORCE=y
 
 7) Let's run it:
 

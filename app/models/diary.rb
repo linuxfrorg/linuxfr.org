@@ -42,12 +42,25 @@ class Diary < Content
 
 ### Search ####
 
-  mapping do
-    indexes :id,         :index    => :not_analyzed
-    indexes :created_at, :type => 'date', :include_in_all => false
-    indexes :username,   :as => 'owner.name',   :boost => 3
-    indexes :title,      :analyzer => 'french', :boost => 10
-    indexes :body,       :analyzer => 'french'
+  include Elasticsearch::Model
+
+  scope :indexable, joins(:node).where('nodes.public' => true)
+
+  mapping :dynamic => false do
+    indexes :created_at, :type => 'date'
+    indexes :username,   :boost => 3
+    indexes :title,      :boost => 6, :analyzer => 'french'
+    indexes :body,                    :analyzer => 'french'
+  end
+
+  def as_indexed_json(options={})
+    {
+      :id => self.id,
+      :created_at => created_at,
+      :username => owner.try(:name),
+      :title => title,
+      :body => body,
+    }
   end
 
 ### ACL ###

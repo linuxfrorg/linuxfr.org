@@ -2,12 +2,13 @@ source 'https://rubygems.org'
 
 gem "rails",                   "~>3.2.17"
 
+gem "ansi",                    "~>1.4", :require => nil
 gem "acts_as_list",            "~>0.1.6"
 gem "bitfields",               "~>0.4"
 gem "canable",                 "~>0.1"
 gem "carrierwave",             "~>0.6"
 gem "devise",                  "~>3.2"
-gem "diff_match_patch", :github => "nono/diff_match_patch-ruby", :require => "diff_match_patch"
+gem "diff_match_patch",    :github => "nono/diff_match_patch-ruby", :require => "diff_match_patch"
 gem "french_rails",            "~>0.2"
 gem "friendly_id",             "~>4.0"
 gem "haml",                    "~>4.0"
@@ -16,11 +17,13 @@ gem "html_spellchecker",       "~>0.1"
 gem "html_truncator",          "~>0.3"
 gem "htmlentities",            "~>4.3"
 gem "inherited_resources",     "~>1.2"
+gem "jbuilder",                "~>2.0"
 gem "kaminari",                "~>0.12"
 gem "mini_magick",             "~>3.5"
 gem "mysql2",                  "~>0.3"
 gem "nokogiri",                "~>1.6"
 gem "oauth2",                  "~>0.6"
+gem "patron",                  "~>0.4"
 gem "rinku",                   "~>1.2"
 gem "hiredis",                 "~>0.3"
 gem "redis",                   "~>3.0", :require => ["redis/connection/hiredis", "redis"]
@@ -28,7 +31,12 @@ gem "sanitize",                "~>2.0"
 gem "sitemap_generator",       "~>2.1"
 gem "simple_autocomplete",     "~>0.3"
 gem "state_machine",           "~>1.1"
-gem "tire",                    "~>0.4"
+
+# Use the github version to have transport auto-detection
+gem "elasticsearch-transport", :github => "elasticsearch/elasticsearch-ruby"
+
+# Elasticsearch-model needs to be loaded after some gems like kaminari
+gem "elasticsearch-model", :github => "elasticsearch/elasticsearch-rails"
 
 # Gems used only for assets and not required
 # in production environments by default.

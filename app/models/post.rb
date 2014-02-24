@@ -42,13 +42,27 @@ class Post < Content
 
 ### Search ####
 
-  mapping do
-    indexes :id,         :index    => :not_analyzed
-    indexes :created_at, :type => 'date', :include_in_all => false
-    indexes :username,   :as => 'user.try(:name)',           :boost => 2
-    indexes :forum,      :as => 'forum.title.tr ".-", "··"', :boost => 5
-    indexes :title,      :analyzer => 'french',              :boost => 10
-    indexes :body,       :analyzer => 'french'
+  include Elasticsearch::Model
+
+  scope :indexable, joins(:node).where('nodes.public' => true)
+
+  mapping :dynamic => false do
+    indexes :created_at, :type => 'date'
+    indexes :username,   :boost => 2
+    indexes :forum,      :boost => 5,  :analyzer => 'keyword'
+    indexes :title,      :boost => 10, :analyzer => 'french'
+    indexes :body,                     :analyzer => 'french'
+  end
+
+  def as_indexed_json(options={})
+    {
+      :id => self.id,
+      :created_at => created_at,
+      :username => user.try(:name),
+      :forum => forum.title,
+      :title => title,
+      :body => body,
+    }
   end
 
 ### ACL ###

@@ -62,14 +62,29 @@ class News < Content
 
 ### Search ####
 
-  mapping do
-    indexes :id,          :index    => :not_analyzed
-    indexes :created_at,  :type => 'date', :include_in_all => false
-    indexes :username,    :as => 'user.try(:name)',           :boost => 6
-    indexes :section,     :as => 'section.title.tr ".", "-"', :boost => 12
-    indexes :title,       :analyzer => 'french',              :boost => 50
-    indexes :body,        :analyzer => 'french',              :boost => 5
-    indexes :second_part, :analyzer => 'french',              :boost => 3
+  include Elasticsearch::Model
+
+  scope :indexable, where(:state => "published")
+
+  mapping :dynamic => false do
+    indexes :created_at,  :type => 'date'
+    indexes :username,    :boost => 6
+    indexes :section,     :boost => 12, :analyzer => 'keyword'
+    indexes :title,       :boost => 50, :analyzer => 'french'
+    indexes :body,        :boost => 5,  :analyzer => 'french'
+    indexes :second_part, :boost => 3,  :analyzer => 'french'
+  end
+
+  def as_indexed_json(options={})
+    {
+      :id => self.id,
+      :created_at => created_at,
+      :username => author_name,
+      :section => section.title,
+      :title => title,
+      :body => body,
+      :second_part => second_part,
+    }
   end
 
 ### Workflow ###

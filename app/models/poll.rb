@@ -58,12 +58,25 @@ class Poll < Content
 
 ### Search ####
 
-  mapping do
-    indexes :id,           :index    => :not_analyzed
-    indexes :created_at,   :type => 'date', :include_in_all => false
-    indexes :title,        :analyzer => 'french', :boost => 10
-    indexes :explanations, :analyzer => 'french', :boost => 5
-    indexes :answers,      :analyzer => 'french', :as => proc { answers.pluck(:answer).join("\n") }
+  include Elasticsearch::Model
+
+  scope :indexable, published.includes(:answers)
+
+  mapping :dynamic => false do
+    indexes :created_at,   :type => 'date'
+    indexes :title,        :boost => 10, :analyzer => 'french'
+    indexes :explanations, :boost => 5,  :analyzer => 'french'
+    indexes :answers,      :boost => 2,  :analyzer => 'french'
+  end
+
+  def as_indexed_json(options={})
+    {
+      :id => self.id,
+      :created_at => created_at,
+      :title => title,
+      :explanations => explanations,
+      :answers => answers.pluck(:answer).join("\n"),
+    }
   end
 
 ### Workflow ###

@@ -4,58 +4,58 @@
   .keyword_navbar
     %h2= "Mots clés"
     = form_tag "#{search_path(params.merge :q => nil)}", :method => :get do
-      = search_field_tag("q", @query, :id => "query")
+      = search_field_tag("q", @search.query, :id => "query")
       = submit_tag "Rechercher", :name => nil, :id => "search_submit"
-  .section_navbar
-    - if @value.present?
-      %h2= "Section : #{@value}"
-      %ul.facets
-        = link_to "Toutes les sections", search_path(params.merge :facet => nil)
-    - elsif @facet.present?
-      %h2 Section
-      %ul.facets
-        = list_of(@results.facets[@facet]['terms']) do |facet|
-          = link_to "#{facet['term']} (#{facet['count']})", search_path(params.merge :facet => facet['term'])
   .type_navbar
-    - if @type.blank?
+    - if @search.type.blank?
       %h2 Types de contenus
       %ul.facets
-        = list_of(@results.facets['types']['terms']) do |facet|
-          = link_to "#{es_type facet['term']} (#{facet['count']})", search_path(params.merge :type => facet['term'])
+        = list_of @search.types do |facet|
+          = link_to "#{es_type facet['key']} (#{facet.doc_count})", search_path(params.merge :type => facet['key'], :page => nil)
     - else
-      %h2= "Types de contenus : #{es_type @type}"
+      %h2= "Types de contenus : #{es_type @search.type}"
       %ul.facets
         %li= link_to "Tous les types", search_path(params.merge :type => nil)
+  .section_navbar
+    - if @search.value.present?
+      %h2= "Section : #{@search.value}"
+      %ul.facets
+        = link_to "Toutes les sections", search_path(params.merge :facet => nil)
+    - elsif @search.facet.present?
+      %h2 Section
+      %ul.facets
+        = list_of @search.facets do |facet|
+          = link_to "#{facet['key']} (#{facet.doc_count})", search_path(params.merge :facet => facet['key'])
   .period_navbar
     - periods = ["Moins d'une semaine", "Moins d'un mois", "Moins d'une année"]
-    - if @start.blank?
+    - if @search.start.blank?
       %h2 Filtrer par période temporelle
       %ul.facets
-        = list_of(@results.facets['periods']['ranges']) do |facet|
-          = link_to "#{periods.shift} (#{facet['count']})", search_path(params.merge :start => facet['from'].to_i / 1000)
+        = list_of @search.periods do |facet|
+          = link_to "#{periods.shift} (#{facet.doc_count})", search_path(params.merge :start => facet.from.to_i / 1000)
     - else
-      - if @start == 1.year.ago.to_date
-        %h2 Filtrer par période temporelle: Moins d'un an
-      - elsif @start == 1.month.ago.to_date
-        %h2 Filtrer par période temporelle: Moins d'un mois
-      - elsif @start == 1.week.ago.to_date
-        %h2 Filtrer par période temporelle: Moins d'une semaine
+      - if @search.start == 1.year.ago.to_date
+        %h2 Filtrer par période temporelle : moins d'un an
+      - elsif @search.start == 1.month.ago.to_date
+        %h2 Filtrer par période temporelle : moins d'un mois
+      - elsif @search.start == 1.week.ago.to_date
+        %h2 Filtrer par période temporelle : moins d'une semaine
       - else
-        %h2 Filtrer par période temporelle: erreur
+        %h2 Filtrer par période temporelle : erreur
       %ul.facets
         %li= link_to "Toute la période", search_path(params.merge :start => nil)
   .order_navbar
     %h2 Trier par
     %ul
-      %li= link_to_unless !@order, "Pertinence", search_path(params.merge :order => nil)
-      %li= link_to_unless  @order, "Date", search_path(params.merge :order => "date")
+      %li= link_to_unless !@search.order, "Pertinence", search_path(params.merge :order => nil)
+      %li= link_to_unless  @search.order, "Date", search_path(params.merge :order => "date")
 
 #results
-  - if @results.empty?
+  - if @search.results.empty?
     %h2 Résultats
     Pas de résultats.
   - else
     .results
-      %h2= pluralize @results.length, "résultats"
-      = render @results.map(&:load)
-      = paginate @results
+      %h2= pluralize @search.total_count, "résultats"
+      = render @search.records
+      = paginate @search.results

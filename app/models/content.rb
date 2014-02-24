@@ -6,7 +6,6 @@
 class Content < ActiveRecord::Base
   self.abstract_class = true
   include Canable::Ables
-  include Tire::Model::Search
 
   has_one :node, :as => :content, :dependent => :destroy, :inverse_of => :content
   has_many :comments, :through => :node
@@ -19,17 +18,10 @@ class Content < ActiveRecord::Base
 
 ### Search ###
 
-  after_save    :update_index
-  after_destroy :update_index
-
+  after_commit :update_index
   def update_index
-    return update_elasticsearch_index if visible?
-    index.remove self
-  end
-
-  # See see https://github.com/karmi/tire/issues/48
-  def self.paginate(options = {})
-    page(options[:page]).per(options[:per_page])
+    return __elasticsearch__.index_document if visible?
+    __elasticsearch__.delete_document
   end
 
 ### License ###

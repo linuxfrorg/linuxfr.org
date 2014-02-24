@@ -32,19 +32,24 @@ class Page < ActiveRecord::Base
   class << self; attr_accessor :type; end
   self.type = "À propos de LinuxFr.org"
 
-  include Tire::Model::Search
-  include Tire::Model::Callbacks
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
-  mapping do
-    indexes :id,         :index    => :not_analyzed
-    indexes :created_at, :type => 'date', :include_in_all => false
-    indexes :title,      :analyzer => 'french', :boost => 50
-    indexes :body,       :analyzer => 'french', :boost => 5
+  scope :indexable, -> {}
+
+  mapping :dynamic => false do
+    indexes :created_at, :type => 'date'
+    indexes :title,      :boost => 50, :analyzer => 'french'
+    indexes :body,       :boost => 5,  :analyzer => 'french'
   end
 
-  # See see https://github.com/karmi/tire/issues/48
-  def self.paginate(options = {})
-    page(options[:page]).per(options[:per_page])
+  def as_indexed_json(options={})
+    {
+      :id => self.id,
+      :created_at => created_at,
+      :title => title,
+      :body => body,
+    }
   end
 
 ### Body ###
