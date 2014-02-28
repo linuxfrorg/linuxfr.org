@@ -28,7 +28,7 @@ $PX_PAD_NODE: 34px;
 $RAY_SIDEBAR: 42px;
 $RAY_CONTAINER: 62px;
 $RAY_FOOT: 7px;
-$RAY_NODE: 6px;
+$RAY_NODE: 3px;
 
 $PC_FOOT_MARG: 0.7%;
 $PC_FOOT_WIDTH: 23%;
@@ -603,11 +603,7 @@ body#admin-index #container > ul,
 
   padding: 10px $PX_PAD_NODE 10px $PX_PAD_NODE;
 
-  -moz-border-radius: $RAY_NODE;
-  -webkit-border-radius: $RAY_NODE;
-  -khtml-border-radius: $RAY_NODE;
   border-radius: $RAY_NODE;
-
   border: solid $BORDER_CONTENT $C_INTER;
 
   margin-bottom: 15px;
