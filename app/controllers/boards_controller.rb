@@ -18,6 +18,8 @@ class BoardsController < ApplicationController
     enforce_create_permission(board)
     board.user_agent = request.user_agent
     board.save
+    news = board.news
+    news.node.read_by current_account.id if news
     respond_to do |wants|
       wants.html { redirect_to :back rescue redirect_to root_url }
       wants.js   { render :nothing => true }
