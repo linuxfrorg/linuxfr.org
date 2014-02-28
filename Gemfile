@@ -81,4 +81,5 @@ group :production do
   gem "unicorn",               "~>4.6"
   gem "gctools",               "~>0.2"
   gem "redis-activesupport",   "~>3.2"
+  gem "lograge",               "~>0.2"
 end

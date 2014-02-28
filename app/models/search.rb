@@ -1,3 +1,9 @@
+# TODO
+# ajouter de nouvelles fonctionnalités (tags, commentaires, suggestions, etc.)
+# prendre en compte la date dans le calcul de la pertinence (nouveau critère de tri ?)
+# utiliser des query time boost
+# autocomplete / suggest
+
 class Search
   include Elasticsearch::Model
 
