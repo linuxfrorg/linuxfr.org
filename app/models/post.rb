@@ -59,7 +59,7 @@ class Post < Content
       :id => self.id,
       :created_at => created_at,
       :username => user.try(:name),
-      :forum => forum.title,
+      :forum => forum.title.tr('/.', '--'),
       :title => title,
       :body => body,
     }

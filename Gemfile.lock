@@ -169,9 +169,6 @@ GEM
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
-    jbuilder (2.0.3)
-      activesupport (>= 3.0.0)
-      multi_json (>= 1.2.0)
     journey (1.0.4)
     jquery-rails (1.0.19)
       railties (~> 3.0)
@@ -371,7 +368,6 @@ DEPENDENCIES
   html_truncator (~> 0.3)
   htmlentities (~> 4.3)
   inherited_resources (~> 1.2)
-  jbuilder (~> 2.0)
   jquery-rails (~> 1.0)
   kaminari (~> 0.12)
   letter_opener

@@ -29,60 +29,52 @@ class Search
   attr_reader :results
 
   def run
-    query = Jbuilder.encode do |json|
-      json.query do
-        json.filtered do
-          json.query do
-            json.simple_query_string do
-              json.query @query
-            end
-          end
+    query = {
+      :query => {
+        :filtered => ->{
+          filtered = {
+            :query => {
+              :simple_query_string => { :query => @query }
+            }
+          }
 
           filters = []
           filters << {
             :range => {
-              :created_at => {
-                :gte => @start,
-                :lte => Date.tomorrow
-              }
+              :created_at => { :gte => @start, :lte => Date.tomorrow }
             }
           } if @start
           filters << { :term => { facet => @value } } if @value
-          json.filter do
-            json.and filters
-          end if filters.any?
-        end
-      end
+          filtered[:filter] = { :and => filters } if filters.any?
 
-      json.aggs do
-        json.types do
-          json.terms do
-            json.field "_type"
-            json.order do
-              json._count "desc"
-            end
-          end
-        end unless @type
-        json.facets do
-          json.terms do
-            json.field facet
-            json.order do
-              json._count "desc"
-            end
-          end
-        end if facet && !@value
-        json.periods do
-          json.date_range do
-            json.field "created_at"
-            json.ranges available_periods
-          end
-        end unless @start
-      end
+          filtered
+        }.call
+      },
 
-      json.sort [ { :created_at => :desc } ] if @order
-    end
-
-    query = MultiJson.load(query, :symbolize_keys => true)
+      :aggs => ->{
+        aggs = {}
+        aggs[:types] = {
+          :terms => {
+            :field => "_type",
+            :order => { :_count => "desc" }
+          }
+        } unless @type
+        aggs[:facets] = {
+          :terms => {
+            :field => facet,
+            :order => { :_count => "desc" }
+          }
+        } if facet && !@value
+        aggs[:periods] = {
+          :date_range => {
+            :field => "created_at",
+            :ranges => available_periods
+          }
+        } unless @start
+        aggs
+      }.call
+    }
+    query[:sort] = [ { :created_at => :desc } ] if @order
 
     if @type
       klass = @type.camelize.constantize rescue nil
