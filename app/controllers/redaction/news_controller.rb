@@ -5,7 +5,7 @@ class Redaction::NewsController < RedactionController
   before_filter :load_news2, :only => [:revision, :reorganize, :reorganized, :reassign]
   before_filter :load_board, :only => [:show, :reorganize]
   after_filter  :marked_as_read, :only => [:show, :update]
-  respond_to :html, :atom
+  respond_to :html, :atom, :md
 
   def index
     @news = News.draft.sorted
@@ -24,8 +24,10 @@ class Redaction::NewsController < RedactionController
   end
 
   def show
-    redirect_to [:redaction, @news], :status => 301 and return if request.path != redaction_news_path(@news)
-    render :show, :layout => 'chat_n_edit'
+    path = redaction_news_path(@news, :format => params[:format])
+    redirect_to [:redaction, @news], :status => 301 and return if request.path != path
+    @news.put_paragraphs_together if params[:format] == "md"
+    respond_with @news, :layout => 'chat_n_edit'
   end
 
   def revision

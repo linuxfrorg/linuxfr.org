@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   before_filter :find_post,  :except => [:new, :create, :index]
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
   after_filter  :expire_cache, :only => [:create, :update, :destroy]
+  respond_to :html, :md
 
 ### Global ###
 
@@ -37,7 +38,7 @@ class PostsController < ApplicationController
 
   def show
     enforce_view_permission(@post)
-    path = forum_post_path(@forum, @post)
+    path = forum_post_path(@forum, @post, :format => params[:format])
     redirect_to path, :status => 301 and return if request.path != path
     flash.now[:alert] = "Attention, ce post a été supprimé et n'est visible que par les admins" unless @post.visible?
   end

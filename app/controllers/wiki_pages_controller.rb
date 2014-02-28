@@ -6,6 +6,7 @@ class WikiPagesController < ApplicationController
   after_filter  :expire_cache, :only => [:create, :update, :destroy]
   caches_page   :index,   :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
   caches_page   :changes, :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
+  respond_to    :html, :md
 
   def index
     respond_to do |wants|
@@ -17,8 +18,9 @@ class WikiPagesController < ApplicationController
   def show
     @wiki_page = WikiPage.find(params[:id])
     enforce_view_permission(@wiki_page)
-    path = wiki_page_path(@wiki_page)
-    redirect_to path, :status => 301 if request.path != path
+    path = wiki_page_path(@wiki_page, :format => params[:format])
+    redirect_to path, :status => 301 and return if request.path != path
+    respond_with @wiki_page
   rescue ActiveRecord::RecordNotFound
     if current_account
       redirect_to new_wiki_page_url(:title => params[:id])

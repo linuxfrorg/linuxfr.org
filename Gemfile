@@ -8,7 +8,7 @@ gem "bitfields",               "~>0.4"
 gem "canable",                 "~>0.1"
 gem "carrierwave",             "~>0.6"
 gem "devise",                  "~>3.2"
-gem "diff_match_patch",    :github => "nono/diff_match_patch-ruby", :require => "diff_match_patch"
+gem "diff_match_patch",        :github => "nono/diff_match_patch-ruby", :require => "diff_match_patch"
 gem "french_rails",            "~>0.2"
 gem "friendly_id",             "~>4.0"
 gem "haml",                    "~>4.0"
@@ -35,7 +35,7 @@ gem "state_machine",           "~>1.1"
 gem "elasticsearch-transport", :github => "elasticsearch/elasticsearch-ruby"
 
 # Elasticsearch-model needs to be loaded after some gems like kaminari
-gem "elasticsearch-model", :github => "elasticsearch/elasticsearch-rails"
+gem "elasticsearch-model",     :github => "elasticsearch/elasticsearch-rails"
 
 # Gems used only for assets and not required
 # in production environments by default.

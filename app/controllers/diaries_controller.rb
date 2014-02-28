@@ -5,7 +5,7 @@ class DiariesController < ApplicationController
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
   after_filter  :expire_cache, :only => [:create, :update, :destroy, :move]
   caches_page   :index, :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
-  respond_to :html, :atom
+  respond_to :html, :atom, :md
 
 ### Global ###
 
@@ -40,7 +40,7 @@ class DiariesController < ApplicationController
 
   def show
     enforce_view_permission(@diary)
-    path = user_diary_path(@user, @diary)
+    path = user_diary_path(@user, @diary, :format => params[:format])
     redirect_to path, :status => 301 if request.path != path
     flash.now[:alert] = "Attention, ce journal a été supprimé et n'est visible que par les admins" unless @diary.visible?
   end

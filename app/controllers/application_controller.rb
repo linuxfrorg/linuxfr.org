@@ -42,11 +42,19 @@ protected
     redirect_to url_for_content(content)
   end
 
+  def url_for_news(news, opts)
+    case news.state
+    when "draft" then polymorphic_url([:redaction, news], opts)
+    when "candidate" then polymorphic_url([:moderation, news], opts)
+    else polymorphic_url(news, opts)
+    end
+  end
+
   def url_for_content(content, only_path=false)
     opts = { :routing_type => (only_path ? :path : :url) }
     case content
     when Diary then content.new_record? ? "/journaux" : polymorphic_url([content.owner, content], opts)
-    when News  then content.new_record? ? "/news" : polymorphic_url(content, opts)
+    when News  then content.new_record? ? "/news" : url_for_news(content, opts)
     when Post  then polymorphic_url([content.forum, content], opts)
                else polymorphic_url(content, opts)
     end

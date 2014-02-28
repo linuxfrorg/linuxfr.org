@@ -4,7 +4,7 @@ class PollsController < ApplicationController
   before_filter :find_poll, :only => [:show, :vote]
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
   caches_page   :index, :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
-  respond_to :html, :atom
+  respond_to :html, :atom, :md
 
   def index
     @order = params[:order]
@@ -20,7 +20,7 @@ class PollsController < ApplicationController
   def show
     enforce_view_permission(@poll)
     @poll.state = 'archived' if params.has_key? :results
-    path = poll_path(@poll)
+    path = poll_path(@poll, :format => params[:format])
     redirect_to path, :status => 301 and return if request.path != path
   end
 

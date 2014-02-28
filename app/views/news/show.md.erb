@@ -1,0 +1,14 @@
+<%= raw @news.title %>
+<%= '=' * @news.title.length %>
+
+<%= raw @news.wiki_body %>
+
+----
+
+<%- @news.links.each do |link| -%>
+[<%= raw link.title %>](<%= raw link.url %>)
+<%- end -%>
+
+----
+
+<%= raw @news.wiki_second_part %>

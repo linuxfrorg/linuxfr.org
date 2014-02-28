@@ -3,6 +3,7 @@ class Moderation::NewsController < ModerationController
   before_filter :find_news, :except => [:index]
   after_filter  :expire_cache, :only => [:update, :accept]
   after_filter  :marked_as_read, :only => [:show, :update, :vote]
+  respond_to :html, :md
 
   def index
     @news    = News.candidate.sorted
@@ -22,6 +23,7 @@ class Moderation::NewsController < ModerationController
         render :show, :layout => 'chat_n_edit'
       }
       wants.js { render :partial => 'short' }
+      wants.md { @news.put_paragraphs_together }
     end
   end
 

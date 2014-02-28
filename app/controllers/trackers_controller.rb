@@ -4,6 +4,7 @@ class TrackersController < ApplicationController
   before_filter :authenticate_account!, :only => [:edit, :update, :destroy]
   before_filter :load_tracker, :only => [:show, :edit, :update, :destroy]
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
+  respond_to :html, :md
 
   def index
     @attrs    = {"state" => "opened"}.merge(params[:tracker] || {})
@@ -39,8 +40,9 @@ class TrackersController < ApplicationController
 
   def show
     enforce_view_permission(@tracker)
-    path = tracker_path(@tracker)
+    path = tracker_path(@tracker, :format => params[:format])
     redirect_to path, :status => 301 if request.path != path
+    respond_with @tracker
   end
 
   def new

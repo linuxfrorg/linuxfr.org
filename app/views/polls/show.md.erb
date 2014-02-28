@@ -1,0 +1,8 @@
+<%= raw @poll.title %>
+<%= '=' * @poll.title.length %>
+
+<%= raw @poll.wiki_explanations %>
+
+<%- @poll.answers.each do |answer| -%>
+* <%= raw answer.answer %>
+<%- end -%>

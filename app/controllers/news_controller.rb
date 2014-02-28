@@ -5,7 +5,7 @@ class NewsController < ApplicationController
   after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
   caches_page :index, :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
   caches_action :show, :unless => :account_signed_in?, :expires_in => 5.minutes
-  respond_to :html, :atom
+  respond_to :html, :atom, :md
 
   def index
     @order = params[:order]
@@ -23,6 +23,7 @@ class NewsController < ApplicationController
 
   def show
     redirect_to [:redaction, @news] if @news.draft?
+    @news.put_paragraphs_together if params[:format] == "md"
   end
 
   def new
@@ -60,7 +61,7 @@ protected
   def find_news
     @news = News.find(params[:id])
     enforce_view_permission(@news)
-    path = news_path(@news)
+    path = news_path(@news, :format => params[:format])
     redirect_to path, :status => 301 if request.path != path
   end
 
