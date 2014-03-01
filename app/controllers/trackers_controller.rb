@@ -26,7 +26,7 @@ class TrackersController < ApplicationController
       @trackers = @trackers.where(:assigned_to_user_id => @tracker.assigned_to_user_id)
     end
     respond_to do |wants|
-      wants.html
+      wants.html { @trackers = @trackers.page(params[:page]).per(100) }
       wants.atom
     end
   end
