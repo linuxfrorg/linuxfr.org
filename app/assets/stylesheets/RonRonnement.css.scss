@@ -1615,10 +1615,11 @@ img {
     clear: left;
     margin: 0;
     padding: 10px;
-    .score, .datePourCss { right: 0 !important; }
+    .datePourCss { display: none !important; }
+    .score { top: 5px; right: 0 !important; }
     header {
-      h1 { margin-right: 48px; }
-      time, .tags { display: none; }
+      h1 { margin-right: 63px; }
+      .tags { display: none; }
     }
     .tag_in_place { display: none; }
     article, ul.threads > li.comment { padding: 10px 15px; }
@@ -1639,6 +1640,11 @@ img {
     .prev, .next { font-size: xx-large; }
   }
   #toolbar_alt_items { display: none; }
+}
+
+@media screen and (max-width: 600px), handheld {
+  article h1 { font-size: 1.3em; }
+  article .content { font-size: 0.9em; line-height: 1.3em; }
 }
 
 @media screen and (max-width: 400px), handheld {
