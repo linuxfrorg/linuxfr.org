@@ -186,7 +186,7 @@ class Search
   end
 
   def by_score?
-    @order == "score"
+    !by_date? && !by_mix?
   end
 
   def by_date?
@@ -194,6 +194,6 @@ class Search
   end
 
   def by_mix?
-    !by_score? && !by_date?
+    @order == "mix"
   end
 end

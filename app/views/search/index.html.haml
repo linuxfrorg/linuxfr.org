@@ -57,9 +57,9 @@
   .order_navbar
     %h2 Trier par
     %ul
-      %li= link_to_unless @search.by_score?, "Score",   search_path(params.merge :order => "score")
+      %li= link_to_unless @search.by_score?, "Score",   search_path(params.merge :order => nil)
       %li= link_to_unless @search.by_date?,  "Date",    search_path(params.merge :order => "date")
-      %li= link_to_unless @search.by_mix?,   "Intérêt", search_path(params.merge :order => nil)
+      %li= link_to_unless @search.by_mix?,   "Intérêt", search_path(params.merge :order => "mix")
 
 #results
   - if @search.results.empty?
