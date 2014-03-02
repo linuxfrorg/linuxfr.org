@@ -29,7 +29,6 @@ namespace :elasticsearch do
       index = klass.index_name
       type  = klass.document_type
 
-      klass.__elasticsearch__.client.transport.logger.level = Logger::WARN unless ENV['DEBUG']
       if ENV.fetch('FORCE', false)
         klass.__elasticsearch__.create_index! :force => true, :index => index
       end

@@ -8,7 +8,7 @@ class SearchController < ApplicationController
     @search.type  = params[:type]
     @search.value = params[:facet]
     @search.start = Time.at(params[:start].to_i).to_date if params[:start].present?
-    @search.order = params[:order] == "date"
+    @search.order = params[:order]
     @search.run
   end
 

@@ -1,1 +1,1 @@
-Elasticsearch::Model.client = Elasticsearch::Client.new :log => true, :adapter => :patron
+Elasticsearch::Model.client = Elasticsearch::Client.new :adapter => :patron

@@ -10,7 +10,7 @@ class Search
   }
 
   INDICES_BOOST = {
-    :pages => 1000,
+    :pages => 1000,  # Old + long body => needs a very large boost to compete with news
     :news  => 3
   }
 
@@ -93,7 +93,22 @@ class Search
 
       :indices_boost => INDICES_BOOST
     }
-    query[:sort] = [ { :created_at => :desc } ] if @order
+    query[:sort] = [ { :created_at => :desc } ] if by_date?
+
+    if by_mix?
+      query[:query] = {
+        :function_score => {
+          :query => query[:query],
+          :exp => {
+            :created_at => {
+              :origin => Date.today.to_s,
+              :scale  => "1w",
+              :decay  => 0.99
+            }
+          }
+        }
+      }
+    end
 
     if @type
       klass = @type.camelize.constantize rescue nil
@@ -153,5 +168,17 @@ class Search
 
   def records
     @response.map { |r| r['_type'].classify.constantize.find(r['_id']) }
+  end
+
+  def by_score?
+    @order == "score"
+  end
+
+  def by_date?
+    @order == "date"
+  end
+
+  def by_mix?
+    !by_score? && !by_date?
   end
 end
