@@ -73,6 +73,7 @@ class News < Content
     indexes :title,       :analyzer => 'french'
     indexes :body,        :analyzer => 'french'
     indexes :second_part, :analyzer => 'french'
+    indexes :tags,        :analyzer => 'keyword'
   end
 
   def as_indexed_json(options={})
@@ -84,6 +85,7 @@ class News < Content
       :title => title,
       :body => body,
       :second_part => second_part,
+      :tags => tag_names,
     }
   end
 

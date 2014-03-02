@@ -26,6 +26,16 @@
       %ul.facets
         = list_of @search.facets do |facet|
           = link_to "#{facet['key']} (#{facet.doc_count})", search_path(params.merge :facet => facet['key'])
+  .tags_navbar
+    %h2 Tags
+    %ul.facets
+      = list_of @search.tag_buckets do |facet|
+        - if @search.tags.include? facet['key']
+          #{facet['key']} (#{facet.doc_count})
+        - else
+          = link_to "#{facet['key']} (#{facet.doc_count})", search_path(params.merge :tags => @search.tags + [facet['key']])
+      - if @search.tags.any?
+        %li= link_to "[X]", search_path(params.merge :tags => [])
   .period_navbar
     - periods = ["Moins d'une semaine", "Moins d'un mois", "Moins d'une année"]
     - if @search.start.blank?

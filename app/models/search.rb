@@ -20,7 +20,8 @@ class Search
     "section^2",
     "forum^2",
     "category^2",
-    "username^2"
+    "username^2",
+    "tags^1.5"
   ]
 
   PER_PAGE = 15
@@ -39,7 +40,7 @@ class Search
     end
   end
 
-  attr_accessor :query, :page, :type, :value, :start, :order
+  attr_accessor :query, :page, :type, :value, :start, :order, :tags
   attr_reader :results
 
   def run
@@ -62,6 +63,9 @@ class Search
             }
           } if @start
           filters << { :term => { facet => @value } } if @value
+          @tags.each do |tag|
+            filters << { :term => { :tags => tag } }
+          end
           filtered[:filter] = { :and => filters } if filters.any?
 
           filtered
@@ -82,6 +86,13 @@ class Search
             :order => { :_count => "desc" }
           }
         } if facet && !@value
+        aggs[:tags] = {
+          :terms => {
+            :field => "tags",
+            :order => { :_count => "desc" },
+            :min_doc_count => 2,
+          }
+        }
         aggs[:periods] = {
           :date_range => {
             :field => "created_at",
@@ -144,6 +155,10 @@ class Search
 
   def facets
     aggregations.facets.buckets
+  end
+
+  def tag_buckets
+    aggregations.tags.buckets
   end
 
   def periods

@@ -52,6 +52,7 @@ class Post < Content
     indexes :forum,      :analyzer => 'keyword'
     indexes :title,      :analyzer => 'french'
     indexes :body,       :analyzer => 'french'
+    indexes :tags,       :analyzer => 'keyword'
   end
 
   def as_indexed_json(options={})
@@ -62,6 +63,7 @@ class Post < Content
       :forum => forum.title.tr('/.', '--'),
       :title => title,
       :body => body,
+      :tags => tag_names,
     }
   end
 

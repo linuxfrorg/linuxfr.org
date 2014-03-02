@@ -57,6 +57,7 @@ class Tracker < Content
     indexes :category,   :analyzer => 'keyword'
     indexes :title,      :analyzer => 'french'
     indexes :body,       :analyzer => 'french'
+    indexes :tags,       :analyzer => 'keyword'
   end
 
   def as_indexed_json(options={})
@@ -67,6 +68,7 @@ class Tracker < Content
       :category => category.title,
       :title => title,
       :body => body,
+      :tags => tag_names,
     }
   end
 

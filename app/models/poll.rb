@@ -60,13 +60,14 @@ class Poll < Content
 
   include Elasticsearch::Model
 
-  scope :indexable, published.includes(:answers)
+  scope :indexable, joins(:node).where('nodes.public' => true).includes(:answers)
 
   mapping :dynamic => false do
     indexes :created_at,   :type => 'date'
     indexes :title,        :analyzer => 'french'
     indexes :explanations, :analyzer => 'french'
     indexes :answers,      :analyzer => 'french'
+    indexes :tags,         :analyzer => 'keyword'
   end
 
   def as_indexed_json(options={})
@@ -76,6 +77,7 @@ class Poll < Content
       :title => title,
       :explanations => explanations,
       :answers => answers.pluck(:answer).join("\n"),
+      :tags => tag_names,
     }
   end
 

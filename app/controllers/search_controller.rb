@@ -7,6 +7,7 @@ class SearchController < ApplicationController
     @search.page  = (params[:page] || 1).to_i
     @search.type  = params[:type]
     @search.value = params[:facet]
+    @search.tags  = Array(params[:tags])
     @search.start = Time.at(params[:start].to_i).to_date if params[:start].present?
     @search.order = params[:order]
     @search.run

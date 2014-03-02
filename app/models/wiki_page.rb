@@ -47,6 +47,7 @@ class WikiPage < Content
     indexes :username
     indexes :title,      :analyzer => 'french'
     indexes :body,       :analyzer => 'french'
+    indexes :tags,       :analyzer => 'keyword'
   end
 
   def as_indexed_json(options={})
@@ -56,6 +57,7 @@ class WikiPage < Content
       :username => user.try(:name),
       :title => title,
       :body => body,
+      :tags => tag_names,
     }
   end
 

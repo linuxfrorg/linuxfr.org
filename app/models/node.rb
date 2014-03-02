@@ -176,4 +176,8 @@ class Node < ActiveRecord::Base
         limit(nb)
   end
 
+  def tag_names
+    tags.where(:public => true).pluck(:name)
+  end
+
 end
