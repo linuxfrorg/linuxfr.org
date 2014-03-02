@@ -39,8 +39,8 @@ class Page < ActiveRecord::Base
 
   mapping :dynamic => false do
     indexes :created_at, :type => 'date'
-    indexes :title,      :boost => 50, :analyzer => 'french'
-    indexes :body,       :boost => 5,  :analyzer => 'french'
+    indexes :title,      :analyzer => 'french'
+    indexes :body,       :analyzer => 'french'
   end
 
   def as_indexed_json(options={})

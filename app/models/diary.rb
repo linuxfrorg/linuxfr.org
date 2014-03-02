@@ -48,9 +48,9 @@ class Diary < Content
 
   mapping :dynamic => false do
     indexes :created_at, :type => 'date'
-    indexes :username,   :boost => 3
-    indexes :title,      :boost => 6, :analyzer => 'french'
-    indexes :body,                    :analyzer => 'french'
+    indexes :username
+    indexes :title,      :analyzer => 'french'
+    indexes :body,       :analyzer => 'french'
   end
 
   def as_indexed_json(options={})

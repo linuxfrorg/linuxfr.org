@@ -53,10 +53,10 @@ class Tracker < Content
 
   mapping :dynamic => false do
     indexes :created_at, :type => 'date'
-    indexes :username,   :boost => 2
-    indexes :category,   :boost => 6,  :analyzer => 'keyword'
-    indexes :title,      :boost => 10, :analyzer => 'french'
-    indexes :body,                     :analyzer => 'french'
+    indexes :username
+    indexes :category,   :analyzer => 'keyword'
+    indexes :title,      :analyzer => 'french'
+    indexes :body,       :analyzer => 'french'
   end
 
   def as_indexed_json(options={})

@@ -1,9 +1,3 @@
-# TODO
-# ajouter de nouvelles fonctionnalités (tags, commentaires, suggestions, etc.)
-# prendre en compte la date dans le calcul de la pertinence (nouveau critère de tri ?)
-# utiliser des query time boost
-# autocomplete / suggest
-
 class Search
   include Elasticsearch::Model
 
@@ -14,6 +8,20 @@ class Search
     'post'    => 'forum',
     'tracker' => 'category'
   }
+
+  INDICES_BOOST = {
+    :pages => 1000,
+    :news  => 3
+  }
+
+  FIELDS_BOOST = [
+    "_all",
+    "title^5",
+    "section^2",
+    "forum^2",
+    "category^2",
+    "username^2"
+  ]
 
   PER_PAGE = 15
 
@@ -40,7 +48,10 @@ class Search
         :filtered => ->{
           filtered = {
             :query => {
-              :simple_query_string => { :query => @query }
+              :simple_query_string => {
+                :query  => @query,
+                :fields => FIELDS_BOOST
+              }
             }
           }
 
@@ -78,7 +89,9 @@ class Search
           }
         } unless @start
         aggs
-      }.call
+      }.call,
+
+      :indices_boost => INDICES_BOOST
     }
     query[:sort] = [ { :created_at => :desc } ] if @order
 

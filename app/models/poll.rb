@@ -64,9 +64,9 @@ class Poll < Content
 
   mapping :dynamic => false do
     indexes :created_at,   :type => 'date'
-    indexes :title,        :boost => 10, :analyzer => 'french'
-    indexes :explanations, :boost => 5,  :analyzer => 'french'
-    indexes :answers,      :boost => 2,  :analyzer => 'french'
+    indexes :title,        :analyzer => 'french'
+    indexes :explanations, :analyzer => 'french'
+    indexes :answers,      :analyzer => 'french'
   end
 
   def as_indexed_json(options={})

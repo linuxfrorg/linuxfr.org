@@ -68,11 +68,11 @@ class News < Content
 
   mapping :dynamic => false do
     indexes :created_at,  :type => 'date'
-    indexes :username,    :boost => 6
-    indexes :section,     :boost => 12, :analyzer => 'keyword'
-    indexes :title,       :boost => 50, :analyzer => 'french'
-    indexes :body,        :boost => 5,  :analyzer => 'french'
-    indexes :second_part, :boost => 3,  :analyzer => 'french'
+    indexes :username
+    indexes :section,     :analyzer => 'keyword'
+    indexes :title,       :analyzer => 'french'
+    indexes :body,        :analyzer => 'french'
+    indexes :second_part, :analyzer => 'french'
   end
 
   def as_indexed_json(options={})
