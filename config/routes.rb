@@ -200,11 +200,11 @@ LinuxfrOrg::Application.routes.draw do
     get "/statistiques/:action"
   end
 
-  # Badges SGL 2013
+  # Badges SGL 2014
   controller :badges do
-    get  "/solutions-linux-2013/badges.csv" => :index
-    get  "/solutions-linux-2013/badge" => :new
-    post "/solutions-linux-2013/badge" => :create, :as => :badges
+    get  "/solutions-linux-2014/badges.csv" => :index
+    get  "/solutions-linux-2014/badge" => :new
+    post "/solutions-linux-2014/badge" => :create, :as => :badges
   end
 
   # Static pages
