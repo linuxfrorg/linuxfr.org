@@ -6,7 +6,7 @@ class Admin::AccountsController < AdminController
     accounts = Account
     if params[:login].present?
       @login = params[:login]
-      accounts = accounts.where("login LIKE ?", "#{@login}%")
+      accounts = accounts.where("login LIKE ? COLLATE UTF8_GENERAL_CI", "#{@login}%")
     end
     if params[:date].present?
       @date = params[:date]
@@ -30,10 +30,10 @@ class Admin::AccountsController < AdminController
   def update
     if @account.inactive?
       @account.reactivate!
-      redirect_to admin_accounts_url, :notice => "Compte réactivé"
+      redirect_to :back, :notice => "Compte réactivé"
     else
       @account.inactivate!
-      redirect_to admin_accounts_url, :notice => "Compte désactivé"
+      redirect_to :back, :notice => "Compte désactivé"
     end
   end
 

@@ -187,6 +187,7 @@ button, input[type='submit'] {
     background: no-repeat 2px 2px / 16px $C_CLAIR;
     background-image: url("/images/icones/denied.png");
     background-image: url("/images/icones/denied.svg"), none;
+    &:hover { background-color: $C_INTER; }
   }
   &#admin_49_3, &.archive_button, &.reopen_button {
     background: no-repeat 2px 2px / 16px $C_CLAIR;
@@ -217,6 +218,7 @@ button, input[type='submit'] {
     background: no-repeat 2px 3px / 16px $C_CLAIR;
     background-image: url("/images/icones/at.png");
     background-image: url("/images/icones/at.svg"), none;
+    &:hover { background-color: $C_INTER; }
   }
 }
 

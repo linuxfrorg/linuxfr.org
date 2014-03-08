@@ -14,6 +14,7 @@
     %th Status
     %th Date de création
     %th Actions
+    %th Changer de rôle
   - @accounts.each do |account|
     %tr
       %td= link_to account.login, account.user
@@ -28,5 +29,16 @@
         - elsif !account.inactive?
           = button_to "Renvoi mot de passe", password_admin_account_path(account), :class => "reset_password"
           = button_to "Suspendre", [:admin, account], :method => :put, :class => "delete_button"
+      %td
+        - if account.editor?
+          = button_to "Retour simple visiteur", admin_account_editor_path(account.id), :method => :delete
+        - elsif account.moderator?
+          = button_to "Retour simple visiteur", admin_account_moderator_path(account.id), :method => :delete
+        - elsif account.admin?
+          = button_to "Retour simple visiteur", admin_account_admin_path(account.id), :method => :delete
+        - elsif !account.inactive?
+          = button_to "→ modérateur", admin_account_moderator_path(account.id)
+          = button_to "→ rédacteur", admin_account_editor_path(account.id)
+          = button_to "→ admin", admin_account_admin_path(account.id)
 
 = paginate @accounts
