@@ -32,10 +32,10 @@ gem "simple_autocomplete",     "~>0.3"
 gem "state_machine",           "~>1.1"
 
 # Use the github version to have transport auto-detection
-gem "elasticsearch-transport", :github => "elasticsearch/elasticsearch-ruby"
+gem "elasticsearch-transport", "~>1.0"
 
 # Elasticsearch-model needs to be loaded after some gems like kaminari
-gem "elasticsearch-model",     :github => "elasticsearch/elasticsearch-rails"
+gem "elasticsearch-model",     "~>0.1"
 
 # Gems used only for assets and not required
 # in production environments by default.
