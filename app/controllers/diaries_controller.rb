@@ -32,6 +32,7 @@ class DiariesController < ApplicationController
     else
       @diary.node = Node.new(:user_id => current_user.id)
       @diary.valid?
+      flash.now[:alert] = "Votre journal ne contient pas de liens. Êtes-vous sûr ?" unless @diary.body =~ /<a /
       render :new
     end
   end
