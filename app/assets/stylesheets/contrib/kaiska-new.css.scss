@@ -399,6 +399,10 @@ div.ac_results ul li:hover {
 #container article footer div.vote form div {
   display: inline;
 }
+#container article .formats {
+  float: right;
+  clear: right;
+}
 
 /* Sondage */
 ul.poll.current {
