@@ -66,8 +66,7 @@ class WikiPage < Content
   attr_accessor   :wiki_body, :message, :user_id
   attr_accessible :wiki_body, :message
 
-  wikify_attr   :body
-  sanitize_attr :body
+  wikify_attr :body
 
   after_save :create_new_version
   def create_new_version

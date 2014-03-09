@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140104211358) do
+ActiveRecord::Schema.define(:version => 20140309230826) do
 
   create_table "access_grants", :force => true do |t|
     t.integer  "account_id"
@@ -100,12 +100,12 @@ ActiveRecord::Schema.define(:version => 20140104211358) do
   create_table "comments", :force => true do |t|
     t.integer  "node_id"
     t.integer  "user_id"
-    t.string   "state",             :limit => 10,   :default => "published", :null => false
-    t.string   "title",             :limit => 160,                           :null => false
-    t.integer  "score",                             :default => 0,           :null => false
-    t.boolean  "answered_to_self",                  :default => false,       :null => false
+    t.string   "state",             :limit => 10,       :default => "published", :null => false
+    t.string   "title",             :limit => 160,                               :null => false
+    t.integer  "score",                                 :default => 0,           :null => false
+    t.boolean  "answered_to_self",                      :default => false,       :null => false
     t.string   "materialized_path", :limit => 1022
-    t.text     "body"
+    t.text     "body",              :limit => 16777215
     t.text     "wiki_body"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -118,10 +118,10 @@ ActiveRecord::Schema.define(:version => 20140104211358) do
   add_index "comments", ["user_id", "state", "created_at"], :name => "index_comments_on_user_id_and_state_and_created_at"
 
   create_table "diaries", :force => true do |t|
-    t.string   "title",             :limit => 160, :null => false
+    t.string   "title",             :limit => 160,      :null => false
     t.string   "cached_slug",       :limit => 165
     t.integer  "owner_id"
-    t.text     "body"
+    t.text     "body",              :limit => 16777215
     t.text     "wiki_body"
     t.text     "truncated_body"
     t.datetime "created_at"
@@ -190,7 +190,7 @@ ActiveRecord::Schema.define(:version => 20140104211358) do
     t.integer  "section_id"
     t.string   "author_name",  :limit => 32,                              :null => false
     t.string   "author_email", :limit => 64,                              :null => false
-    t.text     "body"
+    t.text     "body",         :limit => 16777215
     t.text     "second_part",  :limit => 2147483647
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -284,9 +284,9 @@ ActiveRecord::Schema.define(:version => 20140104211358) do
 
   create_table "posts", :force => true do |t|
     t.integer  "forum_id"
-    t.string   "title",          :limit => 160, :null => false
+    t.string   "title",          :limit => 160,      :null => false
     t.string   "cached_slug",    :limit => 165
-    t.text     "body"
+    t.text     "body",           :limit => 16777215
     t.text     "wiki_body"
     t.text     "truncated_body"
     t.datetime "created_at"
@@ -334,12 +334,12 @@ ActiveRecord::Schema.define(:version => 20140104211358) do
   add_index "tags", ["public", "taggings_count"], :name => "index_tags_on_public_and_taggings_count"
 
   create_table "trackers", :force => true do |t|
-    t.string   "state",               :limit => 10,  :default => "opened", :null => false
-    t.string   "title",               :limit => 100,                       :null => false
+    t.string   "state",               :limit => 10,       :default => "opened", :null => false
+    t.string   "title",               :limit => 100,                            :null => false
     t.string   "cached_slug",         :limit => 105
     t.integer  "category_id"
     t.integer  "assigned_to_user_id"
-    t.text     "body"
+    t.text     "body",                :limit => 16777215
     t.text     "wiki_body"
     t.text     "truncated_body"
     t.datetime "created_at"

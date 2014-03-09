@@ -12,7 +12,7 @@ class ActiveRecord::Base
     method = "sanitize_#{attr}".to_sym
     before_validation method
     define_method method do
-      send("#{attr}=", HTML::Pipeline::LinuxFr.sanitize(self[attr]))
+      send("#{attr}=", HTML::Pipeline::LinuxFr.sanitize(self[attr])) unless self[attr].html_safe?
     end
     define_method attr do
       self[attr].to_s.html_safe
@@ -37,7 +37,9 @@ class ActiveRecord::Base
     define_method method do
       send("#{attr}=", wikify(send "wiki_#{attr}"))
     end
-    sanitize_attr attr
+    define_method attr do
+      self[attr].to_s.html_safe
+    end
   end
 
   # Transform wiki syntax to HTML

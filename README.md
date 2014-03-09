@@ -88,6 +88,7 @@ If you want the full stack for running LinuxFr.org, you should also look at:
 * [The share daemon](https://github.com/nono/share-LinuxFr.org)
 * [The epub daemon](https://github.com/nono/epub-LinuxFr.org)
 * [The img daemon](https://github.com/nono/img-LinuxFr.org)
+* [SVGTeX](https://github.com/linuxfrorg/svgtex)
 
 
 How to run the specs
