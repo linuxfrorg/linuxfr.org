@@ -101,6 +101,8 @@ class Paragraph < ActiveRecord::Base
     self.body = wikify(wiki_body)
   end
 
+  sanitize_attr :body
+
 ### Push ###
 
   after_create :announce_create
