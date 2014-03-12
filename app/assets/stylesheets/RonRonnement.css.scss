@@ -413,10 +413,10 @@ button, input[type='submit'] {
   color: $C_MENU;
 
   background-color: #bdb3aa;
-  background: -moz-linear-gradient(left, #fff, #e7e3e0 201px, #bdb3aa 50%);
-  background: -webkit-linear-gradient(left, #fff, #e7e3e0 201px, #bdb3aa 50%);
-  background: -o-linear-gradient(left, #fff, #e7e3e0 201px, #bdb3aa 50%);
-  background: linear-gradient(to right, #fff, #e7e3e0 201px, #bdb3aa 50%);
+  background: -moz-linear-gradient(left, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
+  background: -webkit-linear-gradient(left, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
+  background: -o-linear-gradient(left, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
+  background: linear-gradient(to right, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
 
   ul {
     display: inline;
