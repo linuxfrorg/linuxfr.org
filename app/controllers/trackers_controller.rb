@@ -92,7 +92,7 @@ protected
   end
 
   def marked_as_read
-    current_account.read(@tracker.node)
+    current_account.read(@tracker.node) unless params[:format] == "md"
   end
 
   def load_tracker

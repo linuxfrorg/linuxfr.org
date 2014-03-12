@@ -106,7 +106,7 @@ protected
   end
 
   def marked_as_read
-    current_account.read(@news.node)
+    current_account.read(@news.node) unless params[:format] == "md"
   end
 
 end

@@ -65,7 +65,7 @@ protected
   end
 
   def marked_as_read
-    current_account.read(@poll.node)
+    current_account.read(@poll.node) unless params[:format] == "md"
   end
 
   def enforce_answer_permission(poll)

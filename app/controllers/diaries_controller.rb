@@ -102,7 +102,7 @@ protected
   end
 
   def marked_as_read
-    current_account.read(@diary.node)
+    current_account.read(@diary.node) unless params[:format] == "md"
   end
 
   def expire_cache
