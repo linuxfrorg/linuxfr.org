@@ -879,7 +879,7 @@ footer.actions {
     margin: 0 auto;
     max-width: 100%;
   }
-  p img { display: inline; max-height: 1em; }
+  img.mathjax { display: inline; max-height: 1em; }
   a {
     @include lien_standard;
     border-bottom: 1px solid;
