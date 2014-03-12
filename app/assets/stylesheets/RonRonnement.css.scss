@@ -17,7 +17,6 @@ $PX_MARGE_DROITE: 30px;
 $PX_TOP: 16px;
 $PX_BANDEAU: 7px;
 $PX_BRANDING_LARG: 201px;
-$PX_BRANDING_HEIGHT: 186px;
 $PX_SITE_PAD_DROIT: 42px;
 $PX_CONT_TOP: 34px;
 
@@ -302,13 +301,22 @@ button, input[type='submit'] {
   /* image DLFP */
   #branding h1 {
     display: block;
-    height: $PX_BRANDING_HEIGHT;
+    height: 0;
+    padding: 100% 0 0 0; /* padding % are defined relative to the element's width. */
+    margin: 0;
+    position: relative;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
 
     a {
+      position: absolute;
       display: block;
       /* chiffre magique qui marche sous firefox et opera */
       margin-top: -17px;
       text-indent: -9999em;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
     }
@@ -1662,10 +1670,6 @@ img {
   #sidebar #branding {
     width: $PX_BRANDING_LARG / 2;
     margin-right: 10px;
-    h1 {
-      height: $PX_BRANDING_HEIGHT / 2;
-      background-size: 100%;
-    }
   }
 
   #bigfooter {
