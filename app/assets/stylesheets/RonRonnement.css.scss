@@ -68,7 +68,7 @@ body {
   padding-top: $PX_TOP;
   border: solid #999;
   border-width: 0 1px;
-  background: #fff;
+  background: linear-gradient(90deg, $C_CLAIR, $C_CLAIR $PX_BRANDING_LARG, $C_CONTAINER $PX_BRANDING_LARG, $C_CONTAINER) #fff;
 }
 
 a {
