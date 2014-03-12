@@ -804,6 +804,9 @@ a:hover {
 a img {
   border: none;
 }
+img {
+  max-width: 100%;
+}
 #tracker .fix a,
 #tracker .invalid a,
 .tracker.fix a,
