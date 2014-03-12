@@ -203,8 +203,8 @@ class News < Content
     self.second_part = wikify(wiki_second_part).gsub(/^<p>NdM/, '<p><abbr title="Note des modérateurs">NdM</abbr>')
   end
 
-  sanitize_attr :body
-  sanitize_attr :second_part
+  mark_as_safe_attr :body
+  mark_as_safe_attr :second_part
 
   after_create :create_parts
   def create_parts

@@ -14,9 +14,7 @@ class ActiveRecord::Base
     define_method method do
       send("#{attr}=", HTML::Pipeline::LinuxFr.sanitize(self[attr])) unless self[attr].html_safe?
     end
-    define_method attr do
-      self[attr].to_s.html_safe
-    end
+    mark_as_safe_attr attr
   end
 
   def self.truncate_attr(attr, nb_words=80)
@@ -26,9 +24,7 @@ class ActiveRecord::Base
       return unless send("#{attr}_changed?")
       send("truncated_#{attr}=", LFTruncator.truncate(send(attr), nb_words))
     end
-    define_method "truncated_#{attr}" do
-      self["truncated_#{attr}"].html_safe
-    end
+    mark_as_safe_attr "truncated_#{attr}"
   end
 
   def self.wikify_attr(attr)
@@ -37,6 +33,10 @@ class ActiveRecord::Base
     define_method method do
       send("#{attr}=", wikify(send "wiki_#{attr}"))
     end
+    mark_as_safe_attr attr
+  end
+
+  def self.mark_as_safe_attr(attr)
     define_method attr do
       self[attr].to_s.html_safe
     end
