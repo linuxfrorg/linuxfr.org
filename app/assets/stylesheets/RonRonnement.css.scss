@@ -493,7 +493,7 @@ button, input[type='submit'] {
     from($C_FOOT),
     to(white)
   );
-  background: linear-gradient(top,
+  background: linear-gradient(to bottom,
     $C_FOOT 0%,
     white 100%
   );
@@ -529,7 +529,7 @@ button, input[type='submit'] {
       from($C_FOOT),
       color-stop(50%, $C_MIBLANC_MIFOOT),
       to($C_FOOT));
-    background: linear-gradient(top,
+    background: linear-gradient(to bottom,
       $C_FOOT 0%,
       $C_MIBLANC_MIFOOT 50%,
       $C_FOOT 100%
