@@ -433,7 +433,7 @@ button, input[type='submit'] {
   form {
     display: inline-block;
     vertical-align: middle;
-    width: 160px;
+    width: 22px+6px+125px+10px;
 
     label {
       float: left;
@@ -445,8 +445,9 @@ button, input[type='submit'] {
     input#query {
       display: block;
       float: left;
-      background: $C_CLAIR;
-      margin-top: 2px;
+      background: transparent;
+      border: none;
+      margin: 3px 0 3px 10px;
       width: 125px;
     }
     input#search_submit {
@@ -458,6 +459,8 @@ button, input[type='submit'] {
       width: 22px;
       height: 22px;
       cursor: pointer;
+      margin: 3px 6px 3px 0;
+      padding: 0;
     }
   }
 }
