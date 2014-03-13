@@ -14,7 +14,6 @@
 /* Pixel size constants */
 $PX_MARGE_GAUCHE: 42px;
 $PX_MARGE_DROITE: 30px;
-$PX_TOP: 16px;
 $PX_BANDEAU: 7px;
 $PX_BRANDING_LARG: 201px;
 $PX_SITE_PAD_DROIT: 42px;
@@ -64,7 +63,6 @@ body {
   color: #000;
   max-width: 150ex;
   margin: 0 auto;
-  padding-top: $PX_TOP;
   border: solid #999;
   border-width: 0 1px;
   background: linear-gradient(90deg, $C_CLAIR, $C_CLAIR $PX_BRANDING_LARG, $C_CONTAINER $PX_BRANDING_LARG, $C_CONTAINER) #fff;
@@ -259,16 +257,11 @@ button, input[type='submit'] {
 }
 
 #top {
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  height: $PX_BANDEAU;
-  background: $C_BANDEAU;
+  display: none;
 }
 
 #sidebar {
   float: left;
-  margin-top: 35px;
   width: $PX_BRANDING_LARG;
   text-align: left;
   font-size: 0.8em;
@@ -403,9 +396,8 @@ button, input[type='submit'] {
 /* menu du haut */
 #site {
   display: block;
-  position: absolute;
   top: 0;
-  padding-top: 23px;
+  padding-top: 16px;
   width: 100%;
   text-align: right;
   text-transform: uppercase;
@@ -417,6 +409,13 @@ button, input[type='submit'] {
   background: -webkit-linear-gradient(left, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
   background: -o-linear-gradient(left, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
   background: linear-gradient(to right, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
+
+  /* we recycle the nav bar to display the black line at the top */
+  .go_to_content {
+    width: 100%;
+    height: $PX_BANDEAU;
+    background: $C_BANDEAU;
+  }
 
   ul {
     display: inline;
@@ -547,7 +546,7 @@ button, input[type='submit'] {
 
 #container {
   display: block;
-  margin: 36px 0 0 $PX_BRANDING_LARG;
+  margin: 0 0 0 $PX_BRANDING_LARG;
   background: $C_CONTAINER;
   padding: 30px $RAY_CONTAINER 10px 40px;
 
@@ -1572,7 +1571,6 @@ img {
     background: #fff;
   }
 
-  #top { display: none; }
   #site {
     position: static;
     padding: 0 3px;
