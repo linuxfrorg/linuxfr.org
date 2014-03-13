@@ -14,16 +14,17 @@
 /* Pixel size constants */
 $PX_MARGE_GAUCHE: 42px;
 $PX_MARGE_DROITE: 30px;
-$PX_TOP: 16px;
 $PX_BANDEAU: 7px;
 $PX_BRANDING_LARG: 201px;
-$PX_BRANDING_HEIGHT: 186px;
 $PX_SITE_PAD_DROIT: 42px;
 $PX_CONT_TOP: 34px;
 
 $PX_MARGE_GAUCHE_SHA: 50px;
 $PX_MARGE_DROITE_SHA: 38px;
 $PX_PAD_NODE: 34px;
+
+/* This is the base font size. Absolute font sizes must not be used elsewhere. */
+$BASE_FONT_SIZE: small;
 
 $RAY_SIDEBAR: 42px;
 $RAY_CONTAINER: 62px;
@@ -65,10 +66,10 @@ body {
   color: #000;
   max-width: 1350px;
   margin: 0 auto;
-  padding-top: $PX_TOP;
   border: solid #999;
   border-width: 0 1px;
   background: linear-gradient(90deg, $C_CLAIR, $C_CLAIR $PX_BRANDING_LARG, $C_CONTAINER $PX_BRANDING_LARG, $C_CONTAINER) #fff;
+  font-size: $BASE_FONT_SIZE; /* we set the base font size here. */
 }
 
 a {
@@ -100,7 +101,7 @@ input[type='submit'] {
   color: black;
   background-color: $C_CLAIR;
   border: 1px solid $C_INTER;
-  font-size: medium;
+  font-size: 1.2em;
 
   &:hover {
     background-color: $C_INTER;
@@ -260,19 +261,13 @@ button, input[type='submit'] {
 }
 
 #top {
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  height: $PX_BANDEAU;
-  background: $C_BANDEAU;
+  display: none;
 }
 
 #sidebar {
   float: left;
-  margin-top: 36px;
   width: $PX_BRANDING_LARG;
   text-align: left;
-  font-size: small;
   background: $C_CLAIR;
 
   a { font-weight: inherit; }
@@ -302,13 +297,22 @@ button, input[type='submit'] {
   /* image DLFP */
   #branding h1 {
     display: block;
-    height: $PX_BRANDING_HEIGHT;
+    height: 0;
+    padding: 100% 0 0 0; /* padding % are defined relative to the element's width. */
+    margin: 0;
+    position: relative;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
 
     a {
+      position: absolute;
       display: block;
       /* chiffre magique qui marche sous firefox et opera */
       margin-top: -17px;
       text-indent: -9999em;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
     }
@@ -348,7 +352,7 @@ button, input[type='submit'] {
     h1 {
       display: inline-block;
       text-align: center;
-      font-size: small;
+      font-size: inherit;
       color: white;
       background: $C_FONCE;
       max-width: 80%;
@@ -381,10 +385,13 @@ button, input[type='submit'] {
   #logout {
     border: 0;
     font-family: sans-serif;
-    font-size: small;
+    font-size: inherit;
     padding: 0;
     margin-left: -3px;
-    &:hover { background-color: $C_CLAIR; }
+    &:hover {
+      background-color: $C_CLAIR;
+      text-decoration: underline;
+    }
   }
 
   .new_content a {
@@ -395,20 +402,25 @@ button, input[type='submit'] {
 /* menu du haut */
 #site {
   display: block;
-  position: absolute;
   top: 0;
-  padding-top: 23px;
+  padding-top: 16px;
   width: 100%;
   text-align: right;
   text-transform: uppercase;
-  font-size: small;
   color: $C_MENU;
 
   background-color: #bdb3aa;
-  background: -moz-linear-gradient(left, #fff, #e7e3e0 201px, #bdb3aa 50%);
-  background: -webkit-linear-gradient(left, #fff, #e7e3e0 201px, #bdb3aa 50%);
-  background: -o-linear-gradient(left, #fff, #e7e3e0 201px, #bdb3aa 50%);
-  background: linear-gradient(to right, #fff, #e7e3e0 201px, #bdb3aa 50%);
+  background: -moz-linear-gradient(left, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
+  background: -webkit-linear-gradient(left, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
+  background: -o-linear-gradient(left, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
+  background: linear-gradient(to right, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
+
+  /* we recycle the nav bar to display the black line at the top */
+  .go_to_content {
+    width: 100%;
+    height: $PX_BANDEAU;
+    background: $C_BANDEAU;
+  }
 
   ul {
     display: inline;
@@ -426,7 +438,7 @@ button, input[type='submit'] {
   form {
     display: inline-block;
     vertical-align: middle;
-    width: 160px;
+    width: 22px+6px+125px+10px;
 
     label {
       float: left;
@@ -438,8 +450,9 @@ button, input[type='submit'] {
     input#query {
       display: block;
       float: left;
-      background: $C_CLAIR;
-      margin-top: 2px;
+      background: transparent;
+      border: none;
+      margin: 3px 0 3px 10px;
       width: 125px;
     }
     input#search_submit {
@@ -451,6 +464,8 @@ button, input[type='submit'] {
       width: 22px;
       height: 22px;
       cursor: pointer;
+      margin: 3px 6px 3px 0;
+      padding: 0;
     }
   }
 }
@@ -483,12 +498,10 @@ button, input[type='submit'] {
     from($C_FOOT),
     to(white)
   );
-  background: linear-gradient(top,
+  background: linear-gradient(to bottom,
     $C_FOOT 0%,
     white 100%
   );
-
-  a { font-size: small; }
 
   nav, section {
     display: inline-block;
@@ -519,7 +532,7 @@ button, input[type='submit'] {
       from($C_FOOT),
       color-stop(50%, $C_MIBLANC_MIFOOT),
       to($C_FOOT));
-    background: linear-gradient(top,
+    background: linear-gradient(to bottom,
       $C_FOOT 0%,
       $C_MIBLANC_MIFOOT 50%,
       $C_FOOT 100%
@@ -530,7 +543,7 @@ button, input[type='submit'] {
     border-bottom-left-radius: $RAY_FOOT;
 
     h1 {
-      font-size: medium;
+      font-size: 1.2em;
       padding: 0 3px 3px 3px;
       border-bottom: 2px solid $C_BANDEAU;
     }
@@ -539,7 +552,7 @@ button, input[type='submit'] {
 
 #container {
   display: block;
-  margin: 36px 0 0 $PX_BRANDING_LARG;
+  margin: 0 0 0 $PX_BRANDING_LARG;
   background: $C_CONTAINER;
   padding: 30px $RAY_CONTAINER 10px 40px;
 
@@ -609,7 +622,6 @@ body#admin-index #container > ul,
   border: solid $BORDER_CONTENT $C_INTER;
 
   margin-bottom: 15px;
-  font-size: small;
 }
 /* reset pour form css, sinon une boite par css */
 #stylesheets-edit #contents > form {
@@ -662,7 +674,7 @@ article {
     border-top-width: 0;
     border-bottom-width: 0;
     border-right-width: 0;
-    font-size: medium;
+    font-size: 1.2em;
     /* the translation should be the exact sum of padding and margin of all elements to the right */
     position: absolute;
     right: -$RAY_CONTAINER - $BORDER_CONTENT;
@@ -702,7 +714,7 @@ article {
     }
     .mois, .annee {
       text-align: left;
-      font-size: x-small;
+      font-size: 0.64em;
       padding-left: 10px;
       clear: right;
     }
@@ -741,7 +753,6 @@ article {
 .read, .no_comments, .new_comments, .not_read {
   a:before {
     content: "+ ";
-    font-size: medium;
     font-weight: bold;
   }
 }
@@ -805,7 +816,6 @@ footer.actions {
 }
 .tags {
   display: block;
-  font-size: small;
 
   ul {
     display: inline;
@@ -852,7 +862,7 @@ footer.actions {
 .vote {
   color: $C_INTER;
   font-style: italic;
-  font-size: x-small;
+  font-size: smaller;
 
   form, form div {
     display: inline;
@@ -862,7 +872,7 @@ footer.actions {
       padding: 0;
       display: inline;
       font-style: italic;
-      font-size: x-small;
+      font-size: 1em;
       color: $C_INTER;
       border-style: none;
       background-color: transparent;
@@ -926,7 +936,6 @@ blockquote {
 .toolbox, .scroll {
   display: block;
   margin: 10px 0 15px 0;
-  font-size: small;
   color: $C_INTER;
 }
 a.scroll {
@@ -1029,7 +1038,7 @@ ul.poll {
     background: $C_BD2;
     border-top: 1px solid $C_BANDEAU;
     border-bottom: 1px solid $C_BANDEAU;
-    font-size: x-small;
+    font-size: smaller;
   }
 }
 
@@ -1037,7 +1046,6 @@ ul.poll {
 #comments > p {
   text-align: justify;
   color: $C_INTER;
-  font-size: small;
   margin: 5px 0 5px 0;
 }
 body#comments-show #contents > ul,
@@ -1059,9 +1067,8 @@ ul.threads {
 
 li.comment {
   min-height: 115px;
-  font-size: small;
   > h2 {
-    font-size: medium;
+    font-size: 1.2em;
     margin-bottom: 0;
     margin-top: 10px;
     background: $C_CLAIR;
@@ -1107,7 +1114,7 @@ li.new-comment {
 }
 
 code {
-  font-size: medium;
+  font-size: 1.2em;
   white-space: pre-wrap;
   border: 1px solid $C_CLAIR;
   border-radius: 4px;
@@ -1130,7 +1137,6 @@ body#boards-show {
   }
   #container {
     margin-left: 0;
-    font-size: small;
     text-align: justify;
   }
 }
@@ -1184,7 +1190,6 @@ body#boards-show {
 
 .board-right {
   a {
-    font-size: small;
     @include lien_standard;
     font-weight: bold;
   }
@@ -1300,7 +1305,7 @@ div#form_links {
     max-width: 20%;
   }
   .link .remove {
-    font-size: small;
+    font-size: 1em;
   }
 }
 
@@ -1407,7 +1412,7 @@ div#toolbar {
   background: $C_CONTAINER;
   border: 1px solid $C_INTER;
   color: $C_FONCE;
-  font-size: x-small;
+  font-size: smaller;
 
   #toolbar_items { float: right; }
   #toolbar_alt_items { float: right; margin-right: 20px; }
@@ -1564,12 +1569,12 @@ img {
     background: #fff;
   }
 
-  #top { display: none; }
   #site {
     position: static;
     padding: 0 3px;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    background: linear-gradient(to right, #e7e3e0, #bdb3aa 50%);
   }
 
   #sidebar {
@@ -1639,8 +1644,8 @@ img {
   div#toolbar {
     left: 20px;
     right: 20px;
-    font-size: small;
-    .prev, .next { font-size: xx-large; }
+    font-size: smaller;
+    .prev, .next { font-size: 2em; }
   }
   #toolbar_alt_items { display: none; }
 }
@@ -1654,10 +1659,6 @@ img {
   #sidebar #branding {
     width: $PX_BRANDING_LARG / 2;
     margin-right: 10px;
-    h1 {
-      height: $PX_BRANDING_HEIGHT / 2;
-      background-size: 100%;
-    }
   }
 
   #bigfooter {
