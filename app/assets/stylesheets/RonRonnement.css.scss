@@ -23,6 +23,9 @@ $PX_MARGE_GAUCHE_SHA: 50px;
 $PX_MARGE_DROITE_SHA: 38px;
 $PX_PAD_NODE: 34px;
 
+/* This is the base font size. Absolute font sizes must not be used elsewhere. */
+$BASE_FONT_SIZE: small;
+
 $RAY_SIDEBAR: 42px;
 $RAY_CONTAINER: 62px;
 $RAY_FOOT: 7px;
@@ -66,6 +69,7 @@ body {
   border: solid #999;
   border-width: 0 1px;
   background: linear-gradient(90deg, $C_CLAIR, $C_CLAIR $PX_BRANDING_LARG, $C_CONTAINER $PX_BRANDING_LARG, $C_CONTAINER) #fff;
+  font-size: $BASE_FONT_SIZE; /* we set the base font size here. */
 }
 
 a {
@@ -97,7 +101,7 @@ input[type='submit'] {
   color: black;
   background-color: $C_CLAIR;
   border: 1px solid $C_INTER;
-  font-size: medium;
+  font-size: 1.2em;
 
   &:hover {
     background-color: $C_INTER;
@@ -264,7 +268,6 @@ button, input[type='submit'] {
   float: left;
   width: $PX_BRANDING_LARG;
   text-align: left;
-  font-size: small;
   background: $C_CLAIR;
 
   a { font-weight: inherit; }
@@ -349,7 +352,7 @@ button, input[type='submit'] {
     h1 {
       display: inline-block;
       text-align: center;
-      font-size: small;
+      font-size: inherit;
       color: white;
       background: $C_FONCE;
       max-width: 80%;
@@ -382,10 +385,13 @@ button, input[type='submit'] {
   #logout {
     border: 0;
     font-family: sans-serif;
-    font-size: small;
+    font-size: inherit;
     padding: 0;
     margin-left: -3px;
-    &:hover { background-color: $C_CLAIR; }
+    &:hover {
+      background-color: $C_CLAIR;
+      text-decoration: underline;
+    }
   }
 
   .new_content a {
@@ -401,7 +407,6 @@ button, input[type='submit'] {
   width: 100%;
   text-align: right;
   text-transform: uppercase;
-  font-size: small;
   color: $C_MENU;
 
   background-color: #bdb3aa;
@@ -498,8 +503,6 @@ button, input[type='submit'] {
     white 100%
   );
 
-  a { font-size: small; }
-
   nav, section {
     display: inline-block;
     padding: 5px 0 30px 0;
@@ -540,7 +543,7 @@ button, input[type='submit'] {
     border-bottom-left-radius: $RAY_FOOT;
 
     h1 {
-      font-size: medium;
+      font-size: 1.2em;
       padding: 0 3px 3px 3px;
       border-bottom: 2px solid $C_BANDEAU;
     }
@@ -619,7 +622,6 @@ body#admin-index #container > ul,
   border: solid $BORDER_CONTENT $C_INTER;
 
   margin-bottom: 15px;
-  font-size: small;
 }
 /* reset pour form css, sinon une boite par css */
 #stylesheets-edit #contents > form {
@@ -672,7 +674,7 @@ article {
     border-top-width: 0;
     border-bottom-width: 0;
     border-right-width: 0;
-    font-size: medium;
+    font-size: 1.2em;
     /* the translation should be the exact sum of padding and margin of all elements to the right */
     position: absolute;
     right: -$RAY_CONTAINER - $BORDER_CONTENT;
@@ -712,7 +714,7 @@ article {
     }
     .mois, .annee {
       text-align: left;
-      font-size: x-small;
+      font-size: 0.64em;
       padding-left: 10px;
       clear: right;
     }
@@ -751,7 +753,6 @@ article {
 .read, .no_comments, .new_comments, .not_read {
   a:before {
     content: "+ ";
-    font-size: medium;
     font-weight: bold;
   }
 }
@@ -815,7 +816,6 @@ footer.actions {
 }
 .tags {
   display: block;
-  font-size: small;
 
   ul {
     display: inline;
@@ -862,7 +862,7 @@ footer.actions {
 .vote {
   color: $C_INTER;
   font-style: italic;
-  font-size: x-small;
+  font-size: smaller;
 
   form, form div {
     display: inline;
@@ -872,7 +872,7 @@ footer.actions {
       padding: 0;
       display: inline;
       font-style: italic;
-      font-size: x-small;
+      font-size: 1em;
       color: $C_INTER;
       border-style: none;
       background-color: transparent;
@@ -936,7 +936,6 @@ blockquote {
 .toolbox, .scroll {
   display: block;
   margin: 10px 0 15px 0;
-  font-size: small;
   color: $C_INTER;
 }
 a.scroll {
@@ -1039,7 +1038,7 @@ ul.poll {
     background: $C_BD2;
     border-top: 1px solid $C_BANDEAU;
     border-bottom: 1px solid $C_BANDEAU;
-    font-size: x-small;
+    font-size: smaller;
   }
 }
 
@@ -1047,7 +1046,6 @@ ul.poll {
 #comments > p {
   text-align: justify;
   color: $C_INTER;
-  font-size: small;
   margin: 5px 0 5px 0;
 }
 body#comments-show #contents > ul,
@@ -1069,9 +1067,8 @@ ul.threads {
 
 li.comment {
   min-height: 115px;
-  font-size: small;
   > h2 {
-    font-size: medium;
+    font-size: 1.2em;
     margin-bottom: 0;
     margin-top: 10px;
     background: $C_CLAIR;
@@ -1117,7 +1114,7 @@ li.new-comment {
 }
 
 code {
-  font-size: medium;
+  font-size: 1.2em;
   white-space: pre-wrap;
   border: 1px solid $C_CLAIR;
   border-radius: 4px;
@@ -1140,7 +1137,6 @@ body#boards-show {
   }
   #container {
     margin-left: 0;
-    font-size: small;
     text-align: justify;
   }
 }
@@ -1194,7 +1190,6 @@ body#boards-show {
 
 .board-right {
   a {
-    font-size: small;
     @include lien_standard;
     font-weight: bold;
   }
@@ -1310,7 +1305,7 @@ div#form_links {
     max-width: 20%;
   }
   .link .remove {
-    font-size: small;
+    font-size: 1em;
   }
 }
 
@@ -1417,7 +1412,7 @@ div#toolbar {
   background: $C_CONTAINER;
   border: 1px solid $C_INTER;
   color: $C_FONCE;
-  font-size: x-small;
+  font-size: smaller;
 
   #toolbar_items { float: right; }
   #toolbar_alt_items { float: right; margin-right: 20px; }
@@ -1649,8 +1644,8 @@ img {
   div#toolbar {
     left: 20px;
     right: 20px;
-    font-size: small;
-    .prev, .next { font-size: xx-large; }
+    font-size: smaller;
+    .prev, .next { font-size: 2em; }
   }
   #toolbar_alt_items { display: none; }
 }
