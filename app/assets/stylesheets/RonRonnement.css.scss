@@ -272,7 +272,7 @@ button, input[type='submit'] {
   margin-top: 36px;
   width: $PX_BRANDING_LARG;
   text-align: left;
-  font-size: small;
+  font-size: 0.8em;
   background: $C_CLAIR;
 
   a { font-weight: inherit; }
@@ -348,7 +348,7 @@ button, input[type='submit'] {
     h1 {
       display: inline-block;
       text-align: center;
-      font-size: small;
+      font-size: 1em;
       color: white;
       background: $C_FONCE;
       max-width: 80%;
@@ -381,7 +381,7 @@ button, input[type='submit'] {
   #logout {
     border: 0;
     font-family: sans-serif;
-    font-size: small;
+    font-size: 1em;
     padding: 0;
     margin-left: -3px;
     &:hover { background-color: $C_CLAIR; }
@@ -401,7 +401,7 @@ button, input[type='submit'] {
   width: 100%;
   text-align: right;
   text-transform: uppercase;
-  font-size: small;
+  font-size: 0.8em;
   color: $C_MENU;
 
   background-color: #bdb3aa;
@@ -488,7 +488,7 @@ button, input[type='submit'] {
     white 100%
   );
 
-  a { font-size: small; }
+  a { font-size: 0.75em; }
 
   nav, section {
     display: inline-block;
@@ -530,7 +530,7 @@ button, input[type='submit'] {
     border-bottom-left-radius: $RAY_FOOT;
 
     h1 {
-      font-size: medium;
+      font-size: 1em;
       padding: 0 3px 3px 3px;
       border-bottom: 2px solid $C_BANDEAU;
     }
@@ -609,7 +609,7 @@ body#admin-index #container > ul,
   border: solid $BORDER_CONTENT $C_INTER;
 
   margin-bottom: 15px;
-  font-size: small;
+  font-size: 0.8em;
 }
 /* reset pour form css, sinon une boite par css */
 #stylesheets-edit #contents > form {
@@ -662,7 +662,7 @@ article {
     border-top-width: 0;
     border-bottom-width: 0;
     border-right-width: 0;
-    font-size: medium;
+    font-size: 1.3em;
     /* the translation should be the exact sum of padding and margin of all elements to the right */
     position: absolute;
     right: -$RAY_CONTAINER - $BORDER_CONTENT;
@@ -702,7 +702,7 @@ article {
     }
     .mois, .annee {
       text-align: left;
-      font-size: x-small;
+      font-size: 0.5em;
       padding-left: 10px;
       clear: right;
     }
@@ -741,7 +741,7 @@ article {
 .read, .no_comments, .new_comments, .not_read {
   a:before {
     content: "+ ";
-    font-size: medium;
+    font-size: 1.2em;
     font-weight: bold;
   }
 }
@@ -805,7 +805,6 @@ footer.actions {
 }
 .tags {
   display: block;
-  font-size: small;
 
   ul {
     display: inline;
@@ -891,7 +890,7 @@ footer.actions {
       font-family: serif;
       font-size: 6pt;
       vertical-align: super;
-	  line-height: 0;
+	    line-height: 0;
     }
     &[href^="/wiki"],
     &[href^="//linuxfr.org/wiki"] {
@@ -901,7 +900,7 @@ footer.actions {
       -webkit-border-image: url('/favicon.png') 0 0 0 32;
       -khtml-border-image:  url('/favicon.png') 0 0 0 32;
       border-image:         url('/favicon.png') 0 0 0 32;
-	  border-style: solid;
+	    border-style: solid;
     }
   }
   ul,ol {
@@ -926,7 +925,7 @@ blockquote {
 .toolbox, .scroll {
   display: block;
   margin: 10px 0 15px 0;
-  font-size: small;
+  font-size: 0.8em;
   color: $C_INTER;
 }
 a.scroll {
@@ -1037,7 +1036,7 @@ ul.poll {
 #comments > p {
   text-align: justify;
   color: $C_INTER;
-  font-size: small;
+  font-size: 0.8em;
   margin: 5px 0 5px 0;
 }
 body#comments-show #contents > ul,
@@ -1059,9 +1058,8 @@ ul.threads {
 
 li.comment {
   min-height: 115px;
-  font-size: small;
   > h2 {
-    font-size: medium;
+    font-size: 1.3em;
     margin-bottom: 0;
     margin-top: 10px;
     background: $C_CLAIR;
@@ -1077,6 +1075,8 @@ li.comment {
     margin: 0 5px 5px 10px;
   }
   .content {
+    font-size: 1.1em;
+    line-height: 1.5em;
     border-left: 1px solid $C_INTER;
     padding-left: 5px;
     margin-bottom: 5px;
@@ -1107,7 +1107,7 @@ li.new-comment {
 }
 
 code {
-  font-size: medium;
+  font-size: 1.1em;
   white-space: pre-wrap;
   border: 1px solid $C_CLAIR;
   border-radius: 4px;
@@ -1654,7 +1654,8 @@ img {
 
 @media screen and (max-width: 600px), handheld {
   article h1 { font-size: 1.3em; }
-  article .content { font-size: 0.9em; line-height: 1.3em; }
+  li.comment > h2 { font-size: 1.1em; }
+  article .content, li.comment .content { font-size: 0.9em; line-height: 1.3em; }
 }
 
 @media screen and (max-width: 400px), handheld {
@@ -1678,7 +1679,8 @@ img {
   }
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 320px) {
   img.avatar { display: none; }
+  li.comment > ul { margin-left: 0; }
   #toolbar { display: none; }
 }
