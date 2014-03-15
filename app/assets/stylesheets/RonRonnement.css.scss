@@ -385,7 +385,10 @@ button, input[type='submit'] {
     font-size: 1em;
     padding: 0;
     margin-left: -3px;
-    &:hover { background-color: $C_CLAIR; }
+    &:hover {
+      background-color: $C_CLAIR;
+      text-decoration: underline;
+    }
   }
 
   .new_content a {
@@ -709,7 +712,7 @@ article {
     }
     .mois, .annee {
       text-align: left;
-      font-size: 0.5em;
+      font-size: 0.64em;
       padding-left: 10px;
       clear: right;
     }
@@ -1647,7 +1650,7 @@ img {
     left: 20px;
     right: 20px;
     font-size: small;
-    .prev, .next { font-size: xx-large; }
+    .prev, .next { font-size: 2em; }
   }
   #toolbar_alt_items { display: none; }
 
