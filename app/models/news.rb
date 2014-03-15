@@ -166,8 +166,8 @@ class News < Content
 
 ### Virtual attributes ###
 
-  attr_accessor   :message, :wiki_body, :wiki_second_part, :editor, :pot_de_miel
-  attr_accessible :message, :wiki_body, :wiki_second_part
+  attr_accessor   :message, :wiki_body, :wiki_second_part, :urgent, :editor, :pot_de_miel
+  attr_accessible :message, :wiki_body, :wiki_second_part, :urgent
 
   before_validation :mark_links_for_destruction
   def mark_links_for_destruction
@@ -315,6 +315,16 @@ class News < Content
     %w(pour contre).each {|word| $redis.del("news/#{self.id}/#{word}") }
     $redis.keys("nodes/#{node.id}/votes/*").each {|key| $redis.del key }
     node.update_column(:score, 0)
+  end
+
+### Urgent flag ###
+
+  def urgent?
+    $redis.sismember("news/urgent", self.id)
+  end
+
+  def urgent!
+    $redis.sadd("news/urgent", self.id)
   end
 
 ### ACL ###

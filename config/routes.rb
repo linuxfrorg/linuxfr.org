@@ -117,6 +117,7 @@ LinuxfrOrg::Application.routes.draw do
         post :followup
         post :erase
         post :reassign
+        post :urgent
         get :reorganize
         put :reorganized
       end

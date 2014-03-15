@@ -89,6 +89,11 @@ class Redaction::NewsController < RedactionController
     redirect_to '/redaction', :notice => "Dépêche effacée"
   end
 
+  def urgent
+    @news.urgent!
+    redirect_to [:redaction, @news]
+  end
+
 protected
 
   def load_news
