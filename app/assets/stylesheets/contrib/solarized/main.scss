@@ -547,6 +547,9 @@ input, button, select {
                 .tags ul li .add_tag {
                     background: url(/images/icones/tag.png) no-repeat 0 6px;
                     }
+                .tags ul li .remove_tag {
+                    background: url(/images/icones/x.png) no-repeat 0 6px;
+                    }
                     .tags ul li .add_tag, .tags ul li .remove_tag {
                         display: inline-block;
                         text-indent: -9998em;
@@ -566,7 +569,7 @@ input, button, select {
             .score {
                 position: absolute !important;
                 top: 4px;
-                right: 4px;
+                right: 11px;
             }
         }
         .datePourCss {
