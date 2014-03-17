@@ -83,7 +83,7 @@ GEM
     daemons (1.1.9)
     database_cleaner (0.9.1)
     debug_inspector (0.0.2)
-    desi (0.6.7)
+    desi (0.6.8)
       addressable
       boson
       cocaine (~> 0.5.3)
