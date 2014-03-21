@@ -211,7 +211,7 @@ button, input[type='submit'] {
     background-image: url("/images/icones/pen.svg"), none;
   }
   &#followup {
-	height: 23px;
+    height: 23px;
     background: no-repeat 2px 3px / 16px $C_CLAIR;
     background-image: url("/images/icones/at.png");
     background-image: url("/images/icones/at.svg"), none;
@@ -530,7 +530,7 @@ button, input[type='submit'] {
       $C_MIBLANC_MIFOOT 50%,
       $C_FOOT 100%
     );
-    min-height: 340px;
+    min-height: 360px;
 
     border-bottom-right-radius: $RAY_FOOT;
     border-bottom-left-radius: $RAY_FOOT;
@@ -689,7 +689,7 @@ article {
     -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     -khtml-border-image:  url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     border-image:         url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-	border-style: solid;
+    border-style: solid;
     text-align: center;
     line-height: 31px;
     font-weight: bold;
@@ -703,7 +703,7 @@ article {
     -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     -khtml-border-image:  url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     border-image:         url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-	border-style: solid;
+    border-style: solid;
     color: white;
     padding: 0;
     margin-bottom: 2px;
@@ -852,7 +852,7 @@ footer.actions {
           background: no-repeat 1px 4px / 12px white;
           background-image: url("/images/icones/tagged.png");
           background-image: url("/images/icones/tagged.svg"), none;
-	    }
+        }
       }
       .remove_tag {
         background: no-repeat 0 6px / 11px white;
@@ -906,7 +906,7 @@ footer.actions {
       font-family: serif;
       font-size: 6pt;
       vertical-align: super;
-	    line-height: 0;
+      line-height: 0;
     }
     &[href^="/wiki"],
     &[href^="//linuxfr.org/wiki"] {
@@ -916,7 +916,7 @@ footer.actions {
       -webkit-border-image: url('/favicon.png') 0 0 0 32;
       -khtml-border-image:  url('/favicon.png') 0 0 0 32;
       border-image:         url('/favicon.png') 0 0 0 32;
-	    border-style: solid;
+      border-style: solid;
     }
   }
   ul,ol {
@@ -1303,9 +1303,9 @@ div#form_links {
     width: 30%;
   }
   .field_with_errors {
-	display: inline-block;
+    display: inline-block;
     width: 30%;
-	border: 1px dashed red;
+    border: 1px dashed red;
     input { width: 96%; }
   }
   label#label-link-lang {
@@ -1357,54 +1357,53 @@ body#redaction-index {
   }
 }
 
-body#news-show #redaction {
+#redaction {
   .score, .datePourCss { right: 0; }
   .score { top: 31px; }
   .datePourCss { top: 0; }
-}
-#redaction #edition {
-  margin: 69px 0 10px;
-  padding-left: 3px;
-  padding-right: 3px;
-  float: left;
-  width: 60%;
-  .paragraph { margin-bottom: 15px; }
-  textarea { width: 100%; }
-}
-#redaction .edition_in_place, #redaction .paragraph, #redaction .link {
-  padding-left: 30px;
-  position: relative;
-  .edit {
-    background: no-repeat 2px 2px / 16px $C_CLAIR;
-    background-image: url("/images/icones/pen.png");
-    background-image: url("/images/icones/pen.svg"), none;
+  #edition {
+    margin: 69px 0 10px;
+    padding-left: 3px;
+    padding-right: 3px;
+    float: left;
+    width: 60%;
+    .paragraph { margin-bottom: 15px; }
+    textarea { width: 100%; }
   }
-  .actions {
-    position: absolute;
-    top: 0;
-    left: 0;
-    button {
-      visibility: hidden;
-      height: 22px;
-      width: 22px;
-      text-indent: -9999em;
+  .edition_in_place, .paragraph, .link {
+    padding-left: 30px;
+    position: relative;
+    .edit {
+      background: no-repeat 2px 2px / 16px $C_CLAIR;
+      background-image: url("/images/icones/pen.png");
+      background-image: url("/images/icones/pen.svg"), none;
+    }
+    .actions {
+      position: absolute;
+      top: 0;
+      left: 0;
+      button {
+        visibility: hidden;
+        height: 22px;
+        width: 22px;
+        text-indent: -9999em;
+      }
+    }
+    &:hover {
+      .actions button {
+        visibility: visible;
+        &:hover { background-color: $C_FONCE; }
+      }
     }
   }
-  &:hover {
-    .actions button {
-      visibility: visible;
-      &:hover { background-color: $C_FONCE; }
-    }
+  #chat {
+    margin-top: 40px + 29px;
+    padding-left: 3px;
+    padding-right: 3px;
+    float: right;
+    width: 38%;
+    .inbox p { margin: 2px 0; }
   }
-}
-#redaction #chat {
-  margin-top: 40px + 29px;
-  padding-left: 3px;
-  padding-right: 3px;
-  float: right;
-  width: 38%;
-
-  .inbox p { margin: 2px 0; }
 }
 #news_board .board #board_message {
   width: 95%;
@@ -1579,6 +1578,8 @@ img {
     border: 0;
     background: #fff;
   }
+  ul { padding-left: 24px; }
+  input { max-width: 100%; }
 
   #site {
     position: static;
@@ -1591,7 +1592,7 @@ img {
   #sidebar {
     background: #fff;
     width: 100%;
-	margin-top: 5px;
+    margin-top: 5px;
     #branding {
       float: right;
       width: $PX_BRANDING_LARG;
@@ -1630,12 +1631,15 @@ img {
     }
   }
 
+  #redaction, #container {
+    .datePourCss { display: none !important; }
+    .score { top: 5px; right: 0 !important; }
+  }
+
   #container {
     clear: left;
     margin: 0;
     padding: 8px;
-    .datePourCss { display: none !important; }
-    .score { top: 5px; right: 0 !important; }
     header {
       h1 { margin-right: 63px; }
       .tags { display: none; }
@@ -1649,7 +1653,7 @@ img {
     #friends, #about_us { width: 48%; min-height: 300px; }
   }
 
-  li.comment > ul { margin-left: 0.25em; }
+  li.comment > ul { margin-left: 0.5em; }
   img.avatar { width: 50px; height: 50px; }
 
   div#toolbar {
@@ -1665,6 +1669,16 @@ img {
   }
   body#redaction-index {
     #main_board, aside.more { float: none; width: auto; }
+  }
+  .markItUpEditor { width:  100%; }
+
+  .markdown_cheatsheet,
+  #contents > form,
+  form#new_post,
+  body#users-comments #contents > ul > li,
+  body#comments-create #contents > ul > li#comment_new,
+  body#comments-update #contents > ul > li#comment_new {
+    padding: 10px;
   }
 }
 
