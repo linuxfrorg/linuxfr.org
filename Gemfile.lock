@@ -143,7 +143,7 @@ GEM
     highline (1.6.21)
     hike (1.2.3)
     hiredis (0.4.5)
-    html-pipeline-linuxfr (0.14.16)
+    html-pipeline-linuxfr (0.14.17)
       activesupport (~> 3.0)
       escape_utils (~> 1.0)
       nokogiri (~> 1.4)
@@ -283,8 +283,7 @@ GEM
     ruby-progressbar (1.4.2)
     sanitize (2.1.0)
       nokogiri (>= 1.4.4)
-    sass (3.3.0)
-      rake
+    sass (3.3.3)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
