@@ -1,4 +1,3 @@
-<%= raw @tracker.title %>
-<%= '=' * @tracker.title.length %>
+<%= render "nodes/front_matter", :content => @tracker %>
 
 <%= raw @tracker.wiki_body %>

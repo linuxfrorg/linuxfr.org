@@ -1,4 +1,3 @@
-<%= raw @diary.title %>
-<%= '=' * @diary.title.length %>
+<%= render "nodes/front_matter", :content => @diary %>
 
 <%= raw @diary.wiki_body %>

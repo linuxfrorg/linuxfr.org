@@ -1,5 +1,4 @@
-<%= raw @poll.title %>
-<%= '=' * @poll.title.length %>
+<%= render "nodes/front_matter", :content => @poll %>
 
 <%= raw @poll.wiki_explanations %>
 

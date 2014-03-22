@@ -1,0 +1,12 @@
+URL:     <%= raw url_for_content(content) %>
+Title:   <%= raw content.title %>
+Authors: <%= raw content.node.user.try(:name) %>
+<%- if content.respond_to? :edited_by -%>
+         <%= raw content.edited_by.pluck(:name).to_sentence %>
+<%- end -%>
+Date:    <%= raw content.created_at.iso8601 %>
+<%- if content.node.cc_licensed? -%>
+License: CC by-sa
+<%- end -%>
+Tags:    <%= raw content.node.popular_tags.map(&:name).to_sentence %>
+Score:   <%= raw content.score %>

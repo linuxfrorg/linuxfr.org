@@ -1,5 +1,4 @@
-<%= raw @news.title %>
-<%= '=' * @news.title.length %>
+<%= render "nodes/front_matter", :content => @news %>
 
 <%= raw @news.wiki_body %>
 
