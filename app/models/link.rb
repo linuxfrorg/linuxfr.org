@@ -28,7 +28,7 @@ class Link < ActiveRecord::Base
   validate  :authorized_protocol
 
   def url=(raw)
-    return if raw.blank?
+    return write_attribute :url, nil if raw.blank?
     uri = URI.parse(raw)
     if uri.scheme.blank? && uri.host.blank?
       raw = "http://#{raw}"
@@ -62,9 +62,9 @@ class Link < ActiveRecord::Base
     if url.blank?
       destroy
     else
-      $redis.del lock_key
       save
     end
+    $redis.del lock_key
   end
 
   after_commit :create_new_version
