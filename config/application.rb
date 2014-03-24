@@ -42,5 +42,10 @@ module LinuxfrOrg
       config.assets.precompile += Dir["common/*"].map {|s| s.sub /.scss$/, '' }
       config.assets.precompile += Dir["pygments/*"].map {|s| s.sub /.scss$/, '' }
     end
+
+    # See http://tmm1.net/ruby21-profiling/
+    if Rails.env.development?
+      config.middleware.use StackProf::Middleware, enabled: true, save_at_exit: true
+    end
   end
 end

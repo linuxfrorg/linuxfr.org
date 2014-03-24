@@ -65,6 +65,7 @@ group :development do
   gem "mo"
   gem "pry-rails"
   gem "quiet_assets"
+  gem "stackprof"
   gem "sushi"
   gem "thin"
 end
