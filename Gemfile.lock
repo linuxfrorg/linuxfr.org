@@ -179,10 +179,6 @@ GEM
     letter_opener (1.2.0)
       launchy (~> 2.2)
     libv8 (3.11.8.17)
-    lograge (0.2.2)
-      actionpack (>= 3)
-      activesupport (>= 3)
-      railties (>= 3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -370,7 +366,6 @@ DEPENDENCIES
   jquery-rails (~> 1.0)
   kaminari (~> 0.12)
   letter_opener
-  lograge (~> 0.2)
   mini_magick (~> 3.5)
   mo
   mysql2 (~> 0.3)

@@ -12,9 +12,6 @@ LinuxfrOrg::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  # Log configuration
-  config.lograge.enabled = true
-
   # See everything in the log (default is :info)
   # config.log_level = :debug
 
