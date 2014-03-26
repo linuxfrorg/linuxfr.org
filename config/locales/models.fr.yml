@@ -47,6 +47,8 @@ fr:
       wikipage: "à la page de wiki"
       wikiversion: "à la version"
     attributes:
+      account:
+        reset_password_token: "token de réinitialisation"
       badge:
         company:    "champ société"
         email:      "champ adresse de courriel"
