@@ -71,7 +71,7 @@ class TrackersController < ApplicationController
     enforce_update_permission(@tracker)
     @tracker.assign_attributes(params[:tracker], :without_protection => true)
     if !preview_mode && @tracker.save
-      redirect_to trackers_url, :notice => "Entrée du suivi modifiée"
+      redirect_to @tracker, :notice => "Entrée du suivi modifiée"
     else
       flash.now[:alert] = "Impossible d'enregistrer cette entrée de suivi" unless @tracker.valid?
       render :edit
