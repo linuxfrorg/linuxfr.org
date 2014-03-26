@@ -98,7 +98,7 @@ class Account < ActiveRecord::Base
     self.password = self.password_confirmation = pass
   end
 
-  def update_with_password(params={})
+  def update_with_password(params={}, *options)
     current_password = params.delete(:current_password)
 
     if params[:password].blank?
@@ -108,11 +108,12 @@ class Account < ActiveRecord::Base
     end
 
     result = if valid_password?(current_password)
-      update_attributes(params)
+      update_attributes(params, *options)
       logs.create(:description => "Mot de passe modifié")
     else
+      self.assign_attributes(params, *options)
+      self.valid?
       self.errors.add(:current_password, "Mot de passe invalide")
-      self.attributes = params
       false
     end
 

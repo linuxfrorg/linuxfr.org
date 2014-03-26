@@ -2,7 +2,7 @@
   %h2 Mot de passe oublié ?
 
   = form_for @account, :url => password_path(:account) do |f|
-    = messages_on_error @account
+    = devise_error_messages!
     %p
       = f.label :email, 'Adresse de courriel'
       = f.email_field :email
