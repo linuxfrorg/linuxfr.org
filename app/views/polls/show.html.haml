@@ -1,11 +1,12 @@
-%article.poll-notice
-  La liste des options proposées est volontairement limitée&nbsp;: tout l'intérêt (ou son absence) de ce type de sondage réside dans le fait de forcer les participants à faire un choix.
-  Les réponses multiples sont interdites pour les mêmes raisons.
-  Il est donc inutile de se plaindre au sujet du faible nombre de réponses proposées, ou de l'impossibilité de choisir plusieurs réponses.
-  76,78% des sondés estiment que ces sondages sont ineptes.
-
 %main#contents(role="main")
   - title @poll.title
   - meta_for @poll
   = render @poll
+
+  %article.poll-notice
+    La liste des options proposées est volontairement limitée&nbsp;: tout l'intérêt (ou son absence) de ce type de sondage réside dans le fait de forcer les participants à faire un choix.
+    Les réponses multiples sont interdites pour les mêmes raisons.
+    Il est donc inutile de se plaindre au sujet du faible nombre de réponses proposées, ou de l'impossibilité de choisir plusieurs réponses.
+    76,78% des sondés estiment que ces sondages sont ineptes.
+
   = render @poll.node
