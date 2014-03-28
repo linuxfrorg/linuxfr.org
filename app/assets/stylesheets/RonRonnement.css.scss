@@ -114,9 +114,10 @@ input[type='submit'] {
 form input[type='submit'], button {
   display: inline-block;
   padding-left: 20px;
-  background: no-repeat 3px 3px / 16px $C_CLAIR;
+  background: 3px 3px / 16px $C_CLAIR;
   background-image: url("/images/icones/check.png");
   background-image: url("/images/icones/check.svg"), none;
+  background-repeat: no-repeat;
   cursor: pointer;
   &[disabled] { cursor: default; }
   &:hover { background-color: $C_FONCE; }
@@ -128,9 +129,10 @@ form input[type='submit'], button {
   height: 21px;
   padding: 0 3px 0 20px;
   margin: 4px 12px;
-  background: no-repeat 2px 2px / 16px $C_CLAIR;
+  background: 2px 2px / 16px $C_CLAIR;
   background-image: url("/images/icones/loop.png");
   background-image: url("/images/icones/loop.svg"), none;
+  background-repeat: no-repeat;
   &:hover { background-color: $C_FONCE; }
 }
 
@@ -140,81 +142,95 @@ button.edit, button.cancel, button#admin_49_3, button.add_link {
 
 button, input[type='submit'] {
   &.publish_news, &.ok_button {
-    background: no-repeat 3px 3px / 16px $C_CLAIR;
+    background: 3px 3px / 16px $C_CLAIR;
     background-image: url("/images/icones/check.png");
     background-image: url("/images/icones/check.svg"), none;
+    background-repeat: no-repeat;
   }
   &.refuse_news, &.delete_button, &.cancel, &.remove, &.refuse_oauth, &.erase_news {
-    background: no-repeat 4px 4px / 14px $C_CLAIR;
+    background: 4px 4px / 14px $C_CLAIR;
     background-image: url("/images/icones/x_red.png");
     background-image: url("/images/icones/x_red.svg"), none;
+    background-repeat: no-repeat;
   }
   &.ppp_news {
-    background: no-repeat 3px 3px / 16px $C_CLAIR;
+    background: 3px 3px / 16px $C_CLAIR;
     background-image: url("/images/icones/pin.png");
     background-image: url("/images/icones/pin.svg"), none;
+    background-repeat: no-repeat;
   }
   &.submit_board {
-    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background: 2px 2px / 16px $C_CLAIR;
     background-image: url("/images/icones/chat.png");
     background-image: url("/images/icones/chat.svg"), none;
+    background-repeat: no-repeat;
   }
   &.submit_news {
-    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background: 2px 2px / 16px $C_CLAIR;
     background-image: url("/images/icones/check_alt.png");
     background-image: url("/images/icones/check_alt.svg"), none;
+    background-repeat: no-repeat;
     margin: 0 15px 15px;
   }
   &.add_para, &.add_link, &.create_news {
-    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background: 2px 2px / 16px $C_CLAIR;
     background-image: url("/images/icones/plus.png");
     background-image: url("/images/icones/plus.svg"), none;
+    background-repeat: no-repeat;
   }
   &.vote_for {
-    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background: 2px 2px / 16px $C_CLAIR;
     background-image: url("/images/icones/arrow_up.png");
     background-image: url("/images/icones/arrow_up.svg"), none;
+    background-repeat: no-repeat;
   }
   &.vote_against {
-    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background: 2px 2px / 16px $C_CLAIR;
     background-image: url("/images/icones/arrow_down.png");
     background-image: url("/images/icones/arrow_down.svg"), none;
+    background-repeat: no-repeat;
   }
   &.plonk, &.block {
-    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background: 2px 2px / 16px $C_CLAIR;
     background-image: url("/images/icones/denied.png");
     background-image: url("/images/icones/denied.svg"), none;
+    background-repeat: no-repeat;
     &:hover { background-color: $C_INTER; }
   }
   &#admin_49_3, &.archive_button, &.reopen_button {
-    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background: 2px 2px / 16px $C_CLAIR;
     background-image: url("/images/icones/target.png");
     background-image: url("/images/icones/target.svg"), none;
+    background-repeat: no-repeat;
   }
   &.reset_news, &.reset_password {
-    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background: 2px 2px / 16px $C_CLAIR;
     background-image: url("/images/icones/loop.png");
     background-image: url("/images/icones/loop.svg"), none;
+    background-repeat: no-repeat;
   }
   &.reassign_news {
-    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background: 2px 2px / 16px $C_CLAIR;
     background-image: url("/images/icones/loop_alt.png");
     background-image: url("/images/icones/loop_alt.svg"), none;
+    background-repeat: no-repeat;
     height: 20px;
     width: 16px;
     padding-left: 16px;
     text-indent: -9999em;
   }
   &.rewrite_news {
-    background: no-repeat 2px 2px / 16px $C_CLAIR;
+    background: 2px 2px / 16px $C_CLAIR;
     background-image: url("/images/icones/pen.png");
     background-image: url("/images/icones/pen.svg"), none;
+    background-repeat: no-repeat;
   }
   &#followup {
     height: 23px;
-    background: no-repeat 2px 3px / 16px $C_CLAIR;
+    background: 2px 3px / 16px $C_CLAIR;
     background-image: url("/images/icones/at.png");
     background-image: url("/images/icones/at.svg"), none;
+    background-repeat: no-repeat;
     &:hover { background-color: $C_INTER; }
   }
 }
@@ -236,15 +252,17 @@ button, input[type='submit'] {
 }
 .edit_client_app a,
 .new_content a {
-  background: no-repeat 3px 3px / 16px $C_CLAIR;
+  background: 3px 3px / 16px $C_CLAIR;
   background-image: url("/images/icones/pen.png");
   background-image: url("/images/icones/pen.svg"), none;
+  background-repeat: no-repeat;
 }
 .toolbox .follow_feed a,
 #comments #follow-feed a {
-  background: no-repeat 3px 3px / 16px $C_CLAIR;
+  background: 3px 3px / 16px $C_CLAIR;
   background-image: url("/images/icones/rss.png");
   background-image: url("/images/icones/rss.svg"), none;
+  background-repeat: no-repeat;
 }
 #comments #send-comment a {
   background: url("/images/icones/comment.png") no-repeat 2px 2px $C_CLAIR;
@@ -275,15 +293,17 @@ button, input[type='submit'] {
     width: 16px;
   }
   .insecure {
-    background: no-repeat 2px 2px / 13px 16px $C_CLAIR;
+    background: 2px 2px / 13px 16px $C_CLAIR;
     background-image: url(/images/icones/lock-insecure.png);
     background-image: url(/images/icones/lock-insecure.svg), none;
+    background-repeat: no-repeat;
     height: 20px
   }
   .secure {
-    background: no-repeat 2px 2px / 13px 16px $C_CLAIR;
+    background: 2px 2px / 13px 16px $C_CLAIR;
     background-image: url(/images/icones/lock-secure.png);
     background-image: url(/images/icones/lock-secure.svg), none;
+    background-repeat: no-repeat;
     height: 20px
   }
 
@@ -449,9 +469,10 @@ button, input[type='submit'] {
       width: 125px;
     }
     input#search_submit {
-      background: no-repeat 0 / 22px transparent;
+      background: 0 / 22px transparent;
       background-image: url("/images/icones/glass.png");
       background-image: url("/images/icones/glass.svg"), none;
+      background-repeat: no-repeat;
       text-indent: -9998em;
       border: none;
       width: 22px;
@@ -1659,17 +1680,26 @@ img {
   img.avatar { width: 50px; height: 50px; }
 
   div#toolbar {
-    left: 20px;
-    right: 20px;
+    left: 0;
+    right: 0;
     font-size: small;
-    .prev, .next { font-size: 2em; }
+    .prev, .next {
+      font-size: 2em;
+      width: 32px;
+      display: inline-block;
+      text-align: center;
+      border: 1px solid $C_INTER;
+    }
   }
   #toolbar_alt_items { display: none; }
 
   #redaction {
     #edition, #chat { float: none; width: auto; }
+    #edition { margin-top: 10px; }
+    #chat { margin: 3px; }
   }
   body#redaction-index {
+    #container { padding: 8px; }
     #main_board, aside.more { float: none; width: auto; }
   }
   .markItUpEditor { width:  100%; }
@@ -1687,7 +1717,7 @@ img {
 @media screen and (max-width: 600px), handheld {
   article h1 { font-size: 1.3em; }
   li.comment > h2 { font-size: 1.1em; }
-  article .content, li.comment .content { font-size: 0.9em; line-height: 1.3em; }
+  article .content, li.comment .content { font-size: 1em; line-height: 1.3em; }
 }
 
 @media screen and (max-width: 400px), handheld {
@@ -1710,5 +1740,4 @@ img {
 @media screen and (max-width: 320px) {
   img.avatar { display: none; }
   li.comment > ul { margin-left: 0; }
-  #toolbar { display: none; }
 }
