@@ -42,7 +42,6 @@ class TrackersController < ApplicationController
     enforce_view_permission(@tracker)
     path = tracker_path(@tracker, :format => params[:format])
     redirect_to path, :status => 301 if request.path != path
-    respond_with @tracker
   end
 
   def new
