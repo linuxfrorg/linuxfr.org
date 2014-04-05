@@ -178,22 +178,32 @@ class Comment < ActiveRecord::Base
   end
 
   def vote_for(account)
-    vote(account, 1) && Comment.increment_counter(:score, self.id)
+    vote(account, :for) && Comment.increment_counter(:score, self.id)
   end
 
   def vote_against(account)
-    vote(account, -1) && Comment.decrement_counter(:score, self.id)
+    vote(account, :against) && Comment.decrement_counter(:score, self.id)
   end
 
-  def vote(account, value)
-    key = "comments/#{self.id}/votes/#{account.id}"
-    return false if $redis.getset(key, value)
+  def vote(account, what)
+    value = what == :for ? 1 : -1
+    key = "comments/#{self.id}/votes/#{what}"
+    return false if $redis.sismember(key, account.id)
+    $redis.sadd(key, account.id)
     $redis.expire(key, 7776000) # 3 months
     unless score * (score + value) > 100  # Score is out of the [-10, 10] bounds
       $redis.incrby("users/#{self.user_id}/diff_karma", value)
     end
     Account.decrement_counter(:nb_votes, account.id)
     true
+  end
+
+  def nb_votes_for
+    $redis.scard "comments/#{self.id}/votes/for"
+  end
+
+  def nb_votes_against
+    $redis.scard "comments/#{self.id}/votes/against"
   end
 
 ### Workflow ###
