@@ -1720,7 +1720,9 @@ img {
   article .content, li.comment .content { font-size: 1em; line-height: 1.3em; }
 }
 
-@media screen and (max-width: 400px), handheld {
+@media screen and (max-width: 400px),
+(max-height: 400px),
+handheld {
   #sidebar #branding {
     width: $PX_BRANDING_LARG / 2;
     margin-right: 10px;
