@@ -1,5 +1,4 @@
 # encoding: utf-8
-require 'shellwords'
 
 # The TagList class is used to convert a string to an array of tags.
 #
@@ -10,19 +9,13 @@ class TagList < Array
   #   taglist = TagList.new("One Two Three")
   #   taglist # => ["One", "Two", "Three"]
   def initialize(string)
-    add(string.shellsplit)
+    add string.split(/\s+/)
   end
 
   # Add tags to the tag_list. Duplicate or blank tags will be ignored.
   def add(names)
     concat(names)
     clean!
-    self
-  end
-
-  # Remove specific tags from the tag_list.
-  def remove(names)
-    delete_if { |name| names.include?(name) }
     self
   end
 
@@ -33,7 +26,7 @@ class TagList < Array
 
 private
 
-  INVALID_CHARS = /\P{Word}/u
+  INVALID_CHARS = /[^\p{Word}'+-]/u
 
   # Keeps only letters and digits, and remove duplicates
   def clean!
