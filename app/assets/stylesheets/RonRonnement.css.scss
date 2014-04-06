@@ -114,10 +114,10 @@ input[type='submit'] {
 form input[type='submit'], button {
   display: inline-block;
   padding-left: 20px;
-  background: 3px 3px / 16px $C_CLAIR;
+  background: no-repeat 3px 3px $C_CLAIR;
+  background-size: 16px;
   background-image: url("/images/icones/check.png");
   background-image: url("/images/icones/check.svg"), none;
-  background-repeat: no-repeat;
   cursor: pointer;
   &[disabled] { cursor: default; }
   &:hover { background-color: $C_FONCE; }
@@ -129,10 +129,10 @@ form input[type='submit'], button {
   height: 21px;
   padding: 0 3px 0 20px;
   margin: 4px 12px;
-  background: 2px 2px / 16px $C_CLAIR;
+  background: no-repeat 2px 2px $C_CLAIR;
+  background-size: 16px;
   background-image: url("/images/icones/loop.png");
   background-image: url("/images/icones/loop.svg"), none;
-  background-repeat: no-repeat;
   &:hover { background-color: $C_FONCE; }
 }
 
@@ -142,95 +142,95 @@ button.edit, button.cancel, button#admin_49_3, button.add_link {
 
 button, input[type='submit'] {
   &.publish_news, &.ok_button {
-    background: 3px 3px / 16px $C_CLAIR;
+    background: no-repeat 3px 3px $C_CLAIR;
+    background-size: 16px;
     background-image: url("/images/icones/check.png");
     background-image: url("/images/icones/check.svg"), none;
-    background-repeat: no-repeat;
   }
   &.refuse_news, &.delete_button, &.cancel, &.remove, &.refuse_oauth, &.erase_news {
-    background: 4px 4px / 14px $C_CLAIR;
+    background: no-repeat 4px 4px $C_CLAIR;
+    background-size: 14px;
     background-image: url("/images/icones/x_red.png");
     background-image: url("/images/icones/x_red.svg"), none;
-    background-repeat: no-repeat;
   }
   &.ppp_news {
-    background: 3px 3px / 16px $C_CLAIR;
+    background: no-repeat 3px 3px $C_CLAIR;
+    background-size: 16px;
     background-image: url("/images/icones/pin.png");
     background-image: url("/images/icones/pin.svg"), none;
-    background-repeat: no-repeat;
   }
   &.submit_board {
-    background: 2px 2px / 16px $C_CLAIR;
+    background: no-repeat 2px 2px $C_CLAIR;
+    background-size: 16px;
     background-image: url("/images/icones/chat.png");
     background-image: url("/images/icones/chat.svg"), none;
-    background-repeat: no-repeat;
   }
   &.submit_news {
-    background: 2px 2px / 16px $C_CLAIR;
+    background: no-repeat 2px 2px $C_CLAIR;
+    background-size: 16px;
     background-image: url("/images/icones/check_alt.png");
     background-image: url("/images/icones/check_alt.svg"), none;
-    background-repeat: no-repeat;
     margin: 0 15px 15px;
   }
   &.add_para, &.add_link, &.create_news {
-    background: 2px 2px / 16px $C_CLAIR;
+    background: no-repeat 2px 2px $C_CLAIR;
+    background-size: 16px;
     background-image: url("/images/icones/plus.png");
     background-image: url("/images/icones/plus.svg"), none;
-    background-repeat: no-repeat;
   }
   &.vote_for {
-    background: 2px 2px / 16px $C_CLAIR;
+    background: no-repeat 2px 2px $C_CLAIR;
+    background-size: 16px;
     background-image: url("/images/icones/arrow_up.png");
     background-image: url("/images/icones/arrow_up.svg"), none;
-    background-repeat: no-repeat;
   }
   &.vote_against {
-    background: 2px 2px / 16px $C_CLAIR;
+    background: no-repeat 2px 2px $C_CLAIR;
+    background-size: 16px;
     background-image: url("/images/icones/arrow_down.png");
     background-image: url("/images/icones/arrow_down.svg"), none;
-    background-repeat: no-repeat;
   }
   &.plonk, &.block {
-    background: 2px 2px / 16px $C_CLAIR;
+    background: no-repeat 2px 2px $C_CLAIR;
+    background-size: 16px;
     background-image: url("/images/icones/denied.png");
     background-image: url("/images/icones/denied.svg"), none;
-    background-repeat: no-repeat;
     &:hover { background-color: $C_INTER; }
   }
   &#admin_49_3, &.archive_button, &.reopen_button {
-    background: 2px 2px / 16px $C_CLAIR;
+    background: no-repeat 2px 2px $C_CLAIR;
+    background-size: 16px;
     background-image: url("/images/icones/target.png");
     background-image: url("/images/icones/target.svg"), none;
-    background-repeat: no-repeat;
   }
   &.reset_news, &.reset_password {
-    background: 2px 2px / 16px $C_CLAIR;
+    background: no-repeat 2px 2px $C_CLAIR;
+    background-size: 16px;
     background-image: url("/images/icones/loop.png");
     background-image: url("/images/icones/loop.svg"), none;
-    background-repeat: no-repeat;
   }
   &.reassign_news {
-    background: 2px 2px / 16px $C_CLAIR;
+    background: no-repeat 2px 2px $C_CLAIR;
+    background-size: 16px;
     background-image: url("/images/icones/loop_alt.png");
     background-image: url("/images/icones/loop_alt.svg"), none;
-    background-repeat: no-repeat;
     height: 20px;
     width: 16px;
     padding-left: 16px;
     text-indent: -9999em;
   }
   &.rewrite_news {
-    background: 2px 2px / 16px $C_CLAIR;
+    background: no-repeat 2px 2px $C_CLAIR;
+    background-size: 16px;
     background-image: url("/images/icones/pen.png");
     background-image: url("/images/icones/pen.svg"), none;
-    background-repeat: no-repeat;
   }
   &#followup {
     height: 23px;
-    background: 2px 3px / 16px $C_CLAIR;
+    background: no-repeat 2px 2px $C_CLAIR;
+    background-size: 16px;
     background-image: url("/images/icones/at.png");
     background-image: url("/images/icones/at.svg"), none;
-    background-repeat: no-repeat;
     &:hover { background-color: $C_INTER; }
   }
 }
@@ -252,17 +252,17 @@ button, input[type='submit'] {
 }
 .edit_client_app a,
 .new_content a {
-  background: 3px 3px / 16px $C_CLAIR;
+  background: no-repeat 3px 3px $C_CLAIR;
+  background-size: 16px;
   background-image: url("/images/icones/pen.png");
   background-image: url("/images/icones/pen.svg"), none;
-  background-repeat: no-repeat;
 }
 .toolbox .follow_feed a,
 #comments #follow-feed a {
-  background: 3px 3px / 16px $C_CLAIR;
+  background: no-repeat 3px 3px $C_CLAIR;
+  background-size: 16px;
   background-image: url("/images/icones/rss.png");
   background-image: url("/images/icones/rss.svg"), none;
-  background-repeat: no-repeat;
 }
 #comments #send-comment a {
   background: url("/images/icones/comment.png") no-repeat 2px 2px $C_CLAIR;
@@ -293,17 +293,17 @@ button, input[type='submit'] {
     width: 16px;
   }
   .insecure {
-    background: 2px 2px / 13px 16px $C_CLAIR;
+    background: no-repeat 2px 2px $C_CLAIR;
+    background-size: 16px 13px;
     background-image: url(/images/icones/lock-insecure.png);
     background-image: url(/images/icones/lock-insecure.svg), none;
-    background-repeat: no-repeat;
     height: 20px
   }
   .secure {
-    background: 2px 2px / 13px 16px $C_CLAIR;
+    background: no-repeat 2px 2px $C_CLAIR;
+    background-size: 16px 13px;
     background-image: url(/images/icones/lock-secure.png);
     background-image: url(/images/icones/lock-secure.svg), none;
-    background-repeat: no-repeat;
     height: 20px
   }
 
@@ -469,10 +469,10 @@ button, input[type='submit'] {
       width: 125px;
     }
     input#search_submit {
-      background: 0 / 22px transparent;
+      background: no-repeat 0 transparent;
+      background-size: 22px;
       background-image: url("/images/icones/glass.png");
       background-image: url("/images/icones/glass.svg"), none;
-      background-repeat: no-repeat;
       text-indent: -9998em;
       border: none;
       width: 22px;
@@ -1599,7 +1599,7 @@ img {
     border: 0;
     background: #fff;
   }
-  ul { padding-left: 24px; }
+  ul { padding-left: 15px; }
   input { max-width: 100%; }
 
   #site {
@@ -1720,9 +1720,7 @@ img {
   article .content, li.comment .content { font-size: 1em; line-height: 1.3em; }
 }
 
-@media screen and (max-width: 400px),
-(max-height: 400px),
-handheld {
+@media screen and (max-width: 400px), screen and (max-height: 400px), handheld {
   #sidebar #branding {
     width: $PX_BRANDING_LARG / 2;
     margin-right: 10px;
@@ -1737,9 +1735,4 @@ handheld {
     padding: 5px 0;
     article { border-width: 1px 0; }
   }
-}
-
-@media screen and (max-width: 320px) {
-  img.avatar { display: none; }
-  li.comment > ul { margin-left: 0; }
 }
