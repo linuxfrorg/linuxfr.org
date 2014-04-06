@@ -48,6 +48,12 @@ class UsersController < ApplicationController
     find_nodes(Tracker)
   end
 
+  def wiki
+    path = wiki_user_path(:id => @user, :format => params[:format])
+    redirect_to path, :status => 301 and return if request.path != path
+    @versions = @user.wiki_versions.order("created_at DESC").page(params[:page])
+  end
+
   def comments
     path = comments_user_path(:id => @user, :format => params[:format])
     redirect_to path, :status => 301 and return if request.path != path

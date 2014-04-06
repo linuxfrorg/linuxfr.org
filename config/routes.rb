@@ -24,6 +24,7 @@ LinuxfrOrg::Application.routes.draw do
       get :posts
       get :suivi
       get :comments
+      get :wiki
     end
   end
   resources :journaux, :controller => "diaries", :as => "diaries", :only => [:index, :new, :create]
