@@ -15,7 +15,6 @@
 #  custom_avatar_url :string(255)
 #
 
-
 # The users are the public informations about the people who create contents.
 # See accounts for the private ones, like authentication.
 #
@@ -73,11 +72,11 @@ class User < ActiveRecord::Base
 
   def avatar_url
     if avatar.present?
-      url = avatar.url
+      avatar.url
     elsif custom_avatar_url.present?
       custom_avatar_url
     else
-      url = AvatarUploader::DEFAULT_AVATAR_URL
+      AvatarUploader::DEFAULT_AVATAR_URL
     end
   end
 

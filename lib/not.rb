@@ -20,4 +20,3 @@ class Object
     end
   end
 end
-

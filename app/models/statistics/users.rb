@@ -27,7 +27,7 @@ class Statistics::Users < Statistics::Statistics
 
   def no_visit
     rows = select_all "SELECT IFNULL(ROUND(AVG(TO_DAYS(CURRENT_TIMESTAMP) - TO_DAYS(current_sign_in_at)), 1), 0) AS avg, IFNULL(ROUND(SQRT(VAR_POP(TO_DAYS(CURRENT_TIMESTAMP) - TO_DAYS(current_sign_in_at))), 1), 0) AS stddev FROM accounts WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive'"
-    novisit = rows.first
+    rows.first
   end
 
   def nb_content_authors

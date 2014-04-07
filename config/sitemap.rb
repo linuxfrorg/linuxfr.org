@@ -59,9 +59,8 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
 
   # Other contents
   sitemap.add polls_path, :priority => 0.3, :changefreq => 'weekly'
-  if poll = Poll.current
-    sitemap.add poll_path(poll), :priority => 0.5, :changefreq => 'hourly', :lastmod => poll.lastmod
-  end
+  poll = Poll.current
+  sitemap.add poll_path(poll), :priority => 0.5, :changefreq => 'hourly', :lastmod => poll.lastmod if poll
   Poll.archived.includes(:node).find_each do |poll|
     sitemap.add poll_path(poll), :priority => 0.3, :changefreq => 'yearly', :lastmod => poll.lastmod
   end
