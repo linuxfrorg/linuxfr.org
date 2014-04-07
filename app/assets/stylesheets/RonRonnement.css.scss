@@ -227,7 +227,7 @@ button, input[type='submit'] {
   }
   &#followup {
     height: 23px;
-    background: no-repeat 2px 2px $C_CLAIR;
+    background: no-repeat 2px 3px $C_CLAIR;
     background-size: 16px;
     background-image: url("/images/icones/at.png");
     background-image: url("/images/icones/at.svg"), none;
@@ -293,15 +293,15 @@ button, input[type='submit'] {
     width: 16px;
   }
   .insecure {
-    background: no-repeat 2px 2px $C_CLAIR;
-    background-size: 16px 13px;
+    background: no-repeat 2px 2px transparent;
+    background-size: 13px 16px;
     background-image: url(/images/icones/lock-insecure.png);
     background-image: url(/images/icones/lock-insecure.svg), none;
     height: 20px
   }
   .secure {
-    background: no-repeat 2px 2px $C_CLAIR;
-    background-size: 16px 13px;
+    background: no-repeat 2px 2px transparent;
+    background-size: 13px 16px;
     background-image: url(/images/icones/lock-secure.png);
     background-image: url(/images/icones/lock-secure.svg), none;
     height: 20px
@@ -1683,12 +1683,14 @@ img {
     left: 0;
     right: 0;
     font-size: small;
+    border-width: 1px 0;
     .prev, .next {
       font-size: 2em;
       width: 32px;
       display: inline-block;
       text-align: center;
       border: 1px solid $C_INTER;
+      border-width: 0 1px;
     }
   }
   #toolbar_alt_items { display: none; }
