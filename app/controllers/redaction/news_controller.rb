@@ -48,7 +48,7 @@ class Redaction::NewsController < RedactionController
 
   def reassign
     enforce_reassign_permission(@news)
-    @news.reassign_to params[:user_id]
+    @news.reassign_to params[:user_id], current_user.name
     namespace = @news.draft? ? :redaction : :moderation
     redirect_to [namespace, @news], :notice => "L'auteur initial de la dépêche a été changé"
   end

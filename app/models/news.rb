@@ -275,12 +275,15 @@ class News < Content
     super attrs
   end
 
-  def reassign_to(user_id)
+  def reassign_to(user_id, editor_name)
     user = User.find(user_id)
     return unless user
     node.update_column(:user_id, user.id)
     self.author_name  = user.name
     self.author_email = user.account.try(:email)
+    message = "La paternité de la dépêche revient maintenant à #{user.name}"
+    Board.new(:object_type => Board.news, :object_id => self.id, :message => message, :user_name => editor_name).save
+    Push.create(self, :kind => :chat, :username => editor_name)
     save
   end
 
