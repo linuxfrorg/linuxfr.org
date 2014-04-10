@@ -22,7 +22,11 @@ class Board
   end
 
   def user=(user)
-    @user_name = user.account.login
+    if @object_type == Board.free
+      @user_name = user.account.login
+    else
+      @user_name = user.name
+    end
     @user_url  = "/users/#{user.to_param}"
   end
 
