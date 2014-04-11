@@ -143,7 +143,7 @@ GEM
     highline (1.6.21)
     hike (1.2.3)
     hiredis (0.4.5)
-    html-pipeline-linuxfr (0.14.19)
+    html-pipeline-linuxfr (0.14.21)
       activesupport (~> 3.0)
       escape_utils (~> 1.0)
       nokogiri (~> 1.4)
@@ -186,7 +186,7 @@ GEM
     mime-types (1.25.1)
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
-    mini_portile (0.5.2)
+    mini_portile (0.5.3)
     mo (1.4.0)
       boson
     multi_json (1.9.2)
