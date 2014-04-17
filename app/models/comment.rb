@@ -174,7 +174,7 @@ class Comment < ActiveRecord::Base
 ### Votes ###
 
   def vote_by?(account_id)
-    $redis.get("comments/#{self.id}/votes/#{account_id}")
+    %w(for against).any? {|w| $redis.sismember("comments/#{self.id}/votes/#{w}", account_id) }
   end
 
   def vote_for(account)
