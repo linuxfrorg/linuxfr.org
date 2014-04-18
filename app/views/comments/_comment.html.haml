@@ -38,4 +38,4 @@
         ou #{button_to "inutile", "/nodes/#{comment.node_id}/comments/#{comment.id}/relevance/against", :remote => true, :class => "useless"} ?
     - elsif v = comment.vote_by?(current_account.id)
       %div.vote.done
-        Vous avez jugé ce commentaire #{v == "1" ? "pertinent" : "inutile"}.
+        Vous avez jugé ce commentaire #{v == "for" ? "pertinent" : "inutile"}.
