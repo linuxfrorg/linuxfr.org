@@ -2,8 +2,8 @@
 class VotesController < ApplicationController
   respond_to :html, :js
 
-  before_filter :authenticate_account!
-  before_filter :load_node
+  before_action :authenticate_account!
+  before_action :load_node
 
   def for
     if @node.content.votable_by?(current_account)

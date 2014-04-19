@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class Moderation::PollsController < ModerationController
-  before_filter :find_poll, :except => [:index]
-  after_filter  :expire_cache, :only => [:update, :accept]
+  before_action :find_poll, :except => [:index]
+  after_action  :expire_cache, :only => [:update, :accept]
 
   def index
     @polls = Poll.draft.order("id DESC")

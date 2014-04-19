@@ -1,9 +1,9 @@
 # encoding: UTF-8
 class PostsController < ApplicationController
-  before_filter :authenticate_account!, :except => [:index, :show]
-  before_filter :find_post,  :except => [:new, :create, :index]
-  after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
-  after_filter  :expire_cache, :only => [:create, :update, :destroy]
+  before_action :authenticate_account!, :except => [:index, :show]
+  before_action :find_post,  :except => [:new, :create, :index]
+  after_action  :marked_as_read, :only => [:show], :if => :account_signed_in?
+  after_action  :expire_cache, :only => [:create, :update, :destroy]
   respond_to :html, :md
 
 ### Global ###

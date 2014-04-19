@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class Admin::FriendSitesController < AdminController
-  before_filter :find_friend_site, :except => [:index, :new, :create]
-  after_filter  :expire_cache,     :except => [:index, :new, :edit]
+  before_action :find_friend_site, :except => [:index, :new, :create]
+  after_action  :expire_cache,     :except => [:index, :new, :edit]
 
   def index
     @friend_sites = FriendSite.all

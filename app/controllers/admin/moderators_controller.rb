@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Admin::ModeratorsController < AdminController
-  before_filter :load_account
+  before_action :load_account
 
   def create
     @account.give_moderator_rights!

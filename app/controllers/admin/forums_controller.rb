@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class Admin::ForumsController < AdminController
-  before_filter :find_forum, :except => [:index, :new, :create]
+  before_action :find_forum, :except => [:index, :new, :create]
 
   def index
     @forums = Forum.sorted.all

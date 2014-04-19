@@ -1,7 +1,7 @@
 # encoding: utf-8
 class DashboardController < ApplicationController
-  before_filter :authenticate_account!
-  before_filter :reset_notifications, :only => [:index]
+  before_action :authenticate_account!
+  before_action :reset_notifications, :only => [:index]
 
   def index
     @self_answer = params[:self] == "1"

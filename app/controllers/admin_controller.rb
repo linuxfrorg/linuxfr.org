@@ -1,6 +1,6 @@
 # encoding: utf-8
 class AdminController < ApplicationController
-  before_filter :admin_required
+  before_action :admin_required
 
   def index
   end

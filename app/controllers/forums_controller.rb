@@ -1,7 +1,7 @@
 # encoding: utf-8
 class ForumsController < ApplicationController
-  before_filter :find_forums
-  before_filter :get_order
+  before_action :find_forums
+  before_action :get_order
   caches_page   :index, :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
   caches_page   :show,  :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
 

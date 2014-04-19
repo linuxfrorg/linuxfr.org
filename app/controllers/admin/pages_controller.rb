@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class Admin::PagesController < AdminController
-  before_filter :find_page, :only => [:edit, :update, :destroy]
-  after_filter :expire_cache, :only => [:update]
+  before_action :find_page, :only => [:edit, :update, :destroy]
+  after_action :expire_cache, :only => [:update]
 
   def index
     @pages = Page.all

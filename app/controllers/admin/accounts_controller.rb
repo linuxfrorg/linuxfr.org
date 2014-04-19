@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class Admin::AccountsController < AdminController
-  before_filter :load_account, :except => [:index]
+  before_action :load_account, :except => [:index]
 
   def index
     accounts = Account

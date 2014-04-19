@@ -1,8 +1,8 @@
 # encoding: utf-8
 class SessionsController < DeviseController
-  prepend_before_filter :allow_params_authentication!, :only => [:create]
-  prepend_before_filter :require_no_authentication,    :only => [:new, :create]
-  skip_before_filter    :verify_authenticity_token,    :only => [:new, :create]
+  prepend_before_action :allow_params_authentication!, :only => [:create]
+  prepend_before_action :require_no_authentication,    :only => [:new, :create]
+  skip_before_action    :verify_authenticity_token,    :only => [:new, :create]
 
   def new
     session[:account_return_to] ||= url_for('/')

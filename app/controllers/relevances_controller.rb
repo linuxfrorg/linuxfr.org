@@ -2,8 +2,8 @@
 class RelevancesController < ApplicationController
   respond_to :html, :js
 
-  before_filter :authenticate_account!
-  before_filter :load_comment
+  before_action :authenticate_account!
+  before_action :load_comment
 
   def for
     if @comment.votable_by?(current_account)

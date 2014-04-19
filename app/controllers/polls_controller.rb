@@ -1,8 +1,8 @@
 # encoding: UTF-8
 class PollsController < ApplicationController
-  before_filter :authenticate_account!, :only => [:new, :create]
-  before_filter :find_poll, :only => [:show, :vote]
-  after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
+  before_action :authenticate_account!, :only => [:new, :create]
+  before_action :find_poll, :only => [:show, :vote]
+  after_action  :marked_as_read, :only => [:show], :if => :account_signed_in?
   caches_page   :index, :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
   respond_to :html, :atom, :md
 

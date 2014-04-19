@@ -1,10 +1,10 @@
 # encoding: UTF-8
 class Redaction::NewsController < RedactionController
-  skip_before_filter :authenticate_account!, :only => [:index, :moderation]
-  before_filter :load_news, :except => [:index, :moderation, :create, :revision, :reorganize, :reorganized, :reassign]
-  before_filter :load_news2, :only => [:revision, :reorganize, :reorganized, :reassign]
-  before_filter :load_board, :only => [:show, :reorganize]
-  after_filter  :marked_as_read, :only => [:show, :update]
+  skip_before_action :authenticate_account!, :only => [:index, :moderation]
+  before_action :load_news, :except => [:index, :moderation, :create, :revision, :reorganize, :reorganized, :reassign]
+  before_action :load_news2, :only => [:revision, :reorganize, :reorganized, :reassign]
+  before_action :load_board, :only => [:show, :reorganize]
+  after_action  :marked_as_read, :only => [:show, :update]
   respond_to :html, :atom, :md
 
   def index

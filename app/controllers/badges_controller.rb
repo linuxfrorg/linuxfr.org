@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class BadgesController < ApplicationController
-  before_filter :authenticate_account!, :only => [:index]
-  before_filter :amr_required,          :only => [:index]
+  before_action :authenticate_account!, :only => [:index]
+  before_action :amr_required,          :only => [:index]
 
   def index
     send_data Badge.to_csv

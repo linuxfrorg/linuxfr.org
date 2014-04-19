@@ -1,7 +1,7 @@
 # encoding: UTF-8
 #
 class Redaction::ParagraphsController < RedactionController
-  before_filter :find_paragraph, :except => [:create]
+  before_action :find_paragraph, :except => [:create]
 
   def create
     @news = News.find(params[:news_id])

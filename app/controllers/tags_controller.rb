@@ -1,11 +1,11 @@
 # encoding: utf-8
 #
 class TagsController < ApplicationController
-  before_filter :authenticate_account!, :except => [:public]
-  before_filter :find_node, :only => [:new, :create, :update, :destroy]
-  before_filter :find_tag,  :only => [:show, :public, :hide, :update]
-  before_filter :get_order, :only => [:index, :show]
-  before_filter :user_tags, :only => [:index, :show]
+  before_action :authenticate_account!, :except => [:public]
+  before_action :find_node, :only => [:new, :create, :update, :destroy]
+  before_action :find_tag,  :only => [:show, :public, :hide, :update]
+  before_action :get_order, :only => [:index, :show]
+  before_action :user_tags, :only => [:index, :show]
   respond_to :html, :atom
 
   autocomplete_for :tag, :name, :order => "taggings_count DESC"

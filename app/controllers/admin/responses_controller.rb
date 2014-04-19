@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class Admin::ResponsesController < AdminController
-  before_filter :find_response, :only => [:edit, :update, :destroy]
+  before_action :find_response, :only => [:edit, :update, :destroy]
 
   def index
     @responses = Response.all

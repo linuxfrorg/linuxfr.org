@@ -1,6 +1,6 @@
 # encoding: utf-8
 class HomeController < ApplicationController
-  before_filter :google_plus
+  before_action :google_plus
   caches_action :index, :unless     => Proc.new {|c| c.account_signed_in? || c.dont_index? },
                         :expires_in => 5.minutes,
                         :cache_path => Proc.new {|c| "home/#{c.params[:order]}/#{c.params[:page]}" }

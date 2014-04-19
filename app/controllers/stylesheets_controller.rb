@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class StylesheetsController < ApplicationController
-  before_filter :authenticate_account!
-  before_filter :load_account
+  before_action :authenticate_account!
+  before_action :load_account
 
   def create
     @account.uploaded_stylesheet = params[:uploaded_stylesheet]

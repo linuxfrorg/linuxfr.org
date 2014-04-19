@@ -1,9 +1,9 @@
 # encoding: UTF-8
 class DiariesController < ApplicationController
-  before_filter :authenticate_account!, :except => [:index, :show]
-  before_filter :find_diary, :except => [:index, :new, :create]
-  after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
-  after_filter  :expire_cache, :only => [:create, :update, :destroy, :move]
+  before_action :authenticate_account!, :except => [:index, :show]
+  before_action :find_diary, :except => [:index, :new, :create]
+  after_action  :marked_as_read, :only => [:show], :if => :account_signed_in?
+  after_action  :expire_cache, :only => [:create, :update, :destroy, :move]
   caches_page   :index, :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
   respond_to :html, :atom, :md
 

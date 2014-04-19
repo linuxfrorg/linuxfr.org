@@ -1,6 +1,6 @@
 # encoding: utf-8
 class UsersController < ApplicationController
-  before_filter :find_user
+  before_action :find_user
 
   def show
     path = user_path(:id => @user, :format => params[:format])

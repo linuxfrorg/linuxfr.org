@@ -1,8 +1,8 @@
 # encoding: utf-8
 class Auth::OauthController < ApplicationController
-  before_filter :authenticate_account!, :only => [:authorize, :authorized]
-  before_filter :find_application, :only => [:authorize, :authorized]
-  skip_before_filter :verify_authenticity_token, :only => [:access_token]
+  before_action :authenticate_account!, :only => [:authorize, :authorized]
+  before_action :find_application, :only => [:authorize, :authorized]
+  skip_before_action :verify_authenticity_token, :only => [:access_token]
 
   def authorize
     @redirect_uri = params[:redirect_uri]

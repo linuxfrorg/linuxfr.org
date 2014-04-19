@@ -1,8 +1,8 @@
 # encoding: UTF-8
 class Moderation::NewsController < ModerationController
-  before_filter :find_news, :except => [:index]
-  after_filter  :expire_cache, :only => [:update, :accept]
-  after_filter  :marked_as_read, :only => [:show, :update, :vote]
+  before_action :find_news, :except => [:index]
+  after_action  :expire_cache, :only => [:update, :accept]
+  after_action  :marked_as_read, :only => [:show, :update, :vote]
   respond_to :html, :md
 
   def index

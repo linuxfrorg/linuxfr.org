@@ -1,8 +1,8 @@
 # encoding: utf-8
 #
 class ReadingsController < ApplicationController
-  before_filter :authenticate_account!
-  before_filter :find_node, :only => [:destroy]
+  before_action :authenticate_account!
+  before_action :find_node, :only => [:destroy]
 
   def index
     @order = params[:order]

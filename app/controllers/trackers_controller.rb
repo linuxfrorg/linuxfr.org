@@ -1,9 +1,9 @@
 # encoding: UTF-8
 class TrackersController < ApplicationController
-  before_filter :honeypot, :only => [:create]
-  before_filter :authenticate_account!, :only => [:edit, :update, :destroy]
-  before_filter :load_tracker, :only => [:show, :edit, :update, :destroy]
-  after_filter  :marked_as_read, :only => [:show], :if => :account_signed_in?
+  before_action :honeypot, :only => [:create]
+  before_action :authenticate_account!, :only => [:edit, :update, :destroy]
+  before_action :load_tracker, :only => [:show, :edit, :update, :destroy]
+  after_action  :marked_as_read, :only => [:show], :if => :account_signed_in?
   respond_to :html, :md
 
   def index

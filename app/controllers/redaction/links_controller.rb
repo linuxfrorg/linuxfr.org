@@ -1,8 +1,8 @@
 # encoding: UTF-8
 #
 class Redaction::LinksController < RedactionController
-  before_filter :new_link,  :only   => [:new, :create]
-  before_filter :find_link, :except => [:new, :create]
+  before_action :new_link,  :only   => [:new, :create]
+  before_action :find_link, :except => [:new, :create]
 
   def new
     render :partial => 'form'
