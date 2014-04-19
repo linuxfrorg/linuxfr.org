@@ -4,7 +4,8 @@ require 'spec_helper'
 describe "Relevance" do
   let(:account) { FactoryGirl.create(:normal_account) }
   let(:writer)  { FactoryGirl.create(:writer) }
-  let(:comment) { FactoryGirl.create(:comment, :user_id => writer.id) }
+  let(:node)    { FactoryGirl.create(:news).node }
+  let(:comment) { FactoryGirl.create(:comment, :user_id => writer.id, :node_id => node.id) }
 
   it "creates an instance when an account votes for a comment" do
     comment.vote_for(account)
@@ -14,12 +15,6 @@ describe "Relevance" do
   it "creates an instance when an account votes against" do
     comment.vote_against(account)
     comment.reload.score.should == -1
-  end
-
-  it "can't be changed by an account if he changes his mind" do
-    comment.vote_for(account)
-    comment.vote_against(account)
-    comment.reload.score.should == 1
   end
 
   it "is idempotent" do

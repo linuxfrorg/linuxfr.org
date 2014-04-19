@@ -4,7 +4,7 @@ require 'spec_helper'
 describe Thread do
   before(:each) do
     @user_id = FactoryGirl.create(:user).id
-    @node_id = 1
+    @node_id = FactoryGirl.create(:news).node.id
   end
 
   context "when no comments have been posted" do

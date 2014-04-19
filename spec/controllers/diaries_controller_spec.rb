@@ -12,7 +12,10 @@ describe DiariesController do
   end
 
   context "Deleted diary" do
-    before(:each) { diary.mark_as_deleted }
+    before(:each) do
+      diary.stub(:update_index)
+      diary.mark_as_deleted
+    end
 
     it "doesn't show the deleted diary" do
       get :show, :user_id => owner.to_param, :id => diary.to_param

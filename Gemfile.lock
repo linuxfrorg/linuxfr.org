@@ -379,7 +379,7 @@ DEPENDENCIES
   redis (~> 3.0)
   redis-activesupport (~> 4.0)
   rinku (~> 1.7)
-  rspec-rails (~> 2.9)
+  rspec-rails (~> 2.14)
   sanitize (~> 2.1)
   sass-rails (~> 4.0)
   simple_autocomplete (~> 0.3)

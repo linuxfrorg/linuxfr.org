@@ -26,20 +26,21 @@ describe Comment do
 
   it "wikifies the body" do
     comment = FactoryGirl.create(:comment, :wiki_body => "_it_ et **gras**")
-    comment.body.should == "<p><em>it</em> et <strong>gras</strong></p>"
+    comment.body.should == "<p><em>it</em> et <strong>gras</strong></p>\n"
   end
 
   context "in a simple thread" do
     before :each do
+      node_id = FactoryGirl.create(:post).node.id
       @user = FactoryGirl.create(:user)
       @modo = FactoryGirl.create(:moderator)
-      @root_one   = FactoryGirl.create(:comment, :id => 1,:user_id => @user.id)
-      @root_two   = FactoryGirl.create(:comment, :id => 2,:user_id => @user.id)
-      @parent_one = FactoryGirl.create(:comment, :id => 3,:user_id => @modo.id, :parent_id => @root_one.id)
-      @child_one  = FactoryGirl.create(:comment, :id => 4,:user_id => @user.id, :parent_id => @parent_one.id)
-      @child_two  = FactoryGirl.create(:comment, :id => 5,:user_id => @user.id, :parent_id => @parent_one.id)
-      @parent_two = FactoryGirl.create(:comment, :id => 6,:user_id => @user.id, :parent_id => @root_one.id)
-      @child_three= FactoryGirl.create(:comment, :id => 7,:user_id => @modo.id, :parent_id => @parent_one.id)
+      @root_one   = FactoryGirl.create(:comment, :id => 1,:user_id => @user.id, :node_id => node_id)
+      @root_two   = FactoryGirl.create(:comment, :id => 2,:user_id => @user.id, :node_id => node_id)
+      @parent_one = FactoryGirl.create(:comment, :id => 3,:user_id => @modo.id, :node_id => node_id, :parent_id => @root_one.id)
+      @child_one  = FactoryGirl.create(:comment, :id => 4,:user_id => @user.id, :node_id => node_id, :parent_id => @parent_one.id)
+      @child_two  = FactoryGirl.create(:comment, :id => 5,:user_id => @user.id, :node_id => node_id, :parent_id => @parent_one.id)
+      @parent_two = FactoryGirl.create(:comment, :id => 6,:user_id => @user.id, :node_id => node_id, :parent_id => @root_one.id)
+      @child_three= FactoryGirl.create(:comment, :id => 7,:user_id => @modo.id, :node_id => node_id, :parent_id => @parent_one.id)
     end
 
     it "has 2 roots" do

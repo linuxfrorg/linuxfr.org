@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe Board do
   let(:john) do
-    user = stub("John Doe", :to_param => "john-doe")
+    user = double("John Doe", :to_param => "john-doe", :name => "John Doe")
     user.stub_chain(:account, :login).and_return("john")
     user
   end
@@ -75,7 +75,7 @@ describe Board do
     board.id.should > 0
     board.message.should == "foobar"
     board.user_agent.should == "console"
-    board.user_name.should == "john"
+    board.user_name.should == "John Doe"
     board.user_url.should == "/users/john-doe"
     board.created_at.to_i.should > 0
     board.created_at.should > (Time.now - 10.seconds)
@@ -146,9 +146,7 @@ describe Board do
   end
 
   context "ActiveModel Lint tests" do
-    require 'test/unit/assertions'
     require 'active_model/lint'
-    include Test::Unit::Assertions
     include ActiveModel::Lint::Tests
 
     # to_s is to support ruby-1.9

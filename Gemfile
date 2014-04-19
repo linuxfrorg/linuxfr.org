@@ -52,7 +52,7 @@ gem 'actionpack-page_caching'
 
 # Rspec-rails must be in development for rake stats and in test for normal stuff
 group :development, :test do
-  gem "rspec-rails",           "~>2.9"
+  gem "rspec-rails",           "~>2.14"
 end
 
 group :development do

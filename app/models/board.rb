@@ -55,7 +55,7 @@ class Board
   end
 
   def push
-    rendered = BoardsController.new.render_to_string(:partial => "board", :locals => { :board => self, :box => false })
+    rendered = BoardsController.new.render_to_body(:partial => "board", :locals => { :board => self, :box => false })
     Push.create(meta, :kind => :chat, :message => rendered)
   end
 
@@ -178,6 +178,8 @@ class Board
   end
 
 ### ActiveModel ###
+
+  # TODO rails41 ActiveModel::Model
 
   extend  ActiveModel::Naming
   include ActiveModel::Conversion

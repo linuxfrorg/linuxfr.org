@@ -21,6 +21,7 @@
 FactoryGirl.define do
   factory :comment do
     user
+    node { FactoryGirl.create(:post).node }
     sequence(:title)     { |n| "Ceci est le #{n}ème commentaire" }
     sequence(:wiki_body) { |n| "Ceci est le #{n}ème commentaire" }
   end

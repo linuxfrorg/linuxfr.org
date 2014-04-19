@@ -16,7 +16,7 @@ require 'spec_helper'
 describe WikiPage do
   it "has internal links, not links to wikipedia" do
     body = FactoryGirl.create(:wiki).body
-    body.should =~ /<a href="\/\/dlfp.lo\/wiki\/Templeet"/
-    body.should =~ /<a href="\/\/dlfp.lo\/wiki\/PierreTramo"/
+    body.should =~ /<a href="\/\/dlfp.lo\/wiki\/templeet"/
+    body.should =~ /<a href="\/\/dlfp.lo\/wiki\/pierretramo"/
   end
 end
