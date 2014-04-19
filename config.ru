@@ -7,4 +7,4 @@ if defined?(Unicorn::HttpRequest)
   use GC::OOB::UnicornMiddleware
 end
 
-run LinuxfrOrg::Application
+run Rails.application

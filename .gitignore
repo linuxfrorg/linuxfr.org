@@ -1,10 +1,8 @@
 /.bundle
-/.rvmrc
 /.sass-cache
 /assets_manifest.yml
 /config/database.yml
-/config/secret.yml
-/db/*.sqlite3
+/config/secrets.yml
 /db/elasticsearch
 /log
 /public/assets

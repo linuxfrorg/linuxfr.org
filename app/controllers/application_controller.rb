@@ -2,7 +2,7 @@
 class ApplicationController < ActionController::Base
   include Canable::Enforcers
 
-  protect_from_forgery
+  protect_from_forgery with: :exception
   before_filter :seo_filter
   helper_method :url_for_content, :path_for_content, :current_user, :current_stylesheet
   rescue_from Canable::Transgression, :with => :error_403

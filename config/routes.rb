@@ -1,6 +1,6 @@
 # encoding: utf-8
 #
-LinuxfrOrg::Application.routes.draw do
+Rails.application.routes.draw do
   root :to => "home#index"
 
   # News
