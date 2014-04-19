@@ -31,7 +31,7 @@ class Redaction::NewsController < RedactionController
   end
 
   def revision
-    @version  = @news.versions.find_by_version!(params[:revision])
+    @version  = @news.versions.find_by!(version: params[:revision])
     @previous = @version.higher_item || NewsVersion.new
   end
 

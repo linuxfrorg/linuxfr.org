@@ -28,12 +28,13 @@ class Comment < ActiveRecord::Base
 
   delegate :content, :content_type, :to => :node
 
+  # FIXME rails41
   attr_accessible :title, :wiki_body, :node_id, :parent_id
 
-  scope :published,    where(:state => 'published')
-  scope :under,        lambda { |path| where("materialized_path LIKE ?", "#{path}_%") }
-  scope :on_dashboard, published.order('created_at DESC')
-  scope :footer,       published.order('created_at DESC').limit(12).select([:id, :node_id, :title])
+  scope :under,        ->(path) { where("materialized_path LIKE ?", "#{path}_%") }
+  scope :published,    -> { where(state: 'published') }
+  scope :on_dashboard, -> { published.order('created_at DESC') }
+  scope :footer,       -> { published.order('created_at DESC').limit(12).select([:id, :node_id, :title]) }
 
   validates :title,     :presence => { :message => "Le titre est obligatoire" },
                         :length   => { :maximum => 100, :message => "Le titre est trop long" }

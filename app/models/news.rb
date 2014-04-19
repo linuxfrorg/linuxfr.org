@@ -35,16 +35,16 @@ class News < Content
   accepts_nested_attributes_for :paragraphs, :allow_destroy => true
   has_many :versions, :class_name => 'NewsVersion',
                       :dependent  => :destroy,
-                      :order      => 'version DESC',
+                      # FIXME rails41 :order      => 'version DESC',
                       :inverse_of => :news
 
   attr_accessible :title, :section_id, :author_name, :author_email, :links_attributes, :paragraphs_attributes
 
-  scope :sorted,    order("created_at DESC")
-  scope :draft,     where(:state => "draft")
-  scope :candidate, where(:state => "candidate")
-  scope :refused,   where(:state => "refused")
-  scope :with_node_ordered_by, lambda {|order| joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
+  scope :sorted,    -> { order("created_at DESC") }
+  scope :draft,     -> { where(state: "draft") }
+  scope :candidate, -> { where(state: "candidate") }
+  scope :refused,   -> { where(state: "refused") }
+  scope :with_node_ordered_by, ->(order) { joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
 
   validates :title,        :presence => { :message => "Le titre est obligatoire" },
                            :length   => { :maximum => 100, :message => "Le titre est trop long" }
@@ -266,7 +266,7 @@ class News < Content
 ### Associated node ###
 
   def author_account
-    Account.active.find_by_email(author_email)
+    Account.active.find_by(email: author_email)
   end
 
   def create_node(attrs={})

@@ -18,6 +18,7 @@ require "csv"
 class Badge < ActiveRecord::Base
   fields = %w(company email first_name last_name country title).map(&:to_sym)
 
+  # FIXME rails41
   attr_accessible *fields
 
   fields.each do |field|

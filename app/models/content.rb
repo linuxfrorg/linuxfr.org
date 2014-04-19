@@ -27,6 +27,7 @@ class Content < ActiveRecord::Base
 ### License ###
 
   attr_accessor   :cc_licensed, :tmp_owner_id
+  # FIXME rails41
   attr_accessible :cc_licensed
 
   after_create :create_node

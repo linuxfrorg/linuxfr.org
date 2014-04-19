@@ -30,7 +30,7 @@ class Auth::OauthController < ApplicationController
   end
 
   def user
-    @grant = AccessGrant.find_by_access_token(params[:bearer_token])
+    @grant = AccessGrant.find_by(access_token: params[:bearer_token])
     if @grant.nil?
       render :json => { :error => "Could not find access grant for this token" }
     else
@@ -41,7 +41,7 @@ class Auth::OauthController < ApplicationController
 protected
 
   def find_application
-    @application = ClientApplication.find_by_app_id(params[:client_id])
+    @application = ClientApplication.find_by(app_id: params[:client_id])
   end
 
   def redirect_uri_for(uri)

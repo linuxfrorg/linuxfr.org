@@ -29,7 +29,7 @@ class WikiPage < Content
                     :exclusion => { :in => reserved, :message => "Ce titre est réservé pour une page spéciale" }
   validates :body,  :presence  => { :message => "Le corps est obligatoire" }
 
-  scope :sorted, order('created_at DESC')
+  scope :sorted, -> { order('created_at DESC') }
 
 ### SEO ###
 
@@ -40,7 +40,7 @@ class WikiPage < Content
 
   include Elasticsearch::Model
 
-  scope :indexable, joins(:node).where('nodes.public' => true)
+  scope :indexable, -> { joins(:node).where('nodes.public' => true) }
 
   mapping :dynamic => false do
     indexes :created_at, :type => 'date'
@@ -86,7 +86,7 @@ class WikiPage < Content
 
   HomePage = "LinuxFr.org"
   def self.home_page
-    find_by_title(HomePage)
+    find_by(title: HomePage)
   end
 
   def home_page?

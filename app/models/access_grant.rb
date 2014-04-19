@@ -38,7 +38,7 @@ class AccessGrant < ActiveRecord::Base
   end
 
   def self.authenticate(code, application_id)
-    where("code = ? AND client_application_id = ?", code, application_id).first
+    where(code: code, client_application_id: application_id).first
   end
 
   def self.prune!

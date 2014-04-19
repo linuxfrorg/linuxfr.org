@@ -19,7 +19,7 @@ class Poll < Content
 
   has_many :answers, :class_name => 'PollAnswer',
                      :dependent  => :destroy,
-                     :order      => 'position',
+                     # FIXME rails41 :order      => 'position',
                      :inverse_of => :poll
   accepts_nested_attributes_for :answers, :allow_destroy => true
 
@@ -29,9 +29,9 @@ class Poll < Content
 
   wikify_attr :explanations
 
-  scope :draft,     where(:state => "draft")
-  scope :published, where(:state => "published")
-  scope :archived,  where(:state => "archived")
+  scope :draft,     -> { where(state: "draft")     }
+  scope :published, -> { where(state: "published") }
+  scope :archived,  -> { where(state: "archived")  }
 
   before_validation :mark_answers_for_destruction
   def mark_answers_for_destruction
@@ -60,7 +60,7 @@ class Poll < Content
 
   include Elasticsearch::Model
 
-  scope :indexable, joins(:node).where('nodes.public' => true).includes(:answers)
+  scope :indexable, -> { joins(:node).where('nodes.public' => true).includes(:answers) }
 
   mapping :dynamic => false do
     indexes :created_at,   :type => 'date'

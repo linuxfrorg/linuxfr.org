@@ -9,8 +9,9 @@ gem "canable",                 "~>0.1"
 gem "carrierwave",             "~>0.10"
 gem "devise",                  "~>3.2"
 gem "diff_match_patch",        :github => "nono/diff_match_patch-ruby", :require => "diff_match_patch"
-gem "french_rails",            "~>0.2"
-gem "friendly_id",             "~>4.0"
+# FIXME rails41
+# gem "french_rails",            "~>0.2"
+gem "friendly_id",             "~>5.0"
 gem "haml",                    "~>4.0"
 gem "html-pipeline-linuxfr",   "~>0.14"
 gem "html_spellchecker",       "~>0.1"
@@ -43,6 +44,11 @@ gem "sass-rails",            "~>4.0"
 gem "coffee-rails",          "~>4.0"
 gem "therubyracer",          "~>0.12", :require => 'v8'
 gem "uglifier"
+
+# FIXME rails41
+gem 'protected_attributes'
+gem 'actionpack-action_caching'
+gem 'actionpack-page_caching'
 
 # Rspec-rails must be in development for rake stats and in test for normal stuff
 group :development, :test do

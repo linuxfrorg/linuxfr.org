@@ -22,9 +22,10 @@ class Paragraph < ActiveRecord::Base
   belongs_to :news
 
   attr_accessor :user, :after, :already_split
+  attr_accessible :user, :after, :already_split, :position, :second_part, :wiki_body
 
-  scope :in_first_part,  where(:second_part => false).order("position ASC")
-  scope :in_second_part, where(:second_part => true ).order("position ASC")
+  scope :in_first_part,  -> { where(second_part: false).order("position ASC") }
+  scope :in_second_part, -> { where(second_part: true ).order("position ASC") }
 
 ### Automatically split paragraphs ###
 

@@ -42,7 +42,7 @@ class Redaction::ParagraphsController < RedactionController
 protected
 
   def find_paragraph
-    @paragraph = Paragraph.find_by_id(params[:id])
+    @paragraph = Paragraph.find(params[:id])
     @news = @paragraph.try(:news)
     enforce_update_permission(@news)
   end

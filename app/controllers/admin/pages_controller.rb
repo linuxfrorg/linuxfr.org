@@ -42,7 +42,7 @@ class Admin::PagesController < AdminController
 protected
 
   def find_page
-    @page = Page.find_by_slug(params[:id])
+    @page = Page.find_by(slug: params[:id])
   end
 
   def expire_cache

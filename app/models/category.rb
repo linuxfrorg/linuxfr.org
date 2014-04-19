@@ -18,5 +18,5 @@ class Category < ActiveRecord::Base
 
   validates :title, :presence => { :message => 'Les catégories ont obligatoirement un titre' }
 
-  default_scope order("title ASC")
+  default_scope { order("title ASC") }
 end

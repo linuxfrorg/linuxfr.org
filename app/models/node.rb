@@ -26,21 +26,23 @@ class Node < ActiveRecord::Base
   belongs_to :user     # can be NULL
   belongs_to :content, :polymorphic => true, :inverse_of => :node
   has_many :comments, :inverse_of => :node
-  has_many :taggings, :dependent => :destroy, :include => :tag
-  has_many :tags, :through => :taggings, :uniq => true
+  has_many :taggings, :dependent => :destroy # FIXME rails41 , :include => :tag
+  has_many :tags, :through => :taggings      # FIXME rails41 , :uniq => true
 
-  scope :visible, where(:public => true)
-  scope :by_date, order('created_at DESC')
-  scope :on_dashboard, lambda {|type| public_listing(type, "created_at") }
-  scope :published_on, lambda {|d| where(:created_at => (d...d+1.day)) }
-  scope :sitemap, lambda {|types| public_listing(types, "id").where("score > 0") }
-  scope :public_listing, lambda {|types,order|
+  scope :visible,        -> { where(public: true) }
+  scope :by_date,        -> { order('created_at DESC') }
+  scope :published_on,   ->(d) { where(:created_at => (d...d+1.day)) }
+  scope :on_dashboard,   ->(type)  { public_listing(type, "created_at") }
+  scope :sitemap,        ->(types) { public_listing(types, "id").where("score > 0") }
+  scope :public_listing, ->(types, order) {
     types.map!(&:to_s) if types.is_a? Array
     types = types.to_s if types.is_a? Class
     visible.where(:content_type => types).order("#{order} DESC")
   }
 
   paginates_per 15
+
+  attr_accessible :cc_licensed, :user_id
 
 ### PPP ###
 
@@ -63,7 +65,7 @@ class Node < ActiveRecord::Base
   def compute_interest
     coeff = content_type.constantize.interest_coefficient
     stmt  = "UPDATE nodes SET interest=(score * #{coeff} + UNIX_TIMESTAMP(created_at) / 1000) WHERE id=#{self.id}"
-    connection.update_sql(stmt)
+    Node.connection.update_sql(stmt)
   end
 
   def make_visible
@@ -95,7 +97,7 @@ class Node < ActiveRecord::Base
     $redis.expire(key, 7776000) # 3 months
     $redis.incrby("users/#{self.user_id}/diff_karma", value)
     Account.decrement_counter(:nb_votes, account.id) unless account.amr?
-    connection.update_sql("UPDATE nodes SET score=score + #{value} WHERE id=#{self.id}")
+    Node.update_counters self.id, score: value
     compute_interest
     content.vote_on_candidate(value, account) if content_type == "News" && content.candidate?
   end
@@ -160,7 +162,7 @@ class Node < ActiveRecord::Base
   def set_taglist(list, user_id)
     self.class.transaction do
       TagList.new(list).each do |tagname|
-        tag = Tag.find_or_create_by_name(tagname)
+        tag = Tag.find_or_create_by(name: tagname)
         taggings.create(:tag_id => tag.id, :user_id => user_id)
       end
     end

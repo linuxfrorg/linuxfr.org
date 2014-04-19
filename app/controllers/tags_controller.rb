@@ -86,7 +86,7 @@ protected
   end
 
   def find_tag
-    @tag = Tag.find_by_name!(params[:id])
+    @tag = Tag.find_by!(name: params[:id])
   end
 
   def get_order

@@ -11,7 +11,7 @@
 
 #
 class Banner < ActiveRecord::Base
-  scope :active, where(:active => true)
+  scope :active, -> { where(active: true) }
 
   validates :content, :presence => { :message => "La bannière ne peut être vide !" }
 

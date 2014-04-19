@@ -21,6 +21,8 @@ class NewsVersion < ActiveRecord::Base
 
   acts_as_list :column => 'version', :scope => :news
 
+  attr_protected :created_at
+
 ### Append-only ###
 
   before_update :raise_on_update

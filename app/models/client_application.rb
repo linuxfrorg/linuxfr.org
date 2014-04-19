@@ -16,6 +16,7 @@ class ClientApplication < ActiveRecord::Base
   belongs_to :account
   has_many :access_grants, :dependent => :delete_all
 
+  # FIXME rails41
   attr_accessible :name
 
   before_create :generate_id_and_secret
@@ -25,6 +26,6 @@ class ClientApplication < ActiveRecord::Base
   end
 
   def self.authenticate(app_id, app_secret)
-    where("app_id = ? AND app_secret = ?", app_id, app_secret).first
+    find_by(app_id: app_id, app_secret: app_secret)
   end
 end

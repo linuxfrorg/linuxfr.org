@@ -35,7 +35,7 @@ class Tracker < Content
                         :length   => { :maximum => 100, :message => "Le titre est trop long" }
   validates :wiki_body, :presence => { :message => "Veuillez décrire cette entrée du suivi" }
 
-  scope :opened, where(:state => "opened")
+  scope :opened, -> { where(state: "opened") }
 
   wikify_attr   :body
   truncate_attr :body
@@ -49,7 +49,7 @@ class Tracker < Content
 
   include Elasticsearch::Model
 
-  scope :indexable, joins(:node).where('nodes.public' => true)
+  scope :indexable, -> { joins(:node).where('nodes.public' => true) }
 
   mapping :dynamic => false do
     indexes :created_at, :type => 'date'

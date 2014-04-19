@@ -44,7 +44,7 @@ class Diary < Content
 
   include Elasticsearch::Model
 
-  scope :indexable, joins(:node).where('nodes.public' => true)
+  scope :indexable, -> { joins(:node).where('nodes.public' => true) }
 
   mapping :dynamic => false do
     indexes :created_at, :type => 'date'

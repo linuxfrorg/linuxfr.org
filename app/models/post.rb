@@ -25,7 +25,7 @@ class Post < Content
 
   attr_accessible :title, :wiki_body, :forum_id
 
-  scope :with_node_ordered_by, lambda {|order| joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
+  scope :with_node_ordered_by, ->(order) { joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
 
   validates :forum,     :presence => { :message => "Vous devez choisir un forum" }
   validates :title,     :presence => { :message => "Le titre est obligatoire" },
@@ -44,7 +44,7 @@ class Post < Content
 
   include Elasticsearch::Model
 
-  scope :indexable, joins(:node).where('nodes.public' => true)
+  scope :indexable, -> { joins(:node).where('nodes.public' => true) }
 
   mapping :dynamic => false do
     indexes :created_at, :type => 'date'

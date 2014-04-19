@@ -56,19 +56,20 @@ class Account < ActiveRecord::Base
   mount_uploader :uploaded_stylesheet, StylesheetUploader
 
   attr_accessor :remember_me, :amr_id
+  # FIXME rails41
   attr_accessible :login, :email, :stylesheet, :uploaded_stylesheet, :password, :password_confirmation, :user_attributes, :remember_me
   delegate :name, :to => :user
 
-  scope :unconfirmed, where(:confirmed_at => nil)
+  scope :unconfirmed, -> { where(confirmed_at: nil) }
 
 ### Validation ###
 
-  LOGIN_REGEXP = /^[\p{Word}.+\-]+$/
+  LOGIN_REGEXP = /\A[\p{Word}.+\-]+\Z/
   validates :login, :presence   => { :message => "Veuillez choisir un pseudo"},
                     :uniqueness => { :message => "Ce pseudo est déjà pris" },
                     :format     => { :message => "Le pseudo n'est pas valide", :with => LOGIN_REGEXP, :allow_blank => true, :on => :create }
 
-  EMAIL_REGEXP = /^[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}$/i
+  EMAIL_REGEXP = /\A[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}\Z/i
   validates :email, :presence   => { :message => "Veuillez remplir l'adresse de courriel" },
                     :uniqueness => { :message => "Cette adresse de courriel est déjà utilisée", :case_sensitive => false, :allow_blank => true },
                     :format     => { :message => "L'adresse de courriel n'est pas valide", :with => EMAIL_REGEXP, :allow_blank => true }
@@ -123,11 +124,11 @@ class Account < ActiveRecord::Base
 
 ### Role ###
 
-  scope :active,    where("role != 'inactive'")
-  scope :moderator, where(:role => "moderator")
-  scope :editor,    where(:role => "editor")
-  scope :admin,     where(:role => "admin")
-  scope :amr,       where(:role => %w[admin moderator])
+  scope :active,    -> { where("role != 'inactive'") }
+  scope :moderator, -> { where(role: "moderator") }
+  scope :editor,    -> { where(role: "editor") }
+  scope :admin,     -> { where(role: "admin") }
+  scope :amr,       -> { where(role: %w[admin moderator]) }
 
   state_machine :role, :initial => :visitor do
     event :inactivate            do transition all             => :inactive  end
