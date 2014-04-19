@@ -7,7 +7,7 @@
 #  forum_id       :integer
 #  title          :string(160)      not null
 #  cached_slug    :string(165)
-#  body           :text
+#  body           :text(16777215)
 #  wiki_body      :text
 #  truncated_body :text
 #  created_at     :datetime

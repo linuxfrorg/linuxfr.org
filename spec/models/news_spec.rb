@@ -11,7 +11,7 @@
 #  section_id   :integer
 #  author_name  :string(32)       not null
 #  author_email :string(64)       not null
-#  body         :text
+#  body         :text(16777215)
 #  second_part  :text(2147483647)
 #  created_at   :datetime
 #  updated_at   :datetime

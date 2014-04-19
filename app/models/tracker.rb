@@ -9,7 +9,7 @@
 #  cached_slug         :string(105)
 #  category_id         :integer
 #  assigned_to_user_id :integer
-#  body                :text
+#  body                :text(16777215)
 #  wiki_body           :text
 #  truncated_body      :text
 #  created_at          :datetime

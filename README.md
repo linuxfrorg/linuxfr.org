@@ -57,13 +57,13 @@ LinuxFr.org on a Debian box.
 
     $ desi install
     $ desi start
-    $ rake db:setup
+    $ ./bin/rake db:setup
     (if you're updating, you'll need an other step: redis-cli flushdb)
-    $ bundle exec rake elasticsearch:import FORCE=y
+    $ ./bin/rake elasticsearch:import FORCE=y
 
 7) Let's run it:
 
-    $ ./script/rails server thin
+    $ ./bin/rails server thin
     $ x-www-browser http://127.0.0.1:3000/
 
 8) Create an admin account:
@@ -96,13 +96,9 @@ How to run the specs
 
 1) Be sure that redis and ElasticSearch are running
 
-2) Create the test database:
+2) And now, just run rspec (and repeat this step until done):
 
-    $ bundle exec rake db:test:prepare
-
-3) And now, just run rspec (and repeat this step until done):
-
-    $ bundle exec rspec spec
+    $ .bin/rspec spec
 
 
 How to generate a CSS
@@ -112,7 +108,7 @@ CSS are written in sass and compiled with the Rails assets pipeline.
 If you just want to compile a CSS without installing Rails and all its
 dependency, you can install the `sass` gem and launch:
 
-    ./script/compile_sass app/assets/stylesheets/application.css.scss > app.css
+    ./bin/compile_sass app/assets/stylesheets/application.css.scss > app.css
 
 
 Copyheart
