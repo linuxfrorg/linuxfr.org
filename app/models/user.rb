@@ -25,8 +25,8 @@ class User < ActiveRecord::Base
   has_many :news_versions, dependent: :nullify
   has_many :wiki_versions, dependent: :nullify
   has_many :comments, inverse_of: :user
-  has_many :taggings, dependent: :destroy # FIXME rails41 , include: :tag
-  has_many :tags, through: :taggings      # FIXME rails41 , uniq: true
+  has_many :taggings, -> { includes(:tag) }, dependent: :destroy
+  has_many :tags, -> { uniq }, through: :taggings
 
   attr_accessible :name, :homesite, :jabber_id, :signature, :avatar, :custom_avatar_url
 

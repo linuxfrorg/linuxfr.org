@@ -64,12 +64,12 @@ class Account < ActiveRecord::Base
 
 ### Validation ###
 
-  LOGIN_REGEXP = /\A[\p{Word}.+\-]+\Z/
+  LOGIN_REGEXP = /\A[\p{Word}.+\-]+\z/
   validates :login, presence: { message: "Veuillez choisir un pseudo"},
                     uniqueness: { message: "Ce pseudo est déjà pris" },
                     format: { message: "Le pseudo n'est pas valide", with: LOGIN_REGEXP, allow_blank: true, on: :create }
 
-  EMAIL_REGEXP = /\A[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}\Z/i
+  EMAIL_REGEXP = /\A[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}\z/i
   validates :email, presence: { message: "Veuillez remplir l'adresse de courriel" },
                     uniqueness: { message: "Cette adresse de courriel est déjà utilisée", case_sensitive: false, allow_blank: true },
                     format: { message: "L'adresse de courriel n'est pas valide", with: EMAIL_REGEXP, allow_blank: true }

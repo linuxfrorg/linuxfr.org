@@ -33,10 +33,11 @@ class News < Content
   has_many :paragraphs, dependent: :destroy, inverse_of: :news
   accepts_nested_attributes_for :links, allow_destroy: true, reject_if: proc { |attrs| attrs['url'].blank? }
   accepts_nested_attributes_for :paragraphs, allow_destroy: true
-  has_many :versions, class_name: 'NewsVersion',
-                      dependent: :destroy,
-                      # FIXME rails41 order: 'version DESC',
-                      inverse_of: :news
+  has_many :versions,
+    -> { order("version DESC") },
+    class_name: "NewsVersion",
+    dependent: :destroy,
+    inverse_of: :news
 
   attr_accessible :title, :section_id, :author_name, :author_email, :links_attributes, :paragraphs_attributes
 

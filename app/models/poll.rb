@@ -17,10 +17,11 @@ class Poll < Content
   self.table_name = "polls"
   self.type = "Sondage"
 
-  has_many :answers, class_name: 'PollAnswer',
-                     dependent: :destroy,
-                     # FIXME rails41 order: 'position',
-                     inverse_of: :poll
+  has_many :answers,
+    -> { order(:position) },
+    class_name: 'PollAnswer',
+    dependent: :destroy,
+    inverse_of: :poll
   accepts_nested_attributes_for :answers, allow_destroy: true
 
   attr_accessible :title, :wiki_explanations, :answers_attributes

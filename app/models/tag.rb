@@ -11,7 +11,7 @@
 
 class Tag < ActiveRecord::Base
   has_many :taggings, dependent: :destroy, inverse_of: :tag
-  has_many :nodes, through: :taggings # FIXME rails41 , uniq: true
+  has_many :nodes, -> { uniq }, through: :taggings
 
   validates :name, presence: true
 

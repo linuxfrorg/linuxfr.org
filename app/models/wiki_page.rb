@@ -19,10 +19,11 @@ class WikiPage < Content
   self.type = "Page wiki"
 
   RESERVED_WORDS = %w(index nouveau modifications pages)
-  has_many :versions, class_name: 'WikiVersion',
-                      dependent: :destroy,
-                      # FIXME rails41 order: 'version DESC',
-                      inverse_of: :wiki_page
+  has_many :versions,
+    -> { order("version DESC") },
+    class_name: "WikiVersion",
+    dependent: :destroy,
+    inverse_of: :wiki_page
   reserved = RESERVED_WORDS + RESERVED_WORDS.map(&:capitalize) + RESERVED_WORDS.map(&:upcase)
   validates :title, presence: { message: "Le titre est obligatoire" },
                     length: { maximum: 100, message: "Le titre est trop long" },

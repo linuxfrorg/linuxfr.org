@@ -26,8 +26,8 @@ class Node < ActiveRecord::Base
   belongs_to :user     # can be NULL
   belongs_to :content, polymorphic: true, inverse_of: :node
   has_many :comments, inverse_of: :node
-  has_many :taggings, dependent: :destroy # FIXME rails41 , include: :tag
-  has_many :tags, through: :taggings      # FIXME rails41 , uniq: true
+  has_many :taggings, -> { includes(:tag) }, dependent: :destroy
+  has_many :tags, -> { uniq }, through: :taggings
 
   scope :visible,        -> { where(public: true) }
   scope :by_date,        -> { order('created_at DESC') }
