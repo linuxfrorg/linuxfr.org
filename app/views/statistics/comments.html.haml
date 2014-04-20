@@ -42,7 +42,7 @@
           - comment.each do |type,cnt|
             %tr
               -if newyear==true
-                %td.stat{'rowspan'=>comment.size()}= year
+                %td.stat{'rowspan' => comment.count}= year
                 -newyear=false
               %td
                 .stat(class="content#{type.downcase()}" style="width: 100px;") #{translate_content_type(type)}
@@ -64,12 +64,12 @@
           - comment.each do |type,cnt|
             %tr
               -if newyear==true
-                %td.stat{'rowspan'=>comment.size()}= month.sub(/(\d{4})(\d{2})/, '\2 \1')
+                %td.stat{'rowspan' => comment.count}= month.sub(/(\d{4})(\d{2})/, '\2 \1')
                 -newyear=false
               %td
-                .stat(class="content#{type.downcase()}" style="width: 100px;") #{translate_content_type(type)}
+                .stat(class="content#{type.downcase}" style="width: 100px;") #{translate_content_type(type)}
               %td
-                .stat(class="content#{type.downcase()}" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
+                .stat(class="content#{type.downcase}" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
 
       %h2#jour Répartition des commentaires par jour de la semaine
       - maxval = @stats.comments_by_day.values.max

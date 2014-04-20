@@ -18,7 +18,7 @@
     %p
       La moitié des entrées fermées ont été traitées en moins de #{pluralize @stats.median_time, "jour"}.
 
-    - if @stats.top_reporters.size() > 0
+    - if @stats.top_reporters.any?
       - maxval = @stats.top_reporters.map {|a| a["cnt"] }.max
       %h2#nbouvertes Utilisateurs ayant ouvert le plus grand nombre d'entrées
       %table
@@ -32,7 +32,7 @@
             %td
               .stat.misc(style="width: #{(width_stats * user["cnt"] / maxval).to_i}px;")= user["cnt"]
 
-    - if @stats.good_workers.size() > 0
+    - if @stats.good_workers.any?
       - maxval = @stats.good_workers.map {|a| a["cnt"] }.max
       %h2#nbfermees Nombre d'entrées fermées par les admins
       %table
@@ -46,7 +46,7 @@
             %td
               .stat.misc(style="width: #{(width_stats * worker["cnt"] / maxval).to_i}px;")= worker["cnt"]
 
-    - if @stats.by_year.size() > 0
+    - if @stats.by_year.any?
       %h2#an Entrées classées par année
       %p
         État des entrées dans le système de suivi (classées par date d'ouverture)

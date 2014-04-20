@@ -45,7 +45,7 @@
         - content.each do |type,cnt|
           %tr
             - if newyear
-              %td{'class' => 'stat','rowspan' => content.size()}= year
+              %td{'class' => 'stat','rowspan' => content.count}= year
               - newyear = false
             %td
               .stat(class="content#{type.downcase()}" style="width: 100px;") #{translate_content_type(type)}
@@ -67,7 +67,7 @@
         - content.each do |type,cnt|
           %tr
             -if newyear
-              %td{'class'=>'stat','rowspan'=>content.size()}= month.sub(/(\d{4})(\d{2})/, '\2 \1')
+              %td{'class' => 'stat','rowspan' => content.count}= month.sub(/(\d{4})(\d{2})/, '\2 \1')
               - newyear = false
             %td
               .stat(class="content#{type.downcase()}" style="width: 100px;") #{translate_content_type(type)}
@@ -106,7 +106,7 @@
       Aucune dépêche publiée
 
     %h2#licence Évolution du pourcentage de contenus sous licence CC By-Sa
-    - if @stats.contents_by_license.size() > 0
+    - if @stats.contents_by_license.any?
       %table
         %th Année
         %th Type
@@ -116,7 +116,7 @@
           - content.each do |type,cnt|
             %tr
               - if newyear
-                %td{'class'=>'stat','rowspan'=>content.size()}= year
+                %td{'class' => 'stat','rowspan' => content.count}= year
                 - newyear = false
               %td
                 .stat(class="content#{type.downcase()}" style="width: 100px;") #{translate_content_type(type)}

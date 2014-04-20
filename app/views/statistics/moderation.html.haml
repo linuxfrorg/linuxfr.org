@@ -16,7 +16,7 @@
       %li Seuil d'acceptation = #{News.accept_threshold}
       %li Seuil de refus = #{News.refuse_threshold}
 
-    - if @stats.by_day.size() > 0
+    - if @stats.by_day.any?
       - maxval = @stats.by_day.map {|a| a["cnt"] }.max
       %h2 Jour de modération
       %table
@@ -78,8 +78,8 @@
 
     %p Il y a eu #{pluralize @stats.moderated_news(7), "dépêche modérée", "dépêches modérées"} (acceptation ou rejet) sur les 7 derniers jours, et #{pluralize @stats.moderated_news(31), "dépêche modérée", "dépêches modérées"} sur les 31 derniers jours.
 
-    - if Account.amr.size > 0
-      %h4 Équipe de modération actuelle (#{Account.amr.size})
+    - if Account.amr.any?
+      %h4 Équipe de modération actuelle (#{Account.amr.count})
       %table.sortable
         %tr
           %th
@@ -111,8 +111,8 @@
 
     %h3#moderationEpoch Depuis Epoch ou le début des données
 
-    - if @stats.top_amr.size > 0
-      %h4 Membre passé ou présent de l'équipe de modération (#{@stats.top_amr.size})
+    - if @stats.top_amr.any?
+      %h4 Membre passé ou présent de l'équipe de modération (#{@stats.top_amr.count})
       %table.sortable
         %tr
           %th

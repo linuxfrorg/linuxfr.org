@@ -179,7 +179,7 @@
   %h2#stats_css Style (CSS)
   %p
     = link_to("Changer de style", "/stylesheet/modifier")
-  - if @stats.by_style.size() > 0
+  - if @stats.by_style.any?
     %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte utilisateur valide et utilisé", "comptes utilisateur valides et utilisés"} au cours des 3 derniers mois&nbsp;:
     %table
       - maxval = @stats.nb_recently_used_accounts
