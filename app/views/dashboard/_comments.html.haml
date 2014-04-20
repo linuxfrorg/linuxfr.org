@@ -5,9 +5,9 @@
     Vous n'avez posté aucun commentaire
 - else
   - if @self_answer
-    = link_to "Ne pas inclure les réponses à mes commentaires", :self => nil
+    = link_to "Ne pas inclure les réponses à mes commentaires", self: nil
   -else
-    = link_to "Inclure les réponses à mes commentaires", :self => "1"
+    = link_to "Inclure les réponses à mes commentaires", self: "1"
   %br
   %table#my_comments
     %tr
@@ -27,6 +27,6 @@
         %td.number= comment.bound_score
         %td.number
           - if answer && !answer.read_by?(current_account)
-            = image_tag "/images/icones/comment.png", :alt => "Nouveaux commentaires !", :class => "thread-new-comments"
+            = image_tag "/images/icones/comment.png", alt: "Nouveaux commentaires !", class: "thread-new-comments"
           = comment.nb_answers
         %td.date= answer ? answer.created_at.to_s(:posted) : "&nbsp;".html_safe

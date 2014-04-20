@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class Admin::ForumsController < AdminController
-  before_action :find_forum, :except => [:index, :new, :create]
+  before_action :find_forum, except: [:index, :new, :create]
 
   def index
     @forums = Forum.sorted.all
@@ -15,7 +15,7 @@ class Admin::ForumsController < AdminController
     @forum.attributes = params[:forum]
     if @forum.save
       @forum.move_to_bottom
-      redirect_to admin_forums_url, :notice => "Forum créé"
+      redirect_to admin_forums_url, notice: "Forum créé"
     else
       flash.now[:alert] = "Impossible d'enregistrer ce forum"
       render :new
@@ -28,7 +28,7 @@ class Admin::ForumsController < AdminController
   def update
     @forum.attributes = params[:forum]
     if @forum.save
-      redirect_to admin_forums_url, :notice => "Forum modifié"
+      redirect_to admin_forums_url, notice: "Forum modifié"
     else
       flash.now[:alert] = "Impossible d'enregistrer ce forum"
       render :edit
@@ -37,17 +37,17 @@ class Admin::ForumsController < AdminController
 
   def archive
     @forum.archive
-    redirect_to admin_forums_url, :notice => "Forum archivé"
+    redirect_to admin_forums_url, notice: "Forum archivé"
   end
 
   def reopen
     @forum.reopen
-    redirect_to admin_forums_url, :notice => "Forum ré-ouvert"
+    redirect_to admin_forums_url, notice: "Forum ré-ouvert"
   end
 
   def destroy
     @forum.destroy
-    redirect_to admin_forums_url, :notice => "Forum supprimé"
+    redirect_to admin_forums_url, notice: "Forum supprimé"
   end
 
   def lower

@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def feed(title, link=nil)
-    link ||= { :format => :atom }
+    link ||= { format: :atom }
     @feeds[link] = title
   end
 

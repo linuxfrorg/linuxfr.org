@@ -2,8 +2,8 @@
 class CreateDiaries < ActiveRecord::Migration
   def self.up
     create_table :diaries do |t|
-      t.string :title,       :limit => 64, :null => false
-      t.string :cached_slug, :limit => 64
+      t.string :title,       limit: 64, null: false
+      t.string :cached_slug, limit: 64
       t.integer :owner_id
       t.text :body
       t.text :wiki_body

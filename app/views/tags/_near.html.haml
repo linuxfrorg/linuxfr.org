@@ -1,7 +1,7 @@
-- cache "fragments/near_tags/#{@tag.name}", :expires => 1.day do
+- cache "fragments/near_tags/#{@tag.name}", expires: 1.day do
   #near_tags_box.box
     %h1 Les tags connexes
     %ul
       = list_of(@tag.near_tags) do |tag|
-        %span.score{ :title => pluralize(tag.cnt, "contenu commun", "contenus communs") }= tag.cnt
+        %span.score{ title: pluralize(tag.cnt, "contenu commun", "contenus communs") }= tag.cnt
         = link_to tag.name, on_public ? public_tag_path(tag.name) : tag_path(tag.name)

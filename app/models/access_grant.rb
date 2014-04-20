@@ -27,9 +27,9 @@ class AccessGrant < ActiveRecord::Base
 
   def as_json
     {
-      :access_token  => access_token,
-      :refresh_token => refresh_token,
-      :expires_in    => Devise.timeout_in.to_i
+      access_token: access_token,
+      refresh_token: refresh_token,
+      expires_in: Devise.timeout_in.to_i
     }
   end
 

@@ -3,4 +3,4 @@
 - @images.each do |image|
   .image
     = image.to_html.html_safe
-    = button_to "Bloquer", moderation_image_path(image.encoded_link), :method => :delete, :data => { :confirm => "Êtes-vous sûr de vouloir bloquer cette image ?" }
+    = button_to "Bloquer", moderation_image_path(image.encoded_link), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir bloquer cette image ?" }

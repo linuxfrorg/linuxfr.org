@@ -24,20 +24,20 @@
 #
 class Node < ActiveRecord::Base
   belongs_to :user     # can be NULL
-  belongs_to :content, :polymorphic => true, :inverse_of => :node
-  has_many :comments, :inverse_of => :node
-  has_many :taggings, :dependent => :destroy # FIXME rails41 , :include => :tag
-  has_many :tags, :through => :taggings      # FIXME rails41 , :uniq => true
+  belongs_to :content, polymorphic: true, inverse_of: :node
+  has_many :comments, inverse_of: :node
+  has_many :taggings, dependent: :destroy # FIXME rails41 , include: :tag
+  has_many :tags, through: :taggings      # FIXME rails41 , uniq: true
 
   scope :visible,        -> { where(public: true) }
   scope :by_date,        -> { order('created_at DESC') }
-  scope :published_on,   ->(d) { where(:created_at => (d...d+1.day)) }
+  scope :published_on,   ->(d) { where(created_at: (d...d+1.day)) }
   scope :on_dashboard,   ->(type)  { public_listing(type, "created_at") }
   scope :sitemap,        ->(types) { public_listing(types, "id").where("score > 0") }
   scope :public_listing, ->(types, order) {
     types.map!(&:to_s) if types.is_a? Array
     types = types.to_s if types.is_a? Class
-    visible.where(:content_type => types).order("#{order} DESC")
+    visible.where(content_type: types).order("#{order} DESC")
   }
 
   paginates_per 15
@@ -116,7 +116,7 @@ class Node < ActiveRecord::Base
 
   def self.readings_of(account_id)
     ids = readings_keys_of(account_id).map {|x| x.scan(/\/(\d+)\//).first.first }
-    visible.where(:id => ids)
+    visible.where(id: ids)
   end
 
   def read_by(account_id)
@@ -163,14 +163,14 @@ class Node < ActiveRecord::Base
     self.class.transaction do
       TagList.new(list).each do |tagname|
         tag = Tag.find_or_create_by(name: tagname)
-        taggings.create(:tag_id => tag.id, :user_id => user_id)
+        taggings.create(tag_id: tag.id, user_id: user_id)
       end
     end
   end
 
   def popular_tags(nb=7)
     Tag.select([:name]).
-        where(:public => true).
+        where(public: true).
         joins(:taggings).
         where("taggings.node_id" => self.id).
         group("tags.id").
@@ -179,7 +179,7 @@ class Node < ActiveRecord::Base
   end
 
   def tag_names
-    tags.where(:public => true).pluck(:name)
+    tags.where(public: true).pluck(:name)
   end
 
 end

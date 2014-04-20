@@ -4,7 +4,7 @@
   - unless node.threads.empty?
     %ul.threads
       - node.threads.each do |thread|
-        = render 'comments/thread', :thread => thread
+        = render 'comments/thread', thread: thread
   - if !node.content.too_old_for_comments?
     %p#send-comment
       = link_to "Envoyer un commentaire", "/nodes/#{node.id}/comments/nouveau"

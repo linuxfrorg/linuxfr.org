@@ -53,19 +53,19 @@ protected
 
   def send_redaction_mail(subject, news)
     @news = news
-    mail :from    => EDITORS,
-         :to      => EDITORS,
-         :bcc     => news.attendees.map(&:account).compact.map(&:email),
-         :subject => "[LinuxFr.org] #{subject} #{news.title}"
+    mail from: EDITORS,
+         to: EDITORS,
+         bcc: news.attendees.map(&:account).compact.map(&:email),
+         subject: "[LinuxFr.org] #{subject} #{news.title}"
   end
 
   def send_moderation_email(subject, news)
     @news = news
     headers["X-Moderator"] = news.moderator.name
-    mail :from    => MODERATORS,
-         :to      => news.author_email,
-         :cc      => MODERATORS,
-         :subject => "[LinuxFr.org] #{subject} #{news.title}"
+    mail from: MODERATORS,
+         to: news.author_email,
+         cc: MODERATORS,
+         subject: "[LinuxFr.org] #{subject} #{news.title}"
   end
 
 end

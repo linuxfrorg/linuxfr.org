@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class Admin::CategoriesController < AdminController
-  before_action :load_category, :only => [:edit, :update, :destroy]
+  before_action :load_category, only: [:edit, :update, :destroy]
 
   def index
     @categories = Category.all
@@ -13,7 +13,7 @@ class Admin::CategoriesController < AdminController
   def create
     @category = Category.new(params[:category])
     if @category.save
-      redirect_to admin_categories_url, :notice => 'Nouvelle catégorie créée.'
+      redirect_to admin_categories_url, notice: 'Nouvelle catégorie créée.'
     else
       flash.now[:alert] = "Impossible d'enregistrer cette catégorie"
       render :new
@@ -26,7 +26,7 @@ class Admin::CategoriesController < AdminController
   def update
     @category.attributes = params[:category]
     if @category.save
-      redirect_to admin_categories_url, :notice => 'Catégorie mise à jour.'
+      redirect_to admin_categories_url, notice: 'Catégorie mise à jour.'
     else
       flash.now[:alert] = "Impossible d'enregistrer cette catégorie"
       render :edit
@@ -35,7 +35,7 @@ class Admin::CategoriesController < AdminController
 
   def destroy
     @category.delete
-    redirect_to admin_categories_url, :notice => 'Catégorie supprimée'
+    redirect_to admin_categories_url, notice: 'Catégorie supprimée'
   end
 
 protected

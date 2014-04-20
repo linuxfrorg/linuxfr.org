@@ -17,15 +17,15 @@ class Poll < Content
   self.table_name = "polls"
   self.type = "Sondage"
 
-  has_many :answers, :class_name => 'PollAnswer',
-                     :dependent  => :destroy,
-                     # FIXME rails41 :order      => 'position',
-                     :inverse_of => :poll
-  accepts_nested_attributes_for :answers, :allow_destroy => true
+  has_many :answers, class_name: 'PollAnswer',
+                     dependent: :destroy,
+                     # FIXME rails41 order: 'position',
+                     inverse_of: :poll
+  accepts_nested_attributes_for :answers, allow_destroy: true
 
   attr_accessible :title, :wiki_explanations, :answers_attributes
 
-  validates :title, :presence => { :message => "La question est obligatoire" }
+  validates :title, presence: { message: "La question est obligatoire" }
 
   wikify_attr :explanations
 
@@ -62,34 +62,34 @@ class Poll < Content
 
   scope :indexable, -> { joins(:node).where('nodes.public' => true).includes(:answers) }
 
-  mapping :dynamic => false do
-    indexes :created_at,   :type => 'date'
-    indexes :title,        :analyzer => 'french'
-    indexes :explanations, :analyzer => 'french'
-    indexes :answers,      :analyzer => 'french'
-    indexes :tags,         :analyzer => 'keyword'
+  mapping dynamic: false do
+    indexes :created_at,   type: 'date'
+    indexes :title,        analyzer: 'french'
+    indexes :explanations, analyzer: 'french'
+    indexes :answers,      analyzer: 'french'
+    indexes :tags,         analyzer: 'keyword'
   end
 
   def as_indexed_json(options={})
     {
-      :id => self.id,
-      :created_at => created_at,
-      :title => title,
-      :explanations => explanations,
-      :answers => answers.pluck(:answer).join("\n"),
-      :tags => tag_names,
+      id: self.id,
+      created_at: created_at,
+      title: title,
+      explanations: explanations,
+      answers: answers.pluck(:answer).join("\n"),
+      tags: tag_names,
     }
   end
 
 ### Workflow ###
 
-  state_machine :state, :initial => :draft do
+  state_machine :state, initial: :draft do
     event :accept  do transition :draft     => :published end
     event :refuse  do transition :draft     => :refused   end
     event :archive do transition :published => :archived  end
     event :delete  do transition :published => :deleted   end
 
-    after_transition :on => :accept, :do => :publish
+    after_transition on: :accept, do: :publish
   end
 
   # There can be only one current poll,

@@ -2,13 +2,13 @@ source 'https://rubygems.org'
 
 gem "rails",                   "4.1.0"
 
-gem "ansi",                    "~>1.4", :require => nil
+gem "ansi",                    "~>1.4", require: nil
 gem "acts_as_list",            "~>0.4"
 gem "bitfields",               "~>0.4"
 gem "canable",                 "~>0.1"
 gem "carrierwave",             "~>0.10"
 gem "devise",                  "~>3.2"
-gem "diff_match_patch",        :github => "nono/diff_match_patch-ruby", :require => "diff_match_patch"
+gem "diff_match_patch",        github: "nono/diff_match_patch-ruby", require: "diff_match_patch"
 gem "french_rails",            "~>0.3"
 gem "friendly_id",             "~>5.0"
 gem "haml",                    "~>4.0"
@@ -25,9 +25,9 @@ gem "oauth2",                  "~>0.6"
 gem "patron",                  "~>0.4"
 gem "rinku",                   "~>1.7"
 gem "hiredis",                 "~>0.5"
-gem "redis",                   "~>3.0", :require => ["redis/connection/hiredis", "redis"]
+gem "redis",                   "~>3.0", require: ["redis/connection/hiredis", "redis"]
 gem "sanitize",                "~>2.1"
-gem "sitemap_generator",       "~>2.1"
+gem "sitemap_generator",       "~>2.1" # TODO update sitemap_generator
 gem "simple_autocomplete",     "~>0.3"
 gem "state_machine",           "~>1.2"
 
@@ -41,7 +41,7 @@ gem "elasticsearch-model",     "~>0.1"
 gem "jquery-rails",          "~>3.1"
 gem "sass-rails",            "~>4.0"
 gem "coffee-rails",          "~>4.0"
-gem "therubyracer",          "~>0.12", :require => 'v8'
+gem "therubyracer",          "~>0.12", require: 'v8'
 gem "uglifier"
 
 # FIXME rails41

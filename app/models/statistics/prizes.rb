@@ -15,9 +15,9 @@ class Statistics::Prizes
   end
 
   def best_score(type, nb)
-    Node.where(:content_type => type.to_s).
-         where(:created_at => current_month).
-         where(:public => true).
+    Node.where(content_type: type.to_s).
+         where(created_at: current_month).
+         where(public: true).
          where("user_id IS NOT NULL").
          order("score DESC").
          limit(nb).
@@ -28,9 +28,9 @@ class Statistics::Prizes
     Node.joins(:comments).
          group("comments.node_id").
          select("SUM(comments.score) AS sum_score, nodes.content_type, nodes.content_id, nodes.user_id").
-         where(:content_type => type.to_s).
-         where(:created_at => current_month).
-         where(:public => true).
+         where(content_type: type.to_s).
+         where(created_at: current_month).
+         where(public: true).
          where("nodes.user_id IS NOT NULL").
          order("sum_score DESC").
          limit(nb).
@@ -50,9 +50,9 @@ class Statistics::Prizes
   end
 
   def top_authors(type, nb)
-    Node.where(:content_type => type.to_s).
-         where(:created_at => current_month).
-         where(:public => true).
+    Node.where(content_type: type.to_s).
+         where(created_at: current_month).
+         where(public: true).
          where("user_id IS NOT NULL").
          group("user_id").
          select("COUNT(*) AS score, user_id").
@@ -62,7 +62,7 @@ class Statistics::Prizes
   end
 
   def top_commenters(type, nb)
-    Node.where(:content_type => type.to_s).
+    Node.where(content_type: type.to_s).
          joins(:comments).
          where("comments.created_at" => current_month).
          where("comments.state" => "published").

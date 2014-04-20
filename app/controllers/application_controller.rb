@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :seo_filter
   helper_method :url_for_content, :path_for_content, :current_user, :current_stylesheet
-  rescue_from Canable::Transgression, :with => :error_403
+  rescue_from Canable::Transgression, with: :error_403
 
   VALID_ORDERS = %w(created_at score interest last_commented_at comments_count)
   REVISION     = `git rev-parse HEAD`.chomp
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 protected
 
   def error_403
-    render :file => "#{Rails.public_path}/errors/403.html", :status => 403, :layout => false
+    render file: "#{Rails.public_path}/errors/403.html", status: 403, layout: false
   end
 
   def seo_filter
@@ -51,7 +51,7 @@ protected
   end
 
   def url_for_content(content, only_path=false)
-    opts = { :routing_type => (only_path ? :path : :url) }
+    opts = { routing_type: (only_path ? :path : :url) }
     case content
     when Diary then content.new_record? ? "/journaux" : polymorphic_url([content.owner, content], opts)
     when News  then content.new_record? ? "/news" : url_for_news(content, opts)
@@ -77,13 +77,13 @@ protected
   def admin_required
     return if current_account && current_account.admin?
     store_location!(:account)
-    redirect_to new_account_session_url, :alert => "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
+    redirect_to new_account_session_url, alert: "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
   end
 
   def amr_required
     return if current_account && current_account.amr?
     store_location!(:account)
-    redirect_to new_account_session_url, :alert => "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
+    redirect_to new_account_session_url, alert: "Vous ne possédez pas les droits nécessaires pour accéder à cette partie du site"
   end
 
   def enforce_view_permission(resource)

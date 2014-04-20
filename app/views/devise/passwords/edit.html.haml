@@ -1,7 +1,7 @@
 %main#contents(role="main")
   %h2 Changer de mot de passe
 
-  = form_for @account, :url => password_path(:account), :method => :put do |f|
+  = form_for @account, url: password_path(:account), method: :put do |f|
     = devise_error_messages!
     = f.hidden_field :reset_password_token
     %p
@@ -13,4 +13,4 @@
     %p
       = f.submit "Enregistrer"
 
-  = render :partial => "devise/shared/links"
+  = render partial: "devise/shared/links"

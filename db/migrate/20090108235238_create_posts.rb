@@ -3,8 +3,8 @@ class CreatePosts < ActiveRecord::Migration
   def self.up
     create_table :posts do |t|
       t.references :forum
-      t.string :title,       :limit => 64, :null => false
-      t.string :cached_slug, :limit => 64
+      t.string :title,       limit: 64, null: false
+      t.string :cached_slug, limit: 64
       t.text :body
       t.text :wiki_body
       t.text :truncated_body

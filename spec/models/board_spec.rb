@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe Board do
   let(:john) do
-    user = double("John Doe", :to_param => "john-doe", :name => "John Doe")
+    user = double("John Doe", to_param: "john-doe", name: "John Doe")
     user.stub_chain(:account, :login).and_return("john")
     user
   end
@@ -22,7 +22,7 @@ describe Board do
     b.object_type.should == Board.free
     b.object_id.should be_nil
     b.message.should be_nil
-    b = Board.new(:object_type => Board.news, :object_id => news.id, :message => "foobar")
+    b = Board.new(object_type: Board.news, object_id: news.id, message: "foobar")
     b.object_type.should == Board.news
     b.object_id.should == news.id
     b.message.should == "foobar"
@@ -41,9 +41,9 @@ describe Board do
 
   it "can construct chan_key" do
     Board.chan_key(Board.free, nil).should == "boards/chans/free"
-    b = Board.new(:object_type => Board.free)
+    b = Board.new(object_type: Board.free)
     b.chan_key.should == "boards/chans/free"
-    b = Board.new(:object_type => Board.news, :object_id => news.id)
+    b = Board.new(object_type: Board.news, object_id: news.id)
     b.chan_key.should == "boards/chans/news/123"
   end
 
@@ -56,16 +56,16 @@ describe Board do
   end
 
   it "can't be possible to save a blank message" do
-    b = Board.new(:object_type => Board.news, :object_id => news.id, :message => "")
+    b = Board.new(object_type: Board.news, object_id: news.id, message: "")
     b.user = john
     b.save.should be_false
-    b = Board.new(:object_type => Board.news, :object_id => news.id)
+    b = Board.new(object_type: Board.news, object_id: news.id)
     b.user = john
     b.save.should be_false
   end
 
   it "can be saved and retrieved" do
-    b = Board.new(:object_type => Board.news, :object_id => news.id, :message => "foobar")
+    b = Board.new(object_type: Board.news, object_id: news.id, message: "foobar")
     b.user = john
     b.user_agent = "console"
     b.save.should be_true
@@ -84,7 +84,7 @@ describe Board do
 
   it "is sorted from the more recent to the older" do
     5.times do
-      b = Board.new(:object_type => Board.free, :message => "foobar")
+      b = Board.new(object_type: Board.free, message: "foobar")
       b.user = john
       b.user_agent = "console"
       b.save.should be_true
@@ -100,7 +100,7 @@ describe Board do
 
   it "should be limited to 100 messages" do
     110.times do
-      b = Board.new(:object_type => Board.free, :message => "foobar")
+      b = Board.new(object_type: Board.free, message: "foobar")
       b.user = john
       b.user_agent = "console"
       b.save

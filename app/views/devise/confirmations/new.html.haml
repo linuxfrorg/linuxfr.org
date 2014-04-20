@@ -1,7 +1,7 @@
 %main#contents(role="main")
   %h2 Renvoyer les instructions de confirmation
 
-  = form_for @account, :url => confirmation_path(:account) do |f|
+  = form_for @account, url: confirmation_path(:account) do |f|
     = messages_on_error @account
     %p
       = f.label :email, 'Adresse de courriel'
@@ -9,4 +9,4 @@
     %p
       = f.submit "Envoyer"
 
-  = render :partial => "devise/shared/links"
+  = render partial: "devise/shared/links"

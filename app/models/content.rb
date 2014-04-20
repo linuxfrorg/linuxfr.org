@@ -7,12 +7,12 @@ class Content < ActiveRecord::Base
   self.abstract_class = true
   include Canable::Ables
 
-  has_one :node, :as => :content, :dependent => :destroy, :inverse_of => :content
-  has_many :comments, :through => :node
+  has_one :node, as: :content, dependent: :destroy, inverse_of: :content
+  has_many :comments, through: :node
 
   # /!\ No scope here /!\
 
-  delegate :score, :user, :set_on_ppp, :on_ppp?, :tag_names, :to => :node
+  delegate :score, :user, :set_on_ppp, :on_ppp?, :tag_names, to: :node
 
   class << self; attr_accessor :type; end
 

@@ -1,7 +1,7 @@
 =h1 "Refuser une dépêche"
 
 - content_for :column do
-  = render 'boards/boards', :boards => @boards, :box => true
+  = render 'boards/boards', boards: @boards, box: true
 
 %h2 Utiliser un courriel de refus type
 = form_tag refuse_moderation_news_path(@news) do
@@ -10,13 +10,13 @@
     = select_tag :template, options_from_collection_for_select(Response.all, 'id', 'title')
   %div
     = label_tag :message, 'Message personnalisé qui sera ajouté dans le corps du courriel'
-    = text_area_tag :message, '', :cols => 120, :rows => 10
+    = text_area_tag :message, '', cols: 120, rows: 10
   = submit_tag "Refuser"
 
 %h2 Utiliser un courriel de refus personnalisé
 = form_tag refuse_moderation_news_path(@news) do
   %div
-    = text_area_tag :message, '', :cols => 120, :rows => 10
+    = text_area_tag :message, '', cols: 120, rows: 10
   = submit_tag "Refuser"
 
 %h2 Utiliser le courriel de refus en anglais

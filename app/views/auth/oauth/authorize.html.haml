@@ -9,5 +9,5 @@
   = hidden_field_tag :client_id, @application.app_id
   = hidden_field_tag :redirect_uri, @redirect_uri
   %p
-    = submit_tag "Refuser",  :class => "refuse_oauth"
-    = submit_tag "Accepter", :class => "accept_oauth"
+    = submit_tag "Refuser",  class: "refuse_oauth"
+    = submit_tag "Accepter", class: "accept_oauth"

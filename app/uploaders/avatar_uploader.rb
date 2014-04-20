@@ -6,7 +6,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   DEFAULT_AVATAR_URL = "//#{MY_DOMAIN}/images/default-avatar.png"
 
   include CarrierWave::MiniMagick
-  process :resize_and_pad => [AVATAR_SIZE, AVATAR_SIZE]
+  process resize_and_pad: [AVATAR_SIZE, AVATAR_SIZE]
 
   def base_dir
     Rails.root.join("uploads")

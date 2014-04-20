@@ -4,7 +4,7 @@ FactoryGirl.define do
     title "Articles"
   end
 
-  factory :default_section, :class => Section do
+  factory :default_section, class: Section do
     title "LinuxFr.org"
   end
 end

@@ -24,7 +24,7 @@ class Link < ActiveRecord::Base
   attr_accessor   :user
   attr_accessible :user, :title, :url, :lang
 
-  validates :title, :presence => { :message => "Un lien doit obligatoirement avoir un titre" }
+  validates :title, presence: { message: "Un lien doit obligatoirement avoir un titre" }
   validate  :authorized_protocol
 
   def url=(raw)
@@ -89,17 +89,17 @@ class Link < ActiveRecord::Base
 
   after_create :announce_create
   def announce_create
-    Push.create(news, as_json.merge(:kind => :add_link, :nb_clicks => 0))
+    Push.create(news, as_json.merge(kind: :add_link, nb_clicks: 0))
   end
 
   after_update :announce_update
   def announce_update
-    Push.create(news, as_json.merge(:kind => :update_link, :nb_clicks => nb_clicks))
+    Push.create(news, as_json.merge(kind: :update_link, nb_clicks: nb_clicks))
   end
 
   before_destroy :announce_destroy
   def announce_destroy
-    Push.create(news, :id => self.id, :kind => :remove_link)
+    Push.create(news, id: self.id, kind: :remove_link)
   end
 
 ### Lock ###

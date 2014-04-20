@@ -52,29 +52,29 @@ class Paragraph < ActiveRecord::Base
     parts
   end
 
-  before_validation :split_on_create, :on => :create
+  before_validation :split_on_create, on: :create
   def split_on_create
     return if already_split
     sentences = split_body
     self.wiki_body = sentences.pop
     sentences.each do |body|
-      news.paragraphs.create :wiki_body     => body,
-                             :second_part   => second_part,
-                             :already_split => true
+      news.paragraphs.create wiki_body: body,
+                             second_part: second_part,
+                             already_split: true
     end
   end
 
-  before_validation :split_on_update, :on => :update
+  before_validation :split_on_update, on: :update
   def split_on_update
     sentences = split_body
     self.wiki_body = sentences.shift
     sentences.inject(self) do |para,body|
-      news.paragraphs.create :wiki_body     => body,
-                             :second_part   => second_part,
-                             :already_split => true,
-                             :user          => user,
-                             :after         => para.id,
-                             :position      => para.position + 1
+      news.paragraphs.create wiki_body: body,
+                             second_part: second_part,
+                             already_split: true,
+                             user: user,
+                             after: para.id,
+                             position: para.position + 1
     end
   end
 
@@ -108,23 +108,23 @@ class Paragraph < ActiveRecord::Base
 
   after_create :announce_create
   def announce_create
-    Push.create(news, :id => self.id, :kind => :add_paragraph, :body => body, :after => after, :part => part)
+    Push.create(news, id: self.id, kind: :add_paragraph, body: body, after: after, part: part)
   end
 
   after_update :announce_update
   def announce_update
-    Push.create(news, :id => self.id, :kind => :update_paragraph, :body => body)
+    Push.create(news, id: self.id, kind: :update_paragraph, body: body)
   end
 
   before_destroy :announce_destroy
   def announce_destroy
-    Push.create(news, :id => self.id, :kind => :remove_paragraph)
+    Push.create(news, id: self.id, kind: :remove_paragraph)
   end
 
   # Warning, acts_as_list also declares a before_destroy callback,
   # and this callback must be called after +announce_destroy+.
   # So do NOT move this line upper in this file.
-  acts_as_list :scope => :news
+  acts_as_list scope: :news
 
 ### Lock ###
 
@@ -138,13 +138,13 @@ class Paragraph < ActiveRecord::Base
     return locker_id.to_i == user.id if locker_id
     $redis.set lock_key, user.id
     $redis.expire lock_key, 1200
-    Push.create(news, :id => self.id, :kind => :lock_paragraph, :user => { :name => user.name, :avatar => user.avatar_url })
+    Push.create(news, id: self.id, kind: :lock_paragraph, user: { name: user.name, avatar: user.avatar_url })
     true
   end
 
   def unlock
     $redis.del lock_key
-    Push.create(news, :id => self.id, :kind => :unlock_paragraph)
+    Push.create(news, id: self.id, kind: :unlock_paragraph)
   end
 
   def locked?

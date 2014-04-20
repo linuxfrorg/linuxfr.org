@@ -10,10 +10,10 @@
 #
 
 class Tag < ActiveRecord::Base
-  has_many :taggings, :dependent => :destroy, :inverse_of => :tag
-  has_many :nodes, :through => :taggings # FIXME rails41 , :uniq => true
+  has_many :taggings, dependent: :destroy, inverse_of: :tag
+  has_many :nodes, through: :taggings # FIXME rails41 , uniq: true
 
-  validates :name, :presence => true
+  validates :name, presence: true
 
   attr_accessor :tagged_by_current
   attr_accessible :name

@@ -23,14 +23,14 @@ class Diary < Content
   self.table_name = "diaries"
   self.type = "Journal"
 
-  belongs_to :owner, :class_name => 'User'
-  belongs_to :converted_news, :class_name => 'News'
+  belongs_to :owner, class_name: 'User'
+  belongs_to :converted_news, class_name: 'News'
 
   attr_accessible :title, :wiki_body
 
-  validates :title,     :presence => { :message => "Le titre est obligatoire" },
-                        :length   => { :maximum => 100, :message => "Le titre est trop long" }
-  validates :wiki_body, :presence => { :message => "Vous ne pouvez pas poster un journal vide" }
+  validates :title,     presence: { message: "Le titre est obligatoire" },
+                        length: { maximum: 100, message: "Le titre est trop long" }
+  validates :wiki_body, presence: { message: "Vous ne pouvez pas poster un journal vide" }
 
   wikify_attr   :body
   truncate_attr :body
@@ -46,22 +46,22 @@ class Diary < Content
 
   scope :indexable, -> { joins(:node).where('nodes.public' => true) }
 
-  mapping :dynamic => false do
-    indexes :created_at, :type => 'date'
+  mapping dynamic: false do
+    indexes :created_at, type: 'date'
     indexes :username
-    indexes :title,      :analyzer => 'french'
-    indexes :body,       :analyzer => 'french'
-    indexes :tags,       :analyzer => 'keyword'
+    indexes :title,      analyzer: 'french'
+    indexes :body,       analyzer: 'french'
+    indexes :tags,       analyzer: 'keyword'
   end
 
   def as_indexed_json(options={})
     {
-      :id => self.id,
-      :created_at => created_at,
-      :username => owner.try(:name),
-      :title => title,
-      :body => body,
-      :tags => tag_names,
+      id: self.id,
+      created_at: created_at,
+      username: owner.try(:name),
+      title: title,
+      body: body,
+      tags: tag_names,
     }
   end
 
@@ -82,17 +82,17 @@ class Diary < Content
 ### Moving ###
 
   def convert
-    @news = News.new :title            => title,
-                     :wiki_body        => "**TODO** insérer une synthèse du journal\n\nNdM : merci à #{owner.try(:name)} pour son journal.",
-                     :wiki_second_part => wiki_body,
-                     :section_id       => Section.default.id
+    @news = News.new title: title,
+                     wiki_body: "**TODO** insérer une synthèse du journal\n\nNdM : merci à #{owner.try(:name)} pour son journal.",
+                     wiki_second_part: wiki_body,
+                     section_id: Section.default.id
     @news.author_name  = owner.try(:name)
     @news.author_email = owner.try(:account).try(:email)
     saved = @news.save
     if saved
       $redis.set "convert/#{@news.id}", self.id
       @news.node.update_column(:cc_licensed, true) if node.cc_licensed?
-      @news.links.create :title => "Journal à l'origine de la dépêche", :url => "#{MY_DOMAIN}/users/#{owner.to_param}/journaux/#{to_param}", :lang => "fr"
+      @news.links.create title: "Journal à l'origine de la dépêche", url: "#{MY_DOMAIN}/users/#{owner.to_param}/journaux/#{to_param}", lang: "fr"
       @news.submit! unless node.cc_licensed?
       @news
     else
@@ -109,7 +109,7 @@ class Diary < Content
       # Note: the 2 nodes are swapped so that all references to the diairy
       # (comments, tags, etc.) are moved to the post.
       other = @post.node
-      other.attributes = node.attributes.except("id").merge(:content_type => "XXX", :public => false)
+      other.attributes = node.attributes.except("id").merge(content_type: "XXX", public: false)
       other.save
       node.update_column :content_type, "Post"
       node.update_column :content_id, @post.id

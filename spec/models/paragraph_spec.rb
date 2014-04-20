@@ -29,7 +29,7 @@ sur plusieurs lignes.
 
 Un autre paragraphe.
 EOS
-    parts = Paragraph.new(:wiki_body => wiki_body).split_body
+    parts = Paragraph.new(wiki_body: wiki_body).split_body
     parts.should have(4).items
     parts[0].should == "Titre 1\n=======\n\n"
     parts[1].should == "Titre 2\n-------\n\n"
@@ -51,7 +51,7 @@ foo()
 ```
 Un paragraphe
 EOS
-    parts = Paragraph.new(:wiki_body => wiki_body).split_body
+    parts = Paragraph.new(wiki_body: wiki_body).split_body
     parts.should have(3).items
     parts[0].should == "Titre 1\n=======\n\n"
     parts[1].should == "```ruby\ndef foo\n  puts 'foo'\nend\n\nfoo()\n```\n\n"
@@ -59,7 +59,7 @@ EOS
   end
 
   it "splits text in paragraphs, even when they are some trailing spaces" do
-    parts = Paragraph.new(:wiki_body => "## Title ##\n  Foobar\n  \nbaz\n").split_body
+    parts = Paragraph.new(wiki_body: "## Title ##\n  Foobar\n  \nbaz\n").split_body
     parts.should have(2).items
     parts[0].should == "## Title ##\n  Foobar\n  \n"
     parts[1].should == "baz\n"

@@ -8,7 +8,7 @@ class Admin::LogosController < AdminController
 
   def create
     Logo.image = params[:logo]
-    redirect_to admin_logo_url, :notice => "Changement de logo enregistré"
+    redirect_to admin_logo_url, notice: "Changement de logo enregistré"
   end
 
 end

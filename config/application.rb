@@ -11,7 +11,7 @@ module LinuxfrOrg
 
     config.generators do |g|
       g.template_engine  :haml
-      g.test_framework   :rspec, :fixture_replacement => :factory_girl
+      g.test_framework   :rspec, fixture_replacement: :factory_girl
       g.view_specs       false
       g.helper           false
       g.assets           false

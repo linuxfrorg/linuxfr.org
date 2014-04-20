@@ -1,20 +1,20 @@
 %main#contents(role="main")
   =h1 "Éditer un journal"
 
-  = render "preview", :preview => @diary if @preview_mode
+  = render "preview", preview: @diary if @preview_mode
 
   %h2 Édition
   = form_for [@diary.owner, @diary] do |form|
     = render form
 
   %h2 Modération
-  = form_for Post.new, :url => move_user_diary_path(:user_id => @diary.owner, :id => @diary) do |form|
+  = form_for Post.new, url: move_user_diary_path(user_id: @diary.owner, id: @diary) do |form|
     %p
       = form.label :forum_id, "Forum"
-      = form.select :forum_id, forums_select_list, { :include_blank => true }, { :required => "required" }
+      = form.select :forum_id, forums_select_list, { include_blank: true }, { required: "required" }
     %p
-      = form.submit "Déplacer vers les forums", :data => { :confirm => "Êtes-vous sûr de vouloir déplacer ce journal ?" }
-  = button_to "Proposer en dépêche", convert_user_diary_path(:user_id => @diary.owner, :id => @diary), :class => "ok_button"
-  = button_to "Supprimer", [@diary.owner, @diary], :method => :delete, :data => { :confirm => "Êtes-vous sûr de vouloir supprimer ce journal ?" }, :class => "delete_button"
+      = form.submit "Déplacer vers les forums", data: { confirm: "Êtes-vous sûr de vouloir déplacer ce journal ?" }
+  = button_to "Proposer en dépêche", convert_user_diary_path(user_id: @diary.owner, id: @diary), class: "ok_button"
+  = button_to "Supprimer", [@diary.owner, @diary], method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce journal ?" }, class: "delete_button"
 
   = render 'shared/wiki_help'

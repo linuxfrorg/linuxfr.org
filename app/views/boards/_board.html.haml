@@ -1,5 +1,5 @@
-%p.chat{:id => "board-#{board.id}"}
-  %span{:class => "board-left", :title => board.user_agent}
-    %time.norloge{:datetime => board.created_at.iso8601}= norloge(board, box)
+%p.chat{id: "board-#{board.id}"}
+  %span{class: "board-left", title: board.user_agent}
+    %time.norloge{datetime: board.created_at.iso8601}= norloge(board, box)
     %b= board.user_link
-  %span{:class => "board-right"}= board.message
+  %span{class: "board-right"}= board.message

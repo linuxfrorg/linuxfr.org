@@ -1,14 +1,14 @@
 %main#contents(role="main")
   =h1 "S'inscrire"
 
-  = form_for @account, :as =>:account, :url => registration_path(:account) do |f|
+  = form_for @account, :as =>:account, url: registration_path(:account) do |f|
     = messages_on_error @account
     %p
       = f.label :login, "Identifiant"
-      = f.text_field :login, :required => 'required', :maxlength => 40
+      = f.text_field :login, required: 'required', maxlength: 40
     %p
       = f.label :email, "Adresse de courriel"
-      = f.email_field :email, :required => "required"
+      = f.email_field :email, required: "required"
     %p
       = f.submit "S'inscrire"
 
@@ -32,4 +32,4 @@
     %p
       Conformément à la loi informatique et liberté, vous pouvez modifier vos informations personnelles par le biais du formulaire web de gestion de vos paramètres utilisateurs.
 
-  = render :partial => "devise/shared/links"
+  = render partial: "devise/shared/links"

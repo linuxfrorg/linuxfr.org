@@ -51,7 +51,7 @@ class Statistics::Users < Statistics::Statistics
   end
 
   def accounts_with_no_contents
-    no_contents_sql = Account.bitfield_sql(:news_on_home => false, :diaries_on_home => false, :posts_on_home => false, :polls_on_home => false, :wiki_pages_on_home => false, :trackers_on_home => false)
+    no_contents_sql = Account.bitfield_sql(news_on_home: false, diaries_on_home: false, posts_on_home: false, polls_on_home: false, wiki_pages_on_home: false, trackers_on_home: false)
     count "SELECT COUNT(*) AS cnt FROM accounts WHERE #{no_contents_sql} AND current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive'"
   end
 

@@ -15,12 +15,12 @@
 # The news are classified in several sections.
 #
 class Section < ActiveRecord::Base
-  has_many :news, :inverse_of => :section
+  has_many :news, inverse_of: :section
 
   scope :published, -> { where(state: "published").order("title") }
 
-  validates :title, :presence   => { :message => "Le titre est obligatoire" },
-                    :uniqueness => { :message => "Ce titre est déjà utilisé" }
+  validates :title, presence: { message: "Le titre est obligatoire" },
+                    uniqueness: { message: "Ce titre est déjà utilisé" }
 
 ### SEO ###
 
@@ -35,7 +35,7 @@ class Section < ActiveRecord::Base
 
 ### Workflow ###
 
-  state_machine :state, :initial => :published do
+  state_machine :state, initial: :published do
     event :reopen  do transition :archived => :published end
     event :archive do transition :published => :archived end
   end

@@ -1,7 +1,7 @@
 # encoding: UTF-8
 #
 class Redaction::ParagraphsController < RedactionController
-  before_action :find_paragraph, :except => [:create]
+  before_action :find_paragraph, except: [:create]
 
   def create
     @news = News.find(params[:news_id])
@@ -12,8 +12,8 @@ class Redaction::ParagraphsController < RedactionController
     else
       paragraphs = @news.paragraphs.in_second_part
     end
-    paragraphs.create(:wiki_body => "Vous pouvez éditer ce paragraphe en cliquant sur le crayon", :user => current_user)
-    render :nothing => true
+    paragraphs.create(wiki_body: "Vous pouvez éditer ce paragraphe en cliquant sur le crayon", user: current_user)
+    render nothing: true
   end
 
   def show
@@ -22,9 +22,9 @@ class Redaction::ParagraphsController < RedactionController
 
   def edit
     if @paragraph.lock_by(current_user)
-      render :partial => 'form'
+      render partial: 'form'
     else
-      render :status => :forbidden, :text => "Désolé, #{@paragraph.locker} est déjà en train de modifier ce paragraphe !"
+      render status: :forbidden, text: "Désolé, #{@paragraph.locker} est déjà en train de modifier ce paragraphe !"
     end
   end
 
@@ -36,7 +36,7 @@ class Redaction::ParagraphsController < RedactionController
 
   def unlock
     @paragraph.unlock
-    render :nothing => true
+    render nothing: true
   end
 
 protected

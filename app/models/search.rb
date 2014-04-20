@@ -10,8 +10,8 @@ class Search
   }
 
   INDICES_BOOST = {
-    :pages => 1000,  # Old + long body => needs a very large boost to compete with news
-    :news  => 3
+    pages: 1000,  # Old + long body => needs a very large boost to compete with news
+    news: 3
   }
 
   FIELDS_BOOST = [
@@ -45,76 +45,76 @@ class Search
 
   def run
     query = {
-      :query => {
-        :filtered => ->{
+      query: {
+        filtered: ->{
           filtered = {
-            :query => {
-              :simple_query_string => {
-                :query  => @query,
-                :fields => FIELDS_BOOST
+            query: {
+              simple_query_string: {
+                query: @query,
+                fields: FIELDS_BOOST
               }
             }
           }
 
           filters = []
           filters << {
-            :range => {
-              :created_at => { :gte => @start, :lte => Date.tomorrow }
+            range: {
+              created_at: { gte: @start, lte: Date.tomorrow }
             }
           } if @start
-          filters << { :term => { facet => @value } } if @value
+          filters << { term: { facet => @value } } if @value
           @tags.each do |tag|
-            filters << { :term => { :tags => tag } }
+            filters << { term: { tags: tag } }
           end
-          filtered[:filter] = { :and => filters } if filters.any?
+          filtered[:filter] = { and: filters } if filters.any?
 
           filtered
         }.call
       },
 
-      :aggs => ->{
+      aggs: ->{
         aggs = {}
         aggs[:types] = {
-          :terms => {
-            :field => "_type",
-            :order => { :_count => "desc" }
+          terms: {
+            field: "_type",
+            order: { _count: "desc" }
           }
         } unless @type
         aggs[:facets] = {
-          :terms => {
-            :field => facet,
-            :order => { :_count => "desc" }
+          terms: {
+            field: facet,
+            order: { _count: "desc" }
           }
         } if facet && !@value
         aggs[:tags] = {
-          :terms => {
-            :field => "tags",
-            :order => { :_count => "desc" },
-            :min_doc_count => 2,
+          terms: {
+            field: "tags",
+            order: { _count: "desc" },
+            min_doc_count: 2,
           }
         }
         aggs[:periods] = {
-          :date_range => {
-            :field => "created_at",
-            :ranges => available_periods
+          date_range: {
+            field: "created_at",
+            ranges: available_periods
           }
         } unless @start
         aggs
       }.call,
 
-      :indices_boost => INDICES_BOOST
+      indices_boost: INDICES_BOOST
     }
-    query[:sort] = [ { :created_at => :desc } ] if by_date?
+    query[:sort] = [ { created_at: :desc } ] if by_date?
 
     if by_mix?
       query[:query] = {
-        :function_score => {
-          :query => query[:query],
-          :exp => {
-            :created_at => {
-              :origin => Date.today.to_s,
-              :scale  => "1w",
-              :decay  => 0.99
+        function_score: {
+          query: query[:query],
+          exp: {
+            created_at: {
+              origin: Date.today.to_s,
+              scale: "1w",
+              decay: 0.99
             }
           }
         }
@@ -131,8 +131,8 @@ class Search
     if response.nil?
       models  = MultipleModels.new(Models)
       options = {
-       :index => models.map { |c| c.index_name },
-       :type  => models.map { |c| c.document_type }
+       index: models.map { |c| c.index_name },
+       type: models.map { |c| c.document_type }
       }
       search  = Searching::SearchRequest.new(models, query, options)
       response = Response::Response.new(models, search)
@@ -143,9 +143,9 @@ class Search
 
   def available_periods
     [
-      { :from => "now-1w/d" },  # last week
-      { :from => "now-1M/d" },  # last month
-      { :from => "now-1y/d" },  # last year
+      { from: "now-1w/d" },  # last week
+      { from: "now-1M/d" },  # last month
+      { from: "now-1y/d" },  # last year
     ]
   end
 

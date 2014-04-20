@@ -1,8 +1,8 @@
 # encoding: UTF-8
 class Moderation::NewsController < ModerationController
-  before_action :find_news, :except => [:index]
-  after_action  :expire_cache, :only => [:update, :accept]
-  after_action  :marked_as_read, :only => [:show, :update, :vote]
+  before_action :find_news, except: [:index]
+  after_action  :expire_cache, only: [:update, :accept]
+  after_action  :marked_as_read, only: [:show, :update, :vote]
   respond_to :html, :md
 
   def index
@@ -19,17 +19,17 @@ class Moderation::NewsController < ModerationController
     respond_to do |wants|
       wants.html {
         path = moderation_news_path(@news)
-        redirect_to path, :status => 301 and return if request.path != path
-        render :show, :layout => 'chat_n_edit'
+        redirect_to path, status: 301 and return if request.path != path
+        render :show, layout: 'chat_n_edit'
       }
-      wants.js { render :partial => 'short' }
+      wants.js { render partial: 'short' }
       wants.md { @news.put_paragraphs_together }
     end
   end
 
   def edit
     enforce_update_permission(@news)
-    render :partial => 'form'
+    render partial: 'form'
   end
 
   def update
@@ -40,9 +40,9 @@ class Moderation::NewsController < ModerationController
     @news.editor = current_account
     @news.save
     if request.xhr?
-      render :partial => 'short'
+      render partial: 'short'
     else
-      redirect_to @news, :notice => "Modification enregistrée"
+      redirect_to @news, notice: "Modification enregistrée"
     end
   end
 
@@ -52,9 +52,9 @@ class Moderation::NewsController < ModerationController
       @news.moderator_id = current_user.id
       @news.accept!
       NewsNotifications.accept(@news).deliver
-      redirect_to @news, :alert => "Dépêche acceptée"
+      redirect_to @news, alert: "Dépêche acceptée"
     else
-      redirect_to [:moderation, @news], :alert => "Impossible de modérer la dépêche tant que quelqu'un est en train de la modifier"
+      redirect_to [:moderation, @news], alert: "Impossible de modérer la dépêche tant que quelqu'un est en train de la modifier"
     end
   end
 
@@ -70,7 +70,7 @@ class Moderation::NewsController < ModerationController
     elsif @news.unlocked?
       @boards = Board.all(Board.news, @news.id)
     else
-      redirect_to [:moderation, @news], :alert => "Impossible de modérer la dépêche tant que quelqu'un est train de la modifier"
+      redirect_to [:moderation, @news], alert: "Impossible de modérer la dépêche tant que quelqu'un est train de la modifier"
     end
   end
 
@@ -80,26 +80,26 @@ class Moderation::NewsController < ModerationController
       @news.moderator_id = current_user.id
       @news.rewrite!
       NewsNotifications.rewrite(@news).deliver
-      redirect_to @news, :alert => "Dépêche renvoyée en rédaction"
+      redirect_to @news, alert: "Dépêche renvoyée en rédaction"
     else
-      redirect_to [:moderation, @news], :alert => "Impossible de modérer la dépêche tant que quelqu'un est en train de la modifier"
+      redirect_to [:moderation, @news], alert: "Impossible de modérer la dépêche tant que quelqu'un est en train de la modifier"
     end
   end
 
   def reset
     enforce_reset_permission(@news)
     @news.reset_votes
-    redirect_to [:moderation, @news], :notice => "Votes remis à zéro"
+    redirect_to [:moderation, @news], notice: "Votes remis à zéro"
   end
 
   def ppp
     enforce_ppp_permission(@news)
     @news.set_on_ppp
-    redirect_to [:moderation, @news], :notice => "Cette dépêche est maintenant affichée en phare"
+    redirect_to [:moderation, @news], notice: "Cette dépêche est maintenant affichée en phare"
   end
 
   def vote
-    render :partial => "vote"
+    render partial: "vote"
   end
 
 protected
@@ -114,8 +114,8 @@ protected
 
   def expire_cache
     return if @news.state == "candidate"
-    expire_page :controller => '/news', :action => :index, :format => :atom
-    expire_action :controller => '/news', :action => :show, :id => @news.to_param
+    expire_page controller: '/news', action: :index, format: :atom
+    expire_action controller: '/news', action: :show, id: @news.to_param
   end
 
 end

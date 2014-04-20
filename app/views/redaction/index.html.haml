@@ -2,7 +2,7 @@
   .notice
     = link_to "Êtes-vous inscrit à la liste de diffusion des rédacteurs ?", "/news/une-liste-de-diffusion-pour-les-redacteurs-de-linuxfr-org"
   =h1 "Tribune rédacteurs"
-  = render 'boards/boards', :boards => @boards, :box => false
+  = render 'boards/boards', boards: @boards, box: false
 
 %aside.more
   #top_redactors
@@ -15,7 +15,7 @@
   #news
     %h1 Dépêches en cours de rédaction
     - feed "Flux atom des dépêches en cours de rédaction", "/redaction/news.atom"
-    = button_to "Commencer une nouvelle dépêche", "/redaction/news", :class => "create_news"
+    = button_to "Commencer une nouvelle dépêche", "/redaction/news", class: "create_news"
     (sous #{link_to "licence CC by-sa", "http://creativecommons.org/licenses/by-sa/4.0/deed.fr"})
     %p
       = link_to "Règles de modération", "/regles_de_moderation"
@@ -28,7 +28,7 @@
       %ul
         = list_of @drafts do |n|
           - if n.node.board_status(current_account) == :new_board
-            = image_tag "/images/icones/chat.svg", :alt => "Nouveaux !", :title => "Il y a de l'activité sur cette dépêche", :width => "16px"
+            = image_tag "/images/icones/chat.svg", alt: "Nouveaux !", title: "Il y a de l'activité sur cette dépêche", width: "16px"
           = link_to n.title, [:redaction, n]
 
   #candidate_news

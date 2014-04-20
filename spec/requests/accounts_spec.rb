@@ -6,8 +6,8 @@ describe "Accounts" do
 
   it "should authenticate use successfully" do
     get new_account_session_path
-    fill_in 'account[login]', :with => account.login
-    fill_in 'account[password]', :with => 'I<3J2EE'
+    fill_in 'account[login]', with: account.login
+    fill_in 'account[password]', with: 'I<3J2EE'
     click_button "Se connecter"
     response.should_not contain("Identifiant ou mot de passe invalide.")
   end

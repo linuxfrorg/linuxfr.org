@@ -2,6 +2,6 @@
   %h1 Derniers contenus
   %ul
     - @contents.each do |node|
-      %li{:class => node.content_type}
+      %li{class: node.content_type}
         %span.content_type= translate_content_type node.content_type
         = link_to_content node.content

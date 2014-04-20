@@ -16,9 +16,9 @@
     = @news.voters_against
   - if current_account.can_vote?(@news)
     %div
-      = button_to "Pour", "/nodes/#{@news.node.id}/vote/for", :remote => true, :class => "vote_for"
+      = button_to "Pour", "/nodes/#{@news.node.id}/vote/for", remote: true, class: "vote_for"
       ou
-      = button_to "Contre", "/nodes/#{@news.node.id}/vote/against", :remote => :true, :class => "vote_against"
+      = button_to "Contre", "/nodes/#{@news.node.id}/vote/against", remote: :true, class: "vote_against"
 
   - if @news.published?
     %p
@@ -26,22 +26,22 @@
     - if @news.on_ppp?
       %strong Affichée en phare
     - elsif current_account.can_ppp?(@news)
-      = button_to "Mettre en phare", ppp_moderation_news_path(@news), :class => "ppp_news"
+      = button_to "Mettre en phare", ppp_moderation_news_path(@news), class: "ppp_news"
   - elsif @news.refused?
     %p
       %strong Dépêche refusée
   - else
     - if @news.acceptable? && current_account.can_accept?(@news)
-      = button_to "Publier", accept_moderation_news_path(@news), :class => "publish_news"
+      = button_to "Publier", accept_moderation_news_path(@news), class: "publish_news"
     - elsif @news.refusable? && current_account.can_refuse?(@news)
-      = button_to "Refuser", refuse_moderation_news_path(@news), :class => "refuse_news"
+      = button_to "Refuser", refuse_moderation_news_path(@news), class: "refuse_news"
       - if @news.node.cc_licensed?
-        = button_to "Re-rédaction", rewrite_moderation_news_path(@news), :class => "rewrite_news"
+        = button_to "Re-rédaction", rewrite_moderation_news_path(@news), class: "rewrite_news"
     - elsif current_account.admin?
       %button#admin_49_3.more 49.3 autoritaire
       .more_actions(style="display: none;")
-        = button_to "Publier", accept_moderation_news_path(@news), :class => "publish_news"
-        = button_to "Refuser", refuse_moderation_news_path(@news), :class => "refuse_news"
-        = button_to "Revoter", reset_moderation_news_path(@news), :class => "reset_news"
+        = button_to "Publier", accept_moderation_news_path(@news), class: "publish_news"
+        = button_to "Refuser", refuse_moderation_news_path(@news), class: "refuse_news"
+        = button_to "Revoter", reset_moderation_news_path(@news), class: "reset_news"
         - if @news.node.cc_licensed?
-          = button_to "Re-rédaction", rewrite_moderation_news_path(@news), :class => "rewrite_news"
+          = button_to "Re-rédaction", rewrite_moderation_news_path(@news), class: "rewrite_news"

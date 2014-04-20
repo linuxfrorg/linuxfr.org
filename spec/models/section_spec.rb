@@ -14,7 +14,7 @@
 require 'spec_helper'
 
 describe Section do
-  subject { FactoryGirl.build(:section, :title => "Ruby") }
+  subject { FactoryGirl.build(:section, title: "Ruby") }
 
   it { should be_valid }
 

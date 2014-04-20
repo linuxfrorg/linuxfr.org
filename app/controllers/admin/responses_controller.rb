@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class Admin::ResponsesController < AdminController
-  before_action :find_response, :only => [:edit, :update, :destroy]
+  before_action :find_response, only: [:edit, :update, :destroy]
 
   def index
     @responses = Response.all
@@ -13,7 +13,7 @@ class Admin::ResponsesController < AdminController
   def create
     @response = Response.new(params[:response])
     if @response.save
-      redirect_to admin_responses_url, :notice => 'Nouvelle réponse créée.'
+      redirect_to admin_responses_url, notice: 'Nouvelle réponse créée.'
     else
       flash.now[:alert] = "Impossible d'enregistrer cette réponse"
       render :new
@@ -26,7 +26,7 @@ class Admin::ResponsesController < AdminController
   def update
     @response.attributes = params[:response]
     if @response.save
-      redirect_to admin_responses_url, :notice => 'Réponse mise à jour.'
+      redirect_to admin_responses_url, notice: 'Réponse mise à jour.'
     else
       flash.now[:alert] = "Impossible d'enregistrer cette réponse"
       render :edit
@@ -35,7 +35,7 @@ class Admin::ResponsesController < AdminController
 
   def destroy
     @response.destroy
-    redirect_to admin_responses_url, :notice => 'Réponse supprimée'
+    redirect_to admin_responses_url, notice: 'Réponse supprimée'
   end
 
 protected

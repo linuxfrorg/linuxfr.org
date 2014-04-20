@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class Admin::FriendSitesController < AdminController
-  before_action :find_friend_site, :except => [:index, :new, :create]
-  after_action  :expire_cache,     :except => [:index, :new, :edit]
+  before_action :find_friend_site, except: [:index, :new, :create]
+  after_action  :expire_cache,     except: [:index, :new, :edit]
 
   def index
     @friend_sites = FriendSite.all
@@ -16,7 +16,7 @@ class Admin::FriendSitesController < AdminController
     @friend_site.attributes = params[:friend_site]
     if @friend_site.save
       @friend_site.move_to_bottom
-      redirect_to admin_friend_sites_url, :notice => "Site ami créé"
+      redirect_to admin_friend_sites_url, notice: "Site ami créé"
     else
       flash.now[:alert] = "Impossible d'enregistrer ce site"
       render :new
@@ -29,7 +29,7 @@ class Admin::FriendSitesController < AdminController
   def update
     @friend_site.attributes = params[:friend_site]
     if @friend_site.save
-      redirect_to admin_friend_sites_url, :notice => "Site ami modifié"
+      redirect_to admin_friend_sites_url, notice: "Site ami modifié"
     else
       flash.now[:alert] = "Impossible d'enregistrer ce site"
       render :edit
@@ -38,7 +38,7 @@ class Admin::FriendSitesController < AdminController
 
   def destroy
     @friend_site.destroy
-    redirect_to admin_friend_sites_url, :notice => "Site ami supprimé"
+    redirect_to admin_friend_sites_url, notice: "Site ami supprimé"
   end
 
   def lower

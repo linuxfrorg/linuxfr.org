@@ -1,4 +1,4 @@
 = form_for [:redaction, @paragraph] do |form|
-  = form.text_area :wiki_body, :spellcheck => 'true', :class => 'markItUp'
-  %button.cancel{'data-url' => unlock_redaction_paragraph_path(@paragraph), :type => "button"} Annuler
+  = form.text_area :wiki_body, spellcheck: 'true', class: 'markItUp'
+  %button.cancel{'data-url' => unlock_redaction_paragraph_path(@paragraph), type: "button"} Annuler
   = form.submit "OK"

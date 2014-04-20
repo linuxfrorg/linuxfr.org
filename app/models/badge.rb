@@ -22,7 +22,7 @@ class Badge < ActiveRecord::Base
   attr_accessible *fields
 
   fields.each do |field|
-    validates field, :presence => { :message => "est un champ obligatoire" }
+    validates field, presence: { message: "est un champ obligatoire" }
   end
 
   def self.to_csv

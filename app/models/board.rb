@@ -55,8 +55,8 @@ class Board
   end
 
   def push
-    rendered = BoardsController.new.render_to_body(:partial => "board", :locals => { :board => self, :box => false })
-    Push.create(meta, :kind => :chat, :message => rendered)
+    rendered = BoardsController.new.render_to_body(partial: "board", locals: { board: self, box: false })
+    Push.create(meta, kind: :chat, message: rendered)
   end
 
   def self.chan_key(object_type, object_id)
@@ -87,7 +87,7 @@ class Board
     node = Nokogiri::HTML::DocumentFragment.new(doc)
     inner_sanitize(node, msg[0, 500])
     msg = Rinku.auto_link(node.to_s, :urls) { "[url]" }
-    sanitize(msg, :tags => ALLOWED_TAGS + ['a'])
+    sanitize(msg, tags: ALLOWED_TAGS + ['a'])
   end
 
   def inner_sanitize(parent, str)
@@ -117,12 +117,12 @@ class Board
     boards = ids.map do |i|
       vals = $redis.hgetall("boards/msg/#{i}")
       next if vals.nil?
-      b = Board.new(:object_type => object_type, :object_id => object_id)
+      b = Board.new(object_type: object_type, object_id: object_id)
       b.id = i.to_i
       b.load(vals)
       b
     end
-    (class << boards; self; end).send(:define_method, :build) { Board.new(:object_type => object_type, :object_id => object_id) }
+    (class << boards; self; end).send(:define_method, :build) { Board.new(object_type: object_type, object_id: object_id) }
     boards
   end
 

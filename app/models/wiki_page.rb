@@ -19,22 +19,22 @@ class WikiPage < Content
   self.type = "Page wiki"
 
   RESERVED_WORDS = %w(index nouveau modifications pages)
-  has_many :versions, :class_name => 'WikiVersion',
-                      :dependent  => :destroy,
-                      # FIXME rails41 :order      => 'version DESC',
-                      :inverse_of => :wiki_page
+  has_many :versions, class_name: 'WikiVersion',
+                      dependent: :destroy,
+                      # FIXME rails41 order: 'version DESC',
+                      inverse_of: :wiki_page
   reserved = RESERVED_WORDS + RESERVED_WORDS.map(&:capitalize) + RESERVED_WORDS.map(&:upcase)
-  validates :title, :presence  => { :message => "Le titre est obligatoire" },
-                    :length    => { :maximum => 100, :message => "Le titre est trop long" },
-                    :exclusion => { :in => reserved, :message => "Ce titre est réservé pour une page spéciale" }
-  validates :body,  :presence  => { :message => "Le corps est obligatoire" }
+  validates :title, presence: { message: "Le titre est obligatoire" },
+                    length: { maximum: 100, message: "Le titre est trop long" },
+                    exclusion: { in: reserved, message: "Ce titre est réservé pour une page spéciale" }
+  validates :body,  presence: { message: "Le corps est obligatoire" }
 
   scope :sorted, -> { order('created_at DESC') }
 
 ### SEO ###
 
   extend FriendlyId
-  friendly_id :title, :reserved_words => RESERVED_WORDS
+  friendly_id :title, reserved_words: RESERVED_WORDS
 
 ### Search ####
 
@@ -42,22 +42,22 @@ class WikiPage < Content
 
   scope :indexable, -> { joins(:node).where('nodes.public' => true) }
 
-  mapping :dynamic => false do
-    indexes :created_at, :type => 'date'
+  mapping dynamic: false do
+    indexes :created_at, type: 'date'
     indexes :username
-    indexes :title,      :analyzer => 'french'
-    indexes :body,       :analyzer => 'french'
-    indexes :tags,       :analyzer => 'keyword'
+    indexes :title,      analyzer: 'french'
+    indexes :body,       analyzer: 'french'
+    indexes :tags,       analyzer: 'keyword'
   end
 
   def as_indexed_json(options={})
     {
-      :id => self.id,
-      :created_at => created_at,
-      :username => user.try(:name),
-      :title => title,
-      :body => body,
-      :tags => tag_names,
+      id: self.id,
+      created_at: created_at,
+      username: user.try(:name),
+      title: title,
+      body: body,
+      tags: tag_names,
     }
   end
 
@@ -71,7 +71,7 @@ class WikiPage < Content
   after_save :create_new_version
   def create_new_version
     self.message = "révision n°#{versions.count + 1}" if message.blank?
-    versions.create(:user_id => user_id, :body => wiki_body, :message => message)
+    versions.create(user_id: user_id, body: wiki_body, message: message)
   end
 
 ### Associated node ###

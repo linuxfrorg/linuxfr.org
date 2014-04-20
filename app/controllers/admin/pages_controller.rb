@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class Admin::PagesController < AdminController
-  before_action :find_page, :only => [:edit, :update, :destroy]
-  after_action :expire_cache, :only => [:update]
+  before_action :find_page, only: [:edit, :update, :destroy]
+  after_action :expire_cache, only: [:update]
 
   def index
     @pages = Page.all
@@ -14,7 +14,7 @@ class Admin::PagesController < AdminController
   def create
     @page = Page.new(params[:page])
     if @page.save
-      redirect_to admin_pages_url, :notice => 'Nouvelle page créée.'
+      redirect_to admin_pages_url, notice: 'Nouvelle page créée.'
     else
       flash.now[:alert] = "Impossible d'enregistrer cette page"
       render :new
@@ -27,7 +27,7 @@ class Admin::PagesController < AdminController
   def update
     @page.attributes = params[:page]
     if @page.save
-      redirect_to admin_pages_url, :notice => 'Page mise à jour.'
+      redirect_to admin_pages_url, notice: 'Page mise à jour.'
     else
       flash.now[:alert] = "Impossible d'enregistrer cette page"
       render :edit
@@ -36,7 +36,7 @@ class Admin::PagesController < AdminController
 
   def destroy
     @page.destroy
-    redirect_to admin_pages_url, :notice => 'Page supprimée'
+    redirect_to admin_pages_url, notice: 'Page supprimée'
   end
 
 protected
@@ -46,6 +46,6 @@ protected
   end
 
   def expire_cache
-    expire_action :controller => '/static', :action => :show, :id => @page
+    expire_action controller: '/static', action: :show, id: @page
   end
 end

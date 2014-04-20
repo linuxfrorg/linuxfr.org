@@ -28,15 +28,15 @@ class News < Content
   self.type = "Dépêche"
 
   belongs_to :section
-  belongs_to :moderator, :class_name => "User"
-  has_many :links, :dependent => :destroy, :inverse_of => :news
-  has_many :paragraphs, :dependent => :destroy, :inverse_of => :news
-  accepts_nested_attributes_for :links, :allow_destroy => true, :reject_if => proc { |attrs| attrs['url'].blank? }
-  accepts_nested_attributes_for :paragraphs, :allow_destroy => true
-  has_many :versions, :class_name => 'NewsVersion',
-                      :dependent  => :destroy,
-                      # FIXME rails41 :order      => 'version DESC',
-                      :inverse_of => :news
+  belongs_to :moderator, class_name: "User"
+  has_many :links, dependent: :destroy, inverse_of: :news
+  has_many :paragraphs, dependent: :destroy, inverse_of: :news
+  accepts_nested_attributes_for :links, allow_destroy: true, reject_if: proc { |attrs| attrs['url'].blank? }
+  accepts_nested_attributes_for :paragraphs, allow_destroy: true
+  has_many :versions, class_name: 'NewsVersion',
+                      dependent: :destroy,
+                      # FIXME rails41 order: 'version DESC',
+                      inverse_of: :news
 
   attr_accessible :title, :section_id, :author_name, :author_email, :links_attributes, :paragraphs_attributes
 
@@ -46,14 +46,14 @@ class News < Content
   scope :refused,   -> { where(state: "refused") }
   scope :with_node_ordered_by, ->(order) { joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
 
-  validates :title,        :presence => { :message => "Le titre est obligatoire" },
-                           :length   => { :maximum => 100, :message => "Le titre est trop long" }
-  validates :body,         :presence => { :message => "Nous n'acceptons pas les dépêches vides" }
-  validates :section,      :presence => { :message => "Veuillez choisir une section pour cette dépêche" }
-  validates :author_name,  :presence => { :message => "Veuillez entrer votre nom" },
-                           :length   => { :maximum => 32, :message => "Le nom de l'auteur est trop long" }
-  validates :author_email, :presence => { :message => "Veuillez entrer votre adresse email" },
-                           :length   => { :maximum => 64, :message => "L'adresse email de l'auteur est trop longue" }
+  validates :title,        presence: { message: "Le titre est obligatoire" },
+                           length: { maximum: 100, message: "Le titre est trop long" }
+  validates :body,         presence: { message: "Nous n'acceptons pas les dépêches vides" }
+  validates :section,      presence: { message: "Veuillez choisir une section pour cette dépêche" }
+  validates :author_name,  presence: { message: "Veuillez entrer votre nom" },
+                           length: { maximum: 32, message: "Le nom de l'auteur est trop long" }
+  validates :author_email, presence: { message: "Veuillez entrer votre adresse email" },
+                           length: { maximum: 64, message: "L'adresse email de l'auteur est trop longue" }
 
 ### SEO ###
 
@@ -64,28 +64,28 @@ class News < Content
 
   include Elasticsearch::Model
 
-  scope :indexable, where(:state => "published")
+  scope :indexable, where(state: "published")
 
-  mapping :dynamic => false do
-    indexes :created_at,  :type => 'date'
+  mapping dynamic: false do
+    indexes :created_at,  type: 'date'
     indexes :username
-    indexes :section,     :analyzer => 'keyword'
-    indexes :title,       :analyzer => 'french'
-    indexes :body,        :analyzer => 'french'
-    indexes :second_part, :analyzer => 'french'
-    indexes :tags,        :analyzer => 'keyword'
+    indexes :section,     analyzer: 'keyword'
+    indexes :title,       analyzer: 'french'
+    indexes :body,        analyzer: 'french'
+    indexes :second_part, analyzer: 'french'
+    indexes :tags,        analyzer: 'keyword'
   end
 
   def as_indexed_json(options={})
     {
-      :id => self.id,
-      :created_at => created_at,
-      :username => author_name,
-      :section => section.title,
-      :title => title,
-      :body => body,
-      :second_part => second_part,
-      :tags => tag_names,
+      id: self.id,
+      created_at: created_at,
+      username: author_name,
+      section: section.title,
+      title: title,
+      body: body,
+      second_part: second_part,
+      tags: tag_names,
     }
   end
 
@@ -104,7 +104,7 @@ class News < Content
   # nodes.created_at:  when the news was published (or pushed in moderation if not yet moderated)
   # nodes.updated_at:  when the news was last commented at (among other things)
   #
-  state_machine :state, :initial => :draft do
+  state_machine :state, initial: :draft do
     event :submit  do transition :draft     => :candidate end
     event :accept  do transition :candidate => :published end
     event :refuse  do transition :candidate => :refused   end
@@ -112,9 +112,9 @@ class News < Content
     event :delete  do transition :published => :deleted   end
     event :erase   do transition :draft     => :deleted   end
 
-    after_transition :on => :accept,  :do => :publish
-    after_transition :on => :refuse,  :do => :be_refused
-    after_transition :on => :rewrite, :do => :be_rewritten
+    after_transition on: :accept,  do: :publish
+    after_transition on: :refuse,  do: :be_refused
+    after_transition on: :rewrite, do: :be_rewritten
   end
 
   before_create :reset_submitted_at
@@ -128,26 +128,26 @@ class News < Content
     node.created_at = DateTime.now
     node.save
     message = "<b>La dépêche a été soumise à la modération</b>"
-    Board.new(:object_type => Board.news, :object_id => self.id, :message => message, :user_name => user.name).save
-    Push.create(self, :kind => :submit, :username => user.name)
+    Board.new(object_type: Board.news, object_id: self.id, message: message, user_name: user.name).save
+    Push.create(self, kind: :submit, username: user.name)
   end
 
   def publish
     node.make_visible
     author_account.try(:give_karma, 50)
-    Push.create(self, :kind => :publish, :username => moderator.name)
-    $redis.publish "news", {:id => self.id, :title => title, :slug => cached_slug}.to_json
+    Push.create(self, kind: :publish, username: moderator.name)
+    $redis.publish "news", {id: self.id, title: title, slug: cached_slug}.to_json
     diary_id = $redis.get("convert/#{self.id}")
     Diary.find(diary_id).update_column(:converted_news_id, self.id) if diary_id
   end
 
   def be_refused
-    Push.create(self, :kind => :refuse, :username => moderator.name)
+    Push.create(self, kind: :refuse, username: moderator.name)
   end
 
   def be_rewritten
     reset_votes
-    Push.create(self, :kind => :rewritten, :username => moderator.name)
+    Push.create(self, kind: :rewritten, username: moderator.name)
   end
 
   def self.create_for_redaction(account)
@@ -189,7 +189,7 @@ class News < Content
   # In fact, it's more complicated as we have both wiki source and generated html
   # on body, second_part and the paragraphs.
 
-  before_validation :put_paragraphs_together, :on => :update
+  before_validation :put_paragraphs_together, on: :update
   def put_paragraphs_together
     self.wiki_body        = paragraphs.in_first_part.map(&:wiki_body).join("\n\n")
     self.wiki_second_part = paragraphs.in_second_part.map(&:wiki_body).join("\n\n")
@@ -207,8 +207,8 @@ class News < Content
 
   after_create :create_parts
   def create_parts
-    paragraphs.create(:second_part => false, :wiki_body => wiki_body)        unless wiki_body.blank?
-    paragraphs.create(:second_part => true,  :wiki_body => wiki_second_part) unless wiki_second_part.blank?
+    paragraphs.create(second_part: false, wiki_body: wiki_body)        unless wiki_body.blank?
+    paragraphs.create(second_part: true,  wiki_body: wiki_second_part) unless wiki_second_part.blank?
   end
 
   def second_part_toc
@@ -218,29 +218,29 @@ class News < Content
   after_update :announce_toc
   def announce_toc
     return if second_part.blank?
-    Push.create(self, :kind => :second_part_toc, :toc => second_part_toc)
+    Push.create(self, kind: :second_part_toc, toc: second_part_toc)
   end
 
-  after_create :announce_message, :unless => Proc.new { |news| news.message.blank? }
+  after_create :announce_message, unless: Proc.new { |news| news.message.blank? }
   def announce_message
-    Board.new(:object_type => Board.news, :object_id => self.id, :message => message, :user_name => author_name).save
+    Board.new(object_type: Board.news, object_id: self.id, message: message, user_name: author_name).save
   end
 
   after_update :announce_modification
   def announce_modification
-    Push.create(self, :kind => :update, :title => title, :section => { :id => section.id, :title => section.title })
+    Push.create(self, kind: :update, title: title, section: { id: section.id, title: section.title })
   end
 
 ### Versioning ###
 
-  after_save :create_new_version, :if => Proc.new { |n| n.body_changed? || n.second_part_changed? || n.title_changed? || n.section_id_changed? }
+  after_save :create_new_version, if: Proc.new { |n| n.body_changed? || n.second_part_changed? || n.title_changed? || n.section_id_changed? }
   def create_new_version
-    v = versions.create(:user_id     => (editor || author_account || Account.anonymous).try(:user_id),
-                        :title       => "#{section.title} : #{title}",
-                        :body        => wiki_body,
-                        :second_part => wiki_second_part,
-                        :links       => links.map(&:to_s).join("\n"))
-    Push.create(self, :kind => :revision, :id => v.id, :version => v.version, :message => v.message, :username => v.author_name)
+    v = versions.create(user_id: (editor || author_account || Account.anonymous).try(:user_id),
+                        title: "#{section.title} : #{title}",
+                        body: wiki_body,
+                        second_part: wiki_second_part,
+                        links: links.map(&:to_s).join("\n"))
+    Push.create(self, kind: :revision, id: v.id, version: v.version, message: v.message, username: v.author_name)
   end
 
   def attendees
@@ -282,8 +282,8 @@ class News < Content
     self.author_name  = user.name
     self.author_email = user.account.try(:email)
     message = "La paternité de la dépêche revient maintenant à #{user.name}"
-    Board.new(:object_type => Board.news, :object_id => self.id, :message => message, :user_name => editor_name).save
-    Push.create(self, :kind => :chat, :username => editor_name)
+    Board.new(object_type: Board.news, object_id: self.id, message: message, user_name: editor_name).save
+    Push.create(self, kind: :chat, username: editor_name)
     save
   end
 
@@ -302,7 +302,7 @@ class News < Content
       $redis.expire(key, 2678400) # 31 days
     end
     $redis.sadd("news/#{self.id}/#{word}", who)
-    Push.create(self, :news_id => self.id, :kind => :vote, :word => word, :username => who)
+    Push.create(self, news_id: self.id, kind: :vote, word: word, username: who)
   end
 
   def voters_for

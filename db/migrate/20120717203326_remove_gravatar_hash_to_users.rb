@@ -4,6 +4,6 @@ class RemoveGravatarHashToUsers < ActiveRecord::Migration
   end
 
   def down
-    add_column :users, :gravatar_hash, :string, :limit => 32
+    add_column :users, :gravatar_hash, :string, limit: 32
   end
 end

@@ -42,7 +42,7 @@ module NodeHelper
   def tags_for(node)
     if current_user
       his_tags = current_user.taggings.
-                             where(:node_id => node.id).
+                             where(node_id: node.id).
                              order("created_at DESC").
                              map(&:tag).each {|t| t.tagged_by_current = true }
       if his_tags.any?
@@ -59,26 +59,26 @@ module NodeHelper
 
   def paginated_nodes(nodes, link=nil)
     paginated_section(nodes, link) do
-      content_tag(:main, render(nodes.map &:content), :id => 'contents', :role => 'main')
+      content_tag(:main, render(nodes.map &:content), id: 'contents', role: 'main')
     end
   end
 
   def paginated_contents(contents, link=nil)
     paginated_section(contents, link) do
-      content_tag(:main, render(contents), :id => 'contents', :role => 'main')
+      content_tag(:main, render(contents), id: 'contents', role: 'main')
     end
   end
 
   def paginated_section(args, link=nil, &block)
     toolbox    = ''.html_safe
     @feeds.each do |k,v|
-      toolbox += content_tag(:div, link_to(v, k), :class => "follow_feed")
+      toolbox += content_tag(:div, link_to(v, k), class: "follow_feed")
     end
-    toolbox   += content_tag(:div, link, :class => 'new_content') if link
+    toolbox   += content_tag(:div, link, class: 'new_content') if link
     order_bar  = render 'shared/order_navbar'
-    pagination = paginate(args, :inner_window => 10).to_s
-    before = content_tag(:nav, toolbox + order_bar + pagination, :class => "toolbox")
-    after  = content_tag(:nav, pagination, :class => "toolbox")
+    pagination = paginate(args, inner_window: 10).to_s
+    before = content_tag(:nav, toolbox + order_bar + pagination, class: "toolbox")
+    after  = content_tag(:nav, pagination, class: "toolbox")
     ContentPresenter.collection do
       before + capture(&block) + after
     end
@@ -86,16 +86,16 @@ module NodeHelper
 
   def date_pour_css(content)
     date_time = content.node.try(:created_at) || Time.now
-    content_tag(:div, date_time.day, :class => "jour") +
-    content_tag(:div, I18n.l(date_time, :format => "%b"), :class => "mois") +
-    content_tag(:div, date_time.year, :class => "annee")
+    content_tag(:div, date_time.day, class: "jour") +
+    content_tag(:div, I18n.l(date_time, format: "%b"), class: "mois") +
+    content_tag(:div, date_time.year, class: "annee")
   end
 
   def posted_by(content, user_link='Anonyme')
     user   = content.user
     user ||= current_user if content.new_record?
     if user
-      user_link  = link_to(user.name, "/users/#{user.cached_slug}", :rel => 'author')
+      user_link  = link_to(user.name, "/users/#{user.cached_slug}", rel: 'author')
       user_infos = []
       user_infos << homesite_link(user)
       user_infos << jabber_link(user)
@@ -104,18 +104,18 @@ module NodeHelper
     end
     date_time    = content.is_a?(Comment) ? content.created_at : content.node.try(:created_at)
     date_time  ||= Time.now
-    date         = content_tag(:span, "le #{date_time.to_s(:date)}", :class => "date")
-    time         = content_tag(:span,  "à #{date_time.to_s(:time)}", :class => "time")
-    published_at = content_tag(:time, date + " " + time, :datetime => date_time.iso8601, :class => "updated")
+    date         = content_tag(:span, "le #{date_time.to_s(:date)}", class: "date")
+    time         = content_tag(:span,  "à #{date_time.to_s(:time)}", class: "time")
+    published_at = content_tag(:time, date + " " + time, datetime: date_time.iso8601, class: "updated")
     "Posté par #{user_link} #{published_at}.".html_safe
   end
 
   def read_it(content)
     node = content.node
     path = path_for_content(content)
-    link = link_to_unless_current("Lire la suite", path, :itemprop => "url") { "" }
-    ret  = tag(:meta, :itemprop => "interactionCount", :content => "UserComments:#{node.try(:comments_count)}")
-    nb_comments = content_tag(:span, pluralize(node.try(:comments_count), "commentaire"), :class => "nb_comments")
+    link = link_to_unless_current("Lire la suite", path, itemprop: "url") { "" }
+    ret  = tag(:meta, itemprop: "interactionCount", content: "UserComments:#{node.try(:comments_count)}")
+    nb_comments = content_tag(:span, pluralize(node.try(:comments_count), "commentaire"), class: "nb_comments")
     if current_account
       status = node.read_status(current_account)
       visit  = case status
@@ -123,15 +123,15 @@ module NodeHelper
                when Integer   then ", #{pluralize status, "nouveau", "nouveaux"} !"
                else                ", déjà visité"
                end
-      visit  = content_tag(:span, visit, :class => "visit")
+      visit  = content_tag(:span, visit, class: "visit")
       status = :new_comments if Integer === status
     else
       status = :anonymous_reader
     end
-    ret += content_tag(:span, "#{link} (#{nb_comments}#{visit}).".html_safe, :class => status)
+    ret += content_tag(:span, "#{link} (#{nb_comments}#{visit}).".html_safe, class: status)
     if current_account && ([:no_comments, :new_comments, :read].include?(status) || (content.persisted? && current_page?(path)))
-      ret += content_tag(:span, :class => "action") do
-        button_to("Oublier", reading_path(:id => node.id), :method => :delete, :remote => true, :class => "unread")
+      ret += content_tag(:span, class: "action") do
+        button_to("Oublier", reading_path(id: node.id), method: :delete, remote: true, class: "unread")
       end
     end
     ret

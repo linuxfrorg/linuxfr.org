@@ -1,7 +1,7 @@
 %main#contents(role="main")
   %h2 Envoyer les instructions pour débloquer mon compte
 
-  = form_for @account, :url => unlock_path(:account) do |f|
+  = form_for @account, url: unlock_path(:account) do |f|
     = messages_on_error @account
     %p
       = f.label :email, 'Adresse de courriel'
@@ -9,4 +9,4 @@
     %p
       = f.submit "Envoyer"
 
-  = render :partial => "devise/shared/links"
+  = render partial: "devise/shared/links"

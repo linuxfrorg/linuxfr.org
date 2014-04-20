@@ -14,7 +14,7 @@
       %th Date du message
     - @trackers.each do |node|
       - tracker = node.content
-      %tr{:class => tracker.state}
+      %tr{class: tracker.state}
         %td= tracker.category.title
         %td= link_to tracker.title, tracker
         %td= tracker.state_name

@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class Admin::BannersController < AdminController
-  before_action :load_banner, :only => [:update, :destroy]
+  before_action :load_banner, only: [:update, :destroy]
 
   def index
     @banners = Banner.all
@@ -13,7 +13,7 @@ class Admin::BannersController < AdminController
   def create
     @banner = Banner.new(params[:banner])
     if !preview_mode && @banner.save
-      redirect_to admin_banners_url, :notice => 'Nouvelle bannière créée.'
+      redirect_to admin_banners_url, notice: 'Nouvelle bannière créée.'
     else
       render :new
     end
@@ -26,7 +26,7 @@ class Admin::BannersController < AdminController
   def update
     @banner.attributes = params[:banner]
     if !preview_mode && @banner.save
-      redirect_to admin_banners_url, :notice => 'Bannière mise à jour.'
+      redirect_to admin_banners_url, notice: 'Bannière mise à jour.'
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class Admin::BannersController < AdminController
 
   def destroy
     @banner.destroy
-    redirect_to admin_banners_url, :notice => 'Bannière supprimée'
+    redirect_to admin_banners_url, notice: 'Bannière supprimée'
   end
 
 protected

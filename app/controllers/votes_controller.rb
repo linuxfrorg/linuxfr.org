@@ -13,7 +13,7 @@ class VotesController < ApplicationController
       notice = "Vote impossible"
     end
     respond_to do |wants|
-      wants.json { render :json => { :notice => notice, :nb_votes => current_account.nb_votes } }
+      wants.json { render json: { notice: notice, nb_votes: current_account.nb_votes } }
       wants.html { redirect_to_content @node.content }
     end
   end
@@ -26,7 +26,7 @@ class VotesController < ApplicationController
       notice = "Vote impossible"
     end
     respond_to do |wants|
-      wants.json { render :json => { :notice => notice, :nb_votes => current_account.nb_votes } }
+      wants.json { render json: { notice: notice, nb_votes: current_account.nb_votes } }
       wants.html { redirect_to_content @node.content }
     end
   end

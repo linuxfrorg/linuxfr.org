@@ -7,9 +7,9 @@ class StylesheetsController < ApplicationController
     @account.uploaded_stylesheet = params[:uploaded_stylesheet]
     if @account.save
       Rails.logger.info @account.uploaded_stylesheet
-      msg = { :notice => "Feuille de style enregistrée" }
+      msg = { notice: "Feuille de style enregistrée" }
     else
-      msg = { :alert => "Erreur lors de l'enregistrement de la feuille de style" }
+      msg = { alert: "Erreur lors de l'enregistrement de la feuille de style" }
     end
     redirect_to edit_stylesheet_url, msg
   end
@@ -22,15 +22,15 @@ class StylesheetsController < ApplicationController
   def update
     if params[:css_session] == "current"
       cookies[:stylesheet] = params[:stylesheet]
-      msg = { :notice => "Feuille de style définie pour cette session uniquement" }
+      msg = { notice: "Feuille de style définie pour cette session uniquement" }
     else
       cookies.delete(:stylesheet)
       @account.stylesheet = params[:stylesheet]
       if @account.save
         @account.remove_uploaded_stylesheet!
-        msg = { :notice => "Feuille de style enregistrée" }
+        msg = { notice: "Feuille de style enregistrée" }
       else
-        msg = { :alert => "Cette feuille de style n'est pas valide" }
+        msg = { alert: "Cette feuille de style n'est pas valide" }
       end
     end
     redirect_to edit_stylesheet_url, msg
@@ -41,7 +41,7 @@ class StylesheetsController < ApplicationController
     @account.remove_uploaded_stylesheet!
     @account.stylesheet = nil
     @account.save
-    redirect_to edit_stylesheet_url, :notice => "Feuille de style par défaut"
+    redirect_to edit_stylesheet_url, notice: "Feuille de style par défaut"
   end
 
 protected

@@ -2,7 +2,7 @@
 
 %p
   = form.label :title, "Titre"
-  = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true', :maxlength => 100
+  = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 100
 %p
   = form.label :category_id, "Catégorie"
   = form.collection_select :category_id, Category.all, :id, :title
@@ -12,14 +12,14 @@
     = form.text_field :pot_de_miel
 %p
   = form.label :wiki_body, "Description détaillée"
-  = form.text_area :wiki_body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
+  = form.text_area :wiki_body, required: 'required', spellcheck: 'true', class: 'markItUp'
 - if form.object.persisted?
   %p
     = form.label :state, "État"
     = form.select :state, Tracker::States.invert
   %p
     = form.label :assigned_to_user_id, "Assigné à"
-    = form.collection_select :assigned_to_user_id, Account.admin, :id, :login, :include_blank => true
+    = form.collection_select :assigned_to_user_id, Account.admin, :id, :login, include_blank: true
 %p
-  = form.submit "Prévisualiser", :id => "tracker_preview"
+  = form.submit "Prévisualiser", id: "tracker_preview"
   = form.submit "Soumettre", 'data-disable-with' => "Enregistrement en cours" if @preview_mode || @tracker.persisted?

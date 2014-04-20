@@ -1,10 +1,10 @@
 # encoding: UTF-8
 class Redaction::NewsController < RedactionController
-  skip_before_action :authenticate_account!, :only => [:index, :moderation]
-  before_action :load_news, :except => [:index, :moderation, :create, :revision, :reorganize, :reorganized, :reassign]
-  before_action :load_news2, :only => [:revision, :reorganize, :reorganized, :reassign]
-  before_action :load_board, :only => [:show, :reorganize]
-  after_action  :marked_as_read, :only => [:show, :update]
+  skip_before_action :authenticate_account!, only: [:index, :moderation]
+  before_action :load_news, except: [:index, :moderation, :create, :revision, :reorganize, :reorganized, :reassign]
+  before_action :load_news2, only: [:revision, :reorganize, :reorganized, :reassign]
+  before_action :load_board, only: [:show, :reorganize]
+  after_action  :marked_as_read, only: [:show, :update]
   respond_to :html, :atom, :md
 
   def index
@@ -20,14 +20,14 @@ class Redaction::NewsController < RedactionController
   def create
     @news = News.create_for_redaction(current_account)
     path = redaction_news_path(@news)
-    redirect_to path, :status => 301 if request.path != path
+    redirect_to path, status: 301 if request.path != path
   end
 
   def show
-    path = redaction_news_path(@news, :format => params[:format])
-    redirect_to [:redaction, @news], :status => 301 and return if request.path != path
+    path = redaction_news_path(@news, format: params[:format])
+    redirect_to [:redaction, @news], status: 301 and return if request.path != path
     @news.put_paragraphs_together if params[:format] == "md"
-    respond_with @news, :layout => 'chat_n_edit'
+    respond_with @news, layout: 'chat_n_edit'
   end
 
   def revision
@@ -36,29 +36,29 @@ class Redaction::NewsController < RedactionController
   end
 
   def edit
-    render :partial => 'form'
+    render partial: 'form'
   end
 
   def update
     @news.attributes = params[:news]
     @news.editor = current_account
     @news.save
-    render :partial => 'short'
+    render partial: 'short'
   end
 
   def reassign
     enforce_reassign_permission(@news)
     @news.reassign_to params[:user_id], current_user.name
     namespace = @news.draft? ? :redaction : :moderation
-    redirect_to [namespace, @news], :notice => "L'auteur initial de la dépêche a été changé"
+    redirect_to [namespace, @news], notice: "L'auteur initial de la dépêche a été changé"
   end
 
   def reorganize
     if @news.lock_by(current_user)
       @news.put_paragraphs_together
-      render :reorganize, :layout => "chat_n_edit"
+      render :reorganize, layout: "chat_n_edit"
     else
-      render :status => :forbidden, :text => "Désolé, un verrou a déjà été posé sur cette dépêche !"
+      render status: :forbidden, text: "Désolé, un verrou a déjà été posé sur cette dépêche !"
     end
   end
 
@@ -71,22 +71,22 @@ class Redaction::NewsController < RedactionController
   def followup
     enforce_followup_permission(@news)
     NewsNotifications.followup(@news, params[:message]).deliver
-    redirect_to [:redaction, @news], :notice => "Courriel de relance envoyé"
+    redirect_to [:redaction, @news], notice: "Courriel de relance envoyé"
   end
 
   def submit
     if @news.unlocked?
       @news.submit_and_notify(current_user)
-      redirect_to '/redaction', :notice => "Dépêche soumise à la modération"
+      redirect_to '/redaction', notice: "Dépêche soumise à la modération"
     else
-      redirect_to [:redaction, @news], :alert => "Impossible de soumettre la dépêche car quelqu'un est encore en train de la modifier"
+      redirect_to [:redaction, @news], alert: "Impossible de soumettre la dépêche car quelqu'un est encore en train de la modifier"
     end
   end
 
   def erase
     enforce_erase_permission(@news)
     @news.erase!
-    redirect_to '/redaction', :notice => "Dépêche effacée"
+    redirect_to '/redaction', notice: "Dépêche effacée"
   end
 
   def urgent

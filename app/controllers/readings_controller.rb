@@ -2,7 +2,7 @@
 #
 class ReadingsController < ApplicationController
   before_action :authenticate_account!
-  before_action :find_node, :only => [:destroy]
+  before_action :find_node, only: [:destroy]
 
   def index
     @order = params[:order]
@@ -13,7 +13,7 @@ class ReadingsController < ApplicationController
   def destroy
     @node.unread_by(current_account.id)
     respond_to do |wants|
-     wants.json { render :json => { :notice => "Ce contenu n'est plus marqué comme lu" } }
+     wants.json { render json: { notice: "Ce contenu n'est plus marqué comme lu" } }
      wants.html { redirect_to_content @node.content }
     end
   end

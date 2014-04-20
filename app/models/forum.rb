@@ -19,20 +19,20 @@
 class Forum < ActiveRecord::Base
   acts_as_list
 
-  has_many :posts, :inverse_of => :forum
+  has_many :posts, inverse_of: :forum
 
   scope :sorted, -> { order("position ASC") }
   scope :active, -> { where(state: "active") }
 
-  validates :title, :presence   => { :message => "Le titre est obligatoire" },
-                    :uniqueness => { :message => "Ce titre est déjà utilisé" }
+  validates :title, presence: { message: "Le titre est obligatoire" },
+                    uniqueness: { message: "Ce titre est déjà utilisé" }
 
   extend FriendlyId
   friendly_id
 
 ### Workflow ###
 
-  state_machine :state, :initial => :active do
+  state_machine :state, initial: :active do
     event :reopen  do transition :archived => :active end
     event :archive do transition :active => :archived end
   end

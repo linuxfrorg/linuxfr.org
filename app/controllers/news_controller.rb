@@ -1,10 +1,10 @@
 # encoding: UTF-8
 class NewsController < ApplicationController
-  before_action :honeypot, :only => [:create]
-  before_action :find_news, :only => [:show]
-  after_action  :marked_as_read, :only => [:show], :if => :account_signed_in?
-  caches_page :index, :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
-  caches_action :show, :unless => :account_signed_in?, :expires_in => 5.minutes
+  before_action :honeypot, only: [:create]
+  before_action :find_news, only: [:show]
+  after_action  :marked_as_read, only: [:show], if: :account_signed_in?
+  caches_page :index, if: Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
+  caches_action :show, unless: :account_signed_in?, expires_in: 5.minutes
   respond_to :html, :atom, :md
 
   def index
@@ -27,7 +27,7 @@ class NewsController < ApplicationController
   end
 
   def new
-    redirect_to root_url, :alert => "Désolé, il n'est pas possible de proposer une dépêche en l'absence de sections" unless Section.exists?
+    redirect_to root_url, alert: "Désolé, il n'est pas possible de proposer une dépêche en l'absence de sections" unless Section.exists?
     @news = News.new
     @news.cc_licensed = true
   end
@@ -42,7 +42,7 @@ class NewsController < ApplicationController
       @news.urgent! if params[:news][:urgent] == "1"
       @news.submitted_at = DateTime.now
       @news.submit!
-      redirect_to news_index_url, :notice => "Votre proposition de dépêche a bien été soumise, et sera modérée dans les heures ou jours à venir"
+      redirect_to news_index_url, notice: "Votre proposition de dépêche a bien été soumise, et sera modérée dans les heures ou jours à venir"
     else
       @news.node = Node.new
       @news.valid?
@@ -56,14 +56,14 @@ protected
     honeypot = params[:news].delete(:pot_de_miel)
     links = params[:news][:links_attributes].values
     same  = links.map {|l| l["title"] }.reject(&:blank?).group_by(&:to_s).map {|_,v| v.size }.max.to_i
-    render :nothing => true if honeypot.present? || same >= 3
+    render nothing: true if honeypot.present? || same >= 3
   end
 
   def find_news
     @news = News.find(params[:id])
     enforce_view_permission(@news)
-    path = news_path(@news, :format => params[:format])
-    redirect_to path, :status => 301 if request.path != path
+    path = news_path(@news, format: params[:format])
+    redirect_to path, status: 301 if request.path != path
   end
 
   def marked_as_read

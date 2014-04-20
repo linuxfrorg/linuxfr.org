@@ -1,9 +1,9 @@
 # encoding: UTF-8
 class PostsController < ApplicationController
-  before_action :authenticate_account!, :except => [:index, :show]
-  before_action :find_post,  :except => [:new, :create, :index]
-  after_action  :marked_as_read, :only => [:show], :if => :account_signed_in?
-  after_action  :expire_cache, :only => [:create, :update, :destroy]
+  before_action :authenticate_account!, except: [:index, :show]
+  before_action :find_post,  except: [:new, :create, :index]
+  after_action  :marked_as_read, only: [:show], if: :account_signed_in?
+  after_action  :expire_cache, only: [:create, :update, :destroy]
   respond_to :html, :md
 
 ### Global ###
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     @post.tmp_owner_id = current_account.user_id
     if !preview_mode && @post.save
       current_account.tag(@post.node, params[:tags])
-      redirect_to forum_posts_url(:forum_id => @post.forum), :notice => "Votre message a bien été créé"
+      redirect_to forum_posts_url(forum_id: @post.forum), notice: "Votre message a bien été créé"
     else
       @post.node = Node.new
       @post.valid?
@@ -33,13 +33,13 @@ class PostsController < ApplicationController
 
   def index
     @forum = Forum.find(params[:forum_id])
-    redirect_to @forum, :status => 301
+    redirect_to @forum, status: 301
   end
 
   def show
     enforce_view_permission(@post)
-    path = forum_post_path(@forum, @post, :format => params[:format])
-    redirect_to path, :status => 301 and return if request.path != path
+    path = forum_post_path(@forum, @post, format: params[:format])
+    redirect_to path, status: 301 and return if request.path != path
     flash.now[:alert] = "Attention, ce post a été supprimé et n'est visible que par les admins" unless @post.visible?
   end
 
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
     @post.attributes = params[:post]
     enforce_update_permission(@post)
     if !preview_mode && @post.save
-      redirect_to forum_posts_url, :notice => "Votre message a bien été modifié"
+      redirect_to forum_posts_url, notice: "Votre message a bien été modifié"
     else
       flash.now[:alert] = "Impossible d'enregistrer ce message" if @post.invalid?
       render :edit
@@ -61,7 +61,7 @@ class PostsController < ApplicationController
   def destroy
     enforce_destroy_permission(@post)
     @post.mark_as_deleted
-    redirect_to forum_posts_url, :notice => "Votre message a bien été supprimé"
+    redirect_to forum_posts_url, notice: "Votre message a bien été supprimé"
   end
 
 protected
@@ -77,7 +77,7 @@ protected
 
   def expire_cache
     return if @post.new_record?
-    expire_page :controller => "forums", :action => :index, :format => :atom
-    expire_page :controller => "forums", :action => :show, :id => @post.forum.to_param, :format => :atom
+    expire_page controller: "forums", action: :index, format: :atom
+    expire_page controller: "forums", action: :show, id: @post.forum.to_param, format: :atom
   end
 end

@@ -19,18 +19,18 @@
 # See accounts for the private ones, like authentication.
 #
 class User < ActiveRecord::Base
-  has_one  :account, :dependent => :destroy, :inverse_of => :user
-  has_many :nodes, :inverse_of => :user
-  has_many :diaries, :dependent => :destroy, :inverse_of => :owner, :foreign_key => "owner_id"
-  has_many :news_versions, :dependent => :nullify
-  has_many :wiki_versions, :dependent => :nullify
-  has_many :comments, :inverse_of => :user
-  has_many :taggings, :dependent => :destroy # FIXME rails41 , :include => :tag
-  has_many :tags, :through => :taggings      # FIXME rails41 , :uniq => true
+  has_one  :account, dependent: :destroy, inverse_of: :user
+  has_many :nodes, inverse_of: :user
+  has_many :diaries, dependent: :destroy, inverse_of: :owner, foreign_key: "owner_id"
+  has_many :news_versions, dependent: :nullify
+  has_many :wiki_versions, dependent: :nullify
+  has_many :comments, inverse_of: :user
+  has_many :taggings, dependent: :destroy # FIXME rails41 , include: :tag
+  has_many :tags, through: :taggings      # FIXME rails41 , uniq: true
 
   attr_accessible :name, :homesite, :jabber_id, :signature, :avatar, :custom_avatar_url
 
-  validates_format_of :homesite, :message => "L'URL du site web personnel n'est pas valide", :with => URI::regexp(%w(http https)), :allow_blank => true
+  validates_format_of :homesite, message: "L'URL du site web personnel n'est pas valide", with: URI::regexp(%w(http https)), allow_blank: true
 
   def self.collective
     find_by(name: "Collectif")

@@ -1,9 +1,9 @@
 # encoding: UTF-8
 class PollsController < ApplicationController
-  before_action :authenticate_account!, :only => [:new, :create]
-  before_action :find_poll, :only => [:show, :vote]
-  after_action  :marked_as_read, :only => [:show], :if => :account_signed_in?
-  caches_page   :index, :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
+  before_action :authenticate_account!, only: [:new, :create]
+  before_action :find_poll, only: [:show, :vote]
+  after_action  :marked_as_read, only: [:show], if: :account_signed_in?
+  caches_page   :index, if: Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
   respond_to :html, :atom, :md
 
   def index
@@ -20,8 +20,8 @@ class PollsController < ApplicationController
   def show
     enforce_view_permission(@poll)
     @poll.state = 'archived' if params.has_key? :results
-    path = poll_path(@poll, :format => params[:format])
-    redirect_to path, :status => 301 and return if request.path != path
+    path = poll_path(@poll, format: params[:format])
+    redirect_to path, status: 301 and return if request.path != path
   end
 
   def new
@@ -35,7 +35,7 @@ class PollsController < ApplicationController
     @poll.attributes = params[:poll]
     @poll.tmp_owner_id = current_account.user_id
     if !preview_mode && @poll.save
-      redirect_to polls_url, :notice => "L'équipe de modération de LinuxFr.org vous remercie pour votre proposition de sondage"
+      redirect_to polls_url, notice: "L'équipe de modération de LinuxFr.org vous remercie pour votre proposition de sondage"
     else
       @poll.node = Node.new
       @poll.valid?
@@ -45,12 +45,12 @@ class PollsController < ApplicationController
 
   def vote
     enforce_answer_permission(@poll)
-    @answer = @poll.answers.where(:position => params[:position]).first
+    @answer = @poll.answers.where(position: params[:position]).first
     if @answer
       @answer.vote(request.remote_ip)
-      redirect_to @poll, :notice => "Merci d'avoir voté pour ce sondage"
+      redirect_to @poll, notice: "Merci d'avoir voté pour ce sondage"
     else
-      redirect_to @poll, :alert => "Veuillez choisir une proposition avant de voter"
+      redirect_to @poll, alert: "Veuillez choisir une proposition avant de voter"
     end
   end
 

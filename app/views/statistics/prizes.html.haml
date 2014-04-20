@@ -3,9 +3,9 @@
 
   .nav
     %span
-      = link_to "Mois précédent", :month => @stats.month.prev_month.strftime("%m-%Y")
+      = link_to "Mois précédent", month: @stats.month.prev_month.strftime("%m-%Y")
     %span
-      = link_to "Mois suivant", :month => @stats.month.next_month.strftime("%m-%Y")
+      = link_to "Mois suivant", month: @stats.month.next_month.strftime("%m-%Y")
 
   .body
     %h2 Dépêches

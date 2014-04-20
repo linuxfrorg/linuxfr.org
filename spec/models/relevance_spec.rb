@@ -5,7 +5,7 @@ describe "Relevance" do
   let(:account) { FactoryGirl.create(:normal_account) }
   let(:writer)  { FactoryGirl.create(:writer) }
   let(:node)    { FactoryGirl.create(:news).node }
-  let(:comment) { FactoryGirl.create(:comment, :user_id => writer.id, :node_id => node.id) }
+  let(:comment) { FactoryGirl.create(:comment, user_id: writer.id, node_id: node.id) }
 
   it "creates an instance when an account votes for a comment" do
     comment.vote_for(account)

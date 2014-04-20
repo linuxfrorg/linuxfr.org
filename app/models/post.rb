@@ -27,10 +27,10 @@ class Post < Content
 
   scope :with_node_ordered_by, ->(order) { joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
 
-  validates :forum,     :presence => { :message => "Vous devez choisir un forum" }
-  validates :title,     :presence => { :message => "Le titre est obligatoire" },
-                         :length   => { :maximum => 100, :message => "Le titre est trop long" }
-  validates :wiki_body, :presence => { :message => "Vous ne pouvez pas poster un journal vide" }
+  validates :forum,     presence: { message: "Vous devez choisir un forum" }
+  validates :title,     presence: { message: "Le titre est obligatoire" },
+                         length: { maximum: 100, message: "Le titre est trop long" }
+  validates :wiki_body, presence: { message: "Vous ne pouvez pas poster un journal vide" }
 
   wikify_attr   :body
   truncate_attr :body
@@ -46,24 +46,24 @@ class Post < Content
 
   scope :indexable, -> { joins(:node).where('nodes.public' => true) }
 
-  mapping :dynamic => false do
-    indexes :created_at, :type => 'date'
+  mapping dynamic: false do
+    indexes :created_at, type: 'date'
     indexes :username
-    indexes :forum,      :analyzer => 'keyword'
-    indexes :title,      :analyzer => 'french'
-    indexes :body,       :analyzer => 'french'
-    indexes :tags,       :analyzer => 'keyword'
+    indexes :forum,      analyzer: 'keyword'
+    indexes :title,      analyzer: 'french'
+    indexes :body,       analyzer: 'french'
+    indexes :tags,       analyzer: 'keyword'
   end
 
   def as_indexed_json(options={})
     {
-      :id => self.id,
-      :created_at => created_at,
-      :username => user.try(:name),
-      :forum => forum.title.tr('/.', '--'),
-      :title => title,
-      :body => body,
-      :tags => tag_names,
+      id: self.id,
+      created_at: created_at,
+      username: user.try(:name),
+      forum: forum.title.tr('/.', '--'),
+      title: title,
+      body: body,
+      tags: tag_names,
     }
   end
 

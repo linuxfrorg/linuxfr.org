@@ -21,26 +21,26 @@ FactoryGirl.define do
     name      "Pierre Tramo"
     homesite  "http://java.sun.com/javaee/"
     jabber_id "pierre.tramo@dlfp.org"
-    association :account, :factory => :normal_account
+    association :account, factory: :normal_account
   end
 
-  factory :anonymous, :class => User do
+  factory :anonymous, class: User do
     name "Anonyme"
-    association :account, :factory => :anonymous_account
+    association :account, factory: :anonymous_account
   end
 
-  factory :writer, :class => User do
+  factory :writer, class: User do
     name "Lionel Allorge"
-    association :account, :factory => :writer_account
+    association :account, factory: :writer_account
   end
 
-  factory :moderator, :class => User do
+  factory :moderator, class: User do
     name "Florent Zara"
-    association :account, :factory => :moderator_account
+    association :account, factory: :moderator_account
   end
 
-  factory :admin, :class => User do
+  factory :admin, class: User do
     name "Benoît Sibaud"
-    association :account, :factory => :admin_account
+    association :account, factory: :admin_account
   end
 end

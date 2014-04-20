@@ -14,5 +14,5 @@
 # So, we keep response templates for theses emails.
 #
 class Response < ActiveRecord::Base
-  validates :title, :presence => { :message => "Le titre est obligatoire" }
+  validates :title, presence: { message: "Le titre est obligatoire" }
 end

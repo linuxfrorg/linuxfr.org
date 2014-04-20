@@ -9,12 +9,12 @@ describe "News" do
 
   let!(:section) do
     FactoryGirl.create(:section).tap do |sect|
-      sect.stub(:image).and_return(double('image', :url => ''))
+      sect.stub(:image).and_return(double('image', url: ''))
     end
   end
 
   it "can be listed" do
-    news = FactoryGirl.create(:news, :section_id => section.id)
+    news = FactoryGirl.create(:news, section_id: section.id)
     news.should be_valid
     get news_index_path
     assert_response :success
@@ -23,11 +23,11 @@ describe "News" do
 
   it "can be submitted" do
     get new_news_path
-    fill_in :news_author_name, :with => "Pierre Tramo"
-    fill_in :news_author_email, :with => "pierre.tramo@dlfp.org"
-    fill_in :news_title, :with => "J2EE is so cool"
+    fill_in :news_author_name, with: "Pierre Tramo"
+    fill_in :news_author_email, with: "pierre.tramo@dlfp.org"
+    fill_in :news_title, with: "J2EE is so cool"
     select section.title
-    fill_in :news_wiki_body, :with => "Really, you should try it!"
+    fill_in :news_wiki_body, with: "Really, you should try it!"
     click_button "Prévisualiser"
     assert_response :success
     response.should contain("J2EE is so cool")

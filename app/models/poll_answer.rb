@@ -16,11 +16,11 @@
 class PollAnswer < ActiveRecord::Base
   belongs_to :poll
 
-  acts_as_list :scope => :poll
+  acts_as_list scope: :poll
 
   attr_accessible :answer
 
-  validates :answer, :presence => { :message => "La description de la réponse ne peut pas être vide" }
+  validates :answer, presence: { message: "La description de la réponse ne peut pas être vide" }
 
   def percent
     return 0.0 if poll.total_votes == 0

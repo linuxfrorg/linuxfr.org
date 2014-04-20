@@ -9,7 +9,7 @@
     %ul.tag_cloud
       - @popular_tags.each do |tag|
         %li= link_to tag.name, "/tags/#{tag.name}/public"
-  - cache "fragments/layouts/friends_and_links", :expires_in => 30.days do
+  - cache "fragments/layouts/friends_and_links", expires_in: 30.days do
     %section#friends
       %h1 Sites amis
       %ul

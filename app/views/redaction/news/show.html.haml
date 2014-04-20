@@ -6,36 +6,36 @@
       = link_to "Retourner sur la liste des dépêches en cours de rédaction", '/redaction'
     - if @news.urgent?
       %h1.urgent Dépêche urgente !
-    = render 'board', :boards => @boards, :box => false
-    = render 'attendees', :attendees => @news.attendees
-    = render 'editions', :news => @news
+    = render 'board', boards: @boards, box: false
+    = render 'attendees', attendees: @news.attendees
+    = render 'editions', news: @news
 
 = article_for @news do |c|
   - c.title = capture do
-    = render :partial => 'short'
+    = render partial: 'short'
   - c.meta  = news_posted_by(@news)
-  - c.image = link_to(image_tag(@news.section.image, :alt => @news.section.title), @news.section)
+  - c.image = link_to(image_tag(@news.section.image, alt: @news.section.title), @news.section)
   - c.body  = capture do
     #first_part
-      = render :partial => 'redaction/paragraphs/paragraph', :collection => @news.paragraphs.in_first_part
+      = render partial: 'redaction/paragraphs/paragraph', collection: @news.paragraphs.in_first_part
     %ul#links
-      = render :partial => 'redaction/links/link', :collection => @news.links
-    %p.new_link{'data-url' => new_redaction_news_link_path(:news_id => @news)}
+      = render partial: 'redaction/links/link', collection: @news.links
+    %p.new_link{'data-url' => new_redaction_news_link_path(news_id: @news)}
       %button.add_link Ajouter un lien
     #second_part_toc
       = @news.second_part_toc
     #second_part
-      = render :partial => 'redaction/paragraphs/paragraph', :collection => @news.paragraphs.in_second_part
+      = render partial: 'redaction/paragraphs/paragraph', collection: @news.paragraphs.in_second_part
     .new_paragraph
-      = button_to "Ajouter un paragraphe", redaction_news_paragraphs_path(:news_id => @news), :remote => true, :class => "add_para"
+      = button_to "Ajouter un paragraphe", redaction_news_paragraphs_path(news_id: @news), remote: true, class: "add_para"
 
-= link_to "Réorganiser", reorganize_redaction_news_path(@news), :class => "reorganize"
+= link_to "Réorganiser", reorganize_redaction_news_path(@news), class: "reorganize"
 - if current_account.amr? || current_account.editor? || @news.submitted_by?(current_account)
-  = button_to "Soumettre la dépêche", submit_redaction_news_path(@news), :class => "submit_news"
+  = button_to "Soumettre la dépêche", submit_redaction_news_path(@news), class: "submit_news"
   - unless @news.urgent?
-    = button_to "Marquer comme urgent", urgent_redaction_news_path(@news), :class => "urgent_news", :data => { :confirm => "Cette dépêche est urgente et doit être publiée au plus tôt ?" }
+    = button_to "Marquer comme urgent", urgent_redaction_news_path(@news), class: "urgent_news", data: { confirm: "Cette dépêche est urgente et doit être publiée au plus tôt ?" }
 - if current_account.can_erase? @news
-  = button_to "Effacer la dépêche", erase_redaction_news_path(@news), :class => "erase_news", :data => { :confirm => "Effacer cette dépêche créée par erreur ?" }
+  = button_to "Effacer la dépêche", erase_redaction_news_path(@news), class: "erase_news", data: { confirm: "Effacer cette dépêche créée par erreur ?" }
 - if current_account.can_followup? @news
   %button#followup.more Relancer les rédacteurs
   .more_actions(style="display: none;")

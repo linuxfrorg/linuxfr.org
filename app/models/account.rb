@@ -48,34 +48,34 @@ class Account < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
 
   has_many :client_applications
-  has_many :access_grants, :dependent => :delete_all
+  has_many :access_grants, dependent: :delete_all
   has_many :logs
-  belongs_to :user, :inverse_of => :account
-  accepts_nested_attributes_for :user, :reject_if => :all_blank
+  belongs_to :user, inverse_of: :account
+  accepts_nested_attributes_for :user, reject_if: :all_blank
 
   mount_uploader :uploaded_stylesheet, StylesheetUploader
 
   attr_accessor :remember_me, :amr_id
   # FIXME rails41
   attr_accessible :login, :email, :stylesheet, :uploaded_stylesheet, :password, :password_confirmation, :user_attributes, :remember_me
-  delegate :name, :to => :user
+  delegate :name, to: :user
 
   scope :unconfirmed, -> { where(confirmed_at: nil) }
 
 ### Validation ###
 
   LOGIN_REGEXP = /\A[\p{Word}.+\-]+\Z/
-  validates :login, :presence   => { :message => "Veuillez choisir un pseudo"},
-                    :uniqueness => { :message => "Ce pseudo est déjà pris" },
-                    :format     => { :message => "Le pseudo n'est pas valide", :with => LOGIN_REGEXP, :allow_blank => true, :on => :create }
+  validates :login, presence: { message: "Veuillez choisir un pseudo"},
+                    uniqueness: { message: "Ce pseudo est déjà pris" },
+                    format: { message: "Le pseudo n'est pas valide", with: LOGIN_REGEXP, allow_blank: true, on: :create }
 
   EMAIL_REGEXP = /\A[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}\Z/i
-  validates :email, :presence   => { :message => "Veuillez remplir l'adresse de courriel" },
-                    :uniqueness => { :message => "Cette adresse de courriel est déjà utilisée", :case_sensitive => false, :allow_blank => true },
-                    :format     => { :message => "L'adresse de courriel n'est pas valide", :with => EMAIL_REGEXP, :allow_blank => true }
+  validates :email, presence: { message: "Veuillez remplir l'adresse de courriel" },
+                    uniqueness: { message: "Cette adresse de courriel est déjà utilisée", case_sensitive: false, allow_blank: true },
+                    format: { message: "L'adresse de courriel n'est pas valide", with: EMAIL_REGEXP, allow_blank: true }
 
-  validates :password, :presence     => { :message => "Le mot de passe est absent", :on => :create },
-                       :confirmation => { :message => "La confirmation du mot de passe ne correspond pas au mot de passe" }
+  validates :password, presence: { message: "Le mot de passe est absent", on: :create },
+                       confirmation: { message: "La confirmation du mot de passe ne correspond pas au mot de passe" }
 
 ### Authentication ###
 
@@ -83,7 +83,7 @@ class Account < ActiveRecord::Base
 
   before_create :create_user
   def create_user
-    self.user_id = User.create(:name => login).id
+    self.user_id = User.create(name: login).id
   end
 
   def self.anonymous
@@ -92,7 +92,7 @@ class Account < ActiveRecord::Base
 
 ### Password ###
 
-  before_validation :generate_a_password, :on => :create
+  before_validation :generate_a_password, on: :create
   def generate_a_password
     chars = [*'A'..'Z'] + [*'a'..'z'] + [*'1'..'9'] + %w(- + ! ? : $ % &)
     pass  = chars.sample(8).join
@@ -110,7 +110,7 @@ class Account < ActiveRecord::Base
 
     result = if valid_password?(current_password)
       update_attributes(params, *options)
-      logs.create(:description => "Mot de passe modifié")
+      logs.create(description: "Mot de passe modifié")
     else
       self.assign_attributes(params, *options)
       self.valid?
@@ -130,19 +130,19 @@ class Account < ActiveRecord::Base
   scope :admin,     -> { where(role: "admin") }
   scope :amr,       -> { where(role: %w[admin moderator]) }
 
-  state_machine :role, :initial => :visitor do
+  state_machine :role, initial: :visitor do
     event :inactivate            do transition all             => :inactive  end
     event :reactivate            do transition :inactive       => :visitor   end
     event :remove_all_rights     do transition all - :inactive => :visitor   end
     event :give_moderator_rights do transition all - :inactive => :moderator end
     event :give_editor_rights    do transition all - :inactive => :editor    end
     event :give_admin_rights     do transition all - :inactive => :admin     end
-    after_transition :do => :log_role
+    after_transition do: :log_role
   end
 
   def log_role
     roles = previous_changes["role"]
-    logs.create(:description => "Changement de rôle : #{roles.join ' → '}", :user_id => amr_id)
+    logs.create(description: "Changement de rôle : #{roles.join ' → '}", user_id: amr_id)
   end
 
   # An AMR is someone who is either an admin or a moderator
@@ -239,7 +239,7 @@ class Account < ActiveRecord::Base
   end
 
   def log_karma(points, who)
-    logs.create(:description => "#{who.login} a donné #{points} points de karma")
+    logs.create(description: "#{who.login} a donné #{points} points de karma")
   end
 
 ### Blocked for comments ###
@@ -251,7 +251,7 @@ class Account < ActiveRecord::Base
   def block(nb_days, user_id)
     $redis.set("block/#{self.id}", 1)
     $redis.expire("block/#{self.id}", nb_days * 86400)
-    logs.create(:description => "Interdiction de poster des commentaires pour #{pluralize nb_days, "jour"}", :user_id => user_id)
+    logs.create(description: "Interdiction de poster des commentaires pour #{pluralize nb_days, "jour"}", user_id: user_id)
   end
 
   def can_block?
@@ -267,7 +267,7 @@ class Account < ActiveRecord::Base
   def plonk(nb_days, user_id)
     $redis.set("plonk/#{self.id}", 1)
     $redis.expire("plonk/#{self.id}", nb_days * 86400)
-    logs.create(:description => "Interdiction de tribune pour #{pluralize nb_days, "jour"}", :user_id => user_id)
+    logs.create(description: "Interdiction de tribune pour #{pluralize nb_days, "jour"}", user_id: user_id)
   end
 
   def can_plonk?
@@ -287,7 +287,7 @@ class Account < ActiveRecord::Base
                          128 => :sort_by_date_on_home,
                          256 => :hide_signature,
                          512 => :show_negative_nodes,
-                         :scopes => false
+                         scopes: false
   attr_accessible :hide_avatar,
                   :news_on_home,
                   :diaries_on_home,

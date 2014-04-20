@@ -12,9 +12,9 @@
 #
 
 class Page < ActiveRecord::Base
-  validates :slug,  :presence => { :message => "Le slug est obligatoire" }
-  validates :title, :presence => { :message => "Le titre est obligatoire" }
-  validates :body,  :presence => { :message => "Le corps est obligatoire" }
+  validates :slug,  presence: { message: "Le slug est obligatoire" }
+  validates :title, presence: { message: "Le titre est obligatoire" }
+  validates :body,  presence: { message: "Le corps est obligatoire" }
 
 ### SEO ###
 
@@ -37,18 +37,18 @@ class Page < ActiveRecord::Base
 
   scope :indexable, -> {}
 
-  mapping :dynamic => false do
-    indexes :created_at, :type => 'date'
-    indexes :title,      :analyzer => 'french'
-    indexes :body,       :analyzer => 'french'
+  mapping dynamic: false do
+    indexes :created_at, type: 'date'
+    indexes :title,      analyzer: 'french'
+    indexes :body,       analyzer: 'french'
   end
 
   def as_indexed_json(options={})
     {
-      :id => self.id,
-      :created_at => created_at,
-      :title => title,
-      :body => body,
+      id: self.id,
+      created_at: created_at,
+      title: title,
+      body: body,
     }
   end
 

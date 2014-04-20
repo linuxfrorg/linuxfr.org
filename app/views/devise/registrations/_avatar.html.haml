@@ -1,15 +1,15 @@
 %h2 Changer d'avatar
-= form_for @account, :url => registration_path(:account), :method => :put do |f|
+= form_for @account, url: registration_path(:account), method: :put do |f|
   = messages_on_error @account
   = f.fields_for :user do |u|
     %figure.image
       = avatar_img(@account.user)
     %p
       = u.label :avatar, 'Avatar'
-      = u.file_field :avatar, :accept => "image/*"
+      = u.file_field :avatar, accept: "image/*"
     %p
       = u.label :custom_avatar_url, 'Je préfère que mon avatar soit téléchargé depuis cette URL&nbsp;: '.html_safe
-      = u.url_field :custom_avatar_url, :value => ""
+      = u.url_field :custom_avatar_url, value: ""
   %p
     %label.factice Sûr de vos modifications ?
     = f.submit "Enregistrer"

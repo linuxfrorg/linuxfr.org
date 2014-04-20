@@ -1,6 +1,6 @@
 - board = boards.build
 .board{'data-chan' => Push.private_key(board.meta)}
   - if current_account && current_account.can_post_on_board?
-    = render 'boards/form', :form => board
+    = render 'boards/form', form: board
   .inbox
-    = render :partial => 'boards/board', :collection => boards, :locals => { :box => box }
+    = render partial: 'boards/board', collection: boards, locals: { box: box }

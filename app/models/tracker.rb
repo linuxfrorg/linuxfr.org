@@ -25,15 +25,15 @@ class Tracker < Content
   self.table_name = "trackers"
   self.type = "Suivi"
 
-  belongs_to :assigned_to_user, :class_name => "User"
+  belongs_to :assigned_to_user, class_name: "User"
   belongs_to :category
 
   attr_accessor :pot_de_miel
   attr_accessible :title, :wiki_body, :category_id, :assigned_to_user_id
 
-  validates :title,     :presence => { :message => "Le titre est obligatoire" },
-                        :length   => { :maximum => 100, :message => "Le titre est trop long" }
-  validates :wiki_body, :presence => { :message => "Veuillez décrire cette entrée du suivi" }
+  validates :title,     presence: { message: "Le titre est obligatoire" },
+                        length: { maximum: 100, message: "Le titre est trop long" }
+  validates :wiki_body, presence: { message: "Veuillez décrire cette entrée du suivi" }
 
   scope :opened, -> { where(state: "opened") }
 
@@ -43,7 +43,7 @@ class Tracker < Content
 ### SEO ###
 
   extend FriendlyId
-  friendly_id :title, :reserved_words => %w(index nouveau modifier comments)
+  friendly_id :title, reserved_words: %w(index nouveau modifier comments)
 
 ### Search ####
 
@@ -51,24 +51,24 @@ class Tracker < Content
 
   scope :indexable, -> { joins(:node).where('nodes.public' => true) }
 
-  mapping :dynamic => false do
-    indexes :created_at, :type => 'date'
+  mapping dynamic: false do
+    indexes :created_at, type: 'date'
     indexes :username
-    indexes :category,   :analyzer => 'keyword'
-    indexes :title,      :analyzer => 'french'
-    indexes :body,       :analyzer => 'french'
-    indexes :tags,       :analyzer => 'keyword'
+    indexes :category,   analyzer: 'keyword'
+    indexes :title,      analyzer: 'french'
+    indexes :body,       analyzer: 'french'
+    indexes :tags,       analyzer: 'keyword'
   end
 
   def as_indexed_json(options={})
     {
-      :id => self.id,
-      :created_at => created_at,
-      :username => user.try(:name),
-      :category => category.title,
-      :title => title,
-      :body => body,
-      :tags => tag_names,
+      id: self.id,
+      created_at: created_at,
+      username: user.try(:name),
+      category: category.title,
+      title: title,
+      body: body,
+      tags: tag_names,
     }
   end
 
@@ -76,7 +76,7 @@ class Tracker < Content
 
   States = { "opened" => "Ouverte", "fixed" => "Corrigée", "invalid" => "Invalide" }.freeze
 
-  state_machine :state, :initial => :opened do
+  state_machine :state, initial: :opened do
     event :fix        do transition :opened => :fixed   end
     event :invalidate do transition :opened => :invalid end
     event :reopen     do transition all     => :opened  end

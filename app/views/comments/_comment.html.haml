@@ -1,8 +1,8 @@
 %h2
-  = link_to "[^]", "#{path_for_content comment.content}#comment-#{comment.parent_id}", :title => "Aller au commentaire parent", :class => "parent" unless comment.root?
-  = link_to "#", "#{path_for_content comment.content}#comment-#{comment.id}", :title => "Lien direct vers ce commentaire", :class => "anchor"
+  = link_to "[^]", "#{path_for_content comment.content}#comment-#{comment.parent_id}", title: "Aller au commentaire parent", class: "parent" unless comment.root?
+  = link_to "#", "#{path_for_content comment.content}#comment-#{comment.id}", title: "Lien direct vers ce commentaire", class: "anchor"
   = ' '
-  = link_to (comment.deleted? ? "Commentaire supprimé" : comment.title), "/nodes/#{comment.node_id}/comments/#{comment.id}", :class => "title"
+  = link_to (comment.deleted? ? "Commentaire supprimé" : comment.title), "/nodes/#{comment.node_id}/comments/#{comment.id}", class: "title"
 %p.meta
   = posted_by(comment)
   - unless defined? hide_content_title
@@ -28,14 +28,14 @@
         = comment.user.try(:signature)
 %footer.actions
   -if !comment.node.content.too_old_for_comments?
-    = link_to "Répondre", "/nodes/#{comment.node_id}/comments/#{comment.id}/answer#new_comment", :class => 'action'
+    = link_to "Répondre", "/nodes/#{comment.node_id}/comments/#{comment.id}/answer#new_comment", class: 'action'
   - if current_account && current_account.can_update?(comment)
-    = link_to "Modifier", "/nodes/#{comment.node_id}/comments/#{comment.id}/modifier", :class => 'action'
+    = link_to "Modifier", "/nodes/#{comment.node_id}/comments/#{comment.id}/modifier", class: 'action'
   - if current_account
     - if current_account.can_vote?(comment)
       %div.vote
-        Ce commentaire est-il #{button_to "pertinent", "/nodes/#{comment.node_id}/comments/#{comment.id}/relevance/for", :remote => true, :class => "relevant"}
-        ou #{button_to "inutile", "/nodes/#{comment.node_id}/comments/#{comment.id}/relevance/against", :remote => true, :class => "useless"} ?
+        Ce commentaire est-il #{button_to "pertinent", "/nodes/#{comment.node_id}/comments/#{comment.id}/relevance/for", remote: true, class: "relevant"}
+        ou #{button_to "inutile", "/nodes/#{comment.node_id}/comments/#{comment.id}/relevance/against", remote: true, class: "useless"} ?
     - elsif v = comment.vote_by?(current_account.id)
       %div.vote.done
         Vous avez jugé ce commentaire #{v == "for" ? "pertinent" : "inutile"}.

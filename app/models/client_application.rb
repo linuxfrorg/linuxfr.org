@@ -14,7 +14,7 @@
 
 class ClientApplication < ActiveRecord::Base
   belongs_to :account
-  has_many :access_grants, :dependent => :delete_all
+  has_many :access_grants, dependent: :delete_all
 
   # FIXME rails41
   attr_accessible :name

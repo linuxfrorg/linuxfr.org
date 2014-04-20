@@ -25,5 +25,5 @@
         %td
           %var= app.app_secret
         %td
-          = link_to "Modifier", edit_auth_client_application_path(app), :class => "edit_client_app"
-          = button_to "Supprimer", [:auth, app], :method => :delete, :data => { :confirm => "Êtes-vous sûr de vouloir supprimer cette application ?" }
+          = link_to "Modifier", edit_auth_client_application_path(app), class: "edit_client_app"
+          = button_to "Supprimer", [:auth, app], method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette application ?" }

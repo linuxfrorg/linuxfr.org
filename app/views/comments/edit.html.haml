@@ -1,13 +1,13 @@
 %main#contents(role="main")
   =h1 "Éditer un commentaire"
 
-  = render "preview", :preview => @comment if @preview_mode
+  = render "preview", preview: @comment if @preview_mode
 
   = form_for [@comment.node, @comment] do |form|
     = render form
 
   - if current_account && current_account.can_destroy?(@comment)
     %p
-      = button_to "Supprimer ce commentaire", [@comment.node, @comment], :method => :delete, :data => { :confirm => "Êtes-vous sûr de vouloir supprimer ce commentaire ?" }, :class => "delete_button"
+      = button_to "Supprimer ce commentaire", [@comment.node, @comment], method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce commentaire ?" }, class: "delete_button"
 
   = render 'shared/wiki_help'

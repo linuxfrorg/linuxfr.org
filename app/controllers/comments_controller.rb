@@ -1,11 +1,11 @@
 # encoding: UTF-8
 class CommentsController < ApplicationController
-  before_action :authenticate_account!, :except => [:index, :show]
-  before_action :find_node, :except => [:templeet]
-  before_action :find_comment, :except => [:index, :new, :answer, :create, :templeet]
+  before_action :authenticate_account!, except: [:index, :show]
+  before_action :find_node, except: [:templeet]
+  before_action :find_comment, except: [:index, :new, :answer, :create, :templeet]
 
   def index
-    @comments = @node.comments.published.all(:order => 'id DESC')
+    @comments = @node.comments.published.all(order: 'id DESC')
     respond_to do |wants|
       wants.html
       wants.atom
@@ -74,7 +74,7 @@ class CommentsController < ApplicationController
 
   def templeet
     comment = Comment.find(params[:id])
-    redirect_to [comment.node, comment], :status => :moved_permanently
+    redirect_to [comment.node, comment], status: :moved_permanently
   end
 
 protected

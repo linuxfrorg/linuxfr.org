@@ -1,13 +1,13 @@
 %main#contents(role="main")
   =h1 "Éditer un message"
 
-  = render "preview", :preview => @post if @preview_mode
+  = render "preview", preview: @post if @preview_mode
 
   %h2 Édition
   = form_for [@forum, @post] do |form|
     = render form
 
   - if current_account && current_account.can_destroy?(@post)
-    = button_to "Supprimer", [@post.forum, @post], :method => :delete, :data => { :confirm => "Êtes-vous sûr de vouloir supprimer ce post ?" }, :class => "delete_button"
+    = button_to "Supprimer", [@post.forum, @post], method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce post ?" }, class: "delete_button"
 
   = render 'shared/wiki_help'

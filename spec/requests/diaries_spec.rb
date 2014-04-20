@@ -24,8 +24,8 @@ describe "Diaries" do
     login_as account
     get new_diary_path
     assert_response :success
-    fill_in :diary_title, :with => title
-    fill_in :diary_wiki_body, :with => "bla bla bla"
+    fill_in :diary_title, with: title
+    fill_in :diary_wiki_body, with: "bla bla bla"
     click_button "Prévisualiser"
     response.should contain(title)
     click_button "Poster le journal"
@@ -41,7 +41,7 @@ describe "Diaries" do
     within ".diary" do
       click_link "Modifier"
     end
-    fill_in :diary_wiki_body, :with => body
+    fill_in :diary_wiki_body, with: body
     click_button "Prévisualiser"
     click_button "Poster le journal"
     response.should contain("Le journal a bien été modifié")

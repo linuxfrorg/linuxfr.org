@@ -24,9 +24,9 @@ class Comment < ActiveRecord::Base
   include Canable::Ables
 
   belongs_to :user
-  belongs_to :node, :counter_cache => :comments_count
+  belongs_to :node, counter_cache: :comments_count
 
-  delegate :content, :content_type, :to => :node
+  delegate :content, :content_type, to: :node
 
   # FIXME rails41
   attr_accessible :title, :wiki_body, :node_id, :parent_id
@@ -36,9 +36,9 @@ class Comment < ActiveRecord::Base
   scope :on_dashboard, -> { published.order('created_at DESC') }
   scope :footer,       -> { published.order('created_at DESC').limit(12).select([:id, :node_id, :title]) }
 
-  validates :title,     :presence => { :message => "Le titre est obligatoire" },
-                        :length   => { :maximum => 100, :message => "Le titre est trop long" }
-  validates :wiki_body, :presence => { :message => "Vous ne pouvez pas poster un commentaire vide" }
+  validates :title,     presence: { message: "Le titre est obligatoire" },
+                        length: { maximum: 100, message: "Le titre est trop long" }
+  validates :wiki_body, presence: { message: "Vous ne pouvez pas poster un commentaire vide" }
 
   wikify_attr :body
 
@@ -96,21 +96,21 @@ class Comment < ActiveRecord::Base
 
   def answer_to_self?
     return false if root?
-    Comment.where(:node_id => node_id, :user_id => user_id).
+    Comment.where(node_id: node_id, user_id: user_id).
             where("LOCATE(materialized_path, ?) > 0", materialized_path).
             where("id != ?", self.id).
             exists?
   end
 
   def children?
-    Comment.where(:node_id => node_id, :user_id => user_id).
+    Comment.where(node_id: node_id, user_id: user_id).
             where("materialized_path LIKE '#{materialized_path}%'").
             where("id != ?", self.id).
             exists?
   end
 
   def parents
-    Comment.where(:node_id => node_id).
+    Comment.where(node_id: node_id).
             where("LOCATE(materialized_path, ?) = 1", materialized_path).
             where("id != ?", self.id)
   end
@@ -128,7 +128,7 @@ class Comment < ActiveRecord::Base
 
 ### Calculations ###
 
-  before_validation :default_score, :on => :create
+  before_validation :default_score, on: :create
   def default_score
     if user.account.karma > 0
       self.score = Math.log10(user.account.karma).to_i - 1

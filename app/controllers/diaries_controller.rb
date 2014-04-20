@@ -1,10 +1,10 @@
 # encoding: UTF-8
 class DiariesController < ApplicationController
-  before_action :authenticate_account!, :except => [:index, :show]
-  before_action :find_diary, :except => [:index, :new, :create]
-  after_action  :marked_as_read, :only => [:show], :if => :account_signed_in?
-  after_action  :expire_cache, :only => [:create, :update, :destroy, :move]
-  caches_page   :index, :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
+  before_action :authenticate_account!, except: [:index, :show]
+  before_action :find_diary, except: [:index, :new, :create]
+  after_action  :marked_as_read, only: [:show], if: :account_signed_in?
+  after_action  :expire_cache, only: [:create, :update, :destroy, :move]
+  caches_page   :index, if: Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
   respond_to :html, :atom, :md
 
 ### Global ###
@@ -28,9 +28,9 @@ class DiariesController < ApplicationController
     @diary.attributes = params[:diary]
     if !preview_mode && @diary.save
       current_account.tag(@diary.node, params[:tags])
-      redirect_to [@diary.owner, @diary], :notice => "Votre journal a bien été créé"
+      redirect_to [@diary.owner, @diary], notice: "Votre journal a bien été créé"
     else
-      @diary.node = Node.new(:user_id => current_user.id)
+      @diary.node = Node.new(user_id: current_user.id)
       @diary.valid?
       flash.now[:alert] = "Votre journal ne contient pas de liens. Êtes-vous sûr ?" unless @diary.body =~ /<a /
       render :new
@@ -41,8 +41,8 @@ class DiariesController < ApplicationController
 
   def show
     enforce_view_permission(@diary)
-    path = user_diary_path(@user, @diary, :format => params[:format])
-    redirect_to path, :status => 301 if request.path != path
+    path = user_diary_path(@user, @diary, format: params[:format])
+    redirect_to path, status: 301 if request.path != path
     flash.now[:alert] = "Attention, ce journal a été supprimé et n'est visible que par les admins" unless @diary.visible?
   end
 
@@ -54,7 +54,7 @@ class DiariesController < ApplicationController
     enforce_update_permission(@diary)
     @diary.attributes = params[:diary]
     if !preview_mode && @diary.save
-      redirect_to [@user, @diary], :notice => "Le journal a bien été modifié"
+      redirect_to [@user, @diary], notice: "Le journal a bien été modifié"
     else
       flash.now[:alert] = "Impossible d'enregistrer ce journal" if @diary.invalid?
       render :edit
@@ -64,7 +64,7 @@ class DiariesController < ApplicationController
   def destroy
     enforce_destroy_permission(@diary)
     @diary.mark_as_deleted
-    redirect_to diaries_url, :notice => "Le journal a bien été supprimé"
+    redirect_to diaries_url, notice: "Le journal a bien été supprimé"
   end
 
   def convert
@@ -73,7 +73,7 @@ class DiariesController < ApplicationController
       if current_account.amr?
         redirect_to [:moderation, @news]
       else
-        redirect_to "/", :notice => "Merci d'avoir proposé ce journal en dépêche"
+        redirect_to "/", notice: "Merci d'avoir proposé ce journal en dépêche"
       end
     else
       flash.now[:alert] = "Impossible de proposer ce journal en dépêche"
@@ -84,7 +84,7 @@ class DiariesController < ApplicationController
   def move
     enforce_destroy_permission(@diary)
     if @diary.move_to_forum(params[:post])
-      redirect_to diaries_url, :notice => "Le journal a bien été déplacé vers les forums"
+      redirect_to diaries_url, notice: "Le journal a bien été déplacé vers les forums"
     else
       flash.now[:alert] = "Impossible de déplacer ce journal. Avez-vous bien choisi un forum ?"
       render :edit
@@ -107,7 +107,7 @@ protected
 
   def expire_cache
     return if @diary.new_record?
-    expire_page :action => :index, :format => :atom
-    expire_action :action => :show, :id => @diary, :user_id => @diary.owner
+    expire_page action: :index, format: :atom
+    expire_action action: :show, id: @diary, user_id: @diary.owner
   end
 end

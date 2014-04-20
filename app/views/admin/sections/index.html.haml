@@ -16,9 +16,9 @@
         %td
           = link_to section.title, section
         %td
-          = image_tag(section.image, :alt => section.title)
+          = image_tag(section.image, alt: section.title)
         %td
           = section.state == "published" ? "publiée" : "archivée"
         %td
           = link_to "Modifier", edit_admin_section_path(section)
-          = button_to "Archiver", [:admin, section], :method => :delete, :data => { :confirm => "Archiver la section ?" }, :class => "delete_button"
+          = button_to "Archiver", [:admin, section], method: :delete, data: { confirm: "Archiver la section ?" }, class: "delete_button"

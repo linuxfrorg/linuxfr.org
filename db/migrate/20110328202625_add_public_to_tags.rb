@@ -1,11 +1,11 @@
 # encoding: utf-8
 class AddPublicToTags < ActiveRecord::Migration
   def self.up
-    add_column :tags, :public, :boolean, :default => true, :null => false
+    add_column :tags, :public, :boolean, default: true, null: false
     remove_index :tags, :taggings_count
     add_index :tags, [:public, :taggings_count]
     remove_index :tags, :name
-    add_index :tags, :name, :unique => true
+    add_index :tags, :name, unique: true
     add_index :taggings, [:created_at, :tag_id]
   end
 

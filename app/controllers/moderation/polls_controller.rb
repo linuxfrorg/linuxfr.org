@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class Moderation::PollsController < ModerationController
-  before_action :find_poll, :except => [:index]
-  after_action  :expire_cache, :only => [:update, :accept]
+  before_action :find_poll, except: [:index]
+  after_action  :expire_cache, only: [:update, :accept]
 
   def index
     @polls = Poll.draft.order("id DESC")
@@ -14,13 +14,13 @@ class Moderation::PollsController < ModerationController
   def accept
     enforce_accept_permission(@poll)
     @poll.accept!
-    redirect_to @poll, :notice => "Sondage accepté"
+    redirect_to @poll, notice: "Sondage accepté"
   end
 
   def refuse
     enforce_refuse_permission(@poll)
     @poll.refuse!
-    redirect_to moderation_polls_url, :notice => "Sondage refusé"
+    redirect_to moderation_polls_url, notice: "Sondage refusé"
   end
 
   def edit
@@ -31,7 +31,7 @@ class Moderation::PollsController < ModerationController
     enforce_update_permission(@poll)
     @poll.attributes = params[:poll]
     if @poll.save
-      redirect_to [:moderation, @poll], :notice => "Modification enregistrée"
+      redirect_to [:moderation, @poll], notice: "Modification enregistrée"
     else
       flash.now[:alert] = "Impossible d'enregistrer ce sondage"
       render :edit
@@ -41,7 +41,7 @@ class Moderation::PollsController < ModerationController
   def ppp
     enforce_accept_permission(@poll)
     @poll.set_on_ppp
-    redirect_to root_url, :notice => "Le sondage a bien été mis en phare"
+    redirect_to root_url, notice: "Le sondage a bien été mis en phare"
   end
 
 protected
@@ -52,6 +52,6 @@ protected
 
   def expire_cache
     return if @poll.state == "draft"
-    expire_page :controller => '/polls', :action => :index, :format => :atom
+    expire_page controller: '/polls', action: :index, format: :atom
   end
 end

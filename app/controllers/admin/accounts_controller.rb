@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class Admin::AccountsController < AdminController
-  before_action :load_account, :except => [:index]
+  before_action :load_account, except: [:index]
 
   def index
     accounts = Account
@@ -17,7 +17,7 @@ class Admin::AccountsController < AdminController
 
   def password
     @account.send_reset_password_instructions
-    redirect_to admin_accounts_url, :notice => "Instructions pour changer le mot de passe envoyées"
+    redirect_to admin_accounts_url, notice: "Instructions pour changer le mot de passe envoyées"
   end
 
   def karma
@@ -30,16 +30,16 @@ class Admin::AccountsController < AdminController
   def update
     if @account.inactive?
       @account.reactivate!
-      redirect_to :back, :notice => "Compte réactivé"
+      redirect_to :back, notice: "Compte réactivé"
     else
       @account.inactivate!
-      redirect_to :back, :notice => "Compte désactivé"
+      redirect_to :back, notice: "Compte désactivé"
     end
   end
 
   def destroy
     @account.inactivate!
-    redirect_to admin_accounts_url, :notice => "Compte désactivé"
+    redirect_to admin_accounts_url, notice: "Compte désactivé"
   end
 
 protected

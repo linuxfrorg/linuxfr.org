@@ -2,7 +2,7 @@
 # LinuxFr Flavored Truncator
 #
 class LFTruncator < HTML_Truncator
-  DEFAULT_OPTIONS = { :ellipsis => "[...](suite)", :length_in_chars => false }
+  DEFAULT_OPTIONS = { ellipsis: "[...](suite)", length_in_chars: false }
 
   def self.truncate(text, max, opts={})
     opts = DEFAULT_OPTIONS.merge(opts)

@@ -1,11 +1,11 @@
 # encoding: UTF-8
 class WikiPagesController < ApplicationController
-  before_action :authenticate_account!, :except => [:index, :show, :revision, :changes, :pages]
-  before_action :load_wiki_page, :only => [:edit, :update, :destroy, :revision]
-  after_action  :marked_as_read, :only => [:show], :if => :account_signed_in?
-  after_action  :expire_cache, :only => [:create, :update, :destroy]
-  caches_page   :index,   :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
-  caches_page   :changes, :if => Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
+  before_action :authenticate_account!, except: [:index, :show, :revision, :changes, :pages]
+  before_action :load_wiki_page, only: [:edit, :update, :destroy, :revision]
+  after_action  :marked_as_read, only: [:show], if: :account_signed_in?
+  after_action  :expire_cache, only: [:create, :update, :destroy]
+  caches_page   :index,   if: Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
+  caches_page   :changes, if: Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
   respond_to    :html, :md
 
   def index
@@ -18,12 +18,12 @@ class WikiPagesController < ApplicationController
   def show
     @wiki_page = WikiPage.find(params[:id])
     enforce_view_permission(@wiki_page)
-    path = wiki_page_path(@wiki_page, :format => params[:format])
-    redirect_to path, :status => 301 and return if request.path != path
+    path = wiki_page_path(@wiki_page, format: params[:format])
+    redirect_to path, status: 301 and return if request.path != path
     respond_with @wiki_page
   rescue ActiveRecord::RecordNotFound
     if current_account
-      redirect_to new_wiki_page_url(:title => params[:id])
+      redirect_to new_wiki_page_url(title: params[:id])
     else
       render :not_found
     end
@@ -42,7 +42,7 @@ class WikiPagesController < ApplicationController
     @wiki_page.attributes = params[:wiki_page]
     enforce_create_permission(@wiki_page)
     if !preview_mode && @wiki_page.save
-      redirect_to @wiki_page, :notice => "Nouvelle page de wiki créée"
+      redirect_to @wiki_page, notice: "Nouvelle page de wiki créée"
     else
       @wiki_page.node = Node.new
       @wiki_page.valid?
@@ -60,7 +60,7 @@ class WikiPagesController < ApplicationController
     @wiki_page.attributes = params[:wiki_page]
     @wiki_page.user_id = current_account.user_id
     if !preview_mode && @wiki_page.save
-      redirect_to @wiki_page, :notice => "Modification enregistrée"
+      redirect_to @wiki_page, notice: "Modification enregistrée"
     else
       flash.now[:alert] = "Impossible d'enregistrer cette page de wiki" if @wiki_page.invalid?
       render :edit
@@ -70,7 +70,7 @@ class WikiPagesController < ApplicationController
   def destroy
     enforce_destroy_permission(@wiki_page)
     @wiki_page.mark_as_deleted
-    redirect_to WikiPage.home_page, :notice => "Page de wiki supprimée"
+    redirect_to WikiPage.home_page, notice: "Page de wiki supprimée"
   end
 
   def revision
@@ -111,7 +111,7 @@ protected
 
   def expire_cache
     return if @wiki_page.new_record?
-    expire_page :action => :index,   :format => :atom
-    expire_page :action => :changes, :format => :atom
+    expire_page action: :index,   format: :atom
+    expire_page action: :changes, format: :atom
   end
 end

@@ -14,6 +14,6 @@ class FriendSite < ActiveRecord::Base
 
   default_scope { order("position ASC") }
 
-  validates :title, :presence => { :message => "Le titre est obligatoire" }
-  validates :url,   :presence => { :message => "L'URL est obligatoire" }
+  validates :title, presence: { message: "Le titre est obligatoire" }
+  validates :url,   presence: { message: "L'URL est obligatoire" }
 end

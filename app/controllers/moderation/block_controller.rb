@@ -6,6 +6,6 @@ class Moderation::BlockController < ModerationController
     nb_days  = (params[:nb_days] || 2).to_i
     @account = Account.find(params[:account_id])
     @account.block(nb_days, current_user.id)
-    render :json => { :notice => "Les commentaires de #{@account.login} sont bloqués pour #{pluralize nb_days, "jour"}" }
+    render json: { notice: "Les commentaires de #{@account.login} sont bloqués pour #{pluralize nb_days, "jour"}" }
   end
 end

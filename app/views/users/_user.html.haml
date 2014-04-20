@@ -1,6 +1,6 @@
-%article{:class => 'content vcard'}
+%article{class: 'content vcard'}
   %h2
-    = link_to user.name, user, :class => 'fn url'
+    = link_to user.name, user, class: 'fn url'
   %figure.image
     = avatar_img(user)
   - unless user.account && user.account.active_for_authentication?
@@ -8,7 +8,7 @@
       Compte fermé
   - if user.homesite
     %p
-      Site personnel&nbsp;: #{link_to user.homesite, user.homesite, :class => 'url me'}
+      Site personnel&nbsp;: #{link_to user.homesite, user.homesite, class: 'url me'}
   - if current_account && user.jabber_id
     %p
-      Jabber ID&nbsp;: #{link_to 'xmpp:' + user.jabber_id, 'xmpp:' + user.jabber_id, :class => 'url'}
+      Jabber ID&nbsp;: #{link_to 'xmpp:' + user.jabber_id, 'xmpp:' + user.jabber_id, class: 'url'}

@@ -1,7 +1,7 @@
 .order_navbar
   Trier par :
   %ul
-    %li= link_to_unless @order == 'created_at', "date", :order => 'created_at', :page => nil
-    %li= link_to_unless @order == 'score', "note", :order => 'score', :page => nil
-    %li= link_to_unless @order == 'interest', "intérêt", :order => 'interest', :page => nil
-    %li= link_to_unless @order == 'last_commented_at', "dernier commentaire", :order => 'last_commented_at', :page => nil
+    %li= link_to_unless @order == 'created_at', "date", order: 'created_at', page: nil
+    %li= link_to_unless @order == 'score', "note", order: 'score', page: nil
+    %li= link_to_unless @order == 'interest', "intérêt", order: 'interest', page: nil
+    %li= link_to_unless @order == 'last_commented_at', "dernier commentaire", order: 'last_commented_at', page: nil

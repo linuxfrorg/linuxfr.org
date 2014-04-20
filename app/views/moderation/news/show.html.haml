@@ -4,41 +4,41 @@
   #redaction_board
     = render 'vote'
     = render 'board'
-    = render 'attendees', :attendees => @news.attendees
-    = render 'editions', :news => @news
+    = render 'attendees', attendees: @news.attendees
+    = render 'editions', news: @news
 
 - if @news.paragraphs.any?
   = article_for @news do |c|
     - c.title = capture do
-      = render :partial => 'short'
+      = render partial: 'short'
     - c.meta  = news_posted_by(@news)
-    - c.image = link_to(image_tag(@news.section.image, :alt => @news.section.title), @news.section)
+    - c.image = link_to(image_tag(@news.section.image, alt: @news.section.title), @news.section)
     - c.body  = capture do
       #first_part
-        = render :partial => 'redaction/paragraphs/paragraph', :collection => @news.paragraphs.in_first_part
+        = render partial: 'redaction/paragraphs/paragraph', collection: @news.paragraphs.in_first_part
       %ul#links
-        = render :partial => 'redaction/links/link', :collection => @news.links
-      %p.new_link{'data-url' => new_redaction_news_link_path(:news_id => @news)}
+        = render partial: 'redaction/links/link', collection: @news.links
+      %p.new_link{'data-url' => new_redaction_news_link_path(news_id: @news)}
         %button.add_link Ajouter un lien
       #second_part_toc
         = @news.second_part_toc
       #second_part
-        = render :partial => 'redaction/paragraphs/paragraph', :collection => @news.paragraphs.in_second_part
+        = render partial: 'redaction/paragraphs/paragraph', collection: @news.paragraphs.in_second_part
       .new_paragraph
-        = button_to "Ajouter un paragraphe", redaction_news_paragraphs_path(:news_id => @news), :remote => true, :class => "add_para"
-  = link_to "Réorganiser", reorganize_redaction_news_path(@news), :class => "reorganize"
+        = button_to "Ajouter un paragraphe", redaction_news_paragraphs_path(news_id: @news), remote: true, class: "add_para"
+  = link_to "Réorganiser", reorganize_redaction_news_path(@news), class: "reorganize"
 - else
   %h2 Dépêche importée !
   = form_for [:moderation, @news] do |form|
     %p
       = form.label :title, "Titre de la dépêche"
-      = form.text_field :title, :autocomplete => 'off', :required => 'required', :spellcheck => 'true'
+      = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true'
     %p
       = form.label :section_id, "Section de la dépêche"
       = form.collection_select :section_id, Section.published, :id, :title
     %p
       = form.label :body, "Contenu de la dépêche (<strong>HTML, pas de syntaxe wiki</strong>)".html_safe
-      = form.text_area :body, :required => 'required', :spellcheck => 'true', :class => 'markItUp'
+      = form.text_area :body, required: 'required', spellcheck: 'true', class: 'markItUp'
     #form_links
       %fieldset
         %label#label-link-name Nom du lien
@@ -52,7 +52,7 @@
           = lform.select :lang, Lang.all
     %p
       = form.label :second_part, "Seconde partie"
-      = form.text_area :second_part, :spellcheck => 'true', :class => 'markItUp'
+      = form.text_area :second_part, spellcheck: 'true', class: 'markItUp'
     %p
       = form.submit "Enregistrer"
 

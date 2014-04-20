@@ -19,7 +19,7 @@ class NewsVersion < ActiveRecord::Base
   belongs_to :news
   belongs_to :user
 
-  acts_as_list :column => 'version', :scope => :news
+  acts_as_list column: 'version', scope: :news
 
   attr_protected :created_at
 

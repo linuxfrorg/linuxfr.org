@@ -4,6 +4,6 @@
     - @sections.each do |section|
       = div_for section do
         = link_to section do
-          = image_tag section.image, :alt => section.title, :title => section.title
+          = image_tag section.image, alt: section.title, title: section.title
           <br/>
           = section.title

@@ -5,10 +5,10 @@ module UsersHelper
     return '' if user.nil?
     return '' if current_account && current_account.hide_avatar?
     options = {
-      :class  => "avatar",
-      :alt    => "",
-      :width  => AvatarUploader::AVATAR_SIZE,
-      :height => AvatarUploader::AVATAR_SIZE
+      class: "avatar",
+      alt: "",
+      width: AvatarUploader::AVATAR_SIZE,
+      height: AvatarUploader::AVATAR_SIZE
     }
     image_tag(user.avatar_url, options)
   end

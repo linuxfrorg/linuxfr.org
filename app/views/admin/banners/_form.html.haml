@@ -3,10 +3,10 @@
   = form.text_field :title
 %p
   = form.label :content, 'code HTML de la bannière'
-  = form.text_area :content, :autocomplete => 'off', :required => 'required'
+  = form.text_area :content, autocomplete: 'off', required: 'required'
 %p
   = form.check_box :active
   = form.label :active, 'Activée'
 %p
-  = form.submit "Prévisualiser", :id => "banner_preview"
+  = form.submit "Prévisualiser", id: "banner_preview"
   = form.submit "Enregistrer"

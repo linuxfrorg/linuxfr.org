@@ -46,7 +46,7 @@ desc "[internal] Common stuff to alpha and production"
 task :common do
   set :application, "#{vserver}.linuxfr.org"
   set :deploy_to,   "/data/#{vserver}/#{user}/#{rails_env}"
-  server "#{user}@#{application}", :app, :web, :db, :primary => true
+  server "#{user}@#{application}", :app, :web, :db, primary: true
   depend :remote, :file, "#{shared_path}/config/database.yml"
   depend :remote, :file, "#{shared_path}/config/secret.yml"
 end
@@ -65,7 +65,7 @@ end
 # Symlinks to share files/dirs between deploys
 namespace :fs do
   desc "[internal] Install some symlinks to share files between deploys."
-  task :symlink, :roles => :app, :except => { :no_release => true } do
+  task :symlink, roles: :app, except: { no_release: true } do
     symlinks = %w(config/database.yml config/secret.yml public/pages tmp/sass-cache tmp/sockets uploads)
     symlinks.each do |symlink|
       run "ln -nfs #{shared_path}/#{symlink} #{release_path}/#{symlink}"
@@ -75,7 +75,7 @@ namespace :fs do
   end
 
   desc "[internal] Create the shared directories"
-  task :create_dirs, :roles => :app do
+  task :create_dirs, roles: :app do
     run "mkdir -p #{shared_path}/config"
     run "mkdir -p #{shared_path}/public/pages"
     run "mkdir -p #{shared_path}/tmp/sass-cache"
@@ -91,7 +91,7 @@ after "deploy:setup", "fs:create_dirs"
 # Redis cache
 namespace :cache do
   desc "Flush the redis cache"
-  task :flush, :roles => :app do
+  task :flush, roles: :app do
     run "redis-cli -n 1 flushdb"
   end
 end
@@ -100,23 +100,23 @@ after "deploy:finalize_update", "cache:flush"
 
 # The hard-core deployment rules
 namespace :deploy do
-  task :start, :roles => :app do
+  task :start, roles: :app do
     run "cd #{current_path} && bundle exec unicorn -c config/unicorn.rb -E #{rails_env} -D"
   end
 
-  task :stop, :roles => :app do
+  task :stop, roles: :app do
     set :unicorn_pidfile, "#{shared_path}/pids/unicorn.pid"
     run "if [ -e #{unicorn_pidfile} ] ; then kill -QUIT `cat #{unicorn_pidfile}` ; fi"
   end
 
-  task :restart, :roles => :app, :except => { :no_release => true }  do
+  task :restart, roles: :app, except: { no_release: true }  do
     set :unicorn_pid, capture("cat #{shared_path}/pids/unicorn.pid").chomp
     run "kill -USR2 #{unicorn_pid}"
     sleep 1
     run "kill -QUIT #{unicorn_pid}"
   end
 
-  task :cold, :roles => :app do
+  task :cold, roles: :app do
     stop
     update
     migrate

@@ -10,9 +10,9 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |c|
   c.mock_with :rspec
-  c.filter_run :focus => true
+  c.filter_run focus: true
   c.run_all_when_everything_filtered = true
-  c.include Devise::TestHelpers, :type => :controller
+  c.include Devise::TestHelpers, type: :controller
 
   c.before(:suite) do
     DatabaseCleaner.strategy = :transaction
