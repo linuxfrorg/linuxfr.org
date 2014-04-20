@@ -18,6 +18,7 @@ class Board
     @object_type = Board.free
     @created_at  = Time.now
     super
+    @object_id   = nil if @object_id.blank?
   end
 
   def user=(user)
