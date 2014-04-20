@@ -1,9 +1,11 @@
 # encoding: utf-8
 
-# It's the famous board, from DaCode (then templeet), boosted to store
-# additional messages about redaction & moderation (votes, locks...)
+# It's the famous board, from DaCode (then templeet)
 #
 class Board
+  extend  ActiveModel::Naming
+  include ActiveModel::Validations
+  include ActiveModel::Conversion
   include Canable::Ables
 
   NB_MSG_PER_CHAN = 100
@@ -11,6 +13,8 @@ class Board
 ### Constructors and attributes ###
 
   attr_accessor :id, :user_name, :user_url, :user_agent, :object_type, :object_id, :message, :created_at
+
+  validates :message, presence: true
 
   def initialize(params={})
     @object_type = Board.free
@@ -37,7 +41,7 @@ class Board
 ### Save boards ###
 
   def save
-    return false if @message.blank?
+    return false unless valid?
     clean
     persist
     push
@@ -52,6 +56,10 @@ class Board
       $redis.del "boards/msg/#{i}"
     end
     $redis.ltrim(chan_key, 0, NB_MSG_PER_CHAN - 1)
+  end
+
+  def persisted?
+    !!@id
   end
 
   def push
@@ -175,22 +183,5 @@ class Board
 
   TYPES.each do |t|
     (class << self; self; end).send(:define_method, t.downcase) { t }
-  end
-
-### ActiveModel ###
-
-  # TODO rails41 ActiveModel::Model
-
-  extend  ActiveModel::Naming
-  include ActiveModel::Conversion
-
-  def valid?()     true  end
-  def persisted?() !!@id end
-
-  def errors
-    obj = Object.new
-    def obj.[](key)         [] end
-    def obj.full_messages() [] end
-    obj
   end
 end

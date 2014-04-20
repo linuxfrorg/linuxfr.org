@@ -105,11 +105,11 @@ class Account < ActiveRecord::Base
     if params[:password].blank?
       params.delete(:password)
       params.delete(:password_confirmation) if params[:password_confirmation].blank?
-      return update_attributes(params)
+      return update(params)
     end
 
     result = if valid_password?(current_password)
-      update_attributes(params, *options)
+      update(params, *options)
       logs.create(description: "Mot de passe modifié")
     else
       self.assign_attributes(params, *options)
