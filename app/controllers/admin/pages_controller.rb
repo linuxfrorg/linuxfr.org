@@ -1,7 +1,6 @@
 # encoding: UTF-8
 class Admin::PagesController < AdminController
   before_action :find_page, only: [:edit, :update, :destroy]
-  after_action :expire_cache, only: [:update]
 
   def index
     @pages = Page.all
@@ -43,9 +42,5 @@ protected
 
   def find_page
     @page = Page.find_by(slug: params[:id])
-  end
-
-  def expire_cache
-    expire_action controller: '/static', action: :show, id: @page
   end
 end

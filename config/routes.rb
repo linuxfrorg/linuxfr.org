@@ -84,8 +84,7 @@ Rails.application.routes.draw do
   controller :boards do
     get  "/board/index.xml" => :show, format: :xml
     get  "/board" => :show
-    # FIXME rails41
-    #post "/board" => :create, as: :board
+    post "/board" => :create
   end
 
   # Accounts
