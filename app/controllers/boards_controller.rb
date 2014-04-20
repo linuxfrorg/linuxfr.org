@@ -13,13 +13,12 @@ class BoardsController < ApplicationController
   end
 
   def create
-    board = Board.new(params[:board])
+    board = Board.new board_params
     board.user = current_account.user
     enforce_create_permission(board)
     board.user_agent = request.user_agent
     board.save
-    news = board.news
-    news.node.read_by current_account.id if news
+    board.news.tap {|news| news.node.read_by current_account.id if news }
     respond_to do |wants|
       wants.html { redirect_to :back rescue redirect_to root_url }
       wants.js   { render nothing: true }
@@ -27,6 +26,10 @@ class BoardsController < ApplicationController
   end
 
 protected
+
+  def board_params
+    params.require(:board).permit(:object_type, :object_id, :message)
+  end
 
   def verify_referer_or_authenticity_token
     request.referer =~ /^https?:\/\/#{MY_DOMAIN}\// or verify_authenticity_token

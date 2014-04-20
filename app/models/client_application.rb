@@ -16,9 +16,6 @@ class ClientApplication < ActiveRecord::Base
   belongs_to :account
   has_many :access_grants, dependent: :delete_all
 
-  # FIXME rails41
-  attr_accessible :name
-
   before_create :generate_id_and_secret
   def generate_id_and_secret
     self.app_id     = SecureRandom.hex(32)

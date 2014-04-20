@@ -29,7 +29,7 @@ class Redaction::ParagraphsController < RedactionController
   end
 
   def update
-    @paragraph.wiki_body = params[:paragraph][:wiki_body]
+    @paragraph.attributes = paragraph_params
     @paragraph.update_by(current_user)
     render @paragraph
   end
@@ -40,6 +40,10 @@ class Redaction::ParagraphsController < RedactionController
   end
 
 protected
+
+  def paragraph_params
+    params.require(:paragraph).permit(:wiki_body)
+  end
 
   def find_paragraph
     @paragraph = Paragraph.find(params[:id])

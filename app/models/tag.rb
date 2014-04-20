@@ -16,7 +16,8 @@ class Tag < ActiveRecord::Base
   validates :name, presence: true
 
   attr_accessor :tagged_by_current
-  attr_accessible :name
+  # FIXME rails41
+  # attr_accessible :name
 
   scope :footer, -> {
     select([:name]).joins(:taggings).

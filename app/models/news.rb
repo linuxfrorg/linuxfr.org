@@ -39,8 +39,6 @@ class News < Content
     dependent: :destroy,
     inverse_of: :news
 
-  attr_accessible :title, :section_id, :author_name, :author_email, :links_attributes, :paragraphs_attributes
-
   scope :sorted,    -> { order("created_at DESC") }
   scope :draft,     -> { where(state: "draft") }
   scope :candidate, -> { where(state: "candidate") }
@@ -167,7 +165,6 @@ class News < Content
 ### Virtual attributes ###
 
   attr_accessor   :message, :wiki_body, :wiki_second_part, :urgent, :editor, :pot_de_miel
-  attr_accessible :message, :wiki_body, :wiki_second_part, :urgent
 
   before_validation :mark_links_for_destruction
   def mark_links_for_destruction

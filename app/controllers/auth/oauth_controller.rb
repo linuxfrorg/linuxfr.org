@@ -12,17 +12,17 @@ class Auth::OauthController < ApplicationController
     if params[:commit] == "Accepter"
       AccessGrant.prune!
       @access_grant = current_account.access_grants.create(client_application: @application)
-      redirect_to redirect_uri_for(params[:redirect_uri])
+      redirect_to redirect_uri_for params.require(:redirect_uri)
     else
-      redirect_to params[:redirect_uri]
+      redirect_to params.require(:redirect_uri)
     end
   end
 
   def access_token
-    @application = ClientApplication.authenticate(params[:client_id], params[:client_secret])
+    @application = ClientApplication.authenticate(params.require(:client_id), params.require(:client_secret))
     render json: {error: "Could not find application"} and return if @application.nil?
 
-    @grant = AccessGrant.authenticate(params[:code], @application.id)
+    @grant = AccessGrant.authenticate(params.require([:code), @application.id)
     render json: {error: "Could not authenticate access code"} and return if @grant.nil?
 
     @grant.start_expiry_period!
@@ -30,7 +30,7 @@ class Auth::OauthController < ApplicationController
   end
 
   def user
-    @grant = AccessGrant.find_by(access_token: params[:bearer_token])
+    @grant = AccessGrant.find_by(access_token: params.require(:bearer_token))
     if @grant.nil?
       render json: { error: "Could not find access grant for this token" }
     else
@@ -41,7 +41,7 @@ class Auth::OauthController < ApplicationController
 protected
 
   def find_application
-    @application = ClientApplication.find_by(app_id: params[:client_id])
+    @application = ClientApplication.find_by(app_id: params.require(:client_id))
   end
 
   def redirect_uri_for(uri)

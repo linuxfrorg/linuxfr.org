@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem "rails",                   "4.1.0"
 
+gem "actionpack-page_caching", "~>1.0"
 gem "ansi",                    "~>1.4", require: nil
 gem "acts_as_list",            "~>0.4"
 gem "bitfields",               "~>0.4"
@@ -44,9 +45,6 @@ gem "coffee-rails",          "~>4.0"
 gem "therubyracer",          "~>0.12", require: 'v8'
 gem "uglifier"
 
-# FIXME rails41
-gem 'protected_attributes'
-
 # Rspec-rails must be in development for rake stats and in test for normal stuff
 group :development, :test do
   gem "rspec-rails",           "~>2.14"
@@ -77,8 +75,7 @@ group :test do
 end
 
 group :production, :alpha do
-  gem "unicorn",                 "~>4.8"
-  gem "gctools",                 "~>0.2"
-  gem "actionpack-page_caching", "~>1.0"
-  gem "redis-activesupport",     "~>4.0"
+  gem "unicorn",               "~>4.8"
+  gem "gctools",               "~>0.2"
+  gem "redis-activesupport",   "~>4.0"
 end

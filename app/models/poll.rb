@@ -24,8 +24,6 @@ class Poll < Content
     inverse_of: :poll
   accepts_nested_attributes_for :answers, allow_destroy: true
 
-  attr_accessible :title, :wiki_explanations, :answers_attributes
-
   validates :title, presence: { message: "La question est obligatoire" }
 
   wikify_attr :explanations

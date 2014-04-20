@@ -32,7 +32,7 @@ class PollsController < ApplicationController
   def create
     @poll = Poll.new
     enforce_create_permission(@poll)
-    @poll.attributes = params[:poll]
+    @poll.attributes = poll_params
     @poll.tmp_owner_id = current_account.user_id
     if !preview_mode && @poll.save
       redirect_to polls_url, notice: "L'équipe de modération de LinuxFr.org vous remercie pour votre proposition de sondage"
@@ -55,6 +55,10 @@ class PollsController < ApplicationController
   end
 
 protected
+
+  def poll_params
+    params.require(:poll).permit(:title, :wiki_explanations, answers_attributes: [:answer])
+  end
 
   def on_the_first_page?
     params[:page].to_i <= 1

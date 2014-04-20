@@ -9,7 +9,7 @@ class Redaction::LinksController < RedactionController
   end
 
   def create
-    @link.attributes = params[:link]
+    @link.attributes = link_params
     @link.user = current_user
     @link.save
     render partial: 'button'
@@ -24,7 +24,7 @@ class Redaction::LinksController < RedactionController
   end
 
   def update
-    @link.attributes = params[:link]
+    @link.attributes = link_params
     @link.update_by(current_user)
     render @link
   end
@@ -35,6 +35,10 @@ class Redaction::LinksController < RedactionController
   end
 
 protected
+
+  def link_params
+    params.require(:link).permit(Link::Accessible)
+  end
 
   def new_link
     @news = News.find(params[:news_id])

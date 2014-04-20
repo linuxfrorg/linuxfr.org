@@ -25,7 +25,7 @@ class DiariesController < ApplicationController
   def create
     @diary = current_user.diaries.build
     enforce_create_permission(@diary)
-    @diary.attributes = params[:diary]
+    @diary.attributes = diary_params
     if !preview_mode && @diary.save
       current_account.tag(@diary.node, params[:tags])
       redirect_to [@diary.owner, @diary], notice: "Votre journal a bien été créé"
@@ -52,7 +52,7 @@ class DiariesController < ApplicationController
 
   def update
     enforce_update_permission(@diary)
-    @diary.attributes = params[:diary]
+    @diary.attributes = diary_params
     if !preview_mode && @diary.save
       redirect_to [@user, @diary], notice: "Le journal a bien été modifié"
     else
@@ -83,7 +83,7 @@ class DiariesController < ApplicationController
 
   def move
     enforce_destroy_permission(@diary)
-    if @diary.move_to_forum(params[:post])
+    if @diary.move_to_forum params.require(:post).permit(:forum_id)
       redirect_to diaries_url, notice: "Le journal a bien été déplacé vers les forums"
     else
       flash.now[:alert] = "Impossible de déplacer ce journal. Avez-vous bien choisi un forum ?"
@@ -92,6 +92,10 @@ class DiariesController < ApplicationController
   end
 
 protected
+
+  def diary_params
+    params.require(:diary).permit(:title, :wiki_body)
+  end
 
   def find_diary
     @user  = User.find(params[:user_id])

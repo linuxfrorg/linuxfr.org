@@ -28,9 +28,6 @@ class Comment < ActiveRecord::Base
 
   delegate :content, :content_type, to: :node
 
-  # FIXME rails41
-  attr_accessible :title, :wiki_body, :node_id, :parent_id
-
   scope :under,        ->(path) { where("materialized_path LIKE ?", "#{path}_%") }
   scope :published,    -> { where(state: 'published') }
   scope :on_dashboard, -> { published.order('created_at DESC') }

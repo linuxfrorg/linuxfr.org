@@ -18,8 +18,6 @@ class PollAnswer < ActiveRecord::Base
 
   acts_as_list scope: :poll
 
-  attr_accessible :answer
-
   validates :answer, presence: { message: "La description de la réponse ne peut pas être vide" }
 
   def percent

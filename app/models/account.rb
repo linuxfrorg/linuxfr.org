@@ -57,7 +57,7 @@ class Account < ActiveRecord::Base
 
   attr_accessor :remember_me, :amr_id
   # FIXME rails41
-  attr_accessible :login, :email, :stylesheet, :uploaded_stylesheet, :password, :password_confirmation, :user_attributes, :remember_me
+  #attr_accessible :login, :email, :stylesheet, :uploaded_stylesheet, :password, :password_confirmation, :user_attributes, :remember_me
   delegate :name, to: :user
 
   scope :unconfirmed, -> { where(confirmed_at: nil) }
@@ -288,16 +288,17 @@ class Account < ActiveRecord::Base
                          256 => :hide_signature,
                          512 => :show_negative_nodes,
                          scopes: false
-  attr_accessible :hide_avatar,
-                  :news_on_home,
-                  :diaries_on_home,
-                  :posts_on_home,
-                  :polls_on_home,
-                  :wiki_pages_on_home,
-                  :trackers_on_home,
-                  :sort_by_date_on_home,
-                  :hide_signature,
-                  :show_negative_nodes
+  # FIXME rails41
+  #attr_accessible :hide_avatar,
+  #                :news_on_home,
+  #                :diaries_on_home,
+  #                :posts_on_home,
+  #                :polls_on_home,
+  #                :wiki_pages_on_home,
+  #                :trackers_on_home,
+  #                :sort_by_date_on_home,
+  #                :hide_signature,
+  #                :show_negative_nodes
 
   def types_on_home
     %w(News Diary Post Poll WikiPage Tracker).select do |type|

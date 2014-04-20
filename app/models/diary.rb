@@ -26,8 +26,6 @@ class Diary < Content
   belongs_to :owner, class_name: 'User'
   belongs_to :converted_news, class_name: 'News'
 
-  attr_accessible :title, :wiki_body
-
   validates :title,     presence: { message: "Le titre est obligatoire" },
                         length: { maximum: 100, message: "Le titre est trop long" }
   validates :wiki_body, presence: { message: "Vous ne pouvez pas poster un journal vide" }

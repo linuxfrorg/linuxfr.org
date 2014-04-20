@@ -28,7 +28,7 @@ class Content < ActiveRecord::Base
 
   attr_accessor   :cc_licensed, :tmp_owner_id
   # FIXME rails41
-  attr_accessible :cc_licensed
+  # attr_accessible :cc_licensed
 
   after_create :create_node
   def create_node(attrs={}, replace_existing=true)

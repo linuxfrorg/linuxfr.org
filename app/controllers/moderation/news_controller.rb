@@ -34,9 +34,7 @@ class Moderation::NewsController < ModerationController
 
   def update
     enforce_update_permission(@news)
-    @news.body = params[:news].delete(:body) if params[:news].has_key?(:body)
-    @news.second_part = params[:news].delete(:second_part) if params[:news].has_key?(:second_part)
-    @news.attributes = params[:news]
+    @news.attributes = news_params
     @news.editor = current_account
     @news.save
     if request.xhr?
@@ -103,6 +101,11 @@ class Moderation::NewsController < ModerationController
   end
 
 protected
+
+  def news_params
+    params.require(:news).permit(:title, :section_id, :wiki_body, :wiki_second_part, :body, :second_part,
+                                 links_attributes: [Link::Accessible])
+  end
 
   def find_news
     @news = News.find(params[:id])

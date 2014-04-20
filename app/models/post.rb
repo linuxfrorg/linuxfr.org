@@ -23,8 +23,6 @@ class Post < Content
 
   belongs_to :forum
 
-  attr_accessible :title, :wiki_body, :forum_id
-
   scope :with_node_ordered_by, ->(order) { joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
 
   validates :forum,     presence: { message: "Vous devez choisir un forum" }

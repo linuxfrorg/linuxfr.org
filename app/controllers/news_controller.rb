@@ -33,7 +33,7 @@ class NewsController < ApplicationController
 
   def create
     @news = News.new
-    @news.attributes   = params[:news]
+    @news.attributes   = news_params
     @news.author_name  = current_account.name  if current_account
     @news.author_email = current_account.email if current_account
     if !preview_mode && @news.save
@@ -50,6 +50,12 @@ class NewsController < ApplicationController
   end
 
 protected
+
+  def news_params
+    params.require(:news).permit(:title, :section_id, :author_name, :author_email,
+                                 :message, :wiki_body, :wiki_second_part, :urgent,
+                                 links_attributes: [Link::Accessible])
+  end
 
   def honeypot
     honeypot = params[:news].delete(:pot_de_miel)

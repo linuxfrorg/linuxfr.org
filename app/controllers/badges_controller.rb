@@ -12,11 +12,17 @@ class BadgesController < ApplicationController
   end
 
   def create
-    @badge = Badge.new params[:badge]
+    @badge = Badge.new badge_params
     if @badge.save
       render :created
     else
       render :new
     end
+  end
+
+  protected
+
+  def badge_params
+    params.require(:badge).permit(Badge::Fields)
   end
 end

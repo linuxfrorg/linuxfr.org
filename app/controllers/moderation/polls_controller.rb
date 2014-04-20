@@ -29,7 +29,7 @@ class Moderation::PollsController < ModerationController
 
   def update
     enforce_update_permission(@poll)
-    @poll.attributes = params[:poll]
+    @poll.attributes = poll_params
     if @poll.save
       redirect_to [:moderation, @poll], notice: "Modification enregistrée"
     else
@@ -45,6 +45,10 @@ class Moderation::PollsController < ModerationController
   end
 
 protected
+
+  def poll_params
+    params.require(:poll).permit!
+  end
 
   def find_poll
     @poll = Poll.find(params[:id])

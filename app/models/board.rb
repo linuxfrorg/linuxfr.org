@@ -3,9 +3,7 @@
 # It's the famous board, from DaCode (then templeet)
 #
 class Board
-  extend  ActiveModel::Naming
-  include ActiveModel::Validations
-  include ActiveModel::Conversion
+  include ActiveModel::Model
   include Canable::Ables
 
   NB_MSG_PER_CHAN = 100
@@ -18,11 +16,8 @@ class Board
 
   def initialize(params={})
     @object_type = Board.free
-    @object_type = params[:object_type] unless params[:object_type].blank?
-    @object_id   = params[:object_id]   unless params[:object_id].blank?
-    @user_name   = params[:user_name]   unless params[:user_name].blank?
-    @message     = params[:message]
     @created_at  = Time.now
+    super
   end
 
   def user=(user)

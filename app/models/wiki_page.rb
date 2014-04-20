@@ -64,8 +64,7 @@ class WikiPage < Content
 
 ### Hey, it's a wiki! ###
 
-  attr_accessor   :wiki_body, :message, :user_id
-  attr_accessible :wiki_body, :message
+  attr_accessor :wiki_body, :message, :user_id
 
   wikify_attr :body
 

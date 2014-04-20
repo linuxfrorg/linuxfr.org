@@ -49,8 +49,7 @@ class TrackersController < ApplicationController
   end
 
   def create
-    @tracker = Tracker.new
-    @tracker.attributes = params[:tracker]
+    @tracker = Tracker.new tracker_params
     @tracker.tmp_owner_id = current_user.try(:id)
     if !preview_mode && @tracker.save
       redirect_to @tracker, notice: "Votre entrée a bien été créée dans le suivi"
@@ -68,7 +67,7 @@ class TrackersController < ApplicationController
 
   def update
     enforce_update_permission(@tracker)
-    @tracker.assign_attributes(params[:tracker], without_protection: true)
+    @tracker.attributes = tracker_params
     if !preview_mode && @tracker.save
       redirect_to @tracker, notice: "Entrée du suivi modifiée"
     else
@@ -84,6 +83,14 @@ class TrackersController < ApplicationController
   end
 
 protected
+
+  def tracker_params
+    if current_account.admin?
+      params.require(:tracker).permit!
+    else
+      params.require(:tracker).permit(:title, :wiki_body, :category_id)
+    end
+  end
 
   def honeypot
     honeypot = params[:tracker].delete(:pot_de_miel)

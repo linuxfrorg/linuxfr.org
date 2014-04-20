@@ -40,7 +40,7 @@ class Redaction::NewsController < RedactionController
   end
 
   def update
-    @news.attributes = params[:news]
+    @news.attributes = news_params
     @news.editor = current_account
     @news.save
     render partial: 'short'
@@ -64,7 +64,7 @@ class Redaction::NewsController < RedactionController
 
   def reorganized
     @news.editor = current_account
-    @news.reorganize params[:news]
+    @news.reorganize news_params
     redirect_to [@news.draft? ? :redaction : :moderation, @news]
   end
 
@@ -95,6 +95,11 @@ class Redaction::NewsController < RedactionController
   end
 
 protected
+
+  def news_params
+    params.require(:news).permit(:title, :section_id, :wiki_body, :wiki_second_part
+                                 links_attributes: [Link::Accessible])
+  end
 
   def load_news
     @news = News.draft.find(params[:id])

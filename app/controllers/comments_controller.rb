@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   before_action :find_comment, except: [:index, :new, :answer, :create, :templeet]
 
   def index
-    @comments = @node.comments.published.all(order: 'id DESC')
+    @comments = @node.comments.published.order('id DESC')
     respond_to do |wants|
       wants.html
       wants.atom
@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @node.comments.build
     enforce_create_permission(@comment)
-    @comment.attributes = params[:comment]
+    @comment.attributes = comment_params
     @comment.user = current_account.user
     @comment.default_score
     if !preview_mode && @comment.save
@@ -55,7 +55,7 @@ class CommentsController < ApplicationController
 
   def update
     enforce_update_permission(@comment)
-    @comment.attributes = params[:comment]
+    @comment.attributes = comment_params
     if !preview_mode && @comment.save
       flash[:notice] = "Votre commentaire a bien été modifié"
       redirect_to_content @node.content
@@ -78,6 +78,10 @@ class CommentsController < ApplicationController
   end
 
 protected
+
+  def comment_params
+    params.require(:comment).permit(:title, :wiki_body, :node_id, :parent_id)
+  end
 
   def find_node
     @node = Node.find(params[:node_id])

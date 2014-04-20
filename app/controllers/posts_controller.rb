@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new
     enforce_create_permission(@post)
-    @post.attributes = params[:post]
+    @post.attributes = post_params
     @post.tmp_owner_id = current_account.user_id
     if !preview_mode && @post.save
       current_account.tag(@post.node, params[:tags])
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.attributes = params[:post]
+    @post.attributes = post_params
     enforce_update_permission(@post)
     if !preview_mode && @post.save
       redirect_to forum_posts_url, notice: "Votre message a bien été modifié"
@@ -65,6 +65,10 @@ class PostsController < ApplicationController
   end
 
 protected
+
+  def post_params
+    params.require(:post).permit(:title, :wiki_body, :forum_id)
+  end
 
   def find_post
     @forum = Forum.find(params[:forum_id])
