@@ -10,7 +10,7 @@ class TrackersController < ApplicationController
     @attrs    = {"state" => "opened"}.merge(params[:tracker] || {})
     @order    = params[:order]
     @order    = "created_at" unless VALID_ORDERS.include?(@order)
-    @trackers = Tracker.scoped
+    @trackers = Tracker.all
     if @order == "created_at"
       @trackers = @trackers.order("#{@order} DESC")
     else
