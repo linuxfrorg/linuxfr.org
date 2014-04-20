@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # News
   resources :sections, only: [:index, :show]
-  get "/news(.:format)" => "news#index", as: "news_index"
+  get "/news" => "news#index", as: "news_index"
   resources :news, only: [:show, :new, :create]
   get "/redirect/:id" => "links#show"
   get "/:year/:month/:day" => "news#calendar", year: /(19|20)\d{2}/, month: /[01]?\d/, day: /[0-3]?\d/
@@ -82,7 +82,7 @@ Rails.application.routes.draw do
 
   # Boards
   controller :boards do
-    get  "/board/index.xml" => :show, format: :xml
+    get  "/board/index" => :show
     get  "/board" => :show
     post "/board" => :create
   end
