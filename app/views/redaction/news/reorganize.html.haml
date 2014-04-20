@@ -7,7 +7,7 @@
     = render 'editions', news: @news
 
 %article
-  = form_for @news, url: reorganized_redaction_news_path(@news) do |form|
+  = form_for @news, url: reorganized_redaction_news_path(@news), method: :put do |form|
     %p
       = form.label :section_id, "Section"
       = form.collection_select :section_id, Section.published, :id, :title

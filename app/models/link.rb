@@ -22,7 +22,7 @@ class Link < ActiveRecord::Base
   belongs_to :news
 
   attr_accessor :user
-  Accessible = [:user, :title, :url, :lang]
+  Accessible = [:id, :user, :title, :url, :lang]
 
   validates :title, presence: { message: "Un lien doit obligatoirement avoir un titre" }
   validate  :authorized_protocol

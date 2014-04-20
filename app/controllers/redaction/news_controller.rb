@@ -97,7 +97,7 @@ class Redaction::NewsController < RedactionController
 protected
 
   def news_params
-    params.require(:news).permit(:title, :section_id, :wiki_body, :wiki_second_part
+    params.require(:news).permit(:title, :section_id, :wiki_body, :wiki_second_part,
                                  links_attributes: [Link::Accessible])
   end
 

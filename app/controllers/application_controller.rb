@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
   before_action :seo_filter
+  before_action :configure_permitted_parameters, if: :devise_controller?
   helper_method :url_for_content, :path_for_content, :current_user, :current_stylesheet
   rescue_from Canable::Transgression, with: :error_403
 
@@ -34,6 +35,16 @@ protected
 
   def dont_index?
     !!@dont_index
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:account_update) do |u|
+      u.permit(:login, :email, :password, :password_confirmation, :current_password,
+               :hide_avatar, :news_on_home, :diaries_on_home, :posts_on_home,
+               :polls_on_home, :wiki_pages_on_home, :trackers_on_home,
+               :sort_by_date_on_home, :hide_signature, :show_negative_nodes,
+               user_attributes: [:id, :name, :homesite, :jabber_id, :signature, :avatar, :custom_avatar_url])
+    end
   end
 
 ### Content ###

@@ -54,7 +54,7 @@ protected
   def news_params
     params.require(:news).permit(:title, :section_id, :author_name, :author_email,
                                  :message, :wiki_body, :wiki_second_part, :urgent,
-                                 links_attributes: [Link::Accessible])
+                                 :cc_licensed, links_attributes: [Link::Accessible])
   end
 
   def honeypot

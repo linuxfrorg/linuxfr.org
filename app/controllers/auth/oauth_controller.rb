@@ -22,7 +22,7 @@ class Auth::OauthController < ApplicationController
     @application = ClientApplication.authenticate(params.require(:client_id), params.require(:client_secret))
     render json: {error: "Could not find application"} and return if @application.nil?
 
-    @grant = AccessGrant.authenticate(params.require([:code), @application.id)
+    @grant = AccessGrant.authenticate(params.require(:code), @application.id)
     render json: {error: "Could not authenticate access code"} and return if @grant.nil?
 
     @grant.start_expiry_period!

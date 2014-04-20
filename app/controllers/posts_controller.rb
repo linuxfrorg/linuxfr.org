@@ -67,7 +67,7 @@ class PostsController < ApplicationController
 protected
 
   def post_params
-    params.require(:post).permit(:title, :wiki_body, :forum_id)
+    params.require(:post).permit(:title, :wiki_body, :forum_id, :cc_licensed)
   end
 
   def find_post

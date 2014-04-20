@@ -94,7 +94,7 @@ class DiariesController < ApplicationController
 protected
 
   def diary_params
-    params.require(:diary).permit(:title, :wiki_body)
+    params.require(:diary).permit(:title, :wiki_body, :cc_licensed)
   end
 
   def find_diary

@@ -57,7 +57,8 @@ class PollsController < ApplicationController
 protected
 
   def poll_params
-    params.require(:poll).permit(:title, :wiki_explanations, answers_attributes: [:answer])
+    params.require(:poll).permit(:title, :wiki_explanations, :cc_licensed,
+                                 answers_attributes: [:answer])
   end
 
   def on_the_first_page?

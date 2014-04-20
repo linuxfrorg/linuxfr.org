@@ -42,9 +42,6 @@ class Node < ActiveRecord::Base
 
   paginates_per 15
 
-  # FIXME rails41
-  # attr_accessible :cc_licensed, :user_id
-
 ### PPP ###
 
   def self.ppp
