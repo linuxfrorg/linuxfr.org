@@ -9,22 +9,21 @@
     %ul.tag_cloud
       - @popular_tags.each do |tag|
         %li= link_to tag.name, "/tags/#{tag.name}/public"
-  - cache "fragments/layouts/friends_and_links", expires_in: 30.days do
-    %section#friends
-      %h1 Sites amis
-      %ul
-        - @friend_sites.each do |site|
-          %li= link_to site.title, site.url
-    %nav#about_us
-      %h1 À propos de LinuxFr.org
-      %ul
-        %li= link_to "Mentions légales", '/mentions_legales'
-        %li= link_to "Faire un don", '/faire_un_don'
-        %li= link_to "Team LinuxFr.org", '/team'
-        %li= link_to "Informations sur le site", '/informations'
-        %li= link_to "Aide / Foire aux questions", '/aide'
-        %li= link_to "Règles de modération", '/regles_de_moderation'
-        %li= link_to "Statistiques", '/statistiques'
-        %li= link_to "API pour les développeurs", '/developpeur'
-        %li= link_to "Code source du site", '/code_source_du_site'
-        %li= link_to "Plan du site", '/plan'
+  %section#friends
+    %h1 Sites amis
+    %ul
+      - @friend_sites.each do |site|
+        %li= link_to site.title, site.url
+  %nav#about_us
+    %h1 À propos de LinuxFr.org
+    %ul
+      %li= link_to "Mentions légales", '/mentions_legales'
+      %li= link_to "Faire un don", '/faire_un_don'
+      %li= link_to "Team LinuxFr.org", '/team'
+      %li= link_to "Informations sur le site", '/informations'
+      %li= link_to "Aide / Foire aux questions", '/aide'
+      %li= link_to "Règles de modération", '/regles_de_moderation'
+      %li= link_to "Statistiques", '/statistiques'
+      %li= link_to "API pour les développeurs", '/developpeur'
+      %li= link_to "Code source du site", '/code_source_du_site'
+      %li= link_to "Plan du site", '/plan'

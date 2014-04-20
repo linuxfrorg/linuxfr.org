@@ -4,7 +4,6 @@ class NewsController < ApplicationController
   before_action :find_news, only: [:show]
   after_action  :marked_as_read, only: [:show], if: :account_signed_in?
   caches_page :index, if: Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
-  caches_action :show, unless: :account_signed_in?, expires_in: 5.minutes
   respond_to :html, :atom, :md
 
   def index

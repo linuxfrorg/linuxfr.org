@@ -115,7 +115,6 @@ protected
   def expire_cache
     return if @news.state == "candidate"
     expire_page controller: '/news', action: :index, format: :atom
-    expire_action controller: '/news', action: :show, id: @news.to_param
   end
 
 end

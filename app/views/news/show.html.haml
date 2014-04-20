@@ -1,5 +1,6 @@
-%main#contents(role="main")
-  - title @news.title
-  - meta_for @news
-  = render @news, with_second_part: true
-  = render @news.node
+- cache_unless account_signed_in?, "news/show/#{@news.to_param}", expires_in: 1.minute do
+  %main#contents(role="main")
+    - title @news.title
+    - meta_for @news
+    = render @news, with_second_part: true
+    = render @news.node

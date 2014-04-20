@@ -1,14 +1,15 @@
 - content_for :column do
   = render 'polls/box'
 
-=h1 "Accueil"
-- feed "Flux Atom des dépêches", "/news.atom"
-- if @ppp
-  %section#phare
-    = render @ppp
-- if @banner
-  %aside.banner
-    = @banner
-= paginated_section @nodes, link_to("Proposer une dépêche", "/news/nouveau") do
-  %main#contents(role="main")
-    = render @nodes.map(&:content)
+- cache_unless account_signed_in?, "home/#{@order}/#{@nodes.current_page}", expires_in: 1.minute do
+  =h1 "Accueil"
+  - feed "Flux Atom des dépêches", "/news.atom"
+  - if @ppp
+    %section#phare
+      = render @ppp
+  - if @banner
+    %aside.banner
+      = @banner
+  = paginated_section @nodes, link_to("Proposer une dépêche", "/news/nouveau") do
+    %main#contents(role="main")
+      = render @nodes.map(&:content)

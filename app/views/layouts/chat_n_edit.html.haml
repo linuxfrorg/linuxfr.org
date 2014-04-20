@@ -3,7 +3,7 @@
   = render 'layouts/head'
   %body{body_attr}
     #top
-    - cache "fragments/layouts/site", expires_in: 30.days do
+    - cache "layouts/site", expires_in: 1.day do
       = render 'layouts/site'
     %section#redaction
       - [:alert, :notice].each do |type|

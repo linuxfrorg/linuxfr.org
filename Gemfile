@@ -46,8 +46,6 @@ gem "uglifier"
 
 # FIXME rails41
 gem 'protected_attributes'
-gem 'actionpack-action_caching'
-gem 'actionpack-page_caching'
 
 # Rspec-rails must be in development for rake stats and in test for normal stuff
 group :development, :test do
@@ -79,7 +77,8 @@ group :test do
 end
 
 group :production, :alpha do
-  gem "unicorn",               "~>4.8"
-  gem "gctools",               "~>0.2"
-  gem "redis-activesupport",   "~>4.0"
+  gem "unicorn",                 "~>4.8"
+  gem "gctools",                 "~>0.2"
+  gem "actionpack-page_caching", "~>1.0"
+  gem "redis-activesupport",     "~>4.0"
 end
