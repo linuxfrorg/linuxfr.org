@@ -63,7 +63,7 @@ LinuxFr.org on a Debian box.
 
 7) Let's run it:
 
-    $ ./bin/rails server thin
+    $ ./bin/rails server
     $ x-www-browser http://127.0.0.1:3000/
 
 8) Create an admin account:

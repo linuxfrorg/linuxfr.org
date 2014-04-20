@@ -45,7 +45,6 @@ GEM
       rake (>= 0.8.7)
     ansi (1.4.3)
     arel (5.0.1.20140414130214)
-    autotest-standalone (4.5.11)
     bcrypt (3.1.7)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
@@ -122,6 +121,8 @@ GEM
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.0.11)
+    french_rails (0.3.0)
+      rails (~> 4.0)
     friendly_id (5.0.3)
       activerecord (>= 4.0.0)
     fuubar (1.3.2)
@@ -130,11 +131,6 @@ GEM
     gctools (0.2.3)
     haml (4.0.5)
       tilt
-    haml-rails (0.5.3)
-      actionpack (>= 4.0.1)
-      activesupport (>= 4.0.1)
-      haml (>= 3.1, < 5.0)
-      railties (>= 4.0.1)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -335,7 +331,6 @@ DEPENDENCIES
   acts_as_list (~> 0.4)
   annotate
   ansi (~> 1.4)
-  autotest-standalone
   better_errors
   binding_of_caller
   bitfields (~> 0.4)
@@ -352,11 +347,11 @@ DEPENDENCIES
   elasticsearch-transport (~> 1.0)
   factory_girl_rails (~> 1.6)
   faker (~> 0.9)
+  french_rails (~> 0.3)
   friendly_id (~> 5.0)
   fuubar (~> 1.0)
   gctools (~> 0.2)
   haml (~> 4.0)
-  haml-rails
   hiredis (~> 0.5)
   html-pipeline-linuxfr (~> 0.14)
   html_spellchecker (~> 0.1)

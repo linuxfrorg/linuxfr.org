@@ -9,8 +9,7 @@ gem "canable",                 "~>0.1"
 gem "carrierwave",             "~>0.10"
 gem "devise",                  "~>3.2"
 gem "diff_match_patch",        :github => "nono/diff_match_patch-ruby", :require => "diff_match_patch"
-# FIXME rails41
-# gem "french_rails",            "~>0.2"
+gem "french_rails",            "~>0.3"
 gem "friendly_id",             "~>5.0"
 gem "haml",                    "~>4.0"
 gem "html-pipeline-linuxfr",   "~>0.14"
@@ -57,13 +56,11 @@ end
 
 group :development do
   gem "annotate"
-  gem "autotest-standalone"
   gem "better_errors"
   gem "binding_of_caller"
   gem "capistrano",            "~>2.0"
   gem "capistrano-maintenance"
   gem "desi"
-  gem "haml-rails"
   gem "letter_opener"
   gem "mo"
   gem "pry-rails"
