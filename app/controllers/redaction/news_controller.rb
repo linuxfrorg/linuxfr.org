@@ -26,6 +26,7 @@ class Redaction::NewsController < RedactionController
   def show
     path = redaction_news_path(@news, format: params[:format])
     redirect_to [:redaction, @news], status: 301 and return if request.path != path
+    headers["Cache-Control"] = "no-cache, no-store, must-revalidate, max-age=0"
     @news.put_paragraphs_together if params[:format] == "md"
     respond_with @news, layout: 'chat_n_edit'
   end

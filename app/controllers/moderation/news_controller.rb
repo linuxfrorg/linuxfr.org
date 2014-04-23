@@ -16,6 +16,7 @@ class Moderation::NewsController < ModerationController
   def show
     enforce_view_permission(@news)
     @boards = Board.all(Board.news, @news.id)
+    headers["Cache-Control"] = "no-cache, no-store, must-revalidate, max-age=0"
     respond_to do |wants|
       wants.html {
         path = moderation_news_path(@news)
