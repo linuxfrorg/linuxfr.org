@@ -10,12 +10,12 @@ describe "Wiki" do
   let!(:wiki)   { FactoryGirl.create(:wiki) }
 
   it "can be listed and showed" do
-    get "/wiki/pages"
-    assert_response :success
-    response.should contain(wiki.title)
+    visit "/wiki/pages"
+    status_code.should be(200)
+    page.should have_content(wiki.title)
     click_link wiki.title
-    assert_response :success
-    response.should contain(wiki.title)
+    status_code.should be(200)
+    page.should have_content(wiki.title)
   end
 end
 

@@ -12,14 +12,14 @@ describe "Posts" do
   let(:forum)   { post.forum }
 
   it "can be listed and showed" do
-    get forums_path
-    assert_response :success
-    response.should contain(post.title)
+    visit forums_path
+    status_code.should be(200)
+    page.should have_content(post.title)
     click_link forum.title
-    assert_response :success
-    response.should contain(post.title)
+    status_code.should be(200)
+    page.should have_content(post.title)
     click_link "Lire la suite"
-    assert_response :success
-    response.should contain(post.title)
+    status_code.should be(200)
+    page.should have_content(post.title)
   end
 end

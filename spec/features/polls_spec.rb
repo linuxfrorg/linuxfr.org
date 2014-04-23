@@ -6,12 +6,12 @@ describe "Polls" do
   let!(:poll)   { FactoryGirl.create(:poll) }
 
   it "can be listed and showed" do
-    get polls_path
-    assert_response :success
-    response.should contain(poll.title)
-    response.should contain("Debian")
+    visit polls_path
+    status_code.should be(200)
+    page.should have_content(poll.title)
+    page.should have_content("Debian")
     click_link "Lire la suite"
-    assert_response :success
-    response.should contain(poll.title)
+    status_code.should be(200)
+    page.should have_content(poll.title)
   end
 end
