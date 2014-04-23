@@ -22,10 +22,6 @@
 require 'spec_helper'
 
 describe News do
-  before(:each) do
-    Paragraph.delete_all
-  end
-
   context "when created in redaction" do
     let(:news) { News.create_for_redaction(FactoryGirl.create :writer_account) }
 

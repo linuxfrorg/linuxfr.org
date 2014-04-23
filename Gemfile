@@ -69,7 +69,6 @@ end
 group :test do
   gem "database_cleaner",      "~>1.2"
   gem "factory_girl_rails",    "~>1.6"
-  gem "faker",                 "~>0.9"
   gem "fuubar",                "~>1.0"
   gem "capybara",              "~>2.2"
 end

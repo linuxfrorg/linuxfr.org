@@ -34,10 +34,6 @@
 require 'spec_helper'
 
 describe Account do
-  before(:each) do
-    Account.delete_all
-  end
-
   it "is valid" do
     FactoryGirl.build(:normal_account).should be_valid
   end

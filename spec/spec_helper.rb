@@ -3,18 +3,12 @@ ENV["RAILS_ENV"] ||= 'test'
 
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'capybara/rspec'
-require 'factory_girl'
-require 'database_cleaner'
 
 RSpec.configure do |c|
-  c.mock_with :rspec
   c.filter_run focus: true
   c.run_all_when_everything_filtered = true
-  c.include Devise::TestHelpers, type: :controller
 
   c.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end
   c.before(:each) do
