@@ -46,7 +46,7 @@ LinuxFr.org on a Debian box.
 
 5) Clone the repository, configure and install gems:
 
-    $ git clone git://github.com/nono/linuxfr.org.git
+    $ git clone git://github.com/linuxfrorg/linuxfr.org.git
     $ cd linuxfr.org
     $ cp config/database.yml{.sample,}
     $ cp config/secret.yml{.sample,}
@@ -82,12 +82,12 @@ See also
 
 If you want the full stack for running LinuxFr.org, you should also look at:
 
-* [The admin files](https://github.com/nono/admin-linuxfr.org)
-* [The migration script](https://github.com/nono/migration-linuxfr.org)
-* [The board daemon](https://github.com/nono/board-sse-linuxfr.org)
-* [The share daemon](https://github.com/nono/share-LinuxFr.org)
-* [The epub daemon](https://github.com/nono/epub-LinuxFr.org)
-* [The img daemon](https://github.com/nono/img-LinuxFr.org)
+* [The admin files](https://github.com/linuxfrorg/admin-linuxfr.org)
+* [The migration script](https://github.com/linuxfrorg/migration-linuxfr.org)
+* [The board daemon](https://github.com/linuxfrorg/board-sse-linuxfr.org)
+* [The share daemon](https://github.com/linuxfrorg/share-LinuxFr.org)
+* [The epub daemon](https://github.com/linuxfrorg/epub-LinuxFr.org)
+* [The img daemon](https://github.com/linuxfrorg/img-LinuxFr.org)
 * [SVGTeX](https://github.com/linuxfrorg/svgtex)
 
 
