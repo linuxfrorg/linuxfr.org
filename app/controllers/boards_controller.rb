@@ -36,6 +36,6 @@ protected
   end
 
   def expire_cache
-    expire_page action: :show, format: :xml
+    expire_page action: :show
   end
 end

@@ -98,7 +98,7 @@ How to run the specs
 
 2) And now, just run rspec (and repeat this step until done):
 
-    $ .bin/rspec spec
+    $ ./bin/rspec spec
 
 
 How to generate a CSS
