@@ -32,7 +32,7 @@ Rails.application.configure do
   config.assets.compile = false
 
   # Set the page cache directory
-  # config.action_controller.page_cache_directory = "#{Rails.public_path}/pages"
+  config.action_controller.page_cache_directory = "#{Rails.public_path}/pages"
 
   # Generate digests for assets URLs.
   config.assets.digest = true
