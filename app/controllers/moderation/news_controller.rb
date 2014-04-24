@@ -15,14 +15,12 @@ class Moderation::NewsController < ModerationController
 
   def show
     enforce_view_permission(@news)
+    path = moderation_news_path(@news, format: params[:format])
+    redirect_to path, status: 301 and return if request.path != path
     @boards = Board.all(Board.news, @news.id)
     headers["Cache-Control"] = "no-cache, no-store, must-revalidate, max-age=0"
     respond_to do |wants|
-      wants.html {
-        path = moderation_news_path(@news)
-        redirect_to path, status: 301 and return if request.path != path
-        render :show, layout: 'chat_n_edit'
-      }
+      wants.html { render :show, layout: 'chat_n_edit' }
       wants.js { render partial: 'short' }
       wants.md { @news.put_paragraphs_together }
     end
@@ -120,5 +118,4 @@ protected
     return if @news.state == "candidate"
     expire_page controller: '/news', action: :index, format: :atom
   end
-
 end

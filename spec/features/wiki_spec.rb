@@ -18,4 +18,3 @@ describe "Wiki" do
     page.should have_content(wiki.title)
   end
 end
-

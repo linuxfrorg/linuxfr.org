@@ -81,7 +81,7 @@ class Account < ActiveRecord::Base
 
   before_create :create_user
   def create_user
-    self.user_id = User.create(name: login).id
+    self.user_id = User.create!(name: login).id
   end
 
   def self.anonymous

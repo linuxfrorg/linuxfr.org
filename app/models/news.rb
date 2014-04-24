@@ -135,7 +135,7 @@ class News < Content
     node.make_visible
     author_account.try(:give_karma, 50)
     Push.create(self, kind: :publish, username: moderator.name)
-    $redis.publish "news", {id: self.id, title: title, slug: cached_slug}.to_json
+    $redis.publish "news", { id: self.id, title: title, slug: cached_slug }.to_json
     diary_id = $redis.get("convert/#{self.id}")
     Diary.find(diary_id).update_column(:converted_news_id, self.id) if diary_id
   end
