@@ -88,7 +88,7 @@ protected
     if current_account.admin?
       params.require(:tracker).permit!
     else
-      params.require(:tracker).permit(:title, :wiki_body, :category_id)
+      params.require(:tracker).permit(:title, :wiki_body, :category_id, :state)
     end
   end
 
