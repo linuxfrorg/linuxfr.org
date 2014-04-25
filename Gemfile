@@ -29,7 +29,6 @@ gem "hiredis",                 "~>0.5"
 gem "redis",                   "~>3.0", require: ["redis/connection/hiredis", "redis"]
 gem "sanitize",                "~>2.1"
 gem "sitemap_generator",       "~>2.1" # TODO update sitemap_generator
-gem "simple_autocomplete",     "~>0.3"
 gem "state_machine",           "~>1.2"
 
 # Use the github version to have transport auto-detection

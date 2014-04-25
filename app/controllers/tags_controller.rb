@@ -8,9 +8,6 @@ class TagsController < ApplicationController
   before_action :user_tags, only: [:index, :show]
   respond_to :html, :atom
 
-  autocomplete_for :tag, :name, order: "taggings_count DESC"
-  alias_method :autocomplete, :autocomplete_for_tag_name
-
   def new
     @tag = @node.tags.build
     render partial: 'form' if request.xhr?
@@ -40,6 +37,13 @@ class TagsController < ApplicationController
      wants.json { render json: { notice: "Tag enlevé" } }
      wants.html { redirect_to_content @node.content }
     end
+  end
+
+  def autocomplete
+    nb = params[:limit].to_i
+    nb = 10 if nb <= 0
+    @tags = Tag.autocomplete(params[:q], nb)
+    render inline: @tags.join("\n")
   end
 
   # Show all the nodes tagged by the current user

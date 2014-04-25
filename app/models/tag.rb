@@ -25,6 +25,12 @@ class Tag < ActiveRecord::Base
                     order("COUNT(*) DESC").
                     limit(12)
   }
+  scope :autocomplete, ->(q, nb) {
+    where("name LIKE ?", "%#{q}%")
+      .order(taggings_count: :desc)
+      .limit(nb)
+      .pluck(:name)
+  }
 
 ### Near tags ###
 
