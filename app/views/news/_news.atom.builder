@@ -17,7 +17,10 @@ feed.entry(news, :published => news.node.created_at) do |entry|
   end
   comments = atom_comments_link(url)
   entry.content(first + links + second + epub + comments, :type => 'html')
-  news.attendees.each do |attendee|
+  entry.author do |author|
+    author.name(news.author_name)
+  end
+  news.edited_by.each do |attendee|
     entry.author do |author|
       author.name(attendee.name)
     end
