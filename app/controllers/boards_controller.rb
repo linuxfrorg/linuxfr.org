@@ -22,7 +22,7 @@ class BoardsController < ApplicationController
     respond_to do |wants|
       wants.html { redirect_to :back rescue redirect_to root_url }
       wants.js   { render nothing: true }
-      wants.xml
+      wants.xml  { render nothing: true }
     end
   end
 
