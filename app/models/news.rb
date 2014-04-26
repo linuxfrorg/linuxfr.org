@@ -34,12 +34,12 @@ class News < Content
   accepts_nested_attributes_for :links, allow_destroy: true, reject_if: proc { |attrs| attrs['url'].blank? }
   accepts_nested_attributes_for :paragraphs, allow_destroy: true
   has_many :versions,
-    -> { order("version DESC") },
+    -> { order(version: :desc) },
     class_name: "NewsVersion",
     dependent: :destroy,
     inverse_of: :news
 
-  scope :sorted,    -> { order("created_at DESC") }
+  scope :sorted,    -> { order(created_at: :desc) }
   scope :draft,     -> { where(state: "draft") }
   scope :candidate, -> { where(state: "candidate") }
   scope :refused,   -> { where(state: "refused") }

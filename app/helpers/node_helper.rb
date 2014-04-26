@@ -43,7 +43,7 @@ module NodeHelper
     if current_user
       his_tags = current_user.taggings.
                              where(node_id: node.id).
-                             order("created_at DESC").
+                             order(created_at: :desc).
                              map(&:tag).each {|t| t.tagged_by_current = true }
       if his_tags.any?
         other_tags = node.popular_tags.where("tags.id NOT IN (?)", his_tags.map(&:id))

@@ -23,8 +23,8 @@ class Paragraph < ActiveRecord::Base
 
   attr_accessor :user, :after, :already_split
 
-  scope :in_first_part,  -> { where(second_part: false).order("position ASC") }
-  scope :in_second_part, -> { where(second_part: true ).order("position ASC") }
+  scope :in_first_part,  -> { where(second_part: false).order(position: :asc) }
+  scope :in_second_part, -> { where(second_part: true ).order(position: :asc) }
 
 ### Automatically split paragraphs ###
 

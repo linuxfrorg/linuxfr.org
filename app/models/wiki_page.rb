@@ -20,7 +20,7 @@ class WikiPage < Content
 
   RESERVED_WORDS = %w(index nouveau modifications pages)
   has_many :versions,
-    -> { order("version DESC") },
+    -> { order(version: :desc) },
     class_name: "WikiVersion",
     dependent: :destroy,
     inverse_of: :wiki_page
@@ -29,8 +29,6 @@ class WikiPage < Content
                     length: { maximum: 100, message: "Le titre est trop long" },
                     exclusion: { in: reserved, message: "Ce titre est réservé pour une page spéciale" }
   validates :body,  presence: { message: "Le corps est obligatoire" }
-
-  scope :sorted, -> { order('created_at DESC') }
 
 ### SEO ###
 

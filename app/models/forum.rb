@@ -21,7 +21,7 @@ class Forum < ActiveRecord::Base
 
   has_many :posts, inverse_of: :forum
 
-  scope :sorted, -> { order("position ASC") }
+  scope :sorted, -> { order(position: :asc) }
   scope :active, -> { where(state: "active") }
 
   validates :title, presence: { message: "Le titre est obligatoire" },
