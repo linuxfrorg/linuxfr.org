@@ -39,7 +39,7 @@ class News < Content
     dependent: :destroy,
     inverse_of: :news
 
-  scope :sorted,    -> { order(created_at: :desc) }
+  scope :sorted,    -> { order(updated_at: :desc) }
   scope :draft,     -> { where(state: "draft") }
   scope :candidate, -> { where(state: "candidate") }
   scope :refused,   -> { where(state: "refused") }
