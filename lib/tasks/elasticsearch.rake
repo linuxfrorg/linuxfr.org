@@ -20,7 +20,7 @@ namespace :elasticsearch do
     if ENV['CLASS'].blank?
       klasses = Search::Models
     else
-      klasses = ENV['CLASS'].split(',').map {|k| eval(k) }
+      klasses = ENV['CLASS'].split(',').map {|k| Object.const_get(k) }
     end
 
     klasses.each do |klass|
