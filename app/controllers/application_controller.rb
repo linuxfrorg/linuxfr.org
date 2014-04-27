@@ -38,7 +38,7 @@ protected
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_in) << :email
+    devise_parameter_sanitizer.for(:sign_up) << :email
     devise_parameter_sanitizer.for(:account_update) do |u|
       u.permit(:login, :email, :password, :password_confirmation, :current_password,
                :hide_avatar, :news_on_home, :diaries_on_home, :posts_on_home,
