@@ -1580,6 +1580,13 @@ img {
   border: 1px solid $C_INTER;
 }
 
+.markItUpHeader {
+  ul a { border: 0; }
+  li.image { margin: 0; }
+}
+
+#redaction .markItUpHeader .link { padding-left: 0; }
+
 .markdown_cheatsheet img.markdown {
   float: left;
   margin: 12px 25px 0 0;

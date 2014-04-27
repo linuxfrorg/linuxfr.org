@@ -23,6 +23,7 @@ class EditionInPlace
     form = @el.html(@xhr.responseText).find("form")
     form.find(".cancel").click @reset
     form.find("textarea, input, select")[0].select()
+    form.find(".markItUp").markItUp window.markItUpSettings
     form.submit @submitForm
     @el.trigger "in_place:form", @xhr
     @xhr = null
