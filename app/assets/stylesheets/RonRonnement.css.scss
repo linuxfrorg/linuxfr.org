@@ -649,6 +649,10 @@ body#admin-index #container > ul,
   margin-bottom: 15px;
   font-size: 0.8em;
 }
+body#news-revision #contents,
+body#wiki_pages-changes #contents {
+  font-size: 1em;
+}
 /* reset pour form css, sinon une boite par css */
 #stylesheets-edit #contents > form {
   display: inherit;
