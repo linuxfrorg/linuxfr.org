@@ -102,7 +102,11 @@ $("#redaction .link, #redaction .paragraph").lockableEditionInPlace()
 $.fn.autocompleter = () ->
   @each ->
     input = $(@)
-    input.autocomplete input.data("url"), multiple: true, multipleSeparator: " ", dataType: "text"
+    input.autocomplete input.data("url"),
+      multiple: true
+      multipleSeparator: " "
+      dataType: "text"
+      matchSubset: false
   @
 $("input#tags").autocompleter()
 $(".tag_in_place").on("in_place:form", ->
