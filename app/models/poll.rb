@@ -55,6 +55,10 @@ class Poll < Content
   extend FriendlyId
   friendly_id
 
+  def should_generate_new_friendly_id?
+    title_changed?
+  end
+
 ### Search ####
 
   include Elasticsearch::Model
