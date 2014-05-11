@@ -49,13 +49,6 @@ fr:
     attributes:
       account:
         reset_password_token: "token de réinitialisation"
-      badge:
-        company:    "champ société"
-        email:      "champ adresse de courriel"
-        first_name: "champ prénom"
-        last_name:  "champ nom"
-        country:    "champ pays"
-        title:      "champ civilité"
 
   errors:
     messages:

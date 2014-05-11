@@ -202,13 +202,6 @@ Rails.application.routes.draw do
     get "/statistiques/:action"
   end
 
-  # Badges SGL 2014
-  controller :badges do
-    get  "/solutions-linux-2014/badges.csv" => :index
-    get  "/solutions-linux-2014/badge" => :new
-    post "/solutions-linux-2014/badge" => :create, as: :badges
-  end
-
   # Static pages
   controller :static do
     get "/proposer-un-contenu" => :submit_content, as: :submit_content
