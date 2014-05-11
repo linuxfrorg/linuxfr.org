@@ -81,7 +81,7 @@ class Diary < Content
 
   def convert
     @news = News.new title: title,
-                     wiki_body: "**TODO** insérer une synthèse du journal\n\nNdM : merci à #{owner.try(:name)} pour son journal.",
+                     wiki_body: "**TODO** insérer une synthèse du journal",
                      wiki_second_part: wiki_body,
                      section_id: Section.default.id
     @news.author_name  = owner.try(:name)
