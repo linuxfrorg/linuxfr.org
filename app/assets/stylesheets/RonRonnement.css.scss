@@ -1597,6 +1597,11 @@ img {
   margin: 12px 25px 0 0;
 }
 
+.people-list {
+  list-style: none;
+  img { vertical-align: middle; }
+}
+
 @media screen and (max-width: 768px), handheld {
   html, body {
     margin: 0;

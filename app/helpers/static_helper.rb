@@ -4,16 +4,26 @@ module StaticHelper
     txt.gsub(/\{\{([a-z_]+)\}\}/) { send "helper_#{$1}" }.html_safe
   end
 
+  def people_list(accounts)
+    content_tag(:ul, class: "people-list") do
+      accounts.map do |a|
+        content_tag(:li) do
+          link_to avatar_img(a.user) + a.user.name, a.user
+        end
+      end.join.html_safe
+    end
+  end
+
   def helper_admin_list
-    Account.admin.all.map { |a| user = a.user; link_to user.name, user }.to_sentence
+    people_list Account.admin
   end
 
   def helper_editor_list
-    Account.editor.all.map { |a| user = a.user; link_to user.name, user }.to_sentence
+    people_list Account.editor
   end
 
   def helper_moderator_list
-    Account.moderator.all.map { |a| user = a.user; link_to user.name, user }.to_sentence
+    people_list Account.moderator
   end
 
   def helper_responses_list
