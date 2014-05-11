@@ -21,11 +21,13 @@ LinuxFr.org on a Debian box.
     # aptitude install ncurses-dev bison automake libtool imagemagick libc6-dev
     # aptitude install hunspell hunspell-fr openjdk-6-jdk redis-server
 
+Note: you can use libcurl4-gnutls-dev instead of libcurl4-openssl-dev.
+
 2) Configure the database:
 
     # mysql -p -u root
     <enter your root password for mysql>
-    > CREATE DATABASE linuxfr_rails;
+    > CREATE DATABASE linuxfr_rails CHARACTER SET utf8;
     > GRANT ALL PRIVILEGES ON linuxfr_rails.* TO "linuxfr_rails"@"localhost";
     > QUIT;
     (return to user)
@@ -33,40 +35,34 @@ LinuxFr.org on a Debian box.
     Statistics need time zone at SQL level. You'll need to population time_zone* tables.
     # mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -p -u root mysql
 
-3) Install RVM (more details on https://rvm.io/rvm/install ):
+3) Install Ruby with RVM (more details on https://rvm.io/rvm/install ):
 
-    $ curl -L https://get.rvm.io | bash
+    $ \curl -sSL https://get.rvm.io | bash -s stable --ruby
 
    And follow the instructions.
 
-4) Install Ruby with RVM:
-
-    $ rvm install 2.1.1
-    $ rvm use --default 2.1.1
-
-5) Clone the repository, configure and install gems:
+4) Clone the repository, configure and install gems:
 
     $ git clone git://github.com/linuxfrorg/linuxfr.org.git
     $ cd linuxfr.org
     $ cp config/database.yml{.sample,}
-    $ cp config/secret.yml{.sample,}
-    $ gem install bundler rake
+    $ cp config/secrets.yml{.sample,}
     $ bundle install
 
-6) Finish to configure:
+5) Finish to configure:
 
     $ desi install
     $ desi start
-    $ ./bin/rake db:setup
+    $ bin/rake db:setup
     (if you're updating, you'll need an other step: redis-cli flushdb)
-    $ ./bin/rake elasticsearch:import FORCE=y
+    $ bin/rake elasticsearch:import FORCE=y
 
-7) Let's run it:
+6) Let's run it:
 
-    $ ./bin/rails server
+    $ bin/rails server
     $ x-www-browser http://127.0.0.1:3000/
 
-8) Create an admin account:
+7) Create an admin account:
 
 * Create an account
 * Get confirmation link in the console and confirm the account
@@ -98,7 +94,7 @@ How to run the specs
 
 2) And now, just run rspec (and repeat this step until done):
 
-    $ ./bin/rspec spec
+    $ bin/rspec spec
 
 
 How to generate a CSS
@@ -108,7 +104,7 @@ CSS are written in sass and compiled with the Rails assets pipeline.
 If you just want to compile a CSS without installing Rails and all its
 dependency, you can install the `sass` gem and launch:
 
-    ./bin/compile_sass app/assets/stylesheets/application.css.scss > app.css
+    bin/compile_sass app/assets/stylesheets/application.css.scss > app.css
 
 
 Copyheart
