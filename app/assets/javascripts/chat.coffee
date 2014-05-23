@@ -54,10 +54,13 @@ class Chat
     @input.focus()
 
   norlogize: (x) ->
+    tmp = $('<div/>')
+    escape = (txt) -> tmp.text(txt).html()
     $(x).contents().filter(-> @nodeType == 3).each ->
       r = /(\d{4}-\d{2}-\d{2} )?(\d{2}:\d{2}(:\d{2})?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+|[:\^]\d+)?/g
+      orig = escape @data
       html = ""
-      while matches = r.exec @data
+      while matches = r.exec orig
         [match, datematch, timematch, minutes, index] = matches
         if index
           switch index.substr(0, 1)
@@ -75,24 +78,25 @@ class Chat
         else
           index = 1
         stop = matches.index
-        html = html + @data.slice(idx, stop) + "<time data-clock-time=\"" + timematch + "\" data-clock-index=\"" + index + "\">" + match + "</time>"
+        html = html + orig.slice(idx, stop) + "<time data-clock-time=\"" + timematch + "\" data-clock-index=\"" + index + "\">" + match + "</time>"
         idx = r.lastIndex
-      $(@).replaceWith html+@data.slice(idx) if html
+      $(@).replaceWith html+orig.slice(idx) if html
     if @totoz_type == "popup" || @totoz_type == "inline"
       cfg = @
       $(x).contents().filter(-> @nodeType == 3).each ->
         totoz = /\[:([0-9a-zA-Z \*\$@':_-]+)\]/g
+        orig = escape @data
         html = ""
-        while matches = totoz.exec @data
+        while matches = totoz.exec orig
           [title, name] = matches
           stop = matches.index
-          html = html + @data.slice(idx, stop) +
+          html = html + orig.slice(idx, stop) +
             if cfg.totoz_type == "popup"
               "<span class=\"totoz\" data-totoz-name=\"#{name}\">#{title}</span>"
             else if cfg.totoz_type == "inline"
               "<img class=\"totoz\" alt=\"#{title}\" title=\"#{title}\" src=\"#{cfg.totoz_url}#{name}.gif\" style=\"vertical-align: top; background-color: transparent\"/>"
           idx = totoz.lastIndex
-        $(@).replaceWith html+@data.slice(idx) if html
+        $(@).replaceWith html+orig.slice(idx) if html
 
   norlogize_left: (x) ->
     r = /((\d{4}-\d{2}-\d{2}) )?(\d{2}:\d{2}:\d{2})/g
