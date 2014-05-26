@@ -331,6 +331,10 @@ class News < Content
     $redis.sadd("news/urgent", self.id)
   end
 
+  def no_more_urgent!
+    $redis.srem("news/urgent", self.id)
+  end
+
 ### ACL ###
 
   def self.accept_threshold

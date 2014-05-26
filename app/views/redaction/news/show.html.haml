@@ -32,7 +32,9 @@
 = link_to "Réorganiser", reorganize_redaction_news_path(@news), class: "reorganize"
 - if current_account.amr? || current_account.editor? || @news.submitted_by?(current_account)
   = button_to "Soumettre la dépêche", submit_redaction_news_path(@news), class: "submit_news"
-  - unless @news.urgent?
+  - if @news.urgent?
+    = button_to "Enlever l'urgence", cancel_urgent_redaction_news_path(@news), class: "urgent_news"
+  - else
     = button_to "Marquer comme urgent", urgent_redaction_news_path(@news), class: "urgent_news", data: { confirm: "Cette dépêche est urgente et doit être publiée au plus tôt ?" }
 - if current_account.can_erase? @news
   = button_to "Effacer la dépêche", erase_redaction_news_path(@news), class: "erase_news", data: { confirm: "Effacer cette dépêche créée par erreur ?" }

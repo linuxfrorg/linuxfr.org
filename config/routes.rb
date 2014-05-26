@@ -119,6 +119,7 @@ Rails.application.routes.draw do
         post :erase
         post :reassign
         post :urgent
+        post :cancel_urgent
         get :reorganize
         put :reorganized
       end

@@ -1,8 +1,8 @@
 # encoding: UTF-8
 class Redaction::NewsController < RedactionController
   skip_before_action :authenticate_account!, only: [:index, :moderation]
-  before_action :load_news, except: [:index, :moderation, :create, :revision, :reorganize, :reorganized, :reassign]
-  before_action :load_news2, only: [:revision, :reorganize, :reorganized, :reassign]
+  before_action :load_news, except: [:index, :moderation, :create, :revision, :reorganize, :reorganized, :reassign, :urgent, :cancel_urgent]
+  before_action :load_news2, only: [:revision, :reorganize, :reorganized, :reassign, :urgent, :cancel_urgent]
   before_action :load_board, only: [:show, :reorganize]
   after_action  :marked_as_read, only: [:show, :update]
   respond_to :html, :atom, :md
@@ -92,7 +92,14 @@ class Redaction::NewsController < RedactionController
 
   def urgent
     @news.urgent!
-    redirect_to [:redaction, @news]
+    namespace = @news.draft? ? :redaction : :moderation
+    redirect_to [namespace, @news]
+  end
+
+  def cancel_urgent
+    @news.no_more_urgent!
+    namespace = @news.draft? ? :redaction : :moderation
+    redirect_to [namespace, @news]
   end
 
 protected
