@@ -53,16 +53,13 @@ ADD docker-files/supervisor/rails.conf /etc/supervisor/conf.d/rails.conf
 WORKDIR /root
 RUN echo "gem: --no-ri --no-rdoc" > .gemrc
 RUN gem install bundler
-RUN mkdir -p prebundle
-WORKDIR /root/prebundle
-ADD Gemfile Gemfile
-ADD Gemfile.lock Gemfile.lock
-RUN bundle install
 
 VOLUME ["/srv/linuxfr"]
 
 WORKDIR /root
 ADD docker-files/mysql-init.sh /root/mysql-init.sh
+ADD docker-files/rails.sh /root/rails.sh
+RUN mkdir /root/.ssh
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN echo "root:docker" | chpasswd

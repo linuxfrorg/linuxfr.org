@@ -9,3 +9,5 @@ cd /srv/linuxfr
 RAILS_ENV=development bundle exec rake db:setup
 
 redis-cli save
+
+supervisorctl start rails
