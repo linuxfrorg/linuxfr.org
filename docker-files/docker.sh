@@ -25,6 +25,7 @@ launch() {
   echo "Creating user $USER"
   ssh root@$DOCKIP "useradd -u $EUID -m -p docker $USER"
   ssh root@$DOCKIP "mkdir /home/$USER/.ssh && cp /root/.ssh/authorized_keys /home/$USER/.ssh/ && chown $USER /home/$USER/.ssh/"
+  ssh root@$DOCKIP " sed -i 's/ -- root/ -- $USER/' /root/rails.sh"
   echo "Launching bundle install --path vendor "
   ssh $DOCKIP "cd /srv/linuxfr && bundle install --path vendor"
   echo
