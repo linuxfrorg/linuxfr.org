@@ -10,18 +10,28 @@ launch() {
 
   docker run -d -v ${gitdir}:/srv/linuxfr --name linuxfr mose/linuxfr-dev
   DOCKIP=$( docker inspect -f "{{.NetworkSettings.IPAddress}}" linuxfr)
+  echo "A container was launched on $DOCKIP."
+  echo "ssh root@$DOCKIP"
+  echo "x-www-browser http://$DOCKIP:3000"
+
   if ! grep $DOCKIP /etc/hosts &> /dev/null; then
     sudo sh -c "echo $DOCKIP linuxfr.dev >> /etc/hosts"
   fi
-  echo "Un conteneur a été lancé sur $DOCKIP."
-  echo "ssh root@$DOCKIP (pass: docker)"
-  echo "x-www-browser http://$DOCKIP:3000"
+
+  echo "(type 'docker' when asked for a password)"
+  echo "Copying ssh key: "
+  ssh root@$DOCKIP "echo \"`cat $HOME/.ssh/*.pub`\" >> /root/.ssh/authorized_keys"
   echo
-  echo -n "Voulez-vous rafraîchir la base de données ? [o/N] "
+  echo "Creating user $USER"
+  ssh root@$DOCKIP "useradd -u $EUID -m -p docker $USER"
+  ssh root@$DOCKIP "mkdir /home/$USER/.ssh && cp /root/.ssh/authorized_keys /home/$USER/.ssh/ && chown $USER /home/$USER/.ssh/"
+  echo "Launching bundle install --path vendor "
+  ssh $DOCKIP "cd /srv/linuxfr && bundle install --path vendor"
+  echo
+  echo -n "Do you want to refresh the database ? [y/N] "
   read resp
   echo
-  if [[ $resp == "o" ]]; then
-    echo "(Tapez 'docker' si on vous demande un mot de passe)"
+  if [[ $resp == "y" ]]; then
     ssh root@$DOCKIP /root/mysql-init.sh
   fi
 }

@@ -95,9 +95,13 @@ Step by step:
 - launch the container either manually
   - `docker run -d -v /path/to/linuxfr-cloned-repo:/srv/linuxfr --name linuxfr mose/linuxfr-dev`
 - or use the small bash script
-  - `./docker-files/docker.sh`
-  - the script will propose you to refresh or not the db
-  - it will tell you on what local natted IP the container is launched (let's say 172.17.0.2)
+  - `./docker-files/docker.sh` it will
+    - create a user with same uid as you so the mounted repo will have no prem trouble
+    - copy your ssh public keys in the container root and user account authorized_keys
+    - run a bundle install --path vendor so the bundled gems will be in vendor/ruby/
+      (note later on if you are on the same ARCH as the container (ie 64bits) you can bundle install from your local repo)
+    - propose you to refresh or not the db
+    - add in your /etc/hosts an entry for the container ip to resolve to linuxfr.dev
 - you can access the launched app
   - `x-www-browser http://172.17.0.2:3000` reach the app in your browser
   - `mysql -h 172.17.0.2 -ulinuxfr.dev linuxfr_rails` to access the db
@@ -110,7 +114,7 @@ Usage:
   so all you change in your local dir are taken in account immediatelyin the container
 - `docker ps` should list the container if it's launched
 - `docker stop linuxfr` stops the container
-- `docker run linuxf` restarts the container if it was stopped
+- `docker start linuxfr` restarts the container if it was stopped
 - `docker rm linuxfr` will erase a container so you can relaunch a fresh one from the image
 - `docker images` lists the docker images you can launch
 - the docker.sh script also puts a linuxfr.dev somain resolution to the container ip for ease of use
