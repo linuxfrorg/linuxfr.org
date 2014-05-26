@@ -80,8 +80,9 @@ is not already set for ruby development, and it may discourage contributions for
 small things like css or quick bugfix.
 
 In such case and if you have a recent kernel (3.8+) you can give docker a try.
-The big plus is that you don't have to install ruby,l, mysql, or whatever, it all
-will be 'contained' in the docker image.
+The big plus is that you don't have to install ruby, mysql, or whatever, it all
+will be 'contained' in the docker image. The image is built upon a debian image
+but can be launched from any distro.
 
 Step by step:
 
