@@ -13,15 +13,15 @@ launch() {
   if ! grep $DOCKIP /etc/hosts &> /dev/null; then
     sudo sh -c "echo $DOCKIP linuxfr.dev >> /etc/hosts"
   fi
-  echo "Un containeur a ete lance sur $DOCKIP."
+  echo "Un conteneur a été lancé sur $DOCKIP."
   echo "ssh root@$DOCKIP (pass: docker)"
-  echo "open http://$DOCKIP:3000"
+  echo "x-www-browser http://$DOCKIP:3000"
   echo
-  echo -n "Do you want a fresh database ? [y/N] "
+  echo -n "Voulez-vous rafraîchir la base de données ? [o/N] "
   read resp
   echo
-  if [[ $resp == "y" ]]; then
-    echo "(Type 'docker')"
+  if [[ $resp == "o" ]]; then
+    echo "(Tapez 'docker' si on vous demande un mot de passe)"
     ssh root@$DOCKIP /root/mysql-init.sh
   fi
 }

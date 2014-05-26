@@ -17,7 +17,7 @@ RUN apt-get -y install mysql-server mysql-client libmysql++-dev \
   imagemagick hunspell hunspell-fr subversion \
   openjdk-6-jdk tcl8.5 libcurl4-openssl-dev
 
-# les services containeurises
+# les services conteneurisés
 RUN apt-get -y install supervisor openssh-server cron rsyslog vim
 
 # compilons ruby

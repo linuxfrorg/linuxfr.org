@@ -72,6 +72,55 @@ Note: you can use libcurl4-gnutls-dev instead of libcurl4-openssl-dev.
   `mysql> UPDATE accounts SET role='admin' WHERE login='xxxxxx';`
 * Reload the page on the site, you should be admin.
 
+Alternative install (docker)
+-----------------------------
+
+The whole install process may seem a bit tedious especially if your environment
+is not already set for ruby development, and it may discourage contributions for
+small things like css or quick bugfix.
+
+In such case and if you have a recent kernel (3.8+) you can give docker a try.
+The big plus is that you don't have to install ruby,l, mysql, or whatever, it all
+will be 'contained' in the docker image.
+
+Step by step:
+
+- install docker (see http://docs.docker.io/installation)
+- pull the premade image
+  - `docker pull mose/linuxfr-dev`
+- or if you already know docker make your own with the `Dockerfile` present in the repo
+  - `docker build -t linuxfr .`
+- remove `database.yml` if you already customised it, as it will use the default one
+- launch the container either manually
+  - `docker run -d -v /path/to/linuxfr-cloned-repo:/srv/linuxfr --name linuxfr mose/linuxfr-dev`
+- or use the small bash script
+  - `./docker-files/docker.sh`
+  - the script will propose you to refresh or not the db
+  - it will tell you on what local natted IP the container is launched (let's say 172.17.0.2)
+- you can access the launched app
+  - `x-www-browser http://172.17.0.2:3000` reach the app in your browser
+  - `mysql -h 172.17.0.2 -ulinuxfr.dev linuxfr_rails` to access the db
+  - `ssh root@172.17.0.2` and password `docker` to reach it via ssh
+- you will have to do the step 7 from the normal install for init the admin account.
+
+Usage:
+
+- your local git clone of linuxfr.org code is mounted in the container,
+  so all you change in your local dir are taken in account immediatelyin the container
+- `docker ps` should list the container if it's launched
+- `docker stop linuxfr` stops the container
+- `docker run linuxf` restarts the container if it was stopped
+- `docker rm linuxfr` will erase a container so you can relaunch a fresh one from the image
+- `docker images` lists the docker images you can launch
+- the docker.sh script also puts a linuxfr.dev somain resolution to the container ip for ease of use
+- you can launch a rails console with `ssh root@linuxfr.dev "cd /srv/linuxfr && bundle exec rails c"`
+
+Limitations:
+
+- elasticsearch is not yet included in the docker image
+- this dockerisation is still experimental and not very well tested but it proved to work at least once
+- please report any bugs or suggest improvements by opening an issue.
+
 
 See also
 --------
