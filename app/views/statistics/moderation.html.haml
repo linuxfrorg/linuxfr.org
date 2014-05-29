@@ -89,7 +89,7 @@
           %th Éditions (31j)
           %th Votes (31j)
           %th Dernière dépêche
-          %th Auteur de dépêches
+          %th.sorttable_numeric Auteur de dépêches
         - Account.amr.each do |user|
           %tr
             %td.stat= link_to user["login"], user.user
