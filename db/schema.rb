@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140309230826) do
+ActiveRecord::Schema.define(version: 20140608232754) do
 
   create_table "access_grants", force: true do |t|
     t.integer  "account_id"
@@ -206,8 +206,8 @@ ActiveRecord::Schema.define(version: 20140309230826) do
     t.integer  "user_id"
     t.integer  "version"
     t.string   "title"
-    t.text     "body"
-    t.text     "second_part"
+    t.text     "body",        limit: 16777215
+    t.text     "second_part", limit: 16777215
     t.text     "links"
     t.datetime "created_at"
   end
