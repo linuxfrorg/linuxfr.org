@@ -1309,6 +1309,18 @@ input#stylesheet {
   border: 1px solid red;
 }
 
+#edition #first_part {
+  position: relative;
+  top: -1em;
+  &::before {
+    color: red;
+    content: "→";
+    position: relative;
+	top: 20em;
+	left:-5em;
+  }
+}
+
 /* url dans les depeches */
 div#form_links {
   fieldset {
