@@ -1313,11 +1313,10 @@ input#stylesheet {
   position: relative;
   top: -1em;
   &::before {
-    color: red;
-    content: "→";
+    content: url("/images/icones/edit-cut.png");
     position: relative;
-	top: 20em;
-	left:-5em;
+    top: 20em;
+    left: -6em;
   }
 }
 
