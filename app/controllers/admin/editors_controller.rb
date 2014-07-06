@@ -4,12 +4,12 @@ class Admin::EditorsController < AdminController
 
   def create
     @account.give_editor_rights!
-    redirect_to @account.user, notice: "Nouveau rôle : rédacteur"
+    redirect_to @account.user, notice: "Nouveau rôle : animateur"
   end
 
   def destroy
     @account.remove_all_rights!
-    redirect_to @account.user, notice: "Rôle retiré : rédacteur"
+    redirect_to @account.user, notice: "Rôle retiré : animateur"
   end
 
 protected

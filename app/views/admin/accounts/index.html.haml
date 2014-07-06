@@ -38,7 +38,7 @@
           = button_to "Retour simple visiteur", admin_account_admin_path(account.id), method: :delete
         - elsif !account.inactive?
           = button_to "→ modérateur", admin_account_moderator_path(account.id)
-          = button_to "→ rédacteur", admin_account_editor_path(account.id)
+          = button_to "→ animateur", admin_account_editor_path(account.id)
           = button_to "→ admin", admin_account_admin_path(account.id)
 
 = paginate @accounts
