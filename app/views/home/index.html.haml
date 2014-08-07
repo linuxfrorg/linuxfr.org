@@ -1,9 +1,9 @@
 - content_for :column do
   = render 'polls/box'
 
+- feed "Flux Atom des dépêches", "/news.atom"
 - cache_unless account_signed_in?, "home/#{@order}/#{@nodes.current_page}", expires_in: 1.minute do
   =h1 "Accueil"
-  - feed "Flux Atom des dépêches", "/news.atom"
   - if @ppp
     %section#phare
       = render @ppp
