@@ -8,4 +8,8 @@ class Auth::ClientApplicationsController < InheritedResources::Base
   def begin_of_association_chain
     current_account
   end
+
+  def client_application_params
+    params.require(:client_application).permit(:name)
+  end
 end

@@ -16,10 +16,12 @@ class ClientApplication < ActiveRecord::Base
   belongs_to :account
   has_many :access_grants, dependent: :delete_all
 
+  validates :name, presence: { message: "Veuillez remplir le nom" }
+
   before_create :generate_id_and_secret
   def generate_id_and_secret
-    self.app_id     = SecureRandom.hex(32)
-    self.app_secret = SecureRandom.hex(32)
+    self.app_id     = SecureRandom.hex(16)
+    self.app_secret = SecureRandom.hex(16)
   end
 
   def self.authenticate(app_id, app_secret)
