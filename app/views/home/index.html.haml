@@ -2,8 +2,9 @@
   = render 'polls/box'
 
 - feed "Flux Atom des dépêches", "/news.atom"
+- title "Accueil"
 - cache_unless account_signed_in?, "home/#{@order}/#{@nodes.current_page}", expires_in: 1.minute do
-  =h1 "Accueil"
+  %h1 "Accueil"
   - if @ppp
     %section#phare
       = render @ppp
