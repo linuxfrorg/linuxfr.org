@@ -28,13 +28,13 @@ describe News do
     before(:all) { FactoryGirl.create(:default_section) }
 
     it "has two paragraphs, one in each part" do
-      news.should have(2).paragraphs
-      news.paragraphs.in_first_part.should have(1).item
-      news.paragraphs.in_second_part.should have(1).item
+      news.paragraphs.size.should eq(2)
+      news.paragraphs.in_first_part.size.should eq(1)
+      news.paragraphs.in_second_part.size.should eq(1)
     end
 
     it "has a body and a second part" do
-      news.should have(0).errors
+      news.errors.should be_empty
       news.body =~ /Vous pouvez éditer/
       news.second_part =~ /Vous pouvez éditer/
     end
@@ -43,8 +43,8 @@ describe News do
       para = news.paragraphs.first
       para.wiki_body = "Paragraphe un\n\nparagraphe deux\n"
       para.update_by(FactoryGirl.create :moderator)
-      news.should have(3).paragraphs
-      news.paragraphs.in_first_part.should have(2).item
+      news.paragraphs.size.should eq(3)
+      news.paragraphs.in_first_part.size.should eq(2)
       news.body =~ /Paragraphe un<\/p>.*<p>paragraphe deux/
     end
   end

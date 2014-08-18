@@ -58,19 +58,19 @@ describe Board do
   it "can't be possible to save a blank message" do
     b = Board.new(object_type: Board.news, object_id: news.id, message: "")
     b.user = john
-    b.save.should be_false
+    b.save.should be false
     b = Board.new(object_type: Board.news, object_id: news.id)
     b.user = john
-    b.save.should be_false
+    b.save.should be false
   end
 
   it "can be saved and retrieved" do
     b = Board.new(object_type: Board.news, object_id: news.id, message: "foobar")
     b.user = john
     b.user_agent = "console"
-    b.save.should be_true
+    b.save.should be true
     boards = Board.all(Board.news, news.id)
-    boards.should have(1).item
+    boards.size.should eq(1)
     board = boards.first
     board.id.should > 0
     board.message.should == "foobar"
@@ -87,10 +87,10 @@ describe Board do
       b = Board.new(object_type: Board.free, message: "foobar")
       b.user = john
       b.user_agent = "console"
-      b.save.should be_true
+      b.save.should be true
     end
     boards = Board.all(Board.free)
-    boards.should have(5).items
+    boards.size.should eq(5)
     boards[0].id.should == 5
     boards[1].id.should == 4
     boards[2].id.should == 3
@@ -106,8 +106,8 @@ describe Board do
       b.save
     end
     boards = Board.all(Board.free)
-    boards.should have(100).items
-    $redis.keys("boards/msg/*").should have(100).items
+    boards.size.should eq(100)
+    $redis.keys("boards/msg/*").size.should eq(100)
     $redis.llen("boards/chans/free").should == 100
   end
 

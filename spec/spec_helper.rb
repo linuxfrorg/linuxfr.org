@@ -7,6 +7,7 @@ require 'rspec/rails'
 RSpec.configure do |c|
   c.filter_run focus: true
   c.run_all_when_everything_filtered = true
+  c.infer_spec_type_from_file_location!
 
   c.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
