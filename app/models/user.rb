@@ -39,9 +39,8 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates
 
-  # FIXME rails41
   def slug_candidates
-    (0..100).map do |i|
+    [login] + (2..100).map do |i|
       "#{login}-#{i}"
     end
   end
