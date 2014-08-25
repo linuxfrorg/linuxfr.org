@@ -1,5 +1,5 @@
 #sections.box
-  %h1 = link_to "Les sections", '/sections'
+  %h1= link_to "Les sections", '/sections'
   %ul
     = list_of(@sections) do |section|
       = link_to section.title, section
