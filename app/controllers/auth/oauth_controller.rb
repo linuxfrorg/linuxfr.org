@@ -2,7 +2,7 @@
 class Auth::OauthController < ApplicationController
   before_action :authenticate_account!, only: [:authorize, :authorized]
   before_action :find_application, only: [:authorize, :authorized]
-  skip_before_action :verify_authenticity_token, only: [:access_token]
+  skip_before_action :verify_authenticity_token, only: [:access_token, :board_post]
 
   def authorize
     @redirect_uri = params[:redirect_uri]
@@ -35,6 +35,25 @@ class Auth::OauthController < ApplicationController
       render json: { error: "Could not find access grant for this token" }
     else
       render json: @grant.account.as_json(only: [:login, :email, :created_at])
+    end
+  end
+
+  def board_post
+    @grant = AccessGrant.find_by(access_token: params.require(:bearer_token))
+    if @grant.nil?
+      render json: { error: "Could not find access grant for this token" }
+    else
+      board = Board.new
+      if board.creatable_by?(@grant.account)
+        board.message = params.require(:message)
+        board.user = @grant.account.user
+        board.user_agent = @grant.client_application.name
+        board.save
+        board.news.tap {|news| news.node.read_by @grant.account.id if news }
+        render json: { id: board.id }
+      else
+        render json: { error: "You cannot post on this board" }
+      end
     end
   end
 
