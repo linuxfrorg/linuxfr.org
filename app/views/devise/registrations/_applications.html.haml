@@ -3,3 +3,24 @@
   Si vous êtes un développeur d'applications web, vous pouvez
   = link_to "enregistrer votre application", auth_client_applications_path
   pour bénéficier de l'API d'authentification OAuth2.
+
+%p
+  Vous pouvez révoquer les autorisations données aux applications avant
+  leur expiration.
+
+= form_for @account, url: registration_path(:account) do |f|
+  %table#access_grants_revoke
+    %tr
+      %th
+      %th Application
+      %th Expiration
+      %th
+    = f.fields_for :access_grants do |a|
+      %tr
+        %td
+          = a.check_box :_destroy
+        %td
+          = a.label :_destroy, a.object.name
+        %td
+          = a.label :_destroy, "le " + a.object.access_token_expires_at.to_s(:date) + " à " + a.object.access_token_expires_at.to_s(:time)
+  = f.submit "Révoquer", {"class" => "remove"}

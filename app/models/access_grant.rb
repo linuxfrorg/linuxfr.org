@@ -18,6 +18,8 @@ class AccessGrant < ActiveRecord::Base
   belongs_to :account
   belongs_to :client_application
 
+  delegate :name, to: :client_application
+
   before_create :generate_tokens
   def generate_tokens
     self.code          = SecureRandom.hex(16)
@@ -31,6 +33,10 @@ class AccessGrant < ActiveRecord::Base
       refresh_token: refresh_token,
       expires_in: Devise.timeout_in.to_i
     }
+  end
+
+  def to_i
+    id
   end
 
   def start_expiry_period!
