@@ -105,6 +105,7 @@ Rails.application.routes.draw do
     post "oauth/authorized"   => "oauth#authorized"
     post "oauth/access_token" => "oauth#access_token"
     get  "oauth/user"         => "oauth#user"
+    post "oauth/board/post"   => "oauth#board_post"
   end
 
   # Redaction

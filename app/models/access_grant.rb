@@ -29,7 +29,7 @@ class AccessGrant < ActiveRecord::Base
     {
       access_token: access_token,
       refresh_token: refresh_token,
-      expires_in: Devise.timeout_in.to_i
+      expires_at: access_token_expires_at.to_i
     }
   end
 
