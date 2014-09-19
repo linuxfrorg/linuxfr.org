@@ -18,6 +18,8 @@ class AccessGrant < ActiveRecord::Base
   belongs_to :account
   belongs_to :client_application
 
+  delegate :name, to: :client_application
+
   before_create :generate_tokens
   def generate_tokens
     self.code          = SecureRandom.hex(16)
@@ -33,8 +35,12 @@ class AccessGrant < ActiveRecord::Base
     }
   end
 
+  def to_i
+    id
+  end
+
   def start_expiry_period!
-    update_column(:access_token_expires_at, 2.days.from_now)
+    update_column(:access_token_expires_at, 1.year.from_now)
   end
 
   def self.authenticate(code, application_id)
@@ -42,6 +48,6 @@ class AccessGrant < ActiveRecord::Base
   end
 
   def self.prune!
-    delete_all(["created_at < ?", 3.days.ago])
+    delete_all(["access_token_expires_at < ?", Time.now])
   end
 end

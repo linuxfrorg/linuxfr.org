@@ -51,7 +51,7 @@ class Account < ActiveRecord::Base
   has_many :access_grants, dependent: :delete_all
   has_many :logs
   belongs_to :user, inverse_of: :account
-  accepts_nested_attributes_for :user, reject_if: :all_blank
+  accepts_nested_attributes_for :access_grants, :user, reject_if: :all_blank, allow_destroy: true
 
   mount_uploader :uploaded_stylesheet, StylesheetUploader
 
