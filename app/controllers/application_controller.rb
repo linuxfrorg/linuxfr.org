@@ -44,6 +44,7 @@ protected
                :hide_avatar, :news_on_home, :diaries_on_home, :posts_on_home,
                :polls_on_home, :wiki_pages_on_home, :trackers_on_home,
                :sort_by_date_on_home, :hide_signature, :show_negative_nodes,
+               access_grants_attributes: [:id, :_destroy],
                user_attributes: [:id, :name, :homesite, :jabber_id, :signature, :avatar, :custom_avatar_url])
     end
   end
