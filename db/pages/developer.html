@@ -117,8 +117,8 @@ POST https://linuxfr.org/auth/oauth/access_token
 	aux informations suivantes de l'utilisateur :
 </p>
 <ul>
-	<li>son login</li>
-	<li>son adresse email</li>
+	<li>son identifiant de compte (pseudo)</li>
+	<li>son adresse de courriel</li>
 	<li>la date de création de son compte.</li>
 </ul>
 
@@ -141,9 +141,9 @@ GET https://linuxfr.org/auth/oauth/user
 	</dd>
 	<dt><var>email</var</dt>
 	<dd>
-		Chaîne de caractères - L'adresse email de l'utilisateur (note :
+		Chaîne de caractères - L'adresse de courriel de l'utilisateur (note :
 		elle a déjà été validée à l'inscription sur LinuxFr.org et il n'est
-		donc pas souhaitable de revalider cette adresse email).
+		donc pas souhaitable de revalider cette adresse de courriel).
 	</dd>
 	<dt><var>created_at</var</dt>
 	<dd>
@@ -194,4 +194,3 @@ POST https://linuxfr.org/auth/oauth/board/post
 	LinuxFr.org :
 	<a href="https://github.com/linuxfrorg/omniauth-linuxfr.org">omniauth-linuxfr.org</a>.
 </p>
-
