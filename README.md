@@ -72,6 +72,7 @@ Note: you can use libcurl4-gnutls-dev instead of libcurl4-openssl-dev.
   `mysql> UPDATE accounts SET role='admin' WHERE login='xxxxxx';`
 * Reload the page on the site, you should be admin.
 
+
 Alternative install (docker)
 -----------------------------
 
@@ -97,7 +98,7 @@ Step by step:
 - or use the small bash script
   - `./docker-files/docker.sh` it will
     - create a user with same uid as you so the mounted repo will have no prem trouble
-    - copy your ssh public keys in the container root and user account authorized_keys
+    - copy your ssh public keys in the container root and user account `authorized_keys`
     - run a bundle install --path vendor so the bundled gems will be in vendor/ruby/
       (note later on if you are on the same ARCH as the container (ie 64bits) you can bundle install from your local repo)
     - propose you to refresh or not the db

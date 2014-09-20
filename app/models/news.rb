@@ -67,7 +67,7 @@ class News < Content
 
   include Elasticsearch::Model
 
-  scope :indexable, where(state: "published")
+  scope :indexable, -> { where(state: "published") }
 
   mapping dynamic: false do
     indexes :created_at,  type: 'date'
