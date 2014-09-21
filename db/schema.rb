@@ -11,22 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608232754) do
-
-  create_table "access_grants", force: true do |t|
-    t.integer  "account_id"
-    t.integer  "client_application_id"
-    t.string   "code"
-    t.string   "access_token"
-    t.string   "refresh_token"
-    t.datetime "access_token_expires_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "access_grants", ["access_token"], name: "index_access_grants_on_access_token", using: :btree
-  add_index "access_grants", ["account_id", "code"], name: "index_access_grants_on_account_id_and_code", using: :btree
-  add_index "access_grants", ["client_application_id"], name: "index_access_grants_on_client_application_id", using: :btree
+ActiveRecord::Schema.define(version: 20140920180945) do
 
   create_table "accounts", force: true do |t|
     t.integer  "user_id"
@@ -85,17 +70,6 @@ ActiveRecord::Schema.define(version: 20140608232754) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "client_applications", force: true do |t|
-    t.integer  "account_id"
-    t.string   "name"
-    t.string   "app_id",     limit: 32
-    t.string   "app_secret", limit: 32
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "client_applications", ["app_id"], name: "index_client_applications_on_app_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.integer  "node_id"
@@ -237,6 +211,48 @@ ActiveRecord::Schema.define(version: 20140608232754) do
   add_index "nodes", ["public", "last_commented_at"], name: "index_nodes_on_public_and_last_commented_at", using: :btree
   add_index "nodes", ["public", "score"], name: "index_nodes_on_public_and_score", using: :btree
   add_index "nodes", ["user_id"], name: "index_nodes_on_user_id", using: :btree
+
+  create_table "oauth_access_grants", force: true do |t|
+    t.integer  "resource_owner_id", null: false
+    t.integer  "application_id",    null: false
+    t.string   "token",             null: false
+    t.integer  "expires_in",        null: false
+    t.text     "redirect_uri",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "revoked_at"
+    t.string   "scopes"
+  end
+
+  add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
+
+  create_table "oauth_access_tokens", force: true do |t|
+    t.integer  "resource_owner_id"
+    t.integer  "application_id"
+    t.string   "token",             null: false
+    t.string   "refresh_token"
+    t.integer  "expires_in"
+    t.datetime "revoked_at"
+    t.datetime "created_at",        null: false
+    t.string   "scopes"
+  end
+
+  add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
+  add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
+  add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
+
+  create_table "oauth_applications", force: true do |t|
+    t.string   "name",         null: false
+    t.string   "uid",          null: false
+    t.string   "secret",       null: false
+    t.text     "redirect_uri", null: false
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "oauth_applications", ["owner_id", "owner_type"], name: "index_oauth_applications_on_owner_id_and_owner_type", using: :btree
+  add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
   create_table "pages", force: true do |t|
     t.string   "slug"

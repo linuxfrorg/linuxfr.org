@@ -10,6 +10,7 @@ gem "canable",                 "~>0.1"
 gem "carrierwave",             "~>0.10"
 gem "devise",                  "~>3.3"
 gem "diff_match_patch",        github: "nono/diff_match_patch-ruby", require: "diff_match_patch"
+gem "doorkeeper",              "~>1.4"
 gem "french_rails",            "~>0.3"
 gem "friendly_id",             "~>5.0"
 gem "haml",                    "~>4.0"
@@ -22,13 +23,12 @@ gem "kaminari",                "~>0.15"
 gem "mini_magick",             "~>3.7"
 gem "mysql2",                  "~>0.3"
 gem "nokogiri",                "~>1.6"
-gem "oauth2",                  "~>0.6"
 gem "patron",                  "~>0.4"
 gem "rinku",                   "~>1.7"
 gem "hiredis",                 "~>0.5"
 gem "redis",                   "~>3.0", require: ["redis/connection/hiredis", "redis"]
 gem "sanitize",                "~>2.1"
-gem "sitemap_generator",       "~>2.1" # TODO update sitemap_generator
+gem "sitemap_generator",       "~>2.1"  # TODO update sitemap_generator
 gem "state_machine",           "~>1.2"
 
 # Use the github version to have transport auto-detection
@@ -46,7 +46,7 @@ gem "uglifier"
 
 # Rspec-rails must be in development for rake stats and in test for normal stuff
 group :development, :test do
-  gem "rspec-rails",           "~>2.14"
+  gem "rspec-rails",           "~>2.14"  # TODO move to rspec3
 end
 
 group :development do

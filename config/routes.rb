@@ -98,14 +98,18 @@ Rails.application.routes.draw do
   }
   resource :stylesheet, only: [:create, :edit, :update, :destroy]
 
-  # OAuth
-  namespace :auth do
-    resources :client_applications
-    get  "oauth/authorize"    => "oauth#authorize"
-    post "oauth/authorized"   => "oauth#authorized"
-    post "oauth/access_token" => "oauth#access_token"
-    get  "oauth/user"         => "oauth#user"
-    post "oauth/board/post"   => "oauth#board_post"
+  # API
+  scope :api do
+    use_doorkeeper do
+      skip_controllers :applications
+    end
+  end
+  namespace :api do
+    resources :applications
+    namespace :v1 do
+      get  "/me"    => "accounts#me"
+      post "/board" => "board#create"
+    end
   end
 
   # Redaction
@@ -164,6 +168,7 @@ Rails.application.routes.draw do
   get "/admin"       => "admin#index"
   get "/admin/debug" => "admin#debug"
   namespace :admin do
+    # TODO Oauth client applications for admins
     resources :comptes, controller: "accounts", as: "accounts", only: [:index, :update, :destroy] do
       resource :moderator, only: [:create, :destroy]
       resource :editor, only: [:create, :destroy]

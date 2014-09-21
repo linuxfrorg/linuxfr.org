@@ -1,5 +1,5 @@
 # encoding: utf-8
-class Auth::ClientApplicationsController < InheritedResources::Base
+class Api::ApplicationsController < InheritedResources::Base
   before_action :authenticate_account!
   respond_to :html
 
@@ -9,7 +9,7 @@ class Auth::ClientApplicationsController < InheritedResources::Base
     current_account
   end
 
-  def client_application_params
-    params.require(:client_application).permit(:name)
+  def application_params
+    params.require(:application).permit(:name, :redirect_uri)
   end
 end

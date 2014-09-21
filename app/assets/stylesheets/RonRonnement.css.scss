@@ -83,7 +83,8 @@ a {
 button { padding-top: 2px; padding-bottom: 2px; }
 
 button,
-.edit_client_app a,
+a.show_client_app,
+a.edit_client_app,
 .new_content a,
 .toolbox .follow_feed a,
 #comments #follow-feed a,
@@ -111,6 +112,7 @@ input[type='submit'] {
   display: inline-block;
 }
 
+a.show_client_app,
 form input[type='submit'], button {
   display: inline-block;
   padding-left: 20px;
@@ -241,7 +243,8 @@ button, input[type='submit'] {
   & + button.edit { display: none; }
 }
 
-.edit_client_app a,
+a.show_client_app,
+a.edit_client_app,
 .new_content a,
 .toolbox .follow_feed a,
 #comments #follow-feed a,
@@ -250,7 +253,7 @@ button, input[type='submit'] {
   padding: 2px 5px 0 25px;
   height: 21px;
 }
-.edit_client_app a,
+a.edit_client_app,
 .new_content a {
   background: no-repeat 3px 3px $C_CLAIR;
   background-size: 16px;
@@ -631,7 +634,7 @@ body#wiki_pages-revision #contents,
 body#news-revision #contents,
 body#dashboard-index #contents table,
 body#trackers-index #contents table,
-body#client_applications-index table,
+body#applications-index table,
 body#redaction-index #container > div,
 body#boards-show #contents,
 body#stylesheets-edit #contents,
@@ -1472,7 +1475,7 @@ body#trackers-index .toolbox .new_content {
 }
 body#dashboard-index #contents table,
 body#trackers-index #contents table,
-body#client_applications-index table {
+body#applications-index table {
   display: inline-block;
   border-collapse: collapse;
   -moz-border-radius: 0;
@@ -1498,7 +1501,7 @@ body#client_applications-index table {
   }
   a[href] { @include lien_standard; }
 }
-body#client_applications-index td {
+body#applications-index td {
   padding: 5px;
 }
 #tracker, #my_trackers, .tracker {

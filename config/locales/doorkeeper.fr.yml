@@ -1,0 +1,49 @@
+fr:
+  activerecord:
+    errors:
+      models:
+        application:
+          attributes:
+            redirect_uri:
+              fragment_present: 'ne peut pas contenir un fragment.'
+              invalid_uri: 'doit être une URI valide.'
+              relative_uri: 'doit être une URI absolue.'
+  doorkeeper:
+    errors:
+      messages:
+        # Common error messages
+        invalid_request: 'Il manque un paramètre obligatoire dans la requête, elle comporte une valeur non prise en charge pour un paramètre, ou elle est mal-formée.'
+        invalid_redirect_uri: "L'URI de redirection incluse n'est pas valide."
+        unauthorized_client: "Le client n'est pas autorisé à effectuer cette requête en utilisant cette méthode."
+        access_denied: "Le propriétaire de la ressource ou le serveur d'autorisation a refusé la requête."
+        invalid_scope: "Les droits demandés sont invalides, inconnues ou mal-formés."
+        server_error: "Le serveur d'autorisation a rencontré une erreur."
+        temporarily_unavailable: "Le serveur d'autorisation est momentannément indisponible."
+
+        # Access grant errors
+        unsupported_response_type: "Le serveur d'autorisation ne prend pas en charge ce type de réponse."
+
+        # Access token errors
+        invalid_client: "L'authentification du client a échoué en raison d'un client inconnu, de l'absence d'authentification pour le client ou d'une méthode d'authentification inconnue."
+        invalid_grant: "La délégation d'autorisation fournie est invalide, a expiré, a été révoquée, ne correspond pas à l'URI de redirection utilisée pour la requête d'autorisation ou a été émise pour un autre client."
+        unsupported_grant_type: "Le type de la délégation d'autorisation n'est pas pris en charge pour le serveur d'autorisation."
+
+        # Password Access token errors
+        invalid_resource_owner: "Les identifiants fournis pour le propriétaire de la ressource ne sont pas valides, ou le propriétaire de la ressource ne peut pas être trouvé."
+
+        invalid_token:
+          revoked: "Le jeton d'accès a été révoqué"
+          expired: "Le jeton d'accès a expiré"
+          unknown: "Le jeton d'accès est invalide"
+
+    flash:
+      applications:
+        create:
+          notice: "L'application a été enregistrée."
+        destroy:
+          notice: "L'application a été supprimée."
+        update:
+          notice: "L'application a été mise à jour."
+      authorized_applications:
+        destroy:
+          notice: "L'application a été révoquée."

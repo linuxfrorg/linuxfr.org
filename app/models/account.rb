@@ -47,11 +47,10 @@ class Account < ActiveRecord::Base
   include Canable::Cans
   include ActionView::Helpers::TextHelper
 
-  has_many :client_applications
-  has_many :access_grants, dependent: :delete_all
+  has_many :applications, class_name: 'Doorkeeper::Application', as: :owner
   has_many :logs
   belongs_to :user, inverse_of: :account
-  accepts_nested_attributes_for :access_grants, :user, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :user, reject_if: :all_blank
 
   mount_uploader :uploaded_stylesheet, StylesheetUploader
 
@@ -206,6 +205,12 @@ class Account < ActiveRecord::Base
 
   def reset_answers_notifications
     $redis.del "dashboard/#{self.id}"
+  end
+
+### API ###
+
+  def as_json(opts={})
+    super opts.merge(only: [:login, :email, :created_at])
   end
 
 ### Karma ###
