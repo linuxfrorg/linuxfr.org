@@ -76,6 +76,14 @@ GET https://linuxfr.org/api/oauth/authorize
     Chaîne de caractères obligatoire - <var>code</var> dans le flux d'OAuth2 le
     plus courant.
   </dd>
+  <dt>scope</dt>
+  <dd>
+    Chaîne de caractères facultative - la liste des scopes demandées, séparés
+    par des espaces (URL encodés en +). Cela indique les actions que
+    l'application pourra faire au nom de l'utilisateur. Exemple :
+    <var>scope=account+board</var>. Par défaut, seul le scope
+    <var>account</var> sera fourni.
+  </dd>
 </dl>
 
 
@@ -124,6 +132,8 @@ POST https://linuxfr.org/api/oauth/token
 
 <h3>Authentification</h3>
 
+<p>Scope nécessaire : <var>account</var></p>.
+
 <p>
   Une fois le <var>bearer_token</var> obtenu, il est possible d'accéder
   aux informations suivantes de l'utilisateur :
@@ -170,6 +180,8 @@ GET https://linuxfr.org/api/oauth/me
 
 
 <h3>Poster sur la tribune</h3>
+
+<p>Scope nécessaire : <var>board</var></p>.
 
 <pre>
 POST https://linuxfr.org/api/oauth/board
