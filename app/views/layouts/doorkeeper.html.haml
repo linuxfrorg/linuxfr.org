@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+%html(lang="fr")
+  %head
+    %meta(charset="utf-8")
+    %title Autoriser une application
+    = stylesheet_link_tag "application", media: nil
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
+    %meta(name="viewport" content="width=device-width")
+    %meta(name="robots" content="noindex, nofollow")
+    <!--[if IE]>#{javascript_include_tag "html5"}<![endif]-->
+    <!--[if lt IE 9]>#{javascript_include_tag "IE9"}<![endif]-->
+  %body#oauth-authorize
+    #top
+    = render 'layouts/site'
+    = render 'layouts/sidebar'
+    %section#container
+      - [:alert, :notice].each do |type|
+        - if flash[type]
+          %div(class=type)= flash[type]
+      = yield :layout

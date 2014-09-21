@@ -23,6 +23,10 @@ module LinuxfrOrg
 
     config.time_zone = 'Paris'
 
+    config.to_prepare do
+      Doorkeeper::AuthorizationsController.layout "doorkeeper"
+    end
+
     config.assets.precompile += %w(IE9.js html5.js sorttable.js)
     config.assets.precompile += %w(mobile.css print.css)
     Dir.chdir(Rails.root.join "app/assets/stylesheets") do
