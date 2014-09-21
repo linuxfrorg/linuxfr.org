@@ -101,11 +101,12 @@ Rails.application.routes.draw do
   # API
   scope :api do
     use_doorkeeper do
-      skip_controllers :applications
+      skip_controllers :applications, :authorized_applications
     end
   end
   namespace :api do
     resources :applications
+    resources :authorized_applications, only: [:destroy]
     namespace :v1 do
       get  "/me"    => "accounts#me"
       post "/board" => "board#create"

@@ -635,6 +635,7 @@ body#news-revision #contents,
 body#dashboard-index #contents table,
 body#trackers-index #contents table,
 body#applications-index table,
+body#registrations-edit table,
 body#redaction-index #container > div,
 body#boards-show #contents,
 body#stylesheets-edit #contents,
@@ -1475,7 +1476,8 @@ body#trackers-index .toolbox .new_content {
 }
 body#dashboard-index #contents table,
 body#trackers-index #contents table,
-body#applications-index table {
+body#applications-index table,
+body#registrations-edit table {
   display: inline-block;
   border-collapse: collapse;
   -moz-border-radius: 0;
@@ -1501,7 +1503,8 @@ body#applications-index table {
   }
   a[href] { @include lien_standard; }
 }
-body#applications-index td {
+body#applications-index td,
+body#registrations-edit td {
   padding: 5px;
 }
 #tracker, #my_trackers, .tracker {

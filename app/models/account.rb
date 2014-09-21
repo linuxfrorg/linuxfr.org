@@ -213,6 +213,10 @@ class Account < ActiveRecord::Base
     super opts.merge(only: [:login, :email, :created_at])
   end
 
+  def authorized_applications
+    Doorkeeper::Application.authorized_for self
+  end
+
 ### Karma ###
 
   def update_karma_bounds

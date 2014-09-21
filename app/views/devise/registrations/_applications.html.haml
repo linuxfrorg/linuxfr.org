@@ -4,6 +4,21 @@
   = link_to "enregistrer votre application", api_applications_path
   pour bénéficier de l'API OAuth2 de LinuxFr.org.
 
-%p
-  Vous pouvez révoquer les autorisations données aux applications avant
-  leur expiration.
+- if current_account.authorized_applications.any?
+  %p
+    Vous pouvez révoquer les autorisations données aux applications avant
+    leur expiration :
+
+  %table#authorized_applications
+    %tr
+      %th Application
+      %th Enregistrée le
+      %th Actions
+    - current_account.authorized_applications.each do |app|
+      %tr
+        %td= app.name
+        %td= app.created_at.to_s(:posted)
+        %td= button_to "Révoquer", api_authorized_application_path(app), method: :delete, data: { confirm: "Révoquer cette autorisation ?" }, class: "delete_button"
+- else
+  %p Vous n'avez donné aucune autorisation à des applications.
+
