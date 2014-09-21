@@ -9,6 +9,10 @@ RSpec.configure do |c|
   c.run_all_when_everything_filtered = true
   c.infer_spec_type_from_file_location!
 
+  c.expect_with :rspec do |cfg|
+    cfg.syntax = [:should, :expect]
+  end
+
   c.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end

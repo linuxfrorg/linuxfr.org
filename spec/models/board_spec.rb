@@ -5,14 +5,14 @@ require 'spec_helper'
 describe Board do
   let(:john) do
     user = double("John Doe", to_param: "john-doe", name: "John Doe")
-    user.stub_chain(:account, :login).and_return("john")
+    allow(user).to receive(:account).and_return(double login: "john")
     user
   end
 
   let(:news) do
     news = News.new
-    news.stub(:id).and_return(123)
-    News.stub(:find).with(123).and_return(news)
+    allow(news).to receive(:id).and_return(123)
+    allow(News).to receive(:find).with(123).and_return(news)
     news
   end
 

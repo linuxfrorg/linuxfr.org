@@ -50,7 +50,7 @@ describe "Diaries" do
 
   context "Deleted diary" do
     before(:each) do
-      diary.stub(:update_index)
+      allow(diary).to receive(:update_index)
       diary.mark_as_deleted
     end
 

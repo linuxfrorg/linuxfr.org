@@ -20,7 +20,7 @@ gem "html_truncator",          "~>0.4"
 gem "htmlentities",            "~>4.3"
 gem "inherited_resources",     "~>1.4"
 gem "kaminari",                "~>0.15"
-gem "mini_magick",             "~>3.7"
+gem "mini_magick",             "~>3.8"
 gem "mysql2",                  "~>0.3"
 gem "nokogiri",                "~>1.6"
 gem "patron",                  "~>0.4"
@@ -28,7 +28,7 @@ gem "rinku",                   "~>1.7"
 gem "hiredis",                 "~>0.5"
 gem "redis",                   "~>3.0", require: ["redis/connection/hiredis", "redis"]
 gem "sanitize",                "~>2.1"
-gem "sitemap_generator",       "~>2.1"  # TODO update sitemap_generator
+gem "sitemap_generator",       "~>2.1"
 gem "state_machine",           "~>1.2"
 
 # Use the github version to have transport auto-detection
@@ -46,7 +46,7 @@ gem "uglifier"
 
 # Rspec-rails must be in development for rake stats and in test for normal stuff
 group :development, :test do
-  gem "rspec-rails",           "~>2.14"  # TODO move to rspec3
+  gem "rspec-rails",           "~>3.1"
 end
 
 group :development do
@@ -68,8 +68,8 @@ end
 group :test do
   gem "database_cleaner",      "~>1.2"
   gem "factory_girl_rails",    "~>1.6"
-  gem "fuubar",                "~>1.0"
-  gem "capybara",              "~>2.2"
+  gem "fuubar",                "~>2.0"
+  gem "capybara",              "~>2.4"
 end
 
 group :production, :alpha do

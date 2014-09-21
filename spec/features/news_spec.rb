@@ -9,7 +9,7 @@ describe "News" do
 
   let!(:section) do
     FactoryGirl.create(:section).tap do |sect|
-      sect.stub(:image).and_return(double('image', url: ''))
+      allow(sect).to receive(:image).and_return(double('image', url: ''))
     end
   end
 
