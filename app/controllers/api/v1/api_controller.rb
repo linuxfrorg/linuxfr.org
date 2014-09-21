@@ -1,5 +1,5 @@
 class Api::V1::ApiController < ApplicationController
-  doorkeeper_for :all
+  respond_to :json
 
 protected
 

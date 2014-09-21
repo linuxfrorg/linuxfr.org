@@ -3,5 +3,6 @@ FactoryGirl.define do
     sequence(:resource_owner_id) { |n| n }
     application
     expires_in 2.hours
+    scopes 'account'
   end
 end

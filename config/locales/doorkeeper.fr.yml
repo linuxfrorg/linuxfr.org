@@ -8,7 +8,12 @@ fr:
               fragment_present: 'ne peut pas contenir un fragment.'
               invalid_uri: 'doit être une URI valide.'
               relative_uri: 'doit être une URI absolue.'
+
   doorkeeper:
+    scopes:
+      account: "Accéder à votre adresse de courriel, votre identifiant et la date de création de votre compte"
+      board: "Poster sur les tribunes"
+
     errors:
       messages:
         # Common error messages

@@ -5,7 +5,7 @@ describe Api::V1::BoardController do
     describe 'POST #board' do
     let!(:account)     { Factory(:normal_account).reload }
     let!(:application) { Factory :application }
-    let!(:token)       { Factory :access_token, application: application, resource_owner_id: account.id }
+    let!(:token)       { Factory :access_token, application: application, resource_owner_id: account.id, scopes: 'board' }
     let!(:message)     { "Un message très intéressant... ou pas" }
 
     it 'responds with 200' do
@@ -25,6 +25,15 @@ describe Api::V1::BoardController do
       board.user_agent.should == application.name
       board.user_name.should == account.user.name
       board.object_type.should == Board.free
+    end
+
+    it 'can post on the redaction board' do
+      post '/api/v1/board', access_token: token.token, message: message, object_type: Board.writing
+      board = Board.last(Board.writing)
+      board.message.should == message
+      board.user_agent.should == application.name
+      board.user_name.should == account.user.name
+      board.object_type.should == Board.writing
     end
   end
 end
