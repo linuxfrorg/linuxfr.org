@@ -115,6 +115,17 @@ POST https://linuxfr.org/api/oauth/token
   <dd>
     Chaîne de caractères obligatoire - Le code reçu à l'étape 1.
   </dd>
+  <dt><var>grant_type</var></dt>
+  <dd>
+    Chaîne de caractères obligatoire - Le format d'authentification utilisé,
+    "authorization_code" pour une application web.
+  </dd>
+  <dt><var>redirect_uri</var></dt>
+  <dd>
+    Chaîne de caractères obligatoire - L'URI vers laquelle l'utilisateur
+    sera redirigé après obtention du token (doit être la même que celle
+    indiquée lors de l'enregistrement de l'application).
+  </dd>
 </dl>
 
 <h4>Réponse</h4>
@@ -124,28 +135,35 @@ POST https://linuxfr.org/api/oauth/token
     Chaîne de caractères - Le jeton d'autorisation, également appelé
     <var>bearer_token</var>.
   </dd>
+  <dt><var>refresh_token</var></dt>
+  <dd>
+    Chaîne de caractères.
+  </dd>
+  <dt><var>expires_in</var></dt>
+  <dd>
+    Entier - Nombre de secondes avant expiration de l'<var>access_token</var>.
+  </dd>
 </dl>
 
 
 
 <h2>Méthodes d'API</h2>
 
+<p>
+  Lors de l'appel des méthodes d'API, le <var>bearer_token</var> peut être
+  envoyé soit en paramètre GET ou POST (suivant la méthode requise pour la
+  requête) soit dans les headers HTTP :
+
+<pre>
+Authorization: Bearer cf075a5c84bbb9489bdca8d18c51937cc69af6b23e06cfc5f0a52e2eef3f6339
+</pre>
+
 <h3>Authentification</h3>
 
 <p>Scope nécessaire : <var>account</var></p>.
 
-<p>
-  Une fois le <var>bearer_token</var> obtenu, il est possible d'accéder
-  aux informations suivantes de l'utilisateur :
-</p>
-<ul>
-  <li>son identifiant de compte (pseudo)</li>
-  <li>son adresse de courriel</li>
-  <li>la date de création de son compte.</li>
-</ul>
-
 <pre>
-GET https://linuxfr.org/api/oauth/me
+GET https://linuxfr.org/api/v1/me
 </pre>
 
 <h4>Paramètres</h4>
@@ -184,7 +202,7 @@ GET https://linuxfr.org/api/oauth/me
 <p>Scope nécessaire : <var>board</var></p>.
 
 <pre>
-POST https://linuxfr.org/api/oauth/board
+POST https://linuxfr.org/api/v1/board
 </pre>
 
 <h4>Paramètres</h4>
