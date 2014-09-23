@@ -1,5 +1,4 @@
 class Api::V1::BoardController < Api::V1::ApiController
-  skip_before_action :verify_authenticity_token
   doorkeeper_for :all, scopes: [:board]
   after_action :expire_cache, only: [:create]
 
@@ -18,8 +17,7 @@ class Api::V1::BoardController < Api::V1::ApiController
 protected
 
   def board_params
-    params.delete(:bearer_token)
-    params.permit(:object_type, :object_id, :message)
+    params.slice(:object_type, :object_id, :message)
   end
 
   def expire_cache
