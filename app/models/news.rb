@@ -282,7 +282,7 @@ class News < Content
     return unless user
     node.update_column(:user_id, user.id)
     self.author_name  = user.name
-    self.author_email = user.account.try(:email)
+    self.author_email = user.account.try(:email) || 'collectif@linuxfr.org'
     message = "La paternité de la dépêche revient maintenant à #{user.name}"
     Board.new(object_type: Board.news, object_id: self.id, message: message, user_name: editor_name).save
     Push.create(self, kind: :chat, username: editor_name)
