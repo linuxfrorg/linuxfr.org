@@ -32,10 +32,6 @@ protected
     params.require(:board).permit(:object_type, :object_id, :message)
   end
 
-  def verify_referer_or_authenticity_token
-    request.referer =~ /^https?:\/\/#{MY_DOMAIN}\// or verify_authenticity_token
-  end
-
   def expire_cache
     expire_page action: :show, format: :xml
   end
