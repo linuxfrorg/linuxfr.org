@@ -70,6 +70,8 @@ group :test do
   gem "factory_girl_rails",    "~>1.6"
   gem "fuubar",                "~>2.0"
   gem "capybara",              "~>2.4"
+  # Security checks
+  gem "brakeman", require: false
 end
 
 group :production, :alpha do
