@@ -1,5 +1,5 @@
 .formats
-  = link_to "Markdown", "#{path_for_content node.content}.md", title: "Télécharger ce contenu au format markdown", class: "action", rel: "source"
+  = link_to "Markdown", "#{path_for_content node.content}.md", title: "Télécharger ce contenu au format markdown", class: "action"
   = link_to "Epub", "#{path_for_content node.content}.epub", title: "Télécharger ce contenu au format epub", class: "action"
 - if current_account && current_account.can_vote?(node.content)
   .vote

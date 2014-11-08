@@ -1577,7 +1577,6 @@ body#wiki_pages-changes #contents {
 
 input, button, select {
   font-size: 1em;
-  max-size: 100%;
 }
 textarea {
   max-width: 100%;
@@ -1703,7 +1702,6 @@ img {
   }
 
   .node footer.actions .action .button_to { display: none; }
-  li.comment > h2 > a.title { pointer-events: none; }
   li.comment > ul { margin-left: 0.5em; }
   img.avatar { width: 50px; height: 50px; }
 
