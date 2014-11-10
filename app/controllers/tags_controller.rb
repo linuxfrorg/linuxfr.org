@@ -95,7 +95,8 @@ protected
 
   def get_order
     default = current_account.try(:sort_by_date_on_home) ? "taggings.created_at" : "nodes.interest"
-    @order = (params[:order] ? "nodes.#{params[:order]}" : default) + " DESC"
+    @order = "#{default} DESC"
+    @order = "nodes.#{params[:order]} DESC" if VALID_ORDERS.include? params[:order]
   end
 
   def user_tags
