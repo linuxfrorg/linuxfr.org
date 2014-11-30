@@ -69,8 +69,9 @@ class TagsController < ApplicationController
 
   # Show all the nodes tagged with the given tag
   def public
-    @order = (params[:order] || "created_at") + " DESC"
-    @nodes = @tag.nodes.where("nodes.public" => true).order(@order).page(params[:page])
+    @order = params[:order]
+    @order = "created_at" unless VALID_ORDERS.include?(@order)
+    @nodes = @tag.nodes.where("nodes.public" => true).order("#{@order} DESC").page(params[:page])
     respond_with(@nodes)
   end
 
