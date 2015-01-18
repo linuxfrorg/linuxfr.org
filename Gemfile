@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem "rails",                   "4.1.9"
+gem "rails",                   "4.2.0"
 
 gem "actionpack-page_caching", "~>1.0"
 gem "ansi",                    "~>1.4", require: nil
@@ -12,13 +12,14 @@ gem "devise",                  "~>3.3"
 gem "diff_match_patch",        github: "nono/diff_match_patch-ruby", require: "diff_match_patch"
 gem "doorkeeper",              "~>1.4"
 gem "french_rails",            "~>0.3"
-gem "friendly_id",             "~>5.0"
+gem "friendly_id",             "~>5.1"
 gem "haml",                    "~>4.0"
 gem "html-pipeline-linuxfr",   "~>0.14"
 gem "html_spellchecker",       "~>0.1"
 gem "html_truncator",          "~>0.4"
 gem "htmlentities",            "~>4.3"
-gem "inherited_resources",     "~>1.4"
+# FIXME gem "inherited_resources",     "~>1.5"
+gem "inherited_resources",     github: "josevalim/inherited_resources", branch: "rails-4-2"
 gem "kaminari",                "~>0.15"
 gem "mini_magick",             "~>3.8"
 gem "mysql2",                  "~>0.3"
@@ -39,8 +40,8 @@ gem "elasticsearch-model",     "~>0.1"
 
 # Gems used for assets
 gem "jquery-rails",          "~>3.1"
-gem "sass-rails",            "~>4.0"
-gem "coffee-rails",          "~>4.0"
+gem "sass-rails",            "~>5.0"
+gem "coffee-rails",          "~>4.1"
 gem "therubyracer",          "~>0.12", require: 'v8'
 gem "uglifier"
 
@@ -53,6 +54,7 @@ group :development do
   gem "annotate"
   gem "better_errors"
   gem "binding_of_caller"
+  gem "byebug"
   gem "capistrano",            "~>2.0"
   gem "capistrano-maintenance"
   gem "desi"
@@ -63,6 +65,7 @@ group :development do
   gem "spring"
   gem "sushi"
   gem "thin"
+  gem "web-console",           "~> 2.0"
 end
 
 group :test do
