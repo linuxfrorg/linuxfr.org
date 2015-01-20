@@ -18,11 +18,12 @@ class Content < ActiveRecord::Base
 
 ### Search ###
 
-  after_commit :update_index
-  def update_index
-    return __elasticsearch__.index_document if visible?
-    __elasticsearch__.delete_document
-  end
+  # FIXME Elasticsearch
+  # after_commit :update_index
+  # def update_index
+  #   return __elasticsearch__.index_document if visible?
+  #   __elasticsearch__.delete_document
+  # end
 
 ### License ###
 
