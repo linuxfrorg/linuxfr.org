@@ -1,6 +1,7 @@
 #main_board
   .notice
     = link_to "Êtes-vous inscrit à la liste de diffusion des rédacteurs ?", "/news/une-liste-de-diffusion-pour-les-redacteurs-de-linuxfr-org"
+    = link_to "Avez-vous lu la page d'aide à la rédaction ?", "/redaction"
   =h1 "Tribune rédacteurs"
   = render 'boards/boards', boards: @boards, box: false
 
