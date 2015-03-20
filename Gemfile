@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem "rails",                   "4.2.0"
+gem "rails",                   "4.2.1"
 
 gem "actionpack-page_caching", "~>1.0"
 gem "ansi",                    "~>1.4", require: nil
@@ -46,7 +46,7 @@ gem "uglifier"
 
 # Rspec-rails must be in development for rake stats and in test for normal stuff
 group :development, :test do
-  gem "rspec-rails",           "~>3.1"
+  gem "rspec-rails",           "~>3.2"
 end
 
 group :development do
