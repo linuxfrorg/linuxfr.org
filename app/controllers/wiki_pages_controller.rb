@@ -20,6 +20,7 @@ class WikiPagesController < ApplicationController
     enforce_view_permission(@wiki_page)
     path = wiki_page_path(@wiki_page, format: params[:format])
     redirect_to path, status: 301 and return if request.path != path
+    headers['Link'] = %(<#{wiki_page_url @wiki_page}>; rel="canonical")
     respond_with @wiki_page
   rescue ActiveRecord::RecordNotFound
     if current_account

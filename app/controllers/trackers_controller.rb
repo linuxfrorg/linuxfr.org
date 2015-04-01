@@ -41,6 +41,7 @@ class TrackersController < ApplicationController
   def show
     enforce_view_permission(@tracker)
     path = tracker_path(@tracker, format: params[:format])
+    headers['Link'] = %(<#{tracker_url @tracker}>; rel="canonical")
     redirect_to path, status: 301 if request.path != path
   end
 
