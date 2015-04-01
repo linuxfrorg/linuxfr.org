@@ -28,6 +28,7 @@ class Link < ActiveRecord::Base
   validate  :authorized_protocol
 
   def url=(raw)
+    raw.strip!
     return write_attribute :url, nil if raw.blank?
     uri = URI.parse(raw)
     if uri.scheme.blank? && uri.host.blank?
