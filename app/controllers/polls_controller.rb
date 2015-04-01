@@ -23,7 +23,7 @@ class PollsController < ApplicationController
     enforce_view_permission(@poll)
     @poll.state = 'archived' if params.has_key? :results
     path = poll_path(@poll, format: params[:format])
-    headers['Link'] = %(<#{poll_for @poll}>; rel="canonical")
+    headers['Link'] = %(<#{poll_url @poll}>; rel="canonical")
     redirect_to path, status: 301 and return if request.path != path
   end
 
