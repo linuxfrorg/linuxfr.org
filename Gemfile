@@ -27,7 +27,6 @@ gem "patron",                  "~>0.4"
 gem "rinku",                   "~>1.7"
 gem "hiredis",                 "~>0.5"
 gem "redis",                   "~>3.0", require: ["redis/connection/hiredis", "redis"]
-gem "sanitize",                "~>2.1"
 gem "sitemap_generator",       "~>2.1"
 gem "state_machine",           "~>1.2"
 
