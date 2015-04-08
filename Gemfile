@@ -38,7 +38,7 @@ gem "elasticsearch-transport", "~>1.0"
 gem "elasticsearch-model",     "~>0.1"
 
 # Gems used for assets
-gem "jquery-rails",          "~>3.1"
+gem "jquery-rails",          "~>4.0"
 gem "sass-rails",            "~>5.0"
 gem "coffee-rails",          "~>4.1"
 gem "therubyracer",          "~>0.12", require: 'v8'
