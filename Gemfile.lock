@@ -113,8 +113,8 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    doorkeeper (1.4.2)
-      railties (>= 3.1)
+    doorkeeper (2.1.4)
+      railties (>= 3.2)
     elasticsearch (1.0.8)
       elasticsearch-api (= 1.0.7)
       elasticsearch-transport (= 1.0.7)
@@ -371,7 +371,7 @@ DEPENDENCIES
   desi
   devise (~> 3.3)
   diff_match_patch!
-  doorkeeper (~> 1.4)
+  doorkeeper (~> 2.1)
   elasticsearch-model (~> 0.1)
   elasticsearch-transport (~> 1.0)
   factory_girl_rails (~> 1.6)

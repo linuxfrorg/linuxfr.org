@@ -1,5 +1,5 @@
 class Api::V1::BoardController < Api::V1::ApiController
-  doorkeeper_for :all, scopes: [:board]
+  before_action -> { doorkeeper_authorize! :board }
   after_action :expire_cache, only: [:create]
 
   def create
