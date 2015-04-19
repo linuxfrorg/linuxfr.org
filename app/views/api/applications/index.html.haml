@@ -22,6 +22,6 @@
         %td
           = app.redirect_uri
         %td
-          = link_to "Afficher", [:api, app], class: "show_client_app"
+          = link_to "Afficher", api_application_path(app), class: "show_client_app"
           = link_to "Modifier", edit_api_application_path(app), class: "edit_client_app"
-          = button_to "Supprimer", [:api, app], method: :delete, class: "delete_button", data: { confirm: "Êtes-vous sûr de vouloir supprimer cette application ?" }
+          = button_to "Supprimer", api_application_path(app), method: :delete, class: "delete_button", data: { confirm: "Êtes-vous sûr de vouloir supprimer cette application ?" }

@@ -1,4 +1,4 @@
 =h1 "Ajouter une nouvelle application"
 
-= form_for [:api, @application] do |form|
+= form_for @application, url: api_applications_path do |form|
   = render form

@@ -10,6 +10,6 @@ class Api::ApplicationsController < InheritedResources::Base
   end
 
   def application_params
-    params.require(:application).permit(:name, :redirect_uri)
+    params.require(:doorkeeper_application).permit(:name, :redirect_uri)
   end
 end

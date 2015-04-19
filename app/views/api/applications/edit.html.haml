@@ -1,4 +1,4 @@
 =h1 "Modifier cette application"
 
-= form_for [:api, @application] do |form|
+= form_for @application, url: api_application_path(@application) do |form|
   = render form
