@@ -33,7 +33,8 @@ class Page < ActiveRecord::Base
   self.type = "À propos de LinuxFr.org"
 
   include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+  # FIXME Elasticsearch
+  # include Elasticsearch::Model::Callbacks
 
   scope :indexable, -> {}
 
