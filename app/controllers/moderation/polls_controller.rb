@@ -9,6 +9,8 @@ class Moderation::PollsController < ModerationController
 
   def show
     enforce_view_permission(@poll)
+    flash.now[:alert] = "Attention, ce sondage a été supprimé et n'est visible que par les modérateurs" if @poll.deleted?
+    flash.now[:alert] = "Attention, ce sondage a été refusé et n'est visible que par les modérateurs" if @poll.refused?
   end
 
   def accept

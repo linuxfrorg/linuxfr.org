@@ -21,6 +21,7 @@ class PollsController < ApplicationController
 
   def show
     enforce_view_permission(@poll)
+    redirect_to [:moderation, @poll] unless @poll.published?
     @poll.state = 'archived' if params.has_key? :results
     path = poll_path(@poll, format: params[:format])
     headers['Link'] = %(<#{poll_url @poll}>; rel="canonical")

@@ -22,6 +22,7 @@ class NewsController < ApplicationController
 
   def show
     redirect_to [:redaction, @news] if @news.draft?
+    redirect_to [:moderation, @news] if @news.deleted? || @news.refused?
     headers['Link'] = %(<#{url_for @news}>; rel="canonical")
     @news.put_paragraphs_together if params[:format] == "md"
   end

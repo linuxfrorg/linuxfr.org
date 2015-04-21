@@ -19,6 +19,8 @@ class Moderation::NewsController < ModerationController
     redirect_to path, status: 301 and return if request.path != path
     @boards = Board.all(Board.news, @news.id)
     headers["Cache-Control"] = "no-cache, no-store, must-revalidate, max-age=0"
+    flash.now[:alert] = "Attention, cette dépêche a été supprimée et n'est visible que par les modérateurs" if @news.deleted?
+    flash.now[:alert] = "Attention, cette dépêche a été refusée et n'est visible que par les modérateurs" if @news.refused?
     respond_to do |wants|
       wants.html { render :show, layout: 'chat_n_edit' }
       wants.js { render partial: 'short' }
