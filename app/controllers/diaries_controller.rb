@@ -102,7 +102,7 @@ protected
     @user  = User.find(params[:user_id])
     @diary = @user.diaries.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    diary = (@user || User.find 1).diaries.find(params[:id])
+    diary = (@user || User.find(1)).diaries.find(params[:id])
     redirect_to [diary.owner, diary]
   end
 

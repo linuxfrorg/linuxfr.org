@@ -11,7 +11,7 @@
   %span.score><
     = comment.bound_score
     - unless comment.content.too_old_for_comments?
-      %span.details (+#{comment.nb_votes_for}/-#{comment.nb_votes_against})
+      %span.details &nbsp;(+#{comment.nb_votes_for}/-#{comment.nb_votes_against})
   \.
   - if comment.created_at != comment.updated_at
     %span.update>
