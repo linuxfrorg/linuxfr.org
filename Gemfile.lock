@@ -1,4 +1,16 @@
 GIT
+  remote: git://github.com/capistrano/capistrano.git
+  revision: dcd325716593553b1538a97c5876b07210f9af13
+  branch: legacy-v2
+  specs:
+    capistrano (2.15.6)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
+
+GIT
   remote: git://github.com/nono/diff_match_patch-ruby.git
   revision: acb4147cf0e37d63a7bc8ac0546911af4394b94b
   specs:
@@ -65,12 +77,6 @@ GEM
     byebug (4.0.5)
       columnize (= 0.9.0)
     canable (0.3.0)
-    capistrano (2.15.5)
-      highline
-      net-scp (>= 1.0.0)
-      net-sftp (>= 2.0.0)
-      net-ssh (>= 2.0.14)
-      net-ssh-gateway (>= 1.1.0)
     capistrano-maintenance (0.0.4)
       capistrano (>= 2.0.0)
     capybara (2.4.4)
@@ -156,7 +162,7 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hashie (3.4.1)
-    highline (1.7.1)
+    highline (1.7.2)
     hiredis (0.6.0)
     html-pipeline-linuxfr (0.14.24)
       activesupport (~> 4.2)
@@ -363,7 +369,7 @@ DEPENDENCIES
   bitfields (~> 0.4)
   byebug
   canable (~> 0.1)
-  capistrano (~> 2.0)
+  capistrano (~> 2.15)!
   capistrano-maintenance
   capybara (~> 2.4)
   carrierwave (~> 0.10)

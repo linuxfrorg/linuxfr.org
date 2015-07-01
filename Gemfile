@@ -53,7 +53,7 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "byebug"
-  gem "capistrano",            "~>2.0"
+  gem "capistrano",            "~>2.15", github: 'capistrano/capistrano', branch: 'legacy-v2'
   gem "capistrano-maintenance"
   gem "desi"
   gem "letter_opener"
