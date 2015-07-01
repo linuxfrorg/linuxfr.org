@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem "rails",                   "4.2.2"
+gem "rails",                   "4.2.3"
 
 gem "actionpack-page_caching", "~>1.0"
 gem "ansi",                    "~>1.4", require: nil
