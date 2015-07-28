@@ -129,7 +129,7 @@ class Toolbar
         if score < @threshold
           item.addClass "fold"
           where = item.children("h2").children(".anchor")
-          link = $('<a href="#" class="folding" title="Plier">[+]</a>').insertBefore(where)
+          link = $('<a href="#" class="folding" title="Déplier">[+]</a>').insertBefore(where)
           link.after(' ').click ->
             item.removeClass "fold"
             link.remove()
