@@ -43,7 +43,9 @@ body {
 
 /* Logo + barre de gauche */
 #branding h1 {
+  background-position: left top;
   background-repeat: no-repeat;
+  background-size: 100% auto;
   display: block;
   width: 201px;
   height: 186px;
