@@ -376,13 +376,9 @@ a.edit_client_app,
       padding: 4px 10px 4px 10px;
 
       -webkit-transform-origin: left top;
-      -khtml-transform-origin: left top;
-      -moz-transform-origin: left top;
       -o-transform-origin: left top;
       transform-origin: left top;
       -webkit-transform: rotate(-90deg) translate(-100%, -100%) translate(3px, -5px);
-      -khtml-transform: rotate(-90deg) translate(-100%, -100%) translate(3px, -5px);
-      -moz-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
       -o-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
       transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
     }
@@ -428,9 +424,7 @@ a.edit_client_app,
   color: $C_MENU;
 
   background-color: #bdb3aa;
-  background: -moz-linear-gradient(left, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
   background: -webkit-linear-gradient(left, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
-  background: -o-linear-gradient(left, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
   background: linear-gradient(to right, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
 
   /* we recycle the nav bar to display the black line at the top */
@@ -495,21 +489,7 @@ a.edit_client_app,
   margin-top: 0;
   padding: 0 0 20px 0;
   background: $C_CLAIR;
-  background: -moz-linear-gradient(top,
-    $C_FOOT 0%,
-    white 100%
-  );
-  background: -o-linear-gradient(top,
-    $C_FOOT 0%,
-    white 100%
-  );
   background: -webkit-gradient(linear,
-    center top,
-    center bottom,
-    from($C_FOOT),
-    to(white)
-  );
-  background: -khtml-gradient(linear,
     center top,
     center bottom,
     from($C_FOOT),
@@ -529,23 +509,7 @@ a.edit_client_app,
     width: $PC_FOOT_WIDTH;
     margin: 0 $PC_FOOT_MARG 0 $PC_FOOT_MARG;
     background: $C_FOOT;
-    background: -moz-linear-gradient(top,
-      $C_FOOT 0%,
-      $C_MIBLANC_MIFOOT 50%,
-      $C_FOOT 100%
-    );
-    background: -o-linear-gradient(top,
-      $C_FOOT 0%,
-      $C_MIBLANC_MIFOOT 50%,
-      $C_FOOT 100%
-    );
     background: -webkit-gradient(linear,
-      center top,
-      center bottom,
-      from($C_FOOT),
-      color-stop(50%, $C_MIBLANC_MIFOOT),
-      to($C_FOOT));
-    background: -khtml-gradient(linear,
       center top,
       center bottom,
       from($C_FOOT),
@@ -663,9 +627,6 @@ body#wiki_pages-changes #contents {
   display: inherit;
   background: inherit;
   padding: 2px 0 2px 0;
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  -khtml-border-radius: 0;
   border-radius: 0;
   border: none;
   margin-bottom: 0;
@@ -716,9 +677,7 @@ article {
   }
   .score {
     background: $C_BAS_FOND;
-    -o-border-image:      url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-    -khtml-border-image:  url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     border-image:         url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     border-style: solid;
     text-align: center;
@@ -730,9 +689,7 @@ article {
   .datePourCss {
     display: block !important;
     background: $C_BANDEAU;
-    -o-border-image:      url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-    -khtml-border-image:  url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     border-image:         url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     border-style: solid;
     color: white;
@@ -943,9 +900,7 @@ footer.actions {
     &[href^="//linuxfr.org/wiki"] {
       padding-left: 3px;
       border-left: 16px;
-      -o-border-image:      url('/favicon.png') 0 0 0 32;
       -webkit-border-image: url('/favicon.png') 0 0 0 32;
-      -khtml-border-image:  url('/favicon.png') 0 0 0 32;
       border-image:         url('/favicon.png') 0 0 0 32;
       border-style: solid;
     }
@@ -1033,8 +988,6 @@ a.scroll {
   min-height: 60px;
   background: #333333;
   border-radius: 6px;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
   color: #eeeeee;
   padding: 6px 6px 0 6px;
   font-family: lucida Grande, sans-serif;
@@ -1481,9 +1434,6 @@ body#applications-index table,
 body#registrations-edit table {
   display: inline-block;
   border-collapse: collapse;
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  -khtml-border-radius: 0;
   border-radius: 0;
   padding: 0;
   clear: right;
@@ -1633,7 +1583,6 @@ img {
   #site {
     position: static;
     padding: 0 3px;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
     background: linear-gradient(to right, #e7e3e0, #bdb3aa 50%);
   }
@@ -1653,8 +1602,6 @@ img {
       &:last-child { padding-bottom: 0; }
       h1 {
         -webkit-transform: none;
-        -khtml-transform: none;
-        -moz-transform: none;
         -o-transform: none;
         transform: none;
         width: 100px;
