@@ -63,7 +63,7 @@ group :development do
   gem "spring"
   gem "sushi"
   gem "thin"
-  gem "web-console",           "~> 2.0"
+  gem "web-console",           "~> 2.1"
 end
 
 group :test do
