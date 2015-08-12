@@ -22,7 +22,7 @@ gem "inherited_resources",     "~>1.6"
 gem "kaminari",                "~>0.15"
 gem "mini_magick",             "~>3.8"
 gem "mysql2",                  "~>0.3"
-gem "nokogiri",                "1.6.5"  # FIXME specs are red with nokogiri 1.6.6.2
+gem "nokogiri",                "1.6.5"  # FIXME see https://github.com/sparklemotion/nokogiri/issues/1233
 gem "patron",                  "~>0.4"
 gem "rinku",                   "~>1.7"
 gem "hiredis",                 "~>0.5"
