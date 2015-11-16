@@ -4,8 +4,8 @@
   .body
     %p
       Le site vit grâce aux contributions des lecteurs, vous !
-      Vous pouvez participer en écrivant différents contenus, allant du simple commentaire à la dépêche façon patrick_g.
-      Voici de manière plus détaillée les types de contenus que vous pouvez proposer.
+      Vous pouvez participer en écrivant différents contenus, allant du simple commentaire à la longue dépêche rédigée.
+      Voici de manière plus détaillée les types de contenus que vous pouvez proposer&nbsp;:
 
     .free_for_all
       %h2 Les dépêches
@@ -14,21 +14,34 @@
         D'autres thèmes peuvent être abordés, sous réserve que l'équipe de modération juge qu'ils intéressent suffisament les lecteurs du site.
         Les dépêches purement commerciales et publicitaires seront rejetées (voir l'ensemble des #{link_to "règles de modération", "/regles_de_moderation" }).
       %p
-        = link_to "Je souhaite proposer une dépêche et la soumettre directement à la modération", "/news/nouveau"
+        = link_to "Je souhaite proposer une dépêche et la soumettre directement à la modération.", "/news/nouveau"
 
-    .authenticated_only
-      %h2 L'espace de rédaction
-      %p
-        Il est également possible pour les utilisateurs authentifiés de proposer des sujets de dépêches et de les rédiger collaborativement sur l'espace de rédaction.
-      %p
-        = link_to "Je souhaite participer à l'écriture collaborative d'une dépêche", "/redaction"
+      .authenticated_only
+        %p
+          Il est également possible pour les utilisateurs authentifiés de proposer des sujets de dépêches et de les rédiger collaborativement sur l'espace de rédaction.
+        %p
+          = link_to "Je souhaite commencer une dépêche dans l'espace collaboratif et pouvoir être aidé(e) par d'autres personnes.", "/redaction"
+        %p
+          Et il est donc possible pour les utilisateurs authentifiés d'aller dans l'espace de rédaction pour participer à l'écriture des dépêches proposées par d'autres visiteurs.
+        %p
+          = link_to "Je souhaite participer à l'écriture collaborative d'une dépêche.", "/redaction"
 
+    .free_for_all
+      %h2 Le suivi des suggestions/bugs
+      %p
+        Si vous avez rencontré un bug en parcourant le site web LinuxFr.org, c'est le bon endroit pour le remonter.
+        Vous pouvez également suggérer des évolutions pour le site.
+      %p
+        = link_to "Je souhaite remonter un bug ou proposer une évolution", "/suivi/nouveau"
+
+    %hr
     %p
       %strong Note :
       -if account_signed_in?
-        En tant qu'utilisateur authentifié, vous pouvez également déposer les contenus suivants :
+        en tant qu'utilisateur authentifié, vous pouvez également déposer les contenus suivants&nbsp;:
       -else
-        Les utilisateurs authentifiés peuvent également proposer les contenus suivants :
+        les utilisateurs authentifiés peuvent également proposer les contenus suivants&nbsp;:
+    %hr
 
     .authenticated_only
       %h2 Les journaux
@@ -52,14 +65,6 @@
         Si celui-ci retient l'attention de l'équipe de modération (voir les #{link_to "règles de modération","/regles_de_moderation"}), il sera publié.
       %p
         = link_to "Je souhaite suggérer un sondage", "/sondages/nouveau"
-
-    .authenticated_only
-      %h2 Le suivi des suggestions/bugs
-      %p
-        Si vous avez rencontré un bug en parcourant le site web LinuxFr.org, c'est le bon endroit pour le remonter.
-        Vous pouvez également suggérer des évolutions pour le site.
-      %p
-        = link_to "Je souhaite remonter un bug ou proposer une évolution", "/suivi/nouveau"
 
     .authenticated_only
       %h2 Le wiki
