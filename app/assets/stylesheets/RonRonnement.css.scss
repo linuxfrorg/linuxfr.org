@@ -1418,6 +1418,7 @@ div#toolbar {
   border: 1px solid $C_INTER;
   color: $C_FONCE;
   font-size: x-small;
+  will-change: transform;
 
   #toolbar_items { float: right; }
   #toolbar_alt_items { float: right; margin-right: 20px; }
