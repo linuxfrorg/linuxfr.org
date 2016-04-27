@@ -698,28 +698,25 @@ article {
     top: 20px;
 
     .jour {
-      padding-left: 8px;
+	  box-sizing: border-box;
+      padding-left: 6px;
       float: left;
       line-height: 31px;
       font-weight: bold;
-      margin-right: 3px;
+	  width: 50%
     }
     .mois, .annee {
       text-align: left;
       font-size: 0.64em;
-      padding-left: 10px;
-      clear: right;
+      float: right;
+	  width: 50%;
+	  height: 50%;
     }
     .mois {
-      padding-top: 2px;
-      margin-bottom: -1px;
-      padding-bottom: 0;
-      vertical-align: bottom;
+      padding-bottom: 2px;
     }
     .annee {
       padding-top: 0;
-      margin-top: -1px;
-      padding-bottom: 3px;
       vertical-align: top;
     }
   }
