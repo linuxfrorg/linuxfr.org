@@ -58,7 +58,7 @@ class CommentsController < ApplicationController
     @comment.attributes = comment_params
     if !preview_mode && @comment.save
       flash[:notice] = "Votre commentaire a bien été modifié"
-      redirect_to_content @node.content
+      redirect_to url_for_content(@node.content) + "#comment-#{@comment.id}"
     else
       flash.now[:alert] = "Impossible d'enregistrer ce commentaire" if @comment.invalid?
       render :edit
