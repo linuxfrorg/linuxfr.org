@@ -5,6 +5,8 @@
  *  basée sur opensuse.linux.fr software.opensuse.org et fr.opensuse.org
  *
  * Historique :
+ *   2.8    27/06/2016    - [nabero] limitation de la taille des images pour qu'elle restent
+ *                          dans la colonne principale.
  *   2.7    23/02/2011    - [Axioplase] espaces autour des paragraphes, symboles
  *                          autour des "sections" dans les titres de contenu,
  *                          première lettre des contenus est plus grosse,
@@ -1516,6 +1518,9 @@ section#container .markItUpEditor:focus {
 #container h1 > a:last-child::after { content: ""; }
 
 #contents > * > * > p:first-child:first-letter { font-size: 200%; vertical-align: middle; }
+/* Avoid images being too wide. */
+#contents img { max-width: 78em; }
+
 li.new-comment  > * > .title { color: #00BBFF !important; }
 
 @import '../common/statistics';
