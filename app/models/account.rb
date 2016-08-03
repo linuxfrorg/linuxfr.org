@@ -217,6 +217,10 @@ class Account < ActiveRecord::Base
 
 ### Karma ###
 
+  def self.default_karma
+    column_defaults['karma']
+  end
+
   def update_karma_bounds
     if karma > max_karma
       self.max_karma = karma
