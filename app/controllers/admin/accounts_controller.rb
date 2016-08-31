@@ -12,6 +12,10 @@ class Admin::AccountsController < AdminController
       @date = params[:date]
       accounts = accounts.where("created_at LIKE ?", "#{@date}%")
     end
+    if params[:ip].present?
+      @ip = params[:ip]
+      accounts = accounts.where("current_sign_in_ip LIKE ? OR last_sign_in_ip LIKE ?", "#{@ip}%", "#{@ip}%")
+    end
     @accounts = accounts.order("created_at DESC").page(params[:page])
   end
 

@@ -1,17 +1,18 @@
 =h1 "Les derniers comptes utilisateurs créés"
 
 = form_tag admin_accounts_path, method: :get do
-  %input(type="text" name="login" value="#{@login}" placeholder="Filtrer par login")
+  %input(type="text" name="login" value="#{@login}" placeholder="Filtrer par pseudo")
   %input(type="date" name="date" value="#{@date}" placeholder="Filtrer par date (YYYY-MM-DD)")
+  %input(type="text" name="ip" value="#{@ip}" placeholder="Filtrer par IP")
   %input(type="submit" value="Filtrer")
 
 %table
   %tr
-    %th Login
-    %th Email
+    %th Pseudo
+    %th Courriel
     %th Karma
-    %th IP
-    %th Status
+    %th IP courante / précédente
+    %th Statut
     %th Date de création
     %th Actions
     %th Changer de rôle
@@ -20,7 +21,11 @@
       %td= link_to account.login, account.user
       %td= account.email
       %td= account.karma
-      %td= account.current_sign_in_ip
+      %td
+        - if account.current_sign_in_ip != account.last_sign_in_ip
+          #{ account.current_sign_in_ip }&nbsp;/&nbsp;#{ account.last_sign_in_ip }
+        - else
+          = account.current_sign_in_ip
       %td= account.inactive? ? "Inactif" : "Actif"
       %td= account.created_at.to_s(:posted)
       %td
