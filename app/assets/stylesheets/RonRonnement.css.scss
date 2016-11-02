@@ -1568,6 +1568,13 @@ img {
   img { vertical-align: middle; }
 }
 
+#badges-new #container h1 { display: block; }
+#new_badge {
+  .hint { color: #666; }
+  label { font-weight: bold; }
+  .field { margin-top: 20px; }
+}
+
 @media screen and (max-width: 768px), handheld {
   html, body {
     margin: 0;
