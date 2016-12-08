@@ -90,10 +90,6 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-    climate_control (0.0.3)
-      activesupport (>= 3.0)
-    cocaine (0.5.7)
-      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -108,11 +104,6 @@ GEM
     daemons (1.2.2)
     database_cleaner (1.4.1)
     debug_inspector (0.0.2)
-    desi (0.7.2)
-      addressable
-      boson
-      cocaine (~> 0.5.3)
-      semantic (~> 1.3.0)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -316,7 +307,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
-    semantic (1.3.1)
     sitemap_generator (2.2.1)
     slop (3.6.0)
     spring (1.3.4)
@@ -379,7 +369,6 @@ DEPENDENCIES
   carrierwave (~> 0.10)
   coffee-rails (~> 4.1)
   database_cleaner (~> 1.2)
-  desi
   devise (~> 3.3)
   diff_match_patch!
   doorkeeper (~> 2.1)
@@ -404,7 +393,6 @@ DEPENDENCIES
   mo
   mysql2 (~> 0.3)
   nokogiri (= 1.6.5)
-  patron (~> 0.4)
   pry-rails
   quiet_assets
   rails (= 4.2.7.1)
@@ -424,4 +412,4 @@ DEPENDENCIES
   web-console (~> 2.1)
 
 BUNDLED WITH
-   1.11.2
+   1.13.6

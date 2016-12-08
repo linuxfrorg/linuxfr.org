@@ -23,7 +23,6 @@ gem "kaminari",                "~>0.15"
 gem "mini_magick",             "~>3.8"
 gem "mysql2",                  "~>0.3"
 gem "nokogiri",                "1.6.5"  # FIXME see https://github.com/sparklemotion/nokogiri/issues/1233
-gem "patron",                  "~>0.4"
 gem "rinku",                   "~>1.7"
 gem "hiredis",                 "~>0.5"
 gem "redis",                   "~>3.0", require: ["redis/connection/hiredis", "redis"]
@@ -55,7 +54,6 @@ group :development do
   gem "byebug"
   gem "capistrano",            "~>2.15", github: 'capistrano/capistrano', branch: 'legacy-v2'
   gem "capistrano-maintenance"
-  gem "desi"
   gem "letter_opener"
   gem "mo"
   gem "pry-rails"

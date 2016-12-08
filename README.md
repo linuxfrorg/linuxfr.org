@@ -19,7 +19,7 @@ LinuxFr.org on a Debian box.
     # aptitude install curl libcurl4-openssl-dev zlib1g zlib1g-dev libssl-dev
     # aptitude install libxml2-dev libxslt-dev autoconf libgmp-dev libyaml-dev
     # aptitude install ncurses-dev bison automake libtool imagemagick libc6-dev
-    # aptitude install hunspell hunspell-fr openjdk-6-jdk redis-server
+    # aptitude install hunspell hunspell-fr redis-server
 
 Note: you can use libcurl4-gnutls-dev instead of libcurl4-openssl-dev.
 
@@ -47,15 +47,13 @@ Note: you can use libcurl4-gnutls-dev instead of libcurl4-openssl-dev.
     $ cd linuxfr.org
     $ cp config/database.yml{.sample,}
     $ cp config/secrets.yml{.sample,}
+    $ gem install bundler
     $ bundle install
 
 5) Finish to configure:
 
-    $ desi install
-    $ desi start
     $ bin/rake db:setup
     (if you're updating, you'll need an other step: redis-cli flushdb)
-    $ bin/rake elasticsearch:import FORCE=y
 
 6) Let's run it:
 
