@@ -66,7 +66,7 @@ Note: you can use libcurl4-gnutls-dev instead of libcurl4-openssl-dev.
 * Get confirmation link in the console and confirm the account
 * Get password in the console
 * Give admin role to this account with
-  `mysql linuxfr_rails`
+  `mysql -u linuxfr_rails linuxfr_rails`
   `mysql> UPDATE accounts SET role='admin' WHERE login='xxxxxx';`
 * Reload the page on the site, you should be admin.
 
@@ -121,7 +121,6 @@ Usage:
 
 Limitations:
 
-- elasticsearch is not yet included in the docker image
 - this dockerisation is still experimental and not very well tested but it proved to work at least once
 - please report any bugs or suggest improvements by opening an issue.
 
@@ -143,7 +142,7 @@ If you want the full stack for running LinuxFr.org, you should also look at:
 How to run the specs
 --------------------
 
-1) Be sure that redis and ElasticSearch are running
+1) Be sure that redis is running
 
 2) And now, just run rspec (and repeat this step until done):
 
