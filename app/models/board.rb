@@ -89,7 +89,7 @@ class Board
     doc = Nokogiri::HTML::Document.new
     doc.encoding = "utf-8"
     node = Nokogiri::HTML::DocumentFragment.new(doc)
-    inner_sanitize(node, msg[0, 500])
+    inner_sanitize(node, msg[0, 65536])
     msg = Rinku.auto_link(node.to_s, :urls) { "[url]" }
     sanitize(msg, tags: ALLOWED_TAGS + ['a'])
   end
