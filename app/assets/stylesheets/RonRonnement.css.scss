@@ -128,10 +128,10 @@ form input[type='submit'], button {
 }
 
 #redaction a.reorganize {
-  float: left;
+  display: inline-block;
   height: 21px;
   padding: 0 3px 0 20px;
-  margin: 4px 12px;
+  margin:  0 4px 12px;
   background: no-repeat 2px 2px $C_CLAIR;
   background-size: 16px;
   background-image: url("/images/icones/loop.png");
