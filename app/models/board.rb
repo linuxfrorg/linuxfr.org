@@ -31,6 +31,7 @@ class Board
   end
 
   def user_link
+    @user_name ||= ""
     (@user_url.blank? ? @user_name : "<a href=\"#{@user_url}\">#{@user_name}</a>").html_safe
   end
 
