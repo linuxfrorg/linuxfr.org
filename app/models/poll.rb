@@ -111,7 +111,7 @@ class Poll < Content
 ### ACL ###
 
   def viewable_by?(account)
-    %w(published archived).include?(state) || account.amr?
+    %w(published archived).include?(state) || account.try(:amr?)
   end
 
   def updatable_by?(account)
