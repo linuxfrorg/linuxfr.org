@@ -63,35 +63,6 @@ class News < Content
     title_changed?
   end
 
-### Search ####
-
-  include Elasticsearch::Model
-
-  scope :indexable, -> { where(state: "published") }
-
-  mapping dynamic: false do
-    indexes :created_at,  type: 'date'
-    indexes :username
-    indexes :section,     analyzer: 'keyword'
-    indexes :title,       analyzer: 'french'
-    indexes :body,        analyzer: 'french'
-    indexes :second_part, analyzer: 'french'
-    indexes :tags,        analyzer: 'keyword'
-  end
-
-  def as_indexed_json(options={})
-    {
-      id: self.id,
-      created_at: created_at,
-      username: author_name,
-      section: section.title,
-      title: title,
-      body: body,
-      second_part: second_part,
-      tags: tag_names,
-    }
-  end
-
 ### Workflow ###
 
   # The workflow for news is not simple, and can traverse these states:

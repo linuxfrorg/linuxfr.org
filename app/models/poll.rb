@@ -59,31 +59,6 @@ class Poll < Content
     title_changed?
   end
 
-### Search ####
-
-  include Elasticsearch::Model
-
-  scope :indexable, -> { joins(:node).where('nodes.public' => true).includes(:answers) }
-
-  mapping dynamic: false do
-    indexes :created_at,   type: 'date'
-    indexes :title,        analyzer: 'french'
-    indexes :explanations, analyzer: 'french'
-    indexes :answers,      analyzer: 'french'
-    indexes :tags,         analyzer: 'keyword'
-  end
-
-  def as_indexed_json(options={})
-    {
-      id: self.id,
-      created_at: created_at,
-      title: title,
-      explanations: explanations,
-      answers: answers.pluck(:answer).join("\n"),
-      tags: tag_names,
-    }
-  end
-
 ### Workflow ###
 
   state_machine :state, initial: :draft do

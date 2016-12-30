@@ -16,15 +16,6 @@ class Content < ActiveRecord::Base
 
   class << self; attr_accessor :type; end
 
-### Search ###
-
-  # FIXME Elasticsearch
-  # after_commit :update_index
-  # def update_index
-  #   return __elasticsearch__.index_document if visible?
-  #   __elasticsearch__.delete_document
-  # end
-
 ### License ###
 
   attr_accessor :cc_licensed, :tmp_owner_id

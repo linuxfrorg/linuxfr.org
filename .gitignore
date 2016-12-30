@@ -3,7 +3,6 @@
 /assets_manifest.yml
 /config/database.yml
 /config/secrets.yml
-/db/elasticsearch
 /log
 /public/assets
 /public/board.xml

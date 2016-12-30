@@ -42,31 +42,6 @@ class Diary < Content
     title_changed?
   end
 
-### Search ####
-
-  include Elasticsearch::Model
-
-  scope :indexable, -> { joins(:node).where('nodes.public' => true) }
-
-  mapping dynamic: false do
-    indexes :created_at, type: 'date'
-    indexes :username
-    indexes :title,      analyzer: 'french'
-    indexes :body,       analyzer: 'french'
-    indexes :tags,       analyzer: 'keyword'
-  end
-
-  def as_indexed_json(options={})
-    {
-      id: self.id,
-      created_at: created_at,
-      username: owner.try(:name),
-      title: title,
-      body: body,
-      tags: tag_names,
-    }
-  end
-
 ### ACL ###
 
   def creatable_by?(account)

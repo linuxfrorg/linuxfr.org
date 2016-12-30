@@ -30,12 +30,6 @@ gem "redis",                   "~>3.0", require: ["redis/connection/hiredis", "r
 gem "sitemap_generator",       "~>2.1"
 gem "state_machine",           "~>1.2"
 
-# Use the github version to have transport auto-detection
-gem "elasticsearch-transport", "~>1.0"
-
-# Elasticsearch-model needs to be loaded after some gems like kaminari
-gem "elasticsearch-model",     "~>0.1"
-
 # Gems used for assets
 gem "jquery-rails",          "~>4.0"
 gem "sass-rails",            "~>5.0"

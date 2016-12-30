@@ -16,10 +16,4 @@ class Tagging < ActiveRecord::Base
   belongs_to :user
 
   scope :owned_by, ->(user_id) { where(user_id: user_id).order(created_at: :desc) }
-
-  # FIXME Elasticsearch
-  # after_commit :reindex_content
-  # def reindex_content
-  #   node.content.update_index
-  # end
 end
