@@ -30,7 +30,7 @@ class MoveToUtf8mb4 < ActiveRecord::Migration
   ]
 
   def up
-    execute "ALTER DATABASE linuxfr_rails CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;"
+    execute "ALTER DATABASE #{db_name} CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;"
 
     execute "ALTER TABLE friendly_id_slugs DROP KEY index_friendly_id_slugs_on_slug_and_sluggable_type;"
 
@@ -52,7 +52,7 @@ class MoveToUtf8mb4 < ActiveRecord::Migration
   end
 
   def down
-    execute "ALTER DATABASE linuxfr_rails CHARACTER SET = utf8 COLLATE = utf8_unicode_ci;"
+    execute "ALTER DATABASE #{db_name} CHARACTER SET = utf8 COLLATE = utf8_unicode_ci;"
 
     execute "ALTER TABLE friendly_id_slugs DROP KEY index_friendly_id_slugs_on_slug_and_sluggable_type;"
 
@@ -75,5 +75,9 @@ class MoveToUtf8mb4 < ActiveRecord::Migration
     execute "ALTER TABLE oauth_applications ADD KEY `index_oauth_applications_on_owner_id_and_owner_type` (`owner_id`,`owner_type`) USING BTREE;"
 
     execute "ALTER TABLE pages ADD KEY `index_pages_on_slug` (`slug`) USING BTREE;"
+  end
+
+  def db_name
+    Rails.configuration.database_configuration[Rails.env]['database']
   end
 end

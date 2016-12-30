@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408104037) do
+ActiveRecord::Schema.define(version: 20161104094116) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "user_id",                limit: 4
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 20150408104037) do
 
   create_table "banners", force: :cascade do |t|
     t.string  "title",   limit: 255
-    t.text    "content", limit: 65535
-    t.boolean "active",  limit: 1,     default: true
+    t.text    "content", limit: 4294967295
+    t.boolean "active",                     default: true
   end
 
   create_table "categories", force: :cascade do |t|
@@ -74,13 +74,13 @@ ActiveRecord::Schema.define(version: 20150408104037) do
   create_table "comments", force: :cascade do |t|
     t.integer  "node_id",           limit: 4
     t.integer  "user_id",           limit: 4
-    t.string   "state",             limit: 10,       default: "published", null: false
-    t.string   "title",             limit: 160,                            null: false
-    t.integer  "score",             limit: 4,        default: 0,           null: false
-    t.boolean  "answered_to_self",  limit: 1,        default: false,       null: false
+    t.string   "state",             limit: 10,         default: "published", null: false
+    t.string   "title",             limit: 160,                              null: false
+    t.integer  "score",             limit: 4,          default: 0,           null: false
+    t.boolean  "answered_to_self",                     default: false,       null: false
     t.string   "materialized_path", limit: 1022
-    t.text     "body",              limit: 16777215
-    t.text     "wiki_body",         limit: 65535
+    t.text     "body",              limit: 4294967295
+    t.text     "wiki_body",         limit: 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -92,12 +92,12 @@ ActiveRecord::Schema.define(version: 20150408104037) do
   add_index "comments", ["user_id", "state", "created_at"], name: "index_comments_on_user_id_and_state_and_created_at", using: :btree
 
   create_table "diaries", force: :cascade do |t|
-    t.string   "title",             limit: 160,      null: false
+    t.string   "title",             limit: 160,        null: false
     t.string   "cached_slug",       limit: 165
     t.integer  "owner_id",          limit: 4
-    t.text     "body",              limit: 16777215
-    t.text     "wiki_body",         limit: 65535
-    t.text     "truncated_body",    limit: 65535
+    t.text     "body",              limit: 4294967295
+    t.text     "wiki_body",         limit: 4294967295
+    t.text     "truncated_body",    limit: 4294967295
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "converted_news_id", limit: 4
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 20150408104037) do
     t.datetime "created_at"
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", length: {"slug"=>190, "sluggable_type"=>nil}, using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
@@ -164,7 +164,7 @@ ActiveRecord::Schema.define(version: 20150408104037) do
     t.integer  "section_id",   limit: 4
     t.string   "author_name",  limit: 32,                           null: false
     t.string   "author_email", limit: 64,                           null: false
-    t.text     "body",         limit: 16777215
+    t.text     "body",         limit: 4294967295
     t.text     "second_part",  limit: 4294967295
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -180,9 +180,9 @@ ActiveRecord::Schema.define(version: 20150408104037) do
     t.integer  "user_id",     limit: 4
     t.integer  "version",     limit: 4
     t.string   "title",       limit: 255
-    t.text     "body",        limit: 16777215
-    t.text     "second_part", limit: 16777215
-    t.text     "links",       limit: 65535
+    t.text     "body",        limit: 4294967295
+    t.text     "second_part", limit: 4294967295
+    t.text     "links",       limit: 4294967295
     t.datetime "created_at"
   end
 
@@ -194,8 +194,8 @@ ActiveRecord::Schema.define(version: 20150408104037) do
     t.integer  "content_id",        limit: 4
     t.string   "content_type",      limit: 255
     t.integer  "user_id",           limit: 4
-    t.boolean  "public",            limit: 1,   default: true, null: false
-    t.boolean  "cc_licensed",       limit: 1,   default: true, null: false
+    t.boolean  "public",                        default: true, null: false
+    t.boolean  "cc_licensed",                   default: true, null: false
     t.integer  "score",             limit: 4,   default: 0,    null: false
     t.integer  "interest",          limit: 4,   default: 0,    null: false
     t.integer  "comments_count",    limit: 4,   default: 0,    null: false
@@ -204,8 +204,8 @@ ActiveRecord::Schema.define(version: 20150408104037) do
     t.datetime "updated_at"
   end
 
-  add_index "nodes", ["content_id", "content_type"], name: "index_nodes_on_content_id_and_content_type", unique: true, using: :btree
-  add_index "nodes", ["content_type", "public", "interest"], name: "index_nodes_on_content_type_and_public_and_interest", using: :btree
+  add_index "nodes", ["content_id", "content_type"], name: "index_nodes_on_content_id_and_content_type", unique: true, length: {"content_id"=>nil, "content_type"=>190}, using: :btree
+  add_index "nodes", ["content_type", "public", "interest"], name: "index_nodes_on_content_type_and_public_and_interest", length: {"content_type"=>190, "public"=>nil, "interest"=>nil}, using: :btree
   add_index "nodes", ["public", "created_at"], name: "index_nodes_on_public_and_created_at", using: :btree
   add_index "nodes", ["public", "interest"], name: "index_nodes_on_public_and_interest", using: :btree
   add_index "nodes", ["public", "last_commented_at"], name: "index_nodes_on_public_and_last_commented_at", using: :btree
@@ -258,19 +258,19 @@ ActiveRecord::Schema.define(version: 20150408104037) do
   create_table "pages", force: :cascade do |t|
     t.string   "slug",       limit: 255
     t.string   "title",      limit: 255
-    t.text     "body",       limit: 65535
+    t.text     "body",       limit: 4294967295
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "pages", ["slug"], name: "index_pages_on_slug", using: :btree
+  add_index "pages", ["slug"], name: "index_pages_on_slug", length: {"slug"=>190}, using: :btree
 
   create_table "paragraphs", force: :cascade do |t|
-    t.integer "news_id",     limit: 4,     null: false
+    t.integer "news_id",     limit: 4,          null: false
     t.integer "position",    limit: 4
-    t.boolean "second_part", limit: 1
-    t.text    "body",        limit: 65535
-    t.text    "wiki_body",   limit: 65535
+    t.boolean "second_part"
+    t.text    "body",        limit: 4294967295
+    t.text    "wiki_body",   limit: 4294967295
   end
 
   add_index "paragraphs", ["news_id", "second_part", "position"], name: "index_paragraphs_on_news_id_and_more", using: :btree
@@ -287,13 +287,13 @@ ActiveRecord::Schema.define(version: 20150408104037) do
   add_index "poll_answers", ["poll_id", "position"], name: "index_poll_answers_on_poll_id_and_position", using: :btree
 
   create_table "polls", force: :cascade do |t|
-    t.string   "state",             limit: 10,    default: "draft", null: false
-    t.string   "title",             limit: 128,                     null: false
+    t.string   "state",             limit: 10,         default: "draft", null: false
+    t.string   "title",             limit: 128,                          null: false
     t.string   "cached_slug",       limit: 128
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "wiki_explanations", limit: 65535
-    t.text     "explanations",      limit: 65535
+    t.text     "wiki_explanations", limit: 4294967295
+    t.text     "explanations",      limit: 4294967295
   end
 
   add_index "polls", ["cached_slug"], name: "index_polls_on_cached_slug", using: :btree
@@ -301,11 +301,11 @@ ActiveRecord::Schema.define(version: 20150408104037) do
 
   create_table "posts", force: :cascade do |t|
     t.integer  "forum_id",       limit: 4
-    t.string   "title",          limit: 160,      null: false
+    t.string   "title",          limit: 160,        null: false
     t.string   "cached_slug",    limit: 165
-    t.text     "body",           limit: 16777215
-    t.text     "wiki_body",      limit: 65535
-    t.text     "truncated_body", limit: 65535
+    t.text     "body",           limit: 4294967295
+    t.text     "wiki_body",      limit: 4294967295
+    t.text     "truncated_body", limit: 4294967295
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -314,8 +314,8 @@ ActiveRecord::Schema.define(version: 20150408104037) do
   add_index "posts", ["forum_id"], name: "index_posts_on_forum_id", using: :btree
 
   create_table "responses", force: :cascade do |t|
-    t.string "title",   limit: 255,   null: false
-    t.text   "content", limit: 65535
+    t.string "title",   limit: 255,        null: false
+    t.text   "content", limit: 4294967295
   end
 
   create_table "sections", force: :cascade do |t|
@@ -344,21 +344,21 @@ ActiveRecord::Schema.define(version: 20150408104037) do
   create_table "tags", force: :cascade do |t|
     t.string  "name",           limit: 64,                null: false
     t.integer "taggings_count", limit: 4,  default: 0,    null: false
-    t.boolean "public",         limit: 1,  default: true, null: false
+    t.boolean "public",                    default: true, null: false
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
   add_index "tags", ["public", "taggings_count"], name: "index_tags_on_public_and_taggings_count", using: :btree
 
   create_table "trackers", force: :cascade do |t|
-    t.string   "state",               limit: 10,       default: "opened", null: false
-    t.string   "title",               limit: 100,                         null: false
+    t.string   "state",               limit: 10,         default: "opened", null: false
+    t.string   "title",               limit: 100,                           null: false
     t.string   "cached_slug",         limit: 105
     t.integer  "category_id",         limit: 4
     t.integer  "assigned_to_user_id", limit: 4
-    t.text     "body",                limit: 16777215
-    t.text     "wiki_body",           limit: 65535
-    t.text     "truncated_body",      limit: 65535
+    t.text     "body",                limit: 4294967295
+    t.text     "wiki_body",           limit: 4294967295
+    t.text     "truncated_body",      limit: 4294967295
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -383,9 +383,9 @@ ActiveRecord::Schema.define(version: 20150408104037) do
   add_index "users", ["cached_slug"], name: "index_users_on_cached_slug", using: :btree
 
   create_table "wiki_pages", force: :cascade do |t|
-    t.string   "title",       limit: 100,      null: false
+    t.string   "title",       limit: 100,        null: false
     t.string   "cached_slug", limit: 105
-    t.text     "body",        limit: 16777215
+    t.text     "body",        limit: 4294967295
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -397,7 +397,7 @@ ActiveRecord::Schema.define(version: 20150408104037) do
     t.integer  "user_id",      limit: 4
     t.integer  "version",      limit: 4
     t.string   "message",      limit: 255
-    t.text     "body",         limit: 16777215
+    t.text     "body",         limit: 4294967295
     t.datetime "created_at"
   end
 
