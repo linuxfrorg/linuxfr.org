@@ -73,7 +73,7 @@ group :test do
 end
 
 group :production, :alpha do
-  gem "unicorn",               "~>4.8"
+  gem "unicorn",               "~>5.1"
   gem "gctools",               "~>0.2"
   gem "redis-activesupport",   "~>4.0"
 end
