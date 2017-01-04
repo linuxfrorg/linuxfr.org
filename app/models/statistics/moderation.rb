@@ -3,14 +3,34 @@ class Statistics::Moderation < Statistics::Statistics
 
   def by_day
     select_all <<-EOS
-       SELECT DAYNAME(CONVERT_TZ(created_at,'+00:00','Europe/Paris')) AS d,
+       SELECT content_type AS type,
+              DAYNAME(CONVERT_TZ(created_at,'+00:00','Europe/Paris')) AS d,
               WEEKDAY(CONVERT_TZ(created_at,'+00:00','Europe/Paris')) AS day,
               COUNT(*) AS cnt
          FROM nodes
-        WHERE content_type='News'
-     GROUP BY d
-     ORDER BY day ASC
+        WHERE (content_type='News' or content_type='Poll') AND public=1
+     GROUP BY type,d
+     ORDER BY type ASC, day ASC
     EOS
+  end
+
+  def acts_by_year
+    return @acts_by_year if @acts_by_year
+
+    @acts_by_year = {}
+
+    acts = ['Interdiction de tribune', 'a donné 50 points de karma', 'Interdiction de poster des commentaires']
+    acts.each do |log|
+      entries = acts_by_year_and_log(log)
+      entries.each do |entry|
+        @acts_by_year[entry["year"]] ||= {}
+        @acts_by_year[entry["year"]][log] = entry["cnt"]
+      end
+    end
+  end
+
+  def acts_by_year_and_log(log)
+    select_all("SELECT YEAR(created_at) AS year, COUNT(*) AS cnt FROM logs WHERE description LIKE '%#{log}%' GROUP BY year ORDER BY year;")
   end
 
   def average_time

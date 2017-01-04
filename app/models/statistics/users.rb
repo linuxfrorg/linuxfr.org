@@ -2,7 +2,7 @@
 class Statistics::Users < Statistics::Statistics
 
   def pctrecent(value)
-    "%.0f" % (100.0 * value / nb_recently_used_accounts)
+    "%.0f%%" % (100.0 * value / nb_recently_used_accounts)
   end
 
   def nb_users
@@ -30,16 +30,25 @@ class Statistics::Users < Statistics::Statistics
     rows.first
   end
 
-  def nb_content_authors
-    select_all "SELECT COUNT(DISTINCT(accounts.user_id)) AS cnt, content_type FROM nodes JOIN accounts ON nodes.user_id = accounts.user_id WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY content_type"
+  def nb_content_authors(days=0)
+    node_age=''
+    node_age="AND nodes.created_at > DATE_SUB(CURDATE(),INTERVAL #{days} DAY)" if days>0
+
+    select_all "SELECT COUNT(DISTINCT(accounts.user_id)) AS cnt, content_type FROM nodes JOIN accounts ON nodes.user_id = accounts.user_id WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' #{node_age} GROUP BY content_type;"
   end
 
-  def nb_comment_authors
-    select_all "SELECT COUNT(DISTINCT(accounts.user_id)) AS cnt FROM comments JOIN accounts ON comments.user_id = accounts.user_id WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive';"
+  def nb_comment_authors(days=0)
+    comment_age=''
+    comment_age="AND comments.created_at > DATE_SUB(CURDATE(),INTERVAL #{days} DAY)" if days>0
+
+    select_all "SELECT COUNT(DISTINCT(accounts.user_id)) AS cnt FROM comments JOIN accounts ON comments.user_id = accounts.user_id WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' #{comment_age};"
   end
 
-  def nb_tag_authors
-    select_all "SELECT COUNT(DISTINCT(accounts.user_id)) AS cnt FROM taggings JOIN accounts ON taggings.user_id = accounts.user_id WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive';"
+  def nb_tag_authors(days=0)
+    tag_age=''
+    tag_age="AND taggings.created_at > DATE_SUB(CURDATE(),INTERVAL #{days} DAY)" if days>0
+
+    select_all "SELECT COUNT(DISTINCT(accounts.user_id)) AS cnt FROM taggings JOIN accounts ON taggings.user_id = accounts.user_id WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' #{tag_age};"
   end
 
   def filled(field)
@@ -61,8 +70,13 @@ class Statistics::Users < Statistics::Statistics
     cnt
   end
 
+  KARMA_BASE=2
+  def karma_base
+    KARMA_BASE
+  end
+
   def by_karma
-    select_all "SELECT SIGN(karma) AS sign, FLOOR(LOG10(ABS(karma)+1E-99)) as k, COUNT(*) AS cnt FROM accounts WHERE karma IS NOT NULL AND current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY sign,k ORDER BY sign ASC, sign*k ASC"
+    select_all "SELECT SIGN(karma) AS sign, FLOOR(LOG#{KARMA_BASE}(ABS(karma)+1E-99)) as k, COUNT(*) AS cnt FROM accounts WHERE karma IS NOT NULL AND current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY sign,k ORDER BY sign ASC, sign*k ASC"
   end
 
   def by_style
@@ -73,7 +87,15 @@ class Statistics::Users < Statistics::Statistics
     select_all "SELECT YEAR(accounts.created_at) AS year, COUNT(*) AS cnt FROM accounts WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY year ORDER BY year ASC"
   end
 
+  ACCOUNT_SLOT=5000
+  def slot_size
+    ACCOUNT_SLOT
+  end
   def by_state
-    select_all "SELECT user_id DIV 2500 AS slot, COUNT(*) AS cnt, (role='inactive') AS inactive, IFNULL(current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY),0) AS recent FROM accounts GROUP BY slot,inactive,recent ORDER BY slot ASC, inactive ASC, recent ASC"
+    select_all "SELECT user_id DIV #{ACCOUNT_SLOT} AS slot, COUNT(*) AS cnt, (role='inactive') AS inactive, IFNULL(current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY),0) AS recent FROM accounts GROUP BY slot,inactive,recent ORDER BY slot ASC, inactive ASC, recent ASC"
+  end
+
+  def top_email_domains
+    select_all "SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(email,'@', -1),'.',1) AS domain, COUNT(*) AS cnt FROM accounts WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY domain HAVING cnt > 3 ORDER BY cnt DESC LIMIT 10;"
   end
 end

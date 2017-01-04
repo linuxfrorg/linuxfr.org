@@ -8,6 +8,8 @@
       = link_to "Mois suivant", month: @stats.month.next_month.strftime("%m-%Y")
 
   .body
+    %p= link_to("Retour à l'ensemble des statistiques", "/statistiques")
+
     %h2 Dépêches
 
     %div

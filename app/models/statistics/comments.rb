@@ -48,7 +48,7 @@ class Statistics::Comments < Statistics::Statistics
     return @comments_by_wday if @comments_by_wday
 
     @comments_by_wday = {}
-    $redis.keys("stats/comments/wday/*").each do |k|
+    $redis.keys("stats/comments/wday/*").sort.each do |k|
       @comments_by_wday[k.split('/').last] = $redis.get(k).to_i
     end
 

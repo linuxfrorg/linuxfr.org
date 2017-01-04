@@ -8,6 +8,8 @@
     %strong
       Statistiques mises à jour le #{l Time.now}
 
+    %p= link_to("Retour à l'ensemble des statistiques", "/statistiques")
+
     %p
       #{pluralize @stats.states["opened"], "entrée ouverte", "entrées ouvertes" },
       #{pluralize @stats.states["invalid"], "invalide"} et

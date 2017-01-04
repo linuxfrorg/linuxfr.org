@@ -6,9 +6,12 @@
     %strong
       Statistiques mises à jour le #{l Time.now}
 
+    %p= link_to("Retour à l'ensemble des statistiques", "/statistiques")
+
     - if @stats.comments["Total"] == 0
       Aucun commentaire
     - else
+      %h2 Sommaire
       %ul
         %li=link_to("par type","#type")
         %li=link_to("par an","#annee")
@@ -20,12 +23,30 @@
       - else
         %h2#type Répartition par type
       %ul
-        %li #{@stats.comments["Diary"].to_i} dans les journaux
-        %li #{@stats.comments["Post"].to_i} dans les forums
-        %li #{@stats.comments["News"].to_i} dans les dépêches
-        %li #{@stats.comments["Tracker"].to_i} dans le système de suivi
-        %li #{@stats.comments["Poll"].to_i} dans les sondages
-        %li #{@stats.comments["WikiPage"].to_i} dans les pages de wiki
+        %li
+          #{pluralize @stats.comments["Diary"].to_i, "commentaire"} dans #{pluralize @contents.contents["Diary"], "journal", "journaux"}
+          -if @contents.contents["Diary"].to_i > 0
+            = "soit #{pluralize (@stats.comments["Diary"]/@contents.contents["Diary"]).round(2), "commentaire"}/journal publié"
+        %li
+          #{pluralize @stats.comments["Post"].to_i, "commentaire"} dans #{pluralize @contents.contents["Post"], "entrée"} de forums
+          -if @contents.contents["Post"].to_i > 0
+            = "soit #{pluralize (@stats.comments["Post"].to_f/@contents.contents["Post"]).round(2), "commentaire"}/entrée publiée"
+        %li
+          #{pluralize @stats.comments["News"].to_i, "commentaire"} dans #{pluralize @contents.contents["News"], "dépêche"}
+          -if @contents.contents["News"].to_i > 0
+            = "soit #{pluralize (@stats.comments["News"].to_f/@contents.contents["News"]).round(2), "commentaire"}/dépêche publiée"
+        %li
+          #{pluralize @stats.comments["Tracker"].to_i, "commentaire"} dans #{pluralize @contents.contents["Tracker"], "entrée"} dans le système de suivi
+          -if @contents.contents["Tracker"].to_i > 0
+            = "soit #{pluralize (@stats.comments["Tracker"].to_f/@contents.contents["Tracker"]).round(2), "commentaire"}/entrée publiée"
+        %li
+          #{pluralize @stats.comments["Poll"].to_i, "commentaire"} dans #{pluralize @contents.contents["Poll"], "sondage"}
+          -if @contents.contents["Poll"].to_i > 0
+            = "soit #{pluralize (@stats.comments["Poll"].to_f/@contents.contents["Poll"]).round(2), "commentaire"}/sondage publié"
+        %li
+          #{pluralize @stats.comments["WikiPage"].to_i, "commentaire"} dans #{pluralize @contents.contents["WikiPage"], "page"} de wiki
+          -if @contents.contents["WikiPage"].to_i > 0
+            = "soit #{pluralize (@stats.comments["WikiPage"].to_f/@contents.contents["WikiPage"]).round(2), "commentaire"}/page publiée"
 
       - if @stats.comments["Total"] > 1
         %h2#annee Répartition annuelle des #{@stats.comments["Total"]} commentaires
@@ -79,6 +100,6 @@
           %th Nombre de commentaires
         - @stats.comments_by_day.each do |day,cnt|
           %tr
-            %td= day_name day
+            %td.stat= day_name day
             %td
               .stat.misc(style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
