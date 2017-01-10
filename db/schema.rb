@@ -20,12 +20,12 @@ ActiveRecord::Schema.define(version: 20161104094116) do
     t.integer  "karma",                  limit: 4,   default: 20,        null: false
     t.integer  "nb_votes",               limit: 4,   default: 0,         null: false
     t.string   "stylesheet",             limit: 255
-    t.string   "email",                  limit: 255, default: "",        null: false
+    t.string   "email",                  limit: 128,                     null: false
     t.string   "encrypted_password",     limit: 128, default: "",        null: false
-    t.string   "confirmation_token",     limit: 255
+    t.string   "confirmation_token",     limit: 64
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "reset_password_token",   limit: 255
+    t.string   "reset_password_token",   limit: 64
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",          limit: 4,   default: 0
     t.datetime "current_sign_in_at"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20161104094116) do
     t.boolean  "answered_to_self",                     default: false,       null: false
     t.string   "materialized_path", limit: 1022
     t.text     "body",              limit: 4294967295
-    t.text     "wiki_body",         limit: 16777215
+    t.text     "wiki_body",         limit: 4294967295
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -126,13 +126,13 @@ ActiveRecord::Schema.define(version: 20161104094116) do
   add_index "friend_sites", ["position"], name: "index_friend_sites_on_position", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string   "slug",           limit: 255
+    t.string   "slug",           limit: 190
     t.integer  "sluggable_id",   limit: 4
     t.string   "sluggable_type", limit: 40
     t.datetime "created_at"
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", length: {"slug"=>190, "sluggable_type"=>nil}, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
@@ -192,20 +192,20 @@ ActiveRecord::Schema.define(version: 20161104094116) do
 
   create_table "nodes", force: :cascade do |t|
     t.integer  "content_id",        limit: 4
-    t.string   "content_type",      limit: 255
+    t.string   "content_type",      limit: 40
     t.integer  "user_id",           limit: 4
-    t.boolean  "public",                        default: true, null: false
-    t.boolean  "cc_licensed",                   default: true, null: false
-    t.integer  "score",             limit: 4,   default: 0,    null: false
-    t.integer  "interest",          limit: 4,   default: 0,    null: false
-    t.integer  "comments_count",    limit: 4,   default: 0,    null: false
+    t.boolean  "public",                       default: true, null: false
+    t.boolean  "cc_licensed",                  default: true, null: false
+    t.integer  "score",             limit: 4,  default: 0,    null: false
+    t.integer  "interest",          limit: 4,  default: 0,    null: false
+    t.integer  "comments_count",    limit: 4,  default: 0,    null: false
     t.datetime "last_commented_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "nodes", ["content_id", "content_type"], name: "index_nodes_on_content_id_and_content_type", unique: true, length: {"content_id"=>nil, "content_type"=>190}, using: :btree
-  add_index "nodes", ["content_type", "public", "interest"], name: "index_nodes_on_content_type_and_public_and_interest", length: {"content_type"=>190, "public"=>nil, "interest"=>nil}, using: :btree
+  add_index "nodes", ["content_id", "content_type"], name: "index_nodes_on_content_id_and_content_type", unique: true, using: :btree
+  add_index "nodes", ["content_type", "public", "interest"], name: "index_nodes_on_content_type_and_public_and_interest", using: :btree
   add_index "nodes", ["public", "created_at"], name: "index_nodes_on_public_and_created_at", using: :btree
   add_index "nodes", ["public", "interest"], name: "index_nodes_on_public_and_interest", using: :btree
   add_index "nodes", ["public", "last_commented_at"], name: "index_nodes_on_public_and_last_commented_at", using: :btree
@@ -256,14 +256,14 @@ ActiveRecord::Schema.define(version: 20161104094116) do
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
   create_table "pages", force: :cascade do |t|
-    t.string   "slug",       limit: 255
+    t.string   "slug",       limit: 128
     t.string   "title",      limit: 255
     t.text     "body",       limit: 4294967295
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "pages", ["slug"], name: "index_pages_on_slug", length: {"slug"=>190}, using: :btree
+  add_index "pages", ["slug"], name: "index_pages_on_slug", using: :btree
 
   create_table "paragraphs", force: :cascade do |t|
     t.integer "news_id",     limit: 4,          null: false
