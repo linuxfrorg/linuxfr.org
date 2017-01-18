@@ -186,8 +186,7 @@ class Comment < ActiveRecord::Base
   def vote(account, what)
     value = what == :for ? 1 : -1
     key = "comments/#{self.id}/votes/#{what}"
-    return false if $redis.sismember(key, account.id)
-    $redis.sadd(key, account.id)
+    return false unless $redis.sadd(key, account.id)
     $redis.expire(key, 7776000) # 3 months
     unless score * (score + value) > 100  # Score is out of the [-10, 10] bounds
       $redis.incrby("users/#{self.user_id}/diff_karma", value)
