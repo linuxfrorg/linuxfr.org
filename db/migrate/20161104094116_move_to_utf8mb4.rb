@@ -33,7 +33,6 @@ class MoveToUtf8mb4 < ActiveRecord::Migration
     execute "ALTER DATABASE #{db_name} CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;"
 
     execute "ALTER TABLE friendly_id_slugs DROP KEY index_friendly_id_slugs_on_slug_and_sluggable_type;"
-    execute "ALTER TABLE friendly_id_slugs DROP KEY index_slugs_on_name_and_sluggable_type_and_scope_and_sequence;"
     execute "ALTER TABLE nodes DROP KEY index_nodes_on_content_id_and_content_type;"
     execute "ALTER TABLE nodes DROP KEY index_nodes_on_content_type_and_public_and_interest;"
     execute "ALTER TABLE pages DROP KEY index_pages_on_slug;"
@@ -53,7 +52,7 @@ class MoveToUtf8mb4 < ActiveRecord::Migration
       execute "ALTER TABLE #{tbl} CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
     end
 
-    execute "ALTER TABLE friendly_id_slugs ADD UNIQUE KEY `index_friendly_id_slugs_on_slug_and_sluggable_type` (`slug`,`sluggable_type`) USING BTREE;"
+    execute "ALTER TABLE friendly_id_slugs ADD KEY `index_friendly_id_slugs_on_slug_and_sluggable_type` (`slug`,`sluggable_type`) USING BTREE;"
     execute "ALTER TABLE nodes ADD UNIQUE KEY `index_nodes_on_content_id_and_content_type` (`content_id`,`content_type`) USING BTREE;"
     execute "ALTER TABLE nodes ADD KEY `index_nodes_on_content_type_and_public_and_interest` (`content_type`,`public`,`interest`) USING BTREE;"
     execute "ALTER TABLE pages ADD KEY `index_pages_on_slug` (`slug`) USING BTREE;"
@@ -86,7 +85,7 @@ class MoveToUtf8mb4 < ActiveRecord::Migration
     execute "ALTER TABLE accounts MODIFY COLUMN reset_password_token VARCHAR(255);"
     execute "ALTER TABLE nodes MODIFY COLUMN content_type VARCHAR(255);"
 
-    execute "ALTER TABLE friendly_id_slugs ADD UNIQUE KEY `index_friendly_id_slugs_on_slug_and_sluggable_type` (`slug`,`sluggable_type`) USING BTREE;"
+    execute "ALTER TABLE friendly_id_slugs ADD KEY `index_friendly_id_slugs_on_slug_and_sluggable_type` (`slug`,`sluggable_type`) USING BTREE;"
     execute "ALTER TABLE nodes ADD UNIQUE KEY `index_nodes_on_content_id_and_content_type` (`content_id`,`content_type`) USING BTREE;"
     execute "ALTER TABLE nodes ADD KEY `index_nodes_on_content_type_and_public_and_interest` (`content_type`,`public`,`interest`) USING BTREE;"
     execute "ALTER TABLE pages ADD KEY `index_pages_on_slug` (`slug`) USING BTREE;"

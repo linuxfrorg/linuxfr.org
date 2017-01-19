@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 20161104094116) do
 
   create_table "banners", force: :cascade do |t|
     t.string  "title",   limit: 255
-    t.text    "content", limit: 4294967295
-    t.boolean "active",                     default: true
+    t.text    "content", limit: 16777215
+    t.boolean "active",                   default: true
   end
 
   create_table "categories", force: :cascade do |t|
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20161104094116) do
     t.boolean  "answered_to_self",                     default: false,       null: false
     t.string   "materialized_path", limit: 1022
     t.text     "body",              limit: 4294967295
-    t.text     "wiki_body",         limit: 4294967295
+    t.text     "wiki_body",         limit: 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -96,8 +96,8 @@ ActiveRecord::Schema.define(version: 20161104094116) do
     t.string   "cached_slug",       limit: 165
     t.integer  "owner_id",          limit: 4
     t.text     "body",              limit: 4294967295
-    t.text     "wiki_body",         limit: 4294967295
-    t.text     "truncated_body",    limit: 4294967295
+    t.text     "wiki_body",         limit: 16777215
+    t.text     "truncated_body",    limit: 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "converted_news_id", limit: 4
@@ -182,7 +182,7 @@ ActiveRecord::Schema.define(version: 20161104094116) do
     t.string   "title",       limit: 255
     t.text     "body",        limit: 4294967295
     t.text     "second_part", limit: 4294967295
-    t.text     "links",       limit: 4294967295
+    t.text     "links",       limit: 16777215
     t.datetime "created_at"
   end
 
@@ -258,7 +258,7 @@ ActiveRecord::Schema.define(version: 20161104094116) do
   create_table "pages", force: :cascade do |t|
     t.string   "slug",       limit: 128
     t.string   "title",      limit: 255
-    t.text     "body",       limit: 4294967295
+    t.text     "body",       limit: 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -266,11 +266,11 @@ ActiveRecord::Schema.define(version: 20161104094116) do
   add_index "pages", ["slug"], name: "index_pages_on_slug", using: :btree
 
   create_table "paragraphs", force: :cascade do |t|
-    t.integer "news_id",     limit: 4,          null: false
+    t.integer "news_id",     limit: 4,        null: false
     t.integer "position",    limit: 4
     t.boolean "second_part"
-    t.text    "body",        limit: 4294967295
-    t.text    "wiki_body",   limit: 4294967295
+    t.text    "body",        limit: 16777215
+    t.text    "wiki_body",   limit: 16777215
   end
 
   add_index "paragraphs", ["news_id", "second_part", "position"], name: "index_paragraphs_on_news_id_and_more", using: :btree
@@ -287,13 +287,13 @@ ActiveRecord::Schema.define(version: 20161104094116) do
   add_index "poll_answers", ["poll_id", "position"], name: "index_poll_answers_on_poll_id_and_position", using: :btree
 
   create_table "polls", force: :cascade do |t|
-    t.string   "state",             limit: 10,         default: "draft", null: false
-    t.string   "title",             limit: 128,                          null: false
+    t.string   "state",             limit: 10,       default: "draft", null: false
+    t.string   "title",             limit: 128,                        null: false
     t.string   "cached_slug",       limit: 128
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "wiki_explanations", limit: 4294967295
-    t.text     "explanations",      limit: 4294967295
+    t.text     "wiki_explanations", limit: 16777215
+    t.text     "explanations",      limit: 16777215
   end
 
   add_index "polls", ["cached_slug"], name: "index_polls_on_cached_slug", using: :btree
@@ -304,8 +304,8 @@ ActiveRecord::Schema.define(version: 20161104094116) do
     t.string   "title",          limit: 160,        null: false
     t.string   "cached_slug",    limit: 165
     t.text     "body",           limit: 4294967295
-    t.text     "wiki_body",      limit: 4294967295
-    t.text     "truncated_body", limit: 4294967295
+    t.text     "wiki_body",      limit: 16777215
+    t.text     "truncated_body", limit: 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -314,8 +314,8 @@ ActiveRecord::Schema.define(version: 20161104094116) do
   add_index "posts", ["forum_id"], name: "index_posts_on_forum_id", using: :btree
 
   create_table "responses", force: :cascade do |t|
-    t.string "title",   limit: 255,        null: false
-    t.text   "content", limit: 4294967295
+    t.string "title",   limit: 255,      null: false
+    t.text   "content", limit: 16777215
   end
 
   create_table "sections", force: :cascade do |t|
@@ -357,8 +357,8 @@ ActiveRecord::Schema.define(version: 20161104094116) do
     t.integer  "category_id",         limit: 4
     t.integer  "assigned_to_user_id", limit: 4
     t.text     "body",                limit: 4294967295
-    t.text     "wiki_body",           limit: 4294967295
-    t.text     "truncated_body",      limit: 4294967295
+    t.text     "wiki_body",           limit: 16777215
+    t.text     "truncated_body",      limit: 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
