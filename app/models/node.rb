@@ -5,7 +5,7 @@
 #
 #  id                :integer          not null, primary key
 #  content_id        :integer
-#  content_type      :string(255)
+#  content_type      :string(40)
 #  user_id           :integer
 #  public            :boolean          default(TRUE), not null
 #  cc_licensed       :boolean          default(TRUE), not null

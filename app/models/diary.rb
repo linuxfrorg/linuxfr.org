@@ -7,9 +7,9 @@
 #  title             :string(160)      not null
 #  cached_slug       :string(165)
 #  owner_id          :integer
-#  body              :text(16777215)
-#  wiki_body         :text
-#  truncated_body    :text
+#  body              :text(4294967295)
+#  wiki_body         :text(4294967295)
+#  truncated_body    :text(4294967295)
 #  created_at        :datetime
 #  updated_at        :datetime
 #  converted_news_id :integer

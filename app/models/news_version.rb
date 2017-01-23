@@ -8,9 +8,9 @@
 #  user_id     :integer
 #  version     :integer
 #  title       :string(255)
-#  body        :text
-#  second_part :text
-#  links       :text
+#  body        :text(4294967295)
+#  second_part :text(4294967295)
+#  links       :text(4294967295)
 #  created_at  :datetime
 #
 

@@ -11,8 +11,8 @@
 #  score             :integer          default(0), not null
 #  answered_to_self  :boolean          default(FALSE), not null
 #  materialized_path :string(1022)
-#  body              :text(16777215)
-#  wiki_body         :text
+#  body              :text(4294967295)
+#  wiki_body         :text(4294967295)
 #  created_at        :datetime
 #  updated_at        :datetime
 #

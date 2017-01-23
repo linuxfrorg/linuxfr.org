@@ -9,8 +9,8 @@
 #  cached_slug       :string(128)
 #  created_at        :datetime
 #  updated_at        :datetime
-#  wiki_explanations :text
-#  explanations      :text
+#  wiki_explanations :text(4294967295)
+#  explanations      :text(4294967295)
 #
 
 class Poll < Content

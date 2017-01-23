@@ -9,9 +9,9 @@
 #  cached_slug         :string(105)
 #  category_id         :integer
 #  assigned_to_user_id :integer
-#  body                :text(16777215)
-#  wiki_body           :text
-#  truncated_body      :text
+#  body                :text(4294967295)
+#  wiki_body           :text(4294967295)
+#  truncated_body      :text(4294967295)
 #  created_at          :datetime
 #  updated_at          :datetime
 #

@@ -10,12 +10,12 @@
 #  karma                  :integer          default(20), not null
 #  nb_votes               :integer          default(0), not null
 #  stylesheet             :string(255)
-#  email                  :string(255)      default(""), not null
+#  email                  :string(128)      not null
 #  encrypted_password     :string(128)      default(""), not null
-#  confirmation_token     :string(255)
+#  confirmation_token     :string(64)
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
-#  reset_password_token   :string(255)
+#  reset_password_token   :string(64)
 #  remember_created_at    :datetime
 #  sign_in_count          :integer          default(0)
 #  current_sign_in_at     :datetime

@@ -6,7 +6,7 @@
 #  id          :integer          not null, primary key
 #  title       :string(100)      not null
 #  cached_slug :string(105)
-#  body        :text(16777215)
+#  body        :text(4294967295)
 #  created_at  :datetime
 #  updated_at  :datetime
 #

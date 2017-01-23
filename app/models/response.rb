@@ -5,7 +5,7 @@
 #
 #  id      :integer          not null, primary key
 #  title   :string(255)      not null
-#  content :text
+#  content :text(4294967295)
 #
 
 # When a news is refused, its author is notified by an email.

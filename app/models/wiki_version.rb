@@ -8,7 +8,7 @@
 #  user_id      :integer
 #  version      :integer
 #  message      :string(255)
-#  body         :text(16777215)
+#  body         :text(4294967295)
 #  created_at   :datetime
 #
 

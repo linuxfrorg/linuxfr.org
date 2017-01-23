@@ -7,8 +7,8 @@
 #  news_id     :integer          not null
 #  position    :integer
 #  second_part :boolean
-#  body        :text
-#  wiki_body   :text
+#  body        :text(4294967295)
+#  wiki_body   :text(4294967295)
 #
 
 #

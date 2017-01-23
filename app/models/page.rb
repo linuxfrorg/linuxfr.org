@@ -4,9 +4,9 @@
 # Table name: pages
 #
 #  id         :integer          not null, primary key
-#  slug       :string(255)
+#  slug       :string(128)
 #  title      :string(255)
-#  body       :text
+#  body       :text(4294967295)
 #  created_at :datetime
 #  updated_at :datetime
 #
