@@ -13,7 +13,7 @@ class Admin::ApplicationsController < AdminController
   end
 
   def update
-    @application.attributes = params[:application]
+    @application.attributes = params[:doorkeeper_application]
     if @application.save
       redirect_to admin_applications_url, notice: 'Application mise à jour.'
     else
