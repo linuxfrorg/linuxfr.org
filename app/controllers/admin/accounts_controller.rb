@@ -6,7 +6,7 @@ class Admin::AccountsController < AdminController
     accounts = Account
     if params[:login].present?
       @login = params[:login]
-      accounts = accounts.where("login LIKE ? COLLATE UTF8_GENERAL_CI", "#{@login}%")
+      accounts = accounts.where("login LIKE ? COLLATE UTF8MB4_UNICODE_CI", "#{@login}%")
     end
     if params[:date].present?
       @date = params[:date]
