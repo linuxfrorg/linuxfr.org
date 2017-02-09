@@ -34,7 +34,7 @@ class Paragraph < ActiveRecord::Base
 
     parts   = []
     codemap = {}
-    str = wiki_body.gsub(/^``` ?(.+?)\r?\n(.+?)\r?\n```\r?$/m) do
+    str = wiki_body.gsub(/^``` ?(.+?)\r?\n(.+?)\r?\n```\s*\r?$/m) do
       id = Digest::SHA1.hexdigest($2)
       codemap[id] = $&.chomp
       id + "\n"
