@@ -2,8 +2,8 @@
 class ForumsController < ApplicationController
   before_action :find_forums
   before_action :get_order
-  caches_page   :index, if: Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
-  caches_page   :show,  if: Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
+  caches_page   :index, if: Proc.new { |c| c.request.format.atom? && c.request.ssl? }
+  caches_page   :show,  if: Proc.new { |c| c.request.format.atom? && c.request.ssl? }
 
   def index
     @nodes = Node.public_listing(Post, @order).page(params[:page])

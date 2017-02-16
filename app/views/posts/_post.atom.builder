@@ -10,5 +10,5 @@ feed.entry(post, :url => url) do |entry|
   post.node.popular_tags.each do |tag|
     entry.category(:term => tag.name)
   end
-  entry.wfw :commentRss, "http://#{MY_DOMAIN}/nodes/#{post.node.id}/comments.atom"
+  entry.wfw :commentRss, "https://#{MY_DOMAIN}/nodes/#{post.node.id}/comments.atom"
 end

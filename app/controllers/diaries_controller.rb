@@ -4,7 +4,7 @@ class DiariesController < ApplicationController
   before_action :find_diary, except: [:index, :new, :create]
   after_action  :marked_as_read, only: [:show], if: :account_signed_in?
   after_action  :expire_cache, only: [:create, :update, :destroy, :move]
-  caches_page   :index, if: Proc.new { |c| c.request.format.atom? && !c.request.ssl? }
+  caches_page   :index, if: Proc.new { |c| c.request.format.atom? && c.request.ssl? }
   respond_to :html, :atom, :md
 
 ### Global ###
