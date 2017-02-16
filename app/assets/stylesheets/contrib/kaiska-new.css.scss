@@ -525,10 +525,7 @@ li.comment footer a.action:after {
 div.vote > form.button_to, span.action > form.button_to {
   display: inline;
 }
-div.vote > form.button_to div, span.action > form.button_to div {
-  display: inline;
-}
-div.vote > form.button_to div input, span.action > form.button_to div input {
+div.vote > form.button_to input, span.action > form.button_to input {
   display: inline-block;
   border: none;
   background: none;
@@ -537,7 +534,7 @@ div.vote > form.button_to div input, span.action > form.button_to div input {
   cursor: pointer;
   font-size: 100%;
 }
-div.vote > form.button_to div input:hover, span.action > form.button_to div input:hover {
+div.vote > form.button_to input:hover, span.action > form.button_to input:hover {
   text-decoration: underline;
 }
 .fold > p.meta,
