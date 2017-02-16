@@ -1,6 +1,6 @@
 /.bundle
 /.sass-cache
-/assets_manifest.yml
+/assets_manifest.json
 /config/database.yml
 /config/secrets.yml
 /log
