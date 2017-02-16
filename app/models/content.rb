@@ -70,7 +70,6 @@ class Content < ActiveRecord::Base
 
   def mark_as_deleted
     node.update_column(:public, false)
-    # update_index
   end
 
   def visible?
