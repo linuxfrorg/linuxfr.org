@@ -661,6 +661,9 @@ article {
   .meta {
     color: $C_INTER;
   }
+  .edited_by {
+    cursor: pointer;
+  }
   .score, .datePourCss {
     display: block;
     width: $RAY_CONTAINER + $BORDER_CONTENT;
