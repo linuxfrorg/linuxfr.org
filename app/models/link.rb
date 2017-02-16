@@ -39,9 +39,13 @@ class Link < ActiveRecord::Base
   end
 
   def authorized_protocol
-    uri = URI.parse(url)
-    unless PROTOCOLS.include?(uri.scheme)
-      errors.add(:url, "L'URL d'un lien n'est pas valide")
+    if url.blank?
+      errors.add(:url, "L'URL est obligatoire")
+    else
+      uri = URI.parse(url)
+      unless PROTOCOLS.include?(uri.scheme)
+        errors.add(:url, "L'URL d'un lien n'est pas valide")
+      end
     end
   end
 
