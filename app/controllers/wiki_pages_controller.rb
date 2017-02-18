@@ -34,6 +34,7 @@ class WikiPagesController < ApplicationController
   def new
     @wiki_page = WikiPage.new
     @wiki_page.title = params[:title]
+    return not_enough_karma('pages de wiki') unless @wiki_page.creatable_by?(current_account)
     enforce_create_permission(@wiki_page)
   end
 
@@ -41,6 +42,7 @@ class WikiPagesController < ApplicationController
     @wiki_page = WikiPage.new
     @wiki_page.attributes = wiki_params :title
     @wiki_page.user_id = current_account.user_id
+    return not_enough_karma('pages de wiki') unless @wiki_page.creatable_by?(current_account)
     enforce_create_permission(@wiki_page)
     if !preview_mode && @wiki_page.save
       redirect_to @wiki_page, notice: "Nouvelle page de wiki créée"
@@ -53,10 +55,12 @@ class WikiPagesController < ApplicationController
 
   def edit
     @wiki_page.wiki_body = @wiki_page.versions.first.body
+    return not_enough_karma('pages de wiki') unless @wiki_page.updatable_by?(current_account)
     enforce_update_permission(@wiki_page)
   end
 
   def update
+    return not_enough_karma('pages de wiki') unless @wiki_page.updatable_by?(current_account)
     enforce_update_permission(@wiki_page)
     @wiki_page.attributes = wiki_params
     @wiki_page.user_id = current_account.user_id

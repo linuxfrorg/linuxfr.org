@@ -17,6 +17,11 @@ protected
     render file: "#{Rails.public_path}/errors/403.html", status: 403, layout: false
   end
 
+  def not_enough_karma(content_type)
+    @content_type = content_type
+    render 'users/not_enough_karma', status: 403
+  end
+
   def seo_filter
     request.session_options[:secure] = request.ssl?
     headers["X-Served-By"] = Process.pid.to_s

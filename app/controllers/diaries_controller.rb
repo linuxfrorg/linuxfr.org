@@ -19,11 +19,13 @@ class DiariesController < ApplicationController
   def new
     @diary = current_user.diaries.build
     @diary.cc_licensed = true
+    return not_enough_karma('journaux') unless @diary.creatable_by?(current_account)
     enforce_create_permission(@diary)
   end
 
   def create
     @diary = current_user.diaries.build
+    return not_enough_karma('journaux') unless @diary.creatable_by?(current_account)
     enforce_create_permission(@diary)
     @diary.attributes = diary_params
     if !preview_mode && @diary.save
