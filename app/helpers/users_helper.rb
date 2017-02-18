@@ -15,8 +15,10 @@ module UsersHelper
 
   def homesite_link(user)
     return if user.homesite.blank?
+    karma = user.account.try(:karma).to_i
+    return unless karma > 0
     attrs = {}
-    attrs[:rel] = "nofollow" unless user.account.try(:karma).to_i > 0
+    attrs[:rel] = "nofollow" unless user.account.try(:karma).to_i > Account.default_karma
     link_to("page perso", user.homesite, attrs)
   end
 
