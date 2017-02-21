@@ -584,21 +584,6 @@ form textarea {
   padding: 5px 5px 0;
 }
 
-#sidebar .insecure, #sidebar .secure {
-  display: block;
-  float: right;
-  text-indent: -9999px;
-  margin: 5px;
-  height: 16px;
-  width: 16px;
-}
-#sidebar .insecure {
-  background: url(/images/icones/lock-insecure.png) no-repeat;
-}
-#sidebar .secure {
-  background: url(/images/icones/lock-secure.png) no-repeat;
-}
-
 #sidebar .box {
   margin: 20px 0;
   padding: 5px;

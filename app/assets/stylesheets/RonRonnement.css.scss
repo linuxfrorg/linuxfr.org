@@ -287,30 +287,6 @@ a.edit_client_app,
 
   a { font-weight: inherit; }
 
-  /* le cadenas */
-  .insecure, .secure {
-    display: block;
-    float: right;
-    text-indent: -9999em;
-    margin: 5px;
-    height: 16px;
-    width: 16px;
-  }
-  .insecure {
-    background: no-repeat 2px 2px transparent;
-    background-size: 13px 16px;
-    background-image: url(/images/icones/lock-insecure.png);
-    background-image: url(/images/icones/lock-insecure.svg), none;
-    height: 20px
-  }
-  .secure {
-    background: no-repeat 2px 2px transparent;
-    background-size: 13px 16px;
-    background-image: url(/images/icones/lock-secure.png);
-    background-image: url(/images/icones/lock-secure.svg), none;
-    height: 20px
-  }
-
   /* image DLFP */
   #branding h1 {
     display: block;

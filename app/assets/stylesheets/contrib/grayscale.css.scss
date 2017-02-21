@@ -996,18 +996,6 @@ body .removed {
 #sidebar {
 	padding: 10px;
 }
-/* line 3, ../../app/stylesheets/layout/_sidebar.scss */
-#sidebar .insecure {
-  display: block;
-  float: right;
-  text-indent: -9999px;
-  margin: 5px;
-  height: 16px;
-  width: 16px;
-  background: url(/images/icones/lock-insecure.png) no-repeat; }
-#sidebar .secure {
-	display: none;
-}
 /* line 6, ../../app/stylesheets/layout/_sidebar.scss */
 #sidebar .box {
 	padding: 28px;
