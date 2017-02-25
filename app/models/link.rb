@@ -43,9 +43,9 @@ class Link < ActiveRecord::Base
       errors.add(:url, "L'URL est obligatoire")
     else
       uri = URI.parse(url)
-      unless PROTOCOLS.include?(uri.scheme)
-        errors.add(:url, "L'URL d'un lien n'est pas valide")
-      end
+      return true if PROTOCOLS.include?(uri.scheme)
+      return true if uri.scheme.nil? && uri.host == MY_DOMAIN
+      errors.add(:url, "L'URL d'un lien n'est pas valide")
     end
   end
 
