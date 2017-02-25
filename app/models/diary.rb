@@ -84,12 +84,18 @@ class Diary < Content
       # Note: the 2 nodes are swapped so that all references to the diairy
       # (comments, tags, etc.) are moved to the post.
       other = @post.node
-      other.attributes = node.attributes.except("id").merge(content_type: "XXX", public: false)
+      other.attributes = node.attributes.except("id", "content_id").merge(content_type: "XXX", public: false)
       other.save!
-      node.update_column :content_type, "Post"
-      node.update_column :content_id, @post.id
-      other.content_type = "Diary"
-      other.save!
+      stmt = <<-EOS
+      UPDATE nodes
+         SET content_id=(#{node.content_id + @post.node.content_id} - content_id),
+             content_type=CASE content_type
+                          WHEN 'Diary' THEN 'Post'
+                          ELSE 'Diary' END
+       WHERE id=#{node.id} OR id=#{@post.node.id}
+      EOS
+      Node.connection.update_sql(stmt)
+      node.compute_interest
     end
   end
 
