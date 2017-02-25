@@ -72,26 +72,26 @@ class DiariesController < ApplicationController
 
   def convert
     enforce_update_permission(@diary)
-    if @news = @diary.convert
-      if current_account.amr?
-        redirect_to [:moderation, @news]
-      else
-        redirect_to "/", notice: "Merci d'avoir proposé ce journal en dépêche"
-      end
+    @news = @diary.convert
+    if current_account.amr?
+      space = :moderation
+      space = :redaction if @news.draft?
+      redirect_to [space, @news]
     else
-      flash.now[:alert] = "Impossible de proposer ce journal en dépêche"
-      render :edit
+      redirect_to "/", notice: "Merci d'avoir proposé ce journal en dépêche"
     end
+  rescue
+    flash.now[:alert] = "Impossible de proposer ce journal en dépêche"
+    render :edit
   end
 
   def move
     enforce_destroy_permission(@diary)
-    if @diary.move_to_forum params.require(:post).permit(:forum_id)
-      redirect_to diaries_url, notice: "Le journal a bien été déplacé vers les forums"
-    else
-      flash.now[:alert] = "Impossible de déplacer ce journal. Avez-vous bien choisi un forum ?"
-      render :edit
-    end
+    @diary.move_to_forum params.require(:post).permit(:forum_id)
+    redirect_to diaries_url, notice: "Le journal a bien été déplacé vers les forums"
+  rescue
+    flash.now[:alert] = "Impossible de déplacer ce journal. Avez-vous bien choisi un forum ?"
+    render :edit
   end
 
 protected

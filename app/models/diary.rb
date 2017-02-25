@@ -65,15 +65,13 @@ class Diary < Content
                      section_id: Section.default.id
     @news.author_name  = owner.try(:name)
     @news.author_email = owner.try(:account).try(:email)
-    saved = @news.save
-    if saved
+    @news.transaction do
+      @news.save!
       $redis.set "convert/#{@news.id}", self.id
       @news.node.update_column(:cc_licensed, true) if node.cc_licensed?
       @news.links.create title: "Journal à l'origine de la dépêche", url: "//#{MY_DOMAIN}/users/#{owner.to_param}/journaux/#{to_param}", lang: "fr"
       @news.submit! unless node.cc_licensed?
       @news
-    else
-      nil
     end
   end
 
@@ -81,19 +79,18 @@ class Diary < Content
     @post = Post.new(attrs)
     @post.title = title
     @post.wiki_body = wiki_body
-    saved = @post.save
-    if saved
+    @post.transaction do
+      @post.save!
       # Note: the 2 nodes are swapped so that all references to the diairy
       # (comments, tags, etc.) are moved to the post.
       other = @post.node
       other.attributes = node.attributes.except("id").merge(content_type: "XXX", public: false)
-      other.save
+      other.save!
       node.update_column :content_type, "Post"
       node.update_column :content_id, @post.id
       other.content_type = "Diary"
-      other.save
+      other.save!
     end
-    saved
   end
 
 end
