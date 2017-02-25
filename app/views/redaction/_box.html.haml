@@ -1,8 +1,6 @@
 #redaction_box.box
   %h1
     = link_to "Rédaction", '/redaction'
-  %p
-    = link_to "Tribune de rédaction", '/redaction'
   %ul
     = list_of News.draft.sorted.limit(10) do |news|
       - if news.node.board_status(current_account) == :new_board

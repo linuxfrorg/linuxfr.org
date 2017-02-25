@@ -358,6 +358,8 @@ a.edit_client_app,
       -o-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
       transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
     }
+	h1 + h2 { margin-top: -1.2em; }
+	h1 + *  { margin-top: -2em; }
 
     span.score {
       color: #333;
