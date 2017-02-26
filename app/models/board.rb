@@ -27,12 +27,20 @@ class Board
     else
       @user_name = user.name
     end
-    @user_url  = "/users/#{user.to_param}"
+    @user_url = "/users/#{user.to_param}"
   end
 
   def user_link
     @user_name ||= ""
     (@user_url.blank? ? @user_name : "<a href=\"#{@user_url}\">#{@user_name}</a>").html_safe
+  end
+
+  def avatar_url
+    if @user_url.present?
+      user = User.find(@user_url.sub "/users/", "") rescue nil
+      return user.avatar_url if user
+    end
+    AvatarUploader::DEFAULT_AVATAR_URL
   end
 
 ### Save boards ###

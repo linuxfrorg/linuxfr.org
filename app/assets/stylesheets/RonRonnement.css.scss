@@ -1112,6 +1112,36 @@ body#boards-show {
     text-align: justify;
   }
 }
+#redaction_board {
+  #board_message {
+    box-sizing: border-box;
+	border: 1px solid #999;
+	padding: 4px;
+  }
+  div.chat {
+	border: 1px solid #999;
+    background-color: white;
+	padding: 0.2em;
+  }
+  .avatar {
+    float: left;
+	height: 36px;
+	margin: 0.2em;
+  }
+  .norloge, .user_link a {
+    color: #555;
+    font-size: 1em;
+	font-weight: normal;
+	font-family: inherit;
+  }
+  .norloge {
+    &::before { content: "" }
+    &::after { content: "" }
+  }
+  .message {
+    margin: 0.4em;
+  }
+}
 #main_board {
   /* on sait qu'on est sur la tribune si on y est */
   h1 {

@@ -11,30 +11,15 @@
       = link_to "Connaissez-vous les règles de modération", "/regles_de_moderation"
     - else
       = link_to "Connaisssez-vous le moteur de recherche de photos sous licence Creative Commons ?", "https://ccsearch.creativecommons.org/?search=tux&licenses=ALL-%24&licenses=ALL-MOD&search_fields=title&search_fields=creator&search_fields=tags&per_page=20&work_types=photos&providers=500px&providers=flickr"
-  =h1 "Tribune rédacteurs"
-  = render 'boards/boards', boards: @boards, box: false
 
-%aside.more
-  #top_redactors
-    %h1 Rédacteurs les plus actifs
-    %ol
-      = list_of @stats.top_month do |stat|
-        [#{stat['cnt']}] #{link_to stat['name'], "/users/#{stat['cached_slug']}"}
-    %p
-      = link_to "Autres statistiques sur la rédaction", "/statistiques/redaction"
   #news
     %h1 Dépêches en cours de rédaction
     - feed "Flux atom des dépêches en cours de rédaction", "/redaction/news.atom"
     = button_to "Commencer une nouvelle dépêche", "/redaction/news", class: "create_news"
-    (sous #{link_to "licence CC by-sa", "http://creativecommons.org/licenses/by-sa/4.0/deed.fr"})
-    %p
-      = link_to "Règles de modération", "/regles_de_moderation"
 
     - if @drafts.empty?
       %p Aucune dépêche.
     - else
-      %p
-        = link_to "Afficher toutes les dépêches", "/redaction/news"
       %ul
         = list_of @drafts do |n|
           - if n.node.board_status(current_account) == :new_board
@@ -50,3 +35,16 @@
       %ul
         = list_of @news do |n|
           = n.title
+
+%aside.more
+  #top_redactors
+    %h1 Rédacteurs les plus actifs
+    %ol
+      = list_of @stats.top_month do |stat|
+        [#{stat['cnt']}] #{link_to stat['name'], "/users/#{stat['cached_slug']}"}
+    %p
+      = link_to "Autres statistiques sur la rédaction", "/statistiques/redaction"
+
+  #redaction_board
+    =h1 "Tribune rédacteurs"
+    = render 'boards/large', boards: @boards
