@@ -1,7 +1,16 @@
 #main_board
   .notice
-    = link_to "Êtes-vous inscrit à la liste de diffusion des rédacteurs ?", "/news/une-liste-de-diffusion-pour-les-redacteurs-de-linuxfr-org"
-    = link_to "Avez-vous lu la page d'aide à la rédaction ?", "/wiki/redaction"
+    - case rand 5
+    - when 0
+      = link_to "Êtes-vous inscrit à la liste de diffusion des rédacteurs ?", "/news/une-liste-de-diffusion-pour-les-redacteurs-de-linuxfr-org"
+    - when 1
+      = link_to "Avez-vous lu la page d'aide à la rédaction ?", "/wiki/redaction"
+    - when 2
+      = link_to "Certains auteurs sont récompensés par des livres, pensez à vérifier votre adresse de courriel (c'est le seul moyen pour le site de vous contacter)", "/compte/modifier"
+    - when 2
+      = link_to "Connaissez-vous les règles de modération", "/regles_de_moderation"
+    - else
+      = link_to "Connaisssez-vous le moteur de recherche de photos sous licence Creative Commons ?", "https://ccsearch.creativecommons.org/?search=tux&licenses=ALL-%24&licenses=ALL-MOD&search_fields=title&search_fields=creator&search_fields=tags&per_page=20&work_types=photos&providers=500px&providers=flickr"
   =h1 "Tribune rédacteurs"
   = render 'boards/boards', boards: @boards, box: false
 
