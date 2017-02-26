@@ -1,6 +1,5 @@
 # encoding: utf-8
 class RedactionController < ApplicationController
-  before_action :authenticate_account!
   append_view_path NoNamespaceResolver.new
 
   def index
