@@ -3,8 +3,7 @@
   = render 'layouts/head'
   %body{body_attr}
     #top
-    - cache "layouts/site", expires_in: 1.day do
-      = render 'layouts/site'
+    = render 'layouts/site', home: true
     %section#redaction
       - [:alert, :notice].each do |type|
         - if flash[type]

@@ -3,7 +3,7 @@
   = render 'layouts/head'
   %body{body_attr}
     #top
-    = render 'layouts/site'
+    = render 'layouts/site', home: false
     = render 'layouts/sidebar'
     %section#container
       - [:alert, :notice].each do |type|
