@@ -1343,21 +1343,23 @@ div#form_links {
 }
 
 body#redaction-index {
-  aside.more {
-    width: 30%;
-    float: right;
-    clear: right;
-  }
-  #main_board {
-    float: left;
-    width: 60%;
-    #board_message { max-width: 100%; }
-  }
   #container {
+    display: flex;
+	flex-direction: row-reverse;
+	flex-wrap: wrap;
     padding: 40px 10px 10px;
     & > div { padding: 10px; }
-    & > footer { clear: both; }
+	& > footer { flex: 0 0 100%; }
   }
+  aside.more {
+    margin: 0 0 10px 10px;
+	flex: 1 0 300px;
+  }
+  #main_board {
+    margin: 0 0 10px 10px;
+    flex: 2 0 420px;
+  }
+  #board_message { width: 100%; }
 }
 
 #redaction {
@@ -1686,7 +1688,7 @@ img {
   }
   body#redaction-index {
     #container { padding: 8px; }
-    #main_board, aside.more { float: none; width: auto; }
+	aside.more, #main_board { margin-right: 10px }
   }
   .markItUpEditor { width:  100%; }
 

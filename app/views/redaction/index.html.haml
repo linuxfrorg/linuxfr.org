@@ -1,3 +1,16 @@
+%aside.more
+  #top_redactors
+    %h1 Rédacteurs les plus actifs
+    %ol
+      = list_of @stats.top_month do |stat|
+        [#{stat['cnt']}] #{link_to stat['name'], "/users/#{stat['cached_slug']}"}
+    %p
+      = link_to "Autres statistiques sur la rédaction", "/statistiques/redaction"
+
+  #redaction_board
+    =h1 "Tribune rédacteurs"
+    = render 'boards/large', boards: @boards
+
 #main_board
   .notice
     - case rand 5
@@ -27,7 +40,7 @@
           = link_to n.title, [:redaction, n]
 
   #candidate_news
-    %h1 Dépêches en cours de modération
+    %h2 Dépêches en cours de modération
     - feed "Flux atom des dépêches en cours de modération", "/redaction/news/moderation.atom"
     - if @news.empty?
       Aucune dépêche.
@@ -35,16 +48,3 @@
       %ul
         = list_of @news do |n|
           = n.title
-
-%aside.more
-  #top_redactors
-    %h1 Rédacteurs les plus actifs
-    %ol
-      = list_of @stats.top_month do |stat|
-        [#{stat['cnt']}] #{link_to stat['name'], "/users/#{stat['cached_slug']}"}
-    %p
-      = link_to "Autres statistiques sur la rédaction", "/statistiques/redaction"
-
-  #redaction_board
-    =h1 "Tribune rédacteurs"
-    = render 'boards/large', boards: @boards
