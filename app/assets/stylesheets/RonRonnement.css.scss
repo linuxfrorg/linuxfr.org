@@ -579,7 +579,6 @@ body#dashboard-index #contents table,
 body#trackers-index #contents table,
 body#applications-index table,
 body#registrations-edit table,
-body#redaction-index #container > div,
 body#boards-show #contents,
 body#stylesheets-edit #contents,
 body#wiki_pages-changes #contents,
@@ -1360,6 +1359,44 @@ body#redaction-index {
     flex: 2 0 420px;
   }
   #board_message { width: 100%; }
+  .create_news { margin: 5px 0 15px 0; }
+  #news, #candidate_news {
+    display: flex;
+	flex-wrap: wrap;
+  }
+  .news {
+    flex: 1 0 225px;
+	margin: 0 25px 10px 0;
+	border: 1px solid #999;
+	padding: 10px 5px;
+	background: #fff;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	font-size: 0.85em;
+	color: #555;
+  }
+  h3 {
+    flex: 1;
+	font-size: 1.2rem;
+	color: #000;
+	margin: 16px 16px 16px 0;
+  }
+  .pen {
+    position: absolute;
+	width : 32px;
+	height: 32px;
+	right: -16px;
+	top: 50%;
+	margin-top: -16px;
+	border-radius: 16px;
+	background: #999;
+	img { width: 16px; height: 16px; margin: 8px; }
+  }
+  #candidate_news .news {
+    padding: 20px 5px;
+	font-weight: bold;
+  }
 }
 
 #redaction {
