@@ -1688,7 +1688,8 @@ img {
   }
   body#redaction-index {
     #container { padding: 8px; }
-	aside.more, #main_board { margin-right: 10px }
+	aside.more, #main_board { margin-right: 10px; flex: 0 1 750px; }
+	aside.more { display: flex; flex-direction: column-reverse; }
   }
   .markItUpEditor { width:  100%; }
 
