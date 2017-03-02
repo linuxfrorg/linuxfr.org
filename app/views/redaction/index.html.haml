@@ -41,8 +41,8 @@
             - if n.node.board_status(current_account) == :new_board
               = image_tag "/images/icones/chat.svg", alt: "Nouveaux !", title: "Il y a de l'activité sur cette dépêche", width: "16px"
             = n.user.try(:name) || n.author_name
-            - unless n.edited_by.none?
-              = "& #{n.edited_by.length} participants"
+            - if n.nb_editors > 0
+              = "& #{pluralize n.nb_editors, "participant"}"
           %h3= link_to n.title, [:redaction, n]
           Modifiée le #{n.updated_at.to_s :date} à #{n.updated_at.to_s :time}
 

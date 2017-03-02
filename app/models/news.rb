@@ -40,7 +40,7 @@ class News < Content
     inverse_of: :news
 
   scope :sorted,    -> { order(updated_at: :desc) }
-  scope :draft,     -> { where(state: "draft") }
+  scope :draft,     -> { where(state: "draft").includes(node: :user) }
   scope :candidate, -> { where(state: "candidate") }
   scope :refused,   -> { where(state: "refused") }
   scope :with_node_ordered_by, ->(order) { joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
@@ -226,6 +226,13 @@ class News < Content
 
   def edited_by
     attendees.where("users.id != ?", node.user_id || 1)
+  end
+
+  def nb_editors
+    @nb ||= NewsVersion.where(news_id: self.id).
+                        group("user_id").
+                        pluck("1").
+                        length - 1
   end
 
   def reorganize(params)
