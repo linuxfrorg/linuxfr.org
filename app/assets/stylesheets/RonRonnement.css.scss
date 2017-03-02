@@ -1348,7 +1348,7 @@ body#redaction-index {
 	flex-wrap: wrap;
     padding: 40px 10px 10px;
     & > div { padding: 10px; }
-	& > footer { flex: 0 0 100%; }
+	& > footer, .notice { flex: 0 0 100%; }
   }
   aside.more {
     margin: 0 0 10px 10px;

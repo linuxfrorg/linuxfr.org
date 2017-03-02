@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170219172423) do
+ActiveRecord::Schema.define(version: 20170302181642) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "user_id",                limit: 4
@@ -187,6 +187,7 @@ ActiveRecord::Schema.define(version: 20170219172423) do
   end
 
   add_index "news_versions", ["created_at"], name: "index_news_versions_on_created_at", using: :btree
+  add_index "news_versions", ["news_id", "user_id"], name: "index_news_versions_on_news_id_and_user_id", using: :btree
   add_index "news_versions", ["news_id", "version"], name: "index_news_versions_on_news_id_and_version", using: :btree
   add_index "news_versions", ["user_id", "created_at"], name: "index_news_versions_on_user_id_and_created_at", using: :btree
 
