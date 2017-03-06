@@ -1125,6 +1125,7 @@ body#boards-show {
   .avatar {
     float: left;
 	height: 36px;
+	width: 36px;
 	margin: 0.2em;
   }
   .norloge, .user_link a {
@@ -1139,6 +1140,9 @@ body#boards-show {
   }
   .message {
     margin: 0.4em;
+  }
+  .meta {
+    img { float: right; }
   }
 }
 #main_board {
