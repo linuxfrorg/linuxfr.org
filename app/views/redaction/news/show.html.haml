@@ -6,9 +6,9 @@
       = link_to "Retourner sur la liste des dépêches en cours de rédaction", '/redaction'
     - if @news.urgent?
       %h1.urgent Dépêche urgente !
-    = render 'board', boards: @boards, box: false
     = render 'attendees', attendees: @news.attendees
     = render 'editions', news: @news
+    = render 'board', boards: @boards, box: false
 
 = article_for @news do |c|
   - c.title = capture do

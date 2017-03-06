@@ -1141,8 +1141,12 @@ body#boards-show {
   .message {
     margin: 0.4em;
   }
-  .meta {
-    img { float: right; }
+  details {
+    margin: 1em 0;
+  }
+  summary {
+    font-size: 1.2em;
+	font-weight: bold;
   }
 }
 #main_board {
@@ -1396,6 +1400,9 @@ body#redaction-index {
 	border-radius: 16px;
 	background: #999;
 	img { width: 16px; height: 16px; margin: 8px; }
+  }
+  .meta {
+    img { float: right; }
   }
   #candidate_news .news {
     padding: 20px 5px;
