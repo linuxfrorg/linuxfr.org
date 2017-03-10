@@ -3,9 +3,9 @@
 - content_for :chat do
   #redaction_board
     = render 'vote'
-    = render 'board'
     = render 'attendees', attendees: @news.attendees
     = render 'editions', news: @news
+    = render 'board'
 
 - if @news.paragraphs.any?
   = article_for @news do |c|

@@ -1148,6 +1148,19 @@ body#boards-show {
     font-size: 1.2em;
 	font-weight: bold;
   }
+  .attendee {
+    display: inline-block;
+	position: relative;
+	width: 48px;
+	height: 48px;
+	margin: 6px;
+	form {
+	  position: absolute;
+	  bottom: 0;
+	  right: 0;
+	  input { margin: 0; }
+	}
+  }
 }
 #main_board {
   /* on sait qu'on est sur la tribune si on y est */

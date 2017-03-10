@@ -1,8 +1,0 @@
-#news_revisions{'data-chan' => Push.private_key(news)}
-  %h1
-    Éditions
-  %p
-    Les dernières modifications&nbsp;:
-  %ul
-    = list_of(news.versions) do |v|
-      = link_to "#{v.author_name}&nbsp;: #{v.message} - #{l v.created_at}".html_safe, "/redaction/news/#{news.to_param}/revisions/#{v.version}"

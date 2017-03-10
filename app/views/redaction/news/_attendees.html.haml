@@ -1,12 +1,12 @@
-#news_attendees
-  %h1
+%details#news_attendees(open="open")
+  %summary
     Participants
-  %ul
-    = list_of(attendees) do |a|
-      = link_to a.name, a, title: pluralize(a.nb_editions, "édition")
+  - attendees.each do |a|
+    %a.attendee(href="#{url_for a}")
+      = image_tag(a.avatar_url, alt: a.name, title: a.name)
       - if current_account.can_reassign?(@news)
         = button_to "Réattribuer", reassign_redaction_news_path(user_id: a.id), class: "reassign_news", title: "Réattribuer la paternité de cette dépêche"
-    - if current_account.can_reassign?(@news)
-      %li
-        Collectif
-        = button_to "Réattribuer", reassign_redaction_news_path(user_id: User.collective.id), class: "reassign_news", title: "Réattribuer la paternité de cette dépêche"
+  - if current_account.can_reassign?(@news)
+    .attendee
+      = image_tag "/images/collectif.png", alt: "Collectif", title: "Collectif"
+      = button_to "Réattribuer", reassign_redaction_news_path(user_id: User.collective.id), class: "reassign_news", title: "Réattribuer la paternité de cette dépêche"
