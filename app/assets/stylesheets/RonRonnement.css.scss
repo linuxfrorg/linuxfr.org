@@ -1425,42 +1425,46 @@ body#redaction-index {
 }
 
 #redaction {
+  article h1 { margin-right: 30px; }
   .score, .datePourCss { right: 0; }
   .score { top: 31px; }
   .datePourCss { top: 0; }
+  #links { overflow: visible; }
   #edition {
     margin: 69px 0 10px;
     padding-left: 3px;
     padding-right: 3px;
     float: left;
     width: 60%;
-    .paragraph { margin-bottom: 15px; }
+    p {
+	  margin: 0 0 5px;
+	  padding: 5px;
+	}
     textarea { width: 100%; }
   }
   .edition_in_place, .paragraph, .link {
-    padding-left: 30px;
     position: relative;
     .edit {
-      background: no-repeat 2px 2px / 16px $C_CLAIR;
+	  height: 30px;
+	  width: 30px;
+	  border-radius: 15px;
+      background: no-repeat 6px 6px / 16px $C_CLAIR;
       background-image: url("/images/icones/pen.png");
       background-image: url("/images/icones/pen.svg"), none;
+	  text-indent: -9999em;
     }
     .actions {
       position: absolute;
-      top: 0;
-      left: 0;
+      bottom: -22px;
+      right: 15px;
       button {
         visibility: hidden;
-        height: 22px;
-        width: 22px;
-        text-indent: -9999em;
+        &:hover { background-color: $C_FONCE; }
       }
     }
     &:hover {
-      .actions button {
-        visibility: visible;
-        &:hover { background-color: $C_FONCE; }
-      }
+	  background-color: #cccccc66;
+      .actions button { visibility: visible; }
     }
   }
   #chat {
@@ -1651,6 +1655,7 @@ img {
     background: #fff;
   }
   ul { padding-left: 15px; }
+  ul.links { padding-left: 25px; }
   input { max-width: 100%; }
 
   #site {
