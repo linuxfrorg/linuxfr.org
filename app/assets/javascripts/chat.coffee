@@ -109,7 +109,7 @@ class Chat
 
   highlitizer: (event) =>
     time = $(event.target).data("clockTime")
-    index = $(event.target).data("clockIndex");
+    index = $(event.target).data("clockIndex")
     @inbox.find("time[data-clock-time=\"" + time + "\"][data-clock-index=\"" + index + "\"]").addClass "highlighted"
 
   deshighlitizer: =>
