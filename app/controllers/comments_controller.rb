@@ -50,6 +50,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    return too_old_for_edition('commentaire', @comment.edition_period) unless @comment.updatable_by?(current_account)
     enforce_update_permission(@comment)
   end
 

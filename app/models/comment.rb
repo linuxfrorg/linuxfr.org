@@ -58,6 +58,7 @@ class Comment < ActiveRecord::Base
 
   PATH_SIZE = 12  # Each id in the materialized_path is coded on 12 chars
   MAX_DEPTH = 1022 / PATH_SIZE
+  EDITION_PERIOD_IN_MINUTES = 5
 
   after_create :generate_materialized_path
   def generate_materialized_path
@@ -112,6 +113,10 @@ class Comment < ActiveRecord::Base
             where("id != ?", self.id)
   end
 
+  def edition_period
+    return EDITION_PERIOD_IN_MINUTES
+  end
+
 ### Notifications ###
 
   after_create :notify_parents
@@ -155,7 +160,7 @@ class Comment < ActiveRecord::Base
 
   def updatable_by?(account)
     account.moderator? || account.admin? ||
-      (user_id == account.user_id && created_at >= 5.minutes.ago && !children?)
+      (user_id == account.user_id && created_at >= EDITION_PERIOD_IN_MINUTES.minutes.ago && !children?)
   end
 
   def destroyable_by?(account)

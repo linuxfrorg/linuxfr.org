@@ -22,6 +22,12 @@ protected
     render 'users/not_enough_karma', status: 403
   end
 
+  def too_old_for_edition(content_type, period_in_minutes)
+    @content_type = content_type
+    @period_in_minutes = period_in_minutes
+    render 'users/too_old_for_edition', status: 403
+  end
+
   def seo_filter
     request.session_options[:secure] = request.ssl?
     headers["X-Served-By"] = Process.pid.to_s
