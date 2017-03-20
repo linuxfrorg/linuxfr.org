@@ -4,6 +4,9 @@
   %input(type="text" name="login" value="#{@login}" placeholder="Filtrer par pseudo")
   %input(type="date" name="date" value="#{@date}" placeholder="Filtrer par date (YYYY-MM-DD)")
   %input(type="text" name="ip" value="#{@ip}" placeholder="Filtrer par IP")
+  %input(type="text" name="email" value="#{@email}" placeholder="Filtrer par courriel")
+  = check_box_tag 'inactive', 'inactive', @inactive=="inactive"
+  %label(for="inactive") Inactifs
   %input(type="submit" value="Filtrer")
 
 %table

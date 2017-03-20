@@ -16,6 +16,14 @@ class Admin::AccountsController < AdminController
       @ip = params[:ip]
       accounts = accounts.where("current_sign_in_ip LIKE ? OR last_sign_in_ip LIKE ?", "#{@ip}%", "#{@ip}%")
     end
+    if params[:email].present?
+      @email = params[:email]
+      accounts = accounts.where("email LIKE ?", "%#{@email}%")
+    end
+    if params[:inactive].present?
+      @inactive = params[:inactive]
+      accounts = accounts.where("role = 'inactive'")
+    end
     @accounts = accounts.order("created_at DESC").page(params[:page])
   end
 
