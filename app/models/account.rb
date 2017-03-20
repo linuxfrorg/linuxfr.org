@@ -135,6 +135,16 @@ class Account < ActiveRecord::Base
     after_transition do: :log_role
   end
 
+  def display_role
+    case
+    when role=='visitor' then 'visiteur'
+    when role=='editor' then 'animateur'
+    when role=='moderator' then 'modérateur'
+    when role=='admin' then 'admin'
+    else 'compte fermé'
+    end
+  end
+
   def log_role
     roles = previous_changes["role"]
     logs.create(description: "Changement de rôle : #{roles.join ' → '}", user_id: amr_id)
