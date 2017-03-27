@@ -135,12 +135,12 @@ class Account < ActiveRecord::Base
     after_transition do: :log_role
   end
 
-  def display_role
-    case
-    when role=='visitor' then 'visiteur'
-    when role=='editor' then 'animateur'
-    when role=='moderator' then 'modérateur'
-    when role=='admin' then 'admin'
+  def display_role(hasContents)
+    case role
+    when 'visitor' then hasContents ? 'contributeur' : 'visiteur'
+    when 'editor' then 'animateur'
+    when 'moderator' then 'modérateur'
+    when 'admin' then 'admin'
     else 'compte fermé'
     end
   end

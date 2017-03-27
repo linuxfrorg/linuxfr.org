@@ -7,7 +7,7 @@
     - a = @user.account
     %ul
       %li Courriel&nbsp;: #{a.email}
-      %li Rôle&nbsp;: #{a.display_role}
+      %li Rôle&nbsp;: #{a.display_role(@user.nodes.where(public: true).count>0)}
       %li Dernière connexion&nbsp;: #{a.current_sign_in_at ? l(@user.account.current_sign_in_at) : "-"}
       %li Karma&nbsp;: #{a.karma} (minimum&nbsp;: #{a.min_karma}, maximum&nbsp;: #{a.max_karma})
     - if current_account.admin?
