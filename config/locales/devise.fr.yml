@@ -31,7 +31,7 @@ fr:
       signed_up: "Vous vous êtes inscrit avec succès. Vous allez recevoir les instructions de confirmation par courriel."
       signed_up_but_inactive: "Vous vous êtes identifié correctement. Pourtant, nous ne pouvons pas ouvrir votre session tant que votre compte n'aura pas été activé."
       signed_up_but_locked: "Vous vous êtes identifié correctement. Pourtant, nous ne pouvons pas ouvrir votre session car votre compte est bloqué."
-      signed_up_but_unconfirmed: "Un message avec un lien de confirmation a été envoyé à votre addresse de courriel. Veuillez ouvrir le lien pour activer votre compte."
+      signed_up_but_unconfirmed: "Un message avec un lien de confirmation a été envoyé à votre adresse de courriel. Veuillez ouvrir le lien pour activer votre compte."
       update_needs_confirmation: "Vous avez mis à jour votre compte avec succès, mais nous devons vérifier votre nouvelle adresse de courriel."
       updated: "Vous avez mis à jour votre compte avec succès."
     sessions:
