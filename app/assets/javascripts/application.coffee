@@ -86,7 +86,7 @@ if $("body").hasClass("logged")
   if $("#comments").length
     $("#comments .new-comment")
       .toolbar("Nouveaux commentaires", folding: "#comments .comment")
-      .additional $("#comments .comment").sort((a,b) -> a.id > b.id), "Commentaires par ordre chronologique"
+      .additional $("#comments .comment").sort((a,b) -> a.id.localeCompare(b.id)), "Commentaires par ordre chronologique"
   else if $("main .node").length
     $("#phare .new-node, main .new-node:not(.ppp)")
       .toolbar("Contenus jamais visités")
