@@ -1,7 +1,5 @@
 # encoding: utf-8
 class HomeController < ApplicationController
-  before_action :google_plus
-
   DEFAULT_TYPES = %w(News Poll)
 
   def index
@@ -16,11 +14,4 @@ class HomeController < ApplicationController
     @poll   = Poll.current
     @nodes  = Node.public_listing(@types, @order).page(params[:page])
   end
-
-protected
-
-  def google_plus
-    @google_plus = true
-  end
-
 end

@@ -9,11 +9,5 @@
     visiteurs ne tenant pas compte de ces conditions d'utilisation
     verront leurs comptes supprimés. Les propos tenus ici sont publiés
     sous la responsabilité de leurs auteurs respectifs.
-  %p
-    Vous pouvez choisir le type d'affichage pour les photos&nbsp;:
-    %a{onclick: "$.cookie('totoz-type', 'popup', {path: '/board', expires: new Date('01/01/2042')});" } en surimpression,
-    %a{onclick: "$.cookie('totoz-type', 'inline', {path: '/board', expires: new Date('01/01/2042')});" } insérées avec le texte
-    ou
-    %a{onclick: "$.cookie('totoz-type', null, {path: '/board'});" } sans
   %main#contents(role="main")
     = render 'boards', boards: @boards, box: false

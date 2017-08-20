@@ -2,7 +2,6 @@
 #= require jquery_ujs
 #= require jquery.autocomplete
 #= require jquery.caret-range
-#= require jquery.cookie
 #= require jquery.hotkeys
 #= require jquery.notice
 #= require jquery.markitup

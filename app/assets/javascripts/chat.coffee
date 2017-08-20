@@ -9,16 +9,10 @@ class Chat
     @chan = @board.data("chan")
     @board.find(".board-left .norloge").click @norloge
     @board.find("form").submit @postMessage
-    @totoz_type = $.cookie("totoz-type")
-    @totoz_url  = $.cookie("totoz-url") or "https://sfw.totoz.eu/gif/"
     @norlogize      right for right in @board.find(".board-right")
     @norlogize_left left  for left  in @board.find(".board-left time").get().reverse()
     @board.on("mouseenter", "time", @highlitizer)
           .on("mouseleave", "time", @deshighlitizer)
-    if @totoz_type == "popup"
-      @totoz = @board.append($("<div id=\"les-totoz\"/>")).find("#les-totoz")
-      @board.on("mouseenter", ".totoz", @createTotoz)
-            .on("mouseleave", ".totoz", @destroyTotoz)
     $.push(@chan).on("chat", @onChat).start()
 
   onChat: (msg) =>
@@ -81,22 +75,6 @@ class Chat
         html = html + orig.slice(idx, stop) + "<time data-clock-time=\"" + timematch + "\" data-clock-index=\"" + index + "\">" + match + "</time>"
         idx = r.lastIndex
       $(@).replaceWith html+orig.slice(idx) if html
-    if @totoz_type == "popup" || @totoz_type == "inline"
-      cfg = @
-      $(x).contents().filter(-> @nodeType == 3).each ->
-        totoz = /\[:([0-9a-zA-Z \*\$@':_-]+)\]/g
-        orig = escape @data
-        html = ""
-        while matches = totoz.exec orig
-          [title, name] = matches
-          stop = matches.index
-          html = html + orig.slice(idx, stop) +
-            if cfg.totoz_type == "popup"
-              "<span class=\"totoz\" data-totoz-name=\"#{name}\">#{title}</span>"
-            else if cfg.totoz_type == "inline"
-              "<img class=\"totoz\" alt=\"#{title}\" title=\"#{title}\" src=\"#{cfg.totoz_url}#{name}.gif\" style=\"vertical-align: top; background-color: transparent\"/>"
-          idx = totoz.lastIndex
-        $(@).replaceWith html+orig.slice(idx) if html
 
   norlogize_left: (x) ->
     r = /((\d{4}-\d{2}-\d{2}) )?(\d{2}:\d{2}:\d{2})/g
@@ -114,24 +92,6 @@ class Chat
 
   deshighlitizer: =>
     @inbox.find("time.highlighted").removeClass "highlighted"
-
-  createTotoz: (event) =>
-    totozName = event.target.getAttribute("data-totoz-name")
-    totozId = encodeURIComponent(totozName).replace(/[%']/g, "")
-    totoz = @totoz.find("#totoz-" + totozId).first()
-    if totoz.size() == 0
-      totoz = $("<div id=\"totoz-#{totozId}\" class=\"totozimg\"></div>")
-              .css(display: "none", position: "absolute")
-              .append("<img src=\"#{@totoz_url}#{totozName}.gif\"/>")
-      @totoz.append totoz
-    offset = $(event.target).offset()
-    [x, y] = [offset.left, offset.top]
-    totoz.css "z-index": "15", display: "block", top: y + 20, left: x + 20
-
-  destroyTotoz: (event) =>
-    totozId = encodeURIComponent(event.target.getAttribute("data-totoz-name")).replace(/[%']/g, "")
-    totoz = @totoz.find("#totoz-" + totozId).first()
-    totoz.css display: "none"
 
 $.fn.chat = ->
   @each ->
