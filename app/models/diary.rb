@@ -94,7 +94,7 @@ class Diary < Content
                           ELSE 'Diary' END
        WHERE id=#{node.id} OR id=#{@post.node.id}
       EOS
-      Node.connection.update_sql(stmt)
+      Node.connection.update(stmt)
       node.compute_interest
     end
   end

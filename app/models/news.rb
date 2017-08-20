@@ -140,7 +140,7 @@ class News < Content
   end
 
   def followup(message, user)
-    NewsNotifications.followup(self, message).deliver
+    NewsNotifications.followup(self, message).deliver_now
     msg = "<b>Relance :</b> #{message}"
     Board.new(object_type: Board.news, object_id: self.id, message: msg, user_name: user.name).save
   end

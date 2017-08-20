@@ -26,7 +26,5 @@ module LinuxfrOrg
     config.to_prepare do
       Doorkeeper::AuthorizationsController.layout "doorkeeper"
     end
-
-    config.active_record.raise_in_transactional_callbacks = true
   end
 end

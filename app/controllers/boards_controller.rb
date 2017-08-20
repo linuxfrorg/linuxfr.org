@@ -20,7 +20,7 @@ class BoardsController < ApplicationController
     board.save
     board.news.tap {|news| news.node.read_by current_account.id if news }
     respond_to do |wants|
-      wants.html { redirect_to :back rescue redirect_to root_url }
+      wants.html { redirect_back fallback_location: root_url }
       wants.js   { render nothing: true }
       wants.xml  { render nothing: true }
       wants.tsv  { render nothing: true }

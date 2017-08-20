@@ -42,10 +42,10 @@ class Admin::AccountsController < AdminController
   def update
     if @account.inactive?
       @account.reactivate!
-      redirect_to :back, notice: "Compte réactivé"
+      redirect_back notice: "Compte réactivé", fallback_location: admin_accounts_url
     else
       @account.inactivate!
-      redirect_to :back, notice: "Compte désactivé"
+      redirect_back notice: "Compte désactivé", fallback_location: admin_accounts_url
     end
   end
 

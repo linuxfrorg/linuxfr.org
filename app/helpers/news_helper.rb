@@ -19,8 +19,9 @@ module NewsHelper
   end
 
   def edited_by(news)
-    return "" if news.edited_by.none?
-    users = news.edited_by.map {|u| link_to u.name, u }.to_sentence
+    editors = news.edited_by.to_a
+    return "" if editors.none?
+    users = editors.map {|u| link_to u.name, u }.to_sentence
     caption = content_tag(:span, "Édité par #{content_tag :span, users.html_safe, class: "edited_by"}.".html_safe, class: "edited_by_spanblock");
     caption.html_safe
   end

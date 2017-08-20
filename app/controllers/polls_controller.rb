@@ -11,11 +11,9 @@ class PollsController < ApplicationController
   def index
     @order = params[:order]
     @order = "created_at" unless VALID_ORDERS.include?(@order)
-    @polls = Poll.archived.joins(:node).order("nodes.#{@order} DESC").page(params[:page])
-    if on_the_first_page?
-      poll = Poll.current
-      @polls.unshift(poll) if poll
-    end
+    @polls = Poll.archived
+    @polls = Poll.published.or(@polls) if on_the_first_page?
+    @polls = @polls.joins(:node).order("nodes.#{@order} DESC").page(params[:page])
     respond_with(@polls)
   end
 
