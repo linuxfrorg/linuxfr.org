@@ -1,25 +1,25 @@
 source 'https://rubygems.org'
 
-gem "rails",                   "4.2.8"
+gem "rails",                   "5.0.5"
 
-gem "actionpack-page_caching", "~>1.0"
+gem "actionpack-page_caching", "~>1.1"
 gem "ansi",                    "~>1.4", require: nil
 gem "acts_as_list",            "~>0.4"
 gem "bitfields",               "~>0.4"
 gem "canable",                 "~>0.1"
-gem "carrierwave",             "~>0.10"
-gem "devise",                  "~>3.3"
+gem "carrierwave",             "~>1.1"
+gem "devise",                  "~>4.3"
 gem "diff_match_patch",        git: "https://github.com/nono/diff_match_patch-ruby.git", require: "diff_match_patch"
 gem "doorkeeper",              "~>2.1"
 gem "ffi-hunspell",            git: "https://github.com/postmodern/ffi-hunspell.git"
-gem "french_rails",            "~>0.3"
+gem "french_rails",            "~>0.4"
 gem "friendly_id",             "~>5.1"
 gem "haml",                    "~>4.0"
-gem "html-pipeline-linuxfr",   "~>0.14"
+gem "html-pipeline-linuxfr",   "~>0.15"
 gem "html_spellchecker",       "~>0.1"
 gem "html_truncator",          "~>0.4"
 gem "htmlentities",            "~>4.3"
-gem "inherited_resources",     "~>1.6"
+gem "inherited_resources",     "~>1.7"
 gem "kaminari",                "~>0.15"
 gem "mini_magick",             "~>3.8"
 gem "mysql2",                  "~>0.3"
@@ -52,7 +52,6 @@ group :development do
   gem "letter_opener"
   gem "mo"
   gem "pry-rails"
-  gem "quiet_assets"
   gem "spring"
   gem "sushi"
   gem "thin"
@@ -69,5 +68,5 @@ end
 group :production, :alpha do
   gem "unicorn",               "~>5.1"
   gem "gctools",               "~>0.2"
-  gem "redis-activesupport",   "~>4.0"
+  gem "redis-activesupport",   "~>5.0"
 end
