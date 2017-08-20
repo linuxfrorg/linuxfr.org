@@ -17,7 +17,7 @@ class Api::V1::BoardController < Api::V1::ApiController
 protected
 
   def board_params
-    params.slice(:object_type, :object_id, :message)
+    params.permit(:object_type, :object_id, :message)
   end
 
   def expire_cache

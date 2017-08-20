@@ -12,7 +12,7 @@ class SessionsController < DeviseController
     cookies.permanent[:https] = { value: "1", secure: false } if request.ssl?
     @account = warden.authenticate!(scope: :account, recall: "#{controller_path}#new")
     sign_in :account, @account
-    redirect_to stored_location_for(:account) || :back, notice: I18n.t("devise.sessions.signed_in")
+    redirect_to after_sign_in_path_for(:account), notice: I18n.t("devise.sessions.signed_in")
   rescue ActionController::RedirectBackError
     redirect_to '/'
   end

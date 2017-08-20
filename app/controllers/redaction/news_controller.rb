@@ -71,7 +71,7 @@ class Redaction::NewsController < RedactionController
 
   def followup
     enforce_followup_permission(@news)
-    NewsNotifications.followup(@news, params[:message]).deliver
+    NewsNotifications.followup(@news, params[:message]).deliver_now
     redirect_to [:redaction, @news], notice: "Courriel de relance envoyé"
   end
 

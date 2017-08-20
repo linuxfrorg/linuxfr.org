@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
 gem "rails",                   "5.0.5"
 
 gem "actionpack-page_caching", "~>1.1"
@@ -9,9 +14,9 @@ gem "bitfields",               "~>0.4"
 gem "canable",                 "~>0.1"
 gem "carrierwave",             "~>1.1"
 gem "devise",                  "~>4.3"
-gem "diff_match_patch",        git: "https://github.com/nono/diff_match_patch-ruby.git", require: "diff_match_patch"
-gem "doorkeeper",              "~>2.1"
-gem "ffi-hunspell",            git: "https://github.com/postmodern/ffi-hunspell.git"
+gem "diff_match_patch",        github: "nono/diff_match_patch-ruby", require: "diff_match_patch"
+gem "doorkeeper",              "~>4.2"
+gem "ffi-hunspell",            github: "postmodern/ffi-hunspell"
 gem "french_rails",            "~>0.4"
 gem "friendly_id",             "~>5.1"
 gem "haml",                    "~>4.0"
@@ -46,16 +51,17 @@ group :development do
   gem "annotate"
   gem "better_errors"
   gem "binding_of_caller"
-  gem "byebug"
-  gem "capistrano",            "~>2.15", git: 'https://github.com/capistrano/capistrano.git', branch: 'legacy-v2'
+  gem "byebug",                platform: :mri
+  gem "capistrano",            "~>2.15", github: 'capistrano', branch: 'legacy-v2'
   gem "capistrano-maintenance"
   gem "letter_opener"
+  gem "listen"
   gem "mo"
   gem "pry-rails"
   gem "spring"
   gem "sushi"
   gem "thin"
-  gem "web-console",           "~> 2.1"
+  gem "web-console"
 end
 
 group :test do

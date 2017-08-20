@@ -50,7 +50,7 @@ class Moderation::NewsController < ModerationController
     if @news.unlocked?
       @news.moderator_id = current_user.id
       @news.accept!
-      NewsNotifications.accept(@news).deliver
+      NewsNotifications.accept(@news).deliver_now
       redirect_to @news, alert: "Dépêche acceptée"
     else
       redirect_to [:moderation, @news], alert: "Impossible de modérer la dépêche tant que quelqu'un est en train de la modifier"
@@ -64,7 +64,7 @@ class Moderation::NewsController < ModerationController
       @news.put_paragraphs_together
       @news.refuse!
       notif = NewsNotifications.refuse_with_message(@news, params[:message], params[:template])
-      notif.deliver if notif
+      notif.deliver_now if notif
       redirect_to '/'
     elsif @news.unlocked?
       @boards = Board.all(Board.news, @news.id)
@@ -78,7 +78,7 @@ class Moderation::NewsController < ModerationController
     if @news.unlocked?
       @news.moderator_id = current_user.id
       @news.rewrite!
-      NewsNotifications.rewrite(@news).deliver
+      NewsNotifications.rewrite(@news).deliver_now
       redirect_to @news, alert: "Dépêche renvoyée en rédaction"
     else
       redirect_to [:moderation, @news], alert: "Impossible de modérer la dépêche tant que quelqu'un est en train de la modifier"

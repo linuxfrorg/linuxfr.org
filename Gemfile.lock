@@ -18,9 +18,9 @@ GIT
 
 GIT
   remote: https://github.com/postmodern/ffi-hunspell.git
-  revision: c5c98da6f39dace66ef2522ab75bb147dd7ddd27
+  revision: d3dcb5d17ef12c955e957573ca98a0fbaf655e14
   specs:
-    ffi-hunspell (0.3.1)
+    ffi-hunspell (0.4.0)
       ffi (~> 1.0)
 
 GEM
@@ -75,10 +75,11 @@ GEM
     ansi (1.5.0)
     arel (7.1.4)
     bcrypt (3.1.11)
-    better_errors (2.1.1)
+    better_errors (2.3.0)
       coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
+      erubi (>= 1.0.0)
       rack (>= 0.9.0)
+    bindex (0.5.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bitfields (0.7.0)
@@ -119,11 +120,12 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
-    doorkeeper (2.2.2)
-      railties (>= 3.2)
+    doorkeeper (4.2.6)
+      railties (>= 4.2)
+    erubi (1.6.1)
     erubis (2.7.0)
     escape_utils (1.2.1)
-    eventmachine (1.2.1)
+    eventmachine (1.2.5)
     execjs (2.7.0)
     factory_girl (2.6.4)
       activesupport (>= 2.3.9)
@@ -156,8 +158,8 @@ GEM
       pygments.rb (~> 1.1)
       redcarpet (~> 3.4)
       sanitize (~> 4.0)
-    html_spellchecker (0.1.8)
-      ffi-hunspell (= 0.3.1)
+    html_spellchecker (0.1.9)
+      ffi-hunspell (~> 0.4)
       nokogiri (~> 1.4)
     html_truncator (0.4.1)
       nokogiri (~> 1.5)
@@ -181,6 +183,9 @@ GEM
     letter_opener (1.4.1)
       launchy (~> 2.2)
     libv8 (3.16.14.19)
+    listen (3.0.8)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.6)
@@ -197,7 +202,7 @@ GEM
     mo (1.4.0)
       boson
     multi_json (1.12.1)
-    mysql2 (0.4.5)
+    mysql2 (0.4.9)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -216,8 +221,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-rails (0.3.4)
-      pry (>= 0.9.10)
+    pry-rails (0.3.6)
+      pry (>= 0.10.4)
     public_suffix (2.0.5)
     pygments.rb (1.1.2)
       multi_json (>= 1.0.0)
@@ -247,7 +252,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    raindrops (0.17.0)
+    raindrops (0.19.0)
     rake (12.0.0)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
@@ -259,7 +264,7 @@ GEM
       redis-store (~> 1.3.0)
     redis-store (1.3.0)
       redis (>= 2.2)
-    ref (1.0.5)
+    ref (2.0.0)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
@@ -299,7 +304,8 @@ GEM
       tilt (>= 1.1, < 3)
     sitemap_generator (2.2.1)
     slop (3.6.0)
-    spring (1.3.4)
+    spring (2.0.2)
+      activesupport (>= 4.2)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -310,10 +316,10 @@ GEM
     state_machine (1.2.0)
     subexec (0.2.3)
     sushi (0.0.4)
-    therubyracer (0.12.2)
-      libv8 (~> 3.16.14.0)
+    therubyracer (0.12.3)
+      libv8 (~> 3.16.14.15)
       ref
-    thin (1.7.0)
+    thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
       rack (>= 1, < 3)
@@ -324,16 +330,16 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
-    unicorn (5.2.0)
+    unicorn (5.3.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.7)
       rack (>= 1.0)
-    web-console (2.3.0)
-      activemodel (>= 4.0)
-      binding_of_caller (>= 0.7.2)
-      railties (>= 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
+    web-console (3.5.1)
+      actionview (>= 5.0)
+      activemodel (>= 5.0)
+      bindex (>= 0.4.0)
+      railties (>= 5.0)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -361,7 +367,7 @@ DEPENDENCIES
   database_cleaner (~> 1.2)
   devise (~> 4.3)
   diff_match_patch!
-  doorkeeper (~> 2.1)
+  doorkeeper (~> 4.2)
   factory_girl_rails (~> 1.6)
   ffi-hunspell!
   french_rails (~> 0.4)
@@ -378,6 +384,7 @@ DEPENDENCIES
   jquery-rails (~> 4.0)
   kaminari (~> 0.15)
   letter_opener
+  listen
   mini_magick (~> 3.8)
   mo
   mysql2 (~> 0.3)
@@ -397,7 +404,7 @@ DEPENDENCIES
   thin
   uglifier
   unicorn (~> 5.1)
-  web-console (~> 2.1)
+  web-console
 
 BUNDLED WITH
    1.13.7

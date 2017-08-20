@@ -61,7 +61,7 @@ $ bundle install
 5) Finish to configure:
 
 ```
-$ bin/rake db:setup
+$ bin/rails db:setup
 (if you're updating, you'll need an other step: redis-cli flushdb)
 ```
 

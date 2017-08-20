@@ -9,17 +9,17 @@ describe Api::V1::BoardController do
     let!(:message)     { "Un message très intéressant... ou pas" }
 
     it 'responds with 200' do
-      post '/api/v1/board', access_token: token.token, message: message
+      post '/api/v1/board', params: { access_token: token.token, message: message }
       response.status.should eq(200)
     end
 
     it 'returns the id as json' do
-      post '/api/v1/board', access_token: token.token, message: message
+      post '/api/v1/board', params: { access_token: token.token, message: message }
       response.body.should == { id: Board.last(Board.free).id }.to_json
     end
 
     it 'sets the attributes correctly' do
-      post '/api/v1/board', access_token: token.token, message: message
+      post '/api/v1/board', params: { access_token: token.token, message: message }
       board = Board.last(Board.free)
       board.message.should == message
       board.user_agent.should == application.name
@@ -28,7 +28,7 @@ describe Api::V1::BoardController do
     end
 
     it 'can post on the redaction board' do
-      post '/api/v1/board', access_token: token.token, message: message, object_type: Board.writing
+      post '/api/v1/board', params: { access_token: token.token, message: message, object_type: Board.writing }
       board = Board.last(Board.writing)
       board.message.should == message
       board.user_agent.should == application.name

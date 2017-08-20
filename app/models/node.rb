@@ -63,7 +63,7 @@ class Node < ActiveRecord::Base
   def compute_interest
     coeff = content_type.constantize.interest_coefficient
     stmt  = "UPDATE nodes SET interest=(score * #{coeff} + UNIX_TIMESTAMP(created_at) / 1000) WHERE id=#{self.id}"
-    Node.connection.update_sql(stmt)
+    Node.connection.update(stmt)
   end
 
   def make_visible
