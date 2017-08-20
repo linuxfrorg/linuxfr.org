@@ -15,12 +15,12 @@ LinuxFr.org on a Debian box.
 1) First install some Debian packages:
 
 ```
-    # aptitude install mysql-server mysql-client libmysql++-dev git-core
-    # aptitude install build-essential openssl libreadline6 libreadline6-dev
-    # aptitude install curl libcurl4-openssl-dev zlib1g zlib1g-dev libssl-dev
-    # aptitude install libxml2-dev libxslt-dev autoconf libgmp-dev libyaml-dev
-    # aptitude install ncurses-dev bison automake libtool imagemagick libc6-dev
-    # aptitude install hunspell hunspell-fr redis-server
+# aptitude install mysql-server mysql-client libmysql++-dev git-core
+# aptitude install build-essential openssl libreadline6 libreadline6-dev
+# aptitude install curl libcurl4-openssl-dev zlib1g zlib1g-dev libssl-dev
+# aptitude install libxml2-dev libxslt-dev autoconf libgmp-dev libyaml-dev
+# aptitude install ncurses-dev bison automake libtool imagemagick libc6-dev
+# aptitude install hunspell hunspell-fr redis-server
 ```
 
 Note: you can use libcurl4-gnutls-dev instead of libcurl4-openssl-dev.
@@ -28,21 +28,21 @@ Note: you can use libcurl4-gnutls-dev instead of libcurl4-openssl-dev.
 2) Configure the database:
 
 ```
-    # mysql -p -u root
-    <enter your root password for mysql>
-    > CREATE DATABASE linuxfr_rails CHARACTER SET utf8;
-    > GRANT ALL PRIVILEGES ON linuxfr_rails.* TO "linuxfr_rails"@"localhost";
-    > QUIT;
-    (return to user)
-    
-    Statistics need time zone at SQL level. You'll need to population time_zone* tables.
-    # mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -p -u root mysql
+# mysql -p -u root
+<enter your root password for mysql>
+> CREATE DATABASE linuxfr_rails CHARACTER SET utf8;
+> GRANT ALL PRIVILEGES ON linuxfr_rails.* TO "linuxfr_rails"@"localhost";
+> QUIT;
+(return to user)
+
+Statistics need time zone at SQL level. You'll need to population time_zone* tables.
+# mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -p -u root mysql
 ```
 
 3) Install Ruby with RVM (more details on https://rvm.io/rvm/install ):
 
 ```
-    $ \curl -sSL https://get.rvm.io | bash -s stable --ruby
+$ \curl -sSL https://get.rvm.io | bash -s stable --ruby
 ```
 
    And follow the instructions.
@@ -50,26 +50,26 @@ Note: you can use libcurl4-gnutls-dev instead of libcurl4-openssl-dev.
 4) Clone the repository, configure and install gems:
 
 ```
-    $ git clone git://github.com/linuxfrorg/linuxfr.org.git
-    $ cd linuxfr.org
-    $ cp config/database.yml{.sample,}
-    $ cp config/secrets.yml{.sample,}
-    $ gem install bundler
-    $ bundle install
+$ git clone git://github.com/linuxfrorg/linuxfr.org.git
+$ cd linuxfr.org
+$ cp config/database.yml{.sample,}
+$ cp config/secrets.yml{.sample,}
+$ gem install bundler
+$ bundle install
 ```
 
 5) Finish to configure:
 
 ```
-    $ bin/rake db:setup
-    (if you're updating, you'll need an other step: redis-cli flushdb)
+$ bin/rake db:setup
+(if you're updating, you'll need an other step: redis-cli flushdb)
 ```
 
 6) Let's run it:
 
 ```
-    $ bin/rails server
-    $ x-www-browser http://127.0.0.1:3000/
+$ bin/rails server
+$ x-www-browser http://127.0.0.1:3000/
 ```
 
 7) Create an admin account:
@@ -160,17 +160,6 @@ How to run the specs
 
 ```
     $ bin/rspec spec
-```
-
-How to generate a CSS
----------------------
-
-CSS are written in sass and compiled with the Rails assets pipeline.
-If you just want to compile a CSS without installing Rails and all its
-dependency, you can install the `sass` gem and launch:
-
-```
-    bin/compile_sass app/assets/stylesheets/application.css.scss > app.css
 ```
 
 Copyheart
