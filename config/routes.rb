@@ -88,9 +88,7 @@ Rails.application.routes.draw do
   end
 
   # Accounts
-  devise_for :account, path: "compte", controllers: {
-    sessions: "sessions"
-  }, path_names: {
+  devise_for :account, path: "compte", path_names: {
     sign_in: "connexion",
     sign_out: "deconnexion",
     sign_up: "inscription",
