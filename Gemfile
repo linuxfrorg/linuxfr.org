@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails",                   "5.0.5"
+gem "rails",                   "~>5.1.3"
 
 gem "actionpack-page_caching", "~>1.1"
 gem "ansi",                    "~>1.4", require: nil
@@ -19,7 +19,7 @@ gem "doorkeeper",              "~>4.2"
 gem "ffi-hunspell",            github: "postmodern/ffi-hunspell"
 gem "french_rails",            "~>0.4"
 gem "friendly_id",             "~>5.1"
-gem "haml",                    "~>4.0"
+gem "haml",                    "~>5.0"
 gem "html-pipeline-linuxfr",   "~>0.15"
 gem "html_spellchecker",       "~>0.1"
 gem "html_truncator",          "~>0.4"

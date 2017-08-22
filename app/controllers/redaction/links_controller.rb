@@ -1,6 +1,7 @@
 # encoding: UTF-8
 #
 class Redaction::LinksController < RedactionController
+  before_action :authenticate_account!
   before_action :new_link,  only: [:new, :create]
   before_action :find_link, except: [:new, :create]
 
