@@ -1,4 +1,7 @@
 # encoding: utf-8
+
+require 'action_view/template/resolver'
+
 class RedactionResolver < ::ActionView::FileSystemResolver
   def initialize
     super("app/views")

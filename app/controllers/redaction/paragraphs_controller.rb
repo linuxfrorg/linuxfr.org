@@ -1,6 +1,7 @@
 # encoding: UTF-8
 #
 class Redaction::ParagraphsController < RedactionController
+  before_action :authenticate_account!
   before_action :find_paragraph, except: [:create]
 
   def create
