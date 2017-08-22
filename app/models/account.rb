@@ -9,7 +9,6 @@
 #  role                   :string(10)       default("visitor"), not null
 #  karma                  :integer          default(20), not null
 #  nb_votes               :integer          default(0), not null
-#  stylesheet             :string(255)
 #  email                  :string(128)      not null
 #  encrypted_password     :string(128)      default(""), not null
 #  confirmation_token     :string(64)
@@ -28,7 +27,6 @@
 #  reset_password_sent_at :datetime
 #  min_karma              :integer          default(20)
 #  max_karma              :integer          default(20)
-#  uploaded_stylesheet    :string(255)
 #
 
 #
@@ -51,8 +49,6 @@ class Account < ActiveRecord::Base
   has_many :logs
   belongs_to :user, inverse_of: :account
   accepts_nested_attributes_for :user, reject_if: :all_blank
-
-  mount_uploader :uploaded_stylesheet, StylesheetUploader
 
   attr_accessor :amr_id
   delegate :name, to: :user
@@ -314,22 +310,4 @@ class Account < ActiveRecord::Base
     end
   end
 
-### Stylesheet ###
-
-  before_validation :validate_css
-  def validate_css
-    return if stylesheet.blank?
-    return if stylesheet.starts_with?("http://")
-    return if stylesheet.starts_with?("https://")
-    return if Stylesheet.include?(stylesheet)
-    errors.add(:stylesheet, "Feuille de style non valide")
-  end
-
-  def stylesheet_url
-    case
-    when uploaded_stylesheet.present? then uploaded_stylesheet.url
-    when stylesheet.present?          then stylesheet
-    else 'application'
-    end
-  end
 end

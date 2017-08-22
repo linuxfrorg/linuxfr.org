@@ -94,7 +94,6 @@ Rails.application.routes.draw do
     sign_up: "inscription",
     unlock: "debloquage"
   }
-  resource :stylesheet, only: [:create, :edit, :update, :destroy]
 
   # API
   scope :api do
@@ -189,7 +188,6 @@ Rails.application.routes.draw do
     resources :categories, except: [:show]
     resources :bannieres, controller: "banners", as: "banners", except: [:show]
     resource :logo, only: [:show, :create]
-    resource :stylesheet, only: [:show, :create]
     resources :sites_amis, controller: "friend_sites", as: "friend_sites", except: [:show] do
       member do
         post :lower

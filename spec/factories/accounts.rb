@@ -9,7 +9,6 @@
 #  role                   :string(10)       default("visitor"), not null
 #  karma                  :integer          default(20), not null
 #  nb_votes               :integer          default(0), not null
-#  stylesheet             :string(255)
 #  email                  :string(128)      not null
 #  encrypted_password     :string(128)      default(""), not null
 #  confirmation_token     :string(64)
@@ -28,7 +27,6 @@
 #  reset_password_sent_at :datetime
 #  min_karma              :integer          default(20)
 #  max_karma              :integer          default(20)
-#  uploaded_stylesheet    :string(255)
 #
 
 FactoryGirl.define do

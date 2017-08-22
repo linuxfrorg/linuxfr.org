@@ -18,7 +18,6 @@
       %li= link_to("Informations personnelles", "#stats_infosperso")
       %li= link_to("Domaines pour le courriel", "#stats_courriel")
       %li= link_to("Utilisation des fonctionnalités", "#stats_fonctionnalites")
-      %li= link_to("Style (CSS)", "#stats_css")
       %li= link_to("Karma des utilisateurs", "#stats_karma")
       %li= link_to("Ancienneté des comptes", "#stats_anciennete")
       %li= link_to("Statut des comptes utilisateurs", "#stats_state")
@@ -243,27 +242,6 @@
       %td #{@stats.pctrecent(@stats.preferences :hide_avatar)}
   %p
     Ces fonctionnalités peuvent être modifiées sur #{ link_to("la page des préférences", "/compte/modifier") }.
-
-  %h2#stats_css Style (CSS)
-  %p
-    = link_to("Changer de style", "/stylesheet/modifier")
-  - if @stats.by_style.any?
-    %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte utilisateur valide et utilisé", "comptes utilisateur valides et utilisés"} au cours des 3 derniers mois&nbsp;:
-    %table
-      - maxval = @stats.nb_recently_used_accounts
-      %tr
-        %th Feuille de style
-        %th Utilisateurs
-        %th Actifs
-      - @stats.by_style.each do |style|
-        %tr
-          %td.stat
-            = (style["stylesheet"] || "Feuille de style par défaut").sub("/stylesheets/contrib/", "")
-          %td
-            .stat.misc(style="width: #{(width_stats * style["cnt"] / maxval).to_i}px;")= style["cnt"]
-          %td #{@stats.pctrecent(style["cnt"])}
-  - else
-    Aucune CSS autre que celle par défaut
 
   %h2#stats_karma Karma des utilisateurs
   %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte utilisateur valide et utilisé", "comptes utilisateur valides et utilisés"} au cours des 3 derniers mois&nbsp;:

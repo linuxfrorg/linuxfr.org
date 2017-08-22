@@ -79,10 +79,6 @@ class Statistics::Users < Statistics::Statistics
     select_all "SELECT SIGN(karma) AS sign, FLOOR(LOG#{KARMA_BASE}(ABS(karma)+1E-99)) as k, COUNT(*) AS cnt FROM accounts WHERE karma IS NOT NULL AND current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY sign,k ORDER BY sign ASC, sign*k ASC"
   end
 
-  def by_style
-    select_all "SELECT TRIM(stylesheet) AS stylesheet, COUNT(*) AS cnt FROM accounts WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY stylesheet HAVING cnt > 2 ORDER BY cnt DESC"
-  end
-
   def by_year
     select_all "SELECT YEAR(accounts.created_at) AS year, COUNT(*) AS cnt FROM accounts WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY year ORDER BY year ASC"
   end

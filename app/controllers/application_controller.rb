@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :seo_filter
   before_action :configure_permitted_parameters, if: :devise_controller?
-  helper_method :url_for_content, :path_for_content, :current_user, :current_stylesheet
+  helper_method :url_for_content, :path_for_content, :current_user
   rescue_from Canable::Transgression, with: :error_403
 
   VALID_ORDERS = %w(created_at score interest last_commented_at comments_count)
@@ -123,10 +123,6 @@ protected
   def handle_unverified_request
     Rails.logger.info "CSRF protection for #{request.remote_ip}: #{form_authenticity_token} // #{params[request_forgery_protection_token]} // #{request.headers['X-CSRF-Token']}"
     super
-  end
-
-  def current_stylesheet
-    cookies[:stylesheet]
   end
 
 ### Doorkeeper ###

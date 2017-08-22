@@ -17,7 +17,6 @@
         %li= link_to "Mes contenus taggés", '/tags'
         %li= link_to "Les contenus que j'ai lus", '/readings'
         %li= link_to "Modifier mes préférences", '/compte/modifier'
-        %li= link_to "Changer de style", '/stylesheet/modifier'
         %li= button_to "Se déconnecter", '/compte/deconnexion', method: :post, id: "logout"
     - else
       = render "devise/sessions/new", id_suffix: "_sidebar"

@@ -8,7 +8,7 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w(mobile.css print.css)
+Rails.application.config.assets.precompile += %w(print.css)
 Dir.chdir(Rails.root.join "app/assets/stylesheets") do
   Rails.application.config.assets.precompile += Dir["contrib/*"].map {|s| s.sub /.scss$/, '' }
   Rails.application.config.assets.precompile += Dir["common/*"].map {|s| s.sub /.scss$/, '' }
