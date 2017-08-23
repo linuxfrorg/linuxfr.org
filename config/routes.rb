@@ -60,12 +60,14 @@ Rails.application.routes.draw do
     resources :comments do
       member do
         get :answer
-        post "/relevance/:action", controller: "relevances", as: :relevance
+        post "/relevance/for",     controller: "relevances", action: :for
+        post "/relevance/against", controller: "relevances", action: :against
       end
     end
     resources :tags, only: [:new, :create, :update, :destroy]
     member do
-      post "/vote/:action", controller: "votes", as: :vote
+      post "/vote/for",     controller: "votes", action: :for
+      post "/vote/against", controller: "votes", action: :against
     end
   end
   resources :readings, only: [:index, :destroy]
@@ -202,8 +204,8 @@ Rails.application.routes.draw do
   get "/recherche(/:type(/:facet))" => "search#index", as: :search
 
   # Statistics
-  controller :statistics do
-    get "/statistiques/:action"
+  %i(tracker prizes users top moderation redaction contents comments tags).each do |action|
+    get "/statistiques/#{action}", controller: :statistics, action: action
   end
 
   # Static pages
