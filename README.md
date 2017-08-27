@@ -47,27 +47,23 @@ Statistics need time zone at SQL level. You'll need to population time_zone* tab
 ```
 $ git clone git://github.com/linuxfrorg/linuxfr.org.git
 $ cd linuxfr.org
-$ cp config/database.yml{.sample,}
-$ cp config/secrets.yml{.sample,}
-$ gem install bundler
-$ bundle install
+$ bin/setup
 ```
 
-5) Finish to configure:
+If you are updating, run instead:
 
 ```
-$ bin/rails db:setup
-(if you're updating, you'll need an other step: redis-cli flushdb)
+$ bin/update
 ```
 
-6) Let's run it:
+5) Let's run it:
 
 ```
 $ bin/rails server
 $ x-www-browser http://127.0.0.1:3000/
 ```
 
-7) Create an admin account:
+6) Create an admin account:
 
 * Create an account
 * Get confirmation link in the console and confirm the account
