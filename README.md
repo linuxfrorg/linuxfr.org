@@ -20,7 +20,7 @@ LinuxFr.org on a Debian box.
 # aptitude install curl libcurl4-openssl-dev zlib1g zlib1g-dev libssl-dev
 # aptitude install libxml2-dev libxslt-dev autoconf libgmp-dev libyaml-dev
 # aptitude install ncurses-dev bison automake libtool imagemagick libc6-dev
-# aptitude install hunspell hunspell-fr redis-server
+# aptitude install hunspell hunspell-fr redis-server ruby
 ```
 
 Note: you can use libcurl4-gnutls-dev instead of libcurl4-openssl-dev.
@@ -39,13 +39,8 @@ Statistics need time zone at SQL level. You'll need to population time_zone* tab
 # mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -p -u root mysql
 ```
 
-3) Install Ruby with RVM (more details on https://rvm.io/rvm/install ):
-
-```
-$ \curl -sSL https://get.rvm.io | bash -s stable --ruby
-```
-
-   And follow the instructions.
+3) Install [nodejs 6.4+](https://nodejs.org/en/) and
+[yarn 0.20+](https://yarnpkg.com/lang/en/)
 
 4) Clone the repository, configure and install gems:
 

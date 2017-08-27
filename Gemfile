@@ -34,13 +34,7 @@ gem "hiredis",                 "~>0.5"
 gem "redis",                   "~>3.0", require: ["redis/connection/hiredis", "redis"]
 gem "sitemap_generator",       "~>2.1"
 gem "state_machine",           "~>1.2"
-
-# Gems used for assets
-gem "jquery-rails",          "~>4.0"
-gem "sass-rails",            "~>5.0"
-gem "coffee-rails",          "~>4.1"
-gem "therubyracer",          "~>0.12", require: 'v8'
-gem "uglifier"
+gem "webpacker",               "~> 2.0"
 
 # Rspec-rails must be in development for rake stats and in test for normal stuff
 group :development, :test do

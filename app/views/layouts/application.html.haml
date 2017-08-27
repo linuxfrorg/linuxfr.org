@@ -14,4 +14,4 @@
         %p= link_to "Revenir en haut de page", '#top', class: 'scroll'
     - cache "layouts/footer", expires_in: 1.minute do
       = render 'layouts/footer'
-    = javascript_include_tag "application"
+    = javascript_pack_tag "application"

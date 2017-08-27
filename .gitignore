@@ -1,13 +1,12 @@
 /.bundle
-/.sass-cache
-/assets_manifest.json
 /config/database.yml
 /config/secrets.yml
 /log
-/public/assets
+/node_modules
 /public/board.xml
 /public/images/historique
 /public/images/load
+/public/packs
 /public/pages
 /public/sitemap*
 /public/system
