@@ -34,7 +34,7 @@ gem "hiredis",                 "~>0.5"
 gem "redis",                   "~>3.0", require: ["redis/connection/hiredis", "redis"]
 gem "sitemap_generator",       "~>2.1"
 gem "state_machine",           "~>1.2"
-gem "webpacker",               "~> 2.0"
+gem "webpacker",               "~>3.0"
 
 # Rspec-rails must be in development for rake stats and in test for normal stuff
 group :development, :test do
