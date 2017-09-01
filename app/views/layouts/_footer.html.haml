@@ -1,30 +1,21 @@
-%footer#bigfooter
-  %nav#last_comments
-    %h1 Derniers commentaires
-    %ul
-      - @last_comments.each do |comment|
-        %li= link_to comment.title, path_for_content(comment.node.content) + "#comment-#{comment.id}"
-  %nav#popular_tags
-    %h1 Tags populaires
-    %ul.tag_cloud
-      - @popular_tags.each do |tag|
-        %li= link_to tag.name, "/tags/#{tag.name}/public"
-  %section#friends
-    %h1 Sites amis
-    %ul
-      - @friend_sites.each do |site|
-        %li= link_to site.title, site.url
-  %nav#about_us
-    %h1 À propos de LinuxFr.org
-    %ul
-      %li= link_to "Mentions légales", '/mentions_legales'
-      %li= link_to "Faire un don", '/faire_un_don'
-      %li= link_to "L'équipe LinuxFr.org", '/team'
-      %li= link_to "Informations sur le site", '/informations'
-      %li= link_to "Aide / Foire aux questions", '/aide'
-      %li= link_to "Suivi des suggestions et bugs", '/suivi'
-      %li= link_to "Règles de modération", '/regles_de_moderation'
-      %li= link_to "Statistiques", '/statistiques'
-      %li= link_to "API pour les développeurs", '/developpeur'
-      %li= link_to "Code source du site", '/code_source_du_site'
-      %li= link_to "Plan du site", '/plan'
+%footer
+  %nav#rubriques
+    %h1 Rubriques
+    %ul.flex.flex-wrap.items-center.justify-between.content-center
+      %li.flex.flex-auto= link_to "applications et services", "#", class: "link yellow ma4"
+      %li.flex.flex-auto= link_to "distributions et bureaux", "#", class: "link yellow ma4"
+      %li.flex.flex-auto= link_to "culture et jeux", "#", class: "link yellow ma4"
+      %li.flex.flex-auto= link_to "systèmes et réseaux", "#", class: "link yellow ma4"
+      %li.flex.flex-auto= link_to "bidouille et développement", "#", class: "link yellow ma4"
+      %li.flex.flex-auto= link_to "économie et entreprise", "#", class: "link yellow ma4"
+      %li.flex.flex-auto= link_to "revue de presse", "#", class: "link yellow ma4"
+  %nav#pages.bg-yellow
+    %ul.flex.flex-wrap
+      %li.flex.flex-auto= link_to "Suivi", '/suivi', class: "link white ma4"
+      %li.flex.flex-auto= link_to "FAQ", '/aide', class: "link white ma4"
+      %li.flex.flex-auto= link_to "À propos", '/informations', class: "link white ma4"
+      %li.flex.flex-auto= link_to "Mentions légales", '/mentions_legales', class: "link white ma4"
+      %li.flex.flex-auto= link_to "Faire un don", '/faire_un_don', class: "link white ma4"
+      %li.flex.flex-auto= link_to "Sites amis", '/sites_amis', class: "link white ma4"
+      %li.flex.flex-auto= link_to "Plan", '/plan', class: "link white ma4"
+      %li.flex.flex-auto= link_to "Code", '/code_source_du_site', class: "link white ma4"
