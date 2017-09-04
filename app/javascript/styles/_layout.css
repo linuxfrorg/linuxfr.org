@@ -1,3 +1,16 @@
+@media (--small) {
+  .layout-header .hamburger {
+    position: fixed;
+	top: 0;
+	left: 0;
+  }
+  .layout-header .login {
+    position: fixed;
+	top: 0;
+	right: 0;
+  }
+}
+
 .layout-footer {
   background-color: var(--dark-yellow);
 }

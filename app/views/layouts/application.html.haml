@@ -3,15 +3,12 @@
   = render 'layouts/head'
   %body{body_attr}
     #top
-    = render 'layouts/site', home: false
-    = render 'layouts/sidebar'
+    = render 'layouts/header'
     %section#container
       - [:alert, :notice].each do |type|
         - if flash[type]
           %div(class=type)= flash[type]
+      = render 'layouts/sidebar'
       = yield :layout
-      %footer
-        %p= link_to "Revenir en haut de page", '#top', class: 'scroll'
-    - cache "layouts/footer", expires_in: 1.minute do
-      = render 'layouts/footer'
+    = render 'layouts/footer'
     = javascript_pack_tag "application"
