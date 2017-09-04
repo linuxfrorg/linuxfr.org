@@ -1,21 +1,10 @@
-%footer
-  %nav#rubriques
-    %h1 Rubriques
-    %ul.flex.flex-wrap.items-center.justify-between.content-center
-      %li.flex.flex-auto= link_to "applications et services", "#", class: "link yellow ma4"
-      %li.flex.flex-auto= link_to "distributions et bureaux", "#", class: "link yellow ma4"
-      %li.flex.flex-auto= link_to "culture et jeux", "#", class: "link yellow ma4"
-      %li.flex.flex-auto= link_to "systèmes et réseaux", "#", class: "link yellow ma4"
-      %li.flex.flex-auto= link_to "bidouille et développement", "#", class: "link yellow ma4"
-      %li.flex.flex-auto= link_to "économie et entreprise", "#", class: "link yellow ma4"
-      %li.flex.flex-auto= link_to "revue de presse", "#", class: "link yellow ma4"
-  %nav#pages.bg-yellow
-    %ul.flex.flex-wrap
-      %li.flex.flex-auto= link_to "Suivi", '/suivi', class: "link white ma4"
-      %li.flex.flex-auto= link_to "FAQ", '/aide', class: "link white ma4"
-      %li.flex.flex-auto= link_to "À propos", '/informations', class: "link white ma4"
-      %li.flex.flex-auto= link_to "Mentions légales", '/mentions_legales', class: "link white ma4"
-      %li.flex.flex-auto= link_to "Faire un don", '/faire_un_don', class: "link white ma4"
-      %li.flex.flex-auto= link_to "Sites amis", '/sites_amis', class: "link white ma4"
-      %li.flex.flex-auto= link_to "Plan", '/plan', class: "link white ma4"
-      %li.flex.flex-auto= link_to "Code", '/code_source_du_site', class: "link white ma4"
+%footer.layout-footer
+  %ul
+    %li= link_to "Suivi", "/suivi"
+    %li= link_to "FAQ", "/aide"
+    %li= link_to "À propos", "/informations"
+    %li= link_to "Mentions légales", "/mentions_legales"
+    %li= link_to "Faire un don", "/faire_un_don"
+    %li= link_to "Sites amis", "/sites_amis"
+    %li= link_to "Plan", "/plan"
+    %li= link_to "Code", "/code_source_du_site"

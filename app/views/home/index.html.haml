@@ -15,3 +15,14 @@
   = paginated_section @nodes, link_to("Proposer une dépêche", "/news/nouveau") do
     %main#contents(role="main")
       = render @nodes.map(&:content)
+
+%nav.sections
+  %h1 Rubriques
+  %ul
+    %li= link_to "applications et services", "#"
+    %li= link_to "distributions et bureaux", "#"
+    %li= link_to "culture et jeux", "#"
+    %li= link_to "systèmes et réseaux", "#"
+    %li= link_to "bidouille et développement", "#"
+    %li= link_to "économie et entreprise", "#"
+    %li= link_to "revue de presse", "#"
