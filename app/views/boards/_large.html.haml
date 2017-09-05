@@ -17,4 +17,4 @@
               = "Il y a #{time_ago_in_words board.created_at},"
             = board.created_at.strftime('%Hh%M')
         .user_link= board.user_link
-        .message= board.message
+        .message{class: "board-right"}= board.message
