@@ -99,9 +99,8 @@ class Chat
         $(@).replaceWith html+orig.slice(idx) if html
 
   norlogize_left: (x) ->
-    r = /((\d{4}-\d{2}-\d{2}) )?(\d{2}:\d{2}:\d{2})/g
-    date = x.innerHTML.replace(r, "$2")
-    time = x.innerHTML.replace(r, "$3")
+    date = /\d{4}-\d{2}-\d{2}/.exec(x.dateTime)
+    time = /\d{2}:\d{2}:\d{2}/.exec(x.dateTime)
     index = @board.find(".board-left time[data-clock-date=\"" + date + "\"][data-clock-time=\"" + time + "\"]").length + 1
     x.dataset.clockDate = date
     x.dataset.clockTime = time
