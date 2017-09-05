@@ -36,7 +36,7 @@ class Chat
     false
 
   norloge: (event) =>
-    string = $(event.target).text()
+    string = $(event.target).data("clockDate") + " " + $(event.target).data("clockTime")
     index = $(event.target).data("clockIndex")
     if index > 1 || (index == 1 && @board.find(".board-left time[data-clock-time=\"" + $(event.target).data("clockTime") + "\"]").length > 1)
       switch index
