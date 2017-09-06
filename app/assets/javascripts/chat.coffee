@@ -99,8 +99,9 @@ class Chat
         $(@).replaceWith html+orig.slice(idx) if html
 
   norlogize_left: (x) ->
-    date = /\d{4}-\d{2}-\d{2}/.exec(x.dateTime)
-    time = /\d{2}:\d{2}:\d{2}/.exec(x.dateTime)
+    norlogeDatetime = $(x).attr("datetime")
+    date = /\d{4}-\d{2}-\d{2}/.exec(norlogeDatetime)
+    time = /\d{2}:\d{2}:\d{2}/.exec(norlogeDatetime)
     index = @board.find(".board-left time[data-clock-date=\"" + date + "\"][data-clock-time=\"" + time + "\"]").length + 1
     x.dataset.clockDate = date
     x.dataset.clockTime = time
