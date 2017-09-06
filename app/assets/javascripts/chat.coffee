@@ -36,7 +36,7 @@ class Chat
     false
 
   norloge: (event) =>
-    string = $(event.target).text()
+    string = $(event.target).attr("norloge")
     index = $(event.target).data("clockIndex")
     if index > 1 || (index == 1 && @board.find(".board-left time[data-clock-time=\"" + $(event.target).data("clockTime") + "\"]").length > 1)
       switch index
@@ -99,9 +99,9 @@ class Chat
         $(@).replaceWith html+orig.slice(idx) if html
 
   norlogize_left: (x) ->
-    r = /((\d{4}-\d{2}-\d{2}) )?(\d{2}:\d{2}:\d{2})/g
-    date = x.innerHTML.replace(r, "$2")
-    time = x.innerHTML.replace(r, "$3")
+    norlogeDatetime = $(x).attr("datetime")
+    date = /\d{4}-\d{2}-\d{2}/.exec(norlogeDatetime)
+    time = /\d{2}:\d{2}:\d{2}/.exec(norlogeDatetime)
     index = @board.find(".board-left time[data-clock-date=\"" + date + "\"][data-clock-time=\"" + time + "\"]").length + 1
     x.dataset.clockDate = date
     x.dataset.clockTime = time
