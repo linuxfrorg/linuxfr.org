@@ -10,7 +10,7 @@
       .chat{id: "board-#{board.id}"}
         = image_tag(board.avatar_url, class: "avatar", alt: "")
         %div{class: "board-left"}
-          %time.norloge{datetime: board.created_at.iso8601}
+          %time.norloge{datetime: board.created_at.iso8601, norloge: norloge(board, box)}
             - if board.created_at.today?
               Aujourd'hui,
             - else
