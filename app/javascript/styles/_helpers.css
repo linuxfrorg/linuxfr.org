@@ -1,7 +1,24 @@
+/* go-to-content is a link aimed at screen readers only */
 .go-to-content {
   float: left;
   text-indent: -9998em;
   overflow: hidden;
   text-align: left;
   width: 10px;
+}
+
+/* measure is used to limit the width, so that the content stays legible */
+.measure {
+  max-width: 64em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* nav-list helps formatting a navigation bar, ie a list of links */
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+}
+.nav-list li {
+  display: inline-block;
 }

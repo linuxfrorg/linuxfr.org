@@ -1,15 +1,17 @@
-%header.layout-header
+%header.layout-header.measure
   .go-to-content
     %a(href="#contents") Aller au contenu
     %a(href="#sidebar") Aller au menu
   %nav.login
     %ul.nav-list
-    - if account_signed_in?
-      %li TODO
-    - else
-      %li= link_to "Se connecter", "/compte/connexion"
-      %li= link_to "S'inscrire", "/compte/inscription"
-  .logo= logo
+      - if account_signed_in?
+        %li TODO
+      - else
+        %li= link_to "Se connecter", "/compte/connexion"
+        %li= link_to "S'inscrire", "/compte/inscription"
+  %a.logo(href="/" title="LinuxFr.org")
+    %img{src: Logo.image, title: "Le logo de LinuxFr.org"}
+    %h1 LinuxFr<span>.org</span>
   %nav.hamburger
     %ul.nav-list
       %li{class: ("active" if controller_name == "home" || controller_name == "sections")}= link_to "Accueil", '/'
@@ -19,6 +21,4 @@
       %li{class: ("active" if controller_name == "forums" || controller_name == "posts")}= link_to "Forums", '/forums', title: "Questions/réponses, petites annonces"
       %li{class: ("active" if controller_name == "wiki_pages" || controller_name == "wiki_versions")}= link_to "Wiki", '/wiki', title: "Pages wiki"
     = form_tag "/recherche", method: :get do
-      <label for="query" id="label_query">Recherche :</label>
       <input id="query" name="q" type="search" placeholder="Rechercher" />
-      = submit_tag "Rechercher", name: nil, id: "search_submit", title: "Lancer la recherche sur le site"

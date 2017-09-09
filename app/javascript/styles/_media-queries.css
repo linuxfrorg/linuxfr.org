@@ -1,4 +1,4 @@
-@custom-media --small screen and (max-width: 30em);
-@custom-media --not-small screen and (min-width: 30em);
-@custom-media --medium screen and (min-width: 30em) and (max-width: 60em);
-@custom-media --large screen and (min-width: 60em);
+@custom-media --small screen and (max-width: 32em);
+@custom-media --not-small screen and (min-width: 32em);
+@custom-media --medium screen and (min-width: 32em) and (max-width: 64em);
+@custom-media --large screen and (min-width: 64em);

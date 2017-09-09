@@ -1,3 +1,59 @@
+/* Header */
+.layout-header {
+  margin-bottom: 2em;
+}
+.layout-header .login {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.layout-header .login a {
+  color: var(--blue);
+}
+.layout-header .login a:hover {
+  color: var(--dark-blue);
+}
+.layout-header .login li {
+  padding: 0 .4em;
+}
+.layout-header .login li:last-of-type {
+  padding-right: 0;
+}
+.layout-header .login li:not(:first-of-type) {
+  border-left: 2px solid var(--near-black);
+}
+.layout-header .logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+}
+.layout-header .logo h1 {
+  color: var(--near-black);
+  font-size: 3rem;
+  margin: .2em;
+  line-height: .8;
+}
+.layout-header .logo span {
+  display: block;
+  color: var(--light-silver);
+  font-size: 0.7em;
+  text-align: right;
+}
+.layout-header .hamburger {
+  display: flex;
+  justify-content: space-between;
+}
+.layout-header .hamburger ul {
+  margin: 0;
+}
+.layout-header .hamburger li {
+  padding-right: 2em;
+  text-transform: uppercase;
+}
+.layout-header .hamburger a:hover {
+  color: var(--gray)
+}
 @media (--small) {
   .layout-header .hamburger {
     position: fixed;
@@ -9,8 +65,12 @@
 	top: 0;
 	right: 0;
   }
+  .layout-header .logo {
+    display: none;
+  }
 }
 
+/* Footer */
 .layout-footer {
   background-color: var(--dark-yellow);
 }

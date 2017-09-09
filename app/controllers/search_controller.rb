@@ -1,7 +1,8 @@
 class SearchController < ApplicationController
 
   def index
-    redirect_to "https://duckduckgo.com/?#{params.slice(:q).to_query}+site%3Alinuxfr.org"
+    q = params.permit(:q, :utf8).slice(:q).to_query
+    redirect_to "https://duckduckgo.com/?#{q}+site%3Alinuxfr.org"
   end
 
 end
