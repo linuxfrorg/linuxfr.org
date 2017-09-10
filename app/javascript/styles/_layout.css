@@ -1,10 +1,9 @@
 /* Header */
-.layout-header {
-  margin-bottom: 2em;
-}
 .layout-header .login {
   display: flex;
   flex-direction: row-reverse;
+  margin-top: .5em;
+  font-weight: bold;
 }
 .layout-header .login a {
   color: var(--blue);
@@ -37,22 +36,26 @@
 .layout-header .logo span {
   display: block;
   color: var(--light-silver);
-  font-size: 0.7em;
+  font-size: 2rem;
   text-align: right;
 }
 .layout-header .hamburger {
   display: flex;
   justify-content: space-between;
 }
-.layout-header .hamburger ul {
-  margin: 0;
-}
 .layout-header .hamburger li {
-  padding-right: 2em;
+  padding: 1px 2em 2px 0;
   text-transform: uppercase;
+  font-size: 1.1em;
 }
 .layout-header .hamburger a:hover {
   color: var(--gray)
+}
+.layout-header .hamburger input {
+  max-width: 12em;
+  border: none;
+  border-bottom: solid 1px var(--gray);
+  font-size: 1.1em;
 }
 @media (--small) {
   .layout-header .hamburger {
@@ -67,6 +70,19 @@
   }
   .layout-header .logo {
     display: none;
+  }
+}
+
+/* Columns */
+@media (--large) {
+  .layout-columns {
+    display: flex;
+  }
+  .layout-column.left {
+    flex: 3;
+  }
+  .layout-column.right {
+    flex: 1;
   }
 }
 

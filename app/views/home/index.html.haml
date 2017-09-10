@@ -1,22 +1,28 @@
-- content_for :column do
-  = render 'polls/box'
-  = render 'sections/box'
-
 - feed "Flux Atom des dépêches", "/news.atom"
 - title "Accueil"
-- cache_unless account_signed_in?, "home/#{@order}/#{@nodes.current_page}", expires_in: 1.minute do
-  %h1 "Accueil"
-  - if @ppp
-    %section#phare
-      = render @ppp
-  - if @banner
-    %aside.banner
-      = @banner
-  = paginated_section @nodes, link_to("Proposer une dépêche", "/news/nouveau") do
-    %main#contents(role="main")
-      = render @nodes.map(&:content)
 
-%nav.sections
+- if @ppp
+  %section.front-page
+    .measure
+      .picture
+        &nbsp;
+      .content
+        %h1= @ppp.title
+
+.layout-columns.measure
+  .layout-column.left
+    = paginated_section @nodes, link_to("Proposer une dépêche", "/news/nouveau") do
+      %main#contents
+        = render @nodes.map(&:content)
+    - if @banner
+      %aside.banner
+        = @banner
+
+  .layout-column.right
+    = render 'polls/box'
+    = render 'sections/box'
+
+%nav.sections.measure
   %h1 Rubriques
   %ul
     %li= link_to "applications et services", "#"

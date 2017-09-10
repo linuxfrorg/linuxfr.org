@@ -9,6 +9,7 @@
 @import '_generics';
 @import '_helpers';
 @import '_layout';
+@import '_homepage';
 
 /* 4. Debug */
 @import '_debug';

@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 %html(lang="fr")
-  = render 'layouts/head'
+  = render "layouts/head"
   %body{body_attr}
     #top
-    = render 'layouts/header'
-    %section#container
+    = render "layouts/header"
+    %section
       - [:alert, :notice].each do |type|
         - if flash[type]
-          %div(class=type)= flash[type]
-      = render 'layouts/sidebar'
+          .measure(class=type)= flash[type]
       = yield :layout
-    = render 'layouts/footer'
+    = render "layouts/footer"
     = javascript_pack_tag "application"

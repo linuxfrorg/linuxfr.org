@@ -1,0 +1,20 @@
+.front-page {
+  margin-top: .5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background: var(--dark-yellow);
+}
+.front-page .measure {
+  display: flex;
+  background-color: #fff;
+}
+.front-page .picture {
+  height: 16em;
+  flex: 3;
+  background-color: var(--gray);
+}
+.front-page .content {
+  flex: 2;
+  align-self: center;
+  text-align: center;
+}
