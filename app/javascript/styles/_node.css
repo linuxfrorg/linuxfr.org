@@ -1,0 +1,39 @@
+/* Footer, with download and comment actions */
+.node-content .actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1em;
+}
+.node-content .download {
+  width: 2em;
+  height: 2em;
+  background: url("~feather-icons/dist/icons/download") no-repeat left;
+  cursor: pointer;
+  position: relative;
+}
+.node-content .download-formats {
+  display: none;
+  position: absolute;
+  top: 2em;
+  border: 1px solid var(--gray);
+}
+.node-content .download:hover .download-formats {
+  display: block;
+}
+.node-content .download-formats a {
+  display: block;
+  width: 100%;
+  padding: .5em;
+  transition: none;
+}
+.node-content .download-formats a:hover {
+  color: #fff;
+  background: var(--blue);
+  transition: none;
+}
+.node-content .comments-count a {
+  display: block;
+  padding: .5em 1.75em;
+  background: url("~feather-icons/dist/icons/message-circle") no-repeat right;
+}

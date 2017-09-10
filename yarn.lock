@@ -1835,6 +1835,10 @@ faye-websocket@~0.11.0:
   dependencies:
     websocket-driver ">=0.5.1"
 
+feather-icons@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/feather-icons/-/feather-icons-3.2.2.tgz#96c132e4a401d5cc18c03063c87999f47dce442b"
+
 file-loader@^0.11.2:
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-0.11.2.tgz#4ff1df28af38719a6098093b88c82c71d1794a34"

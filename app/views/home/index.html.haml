@@ -3,11 +3,18 @@
 
 - if @ppp
   %section.front-page
-    .measure
-      .picture
+    .node.news.measure
+      .node-picture
         &nbsp;
-      .content
-        %h1= @ppp.title
+      .node-content
+        %h1= link_to @ppp.title, @ppp
+        %ul.actions.nav-list
+          %li.download
+            .download-formats
+              = link_to "Markdown", "#{path_for_content @ppp}.md", title: "Télécharger ce contenu au format markdown", class: "action"
+              = link_to "Epub", "#{path_for_content @ppp}.epub", title: "Télécharger ce contenu au format epub", class: "action"
+          %li.comments-count
+            = link_to @ppp.node.comments_count, "#{path_for_content @ppp}#comments"
 
 .layout-columns.measure
   .layout-column.left

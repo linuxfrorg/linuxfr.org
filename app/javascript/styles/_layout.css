@@ -55,6 +55,7 @@
   max-width: 12em;
   border: none;
   border-bottom: solid 1px var(--gray);
+  background: url("~feather-icons/dist/icons/search") no-repeat right;
   font-size: 1.1em;
 }
 @media (--small) {
@@ -89,4 +90,19 @@
 /* Footer */
 .layout-footer {
   background-color: var(--dark-yellow);
+}
+.layout-footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.layout-footer li {
+  padding: .5em;
+}
+.layout-footer a {
+  color: var(--white);
+}
+.layout-footer a:hover {
+  color: var(--gray);
 }
