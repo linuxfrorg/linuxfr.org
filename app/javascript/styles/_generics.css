@@ -2,6 +2,8 @@
   box-sizing: border-box;
 }
 body {
+  color: #000;
+  background-color: #fff;
   font-family: sans-serif;
 }
 a {
@@ -10,4 +12,7 @@ a {
 }
 a, a:link, a:visited, a:hover, a:active, a:focus {
   transition: color .15s ease-in;
+}
+img, canvas, iframe, video, svg, select, textarea {
+  max-width: 100%;
 }

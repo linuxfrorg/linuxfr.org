@@ -1,5 +1,5 @@
 /* 1. External libraries */
-@import '~normalize.css/normalize';
+@import 'normalize.css/normalize';
 
 /* 2. Variables */
 @import '_colors';

@@ -51,7 +51,7 @@
 .layout-header .hamburger a:hover {
   color: var(--gray)
 }
-.layout-header .hamburger input {
+.layout-header .hamburger input[type="search"] {
   max-width: 12em;
   border: none;
   border-bottom: solid 1px var(--gray);
@@ -102,6 +102,7 @@
 }
 .layout-footer a {
   color: var(--white);
+  font-size: 1.1em;
 }
 .layout-footer a:hover {
   color: var(--gray);

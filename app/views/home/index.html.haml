@@ -10,6 +10,7 @@
         %h1= link_to @ppp.title, @ppp
         %ul.actions.nav-list
           %li.download
+            %input.toggle-menu(type="checkbox")
             .download-formats
               = link_to "Markdown", "#{path_for_content @ppp}.md", title: "Télécharger ce contenu au format markdown", class: "action"
               = link_to "Epub", "#{path_for_content @ppp}.epub", title: "Télécharger ce contenu au format epub", class: "action"

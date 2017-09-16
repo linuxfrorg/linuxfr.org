@@ -24,3 +24,15 @@
 .nav-list li {
   display: inline-block;
 }
+
+/* Use a fake checkbox for pure CSS fold-out menu */
+/* Inspired from https://codepen.io/erikterwan/pen/EVzeRP */
+.toggle-menu {
+  display: block;
+  width: 2em;
+  height: 2em;
+  opacity: 0;
+  z-index: 2;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+}

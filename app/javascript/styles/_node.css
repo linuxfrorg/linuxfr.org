@@ -6,10 +6,7 @@
   padding: 1em;
 }
 .node-content .download {
-  width: 2em;
-  height: 2em;
   background: url("~feather-icons/dist/icons/download") no-repeat left;
-  cursor: pointer;
   position: relative;
 }
 .node-content .download-formats {
@@ -18,7 +15,7 @@
   top: 2em;
   border: 1px solid var(--gray);
 }
-.node-content .download:hover .download-formats {
+.node-content .toggle-menu:checked ~ .download-formats {
   display: block;
 }
 .node-content .download-formats a {
