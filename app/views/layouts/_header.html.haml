@@ -2,8 +2,9 @@
   .go-to-content
     %a(href="#contents") Aller au contenu
     %a(href="#sidebar") Aller au menu
-  %nav.login
-    %ul.nav-list
+  %nav.login.menu-small
+    %input.menu-toggle(type="checkbox")
+    %ul.nav-list.menu-content
       - if account_signed_in?
         %li TODO
       - else
@@ -12,13 +13,14 @@
   %a.logo(href="/" title="LinuxFr.org")
     %img{src: Logo.image, title: "Le logo de LinuxFr.org"}
     %h1 LinuxFr<span>.org</span>
-  %nav.hamburger
-    %ul.nav-list
+  %nav.hamburger.menu-small
+    %input.menu-toggle(type="checkbox")
+    %ul.nav-list.menu-content
       %li{class: ("active" if controller_name == "home" || controller_name == "sections")}= link_to "Accueil", '/'
       %li{class: ("active" if controller_name == "news" || controller_name == "sections")}= link_to "Actualités", '/news', title: "Actualités, événements et autres nouveautés"
       %li{class: ("active" if current_page?("/redaction"))}= link_to "Rédaction", '/redaction', title: "Participez à la rédaction des dépêches"
       %li{class: ("active" if controller_name == "diaries" || (controller_name == "users" && action_name == "show"))}= link_to "Blogs", '/journaux', title: "Journaux personnels de nos visiteurs"
       %li{class: ("active" if controller_name == "forums" || controller_name == "posts")}= link_to "Forums", '/forums', title: "Questions/réponses, petites annonces"
       %li{class: ("active" if controller_name == "wiki_pages" || controller_name == "wiki_versions")}= link_to "Wiki", '/wiki', title: "Pages wiki"
-    = form_tag "/recherche", method: :get do
+    = form_tag "/recherche", method: :get, class: "menu-content" do
       <input id="query" name="q" type="search" placeholder="Rechercher" />

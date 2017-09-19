@@ -7,16 +7,10 @@
 }
 .node-content .download {
   background: url("~feather-icons/dist/icons/download") no-repeat left;
-  position: relative;
 }
 .node-content .download-formats {
-  display: none;
-  position: absolute;
   top: 2em;
   border: 1px solid var(--gray);
-}
-.node-content .toggle-menu:checked ~ .download-formats {
-  display: block;
 }
 .node-content .download-formats a {
   display: block;

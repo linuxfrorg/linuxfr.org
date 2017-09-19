@@ -1,10 +1,24 @@
 /* go-to-content is a link aimed at screen readers only */
+/* Inspired from http://www.ffoodd.fr/cache-cache-css/ */
 .go-to-content {
-  float: left;
-  text-indent: -9998em;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
   overflow: hidden;
-  text-align: left;
-  width: 10px;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+.go-to-content:focus,
+.go-to-content:active {
+  clip: auto;
+  clip-path: none;
+  height: auto;
+  overflow: visible;
+  width: auto;
+  white-space: normal;
 }
 
 /* measure is used to limit the width, so that the content stays legible */
@@ -27,7 +41,11 @@
 
 /* Use a fake checkbox for pure CSS fold-out menu */
 /* Inspired from https://codepen.io/erikterwan/pen/EVzeRP */
-.toggle-menu {
+.menu-all, .menu-small {
+  position: relative;
+  z-index: 1;
+}
+.menu-toggle {
   display: block;
   width: 2em;
   height: 2em;
@@ -35,4 +53,27 @@
   z-index: 2;
   cursor: pointer;
   -webkit-touch-callout: none;
+}
+.menu-all .menu-content {
+  display: none;
+  position: absolute;
+  background: var(--white);
+}
+.menu-all .menu-toggle:checked ~ .menu-content {
+  display: block;
+}
+@media (--small) {
+  .menu-small .menu-content {
+    display: none;
+    position: absolute;
+    background: var(--white);
+  }
+  .menu-small .menu-toggle:checked ~ .menu-content {
+    display: block;
+  }
+}
+@media (--not-small) {
+  .menu-small .menu-toggle {
+    display: none;
+  }
 }
