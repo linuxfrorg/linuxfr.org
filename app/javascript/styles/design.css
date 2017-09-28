@@ -10,6 +10,8 @@
 @import '_helpers';
 @import '_layout';
 @import '_homepage';
+@import '_stream';
+@import '_pagination';
 @import '_node';
 
 /* 4. Debug */

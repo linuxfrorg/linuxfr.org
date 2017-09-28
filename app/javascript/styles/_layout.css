@@ -96,9 +96,6 @@
 .layout-header .login li:last-of-type {
   padding-right: 0;
 }
-.layout-header .login li:not(:first-of-type) {
-  border-left: 2px solid var(--near-black);
-}
 @media (--small) {
   .layout-header .login {
     position: fixed;
@@ -118,6 +115,9 @@
     flex-direction: row-reverse;
     margin-top: .5em;
     font-weight: bold;
+  }
+  .layout-header .login li:not(:first-of-type) {
+    border-left: 2px solid var(--near-black);
   }
 }
 

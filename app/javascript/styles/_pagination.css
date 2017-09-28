@@ -1,0 +1,15 @@
+.pagination {
+  margin: 1rem 0;
+}
+.pagination span {
+  padding: .3rem;
+  border: 1px solid var(--gray);
+  border-collapse: collapse;
+  color: var(--dark-gray);
+}
+.pagination span:first-of-type {
+  border-radius: .2rem 0 0 .2rem;
+}
+.pagination span:last-of-type {
+  border-radius: 0 .2rem .2rem 0;
+}

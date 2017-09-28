@@ -72,12 +72,12 @@ module NodeHelper
   def paginated_section(args, link=nil, &block)
     toolbox    = ''.html_safe
     @feeds.each do |k,v|
-      toolbox += content_tag(:div, link_to(v, k), class: "follow_feed")
+      toolbox += content_tag(:div, link_to(v, k), class: "follow-feed")
     end
     toolbox   += content_tag(:div, link, class: 'new_content') if link
     order_bar  = render 'shared/order_navbar'
     pagination = paginate(args, inner_window: 10).to_s
-    before = content_tag(:nav, toolbox + order_bar + pagination, class: "toolbox")
+    before = content_tag(:nav, toolbox + order_bar, class: "toolbox")
     after  = content_tag(:nav, pagination, class: "toolbox")
     ContentPresenter.collection do
       before + capture(&block) + after
