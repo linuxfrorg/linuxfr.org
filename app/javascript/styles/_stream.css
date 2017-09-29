@@ -1,9 +1,9 @@
 .stream {
-  margin-top: .5rem;
-  border-top: .3rem solid var(--dark-gray);
+  margin-top: 0.5rem;
+  border-top: 0.3rem solid var(--dark-gray);
 }
 .stream h1 {
-  margin: .5rem 0 1rem;
+  margin: 0.5rem 0 1rem;
   font-size: 1.5rem;
   color: var(--dark-gray);
 }
@@ -11,8 +11,8 @@
   float: right;
 }
 .stream .node {
-  padding: .5rem 0;
-  border-bottom: .1rem solid var(--gray);
+  padding: 0.5rem 0;
+  border-bottom: 0.1rem solid var(--gray);
 }
 .stream .node:last-of-type {
   border: 0;

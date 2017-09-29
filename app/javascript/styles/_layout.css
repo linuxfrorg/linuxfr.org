@@ -10,21 +10,21 @@
 .layout-header .logo h1 {
   color: var(--near-black);
   font-size: 1.4rem;
-  margin: .2em;
-  line-height: .8;
+  margin: 0.2em;
+  line-height: 0.8;
 }
 .layout-header .logo span {
   display: block;
   color: var(--light-silver);
-  font-size: .7em;
+  font-size: 0.7em;
   text-align: right;
 }
 @media (--small) {
   .layout-header .logo {
     position: fixed;
-	top: 0;
-	left: 0;
-	background-color: var(--white);
+    top: 0;
+    left: 0;
+    background-color: var(--white);
     box-shadow: 0 0 6px var(--near-black);
   }
   .layout-header ~ section {
@@ -43,7 +43,6 @@
   }
 }
 
-
 /* Header - Hamburger & left menu */
 .layout-header .hamburger {
   display: flex;
@@ -55,7 +54,7 @@
   font-size: 1.1em;
 }
 .layout-header .hamburger a:hover {
-  color: var(--gray)
+  color: var(--gray);
 }
 .layout-header .hamburger input[type="search"] {
   max-width: 12em;
@@ -67,9 +66,9 @@
 @media (--small) {
   .layout-header .hamburger {
     position: fixed;
-	top: 0;
-	left: 0;
-	margin: .2rem .3rem;
+    top: 0;
+    left: 0;
+    margin: 0.2rem 0.3rem;
     background: url("~feather-icons/dist/icons/menu") no-repeat left;
   }
   .layout-header .menu-content {
@@ -91,7 +90,7 @@
   color: var(--dark-blue);
 }
 .layout-header .login li {
-  padding: 0 .4em;
+  padding: 0 0.4em;
 }
 .layout-header .login li:last-of-type {
   padding-right: 0;
@@ -99,21 +98,21 @@
 @media (--small) {
   .layout-header .login {
     position: fixed;
-	top: 0;
-	right: 0;
-	margin: .2rem .3rem;
+    top: 0;
+    right: 0;
+    margin: 0.2rem 0.3rem;
     background: url("~feather-icons/dist/icons/user") no-repeat left;
   }
   .layout-header .login .menu-content {
     right: 0;
-	width: 8em;
+    width: 8em;
   }
 }
 @media (--not-small) {
   .layout-header .login {
     display: flex;
     flex-direction: row-reverse;
-    margin-top: .5em;
+    margin-top: 0.5em;
     font-weight: bold;
   }
   .layout-header .login li:not(:first-of-type) {
@@ -145,7 +144,7 @@
   align-items: center;
 }
 .layout-footer li {
-  padding: .5em;
+  padding: 0.5em;
 }
 .layout-footer a {
   color: var(--white);

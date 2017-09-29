@@ -41,7 +41,8 @@
 
 /* Use a fake checkbox for pure CSS fold-out menu */
 /* Inspired from https://codepen.io/erikterwan/pen/EVzeRP */
-.menu-all, .menu-small {
+.menu-all,
+.menu-small {
   position: relative;
   z-index: 1;
 }

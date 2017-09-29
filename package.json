@@ -35,6 +35,10 @@
     "webpack-merge": "^4.1.0"
   },
   "devDependencies": {
+    "prettier": "^1.7.2",
     "webpack-dev-server": "^2.7.1"
+  },
+  "scripts": {
+    "pretty": "prettier --write app/javascript/**/*.{css,js}"
   }
 }

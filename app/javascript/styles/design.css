@@ -1,18 +1,18 @@
 /* 1. External libraries */
-@import 'normalize.css/normalize';
+@import "normalize.css/normalize";
 
 /* 2. Variables */
-@import '_colors';
-@import '_media-queries';
+@import "_colors";
+@import "_media-queries";
 
 /* 3. Modules */
-@import '_generics';
-@import '_helpers';
-@import '_layout';
-@import '_homepage';
-@import '_stream';
-@import '_pagination';
-@import '_node';
+@import "_generics";
+@import "_helpers";
+@import "_layout";
+@import "_homepage";
+@import "_stream";
+@import "_pagination";
+@import "_node";
 
 /* 4. Debug */
-@import '_debug';
+@import "_debug";

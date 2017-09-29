@@ -15,7 +15,7 @@
 .node-content .download-formats a {
   display: block;
   width: 100%;
-  padding: .5em;
+  padding: 0.5em;
   transition: none;
 }
 .node-content .download-formats a:hover {
@@ -25,6 +25,6 @@
 }
 .node-content .comments-count a {
   display: block;
-  padding: .5em 1.75em;
+  padding: 0.5em 1.75em;
   background: url("~feather-icons/dist/icons/message-circle") no-repeat right;
 }
