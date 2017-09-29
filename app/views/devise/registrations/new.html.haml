@@ -4,35 +4,27 @@
     %hr
   =h1 "S'inscrire"
 
-  = form_for @account, :as =>:account, url: registration_path(:account) do |f|
+  = form_with model: @account, as: :account, url: registration_path(:account), class: "devise" do |f|
     = messages_on_error @account
-    %p
-      = f.label :login, "Identifiant"
-      = f.text_field :login, required: 'required', maxlength: 40
-    %p
-      = f.label :email, "Adresse de courriel"
-      = f.email_field :email, required: "required"
-    %p
-      = f.submit "S'inscrire"
+    = f.text_field :login, required: 'required', maxlength: 40, placeholder: "Identifiant"
+    = f.email_field :email, required: "required", placeholder: "Mot de passe"
+    = f.submit "S'inscrire"
 
-  %article.notes
+  .notes
     %p
       Ce formulaire permet de créer un compte utilisateur.
-      Un compte utilisateur vous permet par exemple de poster des commentaires, il est le premier pas pour participer d'une manière ou d'une autre à LinuxFr.org.
-    %p
-      Le système utilisé lors de l'identification est basé sur les cookies.
+      Il va vous permettre par exemple de poster des commentaires, il est le premier pas pour participer d'une manière ou d'une autre à LinuxFr.org.
       Vous recevrez un message pour confirmer la création de votre compte.
     %p
       Si le compte existe déjà, cela signifie que l'adresse électronique proposée est déjà dans notre base.
-      Veuillez alors demander un nouveau mot de passe.
+      Veuillez alors demander <a href="/compte/password/nouveau">un nouveau mot de passe</a>.
     %p
       %strong IMPORTANT&nbsp;:
       une seule création de compte par personne physique est autorisée.
-      Toute création de comptes multiples par une même personne, qu'elle qu'en soit la raison, sera considérée comme un abus de ressources.
       De plus, il est interdit d'utiliser une adresse de courriel temporaire, qui ne permet pas aux administrateurs de vous contacter en cas de problèmes avec votre compte.
-      Lorsqu'une telle adresse est découverte, les administrateurs se réservent le droit de fermer ou supprimer le compte.
       Les comptes, contenus et commentaires du site sont soumis à un ensemble de #{link_to "règles de modération", "/regles_de_moderation"}.
     %p
       Conformément à la loi informatique et liberté, vous pouvez modifier vos informations personnelles par le biais du formulaire web de gestion de vos paramètres utilisateurs.
 
-  = render partial: "devise/shared/links"
+  .devise.links
+    = link_to "Se connecter", new_session_path(:account)

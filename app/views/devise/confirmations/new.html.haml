@@ -7,9 +7,9 @@
   = form_for @account, url: confirmation_path(:account) do |f|
     = messages_on_error @account
     %p
-      = f.label :email, 'Adresse de courriel'
-      = f.email_field :email
+      = f.email_field :email, placeholder: "Adresse de courriel"
     %p
       = f.submit "Envoyer"
 
-  = render partial: "devise/shared/links"
+  .devise.links
+    = render partial: "devise/shared/links"

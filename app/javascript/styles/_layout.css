@@ -36,6 +36,9 @@
   .layout-header ~ section {
     margin-top: 2.5em;
   }
+  .no-layout .layout-header ~ section {
+    margin-top: 0;
+  }
   .layout-header .logo img {
     display: none;
   }

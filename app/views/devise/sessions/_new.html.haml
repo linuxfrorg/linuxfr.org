@@ -1,6 +1,6 @@
 - @account ||= Account.new
 = form_with model: @account, url: '/compte/connexion', class: 'devise' do |f|
-  %p
+  %p.warning
     %strong Attention :
     l'identifiant et le mot de passe sont <strong>sensibles à la casse</strong>.
   = f.text_field :login, id: "account_login#{id_suffix}", required: "required", placeholder: "Identifiant", size: 20

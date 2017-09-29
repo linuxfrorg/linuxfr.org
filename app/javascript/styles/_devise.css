@@ -8,6 +8,8 @@
 main.devise {
   height: 100vh;
 }
+
+/* Logo at the top of the page */
 .devise.logo {
   width: 100%;
 }
@@ -16,6 +18,55 @@ main.devise {
   margin: 0.1rem;
   color: var(--gray);
 }
+
+/* Texts */
+.devise h1 {
+  margin: 1rem 2rem;
+  color: var(--dark-gray);
+  font-size: 1.5rem;
+}
+.devise .warning {
+  margin: 1rem 2rem;
+  color: var(--dark-gray);
+}
+.devise .notes {
+  margin: 1rem 2rem;
+}
+@media (--small) {
+  .devise .notes {
+    font-size: .7rem;
+  }
+}
+
+/* forms */
+.devise input[type="text"],
+.devise input[type="email"],
+.devise input[type="password"] {
+  width: 16rem;
+  margin-top: 1rem;
+  padding: .5rem 0 .3rem 2rem;
+  border: 0;
+  border-bottom: 1px solid var(--dark-gray);
+}
+.devise input[type="text"] {
+  background: url("~feather-icons/dist/icons/user") no-repeat left;
+}
+.devise input[type="email"] {
+  padding-left: 2.25rem;
+  background: url("~feather-icons/dist/icons/mail") no-repeat left;
+}
+.devise input[type="password"] {
+  background: url("~feather-icons/dist/icons/lock") no-repeat left;
+}
+.devise input[type="submit"] {
+  width: 16rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: 1px solid var(--near-black);
+  background-color: var(--white);
+}
+
+/* Links at the bottom of the page */
 .devise.links a {
   width: 12rem;
   margin: 0.6rem;

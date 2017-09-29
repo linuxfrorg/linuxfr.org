@@ -2,7 +2,6 @@
   %a.devise.logo(href="/")
     %img{src: Logo.image, title: "LinuxFr.org"}
     %hr
-  =h1 "Se connecter"
   = render "devise/sessions/new", id_suffix: ""
   .devise.links
     = link_to "Mot de passe oublié ?", new_password_path(:account)
