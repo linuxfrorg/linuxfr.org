@@ -1,13 +1,11 @@
 - @account ||= Account.new
-= form_for @account, url: '/compte/connexion', html: { id: "#{dom_id @account}#{id_suffix}" } do |f|
+= form_with model: @account, url: '/compte/connexion', class: 'devise' do |f|
   %p
-    = f.label "login#{id_suffix}", "Identifiant"
-    = f.text_field :login, id: "account_login#{id_suffix}", required: "required", placeholder: "Identifiant", size: 20
-  %p
-    = f.label "password#{id_suffix}", "Mot de passe"
-    = f.password_field :password, id: "account_password#{id_suffix}", required: "required", placeholder: "Mot de passe", size: 20
+    %strong Attention :
+    l'identifiant et le mot de passe sont <strong>sensibles à la casse</strong>.
+  = f.text_field :login, id: "account_login#{id_suffix}", required: "required", placeholder: "Identifiant", size: 20
+  = f.password_field :password, id: "account_password#{id_suffix}", required: "required", placeholder: "Mot de passe", size: 20
   %p
     = f.check_box :remember_me, id: "account_remember_me#{id_suffix}"
     = f.label "remember_me#{id_suffix}", "Connexion automatique"
-  %p
-    = f.submit "Se connecter", id: "account_submit#{id_suffix}"
+  = f.submit "Se connecter", id: "account_submit#{id_suffix}"

@@ -1,3 +1,9 @@
+/* No layout */
+.no-layout .layout-header,
+.no-layout .layout-footer {
+  display: none;
+}
+
 /* Header - Logo & Title */
 .layout-header .logo {
   display: flex;

@@ -10,6 +10,3 @@
 - if devise_mapping.confirmable? && controller_name != 'confirmations'
   = link_to "Pas encore reçu les instructions de confirmation ?", new_confirmation_path(:account)
   %br/
-- if devise_mapping.lockable? && controller_name != 'unlocks'
-  = link_to "Pas encore reçu les instructions pour déverrouillé votre compte ?", new_unlock_path(:account)
-  %br/

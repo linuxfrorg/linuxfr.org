@@ -1,5 +1,8 @@
-%main#contents(role="main")
-  %h2 Mot de passe oublié ?
+%main.devise.measure#contents(role="main")
+  %a.devise.logo(href="/")
+    %img{src: Logo.image, title: "LinuxFr.org"}
+    %hr
+  =h1 "Mot de passe oublié ?"
 
   = form_for @account, url: password_path(:account) do |f|
     = devise_error_messages!

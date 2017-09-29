@@ -13,6 +13,7 @@
 @import "_stream";
 @import "_pagination";
 @import "_node";
+@import "_devise";
 
 /* 4. Debug */
 @import "_debug";

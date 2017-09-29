@@ -1,0 +1,32 @@
+/* Devise is used for sign-up, login, password reset, etc. */
+.devise {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+main.devise {
+  height: 100vh;
+}
+.devise.logo {
+  width: 100%;
+}
+.devise.logo hr {
+  width: 80%;
+  margin: 0.1rem;
+  color: var(--gray);
+}
+.devise.links a {
+  width: 12rem;
+  margin: 0.6rem;
+  padding: 0.4rem;
+  border: 1px solid var(--gray);
+  color: var(--gray);
+  font-size: 0.8rem;
+  text-align: center;
+}
+.devise.links a:hover {
+  transition-property: border color;
+  border-color: var(--near-black);
+  color: var(--near-black);
+}

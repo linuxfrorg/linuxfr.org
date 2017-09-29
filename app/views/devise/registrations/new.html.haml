@@ -1,4 +1,7 @@
-%main#contents(role="main")
+%main.devise.measure#contents(role="main")
+  %a.devise.logo(href="/")
+    %img{src: Logo.image, title: "LinuxFr.org"}
+    %hr
   =h1 "S'inscrire"
 
   = form_for @account, :as =>:account, url: registration_path(:account) do |f|
