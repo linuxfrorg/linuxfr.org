@@ -2,7 +2,7 @@
 class ApplicationController < ActionController::Base
   include Canable::Enforcers
 
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :reset_session, preprend: true
   before_action :seo_filter
   before_action :configure_permitted_parameters, if: :devise_controller?
   helper_method :url_for_content, :path_for_content, :current_user, :current_stylesheet
