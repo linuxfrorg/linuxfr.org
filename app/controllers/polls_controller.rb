@@ -1,7 +1,5 @@
 # encoding: UTF-8
 class PollsController < ApplicationController
-  skip_before_action :verify_authenticity_token , only: [:vote]
-  before_action :verify_referer_or_authenticity_token, only: [:vote]
   before_action :authenticate_account!, only: [:new, :create]
   before_action :find_poll, only: [:show, :vote]
   after_action  :marked_as_read, only: [:show], if: :account_signed_in?
