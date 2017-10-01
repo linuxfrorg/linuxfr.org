@@ -74,6 +74,10 @@ class Account < ActiveRecord::Base
 
   devise :registerable, :database_authenticatable, :confirmable, :recoverable, :rememberable, :trackable
 
+  def remember_me
+    true
+  end
+
   before_create :create_user
   def create_user
     self.user_id = User.create!(name: login).id
