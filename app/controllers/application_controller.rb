@@ -116,10 +116,6 @@ protected
     session[:"#{scope}_return_to"] = url_for() if request && request.get? && !request.xhr?
   end
 
-  def verify_referer_or_authenticity_token
-    request.referer =~ /^https?:\/\/#{MY_DOMAIN}\// or verify_authenticity_token
-  end
-
   def handle_unverified_request
     Rails.logger.info "CSRF protection for #{request.remote_ip}: #{form_authenticity_token} // #{params[request_forgery_protection_token]} // #{request.headers['X-CSRF-Token']}"
     super

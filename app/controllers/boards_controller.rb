@@ -1,7 +1,5 @@
 # encoding: utf-8
 class BoardsController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  before_action :verify_referer_or_authenticity_token, only: [:create]
   before_action :authenticate_account!, only: :create
   after_action :expire_cache, only: [:create]
   caches_page :show, if: Proc.new { |c| c.request.format.xml? }
