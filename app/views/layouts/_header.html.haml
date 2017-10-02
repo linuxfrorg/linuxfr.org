@@ -2,12 +2,14 @@
   .go-to-content
     %a(href="#contents") Aller au contenu
     %a(href="#sidebar") Aller au menu
-  %nav.login.menu-small
-    %input.menu-toggle(type="checkbox")
-    %ul.nav-list.menu-content
-      - if account_signed_in?
-        %li TODO
-      - else
+  - if account_signed_in?
+    %nav.logged.menu-all
+      %input.menu-toggle(type="checkbox")
+      .menu-content
+        TODO
+  - else
+    %nav.login
+      %ul.nav-list
         %li= link_to "Se connecter", "/compte/connexion"
         %li= link_to "S'inscrire", "/compte/inscription"
   %a.logo(href="/" title="LinuxFr.org")

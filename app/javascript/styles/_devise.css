@@ -34,7 +34,7 @@ main.devise {
 }
 @media (--small) {
   .devise .notes {
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
 }
 
@@ -44,7 +44,7 @@ main.devise {
 .devise input[type="password"] {
   width: 16rem;
   margin-top: 1rem;
-  padding: .5rem 0 .3rem 2rem;
+  padding: 0.5rem 0 0.3rem 2rem;
   border: 0;
   border-bottom: 1px solid var(--dark-gray);
 }

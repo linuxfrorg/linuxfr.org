@@ -30,13 +30,11 @@
 
 /* nav-list helps formatting a navigation bar, ie a list of links */
 .nav-list {
+  display: flex;
   margin-top: 0;
   margin-bottom: 0;
   padding: 0;
   list-style-type: none;
-}
-.nav-list li {
-  display: inline-block;
 }
 
 /* Use a fake checkbox for pure CSS fold-out menu */

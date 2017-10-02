@@ -91,33 +91,38 @@
   }
 }
 
-/* Header - Login & right menu */
-.layout-header .login a {
-  color: var(--blue);
-}
-.layout-header .login a:hover {
-  color: var(--dark-blue);
-}
-.layout-header .login li {
-  padding: 0 0.4em;
-}
-.layout-header .login li:last-of-type {
-  padding-right: 0;
-}
+/* Header - Login & Sign up links */
 @media (--small) {
-  .layout-header .login {
+  .layout-header .login li {
     position: fixed;
+    display: block;
+    z-index: 1;
     top: 0;
     right: 0;
+    width: 2rem;
+    height: 2rem;
     margin: 0.2rem 0.3rem;
-    background: url("~feather-icons/dist/icons/user") no-repeat left;
+    overflow: hidden;
+    color: transparent;
+    background: url("~feather-icons/dist/icons/log-in") no-repeat left;
   }
-  .layout-header .login .menu-content {
-    right: 0;
-    width: 8em;
+  .layout-header .login li + li {
+    display: none;
   }
 }
 @media (--not-small) {
+  .layout-header .login a {
+    color: var(--blue);
+  }
+  .layout-header .login a:hover {
+    color: var(--dark-blue);
+  }
+  .layout-header .login li {
+    padding: 0 0.4em;
+  }
+  .layout-header .login li:last-of-type {
+    padding-right: 0;
+  }
   .layout-header .login {
     display: flex;
     flex-direction: row-reverse;
@@ -127,6 +132,15 @@
   .layout-header .login li:not(:first-of-type) {
     border-left: 2px solid var(--near-black);
   }
+}
+
+/* Header - logged-in menu */
+.layout-header .logged {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 0.2rem 0.3rem;
+  background: url("~feather-icons/dist/icons/user") no-repeat left;
 }
 
 /* Columns */
@@ -147,7 +161,6 @@
   background-color: var(--dark-yellow);
 }
 .layout-footer ul {
-  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
