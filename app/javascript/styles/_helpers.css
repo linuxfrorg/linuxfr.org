@@ -39,8 +39,7 @@
 
 /* Use a fake checkbox for pure CSS fold-out menu */
 /* Inspired from https://codepen.io/erikterwan/pen/EVzeRP */
-.menu-all,
-.menu-small {
+.menu-all {
   position: relative;
   z-index: 1;
 }
@@ -59,16 +58,22 @@
   background: var(--white);
 }
 .menu-all .menu-toggle:checked ~ .menu-content {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 @media (--small) {
+  .menu-small {
+    position: relative;
+    z-index: 1;
+  }
   .menu-small .menu-content {
     display: none;
     position: absolute;
     background: var(--white);
   }
   .menu-small .menu-toggle:checked ~ .menu-content {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 }
 @media (--not-small) {

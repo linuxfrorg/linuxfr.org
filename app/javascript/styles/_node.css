@@ -13,8 +13,6 @@
   border: 1px solid var(--gray);
 }
 .node-content .download-formats a {
-  display: block;
-  width: 100%;
   padding: 0.5em;
   transition: none;
 }

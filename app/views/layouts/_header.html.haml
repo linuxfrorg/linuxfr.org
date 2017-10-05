@@ -6,7 +6,21 @@
     %nav.logged.menu-all
       %input.menu-toggle(type="checkbox")
       .menu-content
-        TODO
+        = avatar_img current_account.user
+        .nickname= current_account.login
+        .numbers
+          .nb_votes
+            #{current_account.nb_votes}
+            %span avis
+          .karma
+            #{current_account.karma}
+            %span karma
+        %hr
+        = link_to "Mon tableau de bord", '/tableau-de-bord'
+        = link_to "Profil", current_account.user
+        = link_to "Paramètres", '/compte/modifier'
+        %hr
+        = button_to "Se déconnecter", '/compte/deconnexion', method: :post, id: "logout"
   - else
     %nav.login
       %ul.nav-list

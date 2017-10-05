@@ -4,6 +4,10 @@
   display: none;
 }
 
+.layout-header {
+  position: relative;
+}
+
 /* Header - Logo & Title */
 .layout-header .logo {
   display: flex;
@@ -141,6 +145,22 @@
   right: 0;
   margin: 0.2rem 0.3rem;
   background: url("~feather-icons/dist/icons/user") no-repeat left;
+}
+@media (--small) {
+  .layout-header .logged .menu-content {
+    top: -0.2rem;
+    right: -0.3rem;
+    width: 80vw;
+    height: 100vh;
+  }
+}
+@media (--not-small) {
+  .layout-header .logged {
+    position: absolute;
+  }
+  .layout-header .logged .menu-content {
+    right: 0;
+  }
 }
 
 /* Columns */
