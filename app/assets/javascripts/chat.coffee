@@ -13,7 +13,9 @@ class Chat
     @totoz_url  = $.cookie("totoz-url") or "https://sfw.totoz.eu/gif/"
     @norlogize      right for right in @board.find(".board-right")
     @norlogize_left left  for left  in @board.find(".board-left time").get().reverse()
-    @board.on("mouseenter", "time", @highlitizer)
+    @board.on("mouseenter", ".board-left time", @left_highlitizer)
+          .on("mouseleave", "time", @deshighlitizer)
+    @board.on("mouseenter", ".board-right time", @right_highlitizer)
           .on("mouseleave", "time", @deshighlitizer)
     if @totoz_type == "popup"
       @totoz = @board.append($("<div id=\"les-totoz\"/>")).find("#les-totoz")
@@ -107,10 +109,19 @@ class Chat
     x.dataset.clockTime = time
     x.dataset.clockIndex = index
 
-  highlitizer: (event) =>
+  left_highlitizer: (event) =>
     time = $(event.target).data("clockTime")
     index = $(event.target).data("clockIndex")
     @inbox.find("time[data-clock-time=\"" + time + "\"][data-clock-index=\"" + index + "\"]").addClass "highlighted"
+    @inbox.find("time[data-clock-time=\"" + time.substr(0, 5) + "\"][data-clock-index=\"" + index + "\"]").addClass "highlighted"
+
+  right_highlitizer: (event) =>
+    time = $(event.target).data("clockTime")
+    index = $(event.target).data("clockIndex")
+    if time.length = 5
+        @inbox.find("time[data-clock-time*=\"" + time + "\"]").addClass "highlighted"
+    else
+        @inbox.find("time[data-clock-time=\"" + time + "\"][data-clock-index=\"" + index + "\"]").addClass "highlighted"
 
   deshighlitizer: =>
     @inbox.find("time.highlighted").removeClass "highlighted"
