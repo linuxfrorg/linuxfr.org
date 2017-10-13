@@ -1,0 +1,3 @@
+<% @boards.reverse_each do |board| %>
+<%= board.id %>	<%= board.created_at.to_s(:timestamp) %>	<%= board.remove_control_chars board.user_agent %>	<%= board.user_name %>	<%= board.remove_control_chars board.message %>
+<% end %>
