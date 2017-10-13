@@ -88,10 +88,18 @@ class Board
   ALLOWED_TAGS = %w(b i u s strong em code)
 
   def clean
-    @message    = sanitize_message @message
-    @user_agent = h @user_agent.to_s.encode(Encoding::UTF_8)
+    @message    = sanitize_message remove_control_chars @message
+    @user_agent = h remove_control_chars @user_agent.to_s.encode(Encoding::UTF_8)
     @user_name  = h @user_name
     @user_url   = h @user_url
+  end
+
+  def remove_control_chars(msg)
+    sanitized = ""
+    msg.each_char do |char|
+      sanitized << char unless char.ascii_only? and (char.ord < 32 or char.ord == 127)
+    end
+    return sanitized
   end
 
   def sanitize_message(msg)
