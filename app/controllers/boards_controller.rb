@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
   before_action :authenticate_account!, only: :create
   after_action :expire_cache, only: [:create]
   caches_page :show, if: Proc.new { |c| c.request.format.xml? }
-  respond_to :html, :xml
+  respond_to :html, :xml, :tsv
 
   def show
     @boards = Board.all(Board.free)
@@ -21,6 +21,7 @@ class BoardsController < ApplicationController
       wants.html { redirect_back fallback_location: root_url }
       wants.js   { render nothing: true }
       wants.xml  { render nothing: true }
+      wants.tsv  { render nothing: true }
     end
   end
 
