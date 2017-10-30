@@ -9,10 +9,8 @@ module LayoutHelper
   end
 
   def logo
-    img = Logo.image
-    content_tag(:h1, title: "Le logo de LinuxFr.org", style: "background-image: url('#{img}');") do
+    content_tag(:h1, title: "Le logo de LinuxFr.org") do
       link_to "LinuxFr.org", '/'
     end
   end
-
 end
