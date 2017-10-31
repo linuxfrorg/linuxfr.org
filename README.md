@@ -16,11 +16,11 @@ LinuxFr.org on a Debian box.
 
 ```
 # aptitude install mysql-server mysql-client libmysql++-dev git-core
-# aptitude install build-essential openssl libreadline6 libreadline6-dev
+# aptitude install build-essential openssl libreadline-dev
 # aptitude install curl libcurl4-openssl-dev zlib1g zlib1g-dev libssl-dev
 # aptitude install libxml2-dev libxslt-dev autoconf libgmp-dev libyaml-dev
 # aptitude install ncurses-dev bison automake libtool imagemagick libc6-dev
-# aptitude install hunspell hunspell-fr redis-server
+# aptitude install hunspell hunspell-fr-comprehensive redis-server ruby
 ```
 
 Note: you can use libcurl4-gnutls-dev instead of libcurl4-openssl-dev.
