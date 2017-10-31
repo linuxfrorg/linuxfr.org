@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302181642) do
+ActiveRecord::Schema.define(version: 20171031210801) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "user_id",                limit: 4
@@ -384,11 +384,12 @@ ActiveRecord::Schema.define(version: 20170302181642) do
   add_index "users", ["cached_slug"], name: "index_users_on_cached_slug", using: :btree
 
   create_table "wiki_pages", force: :cascade do |t|
-    t.string   "title",       limit: 100,        null: false
-    t.string   "cached_slug", limit: 105
-    t.text     "body",        limit: 4294967295
+    t.string   "title",          limit: 100,        null: false
+    t.string   "cached_slug",    limit: 105
+    t.text     "body",           limit: 4294967295
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "truncated_body", limit: 65535
   end
 
   add_index "wiki_pages", ["cached_slug"], name: "index_wiki_pages_on_cached_slug", using: :btree
