@@ -3,12 +3,13 @@
 #
 # Table name: wiki_pages
 #
-#  id          :integer          not null, primary key
-#  title       :string(100)      not null
-#  cached_slug :string(105)
-#  body        :text(4294967295)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id             :integer          not null, primary key
+#  title          :string(100)      not null
+#  cached_slug    :string(105)
+#  body           :text(4294967295)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  truncated_body :text(65535)
 #
 
 #
