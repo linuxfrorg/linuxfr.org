@@ -40,6 +40,7 @@ class WikiPage < Content
   attr_accessor :wiki_body, :message, :user_id
 
   wikify_attr :body
+  truncate_attr :body
 
   after_save :create_new_version
   def create_new_version
