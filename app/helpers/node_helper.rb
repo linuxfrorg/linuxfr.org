@@ -107,7 +107,8 @@ module NodeHelper
     date         = content_tag(:span, "le #{date_time.to_s(:date)}", class: "date")
     time         = content_tag(:span,  "à #{date_time.to_s(:time)}", class: "time")
     published_at = content_tag(:time, date + " " + time, datetime: date_time.iso8601, class: "updated")
-    "Posté par #{user_link} #{published_at}.".html_safe
+    caption      = content_tag(:span, "Posté par #{ user_link } #{ published_at }.".html_safe, class: "posted_by_spanblock")
+    caption.html_safe
   end
 
   def read_it(content)
