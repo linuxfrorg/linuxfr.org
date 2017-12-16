@@ -14,7 +14,7 @@
       = button_to "+50XP", karma_admin_account_path(@user.account.id)
     - if current_account.can_block?
       %button.more.block Interdire de commenter
-      .more_actions(style="display: none;")
+      .more_actions.block(style="display: none;")
         %ul
           %li= button_to "24h", moderation_block_index_path(nb_days: 1, account_id: @user.account.id), remote: true, class: "block"
           %li= button_to "2 jours", moderation_block_index_path(nb_days: 2, account_id: @user.account.id), remote: true, class: "block"
@@ -22,17 +22,26 @@
           %li= button_to "un mois", moderation_block_index_path(nb_days: 30, account_id: @user.account.id), remote: true, class: "block"
     - if current_account.can_plonk?
       %button.more.plonk Interdire de tribune
-      .more_actions(style="display: none;")
+      .more_actions.plonk(style="display: none;")
         %ul
           %li= button_to "24h", moderation_plonk_index_path(nb_days: 1, account_id: @user.account.id), remote: true, class: "plonk"
           %li= button_to "2 jours", moderation_plonk_index_path(nb_days: 2, account_id: @user.account.id), remote: true, class: "plonk"
           %li= button_to "une semaine", moderation_plonk_index_path(nb_days: 7, account_id: @user.account.id), remote: true, class: "plonk"
           %li= button_to "un mois", moderation_plonk_index_path(nb_days: 30, account_id: @user.account.id), remote: true, class: "plonk"
       - if @user.account.logs.any?
-        %h2 Historique
-        %ul
+        %h2.history Historique
+        %ul.history
           = list_of(@user.account.logs) do |log|
-            #{l log.created_at} - #{log.user.try :name} - #{log.description}
+            %span.date
+              #{l log.created_at}
+            %span.sep
+              \-
+            %span.name
+              #{log.user.try :name}
+            %span.sep
+              \-
+            %span.description
+              #{log.description}
   %p Accès aux derniers
   %ul
     %li= link_to "journaux", journaux_user_path(@user)
