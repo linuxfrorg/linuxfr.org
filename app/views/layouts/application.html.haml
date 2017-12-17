@@ -5,7 +5,7 @@
     #top
     = render 'layouts/site', home: false
     = render 'layouts/sidebar'
-    %section#container
+    %section#container.container
       - [:alert, :notice].each do |type|
         - if flash[type]
           %div(class=type)= flash[type]
