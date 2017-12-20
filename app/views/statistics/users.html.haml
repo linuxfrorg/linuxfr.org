@@ -61,7 +61,7 @@
       %tr
         - contentclass = "content#{authors["content_type"].downcase()}"
         %td
-          .stat(class="#{contentclass}" style="width: 100px;") #{translate_content_type(authors["content_type"])}
+          .stat.stats100px(class="#{contentclass}") #{translate_content_type(authors["content_type"])}
         %td
           .stat(class="#{contentclass}" style="width: #{width_stats * authors["cnt"] / maxval}px;")=authors["cnt"]
         %td
@@ -319,7 +319,7 @@
         %tr
           %td
           %td
-            .stat(class="account#{c}" style="width: 100px;") #{translate_account.fetch("account#{c}")}
+            .stat.stats100px(class="account#{c}") #{translate_account.fetch("account#{c}")}
           %td
             .stat(class="account#{c}" style="width: #{(width_stats * cnt / @stats.slot_size).to_i}px;")= cnt
  
@@ -332,6 +332,6 @@
         - c += "recent"   if slot["recent"] == 1
         - c += "inactive" if slot["inactive"] == 1
         %td
-          .stat(class="account#{c}" style="width: 100px;") #{translate_account.fetch("account#{c}")}
+          .stat.stats100px(class="account#{c}") #{translate_account.fetch("account#{c}")}
         %td
           .stat(class="account#{c}" style="width: #{(width_stats * cnt / @stats.slot_size).to_i}px;")= cnt
