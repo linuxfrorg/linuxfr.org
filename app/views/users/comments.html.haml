@@ -5,9 +5,14 @@
 %main#contents(role="main")
   =h1 "#{@user.name} a écrit #{pluralize @comments.total_count, "commentaire"}"
   - feed "Flux Atom des commentaires de #{@user.name}"
-  = paginate @comments
-  %ul
-    - @comments.each do |comment|
-      %li.comment(id="comment-#{comment.id}")
-        = render comment
-  = paginate @comments
+  %style{type: "text/css"}
+    \.toolbox .pagination { display: block }
+  %nav.toolbox
+    = paginate @comments
+  %div#comments
+    %ul.threads
+      - @comments.each do |comment|
+        %li.comment(id="comment-#{comment.id}")
+          = render comment
+  %nav.toolbox
+    = paginate @comments
