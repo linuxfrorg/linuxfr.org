@@ -11,6 +11,11 @@
       %li Dernière connexion&nbsp;: #{a.current_sign_in_at ? l(@user.account.current_sign_in_at) : "-"}
       %li Karma&nbsp;: #{a.karma} (minimum&nbsp;: #{a.min_karma}, maximum&nbsp;: #{a.max_karma})
     - if current_account.admin?
+      %p Visibilité
+      %ul
+        %li Commentaires &nbsp;: #{ @user.comments.published.count } sur #{ @user.comments.count }
+        %li Contenus &nbsp;: #{ @user.nodes.visible.count } sur #{ @user.nodes.count }
+      %p Tags&nbsp;: #{ @user.taggings.count }
       = button_to "+50XP", karma_admin_account_path(@user.account.id)
     - if current_account.can_block?
       %button.more.block Interdire de commenter

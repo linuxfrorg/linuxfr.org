@@ -11,25 +11,34 @@
 
 %table
   %tr
-    %th Pseudo
-    %th Courriel
+    %th Pseudo / Courriel
     %th Karma
     %th IP courante / précédente
-    %th Statut
+    %th Commentaires publics / tous
+    %th Contenus publics / tous
     %th Date de création
     %th Actions
     %th Changer de rôle
   - @accounts.each do |account|
     %tr
-      %td= link_to account.login, account.user
-      %td= account.email
+      %td
+        = link_to account.login, account.user
+        - if account.inactive?
+          = image_tag "/images/icones/x_red.svg", alt: "Inactif", title: "Inactif", width: "15px"
+        - else
+          = image_tag "/images/icones/check.svg", alt: "Actif", title: "Actif", width: "16px"
+        %br
+        = account.email
       %td= account.karma
       %td
         - if account.current_sign_in_ip != account.last_sign_in_ip
-          #{ account.current_sign_in_ip }&nbsp;/&nbsp;#{ account.last_sign_in_ip }
+          #{ account.current_sign_in_ip }&nbsp;/ #{ account.last_sign_in_ip }
         - else
           = account.current_sign_in_ip
-      %td= account.inactive? ? "Inactif" : "Actif"
+      %td
+        #{ account.user.comments.published.count }&nbsp;/ #{ account.user.comments.count }
+      %td
+        #{ account.user.nodes.visible.count }&nbsp;/ #{ account.user.nodes.count }
       %td= account.created_at.to_s(:posted)
       %td
         - if account.inactive? && account.user_id != 1
