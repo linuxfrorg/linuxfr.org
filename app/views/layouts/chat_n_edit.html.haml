@@ -4,7 +4,7 @@
   %body{body_attr}
     #top
     = render 'layouts/site', home: true
-    %section#redaction
+    %section#redaction.container
       - [:alert, :notice].each do |type|
         - if flash[type]
           %div(class=type)= flash[type]

@@ -66,7 +66,7 @@
                 %td.stat{'rowspan' => comment.count}= year
                 -newyear=false
               %td
-                .stat(class="content#{type.downcase()}" style="width: 100px;") #{translate_content_type(type)}
+                .stat.stats100px(class="content#{type.downcase()}") #{translate_content_type(type)}
               %td
                 .stat(class="content#{type.downcase()}" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
 
@@ -88,7 +88,7 @@
                 %td.stat{'rowspan' => comment.count}= month.sub(/(\d{4})(\d{2})/, '\2 \1')
                 -newyear=false
               %td
-                .stat(class="content#{type.downcase}" style="width: 100px;") #{translate_content_type(type)}
+                .stat.stats100px(class="content#{type.downcase}") #{translate_content_type(type)}
               %td
                 .stat(class="content#{type.downcase}" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
 

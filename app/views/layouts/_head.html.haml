@@ -1,6 +1,8 @@
 %head
   %meta(charset="utf-8")
   %title= @title.join(' - ').html_safe
+  %style(type="text/css")= "header#branding h1 { background-image: url('" + Logo.image + "') }"
+  %style(type="text/css")= ".stats100px { width: 100px }"
   - if current_stylesheet
     = stylesheet_link_tag current_stylesheet, media: nil
   - elsif current_account

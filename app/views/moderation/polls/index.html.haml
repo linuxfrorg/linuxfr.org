@@ -1,6 +1,7 @@
-=h1 "Nouveaux sondages"
-- if @polls.empty?
-  Aucune proposition de sondage.
-  = link_to "En proposer un.", new_poll_path
-- else
-  = render @polls
+%main#contents(role="main")
+  =h1 "Nouveaux sondages"
+  - if @polls.empty?
+    Aucune proposition de sondage.
+    = link_to "En proposer un.", new_poll_path
+  - else
+    = render @polls

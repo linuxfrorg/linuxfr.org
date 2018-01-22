@@ -34,12 +34,13 @@
   %pre
     @import url("//#{MY_DOMAIN}/assets/application.css");
 
-  = form_tag "/stylesheet", method: :put do
-    = label_tag :stylesheet, "Pour utiliser une feuille de style externe, veuillez saisir son URL :"
-    = text_field_tag :stylesheet
-    = submit_tag 'OK'
+  %div.sideforms
+    = form_tag "/stylesheet", method: :put do
+      = label_tag :stylesheet, "Pour utiliser une feuille de style externe, veuillez saisir son URL :"
+      = text_field_tag :stylesheet
+      = submit_tag 'OK'
 
-  = form_tag "/stylesheet", multipart: true do
-    = label_tag :uploaded_stylesheet, "Pour utiliser une feuille de style présente sur votre ordinateur, veuillez l'uploader :"
-    = file_field_tag :uploaded_stylesheet
-    = submit_tag 'OK'
+    = form_tag "/stylesheet", multipart: true do
+      = label_tag :uploaded_stylesheet, "Pour utiliser une feuille de style présente sur votre ordinateur, veuillez l'uploader :"
+      = file_field_tag :uploaded_stylesheet
+      = submit_tag 'OK'
