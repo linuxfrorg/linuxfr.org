@@ -1,5 +1,5 @@
 - if @poll
   #poll_box.box
-    %h1 Sondage
+    %h1= link_to 'Sondage', '/sondages'
     %h2= link_to @poll.title, controller: "polls", action: "show", id: @poll.to_param, results: 1
     = render("polls/answers_#{poll_current_or_archived @poll}", poll: @poll, id_suffix: "_sidebar")

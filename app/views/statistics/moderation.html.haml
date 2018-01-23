@@ -37,7 +37,7 @@
           %tr
             - contentclass = "content#{day["type"].downcase()}"
             %td
-              .stat(class="#{contentclass}" style="width: 100px;") #{translate_content_type(day["type"])}
+              .stat.stats100px(class="#{contentclass}") #{translate_content_type(day["type"])}
             %td.stat(class="#{contentclass}")= day_name day["day"]
             %td
               .stat(class="#{contentclass}" style="width: #{(width_stats * day["cnt"] / maxval).to_i}px;")= day["cnt"]

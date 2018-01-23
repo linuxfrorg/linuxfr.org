@@ -10,7 +10,7 @@
         %span#nb_votes #{current_account.nb_votes}
         avis
       %ul
-        %li
+        %li{:class => ((current_account.has_answers?)?"has_answers":"no_answer")}
           - if current_account.has_answers?
             = image_tag "/images/icones/chat.svg", alt: "Nouveaux !", title: "Vous avez reçu des réponses à vos commentaires", width: "16px"
           = link_to "Mon tableau de bord", '/tableau-de-bord'

@@ -15,15 +15,15 @@
   .notice
     - case rand 5
     - when 0
-      = link_to "Êtes-vous inscrit à la liste de diffusion des rédacteurs ?", "/news/une-liste-de-diffusion-pour-les-redacteurs-de-linuxfr-org"
+      = link_to "Êtes-vous inscrit à la liste de diffusion des rédacteurs ?", "/news/une-liste-de-diffusion-pour-les-redacteurs-de-linuxfr-org"
     - when 1
-      = link_to "Avez-vous lu la page d'aide à la rédaction ?", "/wiki/redaction"
+      = link_to "Avez-vous lu la page d'aide à la rédaction ?", "/wiki/redaction"
     - when 2
-      = link_to "Certains auteurs sont récompensés par des livres, pensez à vérifier votre adresse de courriel (c'est le seul moyen pour le site de vous contacter)", "/compte/modifier"
+      = link_to "Certains auteurs sont récompensés par des livres. Pensez à vérifier votre adresse de courriel (c'est le seul moyen pour le site de vous contacter)", "/compte/modifier"
     - when 3
-      = link_to "Connaissez-vous les règles de modération", "/regles_de_moderation"
+      = link_to "Connaissez-vous les règles de modération ?", "/regles_de_moderation"
     - else
-      = link_to "Connaissez-vous le moteur de recherche de photos sous licence Creative Commons ?", "https://ccsearch.creativecommons.org/?search=tux&licenses=ALL-%24&licenses=ALL-MOD&search_fields=title&search_fields=creator&search_fields=tags&per_page=20&work_types=photos&providers=500px&providers=flickr"
+      = link_to "Connaissez-vous le moteur de recherche de photos sous licence Creative Commons ?", "https://ccsearch.creativecommons.org/?search=tux&licenses=ALL-%24&licenses=ALL-MOD&search_fields=title&search_fields=creator&search_fields=tags&per_page=20&work_types=photos&providers=500px&providers=flickr"
 
   %h1 Dépêches en cours de rédaction
   - feed "Flux atom des dépêches en cours de rédaction", "/redaction/news.atom"
@@ -32,13 +32,14 @@
     %p Aucune dépêche.
   - else
     #news
+      - activity=(n.node.board_status(current_account) == :new_board)
       - @drafts.each do |n|
-        .news
+        .news{:class => ("activity" if activity)}
           .pen
             = link_to [:redaction, n] do
               %img{src: "/images/icones/pen.svg", alt: "Éditer la dépêche"}
           .meta
-            - if n.node.board_status(current_account) == :new_board
+            - if activity
               = image_tag "/images/icones/chat.svg", alt: "Nouveaux !", title: "Il y a de l'activité sur cette dépêche", width: "16px"
             = n.user.try(:name) || n.author_name
             - if n.nb_editors > 0

@@ -7,16 +7,18 @@
   - if @comment.parent
     %p
       = link_to "Retourner au contenu associé", path_for_content(@comment.content)
-    %ul.threads
-      %li.comment{comment_attr(@comment.parent)}
-        = render @comment.parent
-    - if @comment.parent.try(:bound_score) == -10
-      .notice
-        %strong Do not feed the troll!
+    %div#comments
+      %ul.threads
+        %li.comment{comment_attr(@comment.parent)}
+          = render @comment.parent
+          = render "preview", preview: @comment if @preview_mode
+      - if @comment.parent.try(:bound_score) == -10
+        .notice
+          %strong Do not feed the troll!
   - else
     = render @comment.node.content
-
-  = render "preview", preview: @comment if @preview_mode
+    %div#comments
+      = render "preview", preview: @comment if @preview_mode
 
   = form_for [@node, @comment], url: "/nodes/#{@node.id}/comments#comment_new" do |form|
     = form.hidden_field :parent_id
