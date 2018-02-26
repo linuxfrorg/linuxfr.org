@@ -38,7 +38,7 @@ desc "Production"
 task :prod do
   set :vserver,   "prod"
   set :user,      "linuxfr"
-  set :branch,    "before-redesign"
+  set :branch,    "master"
   set :rails_env, "production"
 end
 

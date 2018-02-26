@@ -4,12 +4,10 @@
 /config/database.yml
 /config/secrets.yml
 /log
-/node_modules
 /public/assets
 /public/board.xml
 /public/images/historique
 /public/images/load
-/public/packs
 /public/pages
 /public/sitemap*
 /public/system
