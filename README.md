@@ -97,7 +97,7 @@ but can be launched from any distro.
 
 Step by step:
 
-- install docker (see http://docs.docker.io/installation)
+- install docker (see https://docs.docker.io/installation)
 - pull the premade image
   - `docker pull mose/linuxfr-dev`
 - or if you already know docker make your own with the `Dockerfile` present in the repo
@@ -178,10 +178,10 @@ Copyheart
 
 The code is licensed as GNU AGPLv3. See the LICENSE file for the full license.
 
-The [default avatar](http://linuxfr.org/images/default-avatar.png) is a modified
-[Tux](http://en.wikipedia.org/wiki/Tux).
+The [default avatar](https://linuxfr.org/images/default-avatar.png) is a modified
+[Tux](https://en.wikipedia.org/wiki/Tux).
 
 [Iconic icons](http://somerandomdude.com/projects/iconic/) are licenced
-[CC by-sa 3.0](http://creativecommons.org/licenses/by-sa/3.0/us/).
+[CC by-sa 3.0](https://creativecommons.org/licenses/by-sa/3.0/us/).
 
 ♡2011 by Bruno Michel. Copying is an act of love. Please copy and share.

@@ -1,6 +1,6 @@
 # encoding: utf-8
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://linuxfr.org/"
+SitemapGenerator::Sitemap.default_host = "https://linuxfr.org/"
 
 SitemapGenerator::Sitemap.add_links do |sitemap|
   # Put links creation logic here.

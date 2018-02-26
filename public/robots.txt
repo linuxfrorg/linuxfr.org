@@ -8,4 +8,4 @@ Disallow: /redaction
 Disallow: /moderation
 Disallow: /admin
 
-Sitemap: http://linuxfr.org/sitemap_index.xml.gz
+Sitemap: https://linuxfr.org/sitemap_index.xml.gz

@@ -24,6 +24,6 @@ setTimeout ->
   Unity = window.external.getUnityObject(1)
   Unity.init
     name: "LinuxFr.org"
-    iconUrl: "http://linuxfr.org/images/linuxfr2_64.png"
+    iconUrl: "https://linuxfr.org/images/linuxfr2_64.png"
     onInit: init
 , 1000

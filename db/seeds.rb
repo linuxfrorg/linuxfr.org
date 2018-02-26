@@ -38,25 +38,27 @@ Response.create!(title: "Dépêche trop courte",         content: "La dépêche 
 Response.create!(title: "Dépêche déjà publiée",        content: "Le sujet de la dépêche que vous avez proposée a déjà fait l'objet d'une\ndépêche publiée sur LinuxFr.org. Pour cette raison, votre dépêche a été\nrefusée.")
 Response.create!(title: "Dépêche déjà proposée",       content: "Une ou plusieurs autres dépêches sur le même sujet a (ont) déjà été\nproposée(s) par un (ou plusieurs) autre(s) internaute(s). Dès qu'un\nmodérateur pourra s'en occuper, il utilisera celle qui lui semble la\nmieux rédigée.")
 Response.create!(title: "Dépêche hors sujet",          content: "La dépêche que vous avez envoyée est hors-sujet par rapport au site. Si\nLinuxFr.org valide parfois les dépêches hors-sujet, celle-ci n'a pas\nretenu l'attention des modérateurs.")
-Response.create!(title: "Redirection forum",           content: "Une entrée dans un forum serait plus adaptée pour poser cette question.\nNous tenons à vous remercier de l'avoir proposée, et nous\nvous encourageons à la poser dans un des forums du site.\n\nhttp://linuxfr.org/posts/nouveau")
-Response.create!(title: "Redirection journal",         content: "Votre journal est peut-être plus adapté pour passer cette information.\n\nhttp://linuxfr.org//journaux/nouveau")
+Response.create!(title: "Redirection forum",           content: "Une entrée dans un forum serait plus adaptée pour poser cette question.\nNous tenons à vous remercier de l'avoir proposée, et nous\nvous encourageons à la poser dans un des forums du site.\n\nhttps://linuxfr.org/posts/nouveau")
+Response.create!(title: "Redirection journal",         content: "Votre journal est peut-être plus adapté pour passer cette information.\n\nhttps://linuxfr.org//journaux/nouveau")
 Response.create!(title: "Problèmes de rédaction",      content: "Cette dépêche pose des problèmes de rédaction, et il nous est difficile\nde la valider telle quelle. Pourriez-vous re-rédiger cette dépêche s'il\nvous plaît ?")
 Response.create!(title: "Site (presque) vide",         content: "LinuxFr.org préfère valider des dépêches de ce type quand le site est\ndéjà bien avancé. Si d'ici quelques temps, c'est le cas, n'hésitez pas\nà re-proposer une dépêche.")
 Response.create!(title: "Version mineure du logiciel", content: "Votre dépêche traite d'une version mineure d'un logiciel, et n'apporte\nrien de fort d'un point de vue information. Pour cette raison elle a été\nrefusée.")
 
 # Friend sites
-FriendSite.create!(title: "April", url: "http://www.april.org/")
-FriendSite.create!(title: "Agenda du libre", url: "http://www.agendadulibre.org/")
-FriendSite.create!(title: "Framasoft", url: "http://www.framasoft.net/")
-FriendSite.create!(title: "Léa-Linux", url: "http://lea-linux.org/")
+FriendSite.create!(title: "April", url: "https://www.april.org/")
+FriendSite.create!(title: "Agenda du libre", url: "https://www.agendadulibre.org/")
+FriendSite.create!(title: "Framasoft", url: "https://www.framasoft.net/")
 FriendSite.create!(title: "Lolix", url: "http://fr.lolix.org/")
 FriendSite.create!(title: "JeSuisLibre", url: "http://www.jesuislibre.org/")
+FriendSite.create!(title: "Éditions Diamond", url: "https://boutique.ed-diamond.com/")
+FriendSite.create!(title: "Veni, Vedi, Libri", url: "https://vvlibri.org/")
+FriendSite.create!(title: "LinuxGraphic", url: "https://www.linuxgraphic.org/")
+FriendSite.create!(title: "Éditions ENI", url: "https://www.editions-eni.fr/livres/open-source/.12659ab71294b44082200c97a40710bc.html")
+FriendSite.create!(title: "La Quadrature du Net", url: "https://www.laquadrature.net/")
+FriendSite.create!(title: "Grafik Plus", url: "https://www.gp3.fr/")
+FriendSite.create!(title: "Léa-Linux", url: "http://lea-linux.org/")
+FriendSite.create!(title: "TuxFamily", url: "https://tuxfamily.org")
 FriendSite.create!(title: "Eyrolles", url: "http://www.editions-eyrolles.com/Recherche/?q=linux")
-FriendSite.create!(title: "LinuxMag", url: "http://www.gnulinuxmag.com/")
-FriendSite.create!(title: "Veni, Vedi, Libri", url: "http://www.venividilibri.org/")
-FriendSite.create!(title: "InLibroVeritas", url: "http://www.inlibroveritas.net/linuxfr.html")
-FriendSite.create!(title: "LinuxGraphic", url: "http://www.linuxgraphic.org/")
-FriendSite.create!(title: "Éditions ENI", url: "http://www.editions-eni.fr/Livres/Systeme/.2_3a6222cf-b921-41f5-886c-c989f77ba994_a8799413-9165-4927-bb7e-36491cc3dcf2_1_0_0_0_d9bd8b5e-f324-473f-b1fc-b41b421c950f.html")
 
 # Pages
 dir = File.join(File.dirname(__FILE__), 'pages')
@@ -92,7 +94,7 @@ Le wiki de LinuxFr.org
 Fonctionnement
 --------------
 
-Cet espace est un [wiki](http://fr.wikipedia.org/wiki/Wiki), c'est-à-dire un endroit où tous les utilisateurs (du moins, ceux qui sont authentifiés) peuvent écrire.
+Cet espace est un [wiki](https://fr.wikipedia.org/wiki/Wiki), c'est-à-dire un endroit où tous les utilisateurs (du moins, ceux qui sont authentifiés) peuvent écrire.
 Pour créer une page, le plus simple est de faire un lien vers cette page en utilisant la syntaxe `[[[`MaPage`]]]` puis de cliquer sur ce lien.
 Si la page n'existe pas encore, un formulaire vous sera proposée pour la créer.
 

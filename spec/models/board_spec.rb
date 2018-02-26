@@ -127,9 +127,9 @@ describe Board do
     end
 
     it "links automatically URL" do
-      str = "<b>foo</b> http://linuxfr.org/"
+      str = "<b>foo</b> https://linuxfr.org/"
       sanitized = board.sanitize_message(str)
-      sanitized.should == '<b>foo</b> <a href="http://linuxfr.org/">[url]</a>'
+      sanitized.should == '<b>foo</b> <a href="https://linuxfr.org/">[url]</a>'
     end
 
     it "let us play with ducks" do
