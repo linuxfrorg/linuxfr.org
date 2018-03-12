@@ -32,6 +32,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def liens
+    path = liens_user_path(id: @user, format: params[:format])
+    redirect_to path, status: 301 and return if request.path != path
+    find_nodes(Bookmark)
+    respond_to do |wants|
+      wants.html
+      wants.atom { render 'bookmarks/index' }
+    end
+  end
+
   def posts
     path = posts_user_path(id: @user, format: params[:format])
     redirect_to path, status: 301 and return if request.path != path

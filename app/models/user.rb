@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_one  :account, dependent: :destroy, inverse_of: :user
   has_many :nodes, inverse_of: :user
   has_many :diaries, dependent: :destroy, inverse_of: :owner, foreign_key: "owner_id"
+  has_many :bookmarks, dependent: :destroy, inverse_of: :owner, foreign_key: "owner_id"
   has_many :news_versions, dependent: :nullify
   has_many :wiki_versions, dependent: :nullify
   has_many :comments, inverse_of: :user
