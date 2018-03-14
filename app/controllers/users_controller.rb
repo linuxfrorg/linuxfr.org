@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
     path = user_path(id: @user, format: params[:format])
     redirect_to path, status: 301 and return if request.path != path
-    find_nodes([News, Diary])
+    find_nodes([News, Diary, Bookmark])
     respond_to do |wants|
       wants.html
       wants.atom
