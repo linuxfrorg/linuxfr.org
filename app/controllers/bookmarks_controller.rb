@@ -75,7 +75,7 @@ class BookmarksController < ApplicationController
 protected
 
   def bookmark_params
-    params.require(:bookmark).permit(:title, :link, :cc_licensed)
+    params.require(:bookmark).permit(:title, :link, :lang, :cc_licensed)
   end
 
   def find_bookmark

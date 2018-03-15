@@ -8,6 +8,7 @@
 #  cached_slug       :string(165)
 #  owner_id          :integer
 #  link              :string(1024)
+#  lang              :string(2)        not null
 #  created_at        :datetime
 #  updated_at        :datetime
 #

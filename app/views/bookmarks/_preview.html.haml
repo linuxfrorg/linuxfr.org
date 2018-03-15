@@ -1,4 +1,6 @@
 = article_for preview do |c|
   - c.title = "#{link_to "Lien", "/liens", class: "topic"} #{link_to spellcheck(preview.title), "#"}".html_safe
   - c.image = avatar_img(preview.node.user)
-  - c.body = "#{link_to preview.link}".html_safe
+  - c.body = capture do
+    %ul
+      %li{lang: preview.lang}= "#{link_to preview.link, preview.link, hreflang: preview.lang}".html_safe

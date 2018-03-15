@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 20171031210801) do
     t.string   "cached_slug",       limit: 165
     t.integer  "owner_id",          limit: 4
     t.string   "link",              limit: 1024,        null: false
+    t.string   "lang",              limit: 2, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
