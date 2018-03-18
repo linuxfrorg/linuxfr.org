@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031210801) do
+ActiveRecord::Schema.define(version: 20180318212400) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "user_id",                limit: 4
@@ -65,6 +65,19 @@ ActiveRecord::Schema.define(version: 20171031210801) do
     t.boolean "active",                     default: true
   end
 
+  create_table "bookmarks", force: :cascade do |t|
+    t.string   "title",       limit: 160, null: false
+    t.string   "cached_slug", limit: 165
+    t.integer  "owner_id",    limit: 4
+    t.string   "link",        limit: 255, null: false
+    t.string   "lang",        limit: 2,   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bookmarks", ["cached_slug"], name: "index_bookmarks_on_cached_slug", using: :btree
+  add_index "bookmarks", ["owner_id"], name: "index_bookmarks_on_owner_id", using: :btree
+
   create_table "categories", force: :cascade do |t|
     t.string   "title",      limit: 32, null: false
     t.datetime "created_at"
@@ -105,19 +118,6 @@ ActiveRecord::Schema.define(version: 20171031210801) do
 
   add_index "diaries", ["cached_slug"], name: "index_diaries_on_cached_slug", using: :btree
   add_index "diaries", ["owner_id"], name: "index_diaries_on_owner_id", using: :btree
-
-  create_table "bookmarks", force: :cascade do |t|
-    t.string   "title",             limit: 160
-    t.string   "cached_slug",       limit: 165
-    t.integer  "owner_id",          limit: 4
-    t.string   "link",              limit: 1024,        null: false
-    t.string   "lang",              limit: 2, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "bookmarks", ["cached_slug"], name: "index_bookmarks_on_cached_slug", using: :btree
-  add_index "bookmarks", ["owner_id"], name: "index_bookmarks_on_owner_id", using: :btree
 
   create_table "forums", force: :cascade do |t|
     t.string   "state",       limit: 10, default: "active", null: false
