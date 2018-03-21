@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# encoding: utf-8
 class ApplicationController < ActionController::Base
   include Canable::Enforcers
 
@@ -77,6 +77,7 @@ protected
     opts = { routing_type: (only_path ? :path : :url) }
     case content
     when Diary then content.new_record? ? "/journaux" : polymorphic_url([content.owner, content], opts)
+    when Bookmark then content.new_record? ? "/liens" : polymorphic_url([content.owner, content], opts)
     when News  then content.new_record? ? "/news" : url_for_news(content, opts)
     when Post  then polymorphic_url([content.forum, content], opts)
                else polymorphic_url(content, opts)

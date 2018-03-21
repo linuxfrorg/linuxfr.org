@@ -16,6 +16,14 @@ class Content < ActiveRecord::Base
 
   class << self; attr_accessor :type; end
 
+  def label_for_expand
+    "Lire la suite"
+  end
+
+  def alternative_formats
+    true
+  end
+  
 ### License ###
 
   attr_accessor :cc_licensed, :tmp_owner_id
@@ -99,5 +107,4 @@ class Content < ActiveRecord::Base
       'yearly'
     end
   end
-
 end

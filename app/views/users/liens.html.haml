@@ -1,0 +1,7 @@
+- content_for :column do
+  = render 'recent'
+  = render 'nodes'
+
+=h1 "#{@user.name} a partagé #{pluralize @nodes.total_count, "lien"}"
+- feed "Flux Atom des liens de #{@user.name}"
+= paginated_nodes @nodes

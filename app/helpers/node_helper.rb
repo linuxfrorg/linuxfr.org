@@ -1,4 +1,4 @@
-# encoding: UTF-8
+# encoding: utf-8
 module NodeHelper
 
   ContentPresenter = Struct.new(:record, :title, :meta, :tags, :notice, :image, :body, :actions, :css_class, :hidden) do
@@ -115,7 +115,7 @@ module NodeHelper
   def read_it(content)
     node = content.node
     path = path_for_content(content)
-    link = link_to_unless_current("Lire la suite", path, itemprop: "url") { "" }
+    link = link_to_unless_current(content.label_for_expand, path, itemprop: "url") { "" }
     ret  = tag(:meta, itemprop: "interactionCount", content: "UserComments:#{node.try(:comments_count)}")
     nb_comments = content_tag(:span, pluralize(node.try(:comments_count), "commentaire"), class: "nb_comments")
     if current_account

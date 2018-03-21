@@ -18,9 +18,11 @@ Rails.application.routes.draw do
         post :move
       end
     end
+    resources :liens, controller: "bookmarks", as: "bookmarks", except: [:index, :new, :create]
     member do
       get :news
       get :journaux
+      get :liens
       get :posts
       get :suivi
       get :comments
@@ -28,6 +30,7 @@ Rails.application.routes.draw do
     end
   end
   resources :journaux, controller: "diaries", as: "diaries", only: [:index, :new, :create]
+  resources :liens, controller: "bookmarks", as: "bookmarks", only: [:index, :new, :create]
 
   # Forums
   resources :forums, only: [:index, :show] do

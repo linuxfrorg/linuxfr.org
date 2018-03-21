@@ -1,0 +1,11 @@
+%main#contents(role="main")
+  =h1 "Éditer un lien"
+
+  = render "preview", preview: @bookmark if @preview_mode
+
+  %h2 Édition
+  = form_for [@bookmark.owner, @bookmark] do |form|
+    = render form
+
+  %h2 Modération
+  = button_to "Supprimer", [@bookmark.owner, @bookmark], method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce lien ?" }, class: "delete_button"

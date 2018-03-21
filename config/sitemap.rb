@@ -47,6 +47,14 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
     sitemap.add user_diary_path(user_id: diary.owner, id: diary), priority: 0.8, changefreq: diary.changefreq, lastmod: diary.lastmod
   end
 
+  # Bookmarks
+  sitemap.add bookmarks_path, priority: 0.6, changefreq: 'hourly'
+  Node.sitemap(Bookmark).find_each do |node|
+    bookmark = node.content
+    next if bookmark.owner.nil?
+    sitemap.add user_bookmark_path(user_id: bookmark.owner, id: bookmark), priority: 0.8, changefreq: bookmark.changefreq, lastmod: bookmark.lastmod
+  end
+
   # Forums
   sitemap.add forums_path, priority: 0.3, changefreq: 'hourly'
   Forum.find_each do |forum|
