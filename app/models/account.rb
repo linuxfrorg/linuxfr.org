@@ -306,10 +306,11 @@ class Account < ActiveRecord::Base
                          128 => :sort_by_date_on_home,
                          256 => :hide_signature,
                          512 => :show_negative_nodes,
+                        1024 => :bookmarks_on_home,
                          scopes: false
 
   def types_on_home
-    %w(News Diary Post Poll WikiPage Tracker).select do |type|
+    %w(News Diary Post Poll WikiPage Tracker Bookmark).select do |type|
       send "#{type.tableize}_on_home?"
     end
   end
