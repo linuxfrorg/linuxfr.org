@@ -1,7 +1,7 @@
 url = polymorphic_url([bookmark.owner, bookmark])
 feed.entry(bookmark, :url => url) do |entry|
   entry.title(bookmark.title)
-  entry.content("#{link_to bookmark.link}".html_safe + atom_comments_link(url), :type => 'html')
+  entry.content("#{link_to bookmark.link, bookmark.link}".html_safe + atom_comments_link(url), :type => 'html')
   entry.author do |author|
     author.name(bookmark.owner.name)
   end
