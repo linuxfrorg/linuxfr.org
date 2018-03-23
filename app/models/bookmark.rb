@@ -31,15 +31,15 @@ class Bookmark < Content
     attrs[:cc_licensed] = false
     super
   end
-  
+
   def label_for_expand
     "Discuter"
   end
-  
+
   def alternative_formats
     false
   end
-  
+
 ### SEO ###
 
   extend FriendlyId

@@ -1009,6 +1009,16 @@ ul.poll {
   }
 }
 
+/* liens */
+.bookmark {
+  &.score-1 {
+    h1 { color: #888; border-color: #bbb; }
+  }
+  .content.hidden + .actions {
+    span { color: #888; }
+  }
+}
+
 /* les commentaires */
 #comments > p {
   text-align: justify;
