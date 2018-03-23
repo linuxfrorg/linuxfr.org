@@ -15,7 +15,6 @@ class BookmarksController < ApplicationController
     @order = params[:order]
     @order = "created_at" unless VALID_ORDERS.include?(@order)
     @nodes = Node.public_listing(Bookmark, @order).page(params[:page])
-    @nodes.each {|n| n.score = -1}
     respond_with(@nodes)
   end
 
