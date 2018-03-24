@@ -74,6 +74,9 @@ protected
   def find_post
     @forum = Forum.find(params[:forum_id])
     @post  = @forum.posts.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    post = Post.find(params[:id])
+    redirect_to [post.forum, post]
   end
 
   def marked_as_read
