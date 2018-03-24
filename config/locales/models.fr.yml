@@ -3,6 +3,7 @@ fr:
     models:
       account: "compte"
       banner: "bannière"
+      bookmark: "lien"
       category: "catégorie"
       comment: "commentaire"
       content: "contenu"
@@ -26,6 +27,7 @@ fr:
     to_models:
       account: "au compte"
       banner: "à la bannière"
+      bookmark: "au lien"
       category: "à la catégorie"
       comment: "au commentaire"
       content: "au contenu"

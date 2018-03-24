@@ -48,7 +48,7 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   end
 
   # Bookmarks
-  sitemap.add bookmarks_path, priority: 0.6, changefreq: 'hourly'
+  sitemap.add bookmarks_path, priority: 0.4, changefreq: 'hourly'
   Node.sitemap(Bookmark).find_each do |node|
     bookmark = node.content
     next if bookmark.owner.nil?
