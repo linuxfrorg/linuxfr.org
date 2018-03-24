@@ -1,6 +1,6 @@
 # encoding: UTF-8
 class Redaction::NewsController < RedactionController
-  skip_before_action :authenticate_account!, only: [:index, :moderation]
+  before_action :authenticate_account!, except: [:index, :moderation]
   before_action :load_news, except: [:index, :moderation, :create, :revision, :reorganize, :reorganized, :reassign, :urgent, :cancel_urgent]
   before_action :load_news2, only: [:revision, :reorganize, :reorganized, :reassign, :urgent, :cancel_urgent]
   before_action :load_board, only: [:show, :reorganize]
