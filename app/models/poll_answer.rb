@@ -4,7 +4,7 @@
 # Table name: poll_answers
 #
 #  id         :integer          not null, primary key
-#  poll_id    :integer
+#  poll_id    :integer          not null
 #  answer     :string(128)      not null
 #  votes      :integer          default(0), not null
 #  position   :integer

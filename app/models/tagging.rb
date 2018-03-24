@@ -4,8 +4,8 @@
 # Table name: taggings
 #
 #  id         :integer          not null, primary key
-#  tag_id     :integer
-#  node_id    :integer
+#  tag_id     :integer          not null
+#  node_id    :integer          not null
 #  user_id    :integer
 #  created_at :datetime
 #

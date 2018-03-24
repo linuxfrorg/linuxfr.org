@@ -8,7 +8,7 @@
 #  title        :string(160)      not null
 #  cached_slug  :string(165)
 #  moderator_id :integer
-#  section_id   :integer
+#  section_id   :integer          not null
 #  author_name  :string(32)       not null
 #  author_email :string(64)       not null
 #  body         :text(4294967295)

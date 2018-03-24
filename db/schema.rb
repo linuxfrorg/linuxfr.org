@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 20180318212400) do
 
   create_table "banners", force: :cascade do |t|
     t.string  "title",   limit: 255
-    t.text    "content", limit: 4294967295
-    t.boolean "active",                     default: true
+    t.text    "content", limit: 16777215
+    t.boolean "active",                   default: true
   end
 
   create_table "bookmarks", force: :cascade do |t|
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20180318212400) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "node_id",           limit: 4
+    t.integer  "node_id",           limit: 4,                                null: false
     t.integer  "user_id",           limit: 4
     t.string   "state",             limit: 10,         default: "published", null: false
     t.string   "title",             limit: 160,                              null: false
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20180318212400) do
     t.boolean  "answered_to_self",                     default: false,       null: false
     t.string   "materialized_path", limit: 1022
     t.text     "body",              limit: 4294967295
-    t.text     "wiki_body",         limit: 4294967295
+    t.text     "wiki_body",         limit: 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -109,14 +109,15 @@ ActiveRecord::Schema.define(version: 20180318212400) do
     t.string   "cached_slug",       limit: 165
     t.integer  "owner_id",          limit: 4
     t.text     "body",              limit: 4294967295
-    t.text     "wiki_body",         limit: 4294967295
-    t.text     "truncated_body",    limit: 4294967295
+    t.text     "wiki_body",         limit: 16777215
+    t.text     "truncated_body",    limit: 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "converted_news_id", limit: 4
   end
 
   add_index "diaries", ["cached_slug"], name: "index_diaries_on_cached_slug", using: :btree
+  add_index "diaries", ["converted_news_id"], name: "fk_diaries_on_converted_news_id", using: :btree
   add_index "diaries", ["owner_id"], name: "index_diaries_on_owner_id", using: :btree
 
   create_table "forums", force: :cascade do |t|
@@ -161,20 +162,21 @@ ActiveRecord::Schema.define(version: 20180318212400) do
   add_index "links", ["news_id"], name: "index_links_on_news_id", using: :btree
 
   create_table "logs", force: :cascade do |t|
-    t.integer  "account_id",  limit: 4
+    t.integer  "account_id",  limit: 4,   null: false
     t.string   "description", limit: 255
     t.datetime "created_at"
     t.integer  "user_id",     limit: 4
   end
 
   add_index "logs", ["account_id"], name: "index_logs_on_account_id", using: :btree
+  add_index "logs", ["user_id"], name: "fk_logs_on_user_id", using: :btree
 
   create_table "news", force: :cascade do |t|
     t.string   "state",        limit: 10,         default: "draft", null: false
     t.string   "title",        limit: 160,                          null: false
     t.string   "cached_slug",  limit: 165
     t.integer  "moderator_id", limit: 4
-    t.integer  "section_id",   limit: 4
+    t.integer  "section_id",   limit: 4,                            null: false
     t.string   "author_name",  limit: 32,                           null: false
     t.string   "author_email", limit: 64,                           null: false
     t.text     "body",         limit: 4294967295
@@ -185,17 +187,18 @@ ActiveRecord::Schema.define(version: 20180318212400) do
   end
 
   add_index "news", ["cached_slug"], name: "index_news_on_cached_slug", using: :btree
+  add_index "news", ["moderator_id"], name: "fk_news_on_moderator_id", using: :btree
   add_index "news", ["section_id"], name: "index_news_on_section_id", using: :btree
   add_index "news", ["state"], name: "index_news_on_state", using: :btree
 
   create_table "news_versions", force: :cascade do |t|
-    t.integer  "news_id",     limit: 4
+    t.integer  "news_id",     limit: 4,          null: false
     t.integer  "user_id",     limit: 4
     t.integer  "version",     limit: 4
     t.string   "title",       limit: 255
     t.text     "body",        limit: 4294967295
     t.text     "second_part", limit: 4294967295
-    t.text     "links",       limit: 4294967295
+    t.text     "links",       limit: 16777215
     t.datetime "created_at"
   end
 
@@ -237,11 +240,13 @@ ActiveRecord::Schema.define(version: 20180318212400) do
     t.string   "scopes",            limit: 255
   end
 
+  add_index "oauth_access_grants", ["application_id"], name: "fk_oauth_access_grants_on_application_id", using: :btree
+  add_index "oauth_access_grants", ["resource_owner_id"], name: "fk_oauth_access_grants_on_resource_owner_id", using: :btree
   add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
 
   create_table "oauth_access_tokens", force: :cascade do |t|
     t.integer  "resource_owner_id", limit: 4
-    t.integer  "application_id",    limit: 4
+    t.integer  "application_id",    limit: 4,   null: false
     t.string   "token",             limit: 255, null: false
     t.string   "refresh_token",     limit: 255
     t.integer  "expires_in",        limit: 4
@@ -250,6 +255,7 @@ ActiveRecord::Schema.define(version: 20180318212400) do
     t.string   "scopes",            limit: 255
   end
 
+  add_index "oauth_access_tokens", ["application_id"], name: "fk_oauth_access_tokens_on_application_id", using: :btree
   add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
   add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
   add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
@@ -259,7 +265,7 @@ ActiveRecord::Schema.define(version: 20180318212400) do
     t.string   "uid",          limit: 255,                null: false
     t.string   "secret",       limit: 255,                null: false
     t.text     "redirect_uri", limit: 65535,              null: false
-    t.integer  "owner_id",     limit: 4
+    t.integer  "owner_id",     limit: 4,                  null: false
     t.string   "owner_type",   limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -272,7 +278,7 @@ ActiveRecord::Schema.define(version: 20180318212400) do
   create_table "pages", force: :cascade do |t|
     t.string   "slug",       limit: 128
     t.string   "title",      limit: 255
-    t.text     "body",       limit: 4294967295
+    t.text     "body",       limit: 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -280,17 +286,17 @@ ActiveRecord::Schema.define(version: 20180318212400) do
   add_index "pages", ["slug"], name: "index_pages_on_slug", using: :btree
 
   create_table "paragraphs", force: :cascade do |t|
-    t.integer "news_id",     limit: 4,          null: false
+    t.integer "news_id",     limit: 4,        null: false
     t.integer "position",    limit: 4
     t.boolean "second_part"
-    t.text    "body",        limit: 4294967295
-    t.text    "wiki_body",   limit: 4294967295
+    t.text    "body",        limit: 16777215
+    t.text    "wiki_body",   limit: 16777215
   end
 
   add_index "paragraphs", ["news_id", "second_part", "position"], name: "index_paragraphs_on_news_id_and_more", using: :btree
 
   create_table "poll_answers", force: :cascade do |t|
-    t.integer  "poll_id",    limit: 4
+    t.integer  "poll_id",    limit: 4,               null: false
     t.string   "answer",     limit: 128,             null: false
     t.integer  "votes",      limit: 4,   default: 0, null: false
     t.integer  "position",   limit: 4
@@ -301,25 +307,25 @@ ActiveRecord::Schema.define(version: 20180318212400) do
   add_index "poll_answers", ["poll_id", "position"], name: "index_poll_answers_on_poll_id_and_position", using: :btree
 
   create_table "polls", force: :cascade do |t|
-    t.string   "state",             limit: 10,         default: "draft", null: false
-    t.string   "title",             limit: 128,                          null: false
+    t.string   "state",             limit: 10,       default: "draft", null: false
+    t.string   "title",             limit: 128,                        null: false
     t.string   "cached_slug",       limit: 128
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "wiki_explanations", limit: 4294967295
-    t.text     "explanations",      limit: 4294967295
+    t.text     "wiki_explanations", limit: 16777215
+    t.text     "explanations",      limit: 16777215
   end
 
   add_index "polls", ["cached_slug"], name: "index_polls_on_cached_slug", using: :btree
   add_index "polls", ["state"], name: "index_polls_on_state", using: :btree
 
   create_table "posts", force: :cascade do |t|
-    t.integer  "forum_id",       limit: 4
+    t.integer  "forum_id",       limit: 4,          null: false
     t.string   "title",          limit: 160,        null: false
     t.string   "cached_slug",    limit: 165
     t.text     "body",           limit: 4294967295
-    t.text     "wiki_body",      limit: 4294967295
-    t.text     "truncated_body", limit: 4294967295
+    t.text     "wiki_body",      limit: 16777215
+    t.text     "truncated_body", limit: 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -328,8 +334,8 @@ ActiveRecord::Schema.define(version: 20180318212400) do
   add_index "posts", ["forum_id"], name: "index_posts_on_forum_id", using: :btree
 
   create_table "responses", force: :cascade do |t|
-    t.string "title",   limit: 255,        null: false
-    t.text   "content", limit: 4294967295
+    t.string "title",   limit: 255,      null: false
+    t.text   "content", limit: 16777215
   end
 
   create_table "sections", force: :cascade do |t|
@@ -344,8 +350,8 @@ ActiveRecord::Schema.define(version: 20180318212400) do
   add_index "sections", ["state", "title"], name: "index_sections_on_state_and_title", using: :btree
 
   create_table "taggings", force: :cascade do |t|
-    t.integer  "tag_id",     limit: 4
-    t.integer  "node_id",    limit: 4
+    t.integer  "tag_id",     limit: 4, null: false
+    t.integer  "node_id",    limit: 4, null: false
     t.integer  "user_id",    limit: 4
     t.datetime "created_at"
   end
@@ -368,11 +374,11 @@ ActiveRecord::Schema.define(version: 20180318212400) do
     t.string   "state",               limit: 10,         default: "opened", null: false
     t.string   "title",               limit: 100,                           null: false
     t.string   "cached_slug",         limit: 105
-    t.integer  "category_id",         limit: 4
+    t.integer  "category_id",         limit: 4,                             null: false
     t.integer  "assigned_to_user_id", limit: 4
     t.text     "body",                limit: 4294967295
-    t.text     "wiki_body",           limit: 4294967295
-    t.text     "truncated_body",      limit: 4294967295
+    t.text     "wiki_body",           limit: 16777215
+    t.text     "truncated_body",      limit: 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -408,7 +414,7 @@ ActiveRecord::Schema.define(version: 20180318212400) do
   add_index "wiki_pages", ["cached_slug"], name: "index_wiki_pages_on_cached_slug", using: :btree
 
   create_table "wiki_versions", force: :cascade do |t|
-    t.integer  "wiki_page_id", limit: 4
+    t.integer  "wiki_page_id", limit: 4,          null: false
     t.integer  "user_id",      limit: 4
     t.integer  "version",      limit: 4
     t.string   "message",      limit: 255
@@ -416,6 +422,36 @@ ActiveRecord::Schema.define(version: 20180318212400) do
     t.datetime "created_at"
   end
 
+  add_index "wiki_versions", ["user_id"], name: "fk_wiki_versions_on_user_id", using: :btree
   add_index "wiki_versions", ["wiki_page_id", "version"], name: "index_wiki_versions_on_wiki_page_id_and_version", using: :btree
 
+  add_foreign_key "accounts", "users", name: "fk_accounts_on_user_id"
+  add_foreign_key "bookmarks", "users", column: "owner_id", name: "fk_bookmarks_on_owner_id"
+  add_foreign_key "comments", "nodes", name: "fk_comments_on_node_id"
+  add_foreign_key "comments", "users", name: "fk_comments_on_user_id"
+  add_foreign_key "diaries", "news", column: "converted_news_id", name: "fk_diaries_on_converted_news_id"
+  add_foreign_key "diaries", "users", column: "owner_id", name: "fk_diaries_on_owner_id"
+  add_foreign_key "links", "news", name: "fk_links_on_news_id"
+  add_foreign_key "logs", "accounts", name: "fk_logs_on_account_id"
+  add_foreign_key "logs", "users", name: "fk_logs_on_user_id"
+  add_foreign_key "news", "sections", name: "fk_news_on_section_id"
+  add_foreign_key "news", "users", column: "moderator_id", name: "fk_news_on_moderator_id"
+  add_foreign_key "news_versions", "news", name: "fk_news_versions_on_news_id"
+  add_foreign_key "news_versions", "users", name: "fk_news_versions_on_user_id"
+  add_foreign_key "nodes", "users", name: "fk_nodes_on_user_id"
+  add_foreign_key "oauth_access_grants", "accounts", column: "resource_owner_id", name: "fk_oauth_access_grants_on_resource_owner_id"
+  add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id", name: "fk_oauth_access_grants_on_application_id"
+  add_foreign_key "oauth_access_tokens", "accounts", column: "resource_owner_id", name: "fk_oauth_access_tokens_on_resource_owner_id"
+  add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id", name: "fk_oauth_access_tokens_on_application_id"
+  add_foreign_key "oauth_applications", "accounts", column: "owner_id", name: "fk_oauth_applications_on_owner_id"
+  add_foreign_key "paragraphs", "news", name: "fk_paragraphs_on_news_id"
+  add_foreign_key "poll_answers", "polls", name: "fk_poll_answers_on_poll_id"
+  add_foreign_key "posts", "forums", name: "fk_posts_on_forum_id"
+  add_foreign_key "taggings", "nodes", name: "fk_taggings_on_node_id"
+  add_foreign_key "taggings", "tags", name: "fk_taggings_on_tag_id"
+  add_foreign_key "taggings", "users", name: "fk_taggings_on_user_id"
+  add_foreign_key "trackers", "categories", name: "fk_trackers_on_category_id"
+  add_foreign_key "trackers", "users", column: "assigned_to_user_id", name: "fk_trackers_on_assigned_to_user_id"
+  add_foreign_key "wiki_versions", "users", name: "fk_wiki_versions_on_user_id"
+  add_foreign_key "wiki_versions", "wiki_pages", name: "fk_wiki_versions_on_wiki_page_id"
 end

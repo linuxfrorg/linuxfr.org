@@ -4,7 +4,7 @@
 # Table name: comments
 #
 #  id                :integer          not null, primary key
-#  node_id           :integer
+#  node_id           :integer          not null
 #  user_id           :integer
 #  state             :string(10)       default("published"), not null
 #  title             :string(160)      not null
@@ -12,7 +12,7 @@
 #  answered_to_self  :boolean          default(FALSE), not null
 #  materialized_path :string(1022)
 #  body              :text(4294967295)
-#  wiki_body         :text(4294967295)
+#  wiki_body         :text(16777215)
 #  created_at        :datetime
 #  updated_at        :datetime
 #

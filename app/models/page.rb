@@ -6,7 +6,7 @@
 #  id         :integer          not null, primary key
 #  slug       :string(128)
 #  title      :string(255)
-#  body       :text(4294967295)
+#  body       :text(16777215)
 #  created_at :datetime
 #  updated_at :datetime
 #

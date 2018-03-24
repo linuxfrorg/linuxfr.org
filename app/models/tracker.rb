@@ -7,11 +7,11 @@
 #  state               :string(10)       default("opened"), not null
 #  title               :string(100)      not null
 #  cached_slug         :string(105)
-#  category_id         :integer
+#  category_id         :integer          not null
 #  assigned_to_user_id :integer
 #  body                :text(4294967295)
-#  wiki_body           :text(4294967295)
-#  truncated_body      :text(4294967295)
+#  wiki_body           :text(16777215)
+#  truncated_body      :text(16777215)
 #  created_at          :datetime
 #  updated_at          :datetime
 #

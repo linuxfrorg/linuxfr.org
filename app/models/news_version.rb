@@ -4,13 +4,13 @@
 # Table name: news_versions
 #
 #  id          :integer          not null, primary key
-#  news_id     :integer
+#  news_id     :integer          not null
 #  user_id     :integer
 #  version     :integer
 #  title       :string(255)
 #  body        :text(4294967295)
 #  second_part :text(4294967295)
-#  links       :text(4294967295)
+#  links       :text(16777215)
 #  created_at  :datetime
 #
 

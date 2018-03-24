@@ -8,8 +8,8 @@
 #  cached_slug       :string(165)
 #  owner_id          :integer
 #  body              :text(4294967295)
-#  wiki_body         :text(4294967295)
-#  truncated_body    :text(4294967295)
+#  wiki_body         :text(16777215)
+#  truncated_body    :text(16777215)
 #  created_at        :datetime
 #  updated_at        :datetime
 #  converted_news_id :integer

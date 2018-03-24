@@ -9,8 +9,8 @@
 #  cached_slug       :string(128)
 #  created_at        :datetime
 #  updated_at        :datetime
-#  wiki_explanations :text(4294967295)
-#  explanations      :text(4294967295)
+#  wiki_explanations :text(16777215)
+#  explanations      :text(16777215)
 #
 
 require 'spec_helper'

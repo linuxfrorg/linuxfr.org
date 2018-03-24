@@ -4,7 +4,7 @@
 # Table name: wiki_versions
 #
 #  id           :integer          not null, primary key
-#  wiki_page_id :integer
+#  wiki_page_id :integer          not null
 #  user_id      :integer
 #  version      :integer
 #  message      :string(255)

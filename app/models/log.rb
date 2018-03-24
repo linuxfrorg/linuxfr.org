@@ -4,7 +4,7 @@
 # Table name: logs
 #
 #  id          :integer          not null, primary key
-#  account_id  :integer
+#  account_id  :integer          not null
 #  description :string(255)
 #  created_at  :datetime
 #  user_id     :integer

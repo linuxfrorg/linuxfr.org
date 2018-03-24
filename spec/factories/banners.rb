@@ -6,7 +6,7 @@
 #
 #  id      :integer          not null, primary key
 #  title   :string(255)
-#  content :text(4294967295)
+#  content :text(16777215)
 #  active  :boolean          default(TRUE)
 #
 
