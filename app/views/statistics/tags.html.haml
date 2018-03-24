@@ -54,6 +54,11 @@
         -if @contents.contents["WikiPage"].to_i > 0
           = "soit #{pluralize (@stats.taggings["WikiPage"].to_f/@contents.contents["WikiPage"]).round(2), "tag"}/page publiée"
 
+      %li
+        #{pluralize @stats.taggings["Bookmark"].to_i, "tag"} dans #{pluralize @contents.contents["Bookmark"], "lien"}
+        -if @contents.contents["Bookmark"].to_i > 0
+          = "soit #{pluralize (@stats.taggings["Bookmark"].to_f/@contents.contents["Bookmark"]).round(2), "tag"}/lien publié"
+
     - if @stats.taggings["Total"] > 1
       %h2#annee Répartition annuelle des #{@stats.taggings["Total"]} saisies de tags
     - else

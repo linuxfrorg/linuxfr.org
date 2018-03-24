@@ -31,6 +31,7 @@
       %li #{pluralize @stats.contents["Tracker"], "entrée"} dans le système de suivi
       %li #{pluralize @stats.contents["Poll"], "sondage"}
       %li #{pluralize @stats.contents["WikiPage"], "page"} de wiki
+      %li #{pluralize @stats.contents["Bookmark"], "lien"}
 
     - if @stats.contents["Total"] > 1
       %h2#annee Répartition annuelle des #{@stats.contents["Total"]} contenus

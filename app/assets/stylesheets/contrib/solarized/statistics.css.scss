@@ -24,8 +24,9 @@ https://github.com/linuxfrorg/linuxfr.org/blob/master/app/assets/stylesheets/com
         &.contentpost { @include statistic_bar($yellow, $rebase2); }
         &.contentnews { @include statistic_bar($green, $rebase2); }
         &.contenttracker { @include statistic_bar($cyan, $rebase2); }
-        &.contentpoll { @include statistic_bar($cyan, $rebase2); }
+        &.contentpoll { @include statistic_bar($violet, $rebase2); }
         &.contentwikipage { @include statistic_bar($orange, $rebase2); }
+        &.contentbookmark { @include statistic_bar($red, $rebase2); }
       }
 
       span.score {

@@ -48,6 +48,11 @@
           -if @contents.contents["WikiPage"].to_i > 0
             = "soit #{pluralize (@stats.comments["WikiPage"].to_f/@contents.contents["WikiPage"]).round(2), "commentaire"}/page publiée"
 
+        %li
+          #{pluralize @stats.comments["Bookmark"].to_i, "commentaire"} dans #{pluralize @contents.contents["Bookmark"], "lien"}
+          -if @contents.contents["Bookmark"].to_i > 0
+            = "soit #{pluralize (@stats.comments["Bookmark"].to_f/@contents.contents["Bookmark"]).round(2), "commentaire"}/lien publié"
+
       - if @stats.comments["Total"] > 1
         %h2#annee Répartition annuelle des #{@stats.comments["Total"]} commentaires
       - else
