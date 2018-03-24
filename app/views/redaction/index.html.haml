@@ -25,7 +25,7 @@
     - else
       = link_to "Connaissez-vous le moteur de recherche de photos sous licence Creative Commons ?", "https://ccsearch.creativecommons.org/?search=tux&licenses=ALL-%24&licenses=ALL-MOD&search_fields=title&search_fields=creator&search_fields=tags&per_page=20&work_types=photos&providers=500px&providers=flickr"
 
-  %h1 Dépêches en cours de rédaction
+  %h2 #{pluralize @drafts.count, "dépêche"} en cours de rédaction
   - feed "Flux atom des dépêches en cours de rédaction", "/redaction/news.atom"
   = button_to "Commencer une nouvelle dépêche", "/redaction/news", class: "create_news"
   - if @drafts.empty?
@@ -47,12 +47,18 @@
           %h3= link_to n.title, [:redaction, n]
           Modifiée le #{n.updated_at.to_s :date} à #{n.updated_at.to_s :time}
 
-  %h2 Dépêches en cours de modération
+  %h2 #{pluralize @news.count, "dépêche"} en cours de modération
   - feed "Flux atom des dépêches en cours de modération", "/redaction/news/moderation.atom"
+  .notice
+    L'accès à l'espace de modération est réservé aux modérateurs et aux administrateurs.
+    Seuls les titres des dépêches en modération sont visibles des autres utilisateurs authentifiés.
   - if @news.empty?
     Aucune dépêche.
   - else
     #candidate_news
       - @news.each do |n|
         .news
-          %h3= n.title
+          - if current_account && current_account.amr?
+            %h3= link_to n.title, [:moderation, n]
+          - else
+            %h3= n.title
