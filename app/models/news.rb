@@ -137,6 +137,12 @@ class News < Content
     news
   end
 
+  def followup(message, user)
+    NewsNotifications.followup(self, message).deliver
+    msg = "<b>Relance :</b> #{message}"
+    Board.new(object_type: Board.news, object_id: self.id, message: msg, user_name: user.name).save
+  end
+
 ### Virtual attributes ###
 
   attr_accessor   :message, :wiki_body, :wiki_second_part, :urgent, :editor, :pot_de_miel
