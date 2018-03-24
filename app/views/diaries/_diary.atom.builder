@@ -5,7 +5,7 @@ feed.entry(diary, :url => url) do |entry|
     entry.rights("Licence CC by-sa #{cc_url diary}")
   end
   epub = content_tag(:div, link_to("Télécharger ce contenu au format Epub", "#{url}.epub"))
-  entry.content(diary.body + epub + atom_comments_link(url), :type => 'html')
+  entry.content(diary.body + epub + atom_comments_link(diary, url), :type => 'html')
   entry.author do |author|
     author.name(diary.owner.name)
   end

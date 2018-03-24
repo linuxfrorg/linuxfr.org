@@ -15,7 +15,7 @@ feed.entry(news, :published => news.node.created_at) do |entry|
   else
     epub = ""
   end
-  comments = atom_comments_link(url)
+  comments = atom_comments_link(news, url)
   entry.content(first + links + second + epub + comments, :type => 'html')
   if news.author_name != User.collective.name
     entry.author do |author|

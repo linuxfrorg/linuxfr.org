@@ -1,9 +1,13 @@
 # encoding: utf-8
 module AtomHelper
 
-  def atom_comments_link(url)
+  def atom_comments_link(content, url)
     str = <<-EOS
-    <p><a href=\"#{url}#comments\">Lire les commentaires</a></p>
+    <p>
+      <strong>Commentaires :</strong>
+      <a href=\"//#{MY_DOMAIN}/nodes/#{content.node.id}/comments.atom\">voir le flux atom</a>
+      <a href=\"#{url}#comments\">ouvrir dans le navigateur</a>
+    </p>
     EOS
     str.html_safe
   end
