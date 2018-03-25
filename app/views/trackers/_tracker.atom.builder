@@ -1,6 +1,6 @@
 feed.entry(tracker) do |entry|
   entry.title("#{tracker.category.title} : #{tracker.title}")
-  entry.content(tracker.body + atom_comments_link(tracker, tracker_url tracker), :type => 'html')
+  entry.content(tracker.body + atom_comments_link(tracker, (tracker_url tracker)), :type => 'html')
   entry.author do |author|
     author.name(tracker.user.try(:name) || 'Anonyme')
   end
