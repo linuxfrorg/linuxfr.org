@@ -31,7 +31,7 @@
 
 = link_to "Réorganiser", reorganize_redaction_news_path(@news), class: "reorganize"
 - if current_account.amr? || current_account.editor? || @news.submitted_by?(current_account)
-  = button_to "Soumettre la dépêche", submit_redaction_news_path(@news), class: "submit_news"
+  = button_to "Soumettre la dépêche", submit_redaction_news_path(@news), class: "submit_news", data: { confirm: "Une fois la dépêche soumise en modération, vous ne pourrez plus la modifier avant sa publication. Êtes-vous sûr ?" }
   - if @news.urgent?
     = button_to "Enlever l'urgence", cancel_urgent_redaction_news_path(@news), class: "urgent_news"
   - else
