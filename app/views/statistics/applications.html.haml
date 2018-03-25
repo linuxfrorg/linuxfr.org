@@ -5,9 +5,7 @@
   .body
     %strong
       Statistiques mises à jour le #{l Time.now}
-
     %p= link_to("Retour à l'ensemble des statistiques", "/statistiques")
-
     %p
       Des #{link_to("API pour les développeurs", "/developpeur")} sont disponibles pour réaliser des applications/sites interagissant le site.
 
@@ -20,14 +18,36 @@
     %h2#general Général
     %ul
       %li #{@stats.applications} applications créées par #{@stats.applications_distinct_owners} utilisateurs distincts
-      %li #{@stats.access_tokens["total"]} tokens créés pour #{@stats.access_tokens_distinct_applications} applications distinctes, avec #{@stats.access_tokens["00"]} tokens actifs, #{@stats.access_tokens["10"]} expirés et #{@stats.access_tokens["11"]} revoqués
-      %li #{@stats.access_grants["total"]} autorisations créées pour #{@stats.access_grants_distinct_applications} applications distinctes, avec #{@stats.access_grants["00"]} autorisations actives, #{@stats.access_grants["10"]} expirées et #{@stats.access_grants["11"]} revoquées
+      %li #{@stats.access_grants} autorisations créées pour #{@stats.access_grants_distinct_applications} applications distinctes
+      %li #{@stats.access_tokens["total"]} tokens créés pour #{@stats.access_tokens_distinct_applications} applications distinctes, avec #{@stats.access_tokens["00"]} tokens actifs (utilisés au cours des 24 dernières heures), #{@stats.access_tokens["10"]} utilisables et #{@stats.access_tokens["11"]} périmés
 
-    - if @stats.access_tokens["total"] > 1
-      %h2#annee Répartition annuelle des #{@stats.access_tokens["total"]} tokens
-    - else
-      %h2#annee Répartition annuelle
+    %h2#annee Répartition annuelle des #{@stats.applications} applications
+    %table
+      - maxval = @stats.applications_by_year.values.max
+      %tr
+        %th Année
+        %th Autorisations
+      - @stats.applications_by_year.each do |year,cnt|
+        %tr
+          %td
+            .stat= year
+          %td
+            .stat.content(style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
 
+    %h2#annee Répartition annuelle des #{@stats.access_grants} autorisations
+    %table
+      - maxval = @stats.access_grants_by_year.values.max
+      %tr
+        %th Année
+        %th Autorisations
+      - @stats.access_grants_by_year.each do |year,cnt|
+        %tr
+          %td
+            .stat= year
+          %td
+            .stat.content(style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
+
+    %h2#annee Répartition annuelle des #{@stats.access_tokens["total"]} tokens
     %table
       - maxval = @stats.access_tokens_by_year.values.map(&:values).flatten.max
       %tr
@@ -42,29 +62,7 @@
               %td.stat{'rowspan' => token.count}= year
               - newyear = false
             %td
-              .stat.stats100px(class="content")=(inactive==1) ? "inactif":"actif"
+              .stat.stats100px.content= (inactive==1) ? "périmé":"utilisable"
             %td
-              .stat(class="content" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
+              .stat.content(style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
 
-    - if @stats.access_grants["total"] > 1
-      %h2#annee Répartition annuelle des #{@stats.access_grants["total"]} autorisations
-    - else
-      %h2#annee Répartition annuelle
-
-    %table
-      - maxval = @stats.access_grants_by_year.values.map(&:values).flatten.max
-      %tr
-        %th Année
-        %th État
-        %th Autorisations
-      - @stats.access_grants_by_year.each do |year,grant|
-        - newyear = true
-        - grant.each do |inactive,cnt|
-          %tr
-            - if newyear
-              %td.stat{'rowspan' => grant.count}= year
-              - newyear = false
-            %td
-              .stat.stats100px(class="content")=(inactive==1) ? "inactif":"actif"
-            %td
-              .stat(class="content" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
