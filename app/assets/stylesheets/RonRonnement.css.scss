@@ -1676,6 +1676,11 @@ img {
   img { vertical-align: middle; }
 }
 
+.news_waiting_for_moderation {
+  li:hover { background-color: #d0d0d0; }
+  .votes { float: right; }
+}
+
 @media screen and (max-width: 768px), handheld {
   html, body {
     margin: 0;

@@ -4,9 +4,10 @@
 - if @news.empty?
   %p Aucune dépêche dans la file de modération.
 - else
-  %ul
+  %ul.news_waiting_for_moderation
     = list_of(@news) do |news|
       = link_to news.title, [:moderation, news]
+      %span.votes #{news.nb_voters_for} / #{news.nb_voters_against}
 
 %h2 Dépêches en cours de rédaction
 - if @drafts.empty?

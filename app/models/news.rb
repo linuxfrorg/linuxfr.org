@@ -299,6 +299,14 @@ class News < Content
     $redis.smembers("news/#{self.id}/contre").to_sentence
   end
 
+  def nb_voters_for
+    $redis.scard("news/#{self.id}/pour")
+  end
+
+  def nb_voters_against
+    $redis.scard("news/#{self.id}/contre")
+  end
+
   def reset_votes
     %w(pour contre).each {|word| $redis.del("news/#{self.id}/#{word}") }
     $redis.keys("nodes/#{node.id}/votes/*").each {|key| $redis.del key }
