@@ -40,4 +40,8 @@ class StatisticsController < ApplicationController
     @stats = Statistics::Tags.new
     @contents = Statistics::Contents.new
   end
+
+  def applications
+    @stats = Statistics::Applications.new
+  end
 end
