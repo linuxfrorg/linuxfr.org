@@ -12,14 +12,15 @@
     %h2 Sommaire
     %ul
       %li=link_to("général","#general")
-      %li=link_to("par an","#annee")
-      %li=link_to("par mois","#mois")
+      %li=link_to("applications par année","#anneejetons")
+      %li=link_to("autorisations par année","#anneeautorisations")
+      %li=link_to("jetons d'applications par année","#anneejetons")
 
     %h2#general Général
     %ul
-      %li #{@stats.applications} applications créées par #{@stats.applications_distinct_owners} utilisateurs distincts
-      %li #{@stats.access_grants} autorisations créées pour #{@stats.access_grants_distinct_applications} applications distinctes
-      %li #{@stats.access_tokens["total"]} tokens créés pour #{@stats.access_tokens_distinct_applications} applications distinctes, avec #{@stats.access_tokens["00"]} tokens actifs (utilisés au cours des 24 dernières heures), #{@stats.access_tokens["10"]} utilisables et #{@stats.access_tokens["11"]} périmés
+      %li #{pluralize @stats.applications, "application créée", "applications créées"} par #{pluralize @stats.applications_distinct_owners, "utilisateur", "utilisateurs distincts"}
+      %li #{pluralize @stats.access_grants, "autorisation créée", "autorisations créées"} pour #{pluralize @stats.access_grants_distinct_applications, "application", "applications distinctes"}
+      %li #{pluralize @stats.access_tokens["total"], "jeton d'application créé", "jetons d'autorisation créés"} pour #{pluralize @stats.access_tokens_distinct_applications, "application", "applications distinctes"}, avec #{pluralize @stats.access_tokens["00"], "jeton actif (utilisé", "jetons actifs (utilisés"} au cours des 24 dernières heures), #{pluralize @stats.access_tokens["10"], "utilisable", "utilisables"} et #{pluralize @stats.access_tokens["11"], "périmé", "périmés"}
 
     %h2#annee Répartition annuelle des #{@stats.applications} applications
     %table
@@ -34,7 +35,7 @@
           %td
             .stat.content(style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
 
-    %h2#annee Répartition annuelle des #{@stats.access_grants} autorisations
+    %h2#anneeautorisations Répartition annuelle des #{pluralize @stats.access_grants, "autorisation", "autorisations"}
     %table
       - maxval = @stats.access_grants_by_year.values.max
       %tr
@@ -47,7 +48,7 @@
           %td
             .stat.content(style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
 
-    %h2#annee Répartition annuelle des #{@stats.access_tokens["total"]} tokens
+    %h2#anneejetons Répartition annuelle des #{pluralize @stats.access_tokens["total"], "jeton d'application", "jetons d'application"}
     %table
       - maxval = @stats.access_tokens_by_year.values.map(&:values).flatten.max
       %tr
@@ -65,4 +66,3 @@
               .stat.stats100px.content= (inactive==1) ? "périmé":"utilisable"
             %td
               .stat.content(style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
-
