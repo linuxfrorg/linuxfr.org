@@ -12,7 +12,7 @@ class Redaction::ParagraphsController < RedactionController
     else
       paragraphs = @news.paragraphs.in_second_part
     end
-    paragraphs.create(wiki_body: "Vous pouvez éditer ce paragraphe en cliquant sur le crayon", user: current_user)
+    paragraphs.create(wiki_body: News::DEFAULT_PARAGRAPH, user: current_user)
     render nothing: true
   end
 

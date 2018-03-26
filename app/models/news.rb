@@ -24,6 +24,8 @@
 # that will be reviewed and moderated by the LinuxFr.org team.
 #
 class News < Content
+  DEFAULT_PARAGRAPH = "Vous pouvez éditer ce paragraphe en cliquant sur le crayon !".freeze
+
   self.table_name = "news"
   self.type = "Dépêche"
 
@@ -128,7 +130,7 @@ class News < Content
     news = News.new
     news.title = "Nouvelle dépêche #{News.maximum(:id).to_i + 1}"
     news.section = Section.default
-    news.wiki_body = news.wiki_second_part = "Vous pouvez éditer cette partie en cliquant sur le crayon !"
+    news.wiki_body = news.wiki_second_part = DEFAULT_PARAGRAPH
     news.cc_licensed = true
     news.author_name  = account.name
     news.author_email = account.email
@@ -208,6 +210,10 @@ class News < Content
   after_update :announce_modification
   def announce_modification
     Push.create(self, kind: :update, title: title, section: { id: section.id, title: section.title })
+  end
+
+  def has_default_paragraph?
+    paragraphs.any? { |p| p.wiki_body == DEFAULT_PARAGRAPH }
   end
 
 ### Versioning ###

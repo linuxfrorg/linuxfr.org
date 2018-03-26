@@ -47,7 +47,9 @@ class Moderation::NewsController < ModerationController
 
   def accept
     enforce_accept_permission(@news)
-    if @news.unlocked?
+    if @news.has_default_paragraph?
+      redirect_to [:moderation, @news], alert: "Impossible de publier une dépêche avec le texte par défaut d'un paragraphe"
+    elsif @news.unlocked?
       @news.moderator_id = current_user.id
       @news.accept!
       NewsNotifications.accept(@news).deliver
