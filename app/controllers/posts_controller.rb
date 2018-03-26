@@ -24,6 +24,7 @@ class PostsController < ApplicationController
       redirect_to forum_posts_url(forum_id: @post.forum), notice: "Votre message a bien été créé"
     else
       @post.node = Node.new
+      @post.node.preview_tags = params[:tags]
       @post.valid?
       render :new
     end

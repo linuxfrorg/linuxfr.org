@@ -33,6 +33,7 @@ class DiariesController < ApplicationController
       redirect_to [@diary.owner, @diary], notice: "Votre journal a bien été créé"
     else
       @diary.node = Node.new(user_id: current_user.id, cc_licensed: @diary.cc_licensed)
+      @diary.node.preview_tags = params[:tags]
       @diary.valid?
       flash.now[:alert] = "Votre journal ne contient pas de liens. Êtes-vous sûr ?" unless @diary.body =~ /<a /
       render :new

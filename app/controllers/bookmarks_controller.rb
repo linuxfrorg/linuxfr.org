@@ -35,6 +35,7 @@ class BookmarksController < ApplicationController
       redirect_to [@bookmark.owner, @bookmark], notice: "Votre lien a bien été partagé"
     else
       @bookmark.node = Node.new(user_id: current_user.id, cc_licensed: false)
+      @bookmark.node.preview_tags = params[:tags]
       @bookmark.valid?
       flash.now[:alert] = "Votre lien semble invalide. Êtes-vous sûr ?" unless @bookmark.link =~ /\A#{URI::regexp(['http', 'https'])}\z/
       render :new

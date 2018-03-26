@@ -157,6 +157,12 @@ class Node < ActiveRecord::Base
 
 ### Tags ###
 
+  attr_reader :preview_tags
+
+  def preview_tags=(list)
+    @preview_tags = TagList.new(list)
+  end
+
   def set_taglist(list, user_id)
     self.class.transaction do
       TagList.new(list).each do |tagname|
