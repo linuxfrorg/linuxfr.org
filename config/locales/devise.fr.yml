@@ -4,7 +4,7 @@ fr:
       confirmed: "Votre compte a été confirmé avec succès."
       send_instructions: "Vous allez recevoir un courriel avec les instruction pour confirmer votre compte dans quelques minutes."
     failure:
-      already_authenticated: "Vous n'avez pas les droits suffisants pour accéder à cette partie du site."
+      already_authenticated: "Vous êtes déjà connecté(e)."
       inactive: "Votre compte n'a pas encore été activé."
       invalid: "Identifiant ou mot de passe invalide."
       locked: "Votre compte a été verrouillé."
