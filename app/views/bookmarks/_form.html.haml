@@ -1,14 +1,14 @@
 = messages_on_error @bookmark
 
 %p
+  = form.label :title, "Sujet du lien"
+  = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 100
+%p
   = form.label :link, "Lien à partager"
   = form.text_field :link, autocomplete: 'off', required: 'required', spellcheck: 'false', maxlength: 1024
 %p
   = form.label :lang, "Langue"
   = form.select :lang, Lang.all
-%p
-  = form.label :title, "Sujet du lien"
-  = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 100
 %p
 - if form.object.new_record?
   %p

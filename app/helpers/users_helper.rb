@@ -13,6 +13,18 @@ module UsersHelper
     image_tag(user.avatar_url, options)
   end
 
+  def mini_avatar_img(user)
+    return '' if user.nil?
+    return '' if current_account && current_account.hide_avatar?
+    options = {
+      class: "avatar",
+      alt: "",
+      width: AvatarUploader::AVATAR_SIZE / 2,
+      height: AvatarUploader::AVATAR_SIZE / 2
+    }
+    image_tag(user.avatar_url, options)
+  end
+
   def homesite_link(user)
     return if user.homesite.blank?
     karma = user.account.try(:karma).to_i

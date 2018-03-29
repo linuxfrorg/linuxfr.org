@@ -1,6 +1,6 @@
 = article_for bookmark do |c|
   - c.title = "#{link_to "Lien", "/liens", class: "topic"} #{link_to bookmark.title, [bookmark.owner, bookmark]}".html_safe
-  - c.image = avatar_img(bookmark.owner)
+  - c.image = mini_avatar_img(bookmark.owner)
   - c.body = capture do
     %ul.links
       %li.link{lang: bookmark.lang}= "#{link_to bookmark.link, bookmark.link, hreflang: bookmark.lang}".html_safe
