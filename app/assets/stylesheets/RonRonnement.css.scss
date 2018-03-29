@@ -1082,11 +1082,13 @@ li.comment {
     margin-left: 1.25em;
     padding-left: 0;
   }
-  &.fold { min-height: 0; }
-  &.fold > figure,
-  &.fold > .content,
-  &.fold > .actions {
-    display: none;
+  body:not(#comments-show) &.fold {
+    min-height: 0;
+    & > figure,
+    & > .content,
+    & > .actions {
+      display: none;
+    }
   }
 }
 li.new-comment {

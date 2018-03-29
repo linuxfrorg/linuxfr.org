@@ -9,6 +9,7 @@ module CommentsHelper
       classes << "vote-#{v}"
     end
     classes << cycle("odd", "even", name: "comment-#{comment.parent_id}")
+    classes << "fold" unless current_account || comment.score >= 0
     { id: "comment-#{comment.id}", class: classes.join(" ") }
   end
 
