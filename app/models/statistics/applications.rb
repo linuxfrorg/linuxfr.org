@@ -36,7 +36,7 @@ class Statistics::Applications < Statistics::Statistics
     return @applications_by_year if @applications_by_year
 
     @applications_by_year = {}
-    entries = select_all("SELECT YEAR(oauth_applications.created_at) AS year, COUNT(*) AS cnt FROM oauth_applications GROUP BY year ORDER BY year")
+    entries = select_all("SELECT YEAR(CONVERT_TZ(oauth_applications.created_at, 'UTC', 'Europe/Paris')) AS year, COUNT(*) AS cnt FROM oauth_applications GROUP BY year ORDER BY year")
     entries.each do |entry|
       @applications_by_year[entry["year"]] = entry["cnt"]
     end
@@ -48,7 +48,7 @@ class Statistics::Applications < Statistics::Statistics
     return @access_grants_by_year if @access_grants_by_year
 
     @access_grants_by_year = {}
-    entries = select_all("SELECT YEAR(oauth_access_grants.created_at) AS year, COUNT(*) AS cnt FROM oauth_access_grants GROUP BY year ORDER BY year")
+    entries = select_all("SELECT YEAR(CONVERT_TZ(oauth_access_grants.created_at, 'UTC', 'Europe/Paris')) AS year, COUNT(*) AS cnt FROM oauth_access_grants GROUP BY year ORDER BY year")
     entries.each do |entry|
       @access_grants_by_year[entry["year"]] = entry["cnt"]
     end
@@ -60,7 +60,7 @@ class Statistics::Applications < Statistics::Statistics
     return @access_tokens_by_year if @access_tokens_by_year
 
     @access_tokens_by_year = {}
-    entries = select_all("SELECT YEAR(oauth_access_tokens.created_at) AS year, IFNULL(revoked_at,now()+'1 year') < now() AS expired, COUNT(*) AS cnt FROM oauth_access_tokens GROUP BY year, expired ORDER BY year, expired")
+    entries = select_all("SELECT YEAR(CONVERT_TZ(oauth_access_tokens.created_at, 'UTC', 'Europe/Paris')) AS year, IFNULL(revoked_at,now()+'1 year') < now() AS expired, COUNT(*) AS cnt FROM oauth_access_tokens GROUP BY year, expired ORDER BY year, expired")
     entries.each do |entry|
       @access_tokens_by_year[entry["year"]] ||= {}
       @access_tokens_by_year[entry["year"]][entry["expired"]] ||= 0

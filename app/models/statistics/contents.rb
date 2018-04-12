@@ -40,7 +40,7 @@ class Statistics::Contents < Statistics::Statistics
     return @contents_by_year if @contents_by_year
 
     @contents_by_year = {}
-    entries = select_all("SELECT YEAR(created_at) AS year, content_type, COUNT(*) AS cnt FROM nodes WHERE public=1 GROUP BY year, content_type ORDER BY year, content_type")
+    entries = select_all("SELECT YEAR(CONVERT_TZ(created_at, 'UTC', 'Europe/Paris')) AS year, content_type, COUNT(*) AS cnt FROM nodes WHERE public=1 GROUP BY year, content_type ORDER BY year, content_type")
     entries.each do |entry|
       @contents_by_year[entry["year"]] ||= {}
       @contents_by_year[entry["year"]][entry["content_type"]] = entry["cnt"]
@@ -53,7 +53,7 @@ class Statistics::Contents < Statistics::Statistics
     return @contents_by_month if @contents_by_month
 
     @contents_by_month = {}
-    entries = select_all("SELECT CONCAT(SUBSTRING(created_at+0,1,6)) AS month, content_type, COUNT(*) AS cnt FROM nodes WHERE created_at > DATE_SUB(DATE_SUB(CURDATE(),INTERVAL 1 YEAR), INTERVAL DAY(CURDATE())-1 DAY) AND public=1 GROUP BY month, content_type ORDER BY month ASC, content_type")
+    entries = select_all("SELECT CONCAT(SUBSTRING(CONVERT_TZ(created_at, 'UTC', 'Europe/Paris')+0,1,6)) AS month, content_type, COUNT(*) AS cnt FROM nodes WHERE created_at > DATE_SUB(DATE_SUB(CURDATE(),INTERVAL 1 YEAR), INTERVAL DAY(CURDATE())-1 DAY) AND public=1 GROUP BY month, content_type ORDER BY month ASC, content_type")
     entries.each do |entry|
       @contents_by_month[entry["month"]] ||= {}
       @contents_by_month[entry["month"]][entry["content_type"]] = entry["cnt"]
@@ -63,18 +63,18 @@ class Statistics::Contents < Statistics::Statistics
   end
 
   def contents_by_day
-    select_all "SELECT DAYNAME(CONVERT_TZ(created_at,'+00:00','Europe/Paris')) AS d, WEEKDAY(CONVERT_TZ(created_at,'+00:00','Europe/Paris')) AS day, COUNT(*) AS cnt FROM nodes WHERE public=1 GROUP BY d ORDER BY day ASC"
+    select_all "SELECT DAYNAME(CONVERT_TZ(created_at, 'UTC', 'Europe/Paris')) AS d, WEEKDAY(CONVERT_TZ(created_at, 'UTC', 'Europe/Paris')) AS day, COUNT(*) AS cnt FROM nodes WHERE public=1 GROUP BY d ORDER BY day ASC"
   end
 
   def news_size
-    select_all "SELECT YEAR(created_at) AS year,ROUND(AVG(LENGTH(body)+LENGTH(second_part))) AS cnt FROM news WHERE state='published' GROUP BY year ORDER BY year"
+    select_all "SELECT YEAR(CONVERT_TZ(created_at, 'UTC', 'Europe/Paris')) AS year,ROUND(AVG(LENGTH(body)+LENGTH(second_part))) AS cnt FROM news WHERE state='published' GROUP BY year ORDER BY year"
   end
 
   def contents_by_license
     return @contents_by_license if @contents_by_license
 
     @contents_by_license = {}
-    entries = select_all "SELECT YEAR(created_at) AS year, content_type, ROUND(AVG(100*cc_licensed)) AS pct FROM nodes WHERE (content_type='News' OR content_type='Diary') AND public=1 GROUP BY year, content_type HAVING (year>=2010 AND pct>0) ORDER BY year, content_type;"
+    entries = select_all "SELECT YEAR(CONVERT_TZ(created_at, 'UTC', 'Europe/Paris')) AS year, content_type, ROUND(AVG(100*cc_licensed)) AS pct FROM nodes WHERE (content_type='News' OR content_type='Diary') AND public=1 GROUP BY year, content_type HAVING (year>=2010 AND pct>0) ORDER BY year, content_type;"
     entries.each do |entry|
       @contents_by_license[entry["year"]] ||= {}
       @contents_by_license[entry["year"]][entry["content_type"]] = entry["pct"]

@@ -37,7 +37,7 @@ class Statistics::Tracker < Statistics::Statistics
     return @by_year if @by_year
 
     @by_year = {}
-    entries = select_all("SELECT YEAR(trackers.created_at) AS year, state, COUNT(*) AS cnt FROM trackers, nodes WHERE nodes.content_id=trackers.id AND nodes.content_type='Tracker' AND public=1 GROUP BY year, state ORDER BY year, state")
+    entries = select_all("SELECT YEAR(CONVERT_TZ(trackers.created_at, 'UTC', 'Europe/Paris')) AS year, state, COUNT(*) AS cnt FROM trackers, nodes WHERE nodes.content_id=trackers.id AND nodes.content_type='Tracker' AND public=1 GROUP BY year, state ORDER BY year, state")
     entries.each do |entry|
       @by_year[entry["year"]] ||= { "opened" => 0, "fixed" => 0, "invalid" => 0 }
       @by_year[entry["year"]][entry["state"]] = entry["cnt"]
@@ -50,7 +50,7 @@ class Statistics::Tracker < Statistics::Statistics
     return @by_month if @by_month
 
     @by_month = {}
-    entries = select_all("SELECT state, SUBSTRING(trackers.created_at+0,1,6) AS created, SUBSTRING(trackers.updated_at+0,1,6) AS updated FROM trackers, nodes WHERE nodes.content_id=trackers.id AND nodes.content_type='Tracker' AND public=1")
+    entries = select_all("SELECT state, SUBSTRING(CONVERT_TZ(trackers.created_at, 'UTC', 'Europe/Paris')+0,1,6) AS created, SUBSTRING(trackers.updated_at+0,1,6) AS updated FROM trackers, nodes WHERE nodes.content_id=trackers.id AND nodes.content_type='Tracker' AND public=1")
     entries.each do |entry|
       @by_month[entry["created"]] ||= {}
       @by_month[entry["created"]]["opened"] ||= 0

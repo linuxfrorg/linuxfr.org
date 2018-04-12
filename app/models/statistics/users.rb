@@ -84,7 +84,7 @@ class Statistics::Users < Statistics::Statistics
   end
 
   def by_year
-    select_all "SELECT YEAR(accounts.created_at) AS year, COUNT(*) AS cnt FROM accounts WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY year ORDER BY year ASC"
+    select_all "SELECT YEAR(CONVERT_TZ(accounts.created_at, 'UTC', 'Europe/Paris')) AS year, COUNT(*) AS cnt FROM accounts WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY year ORDER BY year ASC"
   end
 
   ACCOUNT_SLOT=5000

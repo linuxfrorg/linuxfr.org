@@ -4,8 +4,8 @@ class Statistics::Moderation < Statistics::Statistics
   def by_day
     select_all <<-EOS
        SELECT content_type AS type,
-              DAYNAME(CONVERT_TZ(created_at,'+00:00','Europe/Paris')) AS d,
-              WEEKDAY(CONVERT_TZ(created_at,'+00:00','Europe/Paris')) AS day,
+              DAYNAME(CONVERT_TZ(created_at,'UTC','Europe/Paris')) AS d,
+              WEEKDAY(CONVERT_TZ(created_at,'UTC','Europe/Paris')) AS day,
               COUNT(*) AS cnt
          FROM nodes
         WHERE (content_type='News' or content_type='Poll') AND public=1
@@ -30,12 +30,12 @@ class Statistics::Moderation < Statistics::Statistics
   end
 
   def acts_by_year_and_log(log)
-    select_all("SELECT YEAR(created_at) AS year, COUNT(*) AS cnt FROM logs WHERE description LIKE '%#{log}%' GROUP BY year ORDER BY year;")
+    select_all("SELECT YEAR(CONVERT_TZ(created_at,'UTC','Europe/Paris')) AS year, COUNT(*) AS cnt FROM logs WHERE description LIKE '%#{log}%' GROUP BY year ORDER BY year;")
   end
 
   def average_time
     select_all <<-EOS
-       SELECT YEAR(CONVERT_TZ(nodes.created_at,'+00:00','Europe/Paris')) AS year,
+       SELECT YEAR(CONVERT_TZ(nodes.created_at,'UTC','Europe/Paris')) AS year,
               COUNT(*) AS cnt,
               SUM(TIMESTAMPDIFF(SECOND,news.created_at,nodes.created_at)) AS duration,
               STD(TIMESTAMPDIFF(SECOND,news.created_at,nodes.created_at)) AS std,
@@ -51,7 +51,7 @@ class Statistics::Moderation < Statistics::Statistics
   end
 
   def median_time(year, count, percentile)
-    count("SELECT TIMESTAMPDIFF(SECOND,news.created_at,nodes.created_at) AS duration FROM nodes, news WHERE nodes.content_id = news.id AND nodes.content_type='News' AND YEAR(CONVERT_TZ(nodes.created_at,'+00:00','Europe/Paris'))='#{year}' ORDER BY duration LIMIT #{(count*percentile).to_i},1;", "duration")
+    count("SELECT TIMESTAMPDIFF(SECOND,news.created_at,nodes.created_at) AS duration FROM nodes, news WHERE nodes.content_id = news.id AND nodes.content_type='News' AND YEAR(CONVERT_TZ(nodes.created_at,'UTC','Europe/Paris'))='#{year}' ORDER BY duration LIMIT #{(count*percentile).to_i},1;", "duration")
   end
 
   def top_amr(sql_criterion="")
@@ -105,15 +105,15 @@ class Statistics::Moderation < Statistics::Statistics
 
   def news_by_week(user_id)
     select_all <<-EOS
-      SELECT COUNT(news.created_at) AS cnt, WEEK(now(),3) AS weeks FROM news,nodes WHERE nodes.content_type='News' AND news.id=nodes.content_id AND state='published' AND YEAR(news.created_at)=YEAR(now()) AND user_id=#{user_id};
+      SELECT COUNT(news.created_at) AS cnt, WEEK(now(),3) AS weeks FROM news,nodes WHERE nodes.content_type='News' AND news.id=nodes.content_id AND state='published' AND YEAR(CONVERT_TZ(news.created_at,'UTC','Europe/Paris'))=YEAR(now()) AND user_id=#{user_id};
     EOS
   end
 
   def news_by_day
-    count "SELECT COUNT(*) AS cnt FROM news,nodes WHERE nodes.content_type='News' AND news.id=nodes.content_id AND state='published' AND YEAR(news.created_at)=YEAR(now());"
+    count "SELECT COUNT(*) AS cnt FROM news,nodes WHERE nodes.content_type='News' AND news.id=nodes.content_id AND state='published' AND YEAR(CONVERT_TZ(news.created_at,'UTC','Europe/Paris'))=YEAR(now());"
   end
 
   def amr_news_by_day
-    count "SELECT COUNT(*) AS cnt FROM news,nodes,accounts WHERE nodes.content_type='News' AND news.id=nodes.content_id AND state='published' AND YEAR(news.created_at)=YEAR(now()) AND accounts.user_id=nodes.user_id AND (accounts.role='moderator' OR accounts.role='admin');"
+    count "SELECT COUNT(*) AS cnt FROM news,nodes,accounts WHERE nodes.content_type='News' AND news.id=nodes.content_id AND state='published' AND YEAR(CONVERT_TZ(news.created_at,'UTC','Europe/Paris'))=YEAR(now()) AND accounts.user_id=nodes.user_id AND (accounts.role='moderator' OR accounts.role='admin');"
   end
 end
