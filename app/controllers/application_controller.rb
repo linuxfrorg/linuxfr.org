@@ -41,7 +41,6 @@ protected
     @popular_tags  = Tag.footer
     @friend_sites  = FriendSite.select([:url, :title])
     @dont_index    = params.has_key?(:order) || (request.headers["User-Agent"] =~ /AppEngine-Google/i)
-    @google_plus   = false
   end
 
   def dont_index?

@@ -10,9 +10,6 @@
   - else
     = stylesheet_link_tag 'application', media: nil
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
-  <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Recherche de contenus sur LinuxFr.org" />
-  - if @google_plus
-    <link rel="publisher" href="https://plus.google.com/116704247328760228227" />
   %meta(name="viewport" content="width=device-width")
   - if @author
     %meta(name="author" content=@author)
@@ -20,7 +17,5 @@
   %meta(name="keywords" content="#{@keywords.join ', '}")
   - if @dont_index
     %meta(name="robots" content="noindex, nofollow")
-  <!--[if IE]>#{javascript_include_tag "html5"}<![endif]-->
-  <!--[if lt IE 9]>#{javascript_include_tag "IE9"}<![endif]-->
   - @feeds.each do |link,title|
     = auto_discovery_link_tag :atom, link, { title: title }

@@ -1,5 +1,3 @@
-#= require eventsource
-
 $ = window.jQuery
 
 class Push
