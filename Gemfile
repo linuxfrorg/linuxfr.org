@@ -42,11 +42,6 @@ gem "coffee-rails",          "~>4.1"
 gem "therubyracer",          "~>0.12.3", require: 'v8'
 gem "uglifier"
 
-# Rspec-rails must be in development for rake stats and in test for normal stuff
-group :development, :test do
-  gem "rspec-rails",           "~>3.2"
-end
-
 group :development do
   gem "annotate"
   gem "better_errors"
@@ -62,13 +57,6 @@ group :development do
   gem "sushi"
   gem "thin"
   gem "web-console"
-end
-
-group :test do
-  gem "database_cleaner",      "~>1.2"
-  gem "factory_girl_rails",    "~>1.6"
-  gem "fuubar",                "~>2.0"
-  gem "capybara",              "~>2.4"
 end
 
 group :production, :alpha do

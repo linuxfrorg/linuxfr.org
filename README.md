@@ -85,17 +85,6 @@ If you want the full stack for running LinuxFr.org, you should also look at:
 * [SVGTeX](https://github.com/linuxfrorg/svgtex)
 
 
-How to run the specs
---------------------
-
-1. Be sure that redis is running
-
-2. And now, just run rspec (and repeat this step until done):
-
-```
-$ bin/rspec spec
-```
-
 Copyheart
 ---------
 
