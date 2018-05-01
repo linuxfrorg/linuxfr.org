@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails",                   "~>5.1.3"
+gem "rails",                   "~>5.1.6"
 
 gem "actionpack-page_caching", "~>1.1"
 gem "ansi",                    "~>1.4", require: nil
@@ -27,7 +27,7 @@ gem "htmlentities",            "~>4.3"
 gem "inherited_resources",     "~>1.7"
 gem "kaminari",                "~>0.15"
 gem "mini_magick",             "~>3.8"
-gem "mysql2",                  "~>0.3"
+gem "mysql2",                  "~>0.5.0"
 gem "nokogiri",                "1.6.5"  # FIXME see https://github.com/sparklemotion/nokogiri/issues/1233
 gem "rinku",                   "~>1.7"
 gem "hiredis",                 "~>0.5"
