@@ -1832,3 +1832,10 @@ img {
     article { border-width: 1px 0; }
   }
 }
+
+	/*	fixe for computer screen	*/
+@media screen and (max-height: 1100px) {
+	.content img, .content svg {
+		max-height: 700px;
+	}
+}
