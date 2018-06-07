@@ -12,9 +12,9 @@
     sous la responsabilité de leurs auteurs respectifs.
   %p
     Vous pouvez choisir le type d'affichage pour les photos&nbsp;:
-    %a{onclick: "$.cookie('totoz-type', 'popup', {path: '/board', expires: new Date('01/01/2042')});" } en surimpression,
-    %a{onclick: "$.cookie('totoz-type', 'inline', {path: '/board', expires: new Date('01/01/2042')});" } insérées avec le texte
+    %a{onclick: "$.cookie('totoz-type', 'popup', {path: '/', expires: new Date('01/01/2042')});" } en surimpression,
+    %a{onclick: "$.cookie('totoz-type', 'inline', {path: '/', expires: new Date('01/01/2042')});" } insérées avec le texte
     ou
-    %a{onclick: "$.cookie('totoz-type', null, {path: '/board'});" } sans
+    %a{onclick: "$.cookie('totoz-type', 'none', {path: '/'});" } sans
   %main#contents(role="main")
     = render 'boards', boards: @boards, box: false

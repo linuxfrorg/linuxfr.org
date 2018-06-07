@@ -10,7 +10,7 @@ class Chat
     @board.find(".board-left .norloge").click @norloge
     @board.find("form").submit @postMessage
     @totoz_type = $.cookie("totoz-type")
-    @totoz_url  = $.cookie("totoz-url") or "https://sfw.totoz.eu/gif/"
+    @totoz_url  = $.cookie("totoz-url") or "https://totoz.moul.es/"
     @norlogize      right for right in @board.find(".board-right")
     @norlogize_left left  for left  in @board.find(".board-left time").get().reverse()
     @board.on("mouseenter", ".board-left time", @left_highlitizer)
