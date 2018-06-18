@@ -57,6 +57,9 @@ class Account < ActiveRecord::Base
   attr_accessor :amr_id
   delegate :name, to: :user
 
+  attr_accessor :totoz_style
+  attr_accessor :totoz_source
+
   scope :unconfirmed, -> { where(confirmed_at: nil) }
 
 ### Validation ###
