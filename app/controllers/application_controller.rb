@@ -55,6 +55,7 @@ protected
       :polls_on_home, :wiki_pages_on_home, :trackers_on_home, :bookmarks_on_home,
       :sort_by_date_on_home, :hide_signature, :show_negative_nodes,
       :totoz_style, :totoz_source,
+      :board_in_sidebar,
       user_attributes: [:id, :name, :homesite, :jabber_id, :signature, :avatar, :custom_avatar_url]
     ])
   end
