@@ -176,4 +176,6 @@ Devise.setup do |config|
   # end
 
   config.expire_all_remember_me_on_sign_out = false
+
+  config.reconfirmable = false
 end

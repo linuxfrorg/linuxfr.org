@@ -78,3 +78,12 @@
   %p
     %label.factice Sûr de vos modifications ?
     = f.submit "Enregistrer"
+
+%h2 Choisir les contenus affichés sur la barre latérale
+= form_for @account, url: registration_path(:account), method: :put do |f|
+  %p
+    = f.check_box :board_in_sidebar
+    = f.label :board_in_sidebar, "Tribune"
+  %p
+    %label.factice Sûr de vos modifications ?
+    = f.submit "Enregistrer"

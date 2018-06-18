@@ -25,6 +25,8 @@
         %li= link_to "Pas de compte&nbsp;? S'inscrire&nbsp;!".html_safe, '/compte/inscription'
   - if current_account
     = render 'redaction/box'
+    - if current_account.try(:board_in_sidebar)
+      = render 'boards/box'
     - if current_account.amr?
       = render 'moderation/box'
     - if current_account.admin?

@@ -310,6 +310,7 @@ class Account < ActiveRecord::Base
                          256 => :hide_signature,
                          512 => :show_negative_nodes,
                         1024 => :bookmarks_on_home,
+                        2048 => :board_in_sidebar,
                          scopes: false
 
   def types_on_home
