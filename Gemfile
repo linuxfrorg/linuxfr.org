@@ -8,9 +8,10 @@ end
 gem "rails",                   "~>5.1.6"
 
 gem "actionpack-page_caching", "~>1.1"
-gem "ansi",                    "~>1.4", require: nil
+gem "ansi",                    "~>1.4", require: false
 gem "acts_as_list",            "~>0.4"
 gem "bitfields",               "~>0.4"
+gem "bootsnap",                "~>1.3", require: false
 gem "canable",                 "~>0.1"
 gem "carrierwave",             "~>1.1"
 gem "devise",                  "~>4.3"
