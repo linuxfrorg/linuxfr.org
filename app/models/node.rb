@@ -27,7 +27,7 @@ class Node < ActiveRecord::Base
   belongs_to :content, polymorphic: true, inverse_of: :node
   has_many :comments, inverse_of: :node
   has_many :taggings, -> { includes(:tag) }, dependent: :destroy
-  has_many :tags, -> { uniq }, through: :taggings
+  has_many :tags, -> { distinct }, through: :taggings
 
   scope :visible,        -> { where(public: true) }
   scope :by_date,        -> { order(created_at: :desc) }
@@ -178,7 +178,7 @@ class Node < ActiveRecord::Base
         joins(:taggings).
         where("taggings.node_id" => self.id).
         group("tags.id").
-        order("COUNT(tags.id) DESC").
+        order(Arel.sql("COUNT(tags.id) DESC")).
         limit(nb)
   end
 

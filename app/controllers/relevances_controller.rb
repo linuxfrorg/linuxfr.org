@@ -27,7 +27,7 @@ class RelevancesController < ApplicationController
     end
     respond_to do |wants|
       wants.json { render json: { notice: notice, nb_votes: current_account.nb_votes } }
-      wants.html { redirect_back :back fallback_location: root_url }
+      wants.html { redirect_back fallback_location: root_url }
     end
   end
 

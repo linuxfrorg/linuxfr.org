@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   has_many :wiki_versions, dependent: :nullify
   has_many :comments, inverse_of: :user
   has_many :taggings, -> { includes(:tag) }, dependent: :destroy
-  has_many :tags, -> { uniq }, through: :taggings
+  has_many :tags, -> { distinct }, through: :taggings
 
   validates_format_of :homesite, message: "L'URL du site web personnel n'est pas valide", with: URI::regexp(%w(http https)), allow_blank: true
 

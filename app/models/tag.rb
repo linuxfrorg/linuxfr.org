@@ -11,7 +11,7 @@
 
 class Tag < ActiveRecord::Base
   has_many :taggings, dependent: :destroy, inverse_of: :tag
-  has_many :nodes, -> { uniq }, through: :taggings
+  has_many :nodes, -> { distinct }, through: :taggings
 
   validates :name, presence: true
 
@@ -22,7 +22,7 @@ class Tag < ActiveRecord::Base
                     where(public: true).
                     where("created_at > ?", 1.month.ago).
                     group(:tag_id).
-                    order("COUNT(*) DESC").
+                    order(Arel.sql("COUNT(*) DESC")).
                     limit(12)
   }
   scope :autocomplete, ->(q, nb) {

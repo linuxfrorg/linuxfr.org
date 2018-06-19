@@ -78,7 +78,7 @@ class TagsController < ApplicationController
   def hide
     enforce_update_permission(@tag)
     @tag.toggle!("public")
-    redirect_back, fallback_location: root_url, notice: "La visibilité du tag a bien été modifiée"
+    redirect_back fallback_location: root_url, notice: "La visibilité du tag a bien été modifiée"
   rescue
     redirect_to root_url
   end
