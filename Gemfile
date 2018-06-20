@@ -31,8 +31,7 @@ gem "mini_magick",             "~>3.8"
 gem "mysql2",                  "~>0.5.0"
 gem "nokogiri",                "1.6.5"  # FIXME see https://github.com/sparklemotion/nokogiri/issues/1233
 gem "rinku",                   "~>1.7"
-gem "hiredis",                 "~>0.5"
-gem "redis",                   "~>3.0", require: ["redis/connection/hiredis", "redis"]
+gem "redis",                   "~>4.0"
 gem "sitemap_generator",       "~>2.1"
 gem "state_machine",           "~>1.2"
 
@@ -63,5 +62,4 @@ end
 group :production, :alpha do
   gem "unicorn",               "~>5.1"
   gem "gctools",               "~>0.2"
-  gem "redis-activesupport",   "~>5.0"
 end
