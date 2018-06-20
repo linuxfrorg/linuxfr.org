@@ -42,5 +42,5 @@ after_fork do |server, worker|
 
   # Don't share the redis connections
   $redis = Redis.new
-  Rails.cache.reconnect
+  Rails.cache.instance_variable_set(:@redis, nil)
 end
