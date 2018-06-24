@@ -20,7 +20,7 @@
         %li= link_to "Changer de style", '/stylesheet/modifier'
         %li= button_to "Se déconnecter", '/compte/deconnexion', method: :post, id: "logout"
     - else
-      = render "sessions/new", id_suffix: "_sidebar"
+      = render "devise/sessions/new", id_suffix: "_sidebar"
       %ul
         %li= link_to "Pas de compte&nbsp;? S'inscrire&nbsp;!".html_safe, '/compte/inscription'
   - if current_account
