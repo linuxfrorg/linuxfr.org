@@ -95,7 +95,7 @@ protected
 
   def honeypot
     honeypot = params[:tracker].delete(:pot_de_miel)
-    render nothing: true if honeypot.present?
+    head :no_content if honeypot.present?
   end
 
   def marked_as_read

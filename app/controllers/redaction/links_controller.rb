@@ -32,7 +32,7 @@ class Redaction::LinksController < RedactionController
 
   def unlock
     @link.unlock
-    render nothing: true
+    head :no_content
   end
 
 protected

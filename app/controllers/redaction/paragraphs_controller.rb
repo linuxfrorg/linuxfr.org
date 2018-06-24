@@ -14,7 +14,7 @@ class Redaction::ParagraphsController < RedactionController
       paragraphs = @news.paragraphs.in_second_part
     end
     paragraphs.create(wiki_body: News::DEFAULT_PARAGRAPH, user: current_user)
-    render nothing: true
+    head :created
   end
 
   def show
@@ -37,7 +37,7 @@ class Redaction::ParagraphsController < RedactionController
 
   def unlock
     @paragraph.unlock
-    render nothing: true
+    head :no_content
   end
 
 protected

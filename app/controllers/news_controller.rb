@@ -64,7 +64,7 @@ protected
     honeypot = params[:news].delete(:pot_de_miel)
     links = params[:news][:links_attributes].values
     same  = links.map {|l| l["title"] }.reject(&:blank?).group_by(&:to_s).map {|_, v| v.size }.max.to_i
-    render nothing: true if honeypot.present? || same >= 3
+    head :no_content if honeypot.present? || same >= 3
   end
 
   def find_news

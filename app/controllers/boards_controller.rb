@@ -19,9 +19,9 @@ class BoardsController < ApplicationController
     board.news.tap {|news| news.node.read_by current_account.id if news }
     respond_to do |wants|
       wants.html { redirect_back fallback_location: root_url }
-      wants.js   { render nothing: true }
-      wants.xml  { render nothing: true }
-      wants.tsv  { render nothing: true }
+      wants.js   { head :created }
+      wants.xml  { head :created }
+      wants.tsv  { head :created }
     end
   end
 
