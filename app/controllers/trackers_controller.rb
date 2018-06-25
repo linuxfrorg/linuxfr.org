@@ -7,7 +7,8 @@ class TrackersController < ApplicationController
   respond_to :html, :md
 
   def index
-    @attrs    = {"state" => "opened"}.merge(params[:tracker] || {})
+    @attrs    = params.require(:tracker).permit(:state, :category_id, :assigned_to_user_id)
+    @attrs    = {"state" => "opened"}.merge @attrs
     @order    = params[:order]
     @order    = "created_at" unless VALID_ORDERS.include?(@order)
     @trackers = Tracker.joins(:node).merge(Node.visible)
