@@ -1082,7 +1082,7 @@ li.comment {
     margin-left: 1.25em;
     padding-left: 0;
   }
-  body:not(#comments-show,#comments-create) &.fold {
+  body:not(#comments-show):not(#comments-create) &.fold {
     min-height: 0;
     & > figure,
     & > .content,
