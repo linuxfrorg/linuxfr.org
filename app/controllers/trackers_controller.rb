@@ -8,7 +8,7 @@ class TrackersController < ApplicationController
 
   def index
     extracted = params.extract!(:tracker).permit(tracker: [:state, :category_id, :assigned_to_user_id])
-    @attrs    = { state: "opened" }.merge(extracted[:tracker] || {})
+    @attrs    = { "state" => "opened" }.merge(extracted[:tracker] || {})
     @order    = params[:order]
     @order    = "created_at" unless VALID_ORDERS.include?(@order)
     @trackers = Tracker.joins(:node).merge(Node.visible)
