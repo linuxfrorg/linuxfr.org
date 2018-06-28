@@ -78,7 +78,8 @@ Devise.setup do |config|
 
   # Options to be passed to the created cookie. For instance, you can set
   # secure: true in order to force SSL only cookies.
-  config.rememberable_options = { same_site: :strict }
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1471137
+  config.rememberable_options = { same_site: :lax }
 
   # ==> Configuration for :validatable
   # Range for password length. Default is 6..20.
