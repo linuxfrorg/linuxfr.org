@@ -29,7 +29,7 @@ gem "inherited_resources",     "~>1.7"
 gem "kaminari",                "~>0.15"
 gem "mini_magick",             "~>3.8"
 gem "mysql2",                  "~>0.5.0"
-gem "nokogiri",                "1.6.5"  # FIXME see https://github.com/sparklemotion/nokogiri/issues/1233
+gem "nokogiri",                "~>1.6"
 gem "rinku",                   "~>1.7"
 gem "redis",                   "~>4.0"
 gem "sitemap_generator",       "~>2.1"
