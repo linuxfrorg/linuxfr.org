@@ -1,13 +1,20 @@
 fr:
   activerecord:
+    attributes:
+      doorkeeper/application:
+        name: "Nom"
+        redirect_uri: "L'URL de redirection"
+        scopes: "Portées"
     errors:
       models:
-        application:
+        doorkeeper/application:
           attributes:
             redirect_uri:
-              fragment_present: 'ne peut pas contenir un fragment.'
-              invalid_uri: 'doit être une URI valide.'
-              relative_uri: 'doit être une URI absolue.'
+              fragment_present: "ne peut contenir un fragment."
+              invalid_uri: "doit être une URL valide."
+              relative_uri: "doit être une URL absolue."
+              secured_uri: "doit être une URL HTTP/SSL."
+              forbidden_uri: 'est interdit par le serveur.'
 
   doorkeeper:
     scopes:
@@ -24,6 +31,10 @@ fr:
         invalid_scope: "Les droits demandés sont invalides, inconnues ou mal-formés."
         server_error: "Le serveur d'autorisation a rencontré une erreur."
         temporarily_unavailable: "Le serveur d'autorisation est momentannément indisponible."
+
+        #configuration error messages
+        credential_flow_not_configured: "Le flux des identifiants du mot de passe du propriétaire de la ressource a échoué en raison de Doorkeeper.configure.resource_owner_from_credentials n'est pas configuré."
+        resource_owner_authenticator_not_configured: "La recherche du propriétaire de la ressource a échoué en raison de Doorkeeper.configure.resource_owner_authenticator n'est pas configuré."
 
         # Access grant errors
         unsupported_response_type: "Le serveur d'autorisation ne prend pas en charge ce type de réponse."
