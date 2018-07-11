@@ -116,6 +116,7 @@ Rails.application.routes.draw do
       get  "/me"    => "accounts#me"
       post "/board" => "board#create"
       post "/journaux" => "diary#create"
+      post "/news" => "news#create"
     end
   end
 

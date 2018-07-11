@@ -23,7 +23,7 @@ class Content < ActiveRecord::Base
   def alternative_formats
     true
   end
-  
+
 ### License ###
 
   attr_accessor :cc_licensed, :tmp_owner_id
