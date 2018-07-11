@@ -197,6 +197,95 @@ GET https://linuxfr.org/api/v1/me
 </pre>
 
 
+<h3>Proposer une dépêche</h3>
+
+<p>Scope nécessaire : <var>news</var></p>
+
+<pre>
+POST https://linuxfr.org/api/v1/news
+</pre>
+
+<h4>Paramètres</h4>
+<dl>
+  <dt><var>bearer_token</var></dt>
+  <dd>Chaîne de caractères obligatoire - Le jeton d'autorisation.</dd>
+  <dt><var>title</var></dt>
+  <dd>Chaîne de caractères obligatoire - Le titre de la dépêche</dd>
+  <dt><var>section_id</var></dt>
+  <dd>
+    Entier - L'identifiant de la section
+    (le code source de <a href="/news/nouveau">la page de soumission d'une dépêche</a> permet de trouver la liste des sections)
+  </dd>
+  <dt><var>wiki_body</var></dt>
+  <dd>Chaîne de caractères obligatoire - Le contenu en markdown de la première partie de la dépêche</dd>
+  <dt><var>wiki_second_part</var></dt>
+  <dd>Chaîne de caractères obligatoire - Le contenu en markdown de la seconde partie de la dépêche</dd>
+</dl>
+
+<h4>Réponse</h4>
+<dl>
+  <dt><var>id</var></dt>
+  <dd>Entier - Id de la dépêche qui vient d'être créée.</dd>
+  <dt><var>section_id</var></dt>
+  <dd>Entier - Id de la section.</dd>
+  <dt><var>cached_slug</var></dt>
+  <dd>Chaîne de caractères - Le slug de la dépeche.</dd>
+  <dt><var>title</var></dt>
+  <dd>Chaîne de caractères - Le titre de la dépêche.</dd>
+  <dt><var>body</var></dt>
+  <dd>Chaîne de caractères - Le contenu de la première partie de la dépêche en HTML.</dd>
+  <dt><var>body</var></dt>
+  <dd>Chaîne de caractères - Le contenu de la seconde partie de la dépêche en HTML.</dd>
+  <dt><var>created_at</var></dt>
+  <dd>Chaîne de caractères - Les date et heure de création.</dd>
+  <dt><var>updated_at</var></dt>
+  <dd>Chaîne de caractères - Les date et heure de dernière modification.</dd>
+  <dt><var>submitted_at</var></dt>
+  <dd>Chaîne de caractères - Les date et heure de soumission en modération.</dd>
+</dl>
+
+
+<h3>Poster un journal</h3>
+
+<p>Scope nécessaire : <var>diary</var></p>
+
+<pre>
+POST https://linuxfr.org/api/v1/journaux
+</pre>
+
+<h4>Paramètres</h4>
+<dl>
+  <dt><var>bearer_token</var></dt>
+  <dd>Chaîne de caractères obligatoire - Le jeton d'autorisation.</dd>
+  <dt><var>title</var></dt>
+  <dd>Chaîne de caractères obligatoire - Le titre du journal</dd>
+  <dt><var>wiki_body</var></dt>
+  <dd>Chaîne de caractères obligatoire - Le contenu en markdown du journal</dd>
+</dl>
+
+<h4>Réponse</h4>
+<dl>
+  <dt><var>id</var></dt>
+  <dd>Entier - Id du journal qui vient d'être créé.</dd>
+  <dt><var>owner_id</var></dt>
+  <dd>Entier - Id de l'utilisateur qui vient de créer le journal.</dd>
+  <dt><var>cached_slug</var></dt>
+  <dd>Chaîne de caractères - Le slug du journal.</dd>
+  <dt><var>title</var></dt>
+  <dd>Chaîne de caractères - Le titre du journal.</dd>
+  <dt><var>body</var></dt>
+  <dd>Chaîne de caractères - Le contenu du journal en HTML.</dd>
+  <dt><var>wiki_body</var></dt>
+  <dd>Chaîne de caractères - Le contenu du journal en Markdown.</dd>
+  <dt><var>truncated_body</var></dt>
+  <dd>Chaîne de caractères - La version courte du contenu du journal en HTML.</dd>
+  <dt><var>created_at</var></dt>
+  <dd>Chaîne de caractères - Les date et heure de création.</dd>
+  <dt><var>updated_at</var></dt>
+  <dd>Chaîne de caractères - Les date et heure de dernière modification.</dd>
+</dl>
+
+
 <h3>Poster sur la tribune</h3>
 
 <p>Scope nécessaire : <var>board</var></p>
