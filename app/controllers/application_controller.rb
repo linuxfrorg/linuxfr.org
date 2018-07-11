@@ -130,11 +130,11 @@ protected
 
 ### Doorkeeper ###
 
-  def doorkeeper_unauthorized_render_options
+  def doorkeeper_unauthorized_render_options(*)
     { json: { error: "Not authorized" } }
   end
 
-  def doorkeeper_forbidden_render_options
+  def doorkeeper_forbidden_render_options(*)
     { json: { error: "Forbidden" } }
   end
 end
