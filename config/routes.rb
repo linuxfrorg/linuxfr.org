@@ -115,6 +115,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get  "/me"    => "accounts#me"
       post "/board" => "board#create"
+      post "/journaux" => "diary#create"
     end
   end
 
