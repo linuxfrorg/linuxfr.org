@@ -2,7 +2,7 @@
   =h1 "Les sections"
   .body
     - @sections.each do |section|
-      = div_for section do
+      %div{class: "section-#{section.id}"}
         = link_to section do
           = image_tag section.image, alt: section.title, title: section.title
           <br/>
