@@ -39,7 +39,6 @@ gem "state_machine",           "~>1.2"
 gem "jquery-rails",          "~>4.0"
 gem "sass-rails",            "~>5.0"
 gem "coffee-rails",          "~>4.1"
-gem "therubyracer",          "~>0.12.3", require: 'v8'
 gem "uglifier"
 
 group :development do
