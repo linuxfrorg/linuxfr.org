@@ -22,6 +22,7 @@ body:not(#posts-new):not(#posts-create) section#container > p,
 }
 article figure.image {
   display: block !important;
+  padding-left: 15px;
 }
 #phare img {
   padding-left: 0;
@@ -36,9 +37,6 @@ article figure.image {
 .comment figure.image,
 article figure.score {
   display: none;
-}
-article figure.image {
-  padding-left: 15px;
 }
 #site ul li:after {
   content: " :: ";
@@ -95,49 +93,48 @@ body {
 #site ul > li:nth-child(6):after {
   content: "";
 }
-body#stylesheets-edit #container > #contents,
-body#news-new #container > #contents,
-body#sections-index #container > #contents,
-body#diaries-new #container > #contents,
-body#posts-new #container,
-body#polls-new #container > #contents,
-body#trackers-index #container table,
-body#trackers-new #container > #contents,
-body#wiki_pages-new #container > #contents,
-body#static-submit_content #container > #contents,
-body#static-changelog #container > #contents,
+body#accounts-index #container,
+body#admin-index #container,
+body#banners-index #container,
+body#boards-show #container > #main_board,
+body#comments-answer #container > #contents,
+body#comments-create #container > #contents,
+body#comments-index #container > #contents,
+body#comments-new #container > #contents,
+body#confirmations-new #container > #contents,
 body#dashboard-index #container > #contents,
+body#diaries-create #container > #contents,
+body#diaries-new #container > #contents,
+body#friend_sites-index #container,
+body#news-create #container > #contents,
+body#news-new #container > #contents,
+body#pages-index #container,
+body#passwords-new #container > #contents,
+body#polls-create #container > #contents,
+body#polls-new #container > #contents,
+body#posts-create #container,
+body#posts-new #container,
 body#registrations-edit #container > #contents,
 body#registrations-new #container > #contents,
-body#wiki_pages-create #container > #contents,
-body#confirmations-new #container > #contents,
-body#comments-answer #container > #contents,
-body#comments-new #container > #contents,
-body#wiki_pages-revision #container > #contents,
-body#comments-create #container > #contents,
-body#sessions-new #container > #contents,
-body#passwords-new #container > #contents,
-body#confirmations-new #container > #contents,
-body#wiki_pages-edit #container > #contents,
-body#boards-show #container > #main_board,
-body#wiki_pages-update #container > #contents,
-body#tags-new #container > #contents,
-body#news-create #container > #contents,
-body#diaries-create #container > #contents,
-body#trackers-create #container > #contents,
-body#posts-create #container,
-body#polls-create #container > #contents,
-body#wiki_pages-changes #container > #contents,
-body#comments-index #container > #contents,
 body#registrations-update #container > #contents,
-body#admin-index #container,
-body#accounts-index #container,
-body#pages-index #container,
 body#responses-index #container,
 body#sections-index #container body#categories-index #container,
-body#banners-index #container,
+body#sections-index #container > #contents,
+body#sessions-new #container > #contents,
+body#static-changelog #container > #contents,
+body#static-submit_content #container > #contents,
+body#stylesheets-edit #container > #contents,
 body#stylesheets-show #container,
-body#friend_sites-index #container {
+body#tags-new #container > #contents,
+body#trackers-create #container > #contents,
+body#trackers-index #container table,
+body#trackers-new #container > #contents,
+body#wiki_pages-changes #container > #contents,
+body#wiki_pages-create #container > #contents,
+body#wiki_pages-edit #container > #contents,
+body#wiki_pages-new #container > #contents,
+body#wiki_pages-revision #container > #contents,
+body#wiki_pages-update #container > #contents {
   padding: 15px;
   margin: 0 !important;
   background: white !important;

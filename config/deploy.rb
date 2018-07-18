@@ -93,7 +93,7 @@ after "deploy:setup", "fs:create_dirs"
 namespace :npm do
   desc "[internal] Install npm modules"
   task :install, roles: :app, except: { no_release: true } do
-    run "cd #{release_path} && npm install"
+    run "cd #{release_path} && npm install --production"
   end
 end
 before "deploy:assets:precompile", "npm:install"
