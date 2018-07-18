@@ -3,12 +3,7 @@
 /* Distributed under GNU AGPL v3 License                                 */
 
 @import 'normalize.css/normalize';
-@import 'common/ac';
-@import 'common/generics';
-@import 'common/langs';
-@import 'common/markitup';
-@import 'common/statistics';
-@import 'common/doorkeeper';
+@import 'common/*';
 @import 'pygments/colorful';
 @import 'print';
 

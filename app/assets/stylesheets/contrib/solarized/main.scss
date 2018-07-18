@@ -32,7 +32,7 @@ Licence CC-BY http://creativecommons.org/licenses/by/3.0/fr/
 @import url(http://fonts.googleapis.com/css?family=Numans);
 @import url(http://fonts.googleapis.com/css?family=Josefin+Slab:700);
 
-@import "langs.css.scss";
+@import "langs";
 
 @mixin triangle_topleft($color) {
     width: 0;
@@ -1149,9 +1149,9 @@ input, button, select {
     @include accentize_h($accent);
 }
 
-@import "markitup.scss";
-@import "statistics.css.scss";
-@import "ac.css.scss";
+@import "markitup";
+@import "statistics";
+@import "ac";
 
 body {
     max-width: 960px;

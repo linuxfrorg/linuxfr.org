@@ -11,7 +11,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w(sorttable.js)
 Rails.application.config.assets.precompile += %w(mobile.css print.css)
 Dir.chdir(Rails.root.join "app/assets/stylesheets") do
-  Rails.application.config.assets.precompile += Dir["contrib/*"].map {|s| s.sub /.scss$/, '' }
-  Rails.application.config.assets.precompile += Dir["common/*"].map {|s| s.sub /.scss$/, '' }
-  Rails.application.config.assets.precompile += Dir["pygments/*"].map {|s| s.sub /.scss$/, '' }
+  Rails.application.config.assets.precompile += Dir["contrib/*"].map {|s| s.sub '.scss', '.css' }
+  Rails.application.config.assets.precompile += Dir["common/*"].map {|s| s.sub '.scss', '.css' }
+  Rails.application.config.assets.precompile += Dir["pygments/*"].map {|s| s.sub '.scss', '.css' }
 end
