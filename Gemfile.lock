@@ -117,6 +117,7 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    dimensions (1.3.0)
     doorkeeper (4.4.0)
       railties (>= 4.2)
     erubi (1.7.1)
@@ -239,6 +240,10 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
+    rails-sass-images (1.0.3)
+      dimensions (> 0)
+      mime-types (> 0)
+      sass (> 0)
     railties (5.2.0)
       actionpack (= 5.2.0)
       activesupport (= 5.2.0)
@@ -351,6 +356,7 @@ DEPENDENCIES
   nokogiri (~> 1.6)
   pry-rails
   rails (~> 5.2)
+  rails-sass-images
   redis (~> 4.0)
   rinku (~> 2.0)
   sass-rails (~> 5.0)
