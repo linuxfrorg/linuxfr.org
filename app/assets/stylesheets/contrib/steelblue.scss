@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 /*****
  ***** steelblue.css – Cold as steel. As tempered steel…
  *****
@@ -14,71 +13,66 @@
  *****/
 
 @font-face {
-    font-family:    "SBLinuxLibertineO";
-    font-weight:    bold;
+  font-family: "SBLinuxLibertineO";
+  font-weight: bold;
 
-    src:            local("Linux Libertine O Bold"),
-                    url(/fonts/LinLibertine_RB.otf);
+  src: local("Linux Libertine O Bold"), url(/fonts/LinLibertine_RB.otf);
 }
 
-@import url('https://fonts.googleapis.com/css?family=Dhurjati|Raleway');
+@import url("https://fonts.googleapis.com/css?family=Dhurjati|Raleway");
 
-$SIDEBAR_WIDTH:         13em;
-$SIDEBAR_PADDING:       0.5em;
-$SIDEBAR_DIV_PADDING:   8px;
-$EDGE_MARGIN:           1em;
-$BOXSPACING_MARGIN:     1em;
+$SIDEBAR_WIDTH: 13em;
+$SIDEBAR_PADDING: 0.5em;
+$SIDEBAR_DIV_PADDING: 8px;
+$EDGE_MARGIN: 1em;
+$BOXSPACING_MARGIN: 1em;
 
-html,body,div,nav
-{
-    margin:             0;
-    padding:            0;
+html,
+body,
+div,
+nav {
+  margin: 0;
+  padding: 0;
 }
 
-html
-{
-    background:             radial-gradient(ellipse 80% 50% at 50% 100%,#606060,black);
-    background-attachment:  fixed;
-    color:                  #808080;
+html {
+  background: radial-gradient(ellipse 80% 50% at 50% 100%, #606060, black);
+  background-attachment: fixed;
+  color: #808080;
 }
 
-body
-{
-    position:           relative;
-    font-family:        helvetica;
-    font-size:          11pt;
-    overflow:           auto;
+body {
+  position: relative;
+  font-family: helvetica;
+  font-size: 11pt;
+  overflow: auto;
 }
 
 /* We want to explicitly use traditional links color
  * when not specified.
  */
-a
-{
-    color:              #0000ee;
+a {
+  color: #0000ee;
 }
 
-a:visited
-{
-    color:              #551a8b;
+a:visited {
+  color: #551a8b;
 }
 
 a[href^="http://en.wikipedia.org"]::after,
 a[href^="https://en.wikipedia.org"]::after,
 a[href^="http://fr.wikipedia.org"]::after,
-a[href^="https://fr.wikipedia.org"]::after
-{
-    vertical-align:     super;
-    font-family:        'SBLinuxLibertineO';
-    content:            "\00a0\e02f"; /* non-breakable space here */
-    font-size:          60%;
-    color:              black;
+a[href^="https://fr.wikipedia.org"]::after {
+  vertical-align: super;
+  font-family: "SBLinuxLibertineO";
+  content: "\00a0\e02f"; /* non-breakable space here */
+  font-size: 60%;
+  color: black;
 }
 
-span.misspelled
-{
-    display:            inline-block;
-    border-bottom:      1px dotted red;
+span.misspelled {
+  display: inline-block;
+  border-bottom: 1px dotted red;
 }
 
 /*
@@ -86,403 +80,406 @@ span.misspelled
  *
  */
 
-nav#site
-{
-    position:           relative;
-    top:                0;
-    left:               0;
-    right:              0;
-    height:             100px;
-    background:         linear-gradient(to bottom,
-                                        transparent 0px, transparent 54px,
-                                        #606060 55px, white 57px, #606060 58px,
-                                        transparent 60px, transparent 100%);
+nav#site {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 54px,
+    #606060 55px,
+    white 57px,
+    #606060 58px,
+    transparent 60px,
+    transparent 100%
+  );
 }
 
-nav#site form
-{
-    position:           absolute;
-    display:            block;
-    vertical-align:     middle;
-    text-align:         right;
-    top:                15px;
-    right:              1.7em;
+nav#site form {
+  position: absolute;
+  display: block;
+  vertical-align: middle;
+  text-align: right;
+  top: 15px;
+  right: 1.7em;
 
-    height:             5.5em;
-    overflow:           hidden;
+  height: 5.5em;
+  overflow: hidden;
 }
 
-nav#site form input#query
-{
-    font-weight:        bold;
-    color:              white;
-    background-color:   transparent;
-    border:             solid 1px white;
-    border-color:       transparent transparent white transparent;
-    padding:            3px 1ex;
+nav#site form input#query {
+  font-weight: bold;
+  color: white;
+  background-color: transparent;
+  border: solid 1px white;
+  border-color: transparent transparent white transparent;
+  padding: 3px 1ex;
 
-    transition:         border-color 0.4s linear;
+  transition: border-color 0.4s linear;
 }
 
-nav#site form input#query:focus
-{
-    color:              white;
-    border-color:       #a0a0a0;
-    border-radius:      2px;
-    text-shadow:        0 0 2px white;
+nav#site form input#query:focus {
+  color: white;
+  border-color: #a0a0a0;
+  border-radius: 2px;
+  text-shadow: 0 0 2px white;
 }
 
-nav#site form label
-{
-    display:            none;
+nav#site form label {
+  display: none;
 }
 
-nav#site form input#search_submit
-{
-    position:           absolute;
-    display:            block;
-    visibility:         visible;
-    top:                4em;
-    left:               20em;
-    color:              white;
-    font-weight:        bold;
-    background:         none;
-    padding:            0.4ex 1.5em;
-    border:             solid 1px #a0a0a0;
-    border-radius:      2px;
+nav#site form input#search_submit {
+  position: absolute;
+  display: block;
+  visibility: visible;
+  top: 4em;
+  left: 20em;
+  color: white;
+  font-weight: bold;
+  background: none;
+  padding: 0.4ex 1.5em;
+  border: solid 1px #a0a0a0;
+  border-radius: 2px;
 
-    transition:         left 0.4s ease-in 0s;
+  transition: left 0.4s ease-in 0s;
 }
 
-nav#site form:focus-within input#search_submit
-{
-    position:           absolute;
-    left:               0;
+nav#site form:focus-within input#search_submit {
+  position: absolute;
+  left: 0;
 
-    transition:         left 0.5s ease-out 0.5s;
+  transition: left 0.5s ease-out 0.5s;
 }
 
-nav#site form:focus-within input#search_submit:hover
-{
-    background:         linear-gradient(to bottom,#000040,#0080ff);
+nav#site form:focus-within input#search_submit:hover {
+  background: linear-gradient(to bottom, #000040, #0080ff);
 }
 
-nav#site div.go_to_content
-{
-    display:            none;
+nav#site div.go_to_content {
+  display: none;
 }
 
-nav#site > ul
-{
-    position:           relative;
-    display:            block;
-    top:                0.7em;
-    width:              42em;
-    height:             2.8em;
-    font-family:        'Raleway';
-    font-weight:        bold;
-    text-align:         center;
-    list-style-type:    none;
-    margin:             0 auto;
-    padding:            0;
+nav#site > ul {
+  position: relative;
+  display: block;
+  top: 0.7em;
+  width: 42em;
+  height: 2.8em;
+  font-family: "Raleway";
+  font-weight: bold;
+  text-align: center;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
 
-    background:         radial-gradient(ellipse 50% 45% at 50% 70%,#8090b0,transparent);
+  background: radial-gradient(ellipse 50% 45% at 50% 70%, #8090b0, transparent);
 }
 
-nav#site > ul li
-{
-    position:           relative;
-    top:                +0.45em;
-    display:            inline;
-    padding:            0 1ex;
+nav#site > ul li {
+  position: relative;
+  top: +0.45em;
+  display: inline;
+  padding: 0 1ex;
 }
 
 nav#site > ul a,
-nav#site > ul a:visited
-{
-    font-size:          12pt;
-    color:              white;
-    text-decoration:    none;
+nav#site > ul a:visited {
+  font-size: 12pt;
+  color: white;
+  text-decoration: none;
 }
 
-nav#site > ul a:hover
-{
-    position:           relative;
-    top:                +3px;
-    color:              #f0f0ff;
+nav#site > ul a:hover {
+  position: relative;
+  top: +3px;
+  color: #f0f0ff;
 }
 
 /* Main menu item shadow shifting.
  * Not the most noticeable feature, though */
-nav#site > ul li                                 a         { text-shadow: 0 +1px 0 #606090,    0ex 0.8em 3px #242830; }
-nav#site > ul li:nth-child(1)                    a         { text-shadow: 0 +1px 0 #606090, -1.0ex 0.8em 3px #242830; }
-nav#site > ul li:nth-child(2)                    a         { text-shadow: 0 +1px 0 #606090, -0.5ex 0.8em 3px #242830; }
-nav#site > ul li:nth-last-child(2)               a         { text-shadow: 0 +1px 0 #606090, +0.5ex 0.8em 3px #242830; }
-nav#site > ul li:nth-last-child(1)               a         { text-shadow: 0 +1px 0 #606090, +1.0ex 0.8em 3px #242830; }
+nav#site > ul li a {
+  text-shadow: 0 +1px 0 #606090, 0ex 0.8em 3px #242830;
+}
+nav#site > ul li:nth-child(1) a {
+  text-shadow: 0 +1px 0 #606090, -1ex 0.8em 3px #242830;
+}
+nav#site > ul li:nth-child(2) a {
+  text-shadow: 0 +1px 0 #606090, -0.5ex 0.8em 3px #242830;
+}
+nav#site > ul li:nth-last-child(2) a {
+  text-shadow: 0 +1px 0 #606090, +0.5ex 0.8em 3px #242830;
+}
+nav#site > ul li:nth-last-child(1) a {
+  text-shadow: 0 +1px 0 #606090, +1ex 0.8em 3px #242830;
+}
 
-nav#site > ul li                                 a:visited { text-shadow: 0 +1px 0 #606090,    0ex 0.8em 3px #182830; }
-nav#site > ul li:nth-child(1)                    a:visited { text-shadow: 0 +1px 0 #606090, -1.0ex 0.8em 3px #182830; }
-nav#site > ul li:nth-child(2)                    a:visited { text-shadow: 0 +1px 0 #606090, -0.5ex 0.8em 3px #182830; }
-nav#site > ul li:nth-last-child(2)               a:visited { text-shadow: 0 +1px 0 #606090, +0.5ex 0.8em 3px #182830; }
-nav#site > ul li:nth-last-child(1)               a:visited { text-shadow: 0 +1px 0 #606090, +1.0ex 0.8em 3px #182830; }
+nav#site > ul li a:visited {
+  text-shadow: 0 +1px 0 #606090, 0ex 0.8em 3px #182830;
+}
+nav#site > ul li:nth-child(1) a:visited {
+  text-shadow: 0 +1px 0 #606090, -1ex 0.8em 3px #182830;
+}
+nav#site > ul li:nth-child(2) a:visited {
+  text-shadow: 0 +1px 0 #606090, -0.5ex 0.8em 3px #182830;
+}
+nav#site > ul li:nth-last-child(2) a:visited {
+  text-shadow: 0 +1px 0 #606090, +0.5ex 0.8em 3px #182830;
+}
+nav#site > ul li:nth-last-child(1) a:visited {
+  text-shadow: 0 +1px 0 #606090, +1ex 0.8em 3px #182830;
+}
 
-nav#site > ul li                                 a:hover   { text-shadow: 0 +1px 0 #f0f0ff,    0ex 0.5em 3px #040810; }
-nav#site > ul li:nth-child(1)                    a:hover   { text-shadow: 0 +1px 0 #f0f0ff, -0.6ex 0.5em 3px #040810; }
-nav#site > ul li:nth-child(2)                    a:hover   { text-shadow: 0 +1px 0 #f0f0ff, -0.3ex 0.5em 3px #040810; }
-nav#site > ul li:nth-last-child(2)               a:hover   { text-shadow: 0 +1px 0 #f0f0ff, +0.3ex 0.5em 3px #040810; }
-nav#site > ul li:nth-last-child(1)               a:hover   { text-shadow: 0 +1px 0 #f0f0ff, +0.6ex 0.5em 3px #040810; }
-
+nav#site > ul li a:hover {
+  text-shadow: 0 +1px 0 #f0f0ff, 0ex 0.5em 3px #040810;
+}
+nav#site > ul li:nth-child(1) a:hover {
+  text-shadow: 0 +1px 0 #f0f0ff, -0.6ex 0.5em 3px #040810;
+}
+nav#site > ul li:nth-child(2) a:hover {
+  text-shadow: 0 +1px 0 #f0f0ff, -0.3ex 0.5em 3px #040810;
+}
+nav#site > ul li:nth-last-child(2) a:hover {
+  text-shadow: 0 +1px 0 #f0f0ff, +0.3ex 0.5em 3px #040810;
+}
+nav#site > ul li:nth-last-child(1) a:hover {
+  text-shadow: 0 +1px 0 #f0f0ff, +0.6ex 0.5em 3px #040810;
+}
 
 /*
  * ===== Left Side Stuff =====
  *
  */
 
-aside#sidebar
-{
-    position:           relative;
-    display:            block;
-    top:                0;
-    background:         linear-gradient(to bottom,#b0b0b0,#404040 25em,#202020);
-    color:              #c0c0c0;
-    width:              $SIDEBAR_WIDTH;
-    margin:             0 $BOXSPACING_MARGIN 0 $EDGE_MARGIN;
-    padding:            $SIDEBAR_PADDING;
-    float:              left;
-    border:             solid 1px #707070;
-    border-radius:      0.4em;
+aside#sidebar {
+  position: relative;
+  display: block;
+  top: 0;
+  background: linear-gradient(to bottom, #b0b0b0, #404040 25em, #202020);
+  color: #c0c0c0;
+  width: $SIDEBAR_WIDTH;
+  margin: 0 $BOXSPACING_MARGIN 0 $EDGE_MARGIN;
+  padding: $SIDEBAR_PADDING;
+  float: left;
+  border: solid 1px #707070;
+  border-radius: 0.4em;
 }
 
-aside#sidebar div a
-{
-    color:              #d0d0d0;
+aside#sidebar div a {
+  color: #d0d0d0;
 }
 
-aside#sidebar div a:visited
-{
-    color:              #a0a0b0;
+aside#sidebar div a:visited {
+  color: #a0a0b0;
 }
 
-aside#sidebar div img[src="/images/icones/chat.svg"]
-{
-    display:            none;
+aside#sidebar div img[src="/images/icones/chat.svg"] {
+  display: none;
 }
 
 aside#sidebar div a.has_answers:not(:hover),
 aside#sidebar div a.has_answers:visited:not(:hover),
 aside#sidebar div img[src="/images/icones/chat.svg"] + a:not(:hover),
-aside#sidebar div img[src="/images/icones/chat.svg"] + a:visited:not(:hover)
-{
-    color:              #e0e0ff;
-    text-shadow:        0 0 2px #c0c0ff;
+aside#sidebar div img[src="/images/icones/chat.svg"] + a:visited:not(:hover) {
+  color: #e0e0ff;
+  text-shadow: 0 0 2px #c0c0ff;
 }
 
 aside#sidebar div a.has_answers:not(:hover)::after,
 aside#sidebar div a.has_answers:visited:not(:hover)::after,
 aside#sidebar div img[src="/images/icones/chat.svg"] + a:not(:hover)::after,
-aside#sidebar div img[src="/images/icones/chat.svg"] + a:visited:not(:hover)::after
-{
-    color:              red;
-    text-shadow:        none;
-    content:            "\00a0⚫";
+aside#sidebar
+  div
+  img[src="/images/icones/chat.svg"]
+  + a:visited:not(:hover)::after {
+  color: red;
+  text-shadow: none;
+  content: "\00a0⚫";
 }
 
 aside#sidebar div.login a.has_answers:not(:hover)::after,
 aside#sidebar div.login a.has_answers:visited:not(:hover)::after,
-aside#sidebar div.login img[src="/images/icones/chat.svg"] + a:not(:hover)::after,
-aside#sidebar div.login img[src="/images/icones/chat.svg"] + a:visited:not(:hover)::after
-{
-    display:            inline-block;
-    position:           absolute;
-    left:               0;
+aside#sidebar
+  div.login
+  img[src="/images/icones/chat.svg"]
+  + a:not(:hover)::after,
+aside#sidebar
+  div.login
+  img[src="/images/icones/chat.svg"]
+  + a:visited:not(:hover)::after {
+  display: inline-block;
+  position: absolute;
+  left: 0;
 }
 
-aside#sidebar div a:hover
-{
-    color:              white;
-    text-shadow:        0 0 2px white;
+aside#sidebar div a:hover {
+  color: white;
+  text-shadow: 0 0 2px white;
 }
 
-aside#sidebar header
-{
-    position:           absolute;
-    display:            block;
-    margin:             0;
-    top:                0;
-    left:               0;
-    right:              0;
-    height:             1px;
-    background-color:   blue;
-    background-image:   none;
-    visibility:         hidden;
+aside#sidebar header {
+  position: absolute;
+  display: block;
+  margin: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: blue;
+  background-image: none;
+  visibility: hidden;
 }
 
-aside#sidebar header#branding h1
-{
-    display:            block;
-    position:           absolute;
-    visibility:         visible;
-    margin:             0;
-    padding:            0;
-    top:                -153px;
-    left:               3px;
-    font-family:        'Dhurjati';
-    font-size:          80px;
-    font-weight:        normal;
-    background-image:   none;
-    text-shadow:        8px 8px 8px black,
-                        0px 0px 13px white;
+aside#sidebar header#branding h1 {
+  display: block;
+  position: absolute;
+  visibility: visible;
+  margin: 0;
+  padding: 0;
+  top: -153px;
+  left: 3px;
+  font-family: "Dhurjati";
+  font-size: 80px;
+  font-weight: normal;
+  background-image: none;
+  text-shadow: 8px 8px 8px black, 0px 0px 13px white;
 }
 
-aside#sidebar > div
-{
-    position:           relative;
-    padding:            0.5em;
-    margin:             $SIDEBAR_DIV_PADDING 0 0 0;
-    border:             solid 1px #202020;
-    background:         linear-gradient(to bottom,
-                                        rgba(0,0,0,0.29) 0,
-                                        rgba(0,0,0,0.33) 10em,
-                                        rgba(0,0,0,0.33) 100%);
+aside#sidebar > div {
+  position: relative;
+  padding: 0.5em;
+  margin: $SIDEBAR_DIV_PADDING 0 0 0;
+  border: solid 1px #202020;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.29) 0,
+    rgba(0, 0, 0, 0.33) 10em,
+    rgba(0, 0, 0, 0.33) 100%
+  );
 }
 
-aside#sidebar > header + div
-{
-    margin-top:         0;
-    border-radius:      0.6ex 0.6ex 0 0;
+aside#sidebar > header + div {
+  margin-top: 0;
+  border-radius: 0.6ex 0.6ex 0 0;
 }
 
-aside#sidebar > div.box > h1
-{
-    display:            block;
-    position:           relative;
-    color:              #1080ff;
-    font-size:          90%;
-    text-align:         center;
-    margin:             1em 0.6em 0.7em 0.6em;
-    padding:            0 0 0.2ex 0;
-    border:             solid 1px #606060;
-    border-width:       0 0 1px 0;
-    box-shadow:         inset 0px -1px 0 #101010;
+aside#sidebar > div.box > h1 {
+  display: block;
+  position: relative;
+  color: #1080ff;
+  font-size: 90%;
+  text-align: center;
+  margin: 1em 0.6em 0.7em 0.6em;
+  padding: 0 0 0.2ex 0;
+  border: solid 1px #606060;
+  border-width: 0 0 1px 0;
+  box-shadow: inset 0px -1px 0 #101010;
 }
 
-aside#sidebar > div.box > h1:first-child
-{
-    margin-top:         0;
+aside#sidebar > div.box > h1:first-child {
+  margin-top: 0;
 }
 
 aside#sidebar > div.box > h1 > a,
-aside#sidebar > div.box > h1 > a:visited
-{
-    color:              #40c0ff;
-    text-shadow:        none;
+aside#sidebar > div.box > h1 > a:visited {
+  color: #40c0ff;
+  text-shadow: none;
 
-    transition:         color       0.4s linear,
-                        text-shadow 0.4s linear;
+  transition: color 0.4s linear, text-shadow 0.4s linear;
 }
 
-aside#sidebar > div.box > h1 > a::before
-{
-    text-align:         left;
-    content:            "";
-    padding:            0 2em 0 0;
-    margin:             0;
+aside#sidebar > div.box > h1 > a::before {
+  text-align: left;
+  content: "";
+  padding: 0 2em 0 0;
+  margin: 0;
 
-    transition:         padding 0.3s ease-out;
+  transition: padding 0.3s ease-out;
 }
 
-aside#sidebar > div.box > h1 > a::after
-{
-    text-align:         right;
-    content:            "";
-    padding:            0 0 0 2em;
-    margin:             0;
+aside#sidebar > div.box > h1 > a::after {
+  text-align: right;
+  content: "";
+  padding: 0 0 0 2em;
+  margin: 0;
 
-    transition:         padding 0.3s ease-out;
+  transition: padding 0.3s ease-out;
 }
 
 aside#sidebar > div.box > h1 > a:hover,
-aside#sidebar > div.box > h1 > a:focus
-{
-    color:              #a0e0ff;
-    outline:            none;
-    text-shadow:        0 0 3px #40c0ff;
+aside#sidebar > div.box > h1 > a:focus {
+  color: #a0e0ff;
+  outline: none;
+  text-shadow: 0 0 3px #40c0ff;
 }
 
 aside#sidebar > div.box > h1 > a:hover::before,
-aside#sidebar > div.box > h1 > a:focus::before
-{
-    content:            "⋅";
-    padding:            0 1ex 0 0;
+aside#sidebar > div.box > h1 > a:focus::before {
+  content: "⋅";
+  padding: 0 1ex 0 0;
 }
 
 aside#sidebar > div.box > h1 > a:hover::after,
-aside#sidebar > div.box > h1 > a:focus::after
-{
-    content:            "⋅";
-    padding:            0 0 0 1ex;
+aside#sidebar > div.box > h1 > a:focus::after {
+  content: "⋅";
+  padding: 0 0 0 1ex;
 }
 
-aside#sidebar > div.box > h2
-{
-    font-weight:        bold;
-    font-size:          100%;
-    text-align:         center;
+aside#sidebar > div.box > h2 {
+  font-weight: bold;
+  font-size: 100%;
+  text-align: center;
 }
 
-aside#sidebar ul
-{
-    padding-left:       0;
-    margin:             1em 0 0 0;
+aside#sidebar ul {
+  padding-left: 0;
+  margin: 1em 0 0 0;
 }
 
-aside#sidebar li
-{
-    left:               0;
-    list-style-type:    none;
-    vertical-align:     middle;
+aside#sidebar li {
+  left: 0;
+  list-style-type: none;
+  vertical-align: middle;
 }
 
 aside#sidebar a,
-aside#sidebar a:visited
-{
-    text-decoration:    none;
+aside#sidebar a:visited {
+  text-decoration: none;
 }
 
 aside#sidebar input,
-aside#sidebar button
-{
-    position:           relative;
-    display:            flex;
-    justify-content:    space-between;
-    margin:             0.5em auto;
-    padding:            0px;
-    width:              90%;
-    flex-grow:          1;
-    align-items:        strech;
+aside#sidebar button {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5em auto;
+  padding: 0px;
+  width: 90%;
+  flex-grow: 1;
+  align-items: strech;
 }
 
-aside#sidebar button.more::after
-{
-    display:            flex;
-    flex-shrink:        1;
-    align-items:        center;
-    margin:             0 0 0 1em;
-    content:            "▼";
+aside#sidebar button.more::after {
+  display: flex;
+  flex-shrink: 1;
+  align-items: center;
+  margin: 0 0 0 1em;
+  content: "▼";
 }
 
-aside#sidebar input[type="text"]
-{
-    padding:            2px;
-    border:             none;
-    margin:             0.6ex auto;
+aside#sidebar input[type="text"] {
+  padding: 2px;
+  border: none;
+  margin: 0.6ex auto;
 }
 
 aside#sidebar li input[type="radio"],
-aside#sidebar li label
-{
-    display:            inline-block;
-    width:              auto;
+aside#sidebar li label {
+  display: inline-block;
+  width: auto;
 }
 
 /*
@@ -498,331 +495,300 @@ aside#sidebar li label
 
 /* "login_box" is mistakenly labeled "login box" in the code,
  * so the web browser assume "login" and "box" to be two distinct classes */
-aside#sidebar > div.login
-{
-    text-align:         center;
+aside#sidebar > div.login {
+  text-align: center;
 }
 
-aside#sidebar > div.login form.button_to
-{
-    margin-top:         1.5em;
+aside#sidebar > div.login form.button_to {
+  margin-top: 1.5em;
 }
 
-aside#sidebar > div.login > h1
-{
-    border-bottom:      solid 1px #a8a8a8;
+aside#sidebar > div.login > h1 {
+  border-bottom: solid 1px #a8a8a8;
 }
 
-aside#sidebar > div.login div.new_content a
-{
-    display:            inline-block;
-    color:              white;
+aside#sidebar > div.login div.new_content a {
+  display: inline-block;
+  color: white;
 }
 
-aside#sidebar > div.login input#logout
-{
-    display:            block;
-    color:              #202020;
-    background-color:   rgba(32,32,32,0.125);
-    border:             solid 1px #202020;
-    border-radius:      2px;
-    padding:            0.5em 0;
-    outline:            none;
+aside#sidebar > div.login input#logout {
+  display: block;
+  color: #202020;
+  background-color: rgba(32, 32, 32, 0.125);
+  border: solid 1px #202020;
+  border-radius: 2px;
+  padding: 0.5em 0;
+  outline: none;
 }
 
 aside#sidebar > div.login input#logout:hover,
-aside#sidebar > div.login input#logout:focus
-{
-    background:         linear-gradient(to bottom,#808080,#606060);
-    outline:            none;
+aside#sidebar > div.login input#logout:focus {
+  background: linear-gradient(to bottom, #808080, #606060);
+  outline: none;
 }
 
 aside#sidebar > #wiki_edition > ul,
 aside#sidebar > #sections_box > ul,
 aside#sidebar > #redaction_box > ul,
-aside#sidebar > #user_recent_nodes > ul
-{
-    font-size:          8pt;
-    text-align:         left;
-    margin:             0;
+aside#sidebar > #user_recent_nodes > ul {
+  font-size: 8pt;
+  text-align: left;
+  margin: 0;
 }
 
-aside#sidebar > #wiki_edition > ul > li
-{
-    margin:             0 0 0.4em 0;
+aside#sidebar > #wiki_edition > ul > li {
+  margin: 0 0 0.4em 0;
 }
 
 aside#sidebar > #wiki_edition > ul > li,
 aside#sidebar > #sections_box > ul > li,
 aside#sidebar > #redaction_box > ul > li,
 aside#sidebar > #forum_box > ul > li > ul > li,
-aside#sidebar > #user_recent_nodes > ul > li
-{
-    position:           relative;
-    left:               0;
+aside#sidebar > #user_recent_nodes > ul > li {
+  position: relative;
+  left: 0;
 
-    transition:         left 0.4s ease-in-out 0.4s;
+  transition: left 0.4s ease-in-out 0.4s;
 }
 
 aside#sidebar > #wiki_edition > ul > li:hover,
 aside#sidebar > #sections_box > ul > li:hover,
 aside#sidebar > #redaction_box > ul > li:hover,
 aside#sidebar > #forum_box > ul > li > ul > li:hover,
-aside#sidebar > #user_recent_nodes > ul > li:hover
-{
-    left:               1em;
+aside#sidebar > #user_recent_nodes > ul > li:hover {
+  left: 1em;
 }
 
-aside#sidebar > #forum_box > ul
-{
-    padding:            0.4ex;
+aside#sidebar > #forum_box > ul {
+  padding: 0.4ex;
 }
 
-aside#sidebar > #forum_box > ul > li
-{
-    margin-top:         1em;
-    font-size:          9pt;
-    font-weight:        bold;
-    color:              #40c0ff;
+aside#sidebar > #forum_box > ul > li {
+  margin-top: 1em;
+  font-size: 9pt;
+  font-weight: bold;
+  color: #40c0ff;
 }
 
-aside#sidebar > #forum_box > ul > li:first-child
-{
-    margin-top:         0;
+aside#sidebar > #forum_box > ul > li:first-child {
+  margin-top: 0;
 }
 
-aside#sidebar > #forum_box > ul > li > ul
-{
-    font-size:          9pt;
-    margin:             0.1em 0 0 0.9em;
+aside#sidebar > #forum_box > ul > li > ul {
+  font-size: 9pt;
+  margin: 0.1em 0 0 0.9em;
 }
 
-aside#sidebar > #user_recent_nodes > ul span.content_type
-{
-    display:            none;
-    width:              3em;
-    height:             1em;
-    overflow:           hidden;
+aside#sidebar > #user_recent_nodes > ul span.content_type {
+  display: none;
+  width: 3em;
+  height: 1em;
+  overflow: hidden;
 }
 
-aside#sidebar > #changes li
-{
-    text-align:         center;
-    margin-bottom:      1em;
-    vertical-align:     middle;
+aside#sidebar > #changes li {
+  text-align: center;
+  margin-bottom: 1em;
+  vertical-align: middle;
 }
 
-aside#sidebar > #changes li:last-child
-{
-    margin-bottom:      0;
+aside#sidebar > #changes li:last-child {
+  margin-bottom: 0;
 }
 
-
-aside#sidebar > #poll_box li + li
-{
-    margin-top:         0.4ex;
+aside#sidebar > #poll_box li + li {
+  margin-top: 0.4ex;
 }
 
-aside#sidebar > #poll_box input[type="radio"]
-{
-    display:            none
+aside#sidebar > #poll_box input[type="radio"] {
+  display: none;
 }
 
-aside#sidebar > #poll_box input[type="radio"] + label
-{
-    display:            inline-flex;
-    align-items:        center;
-    font-size:          9pt;
-    vertical-align:     middle;
+aside#sidebar > #poll_box input[type="radio"] + label {
+  display: inline-flex;
+  align-items: center;
+  font-size: 9pt;
+  vertical-align: middle;
 }
 
-aside#sidebar > #poll_box ul li
-{
-    display:            inline-block;
-    width:              100%;
-    font-size:          9pt;
-    margin-top:         0.5em;
-    color:              #909090;
+aside#sidebar > #poll_box ul li {
+  display: inline-block;
+  width: 100%;
+  font-size: 9pt;
+  margin-top: 0.5em;
+  color: #909090;
 }
 
-aside#sidebar > #poll_box ul li:first-child
-{
-    margin-top:         0;
+aside#sidebar > #poll_box ul li:first-child {
+  margin-top: 0;
 }
 
-aside#sidebar > #poll_box ul li:first-line
-{
-    color:              white;
+aside#sidebar > #poll_box ul li:first-line {
+  color: white;
 }
 
 aside#sidebar > #poll_box ul li div.result,
-section.container article ul.poll li div.result
-{
-    display:            flex;
-    align-items:        center;
-    position:           relative;
-    margin:             0.4ex 0 0.7ex 0;
-    padding:            0 0 0 0.5em;
-    border:             none;
-    height:             10pt;
-    text-align:         right;
-    font-size:          8pt;
-    font-weight:        bold;
-    color:              #80c0ff;
-    background:         none;
+section.container article ul.poll li div.result {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 0.4ex 0 0.7ex 0;
+  padding: 0 0 0 0.5em;
+  border: none;
+  height: 10pt;
+  text-align: right;
+  font-size: 8pt;
+  font-weight: bold;
+  color: #80c0ff;
+  background: none;
 }
 
 aside#sidebar > #poll_box ul li div.result::before,
-section.container article ul.poll li div.result::before
-{
-    display:            inline-block;
-    width:              100%;
-    content:            "";
-    position:           relative;
-    left:               -0.5em;
+section.container article ul.poll li div.result::before {
+  display: inline-block;
+  width: 100%;
+  content: "";
+  position: relative;
+  left: -0.5em;
 
-    border-style:       solid;
-    border-width:       1px;
-    border-color:       #303030 #303030 #202020 #505050;
-    border-radius:      0;
-    height:             10pt;
-    text-align:         right;
-    font-size:          8pt;
-    font-weight:        bold;
-    color:              white;
-    box-shadow:         0.3ex 0.3ex 0.2ex black;
-    background:         linear-gradient(to bottom,#808080,transparent),
-                        repeating-linear-gradient(135deg,#0060c0 0,#0060c0 1em,#202020 1em,#202020 2em);
+  border-style: solid;
+  border-width: 1px;
+  border-color: #303030 #303030 #202020 #505050;
+  border-radius: 0;
+  height: 10pt;
+  text-align: right;
+  font-size: 8pt;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0.3ex 0.3ex 0.2ex black;
+  background: linear-gradient(to bottom, #808080, transparent),
+    repeating-linear-gradient(
+      135deg,
+      #0060c0 0,
+      #0060c0 1em,
+      #202020 1em,
+      #202020 2em
+    );
 }
 
 /* See rest of poll page specific directives in the "Polls" section below */
 
 aside#sidebar #user_recent_contents p,
-aside#sidebar #user_recent_contents ul:first-of-type
-{
-    font-size:          10pt;
+aside#sidebar #user_recent_contents ul:first-of-type {
+  font-size: 10pt;
 }
 
-aside#sidebar #user_recent_contents p:first-of-type + ul + p
-{
-    color:              #707070;
-    margin-bottom:      0.5ex;
+aside#sidebar #user_recent_contents p:first-of-type + ul + p {
+  color: #707070;
+  margin-bottom: 0.5ex;
 }
 
-aside#sidebar #user_recent_contents ul:not(:first-of-type)
-{
-    margin-top:         0.5ex;
+aside#sidebar #user_recent_contents ul:not(:first-of-type) {
+  margin-top: 0.5ex;
 }
 
-aside#sidebar #user_recent_contents ul:not(:first-of-type) li
-{
-    padding-left:       1ex;
+aside#sidebar #user_recent_contents ul:not(:first-of-type) li {
+  padding-left: 1ex;
 }
 
-aside#sidebar #user_recent_contents p:first-of-type
-{
-    display:            block;
-    text-align:         center;
+aside#sidebar #user_recent_contents p:first-of-type {
+  display: block;
+  text-align: center;
 }
 
-aside#sidebar #user_recent_contents ul.history
-{
-    font-size:          9pt;
-    color:              #606060;
-    max-height:         30em;
-    overflow-y:         auto;
+aside#sidebar #user_recent_contents ul.history {
+  font-size: 9pt;
+  color: #606060;
+  max-height: 30em;
+  overflow-y: auto;
 }
 
-aside#sidebar #user_recent_contents ul.history li
-{
-    margin:             0.3em 0 0 0;
-    padding:            0;
+aside#sidebar #user_recent_contents ul.history li {
+  margin: 0.3em 0 0 0;
+  padding: 0;
 }
 
-aside#sidebar #user_recent_contents ul.history li:first-child
-{
-    margin:             0;
+aside#sidebar #user_recent_contents ul.history li:first-child {
+  margin: 0;
 }
 
-aside#sidebar #user_recent_contents ul.history li span.name
-{
-    color:              white;
+aside#sidebar #user_recent_contents ul.history li span.name {
+  color: white;
 }
 
-aside#sidebar #user_recent_contents ul.history li span.description
-{
-    color:              #a0a0a0;
+aside#sidebar #user_recent_contents ul.history li span.description {
+  color: #a0a0a0;
 }
 
-aside#sidebar #user_recent_contents ul.history li span.sep
-{
-    display:            none;
+aside#sidebar #user_recent_contents ul.history li span.sep {
+  display: none;
 }
 
-@keyframes gyrophare
-{
-     0%  { box-shadow:                                   inset 0 0.7em 1em black; }
-     70% { box-shadow: inset 0 0.4em 1em -0.2em #ff0000, inset 0 0.7em 1em black; }
+@keyframes gyrophare {
+  0% {
+    box-shadow: inset 0 0.7em 1em black;
+  }
+  70% {
+    box-shadow: inset 0 0.4em 1em -0.2em #ff0000, inset 0 0.7em 1em black;
+  }
 }
 
-aside#sidebar #user_recent_contents div.more_actions
-{
-    position:           relative;
-    border:             solid 1px #c0c0c0;
-    border-radius:      0.3em;
-    background:         repeating-linear-gradient(135deg,#101010,#101010 1em,#606000 1em,#606000 2em);
-    box-shadow:         inset 0 0.7em 1em black;
-    margin:             2.2em 0 0.5em 0;
-    padding:            0.3em;
+aside#sidebar #user_recent_contents div.more_actions {
+  position: relative;
+  border: solid 1px #c0c0c0;
+  border-radius: 0.3em;
+  background: repeating-linear-gradient(
+    135deg,
+    #101010,
+    #101010 1em,
+    #606000 1em,
+    #606000 2em
+  );
+  box-shadow: inset 0 0.7em 1em black;
+  margin: 2.2em 0 0.5em 0;
+  padding: 0.3em;
 
-    animation: 2s steps(1,end) 0s infinite normal gyrophare;
+  animation: 2s steps(1, end) 0s infinite normal gyrophare;
 }
 
 aside#sidebar #user_recent_contents div.more_actions.block::before,
-aside#sidebar #user_recent_contents div.more_actions.plonk::before
-{
-    position:           absolute;
-    display:            block;
-    text-align:         center;
-    top:                -1.6em;
-    left:               0;
-    right:              0;
-    height:             1em;
-    font-size:          10pt;
-    content:            "";
+aside#sidebar #user_recent_contents div.more_actions.plonk::before {
+  position: absolute;
+  display: block;
+  text-align: center;
+  top: -1.6em;
+  left: 0;
+  right: 0;
+  height: 1em;
+  font-size: 10pt;
+  content: "";
 }
 
-aside#sidebar #user_recent_contents div.more_actions.block::before
-{
-    content:            "Interdire de commenter";
+aside#sidebar #user_recent_contents div.more_actions.block::before {
+  content: "Interdire de commenter";
 }
 
-aside#sidebar #user_recent_contents div.more_actions.plonk::before
-{
-    content:            "Interdire de tribune";
+aside#sidebar #user_recent_contents div.more_actions.plonk::before {
+  content: "Interdire de tribune";
 }
 
-aside#sidebar #user_recent_contents div.more_actions input[type="submit"]
-{
-     box-shadow: 0 0.2em 0.5em black;
+aside#sidebar #user_recent_contents div.more_actions input[type="submit"] {
+  box-shadow: 0 0.2em 0.5em black;
 }
 
-aside#sidebar #user_recent_contents div.more_actions ul
-{
-    margin:             0;
+aside#sidebar #user_recent_contents div.more_actions ul {
+  margin: 0;
 }
 
-
-aside#sidebar #moderation_box div.inbox
-{
-    font-size:          10pt;
-    margin:             0;
+aside#sidebar #moderation_box div.inbox {
+  font-size: 10pt;
+  margin: 0;
 }
 
-aside#sidebar #moderation_box div.inbox p
-{
-    line-height:        110%;
-    margin:             0.4em 0 0 0;
+aside#sidebar #moderation_box div.inbox p {
+  line-height: 110%;
+  margin: 0.4em 0 0 0;
 }
 
 /*
@@ -830,523 +796,507 @@ aside#sidebar #moderation_box div.inbox p
  *
  */
 
-header#branding h1
-{
-    background-image: none;
+header#branding h1 {
+  background-image: none;
 }
 
 header#branding h1 a,
 header#branding h1 a:active,
-header#branding h1 a:visited
-{
-    text-decoration:    none;
-    margin:             0;
-    padding:            0;
-    color:              white;
-//    color: #ff8020;
-//    color:            linear-gradient(to bottom,black,white);
-    font-weight:        normal;
+header#branding h1 a:visited {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  color: white;
+  //    color: #ff8020;
+  //    color:            linear-gradient(to bottom,black,white);
+  font-weight: normal;
 }
 
-header#branding h1::after
-{
-    position:           absolute;
-    top:                106px;
-    left:               4px;
-    display:            block;
-    font-size:          14px;
-    font-weight:        normal;
-    color:              #0080f0;
-    text-shadow:        none;
+header#branding h1::after {
+  position: absolute;
+  top: 106px;
+  left: 4px;
+  display: block;
+  font-size: 14px;
+  font-weight: normal;
+  color: #0080f0;
+  text-shadow: none;
 
-    transition:         color 0.2s ease-in;
+  transition: color 0.2s ease-in;
 }
 
-header#branding:hover h1::after
-{
-    color:              #00d8ff;
-    text-shadow:        0px 0px 8px #0080f0;
+header#branding:hover h1::after {
+  color: #00d8ff;
+  text-shadow: 0px 0px 8px #0080f0;
 }
-
 
 /*
  * ===== Page Body =====
  *
  */
 
-section.container
-{
-    /* This shade counter-balance the grey-bluish that dominates elsewhere    */
-    /* on the page, rendering a slighlty flesh-colored grey. It's necesserary */
-    /* for a comfortable reading on administrative pages, but also because    */
-    /* cheap monitors give a blue rendering of strictly flat, solid grey      */
-    /* elements such as backgrounds. This was previously experienced with the */
-    /* "Springtime" CSS and reported by many other users.                     */
-    /*                                                                        */
-    /* For most of the user pages, though, we want to go back to a dark grey. */
-    /* This is done below, adapting the link color at the same time.          */
-    background-color:   #ece8e0;
+section.container {
+  /* This shade counter-balance the grey-bluish that dominates elsewhere    */
+  /* on the page, rendering a slighlty flesh-colored grey. It's necesserary */
+  /* for a comfortable reading on administrative pages, but also because    */
+  /* cheap monitors give a blue rendering of strictly flat, solid grey      */
+  /* elements such as backgrounds. This was previously experienced with the */
+  /* "Springtime" CSS and reported by many other users.                     */
+  /*                                                                        */
+  /* For most of the user pages, though, we want to go back to a dark grey. */
+  /* This is done below, adapting the link color at the same time.          */
+  background-color: #ece8e0;
 
-    border:             solid 1px #808080;
-    border-radius:      6px;
-    padding:            1em;
-    color:              #404040;
-    margin:             0 $EDGE_MARGIN 0 ($EDGE_MARGIN +
-                                          $BOXSPACING_MARGIN +
-                                          $SIDEBAR_WIDTH +
-                                          $SIDEBAR_PADDING * 2);
+  border: solid 1px #808080;
+  border-radius: 6px;
+  padding: 1em;
+  color: #404040;
+  margin: 0 $EDGE_MARGIN 0
+    ($EDGE_MARGIN + $BOXSPACING_MARGIN + $SIDEBAR_WIDTH + $SIDEBAR_PADDING * 2);
 }
 
-section.container p:first-child
-{
-    margin-top:         0;
+section.container p:first-child {
+  margin-top: 0;
 }
 
-section.container p:last-child
-{
-    margin-bottom:      0;
+section.container p:last-child {
+  margin-bottom: 0;
 }
 
 section.container div.notice,
-section.container div.alert
-{
-    position:           relative;
-    background:         linear-gradient(to bottom,#00e0ff,#0020ff);
-    color:              white;
-    border:             solid 1px #a0a0a0;
-    border-radius:      0.4ex;
-    border-color:       #a0a0a0 #a0a0a0 #606060 #a0a0a0;
-    padding:            0.7em;
-    text-shadow:        2px 2px 0 #203060;
-    box-shadow:         0 +1em 1.5em -1em #101010;
-    margin:             0 0 1em 0;
-    overflow-wrap:      break-word;
-    word-wrap:          break-word;
+section.container div.alert {
+  position: relative;
+  background: linear-gradient(to bottom, #00e0ff, #0020ff);
+  color: white;
+  border: solid 1px #a0a0a0;
+  border-radius: 0.4ex;
+  border-color: #a0a0a0 #a0a0a0 #606060 #a0a0a0;
+  padding: 0.7em;
+  text-shadow: 2px 2px 0 #203060;
+  box-shadow: 0 +1em 1.5em -1em #101010;
+  margin: 0 0 1em 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 section.container div.notice a,
 section.container div.notice a:visited,
-section.container div.alert  a,
-section.container div.alert  a:visited
-{
-    color:              white;
-    text-shadow:        2px 2px 0 #80a0f0;
-    text-decoration:    none;
+section.container div.alert a,
+section.container div.alert a:visited {
+  color: white;
+  text-shadow: 2px 2px 0 #80a0f0;
+  text-decoration: none;
 }
 
 section.container div.notice a:hover,
-section.container div.alert  a:hover
-{
-    text-decoration:    underline;
+section.container div.alert a:hover {
+  text-decoration: underline;
 }
 
-section.container div.alert
-{
-    background:         linear-gradient(to bottom,#ff8000,#ff0000 50%,#c00000);
+section.container div.alert {
+  background: linear-gradient(to bottom, #ff8000, #ff0000 50%, #c00000);
 }
 
-section.container h1
-{
-    color:              #6080d0;
-    text-shadow:        0.1ex 0.1ex 0 #c0a090;
-    font-size:          22pt;
-    border:             solid 5px #c0a090;
-    border-width:       0 0 0 1ex;
-    padding-left:       0.5ex;
+section.container h1 {
+  color: #6080d0;
+  text-shadow: 0.1ex 0.1ex 0 #c0a090;
+  font-size: 22pt;
+  border: solid 5px #c0a090;
+  border-width: 0 0 0 1ex;
+  padding-left: 0.5ex;
 }
 
 /* Top of page titles */
 section.container > h1:first-child,
-section.container >  *:first-child > h1:first-child,
-section.container >  *:first-child >  *:first-child > h1:first-child,
-section.container >  *:first-child >  *:first-child >  *:first-child  > h1:first-child,
-section.container > main#contents > h1:first-child
-{
-    margin-top:         0;
+section.container > *:first-child > h1:first-child,
+section.container > *:first-child > *:first-child > h1:first-child,
+section.container
+  > *:first-child
+  > *:first-child
+  > *:first-child
+  > h1:first-child,
+section.container > main#contents > h1:first-child {
+  margin-top: 0;
 }
 
-section.container img
-{
-    display:            block;
-    margin:             1em auto;
-    text-align:         center;
+section.container img {
+  display: block;
+  margin: 1em auto;
+  text-align: center;
 }
 
-section.container label
-{
-    display:            inline-block;
-    width:              20em;
+section.container label {
+  display: inline-block;
+  width: 20em;
 }
 
-section.container label:first-child
-{
-    text-align:         right;
-    padding-right:      1ex;
+section.container label:first-child {
+  text-align: right;
+  padding-right: 1ex;
 }
 
-section.container input[type="text"]
-{
-    display:            inline-block;
-    max-width:          98%;
-    margin:             0;
+section.container input[type="text"] {
+  display: inline-block;
+  max-width: 98%;
+  margin: 0;
 }
 
-section.container textarea
-{
-    /* Arbitrary dimensions, but better than the default thumbnail set by default */
-    /* Don't use min-width/min-height because unlike the following statements, it */
-    /* prevents the user from shrinking the box below the minimum limits.         */
+section.container textarea {
+  /* Arbitrary dimensions, but better than the default thumbnail set by default */
+  /* Don't use min-width/min-height because unlike the following statements, it */
+  /* prevents the user from shrinking the box below the minimum limits.         */
 
-    width:              55em;
-    max-width:          100%;
-    height:             20em;
+  width: 55em;
+  max-width: 100%;
+  height: 20em;
 }
 
-section.container table
-{
-    position:           relative;
-    border-collapse:    collapse;
-    border:             solid 1px #606060;
-    background-color:   #dcd8d0;
-    margin-left:        1em;
+section.container table {
+  position: relative;
+  border-collapse: collapse;
+  border: solid 1px #606060;
+  background-color: #dcd8d0;
+  margin-left: 1em;
 }
 
 section.container table td,
-section.container table th
-{
-    border:             solid 1px;
-    text-align:         center;
-    padding:            0.5ex;
+section.container table th {
+  border: solid 1px;
+  text-align: center;
+  padding: 0.5ex;
 }
 
-section.container table th
-{
-    background-color:   #bcb8b4;
+section.container table th {
+  background-color: #bcb8b4;
 }
 
-section.container table a
-{
-    text-decoration:    none;
+section.container table a {
+  text-decoration: none;
 }
 
-section.container table a:hover
-{
-    text-decoration:    underline;
+section.container table a:hover {
+  text-decoration: underline;
 }
 
-section.container a.scroll[href="#top"]
-{
-    display:            inline-block;
-    margin-top:         1.5em;
-    text-decoration:    none;
+section.container a.scroll[href="#top"] {
+  display: inline-block;
+  margin-top: 1.5em;
+  text-decoration: none;
 }
 
-section.container a.scroll[href="#top"]::before
-{
-    /* This contains an upleft arrow U+2BA4, plus     */
-    /* an non-breakable space. Don't overwrite this ! */
-    content:            "⮤\00a0";
+section.container a.scroll[href="#top"]::before {
+  /* This contains an upleft arrow U+2BA4, plus     */
+  /* an non-breakable space. Don't overwrite this ! */
+  content: "⮤\00a0";
 }
-
 
 /* == Articles — front-page news ("dépêches") and user logs ("journaux") == */
 
-section.container article
-{
-    display:            block;
-    position:           relative;
-    background-color:   white;
-    color:              #202020;
-    border:             solid 1px black;
-    border-radius:      8px 8px 0.5em 0.5em;
-    margin:             2em 0 0 0;
-    padding:            0;
+section.container article {
+  display: block;
+  position: relative;
+  background-color: white;
+  color: #202020;
+  border: solid 1px black;
+  border-radius: 8px 8px 0.5em 0.5em;
+  margin: 2em 0 0 0;
+  padding: 0;
 }
 
-section.container article:first-child
-{
-    margin-top:         0;
+section.container article:first-child {
+  margin-top: 0;
 }
 
-section.container article img
-{
-    max-width:          100%;
+section.container article img {
+  max-width: 100%;
 }
 
-section.container article img[src$=".svg"]
-{
-    max-width:          33%;
+section.container article img[src$=".svg"] {
+  max-width: 33%;
 }
 
-section.container article
-{
-    box-shadow:         0 14px 15px #908070;
+section.container article {
+  box-shadow: 0 14px 15px #908070;
 }
 
-section.container article hr
-{
-    margin-left:        15%;
-    margin-right:       15%;
+section.container article hr {
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 section.container :not(#phare) article header h1,
-#redaction-index section.container #news div.news h3
-{
-    display:            block;
-    position:           relative;
-    margin:             0;
-    background:         linear-gradient(to top,black 0%,#606060 100%);
-    font-size:          16pt;
-    font-weight:        bold;
-    color:              white;
-    font-family:        'Raleway';
-    text-shadow:        0.1em 0.1em 0 #202020;
-    padding:            0.5em 5em 0.5em 0.8em;
-    border:             solid 1px white;
-    text-align:         left;
-    border-color:       #e0e0e0 #a0a0a0 #909090 #a0a0a0;
-    border-radius:      7px 7px 0 0;
-    text-shadow:        none;
+#redaction-index section.container #news div.news h3 {
+  display: block;
+  position: relative;
+  margin: 0;
+  background: linear-gradient(to top, black 0%, #606060 100%);
+  font-size: 16pt;
+  font-weight: bold;
+  color: white;
+  font-family: "Raleway";
+  text-shadow: 0.1em 0.1em 0 #202020;
+  padding: 0.5em 5em 0.5em 0.8em;
+  border: solid 1px white;
+  text-align: left;
+  border-color: #e0e0e0 #a0a0a0 #909090 #a0a0a0;
+  border-radius: 7px 7px 0 0;
+  text-shadow: none;
 
-    a,
-    a:visited,
-    a:hover
-    {
-        text-decoration:    none;
-        color:              white;
-        text-shadow:        0.2ex 0.2ex 0 #202020;
-    }
+  a,
+  a:visited,
+  a:hover {
+    text-decoration: none;
+    color: white;
+    text-shadow: 0.2ex 0.2ex 0 #202020;
+  }
 
-    a.topic,
-    span.topic
-    {
-        color:              #80c0ff;
-    }
+  a.topic,
+  span.topic {
+    color: #80c0ff;
+  }
 
-    a.topic::after,
-    span.topic::after
-    {
-        color:              #909090;
-        /* Contains non-breakable spaces here too */
-        content:            "\00a0⋅";
-    }
+  a.topic::after,
+  span.topic::after {
+    color: #909090;
+    /* Contains non-breakable spaces here too */
+    content: "\00a0⋅";
+  }
 }
 
-section.container:not(#redaction) :not(#phare) article.new-node header h1::after
-{
-    color:              #60d0ff;
-    display:            inline-block;
-    text-shadow:        none;
-    font-size:          8pt;
-    font-weight:        bold;
-    vertical-align:     middle;
-    content:            "\00a0\00a0\00a0\00a0\00a0\00a0Non visité";
+section.container:not(#redaction)
+  :not(#phare)
+  article.new-node
+  header
+  h1::after {
+  color: #60d0ff;
+  display: inline-block;
+  text-shadow: none;
+  font-size: 8pt;
+  font-weight: bold;
+  vertical-align: middle;
+  content: "\00a0\00a0\00a0\00a0\00a0\00a0Non visité";
 
-    transform:          rotate(-15deg);
-    transform-origin:   50% 50%;
+  transform: rotate(-15deg);
+  transform-origin: 50% 50%;
 }
 
-section.container :not(#phare) article header div.meta
-{
-    display:            block;
-    position:           relative;
-    border-top:         #808080;
-    background:         linear-gradient(to bottom,#c0c0c0,white 3em,white);
-    color:              #808080;
-    padding:            0.3em 0.5em 0.5em 0.5em;
+section.container :not(#phare) article header div.meta {
+  display: block;
+  position: relative;
+  border-top: #808080;
+  background: linear-gradient(to bottom, #c0c0c0, white 3em, white);
+  color: #808080;
+  padding: 0.3em 0.5em 0.5em 0.5em;
 }
 
 section.container article header div.meta span.edited_by_spanblock,
 section.container article header div.meta span.moderated_by_spanblock,
-section.container article header div.meta span.moderated_by_spanblock + a[rel="license"]
-{
-    display:            inline-block;
+section.container
+  article
+  header
+  div.meta
+  span.moderated_by_spanblock
+  + a[rel="license"] {
+  display: inline-block;
 }
 
-section.container article header div.meta a
-{
-    color:              #5050a0;
-    text-decoration:    none;
+section.container article header div.meta a {
+  color: #5050a0;
+  text-decoration: none;
 }
 
-section.container article header div.meta a[rel="author"]
-{
-    color:              black;
-    font-weight:        bold;
+section.container article header div.meta a[rel="author"] {
+  color: black;
+  font-weight: bold;
 }
 
-section.container article header div.meta a[rel="author"]:visited
-{
-    color:              #404040;
+section.container article header div.meta a[rel="author"]:visited {
+  color: #404040;
 }
 
-section.container article header div.meta a:hover
-{
-    text-decoration:    underline;
+section.container article header div.meta a:hover {
+  text-decoration: underline;
 }
 
 section.container article header div.meta ul.tag_cloud,
-section.container article header div.meta ul.tag_cloud li
-{
-    display:            inline;
-    vertical-align:     middle;
-    background:         none;
-    border:             none;
-    margin:             0;
-    padding:            0;
+section.container article header div.meta ul.tag_cloud li {
+  display: inline;
+  vertical-align: middle;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 
-section.container article header div.meta ul.tag_cloud li
-{
-    list-style-type:    none;
-    display:            inline-flex;
-    align-items:        center;
+section.container article header div.meta ul.tag_cloud li {
+  list-style-type: none;
+  display: inline-flex;
+  align-items: center;
 }
 
-section.container article header div.meta ul.tag_cloud li form
-{
-    display:            inline-flex;
-    align-items:        center;
-    width:              1.4em;
-    height:             0.8em;
-    background-color:   #e0e0e0;
-    box-shadow:         inset 1px 1px 2px #606060;
-    border:             solid 1px #808080;
-    border-radius:      0.45em;
+section.container article header div.meta ul.tag_cloud li form {
+  display: inline-flex;
+  align-items: center;
+  width: 1.4em;
+  height: 0.8em;
+  background-color: #e0e0e0;
+  box-shadow: inset 1px 1px 2px #606060;
+  border: solid 1px #808080;
+  border-radius: 0.45em;
 }
 
-section.container article header div.meta ul.tag_cloud li form input[type="submit"]
-{
-    display:            inline-block;
-    align-items:        center;
-    width:              0;
-    height:             0;
-    overflow:           hidden;
-    padding:            0.3em;
-    border-width:       0;
-    border-radius:      0.35em;
+section.container
+  article
+  header
+  div.meta
+  ul.tag_cloud
+  li
+  form
+  input[type="submit"] {
+  display: inline-block;
+  align-items: center;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  padding: 0.3em;
+  border-width: 0;
+  border-radius: 0.35em;
 }
 
-section.container article header div.meta ul.tag_cloud li form input[type="submit"].add_tag:enabled,
-section.container article header div.meta ul.tag_cloud li form input[type="submit"].remove_tag:disabled
-{
-    margin:             0 0 0 0.15em;
-    background:         radial-gradient(circle at 37% 37%,white,#606060 30%,#202020);
+section.container
+  article
+  header
+  div.meta
+  ul.tag_cloud
+  li
+  form
+  input[type="submit"].add_tag:enabled,
+section.container
+  article
+  header
+  div.meta
+  ul.tag_cloud
+  li
+  form
+  input[type="submit"].remove_tag:disabled {
+  margin: 0 0 0 0.15em;
+  background: radial-gradient(circle at 37% 37%, white, #606060 30%, #202020);
 
-    transition:         margin 0.2s linear;
+  transition: margin 0.2s linear;
 }
 
-section.container article header div.meta ul.tag_cloud li form input[type="submit"].add_tag:disabled,
-section.container article header div.meta ul.tag_cloud li form input[type="submit"].remove_tag:enabled
-{
-    margin:             0 0 0 0.80em;
-    background:         radial-gradient(circle at 37% 37%,white,#ff8000 30%,#402000);
+section.container
+  article
+  header
+  div.meta
+  ul.tag_cloud
+  li
+  form
+  input[type="submit"].add_tag:disabled,
+section.container
+  article
+  header
+  div.meta
+  ul.tag_cloud
+  li
+  form
+  input[type="submit"].remove_tag:enabled {
+  margin: 0 0 0 0.8em;
+  background: radial-gradient(circle at 37% 37%, white, #ff8000 30%, #402000);
 
-    transition:         margin 0.2s linear;
+  transition: margin 0.2s linear;
 }
 
-section.container article header div.meta ul.tag_cloud li a[rel="tag"]
-{
-    margin:             0 0.6em 0 0.3em;
+section.container article header div.meta ul.tag_cloud li a[rel="tag"] {
+  margin: 0 0.6em 0 0.3em;
 }
 
-section.container article header div.meta div.tag_in_place
-{
-    display:            inline-block;
-    font-size:          90%;
-    color:              #505050;
-    font-weight:        bold;
+section.container article header div.meta div.tag_in_place {
+  display: inline-block;
+  font-size: 90%;
+  color: #505050;
+  font-weight: bold;
 }
 
-section.container article header div.meta div.tag_in_place a.action::before
-{
-    /* Contains non-breakable spaces here too */
-    content:            "→\00a0";
+section.container article header div.meta div.tag_in_place a.action::before {
+  /* Contains non-breakable spaces here too */
+  content: "→\00a0";
 }
 
-section.container :not(#phare) article header div.meta span.floating_spacer
-{
-    display:            block;
-    float:              right;
-    border:             none;
-    background:         none;
-    width:              5em;
-    height:             7.5em;
-    margin:             0 0.5em 1em 1em;
+section.container :not(#phare) article header div.meta span.floating_spacer {
+  display: block;
+  float: right;
+  border: none;
+  background: none;
+  width: 5em;
+  height: 7.5em;
+  margin: 0 0.5em 1em 1em;
 }
 
 section.container article div.notice,
-section.container article div.alert
-{
-    display:            inline-block;
+section.container article div.alert {
+  display: inline-block;
 }
 
-section.container article div.content
-{
-    margin:             1em;
+section.container article div.content {
+  margin: 1em;
 }
 
-section.container article footer.actions
-{
-    position:           relative;
-    padding:            0;
-    margin:             3em 1em 1em 1em;
+section.container article footer.actions {
+  position: relative;
+  padding: 0;
+  margin: 3em 1em 1em 1em;
 }
 
-section.container article ul.links a
-{
-    text-decoration:    none;
-    outline:            none;
+section.container article ul.links a {
+  text-decoration: none;
+  outline: none;
 }
 
 section.container article ul.links a:hover,
-section.container article ul.links a:focus
-{
-    text-decoration:    underline;
+section.container article ul.links a:focus {
+  text-decoration: underline;
 }
 
 section.container article footer.actions span.action,
-section.container article footer.actions div.vote
-{
-    display:            inline;
+section.container article footer.actions div.vote {
+  display: inline;
 }
 
-section.container article footer.actions a.action:not([href$=".md"]):not([href$=".epub"])
-{
-    margin-right:       1em;
+section.container
+  article
+  footer.actions
+  a.action:not([href$=".md"]):not([href$=".epub"]) {
+  margin-right: 1em;
 }
 
-section.container article footer.actions div.vote
-{
-    font-size:          8.5pt;
+section.container article footer.actions div.vote {
+  font-size: 8.5pt;
 }
 
-section.container article footer.actions form
-{
-    display:            inline;
-    vertical-align:     middle;
+section.container article footer.actions form {
+  display: inline;
+  vertical-align: middle;
 }
 
-section.container article footer.actions div.formats
-{
-    position:           absolute;
-    float:              right;
-    margin:             0;
-    padding:            0;
-    right:              0;
-    bottom:             0;
+section.container article footer.actions div.formats {
+  position: absolute;
+  float: right;
+  margin: 0;
+  padding: 0;
+  right: 0;
+  bottom: 0;
 }
 
-section.container article footer.actions div.formats a[title*="arkdown"]
-{
-    display:            inline-block;
-    height:             1em;
-    vertical-align:     bottom;
-    width:              0;
-    padding:            0 0 0 1.625em;
-    overflow:           hidden;
-    background-size:    1.625em 1em; /* 2.6em 1.6em; */
-    background-image:   url("data:image/svg+xml;base64,\
+section.container article footer.actions div.formats a[title*="arkdown"] {
+  display: inline-block;
+  height: 1em;
+  vertical-align: bottom;
+  width: 0;
+  padding: 0 0 0 1.625em;
+  overflow: hidden;
+  background-size: 1.625em 1em; /* 2.6em 1.6em; */
+  background-image: url("data:image/svg+xml;base64,\
 PD94bWwgdmVyc2lvbj0iMS4wIj8+PHN2ZyB4bWxucz0iaHR0cDovL\
 3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgd2lkdGg9IjIwOCIgaGVpZ2h0PSIxMjgi\
 IHZpZXdCb3g9IjAgMCAyMDggMTI4Ij48cmVjdCBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwO3N\
@@ -1357,354 +1307,322 @@ PSJmaWxsOiMwMDAiIGQ9Im0gMTU1LDk4IC0zMCwtMzMgMjAsMCAwLC0zNSAyMCwwIDAsMzUgMjAsMCB\
 6Ii8+PC9zdmc+Cg==");
 }
 
-section.container article footer.actions div.formats a[title*="epub"]
-{
-    display:            inline-block;
-    height:             1em;
-    vertical-align:     bottom;
-    width:              0;
-    padding:            0 0 0 1em;
-    overflow:           hidden;
-    background-size:    1em 1em;
-    background-image:   url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgd2lkdGg9IjEyOHB4IiBoZWlnaHQ9IjEyOHB4IiB2aWV3Qm94PSIzIDMgMTggMTgiPjxwYXRoIHN0eWxlPSJmaWxsOiMwMDAwMDA7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjAuMTtzdHJva2Utb3BhY2l0eToxIiBkPSJNIDExLjk5OTgzOCwxNy4zMTI3MyA2LjY4NzEwNjQsMTEuOTk5NjA2IDExLjk5OTgzOCw2LjY4NzM4MTkgMTMuNzcwODkyLDguNDU4MDg1MyAxMC4yMjg3ODQsMTEuOTk5NjA2IDExLjk5OTczLDEzLjc3MDc2IDE3LjMxMjQ2NCw4LjQ1ODQyMzUgMTIuNjg0NDUxLDMuODMwMjQ5IGMgLTAuMzc3OTExLC0wLjM3ODI2MSAtMC45OTA4ODUsLTAuMzc4MjYxIC0xLjM2OTExOSwwIEwgMy44MzAwNDMyLDExLjMxNTY3IGMgLTAuMzc3OTExNiwwLjM3NzgxMSAtMC4zNzc5MTE2LDAuOTkwODUgMCwxLjM2OTExMSBsIDcuNDg1Mzk2OCw3LjQ4NDk3IGMgMC4zNzgyMzQsMC4zNzgyNjEgMC45OTEyMDksMC4zNzgyNjEgMS4zNjkxMTksMCBsIDcuNDg1Mzk5LC03LjQ4NDk3IGMgMC4zNzc5MSwtMC4zNzgyNjEgMC4zNzc5MSwtMC45OTEzIDAsLTEuMzY5MTExIGwgLTEuMDg2NjU3LC0xLjA4NjQyOSAtNy4wODM0NjMsNy4wODM0ODkgeiIvPjwvc3ZnPgo=");
+section.container article footer.actions div.formats a[title*="epub"] {
+  display: inline-block;
+  height: 1em;
+  vertical-align: bottom;
+  width: 0;
+  padding: 0 0 0 1em;
+  overflow: hidden;
+  background-size: 1em 1em;
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgd2lkdGg9IjEyOHB4IiBoZWlnaHQ9IjEyOHB4IiB2aWV3Qm94PSIzIDMgMTggMTgiPjxwYXRoIHN0eWxlPSJmaWxsOiMwMDAwMDA7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjAuMTtzdHJva2Utb3BhY2l0eToxIiBkPSJNIDExLjk5OTgzOCwxNy4zMTI3MyA2LjY4NzEwNjQsMTEuOTk5NjA2IDExLjk5OTgzOCw2LjY4NzM4MTkgMTMuNzcwODkyLDguNDU4MDg1MyAxMC4yMjg3ODQsMTEuOTk5NjA2IDExLjk5OTczLDEzLjc3MDc2IDE3LjMxMjQ2NCw4LjQ1ODQyMzUgMTIuNjg0NDUxLDMuODMwMjQ5IGMgLTAuMzc3OTExLC0wLjM3ODI2MSAtMC45OTA4ODUsLTAuMzc4MjYxIC0xLjM2OTExOSwwIEwgMy44MzAwNDMyLDExLjMxNTY3IGMgLTAuMzc3OTExNiwwLjM3NzgxMSAtMC4zNzc5MTE2LDAuOTkwODUgMCwxLjM2OTExMSBsIDcuNDg1Mzk2OCw3LjQ4NDk3IGMgMC4zNzgyMzQsMC4zNzgyNjEgMC45OTEyMDksMC4zNzgyNjEgMS4zNjkxMTksMCBsIDcuNDg1Mzk5LC03LjQ4NDk3IGMgMC4zNzc5MSwtMC4zNzgyNjEgMC4zNzc5MSwtMC45OTEzIDAsLTEuMzY5MTExIGwgLTEuMDg2NjU3LC0xLjA4NjQyOSAtNy4wODM0NjMsNy4wODM0ODkgeiIvPjwvc3ZnPgo=");
 }
 
-section.container :not(#phare) article div.figures
-{
-    display:            block;
-    position:           absolute;
-    top:                -0.6em;
-    right:              0;
-    float:              right;
-    background:         linear-gradient(to bottom,#a0b0ff,transparent);
-    width:              4em;
-    height:             auto;
-    margin:             0 1em 1em 1em;
-    border:             solid 1px #707070;
-    border-radius:      0.4em;
-    padding:            0.5em;
+section.container :not(#phare) article div.figures {
+  display: block;
+  position: absolute;
+  top: -0.6em;
+  right: 0;
+  float: right;
+  background: linear-gradient(to bottom, #a0b0ff, transparent);
+  width: 4em;
+  height: auto;
+  margin: 0 1em 1em 1em;
+  border: solid 1px #707070;
+  border-radius: 0.4em;
+  padding: 0.5em;
 }
 
 section.container :not(#phare) article div.figures figure.score,
-section.container :not(#phare) article div.figures figure.datePourCss
-{
-    display:            block;
-    margin:             0;
-    padding:            0;
-    text-align:         center;
-    color:              black;
+section.container :not(#phare) article div.figures figure.datePourCss {
+  display: block;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: black;
 }
 
-section.container :not(#phare) article div.figures figure.score
-{
-    font-family:        'SBLinuxLibertineO';
-    color:              white;
-    font-size:          28pt;
-    font-weight:        bold;
-    text-shadow:        2px 2px 0 #4060b0;
+section.container :not(#phare) article div.figures figure.score {
+  font-family: "SBLinuxLibertineO";
+  color: white;
+  font-size: 28pt;
+  font-weight: bold;
+  text-shadow: 2px 2px 0 #4060b0;
 }
 
-section.container :not(#phare) article div.figures figure.datePourCss
-{
-    color:              #404040;
-    font-size:          8pt;
-    margin:             1em 0 0 0;
+section.container :not(#phare) article div.figures figure.datePourCss {
+  color: #404040;
+  font-size: 8pt;
+  margin: 1em 0 0 0;
 }
 
 section.container :not(#phare) article div.figures figure.datePourCss div.jour,
-section.container :not(#phare) article div.figures figure.datePourCss div.mois
-{
-    display:            inline;
-    margin:             0 0.3ex;
+section.container :not(#phare) article div.figures figure.datePourCss div.mois {
+  display: inline;
+  margin: 0 0.3ex;
 }
 
-section.container :not(#phare) article div.figures figure.image
-{
-    display:            block;
-    margin:             1em 0 0 0;
-    padding:            0;
-    width:              4em;
-    height:             4em;
+section.container :not(#phare) article div.figures figure.image {
+  display: block;
+  margin: 1em 0 0 0;
+  padding: 0;
+  width: 4em;
+  height: 4em;
 }
 
-section.container :not(#phare) article div.figures figure.image img
-{
-    display:            block;
-    margin:             0;
-    padding:            0;
-    width:              4em;
-    height:             auto;
-    max-height:         4em;
+section.container :not(#phare) article div.figures figure.image img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 4em;
+  height: auto;
+  max-height: 4em;
 }
 
-section.container article div.hidden
-{
-    display:            none;
+section.container article div.hidden {
+  display: none;
 }
 
-section.container article div.hidden + footer
-{
-    margin-top:         0;
+section.container article div.hidden + footer {
+  margin-top: 0;
 }
 
-section.container :not(#phare) article[class*="score-"] div.figures
-{
-    background:         linear-gradient(to bottom,#b0b0b0,transparent);
+section.container :not(#phare) article[class*="score-"] div.figures {
+  background: linear-gradient(to bottom, #b0b0b0, transparent);
 
-    figure.score
-    {
-        text-shadow:    2px 2px 0 #404040;
-    }
+  figure.score {
+    text-shadow: 2px 2px 0 #404040;
+  }
 }
 
-section.container :not(#phare) article.score-8  div.figures figure.score,
-section.container :not(#phare) article.score-9  div.figures figure.score,
-section.container :not(#phare) article.score-10 div.figures figure.score
-{
-    font-size:          24pt;
+section.container :not(#phare) article.score-8 div.figures figure.score,
+section.container :not(#phare) article.score-9 div.figures figure.score,
+section.container :not(#phare) article.score-10 div.figures figure.score {
+  font-size: 24pt;
 }
 
-section.container article ul.poll
-{
-    width:              70%;
-    margin-left:        auto;
-    margin-right:       auto;
-    border:             solid 1px #b0b0b0;
-    border-radius:      0.5em;
-    padding:            1em 4em;
-    font-size:          10pt;
+section.container article ul.poll {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid 1px #b0b0b0;
+  border-radius: 0.5em;
+  padding: 1em 4em;
+  font-size: 10pt;
 }
 
-header#branding h1::after
-{
-    content:            ""
-
-        "\44\0061\20\004c\69\006e\0075\78\0020\0046"
-        "\0072\65\006e\0063\68\0020\50\0061\67\0065";
+header#branding h1::after {
+  content: "" "\44\0061\20\004c\69\006e\0075\78\0020\0046"
+    "\0072\65\006e\0063\68\0020\50\0061\67\0065";
 }
 
-section.container article ul.poll li
-{
-    margin-bottom:      0.5em;
+section.container article ul.poll li {
+  margin-bottom: 0.5em;
 }
 
-section.container article ul.poll li:last-child
-{
-    margin-bottom:      0;
+section.container article ul.poll li:last-child {
+  margin-bottom: 0;
 }
 
-section.container article ul.poll li div.result
-{
-    height:             14pt;
-    font-size:          11pt;
-    padding:            0 0 0 0.7em;
-    color:              black;
-    margin:             0.2em 0 0.4em 0;
+section.container article ul.poll li div.result {
+  height: 14pt;
+  font-size: 11pt;
+  padding: 0 0 0 0.7em;
+  color: black;
+  margin: 0.2em 0 0.4em 0;
 }
 
-section.container article ul.poll li div.result::before
-{
-    height:             14pt;
-    left:               -0.7em;
-    box-shadow:         0.3em 0.3em 0.2em #a0a0a0;
-    background:         linear-gradient(to bottom,#c0c0c0,transparent),
-                        repeating-linear-gradient(135deg,#0060c0 0,#0060c0 1em,#202020 1em,#202020 2em);
+section.container article ul.poll li div.result::before {
+  height: 14pt;
+  left: -0.7em;
+  box-shadow: 0.3em 0.3em 0.2em #a0a0a0;
+  background: linear-gradient(to bottom, #c0c0c0, transparent),
+    repeating-linear-gradient(
+      135deg,
+      #0060c0 0,
+      #0060c0 1em,
+      #202020 1em,
+      #202020 2em
+    );
 }
 
-section.container article ul.poll + p.total_votes
-{
-    color:              #808080;
-    text-align:         center;
+section.container article ul.poll + p.total_votes {
+  color: #808080;
+  text-align: center;
 }
 
 /* = Comments = */
 
-section.container div#comments
-{
-    position:           relative;
-    background:         linear-gradient(170deg,#d0d0f0,white 45em,white);
-    top:                -1px;
-    margin:             0 2em;
-    padding:            1em;
-    border-style:       solid;
-    border-width:       1px;
-    border-color:       black;
-    border-radius:      0 0 0.3em 0.3em;
+section.container div#comments {
+  position: relative;
+  background: linear-gradient(170deg, #d0d0f0, white 45em, white);
+  top: -1px;
+  margin: 0 2em;
+  padding: 1em;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 0 0 0.3em 0.3em;
 }
 
-section.container div#comments a
-{
-    text-decoration:    none;
+section.container div#comments a {
+  text-decoration: none;
 }
 
-section.container div#comments a:hover
-{
-    text-decoration:    underline;
+section.container div#comments a:hover {
+  text-decoration: underline;
 }
 
-#comments-answer    section.container :not(article) + div#comments,
-#comments-create    section.container :not(article) + div#comments,
-#comments-edit      section.container :not(article) + div#comments,
-#comments-show      section.container                 div#comments:first-child,
-#comments-update    section.container :not(article) + div#comments
-{
-    border-radius:      0.3em;
-    box-shadow:         0 14px 15px #908070;
+#comments-answer section.container :not(article) + div#comments,
+#comments-create section.container :not(article) + div#comments,
+#comments-edit section.container :not(article) + div#comments,
+#comments-show section.container div#comments:first-child,
+#comments-update section.container :not(article) + div#comments {
+  border-radius: 0.3em;
+  box-shadow: 0 14px 15px #908070;
 
-    > ul.threads > ul
-    {
-       padding-left:   0;
-    }
+  > ul.threads > ul {
+    padding-left: 0;
+  }
 }
 
-#polls-show section.container div#comments
-{
-    border-radius:      0.3em;
+#polls-show section.container div#comments {
+  border-radius: 0.3em;
 }
 
-section.container article.node + div#comments
-{
-//  box-shadow:         inset 0 29px 15px -15px #303030 Use this to match front page darkgrey shadow
-    box-shadow:         inset 0 29px 15px -15px #606088;
-    padding-top:        1.5em;
+section.container article.node + div#comments {
+  //  box-shadow:         inset 0 29px 15px -15px #303030 Use this to match front page darkgrey shadow
+  box-shadow: inset 0 29px 15px -15px #606088;
+  padding-top: 1.5em;
 }
 
-section.container div#comments > ul
-{
-    margin:             0;
-    padding:            0;
+section.container div#comments > ul {
+  margin: 0;
+  padding: 0;
 }
 
-section.container div#comments ul li[id^="comment"]
-{
-    margin-top:         1.5em;
-    list-style-type:    none;
+section.container div#comments ul li[id^="comment"] {
+  margin-top: 1.5em;
+  list-style-type: none;
 }
 
-section.container div#comments > ul:first-child > li[id^="comment"] + li[id^="comment"]::before
-{
-    display:            block;
-    margin:             2em 25% 0 25%;
-    width:              auto;
-    height:             2em;
-    border-style:       solid;
-    border-width:       1px 0 0 0;
-    border-color:       #8080f0;
-    content:            "";
+section.container
+  div#comments
+  > ul:first-child
+  > li[id^="comment"]
+  + li[id^="comment"]::before {
+  display: block;
+  margin: 2em 25% 0 25%;
+  width: auto;
+  height: 2em;
+  border-style: solid;
+  border-width: 1px 0 0 0;
+  border-color: #8080f0;
+  content: "";
 }
 
-section.container div#comments > ul:first-child > li[id^="comment"]:first-child
-{
-    margin-top:         0;
+section.container
+  div#comments
+  > ul:first-child
+  > li[id^="comment"]:first-child {
+  margin-top: 0;
 }
 
-section.container div#comments ul li[id^="comment"] hr
-{
-    height:             0;
-    width:              50%;
-    border:             solid 1px #b0b0b0;
-    border-width:       0 0 1px 0;
-    margin:             0.7em auto;
+section.container div#comments ul li[id^="comment"] hr {
+  height: 0;
+  width: 50%;
+  border: solid 1px #b0b0b0;
+  border-width: 0 0 1px 0;
+  margin: 0.7em auto;
 }
 
-section.container div#comments h2
-{
-    position:           relative;
-    display:            flex;
-    align-items:        center;
-    margin:             0;
-    color:              #606060;
-    font-family:        'Raleway';
-    font-weight:        bold;
+section.container div#comments h2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  color: #606060;
+  font-family: "Raleway";
+  font-weight: bold;
 }
 
-section.container div#comments h2 a
-{
-    color:              #606060;
+section.container div#comments h2 a {
+  color: #606060;
 }
 
-section.container div#comments h2 a:hover
-{
-    color:              black;
+section.container div#comments h2 a:hover {
+  color: black;
 }
 
 section.container div#comments h2 a.parent,
 section.container div#comments h2 a.close,
 section.container div#comments h2 a.folding,
-section.container div#comments h2 a.anchor
-{
-    display:            inline-block;
-    font-size:          66%;
-    position:           relative;
-    width:              0;
-    height:             1em;
-    margin:             0 0.5em 0 0;
-    padding:            0 1.5em 0 0;
-    color:              black; /* #606060; */
-    border:             solid 1px #606060;
-    border-radius:      2px;
-    overflow:           hidden;
+section.container div#comments h2 a.anchor {
+  display: inline-block;
+  font-size: 66%;
+  position: relative;
+  width: 0;
+  height: 1em;
+  margin: 0 0.5em 0 0;
+  padding: 0 1.5em 0 0;
+  color: black; /* #606060; */
+  border: solid 1px #606060;
+  border-radius: 2px;
+  overflow: hidden;
 }
 
 section.container div#comments h2 a.parent::before,
 section.container div#comments h2 a.close::before,
 section.container div#comments h2 a.folding::before,
-section.container div#comments h2 a.anchor::before
-{
-    display:            block;
-    text-align:         center;
-    vertical-align:     middle;
-    width:              2.25em;
-    height:             1.5em;
-    overflow:           scroll;
-    margin:             0;
-    font-size:          66%;
-    overflow:           hidden;
+section.container div#comments h2 a.anchor::before {
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  width: 2.25em;
+  height: 1.5em;
+  overflow: scroll;
+  margin: 0;
+  font-size: 66%;
+  overflow: hidden;
 
-    fill:               none;
-    stroke:             #606060;
+  fill: none;
+  stroke: #606060;
 }
 
 section.container div#comments h2 a:hover.parent::before,
 section.container div#comments h2 a:hover.close::before,
 section.container div#comments h2 a:hover.folding::before,
-section.container div#comments h2 a:hover.anchor::before
-{
-    background-color:   black;
-    color:              white;
-    stroke:             white;
+section.container div#comments h2 a:hover.anchor::before {
+  background-color: black;
+  color: white;
+  stroke: white;
 }
 
-section.container div#comments h2 a.parent::before
-{
-    padding:            0.10em 0 0 0;
-    content:            "⮤";
+section.container div#comments h2 a.parent::before {
+  padding: 0.1em 0 0 0;
+  content: "⮤";
 }
 
-section.container div#comments h2 a.folding::before
-{
-    padding:            0.10em 0 0 0;
-    content:            "—";
+section.container div#comments h2 a.folding::before {
+  padding: 0.1em 0 0 0;
+  content: "—";
 }
 
-section.container div#comments li.fold > h2 a.folding::before
-{
-    content:            "▼";
+section.container div#comments li.fold > h2 a.folding::before {
+  content: "▼";
 }
 
-section.container div#comments li.fold > div.footer
-{
-    display:            none;
+section.container div#comments li.fold > div.footer {
+  display: none;
 }
 
-section.container div#comments h2 a.close::before
-{
-    padding:            0.10em 0 0 0;
-    content:            "";
-    background-size:    1.5em 1em;
-    background-repeat:  no-repeat;
-    background-position: center;
-    background-image:   url("data:image/svg+xml;base64,\
+section.container div#comments h2 a.close::before {
+  padding: 0.1em 0 0 0;
+  content: "";
+  background-size: 1.5em 1em;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("data:image/svg+xml;base64,\
 PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8v\
 d3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjEw\
 MCIgdmlld0JveD0iMCAwIDE1MCAxMDAiIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDA7c3Ry\
@@ -1714,16 +1632,14 @@ Mj0iMTUwIiB5Mj0iNzUiLz48bGluZSB4MT0iOTUiIHkxPSI5NSIgeDI9IjE1MCIgeTI9Ijk1Ii8+\
 PHBhdGggZD0iTTAsMjVsMjAsMGEgMTUgMTUgMCAwIDEgKzE1ICsxNSBsMCwyMGExNSAxNSAwIDAg\
 MCArMTUgKzE1bDE1LDAiLz48cGF0aCBzdHlsZT0iZmlsbDojMDAwO3N0cm9rZS13aWR0aDowIiBk\
 PSJNODUsNzVsLTIwLC0yMGwwLDQwbDIwLC0yMCIvPjwvc3ZnPgoK");
-
 }
 
-section.container div#comments h2 a:hover.close::before
-{
-    /* fill: and stroke: don't work properly in this context. :(   */
-    /* So we need to add another SVG picture with these parameters */
-    /* properly set in the data.                                   */
+section.container div#comments h2 a:hover.close::before {
+  /* fill: and stroke: don't work properly in this context. :(   */
+  /* So we need to add another SVG picture with these parameters */
+  /* properly set in the data.                                   */
 
-    background-image:   url("data:image/svg+xml;base64,\
+  background-image: url("data:image/svg+xml;base64,\
 PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8v\
 d3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjEw\
 MCIgdmlld0JveD0iMCAwIDE1MCAxMDAiIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiNmZmY7c3Ry\
@@ -1735,621 +1651,581 @@ MCArMTUgKzE1bDE1LDAiLz48cGF0aCBzdHlsZT0iZmlsbDojZmZmO3N0cm9rZS13aWR0aDowIiBk\
 PSJNODUsNzVsLTIwLC0yMGwwLDQwbDIwLC0yMCIvPjwvc3ZnPgoK");
 }
 
-section.container div#comments h2 a.anchor::before
-{
-    padding:            0.20em 0 0 0;
-    content:            "#";
+section.container div#comments h2 a.anchor::before {
+  padding: 0.2em 0 0 0;
+  content: "#";
 }
 
-section.container div#comments li.new-comment > h2::after
-{
-    color:              red;
-    font-size:          7.5pt;
-    vertical-align:     middle;
-    content:            "\00a0\00a0\00a0\00a0Nouveau";
-    position:           absolute;
-    left:               -6.5em;
-    top:                90%;
-    text-shadow:        0.7em 0.7em 0.3em #505050;
+section.container div#comments li.new-comment > h2::after {
+  color: red;
+  font-size: 7.5pt;
+  vertical-align: middle;
+  content: "\00a0\00a0\00a0\00a0Nouveau";
+  position: absolute;
+  left: -6.5em;
+  top: 90%;
+  text-shadow: 0.7em 0.7em 0.3em #505050;
 
-    transform:          rotate(-20deg);
-    transform-origin:   50% 50%;
+  transform: rotate(-20deg);
+  transform-origin: 50% 50%;
 }
 
-section.container div#comments p.meta
-{
-    margin:             0 0 1em 0;
-    color:              #606060;
+section.container div#comments p.meta {
+  margin: 0 0 1em 0;
+  color: #606060;
 }
 
-section.container div#comments p.meta a[rel="author"]
-{
-    font-weight:        bold;
-    text-decoration:    none;
-    color:              #383838;
+section.container div#comments p.meta a[rel="author"] {
+  font-weight: bold;
+  text-decoration: none;
+  color: #383838;
 }
 
-section.container div#comments li.vote-for     > p.meta span.score span.details::after
-{
-    font-weight:        bold;
-    color:              #00a000;
-    content:            "\00a0🡩"; /* Non-breakable space here too */
+section.container
+  div#comments
+  li.vote-for
+  > p.meta
+  span.score
+  span.details::after {
+  font-weight: bold;
+  color: #00a000;
+  content: "\00a0🡩"; /* Non-breakable space here too */
 }
 
-section.container div#comments li.vote-against > p.meta span.score span.details::after
-{
-    font-weight:        bold;
-    color:              #ff0000;
-    content:            "\00a0🡫"; /* Non-breakable space here too */
+section.container
+  div#comments
+  li.vote-against
+  > p.meta
+  span.score
+  span.details::after {
+  font-weight: bold;
+  color: #ff0000;
+  content: "\00a0🡫"; /* Non-breakable space here too */
 }
 
-section.container div#comments p.meta span.score span.details
-{
-    font-weight:        normal;
-    color:              #606060;
+section.container div#comments p.meta span.score span.details {
+  font-weight: normal;
+  color: #606060;
 }
 
-section.container div#comments ul li[id^="comment"] > figure.image
-{
-    position:           relative;
-    float:              right;
-    top:                -3em;
-    margin:             0 1em;
+section.container div#comments ul li[id^="comment"] > figure.image {
+  position: relative;
+  float: right;
+  top: -3em;
+  margin: 0 1em;
 }
 
 section.container div#comments div.content,
-section.container div#comments div.content h2
-{
-    color:              #303030;
+section.container div#comments div.content h2 {
+  color: #303030;
 }
 
-section.container div#comments div.content p
-{
-    overflow-wrap:      break-word;
+section.container div#comments div.content p {
+  overflow-wrap: break-word;
 }
 
-section.container div#comments div.content > ul
-{
-    margin:             1em auto;
-    list-style-type:    disc;
+section.container div#comments div.content > ul {
+  margin: 1em auto;
+  list-style-type: disc;
 }
 
-section.container div#comments div.content > ul ul
-{
-    list-style-type:    square;
+section.container div#comments div.content > ul ul {
+  list-style-type: square;
 }
-section.container div#comments div.content > ul ul ul
-{
-    list-style-type:    disc;
+section.container div#comments div.content > ul ul ul {
+  list-style-type: disc;
 }
 
 section.container div#comments li.fold:not(#comment_new) > figure.image,
 section.container div#comments li.fold:not(#comment_new) > div.content,
-section.container div#comments li.fold:not(#comment_new) > footer
-{
-    display:            none;
+section.container div#comments li.fold:not(#comment_new) > footer {
+  display: none;
 }
 
-section.container div#comments p.signature
-{
-    border-style:       solid;
-    border-width:       1px 0 0 0;
-    border-image:       linear-gradient(to right,#707070 0,transparent 20em) 1;
-    font-size:          75%;
-    color:              #707070;
+section.container div#comments p.signature {
+  border-style: solid;
+  border-width: 1px 0 0 0;
+  border-image: linear-gradient(to right, #707070 0, transparent 20em) 1;
+  font-size: 75%;
+  color: #707070;
 }
 
-section.container div#comments img
-{
-    max-width:          100%;
+section.container div#comments img {
+  max-width: 100%;
 }
 
-section.container div#comments footer
-{
-    display:            flex;
-    align-items:        center;
-    margin:             0.5em 0 1.0em 0;
+section.container div#comments footer {
+  display: flex;
+  align-items: center;
+  margin: 0.5em 0 1em 0;
 }
 
-section.container div#comments footer.actions > *
-{
-    visibility:         hidden;
-    opacity:            0; // Necessary for transition. Maintain here.
+section.container div#comments footer.actions > * {
+  visibility: hidden;
+  opacity: 0; // Necessary for transition. Maintain here.
 
-    transition:         opacity 0.5s linear 0.5s,
-                        visibility 0s linear 1s;
+  transition: opacity 0.5s linear 0.5s, visibility 0s linear 1s;
 }
 
-section.container div#comments footer.actions a.action
-{
-    margin:             0 1em 0 0;
+section.container div#comments footer.actions a.action {
+  margin: 0 1em 0 0;
 }
 
 section.container article footer.actions div.vote,
-section.container div#comments footer.actions div.vote
-{
-    font-size:          8.5pt;
+section.container div#comments footer.actions div.vote {
+  font-size: 8.5pt;
 }
 
 section.container div#comments li[id^="comment"] > footer.actions:hover > *,
-section.container div#comments li[id^="comment"] > *:hover ~ footer.actions > *
-{
-    visibility:         visible;
-    opacity:            1; // Necessary for transition. Maintain here.
+section.container
+  div#comments
+  li[id^="comment"]
+  > *:hover
+  ~ footer.actions
+  > * {
+  visibility: visible;
+  opacity: 1; // Necessary for transition. Maintain here.
 
-    transition:         opacity 0.5s linear;
+  transition: opacity 0.5s linear;
 }
 
 section.container article footer.actions div.vote form,
 section.container article footer.actions div.vote input[type="submit"],
 section.container article footer.actions span.action input[type="submit"],
 section.container div#comments footer.actions div.vote form,
-section.container div#comments footer.actions div.vote input[type="submit"]
-{
-    display:            inline-block;
-    background:         none;
-    padding:            0;
-    margin:             0 0.1ex;
-    font-size:          8.5pt;
-    font-weight:        bold;
-    border:             none;
+section.container div#comments footer.actions div.vote input[type="submit"] {
+  display: inline-block;
+  background: none;
+  padding: 0;
+  margin: 0 0.1ex;
+  font-size: 8.5pt;
+  font-weight: bold;
+  border: none;
 }
 
-section.container article footer.actions span.action input[type="submit"]
-{
-    margin:             0 1.5em 0 0.7em;
-    color:              #808080;
+section.container article footer.actions span.action input[type="submit"] {
+  margin: 0 1.5em 0 0.7em;
+  color: #808080;
 }
 
 section.container article footer.actions div.vote input[type="submit"],
-section.container div#comments footer.actions div.vote input[type="submit"]
-{
-    border-bottom:      solid 2px transparent;
+section.container div#comments footer.actions div.vote input[type="submit"] {
+  border-bottom: solid 2px transparent;
 }
 
-section.container article footer.actions div.vote input[type="submit"].relevant:hover,
-section.container div#comments footer.actions div.vote input[type="submit"].relevant:hover
-{
-    border-bottom:      solid 2px #00ff00;
+section.container
+  article
+  footer.actions
+  div.vote
+  input[type="submit"].relevant:hover,
+section.container
+  div#comments
+  footer.actions
+  div.vote
+  input[type="submit"].relevant:hover {
+  border-bottom: solid 2px #00ff00;
 }
 
-section.container article footer.actions div.vote input[type="submit"].useless:hover,
-section.container div#comments footer.actions div.vote input[type="submit"].useless:hover
-{
-    border-bottom:      solid 2px #ff0000;
+section.container
+  article
+  footer.actions
+  div.vote
+  input[type="submit"].useless:hover,
+section.container
+  div#comments
+  footer.actions
+  div.vote
+  input[type="submit"].useless:hover {
+  border-bottom: solid 2px #ff0000;
 }
 
 section.container div#comments #send-comment a,
-section.container div#comments #send-comment a:visited
-{
-    display:            block;
-    position:           relative;
-    top:                0;
-    color:              #404040;
-    border-color:       #404040;
-    border:             solid 1px;
-    border-radius:      4px;
-    padding:            0.5em 1em;
-    max-width:          20em;
-    margin:             2em auto 1em auto;
-    width:              auto;
-    text-align:         center;
-    text-decoration:    none;
+section.container div#comments #send-comment a:visited {
+  display: block;
+  position: relative;
+  top: 0;
+  color: #404040;
+  border-color: #404040;
+  border: solid 1px;
+  border-radius: 4px;
+  padding: 0.5em 1em;
+  max-width: 20em;
+  margin: 2em auto 1em auto;
+  width: auto;
+  text-align: center;
+  text-decoration: none;
 }
 
-section.container div#comments #send-comment a:hover
-{
-    background:         linear-gradient(to bottom,#c0c0c0,#a0a0a0);
-    box-shadow:         0 8px 9px -2px #a0a0a0;
-    text-decoration:    none;
-    top:                -3px;
+section.container div#comments #send-comment a:hover {
+  background: linear-gradient(to bottom, #c0c0c0, #a0a0a0);
+  box-shadow: 0 8px 9px -2px #a0a0a0;
+  text-decoration: none;
+  top: -3px;
 }
 
-p#follow-feed
-{
-    display:            block;
-    overflow:           hidden;
-    position:           absolute;
-    bottom:             0;
-    right:              0.7em;
-    bottom:             0.8em;
-    width:              1.2em;
-    height:             1.2em;
-    margin:             0;
-    padding:            0;
+p#follow-feed {
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  right: 0.7em;
+  bottom: 0.8em;
+  width: 1.2em;
+  height: 1.2em;
+  margin: 0;
+  padding: 0;
 }
 
-p#follow-feed + p
-{
-    margin-right:       1.7em;
+p#follow-feed + p {
+  margin-right: 1.7em;
 }
 
-p#follow-feed a
-p#follow-feed a::before
-{
-    display:            block;
-    margin:             0;
-    padding:            0;
+p#follow-feed a p#follow-feed a::before {
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
-
-div.markItUpHeader ul
-{
-    display:            flex;
-    align-items:        center;
-    justify-content:    center;
-    flex-wrap:          wrap;
-    margin:             2em 6% 1em 6%;
-    padding:            0.25em;
-    border:             solid 1px #c0c0c0;
-    border-radius:      0.3ex;
-    background-color:   #dcd8d0;
+div.markItUpHeader ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 2em 6% 1em 6%;
+  padding: 0.25em;
+  border: solid 1px #c0c0c0;
+  border-radius: 0.3ex;
+  background-color: #dcd8d0;
 }
 
-div.markItUpHeader ul li
-{
-    list-style-type:    none;
-    display:            inline-block;
-    margin:             0.25em 0 0.25em 1em;
-    padding:            0;
-    overflow:           hidden;
+div.markItUpHeader ul li {
+  list-style-type: none;
+  display: inline-block;
+  margin: 0.25em 0 0.25em 1em;
+  padding: 0;
+  overflow: hidden;
 }
 
 div.markItUpHeader ul li:first-child,
-div.markItUpHeader ul li.markItUpSeparator + li.markItUpButton
-{
+div.markItUpHeader ul li.markItUpSeparator + li.markItUpButton {
 }
 
-div.markItUpHeader ul li.markItUpButton
-{
-    display:            inline-block;
-    padding:            0;
-    margin:             0 0.2em;
-    width:              2em;
-    height:             2em;
-    border:             solid 0.1em #404040;
-    border-radius:      0.4ex;
-    overflow:           hidden;
+div.markItUpHeader ul li.markItUpButton {
+  display: inline-block;
+  padding: 0;
+  margin: 0 0.2em;
+  width: 2em;
+  height: 2em;
+  border: solid 0.1em #404040;
+  border-radius: 0.4ex;
+  overflow: hidden;
 }
 
 div.markItUpHeader ul li.markItUpButton a,
-div.markItUpHeader ul li.markItUpButton a:visited
-{
-    text-decoration:    none;
-    margin:             0;
-    padding:            0;
+div.markItUpHeader ul li.markItUpButton a:visited {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
 }
 
-div.markItUpHeader ul li.markItUpButton a::before
-{
-    display:            flex;
-    align-items:        center;
-    justify-content:    center;
+div.markItUpHeader ul li.markItUpButton a::before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    padding:            0;
-    text-align:         center;
-    width:              2em;
-    height:             2em;
-    color:              #303030;
-    background-color:   white;
-    border:             none;
-    text-decoration:    none;
-    content:            "";
+  padding: 0;
+  text-align: center;
+  width: 2em;
+  height: 2em;
+  color: #303030;
+  background-color: white;
+  border: none;
+  text-decoration: none;
+  content: "";
 }
 
-div.markItUpHeader ul li.markItUpButton a:hover::before
-{
-    color:              white;
-    background-color:   #303030;
+div.markItUpHeader ul li.markItUpButton a:hover::before {
+  color: white;
+  background-color: #303030;
 }
 
-div.markItUpHeader ul li.markItUpSeparator
-{
-    width:              0;
-    height:             1.5em;
-    padding:            0;
-    margin:             0 0.8em;
-    border:             solid 1px;
-    border-color:       #404040 #a0a0a0 #a0a0a0 #404040;
+div.markItUpHeader ul li.markItUpSeparator {
+  width: 0;
+  height: 1.5em;
+  padding: 0;
+  margin: 0 0.8em;
+  border: solid 1px;
+  border-color: #404040 #a0a0a0 #a0a0a0 #404040;
 }
 
-div.markItUpHeader ul li.markItUpButton.h1 a::before
-{
-    content:            "H2";
+div.markItUpHeader ul li.markItUpButton.h1 a::before {
+  content: "H2";
 }
 
-div.markItUpHeader ul li.markItUpButton.h2 a::before
-{
-    content:            "H3";
+div.markItUpHeader ul li.markItUpButton.h2 a::before {
+  content: "H3";
 }
 
-div.markItUpHeader ul li.markItUpButton.h3 a::before
-{
-    content:            "H4";
+div.markItUpHeader ul li.markItUpButton.h3 a::before {
+  content: "H4";
 }
 
-div.markItUpHeader ul li.markItUpButton.h4 a::before
-{
-    content:            "H5";
+div.markItUpHeader ul li.markItUpButton.h4 a::before {
+  content: "H5";
 }
 
-div.markItUpHeader ul li.markItUpButton.bold a::before
-{
-    content:            "B";
-    font-weight:        bold;
+div.markItUpHeader ul li.markItUpButton.bold a::before {
+  content: "B";
+  font-weight: bold;
 }
 
-div.markItUpHeader ul li.markItUpButton.italic a::before
-{
-    content:            "I";
-    font-style:         italic;
+div.markItUpHeader ul li.markItUpButton.italic a::before {
+  content: "I";
+  font-style: italic;
 }
 
-div.markItUpHeader ul li.markItUpButton.stroke a::before
-{
-    content:            "S";
+div.markItUpHeader ul li.markItUpButton.stroke a::before {
+  content: "S";
 }
 
-div.markItUpHeader ul li.markItUpButton.teletype a::before
-{
-    content:            "Tt";
+div.markItUpHeader ul li.markItUpButton.teletype a::before {
+  content: "Tt";
 }
 
-div.markItUpHeader ul li.markItUpButton.list-bullet a::before
-{
-    content:            "•";
+div.markItUpHeader ul li.markItUpButton.list-bullet a::before {
+  content: "•";
 }
 
-div.markItUpHeader ul li.markItUpButton.list-numeric a::before
-{
-    content:            "1.";
+div.markItUpHeader ul li.markItUpButton.list-numeric a::before {
+  content: "1.";
 }
 
-div.markItUpHeader ul li.markItUpButton.image a::before
-{
-    content:            "Im";
+div.markItUpHeader ul li.markItUpButton.image a::before {
+  content: "Im";
 }
 
-div.markItUpHeader ul li.markItUpButton.link a::before
-{
-    content:            "Ln";
+div.markItUpHeader ul li.markItUpButton.link a::before {
+  content: "Ln";
 }
 
-div.markItUpHeader ul li.markItUpButton.quotes a::before
-{
-    content:            "«\00a0»"; /* Non-breakable space here too. */
+div.markItUpHeader ul li.markItUpButton.quotes a::before {
+  content: "«\00a0»"; /* Non-breakable space here too. */
 }
 
-div.markItUpHeader ul li.markItUpButton.code a::before
-{
-    content:            "&@";
+div.markItUpHeader ul li.markItUpButton.code a::before {
+  content: "&@";
 }
-
 
 section.container #contents > form[class^="new_"],
-section.container #contents > form[class^="edit_"]
-{
-    margin:             3em 0 1em 0;
+section.container #contents > form[class^="edit_"] {
+  margin: 3em 0 1em 0;
 
-    > p:first-of-type
-    {
-        display:            flex;
-        margin:             0 10% 1em 10%;
-        align-items:        center;
-    }
+  > p:first-of-type {
+    display: flex;
+    margin: 0 10% 1em 10%;
+    align-items: center;
+  }
 
-    p:first-of-type > label,
-    p:first-of-type > input[type="text"]
-    {
-        display:            inline-block;
-        margin:             0;
-        padding:            0;
-        vertical-align:     middle;
-        min-width:          0;
-        width:              auto;
-    }
+  p:first-of-type > label,
+  p:first-of-type > input[type="text"] {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    min-width: 0;
+    width: auto;
+  }
 
-    > p:first-of-type > input[type="text"]
-    {
-        width:              5em;
-        height:             2.5em;
-        padding:            0.1em;
-        flex-grow:          10;
-        flex-shrink:        1;
-        margin-left:        1em;
-    }
+  > p:first-of-type > input[type="text"] {
+    width: 5em;
+    height: 2.5em;
+    padding: 0.1em;
+    flex-grow: 10;
+    flex-shrink: 1;
+    margin-left: 1em;
+  }
 
-    > p:first-of-type > label::after
-    {
-        content:            "\00a0:"; /* Non-breakable space here too */
-    }
+  > p:first-of-type > label::after {
+    content: "\00a0:"; /* Non-breakable space here too */
+  }
 
-    label[for$="_body"]
-    {
-        display:            none; /* « Commentaire complet » */
-    }
+  label[for$="_body"] {
+    display: none; /* « Commentaire complet » */
+  }
 
-    div.markItUp textarea
-    {
-        display:            block;
-        position:           relative;
-        width:              80%;
-        padding:            0.5em;
-        font-size:          10.5pt;
-        min-height:         22em;
-        margin-left:        auto;
-        margin-right:       auto;
-        border:             solid 2px;
-        border-radius:      0.4em;
-        border-color:       #bcb8b0;
-        box-shadow:         none;
-    }
+  div.markItUp textarea {
+    display: block;
+    position: relative;
+    width: 80%;
+    padding: 0.5em;
+    font-size: 10.5pt;
+    min-height: 22em;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 2px;
+    border-radius: 0.4em;
+    border-color: #bcb8b0;
+    box-shadow: none;
+  }
 
-    p:last-child
-    {
-        display:            block;
-        text-align:         center;
-    }
+  p:last-child {
+    display: block;
+    text-align: center;
+  }
 
-    p:last-child input[type="submit"]
-    {
-        min-width:          18em;
-        margin:             0 1em 2em 1em;
-    }
+  p:last-child input[type="submit"] {
+    min-width: 18em;
+    margin: 0 1em 2em 1em;
+  }
 }
 
-section.container div.markdown_cheatsheet
-{
-    display:            block;
-    margin-top:         3em;
+section.container div.markdown_cheatsheet {
+  display: block;
+  margin-top: 3em;
 }
 
-section.container div.markdown_cheatsheet img.markdown
-{
-    display:            inline-block;
-    vertical-align:     middle;
-    margin:             0 1em 0.5em 2em;
-    padding:            0;
+section.container div.markdown_cheatsheet img.markdown {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 1em 0.5em 2em;
+  padding: 0;
 }
 
-section.container div.markdown_cheatsheet h2
-{
-    display:            inline-block;
+section.container div.markdown_cheatsheet h2 {
+  display: inline-block;
 }
 
 /* = Typograpic specificies & tag behavour adjustments */
 
 section.container article pre,
-section.container div#comments pre
-{
-    font-family:        fixed;
-    max-width:          100%;
-    max-height:         22em;
-    overflow:           auto;
-    border:             solid 1px #b0b0b0;
-    border-radius:      4px;
-    padding:            0.5ex;
-
+section.container div#comments pre {
+  font-family: fixed;
+  max-width: 100%;
+  max-height: 22em;
+  overflow: auto;
+  border: solid 1px #b0b0b0;
+  border-radius: 4px;
+  padding: 0.5ex;
 }
 
 section.container article pre
 //section.container article pre code
-{
-    background-color:   #001000;
-    color:              #30ff30;
-    text-shadow:        0 0 0.4ex #00c000;
+ {
+  background-color: #001000;
+  color: #30ff30;
+  text-shadow: 0 0 0.4ex #00c000;
 }
 
 section.container article blockquote,
-section.container div#comments div.content blockquote
-{
-    display:            block;
-    overflow-x:         auto;
-    margin:             0 6em 0 0;
-    max-width:          80%;
-    background-color:   rgba(32,0,256,0.15);
-    box-shadow:         0.1em 0.1em 0.1em #909090;
-    padding:            0.5em;
+section.container div#comments div.content blockquote {
+  display: block;
+  overflow-x: auto;
+  margin: 0 6em 0 0;
+  max-width: 80%;
+  background-color: rgba(32, 0, 256, 0.15);
+  box-shadow: 0.1em 0.1em 0.1em #909090;
+  padding: 0.5em;
 }
 
 section.container article blockquote blockquote,
-section.container div#comments div.content blockquote blockquote
-{
-    margin:             0;
-    max-width:          100%;
-    box-shadow:         0.1em 0.1em 0.125em #605090;
+section.container div#comments div.content blockquote blockquote {
+  margin: 0;
+  max-width: 100%;
+  box-shadow: 0.1em 0.1em 0.125em #605090;
 }
 
 /* Limit the recursive shading to 5 levels when using embedded boxes */
-section.container article blockquote blockquote blockquote blockquote blockquote,
-section.container div#comments div.content blockquote blockquote blockquote blockquote blockquote
-{
-    background-color:   #7a6bfd;
+section.container
+  article
+  blockquote
+  blockquote
+  blockquote
+  blockquote
+  blockquote,
+section.container
+  div#comments
+  div.content
+  blockquote
+  blockquote
+  blockquote
+  blockquote
+  blockquote {
+  background-color: #7a6bfd;
 }
-
 
 /* == Toolbox (above and below article list, whatever they are (diaries, forums, trackers…) == */
 /*    Contains navigation items such as page numbers (1, 2, 3…) and previous/next buttons.     */
 
-section.container nav.toolbox
-{
-    display:            block;
-    background-color:   rgba(80,80,80,0.75);
-    color:              white;
-    border:             solid 1px black;
-    padding:            0.5em;
-    margin:             1em 0;
-    border-radius:      0.4ex;
-    text-align:         center;
-    min-height:         1.7em;
+section.container nav.toolbox {
+  display: block;
+  background-color: rgba(80, 80, 80, 0.75);
+  color: white;
+  border: solid 1px black;
+  padding: 0.5em;
+  margin: 1em 0;
+  border-radius: 0.4ex;
+  text-align: center;
+  min-height: 1.7em;
 }
 
-section.container nav.toolbox a
-{
-    color:              #c0c0c0;
-    text-decoration:    none;
+section.container nav.toolbox a {
+  color: #c0c0c0;
+  text-decoration: none;
 
-    transition:         text-shadow 0.2s linear;
+  transition: text-shadow 0.2s linear;
 }
 
-section.container nav.toolbox a:visited
-{
-    color:              #a0a0a0;
+section.container nav.toolbox a:visited {
+  color: #a0a0a0;
 
-    transition:         text-shadow 0.2s linear;
+  transition: text-shadow 0.2s linear;
 }
 
-section.container nav.toolbox a:hover
-{
-    color:              white;
-    text-shadow:        0 0 0.4ex white;
+section.container nav.toolbox a:hover {
+  color: white;
+  text-shadow: 0 0 0.4ex white;
 
-    transition:         text-shadow 0.2s linear;
+  transition: text-shadow 0.2s linear;
 }
 
 section.container nav.toolbox div.follow_feed,
-section.container nav.toolbox div.new_content
-{
-    display:            inline-block;
-    border:             solid 1px #282828;
-    background-color:   #484848;
-    border-radius:      2px;
-    height:             1.3em;
-    margin:             0 0.5em 0.5em 0;
-    padding:            2px 1em;
-    float:              left;
+section.container nav.toolbox div.new_content {
+  display: inline-block;
+  border: solid 1px #282828;
+  background-color: #484848;
+  border-radius: 2px;
+  height: 1.3em;
+  margin: 0 0.5em 0.5em 0;
+  padding: 2px 1em;
+  float: left;
 }
 
-section.container nav.toolbox div.new_content
-{
-    float:              right;
-    margin:             0 0 0.5em 0.5em;
+section.container nav.toolbox div.new_content {
+  float: right;
+  margin: 0 0 0.5em 0.5em;
 }
 
-section.container nav.toolbox div.follow_feed a[href$=".atom"]
-{
-    position:           relative;
-    padding:            0 0 0 0.5em;
-    display:            inline-block;
+section.container nav.toolbox div.follow_feed a[href$=".atom"] {
+  position: relative;
+  padding: 0 0 0 0.5em;
+  display: inline-block;
 }
 
-section.container nav.toolbox div.follow_feed a[href$=".atom"]::before
-{
-    position:           relative;
-    left:               -0.5em;
-    top:                0.1em;
-    display:            inline-block;
-    vertical-align:     baseline;
-    padding:            0;
-    width:              0.9em;
-    height:             0.9em;
+section.container nav.toolbox div.follow_feed a[href$=".atom"]::before {
+  position: relative;
+  left: -0.5em;
+  top: 0.1em;
+  display: inline-block;
+  vertical-align: baseline;
+  padding: 0;
+  width: 0.9em;
+  height: 0.9em;
 }
 
 /* Just to avoid repeating the base64 block. follow-feed is actualy defined below */
 p#follow-feed a::before,
-section.container nav.toolbox div.follow_feed a[href$=".atom"]::before
-{
-    content:            url("data:image/svg+xml;base64,\
+section.container nav.toolbox div.follow_feed a[href$=".atom"]::before {
+  content: url("data:image/svg+xml;base64,\
 PD94bWwgdmVyc2lvbj0iMS4wIj8+PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3\
 LnczLm9yZy8yMDAwL3N2ZyIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA0MDUuMzM4IDQw\
 NS4zMzgiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQwNS4zMzggNDA1LjMzODsi\
@@ -2362,94 +2238,125 @@ LjA1Myw0MDUuMzMzeiIvPjxjaXJjbGUgc3R5bGU9ImZpbGw6I0YwNTIyOCIgY3g9IjQ4Ljg2IiBj\
 eT0iMzU2LjQ4IiByPSI0OC44NTgiLz48L2c+PC9zdmc+Cg==");
 }
 
-section.container nav.toolbox div.order_navbar
-{
-    display:            inline;
+section.container nav.toolbox div.order_navbar {
+  display: inline;
 }
 
-section.container nav.toolbox div.order_navbar ul
-{
-    display:            inline-block;
-    margin:             0 0 0 1em;
-    padding:            0;
+section.container nav.toolbox div.order_navbar ul {
+  display: inline-block;
+  margin: 0 0 0 1em;
+  padding: 0;
 }
 
-section.container nav.toolbox div.order_navbar ul li
-{
-    display:            inline;
-    font-weight:        bold;
-    padding:            0;
+section.container nav.toolbox div.order_navbar ul li {
+  display: inline;
+  font-weight: bold;
+  padding: 0;
 }
 
-section.container nav.toolbox div.order_navbar ul li
-{
-    content:            "";
+section.container nav.toolbox div.order_navbar ul li {
+  content: "";
 }
 
 section.container nav.toolbox div.order_navbar ul li a,
-section.container nav.toolbox div.order_navbar ul li a:visited
-{
-    color:              #202020;
-    transition:         none;
+section.container nav.toolbox div.order_navbar ul li a:visited {
+  color: #202020;
+  transition: none;
 }
 
-section.container nav.toolbox div.order_navbar ul li a:hover
-{
-    color:              white;
-    transition:         text-shadow 0.2s linear;
+section.container nav.toolbox div.order_navbar ul li a:hover {
+  color: white;
+  transition: text-shadow 0.2s linear;
 }
 
-section.container nav.toolbox div.order_navbar ul li + li::before
-{
-    /* Contains non-breakable spaces here too */
-    color:              #a0a0a0;
-    content:            "\00a0⋅\00a0\00a0";
+section.container nav.toolbox div.order_navbar ul li + li::before {
+  /* Contains non-breakable spaces here too */
+  color: #a0a0a0;
+  content: "\00a0⋅\00a0\00a0";
 }
 
-section.container nav.toolbox nav.pagination
-{
-    display:            block;
-    margin:             0.5em 0 0 0;
+section.container nav.toolbox nav.pagination {
+  display: block;
+  margin: 0.5em 0 0 0;
 }
 
-section.container nav.toolbox nav.pagination:first-child
-{
-    margin-top:         0.2ex;
+section.container nav.toolbox nav.pagination:first-child {
+  margin-top: 0.2ex;
 }
-
-
 
 /*
  * ===== Sections =====
  *
  */
 
-
 /* === Flag icons === */
 
-li.link[lang=cn] { list-style-image:url("/images/langs/cn.png") }
-li.link[lang=ct] { list-style-image:url("/images/langs/ct.png") }
-li.link[lang=da] { list-style-image:url("/images/langs/da.png") }
-li.link[lang=de] { list-style-image:url("/images/langs/de.png") }
-li.link[lang=ee] { list-style-image:url("/images/langs/ee.png") }
-li.link[lang=el] { list-style-image:url("/images/langs/el.png") }
-li.link[lang=en] { list-style-image:url("/images/langs/en.png") }
-li.link[lang=es] { list-style-image:url("/images/langs/es.png") }
-li.link[lang=eu] { list-style-image:url("/images/langs/eu.png") }
-li.link[lang=fi] { list-style-image:url("/images/langs/fi.png") }
-li.link[lang=fr] { list-style-image:url("/images/langs/fr.png") }
-li.link[lang=it] { list-style-image:url("/images/langs/it.png") }
-li.link[lang=ja] { list-style-image:url("/images/langs/ja.png") }
-li.link[lang=ko] { list-style-image:url("/images/langs/ko.png") }
-li.link[lang=nl] { list-style-image:url("/images/langs/nl.png") }
-li.link[lang=no] { list-style-image:url("/images/langs/no.png") }
-li.link[lang=pl] { list-style-image:url("/images/langs/pl.png") }
-li.link[lang=pt] { list-style-image:url("/images/langs/pt.png") }
-li.link[lang=ru] { list-style-image:url("/images/langs/ru.png") }
-li.link[lang=sv] { list-style-image:url("/images/langs/sv.png") }
-li.link[lang=xx] { list-style-image:url("/images/langs/xx.png") }
-li.link[lang=wq] { list-style-image:url("/images/langs/wq.png") }
-
+li.link[lang="cn"] {
+  list-style-image: url("/images/langs/cn.png");
+}
+li.link[lang="ct"] {
+  list-style-image: url("/images/langs/ct.png");
+}
+li.link[lang="da"] {
+  list-style-image: url("/images/langs/da.png");
+}
+li.link[lang="de"] {
+  list-style-image: url("/images/langs/de.png");
+}
+li.link[lang="ee"] {
+  list-style-image: url("/images/langs/ee.png");
+}
+li.link[lang="el"] {
+  list-style-image: url("/images/langs/el.png");
+}
+li.link[lang="en"] {
+  list-style-image: url("/images/langs/en.png");
+}
+li.link[lang="es"] {
+  list-style-image: url("/images/langs/es.png");
+}
+li.link[lang="eu"] {
+  list-style-image: url("/images/langs/eu.png");
+}
+li.link[lang="fi"] {
+  list-style-image: url("/images/langs/fi.png");
+}
+li.link[lang="fr"] {
+  list-style-image: url("/images/langs/fr.png");
+}
+li.link[lang="it"] {
+  list-style-image: url("/images/langs/it.png");
+}
+li.link[lang="ja"] {
+  list-style-image: url("/images/langs/ja.png");
+}
+li.link[lang="ko"] {
+  list-style-image: url("/images/langs/ko.png");
+}
+li.link[lang="nl"] {
+  list-style-image: url("/images/langs/nl.png");
+}
+li.link[lang="no"] {
+  list-style-image: url("/images/langs/no.png");
+}
+li.link[lang="pl"] {
+  list-style-image: url("/images/langs/pl.png");
+}
+li.link[lang="pt"] {
+  list-style-image: url("/images/langs/pt.png");
+}
+li.link[lang="ru"] {
+  list-style-image: url("/images/langs/ru.png");
+}
+li.link[lang="sv"] {
+  list-style-image: url("/images/langs/sv.png");
+}
+li.link[lang="xx"] {
+  list-style-image: url("/images/langs/xx.png");
+}
+li.link[lang="wq"] {
+  list-style-image: url("/images/langs/wq.png");
+}
 
 /* === User pages tweaks === */
 
@@ -2480,747 +2387,714 @@ body[id^="users-"]:not([id="users-wiki"]) #container,
 #wiki_pages-show #container,
 #wiki_pages-pages #container,
 //#wiki_pages-changes #container,
-.frontpage-like#container
-{
-    background:         linear-gradient(to bottom,#c0c0c0,#808080 15em,#404040);
-    border-color:       #808080;
+.frontpage-like#container {
+  background: linear-gradient(to bottom, #c0c0c0, #808080 15em, #404040);
+  border-color: #808080;
 
-    > a,
-    > p > a,
-    > footer > p > a
-    {
-        color:              #d0d0ff;
-    }
+  > a,
+  > p > a,
+  > footer > p > a {
+    color: #d0d0ff;
+  }
 
-    > a:visited,
-    > p > a:visited,
-    > footer > p > a:visited
-    {
-        color:              #a0a0ff;
-    }
+  > a:visited,
+  > p > a:visited,
+  > footer > p > a:visited {
+    color: #a0a0ff;
+  }
 
-    > a:hover,
-    > p > a:hover,
-    > footer > p > a:hover
-    {
-        color:              #ffffff;
-    }
+  > a:hover,
+  > p > a:hover,
+  > footer > p > a:hover {
+    color: #ffffff;
+  }
 
-    > h1,
-    > main > h1
-    {
-        color:              white;
-        border:             none;
-        text-shadow:        0.1ex 0.1ex 0 #303030;
-    }
+  > h1,
+  > main > h1 {
+    color: white;
+    border: none;
+    text-shadow: 0.1ex 0.1ex 0 #303030;
+  }
 
-    > h1::before,
-    > main > h1::before
-    {
-        /* Contains non-breakable space here too */
-        content:            "►\00a0";
-        color:              #808080;
-        text-shadow:        none;
-    }
+  > h1::before,
+  > main > h1::before {
+    /* Contains non-breakable space here too */
+    content: "►\00a0";
+    color: #808080;
+    text-shadow: none;
+  }
 
-    article
-    {
-        box-shadow:         0 14px 15px #303030;
-    }
+  article {
+    box-shadow: 0 14px 15px #303030;
+  }
 }
 
-#home-index #container > h1
-{
-    display:                none;
+#home-index #container > h1 {
+  display: none;
 }
-
 
 /* === Front page === */
 
 /* == Highlighted news (section phare) == */
 
-#home-index #container
-{
-    padding:            $SIDEBAR_PADDING;
+#home-index #container {
+  padding: $SIDEBAR_PADDING;
 }
 
-#home-index #phare article
-{
-    position:           relative;
-    display:            block;
-    background:         linear-gradient(175deg,#d0d0ff,transparent 33em,transparent 100%),
-                        white;
-    border-radius:      0;
-    margin:             1em 2em 3em 2em;
-    box-shadow:         0 10px 30px #202020;
+#home-index #phare article {
+  position: relative;
+  display: block;
+  background: linear-gradient(
+      175deg,
+      #d0d0ff,
+      transparent 33em,
+      transparent 100%
+    ),
+    white;
+  border-radius: 0;
+  margin: 1em 2em 3em 2em;
+  box-shadow: 0 10px 30px #202020;
 }
 
-#home-index #phare article header
-{
-    text-align:         center;
+#home-index #phare article header {
+  text-align: center;
 }
 
-#home-index #phare article header h1
-{
-    background:         none;
-    display:            flex;
-    flex-direction:     column;
-    text-align:         center;
-    font-family:        'SBLinuxLibertineO';
-    font-weight:        bold;
-    font-size:          36pt;
-    text-shadow:        none;
+#home-index #phare article header h1 {
+  background: none;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: "SBLinuxLibertineO";
+  font-weight: bold;
+  font-size: 36pt;
+  text-shadow: none;
 
-/*                      0 0 1px black,
+  /*                      0 0 1px black,
                         0.2ex 0.2ex 1px #c0c0ff;  */
 
-    margin:             21pt 80pt 18pt 80pt;
+  margin: 21pt 80pt 18pt 80pt;
 }
 
 #home-index #phare article header h1,
 #home-index #phare article header h1 a,
 #home-index #phare article header h1 a:visited,
-#home-index #phare article header h1 a:hover
-{
-    vertical-align:     middle;
-    color:              #101010;
-    border:             none;
-    text-decoration:    none;
-    padding:            0;
-    border-bottom:      solid 1px transparent;
+#home-index #phare article header h1 a:hover {
+  vertical-align: middle;
+  color: #101010;
+  border: none;
+  text-decoration: none;
+  padding: 0;
+  border-bottom: solid 1px transparent;
 }
 
-#home-index #phare article header h1 a
-{
-    display:            inline;
+#home-index #phare article header h1 a {
+  display: inline;
 }
 
-#home-index #phare article header h1 a:hover
-{
-    border-bottom:      solid 1px #c0c0c0;
+#home-index #phare article header h1 a:hover {
+  border-bottom: solid 1px #c0c0c0;
 }
 
 #home-index #phare article header h1 a.topic:first-child,
-#home-index #phare article header h1 span.topic:first-child
-{
-    display:            block;
-    width:              auto;
-    margin-left:        auto;
-    margin-right:       auto;
-    color:              #404068;
-    font-size:          65%;
+#home-index #phare article header h1 span.topic:first-child {
+  display: block;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  color: #404068;
+  font-size: 65%;
 }
 
-#home-index #phare article header h1::first-line a.topic + a::before
-{
-    /* Contains non-breakable space here too */
-    content:            "⋅\00a0";
-    color:              #808080;
+#home-index #phare article header h1::first-line a.topic + a::before {
+  /* Contains non-breakable space here too */
+  content: "⋅\00a0";
+  color: #808080;
 }
 
-#home-index #phare article .meta
-{
-    text-align:         center;
-    color:              #909090;
-    margin-bottom:      3em;
+#home-index #phare article .meta {
+  text-align: center;
+  color: #909090;
+  margin-bottom: 3em;
 }
 
 #home-index #phare article .meta a,
-#home-index #phare article .meta a:visited
-{
-    color:              #404040;
-    text-decoration:    none;
+#home-index #phare article .meta a:visited {
+  color: #404040;
+  text-decoration: none;
 }
 
-#home-index #phare article .meta span.posted_by_spanblock
-{
-    display:            block;
+#home-index #phare article .meta span.posted_by_spanblock {
+  display: block;
 }
 
-#home-index #phare article .meta span.posted_by_spanblock > a:first-of-type
-{
-    font-weight:        bold;
+#home-index #phare article .meta span.posted_by_spanblock > a:first-of-type {
+  font-weight: bold;
 }
 
-#home-index #phare article .meta a:hover
-{
-    text-decoration:    underline;
+#home-index #phare article .meta a:hover {
+  text-decoration: underline;
 }
 
-#home-index #phare article div.tags
-{
-    display:            none;
+#home-index #phare article div.tags {
+  display: none;
 }
 
-#home-index #phare article div.figures
-{
-    position:           absolute;
-    display:            block;
-    right:              2.4em;
-    top:                -0.6em;
-    width:              4em;
-    height:             auto;
-    padding:            0.5em 0.5em 0 0.5em;
-    text-align:         center;
-    color:              #c0c0c0;
-    background:                   linear-gradient(180deg,#303030,transparent 0.4em,#303030 70%,#303030),
-                        repeating-linear-gradient(170deg,#202020 2px,#505050 3px,#303030 4px,#202020 5px);
-    border-radius:      0.4em 0.4em 1px 1px;
-    box-shadow:         0.3em 0.7em 0.6em -0.0em #404060,
-                        inset 0 -1px 3px 3px #303030;
+#home-index #phare article div.figures {
+  position: absolute;
+  display: block;
+  right: 2.4em;
+  top: -0.6em;
+  width: 4em;
+  height: auto;
+  padding: 0.5em 0.5em 0 0.5em;
+  text-align: center;
+  color: #c0c0c0;
+  background: linear-gradient(
+      180deg,
+      #303030,
+      transparent 0.4em,
+      #303030 70%,
+      #303030
+    ),
+    repeating-linear-gradient(
+      170deg,
+      #202020 2px,
+      #505050 3px,
+      #303030 4px,
+      #202020 5px
+    );
+  border-radius: 0.4em 0.4em 1px 1px;
+  box-shadow: 0.3em 0.7em 0.6em -0em #404060, inset 0 -1px 3px 3px #303030;
 }
 
-#home-index #phare article div.figures::after
-{
-    position:           absolute;
-    display:            block;
-    width:              0;
-    bottom:             -1.075em;
-    right:              0;
-    height:             0.1em;
-    content:            "";
-    border-style:       solid;
-    border-width:       1em 2.5em 0 2.5em;
-    border-color:       #303030 transparent transparent transparent;
+#home-index #phare article div.figures::after {
+  position: absolute;
+  display: block;
+  width: 0;
+  bottom: -1.075em;
+  right: 0;
+  height: 0.1em;
+  content: "";
+  border-style: solid;
+  border-width: 1em 2.5em 0 2.5em;
+  border-color: #303030 transparent transparent transparent;
 }
 
-#home-index #phare article div.figures figure
-{
-    margin:             0;
-    width:              auto;
+#home-index #phare article div.figures figure {
+  margin: 0;
+  width: auto;
 }
 
-#home-index #phare article div.figures figure.score
-{
-    font-family:        'SBLinuxLibertineO';
-    font-weight:        bold;
-    font-size:          28pt;
-    color:              white;
-    text-shadow:        2px 2px 0 #101010;
+#home-index #phare article div.figures figure.score {
+  font-family: "SBLinuxLibertineO";
+  font-weight: bold;
+  font-size: 28pt;
+  color: white;
+  text-shadow: 2px 2px 0 #101010;
 }
 
 #home-index #phare article div.figures figure.datePourCss div.jour,
 #home-index #phare article div.figures figure.datePourCss div.mois,
-#home-index #phare article div.figures figure.datePourCss div.annee
-{
-    display:            inline-block;
-    font-size:          8.5pt;
+#home-index #phare article div.figures figure.datePourCss div.annee {
+  display: inline-block;
+  font-size: 8.5pt;
 }
 
-#home-index #phare article div.figures figure.datePourCss div.jour
-{
-    padding-right:      1ex;
+#home-index #phare article div.figures figure.datePourCss div.jour {
+  padding-right: 1ex;
 }
 
-#home-index #phare article div.figures figure.datePourCss div.annee
-{
-    display:            block;
+#home-index #phare article div.figures figure.datePourCss div.annee {
+  display: block;
 }
 
-#home-index #phare article div.figures figure img
-{
-    width:              100%;
+#home-index #phare article div.figures figure img {
+  width: 100%;
 }
 
-body::after
-{
-    position:           absolute;
-    color:              black;
-    left:               1px;
-    bottom:             -4.5em;
-    transform:          rotate(-90deg);
-    font-size:          8pt;
-    font-weight:        normal;
-    transform-origin:   top left;
-    content:            ""
-
-        "\004f\62\0073\69\0064\69\0061\006e\0020\32\30\31"
-        "\37\20\0070\006f\0075\72\20\004c\69\006e\75\0078"
-        "\0046\72\002e\6f\0072\67";
+body::after {
+  position: absolute;
+  color: black;
+  left: 1px;
+  bottom: -4.5em;
+  transform: rotate(-90deg);
+  font-size: 8pt;
+  font-weight: normal;
+  transform-origin: top left;
+  content: "" "\004f\62\0073\69\0064\69\0061\006e\0020\32\30\31"
+    "\37\20\0070\006f\0075\72\20\004c\69\006e\75\0078"
+    "\0046\72\002e\6f\0072\67";
 }
 
-#home-index aside.banner
-{
-    display:            block;
-    text-align:         center;
-    margin:             0 0 3em 0;
+#home-index aside.banner {
+  display: block;
+  text-align: center;
+  margin: 0 0 3em 0;
 }
 
-#home-index aside.banner a
-{
-    display:            inline;
-    width:              15em;
+#home-index aside.banner a {
+  display: inline;
+  width: 15em;
 }
 
-#home-index aside.banner img
-{
-    display:            inline-block;
-    margin:             0;
-    max-width:          100%;
-    box-shadow:         0 0.6em 1em -0.5em black;
+#home-index aside.banner img {
+  display: inline-block;
+  margin: 0;
+  max-width: 100%;
+  box-shadow: 0 0.6em 1em -0.5em black;
 }
 
-#home-index aside.banner img[src$="/priorite-logiciel-libre-je-soutiens-april.png"],
-#home-index aside.banner img.shadowed
-{
-    /* The particular April support banner already has a shadow effect, */
-    /* so we want to disable shadow for this specific case.  And  while */
-    /* being at it, we define a class name to allow exclusion of future */
-    /* such banners. */
+#home-index
+  aside.banner
+  img[src$="/priorite-logiciel-libre-je-soutiens-april.png"],
+#home-index aside.banner img.shadowed {
+  /* The particular April support banner already has a shadow effect, */
+  /* so we want to disable shadow for this specific case.  And  while */
+  /* being at it, we define a class name to allow exclusion of future */
+  /* such banners. */
 
-    box-shadow:         none;
+  box-shadow: none;
 }
 
-#home-index aside.banner br
-{
-    display:            block;
-    margin-top:         1em;
+#home-index aside.banner br {
+  display: block;
+  margin-top: 1em;
 }
 
 /* == Rest of news section == */
-
 
 /* === Poll section === */
 
 aside#sidebar > #poll_box input[type="radio"] + label::before,
 #stylesheets-edit form + p + form input[type="radio"] + label::before /* The rest of this one is defined below */
-{
-    display:            inline-block;
-    position:           relative;
-    font-size:          8pt;
-    width:              1em;
-    height:             1em;
-    margin:             0 0.8em 0 0;
-    padding:            0;
-    border-style:       solid;
-    border-width:       1px;
-    border-color:       #404040 #606060 #606060 #404040; /* #505050; */
-    border-radius:      0.55em;
-    background:         radial-gradient(circle at center,black 0,black 20%,#303030 100%);
-    content:            "";
+ {
+  display: inline-block;
+  position: relative;
+  font-size: 8pt;
+  width: 1em;
+  height: 1em;
+  margin: 0 0.8em 0 0;
+  padding: 0;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #404040 #606060 #606060 #404040; /* #505050; */
+  border-radius: 0.55em;
+  background: radial-gradient(
+    circle at center,
+    black 0,
+    black 20%,
+    #303030 100%
+  );
+  content: "";
 
-    transition:         border-color 0.5s linear;
+  transition: border-color 0.5s linear;
 }
 
 aside#sidebar > #poll_box input[type="radio"]:checked + label::before,
 #stylesheets-edit form + p + form input[type="radio"]:checked + label::before /* The rest of this one is defined below */
-{
-    border-color:       #c0e0ff;
-    background:         radial-gradient(circle at center,white 0,black 100%);
-    content:            "";
+ {
+  border-color: #c0e0ff;
+  background: radial-gradient(circle at center, white 0, black 100%);
+  content: "";
 
-    transition:         border-color 0.5s linear;
+  transition: border-color 0.5s linear;
 }
 
-aside#sidebar > #poll_box p.total_votes
-{
-    text-align:         center;
-    color:              #707070;
-    font-weight:        bold;
+aside#sidebar > #poll_box p.total_votes {
+  text-align: center;
+  color: #707070;
+  font-weight: bold;
 }
 
 #polls-show section.container article.poll-notice,
-#polls-show section#container main#contents article.poll-notice
-{
-    border:             solid 1px #505050;
-    border-radius:      0.2em;
-    margin:             3em 5em 3em 5em;
-    background-color:   #888888;
-    color:              white;
-    box-shadow:         none;
-    padding:            1em;
+#polls-show section#container main#contents article.poll-notice {
+  border: solid 1px #505050;
+  border-radius: 0.2em;
+  margin: 3em 5em 3em 5em;
+  background-color: #888888;
+  color: white;
+  box-shadow: none;
+  padding: 1em;
 }
 
 /* === Section section (list of all existing sections :) === */
 
-#sections-index #container div.body
-{
-    text-align:         center;
+#sections-index #container div.body {
+  text-align: center;
 }
 
-#sections-index #container div.body div.section
-{
-    position:           relative;
-    display:            inline-flex;
-    flex-direction:     column;
-    justify-content:    center;
-    width:              20em;
-    height:             6em;
-    margin:             0 0.5em 1em 0.5em;
-    padding:            0;
-    background-color:   #606060;
-    color:              white;
-    box-shadow:         0.2em 0.2em 0.1em black;
+#sections-index #container div.body div.section {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 20em;
+  height: 6em;
+  margin: 0 0.5em 1em 0.5em;
+  padding: 0;
+  background-color: #606060;
+  color: white;
+  box-shadow: 0.2em 0.2em 0.1em black;
 }
 
-#sections-index #container div.body div.section:hover
-{
-    background-color:   #808080;
+#sections-index #container div.body div.section:hover {
+  background-color: #808080;
 }
 
-#sections-index #container div.body div.section br
-{
-    display:            none;
+#sections-index #container div.body div.section br {
+  display: none;
 }
 
-#sections-index #container div.body div.section img
-{
-    display:            inline-block;
-    vertical-align:     middle;
-    margin:             0 0.9em 0 0;
-    padding:            0;
-    width:              5em;
-    height:             auto;
-    max-height:         5em;
+#sections-index #container div.body div.section img {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.9em 0 0;
+  padding: 0;
+  width: 5em;
+  height: auto;
+  max-height: 5em;
 }
 
-#sections-index #container div.body div.section a
-{
-    display:            block;
-    margin:             0;
-    padding:            0.5em;
-    text-align:         left;
-    vertical-align:     middle;
-    color:              white;
-    text-decoration:    none;
+#sections-index #container div.body div.section a {
+  display: block;
+  margin: 0;
+  padding: 0.5em;
+  text-align: left;
+  vertical-align: middle;
+  color: white;
+  text-decoration: none;
 }
 
-#sections-index #container div.body div.section a:visited
-{
-    color:              #c0c0c0;
+#sections-index #container div.body div.section a:visited {
+  color: #c0c0c0;
 }
-
 
 /* === Board === */
 
-#boards-show #main_board > h1
-{
-    border-color:       #808080;
-    text-shadow:        0.1ex 0.1ex 0 #303030;
-    color:              white;
+#boards-show #main_board > h1 {
+  border-color: #808080;
+  text-shadow: 0.1ex 0.1ex 0 #303030;
+  color: white;
 }
 
 #boards-show #main_board > a,
-#boards-show #main_board > p > a
-{
-    color:              #202020;
-    text-decoration:    none;
-    margin:             0 0.3em;
+#boards-show #main_board > p > a {
+  color: #202020;
+  text-decoration: none;
+  margin: 0 0.3em;
 }
 
-#boards-show #main_board > p > a[onclick]
-{
-    cursor:             pointer;
+#boards-show #main_board > p > a[onclick] {
+  cursor: pointer;
 }
 
 #boards-show #main_board > a:hover,
-#boards-show #main_board > p > a:hover
-{
-    color:              white;
+#boards-show #main_board > p > a:hover {
+  color: white;
 }
 
-#boards-show #main_board div.board
-{
-    display:            flex;
-    flex-flow:          column nowrap;
+#boards-show #main_board div.board {
+  display: flex;
+  flex-flow: column nowrap;
 }
 
-#boards-show #main_board div.board div.inbox
-{
-    display:            flex;
-    flex-flow:          column-reverse nowrap;
-    margin:             2em 0 0 0;
-    border:             solid 1px #505050;
-    border-radius:      0.5em;
-    padding:            1em;
-    background-color:   #181818;
-    order:              3;
+#boards-show #main_board div.board div.inbox {
+  display: flex;
+  flex-flow: column-reverse nowrap;
+  margin: 2em 0 0 0;
+  border: solid 1px #505050;
+  border-radius: 0.5em;
+  padding: 1em;
+  background-color: #181818;
+  order: 3;
 }
 
-#boards-show #main_board a
-{
-    font-weight:        bold;
+#boards-show #main_board a {
+  font-weight: bold;
 }
 
-#boards-show #main_board time
-{
-    font-weight:        bold;
-    color:              #60b0e0;
+#boards-show #main_board time {
+  font-weight: bold;
+  color: #60b0e0;
 }
 
-#boards-show #main_board span.board-left time
-{
-    color:              #3070c0;
+#boards-show #main_board span.board-left time {
+  color: #3070c0;
 }
 
-#boards-show #main_board form.chat
-{
-    display:            flex;
-    width:              100%;
-    margin:             0.5em 0;
-    flex-flow:          row nowrap;
-    justify-content:    space-around;
-    align-items:        center;
-    order:              4;
+#boards-show #main_board form.chat {
+  display: flex;
+  width: 100%;
+  margin: 0.5em 0;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  order: 4;
 }
 
-#boards-show #main_board form.chat input[type="text"]
-{
-    flex-grow:          1;
-    width:              auto;
-    min-width:          8em;
-    margin-right:       1em;
+#boards-show #main_board form.chat input[type="text"] {
+  flex-grow: 1;
+  width: auto;
+  min-width: 8em;
+  margin-right: 1em;
 }
 
-#boards-show #main_board div.board div.inbox p
-{
-    position:           relative;
-    display:            block;
-    margin:             0 0 0.2em 0;
-    padding:            0 0 0 13em;
-    color:              #c0c0c0;
+#boards-show #main_board div.board div.inbox p {
+  position: relative;
+  display: block;
+  margin: 0 0 0.2em 0;
+  padding: 0 0 0 13em;
+  color: #c0c0c0;
 }
 
 #boards-show #main_board div.board div.inbox p a,
-#boards-show #main_board div.board div.inbox p a::after
-{
-    text-decoration:    none;
-    color:              #20ff20;
+#boards-show #main_board div.board div.inbox p a::after {
+  text-decoration: none;
+  color: #20ff20;
 }
 
 #boards-show #main_board div.board div.inbox p a:visited,
-#boards-show #main_board div.board div.inbox p a:visited::after
-{
-    color:              #108010;
+#boards-show #main_board div.board div.inbox p a:visited::after {
+  color: #108010;
 }
 
-#boards-show #main_board div.board div.inbox p a:hover
-{
-    color:              white;
+#boards-show #main_board div.board div.inbox p a:hover {
+  color: white;
 }
 
-#boards-show #main_board div.board div.inbox p span.board-left
-{
-    position:           absolute;
-    display:            block;
-    top:                0;
-    left:               0;
-    clear:              none;
-    width:              12em;
-    color:              white;
+#boards-show #main_board div.board div.inbox p span.board-left {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  clear: none;
+  width: 12em;
+  color: white;
 }
 
 #boards-show #main_board div.board div.inbox p span.board-left a,
-#boards-show #main_board div.board div.inbox p span.board-left a:visited
-{
-    color:              white;
+#boards-show #main_board div.board div.inbox p span.board-left a:visited {
+  color: white;
 }
 
-#boards-show #main_board div.board div.inbox p span.board-right
-{
-    display:            inline;
+#boards-show #main_board div.board div.inbox p span.board-right {
+  display: inline;
 }
 
-#boards-show #main_board div.board div.inbox img
-{
-    display:            inline;
+#boards-show #main_board div.board div.inbox img {
+  display: inline;
 }
 
-#boards-show #main_board div.board div.inbox time.highlighted
-{
-    color:              #a0d0ff;
-    background-color:   #383838;
+#boards-show #main_board div.board div.inbox time.highlighted {
+  color: #a0d0ff;
+  background-color: #383838;
 }
-
 
 /* === Dashboard === */
 
-#dashboard-index a[href^="/tableau-de-bord"]
-{
-    display:            inline-block;
-    margin:             0 0 1em 1em;
+#dashboard-index a[href^="/tableau-de-bord"] {
+  display: inline-block;
+  margin: 0 0 1em 1em;
 }
 
 #dashboard-index table#my_comments,
-#dashboard-index table#my_posts
-{
-    width:              auto;
-    margin:             0 auto;
+#dashboard-index table#my_posts {
+  width: auto;
+  margin: 0 auto;
 }
 
 #dashboard-index table#my_comments th,
-#dashboard-index table#my_comments td
-{
-    font-size:          10pt;
+#dashboard-index table#my_comments td {
+  font-size: 10pt;
 }
 
-#dashboard-index table#my_comments tr > td:first-child
-{
-    text-align:         left;
+#dashboard-index table#my_comments tr > td:first-child {
+  text-align: left;
 }
 
 /* === Statistics pages === */
 
-body[id^="statistics"] section.container li > span.score
-{
-    display:            inline-block;
-    font-weight:        bold;
-    margin-left:        0.5ex;
-    margin-right:       1.0ex;
-    min-width:          3.5em;
-    text-align:         right;
+body[id^="statistics"] section.container li > span.score {
+  display: inline-block;
+  font-weight: bold;
+  margin-left: 0.5ex;
+  margin-right: 1ex;
+  min-width: 3.5em;
+  text-align: right;
 }
 
-body[id^="statistics"] section.container table td
-{
-    text-align:         left;
+body[id^="statistics"] section.container table td {
+  text-align: left;
 }
 
-body[id^="statistics"] section.container table tr > td > div[style^="width:"]
-{
-    display:            inline-block;
-    padding-right:      0.5ex;
-    font-weight:        bold;
-    text-align:         right;
-    background-color:   #aca8a4;
+body[id^="statistics"] section.container table tr > td > div[style^="width:"] {
+  display: inline-block;
+  padding-right: 0.5ex;
+  font-weight: bold;
+  text-align: right;
+  background-color: #aca8a4;
 }
 
 /* Fake progress bars */
-body#statistics-comments    section.container table                 tr > td[rowspan]:first-child + td  > div,
-body#statistics-comments    section.container table                 tr > td:not([rowspan]):first-child > div,
-body#statistics-contents    section.container table                 tr > td:not(:last-child) > div,
-body#statistics-moderation  section.container table:first-of-type   tr > td:first-child      > div,
-body#statistics-tags        section.container table                 tr > td[rowspan]:first-child + td  > div,
-body#statistics-tags        section.container table                 tr > td:not([rowspan]):first-child > div,
-body#statistics-top         section.container table                 tr > td:not(:last-child) > div,
-body#statistics-users       section.container table:first-of-type   tr > td:first-child      > div,
-body#statistics-users       section.container table:nth-of-type(10) tr > td:first-child + td > div
-{
-    background:         none;
-    font-weight:        normal;
+body#statistics-comments
+  section.container
+  table
+  tr
+  > td[rowspan]:first-child
+  + td
+  > div,
+body#statistics-comments
+  section.container
+  table
+  tr
+  > td:not([rowspan]):first-child
+  > div,
+body#statistics-contents section.container table tr > td:not(:last-child) > div,
+body#statistics-moderation
+  section.container
+  table:first-of-type
+  tr
+  > td:first-child
+  > div,
+body#statistics-tags
+  section.container
+  table
+  tr
+  > td[rowspan]:first-child
+  + td
+  > div,
+body#statistics-tags
+  section.container
+  table
+  tr
+  > td:not([rowspan]):first-child
+  > div,
+body#statistics-top section.container table tr > td:not(:last-child) > div,
+body#statistics-users
+  section.container
+  table:first-of-type
+  tr
+  > td:first-child
+  > div,
+body#statistics-users
+  section.container
+  table:nth-of-type(10)
+  tr
+  > td:first-child
+  + td
+  > div {
+  background: none;
+  font-weight: normal;
 }
 
 body#statistics-users #contents > table:last-of-type tr > td + td,
-body#statistics-users #contents > table:last-of-type tr > td + td > div.stat
-{
-    min-width:          16em !important;
+body#statistics-users #contents > table:last-of-type tr > td + td > div.stat {
+  min-width: 16em !important;
 }
 
-body#statistics-users #contents > table:last-of-type tr.slice_odd
-{
-    background-color:   #c8c6c4;
+body#statistics-users #contents > table:last-of-type tr.slice_odd {
+  background-color: #c8c6c4;
 }
 
-body#statistics-prizes      section.container div.nav
-{
-    display:            inline-block;
-    margin:             0 1em 1em 0;
-    padding:            1em;
-    border:             solid 1px #aca8a0;
-    border-radius:      0.5ex;
+body#statistics-prizes section.container div.nav {
+  display: inline-block;
+  margin: 0 1em 1em 0;
+  padding: 1em;
+  border: solid 1px #aca8a0;
+  border-radius: 0.5ex;
 }
 
-body#statistics-prizes      section.container div.nav span
-{
-    margin:             0 1ex;
+body#statistics-prizes section.container div.nav span {
+  margin: 0 1ex;
 }
 
-body#statistics-prizes      section.container div.nav span:first-child::before
-{
-    content:            "◄\00a0";
+body#statistics-prizes section.container div.nav span:first-child::before {
+  content: "◄\00a0";
 }
 
-body#statistics-prizes      section.container div.nav span:first-child + span::after
-{
-    content:            "\00a0►";
+body#statistics-prizes
+  section.container
+  div.nav
+  span:first-child
+  + span::after {
+  content: "\00a0►";
 }
 
 /* === Tracker (suivi) === */
 
-body#trackers-index nav.toolbox h2
-{
-    display:            inline-block;
-    font-size:          14pt;
-    margin:             0.3em auto;
+body#trackers-index nav.toolbox h2 {
+  display: inline-block;
+  font-size: 14pt;
+  margin: 0.3em auto;
 }
 
-body#trackers-index label
-{
-    width:              9em;
+body#trackers-index label {
+  width: 9em;
 }
 
-body#trackers-index select:not([id="tracker_state"])
-{
-    width:              16em;
+body#trackers-index select:not([id="tracker_state"]) {
+  width: 16em;
 }
 
-body#trackers-index input[name="commit"]
-{
-    margin:             0 0 1em 10.8em;
+body#trackers-index input[name="commit"] {
+  margin: 0 0 1em 10.8em;
 }
 
-body#trackers-index table
-{
-    margin-left:        auto;
-    margin-right:       auto;
-    font-size:          10pt;
+body#trackers-index table {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 10pt;
 }
 
 body#trackers-index table th,
-body#trackers-index table td
-{
-    font-size:          inherit;
+body#trackers-index table td {
+  font-size: inherit;
 }
 
-body#trackers-index nav.pagination
-{
-    margin-top:         1em;
+body#trackers-index nav.pagination {
+  margin-top: 1em;
 }
 
 /* === Team page === */
 
-section.container ul.people-list
-{
-    display:            block;
-    text-align:         center;
-    width:              auto;
-    margin:             0 auto;
-    padding:            0;
+section.container ul.people-list {
+  display: block;
+  text-align: center;
+  width: auto;
+  margin: 0 auto;
+  padding: 0;
 }
 
-section.container ul.people-list li
-{
-    display:            inline-block;
-    list-style-type:    none;
-    align-items:        center;
-    width:              18em;
-    box-shadow:         0 6px 9px -1px #908070;
-    margin:             0 1em 1em 0;
+section.container ul.people-list li {
+  display: inline-block;
+  list-style-type: none;
+  align-items: center;
+  width: 18em;
+  box-shadow: 0 6px 9px -1px #908070;
+  margin: 0 1em 1em 0;
 }
 
 section.container ul.people-list li a,
-section.container ul.people-list li a:visited
-{
-    display:            flex;
-    background-color:   #bcb8b4;
-    margin:             0;
-    padding:            0.5em;
-    justify-content:    left;
-    align-items:        center;
-    color:              #404040;
-    font-weight:        bold;
-    text-decoration:    none;
+section.container ul.people-list li a:visited {
+  display: flex;
+  background-color: #bcb8b4;
+  margin: 0;
+  padding: 0.5em;
+  justify-content: left;
+  align-items: center;
+  color: #404040;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-section.container ul.people-list li a:hover
-{
-    display:            flex;
-    background-color:   #ccc8c4;
+section.container ul.people-list li a:hover {
+  display: flex;
+  background-color: #ccc8c4;
 }
 
-section.container ul.people-list li img
-{
-    margin:             0 2em 0 0;
+section.container ul.people-list li img {
+  margin: 0 2em 0 0;
 }
 
 /*
@@ -3228,1092 +3102,1045 @@ section.container ul.people-list li img
  *
  */
 
-footer#bigfooter
-{
-    position:           relative;
-    clear:              both;
-    line-height:        39em;
-    text-align:         center;
-    margin:             0 0 2.5em 0;
-    padding:            2em 0 0 0;
+footer#bigfooter {
+  position: relative;
+  clear: both;
+  line-height: 39em;
+  text-align: center;
+  margin: 0 0 2.5em 0;
+  padding: 2em 0 0 0;
 }
 
 footer#bigfooter > nav,
-footer#bigfooter > section
-{
-    position:           relative;
-    display:            inline-block;
-    line-height:        normal;
-    text-align:         left;
-    width:              20em;
-    min-height:         35em;
-    height:             35em;
-    margin:             0 1em;
-    padding:            1em;
-    vertical-align:     top;
-    border:             solid 1px transparent;
-    border-radius:      0.5em;
+footer#bigfooter > section {
+  position: relative;
+  display: inline-block;
+  line-height: normal;
+  text-align: left;
+  width: 20em;
+  min-height: 35em;
+  height: 35em;
+  margin: 0 1em;
+  padding: 1em;
+  vertical-align: top;
+  border: solid 1px transparent;
+  border-radius: 0.5em;
 
-    transition:         background-color 1s ease-out 1s,
-                        border-color     1s ease-out 1s;
+  transition: background-color 1s ease-out 1s, border-color 1s ease-out 1s;
 }
 
 footer#bigfooter > nav h1,
-footer#bigfooter > section h1
-{
-    display:            block;
-    text-align:         center;
-    margin:             0 0 1em 0;
-    font-size:          12pt;
-    font-weight:        500;
+footer#bigfooter > section h1 {
+  display: block;
+  text-align: center;
+  margin: 0 0 1em 0;
+  font-size: 12pt;
+  font-weight: 500;
 }
 
 footer#bigfooter > nav ul,
-footer#bigfooter > section ul
-{
-    position:           relative;
-    height:             32em;
-    overflow:           hidden;
+footer#bigfooter > section ul {
+  position: relative;
+  height: 32em;
+  overflow: hidden;
 }
 
 footer#bigfooter > nav ul:hover,
-footer#bigfooter > section ul:hover
-{
-    overflow:           auto;
+footer#bigfooter > section ul:hover {
+  overflow: auto;
 }
 
 footer#bigfooter > nav ul > li,
-footer#bigfooter > section ul > li
-{
-    list-style-type:    none;
+footer#bigfooter > section ul > li {
+  list-style-type: none;
 }
 
 footer#bigfooter > nav a,
-footer#bigfooter > section a
-{
-    color:              #c0c0c0;
-    text-decoration:    none;
+footer#bigfooter > section a {
+  color: #c0c0c0;
+  text-decoration: none;
 
-    transition:         color 0.8s linear;
+  transition: color 0.8s linear;
 }
 
 footer#bigfooter:hover > nav,
-footer#bigfooter:hover > section
-{
-    background-color:   rgba(128,128,128,0.125);
-    border-color:       #406080;
+footer#bigfooter:hover > section {
+  background-color: rgba(128, 128, 128, 0.125);
+  border-color: #406080;
 
-    transition:         background-color 2s ease-out 1s,
-                        border-color     2s ease-out 1s;
+  transition: background-color 2s ease-out 1s, border-color 2s ease-out 1s;
 }
 
 /* a:visited::before is not fully working (neither on
  * Chrome or Firefox). Too bad. */
 footer#bigfooter:hover > nav:hover a:not(:visited),
-footer#bigfooter:hover > section:hover a:not(:visited)
-{
-    color:              white;
+footer#bigfooter:hover > section:hover a:not(:visited) {
+  color: white;
 }
 
 /* === Stylesheet chooser === */
 
-#stylesheets-edit #container
-{
-    background:         none;
-    background-color:   #707070;
-    color:              #d0d0d0;
+#stylesheets-edit #container {
+  background: none;
+  background-color: #707070;
+  color: #d0d0d0;
 }
 
 #stylesheets-edit #container main > p,
-#stylesheets-edit #container main > pre
-{
-    overflow-wrap:      break-word;
-    word-wrap:          break-word;
-    overflow-x:         auto;
+#stylesheets-edit #container main > pre {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  overflow-x: auto;
 }
 
-#stylesheets-edit #container main > pre
-{
-    color:              white;
+#stylesheets-edit #container main > pre {
+  color: white;
 }
 
-#stylesheets-edit #container main > h1 + p
-{
-    color:              white;
+#stylesheets-edit #container main > h1 + p {
+  color: white;
 }
 
-#stylesheets-edit form + p + form
-{
-    display:            block;
-    float:              left;
-    width:              60%;
-    max-width:          520px;
-    height:             600px;
-    margin:             0 1em 1em 0;
-    text-align:         center;
-    border:             solid 2px #707070;
-    overflow-x:         auto;
-    background-color:   #404040;
-    box-shadow:         inset 0 1em 1em #101010;
+#stylesheets-edit form + p + form {
+  display: block;
+  float: left;
+  width: 60%;
+  max-width: 520px;
+  height: 600px;
+  margin: 0 1em 1em 0;
+  text-align: center;
+  border: solid 2px #707070;
+  overflow-x: auto;
+  background-color: #404040;
+  box-shadow: inset 0 1em 1em #101010;
 }
 
-#stylesheets-edit input[type="radio"]
-{
-    position:           absolute;
-    top:                0;
-    left:               0;
-    visibility:         hidden;
+#stylesheets-edit input[type="radio"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
 }
 
 #stylesheets-edit form + p + form label:first-of-type,
-#stylesheets-edit form + p + form label:first-of-type ~ label
-{
-    position:           sticky;
-    display:            flex;
-    justify-content:    left;
-    align-items:        center;
-    color:              #404040;
-    top:                1em;
-    left:               5%;
-    width:              85%;
-    height:             2.5em;
-    margin:             0;
-    padding:            0.5em 0.5em 0.5em 1.5em;
-    background-color:   #c0c0c0;
-    border:             solid 2px black;
-    border-width:       1px 1px 0 1px;
-    border-radius:      0.3em 0.3em 0 0;
-    font-size:          9pt;
-    z-index:            1;
+#stylesheets-edit form + p + form label:first-of-type ~ label {
+  position: sticky;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: #404040;
+  top: 1em;
+  left: 5%;
+  width: 85%;
+  height: 2.5em;
+  margin: 0;
+  padding: 0.5em 0.5em 0.5em 1.5em;
+  background-color: #c0c0c0;
+  border: solid 2px black;
+  border-width: 1px 1px 0 1px;
+  border-radius: 0.3em 0.3em 0 0;
+  font-size: 9pt;
+  z-index: 1;
 }
 
 #stylesheets-edit form + p + form input[type="radio"] + label::before,
-#stylesheets-edit form + p + form input[type="radio"]:checked + label::before
-{
-    border-color:       black;
+#stylesheets-edit form + p + form input[type="radio"]:checked + label::before {
+  border-color: black;
 
-    transition:         none;
+  transition: none;
 }
 
-#stylesheets-edit form + p + form label:first-of-type ~ label
-{
-    top:                4em;
-    border-width:       0 1px 1px 1px;
-    border-radius:      0 0 0.3em 0.3em;
+#stylesheets-edit form + p + form label:first-of-type ~ label {
+  top: 4em;
+  border-width: 0 1px 1px 1px;
+  border-radius: 0 0 0.3em 0.3em;
 }
 
-#stylesheets-edit form + p + form button
-{
-    position:           relative;
-    display:            block;
-    margin:             4em auto;
-    padding:            0;
-    width:              80%;
-    max-width:          400px;
-    height:             auto;
-    border:             none;
-    box-shadow:         0 1em 1em black;
+#stylesheets-edit form + p + form button {
+  position: relative;
+  display: block;
+  margin: 4em auto;
+  padding: 0;
+  width: 80%;
+  max-width: 400px;
+  height: auto;
+  border: none;
+  box-shadow: 0 1em 1em black;
 }
 
-#stylesheets-edit form + p + form button:first-of-type
-{
-    margin-top:         3em;
+#stylesheets-edit form + p + form button:first-of-type {
+  margin-top: 3em;
 }
 
-#stylesheets-edit form + p + form button img
-{
-    width:              100%;
-    height:             auto;
-    display:            block;
-    margin:             0;
-    padding:            0
+#stylesheets-edit form + p + form button img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
-#stylesheets-edit div.sideforms
-{
-    display:            flex;
-    flex-direction:     column;
-    width:              auto;
-    clear:              none;
-    margin:             0;
-    padding:            0;
+#stylesheets-edit div.sideforms {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  clear: none;
+  margin: 0;
+  padding: 0;
 }
 
-#stylesheets-edit div.sideforms form
-{
-    display:            flex;
-    flex-grow:          1;
-    flex-wrap:          wrap;
-    align-items:        center;
-    position:           relative;
-    background-color:   #c0c0c0;
-    color:              #404040;
-    width:              auto;
-    border:             solid 1px #404040;
-    border-radius:      0.5ex;
-    padding:            1ex;
-    margin:             1em 0;
+#stylesheets-edit div.sideforms form {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+  background-color: #c0c0c0;
+  color: #404040;
+  width: auto;
+  border: solid 1px #404040;
+  border-radius: 0.5ex;
+  padding: 1ex;
+  margin: 1em 0;
 }
 
-#stylesheets-edit div.sideforms form label
-{
-    display:            block;
-    width:              100%;
-    font-size:          9pt;
-    margin:             0 0 0.5ex 0;
+#stylesheets-edit div.sideforms form label {
+  display: block;
+  width: 100%;
+  font-size: 9pt;
+  margin: 0 0 0.5ex 0;
 }
 
 #stylesheets-edit div.sideforms form input[type="text"],
-#stylesheets-edit div.sideforms form input#uploaded_stylesheet
-{
-    display:            inline-block;
-    flex-grow:          1;
-    margin:             0 0.5em 0 0;
+#stylesheets-edit div.sideforms form input#uploaded_stylesheet {
+  display: inline-block;
+  flex-grow: 1;
+  margin: 0 0.5em 0 0;
 }
 
-#stylesheets-edit footer
-{
-    clear:              both;
+#stylesheets-edit footer {
+  clear: both;
 }
 
 /*
  *  === Redaction index (link in main top menu) ===
  */
 
-
-#redaction-index section.container
-{
-    display:            flex;
-    flex-wrap:          wrap;
+#redaction-index section.container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #redaction-index section.container div.notice,
-#redaction-index section.container div.alert
-{
-    display:            block;
-    position:           relative;
+#redaction-index section.container div.alert {
+  display: block;
+  position: relative;
 }
 
 #redaction-index section.container > div.notice:first-child,
 #redaction-index section.container > div.alert:first-child,
 #news-show section.container > div.notice:first-child,
-#news-show section.container > div.alert:first-child
-{
-    width:              100%;
-    max-height:         4em;
+#news-show section.container > div.alert:first-child {
+  width: 100%;
+  max-height: 4em;
 }
 
-#redaction-index section.container div#main_board
-{
-    display:            block;
-    position:           relative;
-    margin:             0;
-    padding:            0;
-    flex:               3 3;
-    order:              1;
+#redaction-index section.container div#main_board {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  flex: 3 3;
+  order: 1;
 }
 
-#redaction-index section.container div#main_board > div.notice:first-child
-{
-    background:         linear-gradient(to top,#202020 0%,#808080 100%);
-    border:             solid 1px #808080;
-    border-color:       #e0e0e0 #d0d0d0 black #d0d0d0;
-    text-align:         center;
+#redaction-index section.container div#main_board > div.notice:first-child {
+  background: linear-gradient(to top, #202020 0%, #808080 100%);
+  border: solid 1px #808080;
+  border-color: #e0e0e0 #d0d0d0 black #d0d0d0;
+  text-align: center;
 }
 
 #redaction-index section.container div#main_board > div.notice:first-child a,
-#redaction-index section.container div#main_board > div.notice:first-child a:visited
-{
-    text-shadow:        2px 2px 0 black;
+#redaction-index
+  section.container
+  div#main_board
+  > div.notice:first-child
+  a:visited {
+  text-shadow: 2px 2px 0 black;
 }
 
-#redaction-index section.container input.create_news
-{
-    display:            block;
-    width:              auto;
-    margin:             0.5ex auto 2em auto;
+#redaction-index section.container input.create_news {
+  display: block;
+  width: auto;
+  margin: 0.5ex auto 2em auto;
 }
 
-#redaction-index section.container aside
-{
-    display:            block;
-    margin:             0 0 0 1em;
-    min-width:          20em;
-    max-width:          30em;
-    flex:               1 1;
-    order:              2;
+#redaction-index section.container aside {
+  display: block;
+  margin: 0 0 0 1em;
+  min-width: 20em;
+  max-width: 30em;
+  flex: 1 1;
+  order: 2;
 }
 
 #redaction-index section.container aside h1,
-#news-show #redaction #chat h1
-{
-    font-size:          14pt;
-    border-width:       0 0 1px 0;
-    text-align:         center;
-    margin:             1em 2em;
+#news-show #redaction #chat h1 {
+  font-size: 14pt;
+  border-width: 0 0 1px 0;
+  text-align: center;
+  margin: 1em 2em;
 }
 
-#redaction-index section.container aside a
-{
-    text-decoration:    none;
+#redaction-index section.container aside a {
+  text-decoration: none;
 }
 
-#redaction-index section.container aside a:hover
-{
-    text-decoration:    underline;
+#redaction-index section.container aside a:hover {
+  text-decoration: underline;
 }
 
-#redaction-index section.container aside > *:first-child h1
-{
-    margin-top:         0;
+#redaction-index section.container aside > *:first-child h1 {
+  margin-top: 0;
 }
 
-#redaction-index section.container footer
-{
-    display:            block;
-    width:              100%;
-    margin:             1em 0 0 0;
-    order:              3;
+#redaction-index section.container footer {
+  display: block;
+  width: 100%;
+  margin: 1em 0 0 0;
+  order: 3;
 }
 
-#redaction-index section.container #board_message
-{
-    display:            block;
-    position:           relative;
-    margin:             0 auto;
-    width:              90%;
-    left:               0;
-    right:              0;
+#redaction-index section.container #board_message {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  width: 90%;
+  left: 0;
+  right: 0;
 }
 
-#redaction-index
-{
-  section.container div.board div.chat
-  {
-    display:            block;
-    flex-direction:     row;
-    justify-content:    left;
-    flex-wrap:          wrap;
-    font-size:          10pt;
-    margin:             1em 0 2em 0;
+#redaction-index {
+  section.container div.board div.chat {
+    display: block;
+    flex-direction: row;
+    justify-content: left;
+    flex-wrap: wrap;
+    font-size: 10pt;
+    margin: 1em 0 2em 0;
 
-    img.avatar
-    {
-        display:            block;
-        float:              left;
-        width:              3.5em;
-        height:             3.5em;
-        margin:             0 1ex 0.5ex 0;
+    img.avatar {
+      display: block;
+      float: left;
+      width: 3.5em;
+      height: 3.5em;
+      margin: 0 1ex 0.5ex 0;
     }
 
-    div.user_link
-    {
-        display:            inline-block;
+    div.user_link {
+      display: inline-block;
     }
 
-    div.board-left
-    {
-        display:            block;
-        float:              right;
-        font-weight:        bold;
+    div.board-left {
+      display: block;
+      float: right;
+      font-weight: bold;
     }
 
-    div.message
-    {
-        display:            block;
-        margin:             0.5ex 0 0 0;
-        clear:              right;
-        text-align:         justify;
+    div.message {
+      display: block;
+      margin: 0.5ex 0 0 0;
+      clear: right;
+      text-align: justify;
     }
 
-    div.message a
-    {
-        font-weight:        bold;
+    div.message a {
+      font-weight: bold;
     }
   }
 }
 
-#redaction-index section.container #news
-{
-    display:            flex;
-    justify-content:    space-around;
-    flex-wrap:          wrap;
+#redaction-index section.container #news {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-#redaction-index section.container #news div.news
-{
-    display:            flex;
-    flex-flow:          column;
-    justify-content:    start;
-    align-content:      space-between;
-    text-align:         center;
-    width:              22em;
-    min-height:         12em;
-    margin:             0 0 1.5em 0;
-    padding:            0;
-    border:             solid 1px black;
-    border-radius:      8px 8px 0 0;
-    background-color:   white;
-    box-shadow:         0 0.8em 0.8em #aca4a0;
-    font-size:          10pt;
+#redaction-index section.container #news div.news {
+  display: flex;
+  flex-flow: column;
+  justify-content: start;
+  align-content: space-between;
+  text-align: center;
+  width: 22em;
+  min-height: 12em;
+  margin: 0 0 1.5em 0;
+  padding: 0;
+  border: solid 1px black;
+  border-radius: 8px 8px 0 0;
+  background-color: white;
+  box-shadow: 0 0.8em 0.8em #aca4a0;
+  font-size: 10pt;
 }
 
-#redaction-index section.container #news div.news h3
-{
-    display:            flex;
-    justify-content:    stretch;
-    align-items:        stretch;
-    margin:             0 0 0.5ex 0;
-    padding:            0.5em 0 0 0;
-    background:         linear-gradient(to top,#806030 0%,#c0a080 100%);
-    overflow-wrap:      break-word;
-    min-height:         2.5em;
-    word-wrap:          break-word;
-    font-size:          11pt;
-    order:              -2;
+#redaction-index section.container #news div.news h3 {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  margin: 0 0 0.5ex 0;
+  padding: 0.5em 0 0 0;
+  background: linear-gradient(to top, #806030 0%, #c0a080 100%);
+  overflow-wrap: break-word;
+  min-height: 2.5em;
+  word-wrap: break-word;
+  font-size: 11pt;
+  order: -2;
 }
 
-#redaction-index section.container #news div.news h3 > a
-{
-    display:            block;
-    width:              100%;
-    padding:            0 0.8em 0.5em 0.8em;
+#redaction-index section.container #news div.news h3 > a {
+  display: block;
+  width: 100%;
+  padding: 0 0.8em 0.5em 0.8em;
 }
 
-#redaction-index section.container #news div.news h3:focus-within
-{
-    background:         none;
-    background-color:   #806030;
-    outline:            none;
+#redaction-index section.container #news div.news h3:focus-within {
+  background: none;
+  background-color: #806030;
+  outline: none;
 }
 
-#redaction-index section.container #news div.news h3 > a:focus
-{
-    outline:            none;
+#redaction-index section.container #news div.news h3 > a:focus {
+  outline: none;
 }
 
-#redaction-index section.container #news div.news div.meta
-{
-    margin:             0.3ex 1em 0.5em 1em;
-    text-align:         left;
-    display:            block;
-    width:              17em;
-    overflow-wrap:      break-word;
-    word-wrap:          break-word;
-    order:              -1;
+#redaction-index section.container #news div.news div.meta {
+  margin: 0.3ex 1em 0.5em 1em;
+  text-align: left;
+  display: block;
+  width: 17em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  order: -1;
 }
 
-#redaction-index section.container #news div.news div.meta img
-{
-    display:            inline-block;
-    vertical-align:     middle;
-    margin:             0 0 0 1ex;
-    padding:            0;
+#redaction-index section.container #news div.news div.meta img {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0 1ex;
+  padding: 0;
 }
 
-#redaction-index section.container #news div.news div.pen
-{
-    display:            block;
-    margin:             auto 0 0 0;
-    order:              4;
-    width:              100%;
-    height:             3.5em;
-    padding:            0;
+#redaction-index section.container #news div.news div.pen {
+  display: block;
+  margin: auto 0 0 0;
+  order: 4;
+  width: 100%;
+  height: 3.5em;
+  padding: 0;
 }
 
-#redaction-index section.container #news div.news div.pen a
-{
-    display:            flex;
-    flex-direction:     row;
-    justify-content:    center;
-    align-items:        center;
-    background-color:   #f0f0f0;
-    color:              #808080;
-    margin:             0.5em 0 0 0;
-    padding:            0;
-    width:              100%;
-    height:             3em;
-    text-decoration:    none;
-    font-weight:        bold;
+#redaction-index section.container #news div.news div.pen a {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  color: #808080;
+  margin: 0.5em 0 0 0;
+  padding: 0;
+  width: 100%;
+  height: 3em;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-#redaction-index section.container #news div.news div.pen a::after
-{
-    display:            block;
-    padding:            0 0 0 1em;
-    content:            "Cliquez ici pour éditer";
+#redaction-index section.container #news div.news div.pen a::after {
+  display: block;
+  padding: 0 0 0 1em;
+  content: "Cliquez ici pour éditer";
 }
 
-#redaction-index section.container #news div.news div.pen a img
-{
-    display:            block;
-    margin:             0;
-    padding:            0;
-    width:              1em;
-    height:             1em;
+#redaction-index section.container #news div.news div.pen a img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 1em;
+  height: 1em;
 }
 
 #redaction-index section.container #news div.news div.pen a:hover,
-#redaction-index section.container #news div.news div.pen a:focus
-{
-    background-color:   #c0c0c0;
-    color:              white;
-    outline:            none;
+#redaction-index section.container #news div.news div.pen a:focus {
+  background-color: #c0c0c0;
+  color: white;
+  outline: none;
 }
-
 
 /*
  * === Redaction page (news composing page) ===
  */
 
 /* Notice under article box */
-#news-show #redaction
-{
-    display:            flex;
-    flex-wrap:          wrap;
-    margin-left:        1em;
+#news-show #redaction {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 1em;
 }
 
-#news-show #redaction #edition
-{
-    flex:               3 3;
-    order:              1;
+#news-show #redaction #edition {
+  flex: 3 3;
+  order: 1;
 }
 
-#news-show #redaction #edition article.node ~ article:not(.node)
-{
-    border:             none;
-    background-color:   #ccc8c0;
-    box-shadow:         none;
-    border-radius:      0.2em;
-    padding:            0.5em;
+#news-show #redaction #edition article.node ~ article:not(.node) {
+  border: none;
+  background-color: #ccc8c0;
+  box-shadow: none;
+  border-radius: 0.2em;
+  padding: 0.5em;
 }
 
-#news-show #redaction #edition article.node div.actions
-{
-    position:           absolute;
-    display:            none;
-// display: block;
-    text-align:         right;
-    top:                0.5em;
-    right:              1em;
+#news-show #redaction #edition article.node div.actions {
+  position: absolute;
+  display: none;
+  // display: block;
+  text-align: right;
+  top: 0.5em;
+  right: 1em;
 }
 
-#news-show #redaction #edition article.node div.actions button
-{
-    z-index:            2;
-    box-shadow:         0 0.6em 1.0em -0.2em #303030;
+#news-show #redaction #edition article.node div.actions button {
+  z-index: 2;
+  box-shadow: 0 0.6em 1em -0.2em #303030;
 }
 
 #news-show #redaction #edition article.node div[id^="paragraph_"],
-#news-show #redaction #edition article.node  li[id^="link_"]
-{
-    position:           relative;
+#news-show #redaction #edition article.node li[id^="link_"] {
+  position: relative;
 }
 
 #news-show #redaction #edition article.node div[id^="paragraph_"] p:first-child,
-#news-show #redaction #edition article.node div[id^="paragraph_"] table
-{
-    margin-top:         1em;
-    margin-bottom:      1em;
+#news-show #redaction #edition article.node div[id^="paragraph_"] table {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 #news-show #redaction #edition article.node div[id^="paragraph_"] > blockquote,
-#news-show #redaction #edition article.node div[id^="paragraph_"] > blockquote p
-{
-    margin:             0.5em 0;
+#news-show
+  #redaction
+  #edition
+  article.node
+  div[id^="paragraph_"]
+  > blockquote
+  p {
+  margin: 0.5em 0;
 }
 
 #news-show #redaction #edition article.node div[id^="paragraph_"]:hover,
-#news-show #redaction #edition article.node  li[id^="link_"]:hover
-{
-    background-color:   #d0d0d0;
+#news-show #redaction #edition article.node li[id^="link_"]:hover {
+  background-color: #d0d0d0;
 }
 
-#news-show #redaction #edition article.node div[id^="paragraph_"]:hover div.actions,
-#news-show #redaction #edition article.node  li[id^="link_"]:hover div.actions,
-#news-show #redaction #edition article.node #news_header:hover div.actions
-{
-    display:            block;
+#news-show
+  #redaction
+  #edition
+  article.node
+  div[id^="paragraph_"]:hover
+  div.actions,
+#news-show #redaction #edition article.node li[id^="link_"]:hover div.actions,
+#news-show #redaction #edition article.node #news_header:hover div.actions {
+  display: block;
 }
 
-#news-show #redaction #edition article.node div[id^="paragraph_"] div.markItUpContainer textarea
-{
-    margin:             1em 10%;
-    width:              80%;
-    font-size:          11pt;
+#news-show
+  #redaction
+  #edition
+  article.node
+  div[id^="paragraph_"]
+  div.markItUpContainer
+  textarea {
+  margin: 1em 10%;
+  width: 80%;
+  font-size: 11pt;
 }
 
-#news-show #redaction #edition article.node div[id^="paragraph_"] form.edit_paragraph
-{
-    text-align:         center;
+#news-show
+  #redaction
+  #edition
+  article.node
+  div[id^="paragraph_"]
+  form.edit_paragraph {
+  text-align: center;
 }
 
-#news-show #redaction #edition article.node div[id^="paragraph_"] form.edit_paragraph button,
-#news-show #redaction #edition article.node div[id^="paragraph_"] form.edit_paragraph input[type="submit"]
-{
-    width:              16em;
-    margin:             0.5em 2em;
+#news-show
+  #redaction
+  #edition
+  article.node
+  div[id^="paragraph_"]
+  form.edit_paragraph
+  button,
+#news-show
+  #redaction
+  #edition
+  article.node
+  div[id^="paragraph_"]
+  form.edit_paragraph
+  input[type="submit"] {
+  width: 16em;
+  margin: 0.5em 2em;
 }
 
-#news-show #redaction #edition article.node #news_header:hover div.actions button
-{
-    margin-right:       6em;
+#news-show
+  #redaction
+  #edition
+  article.node
+  #news_header:hover
+  div.actions
+  button {
+  margin-right: 6em;
 }
 
-#news-show #redaction #edition article.node #news_header > form:first-child
-{
-    display:            flex;
-    flex-flow:          row wrap;
-    justify-content:    left;
-    align-items:        center;
+#news-show #redaction #edition article.node #news_header > form:first-child {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: left;
+  align-items: center;
 }
 
-#news-show #redaction #edition article.node #news_header > form:first-child label
-{
-    width:              auto;
+#news-show
+  #redaction
+  #edition
+  article.node
+  #news_header
+  > form:first-child
+  label {
+  width: auto;
 }
 
-#news-show #redaction #edition article.node #news_header > form:first-child input,
-#news-show #redaction #edition article.node #news_header > form:first-child select
-{
-    margin:             0.3em 1em;
+#news-show
+  #redaction
+  #edition
+  article.node
+  #news_header
+  > form:first-child
+  input,
+#news-show
+  #redaction
+  #edition
+  article.node
+  #news_header
+  > form:first-child
+  select {
+  margin: 0.3em 1em;
 }
 
-#news-show #redaction #edition article.node #news_header > form:first-child input[type="text"]
-{
-    width:              30%;
-    flex-grow:          1;
-    flex-shrink:        1;
+#news-show
+  #redaction
+  #edition
+  article.node
+  #news_header
+  > form:first-child
+  input[type="text"] {
+  width: 30%;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
-#news-show #redaction #edition a.reorganize
-{
-    display:            block;
-    margin:             1em 0;
+#news-show #redaction #edition a.reorganize {
+  display: block;
+  margin: 1em 0;
 }
 
-#news-show #redaction #edition a.reorganize ~ p img[src$="edit-cut.png"]
-{
-    display:            inline-block;
-    vertical-align:     middle;
-    margin:             0 0.5em;
+#news-show #redaction #edition a.reorganize ~ p img[src$="edit-cut.png"] {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.5em;
 }
 
-#news-show #redaction #chat
-{
-    display:            block;
-    position:           relative;
-    flex:               1 1;
-    order:              2;
-    margin:             0 0 1em 1em;
+#news-show #redaction #chat {
+  display: block;
+  position: relative;
+  flex: 1 1;
+  order: 2;
+  margin: 0 0 1em 1em;
 }
 
-#news-show #redaction #chat a
-{
-    text-decoration:    none;
+#news-show #redaction #chat a {
+  text-decoration: none;
 }
 
-#news-show #redaction #chat a:hover
-{
-    text-decoration:    underline;
+#news-show #redaction #chat a:hover {
+  text-decoration: underline;
 }
 
-#news-show #redaction #chat #news_vote
-{
-    border:             solid 1px #aca8a4;
-    border-radius:      0.3em;
-    margin:             0 0 1em 0;
-    padding:            0.5em;
+#news-show #redaction #chat #news_vote {
+  border: solid 1px #aca8a4;
+  border-radius: 0.3em;
+  margin: 0 0 1em 0;
+  padding: 0.5em;
 }
 
-#news-show #redaction #chat #news_vote h1
-{
-    margin-top:         0;
+#news-show #redaction #chat #news_vote h1 {
+  margin-top: 0;
 }
 
 /* "Pour ou contre" buttons */
-#news-show #redaction #chat #news_vote h1 + p + p + p + div form
-{
-    display:            inline-block;
+#news-show #redaction #chat #news_vote h1 + p + p + p + div form {
+  display: inline-block;
 }
 
-#news-show #redaction #chat #news_vote #admin_49_3
-{
-    margin-top:         2em;
+#news-show #redaction #chat #news_vote #admin_49_3 {
+  margin-top: 2em;
 }
 
-#news-show #redaction #chat #news_vote .more_actions
-{
-    display:            block;
-    border:             solid 1px #707070;
-    border-radius:      0.3em;
-    margin:             1em 15% 0 15%;
-    padding:            0.5em;
-    background:         repeating-linear-gradient(135deg,#e0e000 0,#e0e000 1em,#202020 1em,#202020 2em);
-    text-align:         center;
+#news-show #redaction #chat #news_vote .more_actions {
+  display: block;
+  border: solid 1px #707070;
+  border-radius: 0.3em;
+  margin: 1em 15% 0 15%;
+  padding: 0.5em;
+  background: repeating-linear-gradient(
+    135deg,
+    #e0e000 0,
+    #e0e000 1em,
+    #202020 1em,
+    #202020 2em
+  );
+  text-align: center;
 }
 
-#news-show #redaction #chat #news_vote .more_actions input[type="submit"]
-{
-    display:            block;
-    width:              80%;
-    margin:             0.5em auto 0 auto;
-    box-shadow:         0.08em 0.3em 0.4em black;
+#news-show #redaction #chat #news_vote .more_actions input[type="submit"] {
+  display: block;
+  width: 80%;
+  margin: 0.5em auto 0 auto;
+  box-shadow: 0.08em 0.3em 0.4em black;
 }
 
-#news-show #redaction #chat #news_vote .more_actions form:first-child input[type="submit"]
-{
-    margin-top:         0;
+#news-show
+  #redaction
+  #chat
+  #news_vote
+  .more_actions
+  form:first-child
+  input[type="submit"] {
+  margin-top: 0;
 }
 
-#news-show #redaction #chat #news_attendees
-{
-    position:           relative;
-    text-align:         center;
+#news-show #redaction #chat #news_attendees {
+  position: relative;
+  text-align: center;
 }
 
-#news-show #redaction #chat #news_attendees summary
-{
-    width:              100%;
-    text-align:         left;
+#news-show #redaction #chat #news_attendees summary {
+  width: 100%;
+  text-align: left;
 }
 
 #news-show #redaction #chat #news_attendees a.attendee,
-#news-show #redaction #chat #news_attendees div.attendee
-{
-    display:            inline-block;
-    position:           relative;
-    width:              4em;
-    margin:             1em 1em 0 1em;
-    padding:            0;
+#news-show #redaction #chat #news_attendees div.attendee {
+  display: inline-block;
+  position: relative;
+  width: 4em;
+  margin: 1em 1em 0 1em;
+  padding: 0;
 }
 
 #news-show #redaction #chat #news_attendees a.attendee img,
-#news-show #redaction #chat #news_attendees div.attendee img
-{
-    display:            block;
-    width:              4em;
-    max-width:          4em;
-    height:             4em;
-    margin:             0;
-    padding:            0;
+#news-show #redaction #chat #news_attendees div.attendee img {
+  display: block;
+  width: 4em;
+  max-width: 4em;
+  height: 4em;
+  margin: 0;
+  padding: 0;
 }
 
 #news-show #redaction #chat #news_attendees a.attendee input.reassign_news,
-#news-show #redaction #chat #news_attendees div.attendee input.reassign_news
-{
-    display:            block;
-    margin:             0.5em 0 0 0;
-    padding:            0.2em 0;
-    font-size:          7pt;
-    width:              100%;
-    background-color:   #aca8a4;
-    color:              white;
-    border:             none;
-    text-decoration:    none;
+#news-show #redaction #chat #news_attendees div.attendee input.reassign_news {
+  display: block;
+  margin: 0.5em 0 0 0;
+  padding: 0.2em 0;
+  font-size: 7pt;
+  width: 100%;
+  background-color: #aca8a4;
+  color: white;
+  border: none;
+  text-decoration: none;
 }
 
-#news-show #redaction #chat #news_attendees a.attendee input.reassign_news:hover,
-#news-show #redaction #chat #news_attendees div.attendee input.reassign_news:hover
-{
-    background-color:   white;
-    color:              black;
-    text-decoration:    none;
+#news-show
+  #redaction
+  #chat
+  #news_attendees
+  a.attendee
+  input.reassign_news:hover,
+#news-show
+  #redaction
+  #chat
+  #news_attendees
+  div.attendee
+  input.reassign_news:hover {
+  background-color: white;
+  color: black;
+  text-decoration: none;
 }
 
-#news-show #redaction #chat #news_revisions > ul
-{
-    padding-left:       1em;
-    font-size:          9.5pt;
+#news-show #redaction #chat #news_revisions > ul {
+  padding-left: 1em;
+  font-size: 9.5pt;
 }
 
-#news-show #redaction #chat #news_revisions > ul li
-{
-    display:            block;
-    list-style-type:    none;
-    text-align:         right;
-    margin:             0 0 0.2ex 0;
-    padding:            0;
+#news-show #redaction #chat #news_revisions > ul li {
+  display: block;
+  list-style-type: none;
+  text-align: right;
+  margin: 0 0 0.2ex 0;
+  padding: 0;
 }
 
-
-#news-show #redaction #chat div.board form.chat
-{
-    display:            flex;
-    justify-content:    space-between;
-    align-items:        center;
-    margin:             1em 0;
+#news-show #redaction #chat div.board form.chat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em 0;
 }
 
-#news-show #redaction #chat div.board form.chat input[type="text"]
-{
-    display:            block;
-    flex-grow:          1;
-    width:              24%;
-    margin:             0;
+#news-show #redaction #chat div.board form.chat input[type="text"] {
+  display: block;
+  flex-grow: 1;
+  width: 24%;
+  margin: 0;
 }
 
-#news-show #redaction #chat div.board form.chat input[type="submit"]
-{
-    display:            block;
-    flex-shrink:        1;
-    margin:             0 0 0 1em;
+#news-show #redaction #chat div.board form.chat input[type="submit"] {
+  display: block;
+  flex-shrink: 1;
+  margin: 0 0 0 1em;
 }
 
-#news-show #redaction #chat div.board span.board-right a
-{
-    font-weight:        bold;
+#news-show #redaction #chat div.board span.board-right a {
+  font-weight: bold;
 }
 
 /*
  * == Preferences and settings page ==
  */
 
-#registrations-edit #contents > form
-{
-    background-color:   #dcd8d0;
-    border-radius:      0.3em;
-    margin:             1em 0 3em 0;
-    padding:            1em;
+#registrations-edit #contents > form {
+  background-color: #dcd8d0;
+  border-radius: 0.3em;
+  margin: 1em 0 3em 0;
+  padding: 1em;
 }
 
-#registrations-edit #contents > form p
-{
-    display:            flex;
-    flex-flow:          row wrap;
-    justify-content:    left;
-    align-items:        center;
-    margin:             0.25em 0;
+#registrations-edit #contents > form p {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: left;
+  align-items: center;
+  margin: 0.25em 0;
 }
 
-#registrations-edit #contents > form label
-{
-    min-width:          14em;
-    width:              auto;
-    padding:            0 0 0 1em;
-    margin:             0 1ex;
+#registrations-edit #contents > form label {
+  min-width: 14em;
+  width: auto;
+  padding: 0 0 0 1em;
+  margin: 0 1ex;
 }
 
-#registrations-edit #contents > form label::after
-{
-    content:            none;
+#registrations-edit #contents > form label::after {
+  content: none;
 }
 
-#registrations-edit #contents > form input
-{
-    margin:             0;
+#registrations-edit #contents > form input {
+  margin: 0;
 }
 
-#registrations-edit #contents > form input[type="text"]
-{
-    width:              15em;
-    min-width:          10em;
-    flex-grow:          5;
-    flex-shrink:        1;
+#registrations-edit #contents > form input[type="text"] {
+  width: 15em;
+  min-width: 10em;
+  flex-grow: 5;
+  flex-shrink: 1;
 }
 
-#registrations-edit #contents > form input + span
-{
-    display:            inline-block;
-    color:              #606060;
-    font-size:          70%;
-    padding:            0 0 0 0.7em;
+#registrations-edit #contents > form input + span {
+  display: inline-block;
+  color: #606060;
+  font-size: 70%;
+  padding: 0 0 0 0.7em;
 }
 
-#registrations-edit #contents > form p:last-child
-{
-    margin:             2.5em 0 0 0;
-    padding:            0;
-    min-height:         0;
-    height:             auto;
-    text-align:         left;
+#registrations-edit #contents > form p:last-child {
+  margin: 2.5em 0 0 0;
+  padding: 0;
+  min-height: 0;
+  height: auto;
+  text-align: left;
 }
 
 #registrations-edit #contents > form p:last-child label,
-#registrations-edit #contents > form p:last-child input
-{
-    min-width:          0;
-    width:              auto;
+#registrations-edit #contents > form p:last-child input {
+  min-width: 0;
+  width: auto;
 }
 
-#registrations-edit #contents > form#edit_account_2 #account_user_attributes_id + p
-{
-    margin-top:         2em;
+#registrations-edit
+  #contents
+  > form#edit_account_2
+  #account_user_attributes_id
+  + p {
+  margin-top: 2em;
 }
-
 
 /*
  * === Moderation pages ===
  */
 
-#news-index.moderation_page section.container
-{
-    position:           relative;
-    padding-right:      16em;
+#news-index.moderation_page section.container {
+  position: relative;
+  padding-right: 16em;
 }
 
-#news-index.moderation_page #news_board
-{
-    position:           absolute;
-    top:                1em;
-    bottom:             1em;
-    right:              1em;
-    border:             solid 1px #707070;
-    border-radius:      0.3em;
-    float:              right;
-    padding:            0.5em;
-    min-width:          13em;
-    flex-grow:          1;
-    width:              30%;
+#news-index.moderation_page #news_board {
+  position: absolute;
+  top: 1em;
+  bottom: 1em;
+  right: 1em;
+  border: solid 1px #707070;
+  border-radius: 0.3em;
+  float: right;
+  padding: 0.5em;
+  min-width: 13em;
+  flex-grow: 1;
+  width: 30%;
 }
 
-#news-index.moderation_page #news_board form.chat
-{
-    display:            flex;
-    width:              100%;
-    flex-flow:          row nowrap;
-    justify-content:    space-between;
-    align-items:        center;
+#news-index.moderation_page #news_board form.chat {
+  display: flex;
+  width: 100%;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
-#news-index.moderation_page #news_board form.chat #board_message
-{
-    width:              30%;
-    margin-right:       1em;
-    flex-grow:          1;
+#news-index.moderation_page #news_board form.chat #board_message {
+  width: 30%;
+  margin-right: 1em;
+  flex-grow: 1;
 }
 
-#news-index.moderation_page #news_board p
-{
-    margin:             0.4em 0 0 0;
+#news-index.moderation_page #news_board p {
+  margin: 0.4em 0 0 0;
 }
 
-#news-index.moderation_page footer
-{
-    display:            block;
-    clear:              both;
+#news-index.moderation_page footer {
+  display: block;
+  clear: both;
 }
 
 /* = Revisions = */
 
-#news-revision pre
-{
-    background-color:   white;
-    color:              #101010;
-    border:             solid 1px #808080;
-    padding:            1.5em;
-    font-size:          10pt;
-    word-wrap:          break-word;
-    overflow-wrap:      break-word;
-    word-break:         break-all;
-    white-space:        pre-wrap;
+#news-revision pre {
+  background-color: white;
+  color: #101010;
+  border: solid 1px #808080;
+  padding: 1.5em;
+  font-size: 10pt;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-wrap;
 }
 
-
-#news-revision pre del
-{
-    background-color:   #ff8080;
+#news-revision pre del {
+  background-color: #ff8080;
 }
 
-#news-revision pre ins
-{
-    background-color:   #80ff80;
+#news-revision pre ins {
+  background-color: #80ff80;
 }
-
 
 /*
  * === Administration pages ===
  */
 
 /* == Account list == */
-#accounts-index #container > form:first-of-type
-{
-    display:            flex;
-    flex-flow:          row wrap;
-    justify-content:    space-around;
-    align-items:        center;
-    background-color:   #ccc8c4;
-    border:             solid 1px #aca8a4;
-    border-radius:      0.2em;
-    margin:             0 0 1em 0;
-    padding:            0.3em;
+#accounts-index #container > form:first-of-type {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ccc8c4;
+  border: solid 1px #aca8a4;
+  border-radius: 0.2em;
+  margin: 0 0 1em 0;
+  padding: 0.3em;
 }
 
-#accounts-index #container > form:first-of-type label
-{
-    width:              auto;
+#accounts-index #container > form:first-of-type label {
+  width: auto;
 }
-
 
 /*
  * ===== Toolbar (at bottom of the screen) =====
  *
  */
 
-#toolbar
-{
-    display:            block;
-    position:           fixed;
-    color:              inherit;
-    background-color:   transparent;
-    border:             solid 1px #202020;
-    border-radius:      0.3ex;
-    left:               2em;
-    right:              2em;
-    bottom:             0.7em;
-    margin:             0;
-    padding:            0.5ex;
-    line-height:        1.4;
-    text-align:         center;
-    font-weight:        bold;
+#toolbar {
+  display: block;
+  position: fixed;
+  color: inherit;
+  background-color: transparent;
+  border: solid 1px #202020;
+  border-radius: 0.3ex;
+  left: 2em;
+  right: 2em;
+  bottom: 0.7em;
+  margin: 0;
+  padding: 0.5ex;
+  line-height: 1.4;
+  text-align: center;
+  font-weight: bold;
 
-    transition:         color            0.6s linear,
-                        border-color     0.6s linear,
-                        background-color 0.6s linear;
+  transition: color 0.6s linear, border-color 0.6s linear,
+    background-color 0.6s linear;
 }
 
-#toolbar > span:not(:first-child)
-{
-    padding-left:       4em;
+#toolbar > span:not(:first-child) {
+  padding-left: 4em;
 }
 
 #toolbar a,
-#toolbar a:visited
-{
-    text-decoration:    none;
-    color:              #808080;
-    font-weight:        bold;
-    margin:             0 0.5ex;
-    padding:            0 1.9ex;
-    border-radius:      2px;
-    border-style:       solid;
-    border-width:       1px 3px;
-    border-color:       transparent;
+#toolbar a:visited {
+  text-decoration: none;
+  color: #808080;
+  font-weight: bold;
+  margin: 0 0.5ex;
+  padding: 0 1.9ex;
+  border-radius: 2px;
+  border-style: solid;
+  border-width: 1px 3px;
+  border-color: transparent;
 
-    transition:         color            0.6s linear,
-                        background-color 0.6s linear;
+  transition: color 0.6s linear, background-color 0.6s linear;
 }
 
-#toolbar:hover
-{
-    color:              white;
-    background-color:   #202020;
+#toolbar:hover {
+  color: white;
+  background-color: #202020;
 }
 
 #toolbar:hover a,
-#toolbar:hover a:visited
-{
-    text-decoration:    none;
-    background-color:   #80c0ff;
-    color:              white;
+#toolbar:hover a:visited {
+  text-decoration: none;
+  background-color: #80c0ff;
+  color: white;
 }
 
-#toolbar:hover a:hover
-{
-    border-color:       white;
+#toolbar:hover a:hover {
+  border-color: white;
 }
-
 
 /*
  * ===== Media-Specific Tweaks =====
@@ -4321,278 +4148,253 @@ footer#bigfooter:hover > section:hover a:not(:visited)
  */
 
 @media screen and (max-width: 1080pt) {
-footer#bigfooter
-{
-    font-size:          9pt;
-}
+  footer#bigfooter {
+    font-size: 9pt;
+  }
 }
 
 @media screen and (max-width: 885pt) {
-footer#bigfooter
-{
-    font-size:          11pt;
-    margin-left:        auto;
-    margin-right:       auto;
-    max-width:          540pt;
-}
+  footer#bigfooter {
+    font-size: 11pt;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 540pt;
+  }
 
-#toolbar
-{
-    font-size:          9pt;
-}
+  #toolbar {
+    font-size: 9pt;
+  }
 
-#toolbar > span:not(:first-child)
-{
-    padding-left:       1em;
-}
+  #toolbar > span:not(:first-child) {
+    padding-left: 1em;
+  }
 
-#home-index #phare article header h1
-{
-    font-size:          28pt;
-}
+  #home-index #phare article header h1 {
+    font-size: 28pt;
+  }
 
-section.container :not(#phare) article header h1
-{
-    font-size:          12pt;
-    padding:            0.5em 6em 0.5em 0.8em;
-}
+  section.container :not(#phare) article header h1 {
+    font-size: 12pt;
+    padding: 0.5em 6em 0.5em 0.8em;
+  }
 
-section.container :not(#phare) article div.figures figure.score,
-section.container :not(#phare) article[class*="score"] div.figures figure.score
-{
-    font-size:          21pt;
-}
+  section.container :not(#phare) article div.figures figure.score,
+  section.container
+    :not(#phare)
+    article[class*="score"]
+    div.figures
+    figure.score {
+    font-size: 21pt;
+  }
 
-nav#site ul
-{
-    top:                64px;
-    font-size:          8pt;
-    z-index:            1;
-}
+  nav#site ul {
+    top: 64px;
+    font-size: 8pt;
+    z-index: 1;
+  }
 
-nav#site ul a
-{
-    font-size:          10pt;
-}
+  nav#site ul a {
+    font-size: 10pt;
+  }
 
-nav#site form:focus-within input#search_submit
-{
-    left:               6.45em;
-    z-index:            3;
-}
-
+  nav#site form:focus-within input#search_submit {
+    left: 6.45em;
+    z-index: 3;
+  }
 }
 
 @media screen and (max-width: 540pt) {
+  #home-index #phare article div.figures {
+    width: 3em;
+    right: -2em;
+  }
 
-#home-index #phare article div.figures
-{
-    width:              3em;
-    right:              -2.0em;
+  #home-index #phare article div.figures::after {
+    border-width: 1em 2em 0 2em;
+  }
+
+  #home-index #phare article div.figures figure.score {
+    font-size: 21pt;
+  }
+
+  #home-index #phare article header h1 {
+    margin-left: 22pt;
+    margin-right: 22pt;
+    font-size: 24pt;
+  }
+
+  section.container nav.toolbox {
+    font-size: 9pt;
+  }
+
+  nav#site ul,
+  nav#site ul a {
+    font-size: 8pt;
+  }
 }
 
-#home-index #phare article div.figures::after
-{
-    border-width:       1em 2em 0 2em;
+@media screen and (max-width: 10cm) {
+  html,
+  body {
+    display: block;
+    float: none;
+    clear: both;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  html {
+    background-color: black;
+  }
+
+  body {
+    display: flex;
+    position: relative;
+    flex-flow: column nowrap;
+  }
+
+  aside#sidebar {
+    order: 3;
+    position: unset;
+  }
+
+  aside#sidebar header#branding {
+    position: absolute;
+    left: -3.8em;
+  }
+
+  aside#sidebar header#branding h1 {
+    font-size: 45px;
+    top: -130px;
+  }
+
+  aside#sidebar header#branding h1::after {
+    top: 60px;
+  }
+
+  nav#site {
+    order: 1;
+    background: linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 32px,
+      #606060 33px,
+      white 35px,
+      #606060 36px,
+      transparent 30px,
+      transparent 100%
+    );
+  }
+
+  nav#site form {
+    display: none;
+  }
+
+  nav#site > ul {
+    width: 35em;
+    font-size: 7pt;
+  }
+
+  aside#sidebar {
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+  }
+
+  section.container {
+    display: block;
+    order: 2;
+    position: relative;
+    width: auto;
+    margin: 2em $EDGE_MARGIN;
+  }
+
+  section.container nav.toolbox {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+
+    div.follow_feed,
+    div.new_content,
+    div.order_navbar,
+    nav.pagination {
+      display: block;
+      float: none;
+      margin: 0;
+    }
+
+    div.order_navbar,
+    nav.pagination {
+      padding: 0;
+    }
+
+    div.new_content {
+      order: -1;
+    }
+    div.order_navbar {
+      order: 1;
+      margin: 1.5em 0 0 0;
+    }
+    nav.pagination {
+      order: 2;
+      margin: 1.5em 0;
+    }
+
+    div.follow_feed {
+      order: 3;
+    }
+  }
+
+  section.container nav.toolbox:last-of-type nav.pagination {
+    margin: 1.5em 0;
+  }
+
+  section.container article ul.poll {
+    width: auto;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  footer#bigfooter {
+    display: block;
+    order: 4;
+    line-height: normal;
+    width: auto;
+    margin-left: $EDGE_MARGIN;
+    margin-right: $EDGE_MARGIN;
+  }
+
+  footer#bigfooter > nav,
+  footer#bigfooter > section {
+    width: 80%;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+  }
+
+  footer#bigfooter > nav ul {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+  }
+
+  #toolbar {
+    display: none;
+  }
 }
-
-#home-index #phare article div.figures figure.score
-{
-    font-size:          21pt;
-}
-
-#home-index #phare article header h1
-{
-    margin-left:        22pt;
-    margin-right:       22pt;
-    font-size:          24pt;
-}
-
-section.container nav.toolbox
-{
-    font-size:          9pt;
-}
-
-nav#site ul,
-nav#site ul a
-{
-    font-size:          8pt;
-}
-
-}
-
-
-@media screen and (max-width: 10cm)
-{
-    html, body
-    {
-        display:            block;
-        float:              none;
-        clear:              both;
-        top:                0;
-        left:               0;
-        right:              0;
-        margin:             0;
-        width:              100%;
-    }
-
-    html
-    {
-        background-color:   black;
-    }
-
-    body
-    {
-        display:            flex;
-        position:           relative;
-        flex-flow:          column nowrap;
-    }
-
-    aside#sidebar
-    {
-        order:              3;
-        position:           unset;
-    }
-
-    aside#sidebar header#branding
-    {
-        position:           absolute;
-        left:               -3.8em;
-    }
-
-    aside#sidebar header#branding h1
-    {
-        font-size:          45px;
-        top:                -130px;
-    }
-
-    aside#sidebar header#branding h1::after
-    {
-        top:                60px;
-    }
-
-    nav#site
-    {
-        order:              1;
-        background:         linear-gradient(to bottom,
-                                            transparent 0px, transparent 32px,
-                                            #606060 33px, white 35px, #606060 36px,
-                                            transparent 30px, transparent 100%);
-    }
-
-    nav#site form
-    {
-        display:            none;
-    }
-
-    nav#site > ul
-    {
-        width:              35em;
-        font-size:          7pt;
-    }
-
-    aside#sidebar
-    {
-        margin-left:        auto;
-        margin-right:       auto;
-        float:              none;
-    }
-
-    section.container
-    {
-        display:            block;
-        order:              2;
-        position:           relative;
-        width:              auto;
-        margin:             2em $EDGE_MARGIN;
-    }
-
-    section.container nav.toolbox
-    {
-        display:            flex;
-        flex-flow:          column nowrap;
-        justify-content:    space-between;
-        align-items:        stretch;
-
-        div.follow_feed,
-        div.new_content,
-        div.order_navbar,
-        nav.pagination
-        {
-            display:            block;
-            float:              none;
-            margin:             0;
-        }
-
-        div.order_navbar,
-        nav.pagination
-        {
-            padding:            0;
-        }
-
-        div.new_content  { order: -1 }
-        div.order_navbar { order:  1; margin: 1.5em 0 0 0 }
-        nav.pagination   { order:  2; margin: 1.5em 0 }
-
-        div.follow_feed  { order:  3 }
-    }
-
-    section.container nav.toolbox:last-of-type nav.pagination
-    {
-        margin: 1.5em 0
-    }
-
-    section.container article ul.poll
-    {
-        width:              auto;
-        margin-left:        0;
-        margin-right:       0;
-    }
-
-    footer#bigfooter
-    {
-        display:            block;
-        order:              4;
-        line-height:        normal;
-        width:              auto;
-        margin-left:        $EDGE_MARGIN;
-        margin-right:       $EDGE_MARGIN;
-    }
-
-    footer#bigfooter > nav,
-    footer#bigfooter > section
-    {
-        width:              80%;
-        height:             auto;
-        min-height:         0;
-        max-height:         none;
-    }
-
-    footer#bigfooter > nav ul
-    {
-        height:             auto;
-        min-height:         0;
-        max-height:         none;
-    }
-
-    #toolbar
-    {
-        display:            none;
-    }
-}
-
 
 @media print {
-#toolbar,
-aside#sidebar,
-nav#site
-{
-    display:            none;
-}
+  #toolbar,
+  aside#sidebar,
+  nav#site {
+    display: none;
+  }
 
-section.container
-{
-    margin:             0;
+  section.container {
+    margin: 0;
+  }
 }
-}
-

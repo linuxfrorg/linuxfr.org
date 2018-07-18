@@ -1,18 +1,18 @@
 @charset "UTF-8";
 
-$C_CLAIR: #E9E6E4;
-$C_BANDEAU: #702C14 !default;
-$C_FONCE: #93877B;
-$C_INTER: #93877B;
-$C_BAS_FOND: #E4E4E4;
-$C_FOOT: #D4D1CF;
-$C_MIBLANC_MIFOOT: #E9E8E7;
-$C_CONTAINER: #F9F9F9;
-$C_MENU: #5F574C;
+$C_CLAIR: #e9e6e4;
+$C_BANDEAU: #702c14 !default;
+$C_FONCE: #93877b;
+$C_INTER: #93877b;
+$C_BAS_FOND: #e4e4e4;
+$C_FOOT: #d4d1cf;
+$C_MIBLANC_MIFOOT: #e9e8e7;
+$C_CONTAINER: #f9f9f9;
+$C_MENU: #5f574c;
 
 $C_BD1: transparentize($C_BANDEAU, 0.84);
 $C_BD2: transparentize($C_BANDEAU, 0.67);
-$C_BD3: transparentize($C_BANDEAU, 0.50);
+$C_BD3: transparentize($C_BANDEAU, 0.5);
 $C_BD4: transparentize($C_BANDEAU, 0.33);
 $C_BD5: transparentize($C_BANDEAU, 0.17);
 
@@ -20,14 +20,13 @@ $C_BD5: transparentize($C_BANDEAU, 0.17);
 /* Copyright 2010 Nicolas Schoonbroodt (css) <nicolas@elsewhere.be>      */
 /* Distributed under GNU AGPL v3 License                                 */
 
-@import 'common/ac';
-@import 'common/generics';
-@import 'common/langs';
-@import 'common/markitup';
-@import 'common/statistics';
-@import 'pygments/colorful';
-@import 'print';
-
+@import "common/ac";
+@import "common/generics";
+@import "common/langs";
+@import "common/markitup";
+@import "common/statistics";
+@import "pygments/colorful";
+@import "print";
 
 /* Pixel size constants */
 $PX_MARGE_GAUCHE: 42px;
@@ -59,19 +58,19 @@ $fleche_offset_vertical: 30px;
 
 /* un lien bleu/rouge visité normal */
 @mixin lien_standard {
-  color: #0000EE;
+  color: #0000ee;
   font-weight: inherit;
   &:hover {
     text-decoration: inherit;
   }
   &:visited {
-    color: #551A8B;
+    color: #551a8b;
   }
 }
 
 html {
   background: $C_BAS_FOND;
-  background-image: url('/images/contrib/RonRonnement/background_html.png');
+  background-image: url("/images/contrib/RonRonnement/background_html.png");
   background-repeat: repeat-x;
   background-position: top;
   font-family: sans-serif;
@@ -100,8 +99,13 @@ a {
   }
 }
 
-.button_to { display: inline-block; }
-button { padding-top: 2px; padding-bottom: 2px; }
+.button_to {
+  display: inline-block;
+}
+button {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
 
 button,
 .edit_client_app a,
@@ -110,7 +114,7 @@ button,
 #comments #follow-feed a,
 #comments #send-comment a,
 #redaction a.reorganize,
-input[type='submit'] {
+input[type="submit"] {
   padding-left: 5px;
   padding-right: 5px;
   margin: 3px;
@@ -132,14 +136,24 @@ input[type='submit'] {
   display: inline-block;
 }
 
-form input[type='submit'], button {
+form input[type="submit"],
+button {
   display: inline-block;
   padding-left: 20px;
   background: url("/images/icones/check.png") no-repeat 3px 3px $C_CLAIR;
   cursor: pointer;
-  &[disabled] { cursor: default; }
-  &:hover { background-color: $C_FONCE; }
-  &#logout, &.unread, &.relevant, &.useless { background: $C_CLAIR; }
+  &[disabled] {
+    cursor: default;
+  }
+  &:hover {
+    background-color: $C_FONCE;
+  }
+  &#logout,
+  &.unread,
+  &.relevant,
+  &.useless {
+    background: $C_CLAIR;
+  }
 }
 
 #redaction a.reorganize {
@@ -148,31 +162,47 @@ form input[type='submit'], button {
   padding: 0 3px 0 20px;
   margin: 0 12px;
   background: url("/images/icones/loop.png") no-repeat 2px 2px $C_CLAIR;
-  &:hover { background-color: $C_FONCE; }
+  &:hover {
+    background-color: $C_FONCE;
+  }
 }
 
-button.edit, button.cancel, button#admin_49_3, button.add_link {
-  &:hover { background-color: $C_FONCE; }
+button.edit,
+button.cancel,
+button#admin_49_3,
+button.add_link {
+  &:hover {
+    background-color: $C_FONCE;
+  }
 }
 
-button, input[type='submit'] {
-  &.publish_news, &.ok_button {
+button,
+input[type="submit"] {
+  &.publish_news,
+  &.ok_button {
     background: url("/images/icones/check.png") no-repeat 3px 3px $C_CLAIR;
   }
-  &.refuse_news, &.delete_button, &.cancel, &.remove, &.refuse_oauth {
+  &.refuse_news,
+  &.delete_button,
+  &.cancel,
+  &.remove,
+  &.refuse_oauth {
     background: url("/images/icones/x_red.png") no-repeat 4px 4px $C_CLAIR;
   }
   &.ppp_news {
     background: url("/images/icones/pin.png") no-repeat 3px 3px $C_CLAIR;
   }
   &.submit_board {
-    background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat 2px 2px $C_CLAIR;
+    background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat
+      2px 2px $C_CLAIR;
   }
   &.submit_news {
     background: url("/images/icones/check_alt.png") no-repeat 2px 2px $C_CLAIR;
     margin: 0 15px 15px;
   }
-  &.add_para, &.add_link, &.create_news {
+  &.add_para,
+  &.add_link,
+  &.create_news {
     background: url("/images/icones/plus.png") no-repeat 2px 2px $C_CLAIR;
   }
   &.vote_for {
@@ -184,10 +214,13 @@ button, input[type='submit'] {
   &.plonk {
     background: url("/images/icones/denied.png") no-repeat 2px 2px $C_CLAIR;
   }
-  &#admin_49_3, &.archive_button, &.reopen_button {
+  &#admin_49_3,
+  &.archive_button,
+  &.reopen_button {
     background: url("/images/icones/target.png") no-repeat 2px 2px $C_CLAIR;
   }
-  &.reset_news, &.reset_password {
+  &.reset_news,
+  &.reset_password {
     background: url("/images/icones/loop.png") no-repeat 2px 2px $C_CLAIR;
   }
   &.reassign_news {
@@ -198,7 +231,8 @@ button, input[type='submit'] {
     text-indent: -9999em;
   }
   &.rewrite_news {
-    background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat 2px 2px $C_CLAIR;
+    background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat
+      2px 2px $C_CLAIR;
   }
 }
 
@@ -213,14 +247,17 @@ button, input[type='submit'] {
 }
 .edit_client_app a,
 .new_content a {
-  background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat 2px 2px $C_CLAIR;
+  background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat
+    2px 2px $C_CLAIR;
 }
 .toolbox .follow_feed a,
 #comments #follow-feed a {
-  background: url("/images/contrib/RonRonnement-Sepia/rss.png") no-repeat 2px 2px $C_CLAIR;
+  background: url("/images/contrib/RonRonnement-Sepia/rss.png") no-repeat 2px
+    2px $C_CLAIR;
 }
 #comments #send-comment a {
-  background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat 2px 2px $C_CLAIR;
+  background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat
+    2px 2px $C_CLAIR;
 }
 
 #stylesheets-edit button {
@@ -245,7 +282,9 @@ button, input[type='submit'] {
   font-size: small;
   background: $C_CLAIR;
 
-  a { font-weight: inherit; }
+  a {
+    font-weight: inherit;
+  }
 
   /* image DLFP */
   #branding h1 {
@@ -264,7 +303,7 @@ button, input[type='submit'] {
 
   /* Les boîtes login, wiki, moderation */
   .box {
-    min-height:110px;
+    min-height: 110px;
     border-bottom: 1px solid $C_INTER;
     padding: 0 3px 10px 5px;
 
@@ -277,7 +316,9 @@ button, input[type='submit'] {
       margin-left: 5px;
       padding-left: 5px;
       border-left: solid 1px $C_INTER;
-      &.forum span { font-weight: bold; }
+      &.forum span {
+        font-weight: bold;
+      }
     }
 
     > a {
@@ -307,17 +348,24 @@ button, input[type='submit'] {
       -moz-transform-origin: left top;
       -o-transform-origin: left top;
       transform-origin: left top;
-      -webkit-transform: rotate(-90deg) translate(-100%, -100%) translate(3px, -5px);
-      -khtml-transform: rotate(-90deg) translate(-100%, -100%) translate(3px, -5px);
-      -moz-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
+      -webkit-transform: rotate(-90deg) translate(-100%, -100%)
+        translate(3px, -5px);
+      -khtml-transform: rotate(-90deg) translate(-100%, -100%)
+        translate(3px, -5px);
+      -moz-transform: rotate(-90deg) translate(-100%, -100%)
+        translate(-3px, -5px);
       -o-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
       transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
     }
 
     span.score {
       color: #333;
-      &:before { content: " ["; }
-      &:after  { content: "] "; }
+      &:before {
+        content: " [";
+      }
+      &:after {
+        content: "] ";
+      }
     }
 
     .abusers li {
@@ -332,7 +380,9 @@ button, input[type='submit'] {
     font-size: small;
     padding: 0;
     margin-left: -3px;
-    &:hover { background-color: $C_CLAIR; }
+    &:hover {
+      background-color: $C_CLAIR;
+    }
   }
 
   .new_content a {
@@ -366,8 +416,12 @@ button, input[type='submit'] {
     display: inline;
     padding: 0;
     list-style: none;
-    &:after { content: " | "; }
-    &:last-child:after { content: ""; }
+    &:after {
+      content: " | ";
+    }
+    &:last-child:after {
+      content: "";
+    }
   }
 
   /* boite de recherche */
@@ -391,7 +445,7 @@ button, input[type='submit'] {
       width: 125px;
     }
     input#search_submit {
-      background: url('/images/contrib/kaiska/search.png') no-repeat;
+      background: url("/images/contrib/kaiska/search.png") no-repeat;
       text-indent: -9998em;
       border: none;
       width: 22px;
@@ -402,70 +456,73 @@ button, input[type='submit'] {
 }
 
 /* pied de page derniers commentaires, … */
-#bigfooter{
+#bigfooter {
   display: block;
   clear: both;
   width: 100%;
   margin-top: 0;
   padding: 0 0 20px 0;
   background: $C_CLAIR;
-  background: -moz-linear-gradient(top,
-    $C_FOOT 0%,
-    white 100%
-  );
-  background: -o-linear-gradient(top,
-    $C_FOOT 0%,
-    white 100%
-  );
-  background: -webkit-gradient(linear,
+  background: -moz-linear-gradient(top, $C_FOOT 0%, white 100%);
+  background: -o-linear-gradient(top, $C_FOOT 0%, white 100%);
+  background: -webkit-gradient(
+    linear,
     center top,
     center bottom,
     from($C_FOOT),
     to(white)
   );
-  background: -khtml-gradient(linear,
+  background: -khtml-gradient(
+    linear,
     center top,
     center bottom,
     from($C_FOOT),
     to(white)
   );
-  background: linear-gradient(top,
-    $C_FOOT 0%,
-    white 100%
-  );
+  background: linear-gradient(top, $C_FOOT 0%, white 100%);
 
-  a { font-size: small; }
+  a {
+    font-size: small;
+  }
 
-  nav, section {
+  nav,
+  section {
     display: inline-block;
-    padding: 5px 0 30px 0; 
+    padding: 5px 0 30px 0;
     vertical-align: top;
     width: $PC_FOOT_WIDTH;
     margin: 0 $PC_FOOT_MARG 0 $PC_FOOT_MARG;
     background: $C_FOOT;
-    background: -moz-linear-gradient(top,
+    background: -moz-linear-gradient(
+      top,
       $C_FOOT 0%,
       $C_MIBLANC_MIFOOT 50%,
       $C_FOOT 100%
     );
-    background: -o-linear-gradient(top,
+    background: -o-linear-gradient(
+      top,
       $C_FOOT 0%,
       $C_MIBLANC_MIFOOT 50%,
       $C_FOOT 100%
     );
-    background: -webkit-gradient(linear,
+    background: -webkit-gradient(
+      linear,
       center top,
       center bottom,
       from($C_FOOT),
       color-stop(50%, $C_MIBLANC_MIFOOT),
-      to($C_FOOT));
-    background: -khtml-gradient(linear,
+      to($C_FOOT)
+    );
+    background: -khtml-gradient(
+      linear,
       center top,
       center bottom,
       from($C_FOOT),
       color-stop(50%, $C_MIBLANC_MIFOOT),
-      to($C_FOOT));
-    background: linear-gradient(top,
+      to($C_FOOT)
+    );
+    background: linear-gradient(
+      top,
       $C_FOOT 0%,
       $C_MIBLANC_MIFOOT 50%,
       $C_FOOT 100%
@@ -502,7 +559,8 @@ button, input[type='submit'] {
   border: solid $BORDER_PHARE $C_BANDEAU;
 
   /* comme le bord est plus grand, translation légèrement suppérieur */
-  .score, .datePourCss {
+  .score,
+  .datePourCss {
     right: -$RAY_CONTAINER - $BORDER_PHARE;
     width: $RAY_CONTAINER + $BORDER_PHARE;
   }
@@ -589,7 +647,8 @@ article {
   .meta {
     color: $C_INTER;
   }
-  .score, .datePourCss {
+  .score,
+  .datePourCss {
     display: block;
     width: $RAY_CONTAINER + $BORDER_CONTENT;
     height: 31px;
@@ -605,10 +664,14 @@ article {
   }
   .score {
     background: $C_BAS_FOND;
-    -moz-border-image:    url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-    -o-border-image:      url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-    -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-    -khtml-border-image:  url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -moz-border-image: url("/images/contrib/RonRonnement/coin-transparent.png")
+      0 0 0 15;
+    -o-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0
+      0 0 15;
+    -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png")
+      0 0 0 15;
+    -khtml-border-image: url("/images/contrib/RonRonnement/coin-transparent.png")
+      0 0 0 15;
     text-align: center;
     line-height: 31px;
     font-weight: bold;
@@ -618,10 +681,14 @@ article {
   .datePourCss {
     display: block !important;
     background: $C_BANDEAU;
-    -moz-border-image:    url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-    -o-border-image:      url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-    -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
-    -khtml-border-image:  url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    -moz-border-image: url("/images/contrib/RonRonnement/coin-transparent.png")
+      0 0 0 15;
+    -o-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0
+      0 0 15;
+    -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png")
+      0 0 0 15;
+    -khtml-border-image: url("/images/contrib/RonRonnement/coin-transparent.png")
+      0 0 0 15;
     color: white;
     padding: 0;
     margin-bottom: 2px;
@@ -634,7 +701,8 @@ article {
       font-weight: bold;
       margin-right: 3px;
     }
-    .mois, .annee {
+    .mois,
+    .annee {
       text-align: left;
       font-size: x-small;
       padding-left: 10px;
@@ -672,20 +740,25 @@ article {
 }
 
 /* ajout d'un caractère de couleur changeante devant "lire la suite" */
-.read, .no_comments, .new_comments, .not_read {
+.read,
+.no_comments,
+.new_comments,
+.not_read {
   a:before {
     content: "+ ";
     font-size: medium;
     font-weight: bold;
   }
 }
-.new_comments, .not_read {
+.new_comments,
+.not_read {
   a:before {
     color: $C_BANDEAU;
   }
 }
 
-.read, .no_comments {
+.read,
+.no_comments {
   color: $C_INTER;
 }
 .new_comments a {
@@ -697,7 +770,8 @@ footer.actions {
     color: $C_INTER;
     margin-right: 10px;
   }
-  form, form div {
+  form,
+  form div {
     display: inline;
   }
   .button_to {
@@ -721,7 +795,7 @@ footer.actions {
   a {
     color: $C_INTER;
   }
-  input[type='submit'] {
+  input[type="submit"] {
     font-size: inherit; // tu va la prendre ta putain de taille ? /o\
   }
 }
@@ -738,12 +812,16 @@ footer.actions {
       &:after {
         content: ", ";
       }
-      &:last-child:after, .last:after {
+      &:last-child:after,
+      .last:after {
         content: "";
       }
 
-      form { display: inline-block; }
-      .add_tag, .remove_tag {
+      form {
+        display: inline-block;
+      }
+      .add_tag,
+      .remove_tag {
         display: inline-block;
         text-indent: -9998em;
         height: 20px;
@@ -751,13 +829,17 @@ footer.actions {
         padding: 0;
         border: none;
       }
-      .add_tag  {
+      .add_tag {
         background: url(/images/icones/tag.png) no-repeat 0 6px;
-        &[disabled] { background: url(/images/icones/tagged.png) no-repeat 0 6px; }
+        &[disabled] {
+          background: url(/images/icones/tagged.png) no-repeat 0 6px;
+        }
       }
       .remove_tag {
         background: url(/images/icones/x.png) no-repeat 0 6px;
-        &[disabled] { display: none; }
+        &[disabled] {
+          display: none;
+        }
       }
     }
   }
@@ -768,7 +850,8 @@ footer.actions {
   font-style: italic;
   font-size: x-small;
 
-  form, form div {
+  form,
+  form div {
     display: inline;
   }
   .button_to {
@@ -782,7 +865,9 @@ footer.actions {
       background-color: transparent;
     }
   }
-  &.done { display: none; }
+  &.done {
+    display: none;
+  }
 }
 
 /* concerne tout ce qui est contenu : article, commentaire */
@@ -801,16 +886,21 @@ footer.actions {
       font-family: serif;
       font-size: 6pt;
       vertical-align: super;
-	  line-height: 0;
+      line-height: 0;
     }
     &[title="Lien du wiki interne LinuxFr.org"] {
       padding-left: 3px;
       border-left: 16px;
-      -moz-border-image:    url('/images/contrib/RonRonnement-Sepia/favicon.png') 0 0 0 32;
-      -o-border-image:      url('/images/contrib/RonRonnement-Sepia/favicon.png') 0 0 0 32;
-      -webkit-border-image: url('/images/contrib/RonRonnement-Sepia/favicon.png') 0 0 0 32;
-      -khtml-border-image:  url('/images/contrib/RonRonnement-Sepia/favicon.png') 0 0 0 32;
-      border-image:         url('/images/contrib/RonRonnement-Sepia/favicon.png') 0 0 0 32;
+      -moz-border-image: url("/images/contrib/RonRonnement-Sepia/favicon.png") 0
+        0 0 32;
+      -o-border-image: url("/images/contrib/RonRonnement-Sepia/favicon.png") 0 0
+        0 32;
+      -webkit-border-image: url("/images/contrib/RonRonnement-Sepia/favicon.png")
+        0 0 0 32;
+      -khtml-border-image: url("/images/contrib/RonRonnement-Sepia/favicon.png")
+        0 0 0 32;
+      border-image: url("/images/contrib/RonRonnement-Sepia/favicon.png") 0 0 0
+        32;
     }
   }
   ul {
@@ -831,7 +921,8 @@ blockquote {
 }
 
 /* tri, proposition de dépeche, choix de page */
-.toolbox, .scroll {
+.toolbox,
+.scroll {
   display: block;
   margin: 10px 0 15px 0;
   font-size: small;
@@ -841,21 +932,30 @@ a.scroll {
   margin: 0;
 }
 .toolbox {
-  .follow_feed, .new_content {
+  .follow_feed,
+  .new_content {
     float: right;
   }
   a:hover {
     text-decoration: none;
   }
-  .order_navbar { padding-top: 10px; }
-  .order_navbar ul, ul.facets {
+  .order_navbar {
+    padding-top: 10px;
+  }
+  .order_navbar ul,
+  ul.facets {
     display: inline;
     li {
       display: inline;
       padding: 0;
       list-style: none;
-      &:after { content: " · "; }
-      &:last-child:after, .last:after { content: ""; }
+      &:after {
+        content: " · ";
+      }
+      &:last-child:after,
+      .last:after {
+        content: "";
+      }
     }
   }
   /* pour ne pas afficher les pages en haut */
@@ -1024,7 +1124,9 @@ pre code {
 
 /* Tribune */
 body#boards-show {
-  #sidebar, #bigfooter, .scroll {
+  #sidebar,
+  #bigfooter,
+  .scroll {
     display: none;
   }
   #container {
@@ -1041,7 +1143,7 @@ body#boards-show {
   /* version xml et avertissement */
   > a:first-of-type,
   > p:first-of-type {
-  color: $C_INTER;
+    color: $C_INTER;
   }
   /* totoz links */
   a:hover {
@@ -1053,8 +1155,12 @@ body#boards-show {
   color: black;
   font-family: monospace;
   font-size: 11px;
-  &:before { content: "["; }
-  &:after { content: "]"; }
+  &:before {
+    content: "[";
+  }
+  &:after {
+    content: "]";
+  }
 }
 /* Ligne de tribune */
 .chat {
@@ -1088,7 +1194,7 @@ body#boards-show {
     font-weight: bold;
   }
   .totoz {
-    color: #2EA4FF; 
+    color: #2ea4ff;
   }
 }
 
@@ -1118,13 +1224,13 @@ body#boards-show {
       font-weight: bold;
     }
     time {
-      color: #0000EE;
+      color: #0000ee;
       margin-top: 0;
       margin-bottom: 0;
     }
   }
   .myPost {
-    color: #CC0000;
+    color: #cc0000;
     font-weight: bold;
   }
 }
@@ -1140,13 +1246,17 @@ body#boards-show {
   tr {
     width: 100%;
     border-bottom: 1px solid $C_INTER;
-    &:last-of-type { border-bottom: none; }
+    &:last-of-type {
+      border-bottom: none;
+    }
 
     td {
       width: 50%;
       border-right: 1px solid $C_INTER;
       padding: 4px 0;
-      &:last-of-type { border-right: none; }
+      &:last-of-type {
+        border-right: none;
+      }
     }
   }
 }
@@ -1217,7 +1327,8 @@ div#form_links {
 }
 
 body#redaction-index {
-  #candidate_news, #news {
+  #candidate_news,
+  #news {
     width: 30%;
     float: right;
     clear: right;
@@ -1225,19 +1336,32 @@ body#redaction-index {
   #main_board {
     float: left;
     width: 60%;
-    #board_message { max-width: 100%; }
+    #board_message {
+      max-width: 100%;
+    }
   }
   #container {
     padding: 40px 10px 10px;
-    & > div { padding: 10px; }
-    & > footer { clear: both; }
+    & > div {
+      padding: 10px;
+    }
+    & > footer {
+      clear: both;
+    }
   }
 }
 
 body#news-show #redaction {
-  .score, .datePourCss { right: 0; }
-  .score { top: 31px; }
-  .datePourCss { top: 0; }
+  .score,
+  .datePourCss {
+    right: 0;
+  }
+  .score {
+    top: 31px;
+  }
+  .datePourCss {
+    top: 0;
+  }
 }
 #redaction #edition {
   margin-top: 40px + 29px;
@@ -1245,13 +1369,22 @@ body#news-show #redaction {
   padding-right: 3px;
   float: left;
   width: 60%;
-  .paragraph { margin-bottom: 15px; }
-  textarea { width: 100%; }
+  .paragraph {
+    margin-bottom: 15px;
+  }
+  textarea {
+    width: 100%;
+  }
 }
-#redaction .edition_in_place, #redaction .paragraph, #redaction .link {
+#redaction .edition_in_place,
+#redaction .paragraph,
+#redaction .link {
   padding-left: 30px;
   position: relative;
-  .edit { background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat 2px 2px $C_CLAIR; }
+  .edit {
+    background: url("/images/contrib/RonRonnement-Sepia/feather.png") no-repeat
+      2px 2px $C_CLAIR;
+  }
   .actions {
     position: absolute;
     top: 0;
@@ -1266,7 +1399,9 @@ body#news-show #redaction {
   &:hover {
     .actions button {
       visibility: visible;
-      &:hover { background-color: $C_FONCE; }
+      &:hover {
+        background-color: $C_FONCE;
+      }
     }
   }
 }
@@ -1277,7 +1412,9 @@ body#news-show #redaction {
   float: right;
   width: 38%;
 
-  .inbox p { margin: 2px 0; }
+  .inbox p {
+    margin: 2px 0;
+  }
 }
 #news_board .board #board_message {
   width: 95%;
@@ -1291,16 +1428,23 @@ div#toolbar {
   position: fixed;
   bottom: 0;
   overflow: hidden;
-  left: $PX_MARGE_GAUCHE + 8px;  // 8px pour l'ombre ?
+  left: $PX_MARGE_GAUCHE + 8px; // 8px pour l'ombre ?
   right: $PX_MARGE_DROITE + 8px;
   background: $C_CONTAINER;
   border: 1px solid $C_INTER;
   color: $C_FONCE;
   font-size: x-small;
 
-  #toolbar_items { float: right; }
-  #toolbar_alt_items { float: right; margin-right: 20px; }
-  #toolbar_threeshold { float: left; }
+  #toolbar_items {
+    float: right;
+  }
+  #toolbar_alt_items {
+    float: right;
+    margin-right: 20px;
+  }
+  #toolbar_threeshold {
+    float: left;
+  }
 }
 
 /* tableau de bord et tracker */
@@ -1321,21 +1465,36 @@ body#client_applications-index table {
   tr {
     width: 100%;
     border-bottom: 1px solid $C_INTER;
-    &:last-of-type { border-bottom: none; }
+    &:last-of-type {
+      border-bottom: none;
+    }
   }
-  td, th {
+  td,
+  th {
     border-right: 1px solid $C_INTER;
-    &:last-of-type { border-right: none; }
-    &.date { white-space: nowrap; }
-    &.number { text-align: right; padding-right: 2px; }
+    &:last-of-type {
+      border-right: none;
+    }
+    &.date {
+      white-space: nowrap;
+    }
+    &.number {
+      text-align: right;
+      padding-right: 2px;
+    }
   }
-  a[href] { @include lien_standard; }
+  a[href] {
+    @include lien_standard;
+  }
 }
 body#client_applications-index td {
   padding: 5px;
 }
-#tracker, #my_trackers, .tracker {
-  .fixed, .invalid {
+#tracker,
+#my_trackers,
+.tracker {
+  .fixed,
+  .invalid {
     a {
       text-decoration: line-through;
     }
@@ -1388,7 +1547,7 @@ body#sections-index .body {
   overflow: hidden;
   .section {
     float: left;
-    width:  120px;
+    width: 120px;
     height: 120px;
   }
 }
@@ -1401,7 +1560,9 @@ body#wiki_pages-changes #contents {
   }
 }
 
-input, button, select {
+input,
+button,
+select {
   font-size: 1em;
   max-size: 100%;
 }
@@ -1424,7 +1585,7 @@ img {
 
 .markItUpEditor {
   padding: 5px;
-  background:none;
+  background: none;
   border: 1px solid $C_INTER;
 }
 
@@ -1434,14 +1595,17 @@ img {
 }
 
 @media screen and (max-width: 768px), handheld {
-  html, body {
+  html,
+  body {
     margin: 0;
     padding: 0;
     border: 0;
     background: #fff;
   }
 
-  #top { display: none; }
+  #top {
+    display: none;
+  }
   #site {
     position: static;
     padding: 0 3px;
@@ -1452,7 +1616,7 @@ img {
   #sidebar {
     background: #fff;
     width: 100%;
-	margin-top: 5px;
+    margin-top: 5px;
     #branding {
       float: right;
       width: $PX_BRANDING_LARG;
@@ -1461,7 +1625,9 @@ img {
     .box {
       min-height: 0;
       border-bottom: 0;
-      &:last-child { padding-bottom: 0; }
+      &:last-child {
+        padding-bottom: 0;
+      }
       h1 {
         -webkit-transform: none;
         -khtml-transform: none;
@@ -1471,13 +1637,26 @@ img {
         width: 100px;
         margin: 0 10px;
       }
-      ul { margin: 5px; }
+      ul {
+        margin: 5px;
+      }
     }
-    .box p, .box .new_content, #poll_box, #redaction_box ul, #moderation_box ul, #admin_box { display: none; }
+    .box p,
+    .box .new_content,
+    #poll_box,
+    #redaction_box ul,
+    #moderation_box ul,
+    #admin_box {
+      display: none;
+    }
     #moderation_box {
       .inbox {
-        p { display: block; }
-        p + p + p + p { display: none; }
+        p {
+          display: block;
+        }
+        p + p + p + p {
+          display: none;
+        }
       }
       .board input#board_message {
         float: left;
@@ -1486,8 +1665,14 @@ img {
       }
     }
     #new_account_sidebar {
-      p { display: block; margin: 5px 10px; }
-      input[type="text"], input[type="password"] { width: 120px; }
+      p {
+        display: block;
+        margin: 5px 10px;
+      }
+      input[type="text"],
+      input[type="password"] {
+        width: 120px;
+      }
     }
   }
 
@@ -1495,30 +1680,60 @@ img {
     clear: left;
     margin: 0;
     padding: 10px;
-    .score, .datePourCss { right: 0 !important; }
-    header {
-      h1 { margin-right: 48px; }
-      time, .tags { display: none; }
+    .score,
+    .datePourCss {
+      right: 0 !important;
     }
-    .tag_in_place { display: none; }
-    article, ul.threads > li.comment { padding: 10px 15px; }
+    header {
+      h1 {
+        margin-right: 48px;
+      }
+      time,
+      .tags {
+        display: none;
+      }
+    }
+    .tag_in_place {
+      display: none;
+    }
+    article,
+    ul.threads > li.comment {
+      padding: 10px 15px;
+    }
   }
 
   #bigfooter {
-    #last_comments, #popular_tags { display: none; }
-    #friends, #about_us { width: 48%; min-height: 300px; }
+    #last_comments,
+    #popular_tags {
+      display: none;
+    }
+    #friends,
+    #about_us {
+      width: 48%;
+      min-height: 300px;
+    }
   }
 
-  li.comment > ul { margin-left: 0.25em; }
-  img.avatar { width: 50px; height: 50px; }
+  li.comment > ul {
+    margin-left: 0.25em;
+  }
+  img.avatar {
+    width: 50px;
+    height: 50px;
+  }
 
   div#toolbar {
     left: 20px;
     right: 20px;
     font-size: small;
-    .prev, .next { font-size: xx-large; }
+    .prev,
+    .next {
+      font-size: xx-large;
+    }
   }
-  #toolbar_alt_items { display: none; }
+  #toolbar_alt_items {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 400px), handheld {
@@ -1532,12 +1747,22 @@ img {
   }
 
   #bigfooter {
-    #friends { display: none; }
-    #about_us { width: 100%; margin: 0; min-height: 240px; }
+    #friends {
+      display: none;
+    }
+    #about_us {
+      width: 100%;
+      margin: 0;
+      min-height: 240px;
+    }
   }
 }
 
 @media screen and (max-width: 300px) {
-  img.avatar { display: none; }
-  #toolbar { display: none; }
+  img.avatar {
+    display: none;
+  }
+  #toolbar {
+    display: none;
+  }
 }

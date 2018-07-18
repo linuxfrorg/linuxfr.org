@@ -1,19 +1,19 @@
 @charset "UTF-8";
 
-$C_CLAIR: #E9E6E4;
-$C_BANDEAU: #5D004A !default;
-$C_FONCE: #93877B;
-$C_INTER: #93877B;
-$C_BAS_FOND: #E4E4E4;
-$C_FOOT: #D4D1CF;
-$C_MIBLANC_MIFOOT: #E9E8E7;
-$C_CONTAINER: #F9F9F9;
-$C_MENU: #4C575F;
+$C_CLAIR: #e9e6e4;
+$C_BANDEAU: #5d004a !default;
+$C_FONCE: #93877b;
+$C_INTER: #93877b;
+$C_BAS_FOND: #e4e4e4;
+$C_FOOT: #d4d1cf;
+$C_MIBLANC_MIFOOT: #e9e8e7;
+$C_CONTAINER: #f9f9f9;
+$C_MENU: #4c575f;
 
 $C_BD1: transparentize($C_BANDEAU, 0.84);
 $C_BD2: transparentize($C_BANDEAU, 0.67);
-$C_BD3: transparentize($C_BANDEAU, 0.50);
+$C_BD3: transparentize($C_BANDEAU, 0.5);
 $C_BD4: transparentize($C_BANDEAU, 0.33);
 $C_BD5: transparentize($C_BANDEAU, 0.17);
 
-@import '../RonRonnement';
+@import "../RonRonnement";

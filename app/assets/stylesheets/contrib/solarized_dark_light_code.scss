@@ -10,8 +10,26 @@ dark with light code version
 
 /* Override gradient bar color to be more readable in dark mode */
 @function gradient_bar_color($color) {
-    @return darken($color, 30%);
+  @return darken($color, 30%);
 }
 
-@include rebase($base03,$base02,$base01,$base00,$base0,$base1,$base2,$base3);
-@include solarized_code($base3,$base2,$base1,$base0,$base00,$base01,$base02,$base03);
+@include rebase(
+  $base03,
+  $base02,
+  $base01,
+  $base00,
+  $base0,
+  $base1,
+  $base2,
+  $base3
+);
+@include solarized_code(
+  $base3,
+  $base2,
+  $base1,
+  $base0,
+  $base00,
+  $base01,
+  $base02,
+  $base03
+);

@@ -1,89 +1,147 @@
 @import url("grayscale.css");
 
-#top, #container > h1, .link, #sidebar, #bigfooter, #toolbar, #comments > p, body:not(#wiki_pages-changes) .toolbox, #site form,
-body:not(#posts-new):not(#posts-create) footer > p, body:not(#posts-new):not(#posts-create) section#container > p, .banner, .notice, #contents > h1 {
-	display: none !important;
+#top,
+#container > h1,
+.link,
+#sidebar,
+#bigfooter,
+#toolbar,
+#comments > p,
+body:not(#wiki_pages-changes) .toolbox,
+#site form,
+body:not(#posts-new):not(#posts-create) footer > p,
+body:not(#posts-new):not(#posts-create) section#container > p,
+.banner,
+.notice,
+#contents > h1 {
+  display: none !important;
 }
 #container > * {
-	margin: 0 !important;
+  margin: 0 !important;
 }
 article figure.image {
-	display: block !important;
+  display: block !important;
 }
 #phare img {
-	padding-left: 0;
+  padding-left: 0;
 }
 #site {
-	padding-top: 0;
-	padding-bottom: 0;
-	background: white;
-	margin-top: 17px;
-	font-size: 9px;
+  padding-top: 0;
+  padding-bottom: 0;
+  background: white;
+  margin-top: 17px;
+  font-size: 9px;
 }
-.comment figure.image, article figure.score {
-	display: none;
+.comment figure.image,
+article figure.score {
+  display: none;
 }
 article figure.image {
-	padding-left: 15px;
+  padding-left: 15px;
 }
 #site ul li:after {
-	content: " :: ";
-	font-weight: bold;
+  content: " :: ";
+  font-weight: bold;
 }
 #site ul {
-	padding-left: 15px !important;
+  padding-left: 15px !important;
 }
 #home-index .actions {
-	display: none;
+  display: none;
 }
-body #container, #home-index #container, #news-show #container, #wiki_pages-show #container, #trackers-show #container,
-#posts-show #container, #polls-show #container, #diaries-show #container {
-	padding: 0 !important;
+body #container,
+#home-index #container,
+#news-show #container,
+#wiki_pages-show #container,
+#trackers-show #container,
+#posts-show #container,
+#polls-show #container,
+#diaries-show #container {
+  padding: 0 !important;
 }
-#news-show article, #wiki_pages-show article, #trackers-show article, #posts-show article, #polls-show article, #diaries-show article {
-	background: white !important;
-	margin-top: -15px !important;
+#news-show article,
+#wiki_pages-show article,
+#trackers-show article,
+#posts-show article,
+#polls-show article,
+#diaries-show article {
+  background: white !important;
+  margin-top: -15px !important;
 }
 body#trackers-index #container table {
-	background: white !important;
-	padding: 0 !important;
+  background: white !important;
+  padding: 0 !important;
 }
-article, .threads > li.comment {
-	background: url('/images/contrib/grayscale/comments/hautcentre.png') top repeat-x !important;
-	margin-bottom: -15px !important;
+article,
+.threads > li.comment {
+  background: url("/images/contrib/grayscale/comments/hautcentre.png") top
+    repeat-x !important;
+  margin-bottom: -15px !important;
 }
-#static-show article, #phare article, h1 + nav + #contents > article:first-child {
-	margin-top: -15px !important;
-	background: white !important;
+#static-show article,
+#phare article,
+h1 + nav + #contents > article:first-child {
+  margin-top: -15px !important;
+  background: white !important;
 }
 body {
-	background: none !important;
+  background: none !important;
 }
-#site ul > li:nth-child(7), #site ul > li:nth-child(8) {
-	display: none;
+#site ul > li:nth-child(7),
+#site ul > li:nth-child(8) {
+  display: none;
 }
 #site ul > li:nth-child(6):after {
-	content: '';
+  content: "";
 }
-body#stylesheets-edit #container > #contents, body#news-new #container > #contents, body#sections-index #container > #contents, 
-body#diaries-new #container > #contents, body#posts-new #container, body#polls-new #container > #contents,
-body#trackers-index #container table, body#trackers-new #container > #contents, body#wiki_pages-new #container > #contents,
-body#static-submit_content #container > #contents, body#static-changelog #container > #contents, body#dashboard-index #container > #contents,
-body#registrations-edit #container > #contents, body#registrations-new #container > #contents, body#wiki_pages-create #container > #contents,
-body#confirmations-new #container > #contents, body#comments-answer #container > #contents, body#comments-new #container > #contents,
-body#wiki_pages-revision #container > #contents, body#comments-create #container > #contents, body#sessions-new #container > #contents,
-body#passwords-new #container > #contents, body#confirmations-new #container > #contents, body#wiki_pages-edit #container > #contents,
-body#boards-show #container > #main_board, body#wiki_pages-update #container > #contents, body#tags-new #container > #contents,
-body#news-create #container > #contents, body#diaries-create #container > #contents, body#trackers-create #container > #contents,
-body#posts-create #container, body#polls-create #container > #contents, body#wiki_pages-changes #container > #contents,
-body#comments-index #container > #contents, body#registrations-update #container > #contents, body#admin-index #container,
-body#accounts-index #container, body#pages-index #container, body#responses-index #container, body#sections-index #container
-body#categories-index #container, body#banners-index #container, body#stylesheets-show #container, body#friend_sites-index #container {
-	padding: 15px;
-	margin: 0 !important;
-	background: white !important;
+body#stylesheets-edit #container > #contents,
+body#news-new #container > #contents,
+body#sections-index #container > #contents,
+body#diaries-new #container > #contents,
+body#posts-new #container,
+body#polls-new #container > #contents,
+body#trackers-index #container table,
+body#trackers-new #container > #contents,
+body#wiki_pages-new #container > #contents,
+body#static-submit_content #container > #contents,
+body#static-changelog #container > #contents,
+body#dashboard-index #container > #contents,
+body#registrations-edit #container > #contents,
+body#registrations-new #container > #contents,
+body#wiki_pages-create #container > #contents,
+body#confirmations-new #container > #contents,
+body#comments-answer #container > #contents,
+body#comments-new #container > #contents,
+body#wiki_pages-revision #container > #contents,
+body#comments-create #container > #contents,
+body#sessions-new #container > #contents,
+body#passwords-new #container > #contents,
+body#confirmations-new #container > #contents,
+body#wiki_pages-edit #container > #contents,
+body#boards-show #container > #main_board,
+body#wiki_pages-update #container > #contents,
+body#tags-new #container > #contents,
+body#news-create #container > #contents,
+body#diaries-create #container > #contents,
+body#trackers-create #container > #contents,
+body#posts-create #container,
+body#polls-create #container > #contents,
+body#wiki_pages-changes #container > #contents,
+body#comments-index #container > #contents,
+body#registrations-update #container > #contents,
+body#admin-index #container,
+body#accounts-index #container,
+body#pages-index #container,
+body#responses-index #container,
+body#sections-index #container body#categories-index #container,
+body#banners-index #container,
+body#stylesheets-show #container,
+body#friend_sites-index #container {
+  padding: 15px;
+  margin: 0 !important;
+  background: white !important;
 }
 
 .threads {
-	margin: 0 !important;
+  margin: 0 !important;
 }

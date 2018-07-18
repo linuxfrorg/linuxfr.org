@@ -1,163 +1,218 @@
 @import url("/assets/application.css");
 
 @keyframes newton_adventure_spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.avatar:hover, #branding:hover {
-    animation: newton_adventure_spin 5s infinite linear;
+.avatar:hover,
+#branding:hover {
+  animation: newton_adventure_spin 5s infinite linear;
 }
 
 #branding h1 {
-	background-image: url("/images/contrib/newton/logo_dlfp.png")
-		!important
+  background-image: url("/images/contrib/newton/logo_dlfp.png") !important;
 }
 
 .avatar[src$="/default-avatar.png"] {
-	background-image: url("/images/contrib/newton/default_avatar.png")
-		!important
+  background-image: url("/images/contrib/newton/default_avatar.png") !important;
 }
 
-#bigfooter section,#bigfooter nav {
-	background-image: none
+#bigfooter section,
+#bigfooter nav {
+  background-image: none;
 }
 
 #sidebar {
-	background-color: #6c0000;
-	color: white;
-	background-image:
-		url("/images/contrib/newton/logo_newton_adventure.png");
-	background-repeat: no-repeat;
-	background-position: 50% 98%;
-	padding-bottom: 80px
+  background-color: #6c0000;
+  color: white;
+  background-image: url("/images/contrib/newton/logo_newton_adventure.png");
+  background-repeat: no-repeat;
+  background-position: 50% 98%;
+  padding-bottom: 80px;
 }
 
 #bigfooter {
-	border-top: 1px solid #a56c00;
-	background-image: -moz-linear-gradient(center top, #ad0000 0%, #8a0000 100%);
-	background: -webkit-gradient(linear, center top, center bottom, from(#fcf4dc),
-		to(#f9c129));
-	color: #ffdc1f;
+  border-top: 1px solid #a56c00;
+  background-image: -moz-linear-gradient(center top, #ad0000 0%, #8a0000 100%);
+  background: -webkit-gradient(
+    linear,
+    center top,
+    center bottom,
+    from(#fcf4dc),
+    to(#f9c129)
+  );
+  color: #ffdc1f;
 }
 
-#phare article,article h1 {
-	border-color: #a56c00
+#phare article,
+article h1 {
+  border-color: #a56c00;
 }
 
 #phare article {
-	border-radius: 6px
+  border-radius: 6px;
 }
 
 #top {
-	background-color: black;
+  background-color: black;
 }
 
 #site {
-	background-image: linear-gradient(to right, #8d0000, #a90000 201px, #8d0000 50%);
-	color: #ffdc1f
+  background-image: linear-gradient(
+    to right,
+    #8d0000,
+    #a90000 201px,
+    #8d0000 50%
+  );
+  color: #ffdc1f;
 }
 
 html {
-	background-color: #410505;
-	background-image: none
+  background-color: #410505;
+  background-image: none;
 }
 
 body {
-	background-color: black;
-	box-shadow: 4px 0px 4px #000, -4px 0px 4px #000;
+  background-color: black;
+  box-shadow: 4px 0px 4px #000, -4px 0px 4px #000;
 }
 
 input.create_news[type="submit"] {
-	font-size: 100%
+  font-size: 100%;
 }
 
 #container {
-	background-color: #850000;
+  background-color: #850000;
 }
 
-form input#logout[type="submit"],button#logout,button.unread,button.relevant,button.useless
-	{
-	background-color: #fcf4dc
+form input#logout[type="submit"],
+button#logout,
+button.unread,
+button.relevant,
+button.useless {
+  background-color: #fcf4dc;
 }
 
-.edit_client_app a,.new_content a,form input[type="submit"],button {
-	background-color: #fcf4dc
+.edit_client_app a,
+.new_content a,
+form input[type="submit"],
+button {
+  background-color: #fcf4dc;
 }
 
-form input.unread[type="submit"],form input.relevant[type="submit"],form input.useless[type="submit"],article .meta,footer.actions .action,.new_comments a,.vote,.read,.no_comments,.toolbox,.scroll,li.comment>p.meta
-	{
-	color: #392404
+form input.unread[type="submit"],
+form input.relevant[type="submit"],
+form input.useless[type="submit"],
+article .meta,
+footer.actions .action,
+.new_comments a,
+.vote,
+.read,
+.no_comments,
+.toolbox,
+.scroll,
+li.comment > p.meta {
+  color: #392404;
 }
 
-#contents>form,#wiki_help,form#new_post {
-	border: none;
-	background: none
+#contents > form,
+#wiki_help,
+form#new_post {
+  border: none;
+  background: none;
 }
 
-.markItUpContainer,.markItUp {
-	border: none
+.markItUpContainer,
+.markItUp {
+  border: none;
 }
 
 .markItUpEditor {
-	background-color: #fcf9f2;
-	border: 1px solid #a56c00;
-	border-radius: 6px
+  background-color: #fcf9f2;
+  border: 1px solid #a56c00;
+  border-radius: 6px;
 }
 
 .markdown_cheatsheet {
-	background-color: #fcf9f2;
-	border: none
+  background-color: #fcf9f2;
+  border: none;
 }
 
 input#tags {
-	width: 95%
+  width: 95%;
 }
 
-article .datePourCss,#sidebar .box h1 {
-	background-color: #f5810e;
-	border: none
+article .datePourCss,
+#sidebar .box h1 {
+  background-color: #f5810e;
+  border: none;
 }
 
 article .score {
-	background-color: #e29352;
-	border: none
+  background-color: #e29352;
+  border: none;
 }
 
-article,ul.threads>li.comment {
-	background-color: #f4c79c;
-	border: none;
-	border-bottom: 1px solid #cfdacd;
-	border-radius: 0
+article,
+ul.threads > li.comment {
+  background-color: #f4c79c;
+  border: none;
+  border-bottom: 1px solid #cfdacd;
+  border-radius: 0;
 }
 
 li.comment h2 {
-	background-color: #bc5544;
-	color: #ffcb12;
+  background-color: #bc5544;
+  color: #ffcb12;
 }
 
 .banner {
-	background-color: rgba(207, 218, 205, 0.33);
-	box-shadow: 0px 0px 65px #fff inset, 0px 0px 20px
-		rgba(207, 218, 205, 0.33) inset;
-	border-top: 2px solid #cfdacd;
-	border-bottom: 2px solid #cfdacd
+  background-color: rgba(207, 218, 205, 0.33);
+  box-shadow: 0px 0px 65px #fff inset,
+    0px 0px 20px rgba(207, 218, 205, 0.33) inset;
+  border-top: 2px solid #cfdacd;
+  border-bottom: 2px solid #cfdacd;
 }
 
-article, ul.threads > li.comment, .markdown_cheatsheet, #contents > form, form#new_post, body#users-comments #contents > ul > li, body#comments-create #contents > ul > li#comment_new, body#comments-update #contents > ul > li#comment_new, body#comments-show #contents > ul > li.comment, body#wiki_pages-revision #contents, body#news-revision #contents, body#dashboard-index #contents table, body#trackers-index #contents table, body#client_applications-index table, body#redaction-index #container > div, body#boards-show #contents, body#stylesheets-edit #contents, body#wiki_pages-changes #contents, body#admin-index #container > ul, #redaction #chat {
-    background: none repeat scroll 0 0 #f4c79c;
-    border: 1px solid #93877B;
-    border-radius: 6px 6px 6px 6px;
-    display: block;
-    font-size: small;
-    margin-bottom: 15px;
-    padding: 10px 34px;
+article,
+ul.threads > li.comment,
+.markdown_cheatsheet,
+#contents > form,
+form#new_post,
+body#users-comments #contents > ul > li,
+body#comments-create #contents > ul > li#comment_new,
+body#comments-update #contents > ul > li#comment_new,
+body#comments-show #contents > ul > li.comment,
+body#wiki_pages-revision #contents,
+body#news-revision #contents,
+body#dashboard-index #contents table,
+body#trackers-index #contents table,
+body#client_applications-index table,
+body#redaction-index #container > div,
+body#boards-show #contents,
+body#stylesheets-edit #contents,
+body#wiki_pages-changes #contents,
+body#admin-index #container > ul,
+#redaction #chat {
+  background: none repeat scroll 0 0 #f4c79c;
+  border: 1px solid #93877b;
+  border-radius: 6px 6px 6px 6px;
+  display: block;
+  font-size: small;
+  margin-bottom: 15px;
+  padding: 10px 34px;
 }
 
 .board {
-    background-color: #f4c79c;
+  background-color: #f4c79c;
 }
 
-.toolbox, .scroll {
-    color: #ffdc1f;
+.toolbox,
+.scroll {
+  color: #ffdc1f;
 }

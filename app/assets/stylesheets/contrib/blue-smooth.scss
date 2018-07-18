@@ -7,19 +7,69 @@
 
 @font-face {
   font-family: Megalopolis;
-  src: url('/fonts/MEgalopolisExtra.otf') format("opentype");
+  src: url("/fonts/MEgalopolisExtra.otf") format("opentype");
 }
 
 /* Contenu par défaut */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
   margin: 0;
   padding: 0;
   border: 0;
@@ -35,13 +85,14 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 body {
   line-height: 1;
   color: black;
-  background: -moz-linear-gradient(#C0C4C8, #C8CCD0);
-  background-color:#B0C0D0;
-  font-size:12px;
+  background: -moz-linear-gradient(#c0c4c8, #c8ccd0);
+  background-color: #b0c0d0;
+  font-size: 12px;
 }
 
 /* line 19, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
@@ -53,18 +104,24 @@ table {
 }
 
 /* line 23, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-caption, th, td {
+caption,
+th,
+td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
 /* line 25, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-q, blockquote {
+q,
+blockquote {
   quotes: "" "";
 }
 /* line 96, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-q:before, q:after, blockquote:before, blockquote:after {
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
   content: "";
 }
 
@@ -74,7 +131,19 @@ a img {
 }
 
 /* line 108, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary {
   margin: 0;
   padding: 0;
   border: 0;
@@ -82,10 +151,9 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   display: block;
 }
 
-aside#sidebar
-{
-  position:relative;
-  top:-20px;
+aside#sidebar {
+  position: relative;
+  top: -20px;
   padding: 0;
 }
 
@@ -149,19 +217,29 @@ body {
   font-size: 75%;
 }
 /* line 65, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
-body h1, body h2, body h3, body h4, body h5, body h6 {
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
   font-weight: normal;
   color: #607080;
 }
 /* line 66, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
-body h1 img, body h2 img, body h3 img, body h4 img, body h5 img, body h6 img {
+body h1 img,
+body h2 img,
+body h3 img,
+body h4 img,
+body h5 img,
+body h6 img {
   margin: 0;
 }
 /* line 67, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body h1 {
   font-size: 3em;
   line-height: 1;
-  margin-bottom: 0.50em;
+  margin-bottom: 0.5em;
 }
 /* line 68, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body h2 {
@@ -172,7 +250,7 @@ body h2 {
 body h3 {
   font-size: 1.5em;
   line-height: 1;
-  margin-bottom: 1.00em;
+  margin-bottom: 1em;
 }
 /* line 70, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body h4 {
@@ -184,7 +262,7 @@ body h4 {
 body h5 {
   font-size: 1em;
   font-weight: bold;
-  margin-bottom: 1.50em;
+  margin-bottom: 1.5em;
 }
 /* line 72, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body h6 {
@@ -250,11 +328,13 @@ body dfn {
   font-weight: bold;
 }
 /* line 82, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
-body sup, body sub {
+body sup,
+body sub {
   line-height: 0;
 }
 /* line 83, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
-body abbr, body acronym {
+body abbr,
+body acronym {
   border-bottom: 1px dotted #666666;
 }
 /* line 84, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
@@ -272,16 +352,20 @@ body pre {
   white-space: pre;
 }
 /* line 87, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
-body pre, body code, body tt {
+body pre,
+body code,
+body tt {
   font: 1em "andale mono", "lucida console", monospace;
   line-height: 1.5;
 }
 /* line 88, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
-body li ul, body li ol {
+body li ul,
+body li ol {
   margin: 0;
 }
 /* line 89, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
-body ul, body ol {
+body ul,
+body ol {
   margin: 0 1.5em 1.5em 0;
   padding-left: 3.333em;
 }
@@ -319,7 +403,9 @@ body thead th {
   background: #c3d9ff;
 }
 /* line 98, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
-body th, body td, body caption {
+body th,
+body td,
+body caption {
   padding: 4px 10px 4px 5px;
 }
 /* line 99, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
@@ -389,7 +475,7 @@ body .bottom {
 }
 /* line 8, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_debug.scss */
 body .showgrid {
-  background: url('/images/grid.png');
+  background: url("/images/grid.png");
 }
 /* line 4, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
 body .error {
@@ -464,7 +550,11 @@ form legend {
   font-size: 1.2em;
 }
 /* line 26, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-form input.text, form input.title, form input[type=email], form input[type=text], form input[type=password] {
+form input.text,
+form input.title,
+form input[type="email"],
+form input[type="text"],
+form input[type="password"] {
   margin: 0.5em 0;
   background-color: white;
   padding: 5px;
@@ -474,7 +564,10 @@ form input.title {
   font-size: 1.5em;
 }
 /* line 31, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-form input[type=checkbox], form input.checkbox, form input[type=radio], form input.radio {
+form input[type="checkbox"],
+form input.checkbox,
+form input[type="radio"],
+form input.radio {
   position: relative;
   top: 0.25em;
 }
@@ -492,21 +585,35 @@ form fieldset {
   border: 1px solid #cccccc;
 }
 /* line 62, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-form input.text, form input.title, form input[type=email], form input[type=text], form input[type=password],
-form textarea, form select {
+form input.text,
+form input.title,
+form input[type="email"],
+form input[type="text"],
+form input[type="password"],
+form textarea,
+form select {
   border: 1px solid #bbbbbb;
 }
 /* line 64, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-form input.text:focus, form input.title:focus, form input[type=email]:focus, form input[type=text]:focus, form input[type=password]:focus,
-form textarea:focus, form select:focus {
+form input.text:focus,
+form input.title:focus,
+form input[type="email"]:focus,
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form textarea:focus,
+form select:focus {
   border: 1px solid #666666;
 }
 /* line 48, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-form input.text, form input.title, form input[type=email], form input[type=text], form input[type=password] {
+form input.text,
+form input.title,
+form input[type="email"],
+form input[type="text"],
+form input[type="password"] {
   width: 300px;
-  background: -moz-linear-gradient(white, #E8E8E8) white;
+  background: -moz-linear-gradient(white, #e8e8e8) white;
   border: 1px solid #405070;
-  padding:0;
+  padding: 0;
 }
 /* line 50, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
 form textarea {
@@ -516,11 +623,12 @@ form textarea {
 
 /* line 1, ../../app/stylesheets/layout/_site.scss */
 #site {
-  background:-moz-linear-gradient(#8090A0, #607080) repeat scroll 0 0 transparent;
+  background: -moz-linear-gradient(#8090a0, #607080) repeat scroll 0 0
+    transparent;
   background-color: #607080;
   border-bottom: 2px solid #405070;
   margin-bottom: 20px;
-  padding:1px 0 1px 0;
+  padding: 1px 0 1px 0;
 }
 /* line 5, ../../app/stylesheets/layout/_site.scss */
 #site .go_to_content {
@@ -544,7 +652,8 @@ form textarea {
   content: " | ";
 }
 /* line 13, ../../app/stylesheets/mixins/_list.scss */
-#site ul li:last-child:after, #site ul li.last:after {
+#site ul li:last-child:after,
+#site ul li.last:after {
   content: "";
 }
 /* line 11, ../../app/stylesheets/layout/_site.scss */
@@ -575,11 +684,11 @@ form textarea {
   text-align: left;
 }
 
-#query
-{
-  background:-moz-linear-gradient(#A0B0C0,#A8B8C8) repeat scroll 0 0 transparent;
-  background-color:#A0A8B0;
-  border:1px solid black;
+#query {
+  background: -moz-linear-gradient(#a0b0c0, #a8b8c8) repeat scroll 0 0
+    transparent;
+  background-color: #a0a8b0;
+  border: 1px solid black;
 }
 
 /* line 1, ../../app/stylesheets/layout/_sidebar.scss */
@@ -590,70 +699,62 @@ form textarea {
 #sidebar .box {
   margin: 15px 0 0 0;
   padding: 10px;
-  background-color: #A8B8C8;
-  border-style : solid;
+  background-color: #a8b8c8;
+  border-style: solid;
   border-color: black;
   border-width: 2px 2px 2px 0;
 }
 
 #sidebar .box a {
-  font-weight:bold;
-  text-decoration:none;
-  color:#203040;
+  font-weight: bold;
+  text-decoration: none;
+  color: #203040;
 }
 
-#sidebar .box ul
-{
-  padding-left:2em;
+#sidebar .box ul {
+  padding-left: 2em;
 }
 
 #sidebar .box li {
-  font-weight:bold;
-  text-decoration:none;
-  color:#203040;
+  font-weight: bold;
+  text-decoration: none;
+  color: #203040;
 }
 
-#sidebar .login
-{
+#sidebar .login {
   padding: 0;
-  padding-bottom:10px;
+  padding-bottom: 10px;
 }
 
-#sidebar .login > h1
-{
-  background:-moz-linear-gradient(#8090A0, #607080);
-  background-color:#607080;
-  border-bottom:1px solid #405070;
-  font-size:1.4em;
-  font-weight:bold;
-  color:white;
-  padding:0.1em 0 0.4em 2px;
-  text-align:left;
+#sidebar .login > h1 {
+  background: -moz-linear-gradient(#8090a0, #607080);
+  background-color: #607080;
+  border-bottom: 1px solid #405070;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: white;
+  padding: 0.1em 0 0.4em 2px;
+  text-align: left;
 }
 
-#sidebar .login > h1 a
-{
-  text-decoration:none;
-  color:white;
+#sidebar .login > h1 a {
+  text-decoration: none;
+  color: white;
 }
 
-#sidebar .login p
-{
-  margin:0;
-  padding-left:1em;
-  margin-bottom:0;
+#sidebar .login p {
+  margin: 0;
+  padding-left: 1em;
+  margin-bottom: 0;
 }
 
-#sidebar .login p:first-letter
-{
-  font-weight:bold;
+#sidebar .login p:first-letter {
+  font-weight: bold;
 }
 
-
-#sidebar .login p a
-{
-  text-decoration:none;
-  color:black;
+#sidebar .login p a {
+  text-decoration: none;
+  color: black;
 }
 
 /* line 12, ../../app/stylesheets/layout/_sidebar.scss */
@@ -691,7 +792,7 @@ form textarea {
 
 /* line 2, ../../app/stylesheets/layout/_container.scss */
 #container > h1 {
-  margin-bottom:1em;
+  margin-bottom: 1em;
   text-align: center;
   font-family: Megalopolis, helvetica, arial, serif;
   font-size: 3.5em;
@@ -711,19 +812,17 @@ form textarea {
 /* Navigation */
 
 #container nav.toolbox > div,
-#container nav.toolbox > div a
-{
+#container nav.toolbox > div a {
   margin: 0 auto 0 auto;
   /* background:-moz-linear-gradient(#8090A0, #607080) #607080; */
-  text-align:center;
-  text-decoration:none;
-  color:#607080;
+  text-align: center;
+  text-decoration: none;
+  color: #607080;
 }
 
-#container nav.toolbox > div a:hover
-{
-  background:white;
-  opacity:0.5;
+#container nav.toolbox > div a:hover {
+  background: white;
+  opacity: 0.5;
 }
 
 /* Suivi (faire une demande pour obtenir un vrai id) */
@@ -731,53 +830,53 @@ form textarea {
 #container > p,
 #container > p a,
 #container > footer,
-#container > footer a
-{
-  text-decoration:none;
-  color:#607080;
+#container > footer a {
+  text-decoration: none;
+  color: #607080;
 }
 
 #container > p a:hover,
-#container > footer a:hover
-{
-  background:white;
-  opacity:0.5;
+#container > footer a:hover {
+  background: white;
+  opacity: 0.5;
 }
 
 /* line 9, ../../app/stylesheets/layout/_container.scss */
-#container nav.toolbox ul, #container .toolbox li {
+#container nav.toolbox ul,
+#container .toolbox li {
   display: inline;
 }
 
 /* line 1, ../../app/stylesheets/layout/_bigfooter.scss */
 #bigfooter {
   margin: 15px 0 0;
-  background:-moz-linear-gradient(#8090A0, #607080) #607080;
+  background: -moz-linear-gradient(#8090a0, #607080) #607080;
   padding-bottom: 25px;
   border-top: 2px solid #405070;
 }
 
 /* line 6, ../../app/stylesheets/layout/_bigfooter.scss */
-#bigfooter nav, #bigfooter section {
+#bigfooter nav,
+#bigfooter section {
   display: inline-block;
   padding-top: 5px;
   height: 100%;
   vertical-align: top;
 }
 /* line 11, ../../app/stylesheets/layout/_bigfooter.scss */
-#bigfooter nav h1, #bigfooter section h1 {
+#bigfooter nav h1,
+#bigfooter section h1 {
   font-size: 2em;
-  color:white;
+  color: white;
 }
 /* line 13, ../../app/stylesheets/layout/_bigfooter.scss */
 #bigfooter #about_us {
   margin-right: 0;
 }
 
-#bigfooter a
-{
-  color:white;
-  text-decoration:none;
+#bigfooter a {
+  color: white;
+  text-decoration: none;
 }
 
 /* line 7, ../../app/stylesheets/layout/_layout.scss */
@@ -830,7 +929,8 @@ form textarea {
   margin-right: 1.042%;
 }
 /* line 27, ../../app/stylesheets/layout/_layout.scss */
-#bigfooter nav, #bigfooter section {
+#bigfooter nav,
+#bigfooter section {
   display: inline;
   float: left;
   overflow: hidden;
@@ -845,21 +945,27 @@ body {
 }
 
 /* line 5, ../../app/stylesheets/partials/_generics.scss */
-ins.diffins, ins.diffmod {
+ins.diffins,
+ins.diffmod {
   background-color: #33ff33;
 }
 
 /* line 8, ../../app/stylesheets/partials/_generics.scss */
-del.diffdel, del.diffmod {
+del.diffdel,
+del.diffmod {
   background-color: #ff3333;
 }
 
 /* line 12, ../../app/stylesheets/partials/_generics.scss */
-a.action:before, time.norloge:before, span.content_type:before {
+a.action:before,
+time.norloge:before,
+span.content_type:before {
   content: "[";
 }
 /* line 14, ../../app/stylesheets/partials/_generics.scss */
-a.action:after, time.norloge:after, span.content_type:after {
+a.action:after,
+time.norloge:after,
+span.content_type:after {
   content: "]";
 }
 
@@ -870,26 +976,26 @@ footer.actions:before {
 
 li#comment_new footer.actions:before {
   content: "";
-  height:2em;
-  clear:both;
+  height: 2em;
+  clear: both;
 }
 
 /* line 20, ../../app/stylesheets/partials/_generics.scss */
 aside.banner {
-  background: -moz-linear-gradient(#8090A0, #607080) #607080;
+  background: -moz-linear-gradient(#8090a0, #607080) #607080;
   font-size: 2em;
-  border : 2px solid black;
-  -moz-border-radius:2em;
-  padding-left:2em;
-  padding-right:2em;
+  border: 2px solid black;
+  -moz-border-radius: 2em;
+  padding-left: 2em;
+  padding-right: 2em;
   text-align: center;
-  color:white;
+  color: white;
 }
 
 aside.banner a {
-  font-weight:bold;
-  text-decoration:none;
-  color:white;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
 }
 
 /* line 1, ../../app/stylesheets/partials/_forms.scss */
@@ -901,23 +1007,22 @@ aside.banner a {
 article {
   margin: 15px 0;
   padding: 0;
-  background: -moz-linear-gradient(white, #F0F0F0);
+  background: -moz-linear-gradient(white, #f0f0f0);
   border: 2px solid #1f1f18;
   overflow: hidden;
 }
 
-article header
-{
-  margin:0 0 0 0;
+article header {
+  margin: 0 0 0 0;
 }
 
 /* line 9, ../../app/stylesheets/partials/_contents.scss */
 article header h1 {
   margin: 0;
-  background:-moz-linear-gradient(#8090A0, #607080);
-  background-color:#607080;
-  border-bottom:1px solid black;
-  padding-left:2px;
+  background: -moz-linear-gradient(#8090a0, #607080);
+  background-color: #607080;
+  border-bottom: 1px solid black;
+  padding-left: 2px;
   font-family: Megalopolis, helvetica, arial, serif;
   font-size: 1.4em;
   color: white;
@@ -927,14 +1032,13 @@ article header h1 {
 article header h1 a,
 article header h1 a:visited {
   text-decoration: none;
-  color:white;
+  color: white;
 }
 /* line 4, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/utilities/links/_hover-link.scss */
 article header h1 a:hover,
 article header h1 a:active {
-  color:#E0E0E4;
+  color: #e0e0e4;
 }
-
 
 /* line 16, ../../app/stylesheets/partials/_contents.scss */
 article header h1 a + a:before {
@@ -945,25 +1049,25 @@ article header .meta,
 div#comments ul.threads li.comment p.meta,
 div#contents ul.threads li.comment p.meta,
 li#comment_new p.meta {
-  padding-left:4px;
-  color:#808080;
-  font-style:italic;
+  padding-left: 4px;
+  color: #808080;
+  font-style: italic;
 }
 
 article header .meta a,
 div#comments ul.threads li.comment p.meta a,
 div#contents ul.threads li.comment p.meta a,
 li#comment_new p.meta a {
-  color:#808080;
-  text-decoration:none;
+  color: #808080;
+  text-decoration: none;
 }
 
 article header .meta a:hover,
 div#comments ul.threads li.comment p.meta a:hover,
 div#contents ul.threads li.comment p.meta a:hover,
 li#comment_new p.meta a:hover {
-  color:black;
-  text-decoration:underline;
+  color: black;
+  text-decoration: underline;
 }
 
 /* line 18, ../../app/stylesheets/partials/_contents.scss */
@@ -974,33 +1078,32 @@ article figure {
 }
 /* line 21, ../../app/stylesheets/partials/_contents.scss */
 article figure.score {
-  float:right;
+  float: right;
   width: 2em;
   height: 2em;
-  margin-left:5px;
-  margin-right:1.5em;
-  padding:0.2em 0 0 0;
-  background:-moz-linear-gradient(white, #E0E0F0);
-  border:1px solid #E0E0F0;
+  margin-left: 5px;
+  margin-right: 1.5em;
+  padding: 0.2em 0 0 0;
+  background: -moz-linear-gradient(white, #e0e0f0);
+  border: 1px solid #e0e0f0;
   border-radius: 2em;
   -moz-border-radius: 2em;
   -webkit-border-radius: 2em;
   font-weight: bold;
   text-align: center;
-  color:#A0A0B0;
+  color: #a0a0b0;
 }
 
-article div.tags
-{
-  float:right;
+article div.tags {
+  float: right;
 }
 
 /* line 29, ../../app/stylesheets/partials/_contents.scss */
 article ul.tag_cloud {
   display: inline;
   list-style: none;
-  margin-left:0;
-  padding:0;
+  margin-left: 0;
+  padding: 0;
 }
 /* line 4, ../../app/stylesheets/mixins/_list.scss */
 article ul.tag_cloud li {
@@ -1008,16 +1111,15 @@ article ul.tag_cloud li {
 }
 
 article div.content {
-margin-top:1em;
-padding: 0 4.5em 1em 1.5em;
+  margin-top: 1em;
+  padding: 0 4.5em 1em 1.5em;
 }
 
 article div.content a,
-article footer.actions a
-{
-  text-decoration:none;
-  color:#405060;
-  font-weight:bold;
+article footer.actions a {
+  text-decoration: none;
+  color: #405060;
+  font-weight: bold;
 }
 
 /*
@@ -1032,56 +1134,51 @@ article div.content h4 a
 }
 */
 
-article#contents
-{
-  padding:1em;
+article#contents {
+  padding: 1em;
 }
 
 article#contents > h1,
-li#comment_new .content h1
-{
-  margin-bottom:0.7em;
-  padding-bottom:0;
-  line-height:85%;
-  font-size:1.8em;
-  font-weight:bold;
-  text-align:center;
+li#comment_new .content h1 {
+  margin-bottom: 0.7em;
+  padding-bottom: 0;
+  line-height: 85%;
+  font-size: 1.8em;
+  font-weight: bold;
+  text-align: center;
 }
 
 article > h2,
 article div.content h2,
 article#contents div.body h2,
-li#comment_new .content h2
-{
-  margin-bottom:0.7em;
-  border-bottom:1px solid #607080;
-  padding-bottom:0;
-  line-height:85%;
-  font-size:1.5em;
-  font-weight:bold;
+li#comment_new .content h2 {
+  margin-bottom: 0.7em;
+  border-bottom: 1px solid #607080;
+  padding-bottom: 0;
+  line-height: 85%;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 article > h3,
 article div.content h3,
 article#contents div.body h3,
-li#comment_new .content h3
-{
-  margin-bottom:0.7em;  
-  border-bottom:1px solid #C0C4C8;
-  padding-bottom:0;
-  line-height:85%;
-  font-size:1.3em;
-  font-weight:bold;
+li#comment_new .content h3 {
+  margin-bottom: 0.7em;
+  border-bottom: 1px solid #c0c4c8;
+  padding-bottom: 0;
+  line-height: 85%;
+  font-size: 1.3em;
+  font-weight: bold;
 }
 
 article > h4,
 article div.content h4,
 article#contents div.body h4,
-li#comment_new .content h4
-{
-  margin-bottom:0.7em;
-  font-size:1.2em;
-  font-weight:bold;
+li#comment_new .content h4 {
+  margin-bottom: 0.7em;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 article#contents div.body h2,
@@ -1090,16 +1187,13 @@ article#contents div.body h4,
 li#comment_new .content h1,
 li#comment_new .content h2,
 li#comment_new .content h3,
-li#comment_new .content h4
-{
-  border-bottom:none;
+li#comment_new .content h4 {
+  border-bottom: none;
 }
 
-
-article div.content p
-{
-  text-align:justify;
-  text-indent:1em;
+article div.content p {
+  text-align: justify;
+  text-indent: 1em;
 }
 
 article div.content a:hover,
@@ -1107,54 +1201,50 @@ article div.content a:active,
 article div.content a:visited,
 article footer.actions a:hover,
 article footer.actions a:active,
-article footer.actions a:visited
-{
-  color:#203040;
+article footer.actions a:visited {
+  color: #203040;
 }
 
-article div.content pre
-{
-  margin-left:2em;
-  margin-right:2em;
-  border:1px solid #C8C8D0;
-  padding:2px;
-  overflow:auto;
+article div.content pre {
+  margin-left: 2em;
+  margin-right: 2em;
+  border: 1px solid #c8c8d0;
+  padding: 2px;
+  overflow: auto;
 }
 
 /* line 4, ../../app/stylesheets/partials/_forms.scss */
 
 article footer.actions,
 div#comments ul.threads li.comment footer.actions,
-div#contents ul.threads li.comment footer.actions
-{
-  padding:0 1em 0 1em;
-  clear:both;
-  text-align:right;
+div#contents ul.threads li.comment footer.actions {
+  padding: 0 1em 0 1em;
+  clear: both;
+  text-align: right;
 }
 
 article footer.actions a.action,
 div#comments ul.threads li.comment footer.actions a.action,
-div#contents ul.threads li.comment footer.actions a.action
-{
-  vertical-align:top;
-  font-size:0.9em;
-  font-weight:bold;
-  text-decoration:none;
-  color:black;
+div#contents ul.threads li.comment footer.actions a.action {
+  vertical-align: top;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
 }
 
 #container header li .add_tag,
 #container header li .remove_tag {
-	display: none;
+  display: none;
 }
 
 article footer.actions .vote,
 div#comments ul.threads li.comment footer.actions .vote,
-div#contents ul.threads li.comment footer.actions .vote  {
-  font-size:0.8em;
-  font-style:italic;
-  text-align:right;
-  color:#808080;
+div#contents ul.threads li.comment footer.actions .vote {
+  font-size: 0.8em;
+  font-style: italic;
+  text-align: right;
+  color: #808080;
 }
 
 article footer.actions .vote form.button_to,
@@ -1164,69 +1254,76 @@ div#contents ul.threads li.comment footer.actions .vote form {
 }
 
 article footer.actions .vote form.button_to div input,
-div#comments ul.threads li.comment footer.actions .vote form.button_to div input,
-div#contents ul.threads li.comment footer.actions .vote form.button_to div input{
-  margin:0px;
-  background:inherit;
-  border:0px;
-  padding:0px;
-  font:inherit;
-  font-weight:bold;
+div#comments
+  ul.threads
+  li.comment
+  footer.actions
+  .vote
+  form.button_to
+  div
+  input,
+div#contents
+  ul.threads
+  li.comment
+  footer.actions
+  .vote
+  form.button_to
+  div
+  input {
+  margin: 0px;
+  background: inherit;
+  border: 0px;
+  padding: 0px;
+  font: inherit;
+  font-weight: bold;
 }
 
 div#comments {
-margin-top:1em;
-padding: 0 4.5em 1em 1.5em;
+  margin-top: 1em;
+  padding: 0 4.5em 1em 1.5em;
 }
 
 /* Lien "envoyer un commentaire" et "proposer une entrée" */
 
 div#comments > p:first-child,
 #container nav.toolbox div.new_content,
-#container > p
-{
-  width:15em;
-  margin:1.5em auto 1.5em auto;
-  background:-moz-linear-gradient(#8090A0, #607080) #607080;
-  border:2px solid black;
-  -moz-border-radius:10px;
+#container > p {
+  width: 15em;
+  margin: 1.5em auto 1.5em auto;
+  background: -moz-linear-gradient(#8090a0, #607080) #607080;
+  border: 2px solid black;
+  -moz-border-radius: 10px;
   padding: 1px 2px 1px 2px;
-  font-weight:bold;
-  text-align:center;
+  font-weight: bold;
+  text-align: center;
 }
 
 div#comments p:first-child a,
 #container nav.toolbox div.new_content a,
-#container > p a
-{
-  color:white;
-  text-decoration:none;
+#container > p a {
+  color: white;
+  text-decoration: none;
 }
 
 /* Déclage de "proposer une entrée" dans suivi */
-#container > p
-{
-  position:relative;
-  left:110px;
+#container > p {
+  position: relative;
+  left: 110px;
 }
-
 
 div#comments ul.threads,
 div#contents ul.threads {
 }
 
-
-
 div#comments ul.threads li.comment,
 div#contents ul.threads li.comment,
 li#comment_new {
-  
-  position:relative;
+  position: relative;
   margin: 2em 0 0.5em 0;
-  background: -moz-linear-gradient(#E8ECF0, #D8DCE0);
+  background: -moz-linear-gradient(#e8ecf0, #d8dce0);
   border-left: 1px solid #405060;
   /*-moz-linear-gradient(#A0B0C0, #A8B8C8) #A0A8B0;*/
-  list-style:none;
+  list-style: none;
 }
 
 div#comments ul.threads > li.comment,
@@ -1237,39 +1334,38 @@ li#comment_new {
      du pied du commentaire qui décale le premier message
      sous les boites du panneau de gauche ("Editions par ex.")
   */
-  display:inline-block;
-  width:100%;
-  
+  display: inline-block;
+  width: 100%;
+
   border-right: 1px solid #405060;
   border-bottom: 1px solid #405060;
 }
 
-
 div#comments ul.threads > li.comment ul > li,
 div#contents ul.threads > li.comment ul > li {
-   border-bottom: 1px solid #708090;
-  margin-bottom:0;
+  border-bottom: 1px solid #708090;
+  margin-bottom: 0;
 }
 
 div#comments ul.threads > li.comment ul > li:last-child,
 div#contents ul.threads > li.comment ul > li:last-child {
-   border-bottom: none;
-  margin-bottom:0;
+  border-bottom: none;
+  margin-bottom: 0;
 }
 
 div#comments ul.threads li.comment > h2,
 div#contents ul.threads li.comment > h2,
 li#comment_new > h2 {
   margin: 0;
-  position:relative;
-  left:-2%;
-  top:-0.5em;
-  width:102%;
-  background:-moz-linear-gradient(#8090A0, #607080);
-  background-color:#607080;
-  border:2px solid black;
-  -moz-border-radius:10px;
-  padding:0 0 0 3px;
+  position: relative;
+  left: -2%;
+  top: -0.5em;
+  width: 102%;
+  background: -moz-linear-gradient(#8090a0, #607080);
+  background-color: #607080;
+  border: 2px solid black;
+  -moz-border-radius: 10px;
+  padding: 0 0 0 3px;
   font-family: Megalopolis, helvetica, arial, serif;
   font-size: 1em;
 }
@@ -1289,21 +1385,20 @@ li#comment_new h2 a:hover,
 li#comment_new h2 a:visited,
 li#comment_new h2 a:active {
   color: white;
-  text-decoration:none;
+  text-decoration: none;
 }
 
 div#comments ul.threads li.comment div.content,
 div#contents ul.threads li.comment div.content,
-li#comment_new li.comment div.content{
-  margin-left:1em;
-  margin-right:1em;
+li#comment_new li.comment div.content {
+  margin-left: 1em;
+  margin-right: 1em;
   padding: 2px 1em 1em 1em;
   overflow: hidden;
 }
 
-li#comment_new
-{
-  margin-left:1em;
+li#comment_new {
+  margin-left: 1em;
 }
 
 /* line 34, ../../app/stylesheets/partials/_contents.scss */
@@ -1324,17 +1419,19 @@ li#comment_new
 }
 
 /* line 44, ../../app/stylesheets/partials/_contents.scss */
-#polls .result, .poll .result {
+#polls .result,
+.poll .result {
   display: block;
   margin: 0 0 0 10px;
-  background: -moz-linear-gradient(#A0B0C0, #A8B8C8) #A0A8B0;
+  background: -moz-linear-gradient(#a0b0c0, #a8b8c8) #a0a8b0;
   border: 1px solid #333333;
-  -moz-border-radius-topright:10px;
-  -moz-border-radius-bottomright:10px;
-  padding-left:2px;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomright: 10px;
+  padding-left: 2px;
 }
 /* line 49, ../../app/stylesheets/partials/_contents.scss */
-#polls ul, .poll ul {
+#polls ul,
+.poll ul {
   list-style: none;
   margin-left: 10px;
 }
@@ -1344,12 +1441,15 @@ article ul.archived ul {
   margin-left: 0px;
 }
 
-article ul.archived >li {
+article ul.archived > li {
   margin-bottom: 10px;
 }
 
 /* line 56, ../../app/stylesheets/partials/_contents.scss */
-#tracker .fix a, #tracker .invalid a, .tracker .fix a, .tracker .invalid a {
+#tracker .fix a,
+#tracker .invalid a,
+.tracker .fix a,
+.tracker .invalid a {
   text-decoration: line-through;
 }
 
@@ -1372,7 +1472,10 @@ article ul.archived >li {
 }
 
 /* line 15, ../../app/stylesheets/partials/_toolbar.scss */
-.fold > .meta, .fold > .image, .fold > .content, .fold > .actions {
+.fold > .meta,
+.fold > .image,
+.fold > .content,
+.fold > .actions {
   display: none;
 }
 
@@ -1426,7 +1529,7 @@ article ul.archived >li {
   top: 20px;
   right: 20px;
   width: 250px;
-  height:1em;
+  height: 1em;
   z-index: 9999;
 }
 
@@ -1470,15 +1573,13 @@ article ul.archived >li {
   text-decoration: none;
 }
 
-.markItUpHeader
-{
-  background:black;
+.markItUpHeader {
+  background: black;
 }
 
-.markItUpHeader > ul > li.markItUpButton
-{
-  background : -moz-linear-gradient(#8090A0, #607080) repeat scroll 0 0 #607080;
-  border:1px solid #405070;
+.markItUpHeader > ul > li.markItUpButton {
+  background: -moz-linear-gradient(#8090a0, #607080) repeat scroll 0 0 #607080;
+  border: 1px solid #405070;
 }
 
 /* line 10, ../../app/stylesheets/partials/_markitup.scss */
@@ -1495,7 +1596,7 @@ article ul.archived >li {
   padding: 5px 5px 5px 35px;
   border: 1px solid #405070;
   /* width: 643px; */
-  width:90%;
+  width: 90%;
   margin: 0 auto 0 auto;
   height: 320px;
   background-image: url(/images/markitup/bg-editor-markdown.png);
@@ -1691,8 +1792,8 @@ code.c {
 
 /* line 5, ../../app/stylesheets/pygments/colorful.scss */
 .err {
-  color: #F00000;
-  background-color: #F0A0A0;
+  color: #f00000;
+  background-color: #f0a0a0;
 }
 
 /* line 8, ../../app/stylesheets/pygments/colorful.scss */
@@ -1729,7 +1830,7 @@ code.c {
 
 /* line 22, ../../app/stylesheets/pygments/colorful.scss */
 .gd {
-  color: #A00000;
+  color: #a00000;
 }
 
 /* line 24, ../../app/stylesheets/pygments/colorful.scss */
@@ -1739,7 +1840,7 @@ code.c {
 
 /* line 26, ../../app/stylesheets/pygments/colorful.scss */
 .gr {
-  color: #FF0000;
+  color: #ff0000;
 }
 
 /* line 28, ../../app/stylesheets/pygments/colorful.scss */
@@ -1750,7 +1851,7 @@ code.c {
 
 /* line 31, ../../app/stylesheets/pygments/colorful.scss */
 .gi {
-  color: #00A000;
+  color: #00a000;
 }
 
 /* line 33, ../../app/stylesheets/pygments/colorful.scss */
@@ -1777,11 +1878,13 @@ code.c {
 
 /* line 43, ../../app/stylesheets/pygments/colorful.scss */
 .gt {
-  color: #0040D0;
+  color: #0040d0;
 }
 
 /* line 45, ../../app/stylesheets/pygments/colorful.scss */
-.kc, .kd, .kn {
+.kc,
+.kd,
+.kn {
   color: #008000;
   font-weight: bold;
 }
@@ -1806,7 +1909,7 @@ code.c {
 
 /* line 57, ../../app/stylesheets/pygments/colorful.scss */
 .m {
-  color: #6000E0;
+  color: #6000e0;
   font-weight: bold;
 }
 
@@ -1817,7 +1920,7 @@ code.c {
 
 /* line 62, ../../app/stylesheets/pygments/colorful.scss */
 .na {
-  color: #0000C0;
+  color: #0000c0;
 }
 
 /* line 64, ../../app/stylesheets/pygments/colorful.scss */
@@ -1827,7 +1930,7 @@ code.c {
 
 /* line 66, ../../app/stylesheets/pygments/colorful.scss */
 .nc {
-  color: #B00060;
+  color: #b00060;
   font-weight: bold;
 }
 
@@ -1851,13 +1954,13 @@ code.c {
 
 /* line 78, ../../app/stylesheets/pygments/colorful.scss */
 .ne {
-  color: #F00000;
+  color: #f00000;
   font-weight: bold;
 }
 
 /* line 81, ../../app/stylesheets/pygments/colorful.scss */
 .nf {
-  color: #0060B0;
+  color: #0060b0;
   font-weight: bold;
 }
 
@@ -1896,7 +1999,7 @@ code.c {
 
 /* line 99, ../../app/stylesheets/pygments/colorful.scss */
 .mf {
-  color: #6000E0;
+  color: #6000e0;
   font-weight: bold;
 }
 
@@ -1908,13 +2011,13 @@ code.c {
 
 /* line 105, ../../app/stylesheets/pygments/colorful.scss */
 .mi {
-  color: #0000D0;
+  color: #0000d0;
   font-weight: bold;
 }
 
 /* line 108, ../../app/stylesheets/pygments/colorful.scss */
 .mo {
-  color: #4000E0;
+  color: #4000e0;
   font-weight: bold;
 }
 
@@ -1925,12 +2028,12 @@ code.c {
 
 /* line 113, ../../app/stylesheets/pygments/colorful.scss */
 .sc {
-  color: #0040D0;
+  color: #0040d0;
 }
 
 /* line 115, ../../app/stylesheets/pygments/colorful.scss */
 .sd {
-  color: #D04020;
+  color: #d04020;
 }
 
 /* line 117, ../../app/stylesheets/pygments/colorful.scss */
@@ -1957,7 +2060,7 @@ code.c {
 
 /* line 127, ../../app/stylesheets/pygments/colorful.scss */
 .sx {
-  color: #D02000;
+  color: #d02000;
   background-color: #fff0f0;
 }
 
@@ -1974,7 +2077,7 @@ code.c {
 
 /* line 135, ../../app/stylesheets/pygments/colorful.scss */
 .ss {
-  color: #A06000;
+  color: #a06000;
 }
 
 /* line 137, ../../app/stylesheets/pygments/colorful.scss */
@@ -1995,80 +2098,77 @@ code.c {
 
 /* line 144, ../../app/stylesheets/pygments/colorful.scss */
 .vi {
-  color: #3030B0;
+  color: #3030b0;
 }
 
 /* line 146, ../../app/stylesheets/pygments/colorful.scss */
 .il {
-  color: #0000D0;
+  color: #0000d0;
   font-weight: bold;
 }
 
 table#my_comments,
 table#my_posts,
 table#tracker {
-  border-collapse:collapse;
-  border:2px solid black;
+  border-collapse: collapse;
+  border: 2px solid black;
 }
 
 table#my_comments tbody th,
 table#my_posts tbody th,
-table#tracker tbody th{
-  background:-moz-linear-gradient(#8090A0, #607080) #607080;
-  border:1px solid #405070;
-  border-bottom:2px solid black;
-  font-weight:bold;
-  color:white;
+table#tracker tbody th {
+  background: -moz-linear-gradient(#8090a0, #607080) #607080;
+  border: 1px solid #405070;
+  border-bottom: 2px solid black;
+  font-weight: bold;
+  color: white;
 }
 
 table#my_comments tbody td,
 table#my_posts tbody td,
-table#tracker tbody td{
-  border:1px solid #405070;
-  border-bottom-color:#607080;
-  background:white;
+table#tracker tbody td {
+  border: 1px solid #405070;
+  border-bottom-color: #607080;
+  background: white;
 }
-  
+
 table#my_comments a,
 table#my_posts a,
-table#tracker a
- {
-  color:black;
-  text-decoration:none;
+table#tracker a {
+  color: black;
+  text-decoration: none;
 }
 
 table#my_comments a:hover,
 table#my_posts a:hover,
 table#tracker a:hover {
-  text-decoration:underline;
+  text-decoration: underline;
 }
 
 table#wiki_help {
-  background:-moz-linear-gradient(#8090A0, #607080) repeat scroll 0 0 #607080;
+  background: -moz-linear-gradient(#8090a0, #607080) repeat scroll 0 0 #607080;
 }
 
-table#wiki_help tbody tr td:first-child
-{
-  background:none;
-  border:1px 0 0 1px solid black;
-  color:white;
+table#wiki_help tbody tr td:first-child {
+  background: none;
+  border: 1px 0 0 1px solid black;
+  color: white;
 }
 
-table#wiki_help tbody tr td
-{
-  background:white;
-  border-width: 4px 0  1px 0;
-  border-style:solid;
-  border-color:#C0C4C8;
+table#wiki_help tbody tr td {
+  background: white;
+  border-width: 4px 0 1px 0;
+  border-style: solid;
+  border-color: #c0c4c8;
 }
 
 .misspelled {
-	color: inherit;
-	background-color: inherit;
-	border-bottom: 1px dashed red;
+  color: inherit;
+  background-color: inherit;
+  border-bottom: 1px dashed red;
 }
 .pot_de_miel {
-	display: none;
+  display: none;
 }
 
-@import '../common/statistics';
+@import "../common/statistics";

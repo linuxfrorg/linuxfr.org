@@ -15,5 +15,11 @@
   "dependencies": {
     "feather-icons": "4.7.3",
     "normalize.css": "8.0.0"
+  },
+  "devDependencies": {
+    "prettier": "1.13.7"
+  },
+  "scripts": {
+    "pretty": "prettier --write app/assets/**/*.scss"
   }
 }

@@ -5,13 +5,16 @@
   .markItUp a:link,
   .markItUp a:visited {
     color: black;
-    text-decoration: none; } }
+    text-decoration: none;
+  }
+}
 
 .markItUpContainer {
   border: 1px solid #3c769d;
   background: white url(/images/markitup/bg-container.png) repeat-x top left;
   padding: 5px 5px 2px 5px;
-  font: 11px Verdana, Arial, Helvetica, sans-serif; }
+  font: 11px Verdana, Arial, Helvetica, sans-serif;
+}
 
 .markItUpEditor {
   padding: 5px 5px 5px 35px;
@@ -24,14 +27,17 @@
   display: block;
   line-height: 18px;
   overflow: auto;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .markItUpFooter {
   width: 100%;
-  cursor: n-resize; }
+  cursor: n-resize;
+}
 
 .markItUpResizeHandle {
-  display: none; }
+  display: none;
+}
 
 .markItUpHeader {
   height: 22px;
@@ -41,9 +47,12 @@
       float: left;
       position: relative;
       ul {
-        display: none; }
+        display: none;
+      }
       &:hover > ul {
-        display: block; } }
+        display: block;
+      }
+    }
     a {
       display: block;
       width: 16px;
@@ -51,18 +60,22 @@
       text-indent: -10000px;
       background-repeat: no-repeat;
       padding: 3px;
-      margin: 0; }
+      margin: 0;
+    }
     .markItUpDropMenu {
       background: transparent url(/images/markitup/menu.png) no-repeat 115% 50%;
       margin-right: 5px;
       li {
-        margin-right: 0; } }
+        margin-right: 0;
+      }
+    }
     .markItUpSeparator {
       margin: 0 10px;
       width: 1px;
       height: 16px;
       overflow: hidden;
-      background-color: #cccccc; }
+      background-color: #cccccc;
+    }
     ul {
       display: none;
       position: absolute;
@@ -74,18 +87,23 @@
       .markItUpSeparator {
         width: auto;
         height: 1px;
-        margin: 0; }
+        margin: 0;
+      }
       li {
         float: none;
-        border-bottom: 1px solid #3c769d; }
+        border-bottom: 1px solid #3c769d;
+      }
       .markItUpDropMenu {
-        background: #f5f5f5 url(/images/markitup/submenu.png) no-repeat 100% 50%; }
+        background: #f5f5f5 url(/images/markitup/submenu.png) no-repeat 100% 50%;
+      }
       ul {
         position: absolute;
         top: -1px;
         left: 150px;
         li {
-          float: none; } }
+          float: none;
+        }
+      }
       a {
         display: block;
         padding-left: 0;
@@ -95,34 +113,54 @@
         background-position: 2px 50%;
         &:hover {
           color: white;
-          background-color: #3c769d; } } } } }
+          background-color: #3c769d;
+        }
+      }
+    }
+  }
+}
 
 .markItUp {
   .h1 a {
-    background-image: url(/images/markitup/h1.png); }
+    background-image: url(/images/markitup/h1.png);
+  }
   .h2 a {
-    background-image: url(/images/markitup/h2.png); }
+    background-image: url(/images/markitup/h2.png);
+  }
   .h3 a {
-    background-image: url(/images/markitup/h3.png); }
+    background-image: url(/images/markitup/h3.png);
+  }
   .h4 a {
-    background-image: url(/images/markitup/h4.png); }
+    background-image: url(/images/markitup/h4.png);
+  }
   .bold a {
-    background-image: url(/images/markitup/bold.png); }
+    background-image: url(/images/markitup/bold.png);
+  }
   .italic a {
-    background-image: url(/images/markitup/italic.png); }
+    background-image: url(/images/markitup/italic.png);
+  }
   .stroke a {
-    background-image: url(/images/markitup/stroke.png); }
+    background-image: url(/images/markitup/stroke.png);
+  }
   .teletype a {
-    background-image: url(/images/markitup/teletype.png); }
+    background-image: url(/images/markitup/teletype.png);
+  }
   .list-bullet a {
-    background-image: url(/images/markitup/list-bullet.png); }
+    background-image: url(/images/markitup/list-bullet.png);
+  }
   .list-numeric a {
-    background-image: url(/images/markitup/list-numeric.png); }
+    background-image: url(/images/markitup/list-numeric.png);
+  }
   .image a {
-    background-image: url(/images/markitup/picture.png); }
+    background-image: url(/images/markitup/picture.png);
+  }
   .link a {
-    background-image: url(/images/markitup/link.png); }
+    background-image: url(/images/markitup/link.png);
+  }
   .quotes a {
-    background-image: url(/images/markitup/quotes.png); }
+    background-image: url(/images/markitup/quotes.png);
+  }
   .code a {
-    background-image: url(/images/markitup/page_white_code.png); } }
+    background-image: url(/images/markitup/page_white_code.png);
+  }
+}

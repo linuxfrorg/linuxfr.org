@@ -18,303 +18,367 @@
  */
 
 /* RAZ des styles */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend, input,
-table, caption, tbody, tfoot, thead, tr, th, td {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	font-size: 100%;
-	color: inherit;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+input,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  color: inherit;
 }
 
 /* Corps de la page */
 body {
-	background: #000000;
-	color: #ECBE10;
-	font-family: sans-serif;
-	font-size: 0.9em;
-	margin: 0 auto;
-	min-width: 55em;
-	max-width: 90em;
+  background: #000000;
+  color: #ecbe10;
+  font-family: sans-serif;
+  font-size: 0.9em;
+  margin: 0 auto;
+  min-width: 55em;
+  max-width: 90em;
 }
 
 /* Styles globaux pour les liens */
 a:link,
 a:visited {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 a:hover,
 a:active {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 /* Bandeau de navigation en haut */
 nav#site {
-	display: block;
-	margin: 1.5em 0 3.5em;
-	color: #000000;
-	font-weight:bold;
+  display: block;
+  margin: 1.5em 0 3.5em;
+  color: #000000;
+  font-weight: bold;
 }
-	nav#site .go_to_content {
-		display: none;
-	}
-	nav#site ul {
-		background: #ECBE10;
-		background: -moz-linear-gradient(top, #FFD700, #DAA520);
-		background: -webkit-gradient(linear, left top, left bottom, from(#FFD700), to(#DAA520));
-		display: block;
-		list-style: none;
-		padding: 1.2em;
-		width: 68%;
-		text-align: center;
-		-moz-border-radius: 1em 1em 0 1em;
-		-webkit-border-top-left-radius: 1em;
-		-webkit-border-top-right-radius: 1em;
-		-webkit-border-bottom-left-radius: 1em;
-		border-top-left-radius: 1em;
-		border-top-right-radius: 1em;
-		border-bottom-left-radius: 1em;
-	}
-	nav#site ul li {
-		display: inline;
-	}
-	nav#site ul li:after {
-		content: "$";
-		color: #FFD700;
-		padding: 0 0.75em;
-	}
-	nav#site ul li:last-child:after, nav#site ul li.last:after {
-		content: "";
-		padding: 0;
-	}
-	nav#site a:link,
-	nav#site a:visited {
-		text-decoration: none;
-	}
-	nav#site a:hover {
-		text-decoration: overline;
-	}
-	nav#site form {
-		margin-left: 75%;
-		margin-top: 1.25em;
-		width: 25%;
-		display: block;
-		text-align: center;
-		padding: 1em 0;
-		background: #C0C0C0;
-		background: -moz-linear-gradient(top, #D0D0D0, #B0B0B0);
-		background: -webkit-gradient(linear, left top, left bottom, from(#D0D0D0), to(#B0B0B0));
-		-moz-border-radius: 1em 1em 0 1em;
-		-webkit-border-top-left-radius: 1em;
-		-webkit-border-top-right-radius: 1em;
-		-webkit-border-bottom-left-radius: 1em;
-		border-top-left-radius: 1em;
-		border-top-right-radius: 1em;
-		border-bottom-left-radius: 1em;
-	}
-	label#label_query {
-		display: none;
-	}
-	nav#site input[type=submit] {
-		border: thin solid transparent;
-		background: transparent;
-		font-weight:bold;
-	}
-	nav#site input[type=submit]:hover {
-		color: #ECBE10;
-		cursor: pointer;
-	}
-	nav#site input#query {
-		background-color: #000000;
-		color: #C0C0C0;
-		padding: 0.25em;
-		width: 50%;
-		max-width: 13em;
-		margin-right: 0.2em;
-	}
-	nav#site input#query:focus {
-		border-color: #ECBE10;
-		color: #ECBE10;
-	}
+nav#site .go_to_content {
+  display: none;
+}
+nav#site ul {
+  background: #ecbe10;
+  background: -moz-linear-gradient(top, #ffd700, #daa520);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#ffd700),
+    to(#daa520)
+  );
+  display: block;
+  list-style: none;
+  padding: 1.2em;
+  width: 68%;
+  text-align: center;
+  -moz-border-radius: 1em 1em 0 1em;
+  -webkit-border-top-left-radius: 1em;
+  -webkit-border-top-right-radius: 1em;
+  -webkit-border-bottom-left-radius: 1em;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  border-bottom-left-radius: 1em;
+}
+nav#site ul li {
+  display: inline;
+}
+nav#site ul li:after {
+  content: "$";
+  color: #ffd700;
+  padding: 0 0.75em;
+}
+nav#site ul li:last-child:after,
+nav#site ul li.last:after {
+  content: "";
+  padding: 0;
+}
+nav#site a:link,
+nav#site a:visited {
+  text-decoration: none;
+}
+nav#site a:hover {
+  text-decoration: overline;
+}
+nav#site form {
+  margin-left: 75%;
+  margin-top: 1.25em;
+  width: 25%;
+  display: block;
+  text-align: center;
+  padding: 1em 0;
+  background: #c0c0c0;
+  background: -moz-linear-gradient(top, #d0d0d0, #b0b0b0);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#d0d0d0),
+    to(#b0b0b0)
+  );
+  -moz-border-radius: 1em 1em 0 1em;
+  -webkit-border-top-left-radius: 1em;
+  -webkit-border-top-right-radius: 1em;
+  -webkit-border-bottom-left-radius: 1em;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  border-bottom-left-radius: 1em;
+}
+label#label_query {
+  display: none;
+}
+nav#site input[type="submit"] {
+  border: thin solid transparent;
+  background: transparent;
+  font-weight: bold;
+}
+nav#site input[type="submit"]:hover {
+  color: #ecbe10;
+  cursor: pointer;
+}
+nav#site input#query {
+  background-color: #000000;
+  color: #c0c0c0;
+  padding: 0.25em;
+  width: 50%;
+  max-width: 13em;
+  margin-right: 0.2em;
+}
+nav#site input#query:focus {
+  border-color: #ecbe10;
+  color: #ecbe10;
+}
 
 /* la barre latéral */
 aside#sidebar {
-	display: inline;
-	float: left;
-	overflow: hidden;
-	width: 20%;
-	margin: 0 1%;
-	position: relative;
-	top: -6.5em;
+  display: inline;
+  float: left;
+  overflow: hidden;
+  width: 20%;
+  margin: 0 1%;
+  position: relative;
+  top: -6.5em;
 }
 
 /* les boites de la barre latéral */
 aside#sidebar .box {
-	margin: 1.5em 0;
-	padding: 0 0.25em 2em;
-	border: medium solid #C0C0C0;
-	background: #000000;
-	font-size: 0.8em;
-	-moz-border-radius-bottomright: 3em;
-	-webkit-border-bottom-right-radius: 3em;
-	border-bottom-right-radius: 3em;
+  margin: 1.5em 0;
+  padding: 0 0.25em 2em;
+  border: medium solid #c0c0c0;
+  background: #000000;
+  font-size: 0.8em;
+  -moz-border-radius-bottomright: 3em;
+  -webkit-border-bottom-right-radius: 3em;
+  border-bottom-right-radius: 3em;
 }
 /* titre de la boite latéral */
 aside#sidebar .box h1 {
-	padding: 0.5em 1em;
-	margin-bottom: 1em;
-	background: #000000;
-	display: block;
-	font-size: 1.25em;
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+  background: #000000;
+  display: block;
+  font-size: 1.25em;
 }
 /* texte dans la boite latéral */
 aside#sidebar .box > * {
-	padding: 0.1em 1%;
+  padding: 0.1em 1%;
 }
-aside#sidebar .box input[type=text],
-aside#sidebar .box input[type=password] {
-	border: medium solid #C0C0C0;
-	margin-bottom: 1em;
-	padding: 0.2em 2%;
-	background-color: #000000;
-	display: block;
-	width: 80%;
-	color: #C0C0C0;
+aside#sidebar .box input[type="text"],
+aside#sidebar .box input[type="password"] {
+  border: medium solid #c0c0c0;
+  margin-bottom: 1em;
+  padding: 0.2em 2%;
+  background-color: #000000;
+  display: block;
+  width: 80%;
+  color: #c0c0c0;
 }
-aside#sidebar .box input[type=text]:focus,
-aside#sidebar .box input[type=password]:focus {
-	color: #ECBE10;
-	border-color: #ECBE10;
+aside#sidebar .box input[type="text"]:focus,
+aside#sidebar .box input[type="password"]:focus {
+  color: #ecbe10;
+  border-color: #ecbe10;
 }
-aside#sidebar .box input[type=submit] {
-	border: medium solid #C0C0C0;
-	margin: 1em 0;
-	padding: 0.2em 2%;
-	background-color: #000000;
-	color: #C0C0C0;
+aside#sidebar .box input[type="submit"] {
+  border: medium solid #c0c0c0;
+  margin: 1em 0;
+  padding: 0.2em 2%;
+  background-color: #000000;
+  color: #c0c0c0;
 }
-aside#sidebar .box input[type=submit]:focus {
-	border-color: #ECBE10;
+aside#sidebar .box input[type="submit"]:focus {
+  border-color: #ecbe10;
 }
-aside#sidebar .box input[type=submit]:hover {
-	color: #ECBE10;
-	cursor: pointer;
+aside#sidebar .box input[type="submit"]:hover {
+  color: #ecbe10;
+  cursor: pointer;
 }
-aside#sidebar .box input[type=submit]:active {
-	border-color: #ECBE10;
-	color: #ECBE10;
-	cursor: pointer;
+aside#sidebar .box input[type="submit"]:active {
+  border-color: #ecbe10;
+  color: #ecbe10;
+  cursor: pointer;
 }
 aside#sidebar .box ul {
-	list-style: none;
+  list-style: none;
 }
 
 /* liste des forums */
 aside#sidebar div.forum {
-	margin: 0 1%;
+  margin: 0 1%;
 }
 aside#sidebar div.forum h2 {
-	font-weight: normal;
+  font-weight: normal;
 }
 
 /* le logo */
 header#branding > h1 {
-	margin-bottom: 3em;
-	height: 12.9em;
-	background-image: url(/images/contrib/black_bling/logo.png) !important;
-	background-position:center center;
-	background-repeat:no-repeat;
-	-moz-background-size: contain;
-	-webkit-background-size: contain;
-	-o-background-size: contain;
-	background-size: contain;
+  margin-bottom: 3em;
+  height: 12.9em;
+  background-image: url(/images/contrib/black_bling/logo.png) !important;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -moz-background-size: contain;
+  -webkit-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
 }
 header#branding > h1 > a {
-	display: block;
-	width: 100%;
-	height: 100%;
-	color: transparent;
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: transparent;
 }
 /* le contenu du site */
 section#container {
-	margin: 0 0 0 24%;
-	text-align: justify;
-	display: block;
-	width: 75%;
+  margin: 0 0 0 24%;
+  text-align: justify;
+  display: block;
+  width: 75%;
 }
 
 section#container > section,
 section#container > aside {
-	display: block;
+  display: block;
 }
 
 /* L'article phare */
 section#phare > article {
-	border: thick solid #C0C0C0;
-	margin: 4em 0;
+  border: thick solid #c0c0c0;
+  margin: 4em 0;
 }
 
 /* message important en haut de la page */
 section#container div.notice,
 section#container > aside.banner {
-	margin: 1em auto;
-	border: medium solid #ECBE10;
-	padding: 0.5em 0;
-	font-weight: bold;
-	text-align: center;
-	-moz-border-radius: 1em 1em 0 1em;
-	-webkit-border-top-left-radius: 1em;
-	-webkit-border-top-right-radius: 1em;
-	-webkit-border-bottom-left-radius: 1em;
-	border-top-left-radius: 1em;
-	border-top-right-radius: 1em;
-	border-bottom-left-radius: 1em;
+  margin: 1em auto;
+  border: medium solid #ecbe10;
+  padding: 0.5em 0;
+  font-weight: bold;
+  text-align: center;
+  -moz-border-radius: 1em 1em 0 1em;
+  -webkit-border-top-left-radius: 1em;
+  -webkit-border-top-right-radius: 1em;
+  -webkit-border-bottom-left-radius: 1em;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  border-bottom-left-radius: 1em;
 }
 
 /* Titre de la page */
 section#container > h1,
 section#container > div > h1 {
-	color: #ECBE10;
-	font-size: 2.5em;
-	text-align: center;
-	margin: 1em auto;
+  color: #ecbe10;
+  font-size: 2.5em;
+  text-align: center;
+  margin: 1em auto;
 }
 section#container > h1:first-letter,
 section#container > div > h1:first-letter {
-	font-size: 1.5em;
+  font-size: 1.5em;
 }
 
 /* sous-titre */
 section#container > h2,
 section#container > div > h2,
 section#container > div > div > h2 {
-	color: #ECBE10;
-	font-size: 1.25em;
-	margin: 0.5em auto;
+  color: #ecbe10;
+  font-size: 1.25em;
+  margin: 0.5em auto;
 }
 /* tableau de bord directement dans la partie centrale */
 section#container table {
-	text-align: left;
-	border-collapse:collapse;
-	border: medium solid #C0C0C0;
-	margin:0.5em auto;
-	width:100%;
+  text-align: left;
+  border-collapse: collapse;
+  border: medium solid #c0c0c0;
+  margin: 0.5em auto;
+  width: 100%;
 }
 section#container table th {
-	border: medium solid #C0C0C0;
-	font-weight: bold;
-	padding: 0.2em;
+  border: medium solid #c0c0c0;
+  font-weight: bold;
+  padding: 0.2em;
 }
 section#container table td {
-	border: thin solid #C0C0C0;
-	padding: 0.2em;
+  border: thin solid #c0c0c0;
+  padding: 0.2em;
 }
 /* les formulaires */
 
@@ -326,20 +390,20 @@ section#redaction input,
 section#redaction button,
 section#redaction select,
 section#redaction textarea {
-	margin: 0.5em;
-	color: #C0C0C0;
-	border: medium solid #C0C0C0;
-	background: #000000;
-	padding: 0.1em 0;
+  margin: 0.5em;
+  color: #c0c0c0;
+  border: medium solid #c0c0c0;
+  background: #000000;
+  padding: 0.1em 0;
 }
 section#container textarea,
 section#redaction textarea {
-	width: 100%;
-	margin: 0.5em auto;
+  width: 100%;
+  margin: 0.5em auto;
 }
 section#container select,
 section#redaction select {
-	padding: 0;
+  padding: 0;
 }
 section#container input:focus,
 section#container select:focus,
@@ -347,448 +411,455 @@ section#container textarea:focus,
 section#redaction input:focus,
 section#redaction select:focus,
 section#redaction textarea:focus {
-	border-color: #ECBE10;
-	color: #ECBE10;
+  border-color: #ecbe10;
+  color: #ecbe10;
 }
 section#container button,
-section#container input[type=submit],
+section#container input[type="submit"],
 section#redaction button,
-section#redaction input[type=submit] {
-	border-color: #C0C0C0;
-	color: #C0C0C0;
-	padding: 0 0.25em;
+section#redaction input[type="submit"] {
+  border-color: #c0c0c0;
+  color: #c0c0c0;
+  padding: 0 0.25em;
 }
 section#container button:focus,
-section#container input[type=submit]:focus,
+section#container input[type="submit"]:focus,
 section#redaction button:focus,
-section#redaction input[type=submit]:focus {
-	border-color: #ECBE10;
+section#redaction input[type="submit"]:focus {
+  border-color: #ecbe10;
 }
 section#container button:hover,
-section#container input[type=submit]:hover,
+section#container input[type="submit"]:hover,
 section#redaction button:hover,
-section#redaction input[type=submit]:hover {
-	color: #ECBE10;
-	cursor: pointer;
+section#redaction input[type="submit"]:hover {
+  color: #ecbe10;
+  cursor: pointer;
 }
 section#container button:active,
-section#container input[type=submit]:active,
+section#container input[type="submit"]:active,
 section#redaction button:active,
-section#redaction input[type=submit]:active {
-	border-color: #ECBE10;
-	color: #ECBE10;
-	cursor: pointer;
+section#redaction input[type="submit"]:active {
+  border-color: #ecbe10;
+  color: #ecbe10;
+  cursor: pointer;
 }
 
 /* Nouvelle dépêche : les liens */
 div#form_links {
-	margin: 2em 0;
-	border: medium solid #C0C0C0;
-	-moz-border-radius-bottomright: 3em;
-	-webkit-border-bottom-right-radius: 3em;
-	border-bottom-right-radius: 3em;
+  margin: 2em 0;
+  border: medium solid #c0c0c0;
+  -moz-border-radius-bottomright: 3em;
+  -webkit-border-bottom-right-radius: 3em;
+  border-bottom-right-radius: 3em;
 }
 div#form_links fieldset {
-	padding: 0.5em 0;
+  padding: 0.5em 0;
 }
 div#form_links label {
-	display:inline-block;
-	text-align: center;
-	margin: 0 0 0 1%;
+  display: inline-block;
+  text-align: center;
+  margin: 0 0 0 1%;
 }
 div#form_links label#label-link-name,
 div#form_links label#label-link-url {
-	width: 33%;
+  width: 33%;
 }
 div#form_links label#label-link-lang {
-	width:11%;
+  width: 11%;
 }
 div#form_links label#label-link-actions {
-	width:15%;
+  width: 15%;
 }
 div#form_links input {
-	width: 33%;
-	margin: 0 0 0 1%;
+  width: 33%;
+  margin: 0 0 0 1%;
 }
 div#form_links select {
-	margin: 0 0 0 1%;
-	width: 11%;
+  margin: 0 0 0 1%;
+  width: 11%;
 }
 div#form_links button {
-	margin: 0 0 0 1%;
-	width: 15%;
+  margin: 0 0 0 1%;
+  width: 15%;
 }
 /* mdp et mail utilisateur */
-section#container form.edit_account input[type=text],
-section#container form.edit_account input[type=url],
-section#container form.edit_account input[type=email],
-section#container form.edit_account input[type=password] {
-	width: 50%;
-	display: block;
-	margin-left: 5%;
+section#container form.edit_account input[type="text"],
+section#container form.edit_account input[type="url"],
+section#container form.edit_account input[type="email"],
+section#container form.edit_account input[type="password"] {
+  width: 50%;
+  display: block;
+  margin-left: 5%;
 }
 .misspelled {
-	color: inherit;
-	background-color: inherit;
-	border-bottom: 1px dashed red;
+  color: inherit;
+  background-color: inherit;
+  border-bottom: 1px dashed red;
 }
 .pot_de_miel {
-	display: none;
+  display: none;
 }
 .datePourCss {
-    display: none;
+  display: none;
 }
 
 /* Liens de navigation */
 section#container > nav.toolbox,
 div#contents > div.pagination,
 body#comments-show > section#container > p {
-	margin: 2em auto;
-	display: block;
-	font-size: 0.8em;
+  margin: 2em auto;
+  display: block;
+  font-size: 0.8em;
 }
 section#container > nav.toolbox ul {
-	display: inline;
-	list-style: none;
+  display: inline;
+  list-style: none;
 }
 section#container > nav.toolbox li {
-	display: inline;
+  display: inline;
 }
 
 /* l'article */
 article {
-	margin-bottom: 1em;
-	border: medium solid #C0C0C0;
-	background-color: #000000;
-	display: block;
-	-moz-border-radius-bottomright: 3em;
-	-webkit-border-bottom-right-radius: 3em;
-	border-bottom-right-radius: 3em;
+  margin-bottom: 1em;
+  border: medium solid #c0c0c0;
+  background-color: #000000;
+  display: block;
+  -moz-border-radius-bottomright: 3em;
+  -webkit-border-bottom-right-radius: 3em;
+  border-bottom-right-radius: 3em;
 }
 
 /* en-tête de l'article */
 article header {
-	padding: 0.5em 0.75em 1.25em;
-	display: block;
+  padding: 0.5em 0.75em 1.25em;
+  display: block;
 }
-	/* titre de l'article */
-	article header h1 {
-		font-size: 1.25em;
-		display: inline;
-	}
-	article header h1 a:link,
-	article header h1 a:visited {
-		text-decoration: none;
-	}
-	article header h1 a:hover,
-	article header h1 a:active {
-		text-decoration: underline;
-	}
-	/* Info complémentaires dans l'en-tête */
-	article header div.meta {
-		font-size: 0.7em;
-		color: #C0C0C0;
-	}
-	article header ul,
-	article header li {
-		display: inline;
-		list-style: none;
-	}
+/* titre de l'article */
+article header h1 {
+  font-size: 1.25em;
+  display: inline;
+}
+article header h1 a:link,
+article header h1 a:visited {
+  text-decoration: none;
+}
+article header h1 a:hover,
+article header h1 a:active {
+  text-decoration: underline;
+}
+/* Info complémentaires dans l'en-tête */
+article header div.meta {
+  font-size: 0.7em;
+  color: #c0c0c0;
+}
+article header ul,
+article header li {
+  display: inline;
+  list-style: none;
+}
 
 /*le score de l'article */
 article > div.figures > figure.score {
-	font-weight: bold;
-	background: #ECBE10;
-	background: -moz-linear-gradient(top, #FFD700, #DAA520);
-	background: -webkit-gradient(linear, left top, left bottom, from(#FFD700), to(#DAA520));
-	color: #000000;
-	padding: 1.2em 0 0;
-	margin: 1em 0.75em 0.5em;
-	-moz-border-radius: 0.4em 0.4em 0 0.4em;
-	-webkit-border-top-left-radius: 0.4em;
-	-webkit-border-top-right-radius: 0.4em;
-	-webkit-border-bottom-left-radius: 0.4em;
-	border-top-left-radius: 0.4em;
-	border-top-right-radius: 0.4em;
-	border-bottom-left-radius: 0.4em;
-	float: left;
-	display: block;
-	width: 3.5em;
-	height: 2.3em;
-	text-align: center;
+  font-weight: bold;
+  background: #ecbe10;
+  background: -moz-linear-gradient(top, #ffd700, #daa520);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#ffd700),
+    to(#daa520)
+  );
+  color: #000000;
+  padding: 1.2em 0 0;
+  margin: 1em 0.75em 0.5em;
+  -moz-border-radius: 0.4em 0.4em 0 0.4em;
+  -webkit-border-top-left-radius: 0.4em;
+  -webkit-border-top-right-radius: 0.4em;
+  -webkit-border-bottom-left-radius: 0.4em;
+  border-top-left-radius: 0.4em;
+  border-top-right-radius: 0.4em;
+  border-bottom-left-radius: 0.4em;
+  float: left;
+  display: block;
+  width: 3.5em;
+  height: 2.3em;
+  text-align: center;
 }
 /*la vignette de l'article */
 article > div.figures > figure.image {
-	float: left;
-	margin: 1em 0.75em 0.5em;
-	width: auto !important;
-	height: 3.5em !important;
+  float: left;
+  margin: 1em 0.75em 0.5em;
+  width: auto !important;
+  height: 3.5em !important;
 }
 /* On force la taille de l'image : ce serait mieux avec du svg */
 article > div.figures > figure.image img {
-	width: auto !important;
-	height: auto !important;
-	max-height: 3.5em !important;
+  width: auto !important;
+  height: auto !important;
+  max-height: 3.5em !important;
 }
 
 /* Styles pour le contenu de l'article et des commentaires */
 article div.content,
 article div.body {
-	padding: 0.5em 0.75em;
-	min-height: 4.5em;
+  padding: 0.5em 0.75em;
+  min-height: 4.5em;
 }
 article div h1,
 article > h1 {
-	padding: 0.5em 0.75em;
-	font-size: 1.5em;
+  padding: 0.5em 0.75em;
+  font-size: 1.5em;
 }
 article div h2,
 div.content h2,
 table#wiki_help h2 {
-	padding: 0.4em 0.75em 0;
-	font-size: 1.4em;
+  padding: 0.4em 0.75em 0;
+  font-size: 1.4em;
 }
 article div h3,
 div.content h3,
 table#wiki_help h3 {
-	padding: 0.3em 0.75em 0;
-	font-size: 1.2em;
+  padding: 0.3em 0.75em 0;
+  font-size: 1.2em;
 }
 article div h4,
 div.content h4,
 table#wiki_help h4 {
-	padding: 0.2em 0.75em 0;
-	font-size: 1.1em;
+  padding: 0.2em 0.75em 0;
+  font-size: 1.1em;
 }
 article div h5,
 div.content h5 {
-	padding: 0.1em 0.75em 0;
-	font-size: 1em;
-	font-weight: normal;
+  padding: 0.1em 0.75em 0;
+  font-size: 1em;
+  font-weight: normal;
 }
 article div ul,
 div.content ul {
-	list-style: disc inside;
-	padding: 0.5em 0.75em;
+  list-style: disc inside;
+  padding: 0.5em 0.75em;
 }
 article div ol,
 div.content ol {
-	list-style: decimal inside;
-	padding: 0.5em 0.75em;
+  list-style: decimal inside;
+  padding: 0.5em 0.75em;
 }
 article div blockquote,
 div.content blockquote {
-	font-style: italic;
-	margin: 0.5em 0 0.5em 4em;
-	color: #C0C0C0;
+  font-style: italic;
+  margin: 0.5em 0 0.5em 4em;
+  color: #c0c0c0;
 }
 article div pre,
 div.content pre {
-	color: #C0C0C0;
-	white-space: pre-wrap;
-	min-width: 55em;
+  color: #c0c0c0;
+  white-space: pre-wrap;
+  min-width: 55em;
 }
 
 /* Lien d'article */
 article li.link {
-	padding-left: 3em;
+  padding-left: 3em;
 }
 /* drapeau du lien */
 article li.link img {
-	width: 1.25em !important;
-	height: 0.8em !important;
+  width: 1.25em !important;
+  height: 0.8em !important;
 }
 
 /* uniquement pour le sondage en cours */
 article.poll div.content ul {
-	list-style: none;
+  list-style: none;
 }
 article.poll div.content form {
-	margin-left: 5em;
+  margin-left: 5em;
 }
 
 /* uniquement pour les resultats de sondages */
 article.poll div.content ul.poll {
-	list-style: disc outside none;
-	margin-left: 5em;
+  list-style: disc outside none;
+  margin-left: 5em;
 }
 .poll li {
-	margin-bottom: 0.5em;
+  margin-bottom: 0.5em;
 }
 .poll .result {
-	display: block;
-	background: #ECBE10;
-	color: #808080;
-	text-align: right;
-	font-weight: bold;
+  display: block;
+  background: #ecbe10;
+  color: #808080;
+  text-align: right;
+  font-weight: bold;
 }
 
 /* Le pied de l'article */
 article > footer {
-	padding: 0.5em 0.75em;
-	display: block;
-	font-size: 0.7em;
-	color: #C0C0C0;
+  padding: 0.5em 0.75em;
+  display: block;
+  font-size: 0.7em;
+  color: #c0c0c0;
 }
 article > footer > div {
-	display: inline;
+  display: inline;
 }
 
 /* Les tags */
-#container header li .add_tag, #container header li .remove_tag {
-	display: block;
-	float: left;
-	clear: left;
-	text-indent: -9998em;
-	height: 12px;
-	width: 12px;
-	margin: 0;
-	border: none;
+#container header li .add_tag,
+#container header li .remove_tag {
+  display: block;
+  float: left;
+  clear: left;
+  text-indent: -9998em;
+  height: 12px;
+  width: 12px;
+  margin: 0;
+  border: none;
 }
 #container header li .add_tag {
-	background: url(/images/icones/tag.png) no-repeat;
+  background: url(/images/icones/tag.png) no-repeat;
 }
 #container header li .add_tag[disabled] {
-	background: url(/images/icones/tagged.png) no-repeat;
+  background: url(/images/icones/tagged.png) no-repeat;
 }
 #container header li .remove_tag {
-	background: url(/images/icones/x.png) no-repeat;
+  background: url(/images/icones/x.png) no-repeat;
 }
 #container header li .remove_tag[disabled] {
-	display: none;
+  display: none;
 }
 
 /* Les boutons de vote pour l'article et le commentaire */
 div.vote,
 div.vote form.button_to,
 div.vote form.button_to div {
-	display: inline;
+  display: inline;
 }
 div.vote {
-	margin-left: 0.3em;
+  margin-left: 0.3em;
 }
 section#container div.vote input {
-	border-width: 0;
-	background: #000000;
-	margin: 0;
-	padding: 0;
-	outline-width: 0;
+  border-width: 0;
+  background: #000000;
+  margin: 0;
+  padding: 0;
+  outline-width: 0;
 }
 
 /* Le bouton oublier */
 .action form.button_to,
 .action form.button_to div {
-	display: inline;
+  display: inline;
 }
 section#container .action form.button_to input {
-	border-width: 0;
-	background: #000000;
-	margin: 0;
-	padding: 0;
-	outline-width: 0;
-	text-decoration: underline;
+  border-width: 0;
+  background: #000000;
+  margin: 0;
+  padding: 0;
+  outline-width: 0;
+  text-decoration: underline;
 }
 
 /* Tout les commentaires */
 div#comments {
-	margin: 4em auto;
+  margin: 4em auto;
 }
 
 /* texte au dessus des commentaires */
 div#comments > p {
-	margin: 1em auto;
-	text-align: center;
+  margin: 1em auto;
+  text-align: center;
 }
 
 /* les fils de commentaires */
 div#comments ul.threads {
-	margin: 4em auto;
-	list-style: none;
+  margin: 4em auto;
+  list-style: none;
 }
 div#contents > ul {
-	list-style: none;
+  list-style: none;
 }
 
 /* Un fil de discussion de commentaires */
 div#comments > ul > li,
 div#contents > ul > li {
-	margin: 0 0 1em 0;
-	padding: 0.7em;
-	font-size: 1em;
+  margin: 0 0 1em 0;
+  padding: 0.7em;
+  font-size: 1em;
 }
 /* Decalage a droite pour les reponses */
 div#comments li > ul {
-	padding-left: 2em;
-	list-style: none;
+  padding-left: 2em;
+  list-style: none;
 }
 
 /* le titre du commentaire */
 li.comment > h2 {
-	margin-top: 0.5em;
-	padding: 0.2em 0.5em;
-	border-top: medium solid #C0C0C0;
-	border-left: medium solid #C0C0C0;
-	border-right: medium solid #C0C0C0;
-	font-size: 1.25em;
-	font-weight: bold;
+  margin-top: 0.5em;
+  padding: 0.2em 0.5em;
+  border-top: medium solid #c0c0c0;
+  border-left: medium solid #c0c0c0;
+  border-right: medium solid #c0c0c0;
+  font-size: 1.25em;
+  font-weight: bold;
 }
 li.comment > h2 a:link,
 li.comment > h2 a:visited {
-	text-decoration: none;
+  text-decoration: none;
 }
 li.comment > h2 a:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* en-tête et pied de page du commentaire */
 li.comment > p.meta,
 li.comment > footer.actions {
-	color: #C0C0C0;
-	font-size: 0.7em;
-	display: block;
+  color: #c0c0c0;
+  font-size: 0.7em;
+  display: block;
 }
 li.comment > p.meta {
-	border-left: medium solid #C0C0C0;
-	border-right: medium solid #C0C0C0;
-	padding: 0 0.875em 1.5em;
+  border-left: medium solid #c0c0c0;
+  border-right: medium solid #c0c0c0;
+  padding: 0 0.875em 1.5em;
 }
 li.comment > footer.actions {
-	border-left: medium solid #C0C0C0;
-	border-right: medium solid #C0C0C0;
-	border-bottom: medium solid #C0C0C0;
-	-moz-border-radius-bottomright: 3em;
-	-webkit-border-bottom-right-radius: 3em;
-	border-bottom-right-radius: 3em;
-	padding: 0.5em 0.875em;
+  border-left: medium solid #c0c0c0;
+  border-right: medium solid #c0c0c0;
+  border-bottom: medium solid #c0c0c0;
+  -moz-border-radius-bottomright: 3em;
+  -webkit-border-bottom-right-radius: 3em;
+  border-bottom-right-radius: 3em;
+  padding: 0.5em 0.875em;
 }
 
 /* l'avatar */
 li.comment > figure.image {
-	display: inline;
-	float: left;
-	padding: 0.5em 0.5em 0 1em;
+  display: inline;
+  float: left;
+  padding: 0.5em 0.5em 0 1em;
 }
 li.comment > figure.image img {
-	width: 3em !important;
-	height: 3em !important;
+  width: 3em !important;
+  height: 3em !important;
 }
 
 /* la signature */
 li.comment .content .signature {
-	color: #999;
-	font-size: 11px;
+  color: #999;
+  font-size: 11px;
 }
 li.comment .content .signature:before {
-	white-space: pre-line;
-	content: "-- \a";
+  white-space: pre-line;
+  content: "-- \a";
 }
 
 /* le commentaire */
 li.comment > div.content {
-	padding: 0.5em 1em;
-	min-height: 3em;
-	border-left: medium solid #C0C0C0;
-	border-right: medium solid #C0C0C0;
+  padding: 0.5em 1em;
+  min-height: 3em;
+  border-left: medium solid #c0c0c0;
+  border-right: medium solid #c0c0c0;
 }
 
 /* Style de titre pour les nouveaux commentaires */
@@ -796,320 +867,326 @@ li.new-comment > h2,
 li.new-comment > div.content,
 li.new-comment > p.meta,
 li.new-comment > footer.actions {
-	border-left-color: #ECBE10;
+  border-left-color: #ecbe10;
 }
 
 /* Commentaire replié */
 li.fold > p.meta {
-	padding-bottom: 0.2em;
-	border-bottom: medium solid #C0C0C0;
-	-moz-border-radius-bottomright: 3em;
-	-webkit-border-bottom-right-radius: 3em;
-	border-bottom-right-radius: 3em;
+  padding-bottom: 0.2em;
+  border-bottom: medium solid #c0c0c0;
+  -moz-border-radius-bottomright: 3em;
+  -webkit-border-bottom-right-radius: 3em;
+  border-bottom-right-radius: 3em;
 }
 
 li.fold > figure.image,
 li.fold > div.content,
 li.fold > footer.actions {
-	display: none;
+  display: none;
 }
 
 /* le lien retour en haut de page */
 section#container > footer {
-	display: block;
-	font-size: 0.8em;
-	margin: 2em auto;
+  display: block;
+  font-size: 0.8em;
+  margin: 2em auto;
 }
 
 /* le pied de page */
 footer#bigfooter {
-	display: inline;
-	float: left;
-	width: 100%;
-	margin-top: 3em;
-	padding-bottom: 5em;
-	font-size: 0.8em;
+  display: inline;
+  float: left;
+  width: 100%;
+  margin-top: 3em;
+  padding-bottom: 5em;
+  font-size: 0.8em;
 }
 /* les 4 listes du pied de page */
 footer#bigfooter nav,
 footer#bigfooter section {
-	display: inline;
-	float: left;
-	overflow: hidden;
-	border-top: medium solid #C0C0C0;
-	width: 21%;
-	margin: 1em 1%;
-	padding: 1em 1% 0;
-	color: #C0C0C0;
+  display: inline;
+  float: left;
+  overflow: hidden;
+  border-top: medium solid #c0c0c0;
+  width: 21%;
+  margin: 1em 1%;
+  padding: 1em 1% 0;
+  color: #c0c0c0;
 }
 /* Le contenu du pied de page */
 footer#bigfooter h1 {
-	font-size: 1.25em;
-	margin: 0 0 0.5em 0;
+  font-size: 1.25em;
+  margin: 0 0 0.5em 0;
 }
 footer#bigfooter ul {
-	list-style: none;
+  list-style: none;
 }
 
 /* La tribune de modération */
 section#edition,
 section#chat {
-	display: inline;
-	overflow: hidden;
-	text-align: justify;
+  display: inline;
+  overflow: hidden;
+  text-align: justify;
 }
 section#edition {
-	float: left;
-	margin: 1em 1%;
-	width: 58%;
+  float: left;
+  margin: 1em 1%;
+  width: 58%;
 }
 section#chat {
-	float:left;
-	margin: 1em 1% 1em 0;
-	width: 39%;
+  float: left;
+  margin: 1em 1% 1em 0;
+  width: 39%;
 }
-section#chat input[type=text] {
-	width: 64%;
+section#chat input[type="text"] {
+  width: 64%;
 }
 section#chat h1 {
-	font-size: 1.75em;
-	padding: 0.75em 0 0.5em;
+  font-size: 1.75em;
+  padding: 0.75em 0 0.5em;
 }
 
 /* Les tribunes */
 time.norloge {
-	font-weight: bold;
-	color: #C0C0C0;
+  font-weight: bold;
+  color: #c0c0c0;
 }
 div.board > div.inbox > p {
-	padding: 0.25em 0 0.25em;
-	font-size: 0.8em;
+  padding: 0.25em 0 0.25em;
+  font-size: 0.8em;
 }
 div.board > div.inbox span.board-left {
-	float: left;
-	padding-right: 0.5em;
-	display: block;
+  float: left;
+  padding-right: 0.5em;
+  display: block;
 }
 div.board > div.inbox span.board-right {
-	margin-left: 20%;
-	display: block;
+  margin-left: 20%;
+  display: block;
 }
 input#board_message {
-	width: 75%;
+  width: 75%;
 }
 
 /* Revision de wiki */
 body#wiki_pages-revision div#contents > h2 {
-	border-top: medium solid #C0C0C0;
-	border-left: medium solid #C0C0C0;
-	border-right: medium solid #C0C0C0;
-	padding: 0.4em 0.5em 0;
-	margin: 0;
+  border-top: medium solid #c0c0c0;
+  border-left: medium solid #c0c0c0;
+  border-right: medium solid #c0c0c0;
+  padding: 0.4em 0.5em 0;
+  margin: 0;
 }
 body#wiki_pages-revision div#contents > h2 > a:link,
 body#wiki_pages-revision div#contents > h2 > a:visited {
-	text-decoration: none;
+  text-decoration: none;
 }
 body#wiki_pages-revision div#contents > h2 > a:hover,
 body#wiki_pages-revision div#contents > h2 > a:active {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 body#wiki_pages-revision div#contents > h3 {
-	border-left: medium solid #C0C0C0;
-	border-right: medium solid #C0C0C0;
-	padding: 0 0.75em 1.5em;
-	font-size: 0.7em;
-	font-weight: normal;
-	color: #C0C0C0;
+  border-left: medium solid #c0c0c0;
+  border-right: medium solid #c0c0c0;
+  padding: 0 0.75em 1.5em;
+  font-size: 0.7em;
+  font-weight: normal;
+  color: #c0c0c0;
 }
 body#wiki_pages-revision div#contents > pre {
-	white-space:pre-wrap;
-	padding: 0.5em 1em;
-	border-left: medium solid #C0C0C0;
-	border-right: medium solid #C0C0C0;
+  white-space: pre-wrap;
+  padding: 0.5em 1em;
+  border-left: medium solid #c0c0c0;
+  border-right: medium solid #c0c0c0;
 }
 body#wiki_pages-revision pre > del {
-	background-color: #330000;
+  background-color: #330000;
 }
 body#wiki_pages-revision pre > ins {
-	background-color: #003300;
-	text-decoration: none;
+  background-color: #003300;
+  text-decoration: none;
 }
 body#wiki_pages-revision div#contents > nav {
-	border-left: medium solid #C0C0C0;
-	border-right: medium solid #C0C0C0;
-	border-bottom: medium solid #C0C0C0;
-	padding: 0.75em 0.5em 0.25em;
-	-moz-border-radius: 0 0 2em 0;
-	-webkit-border-bottom-right-radius: 2em;
-	border-bottom-right-radius: 2em;
-	display: block;
+  border-left: medium solid #c0c0c0;
+  border-right: medium solid #c0c0c0;
+  border-bottom: medium solid #c0c0c0;
+  padding: 0.75em 0.5em 0.25em;
+  -moz-border-radius: 0 0 2em 0;
+  -webkit-border-bottom-right-radius: 2em;
+  border-bottom-right-radius: 2em;
+  display: block;
 }
 body#wiki_pages-revision div#contents > nav > ul {
-	list-style: none;
-	font-size: 0.7em;
-	color: #C0C0C0;
+  list-style: none;
+  font-size: 0.7em;
+  color: #c0c0c0;
 }
 body#wiki_pages-revision div#contents > nav > ul > li {
-	display: inline;
-	padding-right: 1.5em;
+  display: inline;
+  padding-right: 1.5em;
 }
 
 /* la toolbar */
 div#toolbar {
-	position: fixed;
-	overflow: hidden;
-	bottom: 0;
-	width: 100%;
-	min-width: 55em;
-	max-width: 90em;
-	padding: 0.35em 0 0.2em;
-	-moz-border-radius: 1.25em 1.25em 0 0;
-	-webkit-border-top-left-radius: 1.25em;
-	-webkit-border-top-right-radius: 1.25em;
-	border-top-left-radius: 1.25em;
-	border-top-right-radius: 1.25em;
-	background: #C0C0C0;
-	background: -moz-linear-gradient(top, #D0D0D0, #B0B0B0);
-	background: -webkit-gradient(linear, left top, left bottom, from(#D0D0D0), to(#B0B0B0));
-	color: #000000;
-	text-align: center;
+  position: fixed;
+  overflow: hidden;
+  bottom: 0;
+  width: 100%;
+  min-width: 55em;
+  max-width: 90em;
+  padding: 0.35em 0 0.2em;
+  -moz-border-radius: 1.25em 1.25em 0 0;
+  -webkit-border-top-left-radius: 1.25em;
+  -webkit-border-top-right-radius: 1.25em;
+  border-top-left-radius: 1.25em;
+  border-top-right-radius: 1.25em;
+  background: #c0c0c0;
+  background: -moz-linear-gradient(top, #d0d0d0, #b0b0b0);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#d0d0d0),
+    to(#b0b0b0)
+  );
+  color: #000000;
+  text-align: center;
 }
 div#toolbar > span {
-	font-size: 0.8em;
-	margin: 0 2em;
+  font-size: 0.8em;
+  margin: 0 2em;
 }
 
 /* linux sait faire ! */
 body#static-show div.body > a > img {
-	width: 100% !important;
-	height: 100% !important;
-	margin-top: 3em;
+  width: 100% !important;
+  height: 100% !important;
+  margin-top: 3em;
 }
 
 /* Autosatisfaction récursive */
 body#comments-create div#contents > img {
-	height: auto !important;
-	max-width: 100%;
+  height: auto !important;
+  max-width: 100%;
 }
 
 /* l'éditeur markdown */
 .markItUpContainer {
-	margin-bottom: 1em;
-	border: medium solid #C0C0C0;
-	-moz-border-radius-bottomright: 2em;
-	-webkit-border-bottom-right-radius: 2em;
-	border-bottom-right-radius: 2em;
+  margin-bottom: 1em;
+  border: medium solid #c0c0c0;
+  -moz-border-radius-bottomright: 2em;
+  -webkit-border-bottom-right-radius: 2em;
+  border-bottom-right-radius: 2em;
 }
 
 .markItUpHeader {
-	padding: 0.5em 1%;
-	height: 1.1em;
+  padding: 0.5em 1%;
+  height: 1.1em;
 }
 
 .markItUpEditor,
 section#container .markItUpEditor {
-	width: 100%;
-	height: 20em;
-	display: block;
-	overflow: auto;
-	border-top: thin solid #C0C0C0;
-	border-bottom: thin solid #C0C0C0;
-	border-left: none;
-	border-right: none;
-	padding: 0;
-	margin: 0;
+  width: 100%;
+  height: 20em;
+  display: block;
+  overflow: auto;
+  border-top: thin solid #c0c0c0;
+  border-bottom: thin solid #c0c0c0;
+  border-left: none;
+  border-right: none;
+  padding: 0;
+  margin: 0;
 }
 .markItUpEditor:focus,
 section#container .markItUpEditor:focus {
 }
 
 .markItUpFooter {
-	padding: 0.6em 0;
+  padding: 0.6em 0;
 }
 
 .markItUpResizeHandle {
-	overflow: hidden;
-	width: 20%;
-	height: 0.5em;
-	margin-left: auto;
-	margin-right: auto;
-	background-image: url(/images/markitup/handle.png);
-	background-position: center center;
-	background-repeat: no-repeat;
-	cursor: s-resize;
+  overflow: hidden;
+  width: 20%;
+  height: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url(/images/markitup/handle.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: s-resize;
 }
 
 .markItUpHeader ul li {
-	list-style: none;
-	float: left;
-	position: relative;
+  list-style: none;
+  float: left;
+  position: relative;
 }
 .markItUpHeader ul li ul {
-	display: none;
+  display: none;
 }
 .markItUpHeader ul li:hover > ul {
-	display: block;
+  display: block;
 }
 .markItUpHeader ul a {
-	display: block;
-	width: 1.1em;
-	height: 1.1em;
-	text-indent: -1000em;
-	background-repeat: no-repeat;
-	background-position: center center;
-	-moz-background-size: 100%;
-	-webkit-background-size: 100%;
-	-o-background-size: 100%;
-	background-size: 100%;
-	margin: 0 0.3em;
+  display: block;
+  width: 1.1em;
+  height: 1.1em;
+  text-indent: -1000em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -moz-background-size: 100%;
+  -webkit-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+  margin: 0 0.3em;
 }
 .markItUpHeader ul .markItUpSeparator {
-	margin: 0 1em;
-	width: 0;
-	height: 1.1em;
-	overflow: hidden;
-	border-left: thin solid #C0C0C0;
+  margin: 0 1em;
+  width: 0;
+  height: 1.1em;
+  overflow: hidden;
+  border-left: thin solid #c0c0c0;
 }
 .markItUp .h1 a {
-	background-image: url(/images/contrib/black_bling/markitup/h1.png);
+  background-image: url(/images/contrib/black_bling/markitup/h1.png);
 }
 .markItUp .h2 a {
-	background-image: url(/images/contrib/black_bling/markitup/h2.png);
+  background-image: url(/images/contrib/black_bling/markitup/h2.png);
 }
 .markItUp .h3 a {
-	background-image: url(/images/contrib/black_bling/markitup/h3.png);
+  background-image: url(/images/contrib/black_bling/markitup/h3.png);
 }
 .markItUp .h4 a {
-	background-image: url(/images/contrib/black_bling/markitup/h4.png);
+  background-image: url(/images/contrib/black_bling/markitup/h4.png);
 }
 .markItUp .bold a {
-	background-image: url(/images/contrib/black_bling/markitup/bold.png);
+  background-image: url(/images/contrib/black_bling/markitup/bold.png);
 }
 .markItUp .italic a {
-	background-image: url(/images/contrib/black_bling/markitup/italic.png);
+  background-image: url(/images/contrib/black_bling/markitup/italic.png);
 }
 .markItUp .stroke a {
-	background-image: url(/images/contrib/black_bling/markitup/stroke.png);
+  background-image: url(/images/contrib/black_bling/markitup/stroke.png);
 }
 .markItUp .list-bullet a {
-	background-image: url(/images/contrib/black_bling/markitup/list-bullet.png);
+  background-image: url(/images/contrib/black_bling/markitup/list-bullet.png);
 }
 .markItUp .list-numeric a {
-	background-image: url(/images/contrib/black_bling/markitup/list-numeric.png);
+  background-image: url(/images/contrib/black_bling/markitup/list-numeric.png);
 }
 .markItUp .image a {
-	background-image: url(/images/contrib/black_bling/markitup/picture.png);
+  background-image: url(/images/contrib/black_bling/markitup/picture.png);
 }
 .markItUp .link a {
-	background-image: url(/images/contrib/black_bling/markitup/link.png);
+  background-image: url(/images/contrib/black_bling/markitup/link.png);
 }
 .markItUp .quotes a {
-	background-image: url(/images/contrib/black_bling/markitup/quotes.png);
+  background-image: url(/images/contrib/black_bling/markitup/quotes.png);
 }
 .markItUp .code a {
-	background-image: url(/images/contrib/black_bling/markitup/page_white_code.png);
+  background-image: url(/images/contrib/black_bling/markitup/page_white_code.png);
 }
 
-@import '../pygments/native';
-@import '../common/statistics';
+@import "../pygments/native";
+@import "../common/statistics";

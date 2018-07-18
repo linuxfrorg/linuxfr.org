@@ -4,102 +4,176 @@
    Police MEgalopolis Extra : © SMeltery http://www.smeltery.net/ | Licence spéciale (http://www.smeltery.net/SMFFEULA.html)
    Fond : © Dmitry Baranovskiy | Licence MIT (http://raphaeljs.com/license.html) */
 
-@import '../colors';
-@import '../common/generics';
-@import '../common/statistics';
-@import '../pygments/colorful';
+@import "../colors";
+@import "../common/generics";
+@import "../common/statistics";
+@import "../pygments/colorful";
 
 @font-face {
-	font-family: Megalopolis;
-	src: url('/fonts/MEgalopolisExtra.otf') format("opentype");
+  font-family: Megalopolis;
+  src: url("/fonts/MEgalopolisExtra.otf") format("opentype");
 }
 
 /* line 14, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, .result, aside, footer, header {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	font-weight: inherit;
-	font-style: inherit;
-	font-size: 100%;
-	font-family: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+.result,
+aside,
+footer,
+header {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
 }
 
 body {
-	overflow-x: hidden;
+  overflow-x: hidden;
 }
 
-#error500, #error404, #error403 {
-	color: white;
+#error500,
+#error404,
+#error403 {
+  color: white;
 }
 
 .errors {
-	display: none !important;
+  display: none !important;
 }
 
 /* line 17, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
-	line-height: 1;
-	color: black;
-	background: white;
+  line-height: 1;
+  color: black;
+  background: white;
 }
 
 /* line 19, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
 
 /* line 21, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
-	border-collapse: separate;
-	border-spacing: 0;
-	vertical-align: middle;
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
 }
 
 /* line 23, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-caption, th, td {
-	text-align: left;
-	font-weight: normal;
-	vertical-align: middle;
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
 }
 
 /* line 25, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-q, blockquote {
-	quotes: "" "";
+q,
+blockquote {
+  quotes: "" "";
 }
 /* line 96, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-q:before, q:after, blockquote:before, blockquote:after {
-	content: "";
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: "";
 }
 
 /* line 27, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
-	border: none;
+  border: none;
 }
 
 /* line 108, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	display: block;
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  display: block;
 }
-
 
 /* line 18, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
 form label {
-	font-weight: bold;
+  font-weight: bold;
 }
 /* line 19, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
 /*
@@ -110,58 +184,67 @@ form fieldset {
 */
 /* line 20, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
 form legend {
-	font-weight: bold;
-	font-size: 1.2em;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 /* line 34, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
 form select {
-	margin: 0.5em 0;
+  margin: 0.5em 0;
 }
 /* line 26, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-form input.text, form input.title, form input[type=email], form input[type=text], form input[type=url], form input[type=password], #form_links select {
-	margin: 0.5em 0;
-	background-color: white;
-	padding: 5px;
+form input.text,
+form input.title,
+form input[type="email"],
+form input[type="text"],
+form input[type="url"],
+form input[type="password"],
+#form_links select {
+  margin: 0.5em 0;
+  background-color: white;
+  padding: 5px;
 }
 .datePourCss {
-    display: none;
+  display: none;
 }
 #form_links select {
-	padding: 4px 5px;
+  padding: 4px 5px;
 }
 #form_links {
-	margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 #form_links label:first-child {
-	width: 162px;
-	margin-left: -1px;
-	display: inline-block;
+  width: 162px;
+  margin-left: -1px;
+  display: inline-block;
 }
 #form_links label:nth-child(2) {
-	width: 162px;
-	display: inline-block;
+  width: 162px;
+  display: inline-block;
 }
 #form_links label:nth-child(3) {
-	width: 113px;
-	display: inline-block;
-	text-transform: capitalize;
+  width: 113px;
+  display: inline-block;
+  text-transform: capitalize;
 }
 #form_links label:nth-child(4) {
-	text-transform: capitalize;
+  text-transform: capitalize;
 }
 /* line 27, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
 form input.title {
-	font-size: 1.5em;
+  font-size: 1.5em;
 }
 /* line 31, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-form input[type=checkbox], form input.checkbox, form input[type=radio], form input.radio {
-	position: relative;
-	top: 0.25em;
+form input[type="checkbox"],
+form input.checkbox,
+form input[type="radio"],
+form input.radio {
+  position: relative;
+  top: 0.25em;
 }
 /* line 33, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
 form textarea {
-	margin: 0.5em 0;
-	padding: 5px;
+  margin: 0.5em 0;
+  padding: 5px;
 }
 /* line 59, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
 /*
@@ -170,1851 +253,2280 @@ form fieldset {
 }
 */
 /* line 62, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-form input.text, form input.title, form input[type=email], form input[type=text], form input[type=search], form input[type=password], form input[type=submit],
-form textarea, form select, form input[type=url], #form_links select, button {
-	border: 1px solid #bbbbbb;
-	-webkit-transition-property: color;
-	-webkit-transition-duration: 0.15s;
-	-moz-transition-duration: 0.15s;
-	transition-property: color;
-	transition-duration: 0.15s;
-	background: white;
+form input.text,
+form input.title,
+form input[type="email"],
+form input[type="text"],
+form input[type="search"],
+form input[type="password"],
+form input[type="submit"],
+form textarea,
+form select,
+form input[type="url"],
+#form_links select,
+button {
+  border: 1px solid #bbbbbb;
+  -webkit-transition-property: color;
+  -webkit-transition-duration: 0.15s;
+  -moz-transition-duration: 0.15s;
+  transition-property: color;
+  transition-duration: 0.15s;
+  background: white;
 }
 /* line 64, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-form input.text:focus, form input.title:focus, form input[type=email]:focus, form input[type=text]:focus, form input[type=search]:focus, form input[type=password]:focus,
-form input[type=submit]:focus, form textarea:focus, form input.text:hover, form input.title:hover, form input[type=email]:hover, form input[type=text]:hover,
-form input[type=search]:hover, form input[type=password]:hover, form input[type=submit]:hover, form textarea:hover, form select:focus, form input[type=url]:focus,
-form input[type=url]:hover, #form_links select:hover, #form_links select:focus, button:focus, button:hover {
-	border: 1px solid #666666;
-	background: white;
-	color: #33332d;
+form input.text:focus,
+form input.title:focus,
+form input[type="email"]:focus,
+form input[type="text"]:focus,
+form input[type="search"]:focus,
+form input[type="password"]:focus,
+form input[type="submit"]:focus,
+form textarea:focus,
+form input.text:hover,
+form input.title:hover,
+form input[type="email"]:hover,
+form input[type="text"]:hover,
+form input[type="search"]:hover,
+form input[type="password"]:hover,
+form input[type="submit"]:hover,
+form textarea:hover,
+form select:focus,
+form input[type="url"]:focus,
+form input[type="url"]:hover,
+#form_links select:hover,
+#form_links select:focus,
+button:focus,
+button:hover {
+  border: 1px solid #666666;
+  background: white;
+  color: #33332d;
 }
 /* line 48, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
-form input.text, form input.title, form input[type=email], form input[type=text], form input[type=password] form input[type=search], form input[type=url] {
-	width: 259px;
+form input.text,
+form input.title,
+form input[type="email"],
+form input[type="text"],
+form input[type="password"] form input[type="search"],
+form input[type="url"] {
+  width: 259px;
 }
 #form_links input {
-	width: 150px;
+  width: 150px;
 }
 /* line 50, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
 form textarea {
-	width: 390px;
-	height: 250px;
+  width: 390px;
+  height: 250px;
 }
 /* line 42, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
 body.bp .box {
-	padding: 1.5em;
-	margin-bottom: 1.5em;
-	background: #e5ecf9;
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+  background: #e5ecf9;
 }
 /* line 45, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
 body.bp div.border {
-	padding-right: 4px;
-	margin-right: 5px;
-	border-right: 1px solid #eeeeee;
+  padding-right: 4px;
+  margin-right: 5px;
+  border-right: 1px solid #eeeeee;
 }
 /* line 48, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
 body.bp div.colborder {
-	padding-right: 24px;
-	margin-right: 25px;
-	border-right: 1px solid #eeeeee;
+  padding-right: 24px;
+  margin-right: 25px;
+  border-right: 1px solid #eeeeee;
 }
 /* line 50, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
 body.bp hr {
-	background: #dddddd;
-	color: #dddddd;
-	clear: both;
-	float: none;
-	width: 100%;
-	height: 0.1em;
-	margin: 0 0 1.45em;
-	border: none;
+  background: #dddddd;
+  color: #dddddd;
+  clear: both;
+  float: none;
+  width: 100%;
+  height: 0.1em;
+  margin: 0 0 1.45em;
+  border: none;
 }
 /* line 52, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
 body.bp hr.space {
-	background: #dddddd;
-	color: #dddddd;
-	clear: both;
-	float: none;
-	width: 100%;
-	height: 0.1em;
-	margin: 0 0 1.45em;
-	border: none;
-	background: white;
-	color: white;
-	visibility: hidden;
+  background: #dddddd;
+  color: #dddddd;
+  clear: both;
+  float: none;
+  width: 100%;
+  height: 0.1em;
+  margin: 0 0 1.45em;
+  border: none;
+  background: white;
+  color: white;
+  visibility: hidden;
 }
 /* line 54, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
 body.bp form.inline {
-	line-height: 3;
+  line-height: 3;
 }
 /* line 6, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
 body.bp form.inline p {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 /* line 23, ../../app/stylesheets/_application.scss */
 body {
-	line-height: 1.5;
-	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-	color: #33332d;
-	font-size: 12px;
+  line-height: 1.5;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  color: #33332d;
+  font-size: 12px;
 }
 /* line 68, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
-body h1, body h2, body h3, body h4, body h5, body h6 {
-	font-weight: normal;
-	color: grey;
-	font-family: Megalopolis, helvetica, arial, serif;
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+  font-weight: normal;
+  color: grey;
+  font-family: Megalopolis, helvetica, arial, serif;
 }
 /* line 69, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
-body h1 img, body h2 img, body h3 img, body h4 img, body h5 img, body h6 img {
-	margin: 0;
+body h1 img,
+body h2 img,
+body h3 img,
+body h4 img,
+body h5 img,
+body h6 img {
+  margin: 0;
 }
 /* line 70, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body h1 {
-	font-size: 3em;
-	line-height: 1;
-	margin: 0.50em 0;
+  font-size: 3em;
+  line-height: 1;
+  margin: 0.5em 0;
 }
 /* line 71, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body h2 {
-	font-size: 2em;
-	margin: 0.50em 0;
+  font-size: 2em;
+  margin: 0.5em 0;
 }
 /* line 72, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body h3 {
-	font-size: 1.5em;
-	line-height: 1;
-	margin: 0.50em 0;
+  font-size: 1.5em;
+  line-height: 1;
+  margin: 0.5em 0;
 }
 /* line 73, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body h4 {
-	font-size: 1.2em;
-	line-height: 1.25;
-	margin: 0.50em 0;
+  font-size: 1.2em;
+  line-height: 1.25;
+  margin: 0.5em 0;
 }
 /* line 74, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body h5 {
-	font-size: 1em;
-	font-weight: bold;
-	margin: 0.50em 0;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0.5em 0;
 }
 /* line 75, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body h6 {
-	font-size: 1em;
-	font-weight: bold;
+  font-size: 1em;
+  font-weight: bold;
 }
 /* line 76, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 .box li {
-	list-style: none;
+  list-style: none;
 }
 li ul {
-	padding-left: 15px !important;
+  padding-left: 15px !important;
 }
-.comment > p, .logged .login li, .logged .login p, #user_recent_contents li {
-	margin: 0 0 1.5em 0 !important;
+.comment > p,
+.logged .login li,
+.logged .login p,
+#user_recent_contents li {
+  margin: 0 0 1.5em 0 !important;
 }
 
-.box ul, .box p {
-	margin: 0;
-	padding: 0;
+.box ul,
+.box p {
+  margin: 0;
+  padding: 0;
 }
 
 label[for="account_remember_me_sidebar"] {
-	font-weight: normal !important;
+  font-weight: normal !important;
 }
 
-label[for="account_login_sidebar"], label[for="account_password_sidebar"] {
-	display: none;
-	margin-top: 0;
+label[for="account_login_sidebar"],
+label[for="account_password_sidebar"] {
+  display: none;
+  margin-top: 0;
 }
 
-.login input[type="checkbox"], #sessions-new input[type="checkbox"] {
-	margin-left: 0;
-	margin-bottom: 15px;
+.login input[type="checkbox"],
+#sessions-new input[type="checkbox"] {
+  margin-left: 0;
+  margin-bottom: 15px;
 }
 
-.login input[value="Se connecter"], #sessions-new input[value="Se connecter"] {
-	margin-bottom: 10px;
+.login input[value="Se connecter"],
+#sessions-new input[value="Se connecter"] {
+  margin-bottom: 10px;
 }
 
 body:not(.logged) .login h1 {
-	margin-bottom: 5px !important;
+  margin-bottom: 5px !important;
 }
 
 .Diary .content_type {
-	display: none;
+  display: none;
 }
 
 .Diary:before {
-	content: url(/images/contrib/grayscale/icons/diary.png);
-	position: relative;
-	top: 4px;
+  content: url(/images/contrib/grayscale/icons/diary.png);
+  position: relative;
+  top: 4px;
 }
 
 .News .content_type {
-	display: none;
+  display: none;
 }
 
 .News:before {
-	content: url(/images/contrib/grayscale/icons/news.png);
-	position: relative;
-	top: 4px;
+  content: url(/images/contrib/grayscale/icons/news.png);
+  position: relative;
+  top: 4px;
 }
 
 .WikiPage .content_type {
-	display: none;
+  display: none;
 }
 
 .WikiPage:before {
-	content: url(/images/contrib/grayscale/icons/wiki.png);
-	position: relative;
-	top: 4px;
+  content: url(/images/contrib/grayscale/icons/wiki.png);
+  position: relative;
+  top: 4px;
 }
 
 .Poll .content_type {
-	display: none;
+  display: none;
 }
 
 .Poll:before {
-	content: url(/images/contrib/grayscale/icons/sondage.png);
-	position: relative;
-	top: 4px;
+  content: url(/images/contrib/grayscale/icons/sondage.png);
+  position: relative;
+  top: 4px;
 }
 
 .Post .content_type {
-	display: none;
+  display: none;
 }
 
 .Post:before {
-	content: url(/images/contrib/grayscale/icons/forum.png);
-	position: relative;
-	top: 4px;
+  content: url(/images/contrib/grayscale/icons/forum.png);
+  position: relative;
+  top: 4px;
 }
 
 .Tracker .content_type {
-	display: none;
+  display: none;
 }
 
 .Tracker:before {
-	content: url(/images/contrib/grayscale/icons/bug.png);
-	position: relative;
-	top: 4px;
+  content: url(/images/contrib/grayscale/icons/bug.png);
+  position: relative;
+  top: 4px;
 }
 
-.logged .login ul, .logged .login p, #user_recent_contents ul, #tags_box ul {
-	padding: 0 0 0 10px;
+.logged .login ul,
+.logged .login p,
+#user_recent_contents ul,
+#tags_box ul {
+  padding: 0 0 0 10px;
 }
 
 .norloge {
-	color: grey;
+  color: grey;
 }
 
 .norloge:before {
-	content: '[';
+  content: "[";
 }
 
 .norloge:after {
-	content: ']';
+  content: "]";
 }
 
-#boards-show time:not(.norloge), .inbox time:not(.norloge) {
-	color: grey;
+#boards-show time:not(.norloge),
+.inbox time:not(.norloge) {
+  color: grey;
 }
 
-#boards-show time:not(.norloge):before, .inbox time:not(.norloge):before {
-	content: '@';
+#boards-show time:not(.norloge):before,
+.inbox time:not(.norloge):before {
+  content: "@";
 }
 
-.logged .login p, #user_recent_contents ul {
-	margin-top: 13px !important;
+.logged .login p,
+#user_recent_contents ul {
+  margin-top: 13px !important;
 }
 
-#changes h1, #wiki_edition h1 {
-	display: none;
+#changes h1,
+#wiki_edition h1 {
+  display: none;
 }
 
-#changes a, #wiki_edition p a {
-	font-family: Megalopolis, helvetica, arial, serif;
-	text-decoration: none;
-	font-size: 1em;
-	text-align: center;
-	display: block;
+#changes a,
+#wiki_edition p a {
+  font-family: Megalopolis, helvetica, arial, serif;
+  text-decoration: none;
+  font-size: 1em;
+  text-align: center;
+  display: block;
 }
 
 #wiki_edition p a {
-	font-size: 1.5em;
+  font-size: 1.5em;
 }
 
 #changes li:first-child {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
-.content > h2:first-child, .content > h3:first-child, .content > h4:first-child, .content > h5:first-child {
-	margin-top: 0;
+.content > h2:first-child,
+.content > h3:first-child,
+.content > h4:first-child,
+.content > h5:first-child {
+  margin-top: 0;
 }
 
 #wiki_edition p:nth-child(3) {
-	display: none;
+  display: none;
 }
 
 article li ul {
-	padding-left: 15px;
+  padding-left: 15px;
 }
 
 #user_recent_nodes h1 {
-	display: none;
+  display: none;
 }
 /* line 77, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body p img.left {
-	display: inline;
-	float: left;
-	margin: 1.5em 1.5em 1.5em 0;
-	padding: 0;
+  display: inline;
+  float: left;
+  margin: 1.5em 1.5em 1.5em 0;
+  padding: 0;
 }
 /* line 78, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body p img.right {
-	display: inline;
-	float: right;
-	margin: 1.5em 0 1.5em 1.5em;
-	padding: 0;
+  display: inline;
+  float: right;
+  margin: 1.5em 0 1.5em 1.5em;
+  padding: 0;
 }
 /* line 80, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body a {
-	text-decoration: underline;
-	color: grey;
-	-webkit-transition-property: color;
-	-webkit-transition-duration: 0.15s;
-	-moz-transition-duration: 0.15s;
-	transition-property: color;
-	transition-duration: 0.15s;
+  text-decoration: underline;
+  color: grey;
+  -webkit-transition-property: color;
+  -webkit-transition-duration: 0.15s;
+  -moz-transition-duration: 0.15s;
+  transition-property: color;
+  transition-duration: 0.15s;
 }
 /* line 26, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
 body a:hover {
-	color: DimGray;
+  color: DimGray;
 }
-body *:not(#changes) > *:not(#wiki_edition) > *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(.banner) > a:hover {
-	color: black;
+body
+  *:not(#changes)
+  > *:not(#wiki_edition)
+  > *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(.banner)
+  > a:hover {
+  color: black;
 }
 /* line 81, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body blockquote {
-	color: #666666;
-	padding-left: 10px;
-	border-left: 1px solid lightgrey;
-	margin:10px 0;
+  color: #666666;
+  padding-left: 10px;
+  border-left: 1px solid lightgrey;
+  margin: 10px 0;
 }
 /* line 82, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body strong {
-	font-weight: bold;
+  font-weight: bold;
 }
 /* line 83, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body em {
-	font-style: italic;
+  font-style: italic;
 }
 /* line 84, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body dfn {
-	font-style: italic;
-	font-weight: bold;
+  font-style: italic;
+  font-weight: bold;
 }
 /* line 85, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
-body sup, body sub {
-	line-height: 0;
+body sup,
+body sub {
+  line-height: 0;
 }
 /* line 86, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
-body abbr, body acronym {
-	border-bottom: 1px dotted #666666;
+body abbr,
+body acronym {
+  border-bottom: 1px dotted #666666;
 }
 /* line 87, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body address {
-	margin: 0 0 1.5em;
-	font-style: italic;
+  margin: 0 0 1.5em;
+  font-style: italic;
 }
 /* line 88, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body del {
-	color: #666666;
+  color: #666666;
 }
 /* line 90, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
-body pre, body code, body tt {
-	font: 1em "andale mono", "lucida console", monospace;
+body pre,
+body code,
+body tt {
+  font: 1em "andale mono", "lucida console", monospace;
 }
 /* line 91, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
-body li ul, body li ol {
-	margin: 0;
+body li ul,
+body li ol {
+  margin: 0;
 }
 /* line 92, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
-body ul, body ol {
-	margin: 1em 0;
-	padding-left: 14px;
+body ul,
+body ol {
+  margin: 1em 0;
+  padding-left: 14px;
 }
-.order_navbar > ul, .tag_cloud {
-	padding: 0;
+.order_navbar > ul,
+.tag_cloud {
+  padding: 0;
 }
 .tags {
-	display: inline;
+  display: inline;
 }
 .order_navbar li:after {
-	content: ',';
+  content: ",";
 }
 .order_navbar li + li + li:after {
-	content: ' ou';
+  content: " ou";
 }
 .order_navbar li:last-child:after {
-	content: '';
+  content: "";
 }
 /* Commentaires */
-#comments > p, #comments > p > a {
-	color: white;
+#comments > p,
+#comments > p > a {
+  color: white;
 }
 #comments > p > a:hover {
-	color: DimGray;
+  color: DimGray;
 }
 li.comment {
-	padding: 28px;
-	margin: -15px -15px 0 -15px;
-	background: url('/images/contrib/grayscale/blocks/hautgauche.png') top left no-repeat, url('/images/contrib/grayscale/blocks/basgauche.png') bottom left no-repeat, url('/images/contrib/grayscale/blocks/hautdroite.png') top right no-repeat,
-	url('/images/contrib/grayscale/blocks/basdroite.png') bottom right no-repeat, url('/images/contrib/grayscale/blocks/milieugauche.png') top left repeat-y, url('/images/contrib/grayscale/blocks/milieudroite.png') top right repeat-y,
-	url('/images/contrib/grayscale/blocks/hautcentre.png') top left repeat-x, url('/images/contrib/grayscale/blocks/bascentre.png') bottom left repeat-x, white !important;
-	list-style-type: none;
-	overflow: hidden;
+  padding: 28px;
+  margin: -15px -15px 0 -15px;
+  background: url("/images/contrib/grayscale/blocks/hautgauche.png") top left
+      no-repeat,
+    url("/images/contrib/grayscale/blocks/basgauche.png") bottom left no-repeat,
+    url("/images/contrib/grayscale/blocks/hautdroite.png") top right no-repeat,
+    url("/images/contrib/grayscale/blocks/basdroite.png") bottom right no-repeat,
+    url("/images/contrib/grayscale/blocks/milieugauche.png") top left repeat-y,
+    url("/images/contrib/grayscale/blocks/milieudroite.png") top right repeat-y,
+    url("/images/contrib/grayscale/blocks/hautcentre.png") top left repeat-x,
+    url("/images/contrib/grayscale/blocks/bascentre.png") bottom left repeat-x,
+    white !important;
+  list-style-type: none;
+  overflow: hidden;
 }
 #comments-show li.comment {
-	margin-top: 0;
+  margin-top: 0;
 }
 *:not(#contents) > .threads {
-	margin-left: -14px;
-	margin-right: 0;
+  margin-left: -14px;
+  margin-right: 0;
 }
-*:not(#contents) > *:not(.threads) > li.comment, #wiki_pages-update article, #comments-create li.comment {
-	margin: 0 -10px 0 -15px;
-	padding: 28px 23px 28px 28px;
-	background: url('/images/contrib/grayscale/comments/hautgauche.png') top left no-repeat, url('/images/contrib/grayscale/comments/basgauche.png') bottom left no-repeat, url('/images/contrib/grayscale/comments/hautdroite.png') top right no-repeat,
-	url('/images/contrib/grayscale/comments/basdroite.png') bottom right no-repeat, url('/images/contrib/grayscale/comments/milieugauche.png') top left repeat-y, url('/images/contrib/grayscale/comments/milieudroite.png') top right repeat-y,
-	url('/images/contrib/grayscale/comments/hautcentre.png') top left repeat-x, url('/images/contrib/grayscale/comments/bascentre.png') bottom left repeat-x !important;
+*:not(#contents) > *:not(.threads) > li.comment,
+#wiki_pages-update article,
+#comments-create li.comment {
+  margin: 0 -10px 0 -15px;
+  padding: 28px 23px 28px 28px;
+  background: url("/images/contrib/grayscale/comments/hautgauche.png") top left
+      no-repeat,
+    url("/images/contrib/grayscale/comments/basgauche.png") bottom left
+      no-repeat,
+    url("/images/contrib/grayscale/comments/hautdroite.png") top right no-repeat,
+    url("/images/contrib/grayscale/comments/basdroite.png") bottom right
+      no-repeat,
+    url("/images/contrib/grayscale/comments/milieugauche.png") top left repeat-y,
+    url("/images/contrib/grayscale/comments/milieudroite.png") top right
+      repeat-y,
+    url("/images/contrib/grayscale/comments/hautcentre.png") top left repeat-x,
+    url("/images/contrib/grayscale/comments/bascentre.png") bottom left repeat-x !important;
 }
 
 #wiki_pages-update article {
-	margin-left: 0;
+  margin-left: 0;
 }
 
 .meta {
-	color: grey;
+  color: grey;
 }
 .meta a {
-	color: #4b4b4b;
-	text-decoration: none;
+  color: #4b4b4b;
+  text-decoration: none;
 }
 .meta a:not(:first-child) {
-	color: grey;
+  color: grey;
 }
 .meta a:hover {
-	color: black;
+  color: black;
 }
 
 .comment .meta {
-	color: silver;
-	font-size: 9px;
+  color: silver;
+  font-size: 9px;
 }
 .comment .meta a {
-	color: grey;
-	text-decoration: none;
+  color: grey;
+  text-decoration: none;
 }
 .comment .meta a:not(:first-child) {
-	color: silver;
+  color: silver;
 }
 .comment .score {
-	color: grey;
+  color: grey;
 }
 .comment .meta a:hover {
-	color: black;
+  color: black;
 }
 .comment .avatar {
-	background: url('/images/contrib/grayscale/avatars/hautgauche.png') top left no-repeat, url('/images/contrib/grayscale/avatars/basgauche.png') bottom left no-repeat, url('/images/contrib/grayscale/avatars/hautdroite.png') top right no-repeat,
-	url('/images/contrib/grayscale/avatars/basdroite.png') bottom right no-repeat, url('/images/contrib/grayscale/avatars/milieugauche.png') top left repeat-y, url('/images/contrib/grayscale/avatars/milieudroite.png') top right repeat-y,
-	url('/images/contrib/grayscale/avatars/hautcentre.png') top left repeat-x, url('/images/contrib/grayscale/avatars/bascentre.png') bottom left repeat-x !important;
-	padding: 15px;
-	border-radius: 20px;
-	-moz-border-radius: 20px;
-	-webkit-border-radius: 20px;
-	float: right;
-	margin-right: -10px;
-	margin-top: -75px;
-	z-index: 42;
-	position: relative;
-	max-height: 85px;
+  background: url("/images/contrib/grayscale/avatars/hautgauche.png") top left
+      no-repeat,
+    url("/images/contrib/grayscale/avatars/basgauche.png") bottom left no-repeat,
+    url("/images/contrib/grayscale/avatars/hautdroite.png") top right no-repeat,
+    url("/images/contrib/grayscale/avatars/basdroite.png") bottom right
+      no-repeat,
+    url("/images/contrib/grayscale/avatars/milieugauche.png") top left repeat-y,
+    url("/images/contrib/grayscale/avatars/milieudroite.png") top right repeat-y,
+    url("/images/contrib/grayscale/avatars/hautcentre.png") top left repeat-x,
+    url("/images/contrib/grayscale/avatars/bascentre.png") bottom left repeat-x !important;
+  padding: 15px;
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  float: right;
+  margin-right: -10px;
+  margin-top: -75px;
+  z-index: 42;
+  position: relative;
+  max-height: 85px;
 }
 .node figure.image img {
-	max-height: 56px;
-	margin-left: -14px;
+  max-height: 56px;
+  margin-left: -14px;
 }
 .comment img {
-	max-width: 100%;
+  max-width: 100%;
 }
 .comment .content {
-	padding-left: 10px;
-	border-left: 1px solid lightgrey;
-	margin: -6px 0 10px 0;
+  padding-left: 10px;
+  border-left: 1px solid lightgrey;
+  margin: -6px 0 10px 0;
 }
 pre {
-	margin: 10px 0;
-	padding-left: 10px;
-	border-left: 1px solid lightgrey;
-	display: block;
+  margin: 10px 0;
+  padding-left: 10px;
+  border-left: 1px solid lightgrey;
+  display: block;
 }
 li > h2 {
-	margin: 0;
+  margin: 0;
 }
-a[title='Remonter au commentaire parent'], .folding {
-	color: darkgray;
+a[title="Remonter au commentaire parent"],
+.folding {
+  color: darkgray;
 }
 li > h2 > a {
-	text-decoration: none;
+  text-decoration: none;
 }
 /* Les tags */
-#container header li .add_tag, #container header li .remove_tag {
-	display: block;
-	float: left;
-	clear: left;
-	text-indent: -9998em;
-	height: 14px;
-	width: 12px;
-	margin: 0;
-	border: none;
+#container header li .add_tag,
+#container header li .remove_tag {
+  display: block;
+  float: left;
+  clear: left;
+  text-indent: -9998em;
+  height: 14px;
+  width: 12px;
+  margin: 0;
+  border: none;
 }
 #container header li .add_tag {
-	background: url(/images/icones/tag.png) no-repeat 0 2px;
+  background: url(/images/icones/tag.png) no-repeat 0 2px;
 }
 #container header li .add_tag[disabled] {
-	background: url(/images/icones/tagged.png) no-repeat 0 2px;
+  background: url(/images/icones/tagged.png) no-repeat 0 2px;
 }
 #container header li .remove_tag {
-	background: url(/images/icones/x.png) no-repeat 0 2px;
+  background: url(/images/icones/x.png) no-repeat 0 2px;
 }
 #container header li .remove_tag[disabled] {
-	display: none;
+  display: none;
 }
 
 .tag_in_place {
-	display: inline;
+  display: inline;
 }
-.action, .vote > form > div > input, input.unread {
-	-webkit-transition-property: color;
-	-webkit-transition-duration: 0.15s;
-	-moz-transition-duration: 0.15s;
-	transition-property: color;
-	transition-duration: 0.15s;
-	color: grey;
-	text-decoration: underline;
-	border: none;
-	background: transparent;
-	padding: 0;
-	margin: 0;
-	cursor: pointer;
-	text-transform: capitalize;
+.action,
+.vote > form > div > input,
+input.unread {
+  -webkit-transition-property: color;
+  -webkit-transition-duration: 0.15s;
+  -moz-transition-duration: 0.15s;
+  transition-property: color;
+  transition-duration: 0.15s;
+  color: grey;
+  text-decoration: underline;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  text-transform: capitalize;
 }
 .actions {
-	cursor: default;
-	margin-top: 5px;
+  cursor: default;
+  margin-top: 5px;
 }
 .action:hover {
-	color: black;
+  color: black;
 }
-.action .button_to, .action .button_to div {
-	display: inline;
+.action .button_to,
+.action .button_to div {
+  display: inline;
 }
 .action .button_to input.unread {
-	border: none;
+  border: none;
 }
 .comment .action:hover {
-	color: grey;
+  color: grey;
 }
 .comment .vote > form > div > input {
-	position: relative;
-	right: 125px;
-	visibility: visible;
+  position: relative;
+  right: 125px;
+  visibility: visible;
 }
 article .vote > form > div > input[value="pertinent"] {
-	position: relative;
-	right: 113px;
-	visibility: visible;
+  position: relative;
+  right: 113px;
+  visibility: visible;
 }
 article .vote > form > div > input[value="inutile"] {
-	position: relative;
-	right: 139px;
-	visibility: visible;
+  position: relative;
+  right: 139px;
+  visibility: visible;
 }
-.comment .action, .comment .vote > form > div > input {
-	font-size: 9px;
-	color: silver;
+.comment .action,
+.comment .vote > form > div > input {
+  font-size: 9px;
+  color: silver;
 }
 .vote {
-	cursor: default;
-	visibility: hidden;
-	display: inline;
+  cursor: default;
+  visibility: hidden;
+  display: inline;
 }
 .vote > form > div > input[value="pertinent"]:hover {
-	color: green !important;
-	border: none;
+  color: green !important;
+  border: none;
 }
 .vote > form > div > input[value="inutile"]:hover {
-	color: red !important;
-	border: none;
+  color: red !important;
+  border: none;
 }
 .threads {
-	margin-bottom: -15px !important;
+  margin-bottom: -15px !important;
 }
 /* line 93, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body ul {
-	list-style-type: disc;
+  list-style-type: disc;
 }
 /* line 94, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body ol {
-	list-style-type: decimal;
+  list-style-type: decimal;
 }
 /* line 95, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body dl {
-	margin: 0 0 1.5em 0;
+  margin: 0 0 1.5em 0;
 }
 /* line 96, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body dl dt {
-	font-weight: bold;
+  font-weight: bold;
 }
 /* line 97, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body dd {
-	margin-left: 1.5em;
+  margin-left: 1.5em;
 }
 /* line 98, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body table {
-	margin-bottom: 1.4em;
+  margin-bottom: 1.4em;
 }
 /* line 99, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body th {
-	font-weight: bold;
+  font-weight: bold;
 }
 /* line 100, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body thead th {
-	background: #c3d9ff;
+  background: #c3d9ff;
 }
 /* line 101, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
-body th, body td, body caption {
-	padding: 4px 10px 4px 5px;
+body th,
+body td,
+body caption {
+  padding: 4px 10px 4px 5px;
 }
 /* line 102, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body tr.even td {
-	background: #e5ecf9;
+  background: #e5ecf9;
 }
 /* line 103, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body tfoot {
-	font-style: italic;
+  font-style: italic;
 }
 /* line 104, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body caption {
-	background: #eeeeee;
+  background: #eeeeee;
 }
 /* line 105, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body .quiet {
-	color: #666660;
+  color: #666660;
 }
 /* line 106, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body .loud {
-	color: #11110b;
+  color: #11110b;
 }
 /* line 9, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
 body .clear {
-	clear: both;
+  clear: both;
 }
 /* line 12, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
 body .nowrap {
-	white-space: nowrap;
+  white-space: nowrap;
 }
 /* line 16, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
 body .clearfix {
-	overflow: hidden;
-	*zoom: 1;
+  overflow: hidden;
+  *zoom: 1;
 }
 /* line 18, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
 body .small {
-	font-size: 0.8em;
-	margin-bottom: 1.875em;
-	line-height: 1.875em;
+  font-size: 0.8em;
+  margin-bottom: 1.875em;
+  line-height: 1.875em;
 }
 /* line 22, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
 body .large {
-	font-size: 1.2em;
-	line-height: 2.5em;
-	margin-bottom: 1.25em;
+  font-size: 1.2em;
+  line-height: 2.5em;
+  margin-bottom: 1.25em;
 }
 /* line 26, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
 body .first {
-	margin-left: 0;
-	padding-left: 0;
+  margin-left: 0;
+  padding-left: 0;
 }
 /* line 29, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
 body .last {
-	margin-right: 0;
-	padding-right: 0;
+  margin-right: 0;
+  padding-right: 0;
 }
 /* line 32, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
 body .top {
-	margin-top: 0;
-	padding-top: 0;
+  margin-top: 0;
+  padding-top: 0;
 }
 /* line 35, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
 body .bottom {
-	margin-bottom: 0;
-	padding-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 /* line 8, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_debug.scss */
 body .showgrid {
-	background: url('/images/grid.png');
+  background: url("/images/grid.png");
 }
 /* line 4, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
 body .error {
-	padding: 0.8em;
-	margin-bottom: 1em;
-	border: 2px solid #dddddd;
-	background: #fbe3e4;
-	color: #8a1f11;
-	border-color: #fbc2c4;
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 2px solid #dddddd;
+  background: #fbe3e4;
+  color: #8a1f11;
+  border-color: #fbc2c4;
 }
 /* line 29, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
 body .error a {
-	color: #8a1f11;
+  color: #8a1f11;
 }
 /* line 6, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
-body .notice, .alert {
-	/* fff6b6 */
-	padding: 0.8em;
-	margin-bottom: 2em !important;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	box-shadow: 0 0 1em grey;
-	-webkit-box-shadow: 0 0 1em grey;
-	-moz-box-shadow: 0 0 1em grey;
-	background: white;
+body .notice,
+.alert {
+  /* fff6b6 */
+  padding: 0.8em;
+  margin-bottom: 2em !important;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  box-shadow: 0 0 1em grey;
+  -webkit-box-shadow: 0 0 1em grey;
+  -moz-box-shadow: 0 0 1em grey;
+  background: white;
 }
 /* line 37, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
 body .notice a {
-	color: #514721;
+  color: #514721;
 }
 /* line 8, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
 body .success {
-	padding: 0.8em;
-	margin-bottom: 1em;
-	border: 2px solid #dddddd;
-	background: #e6efc2;
-	color: #264409;
-	border-color: #c6d880;
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 2px solid #dddddd;
+  background: #e6efc2;
+  color: #264409;
+  border-color: #c6d880;
 }
 /* line 45, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
 body .success a {
-	color: #264409;
+  color: #264409;
 }
 /* line 10, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
 body .hide {
-	display: none;
+  display: none;
 }
 /* line 12, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
 body .highlight {
-	background: yellow;
+  background: yellow;
 }
 /* line 14, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
 body .added {
-	background: #006600;
-	color: white;
+  background: #006600;
+  color: white;
 }
 /* line 16, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
 body .removed {
-	background: #990000;
-	color: white;
+  background: #990000;
+  color: white;
 }
 /* line 1, ../../app/stylesheets/layout/_site.scss */
 #site {
-	background: white url('/images/contrib/grayscale/blocks/bascentre.png') bottom left repeat-x;
-	margin-bottom: 8px;
-	padding: 5px 0 20px 0;
-	cursor: default;
+  background: white url("/images/contrib/grayscale/blocks/bascentre.png") bottom
+    left repeat-x;
+  margin-bottom: 8px;
+  padding: 5px 0 20px 0;
+  cursor: default;
 }
 /* line 8, ../../app/stylesheets/layout/_site.scss */
 #site ul {
-	display: inline;
-	list-style: none;
-	width: 100%;
-	padding-left: 40px;
+  display: inline;
+  list-style: none;
+  width: 100%;
+  padding-left: 40px;
 }
 /* line 4, ../../app/stylesheets/mixins/_list.scss */
 #site ul li {
-	display: inline;
+  display: inline;
 }
 /* line 10, ../../app/stylesheets/mixins/_list.scss */
 #site ul li:after {
-	content: " | ";
+  content: " | ";
 }
 /* line 13, ../../app/stylesheets/mixins/_list.scss */
-#site ul li:last-child:after, #site ul li.last:after {
-	content: "";
+#site ul li:last-child:after,
+#site ul li.last:after {
+  content: "";
 }
 /* line 11, ../../app/stylesheets/layout/_site.scss */
 #site ul li {
-	padding: 2px 0;
-	color: grey;
-	font-size: 1.4em;
+  padding: 2px 0;
+  color: grey;
+  font-size: 1.4em;
 }
 /* line 15, ../../app/stylesheets/layout/_site.scss */
 #site ul li a {
-	color: inherit;
-	text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 /* line 4, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/utilities/links/_hover-link.scss */
 #site ul li a:hover {
-	color: #33332d;
+  color: #33332d;
 }
 /* line 18, ../../app/stylesheets/layout/_site.scss */
 #site form {
-	float: right;
-	padding: 0 10px;
+  float: right;
+  padding: 0 10px;
 }
 
 #site input {
-	padding: 3px;
+  padding: 3px;
 }
 
 #site input[value="Rechercher"] {
-	padding: 2px;
-	color: #969696;
+  padding: 2px;
+  color: #969696;
 }
 #site input[value="Rechercher"]:hover {
-	color: #666666;
+  color: #666666;
 }
 
 /* line 21, ../../app/stylesheets/layout/_site.scss */
 #label_query {
-	display: none;
+  display: none;
 }
 
 /* line 1, ../../app/stylesheets/layout/_sidebar.scss */
 #sidebar {
-	padding: 10px;
+  padding: 10px;
 }
 /* line 6, ../../app/stylesheets/layout/_sidebar.scss */
 #sidebar .box {
-	padding: 28px;
-	margin: -15px -15px 0 -15px;
-	background: url('/images/contrib/grayscale/blocks/hautgauche.png') top left no-repeat, url('/images/contrib/grayscale/blocks/basgauche.png') bottom left no-repeat, url('/images/contrib/grayscale/blocks/hautdroite.png') top right no-repeat,
-	url('/images/contrib/grayscale/blocks/basdroite.png') bottom right no-repeat, url('/images/contrib/grayscale/blocks/milieugauche.png') top left repeat-y, url('/images/contrib/grayscale/blocks/milieudroite.png') top right repeat-y,
-	url('/images/contrib/grayscale/blocks/hautcentre.png') top left repeat-x, url('/images/contrib/grayscale/blocks/bascentre.png') bottom left repeat-x, white !important;
-	min-height: 38px;
+  padding: 28px;
+  margin: -15px -15px 0 -15px;
+  background: url("/images/contrib/grayscale/blocks/hautgauche.png") top left
+      no-repeat,
+    url("/images/contrib/grayscale/blocks/basgauche.png") bottom left no-repeat,
+    url("/images/contrib/grayscale/blocks/hautdroite.png") top right no-repeat,
+    url("/images/contrib/grayscale/blocks/basdroite.png") bottom right no-repeat,
+    url("/images/contrib/grayscale/blocks/milieugauche.png") top left repeat-y,
+    url("/images/contrib/grayscale/blocks/milieudroite.png") top right repeat-y,
+    url("/images/contrib/grayscale/blocks/hautcentre.png") top left repeat-x,
+    url("/images/contrib/grayscale/blocks/bascentre.png") bottom left repeat-x,
+    white !important;
+  min-height: 38px;
 }
 #admin_box h1 {
-	position: relative;
-	top: 10px;
+  position: relative;
+  top: 10px;
 }
 /* line 12, ../../app/stylesheets/layout/_sidebar.scss */
 #sidebar h1 {
-	font-size: 1.6em;
-	text-align: center;
+  font-size: 1.6em;
+  text-align: center;
 }
 /* line 15, ../../app/stylesheets/layout/_sidebar.scss */
 #sidebar input {
-	max-width: 180px;
+  max-width: 180px;
 }
 #sidebar h1 {
-	margin-top: 0;
-	margin-bottom: 0.50em;
+  margin-top: 0;
+  margin-bottom: 0.5em;
 }
 #sidebar h2 {
-	margin-top: 0;
-	margin-bottom: 0.75em;
+  margin-top: 0;
+  margin-bottom: 0.75em;
 }
 /* line 17, ../../app/stylesheets/layout/_sidebar.scss */
 #sidebar .forum h2 {
-	font-size: 1.1em;
+  font-size: 1.1em;
 }
 *:invalid {
-	box-shadow: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
 }
-#account_login_sidebar, #account_password_sidebar, .box #board_message {
-	width: 169px;
+#account_login_sidebar,
+#account_password_sidebar,
+.box #board_message {
+  width: 169px;
 }
 .box #board_message {
-	margin: 10px 0;
+  margin: 10px 0;
 }
 .box .inbox {
-	font-size: 10px;
+  font-size: 10px;
 }
 .box input[value="Envoyer"] {
-	display: none;
+  display: none;
 }
 .logged .login h1 a {
-	font-size: 1em;
+  font-size: 1em;
 }
 .box h1 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 /* line 21, ../../app/stylesheets/layout/_sidebar.scss */
 #branding h1 {
-	display: block;
-	width: 100%;
-	height: 100%;
-	border-radius: 24px;
-	-moz-border-radius: 24px;
-	-webkit-border-radius: 24px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  -moz-border-radius: 24px;
+  -webkit-border-radius: 24px;
 }
 #branding {
-	background: url('/images/contrib/grayscale/blocks/hautgauche.png') top left no-repeat, url('/images/contrib/grayscale/blocks/basgauche.png') bottom left no-repeat, url('/images/contrib/grayscale/blocks/hautdroite.png') top right no-repeat,
-	url('/images/contrib/grayscale/blocks/basdroite.png') bottom right no-repeat, url('/images/contrib/grayscale/blocks/milieugauche.png') top left repeat-y, url('/images/contrib/grayscale/blocks/milieudroite.png') top right repeat-y,
-	url('/images/contrib/grayscale/blocks/hautcentre.png') top left repeat-x, url('/images/contrib/grayscale/blocks/bascentre.png') bottom left repeat-x, black !important;
-	margin: -12px 3px 0 -12px;
-	width: 201px;
-	height: 186px;
-	padding: 15px;
+  background: url("/images/contrib/grayscale/blocks/hautgauche.png") top left
+      no-repeat,
+    url("/images/contrib/grayscale/blocks/basgauche.png") bottom left no-repeat,
+    url("/images/contrib/grayscale/blocks/hautdroite.png") top right no-repeat,
+    url("/images/contrib/grayscale/blocks/basdroite.png") bottom right no-repeat,
+    url("/images/contrib/grayscale/blocks/milieugauche.png") top left repeat-y,
+    url("/images/contrib/grayscale/blocks/milieudroite.png") top right repeat-y,
+    url("/images/contrib/grayscale/blocks/hautcentre.png") top left repeat-x,
+    url("/images/contrib/grayscale/blocks/bascentre.png") bottom left repeat-x,
+    black !important;
+  margin: -12px 3px 0 -12px;
+  width: 201px;
+  height: 186px;
+  padding: 15px;
 }
 #branding h1 a {
-	display: block;
-	color: transparent;
-	width: 100%;
-	height: 100%;
+  display: block;
+  color: transparent;
+  width: 100%;
+  height: 100%;
 }
 /* line 2, ../../app/stylesheets/layout/_container.scss */
-#container > h1, #container > article#contents > h1, #container > div#contents > h1, #main_board > h1 {
-	text-align: center;
-	font-family: Megalopolis, helvetica, arial, serif;
-	font-size: 3.5em;
-	font-weight: bold;
-	color: grey;
-	line-height: 80px;
+#container > h1,
+#container > article#contents > h1,
+#container > div#contents > h1,
+#main_board > h1 {
+  text-align: center;
+  font-family: Megalopolis, helvetica, arial, serif;
+  font-size: 3.5em;
+  font-weight: bold;
+  color: grey;
+  line-height: 80px;
 }
-body:not(#posts-new):not(#posts-create):not(#admin-index):not(#accounts-index):not(#pages-index):not(#responses-index):not(#sections-index):not(#forums-index):not(#categories-index):not(#banners-index):not(#stylesheets-show):not(#friend_sites-index) #container > h1 {
-	color: white;
+body:not(#posts-new):not(#posts-create):not(#admin-index):not(#accounts-index):not(#pages-index):not(#responses-index):not(#sections-index):not(#forums-index):not(#categories-index):not(#banners-index):not(#stylesheets-show):not(#friend_sites-index)
+  #container
+  > h1 {
+  color: white;
 }
 #main_board > p {
-	display: inline;
+  display: inline;
 }
 #main_board > a {
-	float: right;
-	font-style: italic;
+  float: right;
+  font-style: italic;
 }
-#main_board a, .inbox a {
-	text-decoration: none;
+#main_board a,
+.inbox a {
+  text-decoration: none;
 }
-#container > div#contents > h1, #container > article#contents > h1, #main_board > h1, body#posts-new #container > h1, body#posts-create #container > h1, body#admin-index #container > h1, body#accounts-index #container > h1, body#pages-index #container > h1, body#responses-index #container > h1, body#sections-index #container > h1, body#forums-index #container > h1, body#categories-index #container > h1, body#banners-index #container > h1, body#stylesheets-show #container > h1, body#friend_sites-index #container > h1 {
-	padding: 0;
-	margin: 0;
+#container > div#contents > h1,
+#container > article#contents > h1,
+#main_board > h1,
+body#posts-new #container > h1,
+body#posts-create #container > h1,
+body#admin-index #container > h1,
+body#accounts-index #container > h1,
+body#pages-index #container > h1,
+body#responses-index #container > h1,
+body#sections-index #container > h1,
+body#forums-index #container > h1,
+body#categories-index #container > h1,
+body#banners-index #container > h1,
+body#stylesheets-show #container > h1,
+body#friend_sites-index #container > h1 {
+  padding: 0;
+  margin: 0;
 }
 /* line 9, ../../app/stylesheets/layout/_container.scss */
-#container .toolbox ul, #container .toolbox li {
-	display: inline;
+#container .toolbox ul,
+#container .toolbox li {
+  display: inline;
 }
 
 .toolbox {
-	cursor: default;
+  cursor: default;
 }
 
 /* line 1, ../../app/stylesheets/layout/_bigfooter.scss */
 #bigfooter {
-	margin: 5px 0 0 0;
-	padding-top: 15px;
-	padding-bottom: 25px;
-	background-color: white;
-	background: url('/images/contrib/grayscale/blocks/hautcentre.png') white repeat-x;
-	padding-left: 25px;
-	display: block;
-	float: left;
-	overflow: hidden;
-	width: 100%;
+  margin: 5px 0 0 0;
+  padding-top: 15px;
+  padding-bottom: 25px;
+  background-color: white;
+  background: url("/images/contrib/grayscale/blocks/hautcentre.png") white
+    repeat-x;
+  padding-left: 25px;
+  display: block;
+  float: left;
+  overflow: hidden;
+  width: 100%;
 }
 #bigfooter ul {
-	padding: 0;
-	list-style-type: none;
-	overflow: hidden;
+  padding: 0;
+  list-style-type: none;
+  overflow: hidden;
 }
 /* line 6, ../../app/stylesheets/layout/_bigfooter.scss */
-#bigfooter nav, #bigfooter section {
-	display: inline-block;
-	padding-top: 5px;
-	height: 100%;
-	vertical-align: top;
-	display: inline;
-	float: left;
-	overflow: hidden;
-	width: 25%;
-	padding-right: 2px;
+#bigfooter nav,
+#bigfooter section {
+  display: inline-block;
+  padding-top: 5px;
+  height: 100%;
+  vertical-align: top;
+  display: inline;
+  float: left;
+  overflow: hidden;
+  width: 25%;
+  padding-right: 2px;
 }
-#about_us, #friends {
-	margin-left: -5%;
+#about_us,
+#friends {
+  margin-left: -5%;
 }
 #popular_tags {
-	margin-left: 5%;
+  margin-left: 5%;
 }
 /* line 11, ../../app/stylesheets/layout/_bigfooter.scss */
-#bigfooter nav h1, #bigfooter section h1 {
-	font-size: 2em;
+#bigfooter nav h1,
+#bigfooter section h1 {
+  font-size: 2em;
 }
 /* line 7, ../../app/stylesheets/layout/_layout.scss */
 #site {
-	display: inline;
-	float: left;
-	overflow: hidden;
-	width: 99.974%;
-	margin-right: 1.042%;
+  display: inline;
+  float: left;
+  overflow: hidden;
+  width: 99.974%;
+  margin-right: 1.042%;
 }
 
 /* line 10, ../../app/stylesheets/layout/_layout.scss */
 #sidebar {
-	display: inline;
-	float: left;
-	overflow: hidden;
-	width: 20.003%;
-	margin-right: 1.042%;
-	width: 207px;
+  display: inline;
+  float: left;
+  overflow: hidden;
+  width: 20.003%;
+  margin-right: 1.042%;
+  width: 207px;
 }
 
 /* line 14, ../../app/stylesheets/layout/_layout.scss */
-body:not(#posts-new):not(#posts-create):not(#admin-index):not(#accounts-index):not(#pages-index):not(#responses-index):not(#sections-index):not(#categories-index):not(#banners-index):not(#stylesheets-show):not(#friend_sites-index) #container {
-	padding-top: 70px;
+body:not(#posts-new):not(#posts-create):not(#admin-index):not(#accounts-index):not(#pages-index):not(#responses-index):not(#sections-index):not(#categories-index):not(#banners-index):not(#stylesheets-show):not(#friend_sites-index)
+  #container {
+  padding-top: 70px;
 }
-#posts-new #container, #posts-create #container, #posts-new #bigfooter, #posts-create #bigfooter, #admin-index #container, #admin-index #bigfooter,
-#accounts-index #container, #accounts-index #bigfooter, #pages-index #container, #pages-index #bigfooter, #responses-index #container, #responses-index #bigfooter,
-#sections-index #container, #sections-index #bigfooter, #categories-index #container, #categories-index #bigfooter,
-#banners-index #container, #banners-index #bigfooter, #stylesheets-show #container, #stylesheets-show #bigfooter, #friend_sites-index #container,
+#posts-new #container,
+#posts-create #container,
+#posts-new #bigfooter,
+#posts-create #bigfooter,
+#admin-index #container,
+#admin-index #bigfooter,
+#accounts-index #container,
+#accounts-index #bigfooter,
+#pages-index #container,
+#pages-index #bigfooter,
+#responses-index #container,
+#responses-index #bigfooter,
+#sections-index #container,
+#sections-index #bigfooter,
+#categories-index #container,
+#categories-index #bigfooter,
+#banners-index #container,
+#banners-index #bigfooter,
+#stylesheets-show #container,
+#stylesheets-show #bigfooter,
+#friend_sites-index #container,
 #friend_sites-index #bigfooter {
-	position: relative;
-	top: 55px;
+  position: relative;
+  top: 55px;
 }
 /* line 16, ../../app/stylesheets/layout/_layout.scss */
-body:not(#posts-new):not(#posts-create):not(#admin-index):not(#accounts-index):not(#pages-index):not(#responses-index):not(#sections-index):not(#categories-index):not(#banners-index):not(#stylesheets-show):not(#friend_sites-index) #container > * {
-	margin: 0 50px 0 257px;
+body:not(#posts-new):not(#posts-create):not(#admin-index):not(#accounts-index):not(#pages-index):not(#responses-index):not(#sections-index):not(#categories-index):not(#banners-index):not(#stylesheets-show):not(#friend_sites-index)
+  #container
+  > * {
+  margin: 0 50px 0 257px;
 }
 /* line 19, ../../app/stylesheets/layout/_layout.scss */
 #edition {
-	display: inline;
-	float: left;
-	overflow: hidden;
-	width: 62.093%;
-	margin-right: 1.042%;
+  display: inline;
+  float: left;
+  overflow: hidden;
+  width: 62.093%;
+  margin-right: 1.042%;
 }
 
 /* line 22, ../../app/stylesheets/layout/_layout.scss */
 #chat {
-	display: inline;
-	float: left;
-	overflow: hidden;
-	width: 32.63%;
-	margin-right: 1.042%;
+  display: inline;
+  float: left;
+  overflow: hidden;
+  width: 32.63%;
+  margin-right: 1.042%;
 }
 
-body:not(#wiki_pages-changes) .toolbox, body:not(#wiki_pages-changes) .toolbox a, body:not(#posts-new):not(#posts-create) footer > p > a,
+body:not(#wiki_pages-changes) .toolbox,
+body:not(#wiki_pages-changes) .toolbox a,
+body:not(#posts-new):not(#posts-create) footer > p > a,
 body:not(#posts-new):not(#posts-create) section#container > p > a {
-	color: white;
+  color: white;
 }
 
-body:not(#wiki_pages-changes) .toolbox a:hover, body:not(#posts-new):not(#posts-create) footer > p > a:hover,
+body:not(#wiki_pages-changes) .toolbox a:hover,
+body:not(#posts-new):not(#posts-create) footer > p > a:hover,
 body:not(#posts-new):not(#posts-create) section#container > p > a:hover {
-	color: #33332d !important;
+  color: #33332d !important;
 }
 
 /* line 1, ../../app/stylesheets/partials/_generics.scss */
 body {
-	color: #33332d;
-	font-family: "Droid Sans", sans-serif;
-	/* background: url('bg.png') repeat-y 28px 0px, url('bg/grey.png'); */
-	background: url('/images/contrib/grayscale/bg/grey.png');
+  color: #33332d;
+  font-family: "Droid Sans", sans-serif;
+  /* background: url('bg.png') repeat-y 28px 0px, url('bg/grey.png'); */
+  background: url("/images/contrib/grayscale/bg/grey.png");
 }
 
-::-moz-selection { background: grey; color: white; }
-::selection { background: grey; color: white; }
+::-moz-selection {
+  background: grey;
+  color: white;
+}
+::selection {
+  background: grey;
+  color: white;
+}
 
 pre {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 /* line 5, ../../app/stylesheets/partials/_generics.scss */
-ins.diffins, ins.diffmod {
-	background-color: #33ff33;
+ins.diffins,
+ins.diffmod {
+  background-color: #33ff33;
 }
 
 /* line 8, ../../app/stylesheets/partials/_generics.scss */
-del.diffdel, del.diffmod {
-	background-color: #ff3333;
+del.diffdel,
+del.diffmod {
+  background-color: #ff3333;
 }
 .banner {
-	text-align: center;
-	font-size: 2em;
-	padding: 15px;
-	margin: -15px -15px -15px -15px !important;
-	background: url('/images/contrib/grayscale/notice/hautgauche.png') top left no-repeat, url('/images/contrib/grayscale/notice/basgauche.png') bottom left no-repeat, url('/images/contrib/grayscale/notice/hautdroite.png') top right no-repeat,
-	url('/images/contrib/grayscale/notice/basdroite.png') bottom right no-repeat, url('/images/contrib/grayscale/blocks/milieugauche.png') top left repeat-y, url('/images/contrib/grayscale/blocks/milieudroite.png') top right repeat-y,
-	url('/images/contrib/grayscale/blocks/hautcentre.png') top left repeat-x, url('/images/contrib/grayscale/blocks/bascentre.png') bottom left repeat-x, white !important;
-	font-family: Megalopolis, helvetica, arial, serif;
-	font-size: 2em;
-	color: grey;
+  text-align: center;
+  font-size: 2em;
+  padding: 15px;
+  margin: -15px -15px -15px -15px !important;
+  background: url("/images/contrib/grayscale/notice/hautgauche.png") top left
+      no-repeat,
+    url("/images/contrib/grayscale/notice/basgauche.png") bottom left no-repeat,
+    url("/images/contrib/grayscale/notice/hautdroite.png") top right no-repeat,
+    url("/images/contrib/grayscale/notice/basdroite.png") bottom right no-repeat,
+    url("/images/contrib/grayscale/blocks/milieugauche.png") top left repeat-y,
+    url("/images/contrib/grayscale/blocks/milieudroite.png") top right repeat-y,
+    url("/images/contrib/grayscale/blocks/hautcentre.png") top left repeat-x,
+    url("/images/contrib/grayscale/blocks/bascentre.png") bottom left repeat-x,
+    white !important;
+  font-family: Megalopolis, helvetica, arial, serif;
+  font-size: 2em;
+  color: grey;
 }
 /* line 1, ../../app/stylesheets/partials/_forms.scss */
 .fieldWithErrors input {
-	border: 1px solid red;
+  border: 1px solid red;
 }
 
 /* line 4, ../../app/stylesheets/partials/_forms.scss */
 .vote form {
-	display: inline-block;
+  display: inline-block;
 }
 
 /* line 2, ../../app/stylesheets/partials/_contents.scss */
 article {
-	padding: 28px;
-	margin: -15px -15px 0 -15px;
-	background: url('/images/contrib/grayscale/blocks/hautgauche.png') top left no-repeat, url('/images/contrib/grayscale/blocks/basgauche.png') bottom left no-repeat, url('/images/contrib/grayscale/blocks/hautdroite.png') top right no-repeat,
-	url('/images/contrib/grayscale/blocks/basdroite.png') bottom right no-repeat, url('/images/contrib/grayscale/blocks/milieugauche.png') top left repeat-y, url('/images/contrib/grayscale/blocks/milieudroite.png') top right repeat-y,
-	url('/images/contrib/grayscale/blocks/hautcentre.png') top left repeat-x, url('/images/contrib/grayscale/blocks/bascentre.png') bottom left repeat-x, white !important;
+  padding: 28px;
+  margin: -15px -15px 0 -15px;
+  background: url("/images/contrib/grayscale/blocks/hautgauche.png") top left
+      no-repeat,
+    url("/images/contrib/grayscale/blocks/basgauche.png") bottom left no-repeat,
+    url("/images/contrib/grayscale/blocks/hautdroite.png") top right no-repeat,
+    url("/images/contrib/grayscale/blocks/basdroite.png") bottom right no-repeat,
+    url("/images/contrib/grayscale/blocks/milieugauche.png") top left repeat-y,
+    url("/images/contrib/grayscale/blocks/milieudroite.png") top right repeat-y,
+    url("/images/contrib/grayscale/blocks/hautcentre.png") top left repeat-x,
+    url("/images/contrib/grayscale/blocks/bascentre.png") bottom left repeat-x,
+    white !important;
 }
-body#wiki_pages-create article, body#comments-create article, body#news-create article, body#diaries-create article, body#trackers-create article,
-body#posts-create article, body#polls-create article {
-	background: url('/images/contrib/grayscale/comments/hautgauche.png') top left no-repeat, url('/images/contrib/grayscale/comments/basgauche.png') bottom left no-repeat, url('/images/contrib/grayscale/comments/hautdroite.png') top right no-repeat,
-	url('/images/contrib/grayscale/comments/basdroite.png') bottom right no-repeat, url('/images/contrib/grayscale/comments/milieugauche.png') top left repeat-y, url('/images/contrib/grayscale/comments/milieudroite.png') top right repeat-y,
-	url('/images/contrib/grayscale/comments/hautcentre.png') top left repeat-x, url('/images/contrib/grayscale/comments/bascentre.png') bottom left repeat-x, white !important;
-	margin-left: -13px;
-	margin-right: -13px;
+body#wiki_pages-create article,
+body#comments-create article,
+body#news-create article,
+body#diaries-create article,
+body#trackers-create article,
+body#posts-create article,
+body#polls-create article {
+  background: url("/images/contrib/grayscale/comments/hautgauche.png") top left
+      no-repeat,
+    url("/images/contrib/grayscale/comments/basgauche.png") bottom left
+      no-repeat,
+    url("/images/contrib/grayscale/comments/hautdroite.png") top right no-repeat,
+    url("/images/contrib/grayscale/comments/basdroite.png") bottom right
+      no-repeat,
+    url("/images/contrib/grayscale/comments/milieugauche.png") top left repeat-y,
+    url("/images/contrib/grayscale/comments/milieudroite.png") top right
+      repeat-y,
+    url("/images/contrib/grayscale/comments/hautcentre.png") top left repeat-x,
+    url("/images/contrib/grayscale/comments/bascentre.png") bottom left repeat-x,
+    white !important;
+  margin-left: -13px;
+  margin-right: -13px;
 }
-body#stylesheets-edit #container > #contents, body#news-new #container > #contents, body#sections-index #container > #contents, 
-body#diaries-new #container > #contents, body#posts-new #container, body#polls-new #container > #contents,
-body#trackers-index #container table, body#trackers-new #container > #contents, body#wiki_pages-new #container > #contents,
-body#static-submit_content #container > #contents, body#static-changelog #container > #contents, body#dashboard-index #container > #contents,
-body#registrations-edit #container > #contents, body#registrations-new #container > #contents, body#wiki_pages-create #container > #contents,
-body#confirmations-new #container > #contents, body#comments-answer #container > #contents, body#comments-new #container > #contents,
-body#wiki_pages-revision #container > #contents, body#comments-create #container > #contents, body#sessions-new #container > #contents,
-body#passwords-new #container > #contents, body#confirmations-new #container > #contents, body#wiki_pages-edit #container > #contents,
-body#boards-show #container > #main_board, body#wiki_pages-update #container > #contents, body#tags-new #container > #contents,
-body#news-create #container > #contents, body#diaries-create #container > #contents, body#trackers-create #container > #contents,
-body#posts-create #container, body#polls-create #container > #contents, body#wiki_pages-changes #container > #contents,
-body#comments-index #container > #contents, body#registrations-update #container > #contents, body#admin-index #container,
-body#accounts-index #container, body#pages-index #container, body#responses-index #container, body#sections-index #container
-body#categories-index #container, body#banners-index #container, body#stylesheets-show #container, body#friend_sites-index #container {
-	padding: 28px;
-	margin: -15px 35px -15px 242px !important;
-	background: url('/images/contrib/grayscale/blocks/hautgauche.png') top left no-repeat, url('/images/contrib/grayscale/blocks/basgauche.png') bottom left no-repeat, url('/images/contrib/grayscale/blocks/hautdroite.png') top right no-repeat,
-	url('/images/contrib/grayscale/blocks/basdroite.png') bottom right no-repeat, url('/images/contrib/grayscale/blocks/milieugauche.png') top left repeat-y, url('/images/contrib/grayscale/blocks/milieudroite.png') top right repeat-y,
-	url('/images/contrib/grayscale/blocks/hautcentre.png') top left repeat-x, url('/images/contrib/grayscale/blocks/bascentre.png') bottom left repeat-x, white !important;
+body#stylesheets-edit #container > #contents,
+body#news-new #container > #contents,
+body#sections-index #container > #contents,
+body#diaries-new #container > #contents,
+body#posts-new #container,
+body#polls-new #container > #contents,
+body#trackers-index #container table,
+body#trackers-new #container > #contents,
+body#wiki_pages-new #container > #contents,
+body#static-submit_content #container > #contents,
+body#static-changelog #container > #contents,
+body#dashboard-index #container > #contents,
+body#registrations-edit #container > #contents,
+body#registrations-new #container > #contents,
+body#wiki_pages-create #container > #contents,
+body#confirmations-new #container > #contents,
+body#comments-answer #container > #contents,
+body#comments-new #container > #contents,
+body#wiki_pages-revision #container > #contents,
+body#comments-create #container > #contents,
+body#sessions-new #container > #contents,
+body#passwords-new #container > #contents,
+body#confirmations-new #container > #contents,
+body#wiki_pages-edit #container > #contents,
+body#boards-show #container > #main_board,
+body#wiki_pages-update #container > #contents,
+body#tags-new #container > #contents,
+body#news-create #container > #contents,
+body#diaries-create #container > #contents,
+body#trackers-create #container > #contents,
+body#posts-create #container,
+body#polls-create #container > #contents,
+body#wiki_pages-changes #container > #contents,
+body#comments-index #container > #contents,
+body#registrations-update #container > #contents,
+body#admin-index #container,
+body#accounts-index #container,
+body#pages-index #container,
+body#responses-index #container,
+body#sections-index #container body#categories-index #container,
+body#banners-index #container,
+body#stylesheets-show #container,
+body#friend_sites-index #container {
+  padding: 28px;
+  margin: -15px 35px -15px 242px !important;
+  background: url("/images/contrib/grayscale/blocks/hautgauche.png") top left
+      no-repeat,
+    url("/images/contrib/grayscale/blocks/basgauche.png") bottom left no-repeat,
+    url("/images/contrib/grayscale/blocks/hautdroite.png") top right no-repeat,
+    url("/images/contrib/grayscale/blocks/basdroite.png") bottom right no-repeat,
+    url("/images/contrib/grayscale/blocks/milieugauche.png") top left repeat-y,
+    url("/images/contrib/grayscale/blocks/milieudroite.png") top right repeat-y,
+    url("/images/contrib/grayscale/blocks/hautcentre.png") top left repeat-x,
+    url("/images/contrib/grayscale/blocks/bascentre.png") bottom left repeat-x,
+    white !important;
 }
-body#posts-new #container, body#posts-create #container, body#admin-index #container, body#accounts-index #container, body#pages-index #container {
-	margin: 0 35px 0 242px !important;
+body#posts-new #container,
+body#posts-create #container,
+body#admin-index #container,
+body#accounts-index #container,
+body#pages-index #container {
+  margin: 0 35px 0 242px !important;
 }
 body#trackers-index #container table {
- 	margin: 0 !important;
+  margin: 0 !important;
 }
-body#stylesheets-edit #container > #contents > *, body#news-new #container > #contents > *, body#sections-index #container > #contents > *, 
-body#diaries-new #container > #contents > *, body#posts-new #container > *, body#polls-new #container > #contents > *,
-body#trackers-index #container table > *, body#trackers-new #container > #contents > *, body#wiki_pages-new #container > #contents > *,
-body#static-submit_content #container > #contents > *, body#static-changelog #container > #contents > *, body#dashboard-index #container > #contents > *,
-body#registrations-edit #container > #contents > *, body#registrations-new #container > #contents > *, body#wiki_pages-create #container > #contents > *,
-body#confirmations-new #container > #contents > *, body#comments-answer #container > #contents > *, body#comments-new #container > #contents > *,
-body#wiki_pages-revision #container > #contents > *, body#comments-create #container > #contents > *, body#sessions-new #container > #contents > *,
-body#passwords-new #container > #contents > *, body#confirmations-new #container > #contents > *, body#wiki_pages-edit #container > #contents > *,
-body#boards-show #container > #main_board > *, body#wiki_pages-update #container > #contents > *, body#tags-new #container > #contents > *,
-body#news-create #container > #contents > *, body#diaries-create #container > #contents > *, body#trackers-create #container > #contents > *,
-body#posts-new #container > *, body#posts-create #container > *, body#polls-create #container > #contents > *, body#wiki_pages-changes #container > #contents > *,
-body#comments-index #container > #contents > *, body#registrations-update #container > #contents, body#admin-index #container > *, body#accounts-index #container > *,
-body#pages-index #container > *, body#responses-index #container > *, body#sections-index #container > *,
-body#categories-index #container > *, body#banners-index #container > *, body#stylesheets-show #container > *, body#friend_sites-index #container > * {
-	background: white;
+body#stylesheets-edit #container > #contents > *,
+body#news-new #container > #contents > *,
+body#sections-index #container > #contents > *,
+body#diaries-new #container > #contents > *,
+body#posts-new #container > *,
+body#polls-new #container > #contents > *,
+body#trackers-index #container table > *,
+body#trackers-new #container > #contents > *,
+body#wiki_pages-new #container > #contents > *,
+body#static-submit_content #container > #contents > *,
+body#static-changelog #container > #contents > *,
+body#dashboard-index #container > #contents > *,
+body#registrations-edit #container > #contents > *,
+body#registrations-new #container > #contents > *,
+body#wiki_pages-create #container > #contents > *,
+body#confirmations-new #container > #contents > *,
+body#comments-answer #container > #contents > *,
+body#comments-new #container > #contents > *,
+body#wiki_pages-revision #container > #contents > *,
+body#comments-create #container > #contents > *,
+body#sessions-new #container > #contents > *,
+body#passwords-new #container > #contents > *,
+body#confirmations-new #container > #contents > *,
+body#wiki_pages-edit #container > #contents > *,
+body#boards-show #container > #main_board > *,
+body#wiki_pages-update #container > #contents > *,
+body#tags-new #container > #contents > *,
+body#news-create #container > #contents > *,
+body#diaries-create #container > #contents > *,
+body#trackers-create #container > #contents > *,
+body#posts-new #container > *,
+body#posts-create #container > *,
+body#polls-create #container > #contents > *,
+body#wiki_pages-changes #container > #contents > *,
+body#comments-index #container > #contents > *,
+body#registrations-update #container > #contents,
+body#admin-index #container > *,
+body#accounts-index #container > *,
+body#pages-index #container > *,
+body#responses-index #container > *,
+body#sections-index #container > *,
+body#categories-index #container > *,
+body#banners-index #container > *,
+body#stylesheets-show #container > *,
+body#friend_sites-index #container > * {
+  background: white;
 }
 article:first-child {
-	margin-top: 0 !important;
+  margin-top: 0 !important;
 }
-#dashboard-index td, #dashboard-index th, #responses-index td, #responses-index th, #sections-index td, #sections-index th,
-#categories-index td, #categories-index th, #banners-index td, #banners-index th, #stylesheets-show td, #stylesheets-show th, #friend_sites-index td,
+#dashboard-index td,
+#dashboard-index th,
+#responses-index td,
+#responses-index th,
+#sections-index td,
+#sections-index th,
+#categories-index td,
+#categories-index th,
+#banners-index td,
+#banners-index th,
+#stylesheets-show td,
+#stylesheets-show th,
+#friend_sites-index td,
 #friend_sites-index th {
-	border-bottom: 1px solid white;
-	border-left: 1px solid white;
-	background: #f2f2f2;
+  border-bottom: 1px solid white;
+  border-left: 1px solid white;
+  background: #f2f2f2;
 }
-#dashboard-index td:first-letter, #responses-index td:first-letter, #sections-index td:first-letter, #categories-index td:first-letter, #banners-index td:first-letter, #stylesheets-show td:first-letter, #friend_sites-index td:first-letter {
-	text-transform: capitalize;
+#dashboard-index td:first-letter,
+#responses-index td:first-letter,
+#sections-index td:first-letter,
+#categories-index td:first-letter,
+#banners-index td:first-letter,
+#stylesheets-show td:first-letter,
+#friend_sites-index td:first-letter {
+  text-transform: capitalize;
 }
-#dashboard-index tr:last-child td:last-child, #responses-index tr:last-child td:last-child, #sections-index tr:last-child td:last-child, #categories-index tr:last-child td:last-child, #banners-index tr:last-child td:last-child, #stylesheets-show tr:last-child td:last-child, #friend_sites-index tr:last-child td:last-child {
-	border-bottom-right-radius: 5px;
-	-moz-border-radius-bottomright: 5px;
-	-webkit-border-bottom-right-radius: 5px;
+#dashboard-index tr:last-child td:last-child,
+#responses-index tr:last-child td:last-child,
+#sections-index tr:last-child td:last-child,
+#categories-index tr:last-child td:last-child,
+#banners-index tr:last-child td:last-child,
+#stylesheets-show tr:last-child td:last-child,
+#friend_sites-index tr:last-child td:last-child {
+  border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
 }
-#dashboard-index tr:first-child th:last-child, #responses-index tr:first-child th:last-child, #sections-index tr:first-child th:last-child, #categories-index tr:first-child th:last-child, #banners-index tr:first-child th:last-child, #stylesheets-show tr:first-child th:last-child, #friend_sites-index tr:first-child th:last-child {
-	border-top-right-radius: 5px;
-	-moz-border-radius-topright: 5px;
-	-webkit-border-top-right-radius: 5px;
+#dashboard-index tr:first-child th:last-child,
+#responses-index tr:first-child th:last-child,
+#sections-index tr:first-child th:last-child,
+#categories-index tr:first-child th:last-child,
+#banners-index tr:first-child th:last-child,
+#stylesheets-show tr:first-child th:last-child,
+#friend_sites-index tr:first-child th:last-child {
+  border-top-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
 }
-#dashboard-index tr:last-child td:first-child, #responses-index tr:last-child td:first-child, #sections-index tr:last-child td:first-child, #categories-index tr:last-child td:first-child, #banners-index tr:last-child td:first-child, #stylesheets-show tr:last-child td:first-child, #friend_sites-index tr:last-child td:first-child {
-	border-bottom-left-radius: 5px;
-	-moz-border-radius-bottomleft: 5px;
-	-webkit-border-bottom-left-radius: 5px;
+#dashboard-index tr:last-child td:first-child,
+#responses-index tr:last-child td:first-child,
+#sections-index tr:last-child td:first-child,
+#categories-index tr:last-child td:first-child,
+#banners-index tr:last-child td:first-child,
+#stylesheets-show tr:last-child td:first-child,
+#friend_sites-index tr:last-child td:first-child {
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
 }
-#dashboard-index tr:first-child th:first-child, #responses-index tr:first-child th:first-child, #sections-index tr:first-child th:first-child, #categories-index tr:first-child th:first-child, #banners-index tr:first-child th:first-child, #stylesheets-show tr:first-child th:first-child, #friend_sites-index tr:first-child th:first-child {
-	border-top-left-radius: 5px;
-	-moz-border-radius-topleft: 5px;
-	-webkit-border-top-left-radius: 5px;
+#dashboard-index tr:first-child th:first-child,
+#responses-index tr:first-child th:first-child,
+#sections-index tr:first-child th:first-child,
+#categories-index tr:first-child th:first-child,
+#banners-index tr:first-child th:first-child,
+#stylesheets-show tr:first-child th:first-child,
+#friend_sites-index tr:first-child th:first-child {
+  border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
 }
 #stylesheets-edit #contents p:nth-child(3) {
-	margin-bottom: 15px;
+  margin-bottom: 15px;
 }
-#stylesheets-edit #contents input[type="submit"]:not([value="OK"]):not([value="CSS par défaut"]) {
-	margin-bottom: 5px;
+#stylesheets-edit
+  #contents
+  input[type="submit"]:not([value="OK"]):not([value="CSS par défaut"]) {
+  margin-bottom: 5px;
 }
 #stylesheets-edit #contents form:last-child {
-	margin-top: 5px;
+  margin-top: 5px;
 }
 #sections li {
-	padding-left: 13px;
+  padding-left: 13px;
 }
-article + footer > p, div + footer > p {
-	margin-top: 20px;
+article + footer > p,
+div + footer > p {
+  margin-top: 20px;
 }
-input[value="OK"], input[value="Envoyer"], input[value="Tagger"], input[value="Enregistrer"], button.remove {
-	padding-bottom: 3px;
-	height: 29px;
+input[value="OK"],
+input[value="Envoyer"],
+input[value="Tagger"],
+input[value="Enregistrer"],
+button.remove {
+  padding-bottom: 3px;
+  height: 29px;
 }
 body:not(#tags-new) input[value="Tagger"] {
-	padding-bottom: 1px;
+  padding-bottom: 1px;
 }
 .help {
-	font-size: 10px;
-	font-style: italic;
-	color: grey;
-	display: inline-block;
-	width: auto;
-	overflow: hidden;
+  font-size: 10px;
+  font-style: italic;
+  color: grey;
+  display: inline-block;
+  width: auto;
+  overflow: hidden;
 }
 .help:first-letter {
-	text-transform: uppercase;
+  text-transform: uppercase;
 }
 .field_with_errors {
-	display: inline-block;
+  display: inline-block;
 }
 .field_with_errors input {
-	border: 1px solid #AC0000 !important;
+  border: 1px solid #ac0000 !important;
 }
 .edit_account label {
-	width: 220px;
-	display: inline-block;
+  width: 220px;
+  display: inline-block;
 }
 .edit_account #account_user_attributes_jabber_id {
-	width: 210px;
+  width: 210px;
 }
 button.remove {
-	padding-bottom: 2px;
+  padding-bottom: 2px;
 }
 /* line 9, ../../app/stylesheets/partials/_contents.scss */
 article header h1 {
-	margin: 5px 0 5px;
-	font-family: Megalopolis, helvetica, arial, serif;
-	font-size: 2em;
-	color: grey;
+  margin: 5px 0 5px;
+  font-family: Megalopolis, helvetica, arial, serif;
+  font-size: 2em;
+  color: grey;
 }
 /* line 14, ../../app/stylesheets/partials/_contents.scss */
 article header h1 a {
-	text-decoration: none;
+  text-decoration: none;
 }
-article h1 a[name], article h2 a[name], article h3 a[name], article h4 a[name], article h5 a[name], article h6 a[name] {
-	text-decoration: none;
+article h1 a[name],
+article h2 a[name],
+article h3 a[name],
+article h4 a[name],
+article h5 a[name],
+article h6 a[name] {
+  text-decoration: none;
 }
-article h1 a[name]:hover, article h2 a[name]:hover, article h3 a[name]:hover, article h4 a[name]:hover, article h5 a[name]:hover, article h6 a[name]:hover {
-	color: grey;
+article h1 a[name]:hover,
+article h2 a[name]:hover,
+article h3 a[name]:hover,
+article h4 a[name]:hover,
+article h5 a[name]:hover,
+article h6 a[name]:hover {
+  color: grey;
 }
-#home-index #container > h1, #home-index .notice {
-	display: none;
+#home-index #container > h1,
+#home-index .notice {
+  display: none;
 }
-#home-index #container, #news-show #container, #wiki_pages-show #container, #trackers-show #container, #posts-show #container, #polls-show #container,
+#home-index #container,
+#news-show #container,
+#wiki_pages-show #container,
+#trackers-show #container,
+#posts-show #container,
+#polls-show #container,
 #diaries-show #container {
-	padding-top: 56px !important;
+  padding-top: 56px !important;
 }
 /* line 16, ../../app/stylesheets/partials/_contents.scss */
-article header h1 a + a:before, #news-create article header h1 a:after, #wiki_pages-create article header h1 a:after {
-	content: " : ";
-	color: grey;
+article header h1 a + a:before,
+#news-create article header h1 a:after,
+#wiki_pages-create article header h1 a:after {
+  content: " : ";
+  color: grey;
 }
 article header {
-	padding-bottom: 10px;
+  padding-bottom: 10px;
 }
-article header h1, .comment h2 {
-	cursor: default;
+article header h1,
+.comment h2 {
+  cursor: default;
 }
 /* line 18, ../../app/stylesheets/partials/_contents.scss */
 article figure {
-	float: left;
-	margin-right: 10px;
+  float: left;
+  margin-right: 10px;
 }
 /* line 21, ../../app/stylesheets/partials/_contents.scss */
 article figure.score {
-	width: 38px;
-	height: 28px;
-	padding: 10px 0 0 0;
-	text-align: center;
-	font-weight: bold;
-	color: white;
-	background: url('/images/contrib/grayscale/bg/score.png') no-repeat;
-	margin-right: 24px;
-	display: inline-block;
+  width: 38px;
+  height: 28px;
+  padding: 10px 0 0 0;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  background: url("/images/contrib/grayscale/bg/score.png") no-repeat;
+  margin-right: 24px;
+  display: inline-block;
 }
-.tracker figure.score, .post figure.score, .wikipage figure.score {
-	margin-right: 15px;
+.tracker figure.score,
+.post figure.score,
+.wikipage figure.score {
+  margin-right: 15px;
 }
 /* line 29, ../../app/stylesheets/partials/_contents.scss */
 article ul.tag_cloud {
-	display: inline;
-	list-style: none;
+  display: inline;
+  list-style: none;
 }
 /* line 4, ../../app/stylesheets/mixins/_list.scss */
 article ul.tag_cloud li {
-	display: inline;
+  display: inline;
 }
 
 /* line 44, ../../app/stylesheets/partials/_contents.scss */
 .poll .result {
-	display: block;
-	margin: 5px 0;
-	padding-left: 5px;
-	background: url('/images/contrib/grayscale/bg/grey.png');
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	color: white;
-	text-transform: capitalize;
-	overflow: hidden;
+  display: block;
+  margin: 5px 0;
+  padding-left: 5px;
+  background: url("/images/contrib/grayscale/bg/grey.png");
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  color: white;
+  text-transform: capitalize;
+  overflow: hidden;
 }
 /* line 49, ../../app/stylesheets/partials/_contents.scss */
 .poll .content ul {
-	list-style: none;
-	margin-top: 0;
-	margin-left: 48px;
+  list-style: none;
+  margin-top: 0;
+  margin-left: 48px;
 }
 
 .poll label {
-	font-weight: normal;
+  font-weight: normal;
 }
 
 .poll ul:not(.poll) {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
-#polls input[value="Voter"], .poll input[value="Voter"] {
-	margin-left: 69px;
-	margin-top: 5px;
-	margin-bottom: 10px;
+#polls input[value="Voter"],
+.poll input[value="Voter"] {
+  margin-left: 69px;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 /* line 56, ../../app/stylesheets/partials/_contents.scss */
-#tracker .fix a, #tracker .invalid a, .tracker .fix a, .tracker .invalid a {
-	text-decoration: line-through;
+#tracker .fix a,
+#tracker .invalid a,
+.tracker .fix a,
+.tracker .invalid a {
+  text-decoration: line-through;
 }
 
 body#trackers-index #container table {
-	margin-top: 5px !important;
-	margin-bottom: -15px !important;
+  margin-top: 5px !important;
+  margin-bottom: -15px !important;
 }
 
 .poll li {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 /* line 1, ../../app/stylesheets/partials/_toolbar.scss */
 #toolbar {
-	position: fixed;
-	overflow: hidden;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	padding: 2px 50px 2px 260px;
-	background: white;
-	border-top: 1px solid #e7e7e7;
-	height: 1px;
-	-webkit-transition-property: height;
-	-webkit-transition-duration: 0.1s;
-	-moz-transition-duration: 0.1s;
-	transition-property: height;
-	transition-duration: 0.1s;
-	z-index: 43;
+  position: fixed;
+  overflow: hidden;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2px 50px 2px 260px;
+  background: white;
+  border-top: 1px solid #e7e7e7;
+  height: 1px;
+  -webkit-transition-property: height;
+  -webkit-transition-duration: 0.1s;
+  -moz-transition-duration: 0.1s;
+  transition-property: height;
+  transition-duration: 0.1s;
+  z-index: 43;
 }
 
 #toolbar:hover {
-	height: 18px;
+  height: 18px;
 }
 
 #toolbar * {
-	color: white;
-	-webkit-transition-property: height;
-	-webkit-transition-duration: 0.1s;
-	-moz-transition-duration: 0.1s;
-	transition-property: height;
-	transition-duration: 0.1s;
+  color: white;
+  -webkit-transition-property: height;
+  -webkit-transition-duration: 0.1s;
+  -moz-transition-duration: 0.1s;
+  transition-property: height;
+  transition-duration: 0.1s;
 }
 
 #toolbar:hover *:not(a) {
-	color: inherit;
+  color: inherit;
 }
 
 #toolbar:hover a {
-	color: grey;
+  color: grey;
 }
 
 #toolbar a:hover {
-	color: grey;
+  color: grey;
 }
 
 /* line 12, ../../app/stylesheets/partials/_toolbar.scss */
 #toolbar_items {
-	float: right;
+  float: right;
 }
 
 /* line 15, ../../app/stylesheets/partials/_toolbar.scss */
-.fold > .meta, .fold > .image, .fold > .content, .fold > .actions {
-	height: 10px;
-	display: none;
+.fold > .meta,
+.fold > .image,
+.fold > .content,
+.fold > .actions {
+  height: 10px;
+  display: none;
 }
 
 /* line 1, ../../app/stylesheets/partials/_autocomplete.scss */
 .ac_results {
-	padding: 0px;
-	border: 1px solid black;
-	background-color: white;
-	overflow: hidden;
-	z-index: 99999;
+  padding: 0px;
+  border: 1px solid black;
+  background-color: white;
+  overflow: hidden;
+  z-index: 99999;
 }
 /* line 7, ../../app/stylesheets/partials/_autocomplete.scss */
 .ac_results ul {
-	width: 100%;
-	list-style-position: outside;
-	list-style: none;
-	padding: 0;
-	margin: 0;
+  width: 100%;
+  list-style-position: outside;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 /* line 13, ../../app/stylesheets/partials/_autocomplete.scss */
 .ac_results li {
-	font: menu;
-	margin: 0;
-	padding: 2px 5px;
-	cursor: default;
-	display: block;
-	font-size: 12px;
-	line-height: 16px;
-	overflow: hidden;
+  font: menu;
+  margin: 0;
+  padding: 2px 5px;
+  cursor: default;
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  overflow: hidden;
 }
 
 /* line 23, ../../app/stylesheets/partials/_autocomplete.scss */
 .ac_loading {
-	background: white url("/images/ajax-loader.gif") right center no-repeat;
+  background: white url("/images/ajax-loader.gif") right center no-repeat;
 }
 
 /* line 26, ../../app/stylesheets/partials/_autocomplete.scss */
 .ac_odd {
-	background-color: #eeeeee;
+  background-color: #eeeeee;
 }
 
 /* line 29, ../../app/stylesheets/partials/_autocomplete.scss */
 .ac_over {
-	background-color: #0a246a;
-	color: white;
+  background-color: #0a246a;
+  color: white;
 }
 
 /* line 1, ../../app/stylesheets/partials/_notice.scss */
 .notice-wrap {
-	position: fixed;
-	top: 20px;
-	right: 20px;
-	width: 250px;
-	z-index: 9999;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 250px;
+  z-index: 9999;
 }
 
 /* line 8, ../../app/stylesheets/partials/_notice.scss */
 .notice-item {
-	padding: 6px 6px 0 6px;
-	font-family: lucida Grande;
-	font-size: 11px;
-	border-radius: 25px;
-	-moz-border-radius: 25px;
-	-webkit-border-radius: 25px;
-	box-shadow: 0 0 1em grey;
-	-webkit-box-shadow: 0 0 1em grey;
-	-moz-box-shadow: 0 0 1em grey;
-	display: block;
-	position: relative;
-	margin: 0 0 12px 0;
+  padding: 6px 6px 0 6px;
+  font-family: lucida Grande;
+  font-size: 11px;
+  border-radius: 25px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  box-shadow: 0 0 1em grey;
+  -webkit-box-shadow: 0 0 1em grey;
+  -moz-box-shadow: 0 0 1em grey;
+  display: block;
+  position: relative;
+  margin: 0 0 12px 0;
 }
 
 /* line 22, ../../app/stylesheets/partials/_notice.scss */
 .notice-item-close {
-	position: absolute;
-	font-family: Arial;
-	font-size: 12px;
-	font-weight: bold;
-	right: 6px;
-	top: 6px;
-	cursor: pointer;
+  position: absolute;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  right: 6px;
+  top: 6px;
+  cursor: pointer;
 }
 
 /* line 1, ../../app/stylesheets/partials/_markitup.scss */
-p > .markItUp, p > div > .markItUp {
-	width: 700px;
-	margin-top: 15px;
-	margin-bottom: 0;
-	padding: 0 0 13px 13px;
+p > .markItUp,
+p > div > .markItUp {
+  width: 700px;
+  margin-top: 15px;
+  margin-bottom: 0;
+  padding: 0 0 13px 13px;
 }
 
-label[for="comment_title"], label[for="comment_wiki_body"], label[for="stylesheet"], label[for="tags"], label[for="news_title"], label[for="news_section_id"],
-label[for="news_wiki_body"], label[for="diary_wiki_body"], label[for="diary_title"], label[for="tracker_title"], label[for="tracker_category"],
-label[for="tracker_wiki_body"], label[for="wiki_page_title"], label[for="wiki_page_wiki_body"], label[for="post_wiki_body"], label[for="post_title"],
+label[for="comment_title"],
+label[for="comment_wiki_body"],
+label[for="stylesheet"],
+label[for="tags"],
+label[for="news_title"],
+label[for="news_section_id"],
+label[for="news_wiki_body"],
+label[for="diary_wiki_body"],
+label[for="diary_title"],
+label[for="tracker_title"],
+label[for="tracker_category"],
+label[for="tracker_wiki_body"],
+label[for="wiki_page_title"],
+label[for="wiki_page_wiki_body"],
+label[for="post_wiki_body"],
+label[for="post_title"],
 label[for="post_forum_id"] {
-	display: none;
+  display: none;
 }
-label[for="news_cc_licensed"], label[for="news_message"], label[for="diary_cc_licensed"], label[for="wiki_page_message"] {
-	font-weight: normal;
+label[for="news_cc_licensed"],
+label[for="news_message"],
+label[for="diary_cc_licensed"],
+label[for="wiki_page_message"] {
+  font-weight: normal;
 }
 form#new_diary > p:nth-child(4) {
-	margin-top: -15px;
-	margin-bottom: 15px;
+  margin-top: -15px;
+  margin-bottom: 15px;
 }
-#comments-new #contents form p:last-child, #comments-create #contents form p:last-child {
-	margin-top: -10px;
+#comments-new #contents form p:last-child,
+#comments-create #contents form p:last-child {
+  margin-top: -10px;
 }
 .markdown_cheatsheet {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 .markItUpHeader {
-	margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 /* line 10, ../../app/stylesheets/partials/_markitup.scss */
 .markItUpContainer {
-	padding: 0 0 0 5px;
-	font: 11px Verdana, Arial, Helvetica, sans-serif;
+  padding: 0 0 0 5px;
+  font: 11px Verdana, Arial, Helvetica, sans-serif;
 }
 /* line 16, ../../app/stylesheets/partials/_markitup.scss */
 .markItUpEditor {
-	font: 12px "Courier New", Courier, monospace;
-	border: none;
-	width: 643px;
-	height: 320px;
-	line-height: 18px;
-	overflow: auto;
-	margin-left: -28px;
-	margin-top: -5px;
-	border-radius: 15px;
-	-moz-border-radius: 15px;
-	-webkit-border-radius: 15px;
-	padding: 28px 23px 28px 28px;
-	background: url('/images/contrib/grayscale/comments/hautgauche.png') top left no-repeat, url('/images/contrib/grayscale/comments/basgauche.png') bottom left no-repeat, url('/images/contrib/grayscale/comments/hautdroite.png') top right no-repeat,
-	url('/images/contrib/grayscale/comments/basdroite.png') bottom right no-repeat, url('/images/contrib/grayscale/comments/milieugauche.png') top left repeat-y, url('/images/contrib/grayscale/comments/milieudroite.png') top right repeat-y,
-	url('/images/contrib/grayscale/comments/hautcentre.png') top left repeat-x, url('/images/contrib/grayscale/comments/bascentre.png') bottom left repeat-x !important;
+  font: 12px "Courier New", Courier, monospace;
+  border: none;
+  width: 643px;
+  height: 320px;
+  line-height: 18px;
+  overflow: auto;
+  margin-left: -28px;
+  margin-top: -5px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  padding: 28px 23px 28px 28px;
+  background: url("/images/contrib/grayscale/comments/hautgauche.png") top left
+      no-repeat,
+    url("/images/contrib/grayscale/comments/basgauche.png") bottom left
+      no-repeat,
+    url("/images/contrib/grayscale/comments/hautdroite.png") top right no-repeat,
+    url("/images/contrib/grayscale/comments/basdroite.png") bottom right
+      no-repeat,
+    url("/images/contrib/grayscale/comments/milieugauche.png") top left repeat-y,
+    url("/images/contrib/grayscale/comments/milieudroite.png") top right
+      repeat-y,
+    url("/images/contrib/grayscale/comments/hautcentre.png") top left repeat-x,
+    url("/images/contrib/grayscale/comments/bascentre.png") bottom left repeat-x !important;
 }
-.markItUpEditor:focus, .markItUpEditor, .markItUpEditor:hover {
-	border: none;
+.markItUpEditor:focus,
+.markItUpEditor,
+.markItUpEditor:hover {
+  border: none;
 }
 
 /* line 29, ../../app/stylesheets/partials/_markitup.scss */
 .markItUpPreviewFrame {
-	overflow: auto;
-	background-color: white;
-	border: 1px solid #3c769d;
-	width: 99.9%;
-	height: 300px;
-	margin: 0;
+  overflow: auto;
+  background-color: white;
+  border: 1px solid #3c769d;
+  width: 99.9%;
+  height: 300px;
+  margin: 0;
 }
 
 /* line 51, ../../app/stylesheets/partials/_markitup.scss */
 .markItUpHeader ul li {
-	list-style: none;
-	float: left;
-	position: relative;
+  list-style: none;
+  float: left;
+  position: relative;
 }
 /* line 55, ../../app/stylesheets/partials/_markitup.scss */
 .markItUpHeader ul li ul {
-	display: none;
+  display: none;
 }
 /* line 57, ../../app/stylesheets/partials/_markitup.scss */
 .markItUpHeader ul li:hover > ul {
-	display: block;
+  display: block;
 }
 /* line 59, ../../app/stylesheets/partials/_markitup.scss */
 .markItUpHeader ul a {
-	display: block;
-	width: 16px;
-	height: 16px;
-	text-indent: -10000px;
-	background-repeat: no-repeat;
-	padding: 3px;
-	margin: 0px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  text-indent: -10000px;
+  background-repeat: no-repeat;
+  padding: 3px;
+  margin: 0px;
 }
 /* line 67, ../../app/stylesheets/partials/_markitup.scss */
 .markItUpHeader ul .markItUpDropMenu {
-	background: transparent url(/images/markitup/menu.png) no-repeat 115% 50%;
-	margin-right: 5px;
+  background: transparent url(/images/markitup/menu.png) no-repeat 115% 50%;
+  margin-right: 5px;
 }
 /* line 70, ../../app/stylesheets/partials/_markitup.scss */
 .markItUpHeader ul .markItUpDropMenu li {
-	margin-right: 0px;
+  margin-right: 0px;
 }
 /* line 72, ../../app/stylesheets/partials/_markitup.scss */
 .markItUpHeader ul .markItUpSeparator {
-	margin: 0 10px;
-	width: 1px;
-	height: 16px;
-	overflow: hidden;
-	background-color: #cccccc;
-	color: transparent;
-	cursor: default;
+  margin: 0 10px;
+  width: 1px;
+  height: 16px;
+  overflow: hidden;
+  background-color: #cccccc;
+  color: transparent;
+  cursor: default;
 }
 /* line 78, ../../app/stylesheets/partials/_markitup.scss */
 .markItUpHeader ul ul {
-	display: none;
+  display: none;
 }
 /* line 86, ../../app/stylesheets/partials/_markitup.scss */
 .markItUpHeader ul ul .markItUpSeparator {
-	width: auto;
-	height: 1px;
-	margin: 0px;
+  width: auto;
+  height: 1px;
+  margin: 0px;
 }
 /* line 93, ../../app/stylesheets/partials/_markitup.scss */
 .markItUpHeader ul ul .markItUpDropMenu {
-	background: #f5f5f5 url(/images/markitup/submenu.png) no-repeat 100% 50%;
+  background: #f5f5f5 url(/images/markitup/submenu.png) no-repeat 100% 50%;
 }
 /* line 113, ../../app/stylesheets/partials/_markitup.scss */
 .markItUp .h1 a {
-	background-image: url(/images/markitup/h1.png);
+  background-image: url(/images/markitup/h1.png);
 }
 /* line 115, ../../app/stylesheets/partials/_markitup.scss */
 .markItUp .h2 a {
-	background-image: url(/images/markitup/h2.png);
+  background-image: url(/images/markitup/h2.png);
 }
 /* line 117, ../../app/stylesheets/partials/_markitup.scss */
 .markItUp .h3 a {
-	background-image: url(/images/markitup/h3.png);
+  background-image: url(/images/markitup/h3.png);
 }
 /* line 119, ../../app/stylesheets/partials/_markitup.scss */
 .markItUp .h4 a {
-	background-image: url(/images/markitup/h4.png);
+  background-image: url(/images/markitup/h4.png);
 }
 /* line 121, ../../app/stylesheets/partials/_markitup.scss */
 .markItUp .bold a {
-	background-image: url(/images/markitup/bold.png);
+  background-image: url(/images/markitup/bold.png);
 }
 /* line 123, ../../app/stylesheets/partials/_markitup.scss */
 .markItUp .italic a {
-	background-image: url(/images/markitup/italic.png);
+  background-image: url(/images/markitup/italic.png);
 }
 /* line 125, ../../app/stylesheets/partials/_markitup.scss */
 .markItUp .stroke a {
-	background-image: url(/images/markitup/stroke.png);
+  background-image: url(/images/markitup/stroke.png);
 }
 /* line 127, ../../app/stylesheets/partials/_markitup.scss */
 .markItUp .list-bullet a {
-	background-image: url(/images/markitup/list-bullet.png);
+  background-image: url(/images/markitup/list-bullet.png);
 }
 /* line 129, ../../app/stylesheets/partials/_markitup.scss */
 .markItUp .list-numeric a {
-	background-image: url(/images/markitup/list-numeric.png);
+  background-image: url(/images/markitup/list-numeric.png);
 }
 /* line 131, ../../app/stylesheets/partials/_markitup.scss */
 .markItUp .image a {
-	background-image: url(/images/markitup/picture.png);
+  background-image: url(/images/markitup/picture.png);
 }
 /* line 133, ../../app/stylesheets/partials/_markitup.scss */
 .markItUp .link a {
-	background-image: url(/images/markitup/link.png);
+  background-image: url(/images/markitup/link.png);
 }
 *:not(.markItUpHeader) > ul > .link {
-	list-style: none;
-	margin-left: -14px;
+  list-style: none;
+  margin-left: -14px;
 }
 :not(.markItUpHeader) > ul > .link[lang="cn"]:before {
-	content: url("/images/contrib/grayscale/flags/cn.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/cn.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="ct"]:before {
-	content: url("/images/contrib/grayscale/flags/ct.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/ct.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="da"]:before {
-	content: url("/images/contrib/grayscale/flags/da.png");
-	position: /images/contrib/grayscale/relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/da.png");
+  position: / images/contrib/grayscale/relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="de"]:before {
-	content: url("/images/contrib/grayscale/flags/de.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/de.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="el"]:before {
-	content: url("/images/contrib/grayscale/flags/el.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/el.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="en"]:before {
-	content: url("/images/contrib/grayscale/flags/en.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/en.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="es"]:before {
-	content: url("/images/contrib/grayscale/flags/es.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/es.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="eu"]:before {
-	content: url("/images/contrib/grayscale/flags/eu.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/eu.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="fi"]:before {
-	content: url("/images/contrib/grayscale/flags/fi.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/fi.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="fr"]:before {
-	content: url("/images/contrib/grayscale/flags/fr.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/fr.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="it"]:before {
-	content: url("/images/contrib/grayscale/flags/it.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/it.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="ja"]:before {
-	content: url("/images/contrib/grayscale/flags/ja.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/ja.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="ko"]:before {
-	content: url("/images/contrib/grayscale/flags/ko.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/ko.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="nl"]:before {
-	content: url("/images/contrib/grayscale/flags/nl.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/nl.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="no"]:before {
-	content: url("/images/contrib/grayscale/flags/no.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/no.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="pl"]:before {
-	content: url("/images/contrib/grayscale/flags/pl.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/pl.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="pt"]:before {
-	content: url("/images/contrib/grayscale/flags/pt.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/pt.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="ru"]:before {
-	content: url("/images/contrib/grayscale/flags/ru.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/ru.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="sv"]:before {
-	content: url("/images/contrib/grayscale/flags/sv.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/sv.png");
+  position: relative;
+  top: 2px;
 }
 *:not(.markItUpHeader) > ul > .link[lang="xx"]:before {
-	content: url("/images/contrib/grayscale/flags/xx.png");
-	position: relative;
-	top: 2px;
+  content: url("/images/contrib/grayscale/flags/xx.png");
+  position: relative;
+  top: 2px;
 }
-#phare .link, #phare .meta, #phare footer {
-	display: none;
+#phare .link,
+#phare .meta,
+#phare footer {
+  display: none;
 }
 #phare br {
-	display: none;
+  display: none;
 }
 #phare p {
-	display: inline;
+  display: inline;
 }
 #phare .content {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 #phare article {
-	padding-top: 28px;
+  padding-top: 28px;
 }
 #phare .score {
-	display: none;
+  display: none;
 }
 #phare img {
-	padding-left: 10px;
-	margin-top: -10px;
+  padding-left: 10px;
+  margin-top: -10px;
 }
 .diary {
-	min-height: 120px;
+  min-height: 120px;
 }
 /* line 135, ../../app/stylesheets/partials/_markitup.scss */
 .markItUp .quotes a {
-	background-image: url(/images/markitup/quotes.png);
+  background-image: url(/images/markitup/quotes.png);
 }
 /* line 137, ../../app/stylesheets/partials/_markitup.scss */
 .markItUp .code a {
-	background-image: url(/images/markitup/page_white_code.png);
+  background-image: url(/images/markitup/page_white_code.png);
 }
 
-#posts-new #container > h1, #posts-create #container > h1, body#admin-index #container > h1, body#accounts-index #container > h1, body#pages-index #container > h1,
-body#responses-index #container > h1, body#sections-index #container > h1, body#categories-index #container > h1,
-body#banners-index #container > h1, body#stylesheets-show #container > h1, body#friend_sites-index #container > h1 {
-	line-height: 0;
-	margin-bottom: 55px !important;
+#posts-new #container > h1,
+#posts-create #container > h1,
+body#admin-index #container > h1,
+body#accounts-index #container > h1,
+body#pages-index #container > h1,
+body#responses-index #container > h1,
+body#sections-index #container > h1,
+body#categories-index #container > h1,
+body#banners-index #container > h1,
+body#stylesheets-show #container > h1,
+body#friend_sites-index #container > h1 {
+  line-height: 0;
+  margin-bottom: 55px !important;
 }
 
 input:not([type="radio"]) {
-	-webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 .banner {
-	text-align: center;
-	font-size: 2em;
-	padding: 15px;
-	margin: -15px 35px -5px 242px !important;
-	background: url('/images/contrib/grayscale/notice/hautgauche.png') top left no-repeat, url('/images/contrib/grayscale/notice/basgauche.png') bottom left no-repeat, url('/images/contrib/grayscale/notice/hautdroite.png') top right no-repeat,
-	url('/images/contrib/grayscale/notice/basdroite.png') bottom right no-repeat, url('/images/contrib/grayscale/blocks/milieugauche.png') top left repeat-y, url('/images/contrib/grayscale/blocks/milieudroite.png') top right repeat-y,
-	url('/images/contrib/grayscale/blocks/hautcentre.png') top left repeat-x, url('/images/contrib/grayscale/blocks/bascentre.png') bottom left repeat-x, white !important;
-	font-family: Megalopolis, helvetica, arial, serif;
-	font-size: 2em;
-	color: grey;
+  text-align: center;
+  font-size: 2em;
+  padding: 15px;
+  margin: -15px 35px -5px 242px !important;
+  background: url("/images/contrib/grayscale/notice/hautgauche.png") top left
+      no-repeat,
+    url("/images/contrib/grayscale/notice/basgauche.png") bottom left no-repeat,
+    url("/images/contrib/grayscale/notice/hautdroite.png") top right no-repeat,
+    url("/images/contrib/grayscale/notice/basdroite.png") bottom right no-repeat,
+    url("/images/contrib/grayscale/blocks/milieugauche.png") top left repeat-y,
+    url("/images/contrib/grayscale/blocks/milieudroite.png") top right repeat-y,
+    url("/images/contrib/grayscale/blocks/hautcentre.png") top left repeat-x,
+    url("/images/contrib/grayscale/blocks/bascentre.png") bottom left repeat-x,
+    white !important;
+  font-family: Megalopolis, helvetica, arial, serif;
+  font-size: 2em;
+  color: grey;
 }
 
 @media print {
-  #top, #container > h1, .link, #sidebar, #site, #bigfooter, #toolbar, #comments > p, body:not(#wiki_pages-changes) .toolbox,
-  body:not(#posts-new):not(#posts-create) footer > p, body:not(#posts-new):not(#posts-create) section#container > p, .actions, .banner, .notice {
-      display: none !important;
+  #top,
+  #container > h1,
+  .link,
+  #sidebar,
+  #site,
+  #bigfooter,
+  #toolbar,
+  #comments > p,
+  body:not(#wiki_pages-changes) .toolbox,
+  body:not(#posts-new):not(#posts-create) footer > p,
+  body:not(#posts-new):not(#posts-create) section#container > p,
+  .actions,
+  .banner,
+  .notice {
+    display: none !important;
   }
   #container > * {
-      margin: 0 !important;
+    margin: 0 !important;
   }
-  body:not(#posts-new):not(#posts-create) #container, #home-index #container, #news-show #container, #wiki_pages-show #container, #trackers-show #container,
-  #posts-show #container, #polls-show #container, #diaries-show #container {
-      padding: 0 !important;
+  body:not(#posts-new):not(#posts-create) #container,
+  #home-index #container,
+  #news-show #container,
+  #wiki_pages-show #container,
+  #trackers-show #container,
+  #posts-show #container,
+  #polls-show #container,
+  #diaries-show #container {
+    padding: 0 !important;
   }
-  #news-show article, #wiki_pages-show article, #trackers-show article, #posts-show article, #polls-show article,
+  #news-show article,
+  #wiki_pages-show article,
+  #trackers-show article,
+  #posts-show article,
+  #polls-show article,
   #diaries-show article {
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
-      background: white !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    background: white !important;
   }
   body#trackers-index #container table {
-      background: white !important;
-      padding: 0 !important;
+    background: white !important;
+    padding: 0 !important;
   }
   article {
-      background: url('/images/contrib/grayscale/comments/hautcentre.png') top repeat-x !important;
-      margin-bottom: -15px !important;
+    background: url("/images/contrib/grayscale/comments/hautcentre.png") top
+      repeat-x !important;
+    margin-bottom: -15px !important;
   }
-  #static-show article, #phare article, h1 + nav + #contents > article:first-child {
-      margin-top: -15px !important;
-      background: white !important;
+  #static-show article,
+  #phare article,
+  h1 + nav + #contents > article:first-child {
+    margin-top: -15px !important;
+    background: white !important;
   }
   body {
-      background: none !important;
+    background: none !important;
   }
   #comments {
-      display: none;
+    display: none;
   }
 }

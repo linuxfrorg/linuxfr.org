@@ -4,19 +4,26 @@
  * License: CC-by-sa - http://creativecommons.org/licenses/by-sa/3.0/deed.fr
  */
 
-@import '../common/markitup';
-@import '../common/statistics';
-@import '../pygments/colorful';
+@import "../common/markitup";
+@import "../common/statistics";
+@import "../pygments/colorful";
 
 /* Layout */
-body, nav, header, aside, figure, section, footer, article {
+body,
+nav,
+header,
+aside,
+figure,
+section,
+footer,
+article {
   display: block;
 }
 html {
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
 }
 body {
-  border: 2px solid #DDDDDD;
+  border: 2px solid #dddddd;
   background-color: white;
   margin: 15px;
   margin-bottom: 30px;
@@ -26,12 +33,12 @@ body {
   font-family: sans-serif;
   text-align: justify;
 }
-#branding  {
+#branding {
   float: left;
   clear: left;
   width: 211px;
 }
-#sidebar   {
+#sidebar {
   float: left;
   clear: left;
   width: 202px;
@@ -60,17 +67,17 @@ body {
   width: 100%;
   height: 100%;
 }
-#sidebar > div  {
+#sidebar > div {
   clear: left;
-  background-color: #E0DDD8;
-  border: 1px solid #BBBBBB;
+  background-color: #e0ddd8;
+  border: 1px solid #bbbbbb;
   -moz-border-radius: 10px;
   margin-left: 4px;
   margin-top: 5px;
   padding: 5px;
   font-size: 0.8em;
 }
-#sidebar > div > h1  {
+#sidebar > div > h1 {
   display: inline;
   font-size: 14px;
   font-weight: bold;
@@ -82,7 +89,7 @@ body {
   margin-left: 2px;
   padding: 0px;
   padding-left: 8px;
-  border-left:1px solid #AAAAAA;
+  border-left: 1px solid #aaaaaa;
 }
 #sidebar > div > ul {
   list-style: none;
@@ -90,7 +97,7 @@ body {
 
 /* Nav */
 #site {
-  background-color: #EEEAE6;
+  background-color: #eeeae6;
   border-top: 1px solid #999999;
   border-bottom: 1px solid #999999;
   margin-top: 5px;
@@ -121,7 +128,7 @@ body {
   padding-bottom: 2px;
 }
 #site form input#query {
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
   height: 1.1em;
   padding-left: 5px;
   padding-right: 5px;
@@ -129,13 +136,13 @@ body {
 #site form input#search_submit {
   display: inline-block;
   border: none;
-  background: url('/images/contrib/kaiska/search.png') no-repeat;
+  background: url("/images/contrib/kaiska/search.png") no-repeat;
   width: 22px;
   height: 22px;
   margin-top: -3px;
   padding: 0px;
   text-indent: -1000em;
-  color: #36598E;
+  color: #36598e;
   cursor: pointer;
 }
 #site form input#search_submit:hover {
@@ -160,9 +167,9 @@ body#static-show nav#site a[href="/plan"] {
 #bigfooter section {
   float: left;
   width: 23%;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   color: #666666;
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
   -moz-border-radius: 10px;
   margin: 5px;
   margin-bottom: 30px;
@@ -176,9 +183,9 @@ nav#last_comments ul {
 
 /* Banner */
 aside.banner {
-  background-color: #FFF2E8;
-  border-bottom: 1px solid #AAAAAA;
-  border-top: 1px solid #AAAAAA;
+  background-color: #fff2e8;
+  border-bottom: 1px solid #aaaaaa;
+  border-top: 1px solid #aaaaaa;
   font-size: 10px;
   font-weight: bold;
   margin: 10px;
@@ -196,8 +203,8 @@ nav.toolbox div.new_content {
   padding-bottom: 8px;
 }
 nav.toolbox div.new_content a {
-  background-color: #FFFBF7;
-  border: 1px solid #CCCCCC;
+  background-color: #fffbf7;
+  border: 1px solid #cccccc;
   color: #000000;
   padding: 3px;
   max-width: 20em;
@@ -221,23 +228,24 @@ nav.toolbox div.order_navbar {
 }
 
 #container article {
-  background-color: #F5F5F5;
-  border: 1px solid #CCCCCC;
+  background-color: #f5f5f5;
+  border: 1px solid #cccccc;
   -moz-border-radius: 10px;
   margin: 10px;
   padding: 0px;
   overflow: hidden;
   position: relative;
 }
-#container article header, #container article footer {
+#container article header,
+#container article footer {
   margin: 0px;
   padding-top: 5px;
   padding-left: 10px;
   padding-right: 10px;
 }
 #container article header {
-  background-color: #EEEAE6;
-  border: 1px solid #EEEAE6;
+  background-color: #eeeae6;
+  border: 1px solid #eeeae6;
   -moz-border-radius-topleft: 10px;
   -moz-border-radius-topright: 10px;
   margin: -1px;
@@ -282,7 +290,7 @@ nav.toolbox div.order_navbar {
   border-left: 3px solid blue;
   font-style: italic;
   margin-bottom: 10px;
-  margin-left: 74px;  // largeur de l'avatar (64px) + de son padding (10px)
+  margin-left: 74px; // largeur de l'avatar (64px) + de son padding (10px)
   padding-left: 10px;
 }
 #container article figure {
@@ -296,8 +304,8 @@ nav.toolbox div.order_navbar {
 #container article figure.score {
   width: 36px;
   -moz-border-radius: 10px;
-  border: 1px #CCCCCC;
-  background: url('/images/contrib/kaiska/note.png') #DDDDDD;
+  border: 1px #cccccc;
+  background: url("/images/contrib/kaiska/note.png") #dddddd;
   margin: 3px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -308,7 +316,7 @@ nav.toolbox div.order_navbar {
   margin-top: 0px;
 }
 div.content blockquote {
-  background-color: #FFFBEC;
+  background-color: #fffbec;
   border: 1px solid black;
   margin-left: 20px;
   margin-right: 5px;
@@ -324,7 +332,7 @@ div.content blockquote > p:last-child {
 div.content code {
   display: inline-block;
   white-space: pre-wrap;
-  background: #EEEAE6;
+  background: #eeeae6;
   padding: 3px;
 }
 div.content img {
@@ -340,7 +348,7 @@ div.content img {
   padding-bottom: 10px;
 }
 #container article footer span.new_comments {
-  background: url('/images/contrib/kaiska/attention.png') no-repeat;
+  background: url("/images/contrib/kaiska/attention.png") no-repeat;
   padding-left: 18px;
 }
 #container article footer div.epub {
@@ -356,8 +364,8 @@ div.content img {
 div.ac_results {
   /* liste des tags possibles */
   -moz-border-radius: 10px 10px 10px 10px;
-  background-color: #F5F5F5;
-  border: 1px solid #CCCCCC;
+  background-color: #f5f5f5;
+  border: 1px solid #cccccc;
   color: #666666;
   margin: 5px 5px 30px;
   padding: 5px;
@@ -404,17 +412,19 @@ ul.poll.archived li {
 ul.poll li .result {
   display: block;
   -moz-border-radius: 10px 10px 10px 10px;
-  background: #EEEAE6;
-  border: 1px solid #CCCCCC;
+  background: #eeeae6;
+  border: 1px solid #cccccc;
   color: black;
   font-size: 0.7em;
 }
 
 /* Diffs */
-ins.diffins, ins.diffmod {
+ins.diffins,
+ins.diffmod {
   background-color: #3f3;
 }
-del.diffdel, del.diffmod {
+del.diffdel,
+del.diffmod {
   background-color: #f33;
 }
 
@@ -425,8 +435,8 @@ ul.threads {
 }
 ul.threads > li.comment {
   -moz-border-radius: 10px 10px 10px 10px;
-  background: none repeat scroll 0 0 #DAD6D1;
-  border-color: #555522 #CCCCCC;
+  background: none repeat scroll 0 0 #dad6d1;
+  border-color: #555522 #cccccc;
   border-style: solid;
   border-width: 2px 1px;
   padding-top: 10px;
@@ -436,8 +446,8 @@ ul.threads > li.comment {
   margin-bottom: 10px;
 }
 .new-comment > h2 {
-  background-color: #E1DCDC;
-  border: 1px solid #D37537;
+  background-color: #e1dcdc;
+  border: 1px solid #d37537;
   color: #111111;
 }
 li.comment {
@@ -451,7 +461,7 @@ li.comment > h2 {
   margin: 0 20px 3px 0;
   padding-left: 1px;
   -moz-border-radius: 10px 10px 10px 10px;
-  background: none repeat scroll 0 0 #EBE7E2;
+  background: none repeat scroll 0 0 #ebe7e2;
   color: black;
   font-size: 12px;
   font-weight: normal;
@@ -464,7 +474,7 @@ li.comment p.meta {
   margin: 0px;
 }
 li.comment div.content {
-  border-left: 1px solid #AAAAAA;
+  border-left: 1px solid #aaaaaa;
   padding-left: 10px;
   margin-top: 12px;
   margin-bottom: 12px;
@@ -493,7 +503,7 @@ li.comment img.avatar {
   max-height: 64px;
 }
 li.comment footer {
-/*  clear: both; */
+  /*  clear: both; */
   padding-bottom: 5px;
 }
 li.comment footer div.vote {
@@ -506,19 +516,22 @@ li.comment footer a.action:before {
 li.comment footer a.action:after {
   content: " ]";
 }
-div.vote > form.button_to, span.action > form.button_to {
+div.vote > form.button_to,
+span.action > form.button_to {
   display: inline;
 }
-div.vote > form.button_to input, span.action > form.button_to input {
+div.vote > form.button_to input,
+span.action > form.button_to input {
   display: inline-block;
   border: none;
   background: none;
   padding: 0px;
-  color: #36598E;
+  color: #36598e;
   cursor: pointer;
   font-size: 100%;
 }
-div.vote > form.button_to input:hover, span.action > form.button_to input:hover {
+div.vote > form.button_to input:hover,
+span.action > form.button_to input:hover {
   text-decoration: underline;
 }
 .fold > p.meta,
@@ -542,8 +555,8 @@ form.new_tracker,
 form.edit_tracker,
 form.new_wiki_page,
 form.edit_wiki_page {
-  background-color: #EFEFEF;
-  border: 1px solid #8E8E8E;
+  background-color: #efefef;
+  border: 1px solid #8e8e8e;
   margin-left: 50px;
   margin-right: 50px;
   margin-top: 30px;
@@ -557,7 +570,7 @@ input#post_title,
 input#poll_title,
 input#tracker_title,
 input#wiki_page_title {
-  background-color: #FFFBF7;
+  background-color: #fffbf7;
   border: 1px solid black;
   color: #000000;
   font-size: 12px;
@@ -579,7 +592,7 @@ div.markItUpContainer {
 textarea.markItUpEditor {
   width: 100%;
   background-image: none;
-  background-color: #FFFBF7;
+  background-color: #fffbf7;
   padding: 0px;
 }
 div#form_links fieldset {
@@ -602,13 +615,13 @@ div#form_links fieldset.link {
 }
 div#form_links fieldset.link input {
   margin: 0px;
-  background-color: #FFFBF7;
+  background-color: #fffbf7;
   border: 1px solid black;
   width: 30%;
   size: 0;
 }
 div#form_links fieldset.link input:focus {
-  background-color: #EEEAE6;
+  background-color: #eeeae6;
 }
 div#form_links fieldset.link select {
   width: 10%;
@@ -618,7 +631,7 @@ textarea#news_message {
   /* Boite de commentaire pour les modérateurs */
   width: 100%;
   background-image: none;
-  background-color: #FFFBF7;
+  background-color: #fffbf7;
   padding: 0px;
   border: 1px solid black;
 }
@@ -626,7 +639,7 @@ textarea#news_message {
   display: none;
 }
 .datePourCss {
-    display: none;
+  display: none;
 }
 
 li#comment_new {
@@ -654,7 +667,7 @@ table {
   border: 0;
 }
 table th {
-  background: #CCCCCC;
+  background: #cccccc;
   border-color: white;
   border-right: 0;
   border-style: solid;
@@ -662,17 +675,16 @@ table th {
   padding: 1em;
 }
 table td {
-  background: #E0DDD8;
-  border: thin solid #BBBBBB;
+  background: #e0ddd8;
+  border: thin solid #bbbbbb;
 }
 
 /* Modification compte utilisateur */
 form.edit_account {
-  
 }
 form.edit_account p {
-  background: #E0DDD8;
-  border: thin solid #BBBBBB;
+  background: #e0ddd8;
+  border: thin solid #bbbbbb;
   margin: 3px;
   overflow: hidden;
 }
@@ -695,7 +707,7 @@ form.edit_account p input[type="email"],
 form.edit_account p input[type="url"],
 form.edit_account p input[type="password"] {
   border: 1px solid black;
-  background-color: #FFFBF7;
+  background-color: #fffbf7;
   margin-top: 2px;
   margin-bottom: 2px;
   padding-left: 5px;
@@ -739,35 +751,75 @@ div#moderation_box input#board_message {
 }
 
 /* Langues */
-li.link[lang=cn] { list-style: url('/images/langs/cn.png'); }
-li.link[lang=ct] { list-style: url('/images/langs/ct.png'); }
-li.link[lang=da] { list-style: url('/images/langs/da.png'); }
-li.link[lang=de] { list-style: url('/images/langs/de.png'); }
-li.link[lang=el] { list-style: url('/images/langs/el.png'); }
-li.link[lang=en] { list-style: url('/images/langs/en.png'); }
-li.link[lang=es] { list-style: url('/images/langs/es.png'); }
-li.link[lang=eu] { list-style: url('/images/langs/eu.png'); }
-li.link[lang=fi] { list-style: url('/images/langs/fi.png'); }
-li.link[lang=fr] { list-style: url('/images/langs/fr.png'); }
-li.link[lang=it] { list-style: url('/images/langs/it.png'); }
-li.link[lang=ja] { list-style: url('/images/langs/ja.png'); }
-li.link[lang=ko] { list-style: url('/images/langs/ko.png'); }
-li.link[lang=nl] { list-style: url('/images/langs/nl.png'); }
-li.link[lang=no] { list-style: url('/images/langs/no.png'); }
-li.link[lang=pl] { list-style: url('/images/langs/pl.png'); }
-li.link[lang=pt] { list-style: url('/images/langs/pt.png'); }
-li.link[lang=ru] { list-style: url('/images/langs/ru.png'); }
-li.link[lang=sv] { list-style: url('/images/langs/sv.png'); }
-li.link[lang=xx] { list-style: url('/images/langs/xx.png'); }
+li.link[lang="cn"] {
+  list-style: url("/images/langs/cn.png");
+}
+li.link[lang="ct"] {
+  list-style: url("/images/langs/ct.png");
+}
+li.link[lang="da"] {
+  list-style: url("/images/langs/da.png");
+}
+li.link[lang="de"] {
+  list-style: url("/images/langs/de.png");
+}
+li.link[lang="el"] {
+  list-style: url("/images/langs/el.png");
+}
+li.link[lang="en"] {
+  list-style: url("/images/langs/en.png");
+}
+li.link[lang="es"] {
+  list-style: url("/images/langs/es.png");
+}
+li.link[lang="eu"] {
+  list-style: url("/images/langs/eu.png");
+}
+li.link[lang="fi"] {
+  list-style: url("/images/langs/fi.png");
+}
+li.link[lang="fr"] {
+  list-style: url("/images/langs/fr.png");
+}
+li.link[lang="it"] {
+  list-style: url("/images/langs/it.png");
+}
+li.link[lang="ja"] {
+  list-style: url("/images/langs/ja.png");
+}
+li.link[lang="ko"] {
+  list-style: url("/images/langs/ko.png");
+}
+li.link[lang="nl"] {
+  list-style: url("/images/langs/nl.png");
+}
+li.link[lang="no"] {
+  list-style: url("/images/langs/no.png");
+}
+li.link[lang="pl"] {
+  list-style: url("/images/langs/pl.png");
+}
+li.link[lang="pt"] {
+  list-style: url("/images/langs/pt.png");
+}
+li.link[lang="ru"] {
+  list-style: url("/images/langs/ru.png");
+}
+li.link[lang="sv"] {
+  list-style: url("/images/langs/sv.png");
+}
+li.link[lang="xx"] {
+  list-style: url("/images/langs/xx.png");
+}
 
 div.content a[href^="/wiki/"],
 div.content a[href^="//linuxfr.org/wiki/"] {
-  background: url('/images/contrib/kaiska/linuxfr.png') no-repeat;
+  background: url("/images/contrib/kaiska/linuxfr.png") no-repeat;
   padding-left: 18px;
 }
 div.content a[href^="http://fr.wikipedia.org/"],
 div.content a[href^="https://fr.wikipedia.org/"] {
-  background: url('/images/contrib/kaiska/wikipedia.png') no-repeat;
+  background: url("/images/contrib/kaiska/wikipedia.png") no-repeat;
   padding-left: 18px;
 }
 
@@ -776,10 +828,10 @@ a {
   text-decoration: none;
 }
 a:link {
-  color: #36598E;
+  color: #36598e;
 }
 a:visited {
-  color: #B64545;
+  color: #b64545;
 }
 a:hover {
   text-decoration: underline;
@@ -799,5 +851,5 @@ img {
 .misspelled {
   color: inherit;
   background-color: inherit;
-  border-bottom:1px dashed red;
+  border-bottom: 1px dashed red;
 }

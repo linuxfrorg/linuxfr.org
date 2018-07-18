@@ -8,5 +8,23 @@ light with dark code version
 
 @import "solarized/main.scss";
 
-@include rebase($base3,$base2,$base1,$base0,$base00,$base01,$base02,$base03);
-@include solarized_code($base03,$base02,$base01,$base00,$base0,$base1,$base2,$base3);
+@include rebase(
+  $base3,
+  $base2,
+  $base1,
+  $base0,
+  $base00,
+  $base01,
+  $base02,
+  $base03
+);
+@include solarized_code(
+  $base03,
+  $base02,
+  $base01,
+  $base00,
+  $base0,
+  $base1,
+  $base2,
+  $base3
+);

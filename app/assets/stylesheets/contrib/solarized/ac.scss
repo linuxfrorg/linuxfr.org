@@ -1,10 +1,19 @@
 // Autocomplete
-@mixin solarized_ac($rebase03,$rebase02,$rebase01,$rebase00,$rebase0,$rebase1,$rebase2,$rebase3) {
-  $C_CLAIR: #E9E6E4 !default;
-  $C_INTER: #A99C90 !default;
+@mixin solarized_ac(
+  $rebase03,
+  $rebase02,
+  $rebase01,
+  $rebase00,
+  $rebase0,
+  $rebase1,
+  $rebase2,
+  $rebase3
+) {
+  $C_CLAIR: #e9e6e4 !default;
+  $C_INTER: #a99c90 !default;
 
   .ac_loading {
-    background: white url('/images/ajax-loader.gif') right center no-repeat;
+    background: white url("/images/ajax-loader.gif") right center no-repeat;
   }
   .ac_results {
     background-color: $rebase02;

@@ -2,42 +2,95 @@
 Linuxfr default stylesheet for statistics
 https://github.com/linuxfrorg/linuxfr.org/blob/master/app/assets/stylesheets/common/statistics.css.scss
 */
-@mixin solarized_statistics($rebase03,$rebase02,$rebase01,$rebase00,$rebase0,$rebase1,$rebase2,$rebase3) {
-    .statistics {
-      .stat {
-        font-size: x-small;
+@mixin solarized_statistics(
+  $rebase03,
+  $rebase02,
+  $rebase01,
+  $rebase00,
+  $rebase0,
+  $rebase1,
+  $rebase2,
+  $rebase3
+) {
+  .statistics {
+    .stat {
+      font-size: x-small;
+      @include statistic_bar($yellow, $rebase2);
+      &.category {
+        @include statistic_bar($green, $rebase2);
+      }
+      &.opened {
+        @include statistic_bar($red, $rebase2);
+      }
+      &.fixed {
+        @include statistic_bar($green, $rebase2);
+      }
+      &.invalid {
+        @include statistic_bar($cyan, $rebase2);
+      }
+      &.month_new {
+        @include statistic_bar($red, $rebase2);
+      }
+      &.remaining {
+        @include statistic_bar($violet, $rebase2);
+      }
+      &.month_fixed {
+        @include statistic_bar($green, $rebase2);
+      }
+      &.month_invalid {
+        @include statistic_bar($cyan, $rebase2);
+      }
+      &.misc {
+        @include statistic_bar($green, $rebase2);
+      }
+      &.account {
+        @include statistic_bar($cyan, $rebase2);
+      }
+      &.accountrecent {
+        @include statistic_bar($green, $rebase2);
+      }
+      &.accountinactive {
+        @include statistic_bar($violet, $rebase2);
+      }
+      &.accountrecentinactive {
+        @include statistic_bar($red, $rebase2);
+      }
+      &.contentdiary {
+        @include statistic_bar($magenta, $rebase2);
+      }
+      &.contentpost {
         @include statistic_bar($yellow, $rebase2);
-        &.category { @include statistic_bar($green, $rebase2); }
-        &.opened { @include statistic_bar($red, $rebase2); }
-        &.fixed { @include statistic_bar($green, $rebase2); }
-        &.invalid { @include statistic_bar($cyan, $rebase2); }
-        &.month_new { @include statistic_bar($red, $rebase2); }
-        &.remaining { @include statistic_bar($violet, $rebase2); }
-        &.month_fixed { @include statistic_bar($green, $rebase2); }
-        &.month_invalid { @include statistic_bar($cyan, $rebase2); }
-        &.misc { @include statistic_bar($green, $rebase2); }
-        &.account { @include statistic_bar($cyan, $rebase2); }
-        &.accountrecent { @include statistic_bar($green, $rebase2); }
-        &.accountinactive { @include statistic_bar($violet, $rebase2); }
-        &.accountrecentinactive { @include statistic_bar($red, $rebase2); }
-        &.contentdiary { @include statistic_bar($magenta, $rebase2); }
-        &.contentpost { @include statistic_bar($yellow, $rebase2); }
-        &.contentnews { @include statistic_bar($green, $rebase2); }
-        &.contenttracker { @include statistic_bar($cyan, $rebase2); }
-        &.contentpoll { @include statistic_bar($violet, $rebase2); }
-        &.contentwikipage { @include statistic_bar($orange, $rebase2); }
-        &.contentbookmark { @include statistic_bar($red, $rebase2); }
       }
-
-      span.score {
-        color: "#333";
-        &:before { content: " ["; }
-        &:after  { content: "] "; }
+      &.contentnews {
+        @include statistic_bar($green, $rebase2);
       }
-
-      .top_or_flop {
-        float: left;
-        width: 48%;
+      &.contenttracker {
+        @include statistic_bar($cyan, $rebase2);
+      }
+      &.contentpoll {
+        @include statistic_bar($violet, $rebase2);
+      }
+      &.contentwikipage {
+        @include statistic_bar($orange, $rebase2);
+      }
+      &.contentbookmark {
+        @include statistic_bar($red, $rebase2);
       }
     }
+
+    span.score {
+      color: "#333";
+      &:before {
+        content: " [";
+      }
+      &:after {
+        content: "] ";
+      }
+    }
+
+    .top_or_flop {
+      float: left;
+      width: 48%;
+    }
+  }
 }

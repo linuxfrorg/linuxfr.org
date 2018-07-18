@@ -1,33 +1,40 @@
 body#oauth-authorize {
-  #container { min-height: 416px; }
-  #container h1 { display: block; }
-  .authorize_app, .deny_app {
+  #container {
+    min-height: 416px;
+  }
+  #container h1 {
+    display: block;
+  }
+  .authorize_app,
+  .deny_app {
     width: 60%;
-	margin: 30px;
+    margin: 30px;
     padding: 10px 16px;
     line-height: 1.33;
     font-size: 1.6em;
     border-radius: 6px;
     text-align: center;
     vertical-align: middle;
-    color: #FFF;
+    color: #fff;
     background-image: none;
   }
   .authorize_app {
-	margin-bottom: 0;
-    background-color: #5CB85C;
-    border-color: #4CAE4C;
-    &:focus, &:hover {
-      background-color: #47A447;
+    margin-bottom: 0;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    &:focus,
+    &:hover {
+      background-color: #47a447;
       border-color: #398439;
     }
   }
   .deny_app {
-    background-color: #D9534F;
-    border-color: #D43F3A;
-    &:focus, &:hover {
-      background-color: #D2322D;
-      border-color: #AC2925;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    &:focus,
+    &:hover {
+      background-color: #d2322d;
+      border-color: #ac2925;
     }
   }
 }
