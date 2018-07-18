@@ -4,6 +4,7 @@
 /config/database.yml
 /config/secrets.yml
 /log
+/node_modules
 /public/assets
 /public/board.xml
 /public/images/historique

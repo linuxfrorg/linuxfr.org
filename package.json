@@ -1,0 +1,18 @@
+{
+  "name": "linuxfr.org",
+  "version": "1.0.0",
+  "description": "LinuxFr.org",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linuxfrorg/linuxfr.org.git"
+  },
+  "author": "Bruno Michel",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/linuxfrorg/linuxfr.org/issues"
+  },
+  "homepage": "https://github.com/linuxfrorg/linuxfr.org#readme",
+  "dependencies": {
+    "normalize.css": "8.0.0"
+  }
+}
