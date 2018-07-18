@@ -316,12 +316,7 @@ a.edit_client_app,
       background: $C_FONCE;
       max-width: 80%;
       padding: 4px 10px 4px 10px;
-
-      -webkit-transform-origin: left top;
-      -o-transform-origin: left top;
       transform-origin: left top;
-      -webkit-transform: rotate(-90deg) translate(-100%, -100%) translate(3px, -5px);
-      -o-transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
       transform: rotate(-90deg) translate(-100%, -100%) translate(-3px, -5px);
     }
 	h1 + h2 { margin-top: -1.2em; }
@@ -369,7 +364,6 @@ a.edit_client_app,
   color: $C_MENU;
 
   background-color: #bdb3aa;
-  background: -webkit-linear-gradient(left, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
   background: linear-gradient(to right, #fff, #e7e3e0 $PX_BRANDING_LARG, #bdb3aa 50%);
 
   /* we recycle the nav bar to display the black line at the top */
@@ -434,12 +428,6 @@ a.edit_client_app,
   margin-top: 0;
   padding: 0 0 20px 0;
   background: $C_CLAIR;
-  background: -webkit-gradient(linear,
-    center top,
-    center bottom,
-    from($C_FOOT),
-    to(white)
-  );
   background: linear-gradient(to bottom,
     $C_FOOT 0%,
     white 100%
@@ -454,12 +442,6 @@ a.edit_client_app,
     width: $PC_FOOT_WIDTH;
     margin: 0 $PC_FOOT_MARG 0 $PC_FOOT_MARG;
     background: $C_FOOT;
-    background: -webkit-gradient(linear,
-      center top,
-      center bottom,
-      from($C_FOOT),
-      color-stop(50%, $C_MIBLANC_MIFOOT),
-      to($C_FOOT));
     background: linear-gradient(to bottom,
       $C_FOOT 0%,
       $C_MIBLANC_MIFOOT 50%,
@@ -624,7 +606,6 @@ article {
   }
   .score {
     background: $C_BAS_FOND;
-    -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     border-image:         url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     border-style: solid;
     text-align: center;
@@ -636,7 +617,6 @@ article {
   .datePourCss {
     display: block !important;
     background: $C_BANDEAU;
-    -webkit-border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     border-image:         url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
     border-style: solid;
     color: white;
@@ -844,7 +824,6 @@ footer.actions {
     &[href^="//linuxfr.org/wiki"] {
       padding-left: 3px;
       border-left: 16px;
-      -webkit-border-image: url('/favicon.png') 0 0 0 32;
       border-image:         url('/favicon.png') 0 0 0 32;
       border-style: solid;
     }
@@ -1686,8 +1665,6 @@ img {
       border-bottom: 0;
       &:last-child { padding-bottom: 0; }
       h1 {
-        -webkit-transform: none;
-        -o-transform: none;
         transform: none;
         width: 100px;
         margin: 0 10px;
