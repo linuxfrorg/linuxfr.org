@@ -36,10 +36,12 @@ gem "sitemap_generator",       "~>2.1"
 gem "state_machine",           "~>1.2"
 
 # Gems used for assets
-gem "jquery-rails",          "~>4.0"
-gem "sass-rails",            "~>5.0"
-gem "coffee-rails",          "~>4.1"
-gem "uglifier"
+assets = !%w(production alpha).include?(ENV['RAILS_ENV'])
+assets = true if ENV['RAILS_GROUP'] == "assets"
+gem "jquery-rails",          "~>4.0", require: assets
+gem "sass-rails",            "~>5.0", require: assets
+gem "coffee-rails",          "~>4.1", require: assets
+gem "uglifier",                       require: assets
 
 group :development do
   gem "annotate"
