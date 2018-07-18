@@ -7,12 +7,12 @@ class Stylesheet < Struct.new(:name, :url, :image)
   def self.include?(css)
     return true if css == "mobile"
     css.prepend 'contrib/' unless css.starts_with? 'contrib/'
-    Dir["#{BASE_DIR}/#{css.sub 'contrib/', ''}.css.scss"].any?
+    Dir["#{BASE_DIR}/#{css.sub 'contrib/', ''}.scss"].any?
   end
 
   def self.all
     Dir["#{BASE_DIR}/*css"].map do |scss|
-      css = File.basename scss.sub(/.scss$/, ''), '.css'
+      css = File.basename scss, '.scss'
       url = "contrib/#{css}"
       png = "/stylesheets/contrib/#{css}.png"
       Stylesheet.new(css, url, png)
