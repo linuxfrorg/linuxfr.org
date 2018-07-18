@@ -66,7 +66,7 @@ end
 namespace :fs do
   desc "[internal] Install some symlinks to share files between deploys."
   task :symlink, roles: :app, except: { no_release: true } do
-    symlinks = %w(config/database.yml config/secrets.yml public/pages tmp/sass-cache tmp/sockets uploads)
+    symlinks = %w(config/database.yml config/secrets.yml node_modules public/pages tmp/sass-cache tmp/sockets uploads)
     symlinks.each do |symlink|
       run "ln -nfs #{shared_path}/#{symlink} #{release_path}/#{symlink}"
     end
@@ -77,6 +77,7 @@ namespace :fs do
   desc "[internal] Create the shared directories"
   task :create_dirs, roles: :app do
     run "mkdir -p #{shared_path}/config"
+    run "mkdir -p #{shared_path}/node_modules"
     run "mkdir -p #{shared_path}/public/pages"
     run "mkdir -p #{shared_path}/tmp/sass-cache"
     run "mkdir -p #{shared_path}/tmp/sockets"
@@ -86,6 +87,16 @@ namespace :fs do
 end
 after "deploy:finalize_update", "fs:symlink"
 after "deploy:setup", "fs:create_dirs"
+
+
+# Install npm modules before compiling assets
+namespace :npm do
+  desc "[internal] Install npm modules"
+  task :install, roles: :app, except: { no_release: true } do
+    run "cd #{release_path} && npm install"
+  end
+end
+before "deploy:assets:precompile", "npm:install"
 
 
 # Redis cache
