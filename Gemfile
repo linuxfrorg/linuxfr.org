@@ -37,7 +37,7 @@ gem "state_machine",           "~>1.2"
 
 # Gems used for assets
 assets = !%w(production alpha).include?(ENV['RAILS_ENV'])
-assets = true if ENV['RAILS_GROUP'] == "assets"
+assets = true if ENV['RAILS_GROUPS'] == "assets"
 gem "jquery-rails",          "~>4.0", require: assets
 gem "sass-rails",            "~>5.0", require: assets
 gem "coffee-rails",          "~>4.1", require: assets
