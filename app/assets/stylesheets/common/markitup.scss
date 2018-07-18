@@ -1,3 +1,57 @@
+.markItUp {
+  width: auto;
+  margin: 5px 0 5px 0;
+  border: 5px solid #f5f5f5;
+  .markItUp a:link,
+  .markItUp a:visited {
+    color: black;
+    text-decoration: none;
+  }
+
+  .h1 a {
+    background-image: url(/images/markitup/h1.png);
+  }
+  .h2 a {
+    background-image: url(/images/markitup/h2.png);
+  }
+  .h3 a {
+    background-image: url(/images/markitup/h3.png);
+  }
+  .h4 a {
+    background-image: url(/images/markitup/h4.png);
+  }
+  .bold a {
+    background-image: url(/images/markitup/bold.png);
+  }
+  .italic a {
+    background-image: url(/images/markitup/italic.png);
+  }
+  .stroke a {
+    background-image: url(/images/markitup/stroke.png);
+  }
+  .teletype a {
+    background-image: url(/images/markitup/teletype.png);
+  }
+  .list-bullet a {
+    background-image: url(/images/markitup/list-bullet.png);
+  }
+  .list-numeric a {
+    background-image: url(/images/markitup/list-numeric.png);
+  }
+  .image a {
+    background-image: url(/images/markitup/picture.png);
+  }
+  .link a {
+    background-image: url(/images/markitup/link.png);
+  }
+  .quotes a {
+    background-image: url(/images/markitup/quotes.png);
+  }
+  .code a {
+    background-image: url(/images/markitup/page_white_code.png);
+  }
+}
+
 .markItUpContainer {
   border: 1px solid #3c769d;
   background: white url(/images/markitup/bg-container.png) repeat-x top left;
@@ -105,59 +159,5 @@
         }
       }
     }
-  }
-}
-
-.markItUp {
-  width: auto;
-  margin: 5px 0 5px 0;
-  border: 5px solid #f5f5f5;
-  .markItUp a:link,
-  .markItUp a:visited {
-    color: black;
-    text-decoration: none;
-  }
-
-  .h1 a {
-    background-image: url(/images/markitup/h1.png);
-  }
-  .h2 a {
-    background-image: url(/images/markitup/h2.png);
-  }
-  .h3 a {
-    background-image: url(/images/markitup/h3.png);
-  }
-  .h4 a {
-    background-image: url(/images/markitup/h4.png);
-  }
-  .bold a {
-    background-image: url(/images/markitup/bold.png);
-  }
-  .italic a {
-    background-image: url(/images/markitup/italic.png);
-  }
-  .stroke a {
-    background-image: url(/images/markitup/stroke.png);
-  }
-  .teletype a {
-    background-image: url(/images/markitup/teletype.png);
-  }
-  .list-bullet a {
-    background-image: url(/images/markitup/list-bullet.png);
-  }
-  .list-numeric a {
-    background-image: url(/images/markitup/list-numeric.png);
-  }
-  .image a {
-    background-image: url(/images/markitup/picture.png);
-  }
-  .link a {
-    background-image: url(/images/markitup/link.png);
-  }
-  .quotes a {
-    background-image: url(/images/markitup/quotes.png);
-  }
-  .code a {
-    background-image: url(/images/markitup/page_white_code.png);
   }
 }
