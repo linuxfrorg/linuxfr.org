@@ -5,7 +5,6 @@
 @import "normalize.css/normalize";
 @import "common/*";
 @import "pygments/colorful";
-@import "print";
 
 /* Pixel size constants */
 $PX_MARGE_GAUCHE: 42px;
@@ -2097,3 +2096,5 @@ img {
     max-height: 700px;
   }
 }
+
+@import "common/print";
