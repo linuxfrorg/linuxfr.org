@@ -1,0 +1,75 @@
+/* les commentaires */
+#comments > p {
+  text-align: justify;
+  color: $C_INTER;
+  font-size: 0.8em;
+  margin: 5px 0 5px 0;
+}
+body#comments-show #contents > ul,
+body#comments-create #contents > ul,
+body#users-comments #contents > ul,
+body#comments-update #contents > ul,
+ul.threads {
+  padding: 0;
+  list-style: none;
+  /* premier d'un thread */
+  > li.comment,
+  li#comment_new {
+    /* voir ^article$ */
+    padding-top: 0;
+    padding-left: 1.25em;
+    padding-right: 5px;
+  }
+}
+
+li.comment {
+  min-height: 115px;
+  > h2 {
+    font-size: 1.3em;
+    margin-bottom: 0;
+    margin-top: 10px;
+    background: $C_CLAIR;
+    clear: right;
+  }
+  > p.meta {
+    margin-top: 0;
+    margin-bottom: 3px;
+    color: $C_INTER;
+  }
+  img.avatar {
+    float: right;
+    margin: 0 5px 5px 10px;
+  }
+  .content {
+    font-size: 1.1em;
+    line-height: 1.5em;
+    border-left: 1px solid $C_INTER;
+    padding-left: 5px;
+    margin-bottom: 5px;
+  }
+  .deleted {
+    border-left: 3px solid red;
+    font-style: italic;
+  }
+  > ul {
+    list-style: none;
+    margin-left: 1.25em;
+    padding-left: 0;
+  }
+  body:not(#comments-show):not(#comments-create) &.fold {
+    min-height: 0;
+    & > figure,
+    & > .content,
+    & > .actions {
+      display: none;
+    }
+  }
+}
+li.new-comment {
+  > h2 {
+    border: 1px solid $C_BD4;
+  }
+  .content {
+    border-left: 1px solid $C_BD4;
+  }
+}

@@ -1,0 +1,108 @@
+/* Proposition de contenu */
+#wiki_help {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  background: $C_CONTAINER;
+  border-collapse: collapse;
+
+  tr {
+    width: 100%;
+    border-bottom: 1px solid $C_INTER;
+    &:last-of-type {
+      border-bottom: none;
+    }
+
+    td {
+      width: 50%;
+      border-right: 1px solid $C_INTER;
+      padding: 4px 0;
+      &:last-of-type {
+        border-right: none;
+      }
+    }
+  }
+}
+
+input#news_title,
+input#comment_title,
+input#diary_title,
+input#tracker_title,
+input#post_title,
+input#poll_title,
+input#wiki_page_title,
+input#stylesheet {
+  width: 70%;
+}
+
+.fieldWithErrors input {
+  border: 1px solid red;
+}
+
+/* url dans les depeches */
+div#form_links {
+  fieldset {
+    border: none;
+    label {
+      display: inline-block;
+    }
+  }
+  label#label-link-name,
+  label#label-link-url {
+    width: 30%;
+  }
+  .link {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  .link input {
+    width: 30%;
+  }
+  .field_with_errors {
+    display: inline-block;
+    width: 30%;
+    border: 1px dashed red;
+    input {
+      width: 96%;
+    }
+  }
+  label#label-link-lang {
+    width: 10%;
+  }
+  .link select {
+    min-width: 10%;
+    max-width: 20%;
+  }
+  .link .remove {
+    font-size: small;
+  }
+}
+
+#news_message {
+  width: 100%;
+}
+
+div.markItUp {
+  border: 1px solid $C_INTER;
+  border-radius: 6px;
+
+  .markItUpContainer {
+    border: none;
+    background: none;
+  }
+
+  .markItUpEditor {
+    padding: 5px;
+    background: none;
+    border: 1px solid $C_INTER;
+  }
+
+  .markItUpHeader {
+    ul a {
+      border: 0;
+    }
+    li.image {
+      margin: 0;
+    }
+  }
+}

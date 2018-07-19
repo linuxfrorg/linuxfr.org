@@ -1,0 +1,81 @@
+html {
+  background: $C_BAS_FOND;
+  background-image: url("/images/contrib/RonRonnement/background_html.png");
+  background-repeat: repeat-x;
+  background-position: top;
+  font-family: sans-serif;
+  padding: 0 $PX_MARGE_DROITE 0 $PX_MARGE_GAUCHE;
+}
+
+body {
+  position: relative;
+  color: #000;
+  max-width: 150ex;
+  margin: 0 auto;
+  border: solid #999;
+  border-width: 0 1px;
+  background: linear-gradient(
+      90deg,
+      $C_CLAIR,
+      $C_CLAIR $PX_BRANDING_LARG,
+      $C_CONTAINER $PX_BRANDING_LARG,
+      $C_CONTAINER
+    )
+    #fff;
+}
+
+a {
+  color: inherit;
+  font-size: inherit;
+  text-decoration: none;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+input,
+button,
+select {
+  font-size: 1em;
+  max-width: 100%;
+}
+
+textarea {
+  max-width: 100%;
+}
+
+img {
+  max-width: 100%;
+  max-height: 80vh;
+  border: none;
+}
+
+blockquote {
+  border-left: 3px solid $C_BANDEAU;
+  margin: 10px 0 10px 10px;
+  padding-left: 5px;
+  padding-right: 0;
+
+  > p:first-child {
+    padding-top: 5px;
+  }
+}
+
+code {
+  font-size: 1.1em;
+  white-space: pre-wrap;
+  border: 1px solid $C_CLAIR;
+  border-radius: 4px;
+  padding: 1px 4px;
+}
+
+pre code {
+  display: block;
+  margin: 10px 0 10px 10px;
+  padding-left: 5px;
+  padding-right: 0;
+  border-width: 0 0 0 3px;
+  border-color: $C_BANDEAU;
+}

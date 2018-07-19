@@ -1,0 +1,49 @@
+#bigfooter {
+  display: block;
+  clear: both;
+  width: 100%;
+  margin-top: 0;
+  padding: 0 0 20px 0;
+  background: $C_CLAIR;
+  background: linear-gradient(to bottom, $C_FOOT 0%, white 100%);
+
+  a {
+    font-size: 0.75em;
+  }
+
+  nav,
+  section {
+    display: inline-block;
+    padding: 5px 0 15px 0;
+    vertical-align: top;
+    width: $PC_FOOT_WIDTH;
+    margin: 0 $PC_FOOT_MARG 0 $PC_FOOT_MARG;
+    background: $C_FOOT;
+    background: linear-gradient(
+      to bottom,
+      $C_FOOT 0%,
+      $C_MIBLANC_MIFOOT 50%,
+      $C_FOOT 100%
+    );
+    min-height: 360px;
+
+    border-bottom-right-radius: $RAY_FOOT;
+    border-bottom-left-radius: $RAY_FOOT;
+
+    h1 {
+      font-size: 1em;
+      padding: 0 3px 3px 3px;
+      border-bottom: 2px solid $C_BANDEAU;
+    }
+
+    ul {
+      list-style-position: inside;
+      padding: 0 10px 0 20px;
+    }
+    li {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}

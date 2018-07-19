@@ -1,0 +1,73 @@
+#site {
+  display: block;
+  top: 0;
+  padding-top: 16px;
+  width: 100%;
+  text-align: right;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color: $C_MENU;
+  background: linear-gradient(
+    to right,
+    #fff,
+    #e7e3e0 $PX_BRANDING_LARG,
+    #bdb3aa 50%
+  );
+
+  /* we recycle the nav bar to display the black line at the top */
+  .go_to_content {
+    width: 100%;
+    height: $PX_BANDEAU;
+    background: $C_BANDEAU;
+  }
+
+  ul {
+    display: inline;
+    padding-left: 0;
+  }
+  li {
+    display: inline;
+    padding: 0;
+    list-style: none;
+    &:after {
+      content: " | ";
+    }
+    &:last-child:after {
+      content: "";
+    }
+  }
+
+  /* boite de recherche */
+  form {
+    display: inline-block;
+    vertical-align: middle;
+    width: 160px;
+
+    label {
+      float: left;
+      text-indent: -9998em;
+      overflow: hidden;
+      text-align: left;
+      width: 0;
+    }
+    input#query {
+      display: block;
+      float: left;
+      background: $C_CLAIR;
+      margin-top: 2px;
+      width: 125px;
+    }
+    input#search_submit {
+      background: no-repeat 0 transparent;
+      background-size: 22px;
+      background-image: url("/images/icones/glass.png");
+      background-image: url("/images/icones/glass.svg"), none;
+      text-indent: -9998em;
+      border: none;
+      width: 22px;
+      height: 22px;
+      padding-right: 0;
+      cursor: pointer;
+    }
+  }
+}

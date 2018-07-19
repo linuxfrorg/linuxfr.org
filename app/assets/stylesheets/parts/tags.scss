@@ -1,0 +1,74 @@
+/* parti de la base de yggdras pour la partie sur les tags */
+.formats {
+  float: right;
+  clear: right;
+}
+.tag_in_place {
+  display: inline-block;
+  a:before {
+    margin-left: 5px;
+    content: " + ";
+    color: $C_BANDEAU;
+  }
+}
+.tag_in_place,
+.formats {
+  margin-bottom: 5px;
+  color: $C_INTER;
+  a {
+    color: $C_INTER;
+  }
+  input[type="submit"] {
+    font-size: inherit;
+  }
+}
+.tags {
+  display: block;
+
+  ul {
+    display: inline;
+    li {
+      display: inline;
+      padding: 0;
+      list-style: none;
+      &:after {
+        content: ", ";
+      }
+      &:last-child:after,
+      .last:after {
+        content: "";
+      }
+
+      form {
+        display: inline-block;
+      }
+      .add_tag,
+      .remove_tag {
+        display: inline-block;
+        text-indent: -9998em;
+        height: 20px;
+        width: 12px;
+        padding: 0;
+        border: none;
+      }
+      .add_tag {
+        background: no-repeat 1px 4px / 12px white;
+        background-image: url("/images/icones/tag.png");
+        background-image: url("/images/icones/tag.svg"), none;
+        &[disabled] {
+          background: no-repeat 1px 4px / 12px white;
+          background-image: url("/images/icones/tagged.png");
+          background-image: url("/images/icones/tagged.svg"), none;
+        }
+      }
+      .remove_tag {
+        background: no-repeat 0 6px / 11px white;
+        background-image: url("/images/icones/x.png");
+        background-image: url("/images/icones/x.svg"), none;
+        &[disabled] {
+          display: none;
+        }
+      }
+    }
+  }
+}

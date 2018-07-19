@@ -36,9 +36,7 @@
   }
 }
 
-#edition img[alt="Titre de l'image"] {
-  border: 3px dotted red;
-}
+#edition img[alt="Titre de l'image"],
 #edition img[alt=""] {
   border: 3px dotted red;
 }

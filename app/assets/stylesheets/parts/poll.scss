@@ -1,0 +1,17 @@
+/* sondage */
+ul.poll {
+  word-wrap: normal;
+  &.current {
+    padding: 0;
+    margin-top: 0;
+    li {
+      list-style: none;
+    }
+  }
+  .result {
+    background: $C_BD2;
+    border-top: 1px solid $C_BANDEAU;
+    border-bottom: 1px solid $C_BANDEAU;
+    font-size: x-small;
+  }
+}

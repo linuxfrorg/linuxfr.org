@@ -1,0 +1,56 @@
+/* tableau de bord et tracker */
+body#trackers-index .toolbox .new_content {
+  margin-bottom: 10px;
+}
+body#dashboard-index #contents table,
+body#trackers-index #contents table,
+body#applications-index table,
+body#registrations-edit table {
+  display: inline-block;
+  border-collapse: collapse;
+  border-radius: 0;
+  padding: 0;
+  clear: right;
+
+  th {
+    background: $C_CLAIR;
+  }
+  tr {
+    width: 100%;
+    border-bottom: 1px solid $C_INTER;
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+  td,
+  th {
+    border-right: 1px solid $C_INTER;
+    &:last-of-type {
+      border-right: none;
+    }
+    &.date {
+      white-space: nowrap;
+    }
+    &.number {
+      text-align: right;
+      padding-right: 2px;
+    }
+  }
+  a[href] {
+    @include lien_standard;
+  }
+}
+body#applications-index td,
+body#registrations-edit td {
+  padding: 5px;
+}
+#tracker,
+#my_trackers,
+.tracker {
+  .fixed,
+  .invalid {
+    a {
+      text-decoration: line-through;
+    }
+  }
+}

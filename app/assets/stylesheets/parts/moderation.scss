@@ -1,0 +1,23 @@
+/* Moderation */
+#moderation_box {
+  &.box li {
+    list-style: disc inside;
+  }
+
+  .board input#board_message {
+    display: block;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+  }
+}
+
+.news_waiting_for_moderation {
+  li:hover {
+    background-color: #d0d0d0;
+  }
+  .votes {
+    float: right;
+  }
+}

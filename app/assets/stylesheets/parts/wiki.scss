@@ -1,0 +1,41 @@
+/* page d'historique de wiki */
+body#news-revision,
+body#wiki_pages-revision {
+  #contents {
+    pre {
+      width: 100%;
+      white-space: pre-wrap;
+    }
+    ins {
+      text-decoration: none;
+      background: lime;
+    }
+    del {
+      text-decoration: line-through;
+      background: red;
+    }
+    nav ul {
+      display: inline;
+      li {
+        display: inline;
+        &:last-of-type {
+          float: right;
+          &:after {
+            content: " »";
+          }
+        }
+        &:first-of-type {
+          float: left;
+          &:before {
+            content: "« ";
+          }
+          // reset du précédent si un seul élément dans la liste
+          // part du principe qu'on sera plus souvent à la dernière révision qu'à la première
+          &:after {
+            content: "";
+          }
+        }
+      }
+    }
+  }
+}

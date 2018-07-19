@@ -1,0 +1,47 @@
+/* tri, proposition de dépeche, choix de page */
+.toolbox,
+.scroll {
+  display: block;
+  margin: 10px 0 15px 0;
+  font-size: 0.8em;
+  color: $C_INTER;
+}
+a.scroll {
+  margin: 0;
+}
+.toolbox {
+  .follow_feed,
+  .new_content {
+    float: right;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  .order_navbar {
+    padding-top: 10px;
+  }
+  .order_navbar ul,
+  ul.facets {
+    display: inline;
+    li {
+      display: inline;
+      padding: 0;
+      list-style: none;
+      &:after {
+        content: " · ";
+      }
+      &:last-child:after,
+      .last:after {
+        content: "";
+      }
+    }
+  }
+  /* pour ne pas afficher les pages en haut */
+  .pagination {
+    display: none;
+  }
+}
+/* pour les afficher en bas */
+#container > .toolbox:last-of-type .pagination {
+  display: inherit;
+}

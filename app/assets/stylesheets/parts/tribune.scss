@@ -1,0 +1,173 @@
+/* Tribune */
+body#boards-show {
+  #sidebar,
+  #bigfooter,
+  .scroll {
+    display: none;
+  }
+  #container {
+    margin-left: 0;
+    font-size: 1.1em;
+    text-align: justify;
+  }
+}
+#redaction_board {
+  #board_message {
+    box-sizing: border-box;
+    border: 1px solid #999;
+    padding: 4px;
+  }
+  div.chat {
+    border: 1px solid #999;
+    background-color: white;
+    padding: 0.2em;
+  }
+  .avatar {
+    float: left;
+    height: 36px;
+    width: 36px;
+    margin: 0.2em;
+  }
+  .norloge,
+  .user_link a {
+    color: #555;
+    font-size: 1em;
+    font-weight: normal;
+    font-family: inherit;
+  }
+  .norloge {
+    &::before {
+      content: "";
+    }
+    &::after {
+      content: "";
+    }
+  }
+  .message {
+    margin: 0.4em;
+  }
+  details {
+    margin: 1em 0;
+  }
+  summary {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  .attendee {
+    display: inline-block;
+    position: relative;
+    width: 48px;
+    height: 48px;
+    margin: 6px;
+    img {
+      max-height: 100%;
+    }
+    form {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      input {
+        margin: 0;
+      }
+    }
+  }
+}
+#main_board {
+  /* on sait qu'on est sur la tribune si on y est */
+  h1 {
+    display: none;
+  }
+  /* version xml et avertissement */
+  > a:first-of-type,
+  > p:first-of-type {
+    color: $C_INTER;
+  }
+  /* totoz links */
+  a:hover {
+    cursor: pointer;
+  }
+}
+.norloge {
+  font-weight: bold;
+  color: black;
+  font-family: monospace;
+  font-size: 11px;
+  &:before {
+    content: "[";
+  }
+  &:after {
+    content: "]";
+  }
+}
+/* Ligne de tribune */
+.chat {
+  margin: 3px 0 0 0;
+  /* pseudo */
+  .board-left > b:first-of-type {
+    color: $C_FONCE;
+    font-family: monospace;
+    font-size: 11px;
+  }
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  margin-top: 0;
+  margin-bottom: -2px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+@mixin board_highlight {
+  background: $C_BD1;
+  border-top: 1px solid $C_BANDEAU !important;
+  border-bottom: 1px solid $C_BANDEAU !important;
+}
+.highlighted {
+  @include board_highlight;
+}
+
+.board-right {
+  a {
+    font-size: small;
+    @include lien_standard;
+    font-weight: bold;
+  }
+  .totoz {
+    color: #2ea4ff;
+  }
+}
+
+#boards-show #container .inbox {
+  p.chat {
+    clear: both;
+  }
+
+  .board-left {
+    display: block;
+    float: left;
+    width: 180px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .board-right {
+    display: block;
+    margin-left: 180px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    margin-top: 0;
+    margin-bottom: 0;
+    &:before {
+      content: "- ";
+      font-weight: bold;
+    }
+    time {
+      color: #0000ee;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+  .myPost {
+    color: #cc0000;
+    font-weight: bold;
+  }
+}

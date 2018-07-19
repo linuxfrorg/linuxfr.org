@@ -1,0 +1,39 @@
+/* liens */
+.bookmark {
+  & + & {
+    top: -15px;
+    margin-bottom: 0;
+    border-top: none;
+  }
+  h1 {
+    font-size: 1.4em;
+  }
+  .tags {
+    display: inline-block;
+  }
+  .content {
+    padding: 0;
+    min-height: auto;
+    line-height: 1.3em;
+  }
+  &.score-1,
+  &.score-2,
+  &.score-3,
+  &.score-4,
+  &.score-5,
+  &.Score-6,
+  &.score-7,
+  &.score-8,
+  &.score-9,
+  &.score-10 {
+    h1 {
+      color: #888;
+      border-color: #bbb;
+    }
+  }
+  .content.hidden + .actions {
+    span {
+      color: #888;
+    }
+  }
+}

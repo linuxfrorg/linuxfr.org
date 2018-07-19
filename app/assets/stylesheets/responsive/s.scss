@@ -1,0 +1,13 @@
+@media screen and (max-width: 40em), handheld {
+  article h1 {
+    font-size: 1.3em;
+  }
+  li.comment > h2 {
+    font-size: 1.1em;
+  }
+  article .content,
+  li.comment .content {
+    font-size: 1em;
+    line-height: 1.3em;
+  }
+}

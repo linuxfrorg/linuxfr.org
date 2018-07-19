@@ -1,0 +1,35 @@
+#container {
+  display: block;
+  margin: 0 0 0 $PX_BRANDING_LARG;
+  background: $C_CONTAINER;
+  padding: 30px $RAY_CONTAINER 10px 40px;
+
+  /* le titre de la page est déjà contenu dans la barre du navigateur, l'url du navigateur, ... */
+  > h1:first-of-type {
+    display: none;
+  }
+}
+
+div#toolbar {
+  position: fixed;
+  bottom: 0;
+  overflow: hidden;
+  left: $PX_MARGE_GAUCHE + 8px; // 8px pour l'ombre ?
+  right: $PX_MARGE_DROITE + 8px;
+  background: $C_CONTAINER;
+  border: 1px solid $C_INTER;
+  color: $C_FONCE;
+  font-size: x-small;
+  will-change: transform;
+
+  #toolbar_items {
+    float: right;
+  }
+  #toolbar_alt_items {
+    float: right;
+    margin-right: 20px;
+  }
+  #toolbar_threeshold {
+    float: left;
+  }
+}

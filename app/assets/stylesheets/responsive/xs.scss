@@ -1,0 +1,24 @@
+@media screen and (max-width: 25em), screen and (max-height: 25em), handheld {
+  #sidebar #branding {
+    width: $PX_BRANDING_LARG / 2;
+    margin-right: 10px;
+  }
+
+  #bigfooter {
+    #friends {
+      display: none;
+    }
+    #about_us {
+      width: 100%;
+      margin: 0;
+      min-height: 240px;
+    }
+  }
+
+  #container {
+    padding: 5px 0;
+    article {
+      border-width: 1px 0;
+    }
+  }
+}

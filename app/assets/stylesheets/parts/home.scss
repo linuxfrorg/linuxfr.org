@@ -1,0 +1,30 @@
+/* article titre */
+#phare article {
+  /* enleve la liste des liens de la boite d'en-tete pour ne garder que le contenu "texte" de l'article, pour gain de place. */
+  .content ul.links {
+    display: none;
+  }
+
+  border: solid $BORDER_PHARE $C_BANDEAU;
+
+  /* comme le bord est plus grand, translation légèrement suppérieur */
+  .score,
+  .datePourCss {
+    right: -$RAY_CONTAINER - $BORDER_PHARE;
+    width: $RAY_CONTAINER + $BORDER_PHARE;
+  }
+}
+
+/* information générale, "publicité" (genre fosdem p. ex.) */
+.banner {
+  display: block;
+  position: relative;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $C_BD2;
+  box-shadow: 0 0 65px #fff inset, 0 0 20px $C_BD2 inset;
+  border-top: solid 2px $C_BANDEAU;
+  border-bottom: solid 2px $C_BANDEAU;
+  padding: 5px;
+}
