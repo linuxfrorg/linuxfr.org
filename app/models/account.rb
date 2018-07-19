@@ -150,6 +150,7 @@ class Account < ActiveRecord::Base
 
   def log_role
     roles = previous_changes["role"]
+    return if roles.nil?
     logs.create(description: "Changement de rôle : #{roles.join ' → '}", user_id: amr_id)
   end
 
