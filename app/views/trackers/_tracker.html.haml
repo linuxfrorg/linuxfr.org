@@ -3,6 +3,6 @@
   - c.meta = capture do
     %span.tracker_id ##{tracker.id}
     = posted_by(tracker)
-    État de l'entrée&nbsp;: #{tracker.state_name}
+    État de l'entrée&nbsp;: #{tracker.state_name}.
   - if current_account && current_account.can_update?(tracker)
     - c.actions = link_to("Modifier", "/suivi/#{tracker.to_param}/modifier", class: 'action')
