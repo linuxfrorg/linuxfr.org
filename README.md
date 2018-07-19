@@ -1,7 +1,8 @@
 LinuxFr.org
 ===========
 
-LinuxFr.org is a french web site speaking of Linux and Free Software.
+LinuxFr.org is a French-speaking website about Free software / hardware /
+culture / stuff.
 
 This git repository is the rails application that run on LinuxFr.org.
 
