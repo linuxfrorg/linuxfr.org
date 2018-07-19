@@ -15,7 +15,7 @@ namespace :linuxfr do
 
   desc "Delete old accounts that were never activated"
   task delete_old_passive_accounts: :environment do
-    Account.unconfirmed.where(["created_at <= ?", DateTime.now - 1.day]).delete_all
+    Account.unconfirmed.where(["created_at <= ?", DateTime.now - 1.day]).destroy_all
   end
 
   desc "Delete the cache_dir for avatars (temporary stockage)"

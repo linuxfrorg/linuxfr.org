@@ -48,8 +48,8 @@ class Account < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
 
   has_many :applications, class_name: 'Doorkeeper::Application', as: :owner
-  has_many :logs
-  belongs_to :user, inverse_of: :account
+  has_many :logs, dependent: :destroy
+  belongs_to :user, inverse_of: :account, dependent: :delete
   accepts_nested_attributes_for :user, reject_if: :all_blank
 
   mount_uploader :uploaded_stylesheet, StylesheetUploader
