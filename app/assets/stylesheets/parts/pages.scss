@@ -1,0 +1,26 @@
+/* Static pages */
+
+/* The admin, moderation, and redaction teams */
+.people-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  img {
+    vertical-align: middle;
+	padding-right: .5rem;
+  }
+  li {
+    flex: 16rem 1 0;
+	margin: .5rem;
+	padding: .5rem;
+	color: #333;
+	background-color: #eee;
+	max-width: calc(33.33% - 2rem);
+  }
+  a {
+    display: inline-block;
+	width: 100%;
+	height: 100%;
+  }
+}

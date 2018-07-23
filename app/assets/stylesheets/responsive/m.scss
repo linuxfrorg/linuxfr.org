@@ -200,4 +200,8 @@
   body#comments-update #contents > ul > li#comment_new {
     padding: 10px;
   }
+
+  .people-list li {
+    max-width: 100%;
+  }
 }
