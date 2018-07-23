@@ -204,4 +204,8 @@
   .people-list li {
     max-width: 100%;
   }
+  .about-navigation {
+    order: 2;
+	& + img { order: 1; }
+  }
 }

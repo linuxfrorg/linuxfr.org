@@ -1,4 +1,8 @@
 /* Static pages */
+#static-show {
+  line-height: 1.5;
+  h1, h2, h3 { color: #333; }
+}
 
 /* The admin, moderation, and redaction teams */
 .people-list {
@@ -22,5 +26,41 @@
     display: inline-block;
 	width: 100%;
 	height: 100%;
+  }
+}
+
+/* About */
+.static-about {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  img { margin: 2rem; }
+}
+.about-navigation, .about-writing {
+  flex: 400px 1 0;
+  align-self: center;
+  margin: 2rem;
+  & + img {
+    flex: 400px 2 0;
+  }
+}
+.about-writing { order: 4 }
+.about-writing + img { order: 3 }
+.about-contributors {
+  order: 5;
+  .people-list{
+    li { border-radius: .3rem; }
+    a { display: inline; }
+  }
+}
+.about-signup {
+  order: 6;
+  & + img { order: 6; }
+}
+.about-credits {
+  order: 6;
+  .people-list li {
+    max-width: initial;
+	flex: 24rem 1 1;
   }
 }
