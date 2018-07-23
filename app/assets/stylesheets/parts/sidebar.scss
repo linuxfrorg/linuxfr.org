@@ -99,6 +99,12 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
+	.button_to input, button.more {
+	  font-size: .8rem;
+	  width: 190px;
+	  padding: 0 0 0 20px;
+	}
   }
 
   #logout {
