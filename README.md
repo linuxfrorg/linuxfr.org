@@ -31,7 +31,8 @@ Note: you can use libcurl4-gnutls-dev instead of libcurl4-openssl-dev.
 ```
 # mysql -p -u root
 <enter your root password for mysql>
-> CREATE DATABASE linuxfr_rails CHARACTER SET utf8;
+> CREATE DATABASE linuxfr_rails CHARACTER SET utf8mb4;
+> CREATE USER linuxfr_rails IDENTIFIED BY 'asecretpassword';
 > GRANT ALL PRIVILEGES ON linuxfr_rails.* TO "linuxfr_rails"@"localhost";
 > QUIT;
 (return to user)
