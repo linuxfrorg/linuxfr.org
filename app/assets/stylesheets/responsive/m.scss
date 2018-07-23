@@ -206,6 +206,8 @@
   }
   .about-navigation {
     order: 2;
-	& + img { order: 1; }
+    & + img {
+      order: 1;
+    }
   }
 }
