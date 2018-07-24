@@ -6,34 +6,32 @@ body#dashboard-index #contents table,
 body#trackers-index #contents table,
 body#applications-index table,
 body#registrations-edit table {
-  display: inline-block;
-  border-collapse: collapse;
-  border-radius: 0;
+  width: 100%;
+  margin-bottom: 1rem;
   padding: 0;
-  clear: right;
+  border-collapse: collapse;
+  border: 0;
+  font-size: 0.8rem;
 
-  th {
-    background: $C_CLAIR;
-  }
   tr {
-    width: 100%;
-    border-bottom: 1px solid $C_INTER;
-    &:last-of-type {
-      border-bottom: none;
+    &:nth-child(even) {
+      background: $C_CLAIR;
     }
+    &:hover {
+      background: $C_BD1;
+    }
+  }
+  th {
+    background: $C_BD3;
   }
   td,
   th {
-    border-right: 1px solid $C_INTER;
-    &:last-of-type {
-      border-right: none;
-    }
+    padding: 0.25rem;
     &.date {
       white-space: nowrap;
     }
     &.number {
       text-align: right;
-      padding-right: 2px;
     }
   }
   a[href] {
