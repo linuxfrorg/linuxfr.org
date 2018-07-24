@@ -5,6 +5,7 @@ html {
   background-position: top;
   font-family: sans-serif;
   padding: 0 $PX_MARGE_DROITE 0 $PX_MARGE_GAUCHE;
+  scroll-behavior: smooth;
 }
 
 body {

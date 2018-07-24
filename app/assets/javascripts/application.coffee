@@ -26,13 +26,6 @@ $("input[autofocus=autofocus]").focus()
 $(".board").chat()
 $("#news_revisions").redaction()
 
-# Animate the scrolling to a fragment
-$("a.scroll").click ->
-  dst = $(@hash)
-  pos = (if dst then dst.offset().top else 0)
-  $("html,body").animate scrollTop: pos, 500
-  false
-
 # Force people to preview their modified contents
 $("textarea, #form_answers input").keypress (event) ->
   $(@).parents("form").find("input[value=Prévisualiser]").next("input[type=submit]").hide()
