@@ -70,8 +70,23 @@
 }
 .about-signup {
   order: 6;
+  flex: 400px 0 0;
+  max-width: 100vw;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  h3, p { margin: 1rem; }
+  form { position: relative; }
+  label { display: block; }
+  form p:first-child {
+    position: absolute;
+	top: -1rem;
+	left: -490px;
+	label { color: white; }
+  }
   & + img {
-    order: 6;
+    flex: 500px 0 0;
+	margin: 0 0 0 2rem;
+    order: 5;
   }
 }
 .about-credits {
@@ -79,5 +94,15 @@
   .people-list li {
     max-width: initial;
     flex: 24rem 1 1;
+  }
+}
+@media (max-width: 1337px) {
+  .about-signup {
+    flex: 500px 0 1;
+    form p:first-child {
+      position: initial;
+      label { color: inherit; }
+	}
+	& + img { margin: 0; }
   }
 }
