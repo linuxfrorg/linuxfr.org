@@ -33,6 +33,13 @@
       border-radius: 5px;
     }
   }
+  a[href*="/moderation/"],
+  a[href*="/redaction/"] {
+    padding-left: 3px;
+    border-left: 16px;
+    border-image: inline("feather-icons/dist/icons/eye-off") 0 0 0 32;
+    border-style: solid;
+  }
 }
 
 body#redaction-index {
