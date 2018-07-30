@@ -96,7 +96,7 @@ class Chat
             if cfg.totoz_type == "popup"
               "<span class=\"totoz\" data-totoz-name=\"#{name}\">#{title}</span>"
             else if cfg.totoz_type == "inline"
-              "<img class=\"totoz\" alt=\"#{title}\" title=\"#{title}\" src=\"#{cfg.totoz_url}#{name}.gif\" style=\"vertical-align: top; background-color: transparent\"/>"
+              "<img class=\"totoz\" alt=\"#{title}\" title=\"#{title}\" src=\"#{cfg.totoz_url}#{name}\" style=\"vertical-align: top; background-color: transparent\"/>"
           idx = totoz.lastIndex
         $(@).replaceWith html+orig.slice(idx) if html
 
@@ -133,7 +133,7 @@ class Chat
     if totoz.size() == 0
       totoz = $("<div id=\"totoz-#{totozId}\" class=\"totozimg\"></div>")
               .css(display: "none", position: "absolute")
-              .append("<img src=\"#{@totoz_url}#{totozName}.gif\"/>")
+              .append("<img src=\"#{@totoz_url}#{totozName}\"/>")
       @totoz.append totoz
     offset = $(event.target).offset()
     [x, y] = [offset.left, offset.top]
