@@ -6,7 +6,13 @@ html {
   font-family: sans-serif;
   padding: 0 $PX_MARGE_DROITE 0 $PX_MARGE_GAUCHE;
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 
 body {
   position: relative;
@@ -35,19 +41,25 @@ a {
     text-decoration: underline;
   }
 }
+a,
+a:link,
+a:visited,
+a:hover,
+a:active,
+a:focus {
+  transition: color 0.15s ease-in;
+}
 
 input,
 button,
-select {
+select,
+textarea {
   font-size: 1em;
   max-width: 100%;
 }
 
-textarea {
-  max-width: 100%;
-}
-
 img,
+video,
 svg {
   max-width: 100%;
   max-height: 80vh;
