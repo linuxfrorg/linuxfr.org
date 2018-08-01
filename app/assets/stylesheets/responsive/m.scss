@@ -80,15 +80,16 @@
     }
   }
 
-  #redaction,
-  #container {
-    .datePourCss {
-      display: none !important;
-    }
-    .score {
-      top: 5px;
-      right: 0 !important;
-    }
+  .datePourCss {
+    display: none !important;
+  }
+  .score {
+    top: 5px;
+    right: 0 !important;
+  }
+
+  #phare article {
+    margin: 0.5rem 8px;
   }
 
   #container {

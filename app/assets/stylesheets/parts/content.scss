@@ -79,10 +79,9 @@ article {
     /* the translation should be the exact sum of padding and margin of all elements to the right */
     position: absolute;
     right: -$RAY_CONTAINER - $BORDER_CONTENT;
-  }
-  .score, .datePourCss {
-	box-sizing: content-box;
-    border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0 15;
+    box-sizing: content-box;
+    border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0
+      15;
     border-style: solid;
   }
   .score {
@@ -95,14 +94,13 @@ article {
   }
   .datePourCss {
     background: $C_BANDEAU;
-    display: block !important;
     color: white;
     padding: 0;
     margin-bottom: 2px;
     top: 20px;
 
     .jour {
-	  box-sizing: border-box;
+      box-sizing: border-box;
       padding-left: 2px;
       float: left;
       line-height: 31px;

@@ -5,14 +5,10 @@
     display: none;
   }
 
+  margin: 2rem 61px;
+  box-shadow: 0 4px 6px 0 #aaa;
   border: solid $BORDER_PHARE $C_BANDEAU;
-
-  /* comme le bord est plus grand, translation légèrement suppérieur */
-  .score,
-  .datePourCss {
-    right: -$RAY_CONTAINER - $BORDER_PHARE;
-    width: $RAY_CONTAINER + $BORDER_PHARE;
-  }
+  border-radius: 0;
 }
 
 /* information générale, "publicité" (genre fosdem p. ex.) */
