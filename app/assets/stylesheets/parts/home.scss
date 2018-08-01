@@ -24,3 +24,22 @@
   border-bottom: solid 2px $C_BANDEAU;
   padding: 5px;
 }
+
+/* Le court texte à la fin de la page d'accueil pour inciter les gens à participer au site */
+.incitation {
+  text-align: center;
+  margin: 3rem 0 2rem;
+  border-top: solid 2px $C_BANDEAU;
+  & > * {
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h2 {
+    color: #333;
+  }
+  .people-list li {
+    max-width: 100%;
+    padding: 1rem;
+  }
+}
