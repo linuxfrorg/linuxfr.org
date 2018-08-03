@@ -1,8 +1,3 @@
-- if @ppp
-  - content_for :hero do
-    %section#phare
-      = render @ppp
-
 - content_for :column do
   = render 'polls/box'
   = render 'sections/box'
@@ -11,6 +6,10 @@
 - title "Accueil"
 - cache_unless account_signed_in?, "home/#{@order}/#{@nodes.current_page}", expires_in: 1.minute do
   %h1 "Accueil"
+  - if @ppp
+    %section#phare
+      = render @ppp
+
   - if @banner
     %aside.banner
       = @banner

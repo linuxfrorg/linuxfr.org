@@ -4,7 +4,6 @@
   %body{body_attr}
     #top
     = render 'layouts/site', home: false
-    = yield :hero
     = render 'layouts/sidebar'
     %section#container.container
       - [:alert, :notice].each do |type|
