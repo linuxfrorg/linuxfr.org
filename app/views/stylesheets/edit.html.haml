@@ -11,7 +11,8 @@
 
   %p
     Il est possible de choisir une feuille de style (CSS) alternative pour l'affichage du site LinuxFr.org.
-    Pour en choisir une, cliquer simplement sur son nom.
+    Ces feuilles de style ont été écrites par des contributeurs externes du site et leur maintenance n'est pas garantie.
+    Pour en choisir une, cliquer simplement sur son image.
 
   = form_tag "/stylesheet", method: :put do
     %input(type="radio" name="css_session" value="all" id="css_session_all" checked)
