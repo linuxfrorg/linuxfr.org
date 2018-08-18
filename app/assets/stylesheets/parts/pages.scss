@@ -88,6 +88,7 @@
     top: -1rem;
     left: -490px;
     label {
+      text-shadow: 0 1px 1px #666;
       color: white;
     }
   }
@@ -111,6 +112,7 @@
       position: initial;
       label {
         color: inherit;
+        text-shadow: inherit;
       }
     }
     & + img {
