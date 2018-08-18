@@ -1,5 +1,4 @@
-#redaction_box.box
+#board_box.box
   %h1
     = link_to "Tribune", '/board'
   = render 'boards/boards', boards: Board.limit(15, Board.free), box: true
-

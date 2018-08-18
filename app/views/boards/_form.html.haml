@@ -1,5 +1,5 @@
 = form_tag "/board", class: 'chat' do
   = hidden_field :board, :object_type, value: form.object_type
   = hidden_field :board, :object_id, value: form.object_id
-  = text_field :board, :message, value: '', size: box ? 20 : 80, autocomplete: 'off', required: 'required', spellcheck: 'true', autofocus: (form.object_type == Board.free)
+  = text_field :board, :message, value: '', size: box ? 20 : 80, autocomplete: 'off', required: 'required', spellcheck: 'true', autofocus: !box && (form.object_type == Board.free)
   = submit_tag 'Envoyer', class: "submit_board"
