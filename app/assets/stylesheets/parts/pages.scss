@@ -10,8 +10,9 @@
 
 /* The admin, moderation, and redaction teams */
 .people-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  grid-gap: 0.5rem;
   list-style: none;
   padding: 0;
   img {
@@ -19,12 +20,9 @@
     padding-right: 0.5rem;
   }
   li {
-    flex: 16rem 1 0;
-    margin: 0.5rem;
     padding: 0.5rem;
     color: #333;
     background-color: #eee;
-    max-width: calc(33.33% - 2rem);
   }
   a {
     display: inline-block;
@@ -35,30 +33,33 @@
 
 /* About */
 .static-about {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  img {
-    margin: 2rem;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 2.5rem 1fr 2rem 2rem 1fr 2.5rem;
+  & > * {
+    grid-column: 2 / span 4;
+    margin: 1rem 0;
   }
+}
+.about-welcome {
+  text-align: center;
+}
+.about-welcome + img {
+  grid-column: 1 / span 6;
+  width: 100%;
 }
 .about-navigation,
-.about-writing {
-  flex: 400px 1 0;
-  align-self: center;
-  margin: 2rem;
-  & + img {
-    flex: 400px 2 0;
-  }
+.about-writing + img {
+  grid-column: 2;
 }
+.about-navigation + img,
 .about-writing {
-  order: 4;
+  grid-column: 5;
 }
 .about-writing + img {
-  order: 3;
+  grid-row: 5;
 }
 .about-contributors {
-  order: 5;
   .people-list {
     li {
       border-radius: 0.3rem;
@@ -69,10 +70,13 @@
   }
 }
 .about-signup {
-  order: 6;
-  flex: 400px 0 0;
+  grid-column: 4 / span 3;
   max-width: 100vw;
   border: 1px solid #ccc;
+  & + img {
+    grid-column: 1 / span 3;
+    grid-row: 7;
+  }
   h3,
   p {
     margin: 1rem;
@@ -86,37 +90,34 @@
   form p:first-child {
     position: absolute;
     top: -1rem;
-    left: -490px;
+    left: -500px;
     label {
       text-shadow: 0 1px 1px #666;
       color: white;
     }
   }
-  & + img {
-    flex: 500px 0 0;
-    margin: 0 0 0 2rem;
-    order: 5;
-  }
 }
 .about-credits {
-  order: 6;
-  .people-list li {
-    max-width: initial;
-    flex: 24rem 1 1;
+  .people-list {
+    grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
   }
 }
 @media (max-width: 1337px) {
   .about-signup {
-    flex: 500px 0 1;
+    grid-row: 8;
+    &,
+    & + img {
+      grid-column: 2 / span 4;
+    }
+    & + img {
+      margin: 0;
+    }
     form p:first-child {
       position: initial;
       label {
         color: inherit;
         text-shadow: inherit;
       }
-    }
-    & + img {
-      margin: 0;
     }
   }
 }

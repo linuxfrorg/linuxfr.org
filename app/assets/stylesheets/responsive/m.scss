@@ -198,13 +198,17 @@
     padding: 10px;
   }
 
-  .people-list li {
-    max-width: 100%;
+  .about-navigation,
+  .about-navigation + img,
+  .about-writing,
+  .about-writing + img {
+    grid-column: 2 / span 4;
+    grid-row: auto;
   }
-  .about-navigation {
-    order: 2;
-    & + img {
-      order: 1;
-    }
+  .about-signup {
+    grid-row: 10;
+  }
+  .about-signup + img {
+    grid-row: 9;
   }
 }

@@ -10,4 +10,7 @@
     font-size: 1em;
     line-height: 1.3em;
   }
+  .static-about > * {
+    grid-column: 1 / span 6;
+  }
 }
