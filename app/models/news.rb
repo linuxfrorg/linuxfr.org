@@ -360,7 +360,7 @@ class News < Content
   end
 
   def taggable_by?(account)
-    super(account) || account.amr? || account.editor?
+    super(account) || account.amr? || account.editor? || (draft? && submitted_by?(account))
   end
 
   def acceptable_by?(account)
