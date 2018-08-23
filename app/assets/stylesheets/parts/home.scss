@@ -1,10 +1,5 @@
 /* article titre */
 #phare article {
-  /* enleve la liste des liens de la boite d'en-tete pour ne garder que le contenu "texte" de l'article, pour gain de place. */
-  .content ul.links {
-    display: none;
-  }
-
   margin: 1rem -1px 3rem;
   box-shadow: 0 4px 6px 0 #aaa;
   border: solid $BORDER_PHARE $C_BANDEAU;

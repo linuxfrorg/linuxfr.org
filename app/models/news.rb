@@ -24,6 +24,9 @@
 # that will be reviewed and moderated by the LinuxFr.org team.
 #
 class News < Content
+  DEFAULT_FIRST_PART = "Un court chapeau introduisant l'article, ou le" +
+    "synthétisant, aidera les visiteurs du site à savoir s'ils doivent procéder" +
+    "à une lecture approfondie de votre article.".freeze
   DEFAULT_PARAGRAPH = "Vous pouvez éditer ce paragraphe en cliquant sur le crayon !".freeze
 
   self.table_name = "news"
@@ -130,7 +133,8 @@ class News < Content
     news = News.new
     news.title = "Nouvelle dépêche #{News.maximum(:id).to_i + 1}"
     news.section = Section.default
-    news.wiki_body = news.wiki_second_part = DEFAULT_PARAGRAPH
+    news.wiki_body = DEFAULT_FIRST_PART
+    news.wiki_second_part = DEFAULT_PARAGRAPH
     news.cc_licensed = true
     news.author_name  = account.name
     news.author_email = account.email

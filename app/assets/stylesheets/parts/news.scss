@@ -1,0 +1,9 @@
+ul.links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+  list-style-position: inside;
+  padding: 0;
+  li {
+    padding: 0.1rem;
+  }
+}
