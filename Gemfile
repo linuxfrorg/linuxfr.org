@@ -52,7 +52,7 @@ group :development do
   gem "capistrano",            "~>2.15", github: 'capistrano', branch: 'legacy-v2'
   gem "capistrano-maintenance"
   gem "letter_opener"
-  gem "listen"
+  gem "listen",                github: "guard/listen"
   gem "mo"
   gem "pry-rails"
   gem "spring"
