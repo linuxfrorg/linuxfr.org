@@ -213,7 +213,7 @@ Rails.application.routes.draw do
   get "/recherche(/:type(/:facet))" => "search#index", as: :search
 
   # Statistics
-  %i(tracker prizes users top moderation redaction contents comments tags).each do |action|
+  %i(tracker prizes users top moderation redaction contents comments tags applications).each do |action|
     get "/statistiques/#{action}", controller: :statistics, action: action
   end
 
