@@ -25,7 +25,7 @@ gem "html-pipeline-linuxfr",   "~>0.15"
 gem "html_spellchecker",       "~>0.1"
 gem "html_truncator",          "~>0.4"
 gem "htmlentities",            "~>4.3"
-gem "inherited_resources",     "~>1.7"
+gem "inherited_resources",     "~>1.8.0" # inherited_resources 1.9 needs Ruby 2.3
 gem "kaminari",                "~>0.15"
 gem "mini_magick",             "~>4.8"
 gem "mysql2",                  "~>0.5.0"
