@@ -6,7 +6,7 @@
 #  id          :integer          not null, primary key
 #  state       :string(10)       default("published"), not null
 #  title       :string(32)       not null
-#  cached_slug :string(32)
+#  cached_slug :string(32)       not null
 #  created_at  :datetime
 #  updated_at  :datetime
 #

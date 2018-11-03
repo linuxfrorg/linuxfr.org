@@ -5,7 +5,7 @@
 #
 #  id                :integer          not null, primary key
 #  title             :string(160)      not null
-#  cached_slug       :string(165)
+#  cached_slug       :string(165)      not null
 #  owner_id          :integer
 #  body              :text(4294967295)
 #  wiki_body         :text(16777215)

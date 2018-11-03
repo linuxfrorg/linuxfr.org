@@ -6,7 +6,7 @@
 #  id                :integer          not null, primary key
 #  state             :string(10)       default("draft"), not null
 #  title             :string(128)      not null
-#  cached_slug       :string(128)
+#  cached_slug       :string(128)      not null
 #  created_at        :datetime
 #  updated_at        :datetime
 #  wiki_explanations :text(16777215)

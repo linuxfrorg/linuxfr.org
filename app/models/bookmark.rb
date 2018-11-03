@@ -3,14 +3,14 @@
 #
 # Table name: bookmarks
 #
-#  id                :integer          not null, primary key
-#  title             :string(160)      not null
-#  cached_slug       :string(165)
-#  owner_id          :integer
-#  link              :string(1024)
-#  lang              :string(2)        not null
-#  created_at        :datetime
-#  updated_at        :datetime
+#  id          :integer          not null, primary key
+#  title       :string(160)      not null
+#  cached_slug :string(165)      not null
+#  owner_id    :integer
+#  link        :string(255)      not null
+#  lang        :string(2)        not null
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 # The users can post on theirs bookmarks.

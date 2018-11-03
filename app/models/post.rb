@@ -6,7 +6,7 @@
 #  id             :integer          not null, primary key
 #  forum_id       :integer          not null
 #  title          :string(160)      not null
-#  cached_slug    :string(165)
+#  cached_slug    :string(165)      not null
 #  body           :text(4294967295)
 #  wiki_body      :text(16777215)
 #  truncated_body :text(16777215)

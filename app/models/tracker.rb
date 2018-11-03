@@ -6,7 +6,7 @@
 #  id                  :integer          not null, primary key
 #  state               :string(10)       default("opened"), not null
 #  title               :string(100)      not null
-#  cached_slug         :string(105)
+#  cached_slug         :string(105)      not null
 #  category_id         :integer          not null
 #  assigned_to_user_id :integer
 #  body                :text(4294967295)

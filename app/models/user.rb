@@ -7,7 +7,7 @@
 #  name              :string(32)
 #  homesite          :string(100)
 #  jabber_id         :string(32)
-#  cached_slug       :string(32)
+#  cached_slug       :string(32)       not null
 #  created_at        :datetime
 #  updated_at        :datetime
 #  avatar            :string(255)
