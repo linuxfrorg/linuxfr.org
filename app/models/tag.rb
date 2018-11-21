@@ -20,8 +20,10 @@ class Tag < ActiveRecord::Base
   scope :footer, -> {
     select([:name]).joins(:taggings).
                     where(public: true).
-                    where("created_at > ?", 1.month.ago).
-                    group(:tag_id).
+                    joins(:nodes).
+                    where("nodes.public = 1").
+                    where("taggings.created_at > ?", 1.month.ago).
+                    group("taggings.tag_id").
                     order(Arel.sql("COUNT(*) DESC")).
                     limit(12)
   }
