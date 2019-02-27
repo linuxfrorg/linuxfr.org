@@ -12,7 +12,7 @@ package.
 
 ```
 ~ $ sudo bash -c "echo 'deb http://deb.debian.org/debian stretch-backports main' >> /etc/apt/sources.list.d/linuxfr.list"
-~ $ sudo apt udpate
+~ $ sudo apt update
 ```
 
 # Install Debian packages
