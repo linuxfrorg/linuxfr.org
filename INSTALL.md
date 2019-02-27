@@ -146,10 +146,10 @@ website locally using this domain name.
 Set the domain `dlfp.lo` to target localhost:
 
 ```
-~ $ sudo bash -c 'echo "127.0.0.1 dlfp.lo" >> /etc/hosts
+~ $ sudo bash -c 'echo "127.0.0.1 dlfp.lo" >> /etc/hosts'
 ```
 
-For Apache, prepare a virtual host file configuration with:
+For Apache, create a new virtual host file configuration and add:
 
 ```
 ServerName dlfp.lo
