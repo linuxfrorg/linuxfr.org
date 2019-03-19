@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails",                   "~>5.2"
+gem "rails",                   "5.2.2.1"
 
 gem "actionpack-page_caching", "~>1.1"
 gem "ansi",                    "~>1.4", require: false
@@ -25,7 +25,7 @@ gem "html-pipeline-linuxfr",   "~>0.15"
 gem "html_spellchecker",       "~>0.1"
 gem "html_truncator",          "~>0.4"
 gem "htmlentities",            "~>4.3"
-gem "inherited_resources",     "~>1.8.0" # inherited_resources 1.9 needs Ruby 2.3
+gem "inherited_resources",     "~>1.8"
 gem "kaminari",                "~>0.15"
 gem "mini_magick",             "~>4.8"
 gem "mysql2",                  "~>0.5.0"
