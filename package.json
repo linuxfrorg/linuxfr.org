@@ -13,14 +13,14 @@
   },
   "homepage": "https://github.com/linuxfrorg/linuxfr.org#readme",
   "dependencies": {
-    "feather-icons": "4.7.3",
-    "normalize.css": "8.0.0"
+    "feather-icons": "4.21.0",
+    "normalize.css": "8.0.1"
   },
   "devDependencies": {
-    "prettier": "1.13.7",
-    "stylelint": "9.3.0",
+    "prettier": "1.16.4",
+    "stylelint": "9.10.1",
     "stylelint-config-recommended-scss": "3.2.0",
-    "stylelint-scss": "3.1.3"
+    "stylelint-scss": "3.5.4"
   },
   "scripts": {
     "lint": "stylelint app/*/*/{,common/,parts/,responsive/}*.scss",
