@@ -1,7 +1,7 @@
 - if node.content.alternative_formats
   .formats
-    = link_to "Markdown", "#{path_for_content node.content}.md", title: "Télécharger ce contenu au format markdown", class: "action"
-    = link_to "Epub", "#{path_for_content node.content}.epub", title: "Télécharger ce contenu au format epub", class: "action"
+    = link_to "Markdown", "#{path_for_content node.content}.md", title: "Télécharger ce contenu au format markdown", class: "action download"
+    = link_to "Epub", "#{path_for_content node.content}.epub", title: "Télécharger ce contenu au format epub", class: "action download"
 - if current_account && current_account.can_vote?(node.content)
   .vote
     Ce contenu est-il #{button_to "pertinent", "/nodes/#{node.id}/vote/for", remote: true, class: "relevant"}

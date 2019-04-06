@@ -170,6 +170,14 @@ footer.actions {
     color: $C_INTER;
     margin-right: 10px;
   }
+  .action.download {
+    padding-left: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    background: no-repeat 0px 0.2em / 1.6em white;
+    background-image: url("/images/icones/download.png");
+    background-image: url("/images/icones/download.svg"), none;
+  }
   form,
   form div {
     display: inline;
