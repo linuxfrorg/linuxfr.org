@@ -125,6 +125,12 @@
     }
   }
 
+  .node footer .formats
+  {
+    float: none;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
   .node footer.actions .action .button_to {
     display: none;
   }
