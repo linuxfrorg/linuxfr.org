@@ -18,16 +18,17 @@
   - c.body  = capture do
     #first_part
       = render partial: 'redaction/paragraphs/paragraph', collection: @news.paragraphs.in_first_part
-    %ul#links
-      = render partial: 'redaction/links/link', collection: @news.links
-    %p.new_link{'data-url' => new_redaction_news_link_path(news_id: @news)}
-      %button.add_link Ajouter un lien
     #second_part_toc
       = @news.second_part_toc
     #second_part
       = render partial: 'redaction/paragraphs/paragraph', collection: @news.paragraphs.in_second_part
     .new_paragraph
       = button_to "Ajouter un paragraphe", redaction_news_paragraphs_path(news_id: @news), remote: true, class: "add_para"
+    %h2 Aller plus loin
+    %ul#links
+      = render partial: 'redaction/links/link', collection: @news.links
+    %p.new_link{'data-url' => new_redaction_news_link_path(news_id: @news)}
+      %button.add_link Ajouter un lien
 
 = link_to "Réorganiser", reorganize_redaction_news_path(@news), class: "reorganize"
 - if current_account.amr? || current_account.editor? || @news.submitted_by?(current_account)
