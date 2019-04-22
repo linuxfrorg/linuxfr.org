@@ -24,7 +24,7 @@ Packages to install from main Stretch source:
 build-essential openssl libreadline-dev curl libcurl4-openssl-dev zlib1g \
 zlib1g-dev libssl-dev libxml2-dev libxslt-dev autoconf libgmp-dev libyaml-dev \
 ncurses-dev bison automake libtool imagemagick libc6-dev hunspell \
-hunspell-fr-comprehensive redis-server ruby ruby-dev
+hunspell-fr-comprehensive redis-server ruby ruby-dev ruby-rack
 ```
 
 Note:
@@ -53,8 +53,10 @@ the `1.16.4` version.
 So we first install the `bundler` packager directly from `rubygems.org`:
 
 ```
-~ $ sudo gem install bundler
+~ $ gem install --user-install bundler
 ```
+
+and add it to your PATH environment according to the warning message shown during installation.
 
 Now, we can reach external Ruby resources:
 
@@ -71,6 +73,13 @@ Linuxfr uses also some nodejs resources:
 ```
 ~/linuxfr.org $ npm install
 ```
+
+## Install the LinuxFr board
+
+The `board-linuxfr` gem server is used to allow users chat on the `/boards` and
+the collaborative `redaction` space to work asynchronisouly.
+
+To install it, the simplest is to run `gem install --user-install board-linuxfr`
 
 # Configure LinuxFr
 
@@ -131,6 +140,12 @@ Now, you can run LinuxFr server with:
 If everything was good, you can reach the server with a browser inside the
 virtual machine using the `http://localhost:3000` URL.
 
+Additionnaly, you run the boards within another terminal:
+
+```
+~/linuxfr.org $ board-linuxfr -s -a localhost -p 9000
+```
+
 # Configure redirection
 
 This extra step isn't really needed to be able to use Linuxfr.
@@ -149,23 +164,39 @@ Set the domain `dlfp.lo` to target localhost:
 ~ $ sudo bash -c 'echo "127.0.0.1 dlfp.lo" >> /etc/hosts'
 ```
 
-For Apache, create a new virtual host file configuration and add:
+For Nginx, create a new server configuration with content like:
 
 ```
-ServerName dlfp.lo
-ProxyPass / http://localhost:3000/
-ProxyPassReverse / http://localhost:3000/
+server {
+    server_name dlfp.lo;
+    access_log /var/log/nginx/dlfp.access.log;
+
+    listen 80;
+
+    location /b/ {
+        proxy_buffering off;
+        proxy_pass http://localhost:9000;
+    }
+
+
+    location / {
+        proxy_set_header X_FORWARDED_PROTO $scheme;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_pass http://localhost:3000;
+    }
+}
 ```
 
-and enable this website and the proxy module:
+and restart the web server:
 
 ```
-~ $ sudo a2enmod proxy_http proxy
-~ $ sudo a2ensite dlfp
-~ $ sudo systemctl restart apache2
+~ $ sudo systemctl restart nginx
 ```
 
-Now, on the virtual machine, you can access Linuxfr with the `http://dlfp.lo`
+Now, on the virtual machine, you can access LinuxFr with the `http://dlfp.lo`
 URL.
 
 # Create administrator
