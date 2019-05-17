@@ -38,6 +38,10 @@ class Comment < ActiveRecord::Base
   validates :wiki_body, presence: { message: "Vous ne pouvez pas poster un commentaire vide" }
 
   wikify_attr :body
+  def wikify_body
+    nofollow = user.account.karma < 50
+    self.body = wikify(wiki_body, nofollow: nofollow)
+  end
 
 ### Reading status ###
 

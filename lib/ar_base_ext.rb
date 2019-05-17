@@ -2,8 +2,6 @@
 require 'html/pipeline'
 require 'lftruncator'
 
-HTML::Pipeline::LinuxFr::CONTEXT[:host] = MY_DOMAIN
-
 ##
 # Some ActiveRecord::Base extensions
 #
