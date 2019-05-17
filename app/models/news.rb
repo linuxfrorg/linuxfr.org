@@ -56,7 +56,7 @@ class News < Content
   validates :section,      presence: { message: "Veuillez choisir une section pour cette dépêche" }
   validates :author_name,  presence: { message: "Veuillez entrer votre nom" },
                            length: { maximum: 32, message: "Le nom de l'auteur est trop long" }
-  validates :author_email, presence: { message: "Veuillez entrer votre adresse email" },
+  validates :author_email, presence: { message: "Veuillez entrer votre adresse de courriel" },
                            length: { maximum: 64, message: "L'adresse email de l'auteur est trop longue" }
 
 ### SEO ###

@@ -20,6 +20,8 @@ class WikiVersion < ActiveRecord::Base
 
   acts_as_list column: 'version', scope: :wiki_page
 
+  validates :message, length: { maximum: 255, message: "Le message est trop long" }
+
 ### Append-only ###
 
   before_update :raise_on_update

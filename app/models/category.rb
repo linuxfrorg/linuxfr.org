@@ -16,7 +16,8 @@
 class Category < ActiveRecord::Base
   has_many :trackers, dependent: :nullify
 
-  validates :title, presence: { message: 'Les catégories ont obligatoirement un titre' }
+  validates :title, presence: { message: 'Les catégories ont obligatoirement un titre' },
+                    length: { maximum: 32, message: "Le titre est trop long" }
 
   default_scope { order(title: :asc) }
 end

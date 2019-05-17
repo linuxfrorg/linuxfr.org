@@ -24,7 +24,10 @@ class Link < ActiveRecord::Base
   attr_accessor :user
   Accessible = [:id, :user, :title, :url, :lang]
 
-  validates :title, presence: { message: "Un lien doit obligatoirement avoir un titre" }
+  validates :title, presence: { message: "Un lien doit obligatoirement avoir un titre" },
+                    length: { maximum: 100, message: "Le titre est trop long" }
+  validates :url, presence: { message: "Un lien doit obligatoirement avoir une URL" },
+                  length: { maximum: 255, message: "L'URL est trop longue" }
   validate  :authorized_protocol
 
   def url=(raw)

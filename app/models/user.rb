@@ -30,6 +30,11 @@ class User < ActiveRecord::Base
   has_many :tags, -> { distinct }, through: :taggings
 
   validates_format_of :homesite, message: "L'URL du site web personnel n'est pas valide", with: URI::regexp(%w(http https)), allow_blank: true
+  validates :homesite, length: { maximum: 100, message: "L'URL est trop longue" }
+  validates :name, length: { maximum: 32, message: "Le nom affiché est trop long" }
+  validates :jabber_id, length: { maximum: 32, message: "L'URL JabberID est trop longue" }
+  validates :signature, length: { maximum: 255, message: "La signature est trop longue" }
+  validates :custom_avatar_url, length: { maximum: 255, message: "L'URL de l'avatar est trop longue" }
 
   def self.collective
     find_by(name: "Collectif")

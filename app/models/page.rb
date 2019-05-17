@@ -13,7 +13,8 @@
 
 class Page < ActiveRecord::Base
   validates :slug,  presence: { message: "Le slug est obligatoire" }
-  validates :title, presence: { message: "Le titre est obligatoire" }
+  validates :title, presence: { message: "Le titre est obligatoire" },
+                    length: { maximum: 255, message: "Le titre est trop long" }
   validates :body,  presence: { message: "Le corps est obligatoire" }
 
 ### SEO ###

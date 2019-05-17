@@ -67,15 +67,20 @@ class Account < ActiveRecord::Base
   LOGIN_REGEXP = /\A[\p{Word}.+\-]+\z/
   validates :login, presence: { message: "Veuillez choisir un pseudo"},
                     uniqueness: { message: "Ce pseudo est déjà pris" },
-                    format: { message: "Le pseudo n'est pas valide", with: LOGIN_REGEXP, allow_blank: true, on: :create }
+                    format: { message: "Le pseudo n'est pas valide", with: LOGIN_REGEXP, allow_blank: true, on: :create },
+                    length: { maximum: 40, message: "Le login est trop long" }
 
   EMAIL_REGEXP = /\A[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}\z/i
   validates :email, presence: { message: "Veuillez remplir l'adresse de courriel" },
                     uniqueness: { message: "Cette adresse de courriel est déjà utilisée", case_sensitive: false, allow_blank: true },
-                    format: { message: "L'adresse de courriel n'est pas valide", with: EMAIL_REGEXP, allow_blank: true }
+                    format: { message: "L'adresse de courriel n'est pas valide", with: EMAIL_REGEXP, allow_blank: true },
+                    length: { maximum: 128, message: "L'adresse de courriel est trop longue" }
 
   validates :password, presence: { message: "Le mot de passe est absent", on: :create },
                        confirmation: { message: "La confirmation du mot de passe ne correspond pas au mot de passe" }
+
+  validates :stylesheet, length: { maximum: 255, message: "L'URL de la feuille de style est trop longue" }
+  validates :uploaded_stylesheet, length: { maximum: 255, message: "L'URL de la feuille de style est trop longue" }
 
 ### Authentication ###
 

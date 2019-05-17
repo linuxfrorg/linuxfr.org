@@ -20,6 +20,7 @@ class Section < ActiveRecord::Base
   scope :published, -> { where(state: "published").order("title") }
 
   validates :title, presence: { message: "Le titre est obligatoire" },
+                    length: { maximum: 32, message: "Le titre est trop long" },
                     uniqueness: { message: "Ce titre est déjà utilisé" }
 
 ### SEO ###

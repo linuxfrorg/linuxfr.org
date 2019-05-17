@@ -25,7 +25,8 @@ class Forum < ActiveRecord::Base
   scope :active, -> { where(state: "active") }
 
   validates :title, presence: { message: "Le titre est obligatoire" },
-                    uniqueness: { message: "Ce titre est déjà utilisé" }
+                    uniqueness: { message: "Ce titre est déjà utilisé" },
+                    length: { maximum: 32, message: "Le titre est trop long" }
 
   extend FriendlyId
   friendly_id

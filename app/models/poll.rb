@@ -24,7 +24,8 @@ class Poll < Content
     inverse_of: :poll
   accepts_nested_attributes_for :answers, allow_destroy: true
 
-  validates :title, presence: { message: "La question est obligatoire" }
+  validates :title, presence: { message: "La question est obligatoire" },
+                    length: { maximum: 128, message: "La question est trop longue" }
 
   wikify_attr :explanations
 

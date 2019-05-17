@@ -13,7 +13,10 @@
 class Banner < ActiveRecord::Base
   scope :active, -> { where(active: true) }
 
-  validates :content, presence: { message: "La bannière ne peut être vide !" }
+  validates :title, presence: { message: "Le titre ne peut être vide" },
+                    length: { maximum: 255, message: "Le titre est trop long" }
+
+  validates :content, presence: { message: "La bannière ne peut être vide" }
 
   def self.random
     nb = $redis.llen("banners")
