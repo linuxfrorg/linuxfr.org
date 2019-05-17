@@ -41,8 +41,8 @@ class ActiveRecord::Base
   end
 
   # Transform wiki syntax to HTML
-  def wikify(txt)
-    HTML::Pipeline::LinuxFr.render txt
+  def wikify(txt, context = {})
+    HTML::Pipeline::LinuxFr.render txt, context
   end
 
   # Extract the Table of contents from this html
