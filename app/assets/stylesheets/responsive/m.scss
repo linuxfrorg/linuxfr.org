@@ -125,12 +125,11 @@
     }
   }
 
-  .node footer {
-    grid-template-columns: auto;
-  }
   .node footer .formats
   {
-    grid-column: auto;
+    float: none;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
   .node footer.actions .action .button_to {
     display: none;
