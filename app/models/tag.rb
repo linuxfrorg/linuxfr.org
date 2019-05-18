@@ -29,6 +29,9 @@ class Tag < ActiveRecord::Base
   }
   scope :autocomplete, ->(q, nb) {
     where("name LIKE ?", "%#{q}%")
+      .joins(:taggings)
+      .where(public: true)
+      .group("taggings.tag_id")
       .order(taggings_count: :desc)
       .limit(nb)
       .pluck(:name)
