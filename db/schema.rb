@@ -364,7 +364,7 @@ ActiveRecord::Schema.define(version: 2018_10_09_222042) do
   end
 
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "name", limit: 32
+    t.string "name", limit: 40
     t.string "homesite", limit: 100
     t.string "jabber_id", limit: 32
     t.string "cached_slug", limit: 32, null: false

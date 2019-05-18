@@ -4,7 +4,7 @@
 # Table name: users
 #
 #  id                :integer          not null, primary key
-#  name              :string(32)
+#  name              :string(40)
 #  homesite          :string(100)
 #  jabber_id         :string(32)
 #  cached_slug       :string(32)       not null
@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
   validates_format_of :homesite, message: "L'URL du site web personnel n'est pas valide", with: URI::regexp(%w(http https)), allow_blank: true
   validates :homesite, length: { maximum: 100, message: "L'URL est trop longue" }
-  validates :name, length: { maximum: 32, message: "Le nom affiché est trop long" }
+  validates :name, length: { maximum: 40, message: "Le nom affiché est trop long" }
   validates :jabber_id, length: { maximum: 32, message: "L'URL JabberID est trop longue" }
   validates :signature, length: { maximum: 255, message: "La signature est trop longue" }
   validates :custom_avatar_url, length: { maximum: 255, message: "L'URL de l'avatar est trop longue" }
