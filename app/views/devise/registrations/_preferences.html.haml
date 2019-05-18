@@ -3,7 +3,7 @@
   = f.fields_for :user do |u|
     %p
       = u.label :name, "Prénom et nom"
-      = u.text_field :name, maxlength: 32
+      = u.text_field :name, maxlength: 40
     %p
       = u.label :homesite, 'Site web personnel'
       = u.url_field :homesite, maxlength: 100
