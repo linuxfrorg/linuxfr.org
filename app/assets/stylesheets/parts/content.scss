@@ -146,7 +146,6 @@ article {
 .not_read {
   a:before {
     content: '+ ';
-    font-size: 1.2em;
     font-weight: bold;
   }
 }
@@ -193,6 +192,7 @@ footer.actions {
       font-weight: bold;
       border-style: none;
       background-color: transparent;
+      height: auto;
     }
   }
 }
