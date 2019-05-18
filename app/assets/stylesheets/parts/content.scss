@@ -146,6 +146,7 @@ article {
 .not_read {
   a:before {
     content: '+ ';
+    font-size: 1.2em;
     font-weight: bold;
   }
 }
@@ -165,13 +166,6 @@ article {
 }
 
 footer.actions {
-  display: grid;
-  grid-template-columns: auto auto 1fr auto;
-  grid-gap: 0.8em;
-  font-size: 1em;
-  .formats {
-    grid-column: -1;
-  }
   .action {
     color: $C_INTER;
     margin-right: 10px;
@@ -198,7 +192,6 @@ footer.actions {
       font-weight: bold;
       border-style: none;
       background-color: transparent;
-      height: auto;
     }
   }
 }
@@ -207,7 +200,6 @@ footer.actions {
   color: $C_INTER;
   font-style: italic;
   font-size: x-small;
-  grid-column: 1 / -1;
 
   form,
   form div {
