@@ -40,7 +40,7 @@ class Tag < ActiveRecord::Base
     Tag.find_by_sql <<-EOS
         SELECT t.name, COUNT(tg.id) AS cnt
           FROM tags t JOIN taggings tg ON t.id = tg.tag_id
-         WHERE tg.node_id IN (SELECT DISTINCT node_id FROM taggings WHERE tag_id = #{self.id}) AND t.id != #{self.id}
+         WHERE tg.node_id IN (SELECT DISTINCT node_id FROM taggings WHERE tag_id = #{self.id}) AND t.id != #{self.id} AND t.public =1
       GROUP BY tg.tag_id ORDER BY cnt DESC LIMIT 10
     EOS
   end
