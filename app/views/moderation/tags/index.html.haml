@@ -1,0 +1,5 @@
+%h2 Tags publics par nombre croissant d'occurences
+
+- @tags.each do |tag|
+  .tag
+    = link_to("#{tag.name} (#{tag.taggings_count})", public_tag_path(tag.name))
