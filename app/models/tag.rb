@@ -46,6 +46,16 @@ class Tag < ActiveRecord::Base
     EOS
   end
 
+  def self.public_tags(offset=0, count=10000)
+    Tag.find_by_sql <<-EOS
+        SELECT t.name, t.taggings_count
+        FROM tags t
+        WHERE t.public = 1
+        ORDER BY t.taggings_count ASC
+        LIMIT #{offset},#{count}
+    EOS
+  end
+
 ### Visibility ###
 
   def updatable_by?(account)

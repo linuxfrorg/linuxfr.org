@@ -170,6 +170,7 @@ Rails.application.routes.draw do
     resources :plonk, only: [:create]
     resources :block, only: [:create]
     resources :images, only: [:index, :destroy]
+    resources :tags, only: [:index]
   end
 
   # Admin
