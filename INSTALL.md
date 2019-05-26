@@ -222,7 +222,7 @@ configure sections, forums...
 ## Sections for news
 
 To be able to create your first news, you will need to add sections with link
-'http://dlfp.lo/admin/section'.
+`http://dlfp.lo/admin/section`.
 
-Be sure to set title 'LinuxFr.org' to one of your sections, otherwise you won't
+Be sure to set title `LinuxFr.org` to one of your sections, otherwise you won't
 be able to create news in the redaction space.
