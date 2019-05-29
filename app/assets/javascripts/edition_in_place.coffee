@@ -37,8 +37,8 @@ class EditionInPlace
   submitForm: =>
     form = @el.find("form")
     url  = form.attr("action")
-    data = form.serialize()
-    @xhr = $.ajax(url: url, type: "post", data: data, dataType: "html").fail(@error).done(@success)
+    data = new FormData(form[0])
+    @xhr = $.ajax(url: url, type: "post", data: data, dataType: "html", contentType: false, processData: false).fail(@error).done(@success)
     false
 
   error: =>
