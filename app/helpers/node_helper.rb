@@ -92,6 +92,27 @@ module NodeHelper
     content_tag(:div, date_time.year, class: "annee")
   end
 
+  def initiated_by(content, user_link='Anonyme')
+    user   = content.user
+    user ||= current_user if content.new_record?
+    if user
+      user_link  = link_to(user.name, "/users/#{user.cached_slug}", rel: 'author')
+      user_infos = []
+      user_infos << homesite_link(user)
+      user_infos << jabber_link(user)
+      user_infos.compact!
+      user_link += (" (" + user_infos.join(', ') + ")").html_safe  if user_infos.any?
+    end
+    date_time    = content.is_a?(Comment) ? content.created_at : content.node.try(:created_at)
+    date_time  ||= Time.now
+    date         = content_tag(:span, "le #{date_time.to_s(:date)}", class: "date")
+    time         = content_tag(:span,  "à #{date_time.to_s(:time)}", class: "time")
+    published_at = content_tag(:time, date + " " + time, datetime: date_time.iso8601, class: "updated")
+    caption      = content_tag(:span, "", class: "floating_spacer") +
+                   content_tag(:span, "Rédaction collaborative initiée par #{ user_link } #{ published_at }.".html_safe, class: "posted_by_spanblock")
+    caption.html_safe
+  end
+
   def posted_by(content, user_link='Anonyme')
     user   = content.user
     user ||= current_user if content.new_record?

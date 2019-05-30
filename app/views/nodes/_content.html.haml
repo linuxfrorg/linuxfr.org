@@ -1,46 +1,60 @@
-%article{class: css_class, itemscope: true, itemtype: "http://schema.org/Article"}
-  %header
-    %h1(itemprop="name" class="entry-title")= title
-    .meta
-      = meta
-      - if record.node.cc_licensed?
-        = link_to "Licence CC by-sa.", cc_url(record), rel: 'license'
+- if record.is_a?(News) and record.draft?
+  %article{class: css_class, itemscope: true, itemtype: "http://schema.org/Article"}
+    %header
+      .meta
+        = meta
+      %h1(itemprop="name" class="entry-title")= title
+    - if hidden
+      .content.hidden &nbsp;
+    - else
+      .content(itemprop="articleBody" class="entry-content")
+        - if notice
+          .notice= notice
+        = body
+- else
+  %article{class: css_class, itemscope: true, itemtype: "http://schema.org/Article"}
+    %header
+      %h1(itemprop="name" class="entry-title")= title
+      .meta
+        = meta
+        - if record.node.cc_licensed?
+          = link_to "Licence CC by-sa.", cc_url(record), rel: 'license'
+        - unless hidden
+          %div.tags
+            Tags :
+            - if tags.any?
+              %ul.tag_cloud(itemprop="keywords")
+                = list_of tags do |tag|
+                  - if current_account
+                    - if tag.tagged_by_current
+                      = button_to "Supprimer", node_tag_path(node_id: record.node.id, id: tag), method: "delete", remote: true, class: "remove_tag"
+                    - else
+                      = button_to "Ajouter", node_tag_path(node_id: record.node.id, id: tag), method: "put", remote: true, class: "add_tag"
+                  = link_to tag.name, "/tags/#{tag.name}/public", rel: 'tag'
+            - elsif record.node.preview_tags.present?
+              %ul.tag_cloud(itemprop="keywords")
+                = list_of record.node.preview_tags do |tag|
+                  = link_to tag, "/tags/#{tag}/public", rel: 'tag'
+            - else
+              aucun
+            - if current_account && current_account.can_tag?(record)
+              .tag_in_place{"data-url" => "/nodes/#{record.node.id}/tags/nouveau"}
+                = link_to "Tagger", "/nodes/#{record.node.id}/tags/nouveau", class: 'action'
+    .figures
+      %meta{itemprop: "interactionCount", content: "UserLikes:#{record.score}"}
+      %figure.score(title="Note de ce contenu")= record.score
+      %figure.datePourCss= date_pour_css(record)
+      - if image && !hidden
+        %figure.image(itemprop="image")= image
+    - if hidden
+      .content.hidden &nbsp;
+    - else
+      .content(itemprop="articleBody" class="entry-content")
+        - if notice
+          .notice= notice
+        = body
+    %footer.actions
+      = read_it(record)
+      = actions
       - unless hidden
-        %div.tags
-          Tags :
-          - if tags.any?
-            %ul.tag_cloud(itemprop="keywords")
-              = list_of tags do |tag|
-                - if current_account
-                  - if tag.tagged_by_current
-                    = button_to "Supprimer", node_tag_path(node_id: record.node.id, id: tag), method: "delete", remote: true, class: "remove_tag"
-                  - else
-                    = button_to "Ajouter", node_tag_path(node_id: record.node.id, id: tag), method: "put", remote: true, class: "add_tag"
-                = link_to tag.name, "/tags/#{tag.name}/public", rel: 'tag'
-          - elsif record.node.preview_tags.present?
-            %ul.tag_cloud(itemprop="keywords")
-              = list_of record.node.preview_tags do |tag|
-                = link_to tag, "/tags/#{tag}/public", rel: 'tag'
-          - else
-            aucun
-          - if current_account && current_account.can_tag?(record)
-            .tag_in_place{"data-url" => "/nodes/#{record.node.id}/tags/nouveau"}
-              = link_to "Tagger", "/nodes/#{record.node.id}/tags/nouveau", class: 'action'
-  .figures
-    %meta{itemprop: "interactionCount", content: "UserLikes:#{record.score}"}
-    %figure.score(title="Note de ce contenu")= record.score
-    %figure.datePourCss= date_pour_css(record)
-    - if image && !hidden
-      %figure.image(itemprop="image")= image
-  - if hidden
-    .content.hidden &nbsp;
-  - else
-    .content(itemprop="articleBody" class="entry-content")
-      - if notice
-        .notice= notice
-      = body
-  %footer.actions
-    = read_it(record)
-    = actions
-    - unless hidden
-      = render('nodes/actions', node: record.node) unless record.new_record?
+        = render('nodes/actions', node: record.node) unless record.new_record?

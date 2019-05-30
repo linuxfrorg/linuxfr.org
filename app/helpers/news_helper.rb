@@ -11,6 +11,11 @@ module NewsHelper
     news
   end
 
+  def news_initiated_by(news)
+    ( initiated_by(news, news.node.user_id ? nil : news.author_name)
+    ).html_safe
+  end
+
   def news_posted_by(news)
     ( posted_by(news, news.node.user_id ? nil : news.author_name) + "\n" +
       edited_by(news) + "\n" +
