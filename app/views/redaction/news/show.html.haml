@@ -3,13 +3,16 @@
 - content_for :chat do
   #redaction_board
     %p
-      = link_to "Retourner sur la liste des dépêches en cours de rédaction", '/redaction'
     - if @news.urgent?
       %h1.urgent Dépêche urgente !
-    = render 'attendees', attendees: @news.attendees
     = render 'editions', news: @news
     = render 'board', boards: @boards, box: false
 
+.draft_header
+  = link_to "Retour", '/redaction'
+  = render 'attendees', attendees: @news.attendees
+.draft_creator
+  = news_initiated_by(@news)
 = article_for @news do |c|
   - c.title = capture do
     = render partial: 'short'
@@ -30,12 +33,10 @@
       %button.add_link Ajouter un lien
 
 = link_to "Réorganiser", reorganize_redaction_news_path(@news), class: "reorganize"
-- if current_account.amr? || current_account.editor? || @news.submitted_by?(current_account)
-  = button_to "Soumettre la dépêche", submit_redaction_news_path(@news), class: "submit_news", data: { confirm: "Une fois la dépêche soumise en modération, vous ne pourrez plus la modifier avant sa publication. Êtes-vous sûr ?" }
-  - if @news.urgent?
-    = button_to "Enlever l'urgence", cancel_urgent_redaction_news_path(@news), class: "urgent_news"
-  - else
-    = button_to "Marquer comme urgent", urgent_redaction_news_path(@news), class: "urgent_news", data: { confirm: "Cette dépêche est urgente et doit être publiée au plus tôt ?" }
+- if @news.urgent?
+  = button_to "Enlever l'urgence", cancel_urgent_redaction_news_path(@news), class: "urgent_news"
+- else
+  = button_to "Marquer comme urgent", urgent_redaction_news_path(@news), class: "urgent_news", data: { confirm: "Cette dépêche est urgente et doit être publiée au plus tôt ?" }
 - if current_account.can_erase? @news
   = button_to "Effacer la dépêche", erase_redaction_news_path(@news), class: "erase_news", data: { confirm: "Effacer cette dépêche créée par erreur ?" }
 - if current_account.can_followup? @news

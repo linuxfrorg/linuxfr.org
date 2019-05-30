@@ -119,9 +119,65 @@ body#redaction-index {
   }
 }
 
+body {
+ background: #f9f9f9;
+}
+
 #redaction {
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  .draft_header {
+    position: relative;
+    height: 40px;
+    > a {
+      color: transparent;
+      padding: 5px 5px;
+      background: no-repeat 0px 5px / 1.6em transparent;
+      background-image: url("/images/icones/arrow_left.png");
+      background-image: url("/images/icones/arrow_left.svg"), none;
+    }
+    #attendees {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+    }
+    #attendees a {
+      img {
+        height:32px;
+        width: 32px;
+      }
+      form {
+        margin-left: -23px;
+      }
+    }
+  }
+  .draft_creator {
+    background: #747474;
+    padding: 10px;
+    margin: 10px 0px;
+    color: white;
+    font-size: 0.8em;
+    a {
+      font-weight: unset;
+    }
+  }
   article h1 {
-    margin-right: 30px;
+    .edition_in_place .actions
+    {
+      top: 0px;
+      right: 0px;
+      button {
+        visibility: visible;
+        border-radius: unset;
+        width: auto;
+        padding-left: 28px;
+        padding-right: 5px;
+        text-indent: unset;
+      }
+    }
   }
   .score,
   .datePourCss {
@@ -137,10 +193,8 @@ body#redaction-index {
     overflow: visible;
   }
   #edition {
-    margin: 69px 0 10px;
     padding-left: 3px;
     padding-right: 3px;
-    float: left;
     width: 60%;
     p {
       margin: 0 0 5px;
@@ -182,10 +236,8 @@ body#redaction-index {
     }
   }
   #chat {
-    margin-top: 40px + 29px;
     padding-left: 3px;
     padding-right: 3px;
-    float: right;
     width: 38%;
     .inbox p {
       margin: 2px 0;

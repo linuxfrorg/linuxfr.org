@@ -1,12 +1,10 @@
-%details#news_attendees(open="open")
-  %summary
-    Participants
+#attendees
   - attendees.each do |a|
     %a.attendee(href="#{url_for a}")
       = image_tag(a.avatar_url, alt: a.name, title: a.name)
       - if current_account.can_reassign?(@news)
         = button_to "Réattribuer", reassign_redaction_news_path(user_id: a.id), class: "reassign_news", title: "Réattribuer la paternité de cette dépêche"
   - if current_account.can_reassign?(@news)
-    .attendee
+    %a.attendee(href="/users/anonyme")
       = image_tag "/images/collectif.png", alt: "Collectif", title: "Collectif"
       = button_to "Réattribuer", reassign_redaction_news_path(user_id: User.collective.id), class: "reassign_news", title: "Réattribuer la paternité de cette dépêche"

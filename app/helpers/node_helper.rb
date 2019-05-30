@@ -105,7 +105,7 @@ module NodeHelper
     end
     date_time    = content.is_a?(Comment) ? content.created_at : content.node.try(:created_at)
     date_time  ||= Time.now
-    date         = content_tag(:span, "le #{date_time.to_s(:date)}", class: "date")
+    date         = content_tag(:span, "le #{I18n.l(date_time, :format => '%d %B %Y')}", class: "date")
     time         = content_tag(:span,  "à #{date_time.to_s(:time)}", class: "time")
     published_at = content_tag(:time, date + " " + time, datetime: date_time.iso8601, class: "updated")
     caption      = content_tag(:span, "", class: "floating_spacer") +

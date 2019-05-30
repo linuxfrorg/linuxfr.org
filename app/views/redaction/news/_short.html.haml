@@ -2,4 +2,6 @@
   %span.topic= @news.section.title
   %span.title= @news.title
   .actions
-    %button.edit Modifier
+    %button.edit Editer
+    - if current_account.amr? || current_account.editor? || @news.submitted_by?(current_account)
+      = button_to "Soumettre", submit_redaction_news_path(@news), class: "submit_news", data: { confirm: "Une fois la dépêche soumise en modération, vous ne pourrez plus la modifier avant sa publication. Êtes-vous sûr ?" }
