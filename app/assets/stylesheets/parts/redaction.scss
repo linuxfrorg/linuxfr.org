@@ -134,8 +134,8 @@ body {
     height: 40px;
     > a {
       color: transparent;
-      padding: 5px 5px;
-      background: no-repeat 0px 5px / 1.6em transparent;
+      padding: 1rem;
+      background: no-repeat 0px 1.2rem / 1.6em transparent;
       background-image: url("/images/icones/arrow_left.png");
       background-image: url("/images/icones/arrow_left.svg"), none;
     }
@@ -238,7 +238,7 @@ body {
       font-size:1.5em;
       font-weight: unset;
       line-height:1.3em;
-      background: no-repeat 0px 1.4em / 2em transparent;
+      background: no-repeat 0px 1.65rem / 2rem transparent;
       background-image: url("/images/icones/underline.png");
       background-image: url("/images/icones/underline.svg"), none;
       padding-bottom: 5px;
