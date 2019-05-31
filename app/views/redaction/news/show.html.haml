@@ -1,5 +1,37 @@
 - title @news.title
 
+- content_for :sidebar do
+  #second_part_toc
+    = @news.second_part_toc
+
+  %h2 Liens
+  %ul#links
+    = render partial: 'redaction/links/link', collection: @news.links
+  %p.new_link{'data-url' => new_redaction_news_link_path(news_id: @news)}
+    %button.add_link Ajouter un lien
+
+  %h2 Publication
+  %span
+    = link_to "Réorganiser", reorganize_redaction_news_path(@news), class: "reorganize"
+    - if @news.urgent?
+      = button_to "Enlever l'urgence", cancel_urgent_redaction_news_path(@news), class: "urgent_news"
+    - else
+      = button_to "Marquer comme urgent", urgent_redaction_news_path(@news), class: "urgent_news", data: { confirm: "Cette dépêche est urgente et doit être publiée au plus tôt ?" }
+    - if current_account.can_erase? @news
+      = button_to "Effacer la dépêche", erase_redaction_news_path(@news), class: "erase_news", data: { confirm: "Effacer cette dépêche créée par erreur ?" }
+    - if current_account.can_followup? @news
+      %button#followup.more Relancer les rédacteurs
+      .more_actions(style="display: none;")
+        = form_tag followup_redaction_news_path(@news) do
+          %p
+            Vous pouvez envoyer un message de relance aux participants de cette dépêche
+            pour leur demander de finaliser cette dépêche. N'hésitez pas à leur donner
+            des précisions (date de sortie imminente, demande de précisions, etc.).
+          = text_area_tag :message, nil, rows: 10
+          = submit_tag 'Envoyer'
+    - if current_account.amr? || current_account.editor? || @news.submitted_by?(current_account)
+      = button_to "Soumettre", submit_redaction_news_path(@news), class: "submit_news", data: { confirm: "Une fois la dépêche soumise en modération, vous ne pourrez plus la modifier avant sa publication. Êtes-vous sûr ?" }
+
 - content_for :chat do
   #redaction_board
     %p
@@ -13,6 +45,7 @@
   = render 'attendees', attendees: @news.attendees
 .draft_creator
   = news_initiated_by(@news)
+
 = article_for @news do |c|
   - c.title = capture do
     = render partial: 'short'
@@ -20,35 +53,10 @@
   - c.body  = capture do
     #first_part
       = render partial: 'redaction/paragraphs/paragraph', collection: @news.paragraphs.in_first_part
-    #second_part_toc
-      = @news.second_part_toc
     #second_part
       = render partial: 'redaction/paragraphs/paragraph', collection: @news.paragraphs.in_second_part
     .new_paragraph
       = button_to "Ajouter un paragraphe", redaction_news_paragraphs_path(news_id: @news), remote: true, class: "add_para"
-    %h2 Aller plus loin
-    %ul#links
-      = render partial: 'redaction/links/link', collection: @news.links
-    %p.new_link{'data-url' => new_redaction_news_link_path(news_id: @news)}
-      %button.add_link Ajouter un lien
-
-= link_to "Réorganiser", reorganize_redaction_news_path(@news), class: "reorganize"
-- if @news.urgent?
-  = button_to "Enlever l'urgence", cancel_urgent_redaction_news_path(@news), class: "urgent_news"
-- else
-  = button_to "Marquer comme urgent", urgent_redaction_news_path(@news), class: "urgent_news", data: { confirm: "Cette dépêche est urgente et doit être publiée au plus tôt ?" }
-- if current_account.can_erase? @news
-  = button_to "Effacer la dépêche", erase_redaction_news_path(@news), class: "erase_news", data: { confirm: "Effacer cette dépêche créée par erreur ?" }
-- if current_account.can_followup? @news
-  %button#followup.more Relancer les rédacteurs
-  .more_actions(style="display: none;")
-    = form_tag followup_redaction_news_path(@news) do
-      %p
-        Vous pouvez envoyer un message de relance aux participants de cette dépêche
-        pour leur demander de finaliser cette dépêche. N'hésitez pas à leur donner
-        des précisions (date de sortie imminente, demande de précisions, etc.).
-      = text_area_tag :message, nil, rows: 10
-      = submit_tag 'Envoyer'
 
 %article
   %strong Attention :

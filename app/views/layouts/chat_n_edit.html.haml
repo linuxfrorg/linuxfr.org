@@ -8,6 +8,7 @@
       - [:alert, :notice].each do |type|
         - if flash[type]
           %div(class=type)= flash[type]
+      %section#sidebar= yield :sidebar
       %section#edition= yield :layout
       %section#chat= yield :chat
     = javascript_include_tag "application"

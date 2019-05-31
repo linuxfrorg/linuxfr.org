@@ -14,7 +14,7 @@
       content: inline("feather-icons/dist/icons/scissors.svg");
       position: relative;
       top: 20em;
-      left: -6em;
+      left: -2em;
     }
   }
   img {
@@ -223,9 +223,28 @@ body {
   #chat {
     padding-left: 3px;
     padding-right: 3px;
-    width: 38%;
+    width: 19%;
     .inbox p {
       margin: 2px 0;
+    }
+  }
+  #sidebar, #chat{
+    padding-left: 3px;
+    padding-right: 3px;
+    background: transparent;
+    border: unset;
+    width: 19%;
+    h2, summary {
+      font-size:1.5em;
+      font-weight: unset;
+      line-height:1.3em;
+      background: no-repeat 0px 1.4em / 2em transparent;
+      background-image: url("/images/icones/underline.png");
+      background-image: url("/images/icones/underline.svg"), none;
+      padding-bottom: 5px;
+    }
+    ul {
+      padding-left:2em;
     }
   }
 }
@@ -245,3 +264,4 @@ body {
   float: left;
   margin: 12px 25px 0 0;
 }
+

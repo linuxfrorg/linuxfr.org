@@ -1,4 +1,4 @@
-- if record.is_a?(News) and record.draft?
+- if record.is_a?(News) and (record.draft? or record.candidate?)
   %article{class: css_class, itemscope: true, itemtype: "http://schema.org/Article"}
     %header
       %h1(itemprop="name" class="entry-title")= title

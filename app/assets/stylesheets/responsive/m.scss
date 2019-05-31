@@ -165,16 +165,21 @@
   }
 
   #redaction {
+    #sidebar,
     #edition,
     #chat {
-      float: none;
       width: auto;
     }
     #edition {
       margin-top: 10px;
+      order: 0;
+    }
+    #sidebar {
+      order: 1;
     }
     #chat {
       margin: 3px;
+      order: 2;
     }
   }
   body#redaction-index {
