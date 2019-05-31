@@ -86,7 +86,7 @@ if $("body").hasClass("logged")
       .additional $("#phare .new_comments, main .node:not(.ppp) .new_comments").parents("article").reverse(), "Contenus lus avec + de commentaires"
 
 # Redaction
-$(".edition_in_place").editionInPlace("button.edit")
+$(".edition_in_place").editionInPlace()
 $("#redaction .new_link").editionInPlace()
 $("#redaction .new_paragraph").on "ajax:success", false
 $("#redaction .link, #redaction .paragraph").lockableEditionInPlace()

@@ -164,21 +164,6 @@ body {
       font-weight: unset;
     }
   }
-  article h1 {
-    .edition_in_place .actions
-    {
-      top: 0px;
-      right: 0px;
-      button {
-        visibility: visible;
-        border-radius: unset;
-        width: auto;
-        padding-left: 28px;
-        padding-right: 5px;
-        text-indent: unset;
-      }
-    }
-  }
   .score,
   .datePourCss {
     right: 0;
