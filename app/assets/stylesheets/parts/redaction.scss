@@ -270,3 +270,23 @@ body {
   margin: 12px 25px 0 0;
 }
 
+.tab-header-container {
+  display: flex;
+  .tab {
+    margin-right: 16px;
+    margin-bottom: 16px;
+    font-size:1.5em;
+    line-height:1.3em;
+    background: no-repeat 0px 1.65rem / 2rem transparent;
+    background-image: url("/images/icones/underline.png");
+    background-image: url("/images/icones/underline.svg"), none;
+    padding-bottom: 5px;
+    &:not([data-show-content]) {
+      background-image: url("/images/icones/not-active-underline.png");
+      background-image: url("/images/icones/not-active-underline.svg"), none;
+    }
+  }
+}
+.tab-content:not([data-show-content]) {
+  display: none;
+}

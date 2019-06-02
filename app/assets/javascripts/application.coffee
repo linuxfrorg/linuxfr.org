@@ -144,3 +144,13 @@ $("button.more").click ->
   $(@).next('.more_actions').show()
   $(@).hide()
   false
+
+# Tabs
+$(".tab").click ->
+  tab = $(@)
+  content = $("#" + $(@).data("tab-content-id"))
+  tab.attr("data-show-content", true)
+  tab.siblings().removeAttr("data-show-content")
+  content.attr("data-show-content", true)
+  content.siblings().removeAttr("data-show-content")
+  false
