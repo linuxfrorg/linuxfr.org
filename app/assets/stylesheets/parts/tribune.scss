@@ -14,8 +14,12 @@ body#boards-show {
 
 #redaction_board {
   div.chat {
+    display: -ms-flexbox;
     display: flex;
     padding: 0.2em;
+    > div {
+      -ms-flex: 1;
+    }
   }
   .avatar {
     height: 36px;
@@ -70,6 +74,8 @@ body#boards-show {
     overflow: auto;
   }
   .inbox.large {
+    display: -ms-flexbox;
+    -ms-flex-direction: column;
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -86,6 +92,7 @@ body#boards-show {
       border-right: 0;
       padding: 4px;
       height: 28px;
+      -ms-flex: 1;
       flex-grow: 1;
     }
     button {
