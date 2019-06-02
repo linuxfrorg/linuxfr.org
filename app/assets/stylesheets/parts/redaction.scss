@@ -126,6 +126,7 @@ body#redaction-index {
 
 #redaction {
   padding-top: 20px;
+  display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -265,6 +266,7 @@ body#redaction-index {
       font-weight: bold;
     }
     .attendee {
+      display: -ms-flexbox;
       display: flex;
       align-items: center;
     }
@@ -317,6 +319,7 @@ body#redaction-index {
 }
 
 .tab-header-container {
+  display: -ms-flexbox;
   display: flex;
   .tab {
     margin-right: 16px;
