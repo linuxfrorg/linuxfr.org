@@ -53,9 +53,3 @@
       = render partial: 'redaction/paragraphs/paragraph', collection: @news.paragraphs.in_second_part
     .new_paragraph
       = button_to "Ajouter un paragraphe", redaction_news_paragraphs_path(news_id: @news), remote: true, class: "add_para"
-
-%article
-  %strong Attention :
-  pour éviter les conflits, une seule personne à la fois peut éditer un paragraphe donné.
-  En pratique, cela veut dire qu'un verrou est posé sur le paragraphe dès qu'une personne passe en mode édition pour ce paragraphe.
-  Le verrou est relaché quand la personne a fini de modifier le paragraphe ou expirera au bout de 20 minutes.

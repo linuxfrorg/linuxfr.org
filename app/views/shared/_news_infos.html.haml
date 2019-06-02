@@ -40,8 +40,15 @@
   #tab-help.tab-content
     - if news.candidate?
       %p Pour ajouter une note des modérateurs, commencez simplement une ligne par <code>NdM :</code>.
+    %hr
+    %p Pour éviter les conflits, une seule personne à la fois peut éditer un paragraphe donné.
+    %p Pendant l'édition du paragraphe, un verrou est posé par l'utilisateur
+    %p Ce verrou est relaché quand l'utilisateur termine sa modification ou au bout de 20 minutes.
+    %hr
     %p
       L'icone
-      = image_tag "feather-icons/dist/icons/scissors.svg", alt: "Suggestion de découpe"
-      sert à suggérer où découper entre les première et seconde parties de la dépêche.
-    = render 'shared/wiki_help'
+      = image_tag "feather-icons/dist/icons/scissors.svg", alt: "Suggestion de découpe", style: "height:1em;"
+      sert à suggérer où découper entre le chapeau de la dépêche et son contenu.
+    %hr
+    = render 'shared/news_wiki_help'
+    %hr

@@ -308,6 +308,14 @@ body#redaction-index {
   margin: 12px 25px 0 0;
 }
 
+.vertical-align-top td {
+  vertical-align: top;
+}
+
+.tr-section td {
+  padding-top: 1em;
+}
+
 .tab-header-container {
   display: flex;
   .tab {
