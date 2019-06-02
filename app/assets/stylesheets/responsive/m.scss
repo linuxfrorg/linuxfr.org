@@ -165,19 +165,19 @@
   }
 
   #redaction {
-    #sidebar,
+    #redaction-aside,
     #edition,
-    #chat {
-      width: auto;
+    #redaction-infos {
+      width: 100%;
     }
     #edition {
       margin-top: 10px;
       order: 0;
     }
-    #sidebar {
+    #redaction-aside {
       order: 1;
     }
-    #chat {
+    #redaction-infos {
       margin: 3px;
       order: 2;
     }
