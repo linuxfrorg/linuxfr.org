@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_09_222042) do
+ActiveRecord::Schema.define(version: 2019_06_02_183645) do
 
   create_table "accounts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "user_id"
@@ -174,6 +174,9 @@ ActiveRecord::Schema.define(version: 2018_10_09_222042) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "submitted_at"
+    t.string "figure_image"
+    t.string "figure_alternative"
+    t.string "figure_caption"
     t.index ["cached_slug"], name: "index_news_on_cached_slug"
     t.index ["moderator_id"], name: "fk_news_on_moderator_id"
     t.index ["section_id"], name: "index_news_on_section_id"

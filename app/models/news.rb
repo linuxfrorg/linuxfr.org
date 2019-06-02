@@ -3,19 +3,22 @@
 #
 # Table name: news
 #
-#  id           :integer          not null, primary key
-#  state        :string(10)       default("draft"), not null
-#  title        :string(160)      not null
-#  cached_slug  :string(165)      not null
-#  moderator_id :integer
-#  section_id   :integer          not null
-#  author_name  :string(32)       not null
-#  author_email :string(64)       not null
-#  body         :text(4294967295)
-#  second_part  :text(4294967295)
-#  created_at   :datetime
-#  updated_at   :datetime
-#  submitted_at :datetime
+#  id                 :integer          not null, primary key
+#  state              :string(10)       default("draft"), not null
+#  title              :string(160)      not null
+#  cached_slug        :string(165)      not null
+#  moderator_id       :integer
+#  section_id         :integer          not null
+#  author_name        :string(32)       not null
+#  author_email       :string(64)       not null
+#  body               :text(4294967295)
+#  second_part        :text(4294967295)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  submitted_at       :datetime
+#  figure_image       :string(255)
+#  figure_alternative :string(255)
+#  figure_caption     :string(255)
 #
 
 #
@@ -58,6 +61,8 @@ class News < Content
                            length: { maximum: 32, message: "Le nom de l'auteur est trop long" }
   validates :author_email, presence: { message: "Veuillez entrer votre adresse de courriel" },
                            length: { maximum: 64, message: "L'adresse email de l'auteur est trop longue" }
+
+  mount_uploader :figure_image, NewsFigureImageUploader
 
 ### SEO ###
 
