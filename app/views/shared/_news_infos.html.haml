@@ -1,0 +1,47 @@
+%p
+  - if news.urgent?
+    %h1.urgent Dépêche urgente !
+.tab-header-container
+  .tab{'data-tab-content-id' => 'tab-board', 'data-show-content' => true}
+    Tribune
+  .tab{'data-tab-content-id' => 'tab-infos', 'data-chan' => Push.private_key(news)}
+    Détails
+  .tab{'data-tab-content-id' => 'tab-help'}
+    Aide
+%div
+  #tab-board.tab-content{'data-show-content' => true}
+    = render 'boards/boards', boards: @boards, box: false
+  #tab-infos.tab-content
+    %hr
+    %p
+      Titre:
+      = news.title
+    %p
+      Rédaction:
+      - if news.node.cc_licensed?
+        collective
+    %p
+      Licence:
+      - if news.node.cc_licensed?
+        = link_to "CC by-sa", cc_url(news), rel: 'license'
+    %p
+      Catégorie:
+      = link_to(news.section.title, news.section)
+    %hr
+    %p
+      = news.paragraphs.count
+      paragraphes
+    %hr
+    = render 'editions', news: news
+    %hr
+    %p Participants
+    = render 'attendees', attendees: news.attendees
+    %hr
+  #tab-help.tab-content
+    - if news.candidate?
+      %p Pour ajouter une note des modérateurs, commencez simplement une ligne par <code>NdM :</code>.
+    %p
+      L'icone
+      = image_tag "feather-icons/dist/icons/scissors.svg", alt: "Suggestion de découpe"
+      sert à suggérer où découper entre les première et seconde parties de la dépêche.
+    = render 'shared/wiki_help'

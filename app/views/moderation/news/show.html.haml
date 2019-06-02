@@ -1,6 +1,7 @@
 - title @news.title
 
 - content_for :aside do
+  = render 'vote'
   -if @news.paragraphs.any?
     %h1 Publication
     = link_to "Réorganiser", reorganize_redaction_news_path(@news), class: "reorganize"
@@ -8,33 +9,9 @@
       = button_to "Enlever l'urgence", cancel_urgent_redaction_news_path(@news), class: "urgent_news"
     - else
       = button_to "Marquer comme urgent", urgent_redaction_news_path(@news), class: "urgent_news", data: { confirm: "Cette dépêche est urgente et doit être publiée au plus tôt ?" }
-  = render 'vote'
-  %h1 Participants
-  = render 'attendees', attendees: @news.attendees
 
 - content_for :infos do
-  %p
-    - if @news.urgent?
-      %h1.urgent Dépêche urgente !
-  .tab-header-container
-    .tab{'data-tab-content-id' => 'tab-board', 'data-show-content' => true}
-      Tribune
-    .tab{'data-tab-content-id' => 'tab-infos', 'data-chan' => Push.private_key(@news)}
-      Infos
-    .tab{'data-tab-content-id' => 'tab-help'}
-      Aide
-  %div
-    #tab-board.tab-content{'data-show-content' => true}
-      = render 'boards/boards', boards: @boards, box: false
-    #tab-infos.tab-content
-      = render 'editions', news: @news
-    #tab-help.tab-content
-      %p Pour ajouter une note des modérateurs, commencez simplement une ligne par <code>NdM :</code>.
-      %p
-        L'icone
-        = image_tag "feather-icons/dist/icons/scissors.svg", alt: "Suggestion de découpe"
-        sert à suggérer où découper entre les première et seconde parties de la dépêche.
-      = render 'shared/wiki_help'
+  = render "shared/news_infos", news: @news
 
 - if @news.paragraphs.any?
   = article_for @news do |c|

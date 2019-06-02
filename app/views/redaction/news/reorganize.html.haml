@@ -1,10 +1,7 @@
 - title @news.title
 
-- content_for :chat do
-  #redaction_board
-    = render 'board', boards: @boards, box: false
-    = render 'attendees', attendees: @news.attendees
-    = render 'editions', news: @news
+- content_for :infos do
+  = render "shared/news_infos", news: @news
 
 %article
   = form_for @news, url: reorganized_redaction_news_path(@news), method: :put do |form|

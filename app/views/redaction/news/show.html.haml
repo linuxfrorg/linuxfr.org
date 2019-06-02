@@ -34,27 +34,7 @@
       = button_to "Soumettre", submit_redaction_news_path(@news), class: "submit_news", data: { confirm: "Une fois la dépêche soumise en modération, vous ne pourrez plus la modifier avant sa publication. Êtes-vous sûr ?" }
 
 - content_for :infos do
-  %p
-    - if @news.urgent?
-      %h1.urgent Dépêche urgente !
-  .tab-header-container
-    .tab{'data-tab-content-id' => 'tab-board', 'data-show-content' => true}
-      Tribune
-    .tab{'data-tab-content-id' => 'tab-infos', 'data-chan' => Push.private_key(@news)}
-      Infos
-    .tab{'data-tab-content-id' => 'tab-help'}
-      Aide
-  %div
-    #tab-board.tab-content{'data-show-content' => true}
-      = render 'boards/boards', boards: @boards, box: false
-    #tab-infos.tab-content
-      = render 'editions', news: @news
-    #tab-help.tab-content
-      %p
-        L'icone
-        = image_tag "feather-icons/dist/icons/scissors.svg", alt: "Suggestion de découpe"
-        sert à suggérer où découper entre les première et seconde parties de la dépêche.
-      = render 'shared/wiki_help'
+  = render "shared/news_infos", news: @news
 
 .draft_header
   = link_to "Retour", '/redaction'

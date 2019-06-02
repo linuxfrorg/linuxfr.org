@@ -154,6 +154,12 @@ body#redaction-index {
         margin-left: -23px;
       }
     }
+    .attendee {
+      display: inline;
+    }
+    .attendee-name {
+      display: none;
+    }
   }
   .draft_creator {
     background: #747474;
@@ -259,6 +265,13 @@ body#redaction-index {
       font-weight: bold;
     }
     .attendee {
+      display: flex;
+      align-items: center;
+    }
+    .attendee-name {
+      margin-left: 5px;
+    }
+    .attendee a {
       display: inline-block;
       position: relative;
       width: 48px;
