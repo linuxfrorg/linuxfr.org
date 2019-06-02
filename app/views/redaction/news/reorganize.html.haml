@@ -3,6 +3,12 @@
 - content_for :infos do
   = render "shared/news_infos", news: @news
 
+.draft_header
+  = link_to "Retour", :back
+  = render 'attendees', attendees: @news.attendees
+.draft_creator
+  = news_initiated_by(@news)
+
 %article
   = form_for @news, url: reorganized_redaction_news_path(@news), method: :put do |form|
     %p
@@ -12,8 +18,11 @@
       = form.label :title, "Titre"
       = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 100
     %p
-      = form.label :wiki_body, "Contenu de la dépêche"
+      = form.label :wiki_body, "Chapeau"
       = form.text_area :wiki_body, required: 'required', spellcheck: 'true', class: 'markItUp'
+    %p
+      = form.label :wiki_second_part, "Contenu de la dépêche"
+      = form.text_area :wiki_second_part, spellcheck: 'true', class: 'markItUp'
     #form_links
       %fieldset
         %label#label-link-name Nom du lien
@@ -26,9 +35,4 @@
           = lform.url_field :url
           = lform.select :lang, Lang.all
     %p
-      = form.label :wiki_second_part, "Seconde partie"
-      = form.text_area :wiki_second_part, spellcheck: 'true', class: 'markItUp'
-    %p
       = form.submit "OK"
-
-= render 'shared/wiki_help'
