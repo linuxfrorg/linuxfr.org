@@ -18,6 +18,7 @@ class EditionInPlace
     @el.trigger "in_place:cant_edit", @xhr
     @button().click @loadForm
     @xhr = null
+    $(".tab[data-tab-content-id=tab-board]").click()
 
   showForm: =>
     form = @el.html(@xhr.responseText).find("form")
@@ -27,11 +28,13 @@ class EditionInPlace
     form.submit @submitForm
     @el.trigger "in_place:form", @xhr
     @xhr = null
+    $(".tab[data-tab-content-id=tab-help]").click()
 
   reset: (event) =>
     @el.html @old
     @button().click @loadForm
     @el.trigger "in_place:reset", event
+    $(".tab[data-tab-content-id=tab-board]").click()
     false
 
   submitForm: =>
@@ -44,12 +47,14 @@ class EditionInPlace
   error: =>
     @el.trigger "in_place:error", @xhr
     @xhr = null
+    $(".tab[data-tab-content-id=tab-board]").click()
 
   success: =>
     @el = $(@xhr.responseText).replaceAll @el
     @button().click @loadForm
     @el.trigger "in_place:success", @xhr
     @xhr = null
+    $(".tab[data-tab-content-id=tab-board]").click()
 
 $.fn.editionInPlace = (edit_selector) ->
   @each ->
