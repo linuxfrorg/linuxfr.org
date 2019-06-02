@@ -50,6 +50,10 @@
     #tab-infos.tab-content
       = render 'editions', news: @news
     #tab-help.tab-content
+      %p
+        L'icone
+        = image_tag "feather-icons/dist/icons/scissors.svg", alt: "Suggestion de découpe"
+        sert à suggérer où découper entre les première et seconde parties de la dépêche.
       = render 'shared/wiki_help'
 
 .draft_header

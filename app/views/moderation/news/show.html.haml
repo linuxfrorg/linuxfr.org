@@ -1,11 +1,40 @@
 - title @news.title
 
-- content_for :chat do
-  #redaction_board
-    = render 'vote'
-    = render 'attendees', attendees: @news.attendees
-    = render 'editions', news: @news
-    = render 'board'
+- content_for :aside do
+  -if @news.paragraphs.any?
+    %h1 Publication
+    = link_to "Réorganiser", reorganize_redaction_news_path(@news), class: "reorganize"
+    - if @news.urgent?
+      = button_to "Enlever l'urgence", cancel_urgent_redaction_news_path(@news), class: "urgent_news"
+    - else
+      = button_to "Marquer comme urgent", urgent_redaction_news_path(@news), class: "urgent_news", data: { confirm: "Cette dépêche est urgente et doit être publiée au plus tôt ?" }
+  = render 'vote'
+  %h1 Participants
+  = render 'attendees', attendees: @news.attendees
+
+- content_for :infos do
+  %p
+    - if @news.urgent?
+      %h1.urgent Dépêche urgente !
+  .tab-header-container
+    .tab{'data-tab-content-id' => 'tab-board', 'data-show-content' => true}
+      Tribune
+    .tab{'data-tab-content-id' => 'tab-infos', 'data-chan' => Push.private_key(@news)}
+      Infos
+    .tab{'data-tab-content-id' => 'tab-help'}
+      Aide
+  %div
+    #tab-board.tab-content{'data-show-content' => true}
+      = render 'boards/boards', boards: @boards, box: false
+    #tab-infos.tab-content
+      = render 'editions', news: @news
+    #tab-help.tab-content
+      %p Pour ajouter une note des modérateurs, commencez simplement une ligne par <code>NdM :</code>.
+      %p
+        L'icone
+        = image_tag "feather-icons/dist/icons/scissors.svg", alt: "Suggestion de découpe"
+        sert à suggérer où découper entre les première et seconde parties de la dépêche.
+      = render 'shared/wiki_help'
 
 - if @news.paragraphs.any?
   = article_for @news do |c|
@@ -27,11 +56,6 @@
         = render partial: 'redaction/links/link', collection: @news.links
       %p.new_link{'data-url' => new_redaction_news_link_path(news_id: @news)}
         %button.add_link Ajouter un lien
-  = link_to "Réorganiser", reorganize_redaction_news_path(@news), class: "reorganize"
-  - if @news.urgent?
-    = button_to "Enlever l'urgence", cancel_urgent_redaction_news_path(@news), class: "urgent_news"
-  - else
-    = button_to "Marquer comme urgent", urgent_redaction_news_path(@news), class: "urgent_news", data: { confirm: "Cette dépêche est urgente et doit être publiée au plus tôt ?" }
 - else
   %h2 Dépêche importée !
   = form_for [:moderation, @news] do |form|
@@ -44,6 +68,10 @@
     %p
       = form.label :body, "Contenu de la dépêche (<strong>HTML, pas de syntaxe wiki</strong>)".html_safe
       = form.text_area :body, required: 'required', spellcheck: 'true', class: 'markItUp'
+    %p
+      = form.label :second_part, "Seconde partie"
+      = form.text_area :second_part, spellcheck: 'true', class: 'markItUp'
+    %h2 Aller plus loin
     #form_links
       %fieldset
         %label#label-link-name Nom du lien
@@ -56,16 +84,4 @@
           = lform.url_field :url
           = lform.select :lang, Lang.all
     %p
-      = form.label :second_part, "Seconde partie"
-      = form.text_area :second_part, spellcheck: 'true', class: 'markItUp'
-    %p
       = form.submit "Enregistrer"
-
-%p Pour ajouter une note des modérateurs, commencez simplement une ligne par <code>NdM :</code>.
-
-%p
-  L'icone
-  = image_tag "/images/icones/edit-cut.png", alt: "Suggestion de découpe"
-  sert à suggérer où découper entre les première et seconde parties de la dépêche.
-
-= render 'shared/wiki_help'
