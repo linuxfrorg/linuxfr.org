@@ -1,16 +1,17 @@
 - title @news.title
 
 - content_for :aside do
+  %h1 Sommaire
   #second_part_toc
     = @news.second_part_toc
 
-  %h2 Liens
+  %h1 Liens
   %ul#links
     = render partial: 'redaction/links/link', collection: @news.links
   %p.new_link{'data-url' => new_redaction_news_link_path(news_id: @news)}
     %button.add_link Ajouter un lien
 
-  %h2 Publication
+  %h1 Publication
   %span
     = link_to "Réorganiser", reorganize_redaction_news_path(@news), class: "reorganize"
     - if @news.urgent?
@@ -32,13 +33,24 @@
     - if current_account.amr? || current_account.editor? || @news.submitted_by?(current_account)
       = button_to "Soumettre", submit_redaction_news_path(@news), class: "submit_news", data: { confirm: "Une fois la dépêche soumise en modération, vous ne pourrez plus la modifier avant sa publication. Êtes-vous sûr ?" }
 
-  #redaction_board
-    %p
 - content_for :infos do
+  %p
     - if @news.urgent?
       %h1.urgent Dépêche urgente !
-    = render 'editions', news: @news
-    = render 'board', boards: @boards, box: false
+  .tab-header-container
+    .tab{'data-tab-content-id' => 'tab-board', 'data-show-content' => true}
+      Tribune
+    .tab{'data-tab-content-id' => 'tab-infos', 'data-chan' => Push.private_key(@news)}
+      Infos
+    .tab{'data-tab-content-id' => 'tab-help'}
+      Aide
+  %div
+    #tab-board.tab-content{'data-show-content' => true}
+      = render 'boards/boards', boards: @boards, box: false
+    #tab-infos.tab-content
+      = render 'editions', news: @news
+    #tab-help.tab-content
+      = render 'shared/wiki_help'
 
 .draft_header
   = link_to "Retour", '/redaction'
@@ -63,5 +75,3 @@
   pour éviter les conflits, une seule personne à la fois peut éditer un paragraphe donné.
   En pratique, cela veut dire qu'un verrou est posé sur le paragraphe dès qu'une personne passe en mode édition pour ce paragraphe.
   Le verrou est relaché quand la personne a fini de modifier le paragraphe ou expirera au bout de 20 minutes.
-
-= render 'shared/wiki_help'

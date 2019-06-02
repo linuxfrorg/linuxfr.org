@@ -239,14 +239,18 @@ body {
     background: transparent;
     border: unset;
     width: 19%;
-    h1, h2, summary {
+    font-size: 0.8em;
+    >h1 {
       font-size:1.5em;
-      font-weight: unset;
       line-height:1.3em;
+      font-weight: unset;
       background: no-repeat 0px 1.65rem / 2rem transparent;
       background-image: url("/images/icones/underline.png");
       background-image: url("/images/icones/underline.svg"), none;
       padding-bottom: 5px;
+    }
+    #second_part_toc h2 {
+      display:none;
     }
     ul {
       padding-left:2em;
