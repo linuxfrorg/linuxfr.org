@@ -1,0 +1,14 @@
+.edition_in_place{"data-url" => edit_figure_redaction_news_path(news)}
+  %figure
+    %img{src: news.figure_image.url, alt: "#{news.figure_alternative}"}
+    %figcaption #{news.figure_caption}
+  - if news.figure_image?
+    .action
+      %button.edit Modifier
+  - else
+    %p
+      Une belle illustration donnera plus envie de lire votre dépêche.<br/>
+      LinuxFr donne plus de visibilité aux dépêches illustrées par une image
+      haute définition.
+    .action
+      %button.edit Insérer une image

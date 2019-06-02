@@ -40,6 +40,10 @@ class Redaction::NewsController < RedactionController
     render partial: 'form'
   end
 
+  def edit_figure
+    render partial: 'figure_form', locals: {news: @news}
+  end
+
   def update
     @news.attributes = news_params
     @news.editor = current_account
@@ -52,6 +56,17 @@ class Redaction::NewsController < RedactionController
     @news.reassign_to params[:user_id], current_user.name
     namespace = @news.draft? ? :redaction : :moderation
     redirect_to [namespace, @news], notice: "L'auteur initial de la dépêche a été changé"
+  end
+
+  def update_figure
+    params.require(:news).require([:figure_alternative, :figure_caption])
+    if params[:news][:figure_image]
+      @news.figure_image = params[:news][:figure_image]
+    end
+    @news.figure_alternative = params[:news][:figure_alternative]
+    @news.figure_caption = params[:news][:figure_caption]
+    @news.save
+    render partial: 'figure', locals: {news: @news}
   end
 
   def reorganize
@@ -106,6 +121,7 @@ protected
 
   def news_params
     params.require(:news).permit(:title, :section_id, :wiki_body, :wiki_second_part,
+                                 :figure_image, :figure_alternative, :figure_caption,
                                  links_attributes: [Link::Accessible])
   end
 
