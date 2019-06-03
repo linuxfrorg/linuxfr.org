@@ -1,15 +1,16 @@
 = form_for [news], method: "post", url: update_figure_redaction_news_path(news) do |form|
-  %figure
-    %img{src: news.figure_image.url, alt: "#{news.figure_alternative}"}
-    %figcaption #{news.figure_caption}
+  - if news.figure_image?
+    %figure
+      %img{src: news.figure_image.url, alt: "#{news.figure_alternative}"}
+      %figcaption #{news.figure_caption}
   %p
     = form.label :figure_image, "Image:"
     = form.file_field :figure_image, accept: "image/*"
   %p
     = form.label :figure_alternative, "Description de l'image:"
-    = form.text_field :figure_alternative
+    = form.text_field :figure_alternative, required: true
   %p
     = form.label :figure_caption, "Auteur et licence de l'image:"
-    = form.text_field :figure_caption
+    = form.text_field :figure_caption, required: true
   %button.cancel(type="button") Annuler
   = form.submit "OK"
