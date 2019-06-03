@@ -45,6 +45,9 @@
     border-image: inline("feather-icons/dist/icons/eye-off") 0 0 0 32;
     border-style: solid;
   }
+body.chat_n_edit {
+  background: #f9f9f9;
+  min-height: 100vh;
 }
 
 body#redaction-index {
@@ -138,8 +141,7 @@ body#redaction-index {
       color: transparent;
       padding: 1rem;
       background: no-repeat 0px 1.2rem / 1.6em transparent;
-      background-image: url("/images/icones/arrow_left.png");
-      background-image: url("/images/icones/arrow_left.svg"), none;
+      background-image: inline("feather-icons/dist/icons/arrow-left.svg"), none;
     }
     #attendees {
       position: absolute;
@@ -164,8 +166,8 @@ body#redaction-index {
   }
   .draft_creator {
     background: #747474;
-    padding: 10px;
-    margin: 10px 0px;
+    padding: 0.5rem;
+    margin: 0px 0px 20px 0px;
     color: white;
     font-size: 0.8em;
     a {
