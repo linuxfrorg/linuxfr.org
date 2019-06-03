@@ -20,10 +20,6 @@ class NewsFigureImageUploader < CarrierWave::Uploader::Base
     super.sub(base_dir.to_s, "//#{IMG_DOMAIN}/")
   end
 
-  def default_url(*args)
-    "//#{MY_DOMAIN}/images/default-avatar.png"
-  end
-
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
@@ -37,19 +33,19 @@ class NewsFigureImageUploader < CarrierWave::Uploader::Base
 
   # Process files as they are uploaded:
   def large(width, height)
-    resize_to_fill(width, height)
+    resize_to_limit(width, height)
   end
 
   version :medium do
-    process resize_to_fit(3*NEWS_FIGURE_IMAGE_SMALLER_WIDTH, 3*NEWS_FIGURE_IMAGE_SMALLER_WIDTH/NEWS_FIGURE_IMAGE_RATIO)
+    process resize_to_limit(3*NEWS_FIGURE_IMAGE_SMALLER_WIDTH, 3*NEWS_FIGURE_IMAGE_SMALLER_WIDTH/NEWS_FIGURE_IMAGE_RATIO)
   end
 
   version :small do
-    process resize_to_fit(2*NEWS_FIGURE_IMAGE_SMALLER_WIDTH, 2*NEWS_FIGURE_IMAGE_SMALLER_WIDTH/NEWS_FIGURE_IMAGE_RATIO)
+    process resize_to_limit(2*NEWS_FIGURE_IMAGE_SMALLER_WIDTH, 2*NEWS_FIGURE_IMAGE_SMALLER_WIDTH/NEWS_FIGURE_IMAGE_RATIO)
   end
 
   version :smaller do
-    process resize_to_fit(NEWS_FIGURE_IMAGE_SMALLER_WIDTH, NEWS_FIGURE_IMAGE_SMALLER_WIDTH/NEWS_FIGURE_IMAGE_RATIO)
+    process resize_to_limit(NEWS_FIGURE_IMAGE_SMALLER_WIDTH, NEWS_FIGURE_IMAGE_SMALLER_WIDTH/NEWS_FIGURE_IMAGE_RATIO)
   end
 
 end
