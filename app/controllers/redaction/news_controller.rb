@@ -63,6 +63,11 @@ class Redaction::NewsController < RedactionController
     if params[:news][:figure_image]
       @news.figure_image = params[:news][:figure_image]
     end
+    else if not @news.figure_image?
+      error = "Aucune image valide n'a été reçue. Veuillez recommencer avec une image."
+      render partial: 'figure', locals: {news: @news, error: error}
+      return
+    end
     @news.figure_alternative = params[:news][:figure_alternative]
     @news.figure_caption = params[:news][:figure_caption]
     @news.save
