@@ -45,6 +45,74 @@
     border-image: inline("feather-icons/dist/icons/eye-off") 0 0 0 32;
     border-style: solid;
   }
+  #figure
+  {
+    text-align: center;
+    background-color: $C_CLAIR;
+    .add-image {
+      padding: 20px 0;
+    }
+    .edit {
+      border-radius: 0;
+      width: auto;
+      padding-left: 28px;
+      padding-right: 5px;
+      text-indent: 0;
+    }
+    figure {
+      margin:0;
+      padding:0;
+      img {
+        max-height: none;
+        &:before, &:after {
+         position: static;
+         height: auto;
+         width: 100%;
+         display:block;
+         content: "L'image n'a pas été correctement reçue, veuillez réessayer.";
+         color: red;
+         text-align: center;
+         margin:auto;
+         background-color: rgb(230, 230, 230);
+         border: 2px dotted rgb(200, 200, 200);
+         border-radius: 5px;
+        }
+      }
+      figcaption {
+        text-align: center;
+        font-size: 0.8em;
+        background: $C_CLAIR;
+      }
+    }
+  }
+}
+
+body:not(.moderation_page) {
+  #redaction {
+    #edition  {
+      article.news {
+        background:none;
+        border:none;
+        margin:0;
+        padding:0;
+        h1 {
+          font-weight: normal;
+          padding: 0;
+          border: none;
+          margin-right: 0;
+          .topic {
+            display: none;
+          }
+        }
+        p {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
+
 body.chat_n_edit {
   background: #f9f9f9;
   min-height: 100vh;
@@ -171,7 +239,7 @@ body#redaction-index {
     color: white;
     font-size: 0.8em;
     a {
-      font-weight: unset;
+      font-weight: normal;
     }
   }
   article h1 {
@@ -242,13 +310,13 @@ body#redaction-index {
     padding-left: 3px;
     padding-right: 3px;
     background: transparent;
-    border: unset;
+    border: none;
     width: 19%;
     font-size: 0.8em;
     >h1, #news_vote h1 {
       font-size:1.5em;
       line-height:1.3em;
-      font-weight: unset;
+      font-weight: normal;
       background: no-repeat 0px 1.65rem / 2rem transparent;
       background-image: url("/images/icones/underline.png");
       background-image: url("/images/icones/underline.svg"), none;
