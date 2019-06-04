@@ -6,6 +6,11 @@
     - c.actions = link_to("Modifier", [:moderation, news], class: 'action')
   - c.body  = capture do
     = news.body
+    - if news.figure_image?
+      .news-figure
+        %figure
+          %img{src: news.figure_image.url, alt: "#{news.figure_alternative}"}
+          %figcaption #{news.figure_caption}
     - if defined?(with_second_part) && with_second_part
       = news.second_part
       %h2 Aller plus loin

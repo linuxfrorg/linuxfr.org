@@ -1,3 +1,23 @@
+article.news {
+  .news-figure {
+    figure {
+      display:table;
+      margin: 10px auto;
+      padding: 0;
+      background: $C_CLAIR;
+      img:before {
+        display:block;
+        text-align:center;
+        margin:1rem;
+      }
+      figcaption {
+        padding-right: 0.5rem;
+        text-align: right;
+        font-size: 0.8em;
+      }
+    }
+  }
+}
 ul.links {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));

@@ -60,28 +60,30 @@
       text-indent: 0;
     }
     figure {
-      margin:0;
+      margin:0 auto;
       padding:0;
+      display:table;
       img {
         max-height: none;
         &:before, &:after {
          position: static;
          height: auto;
-         width: 100%;
          display:block;
-         content: "L'image n'a pas été correctement reçue, veuillez réessayer.";
-         color: red;
-         text-align: center;
-         margin:auto;
+         margin: auto;
+         padding: 1rem;
          background-color: rgb(230, 230, 230);
          border: 2px dotted rgb(200, 200, 200);
          border-radius: 5px;
         }
+        &:after {
+          content: "Votre navigateur n'arrive pas à afficher l'image. Veuillez réessayer l'envoi.";
+          color: red;
+        }
       }
       figcaption {
-        text-align: center;
+        padding-right: 0.5rem;
+        text-align: right;
         font-size: 0.8em;
-        background: $C_CLAIR;
       }
     }
   }
