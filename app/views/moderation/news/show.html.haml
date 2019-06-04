@@ -22,6 +22,8 @@
     - c.body  = capture do
       #first_part
         = render partial: 'redaction/paragraphs/paragraph', collection: @news.paragraphs.in_first_part
+      #figure
+        = render partial: 'redaction/news/figure', locals: { news: @news }
       #second_part_toc
         = @news.second_part_toc
       #second_part
