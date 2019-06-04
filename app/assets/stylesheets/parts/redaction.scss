@@ -58,6 +58,12 @@
       padding-left: 28px;
       padding-right: 5px;
       text-indent: 0;
+      &.add_news_figure {
+        background-image: inline("feather-icons/dist/icons/plus.svg");
+      }
+      &:hover {
+        background-color: $C_FONCE;
+      }
     }
     figure {
       margin:0 auto;

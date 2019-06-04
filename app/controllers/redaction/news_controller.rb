@@ -1,8 +1,8 @@
 # encoding: UTF-8
 class Redaction::NewsController < RedactionController
   before_action :authenticate_account!, except: [:index, :moderation]
-  before_action :load_news, except: [:index, :moderation, :create, :edit_figure, :update_figure, :revision, :reorganize, :reorganized, :reassign, :urgent, :cancel_urgent]
-  before_action :load_news2, only: [:edit_figure, :update_figure, :revision, :reorganize, :reorganized, :reassign, :urgent, :cancel_urgent]
+  before_action :load_news, except: [:index, :moderation, :create, :edit_figure, :update_figure, :delete_figure, :revision, :reorganize, :reorganized, :reassign, :urgent, :cancel_urgent]
+  before_action :load_news2, only: [:edit_figure, :update_figure, :delete_figure, :revision, :reorganize, :reorganized, :reassign, :urgent, :cancel_urgent]
   before_action :load_board, only: [:show, :reorganize]
   after_action  :marked_as_read, only: [:show, :update]
   respond_to :html, :atom, :md
@@ -108,6 +108,15 @@ class Redaction::NewsController < RedactionController
     enforce_erase_permission(@news)
     @news.erase!
     redirect_to '/redaction', notice: "Dépêche effacée"
+  end
+
+  def delete_figure
+    @news.remove_figure_image!
+    @news.figure_alternative = nil
+    @news.figure_caption = nil
+    @news.save
+    namespace = @news.draft? ? :redaction : :moderation
+    redirect_to [namespace, @news]
   end
 
   def urgent

@@ -3,6 +3,7 @@ $ = window.jQuery
 class EditionInPlace
   constructor: (@el, @edit) ->
     @url = @el.data("url") or (document.location.pathname + "/modifier")
+    @edit = @edit or @el.data("edit-element")
     @button().click @loadForm
 
   button: ->

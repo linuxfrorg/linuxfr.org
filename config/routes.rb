@@ -137,6 +137,7 @@ Rails.application.routes.draw do
         put :reorganized
         get :edit_figure
         post :update_figure
+        post :delete_figure
       end
       resources :links, only: [:new]
       resources :paragraphs, only: [:create]
