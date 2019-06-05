@@ -4,11 +4,12 @@
   = render 'vote'
   -if @news.paragraphs.any?
     %h1 Publication
-    = link_to "Réorganiser", reorganize_redaction_news_path(@news), class: "reorganize"
-    - if @news.urgent?
-      = button_to "Enlever l'urgence", cancel_urgent_redaction_news_path(@news), class: "urgent_news"
-    - else
-      = button_to "Marquer comme urgent", urgent_redaction_news_path(@news), class: "urgent_news", data: { confirm: "Cette dépêche est urgente et doit être publiée au plus tôt ?" }
+    #news-actions
+      = link_to "Réorganiser", reorganize_redaction_news_path(@news), class: "reorganize"
+      - if @news.urgent?
+        = button_to "Enlever l'urgence", cancel_urgent_redaction_news_path(@news), class: "urgent_news"
+      - else
+        = button_to "Marquer comme urgent", urgent_redaction_news_path(@news), class: "urgent_news", data: { confirm: "Cette dépêche est urgente et doit être publiée au plus tôt ?" }
 
 - content_for :infos do
   = render "shared/news_infos", news: @news

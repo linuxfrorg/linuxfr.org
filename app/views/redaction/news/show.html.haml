@@ -12,7 +12,7 @@
     %button.add_link Ajouter un lien
 
   %h1 Publication
-  %span
+  #news-actions
     = link_to "Réorganiser", reorganize_redaction_news_path(@news), class: "reorganize"
     - if @news.urgent?
       = button_to "Enlever l'urgence", cancel_urgent_redaction_news_path(@news), class: "urgent_news"
