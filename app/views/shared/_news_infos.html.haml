@@ -28,9 +28,20 @@
       Catégorie:
       = link_to(news.section.title, news.section)
     %hr
-    %p
-      = news.paragraphs.count
-      paragraphes
+    - news_content = strip_tags(news.body + ' ' + news.second_part)
+    #news_statistics
+      %p
+        #{number_with_delimiter(1 + news.nb_editors)} participants
+      %p
+        #{number_with_delimiter(news.versions.count)} révisions
+      %p
+        #{number_with_delimiter(news_content.split(/[…!\.\?]{1,3}/).count)} phrases
+      %p
+        #{number_with_delimiter(news_content.split(' ').count)} mots
+      %p
+        #{number_with_delimiter(news.paragraphs.count)} paragraphes
+      %p
+        #{number_with_delimiter(news_content.length)} caractères
     %hr
     = render 'editions', news: news
     %hr

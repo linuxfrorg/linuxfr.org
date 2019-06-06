@@ -353,6 +353,16 @@ body#redaction-index {
       font-size: 1.2em;
       font-weight: bold;
     }
+    #news_statistics {
+      display: -ms-flexbox;
+      display: flex;
+      align-items: stretch;
+      flex-wrap: wrap;
+      p {
+        flex-basis: 50%;
+        flex-grow: 1;
+      }
+    }
     .attendee {
       display: -ms-flexbox;
       display: flex;
