@@ -9,7 +9,7 @@
     - if news.figure_image?
       .news-figure
         %figure
-          %img{src: news.figure_image.url, alt: "#{news.figure_alternative}"}
+          %img{src: news.figure_image.url, alt: "#{news.figure_alternative}", srcset: news.figure_image.srcset}
           %figcaption #{news.figure_caption}
     - if defined?(with_second_part) && with_second_part
       = news.second_part

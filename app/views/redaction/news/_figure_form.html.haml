@@ -1,7 +1,7 @@
 = form_for [news], method: "post", url: update_figure_redaction_news_path(news) do |form|
   - if news.figure_image?
     %figure
-      %img{src: news.figure_image.url, alt: "#{news.figure_alternative}"}
+      %img{src: news.figure_image.url, alt: "#{news.figure_alternative}", srcset: news.figure_image.srcset}
       %figcaption #{news.figure_caption}
   %p
     = form.label :figure_image, "Image:"

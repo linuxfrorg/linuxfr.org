@@ -16,8 +16,15 @@ class NewsFigureImageUploader < CarrierWave::Uploader::Base
     base_dir.join "medias/news/#{partition}"
   end
 
-  def url
+  def url(*args)
     super.sub(base_dir.to_s, "//#{IMG_DOMAIN}/")
+  end
+
+  def srcset
+    "#{url(:smaller)} #{NEWS_FIGURE_IMAGE_SMALLER_WIDTH}w,
+    #{url(:small)} #{2*NEWS_FIGURE_IMAGE_SMALLER_WIDTH}w,
+    #{url(:medium)} #{3*NEWS_FIGURE_IMAGE_SMALLER_WIDTH}w,
+    #{url()} #{4*NEWS_FIGURE_IMAGE_SMALLER_WIDTH}w"
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
