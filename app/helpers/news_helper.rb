@@ -12,8 +12,8 @@ module NewsHelper
   end
 
   def news_initiated_by(news)
-    ( initiated_by(news, news.node.user_id ? nil : news.author_name)
-    ).html_safe
+    initiator = initiated_by(news, news.node.user_id ? nil : news.author_name)
+    initiator.html_safe
   end
 
   def news_posted_by(news)
