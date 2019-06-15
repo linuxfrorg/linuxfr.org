@@ -32,7 +32,7 @@ article {
   position: relative;
   header {
     .topic:after {
-      content: ' :';
+      content: " :";
     }
   }
   .content {
@@ -77,7 +77,7 @@ article {
     position: absolute;
     right: -$RAY_CONTAINER - $BORDER_CONTENT;
     box-sizing: content-box;
-    border-image: url('/images/contrib/RonRonnement/coin-transparent.png') 0 0 0
+    border-image: url("/images/contrib/RonRonnement/coin-transparent.png") 0 0 0
       15;
     border-style: solid;
   }
@@ -144,7 +144,7 @@ article {
 .new_comments,
 .not_read {
   a:before {
-    content: '+ ';
+    content: "+ ";
     font-weight: bold;
   }
 }
@@ -174,8 +174,8 @@ footer.actions {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     background: no-repeat 0px 0.2em / 1.6em white;
-    background-image: url('/images/icones/download.png');
-    background-image: url('/images/icones/download.svg'), none;
+    background-image: url("/images/icones/download.png");
+    background-image: url("/images/icones/download.svg"), none;
   }
   form,
   form div {
@@ -244,7 +244,7 @@ footer.actions {
     &[href^="http://en.wikipedia.org/"]:after,
     &[href^="https://fr.wikipedia.org/"]:after,
     &[href^="https://en.wikipedia.org/"]:after {
-      content: '\A0W';
+      content: "\A0W";
       font-family: serif;
       font-size: 6pt;
       vertical-align: super;
@@ -254,7 +254,7 @@ footer.actions {
     &[href^="//linuxfr.org/wiki"] {
       padding-left: 3px;
       border-left: 16px;
-      border-image: url('/favicon.png') 0 0 0 32;
+      border-image: url("/favicon.png") 0 0 0 32;
       border-style: solid;
     }
   }

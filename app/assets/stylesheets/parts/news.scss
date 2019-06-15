@@ -1,14 +1,14 @@
 article.news {
   .news-figure {
     figure {
-      display:table;
+      display: table;
       margin: 10px auto;
       padding: 0;
       background: $C_CLAIR;
       img:before {
-        display:block;
-        text-align:center;
-        margin:1rem;
+        display: block;
+        text-align: center;
+        margin: 1rem;
       }
       figcaption {
         padding-right: 0.5rem;
