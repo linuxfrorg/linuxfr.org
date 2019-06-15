@@ -28,20 +28,28 @@
       Catégorie:
       = link_to(news.section.title, news.section)
     %hr
-    - news_content = strip_tags(news.body + ' ' + news.second_part)
+    - news_content = strip_tags(news.body + ' ' + news.second_part).strip()
+    - sentences = news_content.split(/[…!\.\?]{1,3}/).count - 1
+    - words = news_content.split(' ').count
     #news_statistics
       %p
-        #{number_with_delimiter(1 + news.nb_editors)} participants
+        #{number_with_delimiter(1 + news.nb_editors)}
+        #{"participant".pluralize(1 + news.nb_editors)}
       %p
-        #{number_with_delimiter(news.versions.count)} révisions
+        #{number_with_delimiter(news.versions.count)}
+        #{"révision".pluralize(news.versions.count)}
       %p
-        #{number_with_delimiter(news_content.split(/[…!\.\?]{1,3}/).count)} phrases
+        #{number_with_delimiter(sentences)}
+        #{"phrase".pluralize(sentences)}
       %p
-        #{number_with_delimiter(news_content.split(' ').count)} mots
+        #{number_with_delimiter(words)}
+        #{"mot".pluralize(words)}
       %p
-        #{number_with_delimiter(news.paragraphs.count)} paragraphes
+        #{number_with_delimiter(news.paragraphs.count)}
+        #{"paragraphe".pluralize(news.paragraphs.count)}
       %p
-        #{number_with_delimiter(news_content.length)} caractères
+        #{number_with_delimiter(news_content.length)}
+        #{"caractère".pluralize(news_content.length)}
     %hr
     = render 'editions', news: news
     %hr
