@@ -50,7 +50,7 @@
     #first_part.draft
       = render partial: 'redaction/paragraphs/paragraph', collection: @news.paragraphs.in_first_part
     #figure
-      = render partial: 'redaction/news/figure', locals: { news: @news }
+      = render partial: 'redaction/figures/figure', locals: { news: @news }
     #second_part
       = render partial: 'redaction/paragraphs/paragraph', collection: @news.paragraphs.in_second_part
     .new_paragraph

@@ -1,4 +1,4 @@
-= form_for [news], method: "post", url: update_figure_redaction_news_path(news) do |form|
+= form_for [news], method: "post", url: redaction_figure_path(news) do |form|
   - if news.figure_image?
     %figure
       %img{src: news.figure_image.url, alt: "#{news.figure_alternative}", srcset: news.figure_image.srcset}

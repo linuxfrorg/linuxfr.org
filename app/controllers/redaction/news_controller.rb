@@ -1,8 +1,8 @@
 # encoding: UTF-8
 class Redaction::NewsController < RedactionController
   before_action :authenticate_account!, except: [:index, :moderation]
-  before_action :load_news, except: [:index, :moderation, :create, :edit_figure, :update_figure, :delete_figure, :revision, :reorganize, :reorganized, :reassign, :urgent, :cancel_urgent]
-  before_action :load_news2, only: [:edit_figure, :update_figure, :delete_figure, :revision, :reorganize, :reorganized, :reassign, :urgent, :cancel_urgent]
+  before_action :load_news, except: [:index, :moderation, :create, :revision, :reorganize, :reorganized, :reassign, :urgent, :cancel_urgent]
+  before_action :load_news2, only: [:revision, :reorganize, :reorganized, :reassign, :urgent, :cancel_urgent]
   before_action :load_board, only: [:show, :reorganize]
   after_action  :marked_as_read, only: [:show, :update]
   respond_to :html, :atom, :md
@@ -40,10 +40,6 @@ class Redaction::NewsController < RedactionController
     render partial: 'form'
   end
 
-  def edit_figure
-    render partial: 'figure_form', locals: {news: @news}
-  end
-
   def update
     @news.attributes = news_params
     @news.editor = current_account
@@ -56,22 +52,6 @@ class Redaction::NewsController < RedactionController
     @news.reassign_to params[:user_id], current_user.name
     namespace = @news.draft? ? :redaction : :moderation
     redirect_to [namespace, @news], notice: "L'auteur initial de la dépêche a été changé"
-  end
-
-  def update_figure
-    params.require(:news).require([:figure_alternative, :figure_caption])
-    if params[:news][:figure_image]
-      @news.figure_image = params[:news][:figure_image]
-    end
-    else if not @news.figure_image?
-      error = "Aucune image valide n'a été reçue. Veuillez recommencer avec une image."
-      render partial: 'figure', locals: {news: @news, error: error}
-      return
-    end
-    @news.figure_alternative = params[:news][:figure_alternative]
-    @news.figure_caption = params[:news][:figure_caption]
-    @news.save
-    render partial: 'figure', locals: {news: @news}
   end
 
   def reorganize
@@ -110,15 +90,6 @@ class Redaction::NewsController < RedactionController
     redirect_to '/redaction', notice: "Dépêche effacée"
   end
 
-  def delete_figure
-    @news.remove_figure_image!
-    @news.figure_alternative = nil
-    @news.figure_caption = nil
-    @news.save
-    namespace = @news.draft? ? :redaction : :moderation
-    redirect_to [namespace, @news]
-  end
-
   def urgent
     @news.urgent!
     namespace = @news.draft? ? :redaction : :moderation
@@ -135,7 +106,6 @@ protected
 
   def news_params
     params.require(:news).permit(:title, :section_id, :wiki_body, :wiki_second_part,
-                                 :figure_image, :figure_alternative, :figure_caption,
                                  links_attributes: [Link::Accessible])
   end
 

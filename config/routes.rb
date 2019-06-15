@@ -135,9 +135,12 @@ Rails.application.routes.draw do
         post :cancel_urgent
         get :reorganize
         put :reorganized
-        get :edit_figure
-        post :update_figure
-        post :delete_figure
+        resources :figures, only: [:edit] do
+          member do
+            post :update
+            post :delete
+          end
+        end
       end
       resources :links, only: [:new]
       resources :paragraphs, only: [:create]

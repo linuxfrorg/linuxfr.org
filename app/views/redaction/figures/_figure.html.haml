@@ -1,11 +1,11 @@
-.edition_in_place{"data-url" => edit_figure_redaction_news_path(news), "data-edit-element" => "button.edit"}
+.edition_in_place{"data-url" => edit_redaction_figure_path(news), "data-edit-element" => "button.edit"}
   - if local_assigns.has_key?(:error)
     %p %strong = error
   - if news.figure_image?
     %figure
       %img{src: news.figure_image.url, alt: "#{news.figure_alternative}", srcset: news.figure_image.srcset}
       %figcaption #{news.figure_caption}
-    = button_to "Effacer l'image", delete_figure_redaction_news_path(@news), class: "delete_button", data: { confirm: "Effacer cette image utilisée par erreur ?" }
+    = button_to "Effacer l'image", delete_redaction_figure_path(@news), class: "delete_button", data: { confirm: "Effacer cette image utilisée par erreur ?" }
     %button.edit Modifier l'image
   - else
     .add-image
