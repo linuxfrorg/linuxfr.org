@@ -124,6 +124,7 @@ body:not(.moderation_page) {
 body.chat_n_edit {
   background: #f9f9f9;
   min-height: 100vh;
+  max-width: none;
 }
 
 body#redaction-index {
@@ -269,6 +270,8 @@ body#redaction-index {
   #edition {
     padding-left: 3px;
     padding-right: 3px;
+    margin-right: 3vw;
+    margin-left: 3vw;
     flex-basis: 400px;
     flex-grow: 1;
     p {
@@ -317,7 +320,7 @@ body#redaction-index {
     align-items: flex-start;
   }
   #redaction-aside {
-    width: 240px;
+    width: 280px;
   }
   #redaction-infos {
     width: 280px;
