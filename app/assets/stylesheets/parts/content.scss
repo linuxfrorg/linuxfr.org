@@ -35,6 +35,18 @@ article {
       content: " :";
     }
   }
+  &.collection .content{
+    display: flex;
+    justify-content: space-between;
+    .news-figure figure {
+      margin-left: 2em;
+    }
+
+    figure {
+      width: 168px;
+      height: 112px;
+    }
+  }
   .content {
     padding-top: 5px;
     padding-bottom: 5px;

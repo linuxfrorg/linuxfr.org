@@ -21,4 +21,15 @@
       border-width: 1px 0;
     }
   }
+
+  article.collection .content{
+    .news-figure figure {
+      width: 64px;
+      height: 40px;
+
+      figcaption {
+        display: none;
+      }
+    }
+  }
 }
