@@ -4,6 +4,11 @@
   box-shadow: 0 4px 6px 0 #aaa;
   border: solid $BORDER_PHARE $C_BANDEAU;
   border-radius: 0;
+
+  figure img {
+    width: 100%;
+    max-height: none;
+  }
 }
 
 /* information générale, "publicité" (genre fosdem p. ex.) */
