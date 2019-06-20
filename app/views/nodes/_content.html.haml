@@ -11,6 +11,8 @@
         = body
 - else
   %article{class: css_class, itemscope: true, itemtype: "http://schema.org/Article"}
+    - if record.node.on_ppp?
+      = figure
     %header
       %h1(itemprop="name" class="entry-title")= title
       .meta
@@ -48,9 +50,12 @@
       .content.hidden &nbsp;
     - else
       .content(itemprop="articleBody" class="entry-content")
-        - if notice
-          .notice= notice
-        = body
+        %div
+          - if notice
+            .notice= notice
+          = body
+        - if !record.node.on_ppp?
+          = figure
     %footer.actions
       = read_it(record)
       = actions
