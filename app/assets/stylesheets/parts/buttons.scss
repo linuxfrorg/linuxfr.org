@@ -102,7 +102,8 @@ input[type="submit"] {
   &.submit_board {
     background-image: inline("feather-icons/dist/icons/message-square.svg");
   }
-  &.submit_news {
+  &.submit_news,
+  &.submit {
     background-image: inline("feather-icons/dist/icons/send.svg");
   }
   &.urgent_news {

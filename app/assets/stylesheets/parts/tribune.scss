@@ -13,20 +13,14 @@ body#boards-show {
 }
 #redaction_board,
 #tab-board {
-  #board_message {
-    border: 1px solid #999;
-    padding: 4px;
-  }
   div.chat {
-    border: 1px solid #999;
-    background-color: white;
+    display: flex;
     padding: 0.2em;
   }
   .avatar {
-    float: left;
     height: 36px;
     width: 36px;
-    margin: 0.2em;
+    margin: 0 1em 0.2em 0.2em;
   }
   .norloge,
   .user_link a {
@@ -44,7 +38,7 @@ body#boards-show {
     }
   }
   .message {
-    margin: 0.4em;
+    margin: 1em 0;
   }
   details {
     margin: 1em 0;
@@ -69,6 +63,26 @@ body#boards-show {
       input {
         margin: 0;
       }
+    }
+  }
+  form.chat {
+    > div {
+      display: -ms-flexbox;
+      display: flex;
+      margin: 0.5em;
+    }
+    #board_message {
+      border: 1px solid #999;
+      border-right: 0;
+      padding: 4px;
+      height: 28px;
+      flex-grow: 1;
+    }
+    button {
+      background-color: white;
+      border: 1px solid #999;
+      border-left: none;
+      margin: 0;
     }
   }
 }
