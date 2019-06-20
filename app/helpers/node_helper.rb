@@ -1,7 +1,7 @@
 # encoding: utf-8
 module NodeHelper
 
-  ContentPresenter = Struct.new(:record, :title, :meta, :tags, :notice, :image, :body, :actions, :css_class, :hidden) do
+  ContentPresenter = Struct.new(:record, :title, :meta, :tags, :notice, :image, :figure, :body, :actions, :css_class, :hidden) do
     def to_hash
       attrs = members.map(&:to_sym)
       Hash[*attrs.zip(values).flatten(1)]
@@ -31,6 +31,7 @@ module NodeHelper
     cp.css_class << 'new-node' if current_account && record.node.read_status(current_account) == :not_read
     cp.css_class << 'ppp' if record.node.on_ppp?
     cp.css_class << "preview" if @preview_mode
+    cp.css_class << 'collection' if ContentPresenter.collection?
     yield cp
     cp.meta ||= posted_by(record)
     cp.tags ||= tags_for(record.node)
