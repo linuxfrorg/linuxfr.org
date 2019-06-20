@@ -15,7 +15,7 @@
       = @banner
   = paginated_section @nodes, link_to("Proposer une dépêche", "/news/nouveau") do
     %main#contents(role="main")
-      = render @nodes.map(&:content)
+      = render @nodes.reject{|n| n.on_ppp?}.map(&:content)
   .incitation
     %h2 Faites vivre LinuxFr.org
     %p
