@@ -8,7 +8,7 @@
   %h1 "Accueil"
   - if @ppp
     %section#phare
-      = render @ppp
+      = render @ppp, on_ppp: true
 
   - if @banner
     %aside.banner

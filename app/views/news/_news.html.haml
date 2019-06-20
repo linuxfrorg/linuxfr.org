@@ -1,17 +1,28 @@
 = article_for news do |c|
+  - if news.figure_image? && not(defined?(with_second_part) && with_second_part)
+    - c.figure = capture do
+      - if news.on_ppp?
+        - src = news.figure_image.url(:ppp_large)
+        - srcset = news.figure_image.srcset("ppp")
+      - else
+        - src = news.figure_image.url(:thumb)
+        - srcset = news.figure_image.srcset("thumb")
+      .news-figure
+        %figure
+          %img{src: src, alt: "#{news.figure_alternative}", srcset: srcset}
+          %figcaption #{news.figure_caption}
   - c.title = link_to(news.title, news)
   - c.meta  = news_posted_by(news)
-  - c.image = link_to(image_tag(news.section.image, alt: news.section.title, title: news.section.title), news.section)
   - if current_account && current_account.can_update?(news)
     - c.actions = link_to("Modifier", [:moderation, news], class: 'action')
   - c.body  = capture do
     = news.body
-    - if news.figure_image?
-      .news-figure
-        %figure
-          %img{src: news.figure_image.url, alt: "#{news.figure_alternative}", srcset: news.figure_image.srcset}
-          %figcaption #{news.figure_caption}
     - if defined?(with_second_part) && with_second_part
+      - if news.figure_image?
+        .news-figure
+          %figure
+            %img{src: news.figure_image.url(), alt: "#{news.figure_alternative}", srcset: news.figure_image.srcset}
+            %figcaption #{news.figure_caption}
       = news.second_part
       %h2 Aller plus loin
       %ul.links
