@@ -4,6 +4,9 @@
 
 @import "normalize.css/normalize";
 
+/* Required color constants */
+$C_SOMBRE: #747474 !default;
+
 /* Pixel size constants */
 $PX_MARGE_GAUCHE: 42px;
 $PX_MARGE_DROITE: 30px;
