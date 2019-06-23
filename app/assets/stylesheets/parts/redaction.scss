@@ -7,21 +7,6 @@
 }
 
 #edition {
-  #first_part {
-    position: relative;
-    top: -1em;
-    &::before {
-      content: inline("feather-icons/dist/icons/scissors.svg");
-      position: relative;
-      top: 20em;
-      left: -6em;
-    }
-  }
-  #first_part.draft {
-    &::before {
-      left: -2em;
-    }
-  }
   img {
     color: rgb(100, 100, 100);
     text-align: center;
