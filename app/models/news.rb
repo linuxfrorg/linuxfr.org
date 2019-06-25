@@ -30,7 +30,10 @@ class News < Content
   DEFAULT_FIRST_PART = "Un court chapeau introduisant l'article, ou le " +
     "synthétisant, aidera les visiteurs du site à savoir s'ils doivent procéder " +
     "à une lecture approfondie de votre article.".freeze
+  DEFAULT_TITLE = "#Titre de niveau 1".freeze
+  DEFAULT_SUBTITLE = "##Titre de niveau 2".freeze
   DEFAULT_PARAGRAPH = "Vous pouvez éditer ce paragraphe en cliquant sur le crayon !".freeze
+  DEFAULT_SECOND_PART = [DEFAULT_TITLE, DEFAULT_SUBTITLE, DEFAULT_PARAGRAPH].join("\r\n\r\n").freeze
 
   self.table_name = "news"
   self.type = "Dépêche"
@@ -139,7 +142,7 @@ class News < Content
     news.title = "Nouvelle dépêche #{News.maximum(:id).to_i + 1}"
     news.section = Section.default
     news.wiki_body = DEFAULT_FIRST_PART
-    news.wiki_second_part = DEFAULT_PARAGRAPH
+    news.wiki_second_part = DEFAULT_SECOND_PART
     news.cc_licensed = true
     news.author_name  = account.name
     news.author_email = account.email
