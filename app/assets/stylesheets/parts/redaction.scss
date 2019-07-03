@@ -261,10 +261,10 @@ body#redaction-index {
     }
   }
   .draft_creator {
-    background: $C_SOMBRE;
+    background: $C_CLAIR_HOVER;
     padding: 0.5rem;
     margin: 0px 4rem 3em 4rem;
-    color: white;
+    color: $C_SOMBRE;
     font-size: 0.8em;
     a {
       font-weight: normal;
@@ -336,7 +336,20 @@ body#redaction-index {
     display: -ms-flexbox;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    width: 18em;
+    .action {
+      margin: 4px 0;
+    }
+    form {
+      width: 100%;
+    }
+    button,
+    input[type="submit"],
+    textarea {
+      width: 100%;
+      text-align: left;
+    }
   }
   #redaction-aside {
     width: 280px;
@@ -414,13 +427,6 @@ body#redaction-index {
       }
     }
   }
-}
-#news_board .board #board_message {
-  width: 95%;
-  margin-top: 5px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 5px;
 }
 
 #redaction .markItUpHeader .link {
