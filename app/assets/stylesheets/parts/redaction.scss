@@ -32,29 +32,22 @@
   }
   #figure {
     text-align: center;
-    background-color: $C_CLAIR;
+    background-color: $C_CLAIR_HOVER;
     margin: 2em auto;
     .add-image {
-      color: white;
       font-size: 1.05em;
       line-height: 1.8;
-      background-color: $C_SOMBRE;
       padding: 20px;
       .empty-image {
-        width: 64px;
-        height: 64px;
-        background: no-repeat center white;
+        width: 108px;
+        height: 108px;
+        background: no-repeat center;
         background-image: url("/images/icones/image.png");
         background-image: url("/images/icones/image.svg");
-        background-size: 75%;
         margin: 0.5em auto;
       }
       .edit {
-        background-color: $C_CLAIR;
         margin-top: 1em;
-        &:hover {
-          background-color: scale-color($C_CLAIR, $lightness: -20%);
-        }
       }
     }
     .edit {
@@ -104,22 +97,24 @@
 body:not(.moderation_page) {
   #redaction {
     #edition {
+      color: $C_SOMBRE;
       #news_header {
-        font-size: 1.2em;
-        text-align: center;
-        margin: 0 2.5em;
+        font-size: 1.15em;
       }
       #first_part {
-        font-size: 1.1em;
-        text-align: center;
-        color: $C_SOMBRE;
-        margin: 1em 5em;
+        font-size: 1.05em;
       }
-      #second_part {
-        padding: 0 2.5em;
+      header,
+      #first_part,
+      #second_part,
+      .new_paragraph {
+        padding: 0 4rem;
+      }
+      #first_part {
+        padding-right: 18rem;
       }
       .new_paragraph {
-        padding: 1em 2.5em;
+        padding-top: 1rem;
       }
       article.news {
         background: none;
@@ -237,6 +232,7 @@ body#redaction-index {
   .draft_header {
     position: relative;
     height: 40px;
+    padding: 0 4rem;
     > a {
       color: transparent;
       padding: 1rem;
@@ -245,7 +241,7 @@ body#redaction-index {
     }
     #attendees {
       position: absolute;
-      right: 0px;
+      right: 4rem;
       top: 0px;
     }
     #attendees a {
@@ -267,7 +263,7 @@ body#redaction-index {
   .draft_creator {
     background: $C_SOMBRE;
     padding: 0.5rem;
-    margin: 0px 0px 3em 0px;
+    margin: 0px 4rem 3em 4rem;
     color: white;
     font-size: 0.8em;
     a {
@@ -330,7 +326,7 @@ body#redaction-index {
       }
     }
     &:hover {
-      background-color: #e0e0e0;
+      background-color: $C_CLAIR_HOVER;
       .actions button {
         visibility: visible;
       }
