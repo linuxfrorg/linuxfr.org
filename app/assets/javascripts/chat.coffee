@@ -6,6 +6,9 @@ class Chat
   constructor: (@board) ->
     @input = @board.find("input[type=text]")
     @inbox = @board.find(".inbox")
+    @isInboxLarge = @inbox.hasClass("large")
+    @inboxContainer = @board.find(".inbox-container")
+    @inboxContainer.animate({scrollTop: @inbox.height()})
     @chan = @board.data("chan")
     @board.find(".board-left .norloge").click @norloge
     @board.find("form").submit @postMessage
@@ -26,7 +29,11 @@ class Chat
   onChat: (msg) =>
     existing = $("#board_" + msg.id)
     return  if existing.length > 0
-    @inbox.prepend(msg.message).find(".board-left:first .norloge").click @norloge
+    if @isInboxLarge
+      @inbox.append(msg.message).find(".board-left:first .norloge").click @norloge
+      @inboxContainer.animate({scrollTop: @inbox.height()})
+    else
+      @inbox.prepend(msg.message).find(".board-left:first .norloge").click @norloge
     @norlogize      right for right in @inbox.find(".board-right:first")
     @norlogize_left left  for left  in @inbox.find(".board-left time:first")
 
