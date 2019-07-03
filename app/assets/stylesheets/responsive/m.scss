@@ -222,4 +222,24 @@
   .about-signup + img {
     grid-row: 9;
   }
+
+  body:not(.moderation) {
+    #redaction {
+      #edition {
+        header,
+        .draft_header,
+        #first_part,
+        #second_part,
+        .new_paragraph {
+          padding: 0;
+        }
+        .draft_creator {
+          margin: 0;
+        }
+        .draft_header #attendees {
+          right: 0;
+        }
+      }
+    }
+  }
 }
