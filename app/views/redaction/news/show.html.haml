@@ -14,24 +14,32 @@
 
   %h1 Publication
   #news-actions
-    - if @news.urgent?
-      = button_to "Enlever l'urgence", cancel_urgent_redaction_news_path(@news), class: "urgent_news"
-    - else
-      = button_to "Marquer comme urgent", urgent_redaction_news_path(@news), class: "urgent_news", data: { confirm: "Cette dépêche est urgente et doit être publiée au plus tôt ?" }
     - if current_account.can_erase? @news
-      = button_to "Effacer la dépêche", erase_redaction_news_path(@news), class: "erase_news", data: { confirm: "Effacer cette dépêche créée par erreur ?" }
+      .action
+        = button_to "Effacer la dépêche", erase_redaction_news_path(@news), class: "erase_news", data: { confirm: "Effacer cette dépêche créée par erreur ?" }
     - if current_account.can_followup? @news
-      %button#followup.more Relancer les rédacteurs
-      .more_actions(style="display: none;")
-        = form_tag followup_redaction_news_path(@news) do
-          %p
-            Vous pouvez envoyer un message de relance aux participants de cette dépêche
-            pour leur demander de finaliser cette dépêche. N'hésitez pas à leur donner
-            des précisions (date de sortie imminente, demande de précisions, etc.).
-          = text_area_tag :message, nil, rows: 10
-          = submit_tag 'Envoyer'
+      .action
+        %button#followup.more Relancer les rédacteurs
+        .more_actions(style="display: none;")
+          = form_tag followup_redaction_news_path(@news) do
+            %p
+              Vous pouvez envoyer un message de relance aux participants de cette dépêche
+              pour leur demander de finaliser cette dépêche. N'hésitez pas à leur donner
+              des précisions (date de sortie imminente, demande de précisions, etc.).
+            = text_area_tag :message, nil, rows: 10
+            = submit_tag 'Envoyer'
+    .action
+      - if @news.urgent?
+        = form_tag cancel_urgent_redaction_news_path(@news) do
+          =label_tag "urgence", "La publication est urgente :"
+          =check_box_tag "urgence", value="Dépêche urgente", checked=@news.urgent?, {onclick: "submit()"}
+      - else
+        = form_tag urgent_redaction_news_path(@news) do
+          =label_tag "urgence", "La publication est urgente :"
+          =check_box_tag "urgence", value="Dépêche urgente", checked=@news.urgent?, {onclick: "submit()"}
     - if current_account.amr? || current_account.editor? || @news.submitted_by?(current_account)
-      = button_to "Soumettre", submit_redaction_news_path(@news), class: "submit_news", data: { confirm: "Une fois la dépêche soumise en modération, vous ne pourrez plus la modifier avant sa publication. Êtes-vous sûr ?" }
+      .action
+        = button_to "Soumettre", submit_redaction_news_path(@news), class: "submit_news", data: { confirm: "Une fois la dépêche soumise en modération, vous ne pourrez plus la modifier avant sa publication. Êtes-vous sûr ?" }
 
 - content_for :infos do
   = render "shared/news_infos", news: @news
