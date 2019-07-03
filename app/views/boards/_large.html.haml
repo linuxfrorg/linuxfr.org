@@ -1,23 +1,24 @@
 - board = boards.build
 .board{'data-chan' => Push.private_key(board.meta)}
+  .inbox-container
+    .inbox.large
+      - boards.reverse.each do |board|
+        .chat{id: "board-#{board.id}"}
+          = image_tag(board.avatar_url, class: "avatar", alt: "")
+          %div
+            %div{class: "board-left"}
+              %time.norloge{datetime: board.created_at.iso8601, norloge: norloge(board, box)}
+                - if board.created_at.today?
+                  Aujourd'hui,
+                - else
+                  = "Il y a #{time_ago_in_words board.created_at},"
+                = board.created_at.strftime('%Hh%M')
+            .user_link= board.user_link
+            .message{class: "board-right"}= board.message
   - if current_account && current_account.can_post_on_board?
     = form_tag "/board", class: 'chat' do
       = hidden_field :board, :object_type, value: board.object_type
       = hidden_field :board, :object_id, value: board.object_id
       %div
-        = text_field :board, :message, value: '', autocomplete: 'off', required: 'required', spellcheck: 'true'
+        = text_field :board, :message, value: '', placeholder: 'Écrire un message…', autocomplete: 'off', required: 'required', spellcheck: 'true'
         %button.submit
-  .inbox
-    - boards.each do |board|
-      .chat{id: "board-#{board.id}"}
-        = image_tag(board.avatar_url, class: "avatar", alt: "")
-        %div
-          %div{class: "board-left"}
-            %time.norloge{datetime: board.created_at.iso8601, norloge: norloge(board, box)}
-              - if board.created_at.today?
-                Aujourd'hui,
-              - else
-                = "Il y a #{time_ago_in_words board.created_at},"
-              = board.created_at.strftime('%Hh%M')
-          .user_link= board.user_link
-          .message{class: "board-right"}= board.message

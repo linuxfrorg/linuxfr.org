@@ -65,6 +65,15 @@ body#boards-show {
       }
     }
   }
+  .inbox-container {
+    height: 70vh;
+    overflow: auto;
+  }
+  .inbox.large {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
   form.chat {
     > div {
       display: -ms-flexbox;
