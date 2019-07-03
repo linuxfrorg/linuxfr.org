@@ -1,6 +1,4 @@
 %p
-  - if news.urgent?
-    %h1.urgent Dépêche urgente !
 .tab-header-container
   .tab{'data-tab-content-id' => 'tab-board', 'data-show-content' => true}
     Tribune
@@ -10,7 +8,9 @@
     Aide
 %div
   #tab-board.tab-content{'data-show-content' => true}
+    %hr
     = render 'boards/large', boards: @boards, box: false
+    %hr
   #tab-infos.tab-content
     %hr
     %p
