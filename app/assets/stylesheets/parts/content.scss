@@ -35,11 +35,25 @@ article {
       content: " :";
     }
   }
+  &.collection.ppp {
+    .news-figure figure {
+      img {
+        width: 100%;
+        max-height: none;
+      }
+      figcaption {
+        display: none;
+      }
+    }
+  }
   &.collection .content {
     display: flex;
     justify-content: space-between;
     .news-figure figure {
       margin-left: 2em;
+      figcaption {
+        display: none;
+      }
     }
 
     figure {

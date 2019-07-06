@@ -5,9 +5,14 @@
   border: solid $BORDER_PHARE $C_BANDEAU;
   border-radius: 0;
 
-  figure img {
-    width: 100%;
-    max-height: none;
+  .news-figure figure {
+    img {
+      width: 100%;
+      max-height: none;
+    }
+    figcaption {
+      display: none;
+    }
   }
 }
 
