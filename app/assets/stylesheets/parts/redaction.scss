@@ -223,6 +223,17 @@ body#redaction-index {
     padding: 20px 5px;
     font-weight: bold;
   }
+  .wrapper {
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+  }
+  .news-figure {
+    width: 6vw;
+    figure {
+      margin: auto;
+    }
+  }
 }
 
 #redaction {

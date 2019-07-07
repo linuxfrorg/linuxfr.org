@@ -35,17 +35,25 @@
       - @drafts.each do |n|
         - activity=(n.node.board_status(current_account) == :new_board)
         .news{:class => ("activity" if activity)}
-          .pen
-            = link_to [:redaction, n] do
-              %img{src: "/images/icones/pen.svg", alt: "Éditer la dépêche"}
-          .meta
-            - if activity
-              = image_tag "/images/icones/chat.svg", alt: "Nouveaux !", title: "Il y a de l'activité sur cette dépêche", width: "16px"
-            = n.user.try(:name) || n.author_name
-            - if n.nb_editors > 0
-              = "& #{pluralize n.nb_editors, "participant"}"
-          %h3= link_to n.title, [:redaction, n]
-          Modifiée le #{n.updated_at.to_s :date} à #{n.updated_at.to_s :time}
+          .wrapper
+            %div
+              .pen
+                = link_to [:redaction, n] do
+                  %img{src: "/images/icones/pen.svg", alt: "Éditer la dépêche"}
+              .meta
+                - if activity
+                  = image_tag "/images/icones/chat.svg", alt: "Nouveaux !", title: "Il y a de l'activité sur cette dépêche", width: "16px"
+                = n.user.try(:name) || n.author_name
+                - if n.nb_editors > 0
+                  = "& #{pluralize n.nb_editors, "participant"}"
+              %h3= link_to n.title, [:redaction, n]
+              Modifiée le #{n.updated_at.to_s :date} à #{n.updated_at.to_s :time}
+            - if n.figure_image?
+              - src = n.figure_image.url(:thumb)
+              - srcset = n.figure_image.srcset("thumb")
+              .news-figure
+                %figure
+                  %img{src: src, alt: "#{n.figure_alternative}", srcset: srcset}
 
   %h2 #{pluralize @news.count, "dépêche"} en cours de modération
   - feed "Flux atom des dépêches en cours de modération", "/redaction/news/moderation.atom"
