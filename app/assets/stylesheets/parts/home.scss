@@ -6,7 +6,9 @@
   border-radius: 0;
 
   .wrapper {
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
     .news-figure figure {
       background-color: transparent;

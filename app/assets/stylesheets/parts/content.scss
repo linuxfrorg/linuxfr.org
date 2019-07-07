@@ -37,6 +37,7 @@ article {
   }
   &.collection {
     .wrapper {
+       display: -ms-flexbox;
        display: flex;
       .news-figure figure {
         width: 168px;
@@ -53,8 +54,12 @@ article {
       .meta {
         display: none;
       }
+      div {
+        -ms-flex: 0 1 auto;
+      }
     }
     &.ppp .wrapper {
+      -ms-flex-direction: column-reverse;
       flex-direction: column-reverse;
       .news-figure figure {
         width: 100%;

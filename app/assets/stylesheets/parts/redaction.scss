@@ -150,6 +150,9 @@ body.chat_n_edit {
 
 body#redaction-index {
   #container {
+    display: -ms-flexbox;
+    -ms-flex-direction: row-reverse;
+    -ms-flex-wrap: wrap;
     display: flex;
     flex-direction: row-reverse;
     flex-wrap: wrap;
@@ -159,15 +162,18 @@ body#redaction-index {
     }
     & > footer,
     .notice {
+      -ms-flex: 0 0 100%;
       flex: 0 0 100%;
     }
   }
   aside.more {
     margin: 0 0 10px 10px;
+    -ms-flex: 1 0 300px;
     flex: 1 0 300px;
   }
   #main_board {
     margin: 0 0 10px 10px;
+    -ms-flex: 2 0 420px;
     flex: 2 0 420px;
   }
   #board_message {
@@ -178,10 +184,13 @@ body#redaction-index {
   }
   #news,
   #candidate_news {
+    display: -ms-flexbox;
+    -ms-flex-wrap: wrap;
     display: flex;
     flex-wrap: wrap;
   }
   .news {
+    -ms-flex: 1 0 225px;
     flex: 1 0 225px;
     margin: 0 25px 10px 0;
     border: 1px solid #999;
@@ -194,7 +203,6 @@ body#redaction-index {
     color: #555;
   }
   h3 {
-    flex: 1;
     font-size: 1.1rem;
     color: #000;
     margin: 12px 16px 12px 0;
@@ -226,7 +234,11 @@ body#redaction-index {
   .wrapper {
     display: -ms-flexbox;
     display: flex;
+    -ms-flex-align: center;
     align-items: center;
+    & > div:not(.news-figure) {
+      -ms-flex: 1;
+    }
   }
   .news-figure {
     width: 6vw;
