@@ -197,10 +197,17 @@ body#redaction-index {
     padding: 6px;
     background: #fff;
     display: flex;
-    flex-direction: column;
     position: relative;
     font-size: 0.8em;
     color: #555;
+
+    & > div:not(.news-figure) {
+      display: flex;
+      flex-direction: column;
+      h3 {
+        flex: 1;
+      }
+    }
   }
   h3 {
     font-size: 1.1rem;
@@ -231,18 +238,10 @@ body#redaction-index {
     padding: 20px 5px;
     font-weight: bold;
   }
-  .wrapper {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    & > div:not(.news-figure) {
-      -ms-flex: 1;
-    }
-  }
   .news-figure {
     width: 5vw;
     min-width: 5vw;
+    align-self: center;
     figure {
       margin: auto;
     }
