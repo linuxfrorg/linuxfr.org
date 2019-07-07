@@ -223,6 +223,17 @@
     grid-row: 9;
   }
 
+  article.collection:not(.ppp) .wrapper .news-figure {
+    figure {
+      margin-top: 10vh;
+      height: unset;
+    }
+    figure,
+    figure img {
+      max-width: 30vw;
+    }
+  }
+
   body:not(.moderation) {
     #redaction {
       #edition {

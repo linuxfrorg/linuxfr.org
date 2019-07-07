@@ -9,6 +9,7 @@
     display: flex;
     flex-direction: column-reverse;
     .news-figure figure {
+      background-color: transparent;
       img {
         width: 100%;
         max-height: none;

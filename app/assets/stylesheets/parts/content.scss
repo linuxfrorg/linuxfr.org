@@ -35,39 +35,32 @@ article {
       content: " :";
     }
   }
-  &.collection.ppp .wrapper {
-    display: flex;
-    flex-direction: column-reverse;
-    .news-figure figure {
-      img {
-        width: 100%;
-        max-height: none;
+  &.collection {
+    .wrapper {
+       display: flex;
+      .news-figure figure {
+        width: 168px;
+        background-color: transparent;
+        margin-left: 2em;
+        img {
+          width: 100%;
+          max-height: none;
+        }
+        figcaption {
+          display: none;
+        }
       }
-      figcaption {
+      .meta {
         display: none;
       }
     }
-    .meta {
-      display: none;
-    }
-  }
-  &.collection:not(.ppp) .wrapper {
-    display: flex;
-    .news-figure figure {
-      float:right;
-      width: 168px;
-      height: 112px;
-      margin-left: 2em;
-      img {
+    &.ppp .wrapper {
+      flex-direction: column-reverse;
+      .news-figure figure {
         width: 100%;
+        margin-left: auto;
         max-height: none;
       }
-      figcaption {
-        display: none;
-      }
-    }
-    .meta {
-      display: none;
     }
   }
   .content {
