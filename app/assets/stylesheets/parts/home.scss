@@ -5,12 +5,19 @@
   border: solid $BORDER_PHARE $C_BANDEAU;
   border-radius: 0;
 
-  .news-figure figure {
-    img {
-      width: 100%;
-      max-height: none;
+  .wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    .news-figure figure {
+      img {
+        width: 100%;
+        max-height: none;
+      }
+      figcaption {
+        display: none;
+      }
     }
-    figcaption {
+    .meta {
       display: none;
     }
   }

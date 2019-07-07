@@ -35,7 +35,9 @@ article {
       content: " :";
     }
   }
-  &.collection.ppp {
+  &.collection.ppp .wrapper {
+    display: flex;
+    flex-direction: column-reverse;
     .news-figure figure {
       img {
         width: 100%;
@@ -45,20 +47,27 @@ article {
         display: none;
       }
     }
+    .meta {
+      display: none;
+    }
   }
-  &.collection .content {
+  &.collection:not(.ppp) .wrapper {
     display: flex;
-    justify-content: space-between;
     .news-figure figure {
+      float:right;
+      width: 168px;
+      height: 112px;
       margin-left: 2em;
+      img {
+        width: 100%;
+        max-height: none;
+      }
       figcaption {
         display: none;
       }
     }
-
-    figure {
-      width: 168px;
-      height: 112px;
+    .meta {
+      display: none;
     }
   }
   .content {
