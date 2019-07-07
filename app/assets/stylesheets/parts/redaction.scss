@@ -241,7 +241,8 @@ body#redaction-index {
     }
   }
   .news-figure {
-    width: 6vw;
+    width: 5vw;
+    min-width: 5vw;
     figure {
       margin: auto;
     }
