@@ -143,6 +143,9 @@ body.chat_n_edit {
   background: #f9f9f9;
   min-height: 100vh;
   max-width: none;
+  #tab-board .inbox-container {
+    height: 72vh;
+  }
 }
 
 body#redaction-index {
