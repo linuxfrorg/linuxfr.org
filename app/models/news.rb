@@ -140,6 +140,10 @@ class News < Content
     news.author_email = account.email
     news.editor = account
     news.save
+    message = "Merci d'avoir initié cette rédaction collaborative !
+      Durant toute la phase de rédaction, vous pourrez utiliser la présente
+      messagerie instantanée pour discuter avec les participants."
+    Board.new(object_type: Board.news, object_id: news.id, message: message, user_name: "Le bot LinuxFr").save
     news
   end
 
