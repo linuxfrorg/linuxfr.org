@@ -73,6 +73,7 @@ body#boards-show {
     display: flex;
     flex-direction: column;
     justify-content: end;
+    min-height: 99%;
   }
   form.chat {
     > div {
