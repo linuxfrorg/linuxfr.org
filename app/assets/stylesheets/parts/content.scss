@@ -51,9 +51,6 @@ article {
           display: none;
         }
       }
-      .meta {
-        display: none;
-      }
       div {
         -ms-flex: 0 1 auto;
       }
@@ -66,6 +63,11 @@ article {
         margin-left: auto;
         max-height: none;
       }
+    }
+  }
+  &.home {
+    .meta {
+      display: none;
     }
   }
   .content {

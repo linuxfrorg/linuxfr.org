@@ -31,6 +31,7 @@ module NodeHelper
     cp.css_class << 'new-node' if current_account && record.node.read_status(current_account) == :not_read
     cp.css_class << 'ppp' if record.node.on_ppp?
     cp.css_class << "preview" if @preview_mode
+    cp.css_class << "home" if controller_name == "home"
     cp.css_class << 'collection' if ContentPresenter.collection?
     yield cp
     cp.meta ||= posted_by(record)
