@@ -5,10 +5,13 @@ article.news {
       margin: 10px auto;
       padding: 0;
       background: $C_CLAIR;
-      img:before {
-        display: block;
-        text-align: center;
-        margin: 1rem;
+      img{
+        width: 100%;
+        &:before {
+          display: block;
+          text-align: center;
+          margin: 1rem;
+        }
       }
       figcaption {
         padding-right: 0.5rem;
