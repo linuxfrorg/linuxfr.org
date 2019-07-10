@@ -8,7 +8,7 @@ class Chat
     @inbox = @board.find(".inbox")
     @isInboxLarge = @inbox.hasClass("large")
     @inboxContainer = @board.find(".inbox-container")
-    @inboxContainer.animate({scrollTop: @inbox.height()})
+    @inboxContainer.scrollTop(@inbox.height())
     @chan = @board.data("chan")
     @board.find(".board-left .norloge").click @norloge
     @board.find("form").submit @postMessage
@@ -30,8 +30,8 @@ class Chat
     existing = $("#board_" + msg.id)
     return  if existing.length > 0
     if @isInboxLarge
-      @inbox.append(msg.message).find(".board-left:first .norloge").click @norloge
-      @inboxContainer.animate({scrollTop: @inbox.height()})
+      @inbox.append(msg.large).find(".board-left:first .norloge").click @norloge
+      @inboxContainer.scrollTop(@inbox.height())
     else
       @inbox.prepend(msg.message).find(".board-left:first .norloge").click @norloge
     @norlogize      right for right in @inbox.find(".board-right:first")

@@ -3,18 +3,7 @@
   .inbox-container
     .inbox.large
       - boards.reverse.each do |board|
-        .chat{id: "board-#{board.id}"}
-          = image_tag(board.avatar_url, class: "avatar", alt: "")
-          %div
-            %div{class: "board-left"}
-              %time.norloge{datetime: board.created_at.iso8601, norloge: norloge(board, box)}
-                - if board.created_at.today?
-                  Aujourd'hui,
-                - else
-                  = "Il y a #{time_ago_in_words board.created_at},"
-                = board.created_at.strftime('%Hh%M')
-            .user_link= board.user_link
-            .message{class: "board-right"}= board.message
+        = render board, board: board, box: box, is_large: true
   - if current_account && current_account.can_post_on_board?
     = form_tag "/board", class: 'chat' do
       = hidden_field :board, :object_type, value: board.object_type
