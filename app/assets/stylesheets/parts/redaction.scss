@@ -192,7 +192,9 @@ body#redaction-index {
   }
   .news {
     -ms-flex: 1 0 225px;
+    -ms-flex-pack: justify;
     flex: 1 0 225px;
+    justify-content: space-between;
     margin: 0 25px 10px 0;
     border: 1px solid #999;
     padding: 6px;
