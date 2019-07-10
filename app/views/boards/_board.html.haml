@@ -1,6 +1,20 @@
-%p.chat{id: "board-#{board.id}"}
-  %span{class: "board-left", title: board.user_agent}
-    - norloge = norloge(board, box)
-    %time.norloge{datetime: board.created_at.iso8601, norloge: norloge}= norloge
-    %b= board.user_link
-  %span{class: "board-right"}= board.message
+- if not(defined?(is_large)) or not(is_large)
+  %p.chat{id: "board-#{board.id}"}
+    %span{class: "board-left", title: board.user_agent}
+      - norloge = norloge(board, box)
+      %time.norloge{datetime: board.created_at.iso8601, norloge: norloge}= norloge
+      %b= board.user_link
+    %span{class: "board-right"}= board.message
+- else
+  .chat{id: "board-#{board.id}"}
+    = image_tag(board.avatar_url, class: "avatar", alt: "")
+    %div
+      %div{class: "board-left"}
+        %time.norloge{datetime: board.created_at.iso8601, norloge: norloge(board, box)}
+          - if board.created_at.today?
+            Aujourd'hui,
+          - else
+            = "Il y a #{time_ago_in_words board.created_at},"
+          = board.created_at.strftime('%Hh%M')
+      .user_link= board.user_link
+      .message{class: "board-right"}= board.message
