@@ -8,7 +8,7 @@
       %h1.urgent Dépêche urgente !
     = render 'attendees', attendees: @news.attendees
     = render 'editions', news: @news
-    = render 'board', boards: @boards, box: false
+    = render 'boards/large', boards: @boards, box: false
 
 = article_for @news do |c|
   - c.title = capture do

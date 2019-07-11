@@ -5,7 +5,7 @@
     = render 'vote'
     = render 'attendees', attendees: @news.attendees
     = render 'editions', news: @news
-    = render 'board'
+    = render 'boards/large', boards: @boards, box: false
 
 - if @news.paragraphs.any?
   = article_for @news do |c|
