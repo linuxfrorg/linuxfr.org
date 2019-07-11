@@ -30,12 +30,14 @@ class Chat
     existing = $("#board_" + msg.id)
     return  if existing.length > 0
     if @isInboxLarge
-      @inbox.append(msg.large).find(".board-left:first .norloge").click @norloge
+      @inbox.append(msg.large).find(".board-left:last .norloge").click @norloge
       @inboxContainer.scrollTop(@inbox.height())
+      @norlogize      right for right in @inbox.find(".board-right:last")
+      @norlogize_left left  for left  in @inbox.find(".board-left time:last")
     else
       @inbox.prepend(msg.message).find(".board-left:first .norloge").click @norloge
-    @norlogize      right for right in @inbox.find(".board-right:first")
-    @norlogize_left left  for left  in @inbox.find(".board-left time:first")
+      @norlogize      right for right in @inbox.find(".board-right:first")
+      @norlogize_left left  for left  in @inbox.find(".board-left time:first")
 
   postMessage: (event) =>
     form = $(event.target)
