@@ -6,6 +6,9 @@ class Chat
   constructor: (@board) ->
     @input = @board.find("input[type=text]")
     @inbox = @board.find(".inbox")
+    @isInboxLarge = @inbox.hasClass("large")
+    @inboxContainer = @board.find(".inbox-container")
+    @inboxContainer.scrollTop(@inbox.height())
     @chan = @board.data("chan")
     @board.find(".board-left .norloge").click @norloge
     @board.find("form").submit @postMessage
@@ -26,9 +29,15 @@ class Chat
   onChat: (msg) =>
     existing = $("#board_" + msg.id)
     return  if existing.length > 0
-    @inbox.prepend(msg.message).find(".board-left:first .norloge").click @norloge
-    @norlogize      right for right in @inbox.find(".board-right:first")
-    @norlogize_left left  for left  in @inbox.find(".board-left time:first")
+    if @isInboxLarge
+      @inbox.append(msg.large).find(".board-left:last .norloge").click @norloge
+      @inboxContainer.scrollTop(@inbox.height())
+      @norlogize      right for right in @inbox.find(".board-right:last")
+      @norlogize_left left  for left  in @inbox.find(".board-left time:last")
+    else
+      @inbox.prepend(msg.message).find(".board-left:first .norloge").click @norloge
+      @norlogize      right for right in @inbox.find(".board-right:first")
+      @norlogize_left left  for left  in @inbox.find(".board-left time:first")
 
   postMessage: (event) =>
     form = $(event.target)
@@ -105,9 +114,9 @@ class Chat
     date = /\d{4}-\d{2}-\d{2}/.exec(norlogeDatetime)
     time = /\d{2}:\d{2}:\d{2}/.exec(norlogeDatetime)
     index = @board.find(".board-left time[data-clock-date=\"" + date + "\"][data-clock-time=\"" + time + "\"]").length + 1
-    x.dataset.clockDate = date
-    x.dataset.clockTime = time
-    x.dataset.clockIndex = index
+    $(x).attr("data-clock-date", date)
+    $(x).attr("data-clock-time", time)
+    $(x).attr("data-clock-index", index)
 
   left_highlitizer: (event) =>
     time = $(event.target).data("clockTime")

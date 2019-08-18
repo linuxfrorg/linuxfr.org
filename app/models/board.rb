@@ -69,7 +69,8 @@ class Board
 
   def push
     rendered = BoardsController.new.render_to_body(partial: "board", locals: { board: self, box: false })
-    Push.create(meta, kind: :chat, message: rendered)
+    largeRendered = BoardsController.new.render_to_body(partial: "board", locals: { board: self, box: false, is_large: true })
+    Push.create(meta, kind: :chat, message: rendered, large: largeRendered)
   end
 
   def self.chan_key(object_type, object_id)
