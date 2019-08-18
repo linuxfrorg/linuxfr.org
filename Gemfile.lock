@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/postmodern/ffi-hunspell.git
-  revision: d3dcb5d17ef12c955e957573ca98a0fbaf655e14
+  revision: e5dd37ea70f9dc73ab21b68fa20ad567e9ae9b18
   specs:
     ffi-hunspell (0.4.0)
       ffi (~> 1.0)
@@ -132,7 +132,7 @@ GEM
     escape_utils (1.2.1)
     eventmachine (1.2.7)
     execjs (2.7.0)
-    ffi (1.9.25)
+    ffi (1.11.1)
     french_rails (0.4.0)
       rails (~> 5.0)
     friendly_id (5.2.4)
