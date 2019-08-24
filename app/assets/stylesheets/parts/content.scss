@@ -129,13 +129,13 @@ article {
   .notice {
     margin: 0 20px 10px 100px;
   }
-  h1 {
-    border-left: solid 6px $C_BANDEAU;
-    padding-left: 13px;
-    text-align: left;
-    font-size: 1.6em;
-    margin-top: 8px;
-    margin-bottom: 2px;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Merriweather;
+    font-weight: normal;
+    a {
+      font-weight: normal;
+    }
   }
 }
 
