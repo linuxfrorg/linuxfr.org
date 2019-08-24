@@ -54,6 +54,12 @@ $fleche_offset_vertical: 30px;
        url("/fonts/Lato-Regular.woff") format("woff");
 }
 
+@font-face {
+  font-family: "Lato Light";
+  src: url("/fonts/Lato-Light.woff2") format("woff2"),
+       url("/fonts/Lato-Light.woff") format("woff");
+}
+
 @import "parts/*";
 @import "responsive/*";
 @import "common/*";
