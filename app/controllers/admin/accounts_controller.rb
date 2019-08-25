@@ -45,12 +45,18 @@ class Admin::AccountsController < AdminController
       redirect_back notice: "Compte réactivé", fallback_location: admin_accounts_url
     else
       @account.inactivate!
+      user = @account.user
+      user.homesite = ""
+      user.save
       redirect_back notice: "Compte désactivé", fallback_location: admin_accounts_url
     end
   end
 
   def destroy
     @account.inactivate!
+    user = @account.user
+    user.homesite = ""
+    user.save
     redirect_to admin_accounts_url, notice: "Compte désactivé"
   end
 
