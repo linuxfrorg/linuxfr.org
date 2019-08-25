@@ -44,19 +44,22 @@ $fleche_offset_vertical: 30px;
 
 @font-face {
   font-family: "Merriweather";
-  src: url("/fonts/Merriweather-Regular.woff2") format("woff2"),
+  src: local("Merriweather"),
+    url("/fonts/Merriweather-Regular.woff2") format("woff2"),
     url("/fonts/Merriweather-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "Lato";
-  src: url("/fonts/Lato-Regular.woff2") format("woff2"),
+  src: local("Lato"),
+    url("/fonts/Lato-Regular.woff2") format("woff2"),
     url("/fonts/Lato-Regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "Lato Light";
-  src: url("/fonts/Lato-Light.woff2") format("woff2"),
+  src: local("Lato Light"),
+    url("/fonts/Lato-Light.woff2") format("woff2"),
     url("/fonts/Lato-Light.woff") format("woff");
 }
 
