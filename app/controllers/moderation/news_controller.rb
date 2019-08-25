@@ -52,6 +52,7 @@ class Moderation::NewsController < ModerationController
     elsif @news.unlocked?
       @news.moderator_id = current_user.id
       @news.accept!
+      @news.no_more_urgent!
       NewsNotifications.accept(@news).deliver_now
       redirect_to @news, alert: "Dépêche acceptée"
     else
@@ -65,6 +66,7 @@ class Moderation::NewsController < ModerationController
       @news.moderator_id = current_user.id
       @news.put_paragraphs_together
       @news.refuse!
+      @news.no_more_urgent!
       notif = NewsNotifications.refuse_with_message(@news, params[:message], params[:template])
       notif.deliver_now if notif
       redirect_to '/'
