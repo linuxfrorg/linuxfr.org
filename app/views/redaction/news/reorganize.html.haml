@@ -1,10 +1,9 @@
 - title @news.title
 
-- content_for :chat do
-  #redaction_board
-    = render 'board', boards: @boards, box: false
-    = render 'attendees', attendees: @news.attendees
-    = render 'editions', news: @news
+- content_for :toolpanel do
+  = render 'toolpanel', news: @news, boards: @boards, enable_reassign: false
+
+= render 'topbar', news: @news, show_backlink: false
 
 %article
   = form_for @news, url: reorganized_redaction_news_path(@news), method: :put do |form|
@@ -15,7 +14,7 @@
       = form.label :title, "Titre"
       = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 100
     %p
-      = form.label :wiki_body, "Contenu de la dépêche"
+      = form.label :wiki_body, "Chapeau"
       = form.text_area :wiki_body, required: 'required', spellcheck: 'true', class: 'markItUp'
     #form_links
       %fieldset
@@ -29,7 +28,7 @@
           = lform.url_field :url
           = lform.select :lang, Lang.all
     %p
-      = form.label :wiki_second_part, "Seconde partie"
+      = form.label :wiki_second_part, "Contenu de la dépêche"
       = form.text_area :wiki_second_part, spellcheck: 'true', class: 'markItUp'
     %p
       = form.submit "OK"

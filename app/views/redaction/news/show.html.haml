@@ -1,14 +1,9 @@
 - title @news.title
 
-- content_for :chat do
-  #redaction_board
-    %p
-      = link_to "Retourner sur la liste des dépêches en cours de rédaction", '/redaction'
-    - if @news.urgent?
-      %h1.urgent Dépêche urgente !
-    = render 'attendees', attendees: @news.attendees
-    = render 'editions', news: @news
-    = render 'boards/large', boards: @boards, box: false
+- content_for :toolpanel do
+  = render 'toolpanel', news: @news, boards: @boards, enable_reassign: true
+
+= render 'topbar', news: @news, show_backlink: true
 
 = article_for @news do |c|
   - c.title = capture do

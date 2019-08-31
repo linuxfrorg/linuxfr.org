@@ -1,0 +1,6 @@
+- if news.urgent?
+  %h1.urgent Dépêche urgente !
+%h3 Participants
+= render 'attendees', attendees: news.attendees, enable_reassign: enable_reassign
+= render 'editions', news: news
+= render 'boards/large', boards: boards, box: false

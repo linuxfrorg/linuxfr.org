@@ -51,8 +51,7 @@ $fleche_offset_vertical: 30px;
 
 @font-face {
   font-family: "Lato";
-  src: local("Lato"),
-    url("/fonts/Lato-Regular.woff2") format("woff2"),
+  src: local("Lato"), url("/fonts/Lato-Regular.woff2") format("woff2"),
     url("/fonts/Lato-Regular.woff") format("woff");
 }
 
