@@ -1,6 +1,62 @@
 - if news.urgent?
   %h1.urgent Dépêche urgente !
-%h3 Participants
-= render 'attendees', attendees: news.attendees, enable_reassign: enable_reassign
-= render 'editions', news: news
-= render 'boards/large', boards: boards, box: false
+
+%p
+.tab-header-container
+  .tab{'data-tab-content-id' => 'tab-chat', 'data-show-content' => true}
+    Discussions
+  .tab{'data-tab-content-id' => 'tab-details'}
+    Détails
+  .tab{'data-tab-content-id' => 'tab-history'}
+    Historique
+
+%hr
+
+%div
+  #tab-chat.tab-content{'data-show-content' => true}
+    = render 'boards/large', boards: boards, box: false
+  #tab-details.tab-content
+    %p
+      Titre:
+      = news.title
+    %p
+      Rédaction:
+      - if news.node.cc_licensed?
+        collective
+    %p
+      Licence:
+      - if news.node.cc_licensed?
+        = link_to "CC by-sa", cc_url(news), rel: 'license'
+    %p
+      Catégorie:
+      = link_to(news.section.title, news.section)
+    %hr
+    - news_content = strip_tags(news.body + ' ' + news.second_part).strip()
+    - sentences = news_content.split(/[…!\.\?]{1,3}/).count - 1
+    - words = news_content.split(' ').count
+    #news_statistics
+      %p
+        #{number_with_delimiter(1 + news.nb_editors)}
+        #{"participant".pluralize(1 + news.nb_editors)}
+      %p
+        #{number_with_delimiter(news.versions.count)}
+        #{"révision".pluralize(news.versions.count)}
+      %p
+        #{number_with_delimiter(sentences)}
+        #{"phrase".pluralize(sentences)}
+      %p
+        #{number_with_delimiter(words)}
+        #{"mot".pluralize(words)}
+      %p
+        #{number_with_delimiter(news.paragraphs.count)}
+        #{"paragraphe".pluralize(news.paragraphs.count)}
+      %p
+        #{number_with_delimiter(news_content.length)}
+        #{"caractère".pluralize(news_content.length)}
+    %hr
+    %p Participants
+    = render 'attendees', attendees: news.attendees, enable_reassign: enable_reassign
+  #tab-history.tab-content
+    = render 'editions', news: news
+
+%hr
