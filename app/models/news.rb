@@ -233,7 +233,7 @@ class News < Content
                         body: wiki_body,
                         second_part: wiki_second_part,
                         links: links.map(&:to_s).join("\n"))
-    Push.create(self, kind: :revision, id: v.id, version: v.version, message: v.message, username: v.author_name)
+    Push.create(self, kind: :revision, id: v.id, version: v.version, message: v.message, username: v.author_name, creationdate: I18n.l(v.created_at, :format => '%d %B %Y %H:%M:%S'))
   end
 
   def attendees

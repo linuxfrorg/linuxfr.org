@@ -36,12 +36,16 @@ class Redaction
     slug  = parts[parts.length - 1]
     """
     <li><a href="/redaction/news/#{slug}/revisions/#{msg.version}">
-      #{msg.username}&nbsp;: #{msg.message}
+      #{msg.username}&nbsp;: #{msg.message} - #{msg.creationdate}
     </a></li>
     """
 
   onRevision: (msg) =>
     $("#news_revisions ul").prepend @liForRevision(msg)
+    $("#topbar .revision-cell").text msg.version
+    atPosition = msg.creationdate.indexOf(':') - 2
+    finalDate = [msg.creationdate.slice(0, atPosition), "à ", msg.creationdate.slice(atPosition)].join("")
+    $("#topbar .revision-date").text "le " + finalDate
 
   innerHtmlForLink: (msg) ->
     """

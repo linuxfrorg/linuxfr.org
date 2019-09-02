@@ -12,7 +12,8 @@ body#boards-show {
   }
 }
 
-#redaction_board {
+#redaction_board,
+#toolpanel .board {
   div.chat {
     display: -ms-flexbox;
     display: flex;
