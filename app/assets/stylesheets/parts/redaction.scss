@@ -252,6 +252,9 @@ body#redaction-index {
       }
     }
   }
+  input#link_title {
+    width: 100%; // this rule force the input to not enlarge the #edition flex box
+  }
   #metadata {
     width: 280px;
   }
