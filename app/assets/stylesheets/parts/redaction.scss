@@ -207,11 +207,11 @@ body#redaction-index {
     overflow: visible;
   }
   #edition {
-    margin-right: 3vw;
-    margin-left: 3vw;
+    margin-right: 15px;
+    margin-left: 15px;
     padding-left: 3px;
     padding-right: 3px;
-    flex-basis: 400px;
+    flex-basis: 1vw;
     flex-grow: 1;
     p {
       margin: 0 0 5px;
@@ -255,17 +255,14 @@ body#redaction-index {
   input#link_title {
     width: 100%; // this rule force the input to not enlarge the #edition flex box
   }
-  #metadata {
-    width: 280px;
-  }
   #toolpanel {
-    width: 280px;
     .inbox p {
       margin: 2px 0;
     }
   }
   #metadata,
   #toolpanel {
+    width: 20%;
     padding-left: 3px;
     padding-right: 3px;
     background: transparent;
