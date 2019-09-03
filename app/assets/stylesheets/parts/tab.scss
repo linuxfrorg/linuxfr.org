@@ -1,15 +1,18 @@
 .tab-header-container {
   display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -ms-flwx-wrap: wrap;
+  flex-wrap: wrap;
   .tab {
     font-size: 1.5em;
     line-height: 1.3em;
+    cursor: pointer;
     // Use background to display a little border below tabs
     background: no-repeat 0px 1.65rem / 2rem transparent;
     background-image: url("/images/icones/underline.png");
     background-image: url("/images/icones/underline.svg"), none;
     padding-bottom: 5px;
+    margin-right: 10px;
     // For tabs not active, show an alternative background
     &:not([data-show-content]) {
       background-image: url("/images/icones/not-active-underline.png");
