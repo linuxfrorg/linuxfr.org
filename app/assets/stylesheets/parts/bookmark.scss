@@ -36,4 +36,7 @@
       color: #888;
     }
   }
+  .links {
+    display: block; /* cancel display:grid for bookmark entries */
+  }
 }
