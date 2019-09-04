@@ -211,8 +211,9 @@ body#redaction-index {
     margin-left: 15px;
     padding-left: 3px;
     padding-right: 3px;
-    flex-basis: 1vw;
+    flex-basis: 40%;
     flex-grow: 1;
+    max-width: 55%;
     p {
       margin: 0 0 5px;
       padding: 5px;
