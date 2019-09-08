@@ -1,0 +1,38 @@
+## Redis schema
+
+Key                                            | Type   | Value                 | Expiration | Description
+-----------------------------------------------|--------|---------------------------------------------------------
+`block/<account_id>`                           | string |           1           |   x days   | Not allowed to comment
+`banners`                                      |  list  |      `<banner_id>`    |     no     | Banners (in rotation on homepage)
+`boards/chans/<chan>`                          |  list  |       `<msg_id>`      |     no     | Boards, with `chan` among 'amr' (moderation), 'free' (the original public board), `news/<news_id>` (one per news), `sgl` (former Solutions GNU/Linux event), `writing` (editorial place)
+`boards/id`                                    | string |        integer        |     no     | Last `<msg_id>` in boards
+`boards/msg/<msg_id>`                          |  hash  |                       | no, limited| Messages in boards, limited to NB_MSG_PER_CHAN = 100 messages, fields 'msg': 'blahblah', 'url': `/users/<login_slug>`, 'user': `<display name>`, 'ua': `<user agent>`, 'date': `<seconds_since_Epoch>`
+`comments/<comment_id>/votes/<vote>`           |  set   |     `<account_id>`    |  3 months  | Notes on comments, with `<vote>` 'against' or 'for'
+`convert/<news_id>`                            | string |      `<diary_id>`     |     no     | Conversions from diary to news
+`dashboard/<account_id>`                       |  set   |      `<node_id>`      |   1 week   | Notifications from answers
+`img/<uri>`                                    |  hash  |                       |     no     | Images, with fields 'created_at': seconds since Epoch, 'status': 'Blocked' if administratively blocked (by moderation), 'type': content-type like 'image/jpeg' (set by `img` daemon), 'checksum': SHA1 (set by `img` daemon), and 'etag': etag (set by `img` daemon)
+`img/err/<uri>`                                | string |         error         |     no     | Images in error, like "Invalid content-type", created by `img` daemon but removed by `dlfp`
+`img/latest`                                   |  list  |         URIs          | no, limited| Last images, limited to NB_IMG_IN_LATEST = 100
+`img/updated/<uri>`                            | string |        modtime        |     1h     | Cached images, created by `img` daemon, value like "Thu, 12 Dec 2013 12:28:47 GMT"
+`lang`                                         |  list  |     2-letters code    |     no     | Langages
+`lang/<xx>`                                    | string |      language name    |     no     | Language name
+`links/<link_id>/hits`                         | string |        integer        |     no     | Clicks on links
+`links/<link_id>/url`                          | string |          url          |     no     | Links
+`locks/<news_id>/l/<link_id>`                  | string |       `user_id`       |    300s    | Locks for news co-edition at link level
+`locks/<news_id>/p/<paragraph_id>`             | string |       `user_id`       |   1200s    | Locks for news co-edition at paragraph level
+`locks/<news_id>/reorganize`                   | string |       `user_id`       |   1800s    | Locks for news co-edition at news level
+`logo`                                         | string |       image name      |     no     | Logo
+`news/<news_id>/<vote>`                        |  set   |       `<login>`       |     no     | Votes on news from moderators, with `<vote>` 'pour' or 'contre'
+`news/urgent`                                  |  set   |      `<news_id>`      |     no     | Urgent news to moderate
+`nodes/<node_id>/votes/<account_id>`           | string |        1 or -1        |  3 months  | Notes on news
+`nodes/ppp`                                    | string |      `<node_id>`      |     no     | News making headlines
+`polls/<poll_id>/<ip>`                         | string |           1           |   1 day    | Votes on polls
+`plonk/<account_id>`                           | string |           1           |   x days   | Not allowed to write on boards
+`push/id`                                      | string |    last `<push_id>`   |     no     | Pubsub
+`readings/<node_id>/<account_id>`              | string |  seconds since Epoch  |  3 months  | Readings
+`stats/comments/month/<YYYYMM>/<content_type>` | string |        integer        |     no     | Monthly statistics about comments per contents
+`stats/comments/year/<YYYY>/<content_type>`    | string |        integer        |     no     | Yearly statistics about comments per contents
+`stats/comments/wday/<weekday_0_to_6>`         | string |        integer        |     no     | Day of week statistics about comments per contents
+`users/<login>/nb_votes`                       | string |        integer        |     no     | Total number of news voted in moderation, per moderator
+`users/<login>/nb_votes/<day_of_year>`         | string |        integer        |  31 days   | Number of news voted in moderation this day, per moderator
+`users/<user_id>/diff_karma`                   | string |        integer        |     no     | Karma change due to votes on comments/nodes, daily clean by cron
