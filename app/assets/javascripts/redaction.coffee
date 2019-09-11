@@ -97,7 +97,7 @@ class Redaction
     $("#paragraph_#{msg.id}").remove()
 
   onSecondPartToc: (msg) ->
-    $("#second_part_toc").html(msg.toc)
+    $(".second_part_toc").html(msg.toc)
 
   onLockParagraph: (msg) ->
     editing = $ """
