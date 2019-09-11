@@ -1,0 +1,10 @@
+- if current_page?(moderation_news_path(news))
+  = render 'vote'
+
+%h1 Sommaire
+- if (news.second_part_toc.length > 0)
+  .second_part_toc
+    #{news.second_part_toc}
+- else
+  %p Un sommaire sera automatiquement crée quand le texte sera assez grand.
+

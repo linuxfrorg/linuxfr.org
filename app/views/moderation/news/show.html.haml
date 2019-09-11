@@ -1,10 +1,11 @@
 - title @news.title
 
+- content_for :metadata do
+  = render 'metadata', news: @news
+
 - content_for :toolpanel do
   = render 'toolpanel', news: @news, boards: @boards, enable_reassign: true
 
-- content_for :metadata do
-  = render 'vote'
 
 = render 'topbar', news: @news, show_backlink: true
 
