@@ -1,7 +1,10 @@
 /* message à caractère informatif */
-#redaction .alert,
-#redaction .notice {
-  width: 100%;
+body.chat_n_edit {
+  .alert,
+  .notice {
+    width: 50%;
+    margin: 10px auto;
+  }
 }
 .alert {
   text-align: center;

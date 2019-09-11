@@ -4,11 +4,12 @@
   %body.chat_n_edit{body_attr}
     #top
     = render 'layouts/site', home: true
+    - [:alert, :notice].each do |type|
+      - if flash[type]
+        %div(class=type)= flash[type]
     %section#redaction.container
-      - [:alert, :notice].each do |type|
-        - if flash[type]
-          %div(class=type)= flash[type]
       %section#metadata= yield :metadata
       %section#edition= yield :layout
-      %section#toolpanel= yield :toolpanel
+      %section#toolpanel{'data-popup-show' => true}= yield :toolpanel
+    #toolbar= yield :toolbar
     = javascript_include_tag "application"

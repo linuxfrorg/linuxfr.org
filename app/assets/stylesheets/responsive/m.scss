@@ -5,6 +5,20 @@
     padding: 0;
     border: 0;
     background: #fff;
+    &.chat_n_edit {
+      #toolbar {
+        width: 100%;
+        transform: unset;
+        .popup-event[data-popup-id="toolpanel"] {
+          &[data-popup-shown] {
+            transform: unset;
+          }
+          &:not([data-popup-shown]) {
+            transform: scale(-1, 1);
+          }
+        }
+      }
+    }
   }
   ul {
     padding-left: 15px;
@@ -166,23 +180,54 @@
 
   #redaction {
     padding-top: 0px;
-    #metadata,
-    #toolpanel {
-      flex-grow: 1;
-    }
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
     #edition {
-      flex-basis: 100%;
-      max-width: 100%;
+      width: 100%;
       margin: auto;
       margin-top: 10px;
       order: 0;
     }
     #metadata {
+      width: 100%;
+      max-width: 100%;
+      flex-grow: 1;
       order: 1;
     }
     #toolpanel {
-      margin: 3px;
-      order: 2;
+      position: fixed;
+      top: 0;
+      right: 0;
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.2) 50px,
+        $C_CONTAINER 50px
+      );
+      height: 100vh;
+      &:not([data-popup-show]) {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        padding-left: 50px;
+        margin: 0;
+        z-index: 5;
+        .popup-event {
+          display: unset;
+          transform: scale(-1, 1);
+          padding: 5px;
+          position: absolute;
+          left: 5px;
+          bottom: 5px;
+          background-color: $C_CONTAINER;
+          border-radius: 100%;
+        }
+      }
+      &[data-popup-show] {
+        max-width: 0;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
     }
     #topbar {
       margin-top: 0;

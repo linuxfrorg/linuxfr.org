@@ -1,7 +1,6 @@
 - if news.urgent?
   %h1.urgent Dépêche urgente !
 
-%p
 .tab-header-container
   .tab{'data-tab-content-id' => 'tab-chat', 'data-show-content' => true}
     Discussions
@@ -60,3 +59,5 @@
     = render 'editions', news: news
 
 %hr
+
+= image_tag("icones/show_panel.svg", class: "popup-event", "data-popup-id": "toolpanel", alt: "Afficher les détails", title: "Afficher les détails")

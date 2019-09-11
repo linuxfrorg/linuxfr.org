@@ -6,6 +6,8 @@
 - content_for :toolpanel do
   = render 'toolpanel', news: @news, boards: @boards, enable_reassign: true
 
+- content_for :toolbar do
+  = render 'toolbar', news: @news
 
 = render 'topbar', news: @news, show_backlink: true
 

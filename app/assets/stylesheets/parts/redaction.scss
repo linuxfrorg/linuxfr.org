@@ -51,6 +51,46 @@ body.chat_n_edit {
   #tab-chat .inbox-container {
     height: 72vh;
   }
+  #toolbar {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: auto;
+    overflow: visible;
+    #toolbar-toc {
+      display: none;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      transform: translateY(-100%);
+      background: $C_CONTAINER;
+      border: 1px solid $C_INTER;
+      color: $C_FONCE;
+      &[data-popup-show] {
+        display: block;
+      }
+      h2 {
+        display: none;
+      }
+    }
+    .popup-event[data-popup-id="toolbar-toc"] {
+      img {
+        transition: transform 0.3s ease;
+        vertical-align: middle;
+      }
+      &[data-popup-shown] {
+        img {
+          transform: scale(1, -1);
+        }
+      }
+    }
+    .popup-event[data-popup-id="toolpanel"] {
+      transition: transform 0.3s ease;
+      &[data-popup-shown] {
+        transform: scale(-1, 1);
+      }
+    }
+  }
 }
 
 body#redaction-index {
@@ -134,7 +174,8 @@ body#redaction-index {
   padding-top: 20px;
   display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
   align-items: flex-start;
   justify-content: space-evenly;
   #topbar {
@@ -207,13 +248,14 @@ body#redaction-index {
     overflow: visible;
   }
   #edition {
+    width: 50%;
     margin-right: 15px;
     margin-left: 15px;
     padding-left: 3px;
     padding-right: 3px;
-    flex-basis: 40%;
+    -ms-flex-positive: 1;
     flex-grow: 1;
-    max-width: 55%;
+    flex-shrink: 0;
     p {
       margin: 0 0 5px;
       padding: 5px;
@@ -257,13 +299,23 @@ body#redaction-index {
     width: 100%; // this rule force the input to not enlarge the #edition flex box
   }
   #toolpanel {
+    transition: max-width 0.5s ease;
     .inbox p {
       margin: 2px 0;
+    }
+    .popup-event[data-popup-id="toolpanel"] {
+      display: none;
+    }
+    &:not([data-popup-show]) {
+      max-width: 0px;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
     }
   }
   #metadata,
   #toolpanel {
-    width: 20%;
+    max-width: 20%;
     padding-left: 3px;
     padding-right: 3px;
     background: transparent;
