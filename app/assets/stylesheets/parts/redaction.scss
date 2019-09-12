@@ -52,7 +52,9 @@ body.chat_n_edit {
     height: 72vh;
   }
   #toolbar {
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     width: 50%;
     margin: auto;
@@ -181,15 +183,16 @@ body#redaction-index {
   #topbar {
     padding: 0.2em 0;
     margin-bottom: 1em;
+    display: -ms-flexbox;
     display: flex;
     align-items: center;
     border-bottom: solid 1px #747474;
-    .backlink {
-    }
     .lastmodifications {
       display: -ms-flexbox;
       display: flex;
+      -ms-flex-positive: 1;
       flex-grow: 1;
+      -ms-flex-pack: end;
       justify-content: flex-end;
       font-size: small;
       .revision-table {
@@ -348,9 +351,11 @@ body#redaction-index {
       display: -ms-flexbox;
       display: flex;
       align-items: stretch;
+      -ms-flex-wrap: wrap;
       flex-wrap: wrap;
       p {
-        flex-basis: 50%;
+        width: 50%;
+        -ms-flex-positive: 1;
         flex-grow: 1;
       }
     }
