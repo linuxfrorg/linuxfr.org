@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-%html(lang="fr")
+%html.chat_n_edit(lang="fr")
   = render 'layouts/head'
   %body.chat_n_edit{body_attr}
-    #top
-    = render 'layouts/site', home: true
-    - [:alert, :notice].each do |type|
-      - if flash[type]
-        %div(class=type)= flash[type]
+    #toolpanel{'data-popup-show' => true}= yield :toolpanel
     %section#redaction.container
-      %section#metadata= yield :metadata
+      #top
+      = render 'layouts/site', home: true
+      - [:alert, :notice].each do |type|
+        - if flash[type]
+          %div(class=type)= flash[type]
       %section#edition= yield :layout
-      %section#toolpanel{'data-popup-show' => true}= yield :toolpanel
     #toolbar= yield :toolbar
     = javascript_include_tag "application"

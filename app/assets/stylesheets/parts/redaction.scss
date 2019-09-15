@@ -6,6 +6,10 @@
   }
 }
 
+html.chat_n_edit {
+  padding: 0;
+}
+
 #edition {
   article {
     #first_part {
@@ -45,18 +49,13 @@
 }
 
 body.chat_n_edit {
-  background: #f9f9f9;
-  min-height: 100vh;
   max-width: none;
-  #tab-chat .inbox-container {
-    height: 72vh;
-  }
   #toolbar {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    width: 50%;
+    width: 30%;
     margin: auto;
     overflow: visible;
     #toolbar-toc {
@@ -93,6 +92,142 @@ body.chat_n_edit {
       }
     }
   }
+  #toolpanel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 25vw;
+    height: 100vh;
+    max-height: 100vh;
+    padding-left: 3px;
+    padding-right: 3px;
+    background: $C_CONTAINER;
+    border: none;
+    font-size: 0.8em;
+    transition: width 0.5s ease;
+    .tab-header-container {
+      -ms-flwx-wrap: nowrap;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+    .tab-content-container {
+      position: absolute;
+      overflow-y: auto;
+      width: 100%;
+      height: calc(100vh - 2em);
+      max-height: calc(100vh - 2em);
+    }
+    #tab-chat {
+      width: 100%;
+      max-width: 100%;
+      position: absolute;
+      bottom: 0;
+      .inbox-container {
+        height: calc(100vh - 8em);
+        max-width: 100%;
+        overflow-y: auto;
+      }
+    }
+    h1.urgent + #tab-chat {
+      .inbox-container {
+        height: calc(100vh - 12em);
+      }
+      #news_vote {
+        margin-bottom: 1em;
+        + .board {
+          .inbox-container {
+            height: calc(100vh - 27em);
+          }
+        }
+      }
+    }
+    #news_vote {
+      margin-bottom: 1em;
+      + .board {
+        .inbox-container {
+          height: calc(100vh - 23em);
+        }
+      }
+    }
+    .inbox p {
+      margin: 2px 0;
+    }
+    .popup-event[data-popup-id="toolpanel"] {
+      display: none;
+    }
+    &:not([data-popup-show]) {
+      width: 0px;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      + #redaction {
+        width: 94vw;
+        right: 3vw;
+      }
+    }
+    > h1,
+    h1.urgent,
+    #news_vote h1 {
+      font-size: 1.5em;
+      line-height: 1.3em;
+      font-weight: normal;
+      background: no-repeat 0px 1.65rem / 2rem transparent;
+      background-image: url("/images/icones/underline.png");
+      background-image: url("/images/icones/underline.svg"), none;
+      padding-bottom: 5px;
+    }
+    .second_part_toc h2 {
+      display: none;
+    }
+    ul {
+      padding-left: 2em;
+    }
+    #news_statistics {
+      display: -ms-flexbox;
+      display: flex;
+      align-items: stretch;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      p {
+        width: 50%;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+      }
+    }
+    .attendee {
+      display: -ms-flexbox;
+      display: flex;
+      align-items: center;
+    }
+    .attendee-name {
+      margin-left: 5px;
+    }
+    .attendee a {
+      display: inline-block;
+      position: relative;
+      width: 48px;
+      height: 48px;
+      margin: 6px;
+      img {
+        max-height: 100%;
+      }
+      form {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        input {
+          margin: 0;
+        }
+      }
+    }
+    .markdown_cheatsheet {
+      padding: 0;
+      margin: 0;
+      background: none;
+      border: none;
+      font-size: 1em;
+    }
+  }
 }
 
 body#redaction-index {
@@ -110,12 +245,14 @@ body#redaction-index {
     }
   }
   aside.more {
+    max-width: 300px;
     margin: 0 0 10px 10px;
-    flex: 1 0 300px;
+    flex: 1 0;
   }
   #main_board {
+    width: 420px;
     margin: 0 0 10px 10px;
-    flex: 2 0 420px;
+    flex: 2 0;
   }
   #board_message {
     width: 100%;
@@ -173,16 +310,19 @@ body#redaction-index {
 }
 
 #redaction {
-  padding-top: 20px;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  justify-content: space-evenly;
+  width: 71vw;
+  position: absolute;
+  right: calc(25vw - 1px);
+  top: 0;
+  background: $C_CONTAINER;
+  min-height: 100vh;
+  border: solid #999;
+  border-width: 0 1px;
+  transition: width 0.5s ease, right 0.5s ease;
   #topbar {
     padding: 0.2em 0;
     margin-bottom: 1em;
+    margin-top: 20px;
     display: -ms-flexbox;
     display: flex;
     align-items: center;
@@ -251,14 +391,10 @@ body#redaction-index {
     overflow: visible;
   }
   #edition {
-    width: 50%;
     margin-right: 15px;
     margin-left: 15px;
     padding-left: 3px;
     padding-right: 3px;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    flex-shrink: 0;
     p {
       margin: 0 0 5px;
       padding: 5px;
@@ -300,91 +436,6 @@ body#redaction-index {
   }
   input#link_title {
     width: 100%; // this rule force the input to not enlarge the #edition flex box
-  }
-  #toolpanel {
-    transition: max-width 0.5s ease;
-    .inbox p {
-      margin: 2px 0;
-    }
-    .popup-event[data-popup-id="toolpanel"] {
-      display: none;
-    }
-    &:not([data-popup-show]) {
-      max-width: 0px;
-      padding: 0;
-      margin: 0;
-      overflow: hidden;
-    }
-  }
-  #metadata,
-  #toolpanel {
-    max-width: 20%;
-    padding-left: 3px;
-    padding-right: 3px;
-    background: transparent;
-    border: none;
-    font-size: 0.8em;
-    > h1,
-    #news_vote h1 {
-      font-size: 1.5em;
-      line-height: 1.3em;
-      font-weight: normal;
-      background: no-repeat 0px 1.65rem / 2rem transparent;
-      background-image: url("/images/icones/underline.png");
-      background-image: url("/images/icones/underline.svg"), none;
-      padding-bottom: 5px;
-    }
-    .second_part_toc h2 {
-      display: none;
-    }
-    ul {
-      padding-left: 2em;
-    }
-    details {
-      margin: 1em 0;
-    }
-    summary {
-      font-size: 1.2em;
-      font-weight: bold;
-    }
-    #news_statistics {
-      display: -ms-flexbox;
-      display: flex;
-      align-items: stretch;
-      -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-      p {
-        width: 50%;
-        -ms-flex-positive: 1;
-        flex-grow: 1;
-      }
-    }
-    .attendee {
-      display: -ms-flexbox;
-      display: flex;
-      align-items: center;
-    }
-    .attendee-name {
-      margin-left: 5px;
-    }
-    .attendee a {
-      display: inline-block;
-      position: relative;
-      width: 48px;
-      height: 48px;
-      margin: 6px;
-      img {
-        max-height: 100%;
-      }
-      form {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        input {
-          margin: 0;
-        }
-      }
-    }
   }
 }
 
