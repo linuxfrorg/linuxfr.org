@@ -3,6 +3,9 @@
 - content_for :toolpanel do
   = render 'toolpanel', news: @news, boards: @boards, enable_reassign: false
 
+- content_for :toolbar do
+  = render 'toolbar'
+
 = render 'topbar', news: @news, show_backlink: false
 
 %article
@@ -33,4 +36,3 @@
     %p
       = form.submit "OK"
 
-= render 'shared/wiki_help'
