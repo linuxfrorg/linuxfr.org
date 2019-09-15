@@ -55,23 +55,42 @@ body.chat_n_edit {
     display: flex;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    width: 30%;
+    width: 40%;
     margin: auto;
     overflow: visible;
+    border-radius: 6px;
+    bottom: 5px;
     #toolbar-toc {
       display: none;
       width: 100%;
       position: absolute;
       left: 0;
-      transform: translateY(-100%);
+      bottom: 2.5em;
       background: $C_CONTAINER;
       border: 1px solid $C_INTER;
+      border-radius: 6px;
       color: $C_FONCE;
+      padding: 0px 10px;
       &[data-popup-show] {
         display: block;
       }
       h2 {
         display: none;
+      }
+      ul.toc {
+        margin-left: 1.2em;
+        padding-left: 1em;
+        list-style-type: upper-roman;
+        ul {
+          list-style-type: decimal;
+          padding-left: 1em;
+        }
+        li {
+          padding-top: 10px;
+        }
+        a {
+          font-weight: normal;
+        }
       }
     }
     .popup-event[data-popup-id="toolbar-toc"] {
@@ -226,7 +245,7 @@ body.chat_n_edit {
         margin: auto;
         border: solid 1px #4e4e50;
         border-spacing: 0;
-        border-radius: 10px;
+        border-radius: 6px;
         overflow: hidden;
         th, td {
           vertical-align: top;
