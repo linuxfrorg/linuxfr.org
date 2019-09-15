@@ -220,12 +220,28 @@ body.chat_n_edit {
         }
       }
     }
-    .markdown_cheatsheet {
-      padding: 0;
-      margin: 0;
-      background: none;
-      border: none;
-      font-size: 1em;
+    #tab-help {
+      table {
+        width: 95%;
+        margin: auto;
+        border: solid 1px #4e4e50;
+        border-spacing: 0;
+        border-radius: 10px;
+        overflow: hidden;
+        th, td {
+          vertical-align: top;
+          padding: 0.3em 0.8em;
+        }
+        .tr-title {
+          background: $C_CLAIR;
+          color: #4e4e50;
+          th {
+            font-weight: normal;
+            text-transform: uppercase;
+            text-align: left;
+          }
+        }
+      }
     }
   }
 }
