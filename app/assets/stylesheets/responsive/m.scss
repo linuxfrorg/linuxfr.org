@@ -45,6 +45,10 @@
         padding: 0;
         margin: 0;
         overflow: hidden;
+        + #redaction {
+          max-width: unset;
+          margin: 0;
+        }
       }
     }
     #toolbar {

@@ -1,0 +1,14 @@
+// As <body> is fixed to a max-width to 150ex
+// this @media corrseponds to screens larger than "m.scss",
+// but without margins on sides of the body
+@media screen and (max-width: 150ex), handheld {
+  body.chat_n_edit {
+    #toolpanel[data-popup-show] {
+      + #redaction {
+        max-width: calc(100% - 22rem);
+        margin-left: 0;
+      }
+    }
+  }
+}
+
