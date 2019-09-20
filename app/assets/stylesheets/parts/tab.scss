@@ -25,3 +25,7 @@
 .tab-content:not([data-show-content]) {
   display: none;
 }
+
+.tab-content {
+  padding: 0 3px;
+}
