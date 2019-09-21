@@ -74,6 +74,8 @@ body.chat_n_edit {
       border-radius: 6px;
       color: $C_FONCE;
       padding: 0px 10px;
+      max-height: calc(100vh - 5px - 2.5em);
+      overflow-y: auto;
       &[data-popup-show] {
         display: block;
       }
