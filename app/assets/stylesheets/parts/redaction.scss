@@ -120,7 +120,7 @@ body.chat_n_edit {
     position: fixed;
     right: 0;
     top: 0;
-    width: 22rem;
+    width: $TOOLPANEL_WIDTH;
     height: 100vh;
     max-height: 100vh;
     padding-left: 3px;
@@ -186,8 +186,7 @@ body.chat_n_edit {
     }
     &[data-popup-show]{
       + #redaction {
-        // right margin has to correspond to #toolpanel.width
-        margin-right: 22rem;
+        margin-right: $TOOLPANEL_WIDTH;
       }
     }
     > h1,
@@ -353,8 +352,8 @@ body#redaction-index {
   min-height: 100vh;
   border: solid #999;
   border-width: 0px 1px 1px 1px;
-  max-width: 150ex;
-  margin: 0 calc((100vw - 150ex) / 2);
+  max-width: $BODY_MAX_WIDTH;
+  margin: 0 $BODY_MARGIN_LEFT_RIGHT;
   transition: margin-right 0.5s ease-in-out;
   #topbar {
     padding: 0.2em 0;

@@ -2,7 +2,7 @@
 // to screens larger than "m.scss", but without margins on sides of the body.
 // This media file should be used only for the chat_n_edit layout which has a
 // toolpanel on right which needs to adjust manually <body> position.
-@media screen and (max-width: 150ex), handheld {
+@media screen and (max-width: $BODY_MAX_WIDTH), handheld {
   body.chat_n_edit {
     #site {
       padding-top: 0;
@@ -10,7 +10,7 @@
     }
     #toolpanel[data-popup-show] {
       + #redaction {
-        max-width: calc(100% - 22rem);
+        max-width: $BODY_MAX_WIDTH_WITH_TOOLPANEL;
       }
     }
     #redaction {
