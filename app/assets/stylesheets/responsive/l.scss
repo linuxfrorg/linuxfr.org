@@ -11,8 +11,10 @@
     #toolpanel[data-popup-show] {
       + #redaction {
         max-width: calc(100% - 22rem);
-        margin-left: 0;
       }
+    }
+    #redaction {
+      margin: 0;
     }
   }
 }

@@ -11,6 +11,9 @@
     right: 0;
     overflow: hidden;
     #toolpanel {
+      margin: 0;
+      padding: 0;
+      z-index: 5;
       background: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.2) 50px,
@@ -21,11 +24,7 @@
       }
       &:not([data-popup-show]) {
         width: 100%;
-        max-width: 100%;
-        padding: 0;
         padding-left: 50px;
-        margin: 0;
-        z-index: 5;
         .popup-event {
           display: unset;
           transform: scale(-1, 1);
@@ -41,10 +40,9 @@
         }
       }
       &[data-popup-show] {
-        max-width: 0;
-        padding: 0;
-        margin: 0;
+        width: 0;
         overflow: hidden;
+        transition: width 0.5s ease-in-out, padding-left 0s linear 0.5s;
         + #redaction {
           max-width: unset;
           margin: 0;

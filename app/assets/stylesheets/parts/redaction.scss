@@ -128,11 +128,10 @@ body.chat_n_edit {
     background: $C_CONTAINER;
     border: none;
     font-size: 0.8em;
-    transition: width 0.5s ease;
+    transition: width 0.5s ease-in-out;
     .tab-header-container {
       -ms-flwx-wrap: nowrap;
       flex-wrap: nowrap;
-      overflow-x: auto;
     }
     .tab-content-container {
       position: absolute;
@@ -184,15 +183,11 @@ body.chat_n_edit {
       padding: 0;
       margin: 0;
       overflow: hidden;
-      + #redaction {
-        margin: 0 auto;
-      }
     }
     &[data-popup-show]{
       + #redaction {
         // right margin has to correspond to #toolpanel.width
         margin-right: 22rem;
-        margin-left: calc((100vw - 150ex) / 2);
       }
     }
     > h1,
@@ -359,6 +354,8 @@ body#redaction-index {
   border: solid #999;
   border-width: 0px 1px 1px 1px;
   max-width: 150ex;
+  margin: 0 calc((100vw - 150ex) / 2);
+  transition: margin-right 0.5s ease-in-out;
   #topbar {
     padding: 0.2em 0;
     margin-bottom: 1em;
