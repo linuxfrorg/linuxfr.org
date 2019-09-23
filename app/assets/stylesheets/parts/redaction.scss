@@ -184,7 +184,7 @@ body.chat_n_edit {
       margin: 0;
       overflow: hidden;
     }
-    &[data-popup-show]{
+    &[data-popup-show] {
       + #redaction {
         margin-right: $TOOLPANEL_WIDTH;
       }
@@ -250,7 +250,8 @@ body.chat_n_edit {
         border-spacing: 0;
         border-radius: 6px;
         overflow: hidden;
-        th, td {
+        th,
+        td {
           vertical-align: top;
           padding: 0.3em 0.8em;
         }
