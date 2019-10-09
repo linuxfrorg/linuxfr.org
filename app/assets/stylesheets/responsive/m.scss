@@ -16,15 +16,18 @@
       z-index: 5;
       background: linear-gradient(
         to right,
-        rgba(0, 0, 0, 0.2) $TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN,
-        $C_CONTAINER $TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN
+        rgba(0, 0, 0, 0.2) calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} - 1px),
+        $C_BORDER_FONCE calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} - 1px),
+        $C_BORDER_FONCE calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} + 1px),
+        $C_CONTAINER calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} + 1px)
       );
       .tab-content-container {
-        width: calc(100% - $TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN);
+        width: calc(100% - #{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} - 6px);
       }
       &:not([data-popup-show]) {
         width: 100%;
-        padding-left: $TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN;
+        padding-left: calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} + 3px);
+        padding-right: 3px;
         .popup-event {
           display: unset;
           width: $TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN;
