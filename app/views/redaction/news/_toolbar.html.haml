@@ -3,7 +3,7 @@
     = image_tag("icones/chevron-up.svg")
     Sommaire
 - if defined?(news)
-  #toolbar-toc
+  #toolbar-toc.popup-event{"data-popup-id": "toolbar-toc"}
     - if (news.second_part_toc.length > 0)
       .second_part_toc
         #{news.second_part_toc}

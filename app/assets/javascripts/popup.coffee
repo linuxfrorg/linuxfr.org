@@ -13,4 +13,3 @@ $(".popup-event").click ->
   else
     popup.removeAttr("data-popup-show")
     allEvents.removeAttr("data-popup-shown")
-  false
