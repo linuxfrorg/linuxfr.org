@@ -129,6 +129,7 @@ body.chat_n_edit {
     border: none;
     font-size: 0.8em;
     transition: width 0.5s ease-in-out;
+    box-shadow: 0px 0px 10px 0px $C_BORDER_FONCE;
     .tab-header-container {
       -ms-flwx-wrap: nowrap;
       flex-wrap: nowrap;
@@ -187,6 +188,7 @@ body.chat_n_edit {
     &[data-popup-show] {
       + #redaction {
         margin-right: $TOOLPANEL_WIDTH;
+        border-right: none;
       }
     }
     > h1,
