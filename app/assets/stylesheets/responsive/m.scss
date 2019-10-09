@@ -27,13 +27,20 @@
         padding-left: $TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN;
         .popup-event {
           display: unset;
-          transform: scale(-1, 1);
-          padding: 5px;
+          width: $TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN;
+          height: 100vh;
           position: absolute;
-          left: 5px;
-          bottom: 5px;
-          background-color: $C_CONTAINER;
-          border-radius: 100%;
+          top: 0;
+          left: 0;
+          img {
+            transform: scale(-1, 1);
+            padding: 5px;
+            position: absolute;
+            left: 5px;
+            bottom: 5px;
+            background-color: $C_CONTAINER;
+            border-radius: 100%;
+          }
         }
       }
       &[data-popup-show] {
