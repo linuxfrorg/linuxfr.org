@@ -352,7 +352,7 @@ body#redaction-index {
   border-width: 0px 1px 1px 1px;
   max-width: $BODY_MAX_WIDTH;
   margin: 0 $BODY_MARGIN_LEFT_RIGHT;
-  transition: margin-right 0.5s ease-in-out;
+  transition: max-width 0.5s ease-in-out, margin-right 0.5s ease-in-out;
   #topbar {
     padding: 0.2em 0;
     margin-bottom: 1em;
