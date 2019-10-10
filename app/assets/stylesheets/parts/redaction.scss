@@ -60,6 +60,7 @@ body.chat_n_edit {
     justify-content: space-between;
     width: 40%;
     margin: auto;
+    padding: 0 5px;
     overflow: visible;
     border-radius: 6px;
     bottom: 5px;
@@ -107,12 +108,6 @@ body.chat_n_edit {
         img {
           transform: scale(1, -1);
         }
-      }
-    }
-    .popup-event[data-popup-id="toolpanel"] {
-      transition: transform 0.3s ease;
-      &[data-popup-shown] {
-        transform: scale(-1, 1);
       }
     }
   }
