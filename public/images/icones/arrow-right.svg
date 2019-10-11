@@ -15,10 +15,10 @@
    stroke-width="2"
    stroke-linecap="round"
    stroke-linejoin="round"
-   class="feather feather-arrow-left"
+   class="feather feather-arrow-right"
    version="1.1"
    id="svg6"
-   sodipodi:docname="show_panel.svg"
+   sodipodi:docname="arrow-right.svg"
    inkscape:version="0.92.1 r15371">
   <metadata
      id="metadata12">
@@ -42,34 +42,26 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1600"
-     inkscape:window-height="863"
+     inkscape:window-width="840"
+     inkscape:window-height="480"
      id="namedview8"
      showgrid="false"
      inkscape:zoom="9.8333333"
-     inkscape:cx="-24.189802"
-     inkscape:cy="14.585949"
+     inkscape:cx="12"
+     inkscape:cy="12"
      inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0"
      inkscape:current-layer="svg6" />
   <line
-     x1="17.849121"
+     x1="5"
      y1="12"
-     x2="5.7779503"
+     x2="19"
      y2="12"
      id="line2"
-     style="stroke-width:2;stroke:#4e4e50;stroke-opacity:1" />
+     style="stroke:#4e4e50;stroke-opacity:1" />
   <polyline
-     points="12 19 5 12 12 5"
+     points="12 5 19 12 12 19"
      id="polyline4"
-     transform="matrix(0.60841277,0,0,0.61154507,2.7358865,4.6614592)"
-     style="stroke-width:3.27881265;stroke:#4e4e50;stroke-opacity:1" />
-  <line
-     x1="18.236193"
-     y1="20.795475"
-     x2="18.236193"
-     y2="3.204525"
-     id="line2-3"
-     style="stroke-width:2;stroke:#4e4e50;stroke-opacity:1" />
+     style="stroke:#4e4e50;stroke-opacity:1" />
 </svg>
