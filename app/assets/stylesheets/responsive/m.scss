@@ -29,7 +29,7 @@
         padding-left: calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} + 3px);
         padding-right: 3px;
         .popup-event {
-          display: unset;
+          display: block;
           width: $TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN;
           height: 100vh;
           position: absolute;
@@ -50,24 +50,15 @@
         overflow: hidden;
         transition: width 0.5s ease-in-out, padding-left 0s linear 0.5s;
         + #redaction {
-          max-width: unset;
+          max-width: 100vw;
           margin: 0;
         }
       }
     }
     #toolbar {
-      width: 100%;
-      transform: unset;
+      width: 100vw;
       border-radius: 0;
       bottom: 0;
-      .popup-event[data-popup-id="toolpanel"] {
-        &[data-popup-shown] {
-          transform: unset;
-        }
-        &:not([data-popup-shown]) {
-          transform: scale(-1, 1);
-        }
-      }
       #toolbar-toc {
         border-radius: 0;
       }
