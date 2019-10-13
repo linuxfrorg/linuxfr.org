@@ -1,7 +1,6 @@
 %span.popup-event{"data-popup-id": "toolbar-toc"}
   - if defined?(news)
-    = image_tag("icones/chevron-up.svg")
-    Sommaire
+    = image_tag("icones/toc.svg", alt: "Sommaire", title: "Sommaire")
 - if defined?(news)
   #toolbar-toc.popup-event{"data-popup-id": "toolbar-toc"}
     - if (news.second_part_toc.length > 0)
