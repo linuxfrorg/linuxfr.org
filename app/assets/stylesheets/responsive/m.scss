@@ -9,7 +9,8 @@
   body.chat_n_edit {
     width: 100%;
     right: 0;
-    overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     #toolpanel {
       margin: 0;
       padding: 0;
