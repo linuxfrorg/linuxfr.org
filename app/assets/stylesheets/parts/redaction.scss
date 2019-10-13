@@ -101,13 +101,7 @@ body.chat_n_edit {
     }
     .popup-event[data-popup-id="toolbar-toc"] {
       img {
-        transition: transform 0.3s ease;
         vertical-align: middle;
-      }
-      &[data-popup-shown] {
-        img {
-          transform: scale(1, -1);
-        }
       }
     }
   }
