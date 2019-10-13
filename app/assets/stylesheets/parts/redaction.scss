@@ -119,6 +119,9 @@ body.chat_n_edit {
     font-size: 0.8em;
     transition: width 0.5s ease-in-out;
     box-shadow: 0px 0px 10px 0px $C_BORDER_FONCE;
+    hr {
+      border: solid 1px $C_INACTIVE;
+    }
     .tab-header-container {
       -ms-flwx-wrap: nowrap;
       flex-wrap: nowrap;
@@ -126,9 +129,8 @@ body.chat_n_edit {
     .tab-content-container {
       position: absolute;
       overflow-y: auto;
-      width: 100%;
-      height: calc(100vh - 2em);
-      max-height: calc(100vh - 2em);
+      width: calc(22rem - 6px);
+      height: calc(100vh - 3em);
     }
     #tab-chat {
       width: 100%;
@@ -139,6 +141,9 @@ body.chat_n_edit {
         height: calc(100vh - 8em);
         max-width: 100%;
         overflow-y: auto;
+      }
+      form.chat {
+        margin-bottom: 0px;
       }
     }
     h1.urgent + #tab-chat {
@@ -237,7 +242,7 @@ body.chat_n_edit {
     }
     #tab-help {
       table {
-        border: solid 1px #4e4e50;
+        border: solid 1px $C_SOMBRE;
         border-spacing: 0;
         border-radius: 6px;
         overflow: hidden;
@@ -248,7 +253,7 @@ body.chat_n_edit {
         }
         .tr-title {
           background: $C_CLAIR;
-          color: #4e4e50;
+          color: $C_SOMBRE;
           th {
             font-weight: normal;
             text-transform: uppercase;
