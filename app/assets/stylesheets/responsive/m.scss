@@ -248,6 +248,11 @@
         display: none;
       }
     }
+    table {
+      table-layout: fixed;
+      width: 100%;
+      overflow-wrap: break-word;
+    }
   }
   body#redaction-index {
     #container {
