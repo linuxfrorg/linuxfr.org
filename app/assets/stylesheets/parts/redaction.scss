@@ -254,6 +254,10 @@ body.chat_n_edit {
           word-wrap: break-word;
           overflow-wrap: break-word;
         }
+        tr:first-child th {
+          border-top-right-radius: 6px;
+          border-top-left-radius: 6px;
+        }
         .tr-title {
           background: $C_CLAIR;
           color: $C_SOMBRE;
