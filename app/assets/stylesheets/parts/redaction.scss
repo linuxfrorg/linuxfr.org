@@ -245,11 +245,14 @@ body.chat_n_edit {
         border: solid 1px $C_SOMBRE;
         border-spacing: 0;
         border-radius: 6px;
-        overflow: hidden;
+        table-layout: fixed;
+        width: 100%;
         th,
         td {
           vertical-align: top;
           padding: 0.3em 0.8em;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
         }
         .tr-title {
           background: $C_CLAIR;
