@@ -22,7 +22,7 @@
       padding-right: 3px;
       background: linear-gradient(
         to right,
-        rgba(0, 0, 0, 0.2) calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} - 1px),
+        transparent calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} - 1px),
         $C_BORDER_FONCE calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} - 1px),
         $C_BORDER_FONCE calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} + 1px),
         $C_CONTAINER calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} + 1px)
@@ -58,6 +58,11 @@
         ~ #toolbar {
           right: 0;
         }
+        ~ #toolpanel-overlay {
+          z-index: 1;
+          opacity: 0.2;
+          transition: opacity 0.2s ease-in-out;
+        }
       }
       &[data-popup-show] {
         transition: right 0.2s ease-in-out;
@@ -67,6 +72,11 @@
         }
         ~ #toolbar {
           right: 0;
+        }
+        ~ #toolpanel-overlay {
+          z-index: -1;
+          opacity: 0;
+          transition: opacity 0.2s ease-in-out 0.2s, z-index 0s 0.4s;
         }
       }
     }
