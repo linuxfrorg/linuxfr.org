@@ -72,7 +72,7 @@ body.chat_n_edit {
   #toolbar {
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-pack: justify;
+    -ms-flex-pack: end;
     justify-content: flex-end;
     width: 40%;
     padding: 0 5px;
@@ -83,7 +83,7 @@ body.chat_n_edit {
     font-size: 1em;
     padding: 0;
     right: calc(#{$BODY_MARGIN_LEFT_RIGHT} + 20px);
-    left: unset;
+    left: auto;
     transition: right ease-in-out 0.5s;
     img.button {
       margin-right: 8px;
