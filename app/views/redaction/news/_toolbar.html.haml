@@ -1,6 +1,3 @@
-%span.popup-event{"data-popup-id": "toolbar-toc"}
-  - if defined?(news)
-    = image_tag("icones/toc.svg", alt: "Sommaire", title: "Sommaire")
 - if defined?(news)
   #toolbar-toc.popup-event{"data-popup-id": "toolbar-toc"}
     - if (news.second_part_toc.length > 0)
@@ -8,4 +5,6 @@
         #{news.second_part_toc}
     - else
       %p Un sommaire sera automatiquement crée quand le texte sera assez grand.
-= image_tag("icones/right_sidebar.svg", class: "popup-event", "data-popup-id": "toolpanel", "data-popup-shown": true, alt: "Afficher les détails", title: "Afficher les détails")
+= image_tag("icones/toc.svg", id: "toolbar-show-toc-button", class: "button popup-event", "data-popup-id": "toolbar-toc", alt: "Sommaire", title: "Sommaire")
+= image_tag("icones/slight_x.svg", id: "toolbar-hide-toc-button", class: "button popup-event", "data-popup-id": "toolbar-toc", alt: "Sommaire", title: "Sommaire")
+= image_tag("icones/right_sidebar.svg", class: "button popup-event", "data-popup-id": "toolpanel", "data-popup-shown": true, alt: "Afficher les détails", title: "Afficher les détails")

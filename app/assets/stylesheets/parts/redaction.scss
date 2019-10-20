@@ -49,27 +49,51 @@ html.chat_n_edit {
 }
 
 body.chat_n_edit {
+  /*
+   * With the chat_n_edit layout, we use the #redaction div to constraint the
+   * content width.
+   * So we can add CSS transition animations when we show or hide the toolpanel.
+   */
   max-width: none;
   min-height: 100vh;
   padding: 0;
   background: none;
+  border: none;
   #toolbar {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: justify;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 40%;
-    margin: auto;
     padding: 0 5px;
     overflow: visible;
-    border-radius: 6px;
+    border: none;
+    background: none;
     bottom: 5px;
+    font-size: 1em;
+    padding: 0;
+    right: calc(#{$BODY_MARGIN_LEFT_RIGHT} + 20px);
+    left: unset;
+    transition: right ease-in-out 0.5s;
+    img.button {
+      margin-right: 8px;
+      width: 32px;
+      height: 32px;
+      padding: 5px;
+      border: solid 1px $C_INTER;
+      border-radius: 50%;
+      background-color: $C_CONTAINER;
+    }
+    #toolbar-hide-toc-button {
+      display: none;
+    }
     #toolbar-toc {
       display: none;
       width: 100%;
+      font-size: 0.8em;
       position: absolute;
       left: 0;
-      bottom: 2.5em;
+      bottom: 3em;
       background: $C_CONTAINER;
       border: 1px solid $C_INTER;
       border-radius: 6px;
@@ -79,6 +103,12 @@ body.chat_n_edit {
       overflow-y: auto;
       &[data-popup-show] {
         display: block;
+        ~ #toolbar-show-toc-button {
+          display: none;
+        }
+        ~ #toolbar-hide-toc-button {
+          display: block;
+        }
       }
       h2 {
         display: none;
@@ -97,11 +127,6 @@ body.chat_n_edit {
         a {
           font-weight: normal;
         }
-      }
-    }
-    .popup-event[data-popup-id="toolbar-toc"] {
-      img {
-        vertical-align: middle;
       }
     }
   }
@@ -181,6 +206,9 @@ body.chat_n_edit {
     &[data-popup-show] {
       + #redaction {
         margin-right: $TOOLPANEL_WIDTH;
+      }
+      ~ #toolbar {
+        right: calc(#{$TOOLPANEL_WIDTH} + 20px);
       }
     }
     > h1,

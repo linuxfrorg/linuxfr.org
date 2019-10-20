@@ -37,13 +37,19 @@
           top: 0;
           left: 0;
           img {
-            padding: 5px;
             position: absolute;
-            left: 5px;
-            bottom: 5px;
+            left: 9px;
+            bottom: 8px;
+            width: 32px;
+            height: 32px;
+            padding: 5px;
+            border: solid 1px $C_INTER;
+            border-radius: 50%;
             background-color: $C_CONTAINER;
-            border-radius: 100%;
           }
+        }
+        ~ #toolbar {
+          right: 0;
         }
       }
       &[data-popup-show] {
@@ -54,12 +60,14 @@
           max-width: 100vw;
           margin: 0;
         }
+        ~ #toolbar {
+          right: 0;
+        }
       }
     }
     #toolbar {
       width: 100vw;
-      border-radius: 0;
-      bottom: 0;
+      bottom: 8px;
       #toolbar-toc {
         border-radius: 0;
       }
