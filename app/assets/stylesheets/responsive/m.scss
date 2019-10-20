@@ -12,9 +12,14 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
     #toolpanel {
+      z-index: 5;
+      width: 100vw;
+      right: -102vw;
+      overflow: hidden;
       margin: 0;
       padding: 0;
-      z-index: 5;
+      padding-left: calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} + 3px);
+      padding-right: 3px;
       background: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.2) calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} - 1px),
@@ -25,8 +30,10 @@
       .tab-content-container {
         width: calc(100% - #{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} - 6px);
       }
+      transition: right 0.2s ease-in-out 0.2s;
       &:not([data-popup-show]) {
-        width: 100%;
+        width: 100vw;
+        right: 0px;
         padding-left: calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} + 3px);
         padding-right: 3px;
         .popup-event {
@@ -53,9 +60,7 @@
         }
       }
       &[data-popup-show] {
-        width: 0;
-        overflow: hidden;
-        transition: width 0.5s ease-in-out, padding-left 0s linear 0.5s;
+        transition: right 0.2s ease-in-out;
         + #redaction {
           max-width: 100vw;
           margin: 0;
