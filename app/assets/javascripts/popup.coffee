@@ -7,9 +7,19 @@ $(".popup-event").click ->
   popupId = event.data("popup-id")
   allEvents = $(".popup-event[data-popup-id=#{popupId}]")
   popup = $("##{popupId}")
-  if typeof popup.attr("data-popup-show") is 'undefined'
+  showPopup = (typeof popup.attr("data-popup-show") is 'undefined')
+  # Update popup status and advertise all popup event togglers
+  if showPopup
     popup.attr("data-popup-show", "")
     allEvents.attr("data-popup-shown", "")
   else
     popup.removeAttr("data-popup-show")
     allEvents.removeAttr("data-popup-shown")
+  # Give new popup display status to all listeners
+  listners = popup.data("popup-listner-ids")
+  for listner in listners.split(" ")
+    listnerElement = $("##{listner}")
+    if showPopup
+      listnerElement.attr("data-popup-#{popupId}-shown", "")
+    else
+      listnerElement.removeAttr("data-popup-#{popupId}-shown", "")
