@@ -1,5 +1,5 @@
 - if defined?(news)
-  #toolbar-toc.popup-event{"data-popup-id": "toolbar-toc"}
+  #toolbar-toc.popup-event{"data-popup-id": "toolbar-toc", "data-popup-listner-ids": "overlay"}
     - if (news.second_part_toc.length > 0)
       .second_part_toc
         #{news.second_part_toc}

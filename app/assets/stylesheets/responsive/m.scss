@@ -11,8 +11,13 @@
     right: 0;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    #overlay:not([data-popup-toolpanel-shown]),
+    #overlay[data-popup-toolbar-toc-shown] {
+      z-index: 1;
+      opacity: 0.2;
+      transition: opacity 0.2s ease-in-out;
+    }
     #toolpanel {
-      z-index: 5;
       width: 100vw;
       right: -102vw;
       overflow: hidden;
@@ -59,11 +64,6 @@
         ~ #toolbar {
           right: 0;
         }
-        ~ #toolpanel-overlay {
-          z-index: 1;
-          opacity: 0.2;
-          transition: opacity 0.2s ease-in-out;
-        }
       }
       &[data-popup-show] {
         transition: right 0.2s ease-in-out;
@@ -73,11 +73,6 @@
         }
         ~ #toolbar {
           right: 0;
-        }
-        ~ #toolpanel-overlay {
-          z-index: -1;
-          opacity: 0;
-          transition: opacity 0.2s ease-in-out 0.2s, z-index 0s 0.4s;
         }
       }
     }
