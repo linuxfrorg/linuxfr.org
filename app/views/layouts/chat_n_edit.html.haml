@@ -2,7 +2,6 @@
 %html.chat_n_edit(lang="fr")
   = render 'layouts/head'
   %body.chat_n_edit{body_attr}
-    #toolpanel{'data-popup-show' => true, 'data-popup-listner-ids' => 'redaction toolbar overlay'}= yield :toolpanel
     %section#redaction.container{'data-popup-toolpanel-shown' => ''}
       #top
       = render 'layouts/site', home: true
@@ -10,6 +9,7 @@
         - if flash[type]
           %div(class=type)= flash[type]
       %section#edition= yield :layout
+    #toolpanel{'data-popup-show' => true, 'data-popup-listner-ids' => 'redaction toolbar overlay'}= yield :toolpanel
     #toolbar{'data-popup-toolpanel-shown' => ''}= yield :toolbar
     #overlay{'data-popup-toolpanel-shown' => ''}
     = javascript_include_tag "application"
