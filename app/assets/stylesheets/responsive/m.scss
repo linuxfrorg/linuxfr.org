@@ -61,24 +61,21 @@
             background-color: $C_CONTAINER;
           }
         }
-        ~ #toolbar {
-          right: 0;
-        }
       }
       &[data-popup-show] {
         transition: right 0.2s ease-in-out;
-        + #redaction {
-          max-width: 100vw;
-          margin: 0;
-        }
-        ~ #toolbar {
-          right: 0;
-        }
       }
     }
     #toolbar {
       width: 100vw;
       bottom: 8px;
+      &[data-popup-toolpanel-shown],
+      &:not([data-popup-toolpanel-shown]) {
+        right: 0;
+      }
+      &:not([data-popup-toolpanel-shown]) {
+        z-index: 0;
+      }
       #toolbar-toc {
         margin-left: 8px;
         margin-right: 8px;
@@ -273,6 +270,11 @@
       table-layout: fixed;
       width: 100%;
       overflow-wrap: break-word;
+    }
+    &[data-popup-toolpanel-shown],
+    &:not([data-popup-toolpanel-shown]) {
+      max-width: 100vw;
+      margin: 0;
     }
   }
   body#redaction-index {

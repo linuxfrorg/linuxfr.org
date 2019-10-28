@@ -99,6 +99,9 @@ body.chat_n_edit {
     #toolbar-hide-toc-button {
       display: none;
     }
+    &[data-popup-toolpanel-shown] {
+      right: calc(#{$TOOLPANEL_WIDTH} + 20px);
+    }
     #toolbar-toc {
       display: none;
       width: 100%;
@@ -215,14 +218,6 @@ body.chat_n_edit {
       padding: 0;
       margin: 0;
       overflow: hidden;
-    }
-    &[data-popup-show] {
-      + #redaction {
-        margin-right: $TOOLPANEL_WIDTH;
-      }
-      ~ #toolbar {
-        right: calc(#{$TOOLPANEL_WIDTH} + 20px);
-      }
     }
     > h1,
     h1.urgent,
@@ -398,6 +393,9 @@ body#redaction-index {
   max-width: $BODY_MAX_WIDTH;
   margin: 0 $BODY_MARGIN_LEFT_RIGHT;
   transition: max-width 0.5s ease-in-out, margin-right 0.5s ease-in-out;
+  &[data-popup-toolpanel-shown] {
+    margin-right: $TOOLPANEL_WIDTH;
+  }
   #topbar {
     padding: 0.2em 0;
     margin-bottom: 1em;
