@@ -20,6 +20,7 @@
       padding: 0;
       padding-left: calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} + 3px);
       padding-right: 3px;
+      box-shadow: none;
       background: linear-gradient(
         to right,
         transparent calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} - 1px),
@@ -84,7 +85,9 @@
       width: 100vw;
       bottom: 8px;
       #toolbar-toc {
-        border-radius: 0;
+        margin-left: 8px;
+        margin-right: 8px;
+        width: calc(100% - 16px);
       }
     }
   }
