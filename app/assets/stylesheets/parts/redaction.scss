@@ -98,6 +98,12 @@ body.chat_n_edit {
     }
     #toolbar-hide-toc-button {
       display: none;
+      &[data-popup-toolbar-toc-shown] {
+        display: block;
+      }
+    }
+    #toolbar-show-toc-button[data-popup-toolbar-toc-shown] {
+      display: none;
     }
     &[data-popup-toolpanel-shown] {
       right: calc(#{$TOOLPANEL_WIDTH} + 20px);
@@ -118,12 +124,6 @@ body.chat_n_edit {
       overflow-y: auto;
       &[data-popup-show] {
         display: block;
-        ~ #toolbar-show-toc-button {
-          display: none;
-        }
-        ~ #toolbar-hide-toc-button {
-          display: block;
-        }
       }
       h2 {
         display: none;
