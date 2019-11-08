@@ -171,13 +171,17 @@ server {
     server_name dlfp.lo;
     access_log /var/log/nginx/dlfp.access.log;
 
-    listen 80;
+    listen 0.0.0.0:80;
+    listen [::]:80;
+
+    location ~ ^/(avatars|medias)/ {
+      root /home/linuxfr/linuxfr.org/uploads;
+    }
 
     location /b/ {
         proxy_buffering off;
         proxy_pass http://localhost:9000;
     }
-
 
     location / {
         proxy_set_header X_FORWARDED_PROTO $scheme;
