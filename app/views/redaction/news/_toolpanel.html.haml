@@ -9,12 +9,11 @@
     Aide
 
 .tab-content-container
-  - if news.urgent?
-    %h1.urgent Dépêche urgente !
-
   #tab-chat.tab-content{'data-show-content' => true}
     - if current_page?(moderation_news_path(news))
       = render 'vote'
+      %div
+        %hr
     = render 'boards/large', boards: boards, box: false
   #tab-details.tab-content
     %p
@@ -31,6 +30,9 @@
     %p
       Catégorie:
       = link_to(news.section.title, news.section)
+    - if news.urgent?
+      %p.urgent
+        %b Dépêche urgente !
     %hr
     - news_content = strip_tags(news.body + ' ' + news.second_part).strip()
     - sentences = news_content.split(/[…!\.\?]{1,3}/).count - 1

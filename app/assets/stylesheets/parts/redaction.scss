@@ -173,39 +173,39 @@ body.chat_n_edit {
     #tab-chat {
       width: 100%;
       max-width: 100%;
-      max-height: 100%;
-      position: absolute;
-      bottom: 0;
+      min-height: 100%;
       .inbox-container {
-        height: calc(100vh - 8em);
         max-width: 100%;
         overflow-y: auto;
       }
       form.chat {
         margin-bottom: 0px;
       }
-    }
-    h1.urgent + #tab-chat {
-      max-height: calc(100% - 2.5em);
-      .inbox-container {
-        height: calc(100vh - 12em);
-      }
-      #news_vote {
-        margin-bottom: 1em;
-        + .board {
-          .inbox-container {
-            height: calc(100vh - 28em);
-          }
-        }
-      }
-    }
-    #news_vote {
-      margin-bottom: 1em;
-      + .board {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      .board {
+        min-height: 30vh;
+        width: 100%;
+        -ms-flex: 1 0 50vh;
+        flex-grow: 1;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
         .inbox-container {
-          height: calc(100vh - 25.3em);
-          min-height: calc(50vh);
+          height: 10em;
+          -ms-flex: 1 0 50vh;
+          flex-grow: 1;
         }
+      }
+      &:not([data-show-content]) {
+        display: none;
       }
     }
     .inbox p {
@@ -220,19 +220,10 @@ body.chat_n_edit {
       margin: 0;
       overflow: hidden;
     }
-    > h1,
-    h1.urgent,
     #news_vote h1 {
-      font-size: 1.5em;
-      line-height: 1.3em;
+      font-size: 1em;
       font-weight: normal;
-      background: no-repeat 0px 1.65rem / 2rem transparent;
-      background-image: url("/images/icones/underline.png");
-      background-image: url("/images/icones/underline.svg"), none;
-      padding-bottom: 5px;
-    }
-    .second_part_toc h2 {
-      display: none;
+      padding: 0;
     }
     ul {
       padding-left: 2em;
