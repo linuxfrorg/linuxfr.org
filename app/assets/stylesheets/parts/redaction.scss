@@ -175,6 +175,7 @@ body.chat_n_edit {
     #tab-chat {
       width: 100%;
       max-width: 100%;
+      max-height: 100%;
       position: absolute;
       bottom: 0;
       .inbox-container {
@@ -187,6 +188,7 @@ body.chat_n_edit {
       }
     }
     h1.urgent + #tab-chat {
+      max-height: calc(100% - 2.5em);
       .inbox-container {
         height: calc(100vh - 12em);
       }
@@ -194,7 +196,7 @@ body.chat_n_edit {
         margin-bottom: 1em;
         + .board {
           .inbox-container {
-            height: calc(100vh - 27em);
+            height: calc(100vh - 28em);
           }
         }
       }
@@ -203,7 +205,8 @@ body.chat_n_edit {
       margin-bottom: 1em;
       + .board {
         .inbox-container {
-          height: calc(100vh - 23em);
+          height: calc(100vh - 25.3em);
+          min-height: calc(50vh);
         }
       }
     }
