@@ -67,7 +67,6 @@
       }
     }
     #toolbar {
-      width: 100vw;
       bottom: 8px;
       &[data-popup-toolpanel-shown],
       &:not([data-popup-toolpanel-shown]) {
@@ -77,9 +76,7 @@
         z-index: 0;
       }
       #toolbar-toc {
-        margin-left: 8px;
-        margin-right: 8px;
-        width: calc(100% - 16px);
+        width: calc(100vw - 16px);
       }
     }
   }

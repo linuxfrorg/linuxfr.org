@@ -76,8 +76,6 @@ body.chat_n_edit {
     display: flex;
     -ms-flex-pack: end;
     justify-content: flex-end;
-    width: 40%;
-    padding: 0 5px;
     overflow: visible;
     border: none;
     background: none;
@@ -110,10 +108,10 @@ body.chat_n_edit {
     }
     #toolbar-toc {
       display: none;
-      width: 100%;
+      width: 30vw;
       font-size: 0.8em;
       position: absolute;
-      left: 0;
+      right: 8px;
       bottom: 3em;
       background: $C_CONTAINER;
       border: 1px solid $C_INTER;
