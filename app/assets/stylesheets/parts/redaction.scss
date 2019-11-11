@@ -6,6 +6,10 @@
   }
 }
 
+html.chat_n_edit {
+  padding: 0;
+}
+
 #edition {
   article {
     #first_part {
@@ -45,11 +49,252 @@
 }
 
 body.chat_n_edit {
-  background: #f9f9f9;
-  min-height: 100vh;
+  /*
+   * With the chat_n_edit layout, we use the #redaction div to constraint the
+   * content width.
+   * So we can add CSS transition animations when we show or hide the toolpanel.
+   */
   max-width: none;
-  #tab-chat .inbox-container {
-    height: 72vh;
+  min-height: 100vh;
+  padding: 0;
+  background: none;
+  border: none;
+  #overlay {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    background: black;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.2s ease-in-out 0.2s, z-index 0s 0.4s;
+  }
+  #toolbar {
+    z-index: 10;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    overflow: visible;
+    border: none;
+    background: none;
+    bottom: 5px;
+    font-size: 1em;
+    padding: 0;
+    right: calc(#{$BODY_MARGIN_LEFT_RIGHT} + 20px);
+    left: auto;
+    transition: right ease-in-out 0.5s;
+    img.button {
+      margin-right: 8px;
+      width: 32px;
+      height: 32px;
+      padding: 5px;
+      border: solid 1px $C_INTER;
+      border-radius: 50%;
+      background-color: $C_CONTAINER;
+    }
+    #toolbar-hide-toc-button {
+      display: none;
+      &[data-popup-toolbar-toc-shown] {
+        display: block;
+      }
+    }
+    #toolbar-show-toc-button[data-popup-toolbar-toc-shown] {
+      display: none;
+    }
+    &[data-popup-toolpanel-shown] {
+      right: calc(#{$TOOLPANEL_WIDTH} + 20px);
+    }
+    #toolbar-toc {
+      display: none;
+      width: 30vw;
+      font-size: 0.8em;
+      position: absolute;
+      right: 8px;
+      bottom: 3em;
+      background: $C_CONTAINER;
+      border: 1px solid $C_INTER;
+      border-radius: 6px;
+      color: $C_FONCE;
+      padding: 0px 10px;
+      max-height: calc(100vh - 5px - 2.5em);
+      overflow-y: auto;
+      &[data-popup-show] {
+        display: block;
+      }
+      h2 {
+        display: none;
+      }
+      ul.toc {
+        margin-left: 1.2em;
+        padding-left: 1em;
+        list-style-type: upper-roman;
+        ul {
+          list-style-type: decimal;
+          padding-left: 1em;
+        }
+        li {
+          padding-top: 10px;
+        }
+        a {
+          font-weight: normal;
+        }
+      }
+    }
+  }
+  #toolpanel {
+    z-index: 20;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: $TOOLPANEL_WIDTH;
+    height: 100vh;
+    max-height: 100vh;
+    padding-left: 3px;
+    padding-right: 3px;
+    background: $C_CONTAINER;
+    font-size: 0.8em;
+    transition: width 0.5s ease-in-out;
+    box-shadow: 0px 0px 10px 0px $C_BORDER_FONCE;
+    hr {
+      border: solid 1px $C_INACTIVE;
+    }
+    .tab-header-container {
+      -ms-flwx-wrap: nowrap;
+      flex-wrap: nowrap;
+    }
+    .tab-content-container {
+      position: absolute;
+      overflow-y: auto;
+      width: calc(22rem - 6px);
+      height: calc(100vh - 3em);
+    }
+    #tab-chat {
+      width: 100%;
+      max-width: 100%;
+      min-height: 100%;
+      .inbox-container {
+        max-width: 100%;
+        overflow-y: auto;
+      }
+      form.chat {
+        margin-bottom: 0px;
+      }
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      .board {
+        min-height: 30vh;
+        width: 100%;
+        -ms-flex: 1 0 50vh;
+        flex-grow: 1;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        .inbox-container {
+          height: 10em;
+          -ms-flex: 1 0 50vh;
+          flex-grow: 1;
+        }
+      }
+      &:not([data-show-content]) {
+        display: none;
+      }
+    }
+    .inbox p {
+      margin: 2px 0;
+    }
+    .popup-event[data-popup-id="toolpanel"] {
+      display: none;
+    }
+    &:not([data-popup-show]) {
+      width: 0px;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+    #news_vote h1 {
+      font-size: 1em;
+      font-weight: normal;
+      padding: 0;
+    }
+    ul {
+      padding-left: 2em;
+    }
+    #news_statistics {
+      display: -ms-flexbox;
+      display: flex;
+      align-items: stretch;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      p {
+        width: 50%;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+      }
+    }
+    .attendee {
+      display: -ms-flexbox;
+      display: flex;
+      align-items: center;
+    }
+    .attendee-name {
+      margin-left: 5px;
+    }
+    .attendee a {
+      display: inline-block;
+      position: relative;
+      width: 48px;
+      height: 48px;
+      margin: 6px;
+      img {
+        max-height: 100%;
+      }
+      form {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        input {
+          margin: 0;
+        }
+      }
+    }
+    #tab-help {
+      table {
+        border: solid 1px $C_SOMBRE;
+        border-spacing: 0;
+        border-radius: 6px;
+        table-layout: fixed;
+        width: 100%;
+        th,
+        td {
+          vertical-align: top;
+          padding: 0.3em 0.8em;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+        }
+        tr:first-child th {
+          border-top-right-radius: 6px;
+          border-top-left-radius: 6px;
+        }
+        .tr-title {
+          background: $C_CLAIR;
+          color: $C_SOMBRE;
+          th {
+            font-weight: normal;
+            text-transform: uppercase;
+            text-align: left;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -68,12 +313,14 @@ body#redaction-index {
     }
   }
   aside.more {
+    max-width: 300px;
     margin: 0 0 10px 10px;
-    flex: 1 0 300px;
+    flex: 1 0;
   }
   #main_board {
+    width: 420px;
     margin: 0 0 10px 10px;
-    flex: 2 0 420px;
+    flex: 2 0;
   }
   #board_message {
     width: 100%;
@@ -131,24 +378,30 @@ body#redaction-index {
 }
 
 #redaction {
-  padding-top: 20px;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-evenly;
+  background: $C_CONTAINER;
+  min-height: 100vh;
+  border: solid #999;
+  border-width: 0px 1px 1px 1px;
+  max-width: $BODY_MAX_WIDTH;
+  margin: 0 $BODY_MARGIN_LEFT_RIGHT;
+  transition: max-width 0.5s ease-in-out, margin-right 0.5s ease-in-out;
+  &[data-popup-toolpanel-shown] {
+    margin-right: $TOOLPANEL_WIDTH;
+  }
   #topbar {
     padding: 0.2em 0;
     margin-bottom: 1em;
+    margin-top: 20px;
+    display: -ms-flexbox;
     display: flex;
     align-items: center;
     border-bottom: solid 1px #747474;
-    .backlink {
-    }
     .lastmodifications {
       display: -ms-flexbox;
       display: flex;
+      -ms-flex-positive: 1;
       flex-grow: 1;
+      -ms-flex-pack: end;
       justify-content: flex-end;
       font-size: small;
       .revision-table {
@@ -211,9 +464,6 @@ body#redaction-index {
     margin-left: 15px;
     padding-left: 3px;
     padding-right: 3px;
-    flex-basis: 40%;
-    flex-grow: 1;
-    max-width: 55%;
     p {
       margin: 0 0 5px;
       padding: 5px;
@@ -255,79 +505,6 @@ body#redaction-index {
   }
   input#link_title {
     width: 100%; // this rule force the input to not enlarge the #edition flex box
-  }
-  #toolpanel {
-    .inbox p {
-      margin: 2px 0;
-    }
-  }
-  #metadata,
-  #toolpanel {
-    width: 20%;
-    padding-left: 3px;
-    padding-right: 3px;
-    background: transparent;
-    border: none;
-    font-size: 0.8em;
-    > h1,
-    #news_vote h1 {
-      font-size: 1.5em;
-      line-height: 1.3em;
-      font-weight: normal;
-      background: no-repeat 0px 1.65rem / 2rem transparent;
-      background-image: url("/images/icones/underline.png");
-      background-image: url("/images/icones/underline.svg"), none;
-      padding-bottom: 5px;
-    }
-    #second_part_toc h2 {
-      display: none;
-    }
-    ul {
-      padding-left: 2em;
-    }
-    details {
-      margin: 1em 0;
-    }
-    summary {
-      font-size: 1.2em;
-      font-weight: bold;
-    }
-    #news_statistics {
-      display: -ms-flexbox;
-      display: flex;
-      align-items: stretch;
-      flex-wrap: wrap;
-      p {
-        flex-basis: 50%;
-        flex-grow: 1;
-      }
-    }
-    .attendee {
-      display: -ms-flexbox;
-      display: flex;
-      align-items: center;
-    }
-    .attendee-name {
-      margin-left: 5px;
-    }
-    .attendee a {
-      display: inline-block;
-      position: relative;
-      width: 48px;
-      height: 48px;
-      margin: 6px;
-      img {
-        max-height: 100%;
-      }
-      form {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        input {
-          margin: 0;
-        }
-      }
-    }
   }
 }
 

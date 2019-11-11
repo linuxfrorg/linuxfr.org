@@ -18,7 +18,7 @@ html {
 body {
   position: relative;
   color: #000;
-  max-width: 150ex;
+  max-width: $BODY_MAX_WIDTH;
   margin: 0 auto;
   border: solid #999;
   border-width: 0 1px;

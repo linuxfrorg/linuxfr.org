@@ -30,6 +30,13 @@ $BORDER_CONTENT: 1px;
 $BORDER_PHARE: 2px;
 $fleche_offset_vertical: 30px;
 
+/* Body and Toolpanel constants */
+$BODY_MAX_WIDTH: 150ex;
+$BODY_MARGIN_LEFT_RIGHT: calc((100vw - #{$BODY_MAX_WIDTH}) / 2);
+$TOOLPANEL_WIDTH: 22rem;
+$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN: 50px;
+$BODY_MAX_WIDTH_WITH_TOOLPANEL: calc(100vw - #{$TOOLPANEL_WIDTH});
+
 /* un lien bleu/rouge visité normal */
 @mixin lien_standard {
   color: #0000ee;

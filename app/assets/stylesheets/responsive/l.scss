@@ -1,0 +1,21 @@
+// As <body> is fixed to a max-width to 150ex this @media corrseponds
+// to screens larger than "m.scss", but without margins on sides of the body.
+// This media file should be used only for the chat_n_edit layout which has a
+// toolpanel on right which needs to adjust manually <body> position.
+@media screen and (max-width: $BODY_MAX_WIDTH), handheld {
+  body.chat_n_edit {
+    #site {
+      padding-top: 0;
+      background: linear-gradient(to right, #e7e3e0, #bdb3aa 50%);
+    }
+    #toolbar:not([data-popup-toolpanel-shown]) {
+      right: 20px;
+    }
+  }
+  #redaction {
+    margin: 0;
+    &[data-popup-toolpanel-shown] {
+      max-width: $BODY_MAX_WIDTH_WITH_TOOLPANEL;
+    }
+  }
+}

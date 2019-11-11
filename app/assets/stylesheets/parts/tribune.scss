@@ -18,14 +18,17 @@ body#boards-show {
     display: -ms-flexbox;
     display: flex;
     padding: 0.2em;
+    .avatar {
+      height: 36px;
+      width: 36px;
+      min-width: 36px;
+      margin: 0 1em 0.2em 0.2em;
+    }
     > div {
       -ms-flex: 1;
+      max-width: calc(100% - 36px - 1em);
+      overflow-wrap: break-word;
     }
-  }
-  .avatar {
-    height: 36px;
-    width: 36px;
-    margin: 0 1em 0.2em 0.2em;
   }
   .norloge,
   .user_link a {

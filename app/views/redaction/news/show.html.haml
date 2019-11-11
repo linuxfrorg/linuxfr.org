@@ -1,7 +1,13 @@
 - title @news.title
 
+- content_for :metadata do
+  = render 'metadata', news: @news
+
 - content_for :toolpanel do
   = render 'toolpanel', news: @news, boards: @boards, enable_reassign: true
+
+- content_for :toolbar do
+  = render 'toolbar', news: @news
 
 = render 'topbar', news: @news, show_backlink: true
 
@@ -17,7 +23,7 @@
       = render partial: 'redaction/links/link', collection: @news.links
     %p.new_link{'data-url' => new_redaction_news_link_path(news_id: @news)}
       %button.add_link Ajouter un lien
-    #second_part_toc
+    .second_part_toc
       = @news.second_part_toc
     #second_part
       = render partial: 'redaction/paragraphs/paragraph', collection: @news.paragraphs.in_second_part
@@ -50,4 +56,3 @@
   En pratique, cela veut dire qu'un verrou est posé sur le paragraphe dès qu'une personne passe en mode édition pour ce paragraphe.
   Le verrou est relaché quand la personne a fini de modifier le paragraphe ou expirera au bout de 20 minutes.
 
-= render 'shared/wiki_help'

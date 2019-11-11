@@ -4,11 +4,14 @@ $C_CLAIR: #e9e6e4;
 $C_BANDEAU: #702c14 !default;
 $C_FONCE: #93877b;
 $C_INTER: #93877b;
+$C_SOMBRE: #4e4e50;
+$C_INACTIVE: #cacacb;
 $C_BAS_FOND: #e4e4e4;
 $C_FOOT: #d4d1cf;
 $C_MIBLANC_MIFOOT: #e9e8e7;
 $C_CONTAINER: #f9f9f9;
 $C_MENU: #5f574c;
+$C_BORDER_FONCE: #999;
 
 $C_BD1: transparentize($C_BANDEAU, 0.84);
 $C_BD2: transparentize($C_BANDEAU, 0.67);
@@ -994,7 +997,7 @@ a.scroll {
   padding: 6px 6px 0 6px;
   font-family: lucida Grande, sans-serif;
   font-size: 11px;
-  border: 2px solid #999999;
+  border: 2px solid $C_BORDER_FONCE;
   display: block;
   position: relative;
   margin: 0 0 12px 0;

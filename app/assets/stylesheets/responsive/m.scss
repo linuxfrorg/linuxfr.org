@@ -6,6 +6,80 @@
     border: 0;
     background: #fff;
   }
+  body.chat_n_edit {
+    width: 100%;
+    right: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    #overlay:not([data-popup-toolpanel-shown]),
+    #overlay[data-popup-toolbar-toc-shown] {
+      z-index: 1;
+      opacity: 0.2;
+      transition: opacity 0.2s ease-in-out;
+    }
+    #toolpanel {
+      width: 100vw;
+      right: -102vw;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      padding-left: calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} + 3px);
+      padding-right: 3px;
+      box-shadow: none;
+      background: linear-gradient(
+        to right,
+        transparent calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} - 1px),
+        $C_BORDER_FONCE calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} - 1px),
+        $C_BORDER_FONCE calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} + 1px),
+        $C_CONTAINER calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} + 1px)
+      );
+      .tab-content-container {
+        width: calc(100% - #{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} - 6px);
+      }
+      transition: right 0.2s ease-in-out 0.2s;
+      &:not([data-popup-show]) {
+        width: 100vw;
+        right: 0px;
+        padding-left: calc(#{$TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN} + 3px);
+        padding-right: 3px;
+        .popup-event {
+          display: block;
+          width: $TOOLPANEL_PADDING_LEFT_MEDIUM_SCREEN;
+          height: 100vh;
+          position: absolute;
+          top: 0;
+          left: 0;
+          img {
+            position: absolute;
+            left: 9px;
+            bottom: 8px;
+            width: 32px;
+            height: 32px;
+            padding: 5px;
+            border: solid 1px $C_INTER;
+            border-radius: 50%;
+            background-color: $C_CONTAINER;
+          }
+        }
+      }
+      &[data-popup-show] {
+        transition: right 0.2s ease-in-out;
+      }
+    }
+    #toolbar {
+      bottom: 8px;
+      &[data-popup-toolpanel-shown],
+      &:not([data-popup-toolpanel-shown]) {
+        right: 0;
+      }
+      &:not([data-popup-toolpanel-shown]) {
+        z-index: 0;
+      }
+      #toolbar-toc {
+        width: calc(100vw - 16px);
+      }
+    }
+  }
   ul {
     padding-left: 15px;
   }
@@ -165,30 +239,39 @@
   }
 
   #redaction {
+    width: 100vw;
+    position: static;
     padding-top: 0px;
-    #metadata,
-    #toolpanel {
-      flex-grow: 1;
-    }
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    border: none;
     #edition {
-      flex-basis: 100%;
-      max-width: 100%;
+      width: 100%;
       margin: auto;
       margin-top: 10px;
       order: 0;
     }
     #metadata {
+      width: 100%;
+      max-width: 100%;
+      flex-grow: 1;
       order: 1;
-    }
-    #toolpanel {
-      margin: 3px;
-      order: 2;
     }
     #topbar {
       margin-top: 0;
       .attendees {
         display: none;
       }
+    }
+    table {
+      table-layout: fixed;
+      width: 100%;
+      overflow-wrap: break-word;
+    }
+    &[data-popup-toolpanel-shown],
+    &:not([data-popup-toolpanel-shown]) {
+      max-width: 100vw;
+      margin: 0;
     }
   }
   body#redaction-index {

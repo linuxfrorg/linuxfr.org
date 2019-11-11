@@ -15,11 +15,14 @@ $C_CLAIR: #e9e6e4;
 $C_BANDEAU: #4c575f !default;
 $C_FONCE: #877768;
 $C_INTER: #93877b;
+$C_SOMBRE: #4e4e50;
+$C_INACTIVE: #cacacb;
 $C_BAS_FOND: #e4e4e4;
 $C_FOOT: #d4d1cf;
 $C_MIBLANC_MIFOOT: #e9e8e7;
 $C_CONTAINER: #f9f9f9;
 $C_MENU: #4c575f;
+$C_BORDER_FONCE: #999;
 
 /*$C_BD1: #F9DEE8;
 $C_BD2: #F1ABC5;
@@ -84,7 +87,7 @@ body {
   color: #000;
   max-width: 150ex;
   margin: 0 auto;
-  border: solid #999;
+  border: solid $C_BORDER_FONCE;
   border-width: 0 1px;
   background: linear-gradient(
       90deg,
@@ -1107,7 +1110,7 @@ a.scroll {
   padding: 6px 6px 0 6px;
   font-family: lucida Grande, sans-serif;
   font-size: 11px;
-  border: 2px solid #999999;
+  border: 2px solid $C_BORDER_FONCE;
   display: block;
   position: relative;
   margin: 0 0 12px 0;
@@ -1296,11 +1299,11 @@ body#boards-show {
 #redaction_board {
   #board_message {
     box-sizing: border-box;
-    border: 1px solid #999;
+    border: 1px solid $C_BORDER_FONCE;
     padding: 4px;
   }
   div.chat {
-    border: 1px solid #999;
+    border: 1px solid $C_BORDER_FONCE;
     background-color: white;
     padding: 0.2em;
   }
@@ -1618,7 +1621,7 @@ body#redaction-index {
   .news {
     flex: 1 0 225px;
     margin: 0 25px 10px 0;
-    border: 1px solid #999;
+    border: 1px solid $C_BORDER_FONCE;
     padding: 6px;
     background: #fff;
     display: flex;
@@ -1641,7 +1644,7 @@ body#redaction-index {
     top: 50%;
     margin-top: -16px;
     border-radius: 16px;
-    background: #999;
+    background: $C_BORDER_FONCE;
     img {
       width: 16px;
       height: 16px;

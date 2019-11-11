@@ -1,7 +1,3 @@
-- if news.urgent?
-  %h1.urgent Dépêche urgente !
-
-%p
 .tab-header-container
   .tab{'data-tab-content-id' => 'tab-chat', 'data-show-content' => true}
     Discussions
@@ -9,11 +5,15 @@
     Détails
   .tab{'data-tab-content-id' => 'tab-history'}
     Historique
+  .tab{'data-tab-content-id' => 'tab-help'}
+    Aide
 
-%hr
-
-%div
+.tab-content-container
   #tab-chat.tab-content{'data-show-content' => true}
+    - if current_page?(moderation_news_path(news))
+      = render 'vote'
+      %div
+        %hr
     = render 'boards/large', boards: boards, box: false
   #tab-details.tab-content
     %p
@@ -30,6 +30,9 @@
     %p
       Catégorie:
       = link_to(news.section.title, news.section)
+    - if news.urgent?
+      %p.urgent
+        %b Dépêche urgente !
     %hr
     - news_content = strip_tags(news.body + ' ' + news.second_part).strip()
     - sentences = news_content.split(/[…!\.\?]{1,3}/).count - 1
@@ -58,5 +61,14 @@
     = render 'attendees', attendees: news.attendees, enable_reassign: enable_reassign
   #tab-history.tab-content
     = render 'editions', news: news
+  #tab-help.tab-content
+    - if current_page?(moderation_news_path(news))
+      %p Pour ajouter une note des modérateurs, commencez simplement une ligne par <code>NdM :</code>.
+      %p
+        L'icone
+        = image_tag "/images/icones/edit-cut.png", alt: "Suggestion de découpe"
+        sert à suggérer où découper entre les première et seconde parties de la dépêche.
+    = render 'wiki_help'
 
-%hr
+.popup-event{"data-popup-id": "toolpanel"}
+  = image_tag("icones/arrow-right.svg", alt: "Afficher les détails", title: "Afficher les détails")

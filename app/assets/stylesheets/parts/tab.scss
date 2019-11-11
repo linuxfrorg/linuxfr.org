@@ -3,12 +3,13 @@
   display: flex;
   -ms-flwx-wrap: wrap;
   flex-wrap: wrap;
+  background: linear-gradient(to top, $C_INACTIVE 2px, transparent 2px);
   .tab {
     font-size: 1.5em;
     line-height: 1.3em;
     cursor: pointer;
     // Use background to display a little border below tabs
-    background: no-repeat 0px 1.65rem / 2rem transparent;
+    background: no-repeat 0px 1.55rem / 4ex transparent;
     background-image: url("/images/icones/underline.png");
     background-image: url("/images/icones/underline.svg"), none;
     padding-bottom: 5px;
@@ -24,4 +25,8 @@
 // Hide all content which are not active
 .tab-content:not([data-show-content]) {
   display: none;
+}
+
+.tab-content {
+  padding: 0 3px;
 }
