@@ -269,4 +269,10 @@ footer.actions {
     padding-bottom: 1px;
     text-align: left;
   }
+  table {
+    table-layout: fixed;
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
 }
