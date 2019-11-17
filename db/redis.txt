@@ -24,7 +24,7 @@ Key                                            | Type   | Value                 
 `logo`                                         | string |       image name      |     no     | Logo
 `news/<news_id>/<vote>`                        |  set   |       `<login>`       |     no     | Votes on news from moderators, with `<vote>` 'pour' or 'contre'
 `news/urgent`                                  |  set   |      `<news_id>`      |     no     | Urgent news to moderate
-`nodes/<node_id>/votes/<account_id>`           | string |        1 or -1        |  3 months  | Notes on news
+`nodes/<node_id>/votes/<account_id>`           | string |        1 or -1        |  3 months  | Votes on nodes
 `nodes/ppp`                                    | string |      `<node_id>`      |     no     | News making headlines
 `polls/<poll_id>/<ip>`                         | string |           1           |   1 day    | Votes on polls
 `plonk/<account_id>`                           | string |           1           |   x days   | Not allowed to write on boards
