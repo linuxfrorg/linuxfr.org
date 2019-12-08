@@ -172,12 +172,17 @@ server {
     access_log /var/log/nginx/dlfp.access.log;
 
     listen 0.0.0.0:80;
-    listen [::]:80;
 
     location ~ ^/(avatars|medias)/ {
       root /home/linuxfr/linuxfr.org/uploads;
     }
 
+    # To install the LinuxFr img service, see: https://github.com/linuxfrorg/img-LinuxFr.org
+    location /img/ {
+        proxy_pass http://localhost:8000;
+    }
+
+    # To install the LinuxFr board, see: https://github.com/linuxfrorg/board-sse-linuxfr.org
     location /b/ {
         proxy_buffering off;
         proxy_pass http://localhost:9000;
