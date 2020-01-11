@@ -1,12 +1,12 @@
 %main#contents(role="main")
-  %h2 Mot de passe oublié ?
+  %h2 Mot de passe oublié ?
 
   = form_for @account, url: password_path(:account) do |f|
     = devise_error_messages!
     %p
-      = f.label :email, 'Adresse de courriel'
+      = f.label :email, 'Adresse de courriel'
       = f.email_field :email
     %p
-      = f.submit "Envoyer les instructions pour réinitialiser le mot de passe"
+      = f.submit "Envoyer les instructions pour réinitialiser le mot de passe"
 
   = render partial: "devise/shared/links"
