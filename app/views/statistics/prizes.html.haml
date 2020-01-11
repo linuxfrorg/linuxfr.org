@@ -1,5 +1,5 @@
 %main#contents.statistics(role="main")
-  =h1 "Statistiques d'aide au choix des primables - #{@stats.month.strftime "%m/%Y"}"
+  =h1 "Statistiques d’aide au choix des primables — #{@stats.month.strftime "%m/%Y"}"
 
   .nav
     %span
@@ -8,7 +8,7 @@
       = link_to "Mois suivant", month: @stats.month.next_month.strftime("%m-%Y")
 
   .body
-    %p= link_to("Retour à l'ensemble des statistiques", "/statistiques")
+    %p= link_to("Retour à l’ensemble des statistiques", "/statistiques")
 
     %h2 Dépêches
 

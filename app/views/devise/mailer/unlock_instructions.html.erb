@@ -1,7 +1,7 @@
-<p>Bonjour <%= @resource.email %> !</p>
+<p>Bonjour <%= @resource.email %>,</p>
 
-<p>Votre compte a été bloqué en raison d'un nombre excessif de tentatives infructueuses de connexions.</p>
+<p>Votre compte a été bloqué en raison d’un nombre excessif de tentatives infructueuses de connexions.</p>
 
-<p>Veuillez cliquer sur le lien ci-dessous pour débloquer votre compte :</p>
+<p>Veuillez cliquer sur le lien ci‑dessous pour débloquer votre compte :</p>
 
 <p><%= link_to 'Débloquer mon compte', unlock_url(@resource, :unlock_token => @token) %></p>

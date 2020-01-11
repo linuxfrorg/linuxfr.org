@@ -13,7 +13,7 @@ class Tag < ActiveRecord::Base
   has_many :taggings, dependent: :destroy, inverse_of: :tag
   has_many :nodes, -> { distinct }, through: :taggings
 
-  validates :name, presence: true, length: { maximum: 64, message: "Le tag est trop long" }
+  validates :name, presence: true, length: { maximum: 64, message: "Le nom d’étiquette est trop long" }
 
   attr_accessor :tagged_by_current
 

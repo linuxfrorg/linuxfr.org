@@ -3,7 +3,7 @@ fr:
     attributes:
       doorkeeper/application:
         name: "Nom"
-        redirect_uri: "L'URL de redirection"
+        redirect_uri: "L’URL de redirection"
         scopes: "Portées"
     errors:
       models:
@@ -14,52 +14,52 @@ fr:
               invalid_uri: "doit être une URL valide."
               relative_uri: "doit être une URL absolue."
               secured_uri: "doit être une URL HTTP/SSL."
-              forbidden_uri: 'est interdit par le serveur.'
+              forbidden_uri: 'est interdite par le serveur.'
 
   doorkeeper:
     scopes:
-      account: "Accéder à votre adresse de courriel, votre identifiant et la date de création de votre compte"
+      account: "Accéder à votre adresse de courriel, votre identifiant et à la date de création de votre compte"
       board: "Poster sur les tribunes"
 
     errors:
       messages:
         # Common error messages
-        invalid_request: 'Il manque un paramètre obligatoire dans la requête, elle comporte une valeur non prise en charge pour un paramètre, ou elle est mal-formée.'
-        invalid_redirect_uri: "L'URI de redirection incluse n'est pas valide."
-        unauthorized_client: "Le client n'est pas autorisé à effectuer cette requête en utilisant cette méthode."
-        access_denied: "Le propriétaire de la ressource ou le serveur d'autorisation a refusé la requête."
-        invalid_scope: "Les droits demandés sont invalides, inconnues ou mal-formés."
-        server_error: "Le serveur d'autorisation a rencontré une erreur."
-        temporarily_unavailable: "Le serveur d'autorisation est momentannément indisponible."
+        invalid_request: 'Il manque un paramètre obligatoire dans la requête, elle comporte une valeur non prise en charge pour un paramètre, ou elle est malformée.'
+        invalid_redirect_uri: "L’URI de redirection indiquée n’est pas valide."
+        unauthorized_client: "Le client n’est pas autorisé à effectuer cette requête en utilisant cette méthode."
+        access_denied: "Le propriétaire de la ressource ou le serveur d’autorisation a refusé la requête."
+        invalid_scope: "Les droits demandés sont invalides, inconnus ou malformés."
+        server_error: "Le serveur d’autorisation a rencontré une erreur."
+        temporarily_unavailable: "Le serveur d’autorisation est momentanément indisponible."
 
         #configuration error messages
-        credential_flow_not_configured: "Le flux des identifiants du mot de passe du propriétaire de la ressource a échoué en raison de Doorkeeper.configure.resource_owner_from_credentials n'est pas configuré."
-        resource_owner_authenticator_not_configured: "La recherche du propriétaire de la ressource a échoué en raison de Doorkeeper.configure.resource_owner_authenticator n'est pas configuré."
+        credential_flow_not_configured: "Le flux des informations d’identification du mot de passe du propriétaire de la ressource a échoué car Doorkeeper.configure.resource_owner_from_credentials n’est pas configuré."
+        resource_owner_authenticator_not_configured: "La recherche du propriétaire de la ressource a échoué car Doorkeeper.configure.resource_owner_authenticator n’est pas configuré."
 
         # Access grant errors
-        unsupported_response_type: "Le serveur d'autorisation ne prend pas en charge ce type de réponse."
+        unsupported_response_type: "Le serveur d’autorisation ne prend pas en charge ce type de réponse."
 
         # Access token errors
-        invalid_client: "L'authentification du client a échoué en raison d'un client inconnu, de l'absence d'authentification pour le client ou d'une méthode d'authentification inconnue."
-        invalid_grant: "La délégation d'autorisation fournie est invalide, a expiré, a été révoquée, ne correspond pas à l'URI de redirection utilisée pour la requête d'autorisation ou a été émise pour un autre client."
-        unsupported_grant_type: "Le type de la délégation d'autorisation n'est pas pris en charge pour le serveur d'autorisation."
+        invalid_client: "L’authentification du client a échoué en raison d’un client inconnu, de l’absence d’authentification pour le client ou d’une méthode d’authentification inconnue."
+        invalid_grant: "La délégation d’autorisation fournie est invalide, a expiré, a été révoquée, ne correspond pas à l’URI de redirection utilisée pour la requête d’autorisation ou a été émise pour un autre client."
+        unsupported_grant_type: "Le type de la délégation d’autorisation n’est pas pris en charge par le serveur d’autorisation."
 
         # Password Access token errors
-        invalid_resource_owner: "Les identifiants fournis pour le propriétaire de la ressource ne sont pas valides, ou le propriétaire de la ressource ne peut pas être trouvé."
+        invalid_resource_owner: "Les identifiants fournis pour le propriétaire de la ressource ne sont pas valides, ou le propriétaire de la ressource est introuvable."
 
         invalid_token:
-          revoked: "Le jeton d'accès a été révoqué"
-          expired: "Le jeton d'accès a expiré"
-          unknown: "Le jeton d'accès est invalide"
+          revoked: "Le jeton d’accès a été révoqué"
+          expired: "Le jeton d’accès a expiré"
+          unknown: "Le jeton d’accès est invalide"
 
     flash:
       applications:
         create:
-          notice: "L'application a été enregistrée."
+          notice: "L’application a été enregistrée."
         destroy:
-          notice: "L'application a été supprimée."
+          notice: "L’application a été supprimée."
         update:
-          notice: "L'application a été mise à jour."
+          notice: "L’application a été mise à jour."
       authorized_applications:
         destroy:
-          notice: "L'application a été révoquée."
+          notice: "L’application a été révoquée."

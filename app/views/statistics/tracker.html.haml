@@ -4,16 +4,16 @@
 
   .body
     %p
-      Ces statistiques ne prennent en compte que le système de suivi, en dehors du spam qui est supprimé, et des demandes envoyées par courriel, messagerie instantanée, lettres d'avocat, kernel panic et autres erreurs Nginx.
+      Ces statistiques ne prennent en compte que le système de suivi, en dehors des indésirables qui sont supprimés, et des demandes envoyées par courriel, messagerie instantanée, lettres d’avocat, kernel panic et autres erreurs Nginx.
     %strong
       Statistiques mises à jour le #{l Time.now}
 
-    %p= link_to("Retour à l'ensemble des statistiques", "/statistiques")
+    %p= link_to("Retour à l’ensemble des statistiques", "/statistiques")
 
     %p
       #{pluralize @stats.states["opened"], "entrée ouverte", "entrées ouvertes" },
       #{pluralize @stats.states["invalid"], "invalide"} et
-      #{pluralize @stats.states["fixed"], "fermée"}, total #{pluralize @stats.states["total"], "envoyée"}
+      #{pluralize @stats.states["fixed"], "fermée"}, soit un total de #{pluralize @stats.states["total"], "entrée envoyée", "entrées envoyées"}
       par #{pluralize @stats.distinct_users, "visiteur"} (en groupant les anonymes).
     %p
       Le temps moyen de résolution est de #{pluralize @stats.average_time, "jour"}.
@@ -22,11 +22,11 @@
 
     - if @stats.top_reporters.any?
       - maxval = @stats.top_reporters.map {|a| a["cnt"] }.max
-      %h2#nbouvertes Utilisateurs ayant ouvert le plus grand nombre d'entrées
+      %h2#nbouvertes Utilisateurs et utilisatrices ayant ouvert le plus grand nombre d’entrées
       %table
         %tr
           %th Personne
-          %th Entrées ouvertes
+          %th Nombre d’entrées ouvertes
         - @stats.top_reporters.each do |user|
           %tr
             %td.stat
@@ -36,11 +36,11 @@
 
     - if @stats.good_workers.any?
       - maxval = @stats.good_workers.map {|a| a["cnt"] }.max
-      %h2#nbfermees Nombre d'entrées fermées par les admins
+      %h2#nbfermees Nombre d’entrées fermées par les administrateurs
       %table
         %tr
           %th Personne
-          %th Entrées fermées
+          %th Nombre d’entrées fermées
         - @stats.good_workers.each do |worker|
           %tr
             %td.stat
@@ -49,16 +49,14 @@
               .stat.misc(style="width: #{(width_stats * worker["cnt"] / maxval).to_i}px;")= worker["cnt"]
 
     - if @stats.by_year.any?
-      %h2#an Entrées classées par année
-      %p
-        État des entrées dans le système de suivi (classées par date d'ouverture)
+      %h2#an Total des entrées par année d’ouverture et par état
       %table
         %tr
           %th Année
           %th Entrées ouvertes
           %th Entrées corrigées
           %th Entrées invalidées
-          %th Total
+          %th Total annuel
         - @stats.by_year.each do |year,states|
           %tr
             %td.stat= year
@@ -71,7 +69,7 @@
             %td.total= states.values.sum
 
     -if @stats.states["total"] > 0
-      %h2#mois Évolution du nombre d'entrées dans le système de suivi
+      %h2#mois Évolution mensuelle du nombre d’entrées dans le système de suivi par état
       - maxval = @stats.by_month.values.max {|a,b| a.values.max <=> b.values.max}.values.max
       %table
         %tr
@@ -100,12 +98,12 @@
             %td
               .stat.month_invalid(style="width:#{width_stats * invalid / maxval / 4}px;")= invalid
 
-      %h2#categorie État des entrées dans le système de suivi par catégorie
+      %h2#categorie Nombre d’entrées dans le système de suivi par catégorie
       - maxval = @stats.by_category.max {|a,b| a["cnt"] <=> b["cnt"]}["cnt"]
       %table
         %tr
           %th Catégorie
-          %th Nombre d'entrées
+          %th Nombre d’entrées
         - @stats.by_category.each do |category|
           %tr
             %td.stat= category["name"]

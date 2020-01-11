@@ -32,11 +32,11 @@
         = button_to "Ajouter un paragraphe", redaction_news_paragraphs_path(news_id: @news), remote: true, class: "add_para"
   = link_to "Réorganiser", reorganize_redaction_news_path(@news), class: "reorganize"
   - if @news.urgent?
-    = button_to "Enlever l'urgence", cancel_urgent_redaction_news_path(@news), class: "urgent_news"
+    = button_to "Enlever l’urgence", cancel_urgent_redaction_news_path(@news), class: "urgent_news"
   - else
-    = button_to "Marquer comme urgent", urgent_redaction_news_path(@news), class: "urgent_news", data: { confirm: "Cette dépêche est urgente et doit être publiée au plus tôt ?" }
+    = button_to "Marquer comme urgent", urgent_redaction_news_path(@news), class: "urgent_news", data: { confirm: "Cette dépêche est‑elle urgente et doit‑elle être publiée au plus tôt ?" }
 - else
-  %h2 Dépêche importée !
+  %h2 Dépêche importée !
   = form_for [:moderation, @news] do |form|
     %p
       = form.label :title, "Titre de la dépêche"
@@ -50,7 +50,7 @@
     #form_links
       %fieldset
         %label#label-link-name Nom du lien
-        %label#label-link-url URL
+        %label#label-link-url Adresse
         %label#label-link-lang langue
         %label#label-link-actions actions
       = form.fields_for :links do |lform|

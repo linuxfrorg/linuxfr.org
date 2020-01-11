@@ -35,7 +35,7 @@ class PollsController < ApplicationController
     @poll.attributes = poll_params
     @poll.tmp_owner_id = current_account.user_id
     if !preview_mode && @poll.save
-      redirect_to polls_url, notice: "L'équipe de modération de LinuxFr.org vous remercie pour votre proposition de sondage"
+      redirect_to polls_url, notice: "L’équipe de modération de LinuxFr.org vous remercie pour votre proposition de sondage"
     else
       @poll.node = Node.new
       @poll.valid?
@@ -48,7 +48,7 @@ class PollsController < ApplicationController
     @answer = @poll.answers.where(position: params[:position]).first
     if @answer
       @answer.vote(request.remote_ip)
-      redirect_to @poll, notice: "Merci d'avoir voté pour ce sondage"
+      redirect_to @poll, notice: "Merci d’avoir voté pour ce sondage"
     else
       redirect_to @poll, alert: "Veuillez choisir une proposition avant de voter"
     end

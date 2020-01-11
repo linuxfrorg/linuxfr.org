@@ -67,19 +67,19 @@ class Account < ActiveRecord::Base
   LOGIN_REGEXP = /\A[\p{Word}.+\-]+\z/
   validates :login, presence: { message: "Veuillez choisir un pseudo"},
                     uniqueness: { message: "Ce pseudo est déjà pris" },
-                    format: { message: "Le pseudo n'est pas valide", with: LOGIN_REGEXP, allow_blank: true, on: :create },
-                    length: { maximum: 40, message: "Le login est trop long" }
+                    format: { message: "Le pseudo n’est pas valide", with: LOGIN_REGEXP, allow_blank: true, on: :create },
+                    length: { maximum: 40, message: "Le nom d’utilisateur est trop long" }
 
   EMAIL_REGEXP = /\A[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}\z/i
-  validates :email, presence: { message: "Veuillez remplir l'adresse de courriel" },
+  validates :email, presence: { message: "Veuillez remplir l’adresse de courriel" },
                     uniqueness: { message: "Cette adresse de courriel est déjà utilisée", case_sensitive: false, allow_blank: true },
-                    format: { message: "L'adresse de courriel n'est pas valide", with: EMAIL_REGEXP, allow_blank: true },
-                    length: { maximum: 128, message: "L'adresse de courriel est trop longue" }
+                    format: { message: "L’adresse de courriel n’est pas valide", with: EMAIL_REGEXP, allow_blank: true },
+                    length: { maximum: 128, message: "L’adresse de courriel est trop longue" }
 
   validates :password, presence: { message: "Le mot de passe est absent", on: :create },
                        confirmation: { message: "La confirmation du mot de passe ne correspond pas au mot de passe" }
 
-  validates :stylesheet, length: { maximum: 255, message: "L'URL de la feuille de style est trop longue" }
+  validates :stylesheet, length: { maximum: 255, message: "L’URL de la feuille de style est trop longue" }
 
 ### Authentication ###
 
@@ -155,7 +155,7 @@ class Account < ActiveRecord::Base
   def log_role
     roles = previous_changes["role"]
     return if roles.nil?
-    logs.create(description: "Changement de rôle : #{roles.join ' → '}", user_id: amr_id)
+    logs.create(description: "Changement de rôle : #{roles.join ' → '}", user_id: amr_id)
   end
 
   # An AMR is someone who is either an admin or a moderator
@@ -278,7 +278,7 @@ class Account < ActiveRecord::Base
   def block(nb_days, user_id)
     $redis.set("block/#{self.id}", 1)
     $redis.expire("block/#{self.id}", nb_days * 86400)
-    logs.create(description: "Interdiction de poster des commentaires pour #{pluralize nb_days, "jour"}", user_id: user_id)
+    logs.create(description: "Interdiction de poster des commentaires pendant #{pluralize nb_days, "jour"}", user_id: user_id)
   end
 
   def can_block?
@@ -294,7 +294,7 @@ class Account < ActiveRecord::Base
   def plonk(nb_days, user_id)
     $redis.set("plonk/#{self.id}", 1)
     $redis.expire("plonk/#{self.id}", nb_days * 86400)
-    logs.create(description: "Interdiction de tribune pour #{pluralize nb_days, "jour"}", user_id: user_id)
+    logs.create(description: "Interdiction de tribune pendant #{pluralize nb_days, "jour"}", user_id: user_id)
   end
 
   def can_plonk?

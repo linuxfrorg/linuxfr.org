@@ -7,6 +7,6 @@
   = form_for @tracker do |form|
     = render form
 
-  = button_to "Supprimer", @tracker, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette entrée du tracker ?" }, class: "delete_button"
+  = button_to "Supprimer", @tracker, method: :delete, data: { confirm: "Confirmez‑vous vouloir supprimer cette entrée du suivi ?" }, class: "delete_button"
 
   = render 'shared/wiki_help'

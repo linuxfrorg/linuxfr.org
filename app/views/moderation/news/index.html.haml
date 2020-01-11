@@ -17,7 +17,7 @@
     = list_of(@drafts) do |news|
       = link_to news.title, [:redaction, news]
 
-%h2 15 dernières dépêches refusées
+%h2 Quinze dernières dépêches refusées
 %ul
   = list_of(@refused) do |news|
     = link_to news.title, [:moderation, news]
@@ -26,7 +26,7 @@
   = link_to "Images externes", moderation_images_path
 
 %h2
-  = link_to "Tags publics", moderation_tags_path
+  = link_to "Étiquettes publiques", moderation_tags_path
 
 %h2
   = link_to "Sondages", moderation_polls_path

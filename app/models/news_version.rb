@@ -25,13 +25,13 @@ class NewsVersion < ActiveRecord::Base
 
   before_update :raise_on_update
   def raise_on_update
-    raise ActiveRecordError.new "On ne modifie pas les anciennes versions !"
+    raise ActiveRecordError.new "On ne modifie pas les anciennes versions !"
   end
 
 ### Presentation ###
 
   def message
-    "Révision n°#{self.version}"
+    "Révision nᵒ #{self.version}"
   end
 
   def author_name

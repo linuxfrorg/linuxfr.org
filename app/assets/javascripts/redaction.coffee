@@ -20,7 +20,7 @@ class Redaction
     $.noticeAdd text: "La dépêche a été refusée par #{msg.username}", stay: true
 
   onRewrite: (msg) ->
-    $.noticeAdd text: "La dépêche a été renvoyée dans l'espace de rédaction par #{msg.username}", stay: true
+    $.noticeAdd text: "La dépêche a été renvoyée dans l’espace de rédaction par #{msg.username}", stay: true
 
   onVote: (msg) ->
     $.noticeAdd text: "#{msg.username} a voté #{msg.word}"
@@ -36,7 +36,7 @@ class Redaction
     slug  = parts[parts.length - 1]
     """
     <li><a href="/redaction/news/#{slug}/revisions/#{msg.version}">
-      #{msg.username}&nbsp;: #{msg.message} - #{msg.creationdate}
+      #{msg.username} : #{msg.message} - #{msg.creationdate}
     </a></li>
     """
 

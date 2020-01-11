@@ -12,7 +12,7 @@
       %div{class: "board-left"}
         %time.norloge{datetime: board.created_at.iso8601, norloge: norloge(board, box)}
           - if board.created_at.today?
-            Aujourd'hui,
+            Aujourd’hui,
           - else
             = "Il y a #{time_ago_in_words board.created_at},"
           = board.created_at.strftime('%Hh%M')

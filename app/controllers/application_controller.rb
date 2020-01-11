@@ -35,7 +35,7 @@ protected
     @title         = %w(LinuxFr.org)
     @author        = nil
     @keywords      = %w(Linux Logiciel Libre GNU Free Software Actualité Forum Communauté)
-    @description   = "L'actualité du Logiciel Libre et de Linux, sur un site francophone contributif géré par une équipe bénévole par et pour des libristes enthousiastes"
+    @description   = "L’actualité du logiciel libre et des sujets voisins (DIY, Open Hardware, Open Data, les Communs, etc.), sur un site francophone contributif géré par une équipe bénévole par et pour des libristes enthousiastes"
     @feeds         = {}
     @last_comments = Comment.footer
     @popular_tags  = Tag.footer

@@ -35,7 +35,7 @@ class DiariesController < ApplicationController
       @diary.node = Node.new(user_id: current_user.id, cc_licensed: @diary.cc_licensed)
       @diary.node.preview_tags = params[:tags]
       @diary.valid?
-      flash.now[:alert] = "Votre journal ne contient pas de liens. Êtes-vous sûr ?" unless @diary.body =~ /<a /
+      flash.now[:alert] = "Votre journal ne contient pas de liens. Confirmez‑vous que cela est normal ?" unless @diary.body =~ /<a /
       render :new
     end
   end
@@ -47,7 +47,7 @@ class DiariesController < ApplicationController
     path = user_diary_path(@user, @diary, format: params[:format])
     redirect_to path, status: 301 if request.path != path
     headers['Link'] = %(<#{user_diary_url @user, @diary}>; rel="canonical")
-    flash.now[:alert] = "Attention, ce journal a été supprimé et n'est visible que par les admins" unless @diary.visible?
+    flash.now[:alert] = "Attention, ce journal a été supprimé et n’est visible que par les administrateurs" unless @diary.visible?
   end
 
   def edit
@@ -79,7 +79,7 @@ class DiariesController < ApplicationController
       space = :redaction if @news.draft?
       redirect_to [space, @news]
     else
-      redirect_to "/", notice: "Merci d'avoir proposé ce journal en dépêche"
+      redirect_to "/", notice: "Merci d’avoir proposé ce journal en dépêche"
     end
   rescue
     flash.now[:alert] = "Impossible de proposer ce journal en dépêche"
@@ -91,7 +91,7 @@ class DiariesController < ApplicationController
     @diary.move_to_forum params.require(:post).permit(:forum_id)
     redirect_to diaries_url, notice: "Le journal a bien été déplacé vers les forums"
   rescue
-    flash.now[:alert] = "Impossible de déplacer ce journal. Avez-vous bien choisi un forum ?"
+    flash.now[:alert] = "Impossible de déplacer ce journal. Avez‑vous bien choisi un forum ?"
     render :edit
   end
 

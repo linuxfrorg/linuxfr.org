@@ -4,12 +4,12 @@ class Admin::AdminsController < AdminController
 
   def create
     @account.give_admin_rights!
-    redirect_to @account.user, notice: "Nouveau rôle : admin"
+    redirect_to @account.user, notice: "Nouveau rôle : admin"
   end
 
   def destroy
     @account.remove_all_rights!
-    redirect_to @account.user, notice: "Rôle retiré : admin"
+    redirect_to @account.user, notice: "Rôle retiré : admin"
   end
 
 protected

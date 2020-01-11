@@ -25,7 +25,7 @@ class TagsController < ApplicationController
   def update
     @node.taggings.create(tag_id: @tag.id, user_id: current_account.user_id)
     respond_to do |wants|
-     wants.json { render json: { notice: "Tag ajouté" } }
+     wants.json { render json: { notice: "Étiquette ajoutée" } }
      wants.html { redirect_to_content @node.content }
     end
   end
@@ -34,7 +34,7 @@ class TagsController < ApplicationController
     @tag = Tag.where(name: params[:id]).first
     @node.taggings.where(tag_id: @tag.id, user_id: current_account.user_id).delete_all if @tag
     respond_to do |wants|
-     wants.json { render json: { notice: "Tag enlevé" } }
+     wants.json { render json: { notice: "Étiquette enlevée" } }
      wants.html { redirect_to_content @node.content }
     end
   end
@@ -78,7 +78,7 @@ class TagsController < ApplicationController
   def hide
     enforce_update_permission(@tag)
     @tag.toggle!("public")
-    redirect_back fallback_location: root_url, notice: "La visibilité du tag a bien été modifiée"
+    redirect_back fallback_location: root_url, notice: "La visibilité de l’étiquette a bien été modifiée"
   rescue
     redirect_to root_url
   end

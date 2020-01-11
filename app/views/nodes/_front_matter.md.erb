@@ -6,7 +6,7 @@ Authors: <%= raw content.node.user.try(:name) %>
 <%- end -%>
 Date:    <%= raw content.created_at.iso8601 %>
 <%- if content.node.cc_licensed? -%>
-License: CC by-sa
+License: CC By-SA
 <%- end -%>
 Tags:    <%= raw content.node.popular_tags.map(&:name).to_sentence %>
 Score:   <%= raw content.score %>

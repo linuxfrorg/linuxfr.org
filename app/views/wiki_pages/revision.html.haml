@@ -16,7 +16,7 @@
   %h2
     = link_to @wiki_page.title, @wiki_page
   %h3
-    #{@version.author_name}&nbsp;: #{@version.message} (#{l @version.created_at})
+    #{@version.author_name} : #{@version.message} (#{l @version.created_at})
   %pre
     = htmldiff @was, @version.body
 

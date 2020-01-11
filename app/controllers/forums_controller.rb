@@ -16,7 +16,7 @@ class ForumsController < ApplicationController
   def show
     @forum = Forum.find(params[:id])
     @posts = @forum.posts.with_node_ordered_by(@order).page(params[:page])
-    flash.now[:alert] = "Attention, ce forum a été archivé et n'accueille plus de nouvelles discussions." unless @forum.active?
+    flash.now[:alert] = "Attention, ce forum a été archivé et n’accueille plus de nouvelles discussions." unless @forum.active?
     respond_to do |wants|
       wants.html
       wants.atom

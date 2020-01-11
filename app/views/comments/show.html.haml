@@ -9,7 +9,7 @@
       = link_to "Modifier ce commentaire", "/nodes/#{@comment.node_id}/comments/#{@comment.id}/modifier"
   - if current_account.can_destroy?(@comment)
     %p
-      = button_to "Supprimer ce commentaire", [@comment.node, @comment], method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce commentaire ?" }, class: "delete_button"
+      = button_to "Supprimer ce commentaire", [@comment.node, @comment], method: :delete, data: { confirm: "Confirmez‑vous vouloir supprimer ce commentaire ?" }, class: "delete_button"
 
 %main#contents(role="main")
   %div#comments

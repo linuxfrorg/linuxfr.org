@@ -3,7 +3,7 @@
 %p= link_to "Créer un forum", new_admin_forum_path
 
 - if @forums.empty?
-  %p Pas de forums
+  %p Aucun forum
 - else
   %table
     %tr
@@ -14,11 +14,11 @@
         %td
           = link_to forum.title, forum
         %td
-          = button_to "&uarr;".html_safe, higher_admin_forum_path(forum)
-          = button_to "&darr;".html_safe, lower_admin_forum_path(forum)
+          = button_to "↑", higher_admin_forum_path(forum)
+          = button_to "↓", lower_admin_forum_path(forum)
           = link_to "Modifier", edit_admin_forum_path(forum)
           - if forum.active?
-            = button_to "Archiver", archive_admin_forum_path(forum), data: { confirm: "Archiver le forum ?" }, class: "archive_button"
+            = button_to "Archiver", archive_admin_forum_path(forum), data: { confirm: "Archiver le forum ?" }, class: "archive_button"
           - else
-            = button_to "Ré-ouvrir", reopen_admin_forum_path(forum), data: { confirm: "Ré-ouvrir le forum ?" }, class: "reopen_button"
-          = button_to "Supprimer", [:admin, forum], method: :delete, data: { confirm: "Supprimer le forum ?" }, class: "delete_button"
+            = button_to "Réouvrir", reopen_admin_forum_path(forum), data: { confirm: "Réouvrir le forum ?" }, class: "reopen_button"
+          = button_to "Supprimer", [:admin, forum], method: :delete, data: { confirm: "Supprimer le forum ?" }, class: "delete_button"

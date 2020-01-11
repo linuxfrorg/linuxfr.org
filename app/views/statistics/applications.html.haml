@@ -5,29 +5,29 @@
   .body
     %strong
       Statistiques mises à jour le #{l Time.now}
-    %p= link_to("Retour à l'ensemble des statistiques", "/statistiques")
+    %p= link_to("Retour à l’ensemble des statistiques", "/statistiques")
     %p
-      Des #{link_to("API pour les développeurs", "/developpeur")} sont disponibles pour réaliser des applications/sites interagissant le site.
+      Des #{link_to("API pour les développeurs", "/developpeur")} sont disponibles pour réaliser des applications ou des sites Web interagissant avec le site LinuxFr.org.
 
     %h2 Sommaire
     %ul
       %li=link_to("général","#general")
       %li=link_to("applications par année","#anneejetons")
       %li=link_to("autorisations par année","#anneeautorisations")
-      %li=link_to("jetons d'applications par année","#anneejetons")
+      %li=link_to("jetons d’applications par année","#anneejetons")
 
     %h2#general Général
     %ul
       %li #{pluralize @stats.applications, "application créée", "applications créées"} par #{pluralize @stats.applications_distinct_owners, "utilisateur", "utilisateurs distincts"}
       %li #{pluralize @stats.access_grants, "autorisation créée", "autorisations créées"} pour #{pluralize @stats.access_grants_distinct_applications, "application", "applications distinctes"}
-      %li #{pluralize @stats.access_tokens["total"], "jeton d'application créé", "jetons d'autorisation créés"} pour #{pluralize @stats.access_tokens_distinct_applications, "application", "applications distinctes"}, avec #{pluralize @stats.access_tokens["00"], "jeton actif (utilisé", "jetons actifs (utilisés"} au cours des 24 dernières heures), #{pluralize @stats.access_tokens["10"], "utilisable", "utilisables"} et #{pluralize @stats.access_tokens["11"], "périmé", "périmés"}
+      %li #{pluralize @stats.access_tokens["total"], "jeton d’application créé", "jetons d’applications créés"} pour #{pluralize @stats.access_tokens_distinct_applications, "application", "applications distinctes"}, avec #{pluralize @stats.access_tokens["00"], "jeton actif (utilisé", "jetons actifs (utilisés"} au cours des 24 dernières heures), #{pluralize @stats.access_tokens["10"], "utilisable", "utilisables"} et #{pluralize @stats.access_tokens["11"], "périmé", "périmés"}
 
-    %h2#annee Répartition annuelle des #{@stats.applications} applications
+    %h2#annee Répartition annuelle des #{@stats.applications} applications
     %table
       - maxval = @stats.applications_by_year.values.max
       %tr
         %th Année
-        %th Applications
+        %th Nombre d’applications
       - @stats.applications_by_year.each do |year,cnt|
         %tr
           %td
@@ -35,12 +35,12 @@
           %td
             .stat.content(style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
 
-    %h2#anneeautorisations Répartition annuelle des #{pluralize @stats.access_grants, "autorisation", "autorisations"}
+    %h2#anneeautorisations Répartition annuelle des #{pluralize @stats.access_grants, "autorisation", "autorisations"}
     %table
       - maxval = @stats.access_grants_by_year.values.max
       %tr
         %th Année
-        %th Autorisations
+        %th Nombre d’autorisations
       - @stats.access_grants_by_year.each do |year,cnt|
         %tr
           %td
@@ -48,13 +48,13 @@
           %td
             .stat.content(style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
 
-    %h2#anneejetons Répartition annuelle des #{pluralize @stats.access_tokens["total"], "jeton d'application", "jetons d'application"}
+    %h2#anneejetons Répartition annuelle des #{pluralize @stats.access_tokens["total"], "jeton d’application", "jetons d’applications"}
     %table
       - maxval = @stats.access_tokens_by_year.values.map(&:values).flatten.max
       %tr
         %th Année
         %th État
-        %th Tokens
+        %th Nombre de jetons
       - @stats.access_tokens_by_year.each do |year,token|
         - newyear = true
         - token.each do |inactive,cnt|

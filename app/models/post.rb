@@ -28,7 +28,7 @@ class Post < Content
   validates :forum,     presence: { message: "Vous devez choisir un forum" }
   validates :title,     presence: { message: "Le titre est obligatoire" },
                         length: { maximum: 100, message: "Le titre est trop long" }
-  validates :wiki_body, presence: { message: "Vous ne pouvez pas poster un journal vide" }
+  validates :wiki_body, presence: { message: "Vous ne pouvez pas poster une entrée de forum vide" }
 
   wikify_attr   :body
   truncate_attr :body

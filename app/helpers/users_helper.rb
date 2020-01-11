@@ -31,13 +31,13 @@ module UsersHelper
     return unless karma > 0
     attrs = {}
     attrs[:rel] = "nofollow" unless user.account.try(:karma).to_i > Account.default_karma
-    link_to("page perso", user.homesite, attrs)
+    link_to("site Web personnel", user.homesite, attrs)
   end
 
   def jabber_link(user)
     return unless current_account
     return if user.jabber_id.blank?
-    link_to("jabber id", "xmpp:" + user.jabber_id)
+    link_to("adresse XMPP", "xmpp:" + user.jabber_id)
   end
 
 end

@@ -6,7 +6,7 @@
     %strong
       Statistiques mises à jour le #{l Time.now}
 
-    %p= link_to("Retour à l'ensemble des statistiques", "/statistiques")
+    %p= link_to("Retour à l’ensemble des statistiques", "/statistiques")
 
     %h2 Sommaire
     %ul
@@ -18,7 +18,7 @@
       %li=link_to("par licence","#licence")
 
     - if @stats.contents["Total"] > 1
-      %h2#type Répartition par type des #{@stats.contents["Total"]} contenus
+      %h2#type Répartition par type des #{@stats.contents["Total"]} contenus
     - else
       %h2#type Répartition par type
     %ul
@@ -34,7 +34,7 @@
       %li #{pluralize @stats.contents["Bookmark"], "lien"}
 
     - if @stats.contents["Total"] > 1
-      %h2#annee Répartition annuelle des #{@stats.contents["Total"]} contenus
+      %h2#annee Répartition annuelle des #{@stats.contents["Total"]} contenus
     - else
       %h2#annee Répartition annuelle
 
@@ -43,7 +43,7 @@
       %tr
         %th Année
         %th Type
-        %th Contenus publiés
+        %th Nombre de contenus publiés
       - @stats.contents_by_year.each do |year,content|
         - newyear = true
         - content.each do |type,cnt|
@@ -57,7 +57,7 @@
               .stat(class="content#{type.downcase()}" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
 
     - if @stats.contents["Total"] > 1
-      %h2#mois Répartition mensuelle des #{@stats.contents["Total"]} contenus publiés
+      %h2#mois Répartition mensuelle des #{@stats.contents["Total"]} contenus publiés
     - else
       %h2#mois Répartition mensuelle
 
@@ -66,7 +66,7 @@
       %tr
         %th Mois
         %th Type
-        %th Contenus publiés
+        %th Nombre de contenus publiés
       - @stats.contents_by_month.each do |month,content|
         - newyear = true
         - content.each do |type,cnt|
@@ -79,7 +79,7 @@
             %td
               .stat(class="content#{type.downcase()}" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
 
-    %h2#jour Répartition des contenus par jour de la semaine
+    %h2#jour Répartition du nombre de contenus par jour de la semaine
     - if @stats.contents["Total"] > 1
       - maxval = @stats.contents_by_day.map {|a| a["cnt"] }.max
       %table
@@ -100,7 +100,7 @@
       %table
       %table
         %tr
-          %th Années
+          %th Année
           %th Taille moyenne des dépêches (en octets, mise en forme comprise)
         - @stats.news_size.each do |entry|
           %tr
@@ -110,12 +110,12 @@
     - else
       Aucune dépêche publiée
 
-    %h2#licence Évolution du pourcentage de contenus sous licence CC By-Sa
+    %h2#licence Évolution du pourcentage de contenus sous licence CC By‑SA
     - if @stats.contents_by_license.any?
       %table
         %th Année
         %th Type
-        %th Pourcentage de dépêches et journaux sous licence Creative Commons By-Sa
+        %th Pourcentage de dépêches et journaux sous licence Creative Commons By‑SA
         - @stats.contents_by_license.each do |year,content|
           - newyear = true
           - content.each do |type,cnt|

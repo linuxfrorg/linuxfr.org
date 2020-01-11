@@ -1,5 +1,5 @@
 #tags_box.box
-  %h1 Mes tags
+  %h1 Mes étiquettes (tags)
   %ul
     = list_of(@tags) do |tag|
       = link_to tag.name, tag_path(tag.name)

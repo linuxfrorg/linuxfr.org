@@ -2,9 +2,9 @@
   = render "tags/near", on_public: true
 = render "hide"
 
-=h1 "Tous les contenus taggés avec #{@tag.name}"
-- feed "Flux Atom du tag #{@tag.name}"
-- link = link_to("Afficher uniquement les contenus que j'ai taggés avec #{@tag.name}", tag_path(@tag.name)) if current_account
+=h1 "Tous les contenus étiquetés avec « #{@tag.name} »"
+- feed "Flux Atom étiqueté « #{@tag.name} »"
+- link = link_to("Afficher uniquement les contenus que j’ai étiquetés avec « #{@tag.name} »", tag_path(@tag.name)) if current_account
 = paginated_section @nodes, link do
   %main#contents(role="main")
     = render @nodes.map(&:content)

@@ -1,8 +1,8 @@
 = article_for tracker do |c|
-  - c.title = "#{link_to "Suivi - #{tracker.category_title}", "/suivi?tracker%5Bcategory_id%5D=#{tracker.category_id}", class: "topic"} #{link_to tracker.title, tracker}".html_safe
+  - c.title = "#{link_to "Suivi — #{tracker.category_title}", "/suivi?tracker%5Bcategory_id%5D=#{tracker.category_id}", class: "topic"} #{link_to tracker.title, tracker}".html_safe
   - c.meta = capture do
     %span.tracker_id ##{tracker.id}
     = posted_by(tracker)
-    État de l'entrée&nbsp;: #{tracker.state_name}.
+    État de l’entrée : #{tracker.state_name}.
   - if current_account && current_account.can_update?(tracker)
     - c.actions = link_to("Modifier", "/suivi/#{tracker.to_param}/modifier", class: 'action')

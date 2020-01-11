@@ -2,16 +2,16 @@
   =h1 "Feuilles de style alternatives"
 
   %p
-    Votre feuille de style actuelle est&nbsp;: #{@current || "celle par défaut"}.
+    Votre feuille de style actuelle est : #{@current || "celle par défaut"}.
 
   %p
-    Vous souhaitez revenir à la CSS fournie par défaut ? Cliquez sur ce bouton :
+    Vous souhaitez revenir à la CSS fournie par défaut ? Cliquez sur ce bouton :
 
   = button_to "CSS par défaut", "/stylesheet", method: :delete, class: "ok_button"
 
   %p
-    Il est possible de choisir une feuille de style (CSS) alternative pour l'affichage du site LinuxFr.org.
-    Ces feuilles de style ont été écrites par des contributeurs externes du site et leur maintenance n'est pas garantie.
+    Il est possible de choisir une feuille de style (CSS) alternative pour l’affichage du site LinuxFr.org.
+    Ces feuilles de style ont été écrites par des contributeurs externes du site et leur maintenance n’est pas garantie.
     Pour en choisir une, cliquer simplement sur son image.
 
   = form_tag "/stylesheet", method: :put do
@@ -26,22 +26,22 @@
 
   %p
     En plus des feuilles de style proposées sur cette page, vous pouvez utiliser une feuille de style de votre choix.
-    Deux méthodes vous sont proposées : utiliser une feuille de style hébergée sur un autre serveur ou uploader un fichier.
+    Deux méthodes vous sont proposées : utiliser une feuille de style hébergée sur un autre serveur ou téléverserer un fichier.
 
   %p
-    Dans les deux cas, la feuille de style peut être une réécriture complète ou juste l'ajout de quelques règles à la feuille de style par défaut.
-    Pour cela, il vous suffit de commencer votre feuille de style par la déclaration suivante :
+    Dans les deux cas, la feuille de style peut être une réécriture complète ou juste l’ajout de quelques règles à la feuille de style par défaut.
+    Pour cela, il vous suffit de commencer votre feuille de style par la déclaration suivante :
 
   %pre
     @import url("//#{MY_DOMAIN}/assets/application.css");
 
   %div.sideforms
     = form_tag "/stylesheet", method: :put do
-      = label_tag :stylesheet, "Pour utiliser une feuille de style externe, veuillez saisir son URL :"
+      = label_tag :stylesheet, "Pour utiliser une feuille de style externe, veuillez saisir son adresse :"
       = text_field_tag :stylesheet
       = submit_tag 'OK'
 
     = form_tag "/stylesheet", multipart: true do
-      = label_tag :uploaded_stylesheet, "Pour utiliser une feuille de style présente sur votre ordinateur, veuillez l'uploader :"
+      = label_tag :uploaded_stylesheet, "Pour utiliser une feuille de style présente sur votre ordinateur, veuillez la téléverser :"
       = file_field_tag :uploaded_stylesheet
       = submit_tag 'OK'

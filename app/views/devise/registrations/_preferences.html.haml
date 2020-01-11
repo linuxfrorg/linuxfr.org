@@ -5,10 +5,10 @@
       = u.label :name, "Prénom et nom"
       = u.text_field :name, maxlength: 40
     %p
-      = u.label :homesite, 'Site web personnel'
+      = u.label :homesite, 'Site Web personnel'
       = u.url_field :homesite, maxlength: 100
     %p
-      = u.label :jabber_id, 'Jabber ID'
+      = u.label :jabber_id, 'Adresse XMPP'
       %span.prefix xmpp:
       = u.text_field :jabber_id, placeholder: "me@example.net", maxlength: 32
     %p
@@ -25,12 +25,12 @@
     = f.label :show_negative_nodes, "Afficher les journaux avec un score négatif"
   %p
     = check_box_tag :account_visible_toolbar, 1, true
-    = f.label :visible_toolbar, "Afficher la barre d'outils dans ce navigateur"
+    = f.label :visible_toolbar, "Afficher la barre d’outils dans ce navigateur"
   %p
-    %label.factice Sûr de vos modifications ?
+    %label.factice Confirmez‑vous ces modifications ?
     = f.submit "Enregistrer"
 
-%h2 Choisir les contenus affichés sur la page d'accueil
+%h2 Choisir les contenus affichés sur la page d’accueil
 = form_for @account, url: registration_path(:account), method: :put do |f|
   %p
     = f.check_box :news_on_home
@@ -57,7 +57,7 @@
     = f.check_box :sort_by_date_on_home
     = f.label :sort_by_date_on_home, "Trier par ordre antéchronologique"
   %p
-    %label.factice Sûr de vos modifications ?
+    %label.factice Confirmez‑vous ces modifications ?
     = f.submit "Enregistrer"
 
 %h2 Choisir vos préférences pour la tribune
@@ -68,7 +68,7 @@
     = f.label :totoz_style_inline, "En ligne"
   %p
     = f.radio_button :totoz_style, "popup"
-    = f.label :totoz_style_popup, "En popup"
+    = f.label :totoz_style_popup, "En fenêtre surgissante"
   %p
     = f.radio_button :totoz_style, "none"
     = f.label :totoz_style_none, "Ne pas afficher"
@@ -76,7 +76,7 @@
   %p
     = f.select :totoz_source, {"totoz.eu" => "https://totoz.eu/img/", "totoz.eu (NSFW)" => "https://nsfw.totoz.eu/img/", "claudex.be/sfwttz" => "https://claudex.be/sfwttz/", "claudex.be/ttz (NSFW)" => "https://claudex.be/ttz/"}
   %p
-    %label.factice Sûr de vos modifications ?
+    %label.factice Confirmez‑vous ces modifications ?
     = f.submit "Enregistrer"
 
 %h2 Choisir les contenus affichés sur la barre latérale
@@ -85,5 +85,5 @@
     = f.check_box :board_in_sidebar
     = f.label :board_in_sidebar, "Tribune"
   %p
-    %label.factice Sûr de vos modifications ?
+    %label.factice Confirmez‑vous ces modifications ?
     = f.submit "Enregistrer"
