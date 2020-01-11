@@ -1,16 +1,16 @@
 %h2
-  Vos derniers messages dans les forums
+  Vos derniers messages dans les forums
 - if @posts.empty?
   %p
-    Vous n'avez posté aucun message dans les forums
+    Vous n’avez posté aucun message dans les forums
 - else
   %table#my_posts
     %tr
       %th Forum
       %th Sujet
       %th Note
-      %th Nombre de commentaires
-      %th Date du message
+      %th Nombre de commentaires
+      %th Date du message
     - @posts.each do |node|
       - post = node.content
       %tr
