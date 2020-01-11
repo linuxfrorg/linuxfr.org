@@ -1,13 +1,13 @@
 %h2
   Vos dépêches en attente de modération
 - if @news.empty?
-  Vous n'avez aucune dépêche en cours de modération
+  Vous n’avez aucune dépêche en cours de modération
 - else
   %table#my_news
     %tr
       %th Section
       %th Sujet
-      %th Date de soumission
+      %th Date de soumission
     - @news.each do |news|
       %tr
         %td= news.section.title
