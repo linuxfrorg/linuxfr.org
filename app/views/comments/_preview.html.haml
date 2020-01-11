@@ -4,8 +4,7 @@
       = link_to spellcheck(preview.title), "#", class: "title"
     %p.meta
       = posted_by(preview)
-      Évalué à&nbsp;
-      %span.score>= preview.bound_score
+      Évalué à %span.score>= preview.bound_score
     %figure.image
       = avatar_img(current_user)
     .content
@@ -17,6 +16,6 @@
       &nbsp;
 
 - if preview.parent.try(:user_id) == current_account.user_id
-  = image_tag "/images/dessins/geekscottes_005.png", alt: "Autosatisfaction récursive", title: "Autosatisfaction récursive - © Johann 'nojhan' Dréo : 2005-03-25 - Licence CC By-Sa 2.5"
+  = image_tag "/images/dessins/geekscottes_005.png", alt: "Autosatisfaction récursive", title: "Autosatisfaction récursive — © Johann « nojhan » Dréo, 25 mars 2005 — Licence CC By‑SA 2.5"
 - elsif preview.parent.try(:depth).to_i > 10
-  = image_tag "/images/dessins/discussion.png", alt: "Discussion", title: "Discussion - © Boug metoogotmy.net : 2012 - Licence CC By-Sa 2.0 Fr"
+  = image_tag "/images/dessins/discussion.png", alt: "Discussion", title: "Discussion — © Boug metoogotmy.net : 2012 — Licence CC By‑SA 2.0 Fr"
