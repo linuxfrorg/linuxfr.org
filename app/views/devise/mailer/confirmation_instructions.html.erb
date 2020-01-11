@@ -1,22 +1,22 @@
-<p>Bienvenue <%= @resource.login %>  sur <a href="https://linuxfr.org/">LinuxFr.org</a> !</p>
+<p>Bienvenue <%= @resource.login %> sur <a href="https://linuxfr.org/">LinuxFr.org</a> !</p>
 
 <% if @resource.password %>
-<p>Le mot de passe aléatoirement généré est : <%= @resource.password %></p>
+<p>Le mot de passe aléatoirement généré est : « <%= @resource.password %> ».</p>
 
 <p>Nous vous conseillons de remplacer ce mot de passe à votre première
-connexion. Les mots de passe que vous définirez ne sont jamais transmis par
-courriel.</p>
+connexion. Les mots de passe que vous définirez ne seront jamais transmis 
+par courriel.</p>
 <% else %>
-<p>Un mot de passe généré aléatoirement vous a été envoyé lors d'un précédent
-courriel. En cas de problème, vous pouvez demander le renvoi d'un nouveau mot
-de passe sur :<br/>
+<p>Un mot de passe généré aléatoirement vous a été envoyé lors d’un précédent
+courriel. En cas de problème, vous pouvez demander l’envoi d’un nouveau mot
+de passe via :<br/>
 <%= url_for new_password_url(@resource) %></p>
 <% end %>
 
-<p>Vous devez confirmer la création de votre compte en suivant ce lien :</p>
+<p>Vous devez confirmer la création de votre compte en suivant ce lien :</p>
 
 <p><%= link_to 'Confirmer mon compte', confirmation_url(@resource, :confirmation_token => @token) %></p>
 
 <p>Avoir un compte sur le site vous donne accès à certaines fonctionnalités
-supplémentaires facilitant la lecture. N'hésitez pas à lire
-<a href="https://linuxfr.org/wiki/decouvrir-linuxfr">Découvrir LinuxFR</a> pour en savoir plus.</p>
+supplémentaires facilitant la lecture. N’hésitez pas à lire
+<a href="https://linuxfr.org/wiki/decouvrir-linuxfr">Découvrir LinuxFr.org</a> pour en savoir plus.</p>
