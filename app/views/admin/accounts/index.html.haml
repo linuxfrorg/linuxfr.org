@@ -3,7 +3,7 @@
 = form_tag admin_accounts_path, method: :get do
   %input(type="text" name="login" value="#{@login}" placeholder="Filtrer par pseudo")
   %input(type="date" name="date" value="#{@date}" placeholder="Filtrer par date (YYYY-MM-DD)")
-  %input(type="text" name="ip" value="#{@ip}" placeholder="Filtrer par IP")
+  %input(type="text" name="ip" value="#{@ip}" placeholder="Filtrer par adresse IP")
   %input(type="text" name="email" value="#{@email}" placeholder="Filtrer par courriel")
   = check_box_tag 'inactive', 'inactive', @inactive=="inactive"
   %label(for="inactive") Inactifs
@@ -13,7 +13,7 @@
   %tr
     %th Pseudo / Courriel
     %th Karma
-    %th IP courante / précédente
+    %th Adresse IP courante / précédente
     %th Commentaires publics / tous
     %th Contenus publics / tous
     %th Date de création
@@ -44,7 +44,7 @@
         - if account.inactive? && account.user_id != 1
           = button_to "Activer",   [:admin, account], method: :put, class: "ok_button"
         - elsif !account.inactive?
-          = button_to "Renvoi mot de passe", password_admin_account_path(account), class: "reset_password"
+          = button_to "Renvoi de mot de passe", password_admin_account_path(account), class: "reset_password"
           = button_to "Suspendre", [:admin, account], method: :put, class: "delete_button"
       %td
         - if account.editor?
