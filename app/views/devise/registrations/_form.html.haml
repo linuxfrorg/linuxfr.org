@@ -1,21 +1,21 @@
 = form_for @account, url: registration_path(:account), method: :put do |f|
   = messages_on_error @account
   %p
-    = f.label :email, 'Adresse de courriel'
+    = f.label :email, 'Adresse de courriel'
     = f.email_field :email
   %p
-    = f.label :password, 'Nouveau mot de passe'
+    = f.label :password, 'Nouveau mot de passe'
     = f.password_field :password
     %span.help
-      laissez ce champ vide si vous ne souhaitez pas changer de mot de passe
+      Laissez ce champ vide si vous ne souhaitez pas changer de mot de passe
   %p
-    = f.label :password_confirmation, 'Confirmation du mot de passe'
+    = f.label :password_confirmation, 'Confirmation du mot de passe'
     = f.password_field :password_confirmation
   %p
     = f.label :current_password, 'Mot de passe actuel'
     = f.password_field :current_password
     %span.help
-      votre mot de passe actuel est nécessaire pour valider ce changement
+      Votre mot de passe actuel est nécessaire pour valider ce changement
   %p
-    %label.factice Sûr de vos modifications ?
+    %label.factice Confirmez‑vous ces modifications ?
     = f.submit "Enregistrer"
