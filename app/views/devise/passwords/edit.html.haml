@@ -1,14 +1,14 @@
 %main#contents(role="main")
-  %h2 Changer de mot de passe
+  %h2 Changer de mot de passe
 
   = form_for @account, url: password_path(:account), method: :put do |f|
     = devise_error_messages!
     = f.hidden_field :reset_password_token
     %p
-      = f.label :password, 'Mot de passe'
+      = f.label :password, 'Mot de passe'
       = f.password_field :password
     %p
-      = f.label :password_confirmation, 'Confirmation du mot de passe'
+      = f.label :password_confirmation, 'Confirmation du mot de passe'
       = f.password_field :password_confirmation
     %p
       = f.submit "Enregistrer"
