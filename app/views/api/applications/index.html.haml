@@ -1,14 +1,14 @@
-=h1 "Mes applications pour l'API"
+=h1 "Mes applications pour l’API"
 
 %p
   Cette page est destinée aux développeurs.
-  Elle permet de gérer des applications clientes de l'API en OAuth2.
+  Elle permet de gérer des applications clientes de l’API en OAuth2.
 
 %p
   = link_to "Créer une application", new_api_application_path
 
 - if @applications.empty?
-  %p Vous n'avez pas encore enregistrer d'applications.
+  %p Vous n’avez pas encore enregistré d’application.
 - else
   %table
     %tr
@@ -24,4 +24,4 @@
         %td
           = link_to "Afficher", api_application_path(app), class: "show_client_app"
           = link_to "Modifier", edit_api_application_path(app), class: "edit_client_app"
-          = button_to "Supprimer", api_application_path(app), method: :delete, class: "delete_button", data: { confirm: "Êtes-vous sûr de vouloir supprimer cette application ?" }
+          = button_to "Supprimer", api_application_path(app), method: :delete, class: "delete_button", data: { confirm: "Êtes‑vous sûr(e) de vouloir supprimer cette application ?" }
