@@ -17,22 +17,22 @@
     = render 'boards/large', boards: boards, box: false
   #tab-details.tab-content
     %p
-      Titre:
+      Titre :
       = news.title
     %p
-      Rédaction:
+      Rédaction :
       - if news.node.cc_licensed?
         collective
     %p
-      Licence:
+      Licence :
       - if news.node.cc_licensed?
-        = link_to "CC by-sa", cc_url(news), rel: 'license'
+        = link_to "CC By‑SA", cc_url(news), rel: 'license'
     %p
-      Catégorie:
+      Catégorie :
       = link_to(news.section.title, news.section)
     - if news.urgent?
       %p.urgent
-        %b Dépêche urgente !
+        %b Dépêche urgente !
     %hr
     - news_content = strip_tags(news.body + ' ' + news.second_part).strip()
     - sentences = news_content.split(/[…!\.\?]{1,3}/).count - 1
@@ -63,11 +63,11 @@
     = render 'editions', news: news
   #tab-help.tab-content
     - if current_page?(moderation_news_path(news))
-      %p Pour ajouter une note des modérateurs, commencez simplement une ligne par <code>NdM :</code>.
+      %p Pour ajouter une note des modérateurs, commencez simplement une ligne par « <code>N. D. M. :</code> ».
       %p
-        L'icone
+        L’icône
         = image_tag "/images/icones/edit-cut.png", alt: "Suggestion de découpe"
-        sert à suggérer où découper entre les première et seconde parties de la dépêche.
+        sert à suggérer où découper entre les première et seconde parties de la dépêche.
     = render 'wiki_help'
 
 .popup-event{"data-popup-id": "toolpanel"}
