@@ -3,14 +3,14 @@
     = link_to "Modération", '/moderation'
   - @candidate_news = News.candidate.sorted
   - if @candidate_news.empty?
-    %p Pas de dépêche à modérer
+    %p Aucune dépêche à modérer
   - else
     %ul
       = list_of(@candidate_news) do |news|
         - if news.node.board_status(current_account) != :read
-          = image_tag "/images/icones/chat.svg", alt: "Nouveaux !", title: "Il y a de l'activité sur cette dépêche", width: "16px"
+          = image_tag "/images/icones/chat.svg", alt: "Nouveaux !", title: "Il y a de l’activité sur cette dépêche", width: "16px"
         - if !news.node.vote_by?(current_account.id) && news.node.user_id != current_account.user_id
-          = image_tag "/images/icones/bolt.svg", alt: "Pas de vote", title: "Tu n'as pas voté sur cette dépêche", width: "16px"
+          = image_tag "/images/icones/bolt.svg", alt: "Pas de vote", title: "Tu n’as pas voté sur cette dépêche", width: "16px"
         - if news.acceptable?
           = image_tag "/images/icones/check.svg", alt: "Acceptable", title: "La dépêche est acceptable", width: "16px"
         - elsif news.refusable?
