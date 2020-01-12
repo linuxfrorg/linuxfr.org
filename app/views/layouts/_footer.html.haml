@@ -5,7 +5,7 @@
       - @last_comments.each do |comment|
         %li= link_to comment.title, path_for_content(comment.node.content) + "#comment-#{comment.id}"
   %nav#popular_tags
-    %h1 Tags populaires
+    %h1 Étiquettes (tags) populaires
     %ul.tag_cloud
       - @popular_tags.each do |tag|
         %li= link_to tag.name, "/tags/#{tag.name}/public"
@@ -19,12 +19,12 @@
     %ul
       %li= link_to "Mentions légales", '/mentions_legales'
       %li= link_to "Faire un don", '/faire_un_don'
-      %li= link_to "L'équipe LinuxFr.org", '/team'
-      %li= link_to "Informations sur le site", '/informations'
-      %li= link_to "Aide / Foire aux questions", '/aide'
-      %li= link_to "Suivi des suggestions et bugs", '/suivi'
-      %li= link_to "Règles de modération", '/regles_de_moderation'
+      %li= link_to "L’équipe de LinuxFr.org", '/team'
+      %li= link_to "Informations sur le site", '/informations'
+      %li= link_to "Aide / Foire aux questions", '/aide'
+      %li= link_to "Suivi des suggestions et bogues", '/suivi'
+      %li= link_to "Règles de modération", '/regles_de_moderation'
       %li= link_to "Statistiques", '/statistiques'
-      %li= link_to "API pour les développeurs", '/developpeur'
-      %li= link_to "Code source du site", '/code_source_du_site'
-      %li= link_to "Plan du site", '/plan'
+      %li= link_to "API pour les développeurs", '/developpeur'
+      %li= link_to "Code source du site", '/code_source_du_site'
+      %li= link_to "Plan du site", '/plan'
