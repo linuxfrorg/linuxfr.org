@@ -9,6 +9,6 @@
 
   - if current_account && current_account.can_destroy?(@comment)
     %p
-      = button_to "Supprimer ce commentaire", [@comment.node, @comment], method: :delete, data: { confirm: "Êtes‑vous sûr(e) de vouloir supprimer ce commentaire ?" }, class: "delete_button"
+      = button_to "Supprimer ce commentaire", [@comment.node, @comment], method: :delete, data: { confirm: "Confirmez‑vous vouloir supprimer ce commentaire ?" }, class: "delete_button"
 
   = render 'shared/wiki_help'
