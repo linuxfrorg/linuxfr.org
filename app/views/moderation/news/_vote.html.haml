@@ -1,16 +1,16 @@
 #news_vote
   %h1 Votes
   %p
-    Nombres n de modérateurs&nbsp;: #{Account.amr.count}
+    Nombre de modérateurs : n = #{Account.amr.count}
     %br
-    Seuil d'acceptation (n/6)&nbsp;: &gt; #{News.accept_threshold}
+    Seuil d’acceptation (n/6 votes) : &gt; #{News.accept_threshold}
     %br
-    Seuil de refus (n/5)&nbsp;: &lt; #{News.refuse_threshold}
+    Seuil de refus (n/5 votes) : &lt; #{News.refuse_threshold}
   %p
-    %strong Pour&nbsp;:
+    %strong Pour :
     = @news.voters_for
   %p
-    %strong Contre&nbsp;:
+    %strong Contre :
     = @news.voters_against
   - if current_account.can_vote?(@news)
     %div
@@ -22,24 +22,24 @@
     %p
       %strong Dépêche publiée
     - if @news.on_ppp?
-      %strong Affichée en phare
+      %strong Affichée en phare
     - elsif current_account.can_ppp?(@news)
-      = button_to "Mettre en phare", ppp_moderation_news_path(@news), class: "ppp_news"
+      = button_to "Mettre en phare", ppp_moderation_news_path(@news), class: "ppp_news"
   - elsif @news.refused?
     %p
-      %strong Dépêche refusée
+      %strong Dépêche refusée
   - else
     - if @news.acceptable? && current_account.can_accept?(@news)
       = button_to "Publier", accept_moderation_news_path(@news), class: "publish_news"
     - elsif @news.refusable? && current_account.can_refuse?(@news)
       = button_to "Refuser", refuse_moderation_news_path(@news), class: "refuse_news"
       - if @news.node.cc_licensed?
-        = button_to "Re-rédaction", rewrite_moderation_news_path(@news), class: "rewrite_news"
+        = button_to "Renvoyer en rédaction", rewrite_moderation_news_path(@news), class: "rewrite_news"
     - elsif current_account.admin?
       %button#admin_49_3.more 49.3 autoritaire
       .more_actions(style="display: none;")
         = button_to "Publier", accept_moderation_news_path(@news), class: "publish_news"
         = button_to "Refuser", refuse_moderation_news_path(@news), class: "refuse_news"
-        = button_to "Revoter", reset_moderation_news_path(@news), class: "reset_news"
+        = button_to "Voter à nouveau", reset_moderation_news_path(@news), class: "reset_news"
         - if @news.node.cc_licensed?
-          = button_to "Re-rédaction", rewrite_moderation_news_path(@news), class: "rewrite_news"
+          = button_to "Retour en rédaction", rewrite_moderation_news_path(@news), class: "rewrite_news"
