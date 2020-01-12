@@ -1,9 +1,9 @@
 %aside#sidebar
   %header#branding= logo
   .login.box
-    %h1= account_signed_in? ? link_to(current_account.login, current_account.user) : "Se connecter"
+    %h1= account_signed_in? ? link_to(current_account.login, current_account.user) : "Se connecter"
     .new_content
-      = link_to "Proposer un contenu", '/proposer-un-contenu'
+      = link_to "Proposer un contenu", '/proposer-un-contenu'
     - if account_signed_in?
       %p
         Il vous reste
@@ -13,16 +13,16 @@
         %li{:class => ((current_account.has_answers?)?"has_answers":"no_answer")}
           - if current_account.has_answers?
             = image_tag "/images/icones/chat.svg", alt: "Nouveaux !", title: "Vous avez reçu des réponses à vos commentaires", width: "16px"
-          = link_to "Mon tableau de bord", '/tableau-de-bord'
-        %li= link_to "Mes contenus taggés", '/tags'
-        %li= link_to "Les contenus que j'ai lus", '/readings'
-        %li= link_to "Modifier mes préférences", '/compte/modifier'
-        %li= link_to "Changer de style", '/stylesheet/modifier'
-        %li= button_to "Se déconnecter", '/compte/deconnexion', method: :post, id: "logout"
+          = link_to "Mon tableau de bord", '/tableau-de-bord'
+        %li= link_to "Mes contenus étiquetés", '/tags'
+        %li= link_to "Les contenus que j’ai lus", '/readings'
+        %li= link_to "Modifier mes préférences", '/compte/modifier'
+        %li= link_to "Changer de style", '/stylesheet/modifier'
+        %li= button_to "Se déconnecter", '/compte/deconnexion', method: :post, id: "logout"
     - else
-      = render "devise/sessions/new", id_suffix: "_sidebar"
+       render "devise/sessions/new", id_suffix: "_sidebar"
       %ul
-        %li= link_to "Pas de compte&nbsp;? S'inscrire&nbsp;!".html_safe, '/compte/inscription'
+        %li= link_to "Pas de compte ? S’inscrire…".html_safe, '/compte/inscription'
   - if current_account
     = render 'redaction/box'
     - if current_account.try(:board_in_sidebar)
