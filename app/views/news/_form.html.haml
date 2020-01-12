@@ -5,11 +5,11 @@
     = form.label :author_name, "Votre nom"
     = form.text_field :author_name, autocomplete: 'on', required: 'required', maxlength: 32
   %p
-    = form.label :author_email, "Votre adresse de courriel"
+    = form.label :author_email, "Votre adresse de courriel"
     = form.email_field :author_email, autocomplete: 'on', required: 'required', maxlength: 64
   - if @news.new_record?
     %p.pot_de_miel
-      = form.label :pot_de_miel, "Ne pas remplir ce champ"
+      = form.label :pot_de_miel, "Ne pas remplir ce champ"
       = form.text_field :pot_de_miel
 %p
   = form.label :title, "Titre de la dépêche"
@@ -23,7 +23,7 @@
 #form_links
   %fieldset
     %label#label-link-name Nom du lien
-    %label#label-link-url URL
+    %label#label-link-url Adresse URL
     %label#label-link-lang langue
     %label#label-link-actions actions
   = form.fields_for :links do |lform|
@@ -38,17 +38,17 @@
   = label_tag :tags
   = text_field_tag :tags, nil, class: 'autocomplete', 'data-url' => autocomplete_tags_path, value: params[:tags], size: 100
 %p
-  Votre dépêche peut être publiée au plus tôt (événement à court terme, envie ou besoin de mise en ligne rapide) ou différée pour régulation du flot de dépêches (meilleure visibilité pour une dépêche longue, moins de dispersion d'attention) :
+  Votre dépêche peut être publiée au plus tôt (événement à court terme, envie ou besoin de mise en ligne rapide) ou différée pour régulation du flot de dépêches (meilleure visibilité pour une dépêche longue, moins de dispersion d’attention) :
 %p
   = form.check_box :urgent
-  = form.label :urgent, 'Cette dépêche est urgente, merci de publier au plus tôt.'
+  = form.label :urgent, 'Cette dépêche est urgente, merci de la publier au plus tôt.'
 %p
-  = form.label :message, "Si vous le souhaitez, vous pouvez laisser un message à l'équipe de modération"
+  = form.label :message, "Si vous le souhaitez, vous pouvez laisser un message à l’équipe de modération"
   <br/>
   = form.text_area :message, spellcheck: 'true', rows: 2
 %p
   = form.check_box :cc_licensed
-  = form.label :cc_licensed, 'Je place ce document sous licence Creative Commons Paternité-Partage des Conditions Initiales à l\'Identique 4.0 (<a href="http://creativecommons.org/licenses/by-sa/4.0/deed.fr">licence CC by-sa</a>). Ceci est conseillé, car cela permet l\'édition collaborative de la dépêche si elle doit être complétée.'.html_safe
+  = form.label :cc_licensed, 'Je place ce document sous licence Creative Commons Paternité - Partage des conditions initiales à l’identique, version 4.0 (<a href="http://creativecommons.org/licenses/by-sa/4.0/deed.fr">licence CC By-SA 4.0</a>). Ceci est conseillé afin de permettre l’édition coopérative de la dépêche si elle doit être complétée.'.html_safe
 %p
   = form.submit "Prévisualiser", id:  "news_preview"
-  = form.submit "Soumettre cette dépêche", 'data-disable-with' => "Enregistrement en cours" if @preview_mode
+  = form.submit "Soumettre cette dépêche", 'data-disable-with' => "Enregistrement en cours" if @preview_mode
