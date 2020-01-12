@@ -2,16 +2,16 @@ feed.entry(news, :published => news.node.created_at) do |entry|
   url = news_url news
   entry.title(news.title)
   if news.node.cc_licensed
-    entry.rights("Licence CC by-sa #{cc_url news}")
+    entry.rights("Licence CC By‑SA #{cc_url news}")
   end
   first  = content_tag(:div, news.body)
   links  = content_tag(:ul, news.links.map.with_index do |l,i|
-             content_tag(:li, "lien n°#{i+1} : ".html_safe +
+             content_tag(:li, "lien nᵒ #{i+1} : ".html_safe +
                               link_to(l.title, "https://#{MY_DOMAIN}/redirect/#{l.id}", :title => l.url, :hreflang => l.lang))
            end.join.html_safe)
   second = content_tag(:div, news.second_part)
   if news.published?
-    epub = content_tag(:div, link_to("Télécharger ce contenu au format Epub", "#{url}.epub"))
+    epub = content_tag(:div, link_to("Télécharger ce contenu au format EPUB", "#{url}.epub"))
   else
     epub = ""
   end
