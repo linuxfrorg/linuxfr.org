@@ -2,11 +2,11 @@
   =h1 "Proposer une dépêche"
 
   %p
-    Les dépêches proposées sont relues et modérées a priori par l'équipe de LinuxFr.org.
-    La ligne éditoriale est expliquée sur la page «&nbsp;<a href="/regles_de_moderation">Règles de modération</a>&nbsp;».
+    Les dépêches proposées sont relues et modérées a priori par l’équipe de LinuxFr.org.
+    La ligne éditoriale est expliquée sur la page « <a href="/regles_de_moderation">Règles de modération</a> ».
 
   - if (news = News.draft.limit(10)).any?
-    %p Les dépêches suivantes sont déjà en cours de rédaction. Vous pouvez y contribuer directement si vous le souhaitez :
+    %p Les dépêches suivantes sont déjà en cours de rédaction. Vous pouvez y contribuer directement si vous le souhaitez :
     %ul
       = list_of(news) do |news|
         = link_to news.title, [:redaction, news]
