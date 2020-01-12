@@ -9,7 +9,7 @@
     = label_tag :template, 'Modèle'
     = select_tag :template, options_from_collection_for_select(Response.all, 'id', 'title')
   %div
-    = label_tag :message, 'Message personnalisé qui sera ajouté dans le corps du courriel'
+    = label_tag :message, 'Message personnalisé qui sera ajouté dans le corps du courriel'
     = text_area_tag :message, '', cols: 120, rows: 10
   = submit_tag "Refuser"
 
@@ -19,12 +19,12 @@
     = text_area_tag :message, '', cols: 120, rows: 10
   = submit_tag "Refuser"
 
-%h2 Utiliser le courriel de refus en anglais
+%h2 Utiliser le courriel de refus en anglais
 = form_tag refuse_moderation_news_path(@news) do
   = hidden_field_tag :message, 'en'
   = submit_tag "Refuser"
 
-%h2 Ne pas envoyer de courriel (spam)
+%h2 Ne pas envoyer de courriel (indésirable)
 = form_tag refuse_moderation_news_path(@news) do
   = hidden_field_tag :message, 'no'
   = submit_tag "Refuser"
