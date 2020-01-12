@@ -1,33 +1,33 @@
 %aside.more
   #top_redactors
-    %h1 Rédacteurs les plus actifs
+    %h1 Rédacteurs les plus actifs
     %ol
       = list_of @stats.top_month do |stat|
         [#{stat['cnt']}] #{link_to stat['name'], "/users/#{stat['cached_slug']}"}
     %p
-      = link_to "Autres statistiques sur la rédaction", "/statistiques/redaction"
+      = link_to "Autres statistiques sur la rédaction", "/statistiques/redaction"
 
   #redaction_board
-    =h1 "Tribune rédacteurs"
+    =h1 "Tribune des rédacteurs"
     = render 'boards/large', boards: @boards, box: false
 
 #main_board
   .notice
     - case rand 5
     - when 0
-      = link_to "Êtes-vous inscrit à la liste de diffusion des rédacteurs ?", "/news/une-liste-de-diffusion-pour-les-redacteurs-de-linuxfr-org"
+      = link_to "Avez‑vous pensé à vous abonner à la liste de diffusion des rédacteurs ?", "/news/une-liste-de-diffusion-pour-les-redacteurs-de-linuxfr-org"
     - when 1
-      = link_to "Avez-vous lu la page d'aide à la rédaction ?", "/wiki/redaction"
+      = link_to "Avez‑vous lu la page d’aide à la rédaction ?", "/wiki/redaction"
     - when 2
-      = link_to "Certains auteurs sont récompensés par des livres. Pensez à vérifier votre adresse de courriel (c'est le seul moyen pour le site de vous contacter)", "/compte/modifier"
+      = link_to "Certains auteurs et certaines autrices sont récompensés par des livres. Pensez à vérifier votre adresse de courriel (c’est le seul moyen de vous contacter depuis le site)", "/compte/modifier"
     - when 3
-      = link_to "Connaissez-vous les règles de modération ?", "/regles_de_moderation"
+      = link_to "Connaissez‑vous les règles de modération ?", "/regles_de_moderation"
     - else
-      = link_to "Connaissez-vous le moteur de recherche de photos sous licence Creative Commons ?", "https://ccsearch.creativecommons.org/?search=tux&licenses=ALL-%24&licenses=ALL-MOD&search_fields=title&search_fields=creator&search_fields=tags&per_page=20&work_types=photos&providers=500px&providers=flickr"
+      = link_to "Connaissez‑vous le moteur de recherche de photos sous licence Creative Commons ?", "https://ccsearch.creativecommons.org/?search=tux&licenses=ALL-%24&licenses=ALL-MOD&search_fields=title&search_fields=creator&search_fields=tags&per_page=20&work_types=photos&providers=500px&providers=flickr"
 
-  %h2 #{pluralize @drafts.count, "dépêche"} en cours de rédaction
+  %h2 #{pluralize @drafts.count, "dépêche"} en cours de rédaction
   - feed "Flux atom des dépêches en cours de rédaction", "/redaction/news.atom"
-  = button_to "Commencer une nouvelle dépêche", "/redaction/news", class: "create_news"
+  = button_to "Commencer une nouvelle dépêche", "/redaction/news", class: "create_news"
   - if @drafts.empty?
     %p Aucune dépêche.
   - else
@@ -40,17 +40,17 @@
               %img{src: "/images/icones/pen.svg", alt: "Éditer la dépêche"}
           .meta
             - if activity
-              = image_tag "/images/icones/chat.svg", alt: "Nouveaux !", title: "Il y a de l'activité sur cette dépêche", width: "16px"
+              = image_tag "/images/icones/chat.svg", alt: "Nouveaux !", title: "Il y a de l’activité sur cette dépêche", width: "16px"
             = n.user.try(:name) || n.author_name
             - if n.nb_editors > 0
               = "& #{pluralize n.nb_editors, "participant"}"
           %h3= link_to n.title, [:redaction, n]
-          Modifiée le #{n.updated_at.to_s :date} à #{n.updated_at.to_s :time}
+          Modifiée le #{n.updated_at.to_s :date} à #{n.updated_at.to_s :time}
 
-  %h2 #{pluralize @news.count, "dépêche"} en cours de modération
-  - feed "Flux atom des dépêches en cours de modération", "/redaction/news/moderation.atom"
+  %h2 #{pluralize @news.count, "dépêche"} en cours de modération
+  - feed "Flux Atom des dépêches en cours de modération", "/redaction/news/moderation.atom"
   .notice
-    L'accès à l'espace de modération est réservé aux modérateurs et aux administrateurs.
+    L’accès à l’espace de modération est réservé aux modérateurs et aux administrateurs.
     Seuls les titres des dépêches en modération sont visibles des autres utilisateurs authentifiés.
   - if @news.empty?
     Aucune dépêche.
