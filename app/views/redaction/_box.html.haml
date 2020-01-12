@@ -4,6 +4,6 @@
   %ul
     = list_of News.draft.sorted.limit(10) do |news|
       - if news.node.board_status(current_account) == :new_board
-        = image_tag "/images/icones/chat.svg", alt: "Nouveaux !", title: "Il y a de l'activité sur cette dépêche", width: "16px"
+        = image_tag "/images/icones/chat.svg", alt: "Nouveaux !", title: "Il y a de l’activité sur cette dépêche", width: "16px"
       = link_to news.title, [:redaction, news]
-    %li= link_to "(...)", "/redaction#news"
+    %li= link_to "(…)", "/redaction#news"
