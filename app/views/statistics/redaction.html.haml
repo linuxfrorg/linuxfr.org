@@ -1,19 +1,19 @@
 = javascript_include_tag "sorttable"
 
 %main#contents.statistics(role="main")
-  =h1 "Statistiques sur la rédaction"
+  =h1 "Statistiques sur la rédaction"
   - width_stats = 400
 
   .body
     %strong
-      Statistiques mises à jour le #{l Time.now}
+      Statistiques mises à jour le #{l Time.now}
 
-    %p= link_to("Retour à l'ensemble des statistiques", "/statistiques")
+    %p= link_to("Retour à l’ensemble des statistiques", "/statistiques")
 
     %section
-      %h2 Nombre d'éditions
+      %h2 Nombre d’éditions
       .top_or_flop
-        %h3 Sur les 7 derniers jours
+        %h3 Sur les sept derniers jours
         %ol
           = list_of @stats.top_week(30) do |stat|
             [#{stat['cnt']}] #{link_to stat['name'], "/users/#{stat['cached_slug']}"}
@@ -26,12 +26,12 @@
     %section
       %h2 Dépêches créées
       .top_or_flop
-        %h3 Sur les 7 derniers jours
+        %h3 Sur les sept derniers jours
         %ol
           = list_of @stats.top_created(7, 30) do |stat|
             [#{stat['cnt']}] #{link_to stat['name'], "/users/#{stat['cached_slug']}"}
       .top_or_flop
-        %h3 Sur un mois
+        %h3 Sur un mois
         %ol
           = list_of @stats.top_created(30, 30) do |stat|
             [#{stat['cnt']}] #{link_to stat['name'], "/users/#{stat['cached_slug']}"}
@@ -39,12 +39,12 @@
     %section
       %h2 Dépêches modifiées
       .top_or_flop
-        %h3 Sur les 7 derniers jours
+        %h3 Sur les sept derniers jours
         %ol
           = list_of @stats.top_edited(7, 30) do |stat|
             [#{stat['cnt']}] #{link_to stat['name'], "/users/#{stat['cached_slug']}"}
       .top_or_flop
-        %h3 Sur un mois
+        %h3 Sur un mois
         %ol
           = list_of @stats.top_edited(30, 30) do |stat|
             [#{stat['cnt']}] #{link_to stat['name'], "/users/#{stat['cached_slug']}"}
