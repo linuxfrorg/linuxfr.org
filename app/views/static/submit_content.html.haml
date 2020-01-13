@@ -3,81 +3,81 @@
 
   .body
     %p
-      Le site vit grâce aux contributions des lecteurs, vous !
+      Le site vit grâce aux contributions des lecteurs : vous !
       Vous pouvez participer en écrivant différents contenus, allant du simple commentaire à la longue dépêche rédigée.
-      Voici de manière plus détaillée les types de contenus que vous pouvez proposer&nbsp;:
+      Voici de manière plus détaillée les types de contenus que vous pouvez proposer :
 
     .free_for_all
       %h2 Les dépêches
       %p
-        Les dépêches servent à publier de l'information sur les thèmes principaux de LinuxFr.org, à savoir Linux et les Logiciels Libres.
-        D'autres thèmes peuvent être abordés, sous réserve que l'équipe de modération juge qu'ils intéressent suffisamment les lecteurs du site.
-        Les dépêches purement commerciales et publicitaires seront rejetées (voir l'ensemble des #{link_to "règles de modération", "/regles_de_moderation" }).
+        Les dépêches servent à publier de l’information sur les thèmes principaux de LinuxFr.org, à savoir Linux et les logiciels libres.
+        D’autres thèmes peuvent être abordés, sous réserve que l’équipe de modération juge qu’ils intéressent suffisamment les lecteurs du site.
+        Les dépêches purement commerciales et publicitaires seront rejetées (voir l’ensemble des #{link_to "règles de modération", "/regles_de_moderation" }).
       %p
-        = link_to "Je souhaite proposer une dépêche et la soumettre directement à la modération.", "/news/nouveau"
+        = link_to "Je souhaite proposer une dépêche et la soumettre directement à la modération.", "/news/nouveau"
 
       .authenticated_only
         %p
-          Il est également possible pour les utilisateurs authentifiés de proposer des sujets de dépêches et de les rédiger collaborativement sur l'espace de rédaction.
+          Il est également possible pour les utilisateurs authentifiés de proposer des sujets de dépêches et de les rédiger en coopération sur l’espace de rédaction.
         %p
-          = link_to "Je souhaite commencer une dépêche dans l'espace collaboratif et pouvoir être aidé(e) par d'autres personnes.", "/redaction"
+          = link_to "Je souhaite commencer une dépêche dans l’espace coopératif et pouvoir bénéficier de l’aide d’autres personnes.", "/redaction"
         %p
-          Et il est donc possible pour les utilisateurs authentifiés d'aller dans l'espace de rédaction pour participer à l'écriture des dépêches proposées par d'autres visiteurs.
+          Et il est donc possible pour les utilisateurs authentifiés de se rendre dans l’espace de rédaction afin de participer à l’écriture des dépêches proposées par d’autres visiteurs.
         %p
-          = link_to "Je souhaite participer à l'écriture collaborative d'une dépêche.", "/redaction"
+          = link_to "Je souhaite participer à l’écriture coopérative d’une dépêche.", "/redaction"
 
     .free_for_all
-      %h2 Le suivi des suggestions/bugs
+      %h2 Le suivi des suggestions et bogues
       %p
-        Si vous avez rencontré un bug en parcourant le site web LinuxFr.org, c'est le bon endroit pour le remonter.
-        Vous pouvez également suggérer des évolutions pour le site.
+        Si vous avez rencontré un bogue en parcourant le site Web LinuxFr.org, c’est le bon endroit pour en informer les développeurs.
+        Vous pouvez également suggérer des évolutions pour le site.
       %p
-        = link_to "Je souhaite remonter un bug ou proposer une évolution", "/suivi/nouveau"
+        = link_to "Je souhaite remonter un bogue ou proposer une évolution", "/suivi/nouveau"
 
     %hr
     %p
-      %strong Note :
+      %strong Note :
       -if account_signed_in?
-        en tant qu'utilisateur authentifié, vous pouvez également déposer les contenus suivants&nbsp;:
+        en tant qu’utilisateur authentifié, vous pouvez également déposer les contenus suivants :
       -else
-        les utilisateurs authentifiés peuvent également proposer les contenus suivants&nbsp;:
+        les utilisateurs authentifiés peuvent également proposer les contenus suivants :
     %hr
 
     .authenticated_only
       %h2 Les journaux
       %p
-        Les journaux sont destinés aux discussions et aux informations qui n'auraient pas leur place en dépêches.
+        Les journaux sont destinés aux discussions et aux informations qui n’auraient pas leur place en tant que dépêches.
       %p
-        = link_to "Je souhaite écrire un journal", "/journaux/nouveau"
+        = link_to "Je souhaite écrire un journal", "/journaux/nouveau"
 
     .authenticated_only
       %h2 Les forums
       %p
-        Les forums servent pour demander de l'aide, poser des questions diverses et variées.
-        C'est aussi le bon endroit pour poster des petites annonces.
+        Les forums servent à demander de l’aide, poser des questions diverses et variées.
+        Ils sont aussi le bon endroit pour poster des petites annonces.
       %p
-        = link_to "Je souhaite poster dans les forums", "/posts/nouveau"
+        = link_to "Je souhaite poster dans les forums", "/posts/nouveau"
 
     .authenticated_only
       %h2 Les sondages
       %p
         Vous pouvez suggérer un sondage.
-        Si celui-ci retient l'attention de l'équipe de modération (voir les #{link_to "règles de modération","/regles_de_moderation"}), il sera publié.
+        Si celui‑ci retient l’attention de l’équipe de modération (voir les #{link_to "règles de modération","/regles_de_moderation"}), il sera publié.
       %p
-        = link_to "Je souhaite suggérer un sondage", "/sondages/nouveau"
+        = link_to "Je souhaite suggérer un sondage", "/sondages/nouveau"
 
     .authenticated_only
       %h2 Les liens
       %p
-        La rubrique « liens » est destinée à recevoir les, euh…, liens vers des contenus en rapport avec la ligne éditoriale de LinuxFr.org.
-        En particulier, et de manière non exhaustive, les articles concernant Linux, les logiciels libres, le matériel libre, les arts libres, sont les bienvenus.
-        Vous pouvez aussi partager ici des liens vers vos propres contenus hébergés ailleurs.
+        La rubrique « liens » est destinée à recevoir les… euh… liens vers des contenus en rapport avec la ligne éditoriale de LinuxFr.org.
+        En particulier, et de manière non exhaustive, les articles concernant GNU/Linux, les logiciels libres, le matériel libre, les arts libres, sont les bienvenus.
+        Vous pouvez aussi partager ici des liens vers vos propres contenus hébergés ailleurs.
       %p
-        = link_to "Je souhaite partager un lien", "/liens/nouveau"
+        = link_to "Je souhaite partager un lien", "/liens/nouveau"
 
     .authenticated_only
       %h2 Le wiki
       %p
-        Le wiki est un espace fourre-tout plus ou moins organisé, dont les pages gardent de l'intérêt dans le temps.
+        Le wiki est un espace fourre‑tout plus ou moins organisé, dont les pages gardent de l’intérêt dans le temps.
       %p
-        = link_to "Je souhaite écrire une nouvelle page de wiki", "/wiki/nouveau"
+        = link_to "Je souhaite écrire une nouvelle page de wiki", "/wiki/nouveau"
