@@ -1,14 +1,14 @@
 %main#contents.statistics(role="main")
-  =h1 "Statistiques d'aide au choix des primables - #{@stats.month.strftime "%m/%Y"}"
+  =h1 "Statistiques d’aide au choix des primables — #{@stats.month.strftime "%m/%Y"}"
 
   .nav
     %span
-      = link_to "Mois précédent", month: @stats.month.prev_month.strftime("%m-%Y")
+      = link_to "Mois précédent", month: @stats.month.prev_month.strftime("%m-%Y")
     %span
-      = link_to "Mois suivant", month: @stats.month.next_month.strftime("%m-%Y")
+      = link_to "Mois suivant", month: @stats.month.next_month.strftime("%m-%Y")
 
   .body
-    %p= link_to("Retour à l'ensemble des statistiques", "/statistiques")
+    %p= link_to("Retour à l’ensemble des statistiques", "/statistiques")
 
     %h2 Dépêches
 
@@ -19,7 +19,7 @@
           = link_to_content_with_score(news, score)
 
     %div
-      %h3 Par total des notes des commentaires
+      %h3 Par total des notes des commentaires
       %ol
         = list_of @stats.sum_comments_score(News, 20) do |news, score|
           = link_to_content_with_score(news, score)
@@ -39,7 +39,7 @@
           = link_to_content_with_score(diary, score)
 
     %div
-      %h3 Par total des notes des commentaires
+      %h3 Par total des notes des commentaires
       %ol
         = list_of @stats.sum_comments_score(Diary, 20) do |diary, score|
           = link_to_content_with_score(diary, score)
@@ -53,12 +53,12 @@
           = link_to_content_with_score(post, score)
 
     %div
-      %h3 Par total des notes des commentaires
+      %h3 Par total des notes des commentaires
       %ol
         = list_of @stats.sum_comments_score(Post, 5) do |post, score|
           = link_to_content_with_score(post, score)
 
-    %h2 Les contributeurs les plus prolifiques
+    %h2 Les contributeurs les plus prolifiques
 
     %div
       %h3 Dépêches
@@ -73,19 +73,19 @@
           = link_to_user_with_score(user, score)
 
     %div
-      %h3 Entrées du suivi
+      %h3 Entrées du suivi
       %ol
         = list_of @stats.top_authors(Tracker, 5) do |user, score|
           = link_to_user_with_score(user, score)
 
     %div
-      %h3 Commentaires du suivi
+      %h3 Commentaires du suivi
       %ol
         = list_of @stats.top_commenters(Tracker, 5) do |user, score|
           = link_to_user_with_score(user, score)
 
     %div
-      %h3 Réponses dans les forums
+      %h3 Réponses dans les forums
       %ol
         = list_of @stats.top_commenters(Post, 5) do |user, score|
           = link_to_user_with_score(user, score)
