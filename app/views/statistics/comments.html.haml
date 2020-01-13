@@ -1,60 +1,59 @@
 %main#comments.statistics
-  =h1 "Statistiques sur les commentaires"
+  =h1 "Statistiques sur les commentaires"
   - width_stats = 400
 
   .body
     %strong
-      Statistiques mises à jour le #{l Time.now}
+      Statistiques mises à jour le #{l Time.now}
 
-    %p= link_to("Retour à l'ensemble des statistiques", "/statistiques")
+    %p= link_to("Retour à l’ensemble des statistiques", "/statistiques")
 
     - if @stats.comments["Total"] == 0
       Aucun commentaire
     - else
       %h2 Sommaire
       %ul
-        %li=link_to("par type","#type")
-        %li=link_to("par an","#annee")
-        %li=link_to("par mois","#mois")
-        %li=link_to("par jour de la semaine","#jour")
+        %li=link_to("par type","#type")
+        %li=link_to("par an","#annee")
+        %li=link_to("par mois","#mois")
+        %li=link_to("par jour de la semaine","#jour")
 
       - if @stats.comments["Total"] > 1
-        %h2#type Répartition par type des #{@stats.comments["Total"]} commentaires
+        %h2#type Répartition par type des #{@stats.comments["Total"]} commentaires
       - else
-        %h2#type Répartition par type
+        %h2#type Répartition par type
       %ul
         %li
           #{pluralize @stats.comments["Diary"].to_i, "commentaire"} dans #{pluralize @contents.contents["Diary"], "journal", "journaux"}
           -if @contents.contents["Diary"].to_i > 0
-            = "soit #{pluralize (@stats.comments["Diary"]/@contents.contents["Diary"]).round(2), "commentaire"}/journal publié"
+            = ", soit #{pluralize (@stats.comments["Diary"]/@contents.contents["Diary"]).round(2), "commentaire"} par journal publié"
         %li
           #{pluralize @stats.comments["Post"].to_i, "commentaire"} dans #{pluralize @contents.contents["Post"], "entrée"} de forums
           -if @contents.contents["Post"].to_i > 0
-            = "soit #{pluralize (@stats.comments["Post"].to_f/@contents.contents["Post"]).round(2), "commentaire"}/entrée publiée"
+            = ", soit #{pluralize (@stats.comments["Post"].to_f/@contents.contents["Post"]).round(2), "commentaire"} par entrée publiée"
         %li
           #{pluralize @stats.comments["News"].to_i, "commentaire"} dans #{pluralize @contents.contents["News"], "dépêche"}
           -if @contents.contents["News"].to_i > 0
-            = "soit #{pluralize (@stats.comments["News"].to_f/@contents.contents["News"]).round(2), "commentaire"}/dépêche publiée"
+            = ", soit #{pluralize (@stats.comments["News"].to_f/@contents.contents["News"]).round(2), "commentaire"} par dépêche publiée"
         %li
-          #{pluralize @stats.comments["Tracker"].to_i, "commentaire"} dans #{pluralize @contents.contents["Tracker"], "entrée"} dans le système de suivi
+          #{pluralize @stats.comments["Tracker"].to_i, "commentaire"} dans #{pluralize @contents.contents["Tracker"], "entrée"} dans le système de suivi
           -if @contents.contents["Tracker"].to_i > 0
-            = "soit #{pluralize (@stats.comments["Tracker"].to_f/@contents.contents["Tracker"]).round(2), "commentaire"}/entrée publiée"
+            = ", soit #{pluralize (@stats.comments["Tracker"].to_f/@contents.contents["Tracker"]).round(2), "commentaire"} par entrée publiée"
         %li
           #{pluralize @stats.comments["Poll"].to_i, "commentaire"} dans #{pluralize @contents.contents["Poll"], "sondage"}
           -if @contents.contents["Poll"].to_i > 0
-            = "soit #{pluralize (@stats.comments["Poll"].to_f/@contents.contents["Poll"]).round(2), "commentaire"}/sondage publié"
+            = ", soit #{pluralize (@stats.comments["Poll"].to_f/@contents.contents["Poll"]).round(2), "commentaire"} par sondage publié"
         %li
           #{pluralize @stats.comments["WikiPage"].to_i, "commentaire"} dans #{pluralize @contents.contents["WikiPage"], "page"} de wiki
           -if @contents.contents["WikiPage"].to_i > 0
-            = "soit #{pluralize (@stats.comments["WikiPage"].to_f/@contents.contents["WikiPage"]).round(2), "commentaire"}/page publiée"
-
+            = ",soit #{pluralize (@stats.comments["WikiPage"].to_f/@contents.contents["WikiPage"]).round(2), "commentaire"} par page publiée"
         %li
           #{pluralize @stats.comments["Bookmark"].to_i, "commentaire"} dans #{pluralize @contents.contents["Bookmark"], "lien"}
           -if @contents.contents["Bookmark"].to_i > 0
-            = "soit #{pluralize (@stats.comments["Bookmark"].to_f/@contents.contents["Bookmark"]).round(2), "commentaire"}/lien publié"
+            = ", soit #{pluralize (@stats.comments["Bookmark"].to_f/@contents.contents["Bookmark"]).round(2), "commentaire"} par lien publié"
 
       - if @stats.comments["Total"] > 1
-        %h2#annee Répartition annuelle des #{@stats.comments["Total"]} commentaires
+        %h2#annee Répartition annuelle des #{@stats.comments["Total"]} commentaires
       - else
         %h2#annee Répartition annuelle
       %table
@@ -62,7 +61,7 @@
         %tr
           %th Année
           %th Type
-          %th Commentaires
+          %th Nombre de commentaires
         - @stats.comments_by_year.each do |year,comment|
           - newyear=true
           - comment.each do |type,cnt|
@@ -76,7 +75,7 @@
                 .stat(class="content#{type.downcase()}" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
 
       - if @stats.comments["Total"] > 1
-        %h2#mois Répartition mensuelle des #{@stats.comments["Total"]} commentaires
+        %h2#mois Répartition mensuelle des #{@stats.comments["Total"]} commentaires
       - else
         %h2#mois Répartition mensuelle
       %table
@@ -84,7 +83,7 @@
         %tr
           %th Mois
           %th Type
-          %th Commentaires
+          %th Nombre de commentaires
         - @stats.comments_by_month.each do |month,comment|
           - newyear=true
           - comment.each do |type,cnt|
@@ -97,7 +96,7 @@
               %td
                 .stat(class="content#{type.downcase}" style="width: #{(width_stats * cnt / maxval).to_i}px;")= cnt
 
-      %h2#jour Répartition des commentaires par jour de la semaine
+      %h2#jour Répartition des commentaires par jour de la semaine
       - maxval = @stats.comments_by_day.values.max
       %table
         %tr
