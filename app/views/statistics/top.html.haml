@@ -1,18 +1,18 @@
 %main#contents.statistics(role="main")
-  =h1 "Top ou flop du site"
+  =h1 "Classement des auteurs par nombre de publications"
 
   .body
-    %p= link_to("Retour à l'ensemble des statistiques", "/statistiques")
+    %p= link_to("Retour à l’ensemble des statistiques", "/statistiques")
 
     %section
       %h2 Nombre de dépêches publiées
       .top_or_flop
-        %h3 Sur les 3 derniers mois
+        %h3 Sur les trois derniers mois
         %ol
           = list_of @stats.top_authors(News, 30, true) do |user, score|
             = link_to_user_with_score(user, score)
       .top_or_flop
-        %h3 Depuis le début du site
+        %h3 Depuis le début du site
         %ol
           = list_of @stats.top_authors(News, 30, false) do |user, score|
             = link_to_user_with_score(user, score)
@@ -20,12 +20,12 @@
     %section
       %h2 Nombre de journaux
       .top_or_flop
-        %h3 Sur les 3 derniers mois
+        %h3 Sur les trois derniers mois
         %ol
           = list_of @stats.top_authors(Diary, 15, true) do |user, score|
             = link_to_user_with_score(user, score)
       .top_or_flop
-        %h3 Depuis le début du site
+        %h3 Depuis le début du site
         %ol
           = list_of @stats.top_authors(Diary, 15, false) do |user, score|
             = link_to_user_with_score(user, score)
