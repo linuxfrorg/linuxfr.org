@@ -54,7 +54,7 @@ class TrackersController < ApplicationController
     @tracker = Tracker.new tracker_params
     @tracker.tmp_owner_id = current_user.try(:id)
     if !preview_mode && @tracker.save
-      redirect_to @tracker, notice: "Votre entrée a bien été créée dans le suivi"
+      redirect_to @tracker, notice: "Votre entrée a bien été créée dans le suivi"
     else
       @tracker.node = Node.new
       @tracker.valid?
@@ -73,7 +73,7 @@ class TrackersController < ApplicationController
     if !preview_mode && @tracker.save
       redirect_to @tracker, notice: "Entrée du suivi modifiée"
     else
-      flash.now[:alert] = "Impossible d'enregistrer cette entrée de suivi" unless @tracker.valid?
+      flash.now[:alert] = "Impossible d’enregistrer cette entrée de suivi" unless @tracker.valid?
       render :edit
     end
   end
