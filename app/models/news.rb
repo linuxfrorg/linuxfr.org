@@ -24,10 +24,10 @@
 # that will be reviewed and moderated by the LinuxFr.org team.
 #
 class News < Content
-  DEFAULT_FIRST_PART = "Un court chapeau introduisant l'article, ou le " +
-    "synthétisant, aidera les visiteurs du site à savoir s'ils doivent procéder " +
-    "à une lecture approfondie de votre article.".freeze
-  DEFAULT_PARAGRAPH = "Vous pouvez éditer ce paragraphe en cliquant sur le crayon !".freeze
+  DEFAULT_FIRST_PART = "Un court chapeau introduisant l’article, ou le " +
+    "synthétisant, aidera les visiteurs du site à savoir s’ils doivent procéder " +
+    "à une lecture approfondie de votre article.".freeze
+  DEFAULT_PARAGRAPH = "Vous pouvez éditer ce paragraphe en cliquant sur le crayon !".freeze
 
   self.table_name = "news"
   self.type = "Dépêche"
@@ -51,13 +51,13 @@ class News < Content
   scope :with_node_ordered_by, ->(order) { joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
 
   validates :title,        presence: { message: "Le titre est obligatoire" },
-                           length: { maximum: 100, message: "Le titre est trop long" }
-  validates :body,         presence: { message: "Nous n'acceptons pas les dépêches vides" }
-  validates :section,      presence: { message: "Veuillez choisir une section pour cette dépêche" }
-  validates :author_name,  presence: { message: "Veuillez entrer votre nom" },
-                           length: { maximum: 32, message: "Le nom de l'auteur est trop long" }
-  validates :author_email, presence: { message: "Veuillez entrer votre adresse de courriel" },
-                           length: { maximum: 64, message: "L'adresse email de l'auteur est trop longue" }
+                           length: { maximum: 100, message: "Le titre est trop long" }
+  validates :body,         presence: { message: "Nous n’acceptons pas les dépêches vides" }
+  validates :section,      presence: { message: "Veuillez choisir une section pour cette dépêche" }
+  validates :author_name,  presence: { message: "Veuillez entrer votre nom" },
+                           length: { maximum: 32, message: "Le nom de l’auteur est trop long" }
+  validates :author_email, presence: { message: "Veuillez entrer votre adresse de courriel" },
+                           length: { maximum: 64, message: "L’adresse de courriel de l’auteur est trop longue" }
 
 ### SEO ###
 
@@ -106,7 +106,7 @@ class News < Content
     submit!
     node.created_at = DateTime.now
     node.save
-    message = "<b>La dépêche a été soumise à la modération</b>"
+    message = "<b>La dépêche a été soumise à la modération</b>"
     Board.new(object_type: Board.news, object_id: self.id, message: message, user_name: user.name).save
     Push.create(self, kind: :submit, username: user.name)
   end
@@ -131,7 +131,7 @@ class News < Content
 
   def self.create_for_redaction(account)
     news = News.new
-    news.title = "Nouvelle dépêche #{News.maximum(:id).to_i + 1}"
+    news.title = "Nouvelle dépêche nᵒ #{News.maximum(:id).to_i + 1}"
     news.section = Section.default
     news.wiki_body = DEFAULT_FIRST_PART
     news.wiki_second_part = DEFAULT_PARAGRAPH
@@ -140,16 +140,16 @@ class News < Content
     news.author_email = account.email
     news.editor = account
     news.save
-    message = "Merci d'avoir initié cette rédaction collaborative !
+    message = "Merci d’avoir initié cette rédaction coopérative !
       Durant toute la phase de rédaction, vous pourrez utiliser la présente
-      messagerie instantanée pour discuter avec les participants."
+      messagerie instantanée pour discuter avec les participants."
     Board.new(object_type: Board.news, object_id: news.id, message: message, user_name: "Le bot LinuxFr").save
     news
   end
 
   def followup(message, user)
     NewsNotifications.followup(self, message).deliver_now
-    msg = "<b>Relance :</b> #{message}"
+    msg = "<b>Relance :</b> #{message}"
     Board.new(object_type: Board.news, object_id: self.id, message: msg, user_name: user.name).save
   end
 
@@ -187,8 +187,8 @@ class News < Content
   before_validation :wikify_fields
   def wikify_fields
     return if wiki_body.blank?
-    self.body        = wikify(wiki_body).gsub(/^<p>NdM/, '<p><abbr title="Note des modérateurs">NdM</abbr>')
-    self.second_part = wikify(wiki_second_part).gsub(/^<p>NdM/, '<p><abbr title="Note des modérateurs">NdM</abbr>')
+    self.body        = wikify(wiki_body).gsub(/^<p>N\.?\p{Z}?[Dd]\.?\p{Z}?M\.?\p{Z}?:/, '<p><abbr title="Note des modérateurs">N. D. M. :</abbr>')
+    self.second_part = wikify(wiki_second_part).gsub(/^<p>N\.?\p{Z}?[Dd]\.?\p{Z}?M\.?\p{Z}?:/, '<p><abbr title="Note des modérateurs">N. D. M. :</abbr>')
   end
 
   mark_as_safe_attr :body
