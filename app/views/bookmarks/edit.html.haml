@@ -1,5 +1,5 @@
 %main#contents(role="main")
-  =h1 "Éditer un lien"
+  =h1 "Éditer un lien"
 
   = render "preview", preview: @bookmark if @preview_mode
 
@@ -8,4 +8,4 @@
     = render form
 
   %h2 Modération
-  = button_to "Supprimer", [@bookmark.owner, @bookmark], method: :delete, data: { confirm: "Êtes‑vous sûr(e) de vouloir supprimer ce lien ?" }, class: "delete_button"
+  = button_to "Supprimer", [@bookmark.owner, @bookmark], method: :delete, data: { confirm: "Confirmez‑vous vouloir supprimer ce lien ?" }, class: "delete_button"
