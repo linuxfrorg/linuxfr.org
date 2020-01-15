@@ -21,9 +21,9 @@ class CommentsController < ApplicationController
     enforce_create_permission(@comment)
   rescue Canable::Transgression
     if current_account.blocked?
-      flash[:alert] = "L'équipe de modération a temporairement bloqué vos commentaires sur le site"
+      flash[:alert] = "L’équipe de modération a temporairement bloqué vos commentaires sur le site"
     else
-      flash[:alert] = "Impossible de commenter un contenu vieux de plus de 3 mois"
+      flash[:alert] = "Impossible de commenter un contenu datant de plus de trois mois"
     end
     redirect_to_content @node.content
   end
@@ -61,7 +61,7 @@ class CommentsController < ApplicationController
       flash[:notice] = "Votre commentaire a bien été modifié"
       redirect_to url_for_content(@node.content) + "#comment-#{@comment.id}"
     else
-      flash.now[:alert] = "Impossible d'enregistrer ce commentaire" if @comment.invalid?
+      flash.now[:alert] = "Impossible d’enregistrer ce commentaire" if @comment.invalid?
       render :edit
     end
   end
