@@ -14,13 +14,13 @@ class Redaction
     $.noticeAdd text: "#{msg.username} a soumis la dépêche", stay: true
 
   onPublish: (msg) ->
-    $.noticeAdd text: "La dépêche a été acceptée par #{msg.username}", stay: true
+    $.noticeAdd text: "La dépêche a été acceptée par #{msg.username}", stay: true
 
   onRefuse: (msg) ->
-    $.noticeAdd text: "La dépêche a été refusée par #{msg.username}", stay: true
+    $.noticeAdd text: "La dépêche a été refusée par #{msg.username}", stay: true
 
   onRewrite: (msg) ->
-    $.noticeAdd text: "La dépêche a été renvoyée dans l'espace de rédaction par #{msg.username}", stay: true
+    $.noticeAdd text: "La dépêche a été renvoyée dans l’espace de rédaction par #{msg.username}", stay: true
 
   onVote: (msg) ->
     $.noticeAdd text: "#{msg.username} a voté #{msg.word}"
@@ -36,7 +36,7 @@ class Redaction
     slug  = parts[parts.length - 1]
     """
     <li><a href="/redaction/news/#{slug}/revisions/#{msg.version}">
-      #{msg.username}&nbsp;: #{msg.message} - #{msg.creationdate}
+      #{msg.username} : #{msg.message} - #{msg.creationdate}
     </a></li>
     """
 
@@ -44,8 +44,8 @@ class Redaction
     $("#news_revisions ul").prepend @liForRevision(msg)
     $("#topbar .revision-cell").text msg.version
     atPosition = msg.creationdate.indexOf(':') - 2
-    finalDate = [msg.creationdate.slice(0, atPosition), "à ", msg.creationdate.slice(atPosition)].join("")
-    $("#topbar .revision-date").text "le " + finalDate
+    finalDate = [msg.creationdate.slice(0, atPosition), "à ", msg.creationdate.slice(atPosition)].join("")
+    $("#topbar .revision-date").text "le " + finalDate
 
   innerHtmlForLink: (msg) ->
     """
