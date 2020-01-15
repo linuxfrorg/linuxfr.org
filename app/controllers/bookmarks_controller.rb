@@ -37,7 +37,7 @@ class BookmarksController < ApplicationController
       @bookmark.node = Node.new(user_id: current_user.id, cc_licensed: false)
       @bookmark.node.preview_tags = params[:tags]
       @bookmark.valid?
-      flash.now[:alert] = "Votre lien semble invalide. Êtes-vous sûr ?" unless @bookmark.link =~ /\A#{URI::regexp(['http', 'https'])}\z/
+      flash.now[:alert] = "Votre lien semble invalide. Le confimez‑vous ?" unless @bookmark.link =~ /\A#{URI::regexp(['http', 'https'])}\z/
       render :new
     end
   end
@@ -49,7 +49,7 @@ class BookmarksController < ApplicationController
     path = user_bookmark_path(@user, @bookmark, format: params[:format])
     redirect_to path, status: 301 if request.path != path
     headers['Link'] = %(<#{user_bookmark_url @user, @bookmark}>; rel="canonical")
-    flash.now[:alert] = "Attention, ce lien a été supprimé et n'est visible que par les admins" unless @bookmark.visible?
+    flash.now[:alert] = "Attention, ce lien a été supprimé et n’est visible que par les admins" unless @bookmark.visible?
   end
 
   def edit
@@ -62,7 +62,7 @@ class BookmarksController < ApplicationController
     if !preview_mode && @bookmark.save
       redirect_to [@user, @bookmark], notice: "Le lien a bien été modifié"
     else
-      flash.now[:alert] = "Impossible d'enregistrer ce lien" if @bookmark.invalid?
+      flash.now[:alert] = "Impossible d’enregistrer ce lien" if @bookmark.invalid?
       render :edit
     end
   end
