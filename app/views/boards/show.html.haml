@@ -1,17 +1,17 @@
 #main_board
   =h1 "Tribune"
-  = link_to "Version XML", "/board/index.xml"
-  = link_to "Version TSV", "/board/index.tsv"
+  = link_to "Version XML", "/board/index.xml"
+  = link_to "Version TSV", "/board/index.tsv"
   %p
-    %strong Conditions d’utilisation :
-    cette tribune est un espace de discussion soumis aux lois en vigueur
+    %strong Conditions d’utilisation :<br/><br/>
+    Cette tribune est un espace de discussion soumis aux lois en vigueur
     en France. En conséquence, nous vous remercions de surveiller vos
     écrits et de ne pas tenir de propos pénalement répréhensibles. Les
     visiteurs ne tenant pas compte de ces conditions d’utilisation
     verront leurs comptes supprimés. Les propos tenus ici sont publiés
     sous la responsabilité de leurs auteurs respectifs.
   %p
-    Vous pouvez choisir le type d’affichage pour les photos :
+    Vous pouvez choisir le type d’affichage pour les photos :
     %a{onclick: "$.cookie('totoz-type', 'popup', {path: '/', expires: new Date('01/01/2042')});" } en surimpression,
     %a{onclick: "$.cookie('totoz-type', 'inline', {path: '/', expires: new Date('01/01/2042')});" } insérées avec le texte
     ou
