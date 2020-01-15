@@ -3,8 +3,8 @@
 # This mailer is used to notify news writers when their news are accepted or refused.
 #
 class NewsNotifications < ActionMailer::Base
-  MODERATORS = "Equipe de modération LinuxFr.org <moderateurs@linuxfr.org>"
-  EDITORS    = "Equipe de rédaction LinuxFr.org <redacteurs@linuxfr.org>"
+  MODERATORS = "Équipe de modération de LinuxFr.org <moderateurs@linuxfr.org>"
+  EDITORS    = "Équipe de rédaction de LinuxFr.org <redacteurs@linuxfr.org>"
 
   def accept(news)
     send_moderation_email "Dépêche acceptée :", news
@@ -30,7 +30,7 @@ class NewsNotifications < ActionMailer::Base
 
   def refuse_template(news, message, template)
     @news    = news
-    @message = message.present? ? "Le modérateur a tenu à ajouter : #{message}\n\n" : ""
+    @message = message.present? ? "Le modérateur a tenu à ajouter : #{message}\n\n" : ""
     @response= Response.find(template)
     send_moderation_email "Dépêche refusée :", news
   end
@@ -41,7 +41,7 @@ class NewsNotifications < ActionMailer::Base
   end
 
   def rewrite(news)
-    send_redaction_mail "Dépêche renvoyée en rédaction :", news
+    send_redaction_mail "Dépêche renvoyée en rédaction :", news
   end
 
   def followup(news, message)
