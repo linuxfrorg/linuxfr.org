@@ -4,10 +4,10 @@
   %p
     = link_to "Éditer", "/wiki/#{edition.to_param}/modifier"
   %p
-    Modifié le
+    Modifié le
     = l edition.versions.first.created_at.to_date
   %p
-    Les dernières modifications&nbsp;:
+    Les dernières modifications :
   %ul
     = list_of(edition.versions) do |v|
-      = link_to "#{v.author_name}&nbsp;: #{v.message}".html_safe, "/wiki/#{edition.to_param}/revisions/#{v.version}"
+      = link_to "#{v.author_name} : #{v.message}".html_safe, "/wiki/#{edition.to_param}/revisions/#{v.version}"
