@@ -1,6 +1,6 @@
 - cache "near_tags/#{@tag.name}" do
   #near_tags_box.box
-    %h1 Les tags connexes
+    %h1 Les étiquettes connexes
     %ul
       = list_of(@tag.near_tags) do |tag|
         %span.score{ title: pluralize(tag.cnt, "contenu commun", "contenus communs") }= tag.cnt
