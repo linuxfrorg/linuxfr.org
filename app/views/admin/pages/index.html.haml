@@ -1,6 +1,6 @@
 =h1 "Les pages statiques"
 
-%p= link_to "Créer une page", new_admin_page_path
+%p= link_to "Créer une page", new_admin_page_path
 
 %table
   %tr
@@ -15,4 +15,4 @@
         = link_to page.slug, static_path(page)
       %td
         = link_to "Modifier", edit_admin_page_path(page)
-        = button_to "Supprimer", [:admin, page], method: :delete, data: { confirm: "Supprimer la page ?" }, class: "delete_button"
+        = button_to "Supprimer", [:admin, page], method: :delete, data: { confirm: "Supprimer la page ?" }, class: "delete_button"
