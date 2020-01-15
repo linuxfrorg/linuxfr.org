@@ -1,9 +1,9 @@
 =h1 "Les sections"
 
-%p= link_to "Créer une section", new_admin_section_path
+%p= link_to "Créer une section", new_admin_section_path
 
 - if @sections.empty?
-  %p Pas de sections
+  %p Aucune section
 - else
   %table
     %tr
@@ -21,4 +21,4 @@
           = section.state == "published" ? "publiée" : "archivée"
         %td
           = link_to "Modifier", edit_admin_section_path(section)
-          = button_to "Archiver", [:admin, section], method: :delete, data: { confirm: "Archiver la section ?" }, class: "delete_button"
+          = button_to "Archiver", [:admin, section], method: :delete, data: { confirm: "Archiver la section ?" }, class: "delete_button"
