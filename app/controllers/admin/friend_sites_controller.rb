@@ -17,7 +17,7 @@ class Admin::FriendSitesController < AdminController
       @friend_site.move_to_bottom
       redirect_to admin_friend_sites_url, notice: "Site ami créé"
     else
-      flash.now[:alert] = "Impossible d'enregistrer ce site"
+      flash.now[:alert] = "Impossible d’enregistrer ce site"
       render :new
     end
   end
@@ -30,7 +30,7 @@ class Admin::FriendSitesController < AdminController
     if @friend_site.save
       redirect_to admin_friend_sites_url, notice: "Site ami modifié"
     else
-      flash.now[:alert] = "Impossible d'enregistrer ce site"
+      flash.now[:alert] = "Impossible d’enregistrer ce site"
       render :edit
     end
   end
