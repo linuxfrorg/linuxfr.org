@@ -1,38 +1,38 @@
 #user_recent_contents.box
   %h1= @user.name
-  %p Compte créé le #{l @user.created_at.to_date}
+  %p Compte créé le #{l @user.created_at.to_date}
   - unless @user.account && @user.account.active_for_authentication?
     %p Compte fermé
   - if @user.account && @user.account.viewable_by?(current_account)
     - a = @user.account
     %ul
-      %li Courriel&nbsp;: #{a.email}
-      %li Rôle&nbsp;: #{a.display_role(@user.nodes.where(public: true).count>0)}
-      %li Dernière connexion&nbsp;: #{a.current_sign_in_at ? l(@user.account.current_sign_in_at) : "-"}
-      %li Karma&nbsp;: #{a.karma} (minimum&nbsp;: #{a.min_karma}, maximum&nbsp;: #{a.max_karma})
+      %li Courriel : #{a.email}
+      %li Rôle : #{a.display_role(@user.nodes.where(public: true).count>0)}
+      %li Dernière connexion : #{a.current_sign_in_at ? l(@user.account.current_sign_in_at) : "-"}
+      %li Karma : #{a.karma} (minimum : #{a.min_karma}, maximum : #{a.max_karma})
     - if current_account.admin?
       %p Visibilité
       %ul
-        %li Commentaires &nbsp;: #{ @user.comments.published.count } sur #{ @user.comments.count }
-        %li Contenus &nbsp;: #{ @user.nodes.visible.count } sur #{ @user.nodes.count }
-      %p Tags&nbsp;: #{ @user.taggings.count }
-      = button_to "+50XP", karma_admin_account_path(@user.account.id)
+        %li commentaires : #{ @user.comments.published.count } sur #{ @user.comments.count } ;
+        %li contenus : #{ @user.nodes.visible.count } sur #{ @user.nodes.count }.
+      %p Étiquettes : #{ @user.taggings.count }
+      = button_to "+50 XP", karma_admin_account_path(@user.account.id)
     - if current_account.can_block?
-      %button.more.block Interdire de commenter
+      %button.more.block Interdire de commenter
       .more_actions.block(style="display: none;")
         %ul
-          %li= button_to "24h", moderation_block_index_path(nb_days: 1, account_id: @user.account.id), remote: true, class: "block"
-          %li= button_to "2 jours", moderation_block_index_path(nb_days: 2, account_id: @user.account.id), remote: true, class: "block"
-          %li= button_to "une semaine", moderation_block_index_path(nb_days: 7, account_id: @user.account.id), remote: true, class: "block"
-          %li= button_to "un mois", moderation_block_index_path(nb_days: 30, account_id: @user.account.id), remote: true, class: "block"
+          %li= button_to "24 h", moderation_block_index_path(nb_days: 1, account_id: @user.account.id), remote: true, class: "block"
+          %li= button_to "48 h", moderation_block_index_path(nb_days: 2, account_id: @user.account.id), remote: true, class: "block"
+          %li= button_to "une semaine", moderation_block_index_path(nb_days: 7, account_id: @user.account.id), remote: true, class: "block"
+          %li= button_to "un mois", moderation_block_index_path(nb_days: 30, account_id: @user.account.id), remote: true, class: "block"
     - if current_account.can_plonk?
-      %button.more.plonk Interdire de tribune
+      %button.more.plonk Interdire de tribune
       .more_actions.plonk(style="display: none;")
         %ul
-          %li= button_to "24h", moderation_plonk_index_path(nb_days: 1, account_id: @user.account.id), remote: true, class: "plonk"
-          %li= button_to "2 jours", moderation_plonk_index_path(nb_days: 2, account_id: @user.account.id), remote: true, class: "plonk"
-          %li= button_to "une semaine", moderation_plonk_index_path(nb_days: 7, account_id: @user.account.id), remote: true, class: "plonk"
-          %li= button_to "un mois", moderation_plonk_index_path(nb_days: 30, account_id: @user.account.id), remote: true, class: "plonk"
+          %li= button_to "24 h", moderation_plonk_index_path(nb_days: 1, account_id: @user.account.id), remote: true, class: "plonk"
+          %li= button_to "48 h", moderation_plonk_index_path(nb_days: 2, account_id: @user.account.id), remote: true, class: "plonk"
+          %li= button_to "une semaine", moderation_plonk_index_path(nb_days: 7, account_id: @user.account.id), remote: true, class: "plonk"
+          %li= button_to "un mois", moderation_plonk_index_path(nb_days: 30, account_id: @user.account.id), remote: true, class: "plonk"
       - if @user.account.logs.any?
         %h2.history Historique
         %ul.history
@@ -52,7 +52,7 @@
     %li= link_to "journaux", journaux_user_path(@user)
     %li= link_to "dépêches", news_user_path(@user)
     %li= link_to "liens", liens_user_path(@user)
-    %li= link_to "messages sur les forums", posts_user_path(@user)
-    %li= link_to "entrées du suivi", suivi_user_path(@user)
-    %li= link_to "ajouts au wiki", wiki_user_path(@user)
+    %li= link_to "messages sur les forums", posts_user_path(@user)
+    %li= link_to "entrées du suivi", suivi_user_path(@user)
+    %li= link_to "ajouts au wiki", wiki_user_path(@user)
     %li= link_to "commentaires", comments_user_path(@user), rel: "nofollow"
