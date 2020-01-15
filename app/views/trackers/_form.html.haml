@@ -8,7 +8,7 @@
   = form.collection_select :category_id, Category.all, :id, :title
 - if @tracker.new_record?
   %p.pot_de_miel
-    = form.label :pot_de_miel, "Ne pas remplir ce champ"
+    = form.label :pot_de_miel, "Ne pas remplir ce champ"
     = form.text_field :pot_de_miel
 %p
   = form.label :wiki_body, "Description détaillée"
@@ -18,8 +18,8 @@
     = form.label :state, "État"
     = form.select :state, Tracker::States.invert
   %p
-    = form.label :assigned_to_user_id, "Assigné à"
+    = form.label :assigned_to_user_id, "Assigné à"
     = form.collection_select :assigned_to_user_id, Account.admin, :id, :login, include_blank: true
 %p
   = form.submit "Prévisualiser", id: "tracker_preview"
-  = form.submit "Soumettre", 'data-disable-with' => "Enregistrement en cours" if @preview_mode || @tracker.persisted?
+  = form.submit "Soumettre", 'data-disable-with' => "Enregistrement en cours" if @preview_mode || @tracker.persisted?
