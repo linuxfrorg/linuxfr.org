@@ -15,7 +15,7 @@ class Admin::PagesController < AdminController
     if @page.save
       redirect_to admin_pages_url, notice: 'Nouvelle page créée.'
     else
-      flash.now[:alert] = "Impossible d'enregistrer cette page"
+      flash.now[:alert] = "Impossible d’enregistrer cette page"
       render :new
     end
   end
@@ -26,9 +26,9 @@ class Admin::PagesController < AdminController
   def update
     @page.attributes = params[:page]
     if @page.save
-      redirect_to admin_pages_url, notice: 'Page mise à jour.'
+      redirect_to admin_pages_url, notice: 'Page mise à jour.'
     else
-      flash.now[:alert] = "Impossible d'enregistrer cette page"
+      flash.now[:alert] = "Impossible d’enregistrer cette page"
       render :edit
     end
   end
