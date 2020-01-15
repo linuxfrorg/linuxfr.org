@@ -27,7 +27,7 @@ class Link < ActiveRecord::Base
   validates :title, presence: { message: "Un lien doit obligatoirement avoir un titre" },
                     length: { maximum: 100, message: "Le titre est trop long" }
   validates :url, presence: { message: "Un lien doit obligatoirement avoir une URL" },
-                  length: { maximum: 255, message: "L'URL est trop longue" }
+                  length: { maximum: 255, message: "L’URL est trop longue" }
   validate  :authorized_protocol
 
   def url=(raw)
@@ -43,12 +43,12 @@ class Link < ActiveRecord::Base
 
   def authorized_protocol
     if url.blank?
-      errors.add(:url, "L'URL est obligatoire")
+      errors.add(:url, "L’URL est obligatoire")
     else
       uri = URI.parse(url)
       return true if PROTOCOLS.include?(uri.scheme)
       return true if uri.scheme.nil? && uri.host == MY_DOMAIN
-      errors.add(:url, "L'URL d'un lien n'est pas valide")
+      errors.add(:url, "L’URL d’un lien n’est pas valide")
     end
   end
 
@@ -90,7 +90,7 @@ class Link < ActiveRecord::Base
 ### Presentation ###
 
   def to_s
-    "[#{lang}] #{title} : #{url}"
+    "[#{lang}] #{title} : #{url}"
   end
 
 ### Push ###
