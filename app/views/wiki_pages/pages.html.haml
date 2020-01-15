@@ -1,4 +1,4 @@
-=h1 "Les pages du wiki"
-- feed "Flux Atom du wiki", "/wiki.atom"
-- new_content_link = link_to("Écrire une page de wiki", "/wiki/nouveau") if current_account
+=h1 "Les pages du wiki"
+- feed "Flux Atom du wiki", "/wiki.atom"
+- new_content_link = link_to("Écrire une page de wiki", "/wiki/nouveau") if current_account
 = paginated_nodes @nodes, new_content_link
