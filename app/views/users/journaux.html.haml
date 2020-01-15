@@ -2,6 +2,6 @@
   = render 'recent'
   = render 'nodes'
 
-=h1 "#{@user.name} a écrit #{pluralize @nodes.total_count, "journal"}"
-- feed "Flux Atom des journaux de #{@user.name}"
+=h1 "#{@user.name} a écrit #{pluralize @nodes.total_count, "journal", "journaux"}"
+- feed "Flux Atom des journaux de #{@user.name}"
 = paginated_nodes @nodes
