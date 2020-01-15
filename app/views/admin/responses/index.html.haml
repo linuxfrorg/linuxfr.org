@@ -1,6 +1,6 @@
-=h1 "Les réponses de refus pour les dépêches"
+=h1 "Les réponses de refus pour les dépêches"
 
-%p= link_to "Créer une réponse", new_admin_response_path
+%p= link_to "Créer une réponse", new_admin_response_path
 
 %table
   %tr
@@ -12,4 +12,4 @@
         = resp.title
       %th
         = link_to "Modifier", edit_admin_response_path(resp)
-        = button_to "Supprimer", [:admin, resp], method: :delete, data: { confirm: "Supprimer la réponse ?" }, class: "delete_button"
+        = button_to "Supprimer", [:admin, resp], method: :delete, data: { confirm: "Supprimer la réponse ?" }, class: "delete_button"
