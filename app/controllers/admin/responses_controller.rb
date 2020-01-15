@@ -15,7 +15,7 @@ class Admin::ResponsesController < AdminController
     if @response.save
       redirect_to admin_responses_url, notice: 'Nouvelle réponse créée.'
     else
-      flash.now[:alert] = "Impossible d'enregistrer cette réponse"
+      flash.now[:alert] = "Impossible d’enregistrer cette réponse"
       render :new
     end
   end
@@ -26,9 +26,9 @@ class Admin::ResponsesController < AdminController
   def update
     @response.attributes = params[:response]
     if @response.save
-      redirect_to admin_responses_url, notice: 'Réponse mise à jour.'
+      redirect_to admin_responses_url, notice: 'Réponse mise à jour.'
     else
-      flash.now[:alert] = "Impossible d'enregistrer cette réponse"
+      flash.now[:alert] = "Impossible d’enregistrer cette réponse"
       render :edit
     end
   end
