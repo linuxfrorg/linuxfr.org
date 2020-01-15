@@ -4,12 +4,12 @@ class Admin::ModeratorsController < AdminController
 
   def create
     @account.give_moderator_rights!
-    redirect_to @account.user, notice: "Nouveau rôle : modérateur"
+    redirect_to @account.user, notice: "Nouveau rôle : modérateur"
   end
 
   def destroy
     @account.remove_all_rights!
-    redirect_to @account.user, notice: "Rôle retiré : modérateur"
+    redirect_to @account.user, notice: "Rôle retiré : modérateur"
   end
 
 protected
