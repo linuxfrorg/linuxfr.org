@@ -26,14 +26,14 @@ class WikiVersion < ActiveRecord::Base
 
   before_update :raise_on_update
   def raise_on_update
-    raise ActiveRecordError.new "On ne modifie pas les anciennes versions !"
+    raise ActiveRecordError.new "On ne modifie pas les anciennes versions !"
   end
 
 ### Presentation ###
 
   def message
     msg = read_attribute(:message)
-    msg.blank? ? "Révision n°#{self.id}" : msg
+    msg.blank? ? "Révision nᵒ #{self.id}" : msg
   end
 
   def author_name
