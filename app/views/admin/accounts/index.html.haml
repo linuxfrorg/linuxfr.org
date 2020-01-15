@@ -1,4 +1,4 @@
-=h1 "Les derniers comptes utilisateurs créés"
+=h1 "Les derniers comptes créés"
 
 = form_tag admin_accounts_path, method: :get do
   %input(type="text" name="login" value="#{@login}" placeholder="Filtrer par pseudo")
@@ -44,7 +44,7 @@
         - if account.inactive? && account.user_id != 1
           = button_to "Activer",   [:admin, account], method: :put, class: "ok_button"
         - elsif !account.inactive?
-          = button_to "Renvoi de mot de passe", password_admin_account_path(account), class: "reset_password"
+          = button_to "Réinitialisation de mot de passe", password_admin_account_path(account), class: "reset_password"
           = button_to "Suspendre", [:admin, account], method: :put, class: "delete_button"
       %td
         - if account.editor?
@@ -56,6 +56,6 @@
         - elsif !account.inactive?
           = button_to "→ modérateur", admin_account_moderator_path(account.id)
           = button_to "→ animateur", admin_account_editor_path(account.id)
-          = button_to "→ admin", admin_account_admin_path(account.id)
+          = button_to "→ administrateur", admin_account_admin_path(account.id)
 
 = paginate @accounts
