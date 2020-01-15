@@ -3,25 +3,25 @@
 - feed "Flux Atom des commentaires", "/suivi/comments.atom"
 
 %nav.toolbox
-  %h2 <strong>#{Tracker.opened.count}</strong> entrées ouvertes sur un total de #{Tracker.count}
+  %h2 <strong>#{pluralize Tracker.opened.count, "entrée ouverte", "entrées ouvertes"}</strong> sur un total de #{Tracker.count}
   .follow_feed
-    = link_to "Flux Atom du suivi", "/suivi.atom"
+    = link_to "Flux Atom du suivi", "/suivi.atom"
   .new_content
-    = link_to "Proposer une entrée", "/suivi/nouveau"
+    = link_to "Proposer une entrée", "/suivi/nouveau"
 
 = form_for @tracker, url: trackers_path, method: :get do |f|
   %h2 Filtrer les entrées du suivi
   %p
-    = f.label :state, "État : ".html_safe
+    = f.label :state, "État : "
     = f.select :state, Tracker::States.invert, include_blank: true
   %p
-    = f.label :category_id, "Catégorie : ".html_safe
+    = f.label :category_id, "Catégorie : "
     = f.collection_select :category_id, Category.all, :id, :title, include_blank: true
   %p
-    = f.label :assigned_to_user_id, "Assigné à : ".html_safe
+    = f.label :assigned_to_user_id, "Assigné à : "
     = f.collection_select :assigned_to_user_id, Account.admin, :id, :name, include_blank: true
   %p
-    = label_tag :order, "Trier par : ".html_safe
+    = label_tag :order, "Trier par : "
     = select_tag :order, options_for_select({ "Date d’ouverture" => "created_at", "Note" => "score", "Nombre de commentaires" => "comments_count", "Dernier commentaire" => "last_commented_at" }, @order)
   %p
     = submit_tag "Filtrer"
