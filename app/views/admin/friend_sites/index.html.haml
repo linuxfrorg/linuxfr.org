@@ -1,9 +1,9 @@
 =h1 "Les sites amis"
 
-%p= link_to "Ajouter un site ami", new_admin_friend_site_path
+%p= link_to "Ajouter un site ami", new_admin_friend_site_path
 
 - if @friend_sites.empty?
-  %p Pas de site ami
+  %p Aucun site ami
 - else
   %table
     %tr
@@ -15,7 +15,7 @@
         %td= site.title
         %td= link_to site.url, site.url
         %td
-          = button_to "&uarr;".html_safe, higher_admin_friend_site_path(site)
-          = button_to "&darr;".html_safe, lower_admin_friend_site_path(site)
+          = button_to "↑", higher_admin_friend_site_path(site)
+          = button_to "↓", lower_admin_friend_site_path(site)
           = link_to "Modifier", edit_admin_friend_site_path(site)
-          = button_to "Supprimer", [:admin, site], method: :delete, data: { confirm: "Supprimer le site ami ?" }, class: "delete_button"
+          = button_to "Supprimer", [:admin, site], method: :delete, data: { confirm: "Supprimer le site ami ?" }, class: "delete_button"
