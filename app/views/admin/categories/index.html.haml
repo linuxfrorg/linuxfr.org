@@ -1,9 +1,9 @@
 =h1 "Les catégories"
 
-%p= link_to "Créer une catégorie", new_admin_category_path
+%p= link_to "Créer une catégorie", new_admin_category_path
 
 - if @categories.empty?
-  %p Pas de catégories
+  %p Aucune catégorie
 - else
   %table
     %tr
@@ -15,4 +15,4 @@
           = category.title
         %th
           = link_to "Modifier", edit_admin_category_path(category)
-          = button_to "Supprimer", [:admin, category], method: :delete, data: { confirm: "Supprimer la catégorie ?" }, class: "delete_button"
+          = button_to "Supprimer", [:admin, category], method: :delete, data: { confirm: "Supprimer la catégorie ?" }, class: "delete_button"
