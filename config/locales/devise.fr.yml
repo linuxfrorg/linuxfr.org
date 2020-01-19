@@ -5,7 +5,7 @@ fr:
       send_instructions: "Vous allez recevoir un courriel avec les instruction pour confirmer votre compte dans quelques minutes."
     failure:
       already_authenticated: "Vous êtes déjà connecté(e)."
-      inactive: "Votre compte n'a pas encore été activé."
+      inactive: "Votre compte n’a pas encore été activé."
       invalid: "Identifiant ou mot de passe invalide."
       locked: "Votre compte a été verrouillé."
       last_attempt: "Ceci est votre dernier essai avant que votre compte ne soit verrouillé."
@@ -22,14 +22,14 @@ fr:
       unlock_instructions:
         subject: "Instructions pour le déverrouillage"
     passwords:
-      no_token: "Vous ne pouvez accéder à cette page qu'à partir d'un courriel de réinitialisation du mot de passe."
+      no_token: "Vous ne pouvez accéder à cette page qu’à partir d’un courriel de réinitialisation du mot de passe."
       send_instructions: "Vous allez recevoir un courriel avec les instructions pour réinitialiser votre mot de passe dans quelques minutes."
       updated: "Votre mot de passe a été modifié avec succès. Vous êtes maintenant connecté."
       updated_not_active: "Votre mot de passe a été modifié avec succès."
     registrations:
       destroyed: "Au revoir. Votre compte a été fermé avec succès. Nous espérons vous revoir bientôt."
       signed_up: "Vous vous êtes inscrit avec succès. Vous allez recevoir les instructions de confirmation par courriel."
-      signed_up_but_inactive: "Vous vous êtes identifié correctement. Pourtant, nous ne pouvons pas ouvrir votre session tant que votre compte n'aura pas été activé."
+      signed_up_but_inactive: "Vous vous êtes identifié correctement. Pourtant, nous ne pouvons pas ouvrir votre session tant que votre compte n’aura pas été activé."
       signed_up_but_locked: "Vous vous êtes identifié correctement. Pourtant, nous ne pouvons pas ouvrir votre session car votre compte est bloqué."
       signed_up_but_unconfirmed: "Un message avec un lien de confirmation a été envoyé à votre adresse de courriel. Veuillez ouvrir le lien pour activer votre compte."
       update_needs_confirmation: "Vous avez mis à jour votre compte avec succès, mais nous devons vérifier votre nouvelle adresse de courriel."
@@ -45,9 +45,9 @@ fr:
       expired: "a expiré, veuillez en demander un nouveau"
       not_found: "pas trouvé"
       already_confirmed: "était déjà confirmé, veuillez essayer de vous connecter"
-      not_locked: "n'était pas verrouillé"
+      not_locked: "n’était pas verrouillé"
       not_saved:
-        one: "Ce %{resource} n'a pu être enregistré à cause d'une erreur :"
-        other: "Ce %{resource} n'a pu être enregistré à cause de %{count} erreurs :"
-      confirmation_period_expired: "doit être confirmé avant %{period}, veuillez refaire une demande"
+        one: "Ce %{resource} n’a pu être enregistré à cause d’une erreur :"
+        other: "Ce %{resource} n’a pu être enregistré à cause de %{count} erreurs :"
+      confirmation_period_expired: "doit être confirmé avant %{period}, veuillez refaire une demande"
 
