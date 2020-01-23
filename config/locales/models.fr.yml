@@ -44,15 +44,15 @@ fr:
       post: "au message"
       response: "à la réponse"
       section: "à la section"
-      tracker: "à l'entrée du suivi"
-      user: "à l'utilisateur"
+      tracker: "à l’entrée du suivi"
+      user: "à l’utilisateur"
       wikipage: "à la page de wiki"
       wikiversion: "à la version"
     attributes:
       account:
-        reset_password_token: "token de réinitialisation"
+        reset_password_token: "jeton de réinitialisation"
 
   errors:
     messages:
-      carrierwave_processing_error: "n'a pu être traité"
-      carrierwave_integrity_error: "n'est pas un type de fichier autorisé"
+      carrierwave_processing_error: "n’a pu être traité"
+      carrierwave_integrity_error: "n’est pas un type de fichier autorisé"
