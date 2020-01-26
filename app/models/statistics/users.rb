@@ -30,11 +30,12 @@ class Statistics::Users < Statistics::Statistics
     rows.first
   end
 
-  def nb_content_authors(days=0)
+  def nb_content_authors(days=0, content_type='')
     node_age=''
     node_age="AND nodes.created_at > DATE_SUB(CURDATE(),INTERVAL #{days} DAY)" if days>0
+    node_type="AND content_type='#{content_type}'" if content_type!=''
 
-    select_all "SELECT COUNT(DISTINCT(accounts.user_id)) AS cnt, content_type FROM nodes JOIN accounts ON nodes.user_id = accounts.user_id WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' #{node_age} GROUP BY content_type;"
+    select_all "SELECT COUNT(DISTINCT(accounts.user_id)) AS cnt, content_type FROM nodes JOIN accounts ON nodes.user_id = accounts.user_id WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' #{node_age} #{node_type} GROUP BY content_type;"
   end
 
   def nb_comment_authors(days=0)

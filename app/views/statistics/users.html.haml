@@ -55,9 +55,9 @@
       %th Actifs
       %th Depuis 3 mois
       %th Actifs
-    - last3Months = @stats.nb_content_authors(90)[0]
-    - lastYear = @stats.nb_content_authors(365)[0]
     - @stats.nb_content_authors.each do |authors|
+      - last3Months = @stats.nb_content_authors(90, authors["content_type"])[0]
+      - lastYear = @stats.nb_content_authors(365, authors["content_type"])[0]
       %tr
         - contentclass = "content#{authors["content_type"].downcase()}"
         %td
@@ -67,13 +67,25 @@
         %td
           #{@stats.pctrecent(authors["cnt"])}
         %td
-          .stat(class="#{contentclass}" style="width: #{width_stats * lastYear["cnt"] / maxval}px;")=lastYear["cnt"]
+          - if !lastYear.nil?
+            .stat(class="#{contentclass}" style="width: #{width_stats * lastYear["cnt"] / maxval}px;")=lastYear["cnt"]
+          - else
+            &nbsp;
         %td
-          #{@stats.pctrecent(lastYear["cnt"])}
+          - if !lastYear.nil?
+            #{@stats.pctrecent(lastYear["cnt"])}
+          - else
+            &nbsp;
         %td
-          .stat(class="#{contentclass}" style="width: #{width_stats * last3Months["cnt"] / maxval}px;")=last3Months["cnt"]
+          - if !last3Months.nil?
+            .stat(class="#{contentclass}" style="width: #{width_stats * last3Months["cnt"] / maxval}px;")=last3Months["cnt"]
+          - else
+            &nbsp;
         %td
-          #{@stats.pctrecent(last3Months["cnt"])}
+          - if !last3Months.nil?
+            #{@stats.pctrecent(last3Months["cnt"])}
+          - else
+            &nbsp;
 
   %h2#stats_commentaires Commentaires
   %p
