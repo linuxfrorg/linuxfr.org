@@ -1,7 +1,7 @@
 #news_vote
   %h1 Votes
   %p
-    Nombre de modérateurs : n = #{Account.amr.count}
+    Nombre d’admin+modérateurs : n = #{Account.amr.count}
     %br
     Seuil d’acceptation (n/6 votes) : &gt; #{News.accept_threshold}
     %br

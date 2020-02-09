@@ -14,6 +14,14 @@ class StatisticsController < ApplicationController
     @stats = Statistics::Users.new
   end
 
+  def anonymous
+    @stats = Statistics::Anonymous.new
+  end
+
+  def collective
+    @stats = Statistics::Collective.new
+  end
+
   def top
     @stats = Statistics::Tops.new
   end

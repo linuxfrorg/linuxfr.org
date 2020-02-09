@@ -93,7 +93,7 @@ class Node < ActiveRecord::Base
     return if prev.to_i == value
     value *= 2 if prev
     $redis.expire(key, 7776000) # 3 months
-    $redis.incrby("users/#{self.user_id}/diff_karma", value)
+    $redis.incrby("users/#{self.user_id}/diff_karma", value) unless self.user_id.nil?
     Account.decrement_counter(:nb_votes, account.id) unless account.amr?
     Node.update_counters self.id, score: value
     compute_interest

@@ -198,7 +198,7 @@ class Comment < ActiveRecord::Base
     return false unless $redis.sadd(key, account.id)
     $redis.expire(key, 7776000) # 3 months
     unless score * (score + value) > 100  # Score is out of the [-10, 10] bounds
-      $redis.incrby("users/#{self.user_id}/diff_karma", value)
+      $redis.incrby("users/#{self.user_id}/diff_karma", value) unless self.user_id.nil?
     end
     Account.decrement_counter(:nb_votes, account.id)
     true
