@@ -1,34 +1,34 @@
 %main#contents.statistics(role="main")
-  =h1 "Statistiques sur l'utilisateur Collectif"
+  =h1 "Statistiques sur l’utilisateur Collectif"
   - width_stats = 400
 
   .body
     %strong
-      Statistiques mises à jour le #{l Time.now}
+      Statistiques mises à jour le #{l Time.now}
 
-    %p= link_to("Retour à l'ensemble des statistiques", "/statistiques")
+    %p= link_to("Retour à l’ensemble des statistiques", "/statistiques")
 
-    %p L'utilisateur #{link_to("Collectif", "/users/collectif")} est un compte particulier auquel peuvent être attribués les contenus rédigés collaborativement.
+    %p L’utilisateur #{link_to("Collectif", "/users/collectif")} est un compte particulier auquel peuvent être attribués les contenus rédigés collaborativement.
 
     %h2 Sommaire
     %ul
-      %li=link_to("contenus par type","#contenus_type")
-      %li=link_to("contenus par an","#contenus_annee")
-      %li=link_to("commentaires par type","#commentaires_type")
-      %li=link_to("tags par type","#tags_type")
-      %li=link_to("tags par an","#tags_annee")
+      %li=link_to("contenus par type","#contenus_type")
+      %li=link_to("contenus par an","#contenus_annee")
+      %li=link_to("commentaires par type","#commentaires_type")
+      %li=link_to("étiquettes par type","#tags_type")
+      %li=link_to("étiquettes par an","#tags_annee")
 
     - if @stats.contents_per_type["Total"] > 1
-      %h2#contenus_type Répartition par type des #{@stats.contents_per_type["Total"]} contenus attribués à Collectif
+      %h2#contenus_type Répartition par type des #{@stats.contents_per_type["Total"]} contenus attribués à Collectif
     - else
-      %h2#contenus_type Répartition par type des contenus attribués à Collectif
+      %h2#contenus_type Répartition par type des contenus attribués à Collectif
     %ul
       %li #{pluralize @stats.contents_per_type["News"], "dépêche"}
 
     - if @stats.contents_per_type["Total"] > 1
-      %h2#contenus_annee Répartition annuelle des #{@stats.contents_per_type["Total"]} contenus attribués à Collectif
+      %h2#contenus_annee Répartition annuelle des #{@stats.contents_per_type["Total"]} contenus attribués à Collectif
     - else
-      %h2#contenus_annee Répartition annuelle des contenus attribués à Collectif
+      %h2#contenus_annee Répartition annuelle des contenus attribués à Collectif
 
     %table
       - maxval = @stats.contents_per_year.values.map(&:values).flatten.max
