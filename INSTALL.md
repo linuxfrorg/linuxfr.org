@@ -1,14 +1,14 @@
 # Introduction
 
-This document will give you steps to install linuxfr.org website on your
+This document will give you steps to install LinuxFr.org website on your
 Debian Stretch development machine.
 
 Note that all commands which require root access are prefixed by `sudo`.
 
 # Use stretch-backports
 
-LinuxFr requires to add `stretch-backports` source package as it needs the `npm`
-package.
+LinuxFr.org requires to add `stretch-backports` source package as it
+needs the `npm`package.
 
 ```
 ~ $ sudo bash -c "echo 'deb http://deb.debian.org/debian stretch-backports main' >> /etc/apt/sources.list.d/linuxfr.list"
@@ -37,9 +37,9 @@ Packages to install from backports:
 ~ $ sudo apt install -t stretch-backports nodejs npm
 ```
 
-# Get LinuxFr code and external resources
+# Get LinuxFr.org code and external resources
 
-Use git to get LinuxFr sources:
+Use git to get LinuxFr.org sources:
 
 ```
 ~ $ git clone git://github.com/linuxfrorg/linuxfr.org.git
@@ -56,7 +56,8 @@ So we first install the `bundler` packager directly from `rubygems.org`:
 ~ $ gem install --user-install bundler
 ```
 
-and add it to your PATH environment according to the warning message shown during installation.
+Don't forget to update your PATH environment according to the warning message
+shown during installation.
 
 Now, we can reach external Ruby resources:
 
@@ -68,31 +69,32 @@ Now, we can reach external Ruby resources:
 
 The `check` command above should say you there's no problem.
 
-Linuxfr uses also some nodejs resources:
+LinuxFr.org uses also some nodejs resources:
 
 ```
 ~/linuxfr.org $ npm install
 ```
 
-## Install the LinuxFr board
+## Install the LinuxFr.org board
 
 The `board-linuxfr` gem server is used to allow users chat on the `/boards` and
-the collaborative `redaction` space to work asynchronisouly.
+the collaborative `redaction` space to work asynchronously.
 
 To install it, the simplest is to run `gem install --user-install board-linuxfr`
 
-# Configure LinuxFr
+# Configure LinuxFr.org
 
-To configure LinuxFr, you need to copy both sample configuration files:
+To configure LinuxFr.org, you need to copy both sample configuration files:
 
 ```
 ~/linuxfr.org $ cp config/database.yml{.sample,}
 ~/linuxfr.org $ cp config/secrets.yml{.sample,}
 ```
 
-For database, you'll need to configure both `development` and `test` section.
+For the database, you'll need to configure both `development` and `test`
+section.
 Set there the MySQL password you will use for connections in clear text and
-evenutally the database names to use (they have to be two different databases).
+eventually the database names to use (they have to be two different databases).
 In this document we'll assume you took the default values for database names:
 `linuxfr_rails` and `linuxfr_test`.
 
@@ -101,13 +103,13 @@ the `secrets.yml` file.
 
 # Configure SQL data base
 
-Prepare time zones informations inside the `mysql` database:
+Prepare time zones information inside the `mysql` database:
 
 ```
 ~ $ mysql_tzinfo_to_sql /usr/share/zoneinfo | sudo mysql mysql
 ```
 
-Create LinuxFr databases and MySQL users:
+Create LinuxFr.org databases and MySQL users:
 
 ```
 ~/linuxfr.org $ sudo mysql
@@ -129,18 +131,18 @@ every structures needed:
 ~/linuxfr.org $ bin/rails db:setup
 ```
 
-# Run LinuxFr
+# Run LinuxFr.org
 
-Now, you can run LinuxFr server with:
+Now, you can run LinuxFr.org server with:
 
 ```
 ~/linuxfr.org $ bin/rails server
 ```
 
-If everything was good, you can reach the server with a browser inside the
+If everything were good, you can reach the server with a browser inside the
 virtual machine using the `http://localhost:3000` URL.
 
-Additionnaly, you run the boards within another terminal:
+Additionally, you run the boards within another terminal:
 
 ```
 ~/linuxfr.org $ board-linuxfr -s -a localhost -p 9000
@@ -148,17 +150,17 @@ Additionnaly, you run the boards within another terminal:
 
 # Configure redirection
 
-This extra step isn't really needed to be able to use Linuxfr.
+This extra step isn't really needed to be able to use LinuxFr.org.
 
 In the `config/environments/development.rb` file, there are two domains set
 inside variables `MY_DOMAIN` and `IMG_DOMAIN`.
 By default both domains are `dlfp.lo`.
 
 You'll find this domain inside some documents like emails to confirm user
-subscription. To simplify your usage of Linuxfr, you should consider install a
-website locally using this domain name.
+subscription. To simplify your usage of LinuxFr.org, you should consider
+install a website locally using this domain name.
 
-Set the domain `dlfp.lo` to target localhost:
+Set the domain `dlfp.lo` to target `localhost`:
 
 ```
 ~ $ sudo bash -c 'echo "127.0.0.1 dlfp.lo" >> /etc/hosts'
@@ -205,8 +207,8 @@ and restart the web server:
 ~ $ sudo systemctl restart nginx
 ```
 
-Now, on the virtual machine, you can access LinuxFr with the `http://dlfp.lo`
-URL.
+Now, on the virtual machine, you can access LinuxFr.org with the
+`http://dlfp.lo` URL.
 
 # Create administrator
 
