@@ -7,7 +7,7 @@ shared:
 development:
   database: linuxfr_rails
   username: linuxfr_rails
-  password:
+  password: asecretpassword
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
