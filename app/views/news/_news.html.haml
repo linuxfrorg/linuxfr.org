@@ -8,6 +8,7 @@
     = news.body
     - if defined?(with_second_part) && with_second_part
       = news.second_part
-      %h2 Aller plus loin
-      %ul.links
-        = render news.links.select([:id, :lang, :title, :url])
+      - if news.links && news.links.any?
+        %h2 Aller plus loin
+        %ul.links
+          = render news.links.select([:id, :lang, :title, :url])
