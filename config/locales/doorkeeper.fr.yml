@@ -13,7 +13,7 @@ fr:
               fragment_present: "ne peut contenir un fragment."
               invalid_uri: "doit être une adresse valide."
               relative_uri: "doit être une adresse absolue."
-              secured_uri: "doit être une URL HTTP/SSL."
+              secured_uri: "doit être une adresse HTTPS."
               forbidden_uri: 'est interdite par le serveur.'
 
   doorkeeper:
