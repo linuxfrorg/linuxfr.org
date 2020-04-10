@@ -3,7 +3,7 @@ fr:
     attributes:
       doorkeeper/application:
         name: "Nom"
-        redirect_uri: "L’URL de redirection"
+        redirect_uri: "L’adresse de redirection"
         scopes: "Portées"
     errors:
       models:
