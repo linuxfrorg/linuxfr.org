@@ -3,8 +3,8 @@
   = render "tags/box"
 = render "hide"
 
-=h1 "Tous les contenus que j'ai taggés avec #{@tag.name}"
-- link = link_to("Afficher tous les contenus taggés avec #{@tag.name}", public_tag_path(@tag.name))
+=h1 "Tous les contenus que j’ai étiquetés avec « #{@tag.name} »"
+- link = link_to("Afficher tous les contenus étiquetés avec « #{@tag.name} »", public_tag_path(@tag.name))
 = paginated_section @nodes, link do
   %main#contents(role="main")
     = render @nodes.map(&:content)

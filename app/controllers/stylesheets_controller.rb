@@ -9,7 +9,7 @@ class StylesheetsController < ApplicationController
       Rails.logger.info @account.uploaded_stylesheet
       msg = { notice: "Feuille de style enregistrée" }
     else
-      msg = { alert: "Erreur lors de l'enregistrement de la feuille de style" }
+      msg = { alert: "Erreur lors de l’enregistrement de la feuille de style" }
     end
     redirect_to edit_stylesheet_url, msg
   end
@@ -30,7 +30,7 @@ class StylesheetsController < ApplicationController
         @account.remove_uploaded_stylesheet!
         msg = { notice: "Feuille de style enregistrée" }
       else
-        msg = { alert: "Cette feuille de style n'est pas valide" }
+        msg = { alert: "Cette feuille de style n’est pas valide" }
       end
     end
     redirect_to edit_stylesheet_url, msg

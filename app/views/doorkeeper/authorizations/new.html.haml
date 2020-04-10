@@ -1,11 +1,11 @@
 %h1 Autorisation requise
 
 %p
-  Autoriser l'application <strong>#{@pre_auth.client.name}</strong> à utiliser votre compte ?
+  Autoriser l’application <strong>#{@pre_auth.client.name}</strong> à utiliser votre compte ?
 
 - if @pre_auth.scopes.any?
   #oauth-permissions
-    %p Cette application pourra faire les actions suivantes :
+    %p Cette application pourra effectuer les actions suivantes :
     %ul
       - @pre_auth.scopes.each do |scope|
         %li= t scope, scope: [:doorkeeper, :scopes]

@@ -1,59 +1,58 @@
 <h2>Principes généraux</h2>
 
 <p>
-  LinuxFr.org expose une API Rest au format JSON dont l'authentification repose
-  sur OAuth2. Celle-ci est en cours de développement et ne propose pour le
-  moment que peu de méthodes. Si vous avez des besoins particuliers pour cette
-  API qui ne sont pas encore implémentés, n'hésitez pas à
+  <em>LinuxFr.org</em> expose une API <a href="https://fr.wikipedia.org/wiki/Representational_state_transfer">REST</a>
+  au format JSON dont l’authentification repose sur OAuth2.
+  Celle‑ci est en cours de développement et ne propose pour le
+  moment que peu de méthodes. Si vous avez des besoins particuliers pour
+  cette API qui ne sont pas encore implémentés, n’hésitez pas à
   <a href="/suivi/nouveau">créer une entrée dans le suivi</a>.
 </p>
-
-
 
 <h2>OAuth2</h2>
 
 <p>
   <a href="https://oauth.net/2/">OAuth2</a> est un protocole qui permet à des
-  applications externes de demander l'autorisation d'accéder à des informations
-  privées d'un utilisateur avec un compte LinuxFr.org et de faire des actions
-  en son nom. L'utilisateur n'a pas besoin de fournir son mot de passe au site
-  externe et reste maître des autorisations qu'il a fournies.
+  applications externes de demander l’autorisation d’accéder à des informations
+  privées d’un utilisateur avec un compte <em>LinuxFr.org</em> et de faire des actions
+  en son nom. L’utilisateur n’a pas besoin de fournir son mot de passe au site
+  externe et reste maître des autorisations qu’il a fournies.
 </p>
 
 <p>
-  Si vous êtes un développeur d'applications web et que vous souhaitez utiliser
-  l'API de LinuxFr.org, la première chose à faire est d'
-  <a href="/api/applications">enregistrer votre application</a>. Vous
-  obtiendrez ainsi un identifiant et un secret qui vous serviront lors des
-  échanges OAuth. Le secret doit, comme son nom l'indique, rester secret.
+  Si vous êtes un développeur d’applications Web et que vous souhaitez utiliser
+  l’API de <em>LinuxFr.org</em>, la première chose à faire est
+  d’<a href="/api/applications">enregistrer votre application</a>.
+  Vous obtiendrez ainsi un identifiant et un secret qui vous serviront lors des
+  échanges OAuth. Le secret doit, comme son nom l’indique, rester secret.
 </p>
 
 <p>
-  OAuth fonctionne avec un principe de jetons. Quand une application web
+  OAuth fonctionne avec un principe de jetons. Quand une application Web
   souhaite accéder aux données confidentielles de l'utilisateur, il va demander
-  à l'utilisateur un jeton d'autorisation qui sera délivré par LinuxFr.org,
+  à l’utilisateur un jeton d’autorisation qui sera délivré par <em>LinuxFr.org</em>,
   puis il pourra utiliser ce jeton pour accéder aux informations.
 </p>
 
 <p>
-  LinuxFr.org utilise la bibliothèque Ruby
+  <em>LinuxFr.org</em> utilise la bibliothèque Ruby
   <a href="https://github.com/doorkeeper-gem/doorkeeper">Doorkeeper</a>
   pour gérer la partie OAuth2. Aussi, nous vous conseillons ces deux liens si
-  vous souhaitez utiliser l'API de LinuxFr.org :
+  vous souhaitez utiliser l’API de <em>LinuxFr.org</em> :
+  <ol>
+    <li><a href="https://github.com/doorkeeper-gem/doorkeeper/wiki/API-endpoint-descriptions-and-examples"><i>API endpoint descriptions and examples</i></a> ;</li>
+    <li><a href="https://github.com/doorkeeper-gem/doorkeeper/wiki/Interacting-as-an-OAuth-client-with-Doorkeeper"><i>Interacting as an OAuth client with Doorkeeper</a><i>.</li>
+  </ol>
 </p>
-<ol>
-  <li><a href="https://github.com/doorkeeper-gem/doorkeeper/wiki/API-endpoint-descriptions-and-examples">API endpoint descriptions and examples</a></li>
-  <li><a href="https://github.com/doorkeeper-gem/doorkeeper/wiki/Interacting-as-an-OAuth-client-with-Doorkeeper">Interacting as an OAuth client with Doorkeeper</a></li>
-</ol>
 
 
-<h2>Obtention d'un jeton d'autorisation</h2>
+<h2>Obtention d’un jeton d’autorisation</h2>
 
-<h3>Redirection de l'utilisateur vers LinuxFr.org</h3>
+<h3>Redirection de l’utilisateur vers LinuxFr.org</h3>
 
 <p>
-  La première étape consiste à envoyer l'utilisateur sur LinuxFr.org pour
-  qu'il puisse accepter ou refuser de donner l'autorisation.
+  La première étape consiste à envoyer l’utilisateur sur <em>LinuxFr.org</em>
+  pour qu’il puisse accepter ou refuser de donner l’autorisation.
 </p>
 <pre>
 GET https://linuxfr.org/api/oauth/authorize
@@ -63,37 +62,37 @@ GET https://linuxfr.org/api/oauth/authorize
 <dl>
   <dt><var>client_id</var></dt>
   <dd>
-    Chaîne de caractères obligatoire - L'identifiant de l'application lors
-    de l'inscription sur LinuxFr.org.
+    Chaîne de caractères obligatoire — l’identifiant de l’application lors
+    de l’inscription sur <em>LinuxFr.org</em>.
   </dd>
   <dt>redirect_uri</dt>
   <dd>
-    Chaîne de caractères obligatoire - L'URL vers laquelle sera redirigé
-    l'utilisateur après l'autorisation.
+    Chaîne de caractères obligatoire — l’URL vers laquelle sera redirigé
+    l’utilisateur ou l’utilisatrice après l’autorisation.
   </dd>
   <dt>response_type</dt>
   <dd>
-    Chaîne de caractères obligatoire - <var>code</var> dans le flux d'OAuth2 le
+    Chaîne de caractères obligatoire — <var>code</var> dans le flux d’OAuth2 le
     plus courant.
   </dd>
   <dt>scope</dt>
   <dd>
-    Chaîne de caractères facultative - la liste des scopes demandées, séparés
-    par des espaces (URL encodés en +). Cela indique les actions que
-    l'application pourra faire au nom de l'utilisateur. Exemple :
+    Chaîne de caractères facultative — la liste des scopes demandées, séparés
+    par des espaces (URL encodés en +). Cela indique les actions que
+    l’application pourra faire au nom de l’utilisateur. Exemple :
     <var>scope=account+board</var>. Par défaut, seul le scope
     <var>account</var> sera fourni.
   </dd>
 </dl>
 
 
-<h3>L'utilisateur revient sur le site</h3>
+<h3>L’utilisateur revient sur le site</h3>
 
 <p>
-  Si l'utilisateur accepte l'autorisation, il est renvoyé sur le site d'origine
-  avec un <var>code</var> temporaire. Le code sera passé dans la <i>query
-  string</i> sur l'URL de redirection. Le site peut alors échanger ce code
-  contre le jeton d'autorisation.
+  Si l’utilisateur accepte l’autorisation, il est renvoyé sur le site d’origine
+  avec un <var>code</var> temporaire. Le code sera passé dans la <i>query string</i>
+  sur l’URL de redirection. Le site peut alors échanger ce code contre le jeton
+  d’autorisation.
 </p>
 <pre>
 POST https://linuxfr.org/api/oauth/token
@@ -103,28 +102,28 @@ POST https://linuxfr.org/api/oauth/token
 <dl>
   <dt><var>client_id</var></dt>
   <dd>
-    Chaîne de caractères obligatoire - L'identifiant de l'application lors
-    de l'inscription sur LinuxFr.org.
+    Chaîne de caractères obligatoire — l’identifiant de l’application lors
+    de l’inscription sur <em>LinuxFr.org</em>.
   </dd>
   <dt><var>client_secret</var></dt>
   <dd>
-    Chaîne de caractères obligatoire - Le secret de l'application lors
-    de l'inscription sur LinuxFr.org.
+    Chaîne de caractères obligatoire — le secret de l’application lors
+    de l’inscription sur <em>LinuxFr.org</em>.
   </dd>
   <dt><var>code</var></dt>
   <dd>
-    Chaîne de caractères obligatoire - Le code reçu à l'étape 1.
+    Chaîne de caractères obligatoire — le code reçu à l’étape 1.
   </dd>
   <dt><var>grant_type</var></dt>
   <dd>
-    Chaîne de caractères obligatoire - Le format d'authentification utilisé,
-    "authorization_code" pour une application web.
+    Chaîne de caractères obligatoire — le format d’authentification utilisé,
+    "authorization_code" pour une application Web.
   </dd>
   <dt><var>redirect_uri</var></dt>
   <dd>
-    Chaîne de caractères obligatoire - L'URI vers laquelle l'utilisateur
-    sera redirigé après obtention du token (doit être la même que celle
-    indiquée lors de l'enregistrement de l'application).
+    Chaîne de caractères obligatoire — l’URI vers laquelle l’utilisateur
+    sera redirigé après obtention du jeton (doit être la même que celle
+    indiquée lors de l’enregistrement de l’application).
   </dd>
 </dl>
 
@@ -132,7 +131,7 @@ POST https://linuxfr.org/api/oauth/token
 <dl>
   <dt><var>access_token</var></dt>
   <dd>
-    Chaîne de caractères - Le jeton d'autorisation, également appelé
+    Chaîne de caractères — le jeton d’autorisation, également appelé
     <var>bearer_token</var>.
   </dd>
   <dt><var>refresh_token</var></dt>
@@ -141,26 +140,26 @@ POST https://linuxfr.org/api/oauth/token
   </dd>
   <dt><var>expires_in</var></dt>
   <dd>
-    Entier - Nombre de secondes avant expiration de l'<var>access_token</var>.
+    Entier — Nombre de secondes avant expiration du jeton d’accès <var>access_token</var>.
   </dd>
 </dl>
 
 
 
-<h2>Méthodes d'API</h2>
+<h2>Méthodes d’API</h2>
 
 <p>
-  Lors de l'appel des méthodes d'API, le <var>bearer_token</var> peut être
+  Lors de l’appel des méthodes d’API, le <var>bearer_token</var> peut être
   envoyé soit en paramètre GET ou POST (suivant la méthode requise pour la
-  requête) soit dans les headers HTTP :
-
+  requête) soit dans les en‑têtes HTTP :
+</p>
 <pre>
 Authorization: Bearer cf075a5c84bbb9489bdca8d18c51937cc69af6b23e06cfc5f0a52e2eef3f6339
 </pre>
 
 <h3>Authentification</h3>
 
-<p>Scope nécessaire : <var>account</var></p>
+<p>Scope nécessaire : <var>account</var></p>
 
 <pre>
 GET https://linuxfr.org/api/v1/me
@@ -169,25 +168,25 @@ GET https://linuxfr.org/api/v1/me
 <h4>Paramètres</h4>
 <dl>
   <dt><var>bearer_token</var></dt>
-  <dd>Chaîne de caractères obligatoire - Le jeton d'autorisation.</dd>
+  <dd>Chaîne de caractères obligatoire — le jeton d’autorisation.</dd>
 </dl>
 
 <h4>Réponse</h4>
 <dl>
   <dt><var>login</var></dt>
   <dd>
-    Chaîne de caractères - L'identifiant du compte utilisateur sur
-    LinuxFr.org.
+    Chaîne de caractères — l’identifiant du compte utilisateur sur
+    <em>LinuxFr.org</em>.
   </dd>
   <dt><var>email</var></dt>
   <dd>
-    Chaîne de caractères - L'adresse de courriel de l'utilisateur (note :
-    elle a déjà été validée à l'inscription sur LinuxFr.org et il n'est
-    donc pas souhaitable de revalider cette adresse de courriel).
+    Chaîne de caractères — l’adresse de courriel de l’utilisateur ou 
+    l’utilisatrice (note : elle a déjà été validée à l’inscription sur <em>LinuxFr.org</em>
+    et il n’est donc pas souhaitable de revalider cette adresse de courriel).
   </dd>
   <dt><var>created_at</var></dt>
   <dd>
-    Chaîne de caractères - La date de création du compte, format ISO.
+    Chaîne de caractères — la date de création du compte au format ISO.
   </dd>
 </dl>
 
@@ -199,7 +198,7 @@ GET https://linuxfr.org/api/v1/me
 
 <h3>Proposer une dépêche</h3>
 
-<p>Scope nécessaire : <var>news</var></p>
+<p>Scope nécessaire : <var>news</var></p>
 
 <pre>
 POST https://linuxfr.org/api/v1/news
@@ -208,46 +207,47 @@ POST https://linuxfr.org/api/v1/news
 <h4>Paramètres</h4>
 <dl>
   <dt><var>bearer_token</var></dt>
-  <dd>Chaîne de caractères obligatoire - Le jeton d'autorisation.</dd>
+  <dd>Chaîne de caractères obligatoire — le jeton d’autorisation.</dd>
   <dt><var>title</var></dt>
-  <dd>Chaîne de caractères obligatoire - Le titre de la dépêche</dd>
+  <dd>Chaîne de caractères obligatoire — le titre de la dépêche</dd>
   <dt><var>section_id</var></dt>
   <dd>
-    Entier - L'identifiant de la section
-    (le code source de <a href="/news/nouveau">la page de soumission d'une dépêche</a> permet de trouver la liste des sections)
+    Entier — l’identifiant de la section
+    (le code source de <a href="/news/nouveau">la page de soumission d’une dépêche</a>
+    permet de trouver la liste des sections).
   </dd>
   <dt><var>wiki_body</var></dt>
-  <dd>Chaîne de caractères obligatoire - Le contenu en markdown de la première partie de la dépêche</dd>
+  <dd>Chaîne de caractères obligatoire — le contenu en Markdown de la première partie de la dépêche</dd>
   <dt><var>wiki_second_part</var></dt>
-  <dd>Chaîne de caractères obligatoire - Le contenu en markdown de la seconde partie de la dépêche</dd>
+  <dd>Chaîne de caractères obligatoire — le contenu en Markdown de la seconde partie de la dépêche</dd>
 </dl>
 
 <h4>Réponse</h4>
 <dl>
   <dt><var>id</var></dt>
-  <dd>Entier - Id de la dépêche qui vient d'être créée.</dd>
+  <dd>Entier — identifiant de la dépêche qui vient d’être créée.</dd>
   <dt><var>section_id</var></dt>
-  <dd>Entier - Id de la section.</dd>
+  <dd>Entier — identifiant de la section.</dd>
   <dt><var>cached_slug</var></dt>
-  <dd>Chaîne de caractères - Le slug de la dépeche.</dd>
+  <dd>Chaîne de caractères — le « <em><a href="https://fr.wikipedia.org/wiki/Slug_(journalisme)">slug</a></em> » de la dépeche.</dd>
   <dt><var>title</var></dt>
-  <dd>Chaîne de caractères - Le titre de la dépêche.</dd>
+  <dd>Chaîne de caractères — le titre de la dépêche.</dd>
   <dt><var>body</var></dt>
-  <dd>Chaîne de caractères - Le contenu de la première partie de la dépêche en HTML.</dd>
+  <dd>Chaîne de caractères — le contenu de la première partie de la dépêche en HTML.</dd>
   <dt><var>body</var></dt>
-  <dd>Chaîne de caractères - Le contenu de la seconde partie de la dépêche en HTML.</dd>
+  <dd>Chaîne de caractères — le contenu de la seconde partie de la dépêche en HTML.</dd>
   <dt><var>created_at</var></dt>
-  <dd>Chaîne de caractères - Les date et heure de création.</dd>
+  <dd>Chaîne de caractères — les date et heure de création.</dd>
   <dt><var>updated_at</var></dt>
-  <dd>Chaîne de caractères - Les date et heure de dernière modification.</dd>
+  <dd>Chaîne de caractères — les date et heure de dernière modification.</dd>
   <dt><var>submitted_at</var></dt>
-  <dd>Chaîne de caractères - Les date et heure de soumission en modération.</dd>
+  <dd>Chaîne de caractères — les date et heure de soumission en modération.</dd>
 </dl>
 
 
 <h3>Poster un journal</h3>
 
-<p>Scope nécessaire : <var>diary</var></p>
+<p>Scope nécessaire : <var>diary</var></p>
 
 <pre>
 POST https://linuxfr.org/api/v1/journaux
@@ -256,39 +256,39 @@ POST https://linuxfr.org/api/v1/journaux
 <h4>Paramètres</h4>
 <dl>
   <dt><var>bearer_token</var></dt>
-  <dd>Chaîne de caractères obligatoire - Le jeton d'autorisation.</dd>
+  <dd>Chaîne de caractères obligatoire — le jeton d’autorisation.</dd>
   <dt><var>title</var></dt>
-  <dd>Chaîne de caractères obligatoire - Le titre du journal</dd>
+  <dd>Chaîne de caractères obligatoire — le titre du journal</dd>
   <dt><var>wiki_body</var></dt>
-  <dd>Chaîne de caractères obligatoire - Le contenu en markdown du journal</dd>
+  <dd>Chaîne de caractères obligatoire — le contenu en Markdown du journal</dd>
 </dl>
 
 <h4>Réponse</h4>
 <dl>
   <dt><var>id</var></dt>
-  <dd>Entier - Id du journal qui vient d'être créé.</dd>
+  <dd>Entier - identifiant du journal qui vient d’être créé.</dd>
   <dt><var>owner_id</var></dt>
-  <dd>Entier - Id de l'utilisateur qui vient de créer le journal.</dd>
+  <dd>Entier - identifiant de l’utilisateur qui vient de créer le journal.</dd>
   <dt><var>cached_slug</var></dt>
-  <dd>Chaîne de caractères - Le slug du journal.</dd>
+  <dd>Chaîne de caractères — le « <em><a href="https://fr.wikipedia.org/wiki/Slug_(journalisme)">slug</a></em> » du journal.</dd>
   <dt><var>title</var></dt>
-  <dd>Chaîne de caractères - Le titre du journal.</dd>
+  <dd>Chaîne de caractères — le titre du journal.</dd>
   <dt><var>body</var></dt>
-  <dd>Chaîne de caractères - Le contenu du journal en HTML.</dd>
+  <dd>Chaîne de caractères — le contenu du journal en HTML.</dd>
   <dt><var>wiki_body</var></dt>
-  <dd>Chaîne de caractères - Le contenu du journal en Markdown.</dd>
+  <dd>Chaîne de caractères — le contenu du journal en Markdown.</dd>
   <dt><var>truncated_body</var></dt>
-  <dd>Chaîne de caractères - La version courte du contenu du journal en HTML.</dd>
+  <dd>Chaîne de caractères — la version courte du contenu du journal en HTML.</dd>
   <dt><var>created_at</var></dt>
-  <dd>Chaîne de caractères - Les date et heure de création.</dd>
+  <dd>Chaîne de caractères — les date et heure de création.</dd>
   <dt><var>updated_at</var></dt>
-  <dd>Chaîne de caractères - Les date et heure de dernière modification.</dd>
+  <dd>Chaîne de caractères — les date et heure de dernière modification.</dd>
 </dl>
 
 
 <h3>Poster sur la tribune</h3>
 
-<p>Scope nécessaire : <var>board</var></p>
+<p>Scope nécessaire : <var>board</var></p>
 
 <pre>
 POST https://linuxfr.org/api/v1/board
@@ -297,12 +297,12 @@ POST https://linuxfr.org/api/v1/board
 <h4>Paramètres</h4>
 <dl>
   <dt><var>bearer_token</var></dt>
-  <dd>Chaîne de caractères obligatoire - Le jeton d'autorisation.</dd>
+  <dd>Chaîne de caractères obligatoire — le jeton d’autorisation.</dd>
   <dt><var>message</var></dt>
-  <dd>Chaîne de caractères obligatoire - Message à poster sur la tribune</dd>
+  <dd>Chaîne de caractères obligatoire — message à poster sur la tribune</dd>
   <dt><var>object_type</var></dt>
   <dd>
-    Chaîne de caractères facultative - Par défaut, le message est posté sur la
+    Chaîne de caractères facultative — par défaut, le message est posté sur la
     tribune de test, mais en passant <var>writing</var>, il sera posté sur la
     tribune de rédaction.
   </dd>
@@ -311,7 +311,7 @@ POST https://linuxfr.org/api/v1/board
 <h4>Réponse</h4>
 <dl>
   <dt><var>id</var></dt>
-  <dd>Entier - Id du message qui vient d'être créé, le cas échéant.</dd>
+  <dd>Entier — identifiant du message qui vient d’être créé, le cas échéant.</dd>
 </dl>
 
 <h4>Exemple de réponse</h4>
@@ -320,12 +320,11 @@ POST https://linuxfr.org/api/v1/board
 </pre>
 
 
-
 <h2>Bibliothèques</h2>
 
 <p>
-  <a href="https://github.com/intridea/omniauth">Omniauth</a> est une gem Ruby
-  qui permet d'authentifier des utilisateurs à partir d'applications web
-  distantes. Il possède une stratégie d'authentification pour LinuxFr.org :
-  <a href="https://github.com/linuxfrorg/omniauth-linuxfr.org">omniauth-linuxfr.org</a>.
+  <a href="https://github.com/intridea/omniauth">OmniAuth</a> est une <i>gem</i> Ruby
+  qui permet d’authentifier des utilisateurs à partir d’applications Web
+  distantes. Il possède une stratégie d’authentification pour <em>LinuxFr.org</em> :
+  <em><a href="https://github.com/linuxfrorg/omniauth-linuxfr.org">omniauth-linuxfr.org</a></em>.
 </p>

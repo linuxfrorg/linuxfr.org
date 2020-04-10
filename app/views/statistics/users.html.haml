@@ -1,59 +1,59 @@
 %main#contents.statistics(role="main")
-  =h1 "Statistiques sur les utilisateurs"
+  =h1 "Statistiques sur les utilisatrices et utilisateurs"
   - width_stats = 400
 
   .body
     %strong
       Statistiques mises à jour le #{l Time.now}
 
-    %p= link_to("Retour à l'ensemble des statistiques", "/statistiques")
+    %p= link_to("Retour à l’ensemble des statistiques", "/statistiques")
 
     %h2 Sommaire
     %ul
       %li= link_to("Général", "#stats_general")
-      %li= link_to("Utilisateurs avec privilèges", "#stats_privileges")
-      %li= link_to("Contenus", "#stats_contenus")
+      %li= link_to("Comptes avec privilèges", "#stats_privileges")
+      %li= link_to("Contenus publiés", "#stats_contenus")
       %li= link_to("Commentaires", "#stats_commentaires")
-      %li= link_to("Tags", "#stats_tags")
+      %li= link_to("Étiquettes (tags)", "#stats_tags")
       %li= link_to("Informations personnelles", "#stats_infosperso")
-      %li= link_to("Domaines pour le courriel", "#stats_courriel")
+      %li= link_to("Domaines des courriels", "#stats_courriel")
       %li= link_to("Utilisation des fonctionnalités", "#stats_fonctionnalites")
       %li= link_to("Style (CSS)", "#stats_css")
-      %li= link_to("Karma des utilisateurs", "#stats_karma")
+      %li= link_to("Karmas des utilisatrices et utilisateurs", "#stats_karma")
       %li= link_to("Ancienneté des comptes", "#stats_anciennete")
-      %li= link_to("Statut des comptes utilisateurs", "#stats_state")
+      %li= link_to("Statuts des comptes", "#stats_state")
 
-      %p= link_to("Retour à l'ensemble des statistiques", "/statistiques")
+      %p= link_to("Retour à l’ensemble des statistiques", "/statistiques")
 
   %h2#stats_general Général
   %ul
     %li
-      #{pluralize @stats.nb_users, "utilisateur"} ayant ou ayant eu des comptes
+      #{pluralize @stats.nb_users, "utilisatrice ou utilisateur", "utilisatrices et utilisateurs"} ayant ou ayant eu des comptes
     %li
-      #{pluralize @stats.nb_accounts, "compte"} utilisateur
+      #{pluralize @stats.nb_accounts, "compte"}
     %li
-      #{pluralize @stats.nb_recently_used_accounts, "compte utilisateur valide et utilisé", "comptes utilisateur valides et utilisés"} au cours des 3 derniers mois avec #{pluralize @stats.no_visit["avg"], "jour"} de moyenne sans visite et #{pluralize @stats.no_visit["stddev"], "jour"} d'écart-type
+      #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois avec #{pluralize @stats.no_visit["avg"], "jour"} de moyenne sans visite et #{pluralize @stats.no_visit["stddev"], "jour"} d’écart‑type
     %li
       #{pluralize @stats.nb_waiting_accounts, "compte"} en attente
     %li
       #{pluralize @stats.nb_closed_accounts, "compte fermé", "comptes fermés"}
 
-  %h2#stats_privileges Utilisateurs avec privilèges
+  %h2#stats_privileges Utilisatrices et utilisateurs avec privilèges
   %p
-    = link_to("Voir l'équipe du site", "/team")
+    = link_to("Voir l’équipe du site", "/team")
 
-  %h2#stats_contenus Contenus
+  %h2#stats_contenus Contenus publiés
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte utilisateur valide et utilisé", "comptes utilisateur valides et utilisés"} au cours des 3 derniers mois&nbsp;:
+    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
   %table
     - maxval = @stats.nb_recently_used_accounts
     %tr
-      %th Auteurs de
+      %th Type de contenu
       %th Depuis Epoch
       %th Actifs
       %th Depuis un an
       %th Actifs
-      %th Depuis 3 mois
+      %th Depuis trois mois
       %th Actifs
     - @stats.nb_content_authors.each do |authors|
       - last3Months = @stats.nb_content_authors(90, authors["content_type"])[0]
@@ -89,18 +89,18 @@
 
   %h2#stats_commentaires Commentaires
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte utilisateur valide et utilisé", "comptes utilisateur valides et utilisés"} au cours des 3 derniers mois&nbsp;:
+    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
   %table
     - last3Months = @stats.nb_comment_authors(90)[0]
     - lastYear = @stats.nb_comment_authors(365)[0]
     - maxval = @stats.nb_recently_used_accounts
     %tr
-      %th Auteurs de
+      %th &nbsp;
       %th Depuis Epoch
       %th Actifs
       %th Depuis un an
       %th Actifs
-      %th Depuis 3 mois
+      %th Depuis trois mois
       %th Actifs
     - last3Months = @stats.nb_comment_authors(90)[0]
     - lastYear = @stats.nb_comment_authors(365)[0]
@@ -120,24 +120,24 @@
         %td
           #{@stats.pctrecent(last3Months["cnt"])}
 
-  %h2#stats_tags Tags
+  %h2#stats_tags Étiquettes (tags)
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte utilisateur valide et utilisé", "comptes utilisateur valides et utilisés"} au cours des 3 derniers mois&nbsp;:
+    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
   %table
     - maxval = @stats.nb_recently_used_accounts
     %tr
-      %th Auteurs de
+      %th &nbsp;
       %th Depuis Epoch
       %th Actifs
       %th Depuis un an
       %th Actifs
-      %th Depuis 3 mois
+      %th Depuis trois mois
       %th Actifs
     - last3Months = @stats.nb_tag_authors(90)[0]
     - lastYear = @stats.nb_tag_authors(365)[0]
     - @stats.nb_tag_authors.each do |authors|
       %tr
-        %td.stat Tags
+        %td.stat Étiquettes (tags)
         %td
           .stat.misc(style="width: #{(width_stats * authors["cnt"] / maxval).to_i}px;")= authors["cnt"]
         %td
@@ -153,20 +153,20 @@
 
   %h2#stats_infosperso Informations personnelles
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte utilisateur valide et utilisé", "comptes utilisateur valides et utilisés"} au cours des 3 derniers mois&nbsp;:
+    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
   %table
     - maxval = @stats.nb_recently_used_accounts
     %tr
       %th Information
-      %th Utilisateurs
+      %th Nombre de comptes
       %th Actifs
     %tr
-      %td.stat Site personnel
+      %td.stat Site Web personnel
       %td
         .stat.misc(style="width: #{(width_stats * @stats.filled("homesite") / maxval).to_i}px;")= @stats.filled("homesite")
       %td #{@stats.pctrecent(@stats.filled("homesite"))}
     %tr
-      %td.stat Identifiant Jabber/XMPP
+      %td.stat Adresse XMPP
       %td
         .stat.misc(style="width: #{(width_stats * @stats.filled("jabber_id") / maxval).to_i}px;")= @stats.filled("jabber_id")
       %td #{@stats.pctrecent(@stats.filled("jabber_id"))}
@@ -181,14 +181,14 @@
         .stat.misc(style="width: #{(width_stats * @stats.filled("avatar") / maxval).to_i}px;")= @stats.filled("avatar")
       %td #{@stats.pctrecent(@stats.filled("avatar"))}
 
-  %h2#stats_courriel Domaines pour le courriel
+  %h2#stats_courriel Domaines des courriels
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte utilisateur valide et utilisé", "comptes utilisateur valides et utilisés"} au cours des 3 derniers mois&nbsp;:
+    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
   %table
     - maxval = @stats.nb_recently_used_accounts
     %tr
-      %th Domaines à plus de trois utilisateurs
-      %th Utilisateurs
+      %th Domaines à plus de trois comptes
+      %th Nombre de comptes
       %th Actifs
     - @stats.top_email_domains.each do |domain|
       %tr
@@ -201,45 +201,45 @@
 
   %h2#stats_fonctionnalites Utilisation des fonctionnalités
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte utilisateur valide et utilisé", "comptes utilisateur valides et utilisés"} au cours des 3 derniers mois&nbsp;:
+    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides"} au cours des trois derniers mois :
   %table
     - maxval = @stats.nb_recently_used_accounts
     %tr
       %th Fonctionnalité
-      %th Utilisateurs
+      %th Nombre de comptes
       %th Actifs
     %tr
-      %td.stat Dépêches en page d'accueil
+      %td.stat Dépêches en page d’accueil
       %td
         .stat.misc(style="width: #{(width_stats * @stats.on_home("News") / maxval).to_i}px;")= @stats.on_home("News")
       %td #{@stats.pctrecent(@stats.on_home("News"))}
     %tr
-      %td.stat Journaux en page d'accueil
+      %td.stat Journaux en page d’accueil
       %td
         .stat.misc(style="width: #{(width_stats * @stats.on_home("Diary") / maxval).to_i}px;")= @stats.on_home("Diary")
       %td #{@stats.pctrecent(@stats.on_home("Diary"))}
     %tr
-      %td.stat Entrées de forum en page d'accueil
+      %td.stat Entrées de forum en page d’accueil
       %td
         .stat.misc(style="width: #{(width_stats * @stats.on_home("Post") / maxval).to_i}px;")= @stats.on_home("Post")
       %td #{@stats.pctrecent(@stats.on_home("Post"))}
     %tr
-      %td.stat Sondages en page d'accueil
+      %td.stat Sondages en page d’accueil
       %td
         .stat.misc(style="width: #{(width_stats * @stats.on_home("Poll") / maxval).to_i}px;")= @stats.on_home("Poll")
       %td #{@stats.pctrecent(@stats.on_home("Poll"))}
     %tr
-      %td.stat Pages wiki en page d'accueil
+      %td.stat Pages wiki en page d’accueil
       %td
         .stat.misc(style="width: #{(width_stats * @stats.on_home("WikiPage") / maxval).to_i}px;")= @stats.on_home("WikiPage")
       %td #{@stats.pctrecent(@stats.on_home("WikiPage"))}
     %tr
-      %td.stat Entrées de suivi en page d'accueil
+      %td.stat Entrées de suivi en page d’accueil
       %td
         .stat.misc(style="width: #{(width_stats * @stats.on_home("Tracker") / maxval).to_i}px;")= @stats.on_home("Tracker")
       %td #{@stats.pctrecent(@stats.on_home("Tracker"))}
     %tr
-      %td.stat Tri chronologique en page d'accueil
+      %td.stat Tri chronologique en page d’accueil
       %td
         .stat.misc(style="width: #{(width_stats * @stats.preferences(:sort_by_date_on_home) / maxval).to_i}px;")= @stats.preferences(:sort_by_date_on_home)
       %td #{@stats.pctrecent(@stats.preferences :sort_by_date_on_home)}
@@ -254,18 +254,18 @@
         .stat.misc(style="width: #{(width_stats * @stats.preferences(:hide_avatar) / maxval).to_i}px;")= @stats.preferences(:hide_avatar)
       %td #{@stats.pctrecent(@stats.preferences :hide_avatar)}
   %p
-    Ces fonctionnalités peuvent être modifiées sur #{ link_to("la page des préférences", "/compte/modifier") }.
+    Ces fonctionnalités peuvent être modifiées sur la page des #{ link_to("préférences", "/compte/modifier") }.
 
   %h2#stats_css Style (CSS)
   %p
     = link_to("Changer de style", "/stylesheet/modifier")
   - if @stats.by_style.any?
-    %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte utilisateur valide et utilisé", "comptes utilisateur valides et utilisés"} au cours des 3 derniers mois&nbsp;:
+    %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
     %table
       - maxval = @stats.nb_recently_used_accounts
       %tr
         %th Feuille de style
-        %th Utilisateurs
+        %th Nombre de comptes
         %th Actifs
       - @stats.by_style.each do |style|
         %tr
@@ -275,14 +275,14 @@
             .stat.misc(style="width: #{(width_stats * style["cnt"] / maxval).to_i}px;")= style["cnt"]
           %td #{@stats.pctrecent(style["cnt"])}
   - else
-    Aucune CSS autre que celle par défaut
+    Aucune feuille de style CSS autre que celle par défaut
 
-  %h2#stats_karma Karma des utilisateurs
-  %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte utilisateur valide et utilisé", "comptes utilisateur valides et utilisés"} au cours des 3 derniers mois&nbsp;:
+  %h2#stats_karma Karmas des utilisatrices et utilisateurs
+  %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
   %table
     %tr
       %th Karma
-      %th Utilisateurs
+      %th Nombre de comptes
       %th Actifs
     - @stats.by_karma.each do |karma|
       %tr
@@ -297,13 +297,13 @@
           .stat.misc(style="width: #{(width_stats * karma["cnt"] / maxval).to_i}px;")= karma["cnt"]
         %td #{@stats.pctrecent(karma["cnt"])}
 
-  %h2#stats_anciennete Ancienneté des comptes
-  %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte utilisateur valide et utilisé", "comptes utilisateur valides et utilisés"} au cours des 3 derniers mois&nbsp;:
+  %h2#stats_anciennete Anciennetés des comptes
+  %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
   %table
     - maxval = @stats.nb_recently_used_accounts
     %tr
       %th Année
-      %th Utilisateurs
+      %th Nombre de comptes
       %th Actifs
     - @stats.by_year.each do |year|
       %tr
@@ -313,13 +313,13 @@
           .stat.misc(style="width: #{(width_stats * year["cnt"] / maxval).to_i}px;")= year["cnt"]
         %td #{@stats.pctrecent(year["cnt"])}
 
-  %h2#stats_state Statut des comptes utilisateurs
-  %p Statut des comptes utilisateurs par tranche de #{@stats.slot_size}
-  - translate_account = {"accountrecent"=>"comptes récemment utilisés", "accountinactive"=>"comptes fermés", "accountrecentinactive"=>"comptes fermés récemment utilisés", "account"=>"autres comptes", "accountpurged"=>"comptes purgés"}
+  %h2#stats_state Statuts des comptes
+  %p Statut des comptes par tranche de #{@stats.slot_size}
+  - translate_account = {"accountrecent"=>"récemment utilisé", "accountinactive"=>"fermé", "accountrecentinactive"=>"fermé récemment utilisé", "account"=>"autre", "accountpurged"=>"purgés"}
   %table
     %tr
       %th Tranche
-      %th Type
+      %th Statut du compte
       %th Nombre de comptes
     - oldslot = ''
     - remaining = @stats.slot_size

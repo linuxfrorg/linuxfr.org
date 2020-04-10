@@ -1,5 +1,5 @@
 %main#contents(role="main")
-  =h1 "Changelog"
+  =h1 "Journal des modifications"
 
   #changelog.body
     %pre
@@ -7,6 +7,6 @@
     %nav
       - if @page > 0
         %span
-          = link_to "Commits plus récents", { page: @page - 1 }, { rel: 'prev' }
+          = link_to "Commits les plus récents", { page: @page - 1 }, { rel: 'prev' }
       %span
-        = link_to "Commits plus anciens", { page: @page + 1 }, { rel: 'next' }
+        = link_to "Commits les plus anciens", { page: @page + 1 }, { rel: 'next' }

@@ -15,7 +15,7 @@ class Admin::SectionsController < AdminController
     if @section.save
       redirect_to admin_sections_url, notice: 'Nouvelle section créée.'
     else
-      flash.now[:alert] = "Impossible d'enregistrer cette section"
+      flash.now[:alert] = "Impossible d’enregistrer cette section"
       render :new
     end
   end
@@ -28,7 +28,7 @@ class Admin::SectionsController < AdminController
     if @section.save
       redirect_to admin_sections_url, notice: 'Section mise à jour.'
     else
-      flash.now[:alert] = "Impossible d'enregistrer cette section"
+      flash.now[:alert] = "Impossible d’enregistrer cette section"
       render :edit
     end
   end

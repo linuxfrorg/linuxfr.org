@@ -2,7 +2,7 @@
   = form.label :wiki_body, "Contenu"
   = form.text_area :wiki_body, required: 'required', spellcheck: 'true', class: 'markItUp'
 %p
-  = form.label :message, "Log des modifications"
+  = form.label :message, "Description de la modification"
   = form.text_field :message, autocomplete: 'off', spellcheck: 'true', maxlength: 250, size: 80
 %p
   = form.submit "Prévisualiser", id: "wiki_preview"

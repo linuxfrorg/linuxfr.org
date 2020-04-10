@@ -20,7 +20,7 @@ class Redaction::LinksController < RedactionController
     if @link.lock_by(current_user)
       render partial: 'form'
     else
-      render status: :forbidden, text: "Désolé, #{@link.locker} est déjà en train de modifier ce lien !"
+      render status: :forbidden, text: "Désolé, #{@link.locker} est déjà en train de modifier ce lien !"
     end
   end
 

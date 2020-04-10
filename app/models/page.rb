@@ -33,7 +33,7 @@ class Page < ActiveRecord::Base
   def truncated_body
     LFTruncator.
       truncate(body, 80).
-      sub("[...](suite)", " <a href=\"/#{slug}\">(...)</a>").
+      sub("[...](suite)", " <a href=\"/#{slug}\">(…)</a>").
       html_safe
   end
 

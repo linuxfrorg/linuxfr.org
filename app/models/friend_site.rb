@@ -16,6 +16,6 @@ class FriendSite < ActiveRecord::Base
 
   validates :title, presence: { message: "Le titre est obligatoire" },
                     length: { maximum: 255, message: "Le titre est trop long" }
-  validates :url,   presence: { message: "L'URL est obligatoire" },
-                    length: { maximum: 255, message: "L'URL est trop longue" }
+  validates :url,   presence: { message: "L’URL est obligatoire" },
+                    length: { maximum: 255, message: "L’URL est trop longue" }
 end

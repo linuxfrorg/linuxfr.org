@@ -36,23 +36,23 @@ langs =
   fr: "Français"
   en: "Anglais"
   de: "Allemand"
-  it: "Italien"
+  eu: "Basque"
+  ct: "Catalan"
+  cn: "Chinois"
+  ko: "Coréen"
+  da: "Danois"
   es: "Espagnol"
   fi: "Finnois"
-  eu: "Basque"
-  ja: "Japonais"
-  ru: "Russe"
-  pt: "Portugais"
-  nl: "Néerlandais"
-  da: "Danois"
   el: "Grec"
-  sv: "Suédois"
-  cn: "Chinois"
-  pl: "Polonais"
-  xx: "!? hmmm ?!"
-  ct: "Catalan"
+  it: "Italien"
+  ja: "Japonais"
+  nl: "Néerlandais"
   no: "Norvégien"
-  ko: "Coréen"
+  pl: "Polonais"
+  pt: "Portugais"
+  ru: "Russe"
+  sv: "Suédois"
+  xx: "!? hmmm ?!"
 
 $("#form_links").nested_fields "news", "link", "lien", "fieldset", title: "text", url: "url", lang: langs
 $("#form_answers").nested_fields "poll", "answer", "choix", "p", answer: "text"
@@ -63,7 +63,7 @@ $("article.news .edited_by").each ->
   nb = field.find("a").length
   if nb > 3
     was = field.html()
-    field.html "<a>#{nb} contributeurs</a>"
+    field.html "<a>#{nb} contributeurs</a>"
     field.one "click", -> field.html was
 
 # Toolbar preferences
@@ -105,7 +105,7 @@ $("input#tags").autocompleter()
 $(".tag_in_place").on("in_place:form", ->
   $("input.autocomplete").autocompleter().focus()
 ).on("in_place:success", ->
-  $.noticeAdd text: "Tags ajoutés"
+  $.noticeAdd text: "Étiquettes ajoutées"
 ).editionInPlace()
 $(".add_tag, .remove_tag").click( ->
   $(@).blur().parents("form").data hidden: "true"
@@ -122,10 +122,10 @@ $(document).bind("keypress", "g", ->
 ).bind "keypress", "shift+?", ->
   $.noticeAdd
     text: """
-      Raccourcis clavier : <ul>
-      <li>? pour l'aide</li>
-      <li>&lt; pour le commentaire/contenu non-lu précédent</li>
-      <li>&gt; pour le commentaire/contenu non-lu suivant</li>
+      Raccourcis clavier : <ul>
+      <li>? pour l’aide</li>
+      <li>&lt; pour le commentaire/contenu non lu précédent</li>
+      <li>&gt; pour le commentaire/contenu non lu suivant</li>
       <li>[ pour le contenu avec commentaire précédent</li>
       <li>] pour le contenu avec commentaire suivant</li>
       <li>g pour aller au début de la page</li>

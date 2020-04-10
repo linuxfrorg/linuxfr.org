@@ -1,25 +1,25 @@
 %main#contents.statistics(role="main")
-  =h1 "Statistiques sur l'utilisateur Anonyme"
+  =h1 "Statistiques sur l’utilisateur Anonyme"
   - width_stats = 400
 
   .body
     %strong
       Statistiques mises à jour le #{l Time.now}
 
-    %p= link_to("Retour à l'ensemble des statistiques", "/statistiques")
+    %p= link_to("Retour à l’ensemble des statistiques", "/statistiques")
 
-    %p L'utilisateur #{link_to("Anonyme", "/users/anonyme")} est un compte particulier auquel sont rattachés les contenus, commentaires, tags, etc. qui ont été publiés par des comptes supprimés depuis. Cela est différent d'une soumission de dépêche ou ticket de suivi soumis directement sans compte sur le site.
+    %p L’utilisateur #{link_to("Anonyme", "/users/anonyme")} est un compte particulier auquel sont rattachés les contenus, commentaires, étiquettes, etc. qui ont été publiés par des comptes supprimés depuis. Cela est différent des dépêches ou des tickets de suivi soumis directement sans compte sur le site.
 
     %h2 Sommaire
     %ul
       %li=link_to("contenus par type","#contenus_type")
       %li=link_to("contenus par an","#contenus_annee")
       %li=link_to("commentaires par type","#commentaires_type")
-      %li=link_to("tags par type","#tags_type")
-      %li=link_to("tags par an","#tags_annee")
+      %li=link_to("étiquettes par type","#tags_type")
+      %li=link_to("étiquettes par an","#tags_annee")
 
     - if @stats.contents_per_type["Total"] > 1
-      %h2#contenus_type Répartition par type des #{@stats.contents_per_type["Total"]} contenus attribués à Anonyme
+      %h2#contenus_type Répartition par type des #{@stats.contents_per_type["Total"]} contenus attribués à Anonyme
     - else
       %h2#contenus_type Répartition par type des contenus attribués à Anonyme
     %ul
@@ -32,7 +32,7 @@
       %li #{pluralize @stats.contents_per_type["Bookmark"], "lien"}
 
     - if @stats.contents_per_type["Total"] > 1
-      %h2#contenus_annee Répartition annuelle des #{@stats.contents_per_type["Total"]} contenus attribués à Anonyme
+      %h2#contenus_annee Répartition annuelle des #{@stats.contents_per_type["Total"]} contenus attribués à Anonyme
     - else
       %h2#contenus_annee Répartition annuelle des contenus attribués à Anonyme
 
@@ -64,24 +64,24 @@
       %li #{pluralize @stats.comments_per_type["WikiPage"].to_i, "commentaire"} dans les pages de wiki
       %li #{pluralize @stats.comments_per_type["Bookmark"].to_i, "commentaire"} dans les liens
 
-    %h2#tags_type Répartition par type des saisies de tags attribués à Anonyme
+    %h2#tags_type Répartition par type des étiquetages attribués à Anonyme
     %ul
-      %li #{pluralize @stats.taggings_per_type["Diary"].to_i, "tag"} dans les journaux
-      %li #{pluralize @stats.taggings_per_type["Post"].to_i, "tag"} dans les entrées de forums
-      %li #{pluralize @stats.taggings_per_type["News"].to_i, "tag"} dans les dépêches
-      %li #{pluralize @stats.taggings_per_type["Tracker"].to_i, "tag"} dans le système de suivi
-      %li #{pluralize @stats.taggings_per_type["Poll"].to_i, "tag"} dans les sondages
-      %li #{pluralize @stats.taggings_per_type["WikiPage"].to_i, "tag"} dans les pages de wiki
-      %li #{pluralize @stats.taggings_per_type["Bookmark"].to_i, "tag"} dans les liens
+      %li #{pluralize @stats.taggings_per_type["Diary"].to_i, "étiquette"} dans les journaux
+      %li #{pluralize @stats.taggings_per_type["Post"].to_i, "étiquette"} dans les entrées de forums
+      %li #{pluralize @stats.taggings_per_type["News"].to_i, "étiquette"} dans les dépêches
+      %li #{pluralize @stats.taggings_per_type["Tracker"].to_i, "étiquette"} dans le système de suivi
+      %li #{pluralize @stats.taggings_per_type["Poll"].to_i, "étiquette"} dans les sondages
+      %li #{pluralize @stats.taggings_per_type["WikiPage"].to_i, "étiquette"} dans les pages de wiki
+      %li #{pluralize @stats.taggings_per_type["Bookmark"].to_i, "étiquette"} dans les liens
 
-    %h2#tags_annee Répartition annuelle des saisies de tags attribuées à Anonyme
+    %h2#tags_annee Répartition annuelle des étiquetages attribués à Anonyme
 
     %table
       - maxval = @stats.taggings_per_year.values.map(&:values).flatten.max
       %tr
         %th Année
         %th Type
-        %th Tags publiés
+        %th Étiquettes publiées
       - @stats.taggings_per_year.each do |year,tag|
         - newyear = true
         - tag.each do |type,cnt|

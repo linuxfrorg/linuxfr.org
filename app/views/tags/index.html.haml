@@ -2,7 +2,7 @@
   = render "tags/box"
 = render "hide"
 
-=h1 "Tous les contenus que j'ai taggés"
+=h1 "Tous les contenus que j’ai étiquetés"
 = paginated_section @nodes do
   %main#contents(role="main")
     = render @nodes.map(&:content)

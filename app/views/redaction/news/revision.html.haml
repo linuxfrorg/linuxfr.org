@@ -9,7 +9,7 @@
   = link_to h1(@news.title), [@news.draft? ? :redaction : :moderation, @news]
 
   %h2
-    #{@version.author_name}&nbsp;: #{@version.message} (#{l @version.created_at})
+    #{@version.author_name} : #{@version.message} (#{l @version.created_at})
   - if @version.title != @previous.title
     %h3 Titre
     %pre

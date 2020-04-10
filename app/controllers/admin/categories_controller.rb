@@ -15,7 +15,7 @@ class Admin::CategoriesController < AdminController
     if @category.save
       redirect_to admin_categories_url, notice: 'Nouvelle catégorie créée.'
     else
-      flash.now[:alert] = "Impossible d'enregistrer cette catégorie"
+      flash.now[:alert] = "Impossible d’enregistrer cette catégorie"
       render :new
     end
   end
@@ -28,7 +28,7 @@ class Admin::CategoriesController < AdminController
     if @category.save
       redirect_to admin_categories_url, notice: 'Catégorie mise à jour.'
     else
-      flash.now[:alert] = "Impossible d'enregistrer cette catégorie"
+      flash.now[:alert] = "Impossible d’enregistrer cette catégorie"
       render :edit
     end
   end

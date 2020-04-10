@@ -35,7 +35,7 @@ module NodeHelper
     cp.meta ||= posted_by(record)
     cp.tags ||= tags_for(record.node)
     cp.body ||= (ContentPresenter.collection? ?
-                 record.truncated_body.sub("[...](suite)", " " + link_to("(...)", path_for_content(record))).html_safe :
+                 record.truncated_body.sub("[...](suite)", " " + link_to("(…)", path_for_content(record))).html_safe :
                  record.body)
     render 'nodes/content', cp.to_hash
   end
@@ -106,7 +106,7 @@ module NodeHelper
     date_time    = content.is_a?(Comment) ? content.created_at : content.node.try(:created_at)
     date_time  ||= Time.now
     date         = content_tag(:span, "le #{date_time.to_s(:date)}", class: "date")
-    time         = content_tag(:span,  "à #{date_time.to_s(:time)}", class: "time")
+    time         = content_tag(:span, "à #{date_time.to_s(:time)}", class: "time")
     published_at = content_tag(:time, date + " " + time, datetime: date_time.iso8601, class: "updated")
     caption      = content_tag(:span, "", class: "floating_spacer") +
                    content_tag(:span, "Posté par #{ user_link } #{ published_at }.".html_safe, class: "posted_by_spanblock")
@@ -123,7 +123,7 @@ module NodeHelper
       status = node.read_status(current_account)
       visit  = case status
                when :not_read then ", non visité"
-               when Integer   then ", #{pluralize status, "nouveau", "nouveaux"} !"
+               when Integer   then ", #{pluralize status, "nouveau", "nouveaux"} !"
                else                ", déjà visité"
                end
       visit  = content_tag(:span, visit, class: "visit")

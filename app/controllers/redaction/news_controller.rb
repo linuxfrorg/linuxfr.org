@@ -51,7 +51,7 @@ class Redaction::NewsController < RedactionController
     enforce_reassign_permission(@news)
     @news.reassign_to params[:user_id], current_user.name
     namespace = @news.draft? ? :redaction : :moderation
-    redirect_to [namespace, @news], notice: "L'auteur initial de la dépêche a été changé"
+    redirect_to [namespace, @news], notice: "L’auteur initial de la dépêche a été changé"
   end
 
   def reorganize
@@ -59,7 +59,7 @@ class Redaction::NewsController < RedactionController
       @news.put_paragraphs_together
       render :reorganize, layout: "chat_n_edit"
     else
-      render status: :forbidden, text: "Désolé, un verrou a déjà été posé sur cette dépêche !"
+      render status: :forbidden, text: "Désolé, un verrou a déjà été posé sur cette dépêche !"
     end
   end
 
@@ -80,7 +80,7 @@ class Redaction::NewsController < RedactionController
       @news.submit_and_notify(current_user)
       redirect_to '/redaction', notice: "Dépêche soumise à la modération"
     else
-      redirect_to [:redaction, @news], alert: "Impossible de soumettre la dépêche car quelqu'un est encore en train de la modifier"
+      redirect_to [:redaction, @news], alert: "Impossible de soumettre la dépêche car quelqu’un est encore en train de la modifier"
     end
   end
 

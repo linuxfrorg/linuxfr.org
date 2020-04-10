@@ -17,7 +17,7 @@ class Admin::ForumsController < AdminController
       @forum.move_to_bottom
       redirect_to admin_forums_url, notice: "Forum créé"
     else
-      flash.now[:alert] = "Impossible d'enregistrer ce forum"
+      flash.now[:alert] = "Impossible d’enregistrer ce forum"
       render :new
     end
   end
@@ -30,7 +30,7 @@ class Admin::ForumsController < AdminController
     if @forum.save
       redirect_to admin_forums_url, notice: "Forum modifié"
     else
-      flash.now[:alert] = "Impossible d'enregistrer ce forum"
+      flash.now[:alert] = "Impossible d’enregistrer ce forum"
       render :edit
     end
   end
@@ -42,7 +42,7 @@ class Admin::ForumsController < AdminController
 
   def reopen
     @forum.reopen
-    redirect_to admin_forums_url, notice: "Forum ré-ouvert"
+    redirect_to admin_forums_url, notice: "Forum réouvert"
   end
 
   def destroy

@@ -42,7 +42,7 @@ class PostsController < ApplicationController
     path = forum_post_path(@forum, @post, format: params[:format])
     redirect_to path, status: 301 and return if request.path != path
     headers['Link'] = %(<#{forum_post_url @forum, @post}>; rel="canonical")
-    flash.now[:alert] = "Attention, ce message a été supprimé et n'est visible que par les admins" unless @post.visible?
+    flash.now[:alert] = "Attention, ce message a été supprimé et n’est visible que par les administrateurs" unless @post.visible?
   end
 
   def edit
@@ -55,7 +55,7 @@ class PostsController < ApplicationController
     if !preview_mode && @post.save
       redirect_to forum_posts_url, notice: "Votre message a bien été modifié"
     else
-      flash.now[:alert] = "Impossible d'enregistrer ce message" if @post.invalid?
+      flash.now[:alert] = "Impossible d’enregistrer ce message" if @post.invalid?
       render :edit
     end
   end

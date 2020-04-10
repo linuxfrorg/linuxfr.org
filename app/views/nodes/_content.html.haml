@@ -4,10 +4,10 @@
     .meta
       = meta
       - if record.node.cc_licensed?
-        = link_to "Licence CC by-sa.", cc_url(record), rel: 'license'
+        = link_to "Licence CC By‑SA.", cc_url(record), rel: 'license'
       - unless hidden
         %div.tags
-          Tags :
+          Étiquettes :
           - if tags.any?
             %ul.tag_cloud(itemprop="keywords")
               = list_of tags do |tag|
@@ -22,10 +22,10 @@
               = list_of record.node.preview_tags do |tag|
                 = link_to tag, "/tags/#{tag}/public", rel: 'tag'
           - else
-            aucun
+            aucune
           - if current_account && current_account.can_tag?(record)
             .tag_in_place{"data-url" => "/nodes/#{record.node.id}/tags/nouveau"}
-              = link_to "Tagger", "/nodes/#{record.node.id}/tags/nouveau", class: 'action'
+              = link_to "Étiqueter", "/nodes/#{record.node.id}/tags/nouveau", class: 'action'
   .figures
     %meta{itemprop: "interactionCount", content: "UserLikes:#{record.score}"}
     %figure.score(title="Note de ce contenu")= record.score

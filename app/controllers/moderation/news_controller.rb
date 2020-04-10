@@ -19,8 +19,8 @@ class Moderation::NewsController < ModerationController
     redirect_to path, status: 301 and return if request.path != path
     @boards = Board.all(Board.news, @news.id)
     headers["Cache-Control"] = "no-cache, no-store, must-revalidate, max-age=0"
-    flash.now[:alert] = "Attention, cette dépêche a été supprimée et n'est visible que par les modérateurs" if @news.deleted?
-    flash.now[:alert] = "Attention, cette dépêche a été refusée et n'est visible que par les modérateurs" if @news.refused?
+    flash.now[:alert] = "Attention, cette dépêche a été supprimée et n’est visible que par les modérateurs" if @news.deleted?
+    flash.now[:alert] = "Attention, cette dépêche a été refusée et n’est visible que par les modérateurs" if @news.refused?
     respond_to do |wants|
       wants.html { render :show, layout: 'chat_n_edit' }
       wants.js { render partial: 'short' }
@@ -48,7 +48,7 @@ class Moderation::NewsController < ModerationController
   def accept
     enforce_accept_permission(@news)
     if @news.has_default_paragraph?
-      redirect_to [:moderation, @news], alert: "Impossible de publier une dépêche avec le texte par défaut d'un paragraphe"
+      redirect_to [:moderation, @news], alert: "Impossible de publier une dépêche avec le texte par défaut d’un paragraphe"
     elsif @news.unlocked?
       @news.moderator_id = current_user.id
       @news.accept!
@@ -56,7 +56,7 @@ class Moderation::NewsController < ModerationController
       NewsNotifications.accept(@news).deliver_now
       redirect_to @news, alert: "Dépêche acceptée"
     else
-      redirect_to [:moderation, @news], alert: "Impossible de modérer la dépêche tant que quelqu'un est en train de la modifier"
+      redirect_to [:moderation, @news], alert: "Impossible de modérer la dépêche tant que quelqu’un est en train de la modifier"
     end
   end
 
@@ -73,7 +73,7 @@ class Moderation::NewsController < ModerationController
     elsif @news.unlocked?
       @boards = Board.all(Board.news, @news.id)
     else
-      redirect_to [:moderation, @news], alert: "Impossible de modérer la dépêche tant que quelqu'un est train de la modifier"
+      redirect_to [:moderation, @news], alert: "Impossible de modérer la dépêche tant que quelqu’un est train de la modifier"
     end
   end
 
@@ -85,7 +85,7 @@ class Moderation::NewsController < ModerationController
       NewsNotifications.rewrite(@news).deliver_now
       redirect_to @news, alert: "Dépêche renvoyée en rédaction"
     else
-      redirect_to [:moderation, @news], alert: "Impossible de modérer la dépêche tant que quelqu'un est en train de la modifier"
+      redirect_to [:moderation, @news], alert: "Impossible de modérer la dépêche tant que quelqu’un est en train de la modifier"
     end
   end
 

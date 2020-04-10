@@ -37,11 +37,12 @@
     </pre>
     <div class="inner">
       <h1>Maintenance</h1>
-      <p>Le site est actuellement en maintenance depuis <%= Time.now.strftime("%H:%M") %> et n'est donc pas accessible.</p>
+      <p>Le site est actuellement en maintenance depuis <%= Time.now.strftime("%H:%M") %> et n’est donc pas accessible.</p>
       <% if reason %>
-      <p>Raison : <%= reason %>.</p>
+      <p>Raison : <%= reason %>.</p>
       <% end %>
       <p>Il devrait revenir <%= deadline || "très rapidement" %>.</p>
     </div>
   </div>
 </body>
+</html>

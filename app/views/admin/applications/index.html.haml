@@ -1,4 +1,4 @@
-=h1 "Les applications pour l'API"
+=h1 "Les applications pour l’API"
 
 %table
   %tr
@@ -14,6 +14,6 @@
       %td
         = link_to "Afficher", admin_application_path(app), class: "show_client_app"
         = link_to "Modifier", edit_admin_application_path(app), class: "edit_client_app"
-        = button_to "Supprimer", admin_application_path(app), method: :delete, class: "delete_button", data: { confirm: "Êtes-vous sûr de vouloir supprimer cette application ?" }
+        = button_to "Supprimer", admin_application_path(app), method: :delete, class: "delete_button", data: { confirm: "Confirmez‑vous vouloir supprimer cette application ?" }
 
 = paginate @applications

@@ -7,7 +7,7 @@
   = posted_by(comment)
   - unless defined? hide_content_title
     En réponse #{translate_to_content_type comment.content_type} #{link_to comment.content.title, path_for_content(comment.content)}.
-  Évalué à&nbsp;
+  Évalué à
   %span.score><
     = comment.bound_score
     - unless comment.content.too_old_for_comments?
@@ -19,7 +19,7 @@
 %figure.image= avatar_img(comment.user)
 - if comment.deleted?
   .content.deleted
-    %p Ce commentaire a été supprimé par l'équipe de modération.
+    %p Ce commentaire a été supprimé par l’équipe de modération.
 - else
   .content
     = comment.body
@@ -34,8 +34,8 @@
   - if current_account
     - if current_account.can_vote?(comment)
       %div.vote
-        Ce commentaire est-il #{button_to "pertinent", "/nodes/#{comment.node_id}/comments/#{comment.id}/relevance/for", remote: true, class: "relevant"}
-        ou #{button_to "inutile", "/nodes/#{comment.node_id}/comments/#{comment.id}/relevance/against", remote: true, class: "useless"} ?
+        Ce commentaire est‑il #{button_to "pertinent", "/nodes/#{comment.node_id}/comments/#{comment.id}/relevance/for", remote: true, class: "relevant"}
+        ou #{button_to "inutile", "/nodes/#{comment.node_id}/comments/#{comment.id}/relevance/against", remote: true, class: "useless"} ?
     - elsif v = comment.vote_by?(current_account.id)
       %div.vote.done
         Vous avez jugé ce commentaire #{v == "for" ? "pertinent" : "inutile"}.
