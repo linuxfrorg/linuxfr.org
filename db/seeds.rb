@@ -28,7 +28,7 @@ Lang['xx'] = '!? hmmm ?!'
 Lang['wq'] = 'Code/binaire'
 
 # Category
-%w(Autres Administration Commentaires CSS Dépêches Forums Journaux Modération Entretiens Proposition Recherche Sondages Sites\ amis Suivi Toolbar Tribune XMPP).each do |cat|
+%w(Autres Administration\ site Commentaires Feuilles\ de\ style\ (CSS) Dépêches Forums Journaux Modération Proposition Recherche Sondages Suivi Barre\ d’outil Tribune Wiki Avatars Étiquettes Vieux\ navigateurs Comptes\ utilisateurs Statistiques Rédaction Administration\ système À\ ranger\ quelque\ part Aide\ et\ documentation Notifications Syntaxe\ markdown API\ OAuth Images Flux\ Atom Epub Liens).each do |cat|
   Category.create!(title: cat)
 end
 
@@ -43,22 +43,25 @@ Response.create!(title: "Redirection forum",           content: "Une entrée dan
 Response.create!(title: "Redirection journal",         content: "Votre journal est peut‑être plus adapté pour passer cette information.\n\nhttps://linuxfr.org//journaux/nouveau")
 Response.create!(title: "Site (presque) vide",         content: "LinuxFr.org préfère valider des dépêches de ce type quand le site est\ndéjà bien avancé. Si tel est le cas dans quelque temps, n’hésitez pas\nà proposer une nouvelle dépêche.")
 Response.create!(title: "Version mineure du logiciel", content: "Votre dépêche traite d’une version mineure d’un logiciel, et n’apporte\nrien de fort d’un point de vue information. Pour cette raison, elle a été\nrefusée.")
+Response.create!(title: "Redirection Agenda du libre", content: "LinuxFr.org publie chaque week-end les événements de la semaine à venir qui ont été soumis sur le site de l’Agenda du Libre https://agendadulibre.org .\n\nNous vous invitons donc à soumettre votre événement sur le site de l’Agenda du Libre si vous ne l’avez pas déjà fait. Nous republierons cet événement automatiquement ensuite sur LinuxFr.org.")
+Response.create!(title: "Dépêche à l’abandon", content: "La dépêche que vous avez proposée est restée très longtemps dans l’espace de rédaction collaboratif sans aucune modification alors qu’elle n’est pas terminée.\n\nConsidérant ce contenu abandonné, et pour conserver un certain dynamisme dans l’espace de rédaction collaboratif, nous préférons le refuser.\n\nRien ne vous empêche de le proposer à nouveau si besoin.")
 
 # Friend sites
 FriendSite.create!(title: "Agenda du Libre", url: "https://www.agendadulibre.org/")
 FriendSite.create!(title: "April", url: "https://www.april.org/")
 FriendSite.create!(title: "Éditions Diamond", url: "https://boutique.ed-diamond.com/")
 FriendSite.create!(title: "Éditions ENI", url: "https://www.editions-eni.fr/livres/open-source/.12659ab71294b44082200c97a40710bc.html")
-FriendSite.create!(title: "Éditions Eyrolles", url: "http://www.editions-eyrolles.com/Recherche/?q=linux")
+FriendSite.create!(title: "Éditions Eyrolles", url: "https://www.editions-eyrolles.com/Recherche/?q=linux")
 FriendSite.create!(title: "Framasoft", url: "https://www.framasoft.net/")
 FriendSite.create!(title: "Grafik Plus", url: "https://www.gp3.fr/")
 FriendSite.create!(title: "JeSuisLibre", url: "http://www.jesuislibre.org/")
 FriendSite.create!(title: "La Quadrature du Net", url: "https://www.laquadrature.net/")
-FriendSite.create!(title: "Léa-Linux", url: "http://lea-linux.org/")
+FriendSite.create!(title: "Léa-Linux", url: "https://lea-linux.org/")
 FriendSite.create!(title: "LinuxGraphic", url: "https://www.linuxgraphic.org/")
 FriendSite.create!(title: "Lolix", url: "http://fr.lolix.org/")
 FriendSite.create!(title: "Veni, Vedi, Libri", url: "https://vvlibri.org/")
 FriendSite.create!(title: "TuxFamily", url: "https://tuxfamily.org")
+FriendSite.create!(title: "En Vente Libre", url: "https://enventelibre.org")
 
 # Pages
 dir = File.join(File.dirname(__FILE__), 'pages')

@@ -3,7 +3,7 @@
     %input(type="hidden" name="news_id" value="#{@news.id}")
   %p.link
     = form.text_field :title, maxlength: 100, autocomplete: "off", placeholder: 'Titre'
-    = form.url_field :url, autocomplete: "off", placeholder: 'URL'
+    = form.url_field :url, autocomplete: "off", placeholder: 'Adresse'
     = form.select :lang, Lang.all
     - if @link.persisted?
       %button.cancel{'data-url' => unlock_redaction_link_path(@link), type: "button"} Annuler

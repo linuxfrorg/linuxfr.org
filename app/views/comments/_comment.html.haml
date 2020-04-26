@@ -7,7 +7,7 @@
   = posted_by(comment)
   - unless defined? hide_content_title
     En réponse #{translate_to_content_type comment.content_type} #{link_to comment.content.title, path_for_content(comment.content)}.
-  Évalué à
+  Évalué à 
   %span.score><
     = comment.bound_score
     - unless comment.content.too_old_for_comments?

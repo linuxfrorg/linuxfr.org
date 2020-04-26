@@ -22,7 +22,7 @@
       %li #{pluralize @stats.access_grants, "autorisation créée", "autorisations créées"} pour #{pluralize @stats.access_grants_distinct_applications, "application", "applications distinctes"}
       %li #{pluralize @stats.access_tokens["total"], "jeton d’application créé", "jetons d’applications créés"} pour #{pluralize @stats.access_tokens_distinct_applications, "application", "applications distinctes"}, avec #{pluralize @stats.access_tokens["00"], "jeton actif (utilisé", "jetons actifs (utilisés"} au cours des 24 dernières heures), #{pluralize @stats.access_tokens["10"], "utilisable", "utilisables"} et #{pluralize @stats.access_tokens["11"], "périmé", "périmés"}
 
-    %h2#annee Répartition annuelle des #{@stats.applications} applications
+    %h2#annee Répartition annuelle des #{pluralize @stats.applications, "application"}
     %table
       - maxval = @stats.applications_by_year.values.max
       %tr

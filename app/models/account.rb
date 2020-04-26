@@ -79,7 +79,7 @@ class Account < ActiveRecord::Base
   validates :password, presence: { message: "Le mot de passe est absent", on: :create },
                        confirmation: { message: "La confirmation du mot de passe ne correspond pas au mot de passe" }
 
-  validates :stylesheet, length: { maximum: 255, message: "L’URL de la feuille de style est trop longue" }
+  validates :stylesheet, length: { maximum: 255, message: "L’adresse de la feuille de style est trop longue" }
 
 ### Authentication ###
 
