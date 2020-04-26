@@ -279,6 +279,12 @@ input[type="submit"] {
     background-image: url("/images/icones/loop.png");
     background-image: url("/images/icones/loop.svg"), none;
   }
+  &.change_role {
+    background: no-repeat 2px 2px $C_CLAIR;
+    background-size: 16px;
+    background-image: url("/images/icones/arrow-right.png");
+    background-image: url("/images/icones/arrow-right.svg"), none;
+  }
   &.reassign_news {
     background: no-repeat 2px 2px $C_CLAIR;
     background-size: 16px;

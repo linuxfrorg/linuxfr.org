@@ -14,8 +14,7 @@
     %th Pseudo / Courriel
     %th Karma
     %th Adresse IP courante / précédente
-    %th Commentaires publics / tous
-    %th Contenus publics / tous
+    %th Commentaires / contenus / étiquettes
     %th Date de création
     %th Actions
     %th Changer de rôle
@@ -29,6 +28,9 @@
           = image_tag "/images/icones/check.svg", alt: "Actif", title: "Actif", width: "16px"
         %br
         = account.email
+        - if account.user.homesite
+          %br
+          = account.user.homesite
       %td= account.karma
       %td
         - if account.current_sign_in_ip != account.last_sign_in_ip
@@ -36,26 +38,47 @@
         - else
           = account.current_sign_in_ip
       %td
-        #{ account.user.comments.published.count }&nbsp;/ #{ account.user.comments.count }
-      %td
-        #{ account.user.nodes.visible.count }&nbsp;/ #{ account.user.nodes.count }
+        - if account.user.comments.count > 0
+          = image_tag "/images/icones/comment.png", alt: "Commentaires", title: "Commentaires", width: "16px"
+          #{ account.user.comments.published.count }
+          #{ image_tag "/images/icones/check_alt.png", alt: "visibles", title: "visibles", width: "16px" }
+          - if account.user.comments.count - account.user.comments.published.count > 0
+            #{ (account.user.comments.count - account.user.comments.published.count) }
+            #{ image_tag "/images/icones/denied.png", alt: "masqués", title: "masqués", width: "16px" }
+          %br
+        - if account.user.nodes.count > 0
+          = image_tag "/images/icones/pen.png", alt: "Contenus", title: "Contenus", width: "16px"
+          #{ account.user.nodes.visible.count }
+          #{ image_tag "/images/icones/check_alt.png", alt: "visibles", title: "visibles", width: "16px" }
+          - if account.user.nodes.count - account.user.nodes.visible.count > 0
+            #{ (account.user.nodes.count - account.user.nodes.visible.count) }
+            #{ image_tag "/images/icones/denied.png", alt: "masqués ou non modérés", title: "masqués ou non modérés", width: "16px" }
+          %br
+        - if account.user.tags.count > 0
+          = image_tag "/images/icones/tag.png", alt: "Étiquettes", title: "Étiquettes", width: "16px"
+          #{ account.user.tags.visible.count }
+          #{ image_tag "/images/icones/check_alt.png", alt: "visibles", title: "visibles", width: "16px" }
+          - if account.user.tags.count - account.user.tags.visible.count > 0
+            #{ (account.user.tags.count - account.user.tags.visible.count) }
+            #{ image_tag "/images/icones/denied.png", alt: "masqués", title: "masqués", width: "16px" }
+          %br
       %td= account.created_at.to_s(:posted)
       %td
         - if account.inactive? && account.user_id != 1
           = button_to "Activer",   [:admin, account], method: :put, class: "ok_button"
         - elsif !account.inactive?
-          = button_to "Réinitialisation de mot de passe", password_admin_account_path(account), class: "reset_password"
+          = button_to "Réinit. mot de passe", password_admin_account_path(account), class: "reset_password"
           = button_to "Suspendre", [:admin, account], method: :put, class: "delete_button"
       %td
         - if account.editor?
-          = button_to "Retour simple visiteur", admin_account_editor_path(account.id), method: :delete
+          = button_to "Simple visiteur", admin_account_editor_path(account.id), method: :delete, class: "change_role"
         - elsif account.moderator?
-          = button_to "Retour simple visiteur", admin_account_moderator_path(account.id), method: :delete
+          = button_to "Simple visiteur", admin_account_moderator_path(account.id), method: :delete, class: "change_role"
         - elsif account.admin?
-          = button_to "Retour simple visiteur", admin_account_admin_path(account.id), method: :delete
+          = button_to "Simple visiteur", admin_account_admin_path(account.id), method: :delete, class: "change_role"
         - elsif !account.inactive?
-          = button_to "→ modérateur", admin_account_moderator_path(account.id)
-          = button_to "→ animateur", admin_account_editor_path(account.id)
-          = button_to "→ administrateur", admin_account_admin_path(account.id)
+          = button_to "Modérateur", admin_account_moderator_path(account.id), class: "change_role"
+          = button_to "Animateur", admin_account_editor_path(account.id), class: "change_role"
+          = button_to "Admin", admin_account_admin_path(account.id), class: "change_role"
 
 = paginate @accounts

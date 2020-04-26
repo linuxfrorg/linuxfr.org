@@ -9,13 +9,25 @@
       %li Courriel : #{a.email}
       %li Rôle : #{a.display_role(@user.nodes.where(public: true).count>0)}
       %li Dernière connexion : #{a.current_sign_in_at ? l(@user.account.current_sign_in_at) : "-"}
+      %li Dernière action : #{a.updated_at ? l(@user.account.updated_at) : "-"}
       %li Karma : #{a.karma} (minimum : #{a.min_karma}, maximum : #{a.max_karma})
     - if current_account.admin?
       %p Visibilité
       %ul
-        %li commentaires : #{ @user.comments.published.count } sur #{ @user.comments.count } ;
-        %li contenus : #{ @user.nodes.visible.count } sur #{ @user.nodes.count }.
-      %p Étiquettes : #{ @user.taggings.count }
+        - if @user.comments.count > 0
+          %li commentaires : #{ @user.comments.published.count } sur #{ @user.comments.count } ;
+        - else
+          %li pas de commentaires ;
+        - if @user.nodes.count > 0
+          %li contenus : #{ @user.nodes.visible.count } sur #{ @user.nodes.count } ;
+        - else
+          %li pas de contenus ;
+        - if @user.tags.count > 0
+          %li étiquettes : #{ @user.tags.visible.count } sur #{ @user.tags.count }.
+        - else
+          %li pas d'étiquettes.
+
+      %p Étiquetages : #{ @user.taggings.count }
       = button_to "+50 XP", karma_admin_account_path(@user.account.id)
     - if current_account.can_block?
       %button.more.block Interdire de commenter

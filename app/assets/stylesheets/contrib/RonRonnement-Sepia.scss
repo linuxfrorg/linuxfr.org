@@ -225,6 +225,9 @@ input[type="submit"] {
   &.reset_password {
     background: url("/images/icones/loop.png") no-repeat 2px 2px $C_CLAIR;
   }
+  &.change_role {
+    background: url("/images/icones/arrow-right.png") no-repeat 2px 2px $C_CLAIR;
+  }
   &.reassign_news {
     background: url("/images/icones/loop_alt.png") no-repeat 2px 2px $C_CLAIR;
     height: 20px;

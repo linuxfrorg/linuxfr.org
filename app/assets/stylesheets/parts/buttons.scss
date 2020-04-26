@@ -92,6 +92,9 @@ input[type="submit"] {
   &.erase_news {
     background-image: inline("feather-icons/dist/icons/trash-2.svg");
   }
+  &.change_role {
+    background-image: inline("feather-icons/dist/icons/arrow-right-circle.svg");
+  }
   &.cancel,
   &.refuse_oauth {
     background-image: inline("feather-icons/dist/icons/slash.svg");

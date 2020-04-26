@@ -17,6 +17,7 @@ class Tag < ActiveRecord::Base
 
   attr_accessor :tagged_by_current
 
+  scope :visible, -> { where(public: true) }
   scope :footer, -> {
     select([:name]).joins(:taggings).
                     where(public: true).
