@@ -7,7 +7,7 @@ end
 
 gem "rails",                   "5.2.2.1"
 
-gem "actionpack-page_caching", "~>1.2"
+gem "actionpack-page_caching", github: "linuxfrorg/actionpack-page_caching"
 gem "ansi",                    "~>1.4", require: false
 gem "acts_as_list",            "~>0.4"
 gem "bitfields",               "~>0.4"
