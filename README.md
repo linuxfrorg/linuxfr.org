@@ -32,8 +32,13 @@ Copyheart
 
 The code is licensed as GNU AGPLv3. See the LICENSE file for the full license.
 
-The [default avatar](https://linuxfr.org/images/default-avatar.png) is a modified
-[Tux](https://en.wikipedia.org/wiki/Tux).
+The [default avatar](https://linuxfr.org/images/default-avatar.svg) is a
+[Tux](https://en.wikipedia.org/wiki/Tux) derived from
+the [Tux Flat SVG](https://commons.wikimedia.org/wiki/File:TuxFlat.svg)
+created by [gg3po](https://www.pling.com/u/gg3po/)
+and [Iwan Gabovitch](http://qubodup.deviantart.com/)
+under the GPL v2 or any later version.
+
 
 [Feather icons](https://feathericons.com/) are licenced
 [MIT](https://github.com/feathericons/feather/blob/master/LICENSE).
