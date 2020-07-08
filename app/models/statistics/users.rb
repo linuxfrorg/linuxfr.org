@@ -52,6 +52,12 @@ class Statistics::Users < Statistics::Statistics
     select_all "SELECT COUNT(DISTINCT(accounts.user_id)) AS cnt FROM taggings JOIN accounts ON taggings.user_id = accounts.user_id WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' #{tag_age};"
   end
 
+  def nb_news_versions_authors(days=0)
+    news_versions_age="AND news_versions.created_at > DATE_SUB(CURDATE(),INTERVAL #{days} DAY)" if days>0
+
+    select_all "SELECT COUNT(DISTINCT(accounts.user_id)) AS cnt FROM news_versions JOIN accounts ON news_versions.user_id = accounts.user_id WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' #{news_versions_age};"
+  end
+
   def filled(field)
     count "SELECT COUNT(*) AS cnt FROM users JOIN accounts ON users.id = accounts.user_id WHERE #{field} IS NOT NULL AND #{field} != '' AND current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY)"
   end
@@ -88,7 +94,7 @@ class Statistics::Users < Statistics::Statistics
     select_all "SELECT YEAR(CONVERT_TZ(accounts.created_at, 'UTC', 'Europe/Paris')) AS year, COUNT(*) AS cnt FROM accounts WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY year ORDER BY year ASC"
   end
 
-  ACCOUNT_SLOT=5000
+  ACCOUNT_SLOT=10000
   def slot_size
     ACCOUNT_SLOT
   end

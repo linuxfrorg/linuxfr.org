@@ -25,7 +25,7 @@
       %li #{pluralize @stats.contents["Diary"], "journal", "journaux"}
       %li #{pluralize @stats.contents["Post"], "entrée"} de forums
       %li
-        #{pluralize @stats.contents["News"], "dépêche"}, plus #{@stats.news["draft"]} en rédaction, #{@stats.news["candidate"]} en modération, #{pluralize @stats.news["refused"], "refusée"}.
+        #{pluralize @stats.contents["News"], "dépêche"}, plus #{@stats.news["draft"]} en rédaction, #{@stats.news["candidate"]} en modération, #{pluralize @stats.news["refused"], "refusée"} (et encore en base de données).
         - if @stats.contents["News"].to_i > 0
           = "Publication sous #{pluralize @stats.nb_news_authors, "nom"} par #{pluralize @stats.nb_news_accounts, "utilisateur"}."
       %li #{pluralize @stats.contents["Tracker"], "entrée"} dans le système de suivi
