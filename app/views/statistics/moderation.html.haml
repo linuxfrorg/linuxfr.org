@@ -91,20 +91,14 @@
       %li= link_to("Sur les derniers jours", "#moderation")
       %li= link_to("Depuis Epoch ou le début des données", "#moderationEpoch")
 
-    %p Sur l'année, en #{pluralize Date.today.yday, "jour"} :
+    %p Sur l’année, en #{pluralize Date.today.yday, "jour"} :
     %ul
       %li
         - extra = @stats.news_by_day * 365 / Date.today.yday()
-        = "#{pluralize @stats.news_by_day, "dépêche publiée", "dépêches publiées"} (extrapolation annuelle de #{extra} pour un objectif de #{@goals.news_by_year} "
-        - if (extra >= @goals.news_by_year)
-          = image_tag "/images/icones/check.svg", alt: "Objectif atteint", title: "Objectif atteint", width: "16px"
-        \)
+        = "#{pluralize @stats.news_by_day, "dépêche publiée", "dépêches publiées"} (extrapolation annuelle de #{extra})"
       %li
         - extra2 = @stats.amr_news_by_day * 365 / Date.today.yday()
-        = "#{pluralize @stats.amr_news_by_day, "dépêche publiée écrite", "dépêches publiées écrites"} par l’équipe du site (extrapolation annuelle de #{extra2} pour un objectif de #{@goals.amr_news_by_year} "
-        - if (extra2 >= @goals.amr_news_by_year)
-          = image_tag "/images/icones/check.svg", alt: "Objectif atteint", title: "Objectif atteint", width: "16px"
-        \)
+        = "#{pluralize @stats.amr_news_by_day, "dépêche publiée écrite", "dépêches publiées écrites"} par l’équipe du site (extrapolation annuelle de #{extra2})"
 
     %h3#moderation Sur les derniers jours
 
@@ -121,10 +115,10 @@
           %th Éditions (31 j)
           %th Votes (31 j)
           %th Dernière dépêche
-          %th.sorttable_numeric Auteur de dépêches
+          %th.sorttable_numeric Dépêches cette année en tant qu’auteur
         - Account.amr.each do |user|
           %tr
-            %td.stat= link_to user["login"], user.user
+            %td.stat= link_to user["login"], user["name"]
             %td.stat= @stats.nb_moderations_x_days(user["user_id"],7)
             %td.stat= @stats.nb_moderations_x_days(user["user_id"],31)
             %td.stat= @stats.nb_editions_x_days(user["user_id"],7)
@@ -133,11 +127,7 @@
             - @stats.last_news_at(user["user_id"]).each do |last|
               %td.stat= last["last"]
             - @stats.news_by_week(user["user_id"]).each do |news|
-              %td.stat
-                = "#{news["cnt"]} en #{pluralize news["weeks"], "semaine"}"
-                - if news["cnt"] >= news["weeks"] * @goals.each_amr_news_by_week
-                  = image_tag "/images/icones/check.svg", alt: "Objectif atteint", title: "Objectif atteint", width: "16px"
-
+              %td.stat= news["cnt"]
     - else
       %h4 Il n’y a actuellement aucune équipe de modération
 
