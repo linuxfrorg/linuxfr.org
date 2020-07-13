@@ -56,7 +56,7 @@ class Statistics::Moderation < Statistics::Statistics
 
   def top_amr(sql_criterion="")
     select_all <<-EOS
-       SELECT name, login, moderator_id, COUNT(*) AS cnt
+       SELECT name, users.cached_slug, login, moderator_id, COUNT(*) AS cnt
          FROM nodes, news, users
          LEFT JOIN accounts ON accounts.user_id=users.id
         WHERE moderator_id IS NOT NULL

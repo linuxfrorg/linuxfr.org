@@ -118,7 +118,7 @@
           %th.sorttable_numeric Dépêches cette année en tant qu’auteur
         - Account.amr.each do |user|
           %tr
-            %td.stat= link_to user["login"], user["name"]
+            %td.stat= link_to User.find(user["user_id"]).name, User.find(user["user_id"])
             %td.stat= @stats.nb_moderations_x_days(user["user_id"],7)
             %td.stat= @stats.nb_moderations_x_days(user["user_id"],31)
             %td.stat= @stats.nb_editions_x_days(user["user_id"],7)
@@ -147,7 +147,7 @@
               - if user["login"].nil?
                 = user["name"]
               - else
-                = link_to user["login"], User.find(user["moderator_id"])
+                = link_to user["name"], User.find(user["moderator_id"])
             %td.stat= user["cnt"].to_i
             %td.stat= @stats.nb_votes(user["login"])
             %td.stat= @stats.nb_editions_x_days(user["moderator_id"])
