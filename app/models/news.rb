@@ -24,9 +24,15 @@
 # that will be reviewed and moderated by the LinuxFr.org team.
 #
 class News < Content
-  DEFAULT_FIRST_PART = "Un court chapeau introduisant l’article, ou le " +
+  DEFAULT_FIRST_PART = "Un **court chapeau** introduisant l’article, ou le " +
     "synthétisant, aidera les visiteurs du site à savoir s’ils doivent procéder " +
-    "à une lecture approfondie de votre article.".freeze
+    "à une lecture approfondie de votre article. " +
+    "Nous vous recommandons d'ajouter une illustration. " +
+    "(Vous pouvez éditer ce paragraphe en cliquant sur le crayon !)".freeze
+  DEFAULT_SECOND_PART = "Votre article commence ici. " +
+    "Un sommaire sera automatiquement créé si nécessaire. " +
+    "synthétisant, aidera les visiteurs du site à savoir s’ils doivent procéder " +
+    "(Vous pouvez éditer ce paragraphe en cliquant sur le crayon !)".freeze
   DEFAULT_PARAGRAPH = "Vous pouvez éditer ce paragraphe en cliquant sur le crayon !".freeze
 
   self.table_name = "news"
