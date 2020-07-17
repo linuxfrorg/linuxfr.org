@@ -25,13 +25,11 @@
 #
 class News < Content
   DEFAULT_FIRST_PART = "Un **court chapeau** introduisant l’article, ou le " +
-    "synthétisant, aidera les visiteurs du site à savoir s’ils doivent procéder " +
-    "à une lecture approfondie de votre article. " +
-    "Nous vous recommandons d'ajouter une illustration. " +
+    "synthétisant, aidera les lecteurs à savoir s’ils doivent lire la suite " +
+    "de votre article. Nous vous recommandons d'ajouter une illustration. " +
     "(Vous pouvez éditer ce paragraphe en cliquant sur le crayon !)".freeze
-  DEFAULT_SECOND_PART = "Votre article commence ici. " +
-    "Un sommaire sera automatiquement créé si nécessaire. " +
-    "synthétisant, aidera les visiteurs du site à savoir s’ils doivent procéder " +
+  DEFAULT_SECOND_PART = "Votre article commence ici. Un sommaire sera automatiquement " +
+    "créé si nécessaire. Pensez à l'orthographe et aux liens explicatifs vers Wikipedia. " +
     "(Vous pouvez éditer ce paragraphe en cliquant sur le crayon !)".freeze
   DEFAULT_PARAGRAPH = "Vous pouvez éditer ce paragraphe en cliquant sur le crayon !".freeze
 
@@ -140,7 +138,7 @@ class News < Content
     news.title = "Nouvelle dépêche nᵒ #{News.maximum(:id).to_i + 1}"
     news.section = Section.default
     news.wiki_body = DEFAULT_FIRST_PART
-    news.wiki_second_part = DEFAULT_PARAGRAPH
+    news.wiki_second_part = DEFAULT_SECOND_PART
     news.cc_licensed = true
     news.author_name  = account.name
     news.author_email = account.email
