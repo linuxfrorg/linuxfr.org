@@ -63,7 +63,8 @@ Now, we can reach external Ruby resources:
 
 ```
 ~ $ cd linuxfr.org
-~/linuxfr.org $ bundle install --path vendor/bundle
+~/linuxfr.org $ bundle config set path 'vendor/bundle'
+~/linuxfr.org $ bundle install
 ~/linuxfr.org $ bundle check
 ```
 
