@@ -1,0 +1,55 @@
+version: '3.1'
+
+services:
+  linuxfr.org:
+    build:
+      context: .
+      dockerfile: deployment/linuxfr.org/Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    # Share host directories so, the developer can edit them
+    # and see the result without need to restart the container
+    volumes:
+      - ./app:/linuxfr.org/app
+      - ./db:/linuxfr.org/db
+      - ./public:/linuxfr.org/public
+    depends_on:
+      - database
+      - database-test
+      - redis
+
+  database:
+    image: mariadb:10.1
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - data-database:/var/lib/mysql
+
+  database-test:
+    image: mariadb:10.1
+    env_file:
+      - .env
+    environment:
+      MYSQL_DATABASE: "${MYSQL_TEST_DATABASE}"
+      MYSQL_USER: "${MYSQL_TEST_USER}"
+      MYSQL_PASSWORD: "${MYSQL_TEST_PASSWORD}"
+    restart: always
+    volumes:
+      - data-database-test:/var/lib/mysql
+
+  redis:
+    image: redis:5
+    restart: always
+    volumes:
+      - data-redis:/data
+
+volumes:
+  data-database:
+    driver: local
+  data-database-test:
+    driver: local
+  data-redis:
+    driver: local

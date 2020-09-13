@@ -12,6 +12,21 @@ Install
 
 See [INSTALL.md](INSTALL.md) to set up LinuxFr.org on a Debian environment.
 
+Docker-Compose
+--------------
+
+If want to use Docker as development environment, you can run:
+
+`$ docker-compose up --build`
+
+When `database` and `database-test` services are ready (see logs of the
+above command), you can open a second terminal and run:
+
+`$ docker-compose run linuxfr.org bin/rails db:setup`
+
+That will create database and seed first data.
+
+Finally, you can access the site by opening the url: `http://localhost:3000`.
 
 See also
 --------
