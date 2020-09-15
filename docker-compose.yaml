@@ -27,9 +27,12 @@ services:
       - redis
 
   linuxfr-img:
-    image: nginx:stable
+    build:
+      context: deployment/linuxfr-img
     env_file:
       - .env
+    depends_on:
+      - redis
 
   nginx:
     image: nginx:stable
