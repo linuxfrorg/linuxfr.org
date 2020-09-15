@@ -7,8 +7,6 @@ services:
       dockerfile: deployment/linuxfr.org/Dockerfile
     env_file:
       - .env
-    ports:
-      - "3000:3000"
     # Share host directories so, the developer can edit them
     # and see the result without need to restart the container
     volumes:
@@ -19,6 +17,30 @@ services:
       - database
       - database-test
       - redis
+
+  linuxfr-board:
+    build:
+      context: deployment/linuxfr-board
+    env_file:
+      - .env
+    depends_on:
+      - redis
+
+  linuxfr-img:
+    image: nginx:stable
+    env_file:
+      - .env
+
+  nginx:
+    image: nginx:stable
+    volumes:
+      - ./deployment/nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+    depends_on:
+      - linuxfr.org
+      - linuxfr-board
+      - linuxfr-img
 
   database:
     image: mariadb:10.1
