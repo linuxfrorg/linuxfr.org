@@ -87,6 +87,9 @@ anon.save!
 # Collective user
 User.create! name: "Collectif"
 
+# Default section is defined by it's title (required to be able to create news)
+Section.create! title: "LinuxFr.org"
+
 # Wiki
 wp = WikiPage.new
 wp.title = WikiPage::HomePage
