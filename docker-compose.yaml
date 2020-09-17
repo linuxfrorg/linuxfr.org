@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: deployment/linuxfr.org/Dockerfile
     env_file:
-      - .env
+      - deployment/default.env
     # Share host directories so, the developer can edit them
     # and see the result without need to restart the container
     volumes:
@@ -22,7 +22,7 @@ services:
     build:
       context: deployment/linuxfr-board
     env_file:
-      - .env
+      - deployment/default.env
     depends_on:
       - redis
 
@@ -30,7 +30,7 @@ services:
     build:
       context: deployment/linuxfr-img
     env_file:
-      - .env
+      - deployment/default.env
     depends_on:
       - redis
 
@@ -48,7 +48,7 @@ services:
   database:
     image: mariadb:10.1
     env_file:
-      - .env
+      - deployment/default.env
     restart: always
     volumes:
       - data-database:/var/lib/mysql
@@ -56,14 +56,13 @@ services:
   database-test:
     image: mariadb:10.1
     env_file:
-      - .env
-    environment:
-      MYSQL_DATABASE: "${MYSQL_TEST_DATABASE}"
-      MYSQL_USER: "${MYSQL_TEST_USER}"
-      MYSQL_PASSWORD: "${MYSQL_TEST_PASSWORD}"
+      - deployment/default.env
+    entrypoint: ["/linuxfr-database-test-entrypoint.sh"]
+    command: ["mysqld"]
     restart: always
     volumes:
       - data-database-test:/var/lib/mysql
+      - ./deployment/linuxfr-database-test-entrypoint.sh:/linuxfr-database-test-entrypoint.sh
 
   redis:
     image: redis:5
