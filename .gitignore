@@ -18,3 +18,5 @@
 /REVISION
 /vendor/ruby
 /vendor/bundle
+/.env
+/docker-compose.*.yaml
