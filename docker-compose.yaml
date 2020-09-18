@@ -33,6 +33,8 @@ services:
       - deployment/default.env
     depends_on:
       - redis
+    volumes:
+      - cache-img:/linuxfr-img/cache
 
   nginx:
     image: nginx:stable
@@ -77,3 +79,6 @@ volumes:
     driver: local
   data-redis:
     driver: local
+  cache-img:
+    driver: local
+
