@@ -6,10 +6,9 @@ LABEL description="Run LinuxFr.org Ruby on Rails website"
 
 WORKDIR /linuxfr.org
 
-RUN echo 'deb http://deb.debian.org/debian stretch-backports main' >> '/etc/apt/sources.list.d/linuxfr.list'
-
 # Install system dependencies
-RUN apt-get update \
+RUN echo 'deb http://deb.debian.org/debian stretch-backports main' >> '/etc/apt/sources.list.d/linuxfr.list' \
+  && apt-get update \
   && apt-get install -y --no-install-recommends \
     mysql-client libmysql++-dev git \
     build-essential openssl libreadline-dev curl libcurl4-openssl-dev zlib1g \
@@ -22,13 +21,6 @@ RUN apt-get update \
   && apt-get clean
 
 RUN mkdir /home/linuxfr.org
-
-
-RUN chown -R 1001:0 /linuxfr.org /home/linuxfr.org \
-  && chmod -R g=u /linuxfr.org /home/linuxfr.org
-
-USER 1001:0
-
 ENV HOME /home/linuxfr.org
 
 # Install node external dependencies
@@ -52,5 +44,5 @@ COPY . /linuxfr.org
 
 EXPOSE 3000
 
-# CMD is setting up the database and exec the development server
 CMD ["bin/rails", "server", "--binding", "0.0.0.0"]
+

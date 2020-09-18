@@ -2,10 +2,14 @@ server {
   listen 80;
   listen [::]:80;
 
-  server_name dlfp.lo;
+  server_name ${DOMAIN};
 
+  location /fonts {
+    alias /var/linuxfr/fonts;
+  }
+ 
   location ~ ^/(avatars|medias)/ { 
-    root /home/adrien/code/linuxfr.org/uploads;
+    root /var/linuxfr/uploads;
   }
 
   location /img/ {
