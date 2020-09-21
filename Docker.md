@@ -8,7 +8,9 @@ To init the SQL database schema, open a second terminal and run:
 `docker-compose run linuxfr.org bin/rails db:seed`
 
 Then, the environment is ready to be used on the `http://dlfp.lo:3000`
-address. To be able to access it, you'll need to add the line 
+address.
+
+To be able to access it, you'll need to add the line
 `127.0.0.1 dlfp.lo image.dlfp.lo` your `/etc/hosts` file.
 
 Personalize configuration
@@ -65,7 +67,7 @@ Apply database migrations
 In case you need to apply new database migrations, you need a second
 terminal and run:
 
-`docker-compose run linuxfr.org bin/rails db:seed`
+`docker-compose run linuxfr.org bin/rails db:migrate`
 
 If you had issue and want to reset all data in your database system,
 use:
