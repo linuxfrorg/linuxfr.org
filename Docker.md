@@ -4,17 +4,31 @@ LinuxFr on Docker
 To simplify set up of a developement environment, LinuxFr.org can be
 run on Docker with `docker-compose up`.
 
-To init the SQL database schema, open a second terminal and run:
+To init the SQL database schema, you need to wait upto the `database`
+and `database-test` containers are ready to listen MySQL connections.
+
+For example, you should see in the logs:
+
+> database-test_1  | 2020-09-21 16:03:12 140126029907968 [Note] mysqld: ready for connections.
+>
+> database-test_1  | Version: '10.1.46-MariaDB-1\~bionic'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  mariadb.org binary distribution
+>
+> database_1       | 2020-09-21 16:03:12 139820938893312 [Note] mysqld: ready for connections.
+>
+> database_1       | Version: '10.1.46-MariaDB-1\~bionic'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  mariadb.org binary distribution
+
+Then, open a second terminal and run:
 
 ```
 docker-compose run linuxfr.org bin/rails db:setup
 ```
 
-Then, the environment is ready to be used on the [http://dlfp.lo](http://dlfp.lo)
-address.
+Finally, the environment is ready and you can open [http://dlfp.lo](http://dlfp.lo)
+in your favorite browser.
 
-To be able to access it, you'll need to add the line
-`127.0.0.1 dlfp.lo image.dlfp.lo` your `/etc/hosts` file.
+Note: to be able to access this URL, you'll need to add the line
+`127.0.0.1 dlfp.lo image.dlfp.lo` to the `/etc/hosts` file of your
+machine.
 
 Personalize configuration
 =========================
