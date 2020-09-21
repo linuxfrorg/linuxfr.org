@@ -5,9 +5,12 @@ To simplify set up of a developement environment, LinuxFr.org can be
 run on Docker with `docker-compose up`.
 
 To init the SQL database schema, open a second terminal and run:
-`docker-compose run linuxfr.org bin/rails db:seed`
 
-Then, the environment is ready to be used on the `http://dlfp.lo:3000`
+```
+docker-compose run linuxfr.org bin/rails db:setup
+```
+
+Then, the environment is ready to be used on the [http://dlfp.lo](http://dlfp.lo)
 address.
 
 To be able to access it, you'll need to add the line
