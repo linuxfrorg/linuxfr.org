@@ -84,6 +84,19 @@ anon.encrypted_password = "XXX"
 anon.skip_confirmation!
 anon.save!
 
+# Admin account
+admin = Account.new
+admin.login = "admin"
+admin.role = "admin"
+admin.email = "admin@dlfp.lo"
+admin.skip_confirmation!
+admin.save!
+
+# Reset automatically generated password
+admin.password = "admin"
+admin.password_confirmation = "admin"
+admin.save!
+
 # Collective user
 User.create! name: "Collectif"
 
