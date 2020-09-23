@@ -1,0 +1,15 @@
+server {  
+  listen 80;
+  listen [::]:80;
+
+  server_name ${IMAGE_DOMAIN};
+
+  location ~ ^/(avatars|medias)/ { 
+    root /var/linuxfr/uploads;
+  }
+
+  location / {
+    proxy_pass http://linuxfr-img:8000;
+  }
+}
+

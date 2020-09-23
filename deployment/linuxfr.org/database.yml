@@ -1,0 +1,25 @@
+shared:
+  adapter: mysql2
+  encoding: utf8mb4
+  collation: utf8mb4_bin
+  reconnect: true
+
+development:
+  host: <%= ENV['MYSQL_HOST'] %>
+  database: <%= ENV['MYSQL_DATABASE'] %>
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  host: <%= ENV['MYSQL_TEST_HOST'] %>
+  database: <%= ENV['MYSQL_TEST_DATABASE'] %>
+  username: <%= ENV['MYSQL_TEST_USER'] %>
+  password: <%= ENV['MYSQL_TEST_PASSWORD'] %>
+
+production:
+  database: linuxfr_production
+  username: linuxfr
+  password: XXX

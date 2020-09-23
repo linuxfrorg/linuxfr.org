@@ -1,8 +1,13 @@
+/.git
+/.gitignore
 /.bundle
 /.sass-cache
 /assets_manifest.json
 /config/database.yml
 /config/secrets.yml
+/deployment/
+!/deployment/linuxfr.org/database.yml
+/docker-compose.*.yaml
 /log
 /node_modules
 /public/assets
@@ -13,10 +18,8 @@
 /public/sitemap*
 /public/system
 /public/tmp
+/REVISION
 /tmp
 /uploads
-/REVISION
 /vendor/ruby
 /vendor/bundle
-/.env
-/docker-compose.*.yaml

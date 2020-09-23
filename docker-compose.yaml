@@ -1,0 +1,94 @@
+version: '3.1'
+
+services:
+  linuxfr.org:
+    build:
+      context: .
+      dockerfile: deployment/linuxfr.org/Dockerfile
+    env_file:
+      - deployment/default.env
+    volumes:
+      # Share host directories so, the developer can edit them
+      # and see the result without need to restart the container
+      - ./app:/linuxfr.org/app
+      - ./db:/linuxfr.org/db
+      - ./public:/linuxfr.org/public
+      # uploads are shared with the nginx service
+      - data-uploads:/linuxfr.org/uploads
+    tmpfs:
+      - /linuxfr.org/public/tmp:size=100M
+    depends_on:
+      - database
+      - database-test
+      - redis
+
+  linuxfr-board:
+    build:
+      context: deployment/linuxfr-board
+    env_file:
+      - deployment/default.env
+    depends_on:
+      - redis
+
+  linuxfr-img:
+    build:
+      context: deployment/linuxfr-img
+    env_file:
+      - deployment/default.env
+    depends_on:
+      - redis
+    volumes:
+      - cache-img:/linuxfr-img/cache
+
+  nginx:
+    image: nginx:stable
+    env_file:
+      - deployment/default.env
+    volumes:
+      - ./deployment/nginx/templates:/etc/nginx/templates
+      - ./public/fonts:/var/linuxfr/fonts
+      - data-uploads:/var/linuxfr/uploads
+    ports:
+      - "80:80"
+    depends_on:
+      - linuxfr.org
+      - linuxfr-board
+      - linuxfr-img
+
+  database:
+    image: mariadb:10.1
+    env_file:
+      - deployment/default.env
+    restart: always
+    volumes:
+      - data-database:/var/lib/mysql
+
+  database-test:
+    image: mariadb:10.1
+    env_file:
+      - deployment/default.env
+    entrypoint: ["/linuxfr-entrypoint.sh"]
+    command: ["mysqld"]
+    restart: always
+    volumes:
+      - data-database-test:/var/lib/mysql
+      - ./deployment/database-test/entrypoint.sh:/linuxfr-entrypoint.sh
+
+  redis:
+    image: redis:5
+    restart: always
+    volumes:
+      - data-redis:/data
+
+volumes:
+  data-database:
+    driver: local
+  data-database-test:
+    driver: local
+  data-redis:
+    driver: local
+  data-uploads:
+    driver: local
+  cache-img:
+    driver: local
+
