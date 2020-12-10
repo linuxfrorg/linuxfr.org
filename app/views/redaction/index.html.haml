@@ -25,27 +25,20 @@
     - else
       = link_to "Connaissez‑vous le moteur de recherche de photos sous licence Creative Commons ?", "https://ccsearch.creativecommons.org/?search=tux&licenses=ALL-%24&licenses=ALL-MOD&search_fields=title&search_fields=creator&search_fields=tags&per_page=20&work_types=photos&providers=500px&providers=flickr"
 
-  %h2 #{pluralize @drafts.count, "dépêche"} en cours de rédaction
+  %h2 #{pluralize @drafts.count + @inactive_drafts.count, "dépêche"} en cours de rédaction
   - feed "Flux atom des dépêches en cours de rédaction", "/redaction/news.atom"
   = button_to "Commencer une nouvelle dépêche", "/redaction/news", class: "create_news"
-  - if @drafts.empty?
+  - if @drafts.empty? and @inactive_drafts.empty?
     %p Aucune dépêche.
   - else
-    #news
-      - @drafts.each do |n|
-        - activity=(n.node.board_status(current_account) == :new_board)
-        .news{:class => ("activity" if activity)}
-          .pen
-            = link_to [:redaction, n] do
-              %img{src: "/images/icones/pen.svg", alt: "Éditer la dépêche"}
-          .meta
-            - if activity
-              = image_tag "/images/icones/chat.svg", alt: "Nouveaux !", title: "Il y a de l’activité sur cette dépêche", width: "16px"
-            = n.user.try(:name) || n.author_name
-            - if n.nb_editors > 0
-              = "& #{pluralize n.nb_editors, "participant"}"
-          %h3= link_to n.title, [:redaction, n]
-          Modifiée le #{n.updated_at.to_s :date} à #{n.updated_at.to_s :time}
+    - if @drafts.any?
+      #news
+        = render 'drafts', drafts: @drafts
+    - if @inactive_drafts.any?
+      %details
+        %summary #{pluralize @inactive_drafts.count, "dépêche"} sans activité récente
+        #inactive_news
+          = render 'drafts', drafts: @inactive_drafts
 
   %h2 #{pluralize @news.count, "dépêche"} en cours de modération
   - feed "Flux Atom des dépêches en cours de modération", "/redaction/news/moderation.atom"

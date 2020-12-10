@@ -329,7 +329,8 @@ body#redaction-index {
     margin: 5px 0 15px 0;
   }
   #news,
-  #candidate_news {
+  #candidate_news,
+  #inactive_news {
     display: flex;
     flex-wrap: wrap;
   }
