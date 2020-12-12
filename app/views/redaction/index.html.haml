@@ -53,8 +53,10 @@
   %h2 #{pluralize @news.count, "dépêche"} en cours de modération
   - feed "Flux Atom des dépêches en cours de modération", "/redaction/news/moderation.atom"
   .notice
-    L’accès à l’espace de modération est réservé aux modérateurs et aux administrateurs.
-    Seuls les titres des dépêches en modération sont visibles des autres utilisateurs authentifiés.
+    %p
+      L’accès à l’espace de modération est réservé aux modérateurs et aux administrateurs.
+      %br
+      Seuls les titres des dépêches en modération sont visibles des autres.
   - if @news.empty?
     Aucune dépêche.
   - else
