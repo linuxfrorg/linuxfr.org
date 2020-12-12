@@ -36,7 +36,17 @@
         = render 'drafts', drafts: @drafts
     - if @inactive_drafts.any?
       %details
-        %summary #{pluralize @inactive_drafts.count, "dépêche"} sans activité récente
+        %summary #{pluralize @inactive_drafts.count, "dépêche"} à adopter
+        .notice
+          %p
+            Les dépêches suivantes n’ont plus d’activités depuis plus de 3 mois
+            et peuvent être adoptées pour être finalisées et publiées par
+            d’autres rédacteurs.
+        %p
+          Pour adopter une dépêche, vous pouvez demander dans la tribune de
+          rédaction de devenir l’auteur de la dépêche. Ainsi, l’équipe de
+          modération vous donnera le rôle d’auteur de la dépêche et vous
+          pourrez terminer le processus de publication.
         #inactive_news
           = render 'drafts', drafts: @inactive_drafts
 
