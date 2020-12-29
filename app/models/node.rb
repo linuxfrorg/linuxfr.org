@@ -166,7 +166,12 @@ class Node < ActiveRecord::Base
   def set_taglist(list, user_id)
     self.class.transaction do
       TagList.new(list).each do |tagname|
-        tag = Tag.find_or_create_by(name: tagname)
+        tag = Tag.find_or_initialize_by(name: tagname)
+        if tag.new_record?
+          tag.save!
+          message = "<b>L’étiquette #{tagname} https://#{MY_DOMAIN}/tags/#{tagname}/public vient d’être créée par #{user.name} https://#{MY_DOMAIN}/users/#{user.cached_slug}</b>"
+          Board.new(object_type: Board.amr, message: message, user_name: "Notification").save
+        end
         taggings.create(tag_id: tag.id, user_id: user_id)
       end
     end

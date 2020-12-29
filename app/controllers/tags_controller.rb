@@ -78,6 +78,9 @@ class TagsController < ApplicationController
   def hide
     enforce_update_permission(@tag)
     @tag.toggle!("public")
+    message = "<b>L’étiquette #{@tag.name} #{public_tag_url(@tag.name)} est désormais #{@tag.public ? "visible" : "cachée"}, modifiée par #{current_user.name} #{user_url(current_user)}</b>"
+    Board.new(object_type: Board.amr, message: message, user_name: "Notification").save
+
     redirect_back fallback_location: root_url, notice: "La visibilité de l’étiquette a bien été modifiée"
   rescue
     redirect_to root_url
