@@ -81,6 +81,7 @@ class TrackersController < ApplicationController
   def destroy
     enforce_destroy_permission(@tracker)
     @tracker.mark_as_deleted
+    Board.amr_notification("L’entrée de suivi #{tracker_url @tracker} a été supprimée par #{current_user.name} #{user_url(current_user)}")
     redirect_to trackers_url, notice: "Entrée du suivi supprimée"
   end
 

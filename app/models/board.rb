@@ -81,6 +81,10 @@ class Board
     self.class.chan_key(@object_type, @object_id)
   end
 
+  def self.amr_notification(message)
+    Board.new(object_type: Board.amr, message: "<b>"+message+"</b>", user_name: "Notification").save
+  end
+
 ### Sanitizing messages ###
 
   include ERB::Util

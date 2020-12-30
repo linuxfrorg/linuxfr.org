@@ -68,6 +68,7 @@ class DiariesController < ApplicationController
   def destroy
     enforce_destroy_permission(@diary)
     @diary.mark_as_deleted
+    Board.amr_notification("Le journal #{user_diary_url @user, @diary} a été supprimé par #{current_user.name} #{user_url(current_user)}")
     redirect_to diaries_url, notice: "Le journal a bien été supprimé"
   end
 
@@ -89,6 +90,7 @@ class DiariesController < ApplicationController
   def move
     enforce_destroy_permission(@diary)
     @diary.move_to_forum params.require(:post).permit(:forum_id)
+    Board.amr_notification("Le journal #{user_diary_url @user, @diary} a été déplacé vers les forums par #{current_user.name} #{user_url(current_user)}")
     redirect_to diaries_url, notice: "Le journal a bien été déplacé vers les forums"
   rescue
     flash.now[:alert] = "Impossible de déplacer ce journal. Avez‑vous bien choisi un forum ?"

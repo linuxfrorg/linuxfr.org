@@ -70,6 +70,7 @@ class BookmarksController < ApplicationController
   def destroy
     enforce_destroy_permission(@bookmark)
     @bookmark.mark_as_deleted
+    Board.amr_notification("Le lien #{user_bookmark_url @user, @bookmark} a été supprimé par #{current_user.name} #{user_url(current_user)}")
     redirect_to bookmarks_url, notice: "Le lien a bien été supprimé"
   end
 

@@ -36,18 +36,21 @@ class Admin::AccountsController < AdminController
     nb = params[:karma] || 50
     @account.give_karma nb
     @account.log_karma nb, current_account
+    Board.amr_notification("Le compte #{@account.login} #{user_url @account.login} a reçu #{nb} points de karma par #{current_user.name} #{user_url(current_user)}")
     redirect_to @account.user
   end
 
   def update
     if @account.inactive?
       @account.reactivate!
+      Board.amr_notification("Le compte #{@account.login} #{user_url @account.login} a été réactivé par #{current_user.name} #{user_url(current_user)}")
       redirect_back notice: "Compte réactivé", fallback_location: admin_accounts_url
     else
       @account.inactivate!
       user = @account.user
       user.homesite = ""
       user.save
+      Board.amr_notification("Le compte #{@account.login} #{user_url @account.login} a été désactivé par #{current_user.name} #{user_url(current_user)}")
       redirect_back notice: "Compte désactivé", fallback_location: admin_accounts_url
     end
   end
@@ -57,6 +60,7 @@ class Admin::AccountsController < AdminController
     user = @account.user
     user.homesite = ""
     user.save
+    Board.amr_notification("Le compte #{@account.login} #{user_url @account.login} a été désactivé par #{current_user.name} #{user_url(current_user)}")
     redirect_to admin_accounts_url, notice: "Compte désactivé"
   end
 

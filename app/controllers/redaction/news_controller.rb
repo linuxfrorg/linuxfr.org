@@ -87,6 +87,7 @@ class Redaction::NewsController < RedactionController
   def erase
     enforce_erase_permission(@news)
     @news.erase!
+    Board.amr_notification("La dépêche #{news_url(@news)} a été supprimée en rédaction par #{current_user.name} #{user_url(current_user)}")
     redirect_to '/redaction', notice: "Dépêche effacée"
   end
 

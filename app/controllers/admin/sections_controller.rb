@@ -13,6 +13,7 @@ class Admin::SectionsController < AdminController
   def create
     @section = Section.new(params[:section])
     if @section.save
+      Board.amr_notification("La section de dépêches #{@section.title} #{admin_sections_url} a été créée par #{current_user.name} #{user_url(current_user)}")
       redirect_to admin_sections_url, notice: 'Nouvelle section créée.'
     else
       flash.now[:alert] = "Impossible d’enregistrer cette section"
@@ -26,6 +27,7 @@ class Admin::SectionsController < AdminController
   def update
     @section.attributes = params[:section]
     if @section.save
+      Board.amr_notification("La section de dépêches #{@section.title} #{admin_sections_url} a été modifiée par #{current_user.name} #{user_url(current_user)}")
       redirect_to admin_sections_url, notice: 'Section mise à jour.'
     else
       flash.now[:alert] = "Impossible d’enregistrer cette section"
@@ -34,8 +36,9 @@ class Admin::SectionsController < AdminController
   end
 
   def destroy
+    Board.amr_notification("La section de dépêches #{@section.title} #{admin_sections_url} a été archivée par #{current_user.name} #{user_url(current_user)}")
     @section.archive
-    redirect_to admin_sections_url, notice: 'Section supprimée'
+    redirect_to admin_sections_url, notice: 'Section archivée'
   end
 
 protected

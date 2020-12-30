@@ -13,6 +13,7 @@ class Admin::PagesController < AdminController
   def create
     @page = Page.new(params[:page])
     if @page.save
+      Board.amr_notification("La page #{@page.title} #{admin_pages_url} a été créée par #{current_user.name} #{user_url(current_user)}")
       redirect_to admin_pages_url, notice: 'Nouvelle page créée.'
     else
       flash.now[:alert] = "Impossible d’enregistrer cette page"
@@ -26,6 +27,7 @@ class Admin::PagesController < AdminController
   def update
     @page.attributes = params[:page]
     if @page.save
+      Board.amr_notification("La page #{@page.title} #{admin_pages_url} a été mise à jour par #{current_user.name} #{user_url(current_user)}")
       redirect_to admin_pages_url, notice: 'Page mise à jour.'
     else
       flash.now[:alert] = "Impossible d’enregistrer cette page"
@@ -34,6 +36,7 @@ class Admin::PagesController < AdminController
   end
 
   def destroy
+    Board.amr_notification("La page #{@page.title} #{admin_pages_url} a été supprimée par #{current_user.name} #{user_url(current_user)}")
     @page.destroy
     redirect_to admin_pages_url, notice: 'Page supprimée'
   end

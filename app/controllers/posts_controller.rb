@@ -63,6 +63,7 @@ class PostsController < ApplicationController
   def destroy
     enforce_destroy_permission(@post)
     @post.mark_as_deleted
+    Board.amr_notification("Le message #{forum_post_url @forum, @post} a été supprimé par #{current_user.name} #{user_url(current_user)}")
     redirect_to forum_posts_url, notice: "Votre message a bien été supprimé"
   end
 

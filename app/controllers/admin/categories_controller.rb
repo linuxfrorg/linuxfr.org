@@ -13,6 +13,7 @@ class Admin::CategoriesController < AdminController
   def create
     @category = Category.new(params[:category])
     if @category.save
+      Board.amr_notification("La catégorie #{@category.title} du suivi #{admin_categories_url} a été créée par #{current_user.name} #{user_url(current_user)}")
       redirect_to admin_categories_url, notice: 'Nouvelle catégorie créée.'
     else
       flash.now[:alert] = "Impossible d’enregistrer cette catégorie"
@@ -26,6 +27,7 @@ class Admin::CategoriesController < AdminController
   def update
     @category.attributes = params[:category]
     if @category.save
+      Board.amr_notification("La catégorie #{@category.title} du suivi #{admin_categories_url} a été modifiée par #{current_user.name} #{user_url(current_user)}")
       redirect_to admin_categories_url, notice: 'Catégorie mise à jour.'
     else
       flash.now[:alert] = "Impossible d’enregistrer cette catégorie"
@@ -34,6 +36,7 @@ class Admin::CategoriesController < AdminController
   end
 
   def destroy
+    Board.amr_notification("La catégorie #{@category.title} du suivi #{admin_categories_url} a été supprimée par #{current_user.name} #{user_url(current_user)}")
     @category.delete
     redirect_to admin_categories_url, notice: 'Catégorie supprimée'
   end
