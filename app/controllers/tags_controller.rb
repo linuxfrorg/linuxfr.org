@@ -32,7 +32,7 @@ class TagsController < ApplicationController
 
   def destroy
     @tag = Tag.where(name: params[:id]).first
-    @node.taggings.where(tag_id: @tag.id, user_id: current_account.user_id).delete_all if @tag
+    @node.taggings.where(tag_id: @tag.id, user_id: current_account.user_id).destroy_all if @tag
     respond_to do |wants|
      wants.json { render json: { notice: "Étiquette enlevée" } }
      wants.html { redirect_to_content @node.content }
