@@ -31,7 +31,14 @@ class Comment < ActiveRecord::Base
   scope :under,        ->(path) { where("materialized_path LIKE ?", "#{path}_%") }
   scope :published,    -> { where(state: 'published') }
   scope :on_dashboard, -> { published.order(created_at: :desc) }
-  scope :footer,       -> { published.joins(:node).merge(Node.visible).order(created_at: :desc).limit(12).select([:id, :node_id, :title]) }
+  scope :footer,       -> {
+    # MariaDB tries to scan nodes first, which is a very slow, so we add an index hint
+    from("comments USE INDEX (index_comments_on_state_and_created_at)").published.
+      joins(:node).merge(Node.visible).
+      order(created_at: :desc).
+      limit(12).
+      select([:id, :node_id, :title])
+  }
 
   validates :title,     presence: { message: "Le titre est obligatoire" },
                         length: { maximum: 100, message: "Le titre est trop long" }
