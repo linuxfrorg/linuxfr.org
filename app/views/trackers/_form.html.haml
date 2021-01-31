@@ -19,7 +19,7 @@
     = form.select :state, Tracker::States.invert
   %p
     = form.label :assigned_to_user_id, "Assigné à"
-    = form.collection_select :assigned_to_user_id, Account.admin, :id, :login, include_blank: true
+    = form.collection_select :assigned_to_user_id, Account.admin, :user_id, :login, include_blank: true
 %p
   = form.submit "Prévisualiser", id: "tracker_preview"
   = form.submit "Soumettre", 'data-disable-with' => "Enregistrement en cours" if @preview_mode || @tracker.persisted?
