@@ -39,7 +39,7 @@ class Comment < ActiveRecord::Base
 
   wikify_attr :body
   def wikify_body
-    nofollow = user.account.karma < 50
+    nofollow = user.account.blank? || user.account.karma < 50
     self.body = wikify(wiki_body, nofollow: nofollow)
   end
 
