@@ -69,6 +69,7 @@ class CommentsController < ApplicationController
   def destroy
     enforce_destroy_permission(@comment)
     @comment.mark_as_deleted
+    Board.amr_notification("Le commentaire #{url_for_content(@node.content) + "#comment-#{@comment.id}"} a été masqué par #{current_user.name} #{user_url(current_user)}")
     flash[:notice] = "Votre commentaire a bien été supprimé"
     redirect_to_content @node.content
   end

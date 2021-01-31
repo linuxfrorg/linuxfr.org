@@ -170,8 +170,7 @@ class Node < ActiveRecord::Base
         if tag.new_record?
           tag.save!
           user = User.find(user_id)
-          message = "<b>L’étiquette #{tagname} https://#{MY_DOMAIN}/tags/#{tagname}/public vient d’être créée par #{user.name} https://#{MY_DOMAIN}/users/#{user.cached_slug}</b>"
-          Board.new(object_type: Board.amr, message: message, user_name: "Notification").save
+          Board.amr_notification("L’étiquette #{tagname} https://#{MY_DOMAIN}/tags/#{tagname}/public vient d’être créée par #{user.name} https://#{MY_DOMAIN}/users/#{user.cached_slug}")
         end
         taggings.create(tag_id: tag.id, user_id: user_id)
       end

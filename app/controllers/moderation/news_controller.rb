@@ -69,6 +69,7 @@ class Moderation::NewsController < ModerationController
       @news.no_more_urgent!
       notif = NewsNotifications.refuse_with_message(@news, params[:message], params[:template])
       notif.deliver_now if notif
+      Board.amr_notification("La dépêche #{news_url(@news)} a été refusée par #{current_user.name} #{user_url(current_user)}")
       redirect_to '/'
     elsif @news.unlocked?
       @boards = Board.all(Board.news, @news.id)
@@ -92,12 +93,14 @@ class Moderation::NewsController < ModerationController
   def reset
     enforce_reset_permission(@news)
     @news.reset_votes
+    Board.amr_notification("Sur la dépêche #{news_url(@news)} les votes ont été remis à zéro par #{current_user.name} #{user_url(current_user)}")
     redirect_to [:moderation, @news], notice: "Votes remis à zéro"
   end
 
   def ppp
     enforce_ppp_permission(@news)
     @news.set_on_ppp
+    Board.amr_notification("La dépêche #{news_url(@news)} a été mise à la une par #{current_user.name} #{user_url(current_user)}")
     redirect_to [:moderation, @news], notice: "Cette dépêche est maintenant affichée en phare"
   end
 

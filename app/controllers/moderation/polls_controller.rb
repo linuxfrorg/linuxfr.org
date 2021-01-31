@@ -16,12 +16,14 @@ class Moderation::PollsController < ModerationController
   def accept
     enforce_accept_permission(@poll)
     @poll.accept!
+    Board.amr_notification("Le sondage #{poll_url @poll} a été accepté par #{current_user.name} #{user_url(current_user)}")
     redirect_to @poll, notice: "Sondage accepté"
   end
 
   def refuse
     enforce_refuse_permission(@poll)
     @poll.refuse!
+    Board.amr_notification("Le sondage #{poll_url @poll} a été refusé par #{current_user.name} #{user_url(current_user)}")
     redirect_to moderation_polls_url, notice: "Sondage refusé"
   end
 
@@ -43,6 +45,7 @@ class Moderation::PollsController < ModerationController
   def ppp
     enforce_accept_permission(@poll)
     @poll.set_on_ppp
+    Board.amr_notification("Le sondage #{poll_url @poll} a été mis en une par #{current_user.name} #{user_url(current_user)}")
     redirect_to root_url, notice: "Le sondage a bien été mis en phare"
   end
 

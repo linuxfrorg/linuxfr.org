@@ -15,6 +15,7 @@ class Admin::ApplicationsController < AdminController
   def update
     @application.attributes = params[:doorkeeper_application]
     if @application.save
+      Board.amr_notification("L’application #{@application.name} #{admin_applications_url} a été modifiée par #{current_user.name} #{user_url(current_user)}")
       redirect_to admin_applications_url, notice: 'Application mise à jour.'
     else
       render :edit
@@ -22,6 +23,7 @@ class Admin::ApplicationsController < AdminController
   end
 
   def destroy
+    Board.amr_notification("L’application #{@application.name} #{admin_applications_url} a été supprimée par #{current_user.name} #{user_url(current_user)}")
     @application.destroy
     redirect_to admin_applications_url, notice: 'Application supprimée'
   end

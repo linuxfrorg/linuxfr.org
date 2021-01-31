@@ -75,6 +75,7 @@ class WikiPagesController < ApplicationController
   def destroy
     enforce_destroy_permission(@wiki_page)
     @wiki_page.mark_as_deleted
+    Board.amr_notification("La page wiki #{wiki_page_url @wiki_page} a été supprimée par #{current_user.name} #{user_url(current_user)}")
     redirect_to WikiPage.home_page, notice: "Page de wiki supprimée"
   end
 

@@ -15,6 +15,7 @@ class Admin::FriendSitesController < AdminController
     @friend_site.attributes = params[:friend_site]
     if @friend_site.save
       @friend_site.move_to_bottom
+      Board.amr_notification("Le site ami #{@friend_site.title} #{admin_friend_sites_url} a été créé par #{current_user.name} #{user_url(current_user)}")
       redirect_to admin_friend_sites_url, notice: "Site ami créé"
     else
       flash.now[:alert] = "Impossible d’enregistrer ce site"
@@ -28,6 +29,7 @@ class Admin::FriendSitesController < AdminController
   def update
     @friend_site.attributes = params[:friend_site]
     if @friend_site.save
+      Board.amr_notification("Le site ami #{@friend_site.title} #{admin_friend_sites_url} a été modifié par #{current_user.name} #{user_url(current_user)}")
       redirect_to admin_friend_sites_url, notice: "Site ami modifié"
     else
       flash.now[:alert] = "Impossible d’enregistrer ce site"
@@ -36,6 +38,7 @@ class Admin::FriendSitesController < AdminController
   end
 
   def destroy
+    Board.amr_notification("Le site ami #{@friend_site.title} #{admin_friend_sites_url} a été supprimé par #{current_user.name} #{user_url(current_user)}")
     @friend_site.destroy
     redirect_to admin_friend_sites_url, notice: "Site ami supprimé"
   end

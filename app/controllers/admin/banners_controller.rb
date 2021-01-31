@@ -13,6 +13,7 @@ class Admin::BannersController < AdminController
   def create
     @banner = Banner.new(params[:banner])
     if !preview_mode && @banner.save
+      Board.amr_notification("La bannière #{@banner.title} #{admin_banners_url} a été créée par #{current_user.name} #{user_url(current_user)}")
       redirect_to admin_banners_url, notice: 'Nouvelle bannière créée.'
     else
       render :new
@@ -26,6 +27,7 @@ class Admin::BannersController < AdminController
   def update
     @banner.attributes = params[:banner]
     if !preview_mode && @banner.save
+      Board.amr_notification("La bannière #{@banner.title} #{admin_banners_url} a été modifiée par #{current_user.name} #{user_url(current_user)}")
       redirect_to admin_banners_url, notice: 'Bannière mise à jour.'
     else
       render :edit
@@ -33,6 +35,7 @@ class Admin::BannersController < AdminController
   end
 
   def destroy
+    Board.amr_notification("La bannière #{@banner.title} #{admin_banners_url} a été supprimée par #{current_user.name} #{user_url(current_user)}")
     @banner.destroy
     redirect_to admin_banners_url, notice: 'Bannière supprimée'
   end

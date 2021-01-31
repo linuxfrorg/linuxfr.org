@@ -8,6 +8,7 @@ class Admin::LogosController < AdminController
 
   def create
     Logo.image = params[:logo]
+    Board.amr_notification("Le logo #{admin_logo_url} a été modifié par #{current_user.name} #{user_url(current_user)}")
     redirect_to admin_logo_url, notice: "Changement de logo enregistré"
   end
 
