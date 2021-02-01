@@ -26,6 +26,10 @@ module StaticHelper
     people_list Account.moderator
   end
 
+  def helper_maintainer_list
+    people_list Account.maintainer
+  end
+
   def helper_friend_sites_list
     sites = FriendSite.all.map { |s| content_tag(:li, link_to(s.title, s.url)) }
     content_tag(:ul, safe_join(sites), class: "people-list")

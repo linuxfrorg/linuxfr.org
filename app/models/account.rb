@@ -128,7 +128,8 @@ class Account < ActiveRecord::Base
 ### Role ###
 
   scope :active,    -> { where("role != 'inactive'") }
-  scope :maintainer, -> { where(role: %w[admin maintainer]) }
+  scope :maintainer, -> { where(role: "maintainer") }
+  scope :tracker_admin, -> { where(role: %w[admin maintainer]) }
   scope :moderator, -> { where(role: "moderator") }
   scope :editor,    -> { where(role: "editor") }
   scope :admin,     -> { where(role: "admin") }
@@ -160,6 +161,11 @@ class Account < ActiveRecord::Base
     roles = previous_changes["role"]
     return if roles.nil?
     logs.create(description: "Changement de rôle : #{roles.join ' → '}", user_id: amr_id)
+  end
+
+  # A tracker admin can update, assign and delete a node of the tracker
+  def tracker_admin?
+    admin? || maintainer?
   end
 
   # An AMR is someone who is either an admin or a moderator

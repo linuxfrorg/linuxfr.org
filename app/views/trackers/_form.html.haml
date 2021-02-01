@@ -17,10 +17,10 @@
   %p
     = form.label :state, "État"
     = form.select :state, Tracker::States.invert
-  - if current_account.admin? or current_account.maintainer?
+  - if current_account.tracker_admin?
     %p
       = form.label :assigned_to_user_id, "Assigné à"
-      = form.collection_select :assigned_to_user_id, Account.maintainer, :user_id, :login, include_blank: true
+      = form.collection_select :assigned_to_user_id, Account.tracker_admin, :user_id, :login, include_blank: true
 %p
   = form.submit "Prévisualiser", id: "tracker_preview"
   = form.submit "Soumettre", 'data-disable-with' => "Enregistrement en cours" if @preview_mode || @tracker.persisted?
