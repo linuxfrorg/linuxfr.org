@@ -19,10 +19,8 @@ class Tag < ActiveRecord::Base
 
   scope :visible, -> { where(public: true) }
   scope :footer, -> {
-    select([:name]).joins(:taggings).
-                    where(public: true).
-                    joins(:nodes).
-                    where("nodes.public = 1").
+    select([:name]).visible.
+                    joins(:nodes).merge(Node.visible).
                     where("taggings.created_at > ?", 1.month.ago).
                     group("taggings.tag_id").
                     order(Arel.sql("COUNT(*) DESC")).
