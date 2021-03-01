@@ -1,3 +1,4 @@
+#= require lang
 #= require push
 
 $ = window.jQuery
