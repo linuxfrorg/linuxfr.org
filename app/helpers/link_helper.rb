@@ -2,9 +2,7 @@
 module LinkHelper
   def lang_and_hit(link)
     detail = "("
-    if link.lang != 'fr'
-      detail += "en #{Lang[link.lang].downcase}, "
-    end
+    detail += "en #{Lang[link.lang].downcase}, " unless link.lang == 'fr'
     detail += "#{pluralize link.nb_clicks, 'clic'})"
   end
 end
