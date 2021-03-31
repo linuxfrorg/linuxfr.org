@@ -71,6 +71,7 @@ class TagsController < ApplicationController
   def public
     @order = params[:order]
     @order = "created_at" unless VALID_ORDERS.include?(@order)
+    @dont_index = !@tag.public
     @nodes = @tag.nodes.where("nodes.public" => true).order("#{@order} DESC").page(params[:page])
     respond_with(@nodes)
   end
