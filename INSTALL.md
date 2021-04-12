@@ -24,7 +24,7 @@ Packages to install from main Stretch source:
 build-essential openssl libreadline-dev curl libcurl4-openssl-dev zlib1g \
 zlib1g-dev libssl-dev libxml2-dev libxslt-dev autoconf libgmp-dev libyaml-dev \
 ncurses-dev bison automake libtool imagemagick libc6-dev hunspell \
-hunspell-fr-comprehensive redis-server ruby ruby-dev ruby-rack
+hunspell-fr-comprehensive redis-server ruby ruby-dev ruby-rack shared-mime-info
 ```
 
 Note:
