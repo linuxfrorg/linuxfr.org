@@ -17,7 +17,7 @@ RUN echo 'deb http://deb.debian.org/debian stretch-backports main' >> '/etc/apt/
     hunspell-fr-comprehensive ruby ruby-dev ruby-rack \
   && apt-get install -t stretch-backports -y --no-install-recommends \
     nodejs npm \
-  && gem install bundler \
+  && gem install bundler -v 1.17.3 \
   && apt-get clean
 
 RUN mkdir /home/linuxfr.org
