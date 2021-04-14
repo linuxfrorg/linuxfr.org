@@ -22,7 +22,7 @@
     = f.collection_select :category_id, Category.all, :id, :title, include_blank: true
   %p
     = f.label :assigned_to_user_id, "Assigné à : "
-    = f.collection_select :assigned_to_user_id, Account.admin, :user_id, :name, include_blank: true
+    = f.collection_select :assigned_to_user_id, Account.tracker_admin, :user_id, :name, include_blank: true
   %p
     = label_tag :order, "Trier par : "
     = select_tag :order, options_for_select({ "Date d’ouverture" => "created_at", "Note" => "score", "Nombre de commentaires" => "comments_count", "Dernier commentaire" => "last_commented_at" }, @order)

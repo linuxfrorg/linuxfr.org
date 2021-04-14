@@ -39,6 +39,7 @@
 # There are several levels of users:
 #   * anonymous     -> they have no account and can only read public contents
 #   * authenticated -> they can read public contents and submit new ones
+#   * maintainer    -> they can manage the tracker system
 #   * moderator     -> they make the order and the security ruling
 #   * editor        -> they edit the news in the redaction space
 #   * admin         -> the almighty users
@@ -127,6 +128,8 @@ class Account < ActiveRecord::Base
 ### Role ###
 
   scope :active,    -> { where("role != 'inactive'") }
+  scope :maintainer, -> { where(role: "maintainer") }
+  scope :tracker_admin, -> { where(role: %w[admin maintainer]) }
   scope :moderator, -> { where(role: "moderator") }
   scope :editor,    -> { where(role: "editor") }
   scope :admin,     -> { where(role: "admin") }
@@ -136,6 +139,7 @@ class Account < ActiveRecord::Base
     event :inactivate            do transition all             => :inactive  end
     event :reactivate            do transition :inactive       => :visitor   end
     event :remove_all_rights     do transition all - :inactive => :visitor   end
+    event :give_maintainer_rights do transition all - :inactive => :maintainer end
     event :give_moderator_rights do transition all - :inactive => :moderator end
     event :give_editor_rights    do transition all - :inactive => :editor    end
     event :give_admin_rights     do transition all - :inactive => :admin     end
@@ -145,6 +149,7 @@ class Account < ActiveRecord::Base
   def display_role(hasContents)
     case role
     when 'visitor' then hasContents ? 'contributeur' : 'visiteur'
+    when 'maintainer' then 'mainteneur'
     when 'editor' then 'animateur'
     when 'moderator' then 'modérateur'
     when 'admin' then 'admin'
@@ -156,6 +161,11 @@ class Account < ActiveRecord::Base
     roles = previous_changes["role"]
     return if roles.nil?
     logs.create(description: "Changement de rôle : #{roles.join ' → '}", user_id: amr_id)
+  end
+
+  # A tracker admin can update, assign and delete a node of the tracker
+  def tracker_admin?
+    admin? || maintainer?
   end
 
   # An AMR is someone who is either an admin or a moderator

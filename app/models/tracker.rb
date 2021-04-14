@@ -75,11 +75,11 @@ class Tracker < Content
 ### ACL ###
 
   def updatable_by?(account)
-    account.moderator? || account.admin? || account.user_id == node.user_id
+    account.maintainer? || account.moderator? || account.admin? || account.user_id == node.user_id
   end
 
   def destroyable_by?(account)
-    account.moderator? || account.admin?
+    account.maintainer? || account.moderator? || account.admin?
   end
 
   def too_old_for_comments?

@@ -72,11 +72,14 @@
       %td
         - if account.editor?
           = button_to "Simple visiteur", admin_account_editor_path(account.id), method: :delete, class: "change_role"
+        - if account.maintainer?
+          = button_to "Simple visiteur", admin_account_maintainer_path(account.id), method: :delete, class: "change_role"
         - elsif account.moderator?
           = button_to "Simple visiteur", admin_account_moderator_path(account.id), method: :delete, class: "change_role"
         - elsif account.admin?
           = button_to "Simple visiteur", admin_account_admin_path(account.id), method: :delete, class: "change_role"
         - elsif !account.inactive?
+          = button_to "Mainteneur", admin_account_maintainer_path(account.id), class: "change_role"
           = button_to "Modérateur", admin_account_moderator_path(account.id), class: "change_role"
           = button_to "Animateur", admin_account_editor_path(account.id), class: "change_role"
           = button_to "Admin", admin_account_admin_path(account.id), class: "change_role"

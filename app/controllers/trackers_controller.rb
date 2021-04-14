@@ -88,7 +88,7 @@ class TrackersController < ApplicationController
 protected
 
   def tracker_params
-    if current_account.try(:admin?)
+    if current_account.try(:tracker_admin?)
       params.require(:tracker).permit!
     else
       params.require(:tracker).permit(:title, :wiki_body, :category_id, :state)

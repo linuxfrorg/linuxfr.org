@@ -4,5 +4,7 @@
     %span.tracker_id ##{tracker.id}
     = posted_by(tracker)
     État de l’entrée : #{tracker.state_name}.
+    - if tracker.assigned_to_user_id?
+      Assigné à #{tracker.assigned_to}.
   - if current_account && current_account.can_update?(tracker)
     - c.actions = link_to("Modifier", "/suivi/#{tracker.to_param}/modifier", class: 'action')
