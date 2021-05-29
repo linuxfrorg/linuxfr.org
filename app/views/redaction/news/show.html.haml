@@ -41,13 +41,21 @@
   = button_to "Effacer la dépêche", erase_redaction_news_path(@news), class: "erase_news", data: { confirm: "Confirmez‑vous vouloir supprimer cette dépêche ?" }
 - if current_account.can_followup? @news
   %button#followup.more Relancer les rédacteurs
-  .more_actions(style="display: none;")
+  #followup_container.more_actions(style="display: none;")
+    %h1 Relancer les rédacteurs
+    %p
+      Vous pouvez envoyer un email de relance aux participants de cette dépêche
+      pour leur demander de la finaliser.
+    %p
+      N’hésitez pas à leur donner des précisions (date de sortie imminente, demande de précisions, etc.).
+    %h2 Email de relance
     = form_tag followup_redaction_news_path(@news) do
-      %p
-        Vous pouvez envoyer un message de relance aux participants de cette dépêche
-        pour leur demander de la finaliser. N’hésitez pas à leur donner des 
-        précisions (date de sortie imminente, demande de précisions, etc.).
-      = text_area_tag :message, nil, rows: 10
+      %article#followup_mail
+        %pre#follwoup_header
+          = render formats: [:text], partial: 'news_notifications/followup_header'
+        = text_area_tag :message, "L'équipe d'animation vous encourage à finaliser la dépêche.", rows: 10
+        %pre#followup_footer
+          = render formats: [:text], partial: 'news_notifications/followup_footer'
       = submit_tag 'Envoyer'
 
 %article
