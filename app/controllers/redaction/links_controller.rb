@@ -12,22 +12,29 @@ class Redaction::LinksController < RedactionController
   def create
     @link.attributes = link_params
     @link.user = current_user
-    @link.save
-    render partial: 'button'
+    if @link.save
+      render partial: 'button'
+    else
+      render status: :unprocessable_entity, json: { errors: @link.errors.as_json }
+    end
   end
 
   def edit
     if @link.lock_by(current_user)
       render partial: 'form'
     else
-      render status: :forbidden, text: "Désolé, #{@link.locker} est déjà en train de modifier ce lien !"
+      render status: :forbidden, plain: "Désolé, #{@link.locker} est déjà en train de modifier ce lien !"
     end
   end
 
   def update
     @link.attributes = link_params
     @link.update_by(current_user)
-    render @link
+    if @link.destroyed? || @link.save
+      render @link
+    else
+      render status: :unprocessable_entity, json: { errors: @link.errors.as_json }
+    end
   end
 
   def unlock

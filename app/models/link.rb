@@ -26,9 +26,9 @@ class Link < ActiveRecord::Base
 
   validates :title, presence: { message: "Un lien doit obligatoirement avoir un titre" },
                     length: { maximum: 100, message: "Le titre est trop long" }
-  validates :url, presence: { message: "Un lien doit obligatoirement avoir une adresse" },
+  validates :url, http_url: { protocols: PROTOCOLS, message: "L'adresse n'est pas valide" },
+                  presence: { message: "Un lien doit obligatoirement avoir une adresse" },
                   length: { maximum: 255, message: "L’adresse est trop longue" }
-  validate  :authorized_protocol
 
   def url=(raw)
     raw.strip!
@@ -39,17 +39,9 @@ class Link < ActiveRecord::Base
       uri = URI.parse(raw)
     end
     write_attribute :url, uri.to_s
-  end
-
-  def authorized_protocol
-    if url.blank?
-      errors.add(:url, "L’adresse est obligatoire")
-    else
-      uri = URI.parse(url)
-      return true if PROTOCOLS.include?(uri.scheme)
-      return true if uri.scheme.nil? && uri.host == MY_DOMAIN
-      errors.add(:url, "L’adresse d’un lien n’est pas valide")
-    end
+  # Let raw value if error when parsed, HttpUrlValidator will manage it
+  rescue URI::InvalidURIError
+    write_attribute :url, raw
   end
 
 ### Behaviour ###

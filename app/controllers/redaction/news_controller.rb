@@ -59,7 +59,7 @@ class Redaction::NewsController < RedactionController
       @news.put_paragraphs_together
       render :reorganize, layout: "chat_n_edit"
     else
-      render status: :forbidden, text: "Désolé, un verrou a déjà été posé sur cette dépêche !"
+      render status: :forbidden, plain: "Désolé, un verrou a déjà été posé sur cette dépêche !"
     end
   end
 

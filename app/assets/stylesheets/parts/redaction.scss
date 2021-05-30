@@ -503,6 +503,10 @@ body#redaction-index {
       }
     }
   }
+  #new_link,
+  .edit_link {
+    padding: 5px;
+  }
   input#link_title {
     width: 100%; // this rule force the input to not enlarge the #edition flex box
   }
