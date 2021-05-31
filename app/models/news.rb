@@ -264,7 +264,8 @@ class News < Content
       Paragraph.where(news_id: self.id).delete_all
       self.attributes = params
       create_parts
-      save
+      # Let commit transaction only if save is successful so version will be well created
+      raise ActiveRecord::Rollback unless save
     end
     unlock
   end
