@@ -260,10 +260,12 @@ class News < Content
   end
 
   def reorganize(params)
-    Paragraph.where(news_id: self.id).delete_all
-    self.attributes = params
-    create_parts
-    save
+    self.transaction do
+      Paragraph.where(news_id: self.id).delete_all
+      self.attributes = params
+      create_parts
+      save
+    end
     unlock
   end
 
