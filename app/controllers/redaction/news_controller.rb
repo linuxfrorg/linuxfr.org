@@ -65,8 +65,12 @@ class Redaction::NewsController < RedactionController
 
   def reorganized
     @news.editor = current_account
-    @news.reorganize news_params
-    redirect_to [@news.draft? ? :redaction : :moderation, @news]
+    if @news.reorganize news_params
+      redirect_to [@news.draft? ? :redaction : :moderation, @news]
+    else
+      load_board
+      render :reorganize, layout: "chat_n_edit"
+    end
   end
 
   def followup

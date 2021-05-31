@@ -260,14 +260,20 @@ class News < Content
   end
 
   def reorganize(params)
+    reorganized = false
     self.transaction do
       Paragraph.where(news_id: self.id).delete_all
       self.attributes = params
       create_parts
       # Let commit transaction only if save is successful so version will be well created
-      raise ActiveRecord::Rollback unless save
+      if save
+        reorganized = true
+      else
+        raise ActiveRecord::Rollback
+      end
     end
-    unlock
+    unlock if reorganized
+    reorganized
   end
 
 ### Associated node ###
