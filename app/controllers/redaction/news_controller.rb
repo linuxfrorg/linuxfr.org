@@ -59,14 +59,18 @@ class Redaction::NewsController < RedactionController
       @news.put_paragraphs_together
       render :reorganize, layout: "chat_n_edit"
     else
-      render status: :forbidden, text: "Désolé, un verrou a déjà été posé sur cette dépêche !"
+      render status: :forbidden, plain: "Désolé, un verrou a déjà été posé sur cette dépêche !"
     end
   end
 
   def reorganized
     @news.editor = current_account
-    @news.reorganize news_params
-    redirect_to [@news.draft? ? :redaction : :moderation, @news]
+    if @news.reorganize news_params
+      redirect_to [@news.draft? ? :redaction : :moderation, @news]
+    else
+      load_board
+      render :reorganize, layout: "chat_n_edit"
+    end
   end
 
   def followup

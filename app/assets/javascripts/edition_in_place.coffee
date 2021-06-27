@@ -42,6 +42,20 @@ class EditionInPlace
     false
 
   error: =>
+    try
+      error = @el.find("ul.error")
+      response = $.parseJSON(@xhr.responseText)
+      messages = []
+      for attribute, errors of response.errors
+        for message in errors
+          messages.push(message)
+      if messages.length == 1
+        error.text("Erreur : " + messages[0])
+      else
+        error.text("Erreurs :")
+        for message in messages
+          error.append($("<li>").append(message))
+      error.show()
     @el.trigger "in_place:error", @xhr
     @xhr = null
 

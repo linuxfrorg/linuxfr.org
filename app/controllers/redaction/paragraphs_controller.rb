@@ -25,7 +25,7 @@ class Redaction::ParagraphsController < RedactionController
     if @paragraph.lock_by(current_user)
       render partial: 'form'
     else
-      render status: :forbidden, text: "Désolé, #{@paragraph.locker} est déjà en train de modifier ce paragraphe !"
+      render status: :forbidden, plain: "Désolé, #{@paragraph.locker} est déjà en train de modifier ce paragraphe !"
     end
   end
 
