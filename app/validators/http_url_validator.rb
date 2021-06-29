@@ -9,15 +9,16 @@ class HttpUrlValidator < ActiveModel::EachValidator
   private
 
   def valid?(value, options)
+    # Valid links can be parsed by URI
     uri = URI.parse(value)
-    if uri.scheme.blank? && uri.host.blank?
-      value = "http://#{value}"
-      uri = URI.parse(value)
-    end
+    # Authorize protocol
     if options.has_key?(:protocols)
-      return true if options[:protocols].include?(uri.scheme)
+      return options[:protocols].include?(uri.scheme)
     end
-    uri.scheme.nil? && uri.host == MY_DOMAIN
+    # Links starting with "//MY_DOMAIN" are current scheme dependent and are valid
+    return true if uri.scheme.nil? && uri.host == MY_DOMAIN
+    # All other links are valid only if scheme and host exists
+    return uri.scheme.present? && uri.host.present?
   rescue URI::InvalidURIError
     false
   end 
