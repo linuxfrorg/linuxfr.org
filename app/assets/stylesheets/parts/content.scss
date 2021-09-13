@@ -1,6 +1,7 @@
 /* contenu du site (hors commentaire) */
 article,
 ul.threads > li.comment,
+ul.comments_list > li.comment,
 .markdown_cheatsheet,
 #contents > form,
 form#new_post,
@@ -28,6 +29,10 @@ body#admin-index #container > ul,
 body#news-revision #contents,
 body#wiki_pages-changes #contents {
   font-size: 1em;
+}
+
+#contents > ul.comments_list {
+  padding: 0;
 }
 
 article {

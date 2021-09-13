@@ -1,0 +1,15 @@
+= h1 "Les derniers commentaires"
+- feed "Flux Atom des derniers commentaires"
+%nav.toolbox
+  .follow_feed
+    = link_to "Flux Atom des derniers commentaires", "latest.atom"
+  -# order is not managed, but order_navbar is required due to float property on follow_feed div
+  .order_navbar
+    &nbsp;
+%main#contents(role="main")
+  %ul.comments_list
+    - @comments.each do |comment|
+      %li.comment(id="comment-#{comment.id}")
+        = render comment
+%nav.toolbox
+  = paginate(@comments, inner_window:10)
