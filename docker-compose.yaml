@@ -13,6 +13,7 @@ services:
       - ./app:/linuxfr.org/app
       - ./db:/linuxfr.org/db
       - ./public:/linuxfr.org/public
+      - ./test:/linuxfr.org/test
       # uploads are shared with the nginx service
       - data-uploads:/linuxfr.org/uploads
     tmpfs:

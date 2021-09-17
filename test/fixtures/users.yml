@@ -1,0 +1,42 @@
+# Required Collectif user for User model
+community:
+  name: Collectif
+  cached_slug: collectif
+
+<% 1000.times do |n| %>
+visitor_<%= n%>:
+  name: <%= "visitor_#{n}" %>
+  cached_slug: <%= "visitor_#{n}" %>
+<% end %>
+
+visitor_negative_karma:
+  name: visitor_negative_karma
+  cached_slug: visitor_negative_karma
+
+visitor_zero_karma:
+  name: visitor_zero_karma
+  cached_slug: visitor_zero_karma
+
+<% 7.times do |n| %>
+editor_<%= n%>:
+  name: <%= "editor_#{n}" %>
+  cached_slug: <%= "editor_#{n}" %>
+<% end %>
+
+<% 2.times do |n| %>
+maintainer_<%= n%>:
+  name: <%= "maintainer_#{n}" %>
+  cached_slug: <%= "maintainer_#{n}" %>
+<% end %>
+
+<% 12.times do |n| %>
+moderator_<%= n%>:
+  name: <%= "moderator_#{n}" %>
+  cached_slug: <%= "moderator_#{n}" %>
+<% end %>
+
+<% 6.times do |n| %>
+admin_<%= n%>:
+  name: <%= "admin_#{n}" %>
+  cached_slug: <%= "admin_#{n}" %>
+<% end %>
