@@ -25,8 +25,7 @@ ENV HOME /home/linuxfr.org
 
 # Install node external dependencies
 COPY package*.json ./
-# Note: should use `npm ci`, but it freezes while running, that's strange
-RUN npm install --prod
+RUN npm ci
 
 # Install external dependencies
 COPY Gemfile* ./
