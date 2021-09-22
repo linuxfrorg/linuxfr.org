@@ -20,4 +20,20 @@ class DiaryTest < ActiveSupport::TestCase
     assert_not diary.creatable_by?(diary.owner.account);
     assert diary.save(), "Diary model were not saved";
   end
+
+  test "only admin and moderator can update a diary" do
+    diary = diaries(:lorem);
+    assert_not diary.updatable_by?(accounts(:visitor_1));
+    assert_not diary.updatable_by?(accounts(:maintainer_1));
+    assert diary.updatable_by?(accounts(:moderator_1));
+    assert diary.updatable_by?(accounts(:admin_1));
+  end
+
+  test "only admin and moderator can destroy a diary" do
+    diary = diaries(:lorem);
+    assert_not diary.destroyable_by?(accounts(:visitor_1));
+    assert_not diary.destroyable_by?(accounts(:maintainer_1));
+    assert diary.destroyable_by?(accounts(:moderator_1));
+    assert diary.destroyable_by?(accounts(:admin_1));
+  end
 end
