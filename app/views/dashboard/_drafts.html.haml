@@ -5,9 +5,9 @@
 - else
   %table#my_drafts
     %tr
-      %th Section
-      %th Sujet
-      %th Date de création
+      %th.left Section
+      %th.left Sujet
+      %th.left Date de création
     - @drafts.each do |news|
       %tr
         %td= news.section.title

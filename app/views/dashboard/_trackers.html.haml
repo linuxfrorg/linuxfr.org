@@ -4,20 +4,27 @@
   %p
     Vous n’avez posté aucune entrée dans le suivi
 - else
-  %table#my_trackers
-    %tr
-      %th Catégorie
-      %th Sujet
-      %th État
-      %th Note
-      %th Nombre de commentaires
-      %th Date du message
-    - @trackers.each do |node|
-      - tracker = node.content
-      %tr{class: tracker.state}
-        %td= tracker.category.title
-        %td= link_to tracker.title, tracker
-        %td= tracker.state_name
-        %td.number= node.score
-        %td.number= node.comments.count
-        %td.date= tracker.created_at.to_s(:posted)
+  .table_container
+    %table#my_trackers
+      %tr
+        %th.left Catégorie
+        %th.left Sujet
+        %th.left Date
+        %th.left État
+        %th.number Note
+        %th.number <abbr title="Nombre de commentaires">Comm.</abbr>
+        %th.left Dernier commentaire
+      - @trackers.each do |node|
+        - tracker = node.content
+        - answer = node.latest_answer
+        %tr{class: tracker.state}
+          %td= tracker.category.title
+          %td= link_to tracker.title, tracker
+          %td.date= tracker.created_at.to_s(:posted)
+          %td= tracker.state_name
+          %td.number= node.score
+          %td.number
+            - if answer && !answer.read_by?(current_account)
+              = image_tag "/images/icones/comment.png", alt: "Nouveaux commentaires !", class: "thread-new-comments"
+            = node.comments.count
+          %td.date= answer ? answer.created_at.to_s(:posted) : " "

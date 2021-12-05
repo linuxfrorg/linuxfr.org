@@ -32,7 +32,7 @@ class Node < ActiveRecord::Base
   scope :visible,        -> { where(public: true) }
   scope :by_date,        -> { order(created_at: :desc) }
   scope :published_on,   ->(d) { where(created_at: (d...d+1.day)) }
-  scope :on_dashboard,   ->(type)  { public_listing(type, "created_at") }
+  scope :on_dashboard,   ->(types)  { public_listing(types, "created_at") }
   scope :sitemap,        ->(types) { public_listing(types, "id").where("score > 0") }
   scope :public_listing, ->(types, order) {
     types.map!(&:to_s) if types.is_a? Array
@@ -104,6 +104,10 @@ class Node < ActiveRecord::Base
 
   def threads
     @threads ||= Threads.all(self.id)
+  end
+
+  def latest_answer
+    comments.latest_published.first
   end
 
 ### Readings ###

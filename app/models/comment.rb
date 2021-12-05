@@ -31,6 +31,11 @@ class Comment < ActiveRecord::Base
   scope :under,        ->(path) { where("materialized_path LIKE ?", "#{path}_%") }
   scope :published,    -> { where(state: 'published') }
   scope :on_dashboard, -> { published.order(created_at: :desc) }
+  scope :latest_published, -> {
+    published.
+    order(created_at: :desc).
+    limit(1)
+  }
   scope :footer,       -> {
     # MariaDB tries to scan nodes first, which is a very slow, so we add an index hint
     from("comments USE INDEX (index_comments_on_state_and_created_at)").published.
@@ -139,6 +144,14 @@ class Comment < ActiveRecord::Base
     end
   end
 
+  after_create :notify_node_owner
+  def notify_node_owner
+    if user_id != node.user_id 
+      node_owner = node.user.try(:account)
+      node_owner.notify_answer_on node_id if node_owner
+    end
+  end
+
 ### Calculations ###
 
   before_validation :default_score, on: :create
@@ -155,7 +168,7 @@ class Comment < ActiveRecord::Base
     self.class.published.under(materialized_path).count
   end
 
-  def last_answer
+  def latest_answer
     self.class.published.under(materialized_path).last
   end
 
