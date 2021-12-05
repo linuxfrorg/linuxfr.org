@@ -31,6 +31,11 @@ class Comment < ActiveRecord::Base
   scope :under,        ->(path) { where("materialized_path LIKE ?", "#{path}_%") }
   scope :published,    -> { where(state: 'published') }
   scope :on_dashboard, -> { published.order(created_at: :desc) }
+  scope :last_published, -> {
+    published.
+    order(created_at: :desc).
+    limit(1)
+  }
   scope :footer,       -> {
     # MariaDB tries to scan nodes first, which is a very slow, so we add an index hint
     from("comments USE INDEX (index_comments_on_state_and_created_at)").published.
@@ -136,6 +141,15 @@ class Comment < ActiveRecord::Base
       next if p.user_id == user_id
       account = p.user.try(:account)
       account.notify_answer_on node_id if account
+    end
+  end
+
+  after_create :notify_node_owner
+  def notify_node_owner
+    # Only notify for node types shown in dashboard
+    if Set['Post', 'Tracker'].include?(content_type) and user_id != node.user_id 
+      node_owner = node.user.try(:account)
+      node_owner.notify_answer_on node_id if node_owner
     end
   end
 

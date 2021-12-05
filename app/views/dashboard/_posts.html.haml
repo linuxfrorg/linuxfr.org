@@ -8,14 +8,20 @@
     %tr
       %th Forum
       %th Sujet
+      %th Date
       %th Note
-      %th Nombre de commentaires
-      %th Date du message
+      %th <abbr title="Nombre de réponses">Rép.</abbr>
+      %th Dernière réponse
     - @posts.each do |node|
       - post = node.content
+      - answer = node.last_answer
       %tr
         %td= post.forum.title
         %td= link_to post.title, [post.forum, post]
-        %td.number= node.score
-        %td.number= node.comments.count
         %td.date= post.created_at.to_s(:posted)
+        %td.number= node.score
+        %td.number
+          - if answer && !answer.read_by?(current_account)
+            = image_tag "/images/icones/comment.png", alt: "Nouveaux commentaires !", class: "thread-new-comments"
+          = node.comments.count
+        %td.date= answer ? answer.created_at.to_s(:posted) : " "

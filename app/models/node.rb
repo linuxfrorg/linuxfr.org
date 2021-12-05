@@ -106,6 +106,10 @@ class Node < ActiveRecord::Base
     @threads ||= Threads.all(self.id)
   end
 
+  def last_answer
+    comments.last_published.first
+  end
+
 ### Readings ###
 
   def self.readings_keys_of(account_id)
