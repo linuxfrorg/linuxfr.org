@@ -57,22 +57,13 @@ class DiaryTest < ActiveSupport::TestCase
     assert_equal "draft", news.state;
   end
 
-  test "convert copyrighted diary to news in moderation space" do
+  test "cannot convert non CC licensed diary to news" do
     diary = diaries(:lorem_copyright);
     diary.node = nodes(:diary_lorem_copyright);
-    created_news = diary.convert();
-    # Retrieve News from database to ensure it were saved correctly
-    news = News.find(created_news.id);
-    # Ensure convert work
-    assert_equal diary.title, news.title;
-    assert_equal "**TODO** insérer une synthèse du journal", news.versions.first().body;
-    assert_equal diary.wiki_body, news.versions.first().second_part;
-    assert_equal diary.owner.try(:name), news.author_name;
-    assert_equal diary.owner.try(:account).try(:email), news.author_email;
-    assert_equal diary.node.cc_licensed, news.node.cc_licensed;
-    assert_not news.node.cc_licensed;
-    assert_equal sections(:default).id, news.section_id;
-    # As diary is not cc_licensed, news cannot be reworked collectively in the redaction space
-    assert_equal "candidate", news.state;
+    assert_raises(ActiveRecord::RecordInvalid) do
+      diary.convert
+    end
+    assert_equal diary.errors.details[:base].first[:error], :cannot_convert
+    assert diary.invalid?(:convert)
   end
 end
