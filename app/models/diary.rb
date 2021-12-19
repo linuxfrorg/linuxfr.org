@@ -30,6 +30,8 @@ class Diary < Content
                         length: { maximum: 100, message: "Le titre est trop long" }
   validates :wiki_body, presence: { message: "Vous ne pouvez pas poster un journal vide" }
 
+  validate :convert_only_cc_licensed_diary, on: :convert
+
   wikify_attr   :body
   truncate_attr :body
 
@@ -57,8 +59,12 @@ class Diary < Content
   end
 
 ### Moving ###
+  def convert_only_cc_licensed_diary
+    errors.add :base, :cannot_convert, message: "Le journal n’a pas été publié sous licence CC-BY-SA 4.0, il ne peut donc pas être proposé en dépêche." unless node.cc_licensed?
+  end
 
   def convert
+    validate!(:convert)
     @news = News.new title: title,
                      wiki_body: "**TODO** insérer une synthèse du journal",
                      wiki_second_part: wiki_body,
@@ -70,7 +76,6 @@ class Diary < Content
       $redis.set "convert/#{@news.id}", self.id
       @news.node.update_column(:cc_licensed, node.cc_licensed)
       @news.links.create title: "Journal à l’origine de la dépêche", url: "https://#{MY_DOMAIN}/users/#{owner.to_param}/journaux/#{to_param}", lang: "fr"
-      @news.submit! unless node.cc_licensed?
       @news
     end
   end
