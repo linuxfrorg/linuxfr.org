@@ -47,7 +47,7 @@ class DiariesController < ApplicationController
     path = user_diary_path(@user, @diary, format: params[:format])
     redirect_to path, status: 301 if request.path != path
     headers['Link'] = %(<#{user_diary_url @user, @diary}>; rel="canonical")
-    flash.now[:alert] = "Attention, ce journal a été supprimé et n’est visible que par les administrateurs" unless @diary.visible?
+    flash.now[:alert] = "Attention, ce journal a été supprimé et n’est visible que par l’équipe d'administration" unless @diary.visible?
   end
 
   def edit

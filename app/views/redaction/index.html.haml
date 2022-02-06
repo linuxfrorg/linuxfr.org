@@ -1,6 +1,6 @@
 %aside.more
   #top_redactors
-    %h1 Rédacteurs les plus actifs
+    %h1 Personnes les plus actives en rédaction
     %ol
       = list_of @stats.top_month do |stat|
         [#{stat['cnt']}] #{link_to stat['name'], "/users/#{stat['cached_slug']}"}
@@ -8,14 +8,14 @@
       = link_to "Autres statistiques sur la rédaction", "/statistiques/redaction"
 
   #redaction_board
-    =h1 "Tribune des rédacteurs"
+    =h1 "Tribune de rédaction"
     = render 'boards/large', boards: @boards, box: false
 
 #main_board
   .notice
     - case rand 5
     - when 0
-      = link_to "Avez‑vous pensé à vous abonner à la liste de diffusion des rédacteurs ?", "/news/une-liste-de-diffusion-pour-les-redacteurs-de-linuxfr-org"
+      = link_to "Avez‑vous pensé à vous abonner à la liste de diffusion de la rédaction ?", "/news/une-liste-de-diffusion-pour-les-redacteurs-de-linuxfr-org"
     - when 1
       = link_to "Avez‑vous lu la page d’aide à la rédaction ?", "/wiki/redaction"
     - when 2
@@ -50,8 +50,8 @@
   %h2 #{pluralize @news.count, "dépêche"} en cours de modération
   - feed "Flux Atom des dépêches en cours de modération", "/redaction/news/moderation.atom"
   .notice
-    L’accès à l’espace de modération est réservé aux modérateurs et aux administrateurs.
-    Seuls les titres des dépêches en modération sont visibles des autres utilisateurs authentifiés.
+    L’accès à l’espace de modération est réservé aux équipes de modération et d’administration.
+    Seuls les titres des dépêches en modération sont visibles des autres personnes authentifiées.
   - if @news.empty?
     Aucune dépêche.
   - else
