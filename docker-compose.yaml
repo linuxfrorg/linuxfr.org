@@ -10,9 +10,15 @@ services:
     volumes:
       # Share host directories so, the developer can edit them
       # and see the result without need to restart the container
-      - ./app:/linuxfr.org/app
-      - ./db:/linuxfr.org/db
-      - ./public:/linuxfr.org/public
+      - type: bind
+        source: ./app
+        target: /linuxfr.org/app
+      - type: bind
+        source: ./db
+        target: /linuxfr.org/db
+      - type: bind
+        source: ./public
+        target: /linuxfr.org/public
       # uploads are shared with the nginx service
       - data-uploads:/linuxfr.org/uploads
     tmpfs:
@@ -45,8 +51,12 @@ services:
     env_file:
       - deployment/default.env
     volumes:
-      - ./deployment/nginx/templates:/etc/nginx/templates
-      - ./public/fonts:/var/linuxfr/fonts
+      - type: bind
+        source: ./deployment/nginx/templates
+        target: /etc/nginx/templates
+      - type: bind
+        source: ./public/fonts
+        target: /var/linuxfr/fonts
       - data-uploads:/var/linuxfr/uploads
     ports:
       - "80:80"
@@ -56,7 +66,7 @@ services:
       - linuxfr-img
 
   database:
-    image: mariadb:10.1
+    image: mariadb:10.7
     env_file:
       - deployment/default.env
     restart: always
@@ -64,7 +74,7 @@ services:
       - data-database:/var/lib/mysql
 
   database-test:
-    image: mariadb:10.1
+    image: mariadb:10.7
     env_file:
       - deployment/default.env
     entrypoint: ["/linuxfr-entrypoint.sh"]
@@ -72,10 +82,12 @@ services:
     restart: always
     volumes:
       - data-database-test:/var/lib/mysql
-      - ./deployment/database-test/entrypoint.sh:/linuxfr-entrypoint.sh
+      - type: bind
+        source: ./deployment/database-test/entrypoint.sh
+        target: /linuxfr-entrypoint.sh
 
   redis:
-    image: redis:5
+    image: redis:6
     restart: always
     volumes:
       - data-redis:/data

@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:bullseye-slim
 
 LABEL maintainer="adrien@adorsaz.ch"
 LABEL version="1.0"
@@ -7,15 +7,14 @@ LABEL description="Run LinuxFr.org Ruby on Rails website"
 WORKDIR /linuxfr.org
 
 # Install system dependencies
-RUN echo 'deb http://deb.debian.org/debian stretch-backports main' >> '/etc/apt/sources.list.d/linuxfr.list' \
-  && apt-get update \
+RUN apt-get update \
   && apt-get install -y --no-install-recommends \
-    mysql-client libmysql++-dev git \
+    default-mysql-client libmysql++-dev git \
     build-essential openssl libreadline-dev curl libcurl4-openssl-dev zlib1g \
     zlib1g-dev libssl-dev libxml2-dev libxslt-dev autoconf libgmp-dev libyaml-dev \
     ncurses-dev bison automake libtool imagemagick libc6-dev hunspell \
     hunspell-fr-comprehensive ruby ruby-dev ruby-rack \
-  && apt-get install -t stretch-backports -y --no-install-recommends \
+  && apt-get install -y --no-install-recommends \
     nodejs npm \
   && gem install bundler -v 1.17.3 \
   && apt-get clean
