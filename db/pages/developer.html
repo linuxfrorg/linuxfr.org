@@ -14,13 +14,13 @@
 <p>
   <a href="https://oauth.net/2/">OAuth2</a> est un protocole qui permet à des
   applications externes de demander l’autorisation d’accéder à des informations
-  privées d’un utilisateur avec un compte <em>LinuxFr.org</em> et de faire des actions
-  en son nom. L’utilisateur n’a pas besoin de fournir son mot de passe au site
-  externe et reste maître des autorisations qu’il a fournies.
+  privées d’une utilisatrice avec un compte <em>LinuxFr.org</em> et de faire des actions
+  en son nom. L’utilisatrice n’a pas besoin de fournir son mot de passe au site
+  externe et reste maître des autorisations qu’elle a fournies.
 </p>
 
 <p>
-  Si vous êtes un développeur d’applications Web et que vous souhaitez utiliser
+  Si vous développez des applications Web et que vous souhaitez utiliser
   l’API de <em>LinuxFr.org</em>, la première chose à faire est
   d’<a href="/api/applications">enregistrer votre application</a>.
   Vous obtiendrez ainsi un identifiant et un secret qui vous serviront lors des
@@ -29,8 +29,8 @@
 
 <p>
   OAuth fonctionne avec un principe de jetons. Quand une application Web
-  souhaite accéder aux données confidentielles de l'utilisateur, il va demander
-  à l’utilisateur un jeton d’autorisation qui sera délivré par <em>LinuxFr.org</em>,
+  souhaite accéder aux données confidentielles d’une utilisatrice, il va demander
+  à cette utilisatrice un jeton d’autorisation qui sera délivré par <em>LinuxFr.org</em>,
   puis il pourra utiliser ce jeton pour accéder aux informations.
 </p>
 
@@ -48,11 +48,11 @@
 
 <h2>Obtention d’un jeton d’autorisation</h2>
 
-<h3>Redirection de l’utilisateur vers LinuxFr.org</h3>
+<h3>Redirection de l’utilisatrice vers LinuxFr.org</h3>
 
 <p>
-  La première étape consiste à envoyer l’utilisateur sur <em>LinuxFr.org</em>
-  pour qu’il puisse accepter ou refuser de donner l’autorisation.
+  La première étape consiste à envoyer l’utilisatrice sur <em>LinuxFr.org</em>
+  pour qu’elle puisse accepter ou refuser de donner l’autorisation.
 </p>
 <pre>
 GET https://linuxfr.org/api/oauth/authorize
@@ -68,7 +68,7 @@ GET https://linuxfr.org/api/oauth/authorize
   <dt>redirect_uri</dt>
   <dd>
     Chaîne de caractères obligatoire — l’URL vers laquelle sera redirigé
-    l’utilisateur ou l’utilisatrice après l’autorisation.
+    l’utilisatrice après l’autorisation.
   </dd>
   <dt>response_type</dt>
   <dd>
@@ -79,17 +79,17 @@ GET https://linuxfr.org/api/oauth/authorize
   <dd>
     Chaîne de caractères facultative — la liste des scopes demandées, séparés
     par des espaces (URL encodés en +). Cela indique les actions que
-    l’application pourra faire au nom de l’utilisateur. Exemple :
+    l’application pourra faire au nom de l’utilisatrice. Exemple :
     <var>scope=account+board</var>. Par défaut, seul le scope
     <var>account</var> sera fourni.
   </dd>
 </dl>
 
 
-<h3>L’utilisateur revient sur le site</h3>
+<h3>L’utilisatrice revient sur le site</h3>
 
 <p>
-  Si l’utilisateur accepte l’autorisation, il est renvoyé sur le site d’origine
+  Si l’utilisatrice accepte l’autorisation, elle est renvoyée sur le site d’origine
   avec un <var>code</var> temporaire. Le code sera passé dans la <i>query string</i>
   sur l’URL de redirection. Le site peut alors échanger ce code contre le jeton
   d’autorisation.
@@ -121,8 +121,8 @@ POST https://linuxfr.org/api/oauth/token
   </dd>
   <dt><var>redirect_uri</var></dt>
   <dd>
-    Chaîne de caractères obligatoire — l’URI vers laquelle l’utilisateur
-    sera redirigé après obtention du jeton (doit être la même que celle
+    Chaîne de caractères obligatoire — l’URI vers laquelle l’utilisatrice
+    sera redirigée après obtention du jeton (doit être la même que celle
     indiquée lors de l’enregistrement de l’application).
   </dd>
 </dl>
@@ -175,12 +175,12 @@ GET https://linuxfr.org/api/v1/me
 <dl>
   <dt><var>login</var></dt>
   <dd>
-    Chaîne de caractères — l’identifiant du compte utilisateur sur
+    Chaîne de caractères — l’identifiant du compte personnel sur
     <em>LinuxFr.org</em>.
   </dd>
   <dt><var>email</var></dt>
   <dd>
-    Chaîne de caractères — l’adresse de courriel de l’utilisateur ou 
+    Chaîne de caractères — l’adresse de courriel de
     l’utilisatrice (note : elle a déjà été validée à l’inscription sur <em>LinuxFr.org</em>
     et il n’est donc pas souhaitable de revalider cette adresse de courriel).
   </dd>
@@ -268,7 +268,7 @@ POST https://linuxfr.org/api/v1/journaux
   <dt><var>id</var></dt>
   <dd>Entier - identifiant du journal qui vient d’être créé.</dd>
   <dt><var>owner_id</var></dt>
-  <dd>Entier - identifiant de l’utilisateur qui vient de créer le journal.</dd>
+  <dd>Entier - identifiant de l’utilisatrice qui vient de créer le journal.</dd>
   <dt><var>cached_slug</var></dt>
   <dd>Chaîne de caractères — le « <em><a href="https://fr.wikipedia.org/wiki/Slug_(journalisme)">slug</a></em> » du journal.</dd>
   <dt><var>title</var></dt>
