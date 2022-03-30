@@ -63,7 +63,7 @@ $("article.news .edited_by").each ->
   nb = field.find("a").length
   if nb > 3
     was = field.html()
-    field.html "<a>#{nb} contributeurs</a>"
+    field.html "<a>#{nb} personnes</a>"
     field.one "click", -> field.html was
 
 # Toolbar preferences
