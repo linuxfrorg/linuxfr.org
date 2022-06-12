@@ -40,7 +40,7 @@
 - if current_account.can_erase? @news
   = button_to "Effacer la dépêche", erase_redaction_news_path(@news), class: "erase_news", data: { confirm: "Confirmez‑vous vouloir supprimer cette dépêche ?" }
 - if current_account.can_followup? @news
-  %button#followup.more Relancer les rédacteurs
+  %button#followup.more Relancer l’équipe de rédaction
   .more_actions(style="display: none;")
     = form_tag followup_redaction_news_path(@news) do
       %p

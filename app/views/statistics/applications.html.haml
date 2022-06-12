@@ -7,7 +7,7 @@
       Statistiques mises à jour le #{l Time.now}
     %p= link_to("Retour à l’ensemble des statistiques", "/statistiques")
     %p
-      Des #{link_to("API pour les développeurs", "/developpeur")} sont disponibles pour réaliser des applications ou des sites Web interagissant avec le site LinuxFr.org.
+      Des #{link_to("API pour le développement", "/developpement")} sont disponibles pour réaliser des applications ou des sites Web interagissant avec le site LinuxFr.org.
 
     %h2 Sommaire
     %ul
@@ -18,7 +18,7 @@
 
     %h2#general Général
     %ul
-      %li #{pluralize @stats.applications, "application créée", "applications créées"} par #{pluralize @stats.applications_distinct_owners, "utilisateur", "utilisateurs distincts"}
+      %li #{pluralize @stats.applications, "application créée", "applications créées"} par #{pluralize @stats.applications_distinct_owners, "utilisatrice et utilisateur", "utilisatrices et utilisateurs distincts"}
       %li #{pluralize @stats.access_grants, "autorisation créée", "autorisations créées"} pour #{pluralize @stats.access_grants_distinct_applications, "application", "applications distinctes"}
       %li #{pluralize @stats.access_tokens["total"], "jeton d’application créé", "jetons d’applications créés"} pour #{pluralize @stats.access_tokens_distinct_applications, "application", "applications distinctes"}, avec #{pluralize @stats.access_tokens["00"], "jeton actif (utilisé", "jetons actifs (utilisés"} au cours des 24 dernières heures), #{pluralize @stats.access_tokens["10"], "utilisable", "utilisables"} et #{pluralize @stats.access_tokens["11"], "périmé", "périmés"}
 

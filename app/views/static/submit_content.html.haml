@@ -3,7 +3,7 @@
 
   .body
     %p
-      Le site vit grâce aux contributions des lecteurs : vous !
+      Le site vit grâce aux contributions du lectorat : vous !
       Vous pouvez participer en écrivant différents contenus, allant du simple commentaire à la longue dépêche rédigée.
       Voici de manière plus détaillée les types de contenus que vous pouvez proposer :
 
@@ -11,25 +11,25 @@
       %h2 Les dépêches
       %p
         Les dépêches servent à publier de l’information sur les thèmes principaux de LinuxFr.org, à savoir Linux et les logiciels libres.
-        D’autres thèmes peuvent être abordés, sous réserve que l’équipe de modération juge qu’ils intéressent suffisamment les lecteurs du site.
+        D’autres thèmes peuvent être abordés, sous réserve que l’équipe de modération juge qu’ils intéressent suffisamment le lectorat du site.
         Les dépêches purement commerciales et publicitaires seront rejetées (voir l’ensemble des #{link_to "règles de modération", "/regles_de_moderation" }).
       %p
         = link_to "Je souhaite proposer une dépêche et la soumettre directement à la modération.", "/news/nouveau"
 
       .authenticated_only
         %p
-          Il est également possible pour les utilisateurs authentifiés de proposer des sujets de dépêches et de les rédiger en coopération sur l’espace de rédaction.
+          Il est également possible pour les personnes authentifiées de proposer des sujets de dépêches et de les rédiger en coopération sur l’espace de rédaction.
         %p
           = link_to "Je souhaite commencer une dépêche dans l’espace coopératif et pouvoir bénéficier de l’aide d’autres personnes.", "/redaction"
         %p
-          Et il est donc possible pour les utilisateurs authentifiés de se rendre dans l’espace de rédaction afin de participer à l’écriture des dépêches proposées par d’autres visiteurs.
+          Et il est donc possible pour les personnes authentifiées de se rendre dans l’espace de rédaction afin de participer à l’écriture des dépêches proposées par d’autres personnes.
         %p
           = link_to "Je souhaite participer à l’écriture coopérative d’une dépêche.", "/redaction"
 
     .free_for_all
       %h2 Le suivi des suggestions et bogues du site
       %p
-        Si vous avez rencontré un bogue en parcourant le site Web LinuxFr.org, c’est le bon endroit pour en informer les développeurs.
+        Si vous avez rencontré un bogue en parcourant le site Web LinuxFr.org, c’est le bon endroit pour en informer les équipes de développement et d’administration.
         Vous pouvez également suggérer des évolutions pour le site. Cette partie du site ne concerne que les bogues et évolutions du site LinuxFr.org lui-même.
       %p
         = link_to "Je souhaite remonter un bogue ou proposer une évolution", "/suivi/nouveau"
@@ -38,9 +38,9 @@
     %p
       %strong Note :
       -if account_signed_in?
-        en tant qu’utilisateur authentifié, vous pouvez également déposer les contenus suivants :
+        en tant que personne authentifiée, vous pouvez également déposer les contenus suivants :
       -else
-        les utilisateurs authentifiés peuvent également proposer les contenus suivants :
+        les personnes authentifiées peuvent également proposer les contenus suivants :
     %hr
 
     .authenticated_only
