@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:bullseye-slim
 
 LABEL maintainer="adrien@adorsaz.ch"
 LABEL version="1.0"
