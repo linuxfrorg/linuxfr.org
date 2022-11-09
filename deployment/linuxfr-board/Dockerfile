@@ -1,7 +1,7 @@
-FROM debian:stretch-slim
+FROM debian:bullseye-slim
 
 LABEL maintainer="adrien@adorsaz.ch"
-LABEL version="1.0"
+LABEL version="2.0"
 LABEL description="Run LinuxFr board service for LinuxFr.org Ruby on Rails website"
 
 WORKDIR /linuxfr-board
