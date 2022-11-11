@@ -1,4 +1,5 @@
 =h1 "Les liens"
 - feed "Flux Atom des liens"
 - new_content_link = link_to("Partager un lien", "/liens/nouveau") if current_account
+- filter_pagination_params ['order', 'page']
 = paginated_nodes @nodes, new_content_link

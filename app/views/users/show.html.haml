@@ -4,4 +4,5 @@
 
 =h1 "#{@user.name} a écrit #{pluralize @nodes.total_count, "contenu"} de type dépêche ou journal"
 - feed "Flux Atom de #{@user.name}", "/users/#{@user.to_param}.atom"
+- filter_pagination_params ['id', 'order', 'page']
 = paginated_nodes @nodes

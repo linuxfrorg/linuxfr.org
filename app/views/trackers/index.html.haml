@@ -62,4 +62,5 @@
               = link_to "Modifier", "/suivi/#{tracker.to_param}/modifier"
             - else
               &nbsp;
+    - filter_pagination_params ['order', 'page']
     = paginate @trackers

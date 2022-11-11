@@ -5,6 +5,7 @@
 =h1 "Tous les contenus étiquetés avec « #{@tag.name} »"
 - feed "Flux Atom étiquette « #{@tag.name} »"
 - link = link_to("Afficher uniquement les contenus que j’ai étiquetés avec « #{@tag.name} »", tag_path(@tag.name)) if current_account
+- filter_pagination_params ['id', 'order', 'page']
 = paginated_section @nodes, link do
   %main#contents(role="main")
     = render @nodes.map(&:content)

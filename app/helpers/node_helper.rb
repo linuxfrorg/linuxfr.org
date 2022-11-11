@@ -58,6 +58,17 @@ module NodeHelper
     link_to content.title, path_for_content(content)
   end
 
+  def filter_pagination_params(allowed_params)
+    allowed_params += ['action', 'controller']
+    params.each do |k,v|
+      if allowed_params.include?(k)
+        params[k] = v
+      else
+        params[k] = nil
+      end
+    end
+  end
+
   def paginated_nodes(nodes, link=nil)
     paginated_section(nodes, link) do
       content_tag(:main, render(nodes.map &:content), id: 'contents', role: 'main')

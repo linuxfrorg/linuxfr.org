@@ -84,4 +84,5 @@
           = button_to "Animateur", admin_account_editor_path(account.id), class: "change_role"
           = button_to "Admin", admin_account_admin_path(account.id), class: "change_role"
 
+- filter_pagination_params ['login', 'date', 'ip', 'email', 'inactive', 'page']
 = paginate @accounts
