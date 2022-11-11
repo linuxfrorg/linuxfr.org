@@ -16,4 +16,5 @@
         = link_to "Modifier", edit_admin_application_path(app), class: "edit_client_app"
         = button_to "Supprimer", admin_application_path(app), method: :delete, class: "delete_button", data: { confirm: "Confirmez‑vous vouloir supprimer cette application ?" }
 
+- filter_pagination_params ['page']
 = paginate @applications

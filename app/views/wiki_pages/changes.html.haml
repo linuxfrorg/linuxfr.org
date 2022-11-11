@@ -3,6 +3,7 @@
   - feed "Flux Atom des derniers changements du wiki"
 
   %nav.toolbox
+    - filter_pagination_params ['page']
     = paginate @versions
   %ul.changes
     = list_of(@versions) do |v|
