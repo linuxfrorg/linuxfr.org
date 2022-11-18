@@ -45,11 +45,15 @@ gem "sass-rails",            "~>5.0", require: assets
 gem "rails-sass-images",              require: assets
 gem "uglifier",                       require: assets
 
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem "byebug", platforms: :mri
+end
+
 group :development do
   gem "annotate"
   gem "better_errors"
   gem "binding_of_caller"
-  gem "byebug",                platform: :mri
   gem "capistrano",            "~>2.15", github: 'capistrano', branch: 'legacy-v2'
   gem "capistrano-maintenance"
   gem "letter_opener"
@@ -60,6 +64,12 @@ group :development do
   gem "sushi"
   gem "thin"
   gem "web-console"
+end
+
+group :test do
+  # Adds support for Capybara system testing and selenium driver
+  gem "capybara", ">= 2.15"
+  gem "selenium-webdriver"
 end
 
 group :production, :alpha do

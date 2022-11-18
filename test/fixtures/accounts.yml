@@ -1,0 +1,60 @@
+# Required Anonyme login for Account model
+anonymous:
+  user: community
+  login: Anonyme
+  email: anonymous@example.com
+  role: inactive
+
+<% 1000.times do |n| %>
+visitor_<%= n%>:
+  user: <%= "visitor_#{n}" %>
+  login: <%= "visitor_#{n}" %>
+  email: <%= "visitor_#{n}@example.com" %>
+  role: visitor
+<% end %>
+
+visitor_negative_karma:
+  user: visitor_negative_karma
+  login: visitor_negative_karma
+  email: visitor_negative_karma@example.com
+  role: visitor
+  karma: -100
+
+visitor_zero_karma:
+  user: visitor_zero_karma
+  login: visitor_zero_karma
+  email: visitor_zero_karma@example.com
+  role: visitor
+  karma: 0
+
+<% 7.times do |n| %>
+editor_<%= n%>:
+  user: <%= "editor_#{n}" %>
+  login: <%= "editor_#{n}" %>
+  email: <%= "editor_#{n}@example.com" %>
+  role: editor
+<% end %>
+
+<% 2.times do |n| %>
+maintainer_<%= n%>:
+  user: <%= "maintainer_#{n}" %>
+  login: <%= "maintainer_#{n}" %>
+  email: <%= "maintainer_#{n}@example.com" %>
+  role: maintainer
+<% end %>
+
+<% 12.times do |n| %>
+moderator_<%= n%>:
+  user: <%= "moderator_#{n}" %>
+  login: <%= "moderator_#{n}" %>
+  email: <%= "moderator_#{n}@example.com" %>
+  role: moderator
+<% end %>
+
+<% 6.times do |n| %>
+admin_<%= n%>:
+  user: <%= "admin_#{n}" %>
+  login: <%= "admin_#{n}" %>
+  email: <%= "admin_#{n}@example.com" %>
+  role: admin
+<% end %>
