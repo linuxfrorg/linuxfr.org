@@ -68,6 +68,20 @@ Note: currently, we didn't configure rails to show directly the
 `webconsole` in your browser. That's just because of time needed to
 find the good configuration, any help will be appreciated !
 
+Run application tests
+=====================
+
+To help maintainers, we are in the process of adding tests to check the
+application has still the expected behaviour.
+
+To get help about writing tests, see the 
+[Ruby on Rails documentation](https://guides.rubyonrails.org/testing.html#the-rails-test-runner)
+.
+
+To run tests with Docker environment, you need to use this command:
+
+`docker-compose run linuxfr.org bin/rails test -v`
+
 Inspect database schema
 =======================
 
