@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM ruby:2-slim-buster
 
 LABEL maintainer="adrien@adorsaz.ch"
 LABEL version="1.0"
