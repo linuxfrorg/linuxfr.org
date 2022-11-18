@@ -14,7 +14,7 @@ gem "acts_as_list",            "~>0.4"
 gem "bitfields",               "~>0.4"
 gem "bootsnap",                "~>1.3", require: false
 gem "canable",                 "~>0.1"
-gem "carrierwave",             "~>1.1"
+gem "carrierwave",             "~>1.3"
 gem "devise",                  "~>4.3"
 gem "diff_match_patch",        github: "nono/diff_match_patch-ruby", require: "diff_match_patch"
 gem "doorkeeper",              "~>4.2"
