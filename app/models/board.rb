@@ -101,8 +101,10 @@ class Board
 
   def remove_control_chars(msg)
     sanitized = ""
-    msg.each_char do |char|
-      sanitized << char unless char.ascii_only? and (char.ord < 32 or char.ord == 127)
+    unless msg.nil?
+      msg.each_char do |char|
+        sanitized << char unless char.ascii_only? and (char.ord < 32 or char.ord == 127)
+      end
     end
     return sanitized
   end
