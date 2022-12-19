@@ -20,7 +20,6 @@ services:
       - /linuxfr.org/public/tmp:size=100M
     depends_on:
       - database
-      - database-test
       - redis
 
   linuxfr-board:
@@ -57,23 +56,15 @@ services:
       - linuxfr-img
 
   database:
-    image: mariadb:10.1
+    build:
+      context: deployment/database
     env_file:
       - deployment/default.env
     restart: unless-stopped
+    ports:
+      - "3306:3306"
     volumes:
       - data-database:/var/lib/mysql
-
-  database-test:
-    image: mariadb:10.1
-    env_file:
-      - deployment/default.env
-    entrypoint: ["/linuxfr-entrypoint.sh"]
-    command: ["mysqld"]
-    restart: unless-stopped
-    volumes:
-      - data-database-test:/var/lib/mysql
-      - ./deployment/database-test/entrypoint.sh:/linuxfr-entrypoint.sh
 
   redis:
     image: redis:5
@@ -83,8 +74,6 @@ services:
 
 volumes:
   data-database:
-    driver: local
-  data-database-test:
     driver: local
   data-redis:
     driver: local

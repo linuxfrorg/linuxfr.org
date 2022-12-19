@@ -5,14 +5,10 @@ To simplify set up of a developement environment, LinuxFr.org can be
 run on Docker with `docker-compose up`.
 
 To init the SQL database schema, you need to wait upto the `database`
-and `database-test` containers are ready to listen MySQL connections.
+container to be ready to listen MySQL connections.
 
 For example, you should see in the logs:
 
-> database-test_1  | 2020-09-21 16:03:12 140126029907968 [Note] mysqld: ready for connections.
->
-> database-test_1  | Version: '10.1.46-MariaDB-1\~bionic'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  mariadb.org binary distribution
->
 > database_1       | 2020-09-21 16:03:12 139820938893312 [Note] mysqld: ready for connections.
 >
 > database_1       | Version: '10.1.46-MariaDB-1\~bionic'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  mariadb.org binary distribution
