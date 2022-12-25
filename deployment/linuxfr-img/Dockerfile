@@ -1,22 +1,25 @@
-FROM debian:stretch-slim
+FROM debian:bullseye-slim as build
 
 LABEL maintainer="adrien@adorsaz.ch"
-LABEL version="1.0"
-LABEL description="Run LinuxFr image caching service for LinuxFr.org Ruby on Rails website"
+LABEL version="2.0"
+LABEL description="Run LinuxFr image caching service for LinuxFr.org"
 
+ENV GOPATH=/linuxfr-img
 WORKDIR /linuxfr-img
 
-# Install dependencies
+# Build linuxfr-img
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     golang git ca-certificates \
-  && apt-get clean
+  && apt-get clean \
+  && go get -u github.com/linuxfrorg/img-LinuxFr.org
 
-# Install linuxfr-img
-ENV GOPATH=/linuxfr-img/go
-ENV PATH=${PATH}:/linuxfr-img/go/bin
-RUN go get -u github.com/linuxfrorg/img-LinuxFr.org
+FROM debian:bullseye-slim as deploy
+
+WORKDIR /linuxfr-img
+
+COPY --from=build /linuxfr-img/bin/img-LinuxFr.org .
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "exec img-LinuxFr.org -a 0.0.0.0:8000 -r \"${REDIS_URL##redis://}\""]
+CMD ["sh", "-c", "exec ./img-LinuxFr.org -a 0.0.0.0:8000 -r \"${REDIS_URL##redis://}\""]
