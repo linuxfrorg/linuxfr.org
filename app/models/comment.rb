@@ -39,6 +39,11 @@ class Comment < ActiveRecord::Base
       limit(12).
       select([:id, :node_id, :title])
   }
+  scope :latest, -> {
+    where(["created_at >= ?", Date.current - 7.day])
+  }
+
+  paginates_per 50
 
   validates :title,     presence: { message: "Le titre est obligatoire" },
                         length: { maximum: 100, message: "Le titre est trop long" }
