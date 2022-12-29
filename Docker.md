@@ -22,9 +22,12 @@ docker-compose run linuxfr.org bin/rails db:setup
 Finally, the environment is ready and you can open [http://dlfp.lo](http://dlfp.lo)
 in your favorite browser.
 
-Note: to be able to access this URL, you'll need to add the line
-`127.0.0.1 dlfp.lo image.dlfp.lo` to the `/etc/hosts` file of your
-machine.
+Note: to be able to access this URL, you'll need to add the following line
+into the `/etc/hosts` file of your machine:
+
+```
+127.0.0.1 dlfp.lo image.dlfp.lo
+```
 
 Personalize configuration
 =========================
@@ -58,7 +61,9 @@ will directly detect changes and apply them on next page reload.
 Furthermore, if you need to access the Rails console, you need a second
 terminal and run:
 
-`docker-compose run linuxfr.org bin/rails console`
+```
+docker-compose run linuxfr.org bin/rails console
+```
 
 Note: currently, we didn't configure rails to show directly the
 `webconsole` in your browser. That's just because of time needed to
@@ -76,7 +81,9 @@ To get help about writing tests, see the
 
 To run tests with Docker environment, you need to use this command:
 
-`docker-compose run linuxfr.org bin/rails test -v`
+```
+docker-compose run linuxfr.org bin/rails test -v
+```
 
 Inspect database schema
 =======================
@@ -84,7 +91,9 @@ Inspect database schema
 In case you need to inspect the database, you need a second terminal
 and run:
 
-`docker-compose run database mysql -hdatabase -ulinuxfr_rails -p linuxfr_rails`
+```
+docker-compose run database mysql -hdatabase -ulinuxfr_rails -p linuxfr_rails
+```
 
 By default, the requested password is the same as the username.
 
@@ -94,12 +103,16 @@ Apply database migrations
 In case you need to apply new database migrations, you need a second
 terminal and run:
 
-`docker-compose run linuxfr.org bin/rails db:migrate`
+```
+docker-compose run linuxfr.org bin/rails db:migrate
+```
 
 If you had issue and want to reset all data in your database system,
 use:
 
-`docker-compose run linuxfr.org bin/rails db:reset`
+```
+docker-compose run linuxfr.org bin/rails db:reset
+```
 
 Services provided by the docker-compose
 =======================================
