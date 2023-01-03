@@ -18,6 +18,7 @@
       %li= link_to("Étiquettes (tags)", "#stats_tags")
       %li= link_to("Informations personnelles", "#stats_infosperso")
       %li= link_to("Domaines des courriels", "#stats_courriel")
+      %li= link_to("Domaines XMPP", "#stats_xmpp")
       %li= link_to("Utilisation des fonctionnalités", "#stats_fonctionnalites")
       %li= link_to("Style (CSS)", "#stats_css")
       %li= link_to("Karmas des utilisatrices et utilisateurs", "#stats_karma")
@@ -225,6 +226,24 @@
       %th Nombre de comptes
       %th Actifs
     - @stats.top_email_domains.each do |domain|
+      %tr
+        %td.stat
+          = domain["domain"]
+        %td
+          .stat.misc(style="width: #{(width_stats * domain["cnt"] / maxval).to_i}px;")= domain["cnt"]
+        %td
+          #{@stats.pctrecent(domain["cnt"])}
+
+  %h2#stats_xmpp Domaines XMPP
+  %p
+    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
+  %table
+    - maxval = @stats.nb_recently_used_accounts
+    %tr
+      %th Domaines à plus de trois comptes
+      %th Nombre de comptes
+      %th Actifs
+    - @stats.top_xmpp_domains.each do |domain|
       %tr
         %td.stat
           = domain["domain"]

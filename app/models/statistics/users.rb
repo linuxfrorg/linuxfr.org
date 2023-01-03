@@ -105,4 +105,8 @@ class Statistics::Users < Statistics::Statistics
   def top_email_domains
     select_all "SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(email,'@', -1),'.',1) AS domain, COUNT(*) AS cnt FROM accounts WHERE current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY domain HAVING cnt > 3 ORDER BY cnt DESC LIMIT 10;"
   end
+
+  def top_xmpp_domains
+    select_all "SELECT SUBSTRING_INDEX(jabber_id,'@', -1) AS domain, COUNT(*) AS cnt FROM accounts LEFT JOIN users ON accounts.user_id=users.id WHERE jabber_id LIKE '%@%' AND current_sign_in_at > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY domain HAVING cnt > 3 ORDER BY cnt DESC LIMIT 10;"
+  end
 end
