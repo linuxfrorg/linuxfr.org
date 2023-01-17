@@ -21,15 +21,11 @@ body {
   max-width: $BODY_MAX_WIDTH;
   margin: 0 auto;
   border: solid #999;
-  border-width: 0 1px;
-  background: linear-gradient(
-      90deg,
-      $C_CLAIR,
-      $C_CLAIR $PX_BRANDING_LARG,
-      $C_CONTAINER $PX_BRANDING_LARG,
-      $C_CONTAINER
-    )
-    #fff;
+  border-width: 0 $PX_BODY_BORDER_WIDTH_LEFT_RIGHT;
+  background-repeat: no-repeat;
+  background-size: $PX_BRANDING_LARG + $PX_BODY_BORDER_WIDTH_LEFT_RIGHT, auto;
+  background-position: 0, $PX_BRANDING_LARG + $PX_BODY_BORDER_WIDTH_LEFT_RIGHT;
+  background-image: linear-gradient($C_CLAIR, $C_CLAIR), linear-gradient($C_CONTAINER, $C_CONTAINER);
 }
 
 a {
