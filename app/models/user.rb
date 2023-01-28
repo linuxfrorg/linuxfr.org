@@ -30,8 +30,8 @@ class User < ActiveRecord::Base
   has_many :taggings, -> { includes(:tag) }, dependent: :destroy
   has_many :tags, -> { distinct }, through: :taggings
 
-  validates_format_of :homesite, message: "L’adresse du site Web personnel n’est pas valide", with: URI::regexp(%w(http https)), allow_blank: true
-  validates :homesite, length: { maximum: 100, message: "L’adresse du site Web personnel est trop longue" }
+  validates :homesite, http_url: { protocols: ["http", "https"], message: "L’adresse du site Web personnel n’est pas valide" },
+                       length: { maximum: 100, message: "L’adresse du site Web personnel est trop longue" }
   validates :name, length: { maximum: 40, message: "Le nom affiché est trop long" }
   validates :jabber_id, length: { maximum: 32, message: "L’adresse XMPP est trop longue" }
   validates :mastodon_url, http_url: { protocols: ["https"], message: "L’adresse du compte Mastodon n’est pas valide" },
