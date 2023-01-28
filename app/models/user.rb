@@ -7,6 +7,7 @@
 #  name              :string(40)
 #  homesite          :string(100)
 #  jabber_id         :string(32)
+#  mastodon_url      :string(100)
 #  cached_slug       :string(32)       not null
 #  created_at        :datetime
 #  updated_at        :datetime
@@ -33,6 +34,8 @@ class User < ActiveRecord::Base
   validates :homesite, length: { maximum: 100, message: "L’adresse du site Web personnel est trop longue" }
   validates :name, length: { maximum: 40, message: "Le nom affiché est trop long" }
   validates :jabber_id, length: { maximum: 32, message: "L’adresse XMPP est trop longue" }
+  validates :mastodon_url, http_url: { protocols: ["https"], message: "L’adresse du compte Mastodon n’est pas valide" },
+                           length: { maximum: 255, message: "L’adresse du compte Mastodon est trop longue" }
   validates :signature, length: { maximum: 255, message: "La signature est trop longue" }
   validates :custom_avatar_url, length: { maximum: 255, message: "L’adresse de l’avatar est trop longue" }
 
