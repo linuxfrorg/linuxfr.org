@@ -49,7 +49,7 @@ class UriValidator < ActiveModel::EachValidator
     return uri.to_s
 
   # Let raw value if error occured when we tried to parse it, because
-  # the HttpUrlValidator will manage it itself on validation
+  # the UriValidator will manage it itself on validation
   rescue URI::InvalidURIError
     return raw
   end
