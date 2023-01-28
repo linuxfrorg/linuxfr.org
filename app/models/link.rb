@@ -34,6 +34,10 @@ class Link < ActiveRecord::Base
     link.url = UriValidator.before_validation(link.url);
   end
 
+  after_validation do |link|
+    link.url = UriValidator.after_validation(link.url);
+  end
+
 ### Behaviour ###
 
   def self.hit(id)

@@ -44,6 +44,11 @@ class User < ActiveRecord::Base
     user.mastodon_url = UriValidator.before_validation(user.mastodon_url)
   end
 
+  after_validation do |user|
+    user.homesite = UriValidator.after_validation(user.homesite)
+    user.mastodon_url = UriValidator.after_validation(user.mastodon_url)
+  end
+
   def self.collective
     find_by(name: "Collectif")
   end

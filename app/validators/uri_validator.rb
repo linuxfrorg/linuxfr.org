@@ -54,4 +54,15 @@ class UriValidator < ActiveModel::EachValidator
     return raw
   end
 
+  def self.after_validation(raw)
+    # Decodes sharp signs (#) found in URI fragment to keep visual match with
+    # the user input
+    fragments = raw.split("#")
+    if (fragments.length == 2)
+      raw = fragments[0] + '#' + fragments[1].gsub('%23', '#')
+    end
+
+    return raw
+  end
+
 end

@@ -33,6 +33,10 @@ class Bookmark < Content
     bookmark.link = UriValidator.before_validation(bookmark.link);
   end
 
+  after_validation do |bookmark|
+    bookmark.link = UriValidator.after_validation(bookmark.link);
+  end
+
   def create_node(attrs={})
     attrs[:cc_licensed] = false
     super
