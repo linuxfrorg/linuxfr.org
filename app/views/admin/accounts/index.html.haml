@@ -11,7 +11,7 @@
 
 %table
   %tr
-    %th Pseudo / Courriel
+    %th Pseudo / Adresses
     %th Karma
     %th Adresse IP courante / précédente
     %th Commentaires / contenus / étiquettes
@@ -31,6 +31,12 @@
         - if account.user.homesite
           %br
           = account.user.homesite
+        - if account.user.jabber_id
+          %br
+          = account.user.jabber_id
+        - if account.user.mastodon_url
+          %br
+          = account.user.mastodon_url
       %td= account.karma
       %td
         - if account.current_sign_in_ip != account.last_sign_in_ip
