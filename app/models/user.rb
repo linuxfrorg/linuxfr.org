@@ -30,14 +30,19 @@ class User < ActiveRecord::Base
   has_many :taggings, -> { includes(:tag) }, dependent: :destroy
   has_many :tags, -> { distinct }, through: :taggings
 
-  validates :homesite, http_url: { protocols: ["http", "https"], message: "L’adresse du site Web personnel n’est pas valide" },
+  validates :homesite, uri: { protocols: ["http", "https"], message: "L’adresse du site Web personnel n’est pas valide" },
                        length: { maximum: 100, message: "L’adresse du site Web personnel est trop longue" }
   validates :name, length: { maximum: 40, message: "Le nom affiché est trop long" }
   validates :jabber_id, length: { maximum: 32, message: "L’adresse XMPP est trop longue" }
-  validates :mastodon_url, http_url: { protocols: ["https"], message: "L’adresse du compte Mastodon n’est pas valide" },
+  validates :mastodon_url, uri: { protocols: ["https"], message: "L’adresse du compte Mastodon n’est pas valide" },
                            length: { maximum: 255, message: "L’adresse du compte Mastodon est trop longue" }
   validates :signature, length: { maximum: 255, message: "La signature est trop longue" }
   validates :custom_avatar_url, length: { maximum: 255, message: "L’adresse de l’avatar est trop longue" }
+
+  before_validation do |user|
+    user.homesite = UriValidator.before_validation(user.homesite)
+    user.mastodon_url = UriValidator.before_validation(user.mastodon_url)
+  end
 
   def self.collective
     find_by(name: "Collectif")
