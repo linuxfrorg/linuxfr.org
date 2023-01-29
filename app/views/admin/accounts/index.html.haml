@@ -28,13 +28,13 @@
           = image_tag "/images/icones/check.svg", alt: "Actif", title: "Actif", width: "16px"
         %br
         = account.email
-        - if account.user.homesite
+        - if account.user.homesite.present?
           %br
           = account.user.homesite
-        - if account.user.jabber_id
+        - if account.user.jabber_id.present?
           %br
           = account.user.jabber_id
-        - if account.user.mastodon_url
+        - if account.user.mastodon_url.present?
           %br
           = account.user.mastodon_url
       %td= account.karma

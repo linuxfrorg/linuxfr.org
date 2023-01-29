@@ -6,12 +6,12 @@
   - unless user.account && user.account.active_for_authentication?
     %p
       Compte fermé
-  - if user.homesite
+  - if user.homesite.present?
     %p
       Site Web personnel : #{link_to user.homesite, user.homesite, class: 'url me'}
-  - if current_account && user.jabber_id
+  - if current_account && user.jabber_id.present?
     %p
       Adresse XMPP : #{link_to 'xmpp:' + user.jabber_id, 'xmpp:' + user.jabber_id, class: 'url'}
-  - if current_account && user.mastodon_url
+  - if current_account && user.mastodon_url.present?
     %p
       Adresse Mastodon : #{link_to 'Mastodon', user.mastodon_url, class: 'url'}
