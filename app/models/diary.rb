@@ -60,7 +60,7 @@ class Diary < Content
 
 ### Moving ###
   def convert_only_cc_licensed_diary
-    errors.add :base, :cannot_convert, message: "Le journal n’a pas été publié sous licence CC-BY-SA 4.0, il ne peut donc pas être proposé en dépêche." unless node.cc_licensed?
+    errors.add :base, :cannot_convert, message: "Le journal n’a pas été publié sous licence CC By-SA 4.0, il ne peut donc pas être proposé en dépêche." unless node.cc_licensed?
   end
 
   def convert
