@@ -13,7 +13,7 @@
       = u.text_field :jabber_id, placeholder: "me@example.net", maxlength: 32
     %p
       = u.label :mastodon_url, 'Adresse du compte Mastodon'
-      = u.url_field :mastodon_url, placeholder: "https://mastodon.example/@me", maxlength: 255
+      = u.url_field :mastodon_url, placeholder: "https://mastodon.example/@me", maxlength: 100
       %span.help
         Après avoir enregistré l’adresse de votre compte Mastodon, vous pourrez utiliser le lien <kbd>#{user_url(current_user)}</kbd> pour
         <a href="https://docs.joinmastodon.org/user/profile/#verification">prouver que le compte Mastodon et le compte LinuxFr.org appartiennent à la même personne.</a>
