@@ -58,6 +58,17 @@ module NodeHelper
     link_to content.title, path_for_content(content)
   end
 
+  def filter_pagination_params(allowed_params)
+    allowed_params += ['action', 'controller']
+    params.each do |k,v|
+      if allowed_params.include?(k)
+        params[k] = v
+      else
+        params[k] = nil
+      end
+    end
+  end
+
   def paginated_nodes(nodes, link=nil)
     paginated_section(nodes, link) do
       content_tag(:main, render(nodes.map &:content), id: 'contents', role: 'main')
@@ -100,6 +111,7 @@ module NodeHelper
       user_infos = []
       user_infos << homesite_link(user)
       user_infos << jabber_link(user)
+      user_infos << mastodon_link(user)
       user_infos.compact!
       user_link += (" (" + user_infos.join(', ') + ")").html_safe  if user_infos.any?
     end

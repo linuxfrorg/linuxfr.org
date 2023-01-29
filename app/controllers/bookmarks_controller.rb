@@ -49,7 +49,7 @@ class BookmarksController < ApplicationController
     path = user_bookmark_path(@user, @bookmark, format: params[:format])
     redirect_to path, status: 301 if request.path != path
     headers['Link'] = %(<#{user_bookmark_url @user, @bookmark}>; rel="canonical")
-    flash.now[:alert] = "Attention, ce lien a été supprimé et n’est visible que par les administrateurs" unless @bookmark.visible?
+    flash.now[:alert] = "Attention, ce lien a été supprimé et n’est visible que par l’équipe d'administration" unless @bookmark.visible?
   end
 
   def edit

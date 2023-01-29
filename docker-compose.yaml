@@ -13,13 +13,13 @@ services:
       - ./app:/linuxfr.org/app
       - ./db:/linuxfr.org/db
       - ./public:/linuxfr.org/public
+      - ./test:/linuxfr.org/test
       # uploads are shared with the nginx service
       - data-uploads:/linuxfr.org/uploads
     tmpfs:
       - /linuxfr.org/public/tmp:size=100M
     depends_on:
       - database
-      - database-test
       - redis
 
   linuxfr-board:
@@ -56,34 +56,24 @@ services:
       - linuxfr-img
 
   database:
-    image: mariadb:10.1
+    build:
+      context: deployment/database
     env_file:
       - deployment/default.env
-    restart: always
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
     volumes:
       - data-database:/var/lib/mysql
 
-  database-test:
-    image: mariadb:10.1
-    env_file:
-      - deployment/default.env
-    entrypoint: ["/linuxfr-entrypoint.sh"]
-    command: ["mysqld"]
-    restart: always
-    volumes:
-      - data-database-test:/var/lib/mysql
-      - ./deployment/database-test/entrypoint.sh:/linuxfr-entrypoint.sh
-
   redis:
     image: redis:5
-    restart: always
+    restart: unless-stopped
     volumes:
       - data-redis:/data
 
 volumes:
   data-database:
-    driver: local
-  data-database-test:
     driver: local
   data-redis:
     driver: local

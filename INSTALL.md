@@ -176,12 +176,24 @@ server {
 
     listen 0.0.0.0:80;
 
-    location ~ ^/(avatars|medias)/ {
+    location ~ ^/medias/ {
       root /home/linuxfr/linuxfr.org/uploads;
     }
 
-    # To install the LinuxFr img service, see: https://github.com/linuxfrorg/img-LinuxFr.org
+    # Avatars files uploaded on linuxfr server are stored in partitions
+    # with folder name containing 3 digits
+    location ~ ^/avatars/\d\d\d/ { 
+      root /home/linuxfr/linuxfr.org/uploads;
+    }
+
+    # Avatars URLs has to be served by the image service
+    location ~ ^/avatars/ {
+        # To install the LinuxFr img service, see: https://github.com/linuxfrorg/img-LinuxFr.org
+        proxy_pass http://localhost:8000;
+    }
+
     location /img/ {
+        # To install the LinuxFr img service, see: https://github.com/linuxfrorg/img-LinuxFr.org
         proxy_pass http://localhost:8000;
     }
 

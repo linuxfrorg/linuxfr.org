@@ -9,6 +9,7 @@
 = render 'topbar', news: @news, show_backlink: false
 
 %article
+  = messages_on_error @news
   = form_for @news, url: reorganized_redaction_news_path(@news), method: :put do |form|
     %p
       = form.label :section_id, "Section"

@@ -69,7 +69,7 @@ class Account < ActiveRecord::Base
   validates :login, presence: { message: "Veuillez choisir un pseudo"},
                     uniqueness: { message: "Ce pseudo est déjà pris" },
                     format: { message: "Le pseudo n’est pas valide", with: LOGIN_REGEXP, allow_blank: true, on: :create },
-                    length: { maximum: 40, message: "Le nom d’utilisateur est trop long" }
+                    length: { maximum: 40, message: "Le nom du compte est trop long" }
 
   EMAIL_REGEXP = /\A[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}\z/i
   validates :email, presence: { message: "Veuillez remplir l’adresse de courriel" },

@@ -40,4 +40,10 @@ module UsersHelper
     link_to("adresse XMPP", "xmpp:" + user.jabber_id)
   end
 
+  def mastodon_link(user)
+    return if user.mastodon_url.blank?
+    karma = user.account.try(:karma).to_i
+    return unless karma > 0
+    link_to("Mastodon", user.mastodon_url)
+  end
 end

@@ -1,0 +1,11 @@
+diary_lorem_cc_licensed:
+  cc_licensed: true
+  user: visitor_1
+  content: lorem_cc_licensed
+  content_type: Journal
+
+diary_lorem_copyright:
+  cc_licensed: false
+  user: visitor_2
+  content: lorem_copyright
+  content_type: Journal

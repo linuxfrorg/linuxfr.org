@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_31_231806) do
+ActiveRecord::Schema.define(version: 2022_12_19_214058) do
 
   create_table "accounts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "user_id"
@@ -373,6 +373,7 @@ ActiveRecord::Schema.define(version: 2021_01_31_231806) do
     t.string "avatar"
     t.string "signature"
     t.string "custom_avatar_url"
+    t.string "mastodon_url"
     t.index ["cached_slug"], name: "index_users_on_cached_slug"
   end
 

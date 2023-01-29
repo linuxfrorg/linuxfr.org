@@ -26,7 +26,23 @@ class Bookmark < Content
   validates :title,     presence: { message: "Le titre est obligatoire" },
                         length: { maximum: 100, message: "Le titre est trop long" }
   validates :link, presence: { message: "Vous ne pouvez pas poster un lien vide" },
+                   http_url: { message: "Le lien n'est pas valide" },
                    length: { maximum: 255, message: "Le lien est trop long" }
+
+  def link=(raw)
+    raw.strip!
+    return write_attribute :url, nil if raw.blank?
+    uri = URI.parse(raw)
+    # Default to HTTP link if neither scheme nor host is found
+    if uri.scheme.blank? && uri.host.blank?
+      raw = "http://#{raw}"
+      uri = URI.parse(raw)
+    end
+    write_attribute :link, uri.to_s
+  # Let raw value if error when parsed, HttpUrlValidator will manage it
+  rescue URI::InvalidURIError
+    write_attribute :link, raw
+  end
 
   def create_node(attrs={})
     attrs[:cc_licensed] = false

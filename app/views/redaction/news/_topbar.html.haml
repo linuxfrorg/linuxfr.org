@@ -2,14 +2,15 @@
   - if show_backlink
     .backlink
       = link_to image_tag("feather-icons/dist/icons/arrow-left.svg", alt: "Retour à l’espace de rédaction"), '/redaction'
-  .lastmodifications
-    - revision = news.versions.first
-    .revision-table
-      .revision-cell
-        = revision.version
-    %p
-      dernière modification
-      %br
-      %span.revision-date
-        = "le #{I18n.l(revision.created_at, :format => '%d %B %Y à %H:%M:%S')}"
+  - if news.versions.count > 0
+    .lastmodifications
+      - revision = news.versions.first
+      .revision-table
+        .revision-cell
+          = revision.version
+      %p
+        dernière modification
+        %br
+        %span.revision-date
+          = "le #{I18n.l(revision.created_at, :format => '%d %B %Y à %H:%M:%S')}"
   = render 'attendees', attendees: news.attendees, enable_reassign: false

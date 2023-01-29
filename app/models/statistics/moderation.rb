@@ -14,13 +14,14 @@ class Statistics::Moderation < Statistics::Statistics
     EOS
   end
 
+  ACTS_OF_MODERATION = ['Interdiction de tribune', 'a donné 50 points de karma', 'Interdiction de poster des commentaires']
+
   def acts_by_year
     return @acts_by_year if @acts_by_year
 
     @acts_by_year = {}
 
-    acts = ['Interdiction de tribune', 'a donné 50 points de karma', 'Interdiction de poster des commentaires']
-    acts.each do |log|
+    ACTS_OF_MODERATION.each do |log|
       entries = acts_by_year_and_log(log)
       entries.each do |entry|
         @acts_by_year[entry["year"]] ||= {}
@@ -31,6 +32,10 @@ class Statistics::Moderation < Statistics::Statistics
 
   def acts_by_year_and_log(log)
     select_all("SELECT YEAR(CONVERT_TZ(created_at,'UTC','Europe/Paris')) AS year, COUNT(*) AS cnt FROM logs WHERE description LIKE '%#{log}%' GROUP BY year ORDER BY year;")
+  end
+
+  def nb_acts_x_days(user_id,nbdays=nil)
+    count "SELECT COUNT(*) AS cnt FROM logs WHERE (#{ACTS_OF_MODERATION.map { |log| "description LIKE '%#{log}%'" }.join(' OR ')}) AND #{created_on_the_last_nbdays nbdays, "logs."} AND user_id=#{user_id}"
   end
 
   def average_time

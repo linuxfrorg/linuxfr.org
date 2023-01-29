@@ -14,7 +14,9 @@ body#news-revision #contents,
 body#boards-show #contents,
 body#stylesheets-edit #contents,
 body#wiki_pages-changes #contents,
-body#admin-index #container > ul {
+body#admin-index #container > ul,
+#redaction #new_link,
+#redaction .edit_link {
   display: block;
   background: white;
   padding: 10px $PX_PAD_NODE 10px $PX_PAD_NODE;

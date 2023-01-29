@@ -1,10 +1,17 @@
 = form_for [:redaction, @link] do |form|
   - if @link.new_record?
     %input(type="hidden" name="news_id" value="#{@news.id}")
-  %p.link
+  %div.link
     = form.text_field :title, maxlength: 100, autocomplete: "off", placeholder: 'Titre'
     = form.url_field :url, autocomplete: "off", placeholder: 'Adresse'
     = form.select :lang, Lang.all
+    %br
+    %ul.error(style="display: none")
     - if @link.persisted?
       %button.cancel{'data-url' => unlock_redaction_link_path(@link), type: "button"} Annuler
+    - else
+      %button.cancel{type: "button"} Annuler
     = form.submit "OK"
+    - if @link.persisted?
+      %p
+        Note: pour supprimer le lien, videz le champ Adresse et cliquez sur OK

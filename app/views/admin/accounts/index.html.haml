@@ -11,7 +11,7 @@
 
 %table
   %tr
-    %th Pseudo / Courriel
+    %th Pseudo / Adresses
     %th Karma
     %th Adresse IP courante / précédente
     %th Commentaires / contenus / étiquettes
@@ -28,9 +28,15 @@
           = image_tag "/images/icones/check.svg", alt: "Actif", title: "Actif", width: "16px"
         %br
         = account.email
-        - if account.user.homesite
+        - if account.user.homesite.present?
           %br
           = account.user.homesite
+        - if account.user.jabber_id.present?
+          %br
+          = account.user.jabber_id
+        - if account.user.mastodon_url.present?
+          %br
+          = account.user.mastodon_url
       %td= account.karma
       %td
         - if account.current_sign_in_ip != account.last_sign_in_ip
@@ -84,4 +90,5 @@
           = button_to "Animateur", admin_account_editor_path(account.id), class: "change_role"
           = button_to "Admin", admin_account_admin_path(account.id), class: "change_role"
 
+- filter_pagination_params ['login', 'date', 'ip', 'email', 'inactive', 'page']
 = paginate @accounts

@@ -32,6 +32,8 @@ class News < Content
     "créé si nécessaire. Pensez à l'orthographe et aux liens explicatifs vers Wikipedia. " +
     "(Vous pouvez éditer ce paragraphe en cliquant sur le crayon !)".freeze
   DEFAULT_PARAGRAPH = "Vous pouvez éditer ce paragraphe en cliquant sur le crayon !".freeze
+  LINUXFR_BOT = "Le bot LinuxFr".freeze
+  MODERATION_TEAM = "L'équipe de modération".freeze
 
   self.table_name = "news"
   self.type = "Dépêche"
@@ -110,7 +112,7 @@ class News < Content
     submit!
     node.created_at = DateTime.now
     node.save
-    message = "<b>La dépêche a été soumise à la modération</b>"
+    message = "<b>La dépêche a été soumise à la modération.</b>"
     Board.new(object_type: Board.news, object_id: self.id, message: message, user_name: user.name).save
     Push.create(self, kind: :submit, username: user.name)
   end
@@ -118,6 +120,8 @@ class News < Content
   def publish
     node.make_visible
     author_account.try(:give_karma, 50)
+    message = "<b>La dépêche a été publiée.</b>"
+    Board.new(object_type: Board.news, object_id: self.id, message: message, user_name: MODERATION_TEAM).save
     Push.create(self, kind: :publish, username: moderator.name)
     $redis.publish "news", { id: self.id, title: title, slug: cached_slug }.to_json
     diary_id = $redis.get("convert/#{self.id}")
@@ -125,11 +129,15 @@ class News < Content
   end
 
   def be_refused
+    message = "<b>La dépêche a été refusée.</b>"
+    Board.new(object_type: Board.news, object_id: self.id, message: message, user_name: MODERATION_TEAM).save
     Push.create(self, kind: :refuse, username: moderator.name)
   end
 
   def be_rewritten
     reset_votes
+    message = "<b>La dépêche a été retournée en rédaction.</b>"
+    Board.new(object_type: Board.news, object_id: self.id, message: message, user_name: MODERATION_TEAM).save
     Push.create(self, kind: :rewritten, username: moderator.name)
   end
 
@@ -147,7 +155,7 @@ class News < Content
     message = "Merci d’avoir initié cette rédaction coopérative !
       Durant toute la phase de rédaction, vous pourrez utiliser la présente
       messagerie instantanée pour discuter avec les participants."
-    Board.new(object_type: Board.news, object_id: news.id, message: message, user_name: "Le bot LinuxFr").save
+    Board.new(object_type: Board.news, object_id: news.id, message: message, user_name: LINUXFR_BOT).save
     news
   end
 
@@ -191,8 +199,8 @@ class News < Content
   before_validation :wikify_fields
   def wikify_fields
     return if wiki_body.blank?
-    self.body        = wikify(wiki_body).gsub(/^<p>N\.?\p{Z}?[Dd]\.?\p{Z}?M\.?\p{Z}?:/, '<p><abbr title="Note des modérateurs">N. D. M. :</abbr>')
-    self.second_part = wikify(wiki_second_part).gsub(/^<p>N\.?\p{Z}?[Dd]\.?\p{Z}?M\.?\p{Z}?:/, '<p><abbr title="Note des modérateurs">N. D. M. :</abbr>')
+    self.body        = wikify(wiki_body).gsub(/^<p>N\.?\p{Z}?[Dd]\.?\p{Z}?M\.?\p{Z}?:/, '<p><abbr title="Note de la modération">N. D. M. :</abbr>')
+    self.second_part = wikify(wiki_second_part).gsub(/^<p>N\.?\p{Z}?[Dd]\.?\p{Z}?M\.?\p{Z}?:/, '<p><abbr title="Note de la modération">N. D. M. :</abbr>')
   end
 
   mark_as_safe_attr :body
@@ -260,11 +268,20 @@ class News < Content
   end
 
   def reorganize(params)
-    Paragraph.where(news_id: self.id).delete_all
-    self.attributes = params
-    create_parts
-    save
-    unlock
+    reorganized = false
+    self.transaction do
+      Paragraph.where(news_id: self.id).delete_all
+      self.attributes = params
+      create_parts
+      # Let commit transaction only if save is successful so version will be well created
+      if save
+        reorganized = true
+      else
+        raise ActiveRecord::Rollback
+      end
+    end
+    unlock if reorganized
+    reorganized
   end
 
 ### Associated node ###
