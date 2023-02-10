@@ -60,7 +60,6 @@ services:
       context: deployment/database
     env_file:
       - deployment/default.env
-    restart: unless-stopped
     ports:
       - "3306:3306"
     volumes:
@@ -68,7 +67,6 @@ services:
 
   redis:
     image: redis:5
-    restart: unless-stopped
     volumes:
       - data-redis:/data
 
