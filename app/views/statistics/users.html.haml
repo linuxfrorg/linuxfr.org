@@ -337,7 +337,7 @@
   %p
     = link_to("Changer de style", "/stylesheet/modifier")
   - if @stats.by_style.any?
-    %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et utilisés"} au cours des trois derniers mois :
+    %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
     %table
       - maxval = @stats.nb_recently_used_accounts
       %tr
@@ -355,7 +355,7 @@
     Aucune feuille de style CSS autre que celle par défaut
 
   %h2#stats_karma Karmas des utilisatrices et utilisateurs
-  %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
+  %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
   %table
     %tr
       %th Karma
@@ -375,7 +375,7 @@
         %td #{@stats.pctrecent(karma["cnt"])}
 
   %h2#stats_anciennete Anciennetés des comptes
-  %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
+  %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
   %table
     - maxval = @stats.nb_recently_used_accounts
     %tr
@@ -392,7 +392,7 @@
 
   %h2#stats_state Statuts des comptes
   %p Statut des comptes par tranche de #{@stats.slot_size}
-  - translate_account = {"accountrecent"=>"récemment utilisé", "accountinactive"=>"fermé", "accountrecentinactive"=>"fermé récemment utilisé", "account"=>"autre", "accountpurged"=>"purgés"}
+  - translate_account = {"accountrecent"=>"récemment connecté", "accountinactive"=>"fermé", "accountrecentinactive"=>"fermé récemment connecté", "account"=>"autre", "accountpurged"=>"purgés"}
   %table
     %tr
       %th Tranche
