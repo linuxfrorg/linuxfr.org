@@ -206,11 +206,11 @@
       %td
         .stat.misc(style="width: #{(width_stats * @stats.filled("jabber_id") / maxval).to_i}px;")= @stats.filled("jabber_id")
       %td #{@stats.pctrecent(@stats.filled("jabber_id"))}
+    %tr
       %td.stat Adresse Mastodon
       %td
         .stat.misc(style="width: #{(width_stats * @stats.filled("mastodon_url") / maxval).to_i}px;")= @stats.filled("jabber_id")
       %td #{@stats.pctrecent(@stats.filled("mastodon_url"))}
-    %tr
     %tr
       %td.stat Signature
       %td
