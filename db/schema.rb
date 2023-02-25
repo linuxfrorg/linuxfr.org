@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_19_214058) do
+ActiveRecord::Schema.define(version: 2023_02_25_172700) do
 
   create_table "accounts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "user_id"
@@ -44,17 +44,6 @@ ActiveRecord::Schema.define(version: 2022_12_19_214058) do
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
     t.index ["role"], name: "index_accounts_on_role"
     t.index ["user_id"], name: "index_accounts_on_user_id"
-  end
-
-  create_table "badges", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "title"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "company"
-    t.string "country"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "banners", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
