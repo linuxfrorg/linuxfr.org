@@ -35,7 +35,7 @@
     %li
       #{pluralize @stats.nb_accounts, "compte"}
     %li
-      #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois avec #{pluralize @stats.no_visit["avg"], "jour"} de moyenne sans visite et #{pluralize @stats.no_visit["stddev"], "jour"} d’écart‑type
+      #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois avec #{pluralize @stats.no_visit["avg"], "jour"} de moyenne sans visite et #{pluralize @stats.no_visit["stddev"], "jour"} d’écart‑type
     %li
       #{pluralize @stats.nb_waiting_accounts, "compte"} en attente
     %li
@@ -47,7 +47,7 @@
 
   %h2#stats_contenus Contenus publiés
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
   %table
     - maxval = @stats.nb_recently_used_accounts
     %tr
@@ -92,7 +92,7 @@
 
   %h2#stats_news_versions Contribution sur une dépêche
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
   %table
     - last3Months = @stats.nb_news_versions_authors(90)[0]
     - lastYear = @stats.nb_news_versions_authors(365)[0]
@@ -125,7 +125,7 @@
 
   %h2#stats_commentaires Commentaires
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
   %table
     - last3Months = @stats.nb_comment_authors(90)[0]
     - lastYear = @stats.nb_comment_authors(365)[0]
@@ -158,7 +158,7 @@
 
   %h2#stats_tags Étiquettes (tags)
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
   %table
     - maxval = @stats.nb_recently_used_accounts
     %tr
@@ -189,7 +189,7 @@
 
   %h2#stats_infosperso Informations personnelles
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
   %table
     - maxval = @stats.nb_recently_used_accounts
     %tr
@@ -209,7 +209,7 @@
     %tr
       %td.stat Adresse Mastodon
       %td
-        .stat.misc(style="width: #{(width_stats * @stats.filled("mastodon_url") / maxval).to_i}px;")= @stats.filled("jabber_id")
+        .stat.misc(style="width: #{(width_stats * @stats.filled("mastodon_url") / maxval).to_i}px;")= @stats.filled("mastodon_url")
       %td #{@stats.pctrecent(@stats.filled("mastodon_url"))}
     %tr
       %td.stat Signature
@@ -224,7 +224,7 @@
 
   %h2#stats_courriel Domaines des courriels
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
   %table
     - maxval = @stats.nb_recently_used_accounts
     %tr
@@ -242,7 +242,7 @@
 
   %h2#stats_xmpp Domaines XMPP
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
   %table
     - maxval = @stats.nb_recently_used_accounts
     %tr
@@ -260,7 +260,7 @@
 
   %h2#stats_mastodon Domaines Mastodon
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
   %table
     - maxval = @stats.nb_recently_used_accounts
     %tr
@@ -278,7 +278,7 @@
 
   %h2#stats_fonctionnalites Utilisation des fonctionnalités
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides"} au cours des trois derniers mois :
   %table
     - maxval = @stats.nb_recently_used_accounts
     %tr
@@ -337,7 +337,7 @@
   %p
     = link_to("Changer de style", "/stylesheet/modifier")
   - if @stats.by_style.any?
-    %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et utilisé", "comptes valides et utilisés"} au cours des trois derniers mois :
+    %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et utilisés"} au cours des trois derniers mois :
     %table
       - maxval = @stats.nb_recently_used_accounts
       %tr
