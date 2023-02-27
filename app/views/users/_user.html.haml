@@ -8,7 +8,7 @@
       Compte fermé
   - if user.homesite.present?
     %p
-      Site Web personnel : #{link_to user.homesite, user.homesite, class: 'url me'}
+      Site web personnel : #{link_to user.homesite, user.homesite, class: 'url me'}
   - if current_account && user.jabber_id.present?
     %p
       Adresse XMPP : #{link_to 'xmpp:' + user.jabber_id, 'xmpp:' + user.jabber_id, class: 'url'}

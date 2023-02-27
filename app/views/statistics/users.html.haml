@@ -197,7 +197,7 @@
       %th Nombre de comptes
       %th Actifs
     %tr
-      %td.stat Site Web personnel
+      %td.stat Site web personnel
       %td
         .stat.misc(style="width: #{(width_stats * @stats.filled("homesite") / maxval).to_i}px;")= @stats.filled("homesite")
       %td #{@stats.pctrecent(@stats.filled("homesite"))}
