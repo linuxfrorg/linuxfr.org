@@ -2311,6 +2311,11 @@ form#new_diary > p:nth-child(4) {
   position: relative;
   top: 2px;
 }
+*:not(.markItUpHeader) > ul > .link[lang="ee"]:before {
+  content: url("/images/langs/ee.png");
+  position: relative;
+  top: 2px;
+}
 *:not(.markItUpHeader) > ul > .link[lang="el"]:before {
   content: url("/images/contrib/grayscale/flags/el.png");
   position: relative;
@@ -2388,6 +2393,11 @@ form#new_diary > p:nth-child(4) {
 }
 *:not(.markItUpHeader) > ul > .link[lang="xx"]:before {
   content: url("/images/contrib/grayscale/flags/xx.png");
+  position: relative;
+  top: 2px;
+}
+*:not(.markItUpHeader) > ul > .link[lang="wq"]:before {
+  content: url("/images/langs/wq.png");
   position: relative;
   top: 2px;
 }
