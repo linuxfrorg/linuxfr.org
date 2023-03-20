@@ -49,7 +49,7 @@ class Redaction
 
   innerHtmlForLink: (msg) ->
     """
-    <a href="/redirect/#{msg.id}" class="hit_counter">#{msg.title}</a> (#{msg.nb_clicks} clic#{if msg.nb_clicks > 1 then 's' else ''})
+    <a href="/redirect/#{msg.id}" class="hit_counter">#{msg.title}</a> (#{if msg.lang == 'fr' then '' else 'en ' + window.langs[msg.lang].toLowerCase() + ', '}#{msg.nb_clicks} clic#{if msg.nb_clicks > 1 then 's' else ''})
     """
 
   htmlForLink: (msg) ->
