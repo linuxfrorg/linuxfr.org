@@ -4,12 +4,14 @@
 Logo.image = '/images/logos/linuxfr2_classic.png'
 
 # Langs
-Lang['fr'] = 'Français'
+Lang['xx'] = '!? hmmm ?!' # default choice
+Lang['fr'] = 'Français'   # main language, then others sorted
 Lang['de'] = 'Allemand'
 Lang['en'] = 'Anglais'
 Lang['eu'] = 'Basque'
 Lang['ct'] = 'Catalan'
 Lang['cn'] = 'Chinois'
+Lang['wq'] = 'Code/binaire'
 Lang['ko'] = 'Coréen'
 Lang['da'] = 'Danois'
 Lang['es'] = 'Espagnol'
@@ -24,8 +26,6 @@ Lang['pl'] = 'Polonais'
 Lang['pt'] = 'Portugais'
 Lang['ru'] = 'Russe'
 Lang['sv'] = 'Suédois'
-Lang['xx'] = '!? hmmm ?!'
-Lang['wq'] = 'Code/binaire'
 
 # Category
 %w(Autres Administration\ site Commentaires Feuilles\ de\ style\ (CSS) Dépêches Forums Journaux Modération Proposition Recherche Sondages Suivi Barre\ d’outils Tribune Wiki Avatars Étiquettes Vieux\ navigateurs Comptes\ utilisateurs Statistiques Rédaction Administration\ système À\ ranger\ quelque\ part Aide\ et\ documentation Notifications Syntaxe\ markdown API\ OAuth Images Flux\ Atom Epub Liens).each do |cat|

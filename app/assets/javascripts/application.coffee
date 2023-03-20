@@ -32,31 +32,7 @@ $("textarea, #form_answers input").keypress (event) ->
   $(@).off event
 
 # Add/Remove dynamically links in the news form
-langs =
-  fr: "Français"
-  de: "Allemand"
-  en: "Anglais"
-  eu: "Basque"
-  ct: "Catalan"
-  cn: "Chinois"
-  ko: "Coréen"
-  da: "Danois"
-  es: "Espagnol"
-  ee: "Estonien"
-  fi: "Finnois"
-  el: "Grec"
-  it: "Italien"
-  ja: "Japonais"
-  nl: "Néerlandais"
-  no: "Norvégien"
-  pl: "Polonais"
-  pt: "Portugais"
-  ru: "Russe"
-  sv: "Suédois"
-  xx: "!? hmmm ?!"
-  wq: "Code/binaire"
-
-$("#form_links").nested_fields "news", "link", "lien", "fieldset", title: "text", url: "url", lang: langs
+$("#form_links").nested_fields "news", "link", "lien", "fieldset", title: "text", url: "url", lang: window.langs
 $("#form_answers").nested_fields "poll", "answer", "choix", "p", answer: "text"
 
 # Mask the contributors if they are too many

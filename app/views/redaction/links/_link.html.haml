@@ -1,5 +1,5 @@
-%li[link]{ lang: link.lang, "data-url" => edit_redaction_link_path(link) }
+%li[link]{ "lang" => link.lang, "data-url" => edit_redaction_link_path(link) }
   = link_to link.title, link.url, 'data-hit' => link.id, title: link.url, hreflang: link.lang, class: 'hit_counter'
-  (#{pluralize link.nb_clicks, 'clic'})
+  #{lang_and_hit(link)}
   .actions
     %button.edit Modifier
