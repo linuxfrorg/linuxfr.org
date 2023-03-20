@@ -12,4 +12,8 @@ class Lang
     $redis.set("lang/#{key}", value)
     $redis.rpush("lang", key)
   end
+
+  def self.[](key)
+    return $redis.get("lang/#{key}")
+  end
 end

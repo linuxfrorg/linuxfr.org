@@ -12,7 +12,6 @@
     display: inline-block;
   }
   .content {
-    padding: 0;
     min-height: auto;
     line-height: 1.3em;
   }
@@ -35,8 +34,5 @@
     span {
       color: #888;
     }
-  }
-  .links {
-    display: block; /* cancel display:grid for bookmark entries */
   }
 }
