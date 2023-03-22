@@ -33,12 +33,14 @@ $("textarea, #form_answers input").keypress (event) ->
 
 # Add/Remove dynamically links in the news form
 langs =
+  xx: "!? hmmm ?!"
   fr: "Français"
   de: "Allemand"
   en: "Anglais"
   eu: "Basque"
   ct: "Catalan"
   cn: "Chinois"
+  wq: "Code/binaire"
   ko: "Coréen"
   da: "Danois"
   es: "Espagnol"
@@ -53,8 +55,6 @@ langs =
   pt: "Portugais"
   ru: "Russe"
   sv: "Suédois"
-  xx: "!? hmmm ?!"
-  wq: "Code/binaire"
 
 $("#form_links").nested_fields "news", "link", "lien", "fieldset", title: "text", url: "url", lang: langs
 $("#form_answers").nested_fields "poll", "answer", "choix", "p", answer: "text"

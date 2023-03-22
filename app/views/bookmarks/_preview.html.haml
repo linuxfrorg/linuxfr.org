@@ -3,4 +3,4 @@
   - c.image = mini_avatar_img(preview.node.user)
   - c.body = capture do
     %ul
-      %li{lang: preview.lang}= "#{link_to preview.link, preview.link, hreflang: preview.lang}".html_safe
+      %li.link{lang: preview.lang}= "#{link_to preview.link, preview.link, hreflang: preview.lang}".html_safe
