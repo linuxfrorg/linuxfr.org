@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_25_172700) do
+ActiveRecord::Schema.define(version: 2023_04_16_084218) do
 
   create_table "accounts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "user_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2023_02_25_172700) do
     t.integer "min_karma", default: 20
     t.integer "max_karma", default: 20
     t.string "uploaded_stylesheet"
+    t.datetime "last_seen_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["confirmation_token"], name: "index_accounts_on_confirmation_token", unique: true
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["login"], name: "index_accounts_on_login"
