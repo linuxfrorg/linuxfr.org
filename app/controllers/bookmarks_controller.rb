@@ -37,7 +37,7 @@ class BookmarksController < ApplicationController
       @bookmark.node = Node.new(user_id: current_user.id, cc_licensed: false)
       @bookmark.node.preview_tags = params[:tags]
       @bookmark.valid?
-      flash.now[:alert] = "Votre lien semble invalide. Le confimez‑vous ?" unless @bookmark.link =~ /\A#{URI::regexp(['http', 'https'])}\z/
+      flash.now[:alert] = "Votre lien est invalide, veuillez le corriger." unless @bookmark.errors[:link].empty?
       render :new
     end
   end
