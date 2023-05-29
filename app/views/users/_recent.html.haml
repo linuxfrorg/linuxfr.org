@@ -20,6 +20,10 @@
     - if current_account.admin?
       %p Visibilité
       %ul
+        - if @user.account.plonked?
+          %li interdiction de tribune ;
+        - if @user.account.blocked?
+          %li interdiction de commentaire ;
         - if @user.comments.count > 0
           %li commentaires : #{ @user.comments.published.count } sur #{ @user.comments.count } ;
         - else
@@ -39,6 +43,7 @@
       %button.more.block Interdire de commenter
       .more_actions.block(style="display: none;")
         %ul
+          %li= button_to "réautorisation", moderation_block_index_path(nb_days: 0, account_id: @user.account.id), remote: true, class: "block"
           %li= button_to "24 h", moderation_block_index_path(nb_days: 1, account_id: @user.account.id), remote: true, class: "block"
           %li= button_to "48 h", moderation_block_index_path(nb_days: 2, account_id: @user.account.id), remote: true, class: "block"
           %li= button_to "une semaine", moderation_block_index_path(nb_days: 7, account_id: @user.account.id), remote: true, class: "block"
@@ -47,6 +52,7 @@
       %button.more.plonk Interdire de tribune
       .more_actions.plonk(style="display: none;")
         %ul
+          %li= button_to "réautorisation", moderation_plonk_index_path(nb_days: 0, account_id: @user.account.id), remote: true, class: "plonk"
           %li= button_to "24 heures", moderation_plonk_index_path(nb_days: 1, account_id: @user.account.id), remote: true, class: "plonk"
           %li= button_to "48 heures", moderation_plonk_index_path(nb_days: 2, account_id: @user.account.id), remote: true, class: "plonk"
           %li= button_to "une semaine", moderation_plonk_index_path(nb_days: 7, account_id: @user.account.id), remote: true, class: "plonk"
