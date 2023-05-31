@@ -10,6 +10,7 @@
       %li Rôle : #{a.display_role(@user.nodes.where(public: true).count>0)}
       %li Dernière connexion : #{a.current_sign_in_at ? l(@user.account.current_sign_in_at) : "-"}
       %li Dernière action : #{a.updated_at ? l(@user.account.updated_at) : "-"}
+      %li Dernière visite : #{a.last_seen_on ? l(@user.account.last_seen_on, format: :long) : "-"}
       %li Karma : #{a.karma} (minimum : #{a.min_karma}, maximum : #{a.max_karma})
       - if @user.homesite.present?
         %li Site perso : #{@user.homesite}

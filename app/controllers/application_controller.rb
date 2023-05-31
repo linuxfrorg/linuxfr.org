@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :reset_session, prepend: true
   before_action :seo_filter
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_account_last_seen, if: :account_signed_in?
   helper_method :url_for_content, :path_for_content, :current_user, :current_stylesheet
   rescue_from Canable::Transgression, with: :error_403
 
@@ -42,6 +43,15 @@ protected
     @popular_tags  = Tag.footer
     @friend_sites  = FriendSite.select([:url, :title])
     @dont_index    = params.has_key?(:order) || (request.headers["User-Agent"] =~ /AppEngine-Google/i)
+  end
+
+  def set_account_last_seen
+    # Update last seen only once a day to avoid too many database update
+    if Date.today - current_account.last_seen_on >= 1
+      # Use update_columns to ensure updated_at value is not changed with this
+      # automatic update
+      current_account.update_columns(last_seen_on: Date.today);
+    end
   end
 
   def dont_index?
