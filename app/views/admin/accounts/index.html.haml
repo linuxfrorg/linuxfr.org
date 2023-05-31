@@ -26,6 +26,10 @@
           = image_tag "/images/icones/x_red.svg", alt: "Inactif", title: "Inactif", width: "15px"
         - else
           = image_tag "/images/icones/check.svg", alt: "Actif", title: "Actif", width: "16px"
+        - if account.plonked?
+          📢 #{ image_tag "/images/icones/denied.png", alt: "interdiction de tribune", title: "interdiction de tribune", width: "16px" }
+        - if account.blocked?
+          🖍️  #{ image_tag "/images/icones/denied.png", alt: "interdiction de commentaire", title: "interdiction de commentaire", width: "16px" }
         %br
         = account.email
         - if account.user.homesite.present?

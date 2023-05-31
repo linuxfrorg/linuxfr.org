@@ -288,7 +288,11 @@ class Account < ActiveRecord::Base
   def block(nb_days, user_id)
     $redis.set("block/#{self.id}", 1)
     $redis.expire("block/#{self.id}", nb_days * 86400)
-    logs.create(description: "Interdiction de poster des commentaires pendant #{pluralize nb_days, "jour"}", user_id: user_id)
+    if nb_days > 0
+      logs.create(description: "Interdiction de poster des commentaires pendant #{pluralize nb_days, "jour"}", user_id: user_id)
+    else
+      logs.create(description: "Réautorisation de poster des commentaires", user_id: user_id)
+    end
   end
 
   def can_block?
@@ -304,7 +308,11 @@ class Account < ActiveRecord::Base
   def plonk(nb_days, user_id)
     $redis.set("plonk/#{self.id}", 1)
     $redis.expire("plonk/#{self.id}", nb_days * 86400)
-    logs.create(description: "Interdiction de tribune pendant #{pluralize nb_days, "jour"}", user_id: user_id)
+    if nb_days > 0
+      logs.create(description: "Interdiction de tribune pendant #{pluralize nb_days, "jour"}", user_id: user_id)
+    else
+      logs.create(description: "Réautorisation de poster des commentaires", user_id: user_id)
+    end
   end
 
   def can_plonk?
