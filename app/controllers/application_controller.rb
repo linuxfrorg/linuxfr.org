@@ -47,7 +47,7 @@ protected
 
   def set_account_last_seen
     # Update last seen only once a day to avoid too many database update
-    if Date.today - current_account.last_seen_on >= 1
+    if current_account.last_seen_on.nil? || Date.today - current_account.last_seen_on >= 1
       # Use update_columns to ensure updated_at value is not changed with this
       # automatic update
       current_account.update_columns(last_seen_on: Date.today);
