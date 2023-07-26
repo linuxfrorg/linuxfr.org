@@ -144,9 +144,9 @@ class Chat
               .css(display: "none", position: "absolute")
               .append("<img src=\"#{@totoz_url}#{totozName}\"/>")
       @totoz.append totoz
-    offset = $(event.target).offset()
-    [x, y] = [offset.left, offset.top]
-    totoz.css "z-index": "15", display: "block", top: y + 20, left: x + 20
+    position = $(event.target).position()
+    [x, y] = [position.left, position.top + event.target.offsetHeight]
+    totoz.css "z-index": "15", display: "block", top: y + 5, left: x + 5
 
   destroyTotoz: (event) =>
     totozId = encodeURIComponent(event.target.getAttribute("data-totoz-name")).replace(/[%']/g, "")
