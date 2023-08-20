@@ -24,7 +24,7 @@
   },
   "scripts": {
     "lint": "stylelint app/*/*/{,common/,parts/,responsive/}*.scss",
-    "pretty": "prettier --write app/*/*/{,common/,parts/,responsive/}*.scss"
+    "pretty": "prettier --write app/*/*/{,common/,parts/,responsive/}*.scss app/assets/*/*.js"
   },
   "stylelint": {
     "extends": "stylelint-config-recommended-scss",
