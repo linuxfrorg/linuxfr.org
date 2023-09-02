@@ -24,7 +24,9 @@
 <li><a href="#aide-boiteperso" class="anchor">Boîte d’identification personnelle</a></li>
 <li><a href="#aide-gagnants" class="anchor">Gagnants et prix</a></li>
 <li><a href="#aide-compteferme" class="anchor">Compte fermé et adresse de courriel déjà utilisée</a></li>
-<li><a href="#aide-fermercompte" class="anchor">Fermer son compte</a></li>
+<li><a href="#aide-fermercompte" class="anchor">Fermeture volontaire de son compte</a></li>
+<li><a href="#aide-fermercompteadmin" class="anchor">Fermeture de compte par l’équipe du site</a></li>
+<li><a href="#aide-fermercompteinactivite" class="anchor">Fermeture pour cause d’inactivité d’un compte</a></li>
 <li><a href="#aide-sondage" class="anchor">Sondage : qui peut voter et pour quoi ?</a></li>
 <li><a href="#aide-nouveautes" class="anchor">Comment recevoir des notifications de nouveaux commentaires sur un contenu déjà visité ?</a></li>
 <li><a href="#aide-multis" class="anchor">Comptes multiples ou « multis »</a></li>
@@ -42,6 +44,9 @@
 <li>Questions techniques
 <ul>
 <li><a href="#aide-cookies" class="anchor">Quels sont les cookies utilisés par le site ?</a></li>
+<li><a href="#aide-dcp" class="anchor">Quelles sont les données à caractère personnel traitées par le site ?</a></li>
+<li><a href="#aide-donneesautres" class="anchor">Quelles sont les données sans caractère personnel relatives au compte traitées par le site ?</a></li>
+<li><a href="#aide-donneesinutiles" class="anchor">Quelles sont les données inutiles au service qui sont supprimées des comptes fermés ?</a></li>
 <li><a href="#aide-certificatssl" class="anchor">HTTPS, certificat X.509/SSL/TLS et alertes dans les navigateurs</a></li>
 <li><a href="#aide-autrecertificatssl" class="anchor">Pourquoi ne prenez‑vous pas un certificat X.509/SSL/TLS gratuit ou payant de chez Machin qui est par défaut dans un navigateur ?</a></li>
 <li><a href="#aide-imgcertificatssl" class="anchor">Pourquoi les avatars et images ne s’affichent pas chez moi en HTTPS ?</a></li>
@@ -125,7 +130,6 @@
 <li>visiteur ou contributeur (<i>visitor</i>) : les autres personnes, tous celles qui ne sont pas dans une catégorie précédente, suivant si elles ont déjà écrit des contenus ou non.</li>
 </ul>
 
-
 <h2 id="aide-authentification">Visite (non) authentifiée, ou pourquoi ouvrir un compte ? <a href="#aide-authentification" class="anchor">¶</a></h2>
 <p>
 Pour passer du statut de visite non authentifiée à celui de visite authentifiée,
@@ -164,6 +168,8 @@ il suffit de se <a href="/compte/inscription">créer un compte personnel</a> sur
 <li>afficher ou non les signatures ou les avatars, ou afficher par défaut les journaux notés négativement ;</li>
 <li>être remarqué pour la qualité de ses contributions et rejoindre l’équipe d’animation de l’espace de rédaction ou modération.</li>
 </ul>
+
+<p>Avoir un compte entraîne par définition la création de <a href="#aide-dcp">données à caractère personnel</a>.</p>
 
 <h2 id="aide-animation">Animation de l’espace de rédaction <a href="#aide-animation" class="anchor">¶</a></h2>
 
@@ -227,7 +233,6 @@ il suffit de se <a href="/compte/inscription">créer un compte personnel</a> sur
 
 <p>L’équipe d’administration est par ailleurs abonnée aux listes de discussion <a href="https://lists.linuxfr.org/wws/arc/moderateurs"><em>moderateurs@</em></a> et <a href="https://lists.linuxfr.org/wws/arc/team"><em>team@</em></a>.</p>
 
-
 <h2 id="aide-dlfp">DLFP ? <em>Da Linux French Page</em> ? <a class="anchor" href="#aide-dlfp">¶</a></h2>
 
 <p>Le site <em>LinuxFr.org</em> a été et est encore parfois appelé <em>Da Linux French Page</em> ou simplement DLFP. On peut retrouver cette appellation sur d’<a href="/images/logos/">anciens logos</a>, par exemple.
@@ -275,8 +280,6 @@ soit les plus récents, soit les suffisamment bien notés et pas trop anciens).
 <li>coefficient de fréquence : 864 (≃ nombre de secondes par jour divisé par le nombre de votes par jour).</li>
 </ul>
 
-
-
 <h2 id="aide-karma">Système de karma <a href="#aide-karma" class="anchor">¶</a></h2>
 
 <p>Le karma est une note interne qui détermine le nombre d’avis quotidiens et la possibilité d’écrire sur le site de ceux qui sont authentifiés sur le site.</p>
@@ -299,8 +302,6 @@ soit les plus récents, soit les suffisamment bien notés et pas trop anciens).
 
 <p>Pour pouvoir afficher l’adresse de son site personnel ou de son compte Mastodon, il faut avoir un karma strictement supérieur à 0 (<a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/app/helpers/users_helper.rb">source</a>).</p>
 
-
-
 <h2 id="aide-toolbar">Barre d’outils <a href="#aide-toolbar" class="anchor">¶</a></h2>
 
 <p>La barre d’outils (<i>toolbar</i>) du site n’est disponible que pour les visites authentifiées.</p>
@@ -316,7 +317,6 @@ soit les plus récents, soit les suffisamment bien notés et pas trop anciens).
 
 <h2 id="aide-boiteperso">Boîte d’identification personnelle <a href="#aide-boiteperso" class="anchor">¶</a></h2>
 
-
 <p>Une boîte d’identification personnelle apparaît sur chaque page sous le logo, elle contient différentes informations :</p>
 <ul>
 <li>le nom de votre compte qui pointe vers l’adresse de votre page personnelle <em>LinuxFr.org</em> ;</li>
@@ -324,7 +324,6 @@ soit les plus récents, soit les suffisamment bien notés et pas trop anciens).
 <li>différents liens pour la gestion de votre compte.</li>
 </ul>
 <p><em>Note : le nombre d’avis auquel vous avez droit peut évoluer.</em></p>
-
 
 <h2 id="aide-gagnants">Gagnants et prix <a class="anchor" href="#aide-gagnants">¶</a></h2>
 <p>
@@ -334,17 +333,17 @@ ou encore des abonnements <a href="https://boutique.ed-diamond.com/"><em>GNU/Lin
 <a href="/news/nouveau">soumission de dépêche</a>, journaux, amélioration du code du site, logos, feuilles de style, etc.
 </p>
 
-
 <h2 id="aide-compteferme">Compte fermé et adresse de courriel déjà utilisée <a href="#aide-compteferme" class="anchor">¶</a></h2>
 
 <p>Une adresse de courriel ne peut être associée qu’à un seul compte. Si, à la création d’un nouveau compte, vous voyez l’erreur « Cette adresse de courriel est déjà utilisée », c’est donc qu’elle est déjà associée à un compte.</p>
 <ul>
 <li>soit il s’agit d’un compte ouvert, auquel cas il suffit de se connecter ou de redemander la réinitialisation du mot de passe sur l’adresse de courriel ;</li>
-<li>soit il s’agit d’un compte fermé, auquel cas il faut <a href="mailto:team@linuxfr.org">envoyer une demande aux administrateurs</a> pour réouverture du compte ; un compte peut avoir été <a href="#aide-fermercompte">fermé par l’utilisateur ou l’utilisatrice</a>, par une personne de l’équipe d’administration sur demande de l’utilisateur, ou pour non‑respect des <a href="/regles_de_moderation">règles de modération en vigueur sur le site</a>, ou pour cause d’inactivité ;
-afin de mieux sécuriser les mots de passe des comptes (voir la dépêche « <a href="https://linuxfr.org/news/un-an-apres-la-mise-a-jour-majeure-du-site-grand-nettoyage-dans-les-comptes-utilisateur">Un an après la mise à jour majeure du site, grand nettoyage dans les comptes utilisateur</a> »), nous avons fermé le 31 mars 2012 les environ 35 000 comptes personnels qui n’avaient pas été utilisés entre le 20 février 2011 et le 31 mars 2012, après plusieurs relances par courriel sur les adresses de comptes concernés.</li>
+<li>soit il s’agit d’un compte fermé, auquel cas il faut <a href="mailto:team@linuxfr.org">envoyer une demande aux administrateurs</a> pour réouverture du compte (les courriels nécessitent une confirmation de votre part) ; un compte peut avoir été <a href="#aide-fermercompte">fermé par l’utilisateur ou l’utilisatrice</a>, <a href="#aide-fermercompteadmin">par une personne de l’équipe d’administration</a> sur demande de l’utilisateur, ou pour non‑respect des <a href="/regles_de_moderation">règles de modération en vigueur sur le site</a>, ou pour <a href="#aide-fermercompteinactivite">cause d’inactivité</a>.</li>
 </ul>
 
-<h2 id="aide-fermercompte">Fermer son compte <a href="#aide-fermercompte" class="anchor">¶</a></h2>
+<p>Note historique : afin de mieux sécuriser les mots de passe des comptes (voir la dépêche « <a href="https://linuxfr.org/news/un-an-apres-la-mise-a-jour-majeure-du-site-grand-nettoyage-dans-les-comptes-utilisateur">Un an après la mise à jour majeure du site, grand nettoyage dans les comptes utilisateur</a> »), nous avons fermé le 31 mars 2012 les environ 35 000 comptes personnels qui n’avaient pas été utilisés entre le 20 février 2011 et le 31 mars 2012, après plusieurs relances par courriel sur les adresses de comptes concernés.</p>
+
+<h2 id="aide-fermercompte">Fermeture volontaire de son compte <a href="#aide-fermercompte" class="anchor">¶</a></h2>
 
 <p>
 La « fermeture du compte » consiste en une invalidation du compte, qui devient inutilisable.
@@ -370,8 +369,19 @@ La « purge du compte » consiste à totalement supprimer le compte et à anon
 Seule l’équipe d’administration peut réaliser cette opération, définitive par nature.
 </p>
 
+<p>Les comptes fermés depuis plus d’un an verront les <a href="#aide-donneesinutiles">données associées inutiles au service supprimées</a>.</p>
 
+<h2 id="aide-fermercompteadmin">Fermeture de compte par l’équipe du site <a href="#aide-fermercompteadmin" class="anchor">¶</a></h2>
 
+<p>Un compte peut être fermé par l’équipe du site (par exemple, pour lutter contre le spam ou pour non respect des <a href="/regles_de_moderation">règles en vigueur</a> sur le site. Dans ce cas, les adresses éventuelles de site personnel, de messagerie instantanée ou de compte Mastodon sont automatiquement supprimées (principalement pour le cas du spam afin de limiter son référencement).</p>
+
+<p>Les comptes fermés depuis plus d’un an verront les <a href="#aide-donneesinutiles">données associées inutiles au service supprimées</a>.</p>
+
+<h2 id="aide-fermercompteinactivite">Fermeture pour cause d’inactivité d’un compte <a href="#aide-fermercompteinactivite" class="anchor">¶</a></h2>
+
+<p>Les comptes inactifs pendant trois ans seront fermés.</p>
+
+<p>Les comptes fermés depuis plus d’un an verront les <a href="#aide-donneesinutiles">données associées inutiles au service supprimées</a>.</p>
 
 <h2 id="aide-sondage">Sondage : qui peut voter et pour quoi ? <a class="anchor" href="#aide-sondage">¶</a></h2>
 
@@ -380,7 +390,6 @@ Seule l’équipe d’administration peut réaliser cette opération, définitiv
 <p>La liste des options proposées est volontairement limitée : tout l’intérêt (ou son absence) de ce type de sondage réside dans le fait de forcer le lectorat à faire un choix. Les réponses multiples sont interdites pour les mêmes raisons. Il est donc inutile de se plaindre au sujet du faible nombre de réponses proposées, ou de l’impossibilité de choisir plusieurs réponses. 76,78 % des personnes sondées estiment que ces sondages sont ineptes.</p>
 
 <p>Le lectorat, authentifié ou non, peuvent voter. Le système se base sur l’adresse IP de chaque personne votant, limitant ainsi le vote multiple sans léser les personnes qui accéderaient au site depuis une même adresse IP (<a href="https://fr.wikipedia.org/wiki/Proxy" title="Définition Wikipédia">proxy</a>, <a href="https://fr.wikipedia.org/wiki/NAT" title="Définition Wikipédia">NAT</a>, adresse IP dynamique, etc.). Il est possible, pour une même adresse IP, de voter une fois chaque jour.</p>
-
 
 <h2 id="aide-nouveautes">Comment recevoir des notifications de nouveaux commentaires sur un contenu déjà visité ? <a class="anchor" href="#aide-nouveautes">¶</a></h2>
 
@@ -392,8 +401,6 @@ Seule l’équipe d’administration peut réaliser cette opération, définitiv
 
 <p>Sur les autres pages, on est actuellement notifié des réponses non lues à ses commentaires via l’icône <img src="/images/icones/chat.png" alt="notification" /> qui apparaît à côté du lien « <a href="/tableau-de-bord">Mon tableau de bord</a> », mais pas de commentaires non lus sur les contenus déjà visités à côté du lien « <a href="/readings">Les contenus que j’ai lus</a> ».</p>
 
-
-
 <h2 id="aide-multis">Comptes multiples ou « multis » <a class="anchor" href="#aide-multis">¶</a></h2>
 
 <p>Toute création de comptes multiples par une même personne, quelle qu’en soit la raison, <em>pour une utilisation simultanée</em> de ces comptes, est considérée comme un abus de ressources. Cette pratique est souvent utilisée avec une volonté de manipulation du système de karma (notes en masse). Elle est donc interdite et les comptes sont fermés en cas de détection par l’équipe du site. Les comptes sont personnels.</p>
@@ -402,15 +409,11 @@ Seule l’équipe d’administration peut réaliser cette opération, définitiv
 
 <p>Le souci habituel posé par les comptes multiples <em>actifs</em> concerne les diverses manipulations possibles, comme encenser son propre contenu ou commentaire en utilisant des commentaires d’autres comptes à soi, voter massivement pour soi, ou pour ou contre quelqu’un, etc.</p>
 
-
 <h2 id="aide-ancienscontenus">Pourquoi est‑il impossible de commenter un contenu vieux de plus de trois mois ? <a class="anchor" href="#aide-sondage">¶</a></h2>
 
 <p>Dans un monde idéal, <em>LinuxFr.org</em> laisserait tout le monde aller écrire des commentaires partout. Mais en réalité, il y a des spammeurs, des monomaniaques égocentriques, des hallucinés, des prosélytes politiques ou religieux, etc. Bref, des gens qui profiteront du fait que quasi personne d’humain n’ira lire les vieux contenus (donc pas de système d’auto‐modération effectif) alors que les moteurs de recherche les indexeront. Sans parler des personnes qui attendront désespérément une réponse à leur question formulée sur un contenu ancien.</p>
 
-<p>Un autre aspect légal est à prendre en compte : <a href="https://fr.wikipedia.org/wiki/Diffamation_en_droit_fran%C3 %A7ais">au bout de trois mois de parution</a> d’un contenu, la prescription standard en matière de diffamation publique est atteinte. Au bout de six mois, elle concerne donc aussi tous les commentaires dudit contenu. Cela limite le risque aux commentaires sur les contenus récents, au lieu de la centaine de milliers de contenus et de plus d’un million et demi de commentaires (attention, il y a une prescription d’un an en cas de discrimination spécialement interdite par exemple).</p>
-
-
-
+<p>Un autre aspect légal est à prendre en compte : <a href="https://fr.wikipedia.org/wiki/Diffamation_en_droit_fran%C3%A7ais">au bout de trois mois de parution</a> d’un contenu, la prescription standard en matière de diffamation publique est atteinte. Au bout de six mois, elle concerne donc aussi tous les commentaires dudit contenu. Cela limite le risque aux commentaires sur les contenus récents, au lieu de la centaine de milliers de contenus et de plus d’un million et demi de commentaires (attention, il y a une prescription d’un an en cas de discrimination spécialement interdite par exemple).</p>
 
 <h2 id="aide-offresemploi">Peut‑on proposer des offres d’emploi sur le site ? <a class="anchor" href="#aide-offresemploi">¶</a></h2>
 
@@ -429,7 +432,6 @@ Seule l’équipe d’administration peut réaliser cette opération, définitiv
 <p>Dans la vie, lorsqu’on ne sait pas faire quelque chose, soit on apprend à le faire, soit on le fait faire par quelqu’un. Et quand on le fait faire par quelqu’un, souvent ce n’est pas gratuit. Alors certes les tarifs demandés peuvent paraître élevés, mais en général ils sont conformes à ce qui se fait dans le milieu de la prestation informatique. Parce que oui, demander à quelqu’un d’écrire du code pour résoudre un problème, c’est une prestation informatique. Et oui, c’est un métier qui aujourd’hui est plutôt bien rémunéré.</p>
 
 <p>Alors si vous aussi vous voulez gagner plein de thunes, et facturer plus de 75 euros de l’heure un bête hello world ou un truc un peu plus compliqué, commencez par essayer de faire votre travail. Relisez l’énoncé. En posant votre question, essaiez de le reformuler comme vous l’avez compris. Si vous n’avez rien compris, dites-le «·j’ai pas compris ce que je dois faire. Quelqu’un peut-il me l’expliquer?·» (si possible en indiquant le chapitre du cours que vous examinez, ça peut aider à resituer le contexte). Si vous avez compris l’énoncé, mais que vous n’arrivez pas à coder, relisez vos cours. Écrivez quelque chose même si c’est faux, et postez votre code. Vous trouverez alors quelqu’un qui sera en mesure de vous expliquer ce que vous avez bien fait et ce qui ne va pas. En agissant comme ça, vous pourrez comprendre, et avec le temps, vous pourrez à votre tour demander à une bonne rémunération pour écrire du code.</p>
-
 
 <h2 id="aide-cookies">Quels sont les cookies utilisés par le site ? <a href="#aide-cookies" class="anchor">¶</a></h2>
 
@@ -468,6 +470,86 @@ Seule l’équipe d’administration peut réaliser cette opération, définitiv
   </li>
 </ul>
 
+<h2 id="aide-dcp">Quelles sont les données à caractère personnel (DCP) traitées par le site ? <a href="#aide-dcp" class="anchor">¶</a></h2>
+
+<p>Cette liste de données à caractère personnel concerne les visites du site effectuées avec un compte. Il n’y a pas de données à caractère personnel lors des visites anonymes sans compte.</p>
+
+<p>La loi (le <a href="https://fr.wikipedia.org/wiki/R%C3%A8glement_g%C3%A9n%C3%A9ral_sur_la_protection_des_donn%C3%A9es">Règlement sur la protection des données à caractère personnel ou RGPD</a> et la <a href="https://fr.wikipedia.org/wiki/Loi_informatique_et_libert%C3%A9s">Loi informatique et libertés ou LIL</a> en France) requiert une base légale pour chaque traitement de DCP. Cette obligation s’applique quelle que soit l’état d’activité du compte. Ainsi, si un compte est inactif, une base légale doit exister pour justifier d’une conservation des DCP associées.</p>
+
+<p>Pour les comptes actifs, des données sont obligatoirement stockées en base pour rendre le service. Les tâches suivantes sont réalisées pour le service :</p>
+<ul>
+<li>transmettre un mot de passe initial pour créer un compte en ayant validé l’adresse. Cette tâche utilise l’adresse de courriel ;</li>
+<li>transmettre des notifications liées aux services, par exemple les publications/rejets de dépêches ou les attributions de prix mensuels. Cette tâche utilise l’adresse de courriel ;</li>
+<li>afficher les données publiques liées au compte (le compte lui-même, les contenus du compte, les commentaires du compte, etc.). Cette tâche nécessite en interne un identifiant unique par compte ;</li>
+<li>gérer les litiges éventuels (par exemple, le manifestement illégal, le prétendument illégal) et le cadre légal (par exemple, la modification des données de son propre compte, le droit d’auteur). Cette tâche nécessite d’avoir des données d’identification, d’attribution et de contact pour les publications de contenus / commentaires faits par des tiers (les comptes) ;</li>
+<li>détecter et gérer des éventuels abus du service (comptes multiples, etc.).</li>
+</ul>
+
+<p>Le RGPD limite la conservation des DCP. Dans le présent contexte, cette obligation concerne à la fois les comptes toujours ouverts mais inutilisés pendant une certaine durée aussi bien que les comptes fermés. En tout état de cause, LinuxFr.org n’a pas d’intérêt ou de besoin légitime à conserver indéfiniment ces données, dès qu’une période raisonnable est passée. Pour définir cette période raisonnable, LinuxFr.org tient compte de la prescription après 3 mois pour le droit de la presse en France. LinuxFr.org estime que les risques de revoir le même spammeur avec les mêmes coordonnées diminuent énormément en quelques mois ou mêmes semaines. Etc.</p>
+
+<p>Les données à caractère personnel nécessaires à la fourniture du service :</p>
+<ul>
+<li>identifiant ou pseudo : unique dans l’ensemble du site, il définit aussi un élément de l’adresse qui sera associé au compte (la partie entre le '/users/' et le '/' dans l’adresse associée au compte). Il n’est pas modifiable par la personne utilisant le compte. Il est nécessaire pour créer un compte identifiable de l’extérieur de façon unique.</li>
+<li>nom affichable : choisi par la personne utilisant le compte et modifiable à tout moment tant que le compte est ouvert. Il est nécessaire à identifier l’utilisateur aux autres utilisateurs du site (sachant que l’identifiant ou pseudo est utilisé à défaut).</li>
+<li>adresse de courriel : définie par la personne utilisant le compte, validée par le courriel initialement envoyé à la création du compte ; elle est modifiable par la suite tant que le compte est ouvert. Il est nécessaire pour valider l’humanité du compte et pour les notifications.</li>
+<li>mot de passe : initialement généré aléatoirement et pouvant être modifié à tout moment par la personne utilisant le compte tant que celui-ci est ouvert. Il sert à s’authentifier sur le site.</li>
+<li>adresse IP de connexion courante ;</li>
+<li>adresse IP de connexion précédente.</li>
+</ul>
+
+<p>Les données à caractère personnel non-obligatoires pour le service et fournies par les utilisateurs sont :</p>
+<ul>
+<li>une image d’avatar : la personne utilisant le compte peut y associer une image (qui peut ou non l’identifier) et peut la modifier à tout moment tant que le compte est ouvert ;</li>
+<li>une adresse d’un site web personnel : la personne utilisant le compte peut y associer une telle adresse et peut la modifier à tout moment tant que le compte est ouvert ;</li>
+<li>une adresse de messagerie instantanée XMPP : la personne utilisant le compte peut y associer une telle adresse et peut la modifier à tout moment tant que le compte est ouvert ;</li>
+<li>une adresse de compte Mastodon : la personne utilisant le compte peut y associer une telle adresse et peut la modifier à tout moment tant que le compte est ouvert ;</li>
+<li>une signature ajoutée à chaque commentaire : la personne utilisant le compte peut y associer une telle signature et peut la modifier à tout moment tant que le compte est ouvert ;</li>
+<li>une feuille de style personnelle : la personne utilisant le compte peut y associer une telle feuille de style et peut la modifier à tout moment tant que le compte est ouvert.</li>
+</ul>
+
+<h2 id="aide-donneesautres">Quelles sont les données sans caractère personnel relatives au compte traitées par le site ? <a href="#aide-donneesautres" class="anchor">¶</a></h2>
+
+<p>Cette liste de données sans caractère personnel concerne les visites du site effectuées avec un compte.</p>
+
+<p>Le compte peut être associé à des contenus (dépêches, journal personnel, entrées de forums, sondages, pages wiki, liens, entrées dans le système de suivi), des commentaires, des notes ou des étiquetages, ainsi que des contenus sur lesquels le compte a contribué. Le compte peut aussi être associé à des applications ou sites tiers, ayant été autorisés à accéder à certaines informations via une API Oauth2. Le compte est associé éventuellement à des opérations administratives (changement de mot de passe, sanctions temporaires d’interdiction de commenter, etc.).</p>
+
+<p>La fermeture du compte était sans effet sur ces données. Une demande d’anonymisation (réattribution de tout à l’utilisateur fictif Anonyme) est possible en passant par l’équipe du site.</p>
+
+<h2 id="aide-donneesinutiles">Quelles sont les données inutiles au service qui sont supprimées des comptes fermés ? <a href="#aide-donneesinutiles" class="anchor">¶</a></h2>
+
+<p><a href="https://linuxfr.org/news/regles-de-perennite-des-comptes-linuxfr-org-et-donnees-a-caractere-personnel">Depuis le 28 juin 2023</a>, les données associées inutiles au service des comptes fermés sont supprimées.</p>
+
+<p>Les comptes inactifs pendant trois ans seront fermés :</p>
+
+<ul>
+<li>les éventuels contenus et commentaires non publics de ces comptes seront supprimés ;
+<li>en l’absence de contenus ou commentaires publics ou de contributions à des contenus publics, le compte sera purgé ;
+<li>sinon
+  <ul>
+  <li>seront conservés l’identifiant ou pseudo, l’adresse de courriel, le nom affichable et la signature (pour l’attribution du droit d’auteur) ;</li>
+  <li>seront supprimées de la base le mot de passe, les adresses IP de création du compte et de dernière connexion, l’image éventuelle d’avatar, les éventuelles adresses de site web personnel, de messagerie instantanée XMPP et/ou de compte Mastodon, l’éventuelle feuille de style personnelle.</li>
+  </ul>
+</li>
+</ul>
+
+<p>Précision : la durée de trois ans commence à courir à partir du lendemain de la dernière activité sur le compte.</p>
+
+<p>Les comptes fermés (par les personnes détentrices des comptes ou par l’équipe) depuis plus d’un an verront les données associées réduites par rapport au besoin de service :</p>
+
+<ul>
+<li>les éventuels contenus et commentaires non publics de ces comptes seront supprimés ;</li>
+<li>en l’absence de contenus ou commentaires publics ou de contributions à des contenus publics, le compte sera purgé ;</li>
+<li>sinon
+  <ul>
+   <li>seront conservés l’identifiant ou pseudo, le nom affichable et la signature (pour l’attribution du droit d’auteur) ;</li>
+   <li>seront supprimées de la base active l’adresse de courriel, le mot de passe, les adresses IP de création du compte et de dernière connexion, l’image éventuelle d’avatar, les éventuelles adresses de site web personnel, de messagerie instantanée XMPP et/ou de compte Mastodon, l’éventuelle feuille de style personnelle.</li>
+  </ul>
+</li>
+</ul>
+
+<p>La principale différence concerne la conservation de l’adresse de courriel pour permettre une réouverture du compte et un envoi de nouveau mot de passe en cas de demande.</p>
+
+<p>Ces opérations seront faites manuellement dans les meilleurs délais (par une équipe de bénévoles initialement, puis, et à terme, automatiquement).</p>
 
 <h2 id="aide-certificatssl">HTTPS, certificat X.509/TLS/SSL et alertes dans les navigateurs <a href="#aide-certificatssl" class="anchor">¶</a></h2>
 
@@ -480,7 +562,6 @@ Seule l’équipe d’administration peut réaliser cette opération, définitiv
 <img alt="Capture avec Firefox 3.5 sans certificat racine" src="/images/https_firefox_3_5_sans_root_cert.png" />
 
 <p>Avant le 5 juin 2015, <em>LinuxFr.org</em> utilisait l’autorité de certification communautaire CAcert. Entre le 5 juin 2015 et le 3 juin 2018, <em>LinuxFr.org</em> utilisait un certificat offert (merci à eux) par la <a href="https://www.gandi.net/fr">société Gandi</a>,un bureau d’enregistrement de noms de domaines (<em>registrar</em>).</p>
-
 
 <h2 id="aide-autrecertificatssl">Pourquoi ne prenez‑vous pas un certificat X.509/SSL/TLS gratuit ou payant de chez Machin qui est par défaut dans un navigateur ? <a href="#aide-autrecertificatssl" class="anchor">¶</a></h2>
 
@@ -505,7 +586,6 @@ Seule l’équipe d’administration peut réaliser cette opération, définitiv
     <li><a href="/news/licann-et-liab-somment-verisign-de-suspendre-leur-service-de-r"><em>DLFP</em> : « L’ICANN et l’IAB somment Verisign de suspendre leur service de redirection »</a> (2003) ;</li>
     <li><a href="/news/verisign-detruit-lun-des-fondements-dinternet"><em>DLFP</em> : « VeriSign détruit l’un des fondements d’Internet »</a> (2003).</li>
 </ul>
-
 
 <h2 id="aide-imgcertificatssl">Pourquoi les avatars et images ne s’affichent pas chez moi en HTTPS ? <a href="#aide-imgcertificatssl" class="anchor">¶</a></h2>
 
