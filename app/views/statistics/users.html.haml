@@ -22,9 +22,9 @@
       %li= link_to("Domaines Mastodon", "#stats_mastodon")
       %li= link_to("Utilisation des fonctionnalités", "#stats_fonctionnalites")
       %li= link_to("Style (CSS)", "#stats_css")
-      %li= link_to("Karmas des utilisatrices et utilisateurs", "#stats_karma")
+      %li= link_to("Karma des utilisatrices et utilisateurs", "#stats_karma")
       %li= link_to("Ancienneté des comptes", "#stats_anciennete")
-      %li= link_to("Statuts des comptes", "#stats_state")
+      %li= link_to("Statut des comptes", "#stats_state")
 
       %p= link_to("Retour à l’ensemble des statistiques", "/statistiques")
 
@@ -35,7 +35,7 @@
     %li
       #{pluralize @stats.nb_accounts, "compte"}
     %li
-      #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois avec #{pluralize @stats.no_visit["avg"], "jour"} de moyenne sans visite et #{pluralize @stats.no_visit["stddev"], "jour"} d’écart‑type
+      #{pluralize @stats.nb_recently_seen_accounts, "compte utilisé", "comptes utilisés"} sur le site au cours des trois derniers mois avec #{pluralize @stats.no_visit["avg"], "jour"} de moyenne sans visite et #{pluralize @stats.no_visit["stddev"], "jour"} d’écart‑type
     %li
       #{pluralize @stats.nb_waiting_accounts, "compte"} en attente
     %li
@@ -47,9 +47,9 @@
 
   %h2#stats_contenus Contenus publiés
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_seen_accounts, "compte utilisé", "comptes utilisés"} sur le site au cours des trois derniers mois :
   %table
-    - maxval = @stats.nb_recently_used_accounts
+    - maxval = @stats.nb_recently_seen_accounts
     %tr
       %th Type de contenu
       %th Depuis Epoch
@@ -92,11 +92,11 @@
 
   %h2#stats_news_versions Contribution sur une dépêche
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_seen_accounts, "compte utilisé", "comptes utilisés"} sur le site au cours des trois derniers mois :
   %table
     - last3Months = @stats.nb_news_versions_authors(90)[0]
     - lastYear = @stats.nb_news_versions_authors(365)[0]
-    - maxval = @stats.nb_recently_used_accounts
+    - maxval = @stats.nb_recently_seen_accounts
     %tr
       %th &nbsp;
       %th Depuis Epoch
@@ -125,11 +125,11 @@
 
   %h2#stats_commentaires Commentaires
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_seen_accounts, "compte utilisé", "comptes utilisés"} sur le site au cours des trois derniers mois :
   %table
     - last3Months = @stats.nb_comment_authors(90)[0]
     - lastYear = @stats.nb_comment_authors(365)[0]
-    - maxval = @stats.nb_recently_used_accounts
+    - maxval = @stats.nb_recently_seen_accounts
     %tr
       %th &nbsp;
       %th Depuis Epoch
@@ -158,9 +158,9 @@
 
   %h2#stats_tags Étiquettes (tags)
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_seen_accounts, "compte utilisé", "comptes utilisés"} sur le site au cours des trois derniers mois :
   %table
-    - maxval = @stats.nb_recently_used_accounts
+    - maxval = @stats.nb_recently_seen_accounts
     %tr
       %th &nbsp;
       %th Depuis Epoch
@@ -189,9 +189,9 @@
 
   %h2#stats_infosperso Informations personnelles
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_seen_accounts, "compte utilisé", "comptes utilisés"} sur le site au cours des trois derniers mois :
   %table
-    - maxval = @stats.nb_recently_used_accounts
+    - maxval = @stats.nb_recently_seen_accounts
     %tr
       %th Information
       %th Nombre de comptes
@@ -224,9 +224,9 @@
 
   %h2#stats_courriel Domaines des courriels
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_seen_accounts, "compte utilisé", "comptes utilisés"} sur le site au cours des trois derniers mois :
   %table
-    - maxval = @stats.nb_recently_used_accounts
+    - maxval = @stats.nb_recently_seen_accounts
     %tr
       %th Domaines à plus de trois comptes
       %th Nombre de comptes
@@ -242,9 +242,9 @@
 
   %h2#stats_xmpp Domaines XMPP
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_seen_accounts, "compte utilisé", "comptes utilisés"} sur le site au cours des trois derniers mois :
   %table
-    - maxval = @stats.nb_recently_used_accounts
+    - maxval = @stats.nb_recently_seen_accounts
     %tr
       %th Domaines à plus de trois comptes
       %th Nombre de comptes
@@ -260,9 +260,9 @@
 
   %h2#stats_mastodon Domaines Mastodon
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_seen_accounts, "compte utilisé", "comptes utilisés"} sur le site au cours des trois derniers mois :
   %table
-    - maxval = @stats.nb_recently_used_accounts
+    - maxval = @stats.nb_recently_seen_accounts
     %tr
       %th Domaines à plus de trois comptes
       %th Nombre de comptes
@@ -278,9 +278,9 @@
 
   %h2#stats_fonctionnalites Utilisation des fonctionnalités
   %p
-    Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides"} au cours des trois derniers mois :
+    Sur #{pluralize @stats.nb_recently_seen_accounts, "compte utilisé", "comptes utilisés"} sur le site au cours des trois derniers mois :
   %table
-    - maxval = @stats.nb_recently_used_accounts
+    - maxval = @stats.nb_recently_seen_accounts
     %tr
       %th Fonctionnalité
       %th Nombre de comptes
@@ -337,9 +337,9 @@
   %p
     = link_to("Changer de style", "/stylesheet/modifier")
   - if @stats.by_style.any?
-    %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
+    %p Sur #{pluralize @stats.nb_recently_seen_accounts, "compte utilisé", "comptes utilisés"} sur le site au cours des trois derniers mois :
     %table
-      - maxval = @stats.nb_recently_used_accounts
+      - maxval = @stats.nb_recently_seen_accounts
       %tr
         %th Feuille de style
         %th Nombre de comptes
@@ -354,8 +354,8 @@
   - else
     Aucune feuille de style CSS autre que celle par défaut
 
-  %h2#stats_karma Karmas des utilisatrices et utilisateurs
-  %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
+  %h2#stats_karma Karma des utilisatrices et utilisateurs
+  %p Sur #{pluralize @stats.nb_recently_seen_accounts, "compte utilisé", "comptes utilisés"} sur le site au cours des trois derniers mois :
   %table
     %tr
       %th Karma
@@ -374,10 +374,10 @@
           .stat.misc(style="width: #{(width_stats * karma["cnt"] / maxval).to_i}px;")= karma["cnt"]
         %td #{@stats.pctrecent(karma["cnt"])}
 
-  %h2#stats_anciennete Anciennetés des comptes
-  %p Sur #{pluralize @stats.nb_recently_used_accounts, "compte valide et s’étant connecté", "comptes valides et s’étant connectés"} au cours des trois derniers mois :
+  %h2#stats_anciennete Ancienneté des comptes
+  %p Sur #{pluralize @stats.nb_recently_seen_accounts, "compte utilisé", "comptes utilisés"} sur le site au cours des trois derniers mois :
   %table
-    - maxval = @stats.nb_recently_used_accounts
+    - maxval = @stats.nb_recently_seen_accounts
     %tr
       %th Année
       %th Nombre de comptes
@@ -390,9 +390,9 @@
           .stat.misc(style="width: #{(width_stats * year["cnt"] / maxval).to_i}px;")= year["cnt"]
         %td #{@stats.pctrecent(year["cnt"])}
 
-  %h2#stats_state Statuts des comptes
+  %h2#stats_state Statut des comptes
   %p Statut des comptes par tranche de #{@stats.slot_size}
-  - translate_account = {"accountrecent"=>"récemment connecté", "accountinactive"=>"fermé", "accountrecentinactive"=>"fermé récemment connecté", "account"=>"autre", "accountpurged"=>"purgé"}
+  - translate_account = {"accountrecent"=>"récemment utilisé", "accountinactive"=>"fermé", "accountrecentinactive"=>"fermé récemment utilisé", "account"=>"autre", "accountpurged"=>"purgé"}
   %table
     %tr
       %th Tranche
