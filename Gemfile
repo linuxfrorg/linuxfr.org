@@ -34,7 +34,7 @@ gem "nokogiri",                "~>1.10"
 gem "rinku",                   "~>2.0"
 gem "redis",                   "~>4.0"
 gem "sitemap_generator",       "~>2.1"
-gem "state_machine",           "~>1.2"
+gem "state_machines-activerecord"
 
 # Gems used for assets
 assets = !%w(production alpha).include?(ENV['RAILS_ENV'])
