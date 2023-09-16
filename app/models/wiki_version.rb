@@ -14,7 +14,7 @@
 
 #
 class WikiVersion < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :wiki_page
   has_one :node, through: :wiki_page
 

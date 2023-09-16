@@ -25,7 +25,7 @@ class Tracker < Content
   self.table_name = "trackers"
   self.type = "Suivi"
 
-  belongs_to :assigned_to_user, class_name: "User"
+  belongs_to :assigned_to_user, class_name: "User", optional: true
   belongs_to :category
 
   attr_accessor :pot_de_miel

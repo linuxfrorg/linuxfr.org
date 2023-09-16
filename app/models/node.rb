@@ -23,7 +23,7 @@
 # and facilitates the transformation of one content to another.
 #
 class Node < ActiveRecord::Base
-  belongs_to :user     # can be NULL
+  belongs_to :user, optional: true     # can be NULL
   belongs_to :content, polymorphic: true, inverse_of: :node
   has_many :comments, inverse_of: :node
   has_many :taggings, -> { includes(:tag) }, dependent: :destroy

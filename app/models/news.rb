@@ -39,7 +39,7 @@ class News < Content
   self.type = "Dépêche"
 
   belongs_to :section
-  belongs_to :moderator, class_name: "User"
+  belongs_to :moderator, class_name: "User", optional: true
   has_many :links, dependent: :destroy, inverse_of: :news
   has_many :paragraphs, dependent: :destroy, inverse_of: :news
   accepts_nested_attributes_for :links, allow_destroy: true, reject_if: proc { |attrs| attrs['url'].blank? }
