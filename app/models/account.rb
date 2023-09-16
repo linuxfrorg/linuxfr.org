@@ -51,7 +51,7 @@ class Account < ActiveRecord::Base
 
   has_many :applications, class_name: 'Doorkeeper::Application', as: :owner
   has_many :logs, dependent: :destroy
-  belongs_to :user, inverse_of: :account, dependent: :delete
+  belongs_to :user, inverse_of: :account, dependent: :delete, optional: true
   accepts_nested_attributes_for :user, reject_if: :all_blank
 
   mount_uploader :uploaded_stylesheet, StylesheetUploader
