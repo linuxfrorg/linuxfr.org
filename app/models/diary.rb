@@ -24,7 +24,7 @@ class Diary < Content
   self.type = "Journal"
 
   belongs_to :owner, class_name: 'User'
-  belongs_to :converted_news, class_name: 'News'
+  belongs_to :converted_news, class_name: 'News', optional: true
 
   validates :title,     presence: { message: "Le titre est obligatoire" },
                         length: { maximum: 100, message: "Le titre est trop long" }

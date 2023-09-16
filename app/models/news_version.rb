@@ -17,7 +17,7 @@
 #
 class NewsVersion < ActiveRecord::Base
   belongs_to :news
-  belongs_to :user
+  belongs_to :user, optional: true
 
   acts_as_list column: 'version', scope: :news
 
