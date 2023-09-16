@@ -27,7 +27,7 @@ class Image < Struct.new(:link, :title, :alt_text)
   end
 
   def register_in_redis
-    if $redis.exists "img/#{link}"
+    if $redis.exists? "img/#{link}"
       $redis.del "img/err/#{link}"
       return
     end

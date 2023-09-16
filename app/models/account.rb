@@ -213,7 +213,7 @@ class Account < ActiveRecord::Base
 
   def read(node)
     node.read_by(self.id)
-    $redis.srem "dashboard/#{self.id}", node.id
+    $redis.srem? "dashboard/#{self.id}", node.id
   end
 
   def notify_answer_on(node_id)
@@ -282,7 +282,7 @@ class Account < ActiveRecord::Base
 ### Blocked for comments ###
 
   def blocked?
-    $redis.exists("block/#{self.id}")
+    $redis.exists?("block/#{self.id}")
   end
 
   def block(nb_days, user_id)
@@ -302,7 +302,7 @@ class Account < ActiveRecord::Base
 ### Plonk for the board ###
 
   def plonked?
-    $redis.exists("plonk/#{self.id}")
+    $redis.exists?("plonk/#{self.id}")
   end
 
   def plonk(nb_days, user_id)
