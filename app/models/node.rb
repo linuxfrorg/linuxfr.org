@@ -76,7 +76,7 @@ class Node < ActiveRecord::Base
 ### Votes ###
 
   def vote_by?(account_id)
-    $redis.exists("nodes/#{self.id}/votes/#{account_id}")
+    $redis.exists?("nodes/#{self.id}/votes/#{account_id}")
   end
 
   def vote_for(account)
