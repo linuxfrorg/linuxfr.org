@@ -80,7 +80,7 @@
         - if account.user.wiki_versions.count > 0
           %span{title: "Versions de wiki"}
             🔀 #{ account.user.wiki_versions.count }
-      %td= account.created_at.to_s(:posted)
+      %td= account.created_at.to_fs(:posted)
       %td= account.display_last_seen_on
       %td
         - if account.inactive? && account.user_id != 1
