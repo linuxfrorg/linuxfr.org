@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails",                   "~>6.1"
+gem "rails",                   "~>7.0"
 gem "nio4r",                   "2.5.2" # 2.5.3 is not compatible with ruby 2.3
 
 gem "actionpack-page_caching"
