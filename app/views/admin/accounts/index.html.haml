@@ -73,7 +73,7 @@
             #{ (account.user.tags.count - account.user.tags.visible.count) }
             #{ image_tag "/images/icones/denied.png", alt: "masqués", title: "masqués", width: "16px" }
           %br
-      %td= account.created_at.to_s(:posted)
+      %td= account.created_at.to_fs(:posted)
       %td= account.display_last_seen_on
       %td
         - if account.inactive? && account.user_id != 1
