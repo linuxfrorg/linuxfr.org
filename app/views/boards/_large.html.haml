@@ -3,7 +3,7 @@
   .inbox-container
     .inbox.large
       - boards.reverse.each do |board|
-        = render board, board: board, box: box, is_large: true
+        = render 'boards/board', board: board, box: box, is_large: true
   - if current_account && current_account.can_post_on_board?
     = form_tag "/board", class: 'chat' do
       = hidden_field :board, :object_type, value: board.object_type

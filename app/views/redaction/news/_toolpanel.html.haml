@@ -58,9 +58,9 @@
         #{"caractère".pluralize(news_content.length)}
     %hr
     %p Participants
-    = render 'attendees', attendees: news.attendees, enable_reassign: enable_reassign
+    = render 'redaction/news/attendees', attendees: news.attendees, enable_reassign: enable_reassign
   #tab-history.tab-content
-    = render 'editions', news: news
+    = render 'redaction/news/editions', news: news
   #tab-help.tab-content
     - if current_page?(moderation_news_path(news))
       %p Pour ajouter une note des modérateurs, commencez simplement une ligne par « <code>N. D. M. :</code> ».
@@ -68,7 +68,7 @@
         L’icône
         = image_tag "/images/icones/edit-cut.png", alt: "Suggestion de découpe"
         sert à suggérer où découper entre les première et seconde parties de la dépêche.
-    = render 'wiki_help'
+    = render 'redaction/news/wiki_help'
 
 .popup-event{"data-popup-id": "toolpanel"}
   = image_tag("/images/icones/arrow-right.svg", alt: "Afficher les détails", title: "Afficher les détails")
