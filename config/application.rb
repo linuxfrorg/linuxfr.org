@@ -3,10 +3,15 @@ require_relative 'boot'
 
 require 'rails/all'
 
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module LinuxfrOrg
   class Application < Rails::Application
+    # Default, this line can be removed in rails 7
+    config.autoloader = :zeitwerk
+
     I18n.enforce_available_locales = true
 
     config.generators do |g|
@@ -19,6 +24,11 @@ module LinuxfrOrg
     config.after_initialize do
       ActiveSupport::XmlMini.backend = "Nokogiri"
     end
+
+    # Configuration for the application, engines, and railties goes here.
+    #
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
 
     config.time_zone = 'Paris'
 

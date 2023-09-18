@@ -5,10 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails",                   "~>5.2"
+gem "rails",                   "~>6.1"
 gem "nio4r",                   "2.5.2" # 2.5.3 is not compatible with ruby 2.3
 
-gem "actionpack-page_caching", github: "linuxfrorg/actionpack-page_caching"
+gem "actionpack-page_caching"
 gem "ansi",                    "~>1.4", require: false
 gem "acts_as_list",            "~>0.4"
 gem "bitfields",               "~>0.4"
@@ -17,12 +17,13 @@ gem "canable",                 "~>0.1"
 gem "carrierwave",             "~>1.1"
 gem "devise",                  "~>4.3"
 gem "diff_match_patch",        github: "nono/diff_match_patch-ruby", require: "diff_match_patch"
-gem "doorkeeper",              "~>4.2"
+# gem "doorkeeper",              "~>4.2"
+gem "doorkeeper"
 gem "ffi-hunspell",            github: "postmodern/ffi-hunspell"
-gem "french_rails",            "~>0.4"
+gem "french_rails",            "~>0.5", path: "../french-rails"
 gem "friendly_id",             "~>5.1"
 gem "haml",                    "~>5.0"
-gem "html-pipeline-linuxfr",   "~>0.15"
+gem "html-pipeline-linuxfr",   "~>0.16", path: "../html-pipeline-linuxfr"
 gem "html_spellchecker",       "~>0.1"
 gem "html_truncator",          "~>0.4"
 gem "htmlentities",            "~>4.3"
