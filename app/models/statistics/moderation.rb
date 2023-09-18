@@ -80,7 +80,7 @@ class Statistics::Moderation < Statistics::Statistics
 
   def created_on_the_last_nbdays(nbdays,prefix="")
     return "1=1" unless nbdays
-    "#{prefix}created_at >= '#{nbdays.days.ago.to_s :db}'"
+    "#{prefix}created_at >= '#{nbdays.days.ago.to_fs :db}'"
   end
 
   def nb_moderations_x_days(user_id,nbdays=nil)

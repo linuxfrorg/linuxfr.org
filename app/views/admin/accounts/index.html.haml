@@ -73,8 +73,8 @@
             #{ (account.user.tags.count - account.user.tags.visible.count) }
             #{ image_tag "/images/icones/denied.png", alt: "masqués", title: "masqués", width: "16px" }
           %br
-      %td= account.created_at.to_s(:posted)
-      %td= account.last_seen_on ? account.last_seen_on.to_s(:date) : "-"
+      %td= account.created_at.to_fs(:posted)
+      %td= account.last_seen_on ? account.last_seen_on.to_fs(:date) : "-"
       %td
         - if account.inactive? && account.user_id != 1
           = button_to "Activer",   [:admin, account], method: :put, class: "ok_button"
