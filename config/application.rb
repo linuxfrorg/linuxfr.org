@@ -9,8 +9,7 @@ Bundler.require(*Rails.groups)
 
 module LinuxfrOrg
   class Application < Rails::Application
-    # Default, this line can be removed in rails 7
-    config.autoloader = :zeitwerk
+    config.load_defaults 7.0
 
     I18n.enforce_available_locales = true
 
