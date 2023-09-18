@@ -29,6 +29,7 @@
 #  min_karma              :integer          default(20)
 #  max_karma              :integer          default(20)
 #  uploaded_stylesheet    :string(255)
+#  last_seen_on           :date
 #
 
 #
@@ -197,10 +198,28 @@ class Account < ActiveRecord::Base
     recoverable
   end
 
+  def display_last_seen_on
+    if not last_seen_on
+      'jamais'
+    elsif last_seen_on >= 30.days.ago
+      'dans les 30 derniers jours'
+    elsif last_seen_on >= 1.year.ago
+      'il y a moins d’un an'
+    elsif last_seen_on >= 3.year.ago
+      'il y a moins de trois ans'
+    else
+      'il y a plus de trois ans'
+    end
+  end
+
 ### Actions ###
 
   def viewable_by?(account)
     account && (account.admin? || account.moderator? || account.id == self.id)
+  end
+
+  def is?(account)
+    account && account.id == self.id
   end
 
   def can_post_on_board?

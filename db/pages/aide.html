@@ -482,7 +482,8 @@ Seule l’équipe d’administration peut réaliser cette opération, définitiv
 <li>transmettre des notifications liées aux services, par exemple les publications/rejets de dépêches ou les attributions de prix mensuels. Cette tâche utilise l’adresse de courriel ;</li>
 <li>afficher les données publiques liées au compte (le compte lui-même, les contenus du compte, les commentaires du compte, etc.). Cette tâche nécessite en interne un identifiant unique par compte ;</li>
 <li>gérer les litiges éventuels (par exemple, le manifestement illégal, le prétendument illégal) et le cadre légal (par exemple, la modification des données de son propre compte, le droit d’auteur). Cette tâche nécessite d’avoir des données d’identification, d’attribution et de contact pour les publications de contenus / commentaires faits par des tiers (les comptes) ;</li>
-<li>détecter et gérer des éventuels abus du service (comptes multiples, etc.).</li>
+<li>détecter et gérer des éventuels abus du service (comptes multiples, etc.) ;</li>
+<li>gérer la limitation de la conservation des DCP et la limitation dans le temps des habilitations (modération, administration). Cette tâche nécessite d’avoir la date de dernière visite.</li>
 </ul>
 
 <p>Le RGPD limite la conservation des DCP. Dans le présent contexte, cette obligation concerne à la fois les comptes toujours ouverts mais inutilisés pendant une certaine durée aussi bien que les comptes fermés. En tout état de cause, LinuxFr.org n’a pas d’intérêt ou de besoin légitime à conserver indéfiniment ces données, dès qu’une période raisonnable est passée. Pour définir cette période raisonnable, LinuxFr.org tient compte de la prescription après 3 mois pour le droit de la presse en France. LinuxFr.org estime que les risques de revoir le même spammeur avec les mêmes coordonnées diminuent énormément en quelques mois ou mêmes semaines. Etc.</p>
@@ -493,8 +494,9 @@ Seule l’équipe d’administration peut réaliser cette opération, définitiv
 <li>nom affichable : choisi par la personne utilisant le compte et modifiable à tout moment tant que le compte est ouvert. Il est nécessaire à identifier l’utilisateur aux autres utilisateurs du site (sachant que l’identifiant ou pseudo est utilisé à défaut).</li>
 <li>adresse de courriel : définie par la personne utilisant le compte, validée par le courriel initialement envoyé à la création du compte ; elle est modifiable par la suite tant que le compte est ouvert. Il est nécessaire pour valider l’humanité du compte et pour les notifications.</li>
 <li>mot de passe : initialement généré aléatoirement et pouvant être modifié à tout moment par la personne utilisant le compte tant que celui-ci est ouvert. Il sert à s’authentifier sur le site.</li>
-<li>adresse IP de connexion courante ;</li>
-<li>adresse IP de connexion précédente.</li>
+<li>date et adresse IP de connexion courante ;</li>
+<li>date et adresse IP de connexion précédente ;</li>
+<li>date de dernière visite ;</li>
 </ul>
 
 <p>Les données à caractère personnel non-obligatoires pour le service et fournies par les utilisateurs sont :</p>
@@ -519,15 +521,18 @@ Seule l’équipe d’administration peut réaliser cette opération, définitiv
 
 <p><a href="https://linuxfr.org/news/regles-de-perennite-des-comptes-linuxfr-org-et-donnees-a-caractere-personnel">Depuis le 28 juin 2023</a>, les données associées inutiles au service des comptes fermés sont supprimées.</p>
 
+<p>Les comptes créés et sans connexion pendant sept jours seront purgés.</p>
+
 <p>Les comptes inactifs pendant trois ans seront fermés :</p>
 
 <ul>
 <li>les éventuels contenus et commentaires non publics de ces comptes seront supprimés ;
-<li>en l’absence de contenus ou commentaires publics ou de contributions à des contenus publics, le compte sera purgé ;
+<li>en l’absence de contenus ou commentaires publics ou de contributions à des contenus publics, le compte sera purgé (les éventuels étiquetages seront réattribués à l'utilisateur Anonyme) ;
 <li>sinon
   <ul>
   <li>seront conservés l’identifiant ou pseudo, l’adresse de courriel, le nom affichable et la signature (pour l’attribution du droit d’auteur) ;</li>
-  <li>seront supprimées de la base le mot de passe, les adresses IP de création du compte et de dernière connexion, l’image éventuelle d’avatar, les éventuelles adresses de site web personnel, de messagerie instantanée XMPP et/ou de compte Mastodon, l’éventuelle feuille de style personnelle.</li>
+  <li>seront supprimées de la base le mot de passe, les dates et adresses IP des deux dernières connexions du compte, l’image éventuelle d’avatar, les éventuelles adresses de site web personnel, de messagerie instantanée XMPP et/ou de compte Mastodon, l’éventuelle feuille de style personnelle.</li>
+  <li>seront supprimées les applications utilisant l'API du site reliées au compte, ainsi que les accès et tokens reliés à ces applications ou au compte ;</li>
   </ul>
 </li>
 </ul>
@@ -538,11 +543,12 @@ Seule l’équipe d’administration peut réaliser cette opération, définitiv
 
 <ul>
 <li>les éventuels contenus et commentaires non publics de ces comptes seront supprimés ;</li>
-<li>en l’absence de contenus ou commentaires publics ou de contributions à des contenus publics, le compte sera purgé ;</li>
+<li>en l’absence de contenus ou commentaires publics ou de contributions à des contenus publics, le compte sera purgé (les éventuels étiquetages seront réattribués à l'utilisateur Anonyme) ;</li>
 <li>sinon
   <ul>
    <li>seront conservés l’identifiant ou pseudo, le nom affichable et la signature (pour l’attribution du droit d’auteur) ;</li>
-   <li>seront supprimées de la base active l’adresse de courriel, le mot de passe, les adresses IP de création du compte et de dernière connexion, l’image éventuelle d’avatar, les éventuelles adresses de site web personnel, de messagerie instantanée XMPP et/ou de compte Mastodon, l’éventuelle feuille de style personnelle.</li>
+   <li>seront supprimées de la base active l’adresse de courriel, le mot de passe, les dates et adresses IP des deux dernières connexions du compte, l’image éventuelle d’avatar, les éventuelles adresses de site web personnel, de messagerie instantanée XMPP et/ou de compte Mastodon, l’éventuelle feuille de style personnelle.</li>
+  <li>seront supprimées les applications utilisant l'API du site reliées au compte, ainsi que les accès et tokens reliés à ces applications ou au compte ;</li>
   </ul>
 </li>
 </ul>
