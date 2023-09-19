@@ -270,7 +270,7 @@ GEM
     net-ssh (7.2.0)
     net-ssh-gateway (2.0.0)
       net-ssh (>= 4.0.0)
-    nio4r (2.5.2)
+    nio4r (2.5.9)
     nokogiri (1.15.4)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -392,7 +392,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    websocket (1.2.9)
+    websocket (1.2.10)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -439,7 +439,6 @@ DEPENDENCIES
   mini_magick (~> 4.9)
   mo
   mysql2 (~> 0.5.0)
-  nio4r (= 2.5.2)
   nokogiri (~> 1.10)
   pry-rails
   rails (~> 7.0)
