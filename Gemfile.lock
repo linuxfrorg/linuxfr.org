@@ -19,6 +19,26 @@ GIT
       rb-inotify (~> 0.9, >= 0.9.10)
 
 GIT
+  remote: https://github.com/linuxfrorg/french-rails.git
+  revision: 9fd86a206d4ee90eed0205eb0e9047934dcb20bb
+  specs:
+    french_rails (0.6.0)
+      rails (~> 7.0)
+
+GIT
+  remote: https://github.com/linuxfrorg/html-pipeline-linuxfr.git
+  revision: 5d3b7a41555a63c23fdd51bd1d2cb5107a2b9d5f
+  specs:
+    html-pipeline-linuxfr (0.17.0)
+      activesupport (~> 7.0)
+      escape_utils (~> 1.2)
+      nokogiri (~> 1.6)
+      patron (~> 0.8)
+      pygments.rb (~> 1.1)
+      redcarpet (~> 3.4)
+      sanitize (~> 5.0)
+
+GIT
   remote: https://github.com/nono/diff_match_patch-ruby.git
   revision: acb4147cf0e37d63a7bc8ac0546911af4394b94b
   specs:
@@ -30,24 +50,6 @@ GIT
   specs:
     ffi-hunspell (0.6.1)
       ffi (~> 1.0)
-
-PATH
-  remote: ../french-rails
-  specs:
-    french_rails (0.6.0)
-      rails (~> 7.0)
-
-PATH
-  remote: ../html-pipeline-linuxfr
-  specs:
-    html-pipeline-linuxfr (0.17.0)
-      activesupport (~> 7.0)
-      escape_utils (~> 1.2)
-      nokogiri (~> 1.6)
-      patron (~> 0.8)
-      pygments.rb (~> 1.1)
-      redcarpet (~> 3.4)
-      sanitize (~> 5.0)
 
 GEM
   remote: https://rubygems.org/
@@ -265,7 +267,7 @@ GEM
       net-ssh (>= 2.6.5, < 8.0.0)
     net-sftp (4.0.0)
       net-ssh (>= 5.0.0, < 8.0.0)
-    net-smtp (0.3.3)
+    net-smtp (0.4.0)
       net-protocol
     net-ssh (7.2.0)
     net-ssh-gateway (2.0.0)
@@ -427,7 +429,7 @@ DEPENDENCIES
   friendly_id (~> 5.1)
   gctools (~> 0.2)
   haml (~> 5.0)
-  html-pipeline-linuxfr (~> 0.16)!
+  html-pipeline-linuxfr (~> 0.17)!
   html_spellchecker (~> 0.1)
   html_truncator (~> 0.4)
   htmlentities (~> 4.3)
