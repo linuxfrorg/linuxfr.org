@@ -32,7 +32,7 @@ gem "mini_magick",             "~>4.9"
 gem "mysql2",                  "~>0.5.0"
 gem "nokogiri",                "~>1.10"
 gem "rinku",                   "~>2.0"
-gem "redis",                   "~>4.8"
+gem "redis",                   "~>5.0"
 gem "sitemap_generator",       "~>2.1"
 gem "state_machines-activerecord"
 

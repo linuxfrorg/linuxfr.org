@@ -170,6 +170,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     crass (1.0.6)
     daemons (1.4.1)
     date (3.3.3)
@@ -326,7 +327,10 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redcarpet (3.6.0)
-    redis (4.8.1)
+    redis (5.0.7)
+      redis-client (>= 0.9.0)
+    redis-client (0.17.0)
+      connection_pool
     regexp_parser (2.8.1)
     responders (3.1.0)
       actionpack (>= 5.2)
@@ -444,7 +448,7 @@ DEPENDENCIES
   nokogiri (~> 1.10)
   pry-rails
   rails (~> 7.0)
-  redis (~> 4.8)
+  redis (~> 5.0)
   rinku (~> 2.0)
   sass-rails (~> 5.0)
   selenium-webdriver
