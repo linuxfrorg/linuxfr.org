@@ -4,13 +4,13 @@
   - unless @user.account && @user.account.active_for_authentication?
     %p Compte fermé
   - if @user.account && @user.account.viewable_by?(current_account)
+    %p 🛈 infos visibles du compte 👤 et des équipes de modération 🧐 et d’administration 👾 sauf exception
     - a = @user.account
     %ul
       %li Courriel : #{a.email}
       %li Rôle : #{a.display_role(@user.nodes.where(public: true).count>0)}
-      %li Dernière connexion : #{a.current_sign_in_at ? l(@user.account.current_sign_in_at) : "-"}
-      %li Dernière action : #{a.updated_at ? l(@user.account.updated_at) : "-"}
-      %li Dernière visite : #{a.last_seen_on ? l(@user.account.last_seen_on, format: '%d %B %Y') : "-"}
+      - if @user.account.is?(current_account)
+        %li Dernière connexion : #{a.current_sign_in_at ? l(@user.account.current_sign_in_at) : "-"} (👤)
       %li Karma : #{a.karma} (minimum : #{a.min_karma}, maximum : #{a.max_karma})
       - if @user.homesite.present?
         %li Site perso : #{@user.homesite}
@@ -18,8 +18,10 @@
         %li XMPP : #{@user.jabber_id}
       - if @user.mastodon_url.present?
         %li Mastodon : #{@user.mastodon_url}
-    - if current_account.admin?
-      %p Visibilité
+      - if current_account.admin?
+        %li Dernière visite : #{@user.account.display_last_seen_on} (👾)
+    - if current_account.amr?
+      %p Visibilité (🧐👾)
       %ul
         - if @user.account.plonked?
           %li interdiction de tribune ;
@@ -38,7 +40,7 @@
         - else
           %li pas d'étiquettes.
 
-      %p Étiquetages : #{ @user.taggings.count }
+      %p Étiquetages (🧐👾) : #{ @user.taggings.count }
       = button_to "+50 XP", karma_admin_account_path(@user.account.id)
     - if current_account.can_block?
       %button.more.block Interdire de commenter
@@ -59,7 +61,7 @@
           %li= button_to "une semaine", moderation_plonk_index_path(nb_days: 7, account_id: @user.account.id), remote: true, class: "plonk"
           %li= button_to "un mois", moderation_plonk_index_path(nb_days: 30, account_id: @user.account.id), remote: true, class: "plonk"
       - if @user.account.logs.any?
-        %h2.history Historique
+        %h2.history Historique (🧐👾)
         %ul.history
           = list_of(@user.account.logs) do |log|
             %span.date
