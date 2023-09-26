@@ -2,7 +2,7 @@
 #
 # This mailer is used to notify news writers when their news are accepted or refused.
 #
-class NewsNotifications < ActionMailer::Base
+class NewsNotifications < ApplicationMailer
   MODERATORS = "Équipe de modération de LinuxFr.org <moderateurs@linuxfr.org>"
   EDITORS    = "Équipe de rédaction de LinuxFr.org <redacteurs@linuxfr.org>"
 

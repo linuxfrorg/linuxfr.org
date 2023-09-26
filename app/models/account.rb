@@ -45,7 +45,7 @@
 #   * editor        -> they edit the news in the redaction space
 #   * admin         -> the almighty users
 #
-class Account < ActiveRecord::Base
+class Account < ApplicationRecord
   include Canable::Cans
   include ActionView::Helpers::TextHelper
 

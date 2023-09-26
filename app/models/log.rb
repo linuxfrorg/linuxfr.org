@@ -13,7 +13,7 @@
 #
 # The Log class is here to keep some facts about accounts like plonks.
 #
-class Log < ActiveRecord::Base
+class Log < ApplicationRecord
   belongs_to :account               # The account that has been modified
   belongs_to :user, optional: true  # The AMR or user who made the modification
 end

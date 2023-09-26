@@ -11,9 +11,7 @@
 #  body         :text(4294967295)
 #  created_at   :datetime
 #
-
-#
-class WikiVersion < ActiveRecord::Base
+class WikiVersion < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :wiki_page
   has_one :node, through: :wiki_page

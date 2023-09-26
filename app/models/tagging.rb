@@ -9,8 +9,7 @@
 #  user_id    :integer
 #  created_at :datetime
 #
-
-class Tagging < ActiveRecord::Base
+class Tagging < ApplicationRecord
   belongs_to :tag, counter_cache: true
   belongs_to :node
   belongs_to :user, optional: true
