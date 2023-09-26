@@ -22,7 +22,7 @@
 # It helps organizing some common stuff between the contents,
 # and facilitates the transformation of one content to another.
 #
-class Node < ActiveRecord::Base
+class Node < ApplicationRecord
   belongs_to :user, optional: true     # can be NULL
   belongs_to :content, polymorphic: true, inverse_of: :node
   has_many :comments, inverse_of: :node
