@@ -9,7 +9,7 @@
 #  position :integer
 #
 
-class FriendSite < ActiveRecord::Base
+class FriendSite < ApplicationRecord
   acts_as_list
 
   default_scope { order(position: :asc) }

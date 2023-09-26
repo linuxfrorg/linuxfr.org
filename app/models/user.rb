@@ -19,7 +19,7 @@
 # The users are the public informations about the people who create contents.
 # See accounts for the private ones, like authentication.
 #
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   has_one  :account, dependent: :destroy, inverse_of: :user
   has_many :nodes, inverse_of: :user
   has_many :diaries, dependent: :destroy, inverse_of: :owner, foreign_key: "owner_id"
