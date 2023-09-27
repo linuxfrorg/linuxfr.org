@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: wiki_versions
+#
+#  id           :integer(4)      not null, primary key
+#  wiki_page_id :integer(4)
+#  user_id      :integer(4)
+#  version      :integer(4)
+#  message      :string(255)
+#  body         :text
+#  created_at   :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  wiki_page: one
+  version: 1
+  message: MyString
+  body: MyText
+
+two:
+  wiki_page: one
+  version: 1
+  message: MyString
+  body: MyText

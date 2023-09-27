@@ -1,0 +1,11 @@
+one:
+  category: one
+  title: A nice tracker title
+  wiki_body: A nice tracker description
+  cached_slug: tracker_one
+
+two:
+  category: one
+  title: Another nice tracker title
+  wiki_body: Another nice tracker description
+  cached_slug: tracker_two

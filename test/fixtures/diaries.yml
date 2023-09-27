@@ -1,3 +1,10 @@
+one:
+  title: My own diary
+  cached_slug: my-own-diary
+  owner: visitor_1
+  body: Un si joli journal
+  wiki_body: Un si joli journal
+
 lorem_cc_licensed:
   title: Lorem ipsum
   cached_slug: lorem-ipsum
@@ -16,7 +23,7 @@ lorem_cc_licensed:
     Pellentesque sed dui ut augue blandit sodales.
     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
     posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum.
-    Maecenas adipiscing ante non diam sodales hendrerit. 
+    Maecenas adipiscing ante non diam sodales hendrerit.
   wiki_body: >-
     <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -55,7 +62,7 @@ lorem_copyright:
     Pellentesque sed dui ut augue blandit sodales.
     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
     posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum.
-    Maecenas adipiscing ante non diam sodales hendrerit. 
+    Maecenas adipiscing ante non diam sodales hendrerit.
   wiki_body: >-
     <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.

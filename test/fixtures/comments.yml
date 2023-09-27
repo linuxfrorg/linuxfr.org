@@ -1,0 +1,13 @@
+one:
+  node: tracker_one
+  user: admin_0
+  title: "Hello World"
+  wiki_body: "Hello World"
+  materialized_path: "hello-world"
+  state: published
+
+seconde:
+  node: one
+  user: admin_0
+  title: Commentaire sur un journal
+  wiki_body: Commentaire sur un journal
