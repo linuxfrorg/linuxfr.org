@@ -1,0 +1,10 @@
+news:
+  section: news
+  state: published
+  title: "The Lord of the Rings: The Fellowship of the Ring"
+  cached_slug: "the-lord-of-the-rings-the-fellowship-of-the-ring"
+  author_name: J.R.R. Tolkien
+  author_email: test@exemple.com
+  body: Une jolies nouvelle
+  second_part: En deuxième partie
+  moderator: moderator_1

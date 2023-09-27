@@ -1,11 +1,66 @@
-diary_lorem_cc_licensed:
-  cc_licensed: true
+one:
   user: visitor_1
+  cc_licensed: true
+  content: one
+  content_type: Diary
+  created_at: <%= Time.now %>
+
+diary_lorem_cc_licensed:
+  user: visitor_1
+  cc_licensed: true
   content: lorem_cc_licensed
-  content_type: Journal
+  content_type: Diary
 
 diary_lorem_copyright:
-  cc_licensed: false
   user: visitor_2
+  cc_licensed: false
   content: lorem_copyright
-  content_type: Journal
+  content_type: Diary
+
+tracker_one:
+  user: visitor_1
+  cc_licensed: true
+  content: one
+  content_type: Tracker
+
+tracker_two:
+  user: visitor_1
+  cc_licensed: true
+  content: two
+  content_type: Tracker
+
+forum:
+  user: visitor_1
+  cc_licensed: true
+  content: one
+  content_type: Forum
+
+news:
+  user: moderator_1
+  cc_licensed: true
+  content: news
+  content_type: News
+
+poll:
+  user: moderator_1
+  cc_licensed: true
+  content: one
+  content_type: Poll
+
+post:
+  user: moderator_1
+  cc_licensed: true
+  content: one
+  content_type: Post
+
+wiki:
+  user: moderator_1
+  cc_licensed: true
+  content: one
+  content_type: WikiPage
+
+homePage:
+  user: moderator_1
+  cc_licensed: true
+  content: homePage
+  content_type: WikiPage
