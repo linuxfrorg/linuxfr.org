@@ -1,0 +1,19 @@
+# == Schema Information
+#
+# Table name: banners
+#
+#  id      :integer(4)      not null, primary key
+#  title   :string(255)
+#  content :text
+#  active  :boolean(1)
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  content: MyText
+
+two:
+  title: MyString
+  content: MyText
