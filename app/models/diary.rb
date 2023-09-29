@@ -35,7 +35,7 @@ class Diary < Content
   wikify_attr   :body
   truncate_attr :body
 
-### SEO ###
+  ### SEO ###
 
   extend FriendlyId
   friendly_id
@@ -44,7 +44,7 @@ class Diary < Content
     title_changed?
   end
 
-### ACL ###
+  ### ACL ###
 
   def creatable_by?(account)
     account.karma > 0
@@ -58,7 +58,7 @@ class Diary < Content
     account.moderator? || account.admin?
   end
 
-### Moving ###
+  ### Moving ###
   def convert_only_cc_licensed_diary
     errors.add :base, :cannot_convert, message: "Le journal n’a pas été publié sous licence CC By-SA 4.0, il ne peut donc pas être proposé en dépêche." unless node.cc_licensed?
   end
@@ -86,22 +86,20 @@ class Diary < Content
     @post.wiki_body = wiki_body
     @post.transaction do
       @post.save!
-      # Note: the 2 nodes are swapped so that all references to the diairy
+      # The 2 nodes are swapped so that all references to the diairy
       # (comments, tags, etc.) are moved to the post.
       other = @post.node
       other.attributes = node.attributes.except("id", "content_id").merge(content_type: "XXX", public: false)
-      other.save!
-      stmt = <<-EOS
+      other.save!(validate: false)
+      Node.connection.update <<-SQL.squish
       UPDATE nodes
          SET content_id=(#{node.content_id + @post.node.content_id} - content_id),
              content_type=CASE content_type
                           WHEN 'Diary' THEN 'Post'
                           ELSE 'Diary' END
        WHERE id=#{node.id} OR id=#{@post.node.id}
-      EOS
-      Node.connection.update(stmt)
+      SQL
       node.compute_interest
     end
   end
-
 end
