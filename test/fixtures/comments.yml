@@ -1,6 +1,6 @@
 one:
   node: tracker_one
-  user: admin_0
+  user: visitor_10
   title: "Hello World"
   wiki_body: "Hello World"
   materialized_path: "hello-world"
@@ -8,6 +8,6 @@ one:
 
 seconde:
   node: one
-  user: admin_0
+  user: visitor_10
   title: Commentaire sur un journal
   wiki_body: Commentaire sur un journal

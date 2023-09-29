@@ -7,7 +7,7 @@ class SectionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show section' do
-    get sections_url(sections(:default))
+    get section_url sections :default
     assert_response :success
   end
 end
