@@ -62,6 +62,11 @@ class TrackersControllerTest < ActionDispatch::IntegrationTest
     assert_select 'a', 'new title'
   end
 
+  test 'should list comments' do
+    get comments_trackers_url format: :atom
+    assert_response :success
+  end
+
   test 'should destroy tracker' do
     # Deleting a tracker ends up as an invisible node
     assert_difference('Node.visible.count', -1) do

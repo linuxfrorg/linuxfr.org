@@ -41,6 +41,12 @@ news:
   content: news
   content_type: News
 
+draft:
+  user: moderator_1
+  cc_licensed: true
+  content: draft
+  content_type: News
+
 poll:
   user: moderator_1
   cc_licensed: true
@@ -64,3 +70,8 @@ homePage:
   cc_licensed: true
   content: homePage
   content_type: WikiPage
+
+bookmark:
+  user: visitor_0
+  content: one
+  content_type: Bookmark

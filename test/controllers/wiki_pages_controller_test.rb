@@ -81,6 +81,27 @@ class WikiPagesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to wiki_page_url(wiki_pages(:one))
   end
 
+  test 'should get revision' do
+    sign_in accounts 'admin_0'
+    get revision_wiki_page_url wiki_pages(:one), '1'
+    assert_nil flash[:alert]
+    assert_response :success
+  end
+
+  test 'should get changes' do
+    sign_in accounts 'admin_0'
+    get modifications_wiki_pages_url
+    assert_nil flash[:alert]
+    assert_response :success
+  end
+
+  test 'should get pages' do
+    sign_in accounts 'admin_0'
+    get pages_wiki_pages_url
+    assert_nil flash[:alert]
+    assert_response :success
+  end
+
   test 'should destroy wiki page' do
     sign_in accounts 'admin_0'
     assert_difference('Node.visible.count', -1) do

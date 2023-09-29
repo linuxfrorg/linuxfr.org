@@ -2,9 +2,19 @@ news:
   section: news
   state: published
   title: "The Lord of the Rings: The Fellowship of the Ring"
-  cached_slug: "the-lord-of-the-rings-the-fellowship-of-the-ring"
+  cached_slug: the-lord-of-the-rings-the-fellowship-of-the-ring
   author_name: J.R.R. Tolkien
   author_email: test@exemple.com
-  body: Une jolies nouvelle
+  body: Une jolie nouvelle
   second_part: En deuxième partie
   moderator: moderator_1
+
+draft:
+  section: news
+  state: draft
+  title: Une jolie actualité en cours d'écriture
+  cached_slug: une-jolie-actualite-en-cours-decriture
+  author_name: Auteur sympa
+  author_email: test@exemple.com
+  body: Nouvelle en brouillon
+  second_part: En deuxième partie

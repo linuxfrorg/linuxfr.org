@@ -14,27 +14,22 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get new' do
-    account = accounts('maintainer_0')
-    account.confirm
-    sign_in account
+    sign_in accounts 'visitor_0'
 
     get new_node_comment_url(comments(:one).node, comments(:one))
     assert_response :success
   end
 
   test 'should answer' do
-    account = accounts('maintainer_0')
-    account.confirm
-    sign_in account
+    sign_in accounts 'visitor_0'
 
     get answer_node_comment_url(comments(:one).node, comments(:one))
     assert_response :success
   end
 
   test 'should preview comment' do
-    account = accounts('maintainer_0')
-    account.confirm
-    sign_in account
+    sign_in accounts 'visitor_0'
+
     assert_no_difference('Comment.count') do
       post node_comments_url(comments(:one).node),
            params: {
@@ -50,9 +45,8 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create comment' do
-    account = accounts('maintainer_0')
-    account.confirm
-    sign_in account
+    sign_in accounts 'visitor_0'
+
     assert_difference('Comment.count') do
       post node_comments_url(comments(:one).node),
            params: {
@@ -69,18 +63,15 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should edit comment' do
-    account = accounts('admin_0')
-    account.confirm
-    sign_in account
+    sign_in accounts 'admin_0'
+
     get edit_node_comment_url(comments(:one).node, comments(:one))
     assert_response :success
   end
 
   test 'should preview update comment' do
     # skip 'trouble with wikification'
-    account = accounts('admin_0')
-    account.confirm
-    sign_in account
+    sign_in accounts 'admin_0'
 
     patch node_comment_url(comments(:one).node, comments(:one)),
           params: {
@@ -95,9 +86,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update comment' do
     # skip 'trouble with wikification'
-    account = accounts('admin_0')
-    account.confirm
-    sign_in account
+    sign_in accounts 'admin_0'
 
     patch node_comment_url(comments(:one).node, comments(:one)),
           params: {
@@ -110,9 +99,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy comment' do
-    account = accounts('admin_0')
-    account.confirm
-    sign_in account
+    sign_in accounts 'admin_0'
 
     assert_difference('Comment.published.count', -1) do
       delete node_comment_url(comments(:one).node, comments(:one))
