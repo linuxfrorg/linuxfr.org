@@ -8,6 +8,11 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to forum_url forums :one
   end
 
+  test 'should show post' do
+    get forum_post_url(forums(:one), posts(:one))
+    assert_response :success
+  end
+
   test 'should get new page' do
     sign_in accounts 'maintainer_0'
     get new_post_url forums(:one)

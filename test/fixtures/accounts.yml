@@ -12,6 +12,8 @@ visitor_<%= n%>:
   login: <%= "visitor_#{n}" %>
   email: <%= "visitor_#{n}@example.com" %>
   role: visitor
+  karma: 50
+  nb_votes: 10
   confirmed_at: <%= Time.now %>
   last_seen_on: <%= Date.today %>
 <% end %>

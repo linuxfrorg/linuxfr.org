@@ -9,6 +9,7 @@ class DiariesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'get show' do
+    sign_in accounts 'visitor_0'
     get user_diary_url(users('visitor_1'), diaries(:lorem_cc_licensed), format: :html)
     assert_response :success
     assert_nil flash[:alert]
@@ -57,20 +58,21 @@ class DiariesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'get edit' do
-    sign_in accounts 'maintainer_0'
-    get edit_user_diary_url(users('editor_0'), diaries(:lorem_cc_licensed))
-    assert_redirected_to user_diary_url(users('visitor_2'), Diary.last)
+    sign_in accounts 'admin_0'
+    get edit_user_diary_url users('visitor_1').id, diaries(:lorem_cc_licensed).id
+    assert_response :success
   end
 
   test 'update diary' do
-    sign_in accounts 'maintainer_0'
-    patch user_diary_url(users('editor_0'), diaries(:lorem_cc_licensed)),
-          params: {
-            diary: {
-              title: 'Nouveau titre'
-            }
-          }
-    assert_redirected_to user_diary_url(users('visitor_2'), diaries(:lorem_cc_licensed))
+    sign_in accounts 'admin_0'
+    patch user_diary_url(users('visitor_1'), diaries(:lorem_cc_licensed)), params: {
+      diary: {
+        title: 'Nouveau titre'
+      }
+    }
+    assert_nil flash[:alert]
+    assert flash[:notice]
+    assert_redirected_to user_diary_url(users('visitor_1'), 'nouveau-titre')
   end
 
   test 'destroy diary' do
@@ -84,23 +86,26 @@ class DiariesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'convert diary' do
-    sign_in accounts 'maintainer_0'
-    post convert_user_diary_url(users('visitor_2'), diaries(:one))
+    sign_in accounts 'admin_0'
+    post convert_user_diary_url(users('visitor_1'), diaries(:one))
     assert_nil flash[:alert]
-    assert_redirected_to user_diary_url(users('visitor_1'), diaries(:one))
+    assert_redirected_to redaction_news_url diaries(:one)
   end
 
   test 'move diary' do
     sign_in accounts 'admin_0'
-    post move_user_diary_url(users('visitor_2'), diaries(:one)),
-         params: {
-           post: {
-             forum_id: forums(:one).id,
-             title: 'Nouveau titre',
-             cached_slud: 'nouveau-titre'
-           }
-         }
+    assert_difference('Diary.all.find_all { |d| d.visible? }.count', -1) do
+      assert_difference 'Post.count' do
+        post move_user_diary_url users('visitor_1'), diaries(:one), params: {
+          post: {
+            forum_id: forums(:one).id
+          }
+        }
+      end
+    end
     assert_nil flash[:alert]
-    assert_redirected_to user_diary_url(users('visitor_1'), diaries(:one))
+    assert flash[:notice]
+
+    assert_redirected_to diaries_url
   end
 end

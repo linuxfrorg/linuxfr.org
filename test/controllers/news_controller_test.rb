@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class NewsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   test 'should list news' do
     get news_index_url
     assert_response :success
@@ -12,6 +14,17 @@ class NewsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show news' do
+    # For the fixtures configuration
+    news(:news).node = nodes(:news)
+
+    get news_url(news(:news), format: :html)
+    assert_response :success
+    assert_nil flash[:alert]
+  end
+
+  test 'should show news and mark as read' do
+    sign_in accounts 'visitor_0'
+
     # For the fixtures configuration
     news(:news).node = nodes(:news)
 

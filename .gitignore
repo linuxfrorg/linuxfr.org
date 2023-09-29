@@ -20,3 +20,6 @@
 /vendor/bundle
 /.env
 /docker-compose.*.yaml
+.rubocop.yml
+Guardfile
+coverage

@@ -9,7 +9,8 @@ class BookmarksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show bookmark' do
-    get bookmarks_url(bookmarks(:one), format: :html)
+    sign_in accounts 'admin_0'
+    get user_bookmark_url(users('visitor_0'), bookmarks(:one), format: :html)
     assert_response :success
     assert_nil flash[:alert]
   end
@@ -53,17 +54,16 @@ class BookmarksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get edit' do
-    sign_in accounts 'maintainer_0'
-    get edit_user_bookmark_url(users('editor_0'), bookmarks(:one))
-    assert_redirected_to user_bookmark_url(users('visitor_0'), Bookmark.last)
+    sign_in accounts 'admin_0'
+    get edit_user_bookmark_url(users('visitor_0'), bookmarks(:one))
+    assert_response :success
   end
 
   test 'should update bookmark' do
-    sign_in accounts 'maintainer_0'
-    patch user_bookmark_url(users('editor_0'), bookmarks(:one)),
+    sign_in accounts 'admin_0'
+    patch user_bookmark_url(users('visitor_0'), bookmarks(:one)),
           params: {
             bookmark: {
-              title: 'Hello world',
               link: 'http://example.com'
             }
           }
@@ -71,8 +71,8 @@ class BookmarksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy bookmark' do
-    sign_in accounts 'maintainer_0'
-    delete user_bookmark_url(users('editor_0'), bookmarks(:one))
-    assert_redirected_to user_bookmark_url(users('visitor_0'), bookmarks(:one))
+    sign_in accounts 'admin_0'
+    delete user_bookmark_url(users('visitor_0'), bookmarks(:one))
+    assert_redirected_to bookmarks_url
   end
 end
