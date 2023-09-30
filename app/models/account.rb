@@ -47,6 +47,7 @@
 #
 class Account < ApplicationRecord
   include Canable::Cans
+  include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
 
   has_many :applications, class_name: 'Doorkeeper::Application', as: :owner
