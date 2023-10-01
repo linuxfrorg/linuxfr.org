@@ -18,3 +18,13 @@ draft:
   author_email: test@exemple.com
   body: Nouvelle en brouillon
   second_part: En deuxième partie
+
+candidate:
+  section: news
+  state: candidate
+  title: Une actualité en cours de soumission
+  cached_slug: une-actualite-en-cours-de-soumission
+  author_name: Auteur sympa
+  author_email: test@exemple.com
+  body: Nouvelle en soumission
+  second_part: En deuxième partie

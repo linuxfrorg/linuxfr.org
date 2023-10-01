@@ -8,11 +8,23 @@ class DiariesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'can not show' do
+    sign_in accounts 'visitor_0'
+    get user_diary_url users('visitor_0'), diaries(:lorem_cc_licensed)
+    assert_redirected_to user_diary_url users('visitor_2'), diaries(:lorem_cc_licensed)
+  end
+
   test 'get show' do
     sign_in accounts 'visitor_0'
     get user_diary_url(users('visitor_1'), diaries(:lorem_cc_licensed), format: :html)
     assert_response :success
     assert_nil flash[:alert]
+  end
+
+  test 'can not get new' do
+    sign_in accounts 'visitor_zero_karma'
+    get new_diary_url
+    assert_response :forbidden
   end
 
   test 'get new' do
@@ -63,6 +75,17 @@ class DiariesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'preview update diary' do
+    sign_in accounts 'admin_0'
+    patch user_diary_url(users('visitor_1'), diaries(:lorem_cc_licensed)), params: {
+      diary: {
+        title: 'Nouveau titre'
+      },
+      commit: 'Prévisualiser'
+    }
+    assert_response :success
+  end
+
   test 'update diary' do
     sign_in accounts 'admin_0'
     patch user_diary_url(users('visitor_1'), diaries(:lorem_cc_licensed)), params: {
@@ -85,11 +108,28 @@ class DiariesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to diaries_url
   end
 
-  test 'convert diary' do
+  test 'do not convert diary' do
+    sign_in accounts 'visitor_0'
+    post convert_user_diary_url(users('visitor_1'), diaries(:one))
+    assert flash[:alert]
+    assert_response :success
+  end
+
+  test 'convert diary as admin' do
     sign_in accounts 'admin_0'
     post convert_user_diary_url(users('visitor_1'), diaries(:one))
     assert_nil flash[:alert]
     assert_redirected_to redaction_news_url diaries(:one)
+  end
+
+  test 'do not move diary' do
+    sign_in accounts 'visitor_1'
+    post move_user_diary_url users('visitor_1'), diaries(:one), params: {
+      post: {
+        forum_id: forums(:one).id
+      }
+    }
+    assert_response :success
   end
 
   test 'move diary' do

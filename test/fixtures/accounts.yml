@@ -21,14 +21,15 @@ visitor_<%= n%>:
 visitor_negative_karma:
   user: visitor_negative_karma
   login: visitor_negative_karma
-  email: visitor_negative_karma@example.com
+  email: "visitor_negative_karma@example.com"
   role: visitor
   karma: -100
+  last_seen_on: <%= 40.days.ago %>
 
 visitor_zero_karma:
   user: visitor_zero_karma
   login: visitor_zero_karma
-  email: visitor_zero_karma@example.com
+  email: "visitor_zero_karma@example.com"
   role: visitor
   karma: 0
   confirmed_at: <%= Time.now %>
