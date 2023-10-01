@@ -4,9 +4,7 @@ class Admin::SectionsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   def setup
-    admin = accounts('admin_0')
-    admin.confirm
-    sign_in admin
+    sign_in accounts 'admin_0'
   end
 
   test 'should get new' do
@@ -25,6 +23,16 @@ class Admin::SectionsControllerTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_response :success
     assert_select 'p', "Il vous reste\n0\navis"
+  end
+
+  test 'should not create section' do
+    assert_no_difference('Section.count') do
+      post admin_sections_url, params: {
+        section: { title: '' }
+      }
+    end
+
+    assert_response :success
   end
 
   test 'should get edit' do

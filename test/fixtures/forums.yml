@@ -1,3 +1,9 @@
 one:
   title: "Foo bar forum"
   cached_slug: "foo-bar-forum"
+  position: 1
+
+two:
+  title: "Foo bar forum 2"
+  cached_slug: "foo-bar-forum-2"
+  position: 2

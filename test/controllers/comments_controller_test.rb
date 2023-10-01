@@ -20,6 +20,23 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should not get new for blocked user' do
+    sign_in accounts 'visitor_666'
+    accounts('visitor_666').block 1, accounts('admin_0').user.id
+
+    get new_node_comment_url(comments(:one).node, comments(:one))
+
+    assert_redirected_to tracker_url trackers(:one).cached_slug
+  end
+
+  test 'should not get new on old content' do
+    sign_in accounts 'visitor_0'
+
+    get new_node_comment_url(comments(:old).node, comments(:old))
+
+    assert_redirected_to user_diary_path users('visitor_1'), comments(:old).content.cached_slug
+  end
+
   test 'should answer' do
     sign_in accounts 'visitor_0'
 
@@ -62,6 +79,13 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to tracker_url(trackers(:one).cached_slug) + "#comment-#{Comment.last.id}"
   end
 
+  test 'should not edit old comment' do
+    sign_in accounts 'visitor_10'
+
+    get edit_node_comment_url(comments(:old).node, comments(:old))
+    assert_response :forbidden
+  end
+
   test 'should edit comment' do
     sign_in accounts 'admin_0'
 
@@ -95,7 +119,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
               wiki_body: 'This is an updated comment'
             }
           }
-    assert_redirected_to tracker_url(trackers(:one).cached_slug) + "#comment-#{Comment.last.id}"
+    assert_redirected_to tracker_url(trackers(:one).cached_slug) + "#comment-#{comments(:one).id}"
   end
 
   test 'should destroy comment' do
@@ -107,5 +131,12 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
       assert flash[:notice]
     end
     assert_redirected_to tracker_url(trackers(:one).cached_slug)
+  end
+
+  test 'should redirect for templeet' do
+    sign_in accounts 'visitor_0'
+
+    get "/comments/#{comments(:one).id}"
+    assert_redirected_to node_comment_url(comments(:one).node, comments(:one))
   end
 end

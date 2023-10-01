@@ -20,6 +20,26 @@ class PollsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should preview creation' do
+    sign_in accounts 'maintainer_0'
+    assert_no_difference('Poll.count') do
+      post polls_url, params: {
+        poll: {
+          title: 'Hello world',
+          wiki_explanations: 'Partie première',
+          answers_attributes: {
+            '0' => {
+              answer: 'Hello world'
+            }
+          }
+        },
+        commit: 'Prévisualiser'
+      }
+      assert_nil flash[:alert]
+    end
+    assert_response :success
+  end
+
   test 'should create poll' do
     sign_in accounts 'maintainer_0'
 
@@ -49,6 +69,18 @@ class PollsControllerTest < ActionDispatch::IntegrationTest
     post vote_poll_url polls(:one), position: 0
     assert_nil flash[:alert]
     assert flash[:notice]
+
+    assert_redirected_to poll_url polls(:one)
+  end
+
+  test 'should not vote' do
+    # Remove eventual existing vote
+    $redis.del "polls/#{polls(:one).id}/127.0.0.1"
+    sign_in accounts :joe
+
+    post vote_poll_url polls(:one)
+    assert flash[:alert]
+    assert_nil flash[:notice]
 
     assert_redirected_to poll_url polls(:one)
   end

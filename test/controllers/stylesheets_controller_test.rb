@@ -22,6 +22,15 @@ class StylesheetsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should not update stylesheet' do
+    patch stylesheet_url, params: {
+      css_session: 'current'
+    }
+    assert_nil flash[:alert]
+    assert flash[:notice]
+    assert_redirected_to edit_stylesheet_url
+  end
+
   test 'should update stylesheet' do
     patch stylesheet_url, params: {
       stylesheet: 'contrib/blue-smooth'
