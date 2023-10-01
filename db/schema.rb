@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_18_152346) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_01_132606) do
   create_table "accounts", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "user_id"
     t.string "login", limit: 40, null: false, collation: "utf8mb4_bin"
@@ -244,6 +244,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_152346) do
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
     t.string "scopes", default: "", null: false
+    t.boolean "confidential", default: true, null: false
     t.index ["owner_id", "owner_type"], name: "index_oauth_applications_on_owner_id_and_owner_type"
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
