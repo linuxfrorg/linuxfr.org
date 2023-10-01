@@ -1,0 +1,8 @@
+one:
+  owner_id: 0
+  owner_type: User
+  name: Test
+  uid: 12345
+  secret: 12345
+  redirect_uri: https://localhost:8080
+  scopes: [read, write]

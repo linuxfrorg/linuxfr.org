@@ -15,5 +15,5 @@ one:
   content: MyText
 
 two:
-  title: MyString
-  content: MyText
+  title: Autre titre
+  content: Autre contenu

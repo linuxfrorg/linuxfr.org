@@ -14,13 +14,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  news: one
+  news: news
   position: 1
   second_part: false
   body: MyText
 
 two:
-  news: one
+  news: news
   position: 1
   second_part: false
   body: MyText

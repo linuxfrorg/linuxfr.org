@@ -5,6 +5,13 @@ one:
   body: Un si joli journal
   wiki_body: Un si joli journal
 
+old:
+  title: My own diary
+  cached_slug: my-own-diary
+  owner: visitor_1
+  body: Un si joli journal
+  wiki_body: Un si joli journal
+
 lorem_cc_licensed:
   title: Lorem ipsum
   cached_slug: lorem-ipsum

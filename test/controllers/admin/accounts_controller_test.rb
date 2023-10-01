@@ -7,6 +7,12 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
     sign_in accounts 'admin_0'
   end
 
+  test 'should not list accounts' do
+    sign_in accounts 'visitor_0'
+    get admin_accounts_url
+    assert_redirected_to account_session_url
+  end
+
   test 'should list accounts' do
     get admin_accounts_url
     assert_response :success

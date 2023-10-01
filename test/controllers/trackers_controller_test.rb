@@ -12,12 +12,59 @@ class TrackersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should get sorted index' do
+    get trackers_url, params: {
+      tracker: { assigned_to_user_id: 0 },
+      order: 'score'
+    }
+    assert_response :success
+  end
+
   test 'should get new' do
     get new_tracker_url
     assert_response :success
   end
 
+  test 'should preview creation' do
+    assert_no_difference('Tracker.count') do
+      post trackers_url, params: {
+        tracker: {
+          title: 'hello world my tracker',
+          body: 'hello world',
+          wiki_body: 'hello world',
+          category_id: categories(:one).id
+        },
+        commit: 'Prévisualiser'
+      }
+      assert_nil flash[:alert]
+      assert_nil flash[:notice]
+    end
+
+    assert_response :success
+  end
+
   test 'should create tracker' do
+    assert_difference('Tracker.count') do
+      post trackers_url, params: {
+        tracker: {
+          title: 'hello world my tracker',
+          body: 'hello world',
+          wiki_body: 'hello world',
+          category_id: categories(:one).id
+        }
+      }
+      assert_nil flash[:alert]
+      assert flash[:notice]
+    end
+
+    assert_response :redirect
+    follow_redirect!
+    assert_response :success
+    assert_select 'a', 'hello world my tracker'
+  end
+
+  test 'should create tracker with simple user' do
+    sign_in accounts 'visitor_0'
     assert_difference('Tracker.count') do
       post trackers_url, params: {
         tracker: {
@@ -44,6 +91,17 @@ class TrackersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get edit' do
     get edit_tracker_url(trackers(:one))
+    assert_response :success
+  end
+
+  test 'should preview update' do
+    patch tracker_url(trackers(:one)), params: {
+      tracker: {
+        title: 'new title'
+      },
+      commit: 'Prévisualiser'
+    }
+    assert_nil flash[:alert]
     assert_response :success
   end
 

@@ -39,6 +39,17 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to user_diary_url(users('visitor_1'), diaries(:one))
   end
 
+  test 'should create tag, xhr' do
+    assert_difference 'Tag.visible.count' do
+      post node_tags_url(nodes(:one)), params: {
+        tags: 'Hello'
+      }, xhr: true
+      assert_nil flash[:alert]
+    end
+
+    assert_response :success
+  end
+
   test 'should autocomplete tag' do
     get autocomplete_tags_url, params: {
       q: 'Hello'

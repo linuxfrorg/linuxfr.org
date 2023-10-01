@@ -1,5 +1,14 @@
 require 'simplecov'
-SimpleCov.start
+
+SimpleCov.start do
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Helpers', 'app/helpers'
+  add_group 'Mailers', 'app/mailers'
+  add_group 'Models', 'app/models'
+  add_group 'Long files' do |src_file|
+    src_file.lines.count > 100
+  end
+end
 
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
