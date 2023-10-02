@@ -2,3 +2,18 @@ one:
   title: Une jolie page
   slug: jolie-page
   body: Joe contenu de page
+
+equipe:
+  title: Notre équipe
+  slug: equipe
+  body: Le contenu de l'équipe
+
+amis:
+  title: Nos amis
+  slug: amis
+  body: Le contenu des amis
+
+moderation:
+  title: Règles de modération
+  slug: moderations
+  body: Le contenu des règles de modération

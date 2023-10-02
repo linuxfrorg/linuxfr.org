@@ -14,6 +14,14 @@ class TrackersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get sorted index' do
     get trackers_url, params: {
+      tracker: { assigned_to_user_id: users(:visitor_0).id },
+      order: 'score'
+    }
+    assert_response :success
+  end
+
+  test 'should get sorted index for user 0' do
+    get trackers_url, params: {
       tracker: { assigned_to_user_id: 0 },
       order: 'score'
     }

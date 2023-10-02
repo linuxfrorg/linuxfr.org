@@ -60,10 +60,22 @@ candidate:
   content: candidate
   content_type: News
 
+first_part_only:
+  user: moderator_1
+  cc_licensed: true
+  content: first_part_only
+  content_type: News
+
 poll:
   user: moderator_1
   cc_licensed: true
   content: one
+  content_type: Poll
+
+poll_draft:
+  user: moderator_1
+  cc_licensed: true
+  content: draft
   content_type: Poll
 
 post:

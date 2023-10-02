@@ -57,8 +57,21 @@ class Moderation::NewsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to moderation_news_url news(:candidate)
   end
 
+  test 'should not accept empty news' do
+    sign_in accounts 'admin_0'
+
+    news(:first_part_only).paragraphs << Paragraph.new(wiki_body: News::DEFAULT_PARAGRAPH)
+
+    assert_no_difference 'News.candidate.count' do
+      post accept_moderation_news_url news(:first_part_only)
+      assert flash[:alert]
+    end
+    assert_redirected_to moderation_news_url news(:first_part_only)
+  end
+
   test 'should accept news' do
     sign_in accounts 'admin_0'
+
     assert_difference 'News.candidate.count', -1 do
       post accept_moderation_news_url news(:candidate)
       assert flash[:alert]

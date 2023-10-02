@@ -70,10 +70,13 @@ class Redaction::NewsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get reorganize news page' do
-    sign_in accounts 'admin_0'
     get reorganize_redaction_news_url news(:draft)
     assert_nil flash[:alert]
     assert_response :success
+
+    sign_in accounts 'visitor_1'
+    get reorganize_redaction_news_url news(:draft)
+    assert_response :forbidden
   end
 
   test 'should reorganize news' do
@@ -83,7 +86,16 @@ class Redaction::NewsControllerTest < ActionDispatch::IntegrationTest
       }
     }
     assert_nil flash[:alert]
-    assert_redirected_to redaction_news_url News.draft.last
+    assert_redirected_to redaction_news_url news(:draft).reload
+  end
+
+  test 'should not reorganize news' do
+    put reorganized_redaction_news_url news(:draft), params: {
+      news: {
+        title: ''
+      }
+    }
+    assert_response :success
   end
 
   test 'should get revision' do
@@ -105,7 +117,7 @@ class Redaction::NewsControllerTest < ActionDispatch::IntegrationTest
       message: 'Hello world'
     }
     assert_nil flash[:alert]
-    assert_redirected_to redaction_news_url News.draft.last
+    assert_redirected_to redaction_news_url news(:draft).reload
   end
 
   test 'should submit news' do
@@ -121,6 +133,15 @@ class Redaction::NewsControllerTest < ActionDispatch::IntegrationTest
     post submit_redaction_news_url news(:draft).id
     assert_nil flash[:alert]
     assert_redirected_to redaction_url
+  end
+
+  test 'should not submit news' do
+    # To lock the news
+    get reorganize_redaction_news_url news(:draft)
+
+    post submit_redaction_news_url news(:draft).id
+    assert flash[:alert]
+    assert_redirected_to redaction_news_url news(:draft)
   end
 
   test 'should erase news' do

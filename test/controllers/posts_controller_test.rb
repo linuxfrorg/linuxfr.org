@@ -13,6 +13,17 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should show post when logged in' do
+    sign_in accounts 'visitor_0'
+    get forum_post_url(forums(:one), posts(:one))
+    assert_response :success
+  end
+
+  test 'should show post from another forum' do
+    get forum_post_url(forums(:two), posts(:one))
+    assert_redirected_to forum_post_url forums(:one), posts(:one)
+  end
+
   test 'should get new page' do
     sign_in accounts 'maintainer_0'
     get new_post_url forums(:one)

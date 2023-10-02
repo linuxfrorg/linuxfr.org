@@ -28,3 +28,11 @@ candidate:
   author_email: test@exemple.com
   body: Nouvelle en soumission
   second_part: En deuxième partie
+
+first_part_only:
+  section: news
+  state: draft
+  title: Une actualité avec une seule partie
+  cached_slug: une-actualite-avec-une-seule-partie
+  author_name: Auteur sympa
+  author_email: test@exemple.com
