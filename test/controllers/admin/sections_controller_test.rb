@@ -53,6 +53,17 @@ class Admin::SectionsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'a', 'hello world'
   end
 
+  test 'should not update section' do
+    patch admin_section_url(sections(:default)), params: {
+      section: {
+        title: ''
+      }
+    }
+    assert flash[:alert]
+    assert_nil flash[:notice]
+    assert_response :success
+  end
+
   test 'should destroy section' do
     assert_difference('Section.published.count', -1) do
       delete admin_section_url(sections(:default))
