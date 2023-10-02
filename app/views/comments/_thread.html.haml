@@ -1,5 +1,5 @@
 %li.comment{comment_attr(thread.comment)}
-  = render thread.comment, hide_content_title: 1
+  = render 'comments/comment', comment: thread.comment, hide_content_title: 1
   - if thread.children.any?
     %ul
       - thread.children.each do |thread|
