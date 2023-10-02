@@ -25,6 +25,15 @@ class Moderation::ParagraphsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_response :created
+
+    assert_difference 'Paragraph.count' do
+      post redaction_news_paragraphs_url news(:first_part_only)
+      assert_nil flash[:alert]
+      assert_equal 1, news(:first_part_only).paragraphs.in_first_part.count
+      assert_equal 0, news(:first_part_only).paragraphs.in_second_part.count
+    end
+
+    assert_response :created
   end
 
   test 'should show paragraph' do
@@ -35,6 +44,10 @@ class Moderation::ParagraphsControllerTest < ActionDispatch::IntegrationTest
   test 'should edit paragraph' do
     get edit_redaction_paragraph_url paragraphs(:one)
     assert_response :success
+
+    sign_in accounts 'moderator_1'
+    get edit_redaction_paragraph_url paragraphs(:one)
+    assert_response :forbidden
   end
 
   test 'should update paragraph' do

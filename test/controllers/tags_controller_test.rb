@@ -70,6 +70,13 @@ class TagsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 
+  test 'should not hide tag' do
+    post hide_tag_url tags(:one)
+    assert_nil flash[:alert]
+    assert_nil flash[:notice]
+    assert_redirected_to root_url
+  end
+
   test 'should destroy tag' do
     assert_difference 'Tagging.count', -1 do
       delete node_tag_url(nodes(:one), tags(:one).name)
