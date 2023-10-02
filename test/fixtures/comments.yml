@@ -18,3 +18,19 @@ old:
   title: Commentaire sur un journal
   wiki_body: Commentaire sur un journal
   created_at: 2010-01-01 00:00:00
+
+poll:
+  node: poll
+  user: visitor_10
+  title: Commentaire sur un sondage
+  wiki_body: Commentaire sur un sondage
+  created_at: 2010-01-01 00:00:00
+  materialized_path: 000079493703
+
+poll_2:
+  node: poll
+  user: visitor_10
+  title: Commentaire sur un sondage
+  wiki_body: Commentaire sur un sondage
+  created_at: 2010-01-01 00:00:00
+  materialized_path: 000079493703

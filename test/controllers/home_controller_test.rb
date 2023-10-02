@@ -9,6 +9,10 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
 
     get root_url
     assert_response :success
+
+    assert_select 'title', 'Accueil - LinuxFr.org'
+
+    post destroy_account_session_url
   end
 
   test 'should not login' do
