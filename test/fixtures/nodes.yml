@@ -78,6 +78,12 @@ poll_draft:
   content: draft
   content_type: Poll
 
+poll_collectif:
+  user: community
+  cc_licensed: true
+  content: collectif
+  content_type: Poll
+
 post:
   user: moderator_1
   cc_licensed: true
