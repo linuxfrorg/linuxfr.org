@@ -11,6 +11,7 @@ old:
   owner: visitor_1
   body: Un si joli journal
   wiki_body: Un si joli journal
+  created_at: <%= 4.months.ago %>
 
 lorem_cc_licensed:
   title: Lorem ipsum
