@@ -4,13 +4,20 @@ class AccountTest < ActiveSupport::TestCase
   def test_should_create_account
     assert_difference 'Account.count' do
       account = new_account
+
       assert account.save, account.errors.full_messages.to_sentence
     end
+  end
+
+  test 'should get anonymous account' do
+    assert Account.anonymous
+    assert_equal 'Anonyme', Account.anonymous.login
   end
 
   def test_should_require_login
     assert_no_difference 'Account.count' do
       account = new_account(login: nil)
+
       assert_not account.save, account.errors.full_messages.to_sentence
     end
   end
