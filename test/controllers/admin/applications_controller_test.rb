@@ -9,6 +9,7 @@ class Admin::ApplicationsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should list applications' do
     get admin_applications_url
+
     assert_response :success
   end
 
@@ -16,6 +17,7 @@ class Admin::ApplicationsControllerTest < ActionDispatch::IntegrationTest
     patch admin_application_url(Doorkeeper::Application.first), params: {
       doorkeeper_application: { name: 'New name' }
     }
+
     assert_response :success
   end
 
@@ -27,6 +29,7 @@ class Admin::ApplicationsControllerTest < ActionDispatch::IntegrationTest
     patch admin_application_url(app), params: {
       doorkeeper_application: { name: 'New name' }
     }
+
     assert_nil flash[:alert]
     assert flash[:notice]
     assert_redirected_to admin_applications_url

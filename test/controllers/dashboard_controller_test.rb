@@ -9,11 +9,13 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get index' do
     get dashboard_url
+
     assert_response :success
   end
 
   test 'should get answers' do
     get tableau_de_bord_reponses_url
+
     assert_response :success
   end
 end

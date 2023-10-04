@@ -7,6 +7,7 @@ class ModerationControllerTest < ActionDispatch::IntegrationTest
     sign_in accounts 'visitor_0'
 
     get moderation_url
+
     assert_redirected_to account_session_url
   end
 
@@ -14,6 +15,7 @@ class ModerationControllerTest < ActionDispatch::IntegrationTest
     sign_in accounts 'admin_0'
 
     get moderation_url
+
     assert_redirected_to moderation_news_index_url
   end
 end

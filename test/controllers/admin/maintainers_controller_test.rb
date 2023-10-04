@@ -10,17 +10,18 @@ class Admin::MaintainersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should give maintainer rights' do
     post admin_account_maintainer_url @account
+
     assert_redirected_to @account.user
     assert_equal 'Nouveau rôle : mainteneur', flash[:notice]
-    assert @account.reload.maintainer?
+    assert_predicate @account.reload, :maintainer?
   end
 
   test 'should remove maintainer rights' do
     @account.give_maintainer_rights!
     delete admin_account_maintainer_url @account
+
     assert_redirected_to @account.user
     assert_equal 'Rôle retiré : mainteneur', flash[:notice]
     assert_not @account.reload.maintainer?
   end
 end
-

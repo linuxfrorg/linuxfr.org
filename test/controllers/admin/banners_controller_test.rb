@@ -7,13 +7,20 @@ class Admin::BannersControllerTest < ActionDispatch::IntegrationTest
     sign_in accounts 'admin_0'
   end
 
+  teardown do
+    # Reset
+    $redis.del('banners')
+  end
+
   test 'should list banners' do
     get admin_banners_url
+
     assert_response :success
   end
 
   test 'should get new' do
     get new_admin_banner_url
+
     assert_response :success
   end
 
@@ -46,6 +53,7 @@ class Admin::BannersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should edit banner' do
     get edit_admin_banner_url(banners(:one))
+
     assert_response :success
   end
 
@@ -71,6 +79,7 @@ class Admin::BannersControllerTest < ActionDispatch::IntegrationTest
               content: 'This is a banner'
             }
           }
+
     assert_redirected_to admin_banners_url
   end
 

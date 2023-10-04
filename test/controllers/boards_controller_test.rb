@@ -5,6 +5,7 @@ class BoardsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should show' do
     get board_url(Board.free, format: :html)
+
     assert_response :success
   end
 

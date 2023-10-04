@@ -9,6 +9,7 @@ class Admin::StylesheetsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should show stylesheet' do
     get admin_stylesheet_url
+
     assert_response :success
   end
 

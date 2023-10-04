@@ -25,6 +25,7 @@ class AccountTest < ActiveSupport::TestCase
   def test_should_require_email
     assert_no_difference 'Account.count' do
       account = new_account(email: nil)
+
       assert_not account.save, account.errors.full_messages.to_sentence
     end
   end
@@ -40,7 +41,7 @@ class AccountTest < ActiveSupport::TestCase
 
   test 'should display last seen on' do
     assert_equal 'jamais', accounts(:anonymous).display_last_seen_on
-    assert_equal 'dans les 30 derniers jours', accounts(:visitor_0).display_last_seen_on
+    assert_equal 'dans les 30 derniers jours', accounts('visitor_0').display_last_seen_on
     assert_equal 'il y a moins d’un an', accounts('visitor_negative_karma').display_last_seen_on
   end
 
@@ -50,17 +51,17 @@ class AccountTest < ActiveSupport::TestCase
   end
 
   test 'should be able to block' do
-    assert_not accounts(:visitor_0).can_block?
-    assert_not accounts(:editor_0).can_block?
-    assert accounts(:moderator_0).can_block?
-    assert accounts(:admin_0).can_block?
+    assert_not accounts('visitor_0').can_block?
+    assert_not accounts('editor_0').can_block?
+    assert_predicate accounts('moderator_0'), :can_block?
+    assert_predicate accounts('admin_0'), :can_block?
   end
 
   test 'should be able to plonk' do
-    assert_not accounts(:visitor_0).can_plonk?
-    assert_not accounts(:editor_0).can_plonk?
-    assert accounts(:moderator_0).can_plonk?
-    assert accounts(:admin_0).can_plonk?
+    assert_not accounts('visitor_0').can_plonk?
+    assert_not accounts('editor_0').can_plonk?
+    assert_predicate accounts('moderator_0'), :can_plonk?
+    assert_predicate accounts('admin_0'), :can_plonk?
   end
 
   def test_should_delete_account

@@ -9,6 +9,7 @@ class Admin::AdminsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create admin' do
     post admin_account_admin_url(accounts('visitor_0'))
+
     assert_nil flash[:alert]
     assert flash[:notice]
     assert_redirected_to accounts('visitor_0').user
@@ -16,6 +17,7 @@ class Admin::AdminsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should destroy admin' do
     delete admin_account_admin_url(accounts('admin_0'))
+
     assert_nil flash[:alert]
     assert flash[:notice]
     assert_redirected_to accounts('admin_0').user
