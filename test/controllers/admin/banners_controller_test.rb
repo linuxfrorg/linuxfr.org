@@ -9,7 +9,7 @@ class Admin::BannersControllerTest < ActionDispatch::IntegrationTest
 
   teardown do
     # Reset
-    $redis.del('banners')
+    Redis.new.del('banners')
   end
 
   test 'should list banners' do

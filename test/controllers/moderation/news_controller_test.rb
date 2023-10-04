@@ -126,7 +126,7 @@ class Moderation::NewsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to moderation_news_url news(:news)
 
     # Reset
-    $redis.del('nodes/ppp')
+    Redis.new.del('nodes/ppp')
   end
 
   test 'should get vote' do
