@@ -10,14 +10,16 @@ class Admin::ModeratorsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should give moderator rights' do
     post admin_account_moderator_url @account
+
     assert_redirected_to @account.user
     assert_equal 'Nouveau rôle : modérateur', flash[:notice]
-    assert @account.reload.moderator?
+    assert_predicate @account.reload, :moderator?
   end
 
   test 'should remove moderator rights' do
     @account.give_moderator_rights!
     delete admin_account_moderator_url @account
+
     assert_redirected_to @account.user
     assert_equal 'Rôle retiré : modérateur', flash[:notice]
     assert_not @account.reload.moderator?

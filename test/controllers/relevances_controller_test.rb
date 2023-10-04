@@ -9,6 +9,7 @@ class RelevancesControllerTest < ActionDispatch::IntegrationTest
 
     assert_difference 'comments(:one).nb_votes_for' do
       post relevance_for_node_comment_url nodes(:tracker_one), comments(:one), format: :json
+
       assert_nil flash[:alert]
     end
 
@@ -21,6 +22,7 @@ class RelevancesControllerTest < ActionDispatch::IntegrationTest
 
     assert_difference 'comments(:one).nb_votes_against' do
       post relevance_against_node_comment_url nodes(:tracker_one), comments(:one), format: :json
+
       assert_nil flash[:alert]
     end
 
@@ -32,6 +34,7 @@ class RelevancesControllerTest < ActionDispatch::IntegrationTest
 
     assert_no_difference 'comments(:one).nb_votes_for' do
       post relevance_for_node_comment_url nodes(:tracker_one), comments(:one), format: :json
+
       assert_nil flash[:alert]
     end
 
@@ -43,6 +46,7 @@ class RelevancesControllerTest < ActionDispatch::IntegrationTest
 
     assert_no_difference 'comments(:one).nb_votes_against' do
       post relevance_against_node_comment_url nodes(:tracker_one), comments(:one), format: :json
+
       assert_nil flash[:alert]
     end
 

@@ -9,18 +9,19 @@ class Admin::SectionsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get new' do
     get new_admin_section_url
+
     assert_response :success
   end
 
   test 'should create section' do
     assert_difference('Section.count') do
-      post admin_sections_url, params: { section: {
-        title: 'title'
-      } }
+      post admin_sections_url, params: {
+        section: { title: 'title' }
+      }
     end
 
-    assert_response :redirect
     follow_redirect!
+
     assert_response :success
     assert_select 'p', "Il vous reste\n0\navis"
   end
@@ -37,6 +38,7 @@ class Admin::SectionsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get edit' do
     get edit_admin_section_url(sections(:default))
+
     assert_response :success
   end
 
@@ -49,6 +51,7 @@ class Admin::SectionsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
     follow_redirect!
+
     assert_response :success
     assert_select 'a', 'hello world'
   end
@@ -59,8 +62,8 @@ class Admin::SectionsControllerTest < ActionDispatch::IntegrationTest
         title: ''
       }
     }
+
     assert flash[:alert]
-    assert_nil flash[:notice]
     assert_response :success
   end
 

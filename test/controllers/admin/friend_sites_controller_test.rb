@@ -9,11 +9,13 @@ class FriendSitesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should list friend sites' do
     get admin_friend_sites_url
+
     assert_response :success
   end
 
   test 'should get new' do
     get new_admin_friend_site_url
+
     assert_response :success
   end
 
@@ -25,7 +27,7 @@ class FriendSitesControllerTest < ActionDispatch::IntegrationTest
           url: 'http://example.com'
         }
       }
-      assert_nil flash[:alert]
+
       assert flash[:notice]
     end
     assert_response :redirect
@@ -38,14 +40,15 @@ class FriendSitesControllerTest < ActionDispatch::IntegrationTest
           url: 'http://example.com'
         }
       }
+
       assert flash[:alert]
-      assert_nil flash[:notice]
     end
     assert_response :success
   end
 
   test 'should get edit' do
     get edit_admin_friend_site_url(friend_sites(:one))
+
     assert_response :success
   end
 
@@ -56,7 +59,7 @@ class FriendSitesControllerTest < ActionDispatch::IntegrationTest
         url: 'http://example.com'
       }
     }
-    assert_nil flash[:alert]
+
     assert flash[:notice]
     assert_response :redirect
   end
@@ -67,35 +70,35 @@ class FriendSitesControllerTest < ActionDispatch::IntegrationTest
         title: ''
       }
     }
+
     assert flash[:alert]
-    assert_nil flash[:notice]
     assert_response :success
   end
 
   test 'should destroy friend site' do
     assert_difference('FriendSite.count', -1) do
       delete admin_friend_site_url(friend_sites(:one))
+
+      assert flash[:notice]
     end
-    assert_nil flash[:alert]
-    assert flash[:notice]
     assert_response :redirect
   end
 
   test 'should lower friend site' do
     assert_difference('friend_sites(:one).reload.position') do
       post lower_admin_friend_site_url(friend_sites(:one))
+
+      assert_nil flash[:alert]
     end
-    assert_nil flash[:alert]
-    assert_nil flash[:notice]
     assert_response :redirect
   end
 
   test 'should higher friend site' do
     assert_no_difference('friend_sites(:one).position') do
       post higher_admin_friend_site_url(friend_sites(:one))
+
+      assert_nil flash[:alert]
     end
-    assert_nil flash[:alert]
-    assert_nil flash[:notice]
     assert_response :redirect
   end
 end

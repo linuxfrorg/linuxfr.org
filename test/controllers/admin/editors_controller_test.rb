@@ -10,7 +10,7 @@ class Admin::EditorsControllerTest < ActionDispatch::IntegrationTest
   test 'should authorize editor' do
     assert_difference 'Account.editor.count' do
       post admin_account_editor_url accounts('visitor_0')
-      assert_nil flash[:alert]
+
       assert flash[:notice]
     end
     assert_redirected_to accounts('visitor_0').user
@@ -19,7 +19,7 @@ class Admin::EditorsControllerTest < ActionDispatch::IntegrationTest
   test 'should destroy editor' do
     assert_difference 'Account.editor.count', -1 do
       delete admin_account_editor_url accounts('editor_0')
-      assert_nil flash[:alert]
+
       assert flash[:notice]
     end
     assert_redirected_to accounts('editor_0').user

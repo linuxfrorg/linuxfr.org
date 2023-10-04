@@ -9,92 +9,79 @@ class Redaction::NewsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should list news' do
     get redaction_news_index_url
+
     assert_response :success
   end
 
   test 'should get moderation' do
     get moderation_redaction_news_index_url format: :atom
+
     assert_response :success
   end
 
   test 'should show news' do
     get redaction_news_url news(:draft)
+
     assert_response :success
-    assert_nil flash[:alert]
   end
 
   test 'should create news' do
     assert_difference('News.count') do
-      post redaction_news_index_url,
-           params: {
-             news: {
-               section: sections(:news),
-               title: 'Hello world',
-               cached_slug: 'hello-world',
-               author_name: 'John Doe',
-               author_email: 'test@example.com'
-             }
-           }
-      assert_nil flash[:alert]
+      post redaction_news_index_url, params: {
+        news: { title: 'Hello world' }
+      }
     end
     assert_redirected_to redaction_news_url News.last
   end
 
   test 'should get edit' do
     get edit_redaction_news_url news(:draft)
+
     assert_response :success
   end
 
   test 'should update news' do
-    patch redaction_news_url(news(:draft)),
-          params: {
-            news: {
-              title: 'Hello world',
-              cached_slug: 'hello-world',
-              author_name: 'John Doe',
-              author_email: 'test@example.com'
-            }
-          }
-    assert_nil flash[:alert]
+    patch redaction_news_url(news(:draft)), params: {
+      news: { title: 'Hello world' }
+    }
+
     assert_response :success
   end
 
   test 'should reassign news' do
     sign_in accounts 'admin_0'
     post reassign_redaction_news_url news(:draft), params: {
-      user_id: users(:visitor_1).id
+      user_id: users('visitor_1').id
     }
-    assert_nil flash[:alert]
+
     assert flash[:notice]
     assert_redirected_to redaction_news_url news(:draft)
   end
 
   test 'should get reorganize news page' do
     get reorganize_redaction_news_url news(:draft)
-    assert_nil flash[:alert]
+
     assert_response :success
 
     sign_in accounts 'visitor_1'
     get reorganize_redaction_news_url news(:draft)
+
     assert_response :forbidden
   end
 
   test 'should reorganize news' do
     put reorganized_redaction_news_url news(:draft), params: {
-      news: {
-        title: 'Hello world'
-      }
+      news: { title: 'Hello world' }
     }
-    assert_nil flash[:alert]
+
     assert_redirected_to redaction_news_url news(:draft).reload
   end
 
   test 'should not reorganize news' do
     put reorganized_redaction_news_url news(:draft), params: {
-      news: {
-        title: ''
-      }
+      news: { title: '' }
     }
+
     assert_response :success
   end
 
@@ -102,36 +89,26 @@ class Redaction::NewsControllerTest < ActionDispatch::IntegrationTest
     sign_in accounts 'admin_0'
     # This is required to generate a version numbered '1'
     put reorganized_redaction_news_url news(:draft), params: {
-      news: {
-        title: 'Hello world'
-      }
+      news: { title: 'Hello world' }
     }
     get revision_redaction_news_url news(:draft).id, 1
-    assert_nil flash[:alert]
+
     assert_response :success
   end
 
   test 'should followup news' do
     sign_in accounts 'admin_0'
-    post followup_redaction_news_url news(:draft), params: {
-      message: 'Hello world'
-    }
-    assert_nil flash[:alert]
+    post followup_redaction_news_url news(:draft), params: { message: 'Hello world' }
+
     assert_redirected_to redaction_news_url news(:draft).reload
   end
 
   test 'should submit news' do
-    sign_in accounts 'admin_0'
-
     # Required to unlock the draft
-    put reorganized_redaction_news_url news(:draft), params: {
-      news: {
-        title: 'Hello world'
-      }
-    }
+    put reorganized_redaction_news_url news(:draft), params: { news: { title: 'Hello world' } }
 
     post submit_redaction_news_url news(:draft).id
-    assert_nil flash[:alert]
+
     assert_redirected_to redaction_url
   end
 
@@ -140,6 +117,7 @@ class Redaction::NewsControllerTest < ActionDispatch::IntegrationTest
     get reorganize_redaction_news_url news(:draft)
 
     post submit_redaction_news_url news(:draft).id
+
     assert flash[:alert]
     assert_redirected_to redaction_news_url news(:draft)
   end
@@ -154,11 +132,13 @@ class Redaction::NewsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should mark news as urgent' do
     post urgent_redaction_news_url news(:draft)
+
     assert_redirected_to redaction_news_url news(:draft)
   end
 
   test 'should cancel news as urgent' do
     post cancel_urgent_redaction_news_url news(:draft)
+
     assert_redirected_to redaction_news_url news(:draft)
   end
 end

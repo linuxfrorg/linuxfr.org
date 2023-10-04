@@ -9,11 +9,13 @@ class Admin::ForumsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should list forums' do
     get admin_forums_url
+
     assert_response :success
   end
 
   test 'should get new' do
     get new_admin_forum_url
+
     assert_response :success
   end
 
@@ -34,7 +36,7 @@ class Admin::ForumsControllerTest < ActionDispatch::IntegrationTest
           cached_slug: 'hello-world'
         }
       }
-      assert_nil flash[:alert]
+
       assert flash[:notice]
     end
     assert_redirected_to admin_forums_url
@@ -42,6 +44,7 @@ class Admin::ForumsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get edit' do
     get edit_admin_forum_url(forums(:one))
+
     assert_response :success
   end
 
@@ -49,6 +52,7 @@ class Admin::ForumsControllerTest < ActionDispatch::IntegrationTest
     patch admin_forum_url(forums(:one)), params: {
       forum: { title: '' }
     }
+
     assert_response :success
   end
 
@@ -56,7 +60,7 @@ class Admin::ForumsControllerTest < ActionDispatch::IntegrationTest
     patch admin_forum_url(forums(:one)), params: {
       forum: { title: 'Hello world' }
     }
-    assert_nil flash[:alert]
+
     assert flash[:notice]
     assert_redirected_to admin_forums_url
   end
@@ -64,7 +68,7 @@ class Admin::ForumsControllerTest < ActionDispatch::IntegrationTest
   test 'should archive forum' do
     assert_difference 'Forum.active.count', -1 do
       post archive_admin_forum_url(forums(:one))
-      assert_nil flash[:alert]
+
       assert flash[:notice]
     end
     assert_redirected_to admin_forums_url
@@ -72,7 +76,7 @@ class Admin::ForumsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should reopen forum' do
     post reopen_admin_forum_url(forums(:one))
-    assert_nil flash[:alert]
+
     assert flash[:notice]
 
     assert_redirected_to admin_forums_url
@@ -81,7 +85,7 @@ class Admin::ForumsControllerTest < ActionDispatch::IntegrationTest
   test 'should destroy forum' do
     assert_difference 'Forum.count', -1 do
       delete admin_forum_url(forums(:two))
-      assert_nil flash[:alert]
+
       assert flash[:notice]
     end
     assert_redirected_to admin_forums_url

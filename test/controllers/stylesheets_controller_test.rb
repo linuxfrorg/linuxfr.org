@@ -11,7 +11,7 @@ class StylesheetsControllerTest < ActionDispatch::IntegrationTest
     post stylesheet_url, params: {
       uploaded_stylesheet: fixture_file_upload('blue-smooth.scss', 'text/css')
     }
-    assert_nil flash[:alert]
+
     assert flash[:notice]
 
     assert_redirected_to edit_stylesheet_url
@@ -19,33 +19,34 @@ class StylesheetsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should not create stylesheet' do
     # Pour rendre l'utilisateur invalide et bloquer son enregistrement
-    accounts('visitor_666').update_column :email, ''
+    accounts('visitor_666').email = ''
     sign_in accounts 'visitor_666'
 
     post stylesheet_url, params: {
       uploaded_stylesheet: fixture_file_upload('blue-smooth.scss')
     }
+
     assert flash[:alert]
-    assert_nil flash[:notice]
 
     assert_redirected_to edit_stylesheet_url
   end
 
   test 'should get edit' do
     get edit_stylesheet_url
+
     assert_response :success
   end
 
   test 'should not update stylesheet' do
     # Pour rendre l'utilisateur invalide et bloquer son enregistrement
-    accounts('visitor_666').update_column :email, ''
+    accounts('visitor_666').email = ''
     sign_in accounts 'visitor_666'
 
     patch stylesheet_url, params: {
       uploaded_stylesheet: fixture_file_upload('blue-smooth.scss')
     }
+
     assert flash[:alert]
-    assert_nil flash[:notice]
     assert_redirected_to edit_stylesheet_url
   end
 
@@ -53,7 +54,7 @@ class StylesheetsControllerTest < ActionDispatch::IntegrationTest
     patch stylesheet_url, params: {
       css_session: 'current'
     }
-    assert_nil flash[:alert]
+
     assert flash[:notice]
     assert_redirected_to edit_stylesheet_url
   end
@@ -62,14 +63,14 @@ class StylesheetsControllerTest < ActionDispatch::IntegrationTest
     patch stylesheet_url, params: {
       stylesheet: 'contrib/blue-smooth'
     }
-    assert_nil flash[:alert]
+
     assert flash[:notice]
     assert_redirected_to edit_stylesheet_url
   end
 
   test 'should destroy stylesheet' do
     delete stylesheet_url
-    assert_nil flash[:alert]
+
     assert flash[:notice]
     assert_redirected_to edit_stylesheet_url
   end

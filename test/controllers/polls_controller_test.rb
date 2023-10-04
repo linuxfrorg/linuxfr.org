@@ -5,18 +5,21 @@ class PollsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get index' do
     get polls_url
+
     assert_response :success
   end
 
   test 'should get show' do
     sign_in accounts 'maintainer_0'
     get poll_url polls(:one), format: :html
+
     assert_response :success
   end
 
   test 'should get new page' do
     sign_in accounts 'maintainer_0'
     get new_poll_url
+
     assert_response :success
   end
 
@@ -35,6 +38,7 @@ class PollsControllerTest < ActionDispatch::IntegrationTest
         },
         commit: 'Prévisualiser'
       }
+
       assert_nil flash[:alert]
     end
     assert_response :success
@@ -55,7 +59,7 @@ class PollsControllerTest < ActionDispatch::IntegrationTest
           }
         }
       }
-      assert_nil flash[:alert]
+
       assert flash[:notice]
     end
     assert_redirected_to polls_url
@@ -67,6 +71,7 @@ class PollsControllerTest < ActionDispatch::IntegrationTest
     sign_in accounts :joe
 
     post vote_poll_url polls(:one), position: 0
+
     assert_nil flash[:alert]
     assert flash[:notice]
 
@@ -79,6 +84,7 @@ class PollsControllerTest < ActionDispatch::IntegrationTest
     sign_in accounts :joe
 
     post vote_poll_url polls(:one)
+
     assert flash[:alert]
     assert_nil flash[:notice]
 

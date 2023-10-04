@@ -9,6 +9,7 @@ class Moderation::TagsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should list tags' do
     get moderation_tags_url
+
     assert_response :success
   end
 end
