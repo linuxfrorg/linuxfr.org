@@ -67,7 +67,7 @@ class PollsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should vote' do
     # Remove eventual existing vote
-    $redis.del "polls/#{polls(:one).id}/127.0.0.1"
+    Redis.new.del "polls/#{polls(:one).id}/127.0.0.1"
     sign_in accounts :joe
 
     post vote_poll_url polls(:one), position: 0
@@ -80,7 +80,7 @@ class PollsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should not vote' do
     # Remove eventual existing vote
-    $redis.del "polls/#{polls(:one).id}/127.0.0.1"
+    Redis.new.del "polls/#{polls(:one).id}/127.0.0.1"
     sign_in accounts :joe
 
     post vote_poll_url polls(:one)

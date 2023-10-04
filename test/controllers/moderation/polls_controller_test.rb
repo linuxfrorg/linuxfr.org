@@ -78,6 +78,6 @@ class Moderation::PollControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
 
     # Reset
-    $redis.del('nodes/ppp')
+    Redis.new.del('nodes/ppp')
   end
 end
