@@ -16,8 +16,8 @@ class VoteTest < ActiveSupport::TestCase
     @account = accounts(:joe)
 
     # Reset redis related data
-    $redis.del "nodes/#{@node.id}/votes/#{@account.id}"
-    $redis.del "nodes/#{@node.id}/votes/#{accounts(:bob).id}"
+    Redis.new.del "nodes/#{@node.id}/votes/#{@account.id}"
+    Redis.new.del "nodes/#{@node.id}/votes/#{accounts(:bob).id}"
   end
 
   test 'A node has a score of 0 by default' do

@@ -2,8 +2,8 @@ require 'test_helper'
 
 class LangTest < ActiveSupport::TestCase
   setup do
-    $redis.del 'lang'
-    $redis.del 'lang/fr'
+    Redis.new.del 'lang'
+    Redis.new.del 'lang/fr'
   end
 
   test 'should have no language' do
