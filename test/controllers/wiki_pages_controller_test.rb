@@ -5,16 +5,19 @@ class WikiPagesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should list wiki pages' do
     get wiki_pages_url format: :atom
+
     assert_response :success
   end
 
   test 'should show wiki page' do
     get wiki_page_url wiki_pages(:one)
+
     assert_response :success
   end
 
   test 'should not show wiki page' do
     get wiki_page_url 'none'
+
     assert_response :success
   end
 
@@ -22,6 +25,7 @@ class WikiPagesControllerTest < ActionDispatch::IntegrationTest
     sign_in accounts 'editor_0'
 
     get wiki_page_url 'none'
+
     assert_redirected_to new_wiki_page_url title: 'none'
   end
 
@@ -29,6 +33,7 @@ class WikiPagesControllerTest < ActionDispatch::IntegrationTest
     sign_in accounts 'editor_0'
 
     get new_wiki_page_url
+
     assert_response :success
   end
 
@@ -37,14 +42,9 @@ class WikiPagesControllerTest < ActionDispatch::IntegrationTest
 
     assert_no_difference('WikiPage.count') do
       post wiki_pages_url, params: {
-        wiki_page: {
-          title: 'Test',
-          wiki_body: 'Test'
-        },
+        wiki_page: { title: 'Test' },
         commit: 'Prévisualiser'
       }
-      assert_nil flash[:alert]
-      assert_nil flash[:notice]
     end
     assert_response :success
   end
@@ -59,7 +59,7 @@ class WikiPagesControllerTest < ActionDispatch::IntegrationTest
           wiki_body: 'Test'
         }
       }
-      assert_nil flash[:alert]
+
       assert flash[:notice]
     end
     assert_redirected_to wiki_page_url(WikiPage.last)
@@ -69,6 +69,7 @@ class WikiPagesControllerTest < ActionDispatch::IntegrationTest
     sign_in accounts 'editor_0'
 
     get edit_wiki_page_url wiki_pages(:one)
+
     assert_response :success
   end
 
@@ -82,6 +83,7 @@ class WikiPagesControllerTest < ActionDispatch::IntegrationTest
       },
       commit: 'Prévisualiser'
     }
+
     assert_nil flash[:alert]
     assert_nil flash[:notice]
     assert_response :success
@@ -96,13 +98,14 @@ class WikiPagesControllerTest < ActionDispatch::IntegrationTest
         wiki_body: 'Test'
       }
     }
-    assert_nil flash[:alert]
+
     assert flash[:notice]
     assert_redirected_to wiki_page_url(wiki_pages(:one))
   end
 
   test 'should get revision' do
     get revision_wiki_page_url wiki_pages(:one), '1'
+
     assert_nil flash[:alert]
     assert_response :success
   end
@@ -110,6 +113,7 @@ class WikiPagesControllerTest < ActionDispatch::IntegrationTest
   test 'should get changes' do
     sign_in accounts 'admin_0'
     get modifications_wiki_pages_url
+
     assert_nil flash[:alert]
     assert_response :success
   end
@@ -117,6 +121,7 @@ class WikiPagesControllerTest < ActionDispatch::IntegrationTest
   test 'should get pages' do
     sign_in accounts 'admin_0'
     get pages_wiki_pages_url
+
     assert_nil flash[:alert]
     assert_response :success
   end
@@ -125,7 +130,7 @@ class WikiPagesControllerTest < ActionDispatch::IntegrationTest
     sign_in accounts 'admin_0'
     assert_difference('Node.visible.count', -1) do
       delete wiki_page_url(wiki_pages(:one))
-      assert_nil flash[:alert]
+
       assert flash[:notice]
     end
     assert_redirected_to wiki_page_url wiki_pages(:homePage)

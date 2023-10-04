@@ -10,11 +10,13 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
   test 'should not list accounts' do
     sign_in accounts 'visitor_0'
     get admin_accounts_url
+
     assert_redirected_to account_session_url
   end
 
   test 'should list accounts' do
     get admin_accounts_url
+
     assert_response :success
   end
 
@@ -26,26 +28,33 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
       email: 'test@example.com',
       inactive: '1'
     }
+
     assert_response :success
   end
 
   test 'should send password reset' do
     post password_admin_account_url(accounts(:anonymous))
+
     assert_redirected_to admin_accounts_url
   end
 
   test 'should give karma' do
     post karma_admin_account_url(accounts(:anonymous))
+
     assert_redirected_to accounts(:anonymous).user
   end
 
-  test 'should activate/inactivate account' do
+  test 'should activate account' do
     patch admin_account_url accounts(:anonymous)
+
     assert_nil flash[:alert]
     assert_equal 'Compte réactivé', flash[:notice]
     assert_redirected_to admin_accounts_url
+  end
 
-    patch admin_account_url accounts(:anonymous)
+  test 'should inactivate account' do
+    patch admin_account_url accounts('visitor_999')
+
     assert_nil flash[:alert]
     assert_equal 'Compte désactivé', flash[:notice]
     assert_redirected_to admin_accounts_url
@@ -53,6 +62,7 @@ class Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should destroy account' do
     delete admin_account_url(accounts(:anonymous))
+
     assert_redirected_to admin_accounts_url
   end
 end

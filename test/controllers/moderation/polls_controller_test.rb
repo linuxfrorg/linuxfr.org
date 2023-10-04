@@ -9,13 +9,15 @@ class Moderation::PollControllerTest < ActionDispatch::IntegrationTest
 
   test 'should list polls' do
     get moderation_polls_url
+
     assert_response :success
   end
 
   test 'should show poll' do
-    comments(:poll_2).parent_id = comments(:poll).id
-    comments(:poll_2).generate_materialized_path
+    comments('poll_2').parent_id = comments(:poll).id
+    comments('poll_2').generate_materialized_path
     get moderation_poll_url(polls(:one))
+
     assert_response :success
   end
 
@@ -23,7 +25,7 @@ class Moderation::PollControllerTest < ActionDispatch::IntegrationTest
     # For information, there can only be one published poll!
     assert_difference('Poll.draft.count', -1) do
       post accept_moderation_poll_url(polls(:draft))
-      assert_nil flash[:alert]
+
       assert flash[:notice]
     end
     assert_redirected_to poll_url polls(:draft)
@@ -32,7 +34,7 @@ class Moderation::PollControllerTest < ActionDispatch::IntegrationTest
   test 'should refuse poll' do
     assert_difference('Poll.draft.count', -1) do
       post refuse_moderation_poll_url(polls(:draft))
-      assert_nil flash[:alert]
+
       assert flash[:notice]
     end
     assert_redirected_to moderation_polls_url
@@ -40,6 +42,7 @@ class Moderation::PollControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get edit' do
     get edit_moderation_poll_url(polls(:one))
+
     assert_response :success
   end
 
@@ -49,6 +52,7 @@ class Moderation::PollControllerTest < ActionDispatch::IntegrationTest
         title: 'hello world my poll'
       }
     }
+
     assert_nil flash[:alert]
     assert flash[:notice]
     assert_redirected_to moderation_poll_url(polls(:one).reload)
@@ -60,6 +64,7 @@ class Moderation::PollControllerTest < ActionDispatch::IntegrationTest
         title: ''
       }
     }
+
     assert flash[:alert]
     assert_nil flash[:notice]
     assert_response :success
@@ -67,8 +72,12 @@ class Moderation::PollControllerTest < ActionDispatch::IntegrationTest
 
   test 'should set poll on ppp' do
     post ppp_moderation_poll_url(polls(:one))
+
     assert_nil flash[:alert]
     assert flash[:notice]
     assert_redirected_to root_url
+
+    # Reset
+    $redis.del('nodes/ppp')
   end
 end

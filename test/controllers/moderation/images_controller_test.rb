@@ -9,12 +9,14 @@ class Moderation::ImagesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should list images' do
     get moderation_images_url
+
     assert_response :success
   end
 
   test 'should destroy image' do
     # Plutôt inutile, mais permet de passer à travers le code malgré tout
     delete moderation_image_url 0
+
     assert_redirected_to moderation_images_url
   end
 end

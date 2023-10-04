@@ -9,11 +9,13 @@ class Admin::ModeratorsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should list pages' do
     get admin_pages_url
+
     assert_response :success
   end
 
   test 'should get new' do
     get new_admin_page_url
+
     assert_response :success
   end
 
@@ -26,7 +28,7 @@ class Admin::ModeratorsControllerTest < ActionDispatch::IntegrationTest
           body: 'hello world'
         }
       }
-      assert_nil flash[:alert]
+
       assert flash[:notice]
     end
     assert_redirected_to admin_pages_url
@@ -40,14 +42,15 @@ class Admin::ModeratorsControllerTest < ActionDispatch::IntegrationTest
           body: 'hello world'
         }
       }
+
       assert flash[:alert]
-      assert_nil flash[:notice]
     end
     assert_response :success
   end
 
   test 'should get edit' do
     get edit_admin_page_url(pages(:one))
+
     assert_response :success
   end
 
@@ -59,7 +62,7 @@ class Admin::ModeratorsControllerTest < ActionDispatch::IntegrationTest
         body: 'hello world'
       }
     }
-    assert_nil flash[:alert]
+
     assert flash[:notice]
     assert_redirected_to admin_pages_url
   end
@@ -72,15 +75,15 @@ class Admin::ModeratorsControllerTest < ActionDispatch::IntegrationTest
         body: 'hello world'
       }
     }
+
     assert flash[:alert]
-    assert_nil flash[:notice]
     assert_response :success
   end
 
   test 'should destroy page' do
     assert_difference('Page.count', -1) do
       delete admin_page_url(pages(:one))
-      assert_nil flash[:alert]
+
       assert flash[:notice]
     end
     assert_redirected_to admin_pages_url

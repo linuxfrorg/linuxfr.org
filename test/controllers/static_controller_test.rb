@@ -3,6 +3,7 @@ require 'test_helper'
 class StaticControllerTest < ActionDispatch::IntegrationTest
   test 'should get home page' do
     get static_url pages(:one)
+
     assert_response :success
   end
 
@@ -11,6 +12,7 @@ class StaticControllerTest < ActionDispatch::IntegrationTest
     pages(:equipe).save!
 
     get static_url pages(:equipe)
+
     assert_response :success
   end
 
@@ -19,6 +21,7 @@ class StaticControllerTest < ActionDispatch::IntegrationTest
     pages(:amis).save!
 
     get static_url pages(:amis)
+
     assert_response :success
   end
 
@@ -27,11 +30,13 @@ class StaticControllerTest < ActionDispatch::IntegrationTest
     pages(:moderation).save!
 
     get static_url pages(:moderation)
+
     assert_response :success
   end
 
   test 'get changelog' do
     get changelog_url pages(:one)
+
     assert_response :success
   end
 end

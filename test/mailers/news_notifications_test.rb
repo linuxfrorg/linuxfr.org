@@ -33,12 +33,14 @@ class NewsNotificationsTest < ActionMailer::TestCase
 
   test 'should send rewrite notification' do
     mail = NewsNotifications.rewrite news(:news)
+
     assert_match(/Dépêche renvoyée/, mail.subject)
     assert_match(/a été renvoyée/, mail.body.encoded)
   end
 
   test 'should send followup notification' do
     mail = NewsNotifications.followup news(:news), 'hello world'
+
     assert_match(/Relance/, mail.subject)
     assert_match(/hello world/, mail.body.encoded)
   end

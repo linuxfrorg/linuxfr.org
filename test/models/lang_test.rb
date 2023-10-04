@@ -14,6 +14,6 @@ class LangTest < ActiveSupport::TestCase
     Lang['fr'] = 'Français'
 
     assert_not_empty Lang.all
-    assert 1, Lang.all.size
+    assert_equal 1, Lang.all.size
   end
 end

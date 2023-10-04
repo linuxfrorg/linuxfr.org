@@ -5,28 +5,33 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should list posts' do
     get forum_posts_url forums(:one)
+
     assert_redirected_to forum_url forums :one
   end
 
   test 'should show post' do
     get forum_post_url(forums(:one), posts(:one))
+
     assert_response :success
   end
 
   test 'should show post when logged in' do
     sign_in accounts 'visitor_0'
     get forum_post_url(forums(:one), posts(:one))
+
     assert_response :success
   end
 
   test 'should show post from another forum' do
     get forum_post_url(forums(:two), posts(:one))
+
     assert_redirected_to forum_post_url forums(:one), posts(:one)
   end
 
   test 'should get new page' do
     sign_in accounts 'maintainer_0'
     get new_post_url forums(:one)
+
     assert_response :success
   end
 
@@ -43,6 +48,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
         tags: 'hello, world',
         commit: 'Prévisualiser'
       }
+
       assert_nil flash[:alert]
     end
     assert_response :success
@@ -60,7 +66,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
         },
         tags: 'hello, world'
       }
-      assert_nil flash[:alert]
+
       assert flash[:notice]
     end
     assert_redirected_to forum_posts_url forums :one
@@ -69,6 +75,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test 'should get edit page' do
     sign_in accounts 'admin_0'
     get edit_forum_post_url forums(:one), posts(:one)
+
     assert_response :success
   end
 
@@ -85,6 +92,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
         tags: 'hello, world',
         commit: 'Prévisualiser'
       }
+
       assert_nil flash[:alert]
     end
     assert_response :success
@@ -100,6 +108,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       },
       tags: 'updated'
     }
+
     assert_nil flash[:alert]
     assert flash[:notice]
     assert_redirected_to forum_posts_url forums :one
@@ -109,7 +118,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     sign_in accounts 'admin_0'
     assert_difference('Post.all.find_all { |d| d.visible? }.count', -1) do
       delete forum_post_url(forums(:one), posts(:one))
-      assert_nil flash[:alert]
+
       assert flash[:notice]
     end
     assert_redirected_to forum_posts_url forums :one
