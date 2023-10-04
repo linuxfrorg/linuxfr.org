@@ -6,7 +6,7 @@ class VotesControllerTest < ActionDispatch::IntegrationTest
   test 'should vote for' do
     sign_in accounts 'admin_0'
 
-    $redis.del "nodes/#{nodes(:one).id}/votes/#{accounts('admin_0').id}"
+    Redis.new.del "nodes/#{nodes(:one).id}/votes/#{accounts('admin_0').id}"
     assert_difference 'nodes(:one).score' do
       post vote_for_node_url nodes(:one)
 
@@ -29,7 +29,7 @@ class VotesControllerTest < ActionDispatch::IntegrationTest
   test 'should vote against' do
     sign_in accounts 'admin_0'
 
-    $redis.del "nodes/#{nodes(:one).id}/votes/#{accounts('admin_0').id}"
+    Redis.new.del "nodes/#{nodes(:one).id}/votes/#{accounts('admin_0').id}"
     assert_difference 'nodes(:one).score', -1 do
       post vote_against_node_url nodes(:one)
 

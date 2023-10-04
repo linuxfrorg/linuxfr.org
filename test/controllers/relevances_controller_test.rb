@@ -5,7 +5,7 @@ class RelevancesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should vote for' do
     sign_in accounts 'visitor_0'
-    $redis.del "comments/#{comments(:one).id}/votes/for", accounts('visitor_0').id
+    Redis.new.del "comments/#{comments(:one).id}/votes/for", accounts('visitor_0').id
 
     assert_difference 'comments(:one).nb_votes_for' do
       post relevance_for_node_comment_url nodes(:tracker_one), comments(:one), format: :json
@@ -18,7 +18,7 @@ class RelevancesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should vote against' do
     sign_in accounts 'visitor_2'
-    $redis.del "comments/#{comments(:one).id}/votes/against", accounts('visitor_2').id
+    Redis.new.del "comments/#{comments(:one).id}/votes/against", accounts('visitor_2').id
 
     assert_difference 'comments(:one).nb_votes_against' do
       post relevance_against_node_comment_url nodes(:tracker_one), comments(:one), format: :json
