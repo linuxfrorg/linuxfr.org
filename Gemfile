@@ -57,10 +57,10 @@ group :development do
   gem "letter_opener"
   gem "listen",                github: "guard/listen"
   gem "mo"
+  gem "puma"
   gem "pry-rails"
   gem "spring"
   gem "sushi"
-  gem "thin"
   gem "web-console"
 end
 
