@@ -1,24 +1,34 @@
 FROM debian:bullseye-slim as build
 
-LABEL maintainer="adrien@adorsaz.ch"
-LABEL version="2.0"
-LABEL description="Run LinuxFr image caching service for LinuxFr.org"
+LABEL org.opencontainers.image.title="LinuxFr.org image caching service"
+LABEL org.opencontainers.image.description="Store external images into a cache to not flood external website"
+LABEL org.opencontainers.image.source="https://github.com/linuxfrorg/img-LinuxFr.org"
+LABEL org.opencontainers.image.url="https://github.com/linuxfrorg/linuxfr.org/blob/master/Container.md"
+LABEL org.opencontainers.image.licenses="AGPL-3.0-only"
+LABEL org.opencontainers.image.version="rails7-bullseye"
+LABEL org.opencontainers.image.authors="Adrien Dorsaz <adrien@adorsaz.ch>"
 
-ENV GOPATH=/linuxfr-img
-WORKDIR /linuxfr-img
+ARG UID=1200
 
-# Build linuxfr-img
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     golang git ca-certificates \
-  && apt-get clean \
-  && go get -u github.com/linuxfrorg/img-LinuxFr.org
+  && apt-get clean
+
+USER ${UID}
+ENV GOPATH=/linuxfr-img
+ENV HOME=/linuxfr-img
+WORKDIR /linuxfr-img
+
+# Build linuxfr-img
+RUN go get -u github.com/linuxfrorg/img-LinuxFr.org
 
 FROM debian:bullseye-slim as deploy
 
+USER ${UID}
 WORKDIR /linuxfr-img
 
-COPY --from=build /linuxfr-img/bin/img-LinuxFr.org .
+COPY --from=build --chown=${UID}:0 --chmod=770 /linuxfr-img/bin/img-LinuxFr.org .
 
 EXPOSE 8000
 

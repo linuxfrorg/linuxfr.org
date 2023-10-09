@@ -1,44 +1,49 @@
-FROM debian:stretch-slim
+FROM debian:bookworm-slim
 
-LABEL maintainer="adrien@adorsaz.ch"
-LABEL version="1.0"
-LABEL description="Run LinuxFr.org Ruby on Rails website"
+LABEL org.opencontainers.image.title="LinuxFr.org website"
+LABEL org.opencontainers.image.description="Run LinuxFr.org Ruby on Rails website"
+LABEL org.opencontainers.image.source="https://github.com/linuxfrorg/linuxfr.org"
+LABEL org.opencontainers.image.url="https://github.com/linuxfrorg/linuxfr.org/blob/master/Docker.md"
+LABEL org.opencontainers.image.licenses="AGPL-3.0-only"
+LABEL org.opencontainers.image.version="rails7-bookworm"
+LABEL org.opencontainers.image.authors="Adrien Dorsaz <adrien@adorsaz.ch>"
 
-WORKDIR /linuxfr.org
+ARG UID=1200
 
 # Install system dependencies
-# Debian Stretch has been archived so we replace the sources with the archived ones
-RUN echo 'deb http://archive.debian.org/debian stretch main' > '/etc/apt/sources.list' \
-  && echo 'deb http://archive.debian.org/debian stretch-proposed-updates main' >> '/etc/apt/sources.list' \
-  && echo 'deb http://archive.debian.org/debian stretch-backports main' >> '/etc/apt/sources.list.d/linuxfr.list' \
-  && apt-get update \
+RUN apt-get update \
   && apt-get install -y --no-install-recommends --allow-downgrades \
-    mysql-client libmysql++-dev git \
-    build-essential openssl libreadline-dev curl libcurl4-openssl-dev zlib1g=1:1.2.8.dfsg-5 \
+    mariadb-client libmariadb++-dev git \
+    build-essential openssl libreadline-dev curl libcurl4-openssl-dev zlib1g \
     zlib1g-dev libssl-dev libxml2-dev libxslt-dev autoconf libgmp-dev libyaml-dev \
     ncurses-dev bison automake libtool imagemagick libc6-dev hunspell \
     hunspell-fr-comprehensive ruby ruby-dev ruby-rack \
-  && gem install bundler -v 1.17.3 \
+    nodejs npm \
+  && gem install bundler -v 2.4.20 \
   && apt-get clean
 
-RUN mkdir /home/linuxfr.org
-ENV HOME /home/linuxfr.org
+USER ${UID}
+ENV HOME=/linuxfr.org
+WORKDIR /linuxfr.org
 
 # Install external dependencies
-COPY Gemfile* ./
+COPY --chown=${UID}:0 --chmod=770 Gemfile* ./
 
 RUN bundle config set path 'vendor/bundle' \
   && bundle config set deployment 'true' \
   && bundle install
 
 # Configure the application
-COPY deployment/linuxfr.org/database.yml config/database.yml
-COPY config/secrets.yml.sample config/secrets.yml
+COPY --chown=${UID}:0 --chmod=770 deployment/linuxfr.org/database.yml config/database.yml
+COPY --chown=${UID}:0 --chmod=770 config/secrets.yml.sample config/secrets.yml
 
 # Bundle source code
-COPY . /linuxfr.org
+COPY --chown=${UID}:0 --chmod=770 . /linuxfr.org
 
 EXPOSE 3000
+
+# Workaround for EACCESS error while running assets.rb
+USER 0
 
 CMD ["bin/rails", "server", "--binding", "0.0.0.0"]
 
