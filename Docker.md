@@ -4,6 +4,9 @@ LinuxFr on Docker
 To simplify set up of a developement environment, LinuxFr.org can be
 run on Docker with `docker-compose up`.
 
+Note: you need to enable the Docker BuildKit builder. Either you have a Docker
+version which uses it by default, or you set the environment variable `export DOCKER_BUILDKIT=1`.
+
 To init the SQL database schema, you need to wait upto the `database`
 container to be ready to listen MySQL connections.
 
