@@ -1,7 +1,7 @@
-require 'test_helper'
+require "test_helper"
 
 class FormHelperTest < ActionView::TestCase
-  test 'should display errors' do
+  test "should display errors" do
     news = News.new
     news.valid?
 

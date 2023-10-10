@@ -1,7 +1,7 @@
-require 'test_helper'
+require "test_helper"
 
 class RedactionControllerTest < ActionDispatch::IntegrationTest
-  test 'should get index' do
+  test "should get index" do
     get redaction_url
 
     assert_response :success

@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 # == Schema Information
 #
@@ -10,7 +10,7 @@ require 'test_helper'
 #
 class BannerTest < ActiveSupport::TestCase
   # Replace this with your real tests.
-  test 'the truth' do
+  test "the truth" do
     assert true
   end
 end

@@ -1,13 +1,13 @@
-require 'test_helper'
+require "test_helper"
 
 class ForumsControllerTest < ActionDispatch::IntegrationTest
-  test 'get index' do
+  test "get index" do
     get forums_url
 
     assert_response :success
   end
 
-  test 'get show' do
+  test "get show" do
     get forum_url(forums(:one), format: :html)
 
     assert_response :success

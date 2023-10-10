@@ -1,21 +1,21 @@
-require 'test_helper'
+require "test_helper"
 
 class NewsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-  test 'should list news' do
+  test "should list news" do
     get news_index_url
 
     assert_response :success
   end
 
-  test 'should get calendar' do
-    get '/2016/1/1'
+  test "should get calendar" do
+    get "/2016/1/1"
 
     assert_response :success
   end
 
-  test 'should show news' do
+  test "should show news" do
     # For the fixtures configuration
     news(:news).node = nodes(:news)
 
@@ -25,8 +25,8 @@ class NewsControllerTest < ActionDispatch::IntegrationTest
     assert_nil flash[:alert]
   end
 
-  test 'should show news and mark as read' do
-    sign_in accounts 'visitor_0'
+  test "should show news and mark as read" do
+    sign_in accounts "visitor_0"
 
     # For the fixtures configuration
     news(:news).node = nodes(:news)
@@ -37,33 +37,33 @@ class NewsControllerTest < ActionDispatch::IntegrationTest
     assert_nil flash[:alert]
   end
 
-  test 'should get new' do
+  test "should get new" do
     get new_news_url
 
     assert_response :success
   end
 
-  test 'should preview news' do
-    assert_no_difference('News.count') do
+  test "should preview news" do
+    assert_no_difference("News.count") do
       post news_index_url,
            params: {
              news: {
                section_id: sections(:news).id,
-               title: 'Hello world',
-               cached_slug: 'hello-world',
-               author_name: 'John Doe',
-               author_email: 'johndoe@example.com',
-               wiki_body: 'Partie première',
-               wiki_second_part: 'Partie secondaire',
+               title: "Hello world",
+               cached_slug: "hello-world",
+               author_name: "John Doe",
+               author_email: "johndoe@example.com",
+               wiki_body: "Partie première",
+               wiki_second_part: "Partie secondaire",
                links_attributes: {
-                 '0' => {
-                   title: 'Hello world',
-                   link: 'http://example.com'
+                 "0" => {
+                   title: "Hello world",
+                   link: "http://example.com"
                  }
                }
              },
-             tags: 'foo, bar',
-             commit: 'Prévisualiser'
+             tags: "foo, bar",
+             commit: "Prévisualiser"
            }
 
       assert_nil flash[:alert]
@@ -71,25 +71,25 @@ class NewsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should create news' do
-    assert_difference('News.count') do
+  test "should create news" do
+    assert_difference("News.count") do
       post news_index_url, params: {
         news: {
           section_id: sections(:news).id,
-          title: 'Hello world',
-          cached_slug: 'hello-world',
-          author_name: 'John Doe',
-          author_email: 'johndoe@example.com',
-          wiki_body: 'Partie première',
-          wiki_second_part: 'Partie secondaire',
+          title: "Hello world",
+          cached_slug: "hello-world",
+          author_name: "John Doe",
+          author_email: "johndoe@example.com",
+          wiki_body: "Partie première",
+          wiki_second_part: "Partie secondaire",
           links_attributes: {
-            '0' => {
-              title: 'Hello world',
-              link: 'http://example.com'
+            "0" => {
+              title: "Hello world",
+              link: "http://example.com"
             }
           }
         },
-        tags: 'foo, bar'
+        tags: "foo, bar"
       }
 
       assert flash[:notice]
