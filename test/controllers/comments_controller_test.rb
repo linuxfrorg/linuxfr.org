@@ -4,7 +4,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    sign_in accounts "visitor_0"
+    sign_in accounts "visitor_1"
   end
 
   test "should list comments" do
