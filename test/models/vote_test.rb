@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 # == Schema Information
 #
@@ -20,34 +20,34 @@ class VoteTest < ActiveSupport::TestCase
     Redis.new.del "nodes/#{@node.id}/votes/#{accounts(:bob).id}"
   end
 
-  test 'A node has a score of 0 by default' do
+  test "A node has a score of 0 by default" do
     assert_equal 0, @node.score
   end
 
-  test 'A user can vote' do
-    assert_difference '@node.score' do
+  test "A user can vote" do
+    assert_difference "@node.score" do
       @node.vote_for @account
       @node.reload
     end
   end
 
-  test 'A user change its vote' do
-    assert_difference '@node.score', -1 do
+  test "A user change its vote" do
+    assert_difference "@node.score", -1 do
       @node.vote_for @account
       @node.vote_against @account
       @node.reload
     end
   end
 
-  test 'A user vote twice' do
-    assert_difference '@node.score' do
+  test "A user vote twice" do
+    assert_difference "@node.score" do
       @node.vote_for @account
       @node.reload
     end
   end
 
-  test 'Two users can vote on the same node' do
-    assert_difference '@node.score', 2 do
+  test "Two users can vote on the same node" do
+    assert_difference "@node.score", 2 do
       @node.vote_for accounts(:bob)
       @node.vote_for @account
       @node.reload
