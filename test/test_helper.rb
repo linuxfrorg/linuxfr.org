@@ -8,6 +8,7 @@ SimpleCov.start do
   add_group "Long files" do |src_file|
     src_file.lines.count > 100
   end
+  load_profile "test_frameworks"
 end
 
 ENV["RAILS_ENV"] ||= "test"

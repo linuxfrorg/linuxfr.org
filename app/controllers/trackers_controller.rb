@@ -21,7 +21,7 @@ class TrackersController < ApplicationController
     @tracker.state = @attrs["state"]
     @trackers = @trackers.where(state: @tracker.state)             if @attrs["state"].present?
     @trackers = @trackers.where(category_id: @tracker.category_id) if @attrs["category_id"].present?
-    if @attrs["assigned_to_user_id"] == '0'
+    if @attrs["assigned_to_user_id"] == "0"
       @trackers = @trackers.where(assigned_to_user_id: nil)
     elsif @attrs["assigned_to_user_id"].present?
       @trackers = @trackers.where(assigned_to_user_id: @tracker.assigned_to_user_id)

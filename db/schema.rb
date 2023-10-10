@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_01_132606) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_01_132606) do
   create_table "accounts", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "user_id"
     t.string "login", limit: 40, null: false, collation: "utf8mb4_bin"
