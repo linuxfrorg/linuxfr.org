@@ -7,6 +7,6 @@ class NewsNotificationsPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/news_notifications/refuse
   def refuse
-    NewsNotifications.refuse News.first, 'hello world'
+    NewsNotifications.refuse News.first, "hello world"
   end
 end
