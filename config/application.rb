@@ -11,6 +11,8 @@ module LinuxfrOrg
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
+    config.action_view.button_to_generates_button_tag = false
+
     I18n.enforce_available_locales = true
 
     config.generators do |g|
