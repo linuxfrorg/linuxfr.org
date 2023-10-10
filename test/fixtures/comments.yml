@@ -1,6 +1,6 @@
 one:
   node: tracker_one
-  user: visitor_10
+  user: visitor_1
   title: "Hello World"
   wiki_body: "Hello World"
   materialized_path: "hello-world"
@@ -8,20 +8,20 @@ one:
 
 seconde:
   node: one
-  user: visitor_10
+  user: visitor_1
   title: Commentaire sur un journal
   wiki_body: Commentaire sur un journal
 
 old:
   node: old
-  user: visitor_10
+  user: visitor_1
   title: Commentaire sur un journal
   wiki_body: Commentaire sur un journal
   created_at: 2010-01-01 00:00:00
 
 poll:
   node: poll
-  user: visitor_10
+  user: visitor_1
   title: Commentaire sur un sondage
   wiki_body: Commentaire sur un sondage
   created_at: 2010-01-01 00:00:00
@@ -29,7 +29,7 @@ poll:
 
 poll_2:
   node: poll
-  user: visitor_10
+  user: visitor_1
   title: Commentaire sur un sondage
   wiki_body: Commentaire sur un sondage
   created_at: 2010-01-01 00:00:00

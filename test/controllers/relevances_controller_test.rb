@@ -30,7 +30,7 @@ class RelevancesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not vote for" do
-    sign_in accounts "visitor_10"
+    sign_in accounts "visitor_1"
 
     assert_no_difference "comments(:one).nb_votes_for" do
       post relevance_for_node_comment_url nodes(:tracker_one), comments(:one), format: :json
@@ -42,7 +42,7 @@ class RelevancesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not vote against" do
-    sign_in accounts "visitor_10"
+    sign_in accounts "visitor_1"
 
     assert_no_difference "comments(:one).nb_votes_against" do
       post relevance_against_node_comment_url nodes(:tracker_one), comments(:one), format: :json
