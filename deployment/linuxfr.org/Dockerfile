@@ -20,18 +20,13 @@ RUN \
     build-essential openssl libreadline-dev curl libcurl4-openssl-dev zlib1g \
     zlib1g-dev libssl-dev libxml2-dev libxslt-dev autoconf libgmp-dev libyaml-dev \
     ncurses-dev bison automake libtool imagemagick libc6-dev hunspell \
-    hunspell-fr-comprehensive ruby ruby-dev ruby-rack \
-    nodejs npm; \
+    hunspell-fr-comprehensive ruby ruby-dev ruby-rack; \
   gem install bundler -v 1.17.3; \
   apt-get clean
 
 USER ${UID}
 ENV HOME=/linuxfr.org
 WORKDIR /linuxfr.org
-
-# Install node external dependencies
-COPY --chown=${UID}:0 --chmod=770 package*.json ./
-RUN npm ci
 
 # Install external dependencies
 COPY --chown=${UID}:0 --chmod=770 Gemfile* ./

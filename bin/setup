@@ -17,9 +17,6 @@ FileUtils.chdir APP_ROOT do
   system! "gem install bundler --conservative"
   system("bundle check") || system!("bundle install")
 
-  puts "\n== Installing npm modules =="
-  system! "npm install"
-
   puts "\n== Copying sample files =="
   FileUtils.cp "config/database.yml.sample", "config/database.yml" unless File.exist?("config/database.yml")
   FileUtils.cp "config/secrets.yml.sample", "config/secrets.yml" unless File.exist?("config/secrets.yml")
