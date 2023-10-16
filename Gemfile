@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -40,6 +40,7 @@ assets = !%w(production alpha).include?(ENV['RAILS_ENV'])
 assets = true if ENV['RAILS_GROUPS'] == "assets"
 gem "jquery-rails",          "~>4.0", require: assets
 gem "coffee-rails",          "~>4.1", require: assets
+gem "normalize-rails",       "~>8.0", require: assets
 gem "sass-rails",            "~>5.0", require: assets
 gem "uglifier",                       require: assets
 
