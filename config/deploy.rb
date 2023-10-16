@@ -88,17 +88,6 @@ end
 after "deploy:finalize_update", "fs:symlink"
 after "deploy:setup", "fs:create_dirs"
 
-
-# Install npm modules before compiling assets
-namespace :npm do
-  desc "[internal] Install npm modules"
-  task :install, roles: :app, except: { no_release: true } do
-    run "cd #{release_path} && npm install --production"
-  end
-end
-before "deploy:assets:precompile", "npm:install"
-
-
 # Redis cache
 namespace :cache do
   desc "Flush the redis cache"
@@ -120,7 +109,7 @@ namespace :deploy do
     run "if [ -e #{unicorn_pidfile} ] ; then kill -QUIT `cat #{unicorn_pidfile}` ; fi"
   end
 
-  task :restart, roles: :app, except: { no_release: true }  do
+  task :restart, roles: :app, except: { no_release: true } do
     set :unicorn_pid, capture("cat #{shared_path}/pids/unicorn.pid").chomp
     run "kill -USR2 #{unicorn_pid}"
     sleep 1
