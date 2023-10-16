@@ -5,16 +5,6 @@ Debian Stretch development machine.
 
 Note that all commands which require root access are prefixed by `sudo`.
 
-# Use stretch-backports
-
-LinuxFr.org requires to add `stretch-backports` source package as it
-needs the `npm`package.
-
-```
-~ $ sudo bash -c "echo 'deb http://deb.debian.org/debian stretch-backports main' >> /etc/apt/sources.list.d/linuxfr.list"
-~ $ sudo apt update
-```
-
 # Install Debian packages
 
 Packages to install from main Stretch source:
@@ -30,12 +20,6 @@ hunspell-fr-comprehensive redis-server ruby ruby-dev ruby-rack
 Note:
   * you can use libcurl4-gnutls-dev instead of libcurl4-openssl-dev.
   * the `mysql` packages will install MariaDB on Debian Stretch
-
-Packages to install from backports:
-
-```
-~ $ sudo apt install -t stretch-backports nodejs npm
-```
 
 # Get LinuxFr.org code and external resources
 
@@ -69,12 +53,6 @@ Now, we can reach external Ruby resources:
 ```
 
 The `check` command above should say you there's no problem.
-
-LinuxFr.org uses also some nodejs resources:
-
-```
-~/linuxfr.org $ npm install
-```
 
 ## Install the LinuxFr.org board
 
