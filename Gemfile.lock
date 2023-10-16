@@ -295,6 +295,7 @@ GEM
       racc (~> 1.4)
     nokogumbo (2.0.5)
       nokogiri (~> 1.8, >= 1.8.4)
+    normalize-rails (8.0.1)
     orm_adapter (0.5.0)
     patron (0.13.3)
     pry (0.14.2)
@@ -481,6 +482,7 @@ DEPENDENCIES
   mo
   mysql2 (~> 0.5.0)
   nokogiri (~> 1.10)
+  normalize-rails (~> 8.0)
   pry-rails
   puma
   rails (~> 7.0)
