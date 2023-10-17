@@ -1,16 +1,4 @@
 GIT
-  remote: https://github.com/capistrano/capistrano.git
-  revision: d671aab46b321ececc672379f0898562b2d85b9b
-  branch: legacy-v2
-  specs:
-    capistrano (2.15.11)
-      highline
-      net-scp (>= 1.0.0)
-      net-sftp (>= 2.0.0)
-      net-ssh (>= 2.0.14)
-      net-ssh-gateway (>= 1.1.0)
-
-GIT
   remote: https://github.com/guard/listen.git
   revision: fd85e1cb2375767e3cbc4b5743ff50061e8a6c75
   specs:
@@ -151,27 +139,14 @@ GEM
       activerecord (>= 5.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
-    boson (1.3.0)
     builder (3.2.4)
     byebug (11.1.3)
     canable (0.3.0)
-    capistrano-maintenance (0.0.5)
-      capistrano (~> 2.0)
-    capybara (3.39.2)
-      addressable
-      matrix
-      mini_mime (>= 0.1.3)
-      nokogiri (~> 1.8)
-      rack (>= 1.6.0)
-      rack-test (>= 0.6.3)
-      regexp_parser (>= 1.5, < 3.0)
-      xpath (~> 3.2)
     carrierwave (1.3.4)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
       ssrf_filter (~> 1.0, < 1.1.0)
-    coderay (1.1.3)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -201,7 +176,6 @@ GEM
     ffi (1.16.3)
     friendly_id (5.5.0)
       activerecord (>= 4.0.0)
-    gctools (0.2.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
     haml (5.2.2)
@@ -210,7 +184,6 @@ GEM
     has_scope (0.8.2)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
-    highline (2.1.0)
     html_spellchecker (0.1.9)
       ffi-hunspell (~> 0.4)
       nokogiri (~> 1.4)
@@ -258,17 +231,12 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.2)
-    matrix (0.4.2)
-    method_source (1.0.0)
     mime-types (3.5.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2023.1003)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.4)
     minitest (5.20.0)
-    mo (1.4.0)
-      boson
     msgpack (1.7.2)
     multi_json (1.15.0)
     mutex_m (0.1.2)
@@ -280,29 +248,16 @@ GEM
       net-protocol
     net-protocol (0.2.1)
       timeout
-    net-scp (4.0.0)
-      net-ssh (>= 2.6.5, < 8.0.0)
-    net-sftp (4.0.0)
-      net-ssh (>= 5.0.0, < 8.0.0)
     net-smtp (0.4.0)
       net-protocol
-    net-ssh (7.2.0)
-    net-ssh-gateway (2.0.0)
-      net-ssh (>= 4.0.0)
     nio4r (2.5.9)
-    nokogiri (1.15.4)
-      mini_portile2 (~> 2.8.2)
+    nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     nokogumbo (2.0.5)
       nokogiri (~> 1.8, >= 1.8.4)
     normalize-rails (8.0.1)
     orm_adapter (0.5.0)
     patron (0.13.3)
-    pry (0.14.2)
-      coderay (~> 1.1)
-      method_source (~> 1.0)
-    pry-rails (0.3.9)
-      pry (>= 0.10.4)
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.3)
@@ -360,17 +315,14 @@ GEM
       redis-client (>= 0.9.0)
     redis-client (0.17.0)
       connection_pool
-    regexp_parser (2.8.2)
     reline (0.3.9)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.2.6)
     rinku (2.0.6)
     rouge (4.1.3)
     ruby2_keywords (0.0.5)
-    rubyzip (2.3.2)
     sanitize (5.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.8.0)
@@ -386,10 +338,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selenium-webdriver (4.14.0)
-      rexml (~> 3.2, >= 3.2.5)
-      rubyzip (>= 1.2.2, < 3.0)
-      websocket (~> 1.0)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -414,7 +362,6 @@ GEM
       activerecord (>= 6.0)
       state_machines-activemodel (>= 0.9.0)
     stringio (3.0.8)
-    sushi (0.0.4)
     temple (0.10.3)
     thor (1.2.2)
     tilt (2.3.0)
@@ -434,16 +381,13 @@ GEM
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
     webrick (1.8.1)
-    websocket (1.2.10)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    xpath (3.2.0)
-      nokogiri (~> 1.8)
     zeitwerk (2.6.12)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   actionpack-page_caching
@@ -456,9 +400,6 @@ DEPENDENCIES
   bootsnap (~> 1.3)
   byebug
   canable (~> 0.1)
-  capistrano (~> 2.15)!
-  capistrano-maintenance
-  capybara (>= 2.15)
   carrierwave (~> 1.1)
   coffee-rails (~> 4.1)
   devise (~> 4.3)
@@ -467,7 +408,6 @@ DEPENDENCIES
   ffi-hunspell!
   french_rails (~> 0.5)!
   friendly_id (~> 5.1)
-  gctools (~> 0.2)
   haml (~> 5.0)
   html-pipeline-linuxfr (~> 0.17)!
   html_spellchecker (~> 0.1)
@@ -479,25 +419,21 @@ DEPENDENCIES
   letter_opener
   listen!
   mini_magick (~> 4.9)
-  mo
   mysql2 (~> 0.5.0)
   nokogiri (~> 1.10)
   normalize-rails (~> 8.0)
-  pry-rails
   puma
-  rails (~> 7.0)
+  rails (~> 7.1)
   redis (~> 5.0)
   rinku (~> 2.0)
   sass-rails (~> 5.0)
-  selenium-webdriver
   simplecov
   sitemap_generator (~> 2.1)
   spring
   state_machines-activerecord
-  sushi
   uglifier
   unicorn (~> 5.1)
   web-console
 
 BUNDLED WITH
-   2.3.15
+   2.4.20
