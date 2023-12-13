@@ -1,7 +1,7 @@
 # encoding: UTF-8
 date_formats = {
   date:      '%d/%m/%y',
-  posted:    '%d/%m/%y à %H:%M',
+  posted:    ->(t) {I18n.l(t, format: :posted)},
   norloge:   '%H:%M:%S',
   norloge2:  '%Y-%m-%d %H:%M:%S',
   timestamp: '%Y%m%d%H%M%S'
