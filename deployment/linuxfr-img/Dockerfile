@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim as build
+FROM docker.io/debian:bullseye-slim as build
 
 LABEL org.opencontainers.image.title="LinuxFr.org image caching service"
 LABEL org.opencontainers.image.description="Store external images into a cache to not flood external website"
@@ -23,7 +23,7 @@ WORKDIR /linuxfr-img
 # Build linuxfr-img
 RUN go get -u github.com/linuxfrorg/img-LinuxFr.org
 
-FROM debian:bullseye-slim as deploy
+FROM docker.io/debian:bullseye-slim as deploy
 
 USER ${UID}
 WORKDIR /linuxfr-img

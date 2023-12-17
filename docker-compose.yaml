@@ -41,7 +41,7 @@ services:
       - cache-img:/linuxfr-img/cache
 
   nginx:
-    image: nginx:stable
+    image: docker.io/nginx:stable
     env_file:
       - deployment/default.env
     volumes:
@@ -66,7 +66,7 @@ services:
       - data-database:/var/lib/mysql
 
   redis:
-    image: redis:5
+    image: docker.io/redis:5
     volumes:
       - data-redis:/data
 

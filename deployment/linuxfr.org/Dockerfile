@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim
+FROM docker.io/debian:bookworm-slim
 
 LABEL org.opencontainers.image.title="LinuxFr.org website"
 LABEL org.opencontainers.image.description="Run LinuxFr.org Ruby on Rails website"

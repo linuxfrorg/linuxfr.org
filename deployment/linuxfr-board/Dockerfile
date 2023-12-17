@@ -1,4 +1,4 @@
-FROM ruby:3-slim-bookworm
+FROM  docker.io/ruby:3-slim-bookworm
 
 LABEL org.opencontainers.image.title="LinuxFr.org boards"
 LABEL org.opencontainers.image.description="Push notifications for chat rooms of LinuxFr"
