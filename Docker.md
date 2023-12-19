@@ -25,12 +25,23 @@ docker-compose run linuxfr.org bin/rails db:setup
 Finally, the environment is ready and you can open [http://dlfp.lo](http://dlfp.lo)
 in your favorite browser.
 
-Note: to be able to access this URL, you'll need to add the following line
-into the `/etc/hosts` file of your machine:
+Notes:
 
-```
-127.0.0.1 dlfp.lo image.dlfp.lo
-```
+1. to be able to access this URL, you'll need to add the following line
+  into the `/etc/hosts` file of your machine:
+  
+  ```
+  127.0.0.1 dlfp.lo image.dlfp.lo
+  ```
+
+2. for [rootless containers](https://rootlesscontaine.rs/), you'll need
+  to allow standard users to listen on ports less than 1024
+  (this is needed because linuxfr use port 80 and 443):
+
+  ```sh
+  sudo sysctl net.ipv4.ip_unprivileged_port_start=80
+  ```
+
 
 Personalize configuration
 =========================

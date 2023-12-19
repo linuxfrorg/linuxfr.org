@@ -10,10 +10,10 @@ services:
     volumes:
       # Share host directories so, the developer can edit them
       # and see the result without need to restart the container
-      - ./app:/linuxfr.org/app
-      - ./db:/linuxfr.org/db
-      - ./public:/linuxfr.org/public
-      - ./test:/linuxfr.org/test
+      - ./app:/linuxfr.org/app:Z
+      - ./db:/linuxfr.org/db:Z
+      - ./public:/linuxfr.org/public:Z
+      - ./test:/linuxfr.org/test:Z
       # uploads are shared with the nginx service
       - data-uploads:/linuxfr.org/uploads
     tmpfs:
@@ -45,8 +45,8 @@ services:
     env_file:
       - deployment/default.env
     volumes:
-      - ./deployment/nginx/templates:/etc/nginx/templates
-      - ./public/fonts:/var/linuxfr/fonts
+      - ./deployment/nginx/templates:/etc/nginx/templates:Z
+      - ./public/fonts:/var/linuxfr/fonts:Z
       - data-uploads:/var/linuxfr/uploads
     ports:
       - "80:80"
