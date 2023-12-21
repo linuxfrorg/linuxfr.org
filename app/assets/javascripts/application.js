@@ -171,7 +171,7 @@ $(document)
     return false;
   })
   .bind("keypress", "shift+g", function() {
-    $("html,body").animate({ scrollTop: $("body").attr("scrollHeight") }, 500);
+    $("html,body").animate({ scrollTop: document.body.offsetHeight }, 500);
     return false;
   })
   .bind("keypress", "shift+?", function() {
