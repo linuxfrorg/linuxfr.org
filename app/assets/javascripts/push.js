@@ -1,10 +1,4 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-const $ = window.jQuery;
+$ = window.jQuery;
 
 class Push {
   constructor(chan) {
@@ -23,11 +17,11 @@ class Push {
   start() {
     if (!this.started) {
       this.started = true;
-      return $(window).load(() => {
+      $(window).load(() => {
         const source = new EventSource(`/b/${this.chan}`);
         source.addEventListener("message", this.onMessage);
         source.addEventListener("error", this.onError);
-        return $(window).unload(() => source.close());
+        $(window).unload(() => source.close());
       });
     }
   }
@@ -36,19 +30,19 @@ class Push {
     try {
       const msg = $.parseJSON(e.data);
       const fn = this.callbacks[msg.kind];
-      if (fn != null) {
-        return fn(msg);
+      if (fn) {
+        fn(msg);
       }
     } catch (err) {
       if (window.console) {
-        return console.log(err);
+        console.log(err);
       }
     }
   }
 
   onError(e) {
     if (window.console) {
-      return console.log("onError", e);
+      console.log("onError", e);
     }
   }
 }

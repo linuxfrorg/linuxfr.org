@@ -1,14 +1,6 @@
-/*
- * decaffeinate suggestions:
- * DS101: Remove unnecessary use of Array.from
- * DS102: Remove unnecessary code created because of implicit returns
- * DS205: Consider reworking code to avoid use of IIFEs
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 //= require push
 
-const $ = window.jQuery;
+$ = window.jQuery;
 
 class Chat {
   constructor(board) {
@@ -31,15 +23,13 @@ class Chat {
     this.board.find("form").submit(this.postMessage);
     this.totoz_type = $.cookie("totoz-type");
     this.totoz_url = $.cookie("totoz-url") || "https://totoz.eu/img/";
-    for (var right of Array.from(this.board.find(".board-right"))) {
+    for (var right of this.board.find(".board-right")) {
       this.norlogize(right);
     }
-    for (var left of Array.from(
-      this.board
-        .find(".board-left time")
-        .get()
-        .reverse()
-    )) {
+    for (var left of this.board
+      .find(".board-left time")
+      .get()
+      .reverse()) {
       this.norlogize_left(left);
     }
     this.board
@@ -73,33 +63,23 @@ class Chat {
         .find(".board-left:last .norloge")
         .click(this.norloge);
       this.inboxContainer.scrollTop(this.inbox.height());
-      for (right of Array.from(this.inbox.find(".board-right:last"))) {
+      for (right of this.inbox.find(".board-right:last")) {
         this.norlogize(right);
       }
-      return (() => {
-        const result = [];
-        for (var left of Array.from(this.inbox.find(".board-left time:last"))) {
-          result.push(this.norlogize_left(left));
-        }
-        return result;
-      })();
+      for (var left of this.inbox.find(".board-left time:last")) {
+        this.norlogize_left(left);
+      }
     } else {
       this.inbox
         .prepend(msg.message)
         .find(".board-left:first .norloge")
         .click(this.norloge);
-      for (right of Array.from(this.inbox.find(".board-right:first"))) {
+      for (right of this.inbox.find(".board-right:first")) {
         this.norlogize(right);
       }
-      return (() => {
-        const result1 = [];
-        for (var left of Array.from(
-          this.inbox.find(".board-left time:first")
-        )) {
-          result1.push(this.norlogize_left(left));
-        }
-        return result1;
-      })();
+      for (var left of this.inbox.find(".board-left time:first")) {
+        this.norlogize_left(left);
+      }
     }
   }
 
@@ -144,7 +124,7 @@ class Chat {
     }
     const value = this.input.val();
     const range = this.input.caret();
-    if (range.start == null) {
+    if (!range.start) {
       range.start = 0;
       range.end = 0;
     }
@@ -173,9 +153,7 @@ class Chat {
         const orig = escape(this.data);
         let html = "";
         while ((matches = r.exec(orig))) {
-          var [match, datematch, timematch, minutes, index] = Array.from(
-            matches
-          );
+          var [match, datematch, timematch, minutes, index] = matches;
           if (index) {
             switch (index.substr(0, 1)) {
               case ":":
@@ -246,7 +224,7 @@ class Chat {
           const orig = escape(this.data);
           let html = "";
           while ((matches = totoz.exec(orig))) {
-            var [title, name] = Array.from(matches);
+            var [title, name] = matches;
             var stop = matches.index;
             html =
               html +
@@ -340,10 +318,8 @@ class Chat {
       this.totoz.append(totoz);
     }
     const position = $(event.target).position();
-    const [x, y] = Array.from([
-      position.left,
-      position.top + event.target.offsetHeight
-    ]);
+    const x = position.left;
+    const y = position.top + event.target.offsetHeight;
     return totoz.css({
       "z-index": "15",
       display: "block",

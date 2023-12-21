@@ -1,10 +1,4 @@
-/*
- * decaffeinate suggestions:
- * DS101: Remove unnecessary use of Array.from
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-const $ = window.jQuery;
+$ = window.jQuery;
 
 class EditionInPlace {
   constructor(el, edit) {
@@ -41,7 +35,7 @@ class EditionInPlace {
   cantEdit() {
     this.el.trigger("in_place:cant_edit", this.xhr);
     this.button().click(this.loadForm);
-    return (this.xhr = null);
+    this.xhr = null;
   }
 
   showForm() {
@@ -51,7 +45,7 @@ class EditionInPlace {
     form.find(".markItUp").markItUp(window.markItUpSettings);
     form.submit(this.submitForm);
     this.el.trigger("in_place:form", this.xhr);
-    return (this.xhr = null);
+    this.xhr = null;
   }
 
   reset(event) {
@@ -79,7 +73,7 @@ class EditionInPlace {
       const messages = [];
       for (var attribute in response.errors) {
         var errors = response.errors[attribute];
-        for (message of Array.from(errors)) {
+        for (message of errors) {
           messages.push(message);
         }
       }
@@ -87,21 +81,21 @@ class EditionInPlace {
         error.text("Erreur : " + messages[0]);
       } else {
         error.text("Erreurs :");
-        for (message of Array.from(messages)) {
+        for (message of messages) {
           error.append($("<li>").append(message));
         }
       }
       error.show();
     } catch (error1) {}
     this.el.trigger("in_place:error", this.xhr);
-    return (this.xhr = null);
+    this.xhr = null;
   }
 
   success() {
     this.el = $(this.xhr.responseText).replaceAll(this.el);
     this.button().click(this.loadForm);
     this.el.trigger("in_place:success", this.xhr);
-    return (this.xhr = null);
+    this.xhr = null;
   }
 }
 
