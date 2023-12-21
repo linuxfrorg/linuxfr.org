@@ -1,11 +1,6 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 //= require push
 
-const $ = window.jQuery;
+$ = window.jQuery;
 
 class Redaction {
   constructor(chan) {
@@ -29,28 +24,28 @@ class Redaction {
   }
 
   onSubmit(msg) {
-    return $.noticeAdd({
+    $.noticeAdd({
       text: `${msg.username} a soumis la dépêche`,
       stay: true
     });
   }
 
   onPublish(msg) {
-    return $.noticeAdd({
+    $.noticeAdd({
       text: `La dépêche a été acceptée par ${msg.username}`,
       stay: true
     });
   }
 
   onRefuse(msg) {
-    return $.noticeAdd({
+    $.noticeAdd({
       text: `La dépêche a été refusée par ${msg.username}`,
       stay: true
     });
   }
 
   onRewrite(msg) {
-    return $.noticeAdd({
+    $.noticeAdd({
       text: `La dépêche a été renvoyée dans l’espace de rédaction par ${
         msg.username
       }`,
@@ -60,13 +55,13 @@ class Redaction {
 
   onVote(msg) {
     $.noticeAdd({ text: `${msg.username} a voté ${msg.word}` });
-    return $("#news_vote").load(`/moderation/news/${msg.news_id}/vote`);
+    $("#news_vote").load(`/moderation/news/${msg.news_id}/vote`);
   }
 
   onUpdate(msg) {
     $("#news_header .title").text(msg.title);
     $("#news_header .topic").text(msg.section.title);
-    return $("#edition figure.image img").attr({
+    $("#edition figure.image img").attr({
       src: `/images/sections/${msg.section.id}.png`
     });
   }
@@ -90,7 +85,7 @@ class Redaction {
       "à ",
       msg.creationdate.slice(atPosition)
     ].join("");
-    return $("#topbar .revision-date").text("le " + finalDate);
+    $("#topbar .revision-date").text("le " + finalDate);
   }
 
   innerHtmlForLink(msg) {
@@ -116,17 +111,17 @@ class Redaction {
 
   onAddLink(msg) {
     $("#links").append(this.htmlForLink(msg));
-    return $(`#link_${msg.id}`).lockableEditionInPlace();
+    $(`#link_${msg.id}`).lockableEditionInPlace();
   }
 
   onUpdateLink(msg) {
-    return $(`#link_${msg.id}`)
+    $(`#link_${msg.id}`)
       .html(this.innerHtmlForLink(msg))
       .attr({ lang: msg.lang });
   }
 
   onRemoveLink(msg) {
-    return $(`#link_${msg.id}`).remove();
+    $(`#link_${msg.id}`).remove();
   }
 
   htmlForPara(msg) {
@@ -148,19 +143,19 @@ class Redaction {
     } else {
       $(`#${msg.part}`).append(this.htmlForPara(msg));
     }
-    return $(`#paragraph_${msg.id}`).lockableEditionInPlace();
+    $(`#paragraph_${msg.id}`).lockableEditionInPlace();
   }
 
   onUpdateParagraph(msg) {
-    return $(`#paragraph_${msg.id}`).html(msg.body);
+    $(`#paragraph_${msg.id}`).html(msg.body);
   }
 
   onRemoveParagraph(msg) {
-    return $(`#paragraph_${msg.id}`).remove();
+    $(`#paragraph_${msg.id}`).remove();
   }
 
   onSecondPartToc(msg) {
-    return $(".second_part_toc").html(msg.toc);
+    $(".second_part_toc").html(msg.toc);
   }
 
   onLockParagraph(msg) {
@@ -171,11 +166,11 @@ class Redaction {
      title="${msg.user.name} est en train de modifier ce paragraphe"
      src="${msg.user.avatar}" />\
 `);
-    return $(`#paragraph_${msg.id} .actions`).prepend(editing);
+    $(`#paragraph_${msg.id} .actions`).prepend(editing);
   }
 
   onUnlockParagraph(msg) {
-    return $(`#editing_${msg.id}`).remove();
+    $(`#editing_${msg.id}`).remove();
   }
 }
 

@@ -1,9 +1,4 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-const $ = window.jQuery;
+$ = window.jQuery;
 
 class NestedFields {
   constructor(el, parent, nested, text, tag, attributes) {
@@ -33,7 +28,7 @@ class NestedFields {
         })
       })
     );
-    return $(`#add_${this.nested}`).click(this.add_item);
+    $(`#add_${this.nested}`).click(this.add_item);
   }
 
   bind_item(item, counter) {
@@ -41,7 +36,7 @@ class NestedFields {
     it.append(
       `<button type="button" class="remove">Supprimer ce ${this.text} </button>`
     );
-    return it.children(".remove").click(() => {
+    it.children(".remove").click(() => {
       if (counter) {
         const name = `${this.parent}[${
           this.nested
