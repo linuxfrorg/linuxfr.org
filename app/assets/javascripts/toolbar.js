@@ -1,11 +1,4 @@
-/*
- * decaffeinate suggestions:
- * DS101: Remove unnecessary use of Array.from
- * DS102: Remove unnecessary code created because of implicit returns
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-const $ = window.jQuery;
+$ = window.jQuery;
 
 class Toolbar {
   constructor(items, text, options) {
@@ -43,7 +36,7 @@ class Toolbar {
       $("#toolbar_items .next").click(this.next_item);
       $("#toolbar .change").click(this.change_threshold);
     }
-    return $(document)
+    $(document)
       .bind("keypress", "<", this.prev_item)
       .bind("keypress", ">", this.next_item)
       .bind("keypress", "k", this.prev_item)
@@ -55,7 +48,8 @@ class Toolbar {
     if (this.current > this.nb_items) {
       this.current = 1;
     }
-    return this.go_to_current();
+    this.go_to_current();
+    return false;
   }
 
   prev_item() {
@@ -63,7 +57,8 @@ class Toolbar {
     if (this.current <= 0) {
       this.current = this.nb_items;
     }
-    return this.go_to_current();
+    this.go_to_current();
+    return false;
   }
 
   go_to_current() {
@@ -78,7 +73,6 @@ class Toolbar {
     if (this.visible) {
       $("#toolbar_current_item").text(this.current);
     }
-    return false;
   }
 
   additional(alt_items, alt_text) {
@@ -118,7 +112,8 @@ class Toolbar {
     if (this.alt_current <= 0) {
       this.alt_current = this.nb_alt_items;
     }
-    return this.go_to_alt_current();
+    this.go_to_alt_current();
+    return false;
   }
 
   go_to_alt_current() {
@@ -133,7 +128,6 @@ class Toolbar {
     if (this.visible) {
       $("#toolbar_current_alt_item").text(this.alt_current);
     }
-    return false;
   }
 
   change_threshold(event) {
@@ -150,33 +144,30 @@ class Toolbar {
     if (this.options.folding == null) {
       return;
     }
-    const items = $(this.options.folding);
-    return Array.from(items).map(i =>
-      (i => {
-        const item = $(i);
-        const score = parseInt(item.find(".score:first").text(), 10);
-        const where = item.children("h2").children(".anchor");
-        const close = $(
-          '<a href="#" class="close" title="Cacher le fil de discussion">[-]</a>'
-        ).insertBefore(where);
-        close.after(" ");
-        const hide = function(b) {
-          if (b) {
-            item.addClass("fold");
-            close.text("[+]").attr("title", "Réafficher le fil de discussion");
-            return item.children("ul").hide();
-          } else {
-            item.removeClass("fold");
-            close.text("[-]").attr("title", "Cacher le fil de discussion");
-            return item.children("ul").show();
-          }
-        };
-        return close.click(function() {
-          hide(close.text() === "[-]");
-          return false;
-        });
-      })(i)
-    );
+    $(this.options.folding).each(i => {
+      const item = $(i);
+      const score = parseInt(item.find(".score:first").text(), 10);
+      const where = item.children("h2").children(".anchor");
+      const close = $(
+        '<a href="#" class="close" title="Cacher le fil de discussion">[-]</a>'
+      ).insertBefore(where);
+      close.after(" ");
+      const hide = function(b) {
+        if (b) {
+          item.addClass("fold");
+          close.text("[+]").attr("title", "Réafficher le fil de discussion");
+          item.children("ul").hide();
+        } else {
+          item.removeClass("fold");
+          close.text("[-]").attr("title", "Cacher le fil de discussion");
+          item.children("ul").show();
+        }
+      };
+      close.click(function() {
+        hide(close.text() === "[-]");
+        return false;
+      });
+    });
   }
 
   folding() {
@@ -185,24 +176,22 @@ class Toolbar {
     }
     const items = $(this.options.folding);
     items.find(".folding").click();
-    return Array.from(items).map(i =>
-      (i => {
-        const item = $(i);
-        const score = parseInt(item.find(".score:first").text(), 10);
-        if (score < this.threshold) {
-          item.addClass("fold");
-          const where = item.children("h2").children(".anchor");
-          const link = $(
-            '<a href="#" class="folding" title="Déplier">[+]</a>'
-          ).insertBefore(where);
-          return link.after(" ").click(function() {
-            item.removeClass("fold");
-            link.remove();
-            return false;
-          });
-        }
-      })(i)
-    );
+    items.each(i => {
+      const item = $(i);
+      const score = parseInt(item.find(".score:first").text(), 10);
+      if (score < this.threshold) {
+        item.addClass("fold");
+        const where = item.children("h2").children(".anchor");
+        const link = $(
+          '<a href="#" class="folding" title="Déplier">[+]</a>'
+        ).insertBefore(where);
+        link.after(" ").click(function() {
+          item.removeClass("fold");
+          link.remove();
+          return false;
+        });
+      }
+    });
   }
 }
 

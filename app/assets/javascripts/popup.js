@@ -1,11 +1,4 @@
-/*
- * decaffeinate suggestions:
- * DS101: Remove unnecessary use of Array.from
- * DS102: Remove unnecessary code created because of implicit returns
- * DS205: Consider reworking code to avoid use of IIFEs
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-const $ = window.jQuery;
+$ = window.jQuery;
 
 // Popup management: on click on event element, hide / show popup
 $(".popup-event").click(function() {
@@ -25,18 +18,13 @@ $(".popup-event").click(function() {
   }
   // Give new popup display status to all listeners
   const listners = popup.data("popup-listner-ids");
-  return (() => {
-    const result = [];
-    for (var listner of Array.from(listners.split(" "))) {
-      var listnerElement = $(`#${listner}`);
-      if (showPopup) {
-        result.push(listnerElement.attr(`data-popup-${popupId}-shown`, ""));
-      } else {
-        result.push(
-          listnerElement.removeAttr(`data-popup-${popupId}-shown`, "")
-        );
-      }
+
+  for (var listner of listners.split(" ")) {
+    var listnerElement = $(`#${listner}`);
+    if (showPopup) {
+      listnerElement.attr(`data-popup-${popupId}-shown`, "");
+    } else {
+      listnerElement.removeAttr(`data-popup-${popupId}-shown`, "");
     }
-    return result;
-  })();
+  }
 });

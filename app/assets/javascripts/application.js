@@ -1,9 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 //= require jquery2
 //= require jquery_ujs
 //= require jquery.autocomplete
@@ -15,7 +9,7 @@
 //= require markitup-markdown
 //= require_tree .
 
-const $ = window.jQuery;
+$ = window.jQuery;
 
 $("body").on("ajax:success", "form[data-remote]", function(e, data) {
   if (data && data.notice) {
@@ -25,7 +19,7 @@ $("body").on("ajax:success", "form[data-remote]", function(e, data) {
     $("#nb_votes").text(data.nb_votes);
   }
   if (!$(this).data("hidden")) {
-    return $(this)
+    $(this)
       .parent()
       .hide();
   }
@@ -34,7 +28,7 @@ $("body").on("ajax:success", "form[data-remote]", function(e, data) {
 $(".markItUp").markItUp(window.markItUpSettings);
 
 $("a.hit_counter[data-hit]").each(function() {
-  return (this.href = "/redirect/" + $(this).data("hit"));
+  this.href = "/redirect/" + $(this).data("hit");
 });
 
 // Ready to moule
@@ -49,7 +43,7 @@ $("textarea, #form_answers input").keypress(function(event) {
     .find("input[value=Prévisualiser]")
     .next("input[type=submit]")
     .hide();
-  return $(this).off(event);
+  $(this).off(event);
 });
 
 // Add/Remove dynamically links in the news form
@@ -94,7 +88,7 @@ $("article.news .edited_by").each(function() {
   if (nb > 3) {
     const was = field.html();
     field.html(`<a>${nb} personnes</a>`);
-    return field.one("click", () => field.html(was));
+    field.one("click", () => field.html(was));
   }
 });
 
@@ -136,7 +130,7 @@ $("#redaction .link, #redaction .paragraph").lockableEditionInPlace();
 
 // Tags
 $.fn.autocompleter = function() {
-  this.each(function() {
+  return this.each(function() {
     const input = $(this);
     return input.autocomplete(input.data("url"), {
       multiple: true,
@@ -158,14 +152,14 @@ $(".tag_in_place")
   .editionInPlace();
 $(".add_tag, .remove_tag")
   .click(function() {
-    return $(this)
+    $(this)
       .blur()
       .parents("form")
       .data({ hidden: "true" });
   })
   .parents("form")
   .on("ajax:success", function() {
-    return $(this)
+    $(this)
       .find("input")
       .attr({ disabled: "disabled" });
   });
@@ -198,7 +192,7 @@ Raccourcis clavier : <ul>
   });
 
 $("#account_user_attributes_avatar").change(function() {
-  if (window.URL != null) {
+  if (!window.URL) {
     return;
   }
   const url = window.URL.createObjectURL(this.files[0]);
@@ -214,5 +208,4 @@ $("button.more").click(function() {
     .next(".more_actions")
     .show();
   $(this).hide();
-  return false;
 });
