@@ -316,6 +316,11 @@
         .stat.misc(style="width: #{(width_stats * @stats.on_home("Tracker") / maxval).to_i}px;")= @stats.on_home("Tracker")
       %td #{@stats.pctrecent(@stats.on_home("Tracker"))}
     %tr
+      %td.stat Liens en page d’accueil
+      %td
+        .stat.misc(style="width: #{(width_stats * @stats.on_home("Bookmark") / maxval).to_i}px;")= @stats.on_home("Bookmark")
+      %td #{@stats.pctrecent(@stats.on_home("Bookmark"))}
+    %tr
       %td.stat Tri chronologique en page d’accueil
       %td
         .stat.misc(style="width: #{(width_stats * @stats.preferences(:sort_by_date_on_home) / maxval).to_i}px;")= @stats.preferences(:sort_by_date_on_home)
@@ -330,6 +335,16 @@
       %td
         .stat.misc(style="width: #{(width_stats * @stats.preferences(:hide_avatar) / maxval).to_i}px;")= @stats.preferences(:hide_avatar)
       %td #{@stats.pctrecent(@stats.preferences :hide_avatar)}
+    %tr
+      %td.stat Affichage des contenus avec une note négative
+      %td
+        .stat.misc(style="width: #{(width_stats * @stats.preferences(:show_negative_nodes) / maxval).to_i}px;")= @stats.preferences(:show_negative_nodes)
+      %td #{@stats.pctrecent(@stats.preferences :show_negative_nodes)}
+    %tr
+      %td.stat Affichage de la tribune dans une boîte latérale
+      %td
+        .stat.misc(style="width: #{(width_stats * @stats.preferences(:board_in_sidebar) / maxval).to_i}px;")= @stats.preferences(:board_in_sidebar)
+      %td #{@stats.pctrecent(@stats.preferences :board_in_sidebar)}
   %p
     Ces fonctionnalités peuvent être modifiées sur la page des #{ link_to("préférences", "/compte/modifier") }.
 

@@ -23,7 +23,21 @@
     - else
       %h2#contenus_type Répartition par type des contenus attribués à Collectif
     %ul
-      %li #{pluralize @stats.contents_per_type["News"], "dépêche"}
+      - if @stats.contents_per_type["News"] > 0
+        %li #{pluralize @stats.contents_per_type["News"], "dépêche"}
+      - if @stats.contents_per_type["Diary"] > 0
+        %li #{pluralize @stats.contents_per_type["Diary"], "journal", "journaux"}
+      - if @stats.contents_per_type["Post"] > 0
+        %li #{pluralize @stats.contents_per_type["Post"], "entrée"} de forums
+      - if @stats.contents_per_type["Tracker"] > 0
+        %li #{pluralize @stats.contents_per_type["Tracker"], "entrée"} dans le système de suivi
+      - if @stats.contents_per_type["Poll"] > 0
+        %li #{pluralize @stats.contents_per_type["Poll"], "sondage"}
+      - if @stats.contents_per_type["WikiPage"] > 0
+        %li #{pluralize @stats.contents_per_type["WikiPage"], "page"} de wiki
+      - if @stats.contents_per_type["Bookmark"] > 0
+        %li #{pluralize @stats.contents_per_type["Bookmark"], "lien"}
+
 
     - if @stats.contents_per_type["Total"] > 1
       %h2#contenus_annee Répartition annuelle des #{@stats.contents_per_type["Total"]} contenus attribués à Collectif
