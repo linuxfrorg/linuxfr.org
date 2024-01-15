@@ -8,16 +8,22 @@
     %tr
       %th Catégorie
       %th Sujet
+      %th Date
       %th État
       %th Note
-      %th Nombre de commentaires
-      %th Date du message
+      %th <abbr title="Nombre de réponses">Rép.</abbr>
+      %th Dernière réponse
     - @trackers.each do |node|
       - tracker = node.content
+      - answer = node.last_answer
       %tr{class: tracker.state}
         %td= tracker.category.title
         %td= link_to tracker.title, tracker
+        %td.date= tracker.created_at.to_s(:posted)
         %td= tracker.state_name
         %td.number= node.score
-        %td.number= node.comments.count
-        %td.date= tracker.created_at.to_s(:posted)
+        %td.number
+          - if answer && !answer.read_by?(current_account)
+            = image_tag "/images/icones/comment.png", alt: "Nouveaux commentaires !", class: "thread-new-comments"
+          = node.comments.count
+        %td.date= answer ? answer.created_at.to_s(:posted) : " "
