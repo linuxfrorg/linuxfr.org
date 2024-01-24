@@ -12,8 +12,8 @@ Install
 
 See [INSTALL.md](INSTALL.md) to set up LinuxFr.org on a Debian environment.
 
-Alternatively, you can read [Docker.md](Docker.md) to setup easily
-LinuxFr.org development environment with the Docker engine and
+Alternatively, you can read [Docker.md](Docker.md) or [Podman.md](Podman.md)
+to setup easily LinuxFr.org development environment with the Docker engine and
 [docker-compose](https://docs.docker.com/compose/).
 
 See also

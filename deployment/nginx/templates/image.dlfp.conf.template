@@ -1,6 +1,6 @@
 server {  
-  listen 80;
-  listen [::]:80;
+  listen ${LINUXFR_IMG_PORT};
+  listen [::]:${LINUXFR_IMG_PORT};
 
   server_name ${IMAGE_DOMAIN};
 
@@ -16,7 +16,7 @@ server {
 
   # All other images (avatars URLs and /img) pass by the image service
   location / {
-    proxy_pass http://linuxfr-img:8000;
+    proxy_pass http://${DOMAIN_PROXYPASS_IMG}:8000;
   }
 }
 
