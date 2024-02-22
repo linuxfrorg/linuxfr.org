@@ -1,0 +1,4 @@
+fr:
+  time:
+    formats:
+      posted: '%d %B %Y à %H:%M'
