@@ -21,6 +21,9 @@
       = u.label :signature, "Signature"
       = u.text_field :signature, maxlength: 250, size: 100
   %p
+    = f.check_box :show_email
+    = f.label :show_email, "Rendre mon adresse de courriel visible publiquement"
+  %p
     = f.check_box :hide_avatar
     = f.label :hide_avatar, "Ne pas afficher les avatars sur le site"
   %p

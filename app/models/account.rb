@@ -11,6 +11,7 @@
 #  nb_votes               :integer          default(0), not null
 #  stylesheet             :string(255)
 #  email                  :string(128)      not null
+#  show_email             :bool             default(false), not null
 #  encrypted_password     :string(128)      default(""), not null
 #  confirmation_token     :string(64)
 #  confirmed_at           :datetime
@@ -353,6 +354,7 @@ class Account < ActiveRecord::Base
                          512 => :show_negative_nodes,
                         1024 => :bookmarks_on_home,
                         2048 => :board_in_sidebar,
+                        4096 => :show_email,
                          scopes: false
 
   def types_on_home
