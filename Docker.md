@@ -92,10 +92,8 @@ In case you need to inspect the database, you need a second terminal
 and run:
 
 ```
-docker-compose run database mysql -hdatabase -ulinuxfr_rails -p linuxfr_rails
+docker-compose run database mysql -hdatabase -ulinuxfr_rails -plinuxfr_rails linuxfr_rails
 ```
-
-By default, the requested password is the same as the username.
 
 Apply database migrations
 =========================
