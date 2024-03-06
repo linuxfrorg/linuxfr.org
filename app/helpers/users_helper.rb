@@ -37,6 +37,8 @@ module UsersHelper
   def jabber_link(user)
     return unless current_account
     return if user.jabber_id.blank?
+    karma = user.account.try(:karma).to_i
+    return unless karma > 0
     link_to("adresse XMPP", "xmpp:" + user.jabber_id)
   end
 
