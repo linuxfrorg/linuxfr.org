@@ -18,17 +18,11 @@ RUN echo 'deb http://archive.debian.org/debian stretch main' > '/etc/apt/sources
     zlib1g-dev libssl-dev libxml2-dev libxslt-dev autoconf libgmp-dev libyaml-dev \
     ncurses-dev bison automake libtool imagemagick libc6-dev hunspell \
     hunspell-fr-comprehensive ruby ruby-dev ruby-rack \
-  && apt-get install -t stretch-backports -y --no-install-recommends \
-    nodejs npm \
   && gem install bundler -v 1.17.3 \
   && apt-get clean
 
 RUN mkdir /home/linuxfr.org
 ENV HOME /home/linuxfr.org
-
-# Install node external dependencies
-COPY package*.json ./
-RUN npm ci
 
 # Install external dependencies
 COPY Gemfile* ./

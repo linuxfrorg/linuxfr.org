@@ -4,6 +4,7 @@ anonymous:
   login: Anonyme
   email: anonymous@example.com
   role: inactive
+  confirmed_at: <%= Time.now %>
 
 <% 1000.times do |n| %>
 visitor_<%= n%>:
@@ -11,21 +12,27 @@ visitor_<%= n%>:
   login: <%= "visitor_#{n}" %>
   email: <%= "visitor_#{n}@example.com" %>
   role: visitor
+  karma: 50
+  nb_votes: 10
+  confirmed_at: <%= Time.now %>
+  last_seen_on: <%= Date.today %>
 <% end %>
 
 visitor_negative_karma:
   user: visitor_negative_karma
   login: visitor_negative_karma
-  email: visitor_negative_karma@example.com
+  email: "visitor_negative_karma@example.com"
   role: visitor
   karma: -100
+  last_seen_on: <%= 40.days.ago %>
 
 visitor_zero_karma:
   user: visitor_zero_karma
   login: visitor_zero_karma
-  email: visitor_zero_karma@example.com
+  email: "visitor_zero_karma@example.com"
   role: visitor
   karma: 0
+  confirmed_at: <%= Time.now %>
 
 <% 7.times do |n| %>
 editor_<%= n%>:
@@ -33,6 +40,8 @@ editor_<%= n%>:
   login: <%= "editor_#{n}" %>
   email: <%= "editor_#{n}@example.com" %>
   role: editor
+  karma: 50
+  confirmed_at: <%= Time.now %>
 <% end %>
 
 <% 2.times do |n| %>
@@ -41,6 +50,7 @@ maintainer_<%= n%>:
   login: <%= "maintainer_#{n}" %>
   email: <%= "maintainer_#{n}@example.com" %>
   role: maintainer
+  confirmed_at: <%= Time.now %>
 <% end %>
 
 <% 12.times do |n| %>
@@ -49,6 +59,7 @@ moderator_<%= n%>:
   login: <%= "moderator_#{n}" %>
   email: <%= "moderator_#{n}@example.com" %>
   role: moderator
+  confirmed_at: <%= Time.now %>
 <% end %>
 
 <% 6.times do |n| %>
@@ -57,4 +68,20 @@ admin_<%= n%>:
   login: <%= "admin_#{n}" %>
   email: <%= "admin_#{n}@example.com" %>
   role: admin
+  confirmed_at: <%= Time.now %>
 <% end %>
+
+joe:
+  user: joe
+  login: Joe
+  email: joe@example.com
+  role: visitor
+  karma: 10
+  confirmed_at: <%= Time.now %>
+bob:
+  user: bob
+  login: bob
+  email: bob@example.com
+  role: visitor
+  karma: 10
+  confirmed_at: <%= Time.now %>

@@ -1,3 +1,7 @@
 default:
   title: LinuxFr.org
   cached_slug: linuxfr-org
+
+news:
+  title: News
+  cached_slug: news

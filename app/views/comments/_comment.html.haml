@@ -15,7 +15,7 @@
   \.
   - if comment.created_at != comment.updated_at
     %span.update>
-      Dernière modification le #{comment.updated_at.to_s :posted}.
+      Dernière modification le #{comment.updated_at.to_fs :posted}.
 %figure.image= avatar_img(comment.user)
 - if comment.deleted?
   .content.deleted

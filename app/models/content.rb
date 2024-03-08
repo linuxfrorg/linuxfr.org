@@ -3,7 +3,7 @@
 # It's use as the base class for each content type.
 # It defines some common methods, particulary for ACL.
 #
-class Content < ActiveRecord::Base
+class Content < ApplicationRecord
   self.abstract_class = true
   include Canable::Ables
 

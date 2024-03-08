@@ -1,0 +1,38 @@
+news:
+  section: news
+  state: published
+  title: "The Lord of the Rings: The Fellowship of the Ring"
+  cached_slug: the-lord-of-the-rings-the-fellowship-of-the-ring
+  author_name: J.R.R. Tolkien
+  author_email: test@exemple.com
+  body: Une jolie nouvelle
+  second_part: En deuxième partie
+  moderator: moderator_1
+
+draft:
+  section: news
+  state: draft
+  title: Une jolie actualité en cours d'écriture
+  cached_slug: une-jolie-actualite-en-cours-decriture
+  author_name: Auteur sympa
+  author_email: test@exemple.com
+  body: Nouvelle en brouillon
+  second_part: En deuxième partie
+
+candidate:
+  section: news
+  state: candidate
+  title: Une actualité en cours de soumission
+  cached_slug: une-actualite-en-cours-de-soumission
+  author_name: Auteur sympa
+  author_email: test@exemple.com
+  body: Nouvelle en soumission
+  second_part: En deuxième partie
+
+first_part_only:
+  section: news
+  state: draft
+  title: Une actualité avec une seule partie
+  cached_slug: une-actualite-avec-une-seule-partie
+  author_name: Auteur sympa
+  author_email: test@exemple.com

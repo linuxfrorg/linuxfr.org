@@ -5,7 +5,7 @@ class BookmarksController < ApplicationController
   before_action :authenticate_account!, except: [:index, :show]
   before_action :find_bookmark, except: [:index, :new, :create]
   after_action  :marked_as_read, only: [:show], if: :account_signed_in?
-  after_action  :expire_cache, only: [:create, :update, :destroy, :move]
+  after_action  :expire_cache, only: [:create, :update, :destroy]
   caches_page   :index, if: Proc.new { |c| c.request.format.atom? && c.request.ssl? && c.request.host == c.request.host.downcase }
   respond_to :html, :atom, :md
 

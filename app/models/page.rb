@@ -10,8 +10,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
-
-class Page < ActiveRecord::Base
+class Page < ApplicationRecord
   validates :slug,  presence: { message: "Le slug est obligatoire" }
   validates :title, presence: { message: "Le titre est obligatoire" },
                     length: { maximum: 255, message: "Le titre est trop long" }
