@@ -4,7 +4,7 @@ services:
   linuxfr.org:
     build:
       context: .
-      dockerfile: deployment/linuxfr.org/Dockerfile
+      dockerfile: deployment/linuxfr.org/Containerfile
     env_file:
       - deployment/default.env
     volumes:
