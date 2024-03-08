@@ -1,11 +1,24 @@
-LinuxFr on Docker
------------------
+LinuxFr with Containers
+-----------------------
 
 To simplify set up of a developement environment, LinuxFr.org can be
-run on Docker with `docker compose up`.
+run with a container engine like Docker or Podman with the [`compose.yml`](./compose.yaml)
+file which describes how to build all needed services.
 
-Note: you need to enable the Docker BuildKit builder. Either you have a Docker
-version which uses it by default, or you set the environment variable `export DOCKER_BUILDKIT=1`.
+If you use the Docker engine, you can use the `docker compose up` command to start the system (you
+need to install the [Docker compose plugin](https://docs.docker.com/compose/)).
+
+> Note: with the Docker engine, you need to enable the Docker BuildKit builder.
+> Either you have a Docker version which uses it by default, or you set the
+> environment variable `export DOCKER_BUILDKIT=1`.
+
+If you use Podman, you can either use the same Docker compose plugin or the
+[podman-compose](https://github.com/containers/podman-compose/)
+utility. The podman cli itself provide a wrapper of one of these two tools through the
+[`podman compose` command](https://docs.podman.io/en/latest/markdown/podman-compose.1.html).
+
+At this point, the documentation will give you `docker compose` commands, but you should be able
+to use `podman compose` without any issue.
 
 To init the SQL database schema, you need to wait upto the `database`
 container to be ready to listen MySQL connections.
@@ -68,8 +81,8 @@ service won't work well and so you won't be able to see images in the news.
 Test modifications
 ==================
 
-The docker compose is currently configured to share `./app`, `./db` and
-`./public` directories with the docker container.
+The compose file currently shares `./app`, `./db` and
+`./public` directories with the container.
 
 So you can update files with your prefered IDE on your machine. Rails
 will directly detect changes and apply them on next page reload.
@@ -95,7 +108,7 @@ To get help about writing tests, see the
 [Ruby on Rails documentation](https://guides.rubyonrails.org/testing.html#the-rails-test-runner)
 .
 
-To run tests with Docker environment, you need to use this command:
+To run tests with containers, you need to use this command:
 
 ```
 docker compose exec linuxfr.org bin/rails test -v
@@ -128,10 +141,10 @@ use:
 docker compose exec linuxfr.org bin/rails db:reset
 ```
 
-Services provided by the docker compose
+Services provided by the compose file
 =======================================
 
-Currently, these services are directly enabled by docker compose:
+Currently, these services are directly enabled by compose:
 
 1. The [LinuxFr.org](https://github.com/linuxfrorg/linuxfr.org)
 ruby on rails application itself
