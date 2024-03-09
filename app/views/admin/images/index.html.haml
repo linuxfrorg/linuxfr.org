@@ -1,0 +1,13 @@
+# encoding: utf-8
+%h1 Images externes bloquées
+
+- if @images.any?
+  %p Liste des images externes bloquées :
+- else
+  %p Aucune image externe bloquée actuellement
+
+%ul
+  - @images.each do |image|
+    %li
+      %pre
+        = "#{image.link.html_safe} #{'⚠ image non bloquée' unless image.blocked}"
