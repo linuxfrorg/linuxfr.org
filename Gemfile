@@ -8,12 +8,12 @@ end
 gem "rails",                   "~>7.1"
 
 gem "actionpack-page_caching"
-gem "acts_as_list",            "~>0.4"
+gem "acts_as_list",            "~>1.1"
 gem "ansi",                    "~>1.4", require: false
 gem "bitfields",               "~>0.4"
 gem "bootsnap",                "~>1.3", require: false
 gem "canable",                 "~>0.1"
-gem "carrierwave",             "~>1.1"
+gem "carrierwave",             "~>3.0"
 gem "devise",                  "~>4.3"
 gem "diff_match_patch",        github: "nono/diff_match_patch-ruby", require: "diff_match_patch"
 gem "doorkeeper"
@@ -38,7 +38,6 @@ gem "state_machines-activerecord"
 # Gems used for assets
 assets = !%w(production alpha).include?(ENV['RAILS_ENV'])
 assets = true if ENV['RAILS_GROUPS'] == "assets"
-gem "coffee-rails",          "~>4.1", require: assets
 gem "jquery-rails",          "~>4.0", require: assets
 gem "normalize-rails",       "~>8.0", require: assets
 gem "sass-rails",            "~>5.0", require: assets
@@ -65,5 +64,5 @@ group :test do
 end
 
 group :production, :alpha do
-  gem "unicorn",						 "~>5.1"
+  gem "unicorn",						 "~>6.1"
 end
