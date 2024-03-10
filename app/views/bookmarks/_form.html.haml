@@ -8,7 +8,7 @@
   = form.text_field :link, autocomplete: 'off', required: 'required', spellcheck: 'false', maxlength: 1024
 %p
   = form.label :lang, "Langue"
-  = form.select :lang, Lang.all
+  = form.select :lang, Lang.all, { include_blank: true }, { required: "required" }
 %p
 - if form.object.new_record?
   %p

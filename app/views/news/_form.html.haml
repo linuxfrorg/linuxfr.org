@@ -16,7 +16,7 @@
   = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 100
 %p
   = form.label :section_id, "Section de la dépêche"
-  = form.collection_select :section_id, Section.published, :id, :title
+  = form.collection_select :section_id, Section.published, :id, :title, { include_blank: true }, { required: "required" }
 %p
   = form.label :wiki_body, "Contenu de la dépêche"
   = form.text_area :wiki_body, required: 'required', spellcheck: 'true', class: 'markItUp'
