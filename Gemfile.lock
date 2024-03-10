@@ -118,8 +118,8 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
-    acts_as_list (0.9.19)
-      activerecord (>= 3.0)
+    acts_as_list (1.1.0)
+      activerecord (>= 4.2)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
     annotate (3.2.0)
@@ -143,18 +143,13 @@ GEM
     builder (3.2.4)
     byebug (11.1.3)
     canable (0.3.0)
-    carrierwave (1.3.4)
-      activemodel (>= 4.0.0)
-      activesupport (>= 4.0.0)
-      mime-types (>= 1.16)
-      ssrf_filter (~> 1.0, < 1.1.0)
-    coffee-rails (4.2.2)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
+    carrierwave (3.0.6)
+      activemodel (>= 6.0.0)
+      activesupport (>= 6.0.0)
+      addressable (~> 2.6)
+      image_processing (~> 1.1)
+      marcel (~> 1.0.0)
+      ssrf_filter (~> 1.0)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -192,6 +187,9 @@ GEM
     htmlentities (4.3.4)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
+    image_processing (1.12.2)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     inherited_resources (1.14.0)
       actionpack (>= 6.0)
       has_scope (>= 0.6)
@@ -231,9 +229,6 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.4)
-    mime-types (3.5.2)
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2024.0305)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.22.2)
@@ -322,6 +317,8 @@ GEM
       railties (>= 5.2)
     rinku (2.0.6)
     rouge (4.2.0)
+    ruby-vips (2.2.1)
+      ffi (~> 1.12)
     sanitize (5.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.8.0)
@@ -352,7 +349,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    ssrf_filter (1.0.8)
+    ssrf_filter (1.1.2)
     state_machines (0.6.0)
     state_machines-activemodel (0.9.0)
       activemodel (>= 6.0)
@@ -369,7 +366,7 @@ GEM
       concurrent-ruby (~> 1.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
-    unicorn (5.8.0)
+    unicorn (6.1.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     warden (1.2.9)
@@ -390,7 +387,7 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack-page_caching
-  acts_as_list (~> 0.4)
+  acts_as_list (~> 1.1)
   annotate
   ansi (~> 1.4)
   better_errors
@@ -399,8 +396,7 @@ DEPENDENCIES
   bootsnap (~> 1.3)
   byebug
   canable (~> 0.1)
-  carrierwave (~> 1.1)
-  coffee-rails (~> 4.1)
+  carrierwave (~> 3.0)
   devise (~> 4.3)
   diff_match_patch!
   doorkeeper
@@ -431,7 +427,7 @@ DEPENDENCIES
   spring
   state_machines-activerecord
   uglifier
-  unicorn (~> 5.1)
+  unicorn (~> 6.1)
   web-console
 
 BUNDLED WITH
