@@ -85,17 +85,15 @@ To run tests with Docker environment, you need to use this command:
 docker-compose run linuxfr.org bin/rails test -v
 ```
 
-Inspect database schema
-=======================
+Inspect the database schema
+===========================
 
-In case you need to inspect the database, you need a second terminal
-and run:
+In case you need to inspect the database, the port `3306` of your machine is
+by default bound to the port `3306` of the database container.
 
-```
-docker-compose run database mysql -hdatabase -ulinuxfr_rails -p linuxfr_rails
-```
-
-By default, the requested password is the same as the username.
+Thus you can connect to the linuxfr database with hostname `localhost` and the
+username, password and database name defined in the `deployment/default.env`
+configuration file (all three last are by default `linuxfr_rails`).
 
 Apply database migrations
 =========================
