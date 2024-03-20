@@ -209,6 +209,7 @@ Rails.application.routes.draw do
     end
     resources :pages, except: [:show]
     resources :applications, except: [:new, :create]
+    resources :images, except: [:show]
   end
 
   # Search
