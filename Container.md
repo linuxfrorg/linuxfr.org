@@ -16,6 +16,7 @@ If you use Podman, you can either use the same Docker compose plugin or the
 [podman-compose](https://github.com/containers/podman-compose/)
 utility. The podman cli itself provide a wrapper of one of these two tools through the
 [`podman compose` command](https://docs.podman.io/en/latest/markdown/podman-compose.1.html).
+Thus you need to use the `podman compose up` command to start the system.
 
 At this point, the documentation will give you `docker compose` commands, but you should be able
 to use `podman compose` without any issue.
