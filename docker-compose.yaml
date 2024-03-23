@@ -1,5 +1,3 @@
-version: '3.1'
-
 services:
   linuxfr.org:
     build:
@@ -10,50 +8,75 @@ services:
     volumes:
       # Share host directories so, the developer can edit them
       # and see the result without need to restart the container
-      - ./app:/linuxfr.org/app
-      - ./db:/linuxfr.org/db
-      - ./public:/linuxfr.org/public
-      - ./test:/linuxfr.org/test
+      - ./app:/linuxfr.org/app:Z
+      - ./db:/linuxfr.org/db:Z
+      - ./lib:/linuxfr.org/lib:Z
+      - ./public:/linuxfr.org/public:Z
+      - ./test:/linuxfr.org/test:Z
       # uploads are shared with the nginx service
       - data-uploads:/linuxfr.org/uploads
     tmpfs:
       - /linuxfr.org/public/tmp:size=100M
+    healthcheck:
+      test: curl --fail http://localhost:3000
     depends_on:
-      - database
-      - redis
+      database:
+        condition: service_healthy
+        restart: true
+      redis:
+        condition: service_healthy
+        restart: true
 
   linuxfr-board:
     build:
       context: deployment/linuxfr-board
     env_file:
       - deployment/default.env
+    healthcheck:
+      test: curl --fail -I http://localhost:9000
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
+        restart: true
 
   linuxfr-img:
     build:
       context: deployment/linuxfr-img
     env_file:
       - deployment/default.env
+    healthcheck:
+      test: curl --fail http://localhost:8000/status
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
+        restart: true
     volumes:
       - cache-img:/linuxfr-img/cache
 
   nginx:
-    image: nginx:stable
+    image: docker.io/nginx:stable
     env_file:
       - deployment/default.env
     volumes:
-      - ./deployment/nginx/templates:/etc/nginx/templates
-      - ./public/fonts:/var/linuxfr/fonts
+      - ./deployment/nginx/templates:/etc/nginx/templates:Z
+      - ./public/fonts:/var/linuxfr/fonts:Z
       - data-uploads:/var/linuxfr/uploads
     ports:
-      - "80:80"
+      - target: 80
+        published: 127.0.0.1:80
+        protocol: tcp
+    healthcheck:
+      test: curl --fail http://$$DOMAIN && curl --fail http://$$DOMAIN/img && curl --fail -I http://$$DOMAIN/b
     depends_on:
-      - linuxfr.org
-      - linuxfr-board
-      - linuxfr-img
+      linuxfr.org:
+        condition: service_healthy
+        restart: true
+      linuxfr-board:
+        condition: service_healthy
+        restart: true
+      linuxfr-img:
+        condition: service_healthy
+        restart: true
 
   database:
     build:
@@ -61,12 +84,18 @@ services:
     env_file:
       - deployment/default.env
     ports:
-      - "3306:3306"
+      - target: 3306
+        published: 127.0.0.1:3306
+        protocol: tcp
+    healthcheck:
+      test: mysql -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD --execute "SHOW DATABASES;"
     volumes:
       - data-database:/var/lib/mysql
 
   redis:
-    image: redis:5
+    image: docker.io/redis:5
+    healthcheck:
+      test: redis-cli --raw incr ping
     volumes:
       - data-redis:/data
 
