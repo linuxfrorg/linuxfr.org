@@ -1,24 +1,50 @@
-FROM debian:bullseye-slim as build
+FROM docker.io/debian:bullseye-slim as build
 
-LABEL maintainer="adrien@adorsaz.ch"
-LABEL version="2.0"
-LABEL description="Run LinuxFr image caching service for LinuxFr.org"
+LABEL org.opencontainers.image.title="LinuxFr.org image caching service"
+LABEL org.opencontainers.image.description="Store external images into a cache to not flood external website"
+LABEL org.opencontainers.image.source="https://github.com/linuxfrorg/img-LinuxFr.org"
+LABEL org.opencontainers.image.url="https://github.com/linuxfrorg/linuxfr.org/blob/master/Container.md"
+LABEL org.opencontainers.image.licenses="AGPL-3.0-only"
+LABEL org.opencontainers.image.version="2.1"
+LABEL org.opencontainers.image.authors="Adrien Dorsaz <adrien@adorsaz.ch>"
 
+ARG UID=1200
+
+RUN \
+  set -eux; \
+  IFS=$'\n\t'; \
+  apt-get update; \
+  apt-get install -y --no-install-recommends \
+    golang git ca-certificates; \
+  apt-get clean;
+
+USER ${UID}
 ENV GOPATH=/linuxfr-img
+ENV HOME=/linuxfr-img
 WORKDIR /linuxfr-img
 
 # Build linuxfr-img
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
-    golang git ca-certificates \
-  && apt-get clean \
-  && go get -u github.com/linuxfrorg/img-LinuxFr.org
+RUN go get -u github.com/linuxfrorg/img-LinuxFr.org
 
-FROM debian:bullseye-slim as deploy
+FROM docker.io/debian:bullseye-slim as deploy
 
+ARG UID=1200
+
+# Install curl to be used by the healthcheck defined in compose.yaml
+RUN \
+  set -eux; \
+  IFS=$'\n\t'; \
+  apt-get update; \
+  apt-get install -y --no-install-recommends \
+    curl; \
+  apt-get clean;
+
+USER ${UID}
+ENV GOPATH=/linuxfr-img
+ENV HOME=/linuxfr-img
 WORKDIR /linuxfr-img
 
-COPY --from=build /linuxfr-img/bin/img-LinuxFr.org .
+COPY --from=build --chown=${UID}:0 --chmod=770 /linuxfr-img/bin/img-LinuxFr.org .
 
 EXPOSE 8000
 

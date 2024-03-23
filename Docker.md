@@ -13,10 +13,12 @@ For example, you should see in the logs:
 >
 > database_1       | Version: '10.1.46-MariaDB-1\~bionic'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  mariadb.org binary distribution
 
+Or you can check the `database` container status to be "healthy".
+
 Then, open a second terminal and run:
 
 ```
-docker-compose run linuxfr.org bin/rails db:setup
+docker-compose exec linuxfr.org bin/rails db:setup
 ```
 
 Finally, the environment is ready and you can open [http://dlfp.lo](http://dlfp.lo)
