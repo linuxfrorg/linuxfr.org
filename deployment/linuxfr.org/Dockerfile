@@ -1,11 +1,11 @@
-FROM docker.io/debian:bullseye-slim
+FROM docker.io/debian:bookworm-slim
 
 LABEL org.opencontainers.image.title="LinuxFr.org website"
 LABEL org.opencontainers.image.description="Run LinuxFr.org Ruby on Rails website"
 LABEL org.opencontainers.image.source="https://github.com/linuxfrorg/linuxfr.org"
 LABEL org.opencontainers.image.url="https://github.com/linuxfrorg/linuxfr.org/blob/master/Docker.md"
 LABEL org.opencontainers.image.licenses="AGPL-3.0-only"
-LABEL org.opencontainers.image.version="2.0"
+LABEL org.opencontainers.image.version="rails7-bookworm"
 LABEL org.opencontainers.image.authors="Adrien Dorsaz <adrien@adorsaz.ch>"
 
 ARG UID=1200
@@ -21,7 +21,7 @@ RUN \
     zlib1g-dev libssl-dev libxml2-dev libxslt-dev autoconf libgmp-dev libyaml-dev \
     ncurses-dev bison automake libtool imagemagick libc6-dev hunspell \
     hunspell-fr-comprehensive ruby ruby-dev ruby-rack; \
-  gem install bundler -v 1.17.3; \
+  gem install bundler -v 2.4.20; \
   apt-get clean
 
 USER ${UID}
@@ -31,16 +31,12 @@ WORKDIR /linuxfr.org
 # Install external dependencies
 COPY --chown=${UID}:0 --chmod=770 Gemfile* ./
 
-USER 0
 RUN \
   set -eux; \
   IFS=$'\n\t'; \
   bundle config set path 'vendor/bundle'; \
   bundle config set deployment 'true'; \
-  bundle install; \
-  chown ${UID}:0 -R .;
-
-USER ${UID}
+  bundle install;
 
 # Configure the application
 COPY --chown=${UID}:0 --chmod=770 deployment/linuxfr.org/database.yml config/database.yml
