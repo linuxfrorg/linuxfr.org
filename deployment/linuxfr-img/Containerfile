@@ -1,11 +1,13 @@
-FROM docker.io/debian:bullseye-slim as build
+FROM docker.io/debian:bookworm-slim as base
+
+FROM base as build
 
 LABEL org.opencontainers.image.title="LinuxFr.org image caching service"
 LABEL org.opencontainers.image.description="Store external images into a cache to not flood external website"
 LABEL org.opencontainers.image.source="https://github.com/linuxfrorg/img-LinuxFr.org"
 LABEL org.opencontainers.image.url="https://github.com/linuxfrorg/linuxfr.org/blob/master/Container.md"
 LABEL org.opencontainers.image.licenses="AGPL-3.0-only"
-LABEL org.opencontainers.image.version="rails7-bullseye"
+LABEL org.opencontainers.image.version="bookworm"
 LABEL org.opencontainers.image.authors="Adrien Dorsaz <adrien@adorsaz.ch>"
 
 ARG UID=1200
@@ -24,9 +26,14 @@ ENV HOME=/linuxfr-img
 WORKDIR /linuxfr-img
 
 # Build linuxfr-img
-RUN go get -u github.com/linuxfrorg/img-LinuxFr.org
+RUN \
+  set -eux; \
+  IFS=$'\n\t'; \
+  git clone https://github.com/linuxfrorg/img-LinuxFr.org; \
+  cd img-LinuxFr.org; \
+  go install;
 
-FROM docker.io/debian:bullseye-slim as deploy
+FROM base as deploy
 
 ARG UID=1200
 
@@ -40,8 +47,6 @@ RUN \
   apt-get clean;
 
 USER ${UID}
-ENV GOPATH=/linuxfr-img
-ENV HOME=/linuxfr-img
 WORKDIR /linuxfr-img
 
 COPY --from=build --chown=${UID}:0 --chmod=770 /linuxfr-img/bin/img-LinuxFr.org .
