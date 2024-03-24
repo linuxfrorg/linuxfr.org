@@ -18,7 +18,9 @@ services:
     tmpfs:
       - /linuxfr.org/public/tmp:size=100M
     healthcheck:
-      test: curl --fail http://localhost:3000
+      test: ["CMD", "curl", "--silent", "--fail", "--head", "http://localhost:3000"]
+      interval: 10s
+      start_period: 5s
     depends_on:
       database:
         condition: service_healthy
@@ -33,7 +35,9 @@ services:
     env_file:
       - deployment/default.env
     healthcheck:
-      test: curl --fail -I http://localhost:9000
+      test: ["CMD", "curl", "--silent", "--fail", "--head", "http://localhost:9000"]
+      interval: 10s
+      start_period: 5s
     depends_on:
       redis:
         condition: service_healthy
@@ -45,7 +49,9 @@ services:
     env_file:
       - deployment/default.env
     healthcheck:
-      test: curl --fail http://localhost:8000/status
+      test: ["CMD", "curl", "--silent", "--fail", "--head", "http://localhost:8000/status"]
+      interval: 10s
+      start_period: 5s
     depends_on:
       redis:
         condition: service_healthy
@@ -66,8 +72,16 @@ services:
         published: 127.0.0.1:80
         protocol: tcp
     healthcheck:
-      test: curl --fail http://$$DOMAIN && curl --fail http://$$DOMAIN/img && curl --fail -I http://$$DOMAIN/b
+      test: ["CMD", "curl", "--silent", "--fail", "--fail-early", "--head", "http://$$DOMAIN", "http://$$DOMAIN/img", "http://$$DOMAIN/b", "http://$$IMAGE_DOMAIN/status"]
+      interval: 10s
+      start_period: 5s
     depends_on:
+      database:
+        condition: service_healthy
+        restart: true
+      redis:
+        condition: service_healthy
+        restart: true
       linuxfr.org:
         condition: service_healthy
         restart: true
@@ -77,6 +91,11 @@ services:
       linuxfr-img:
         condition: service_healthy
         restart: true
+    networks:
+      default:
+        aliases:
+          - ${DOMAIN}
+          - ${IMAGE_DOMAIN}
 
   database:
     build:
@@ -88,14 +107,18 @@ services:
         published: 127.0.0.1:3306
         protocol: tcp
     healthcheck:
-      test: mysql -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD --execute "SHOW DATABASES;"
+      test: ["CMD", "mysql", "-h", "127.0.0.1", "-u", "$$MYSQL_USER", "--password=$$MYSQL_PASSWORD", "--execute", "\"SHOW DATABASES;\""]
+      interval: 10s
+      start_period: 5s
     volumes:
       - data-database:/var/lib/mysql
 
   redis:
     image: docker.io/redis:5
     healthcheck:
-      test: redis-cli --raw incr ping
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      start_period: 5s
     volumes:
       - data-redis:/data
 
