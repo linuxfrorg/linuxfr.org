@@ -20,7 +20,8 @@ RUN \
     build-essential openssl libreadline-dev curl libcurl4-openssl-dev zlib1g \
     zlib1g-dev libssl-dev libxml2-dev libxslt-dev autoconf libgmp-dev libyaml-dev \
     ncurses-dev bison automake libtool imagemagick libc6-dev hunspell \
-    hunspell-fr-comprehensive ruby ruby-dev ruby-rack; \
+    hunspell-fr-comprehensive ruby ruby-dev ruby-rack \
+    nodejs; \
   gem install bundler -v 2.4.20; \
   apt-get clean
 
