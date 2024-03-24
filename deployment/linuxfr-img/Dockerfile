@@ -5,7 +5,7 @@ LABEL org.opencontainers.image.description="Store external images into a cache t
 LABEL org.opencontainers.image.source="https://github.com/linuxfrorg/img-LinuxFr.org"
 LABEL org.opencontainers.image.url="https://github.com/linuxfrorg/linuxfr.org/blob/master/Container.md"
 LABEL org.opencontainers.image.licenses="AGPL-3.0-only"
-LABEL org.opencontainers.image.version="2.1"
+LABEL org.opencontainers.image.version="rails7-bullseye"
 LABEL org.opencontainers.image.authors="Adrien Dorsaz <adrien@adorsaz.ch>"
 
 ARG UID=1200
