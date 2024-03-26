@@ -10,6 +10,8 @@ services:
       # and see the result without need to restart the container
       - ./app:/linuxfr.org/app:Z
       - ./db:/linuxfr.org/db:Z
+      - ./Gemfile:/linuxfr.org/Gemfile:Z
+      - ./Gemfile.lock:/linuxfr.org/Gemfile.lock:Z
       - ./lib:/linuxfr.org/lib:Z
       - ./public:/linuxfr.org/public:Z
       - ./test:/linuxfr.org/test:Z
