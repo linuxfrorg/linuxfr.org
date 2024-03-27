@@ -41,7 +41,7 @@ assets = true if ENV['RAILS_GROUPS'] == "assets"
 gem "jquery-rails",          "~>4.0", require: assets
 gem "normalize-rails",       "~>8.0", require: assets
 gem "sass-rails",            "~>5.0", require: assets
-gem "uglifier",                       require: assets
+gem "terser", "~> 1.2",               require: assets
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
