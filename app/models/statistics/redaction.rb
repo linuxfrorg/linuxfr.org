@@ -15,11 +15,11 @@ class Statistics::Redaction < Statistics::Statistics
   end
 
   def top_month(limit=10)
-    top "AND news_versions.created_at >= '#{1.month.ago.to_s :db}'", limit
+    top "AND news_versions.created_at >= '#{1.month.ago.to_fs :db}'", limit
   end
 
   def top_week(limit=10)
-    top "AND news_versions.created_at >= '#{7.days.ago.to_s :db}'", limit
+    top "AND news_versions.created_at >= '#{7.days.ago.to_fs :db}'", limit
   end
 
   def top_created(nb_days, limit)
@@ -28,7 +28,7 @@ class Statistics::Redaction < Statistics::Statistics
         FROM news
         JOIN nodes ON news.id = nodes.content_id AND nodes.content_type = 'News'
         JOIN users ON users.id = nodes.user_id
-       WHERE news.created_at >= '#{nb_days.days.ago.to_s :db}'
+       WHERE news.created_at >= '#{nb_days.days.ago.to_fs :db}'
     GROUP BY users.id
     ORDER BY cnt DESC
        LIMIT #{limit}
@@ -40,7 +40,7 @@ class Statistics::Redaction < Statistics::Statistics
       SELECT users.name, users.cached_slug, COUNT(DISTINCT news_id) AS cnt
         FROM users
         JOIN news_versions ON users.id = news_versions.user_id
-       WHERE news_versions.created_at >= '#{nb_days.days.ago.to_s :db}'
+       WHERE news_versions.created_at >= '#{nb_days.days.ago.to_fs :db}'
     GROUP BY users.id
     ORDER BY cnt DESC
        LIMIT #{limit}

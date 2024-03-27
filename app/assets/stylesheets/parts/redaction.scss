@@ -16,7 +16,7 @@ html.chat_n_edit {
       position: relative;
       top: -1em;
       &::before {
-        content: inline("feather-icons/dist/icons/scissors.svg");
+        content: url("feather-icons/dist/icons/scissors.svg");
         position: relative;
         top: 20em;
         left: -6em;
@@ -43,7 +43,7 @@ html.chat_n_edit {
   .content a[href*="/redaction/"] {
     padding-left: 3px;
     border-left: 16px;
-    border-image: inline("feather-icons/dist/icons/eye-off") 0 0 0 32;
+    border-image: url("feather-icons/dist/icons/eye-off") 0 0 0 32;
     border-style: solid;
   }
 }
@@ -482,7 +482,7 @@ body#redaction-index {
       padding: 0;
       border-radius: 15px;
       background: no-repeat 6px 6px / 16px $C_CLAIR;
-      background-image: inline("feather-icons/dist/icons/edit-3.svg");
+      background-image: url("feather-icons/dist/icons/edit-3.svg");
       text-indent: -9999em;
     }
     .actions {

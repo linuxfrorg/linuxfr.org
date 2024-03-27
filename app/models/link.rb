@@ -16,7 +16,7 @@
 # The news can have some important links.
 # We follow the number of clicks on each of these links.
 #
-class Link < ActiveRecord::Base
+class Link < ApplicationRecord
   PROTOCOLS = HTML::Pipeline::SanitizationFilter::WHITELIST[:protocols]['a']['href'] - [:relative]
 
   belongs_to :news

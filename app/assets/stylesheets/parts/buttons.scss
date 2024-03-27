@@ -45,7 +45,7 @@ button {
   padding-left: 28px;
   background: no-repeat 3px 3px $C_CLAIR;
   background-size: 20px;
-  background-image: inline("feather-icons/dist/icons/check");
+  background-image: url("feather-icons/dist/icons/check");
   cursor: pointer;
   &[disabled] {
     cursor: default;
@@ -69,7 +69,7 @@ button {
   line-height: 1.6;
   background: no-repeat 2px 2px $C_CLAIR;
   background-size: 20px;
-  background-image: inline("feather-icons/dist/icons/shuffle");
+  background-image: url("feather-icons/dist/icons/shuffle");
   &:hover {
     background-color: $C_FONCE;
   }
@@ -90,54 +90,54 @@ input[type="submit"] {
   &.delete_button,
   &.remove,
   &.erase_news {
-    background-image: inline("feather-icons/dist/icons/trash-2.svg");
+    background-image: url("feather-icons/dist/icons/trash-2.svg");
   }
   &.change_role {
-    background-image: inline("feather-icons/dist/icons/arrow-right-circle.svg");
+    background-image: url("feather-icons/dist/icons/arrow-right-circle.svg");
   }
   &.cancel,
   &.refuse_oauth {
-    background-image: inline("feather-icons/dist/icons/slash.svg");
+    background-image: url("feather-icons/dist/icons/slash.svg");
   }
   &.ppp_news {
-    background-image: inline("feather-icons/dist/icons/sunrise.svg");
+    background-image: url("feather-icons/dist/icons/sunrise.svg");
   }
   &.submit_board {
-    background-image: inline("feather-icons/dist/icons/message-square.svg");
+    background-image: url("feather-icons/dist/icons/message-square.svg");
   }
   &.submit_news,
   &.submit {
-    background-image: inline("feather-icons/dist/icons/send.svg");
+    background-image: url("feather-icons/dist/icons/send.svg");
   }
   &.urgent_news {
-    background-image: inline("feather-icons/dist/icons/zap.svg");
+    background-image: url("feather-icons/dist/icons/zap.svg");
   }
   &.add_para,
   &.add_link,
   &.create_news {
-    background-image: inline("feather-icons/dist/icons/plus.svg");
+    background-image: url("feather-icons/dist/icons/plus.svg");
   }
   &.vote_for {
-    background-image: inline("feather-icons/dist/icons/thumbs-up.svg");
+    background-image: url("feather-icons/dist/icons/thumbs-up.svg");
   }
   &.vote_against {
-    background-image: inline("feather-icons/dist/icons/thumbs-down.svg");
+    background-image: url("feather-icons/dist/icons/thumbs-down.svg");
   }
   &.plonk,
   &.block {
-    background-image: inline("feather-icons/dist/icons/volume-x.svg");
+    background-image: url("feather-icons/dist/icons/volume-x.svg");
   }
   &#admin_49_3,
   &.archive_button,
   &.reopen_button {
-    background-image: inline("feather-icons/dist/icons/crosshair.svg");
+    background-image: url("feather-icons/dist/icons/crosshair.svg");
   }
   &.reset_news,
   &.reset_password {
-    background-image: inline("feather-icons/dist/icons/refresh-cw.svg");
+    background-image: url("feather-icons/dist/icons/refresh-cw.svg");
   }
   &.reassign_news {
-    background-image: inline("feather-icons/dist/icons/user-check.svg");
+    background-image: url("feather-icons/dist/icons/user-check.svg");
     background-size: 14px;
     width: 20px;
     height: 20px;
@@ -145,16 +145,16 @@ input[type="submit"] {
     text-indent: -9999em;
   }
   &.rewrite_news {
-    background-image: inline("feather-icons/dist/icons/edit.svg");
+    background-image: url("feather-icons/dist/icons/edit.svg");
   }
   .tag_in_place & {
-    background-image: inline("feather-icons/dist/icons/tag.svg");
+    background-image: url("feather-icons/dist/icons/tag.svg");
   }
   &#followup {
-    background-image: inline("feather-icons/dist/icons/at-sign.svg");
+    background-image: url("feather-icons/dist/icons/at-sign.svg");
   }
   #trackers-index .new_tracker & {
-    background-image: inline("feather-icons/dist/icons/filter.svg");
+    background-image: url("feather-icons/dist/icons/filter.svg");
   }
 }
 
@@ -172,18 +172,18 @@ a.edit_client_app,
 .new_content a {
   background: no-repeat 3px 3px $C_CLAIR;
   background-size: 16px;
-  background-image: inline("feather-icons/dist/icons/edit-3.svg");
+  background-image: url("feather-icons/dist/icons/edit-3.svg");
 }
 .toolbox .follow_feed a,
 #comments #follow-feed a {
   background: no-repeat 3px 3px $C_CLAIR;
   background-size: 16px;
-  background-image: inline("feather-icons/dist/icons/rss.svg");
+  background-image: url("feather-icons/dist/icons/rss.svg");
 }
 #comments #send-comment a {
   background: no-repeat 3px 3px $C_CLAIR;
   background-size: 18px;
-  background-image: inline("feather-icons/dist/icons/message-circle.svg");
+  background-image: url("feather-icons/dist/icons/message-circle.svg");
 }
 
 #stylesheets-edit button {

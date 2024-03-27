@@ -14,7 +14,7 @@
 #
 # The news are classified in several sections.
 #
-class Section < ActiveRecord::Base
+class Section < ApplicationRecord
   has_many :news, inverse_of: :section
 
   scope :published, -> { where(state: "published").order("title") }

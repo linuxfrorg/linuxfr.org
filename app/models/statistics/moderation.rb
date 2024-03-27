@@ -9,7 +9,7 @@ class Statistics::Moderation < Statistics::Statistics
               COUNT(*) AS cnt
          FROM nodes
         WHERE (content_type='News' or content_type='Poll') AND public=1
-     GROUP BY type,d
+     GROUP BY type, d, day
      ORDER BY type ASC, day ASC
     EOS
   end
@@ -69,7 +69,7 @@ class Statistics::Moderation < Statistics::Statistics
           AND content_type='News'
           AND moderator_id=users.id
           #{sql_criterion}
-    GROUP BY moderator_id
+    GROUP BY name, users.cached_slug, login, moderator_id
     ORDER BY LOWER(login) ASC
     EOS
   end
@@ -80,7 +80,7 @@ class Statistics::Moderation < Statistics::Statistics
 
   def created_on_the_last_nbdays(nbdays,prefix="")
     return "1=1" unless nbdays
-    "#{prefix}created_at >= '#{nbdays.days.ago.to_s :db}'"
+    "#{prefix}created_at >= '#{nbdays.days.ago.to_fs :db}'"
   end
 
   def nb_moderations_x_days(user_id,nbdays=nil)

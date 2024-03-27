@@ -1,6 +1,5 @@
 # encoding: utf-8
 module NodeHelper
-
   ContentPresenter = Struct.new(:record, :title, :meta, :tags, :notice, :image, :body, :actions, :css_class, :hidden) do
     def to_hash
       attrs = members.map(&:to_sym)
@@ -117,7 +116,7 @@ module NodeHelper
     end
     date_time    = content.is_a?(Comment) ? content.created_at : content.node.try(:created_at)
     date_time  ||= Time.now
-    published_at = content_tag(:time, "le #{date_time.to_s(:posted)}", datetime: date_time.iso8601, class: "updated")
+    published_at = content_tag(:time, "le #{date_time.to_fs(:posted)}", datetime: date_time.iso8601, class: "updated")
     caption      = content_tag(:span, "", class: "floating_spacer") +
                    content_tag(:span, "Posté par #{ user_link } #{ published_at }.".html_safe, class: "posted_by_spanblock")
     caption.html_safe
