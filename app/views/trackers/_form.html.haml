@@ -5,7 +5,7 @@
   = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 100
 %p
   = form.label :category_id, "Catégorie"
-  = form.collection_select :category_id, Category.all, :id, :title
+  = form.collection_select :category_id, Category.all, :id, :title, { include_blank: true }, { required: "required" }
 - if @tracker.new_record?
   %p.pot_de_miel
     = form.label :pot_de_miel, "Ne pas remplir ce champ"
