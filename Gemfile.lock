@@ -174,8 +174,9 @@ GEM
       activerecord (>= 4.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    haml (5.2.2)
-      temple (>= 0.8.0)
+    haml (6.3.0)
+      temple (>= 0.8.2)
+      thor
       tilt
     has_scope (0.8.2)
       actionpack (>= 5.2)
@@ -406,7 +407,7 @@ DEPENDENCIES
   ffi-hunspell!
   french_rails (~> 0.5)!
   friendly_id (~> 5.1)
-  haml (~> 5.0)
+  haml (~> 6.3)
   html-pipeline-linuxfr (~> 0.17)!
   html_spellchecker (~> 0.1)
   html_truncator (~> 0.4)
