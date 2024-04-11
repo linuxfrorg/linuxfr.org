@@ -23,4 +23,4 @@
       = form.collection_select :assigned_to_user_id, Account.tracker_admin, :user_id, :login, include_blank: true
 %p
   = form.submit "Prévisualiser", id: "tracker_preview"
-  = form.submit "Soumettre", 'data-disable-with' => "Enregistrement en cours" if @preview_mode || @tracker.persisted?
+  = form.submit "Soumettre", 'data-disable-with' => "Enregistrement en cours" if (@preview_mode || @tracker.persisted?) and @tracker.valid?

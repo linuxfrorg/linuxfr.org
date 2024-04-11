@@ -1,7 +1,7 @@
 %main#contents(role="main")
   =h1 "Éditer un journal"
 
-  = render "preview", preview: @diary if @preview_mode
+  = render "preview", preview: @diary if @preview_mode and @diary.valid?
 
   %h2 Édition
   = form_for [@diary.owner, @diary] do |form|
