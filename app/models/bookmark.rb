@@ -34,7 +34,7 @@ class Bookmark < Content
 
   def link=(raw)
     raw.strip!
-    return write_attribute :url, nil if raw.blank?
+    return write_attribute :link, nil if raw.blank?
     uri = URI.parse(raw)
     # Default to HTTP link if neither scheme nor host is found
     if uri.scheme.blank? && uri.host.blank?
