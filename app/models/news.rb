@@ -50,6 +50,8 @@ class News < Content
     dependent: :destroy,
     inverse_of: :news
 
+  validates_associated :section, message: "Veuillez choisir une section pour cette dépêche"
+
   scope :sorted,    -> { order(updated_at: :desc) }
   scope :draft,     -> { where(state: "draft").includes(node: :user) }
   scope :candidate, -> { where(state: "candidate") }

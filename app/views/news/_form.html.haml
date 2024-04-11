@@ -51,4 +51,4 @@
   = form.label :cc_licensed, 'Je place ce document sous licence Creative Commons Paternité - Partage des conditions initiales à l’identique, version 4.0 (<a href="http://creativecommons.org/licenses/by-sa/4.0/deed.fr">licence CC By-SA 4.0</a>). Ceci est conseillé afin de permettre l’édition coopérative de la dépêche si elle doit être complétée.'.html_safe
 %p
   = form.submit "Prévisualiser", id:  "news_preview"
-  = form.submit "Soumettre cette dépêche", 'data-disable-with' => "Enregistrement en cours" if @preview_mode
+  = form.submit "Soumettre cette dépêche", 'data-disable-with' => "Enregistrement en cours" if @preview_mode and @news.valid?
