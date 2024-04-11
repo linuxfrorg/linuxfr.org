@@ -46,11 +46,6 @@ class Link < ActiveRecord::Base
     write_attribute :url, raw
   end
 
-  def lang_validation
-    if lang == "xx"
-      errors.add(:lang, "La langue du lien doit être définie") unless title.blank? or url.blank?
-    end
- end
 ### Behaviour ###
 
   def self.hit(id)
