@@ -34,6 +34,7 @@ class Tracker < Content
 
   validates :title,     presence: { message: "Le titre est obligatoire" },
                         length: { maximum: 100, message: "Le titre est trop long" }
+  validates :category,  presence: { message: "Veuillez choisir une catégorie pour cette entrée de suivi" }
   validates :wiki_body, presence: { message: "Veuillez décrire cette entrée du suivi" }
 
   scope :opened, -> { where(state: "opened") }
