@@ -29,7 +29,8 @@ class Link < ActiveRecord::Base
   validates :url, http_url: { protocols: PROTOCOLS, message: "L'adresse n'est pas valide" },
                   presence: { message: "Un lien doit obligatoirement avoir une adresse" },
                   length: { maximum: 255, message: "L’adresse est trop longue" }
-  validate :lang_validation
+  validates :lang, inclusion: { in: Lang.valid_codes, allow_nil: false, message: "La langue du lien doit être définie" }
+
 
   def url=(raw)
     raw.strip!

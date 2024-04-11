@@ -30,6 +30,7 @@ class Bookmark < Content
                    http_url: { message: "Le lien n'est pas valide" },
                    length: { maximum: 255, message: "Le lien est trop long" },
                    uniqueness: { message: "Le lien a déjà été proposé" }
+  validates :lang, inclusion: { in: Lang.valid_codes, allow_nil: false, message: "La langue du lien doit être définie" }
 
   def link=(raw)
     raw.strip!
