@@ -23,6 +23,8 @@ class Post < Content
 
   belongs_to :forum
 
+  validates_associated :forum, message: "Vous devez choisir un forum" 
+
   scope :with_node_ordered_by, ->(order) { joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
 
   validates :forum,     presence: { message: "Vous devez choisir un forum" }
