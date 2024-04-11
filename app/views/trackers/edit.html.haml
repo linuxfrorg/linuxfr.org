@@ -1,7 +1,7 @@
 %main#contents(role="main")
   =h1 "Modifier une entrée dans le suivi"
 
-  = render "preview", preview: @tracker if @preview_mode
+  = render "preview", preview: @tracker if @preview_mode and @tracker.valid?
 
   %h2 Édition
   = form_for @tracker do |form|

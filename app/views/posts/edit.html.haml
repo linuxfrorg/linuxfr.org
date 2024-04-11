@@ -1,7 +1,7 @@
 %main#contents(role="main")
   =h1 "Éditer un message"
 
-  = render "preview", preview: @post if @preview_mode
+  = render "preview", preview: @post if @preview_mode and @post.valid?
 
   %h2 Édition
   = form_for [@forum, @post] do |form|
