@@ -20,7 +20,7 @@ gem "doorkeeper"
 gem "ffi-hunspell",            github: "postmodern/ffi-hunspell"
 gem "french_rails",            "~>0.5", github: "linuxfrorg/french-rails"
 gem "friendly_id",             "~>5.1"
-gem "haml",                    "~>5.0"
+gem "haml",                    "~>6.3"
 gem "htmlentities",            "~>4.3"
 gem "html-pipeline-linuxfr",   "~>0.17", github: "linuxfrorg/html-pipeline-linuxfr"
 gem "html_spellchecker",       "~>0.1"
@@ -38,10 +38,10 @@ gem "state_machines-activerecord"
 # Gems used for assets
 assets = !%w(production alpha).include?(ENV['RAILS_ENV'])
 assets = true if ENV['RAILS_GROUPS'] == "assets"
-gem "jquery-rails",          "~>4.0", require: assets
-gem "normalize-rails",       "~>8.0", require: assets
-gem "sass-rails",            "~>5.0", require: assets
-gem "terser", "~> 1.2",               require: assets
+gem "jquery-rails",            "~>4.0", require: assets
+gem "normalize-rails",         "~>8.0", require: assets
+gem "sassc-rails",                      require: assets
+gem "terser", "~> 1.2",                 require: assets
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -64,5 +64,5 @@ group :test do
 end
 
 group :production, :alpha do
-  gem "unicorn",						 "~>6.1"
+  gem "unicorn",						   "~>6.1"
 end
