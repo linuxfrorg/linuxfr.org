@@ -113,7 +113,7 @@ class Poll < Content
 ### Voters IP ###
 
    def has_voted?(ip)
-     $redis.exists("polls/#{self.id}/#{ip}")
+     $redis.exists?("polls/#{self.id}/#{ip}")
    end
 
    def vote(ip)

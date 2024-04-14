@@ -1,0 +1,2174 @@
+/**
+ * Author: Mounir
+ * License: CC-by-sa - http://creativecommons.org/licenses/by-sa/3.0/deed.fr
+ */
+
+/* Contenu par défaut */
+
+@font-face {
+  font-family: Megalopolis;
+  src: url("/fonts/MEgalopolisExtra.otf") format("opentype");
+}
+
+/* Contenu par défaut */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* line 17, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+body {
+  line-height: 1;
+  color: black;
+  background: -moz-linear-gradient(#c0c4c8, #c8ccd0);
+  background-color: #b0c0d0;
+  font-size: 12px;
+}
+
+/* line 19, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol,
+ul {
+  list-style: none;
+}
+
+/* line 21, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+
+/* line 23, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 25, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q,
+blockquote {
+  quotes: "" "";
+}
+/* line 96, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: "";
+}
+
+/* line 27, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 108, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  display: block;
+}
+
+aside#sidebar {
+  position: relative;
+  top: -20px;
+  padding: 0;
+}
+
+/* line 41, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+body.bp .box {
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+  background: #e5ecf9;
+}
+/* line 44, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+body.bp div.border {
+  padding-right: 4px;
+  margin-right: 5px;
+  border-right: 1px solid #eeeeee;
+}
+/* line 47, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+body.bp div.colborder {
+  padding-right: 24px;
+  margin-right: 25px;
+  border-right: 1px solid #eeeeee;
+}
+/* line 49, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+body.bp hr {
+  background: #dddddd;
+  color: #dddddd;
+  clear: both;
+  float: none;
+  width: 100%;
+  height: 0.1em;
+  margin: 0 0 1.45em;
+  border: none;
+}
+/* line 51, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+body.bp hr.space {
+  background: #dddddd;
+  color: #dddddd;
+  clear: both;
+  float: none;
+  width: 100%;
+  height: 0.1em;
+  margin: 0 0 1.45em;
+  border: none;
+  background: white;
+  color: white;
+  visibility: hidden;
+}
+/* line 53, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+body.bp form.inline {
+  line-height: 3;
+}
+/* line 6, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+body.bp form.inline p {
+  margin-bottom: 0;
+}
+
+/* line 23, ../../app/stylesheets/_application.scss */
+body {
+  line-height: 1.5;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  color: #33332d;
+  font-size: 75%;
+}
+/* line 65, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+  font-weight: normal;
+  color: #607080;
+}
+/* line 66, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body h1 img,
+body h2 img,
+body h3 img,
+body h4 img,
+body h5 img,
+body h6 img {
+  margin: 0;
+}
+/* line 67, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body h1 {
+  font-size: 3em;
+  line-height: 1;
+  margin-bottom: 0.5em;
+}
+/* line 68, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body h2 {
+  font-size: 2em;
+  margin-bottom: 0.75em;
+}
+/* line 69, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body h3 {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-bottom: 1em;
+}
+/* line 70, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body h4 {
+  font-size: 1.2em;
+  line-height: 1.25;
+  margin-bottom: 1.25em;
+}
+/* line 71, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body h5 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 1.5em;
+}
+/* line 72, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body h6 {
+  font-size: 1em;
+  font-weight: bold;
+}
+/* line 73, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body p {
+  margin: 0 0 1.5em;
+}
+/* line 74, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body p img.left {
+  display: inline;
+  float: left;
+  margin: 1.5em 1.5em 1.5em 0;
+  padding: 0;
+}
+/* line 75, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body p img.right {
+  display: inline;
+  float: right;
+  margin: 1.5em 0 1.5em 1.5em;
+  padding: 0;
+}
+/* line 77, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body a {
+  text-decoration: underline;
+  color: #000099;
+}
+/* line 18, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+body a:visited {
+  color: black;
+}
+/* line 21, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+body a:focus {
+  color: black;
+}
+/* line 24, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+body a:hover {
+  color: black;
+}
+/* line 27, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+body a:active {
+  color: black;
+}
+/* line 78, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body blockquote {
+  margin: 1.5em;
+  color: #666666;
+  font-style: italic;
+}
+/* line 79, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body strong {
+  font-weight: bold;
+}
+/* line 80, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body em {
+  font-style: italic;
+}
+/* line 81, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body dfn {
+  font-style: italic;
+  font-weight: bold;
+}
+/* line 82, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body sup,
+body sub {
+  line-height: 0;
+}
+/* line 83, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body abbr,
+body acronym {
+  border-bottom: 1px dotted #666666;
+}
+/* line 84, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body address {
+  margin: 0 0 1.5em;
+  font-style: italic;
+}
+/* line 85, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body del {
+  color: #666666;
+}
+/* line 86, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body pre {
+  margin: 1.5em 0;
+  white-space: pre;
+}
+/* line 87, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body pre,
+body code,
+body tt {
+  font: 1em "andale mono", "lucida console", monospace;
+  line-height: 1.5;
+}
+/* line 88, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body li ul,
+body li ol {
+  margin: 0;
+}
+/* line 89, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body ul,
+body ol {
+  margin: 0 1.5em 1.5em 0;
+  padding-left: 3.333em;
+}
+/* line 90, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body ul {
+  list-style-type: disc;
+}
+/* line 91, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body ol {
+  list-style-type: decimal;
+}
+/* line 92, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body dl {
+  margin: 0 0 1.5em 0;
+}
+/* line 93, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body dl dt {
+  font-weight: bold;
+}
+/* line 94, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body dd {
+  margin-left: 1.5em;
+}
+/* line 95, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body table {
+  margin-bottom: 1.4em;
+  width: 100%;
+}
+/* line 96, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body th {
+  font-weight: bold;
+}
+/* line 97, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body thead th {
+  background: #c3d9ff;
+}
+/* line 98, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body th,
+body td,
+body caption {
+  padding: 4px 10px 4px 5px;
+}
+/* line 99, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body tr.even td {
+  background: #e5ecf9;
+}
+/* line 100, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body tfoot {
+  font-style: italic;
+}
+/* line 101, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body caption {
+  background: #eeeeee;
+}
+/* line 102, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body .quiet {
+  color: #666660;
+}
+/* line 103, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body .loud {
+  color: #11110b;
+}
+/* line 9, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body .clear {
+  clear: both;
+}
+/* line 12, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body .nowrap {
+  white-space: nowrap;
+}
+/* line 16, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body .clearfix {
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 18, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body .small {
+  font-size: 0.8em;
+  margin-bottom: 1.875em;
+  line-height: 1.875em;
+}
+/* line 22, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body .large {
+  font-size: 1.2em;
+  line-height: 2.5em;
+  margin-bottom: 1.25em;
+}
+/* line 26, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body .first {
+  margin-left: 0;
+  padding-left: 0;
+}
+/* line 29, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body .last {
+  margin-right: 0;
+  padding-right: 0;
+}
+/* line 32, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body .top {
+  margin-top: 0;
+  padding-top: 0;
+}
+/* line 35, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body .bottom {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+/* line 8, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_debug.scss */
+body .showgrid {
+  background: url("/images/grid.png");
+}
+/* line 4, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body .error {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 2px solid #dddddd;
+  background: #fbe3e4;
+  color: #8a1f11;
+  border-color: #fbc2c4;
+}
+/* line 29, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body .error a {
+  color: #8a1f11;
+}
+/* line 6, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body .notice {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 2px solid #dddddd;
+  background: #fff6bf;
+  color: #514721;
+  border-color: #ffd324;
+}
+/* line 37, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body .notice a {
+  color: #514721;
+}
+/* line 8, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body .success {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 2px solid #dddddd;
+  background: #e6efc2;
+  color: #264409;
+  border-color: #c6d880;
+}
+/* line 45, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body .success a {
+  color: #264409;
+}
+/* line 10, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body .hide {
+  display: none;
+}
+/* line 12, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body .highlight {
+  background: yellow;
+}
+/* line 14, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body .added {
+  background: #006600;
+  color: white;
+}
+/* line 16, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body .removed {
+  background: #990000;
+  color: white;
+}
+
+/* line 18, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+form label {
+  font-weight: bold;
+}
+/* line 19, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+form fieldset {
+  padding: 1.4em;
+  margin: 0 0 1.5em 0;
+}
+/* line 20, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+form legend {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+/* line 26, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+form input.text,
+form input.title,
+form input[type="email"],
+form input[type="text"],
+form input[type="password"] {
+  margin: 0.5em 0;
+  background-color: white;
+  padding: 5px;
+}
+/* line 27, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+form input.title {
+  font-size: 1.5em;
+}
+/* line 31, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+form input[type="checkbox"],
+form input.checkbox,
+form input[type="radio"],
+form input.radio {
+  position: relative;
+  top: 0.25em;
+}
+/* line 33, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+form textarea {
+  margin: 0.5em 0;
+  padding: 5px;
+}
+/* line 34, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+form select {
+  margin: 0.5em 0;
+}
+/* line 59, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+form fieldset {
+  border: 1px solid #cccccc;
+}
+/* line 62, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+form input.text,
+form input.title,
+form input[type="email"],
+form input[type="text"],
+form input[type="password"],
+form textarea,
+form select {
+  border: 1px solid #bbbbbb;
+}
+/* line 64, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+form input.text:focus,
+form input.title:focus,
+form input[type="email"]:focus,
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form textarea:focus,
+form select:focus {
+  border: 1px solid #666666;
+}
+/* line 48, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+form input.text,
+form input.title,
+form input[type="email"],
+form input[type="text"],
+form input[type="password"] {
+  width: 300px;
+  background: -moz-linear-gradient(white, #e8e8e8) white;
+  border: 1px solid #405070;
+  padding: 0;
+}
+/* line 50, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+form textarea {
+  width: 390px;
+  height: 250px;
+}
+
+/* line 1, ../../app/stylesheets/layout/_site.scss */
+#site {
+  background: -moz-linear-gradient(#8090a0, #607080) repeat scroll 0 0
+    transparent;
+  background-color: #607080;
+  border-bottom: 2px solid #405070;
+  margin-bottom: 20px;
+  padding: 1px 0 1px 0;
+}
+/* line 5, ../../app/stylesheets/layout/_site.scss */
+#site .go_to_content {
+  float: left;
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+}
+/* line 8, ../../app/stylesheets/layout/_site.scss */
+#site ul {
+  display: inline;
+  list-style: none;
+  width: 100%;
+}
+/* line 4, ../../app/stylesheets/mixins/_list.scss */
+#site ul li {
+  display: inline;
+}
+/* line 10, ../../app/stylesheets/mixins/_list.scss */
+#site ul li:after {
+  content: " | ";
+}
+/* line 13, ../../app/stylesheets/mixins/_list.scss */
+#site ul li:last-child:after,
+#site ul li.last:after {
+  content: "";
+}
+/* line 11, ../../app/stylesheets/layout/_site.scss */
+#site ul li {
+  padding: 5px 0;
+  color: white;
+  font-size: 1em;
+}
+/* line 15, ../../app/stylesheets/layout/_site.scss */
+#site ul li a {
+  color: inherit;
+  text-decoration: none;
+}
+/* line 4, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/utilities/links/_hover-link.scss */
+#site ul li a:hover {
+  text-decoration: underline;
+}
+/* line 18, ../../app/stylesheets/layout/_site.scss */
+#site form {
+  float: right;
+}
+
+/* line 21, ../../app/stylesheets/layout/_site.scss */
+#label_query {
+  float: left;
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+}
+
+#query {
+  background: -moz-linear-gradient(#a0b0c0, #a8b8c8) repeat scroll 0 0
+    transparent;
+  background-color: #a0a8b0;
+  border: 1px solid black;
+}
+
+/* line 1, ../../app/stylesheets/layout/_sidebar.scss */
+#sidebar {
+  padding: 10px;
+}
+/* line 6, ../../app/stylesheets/layout/_sidebar.scss */
+#sidebar .box {
+  margin: 15px 0 0 0;
+  padding: 10px;
+  background-color: #a8b8c8;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px 2px 2px 0;
+}
+
+#sidebar .box a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #203040;
+}
+
+#sidebar .box ul {
+  padding-left: 2em;
+}
+
+#sidebar .box li {
+  font-weight: bold;
+  text-decoration: none;
+  color: #203040;
+}
+
+#sidebar .login {
+  padding: 0;
+  padding-bottom: 10px;
+}
+
+#sidebar .login > h1 {
+  background: -moz-linear-gradient(#8090a0, #607080);
+  background-color: #607080;
+  border-bottom: 1px solid #405070;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: white;
+  padding: 0.1em 0 0.4em 2px;
+  text-align: left;
+}
+
+#sidebar .login > h1 a {
+  text-decoration: none;
+  color: white;
+}
+
+#sidebar .login p {
+  margin: 0;
+  padding-left: 1em;
+  margin-bottom: 0;
+}
+
+#sidebar .login p:first-letter {
+  font-weight: bold;
+}
+
+#sidebar .login p a {
+  text-decoration: none;
+  color: black;
+}
+
+/* line 12, ../../app/stylesheets/layout/_sidebar.scss */
+#sidebar h1 {
+  font-size: 1.6em;
+  text-align: center;
+}
+/* line 15, ../../app/stylesheets/layout/_sidebar.scss */
+#sidebar input {
+  max-width: 180px;
+}
+/* line 17, ../../app/stylesheets/layout/_sidebar.scss */
+#sidebar .forum h2 {
+  font-size: 1.1em;
+}
+
+/* line 21, ../../app/stylesheets/layout/_sidebar.scss */
+#branding h1 {
+  display: block;
+  width: 201px;
+  height: 186px;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  -moz-border-radius-bottomright: 10px;
+}
+/* line 27, ../../app/stylesheets/layout/_sidebar.scss */
+#branding h1 a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+}
+
+/* line 2, ../../app/stylesheets/layout/_container.scss */
+#container > h1 {
+  margin-bottom: 1em;
+  text-align: center;
+  font-family: Megalopolis, helvetica, arial, serif;
+  font-size: 3.5em;
+  font-weight: bolder;
+  line-height: 1em;
+}
+
+/*
+#container nav.toolbox
+{
+  background:-moz-linear-gradient(white, #F0F0F0);
+  border:2px solid #1F1F18;
+  -moz-border-radius:10px;
+}
+*/
+
+/* Navigation */
+
+#container nav.toolbox > div,
+#container nav.toolbox > div a {
+  margin: 0 auto 0 auto;
+  /* background:-moz-linear-gradient(#8090A0, #607080) #607080; */
+  text-align: center;
+  text-decoration: none;
+  color: #607080;
+}
+
+#container nav.toolbox > div a:hover {
+  background: white;
+  opacity: 0.5;
+}
+
+/* Suivi (faire une demande pour obtenir un vrai id) */
+
+#container > p,
+#container > p a,
+#container > footer,
+#container > footer a {
+  text-decoration: none;
+  color: #607080;
+}
+
+#container > p a:hover,
+#container > footer a:hover {
+  background: white;
+  opacity: 0.5;
+}
+
+/* line 9, ../../app/stylesheets/layout/_container.scss */
+#container nav.toolbox ul,
+#container .toolbox li {
+  display: inline;
+}
+
+/* line 1, ../../app/stylesheets/layout/_bigfooter.scss */
+#bigfooter {
+  margin: 15px 0 0;
+  background: -moz-linear-gradient(#8090a0, #607080) #607080;
+  padding-bottom: 25px;
+  border-top: 2px solid #405070;
+}
+
+/* line 6, ../../app/stylesheets/layout/_bigfooter.scss */
+#bigfooter nav,
+#bigfooter section {
+  display: inline-block;
+  padding-top: 5px;
+  height: 100%;
+  vertical-align: top;
+}
+/* line 11, ../../app/stylesheets/layout/_bigfooter.scss */
+#bigfooter nav h1,
+#bigfooter section h1 {
+  font-size: 2em;
+  color: white;
+}
+/* line 13, ../../app/stylesheets/layout/_bigfooter.scss */
+#bigfooter #about_us {
+  margin-right: 0;
+}
+
+#bigfooter a {
+  color: white;
+  text-decoration: none;
+}
+
+/* line 7, ../../app/stylesheets/layout/_layout.scss */
+#site {
+  overflow: hidden;
+}
+
+/* line 10, ../../app/stylesheets/layout/_layout.scss */
+#sidebar {
+  display: inline;
+  float: left;
+  overflow: hidden;
+  width: 20.003%;
+  margin-right: 1.042%;
+  width: 203px;
+}
+
+/* line 14, ../../app/stylesheets/layout/_layout.scss */
+#container {
+}
+/* line 16, ../../app/stylesheets/layout/_layout.scss */
+#container > * {
+  margin: 0 50px 0 257px;
+}
+
+/* line 19, ../../app/stylesheets/layout/_layout.scss */
+#edition {
+  display: inline;
+  float: left;
+  overflow: hidden;
+  width: 62.093%;
+  margin-right: 1.042%;
+}
+
+/* line 22, ../../app/stylesheets/layout/_layout.scss */
+#chat {
+  display: inline;
+  float: left;
+  overflow: hidden;
+  width: 32.63%;
+  margin-right: 1.042%;
+}
+
+/* line 25, ../../app/stylesheets/layout/_layout.scss */
+#bigfooter {
+  display: inline;
+  float: left;
+  overflow: hidden;
+  width: 99.974%;
+  margin-right: 1.042%;
+}
+/* line 27, ../../app/stylesheets/layout/_layout.scss */
+#bigfooter nav,
+#bigfooter section {
+  display: inline;
+  float: left;
+  overflow: hidden;
+  width: 24.212%;
+  margin-right: 1.042%;
+}
+
+/* line 1, ../../app/stylesheets/partials/_generics.scss */
+body {
+  color: #33332d;
+  font-family: "Droid Sans", sans-serif;
+}
+
+/* line 5, ../../app/stylesheets/partials/_generics.scss */
+ins.diffins,
+ins.diffmod {
+  background-color: #33ff33;
+}
+
+/* line 8, ../../app/stylesheets/partials/_generics.scss */
+del.diffdel,
+del.diffmod {
+  background-color: #ff3333;
+}
+
+/* line 12, ../../app/stylesheets/partials/_generics.scss */
+a.action:before,
+time.norloge:before,
+span.content_type:before {
+  content: "[";
+}
+/* line 14, ../../app/stylesheets/partials/_generics.scss */
+a.action:after,
+time.norloge:after,
+span.content_type:after {
+  content: "]";
+}
+
+/* line 17, ../../app/stylesheets/partials/_generics.scss */
+footer.actions:before {
+  content: "⇾";
+}
+
+li#comment_new footer.actions:before {
+  content: "";
+  height: 2em;
+  clear: both;
+}
+
+/* line 20, ../../app/stylesheets/partials/_generics.scss */
+aside.banner {
+  background: -moz-linear-gradient(#8090a0, #607080) #607080;
+  font-size: 2em;
+  border: 2px solid black;
+  -moz-border-radius: 2em;
+  padding-left: 2em;
+  padding-right: 2em;
+  text-align: center;
+  color: white;
+}
+
+aside.banner a {
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+/* line 1, ../../app/stylesheets/partials/_forms.scss */
+.fieldWithErrors input {
+  border: 1px solid red;
+}
+
+/* line 2, ../../app/stylesheets/partials/_contents.scss */
+article {
+  margin: 15px 0;
+  padding: 0;
+  background: -moz-linear-gradient(white, #f0f0f0);
+  border: 2px solid #1f1f18;
+  overflow: hidden;
+}
+
+article header {
+  margin: 0 0 0 0;
+}
+
+/* line 9, ../../app/stylesheets/partials/_contents.scss */
+article header h1 {
+  margin: 0;
+  background: -moz-linear-gradient(#8090a0, #607080);
+  background-color: #607080;
+  border-bottom: 1px solid black;
+  padding-left: 2px;
+  font-family: Megalopolis, helvetica, arial, serif;
+  font-size: 1.4em;
+  color: white;
+}
+
+/* line 14, ../../app/stylesheets/partials/_contents.scss */
+article header h1 a,
+article header h1 a:visited {
+  text-decoration: none;
+  color: white;
+}
+/* line 4, ../../../../shared/bundle/ruby/1.9.1/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/utilities/links/_hover-link.scss */
+article header h1 a:hover,
+article header h1 a:active {
+  color: #e0e0e4;
+}
+
+/* line 16, ../../app/stylesheets/partials/_contents.scss */
+article header h1 a + a:before {
+  content: " : ";
+}
+
+article header .meta,
+div#comments ul.threads li.comment p.meta,
+div#contents ul.threads li.comment p.meta,
+li#comment_new p.meta {
+  padding-left: 4px;
+  color: #808080;
+  font-style: italic;
+}
+
+article header .meta a,
+div#comments ul.threads li.comment p.meta a,
+div#contents ul.threads li.comment p.meta a,
+li#comment_new p.meta a {
+  color: #808080;
+  text-decoration: none;
+}
+
+article header .meta a:hover,
+div#comments ul.threads li.comment p.meta a:hover,
+div#contents ul.threads li.comment p.meta a:hover,
+li#comment_new p.meta a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+/* line 18, ../../app/stylesheets/partials/_contents.scss */
+article figure {
+  float: left;
+  margin-left: 2px;
+  margin-right: 5px;
+}
+/* line 21, ../../app/stylesheets/partials/_contents.scss */
+article figure.score {
+  float: right;
+  width: 2em;
+  height: 2em;
+  margin-left: 5px;
+  margin-right: 1.5em;
+  padding: 0.2em 0 0 0;
+  background: -moz-linear-gradient(white, #e0e0f0);
+  border: 1px solid #e0e0f0;
+  border-radius: 2em;
+  -moz-border-radius: 2em;
+  -webkit-border-radius: 2em;
+  font-weight: bold;
+  text-align: center;
+  color: #a0a0b0;
+}
+
+article div.tags {
+  float: right;
+}
+
+/* line 29, ../../app/stylesheets/partials/_contents.scss */
+article ul.tag_cloud {
+  display: inline;
+  list-style: none;
+  margin-left: 0;
+  padding: 0;
+}
+/* line 4, ../../app/stylesheets/mixins/_list.scss */
+article ul.tag_cloud li {
+  display: inline;
+}
+
+article div.content {
+  margin-top: 1em;
+  padding: 0 4.5em 1em 1.5em;
+}
+
+article div.content a,
+article footer.actions a {
+  text-decoration: none;
+  color: #405060;
+  font-weight: bold;
+}
+
+/*
+article div.content h2,
+article div.content h3,
+article div.content h4,
+article div.content h2 a,
+article div.content h3 a,
+article div.content h4 a
+{
+  color:black;
+}
+*/
+
+article#contents {
+  padding: 1em;
+}
+
+article#contents > h1,
+li#comment_new .content h1 {
+  margin-bottom: 0.7em;
+  padding-bottom: 0;
+  line-height: 85%;
+  font-size: 1.8em;
+  font-weight: bold;
+  text-align: center;
+}
+
+article > h2,
+article div.content h2,
+article#contents div.body h2,
+li#comment_new .content h2 {
+  margin-bottom: 0.7em;
+  border-bottom: 1px solid #607080;
+  padding-bottom: 0;
+  line-height: 85%;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+article > h3,
+article div.content h3,
+article#contents div.body h3,
+li#comment_new .content h3 {
+  margin-bottom: 0.7em;
+  border-bottom: 1px solid #c0c4c8;
+  padding-bottom: 0;
+  line-height: 85%;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+article > h4,
+article div.content h4,
+article#contents div.body h4,
+li#comment_new .content h4 {
+  margin-bottom: 0.7em;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+article#contents div.body h2,
+article#contents div.body h3,
+article#contents div.body h4,
+li#comment_new .content h1,
+li#comment_new .content h2,
+li#comment_new .content h3,
+li#comment_new .content h4 {
+  border-bottom: none;
+}
+
+article div.content p {
+  text-align: justify;
+  text-indent: 1em;
+}
+
+article div.content a:hover,
+article div.content a:active,
+article div.content a:visited,
+article footer.actions a:hover,
+article footer.actions a:active,
+article footer.actions a:visited {
+  color: #203040;
+}
+
+article div.content pre {
+  margin-left: 2em;
+  margin-right: 2em;
+  border: 1px solid #c8c8d0;
+  padding: 2px;
+  overflow: auto;
+}
+
+/* line 4, ../../app/stylesheets/partials/_forms.scss */
+
+article footer.actions,
+div#comments ul.threads li.comment footer.actions,
+div#contents ul.threads li.comment footer.actions {
+  padding: 0 1em 0 1em;
+  clear: both;
+  text-align: right;
+}
+
+article footer.actions a.action,
+div#comments ul.threads li.comment footer.actions a.action,
+div#contents ul.threads li.comment footer.actions a.action {
+  vertical-align: top;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+#container header li .add_tag,
+#container header li .remove_tag {
+  display: none;
+}
+
+article footer.actions .vote,
+div#comments ul.threads li.comment footer.actions .vote,
+div#contents ul.threads li.comment footer.actions .vote {
+  font-size: 0.8em;
+  font-style: italic;
+  text-align: right;
+  color: #808080;
+}
+
+article footer.actions .vote form.button_to,
+div#comments ul.threads li.comment footer.actions .vote form,
+div#contents ul.threads li.comment footer.actions .vote form {
+  display: inline-block;
+}
+
+article footer.actions .vote form.button_to div input,
+div#comments
+  ul.threads
+  li.comment
+  footer.actions
+  .vote
+  form.button_to
+  div
+  input,
+div#contents
+  ul.threads
+  li.comment
+  footer.actions
+  .vote
+  form.button_to
+  div
+  input {
+  margin: 0px;
+  background: inherit;
+  border: 0px;
+  padding: 0px;
+  font: inherit;
+  font-weight: bold;
+}
+
+div#comments {
+  margin-top: 1em;
+  padding: 0 4.5em 1em 1.5em;
+}
+
+/* Lien "envoyer un commentaire" et "proposer une entrée" */
+
+div#comments > p:first-child,
+#container nav.toolbox div.new_content,
+#container > p {
+  width: 15em;
+  margin: 1.5em auto 1.5em auto;
+  background: -moz-linear-gradient(#8090a0, #607080) #607080;
+  border: 2px solid black;
+  -moz-border-radius: 10px;
+  padding: 1px 2px 1px 2px;
+  font-weight: bold;
+  text-align: center;
+}
+
+div#comments p:first-child a,
+#container nav.toolbox div.new_content a,
+#container > p a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Déclage de "proposer une entrée" dans suivi */
+#container > p {
+  position: relative;
+  left: 110px;
+}
+
+div#comments ul.threads,
+div#contents ul.threads {
+}
+
+div#comments ul.threads li.comment,
+div#contents ul.threads li.comment,
+li#comment_new {
+  position: relative;
+  margin: 2em 0 0.5em 0;
+  background: -moz-linear-gradient(#e8ecf0, #d8dce0);
+  border-left: 1px solid #405060;
+  /*-moz-linear-gradient(#A0B0C0, #A8B8C8) #A0A8B0;*/
+  list-style: none;
+}
+
+div#comments ul.threads > li.comment,
+div#contents ul.threads > li.comment,
+li#comment_new {
+  /*
+     Les deux lignes suivantes règlent le problème de la propriété clear
+     du pied du commentaire qui décale le premier message
+     sous les boites du panneau de gauche ("Editions par ex.")
+  */
+  display: inline-block;
+  width: 100%;
+
+  border-right: 1px solid #405060;
+  border-bottom: 1px solid #405060;
+}
+
+div#comments ul.threads > li.comment ul > li,
+div#contents ul.threads > li.comment ul > li {
+  border-bottom: 1px solid #708090;
+  margin-bottom: 0;
+}
+
+div#comments ul.threads > li.comment ul > li:last-child,
+div#contents ul.threads > li.comment ul > li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+div#comments ul.threads li.comment > h2,
+div#contents ul.threads li.comment > h2,
+li#comment_new > h2 {
+  margin: 0;
+  position: relative;
+  left: -2%;
+  top: -0.5em;
+  width: 102%;
+  background: -moz-linear-gradient(#8090a0, #607080);
+  background-color: #607080;
+  border: 2px solid black;
+  -moz-border-radius: 10px;
+  padding: 0 0 0 3px;
+  font-family: Megalopolis, helvetica, arial, serif;
+  font-size: 1em;
+}
+
+div#comments ul.threads li.comment > h2,
+div#comments ul.threads li.comment > h2 a,
+div#comments ul.threads li.comment > h2 a:hover,
+div#comments ul.threads li.comment > h2 a:visited,
+div#comments ul.threads li.comment > h2 a:active,
+div#contents ul.threads li.comment > h2,
+div#contents ul.threads li.comment > h2 a,
+div#contents ul.threads li.comment > h2 a:hover,
+div#contents ul.threads li.comment > h2 a:visited,
+div#contents ul.threads li.comment > h2 a:active,
+li#comment_new h2 a,
+li#comment_new h2 a:hover,
+li#comment_new h2 a:visited,
+li#comment_new h2 a:active {
+  color: white;
+  text-decoration: none;
+}
+
+div#comments ul.threads li.comment div.content,
+div#contents ul.threads li.comment div.content,
+li#comment_new li.comment div.content {
+  margin-left: 1em;
+  margin-right: 1em;
+  padding: 2px 1em 1em 1em;
+  overflow: hidden;
+}
+
+li#comment_new {
+  margin-left: 1em;
+}
+
+/* line 34, ../../app/stylesheets/partials/_contents.scss */
+.comment .new_comment h3 {
+  border: 1px solid red;
+}
+/* line 36, ../../app/stylesheets/partials/_contents.scss */
+.comment .avatar {
+  float: left;
+  margin: 5px 10px;
+  box-shadow: 8px 8px 12px #607080;
+  -moz-box-shadow: 8px 8px 12px #aaa;
+  -webkit-box-shadow: 8px 8px 12px #aaa;
+}
+/* line 39, ../../app/stylesheets/partials/_contents.scss */
+.comment img {
+  max-width: 100%;
+}
+
+/* line 44, ../../app/stylesheets/partials/_contents.scss */
+#polls .result,
+.poll .result {
+  display: block;
+  margin: 0 0 0 10px;
+  background: -moz-linear-gradient(#a0b0c0, #a8b8c8) #a0a8b0;
+  border: 1px solid #333333;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomright: 10px;
+  padding-left: 2px;
+}
+/* line 49, ../../app/stylesheets/partials/_contents.scss */
+#polls ul,
+.poll ul {
+  list-style: none;
+  margin-left: 10px;
+}
+
+article ul.archived ul {
+  list-style: none;
+  margin-left: 0px;
+}
+
+article ul.archived > li {
+  margin-bottom: 10px;
+}
+
+/* line 56, ../../app/stylesheets/partials/_contents.scss */
+#tracker .fix a,
+#tracker .invalid a,
+.tracker .fix a,
+.tracker .invalid a {
+  text-decoration: line-through;
+}
+
+/* line 1, ../../app/stylesheets/partials/_toolbar.scss */
+#toolbar {
+  position: fixed;
+  overflow: hidden;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
+  padding: 2px;
+  color: #333333;
+  background-color: #dfd6d1;
+  border: 1px solid #bbaaaa;
+}
+
+/* line 12, ../../app/stylesheets/partials/_toolbar.scss */
+#toolbar_items {
+  float: right;
+}
+
+/* line 15, ../../app/stylesheets/partials/_toolbar.scss */
+.fold > .meta,
+.fold > .image,
+.fold > .content,
+.fold > .actions {
+  display: none;
+}
+
+/* line 1, ../../app/stylesheets/partials/_autocomplete.scss */
+.ac_results {
+  padding: 0px;
+  border: 1px solid black;
+  background-color: white;
+  overflow: hidden;
+  z-index: 99999;
+}
+/* line 7, ../../app/stylesheets/partials/_autocomplete.scss */
+.ac_results ul {
+  width: 100%;
+  list-style-position: outside;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 13, ../../app/stylesheets/partials/_autocomplete.scss */
+.ac_results li {
+  font: menu;
+  margin: 0;
+  padding: 2px 5px;
+  cursor: default;
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  overflow: hidden;
+}
+
+/* line 23, ../../app/stylesheets/partials/_autocomplete.scss */
+.ac_loading {
+  background: white url("/images/ajax-loader.gif") right center no-repeat;
+}
+
+/* line 26, ../../app/stylesheets/partials/_autocomplete.scss */
+.ac_odd {
+  background-color: #eeeeee;
+}
+
+/* line 29, ../../app/stylesheets/partials/_autocomplete.scss */
+.ac_over {
+  background-color: #0a246a;
+  color: white;
+}
+
+/* line 1, ../../app/stylesheets/partials/_notice.scss */
+.notice-wrap {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 250px;
+  height: 1em;
+  z-index: 9999;
+}
+
+/* line 8, ../../app/stylesheets/partials/_notice.scss */
+.notice-item {
+  height: 60px;
+  background: #333333;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  color: #eeeeee;
+  padding: 6px 6px 0 6px;
+  font-family: lucida Grande;
+  font-size: 11px;
+  border: 2px solid #999999;
+  display: block;
+  position: relative;
+  margin: 0 0 12px 0;
+}
+
+/* line 22, ../../app/stylesheets/partials/_notice.scss */
+.notice-item-close {
+  position: absolute;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  right: 6px;
+  top: 6px;
+  cursor: pointer;
+}
+
+/* line 1, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp {
+  /* width: 700px; */
+  margin: 5px 0 5px 0;
+  /* border: 5px solid #f5f5f5; */
+}
+/* line 6, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .markItUp a:link,
+.markItUp .markItUp a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+.markItUpHeader {
+  background: black;
+}
+
+.markItUpHeader > ul > li.markItUpButton {
+  background: -moz-linear-gradient(#8090a0, #607080) repeat scroll 0 0 #607080;
+  border: 1px solid #405070;
+}
+
+/* line 10, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpContainer {
+  /* border: 1px solid #3c769d; */
+  /* background: white url(/images/markitup/bg-container.png) repeat-x top left; */
+  padding: 5px 5px 2px 5px;
+  font: 11px Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* line 16, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpEditor {
+  font: 12px "Courier New", Courier, monospace;
+  padding: 5px 5px 5px 35px;
+  border: 1px solid #405070;
+  /* width: 643px; */
+  width: 90%;
+  margin: 0 auto 0 auto;
+  height: 320px;
+  background-image: url(/images/markitup/bg-editor-markdown.png);
+  background-repeat: no-repeat;
+  /* clear: both */
+  display: block;
+  line-height: 18px;
+  -moz-box-shadow: 8px 8px 12px #aaa;
+  -webkit-box-shadow: 8px 8px 12px #aaa;
+  overflow: auto;
+}
+
+/* line 29, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpPreviewFrame {
+  overflow: auto;
+  background-color: white;
+  border: 1px solid #3c769d;
+  width: 99.9%;
+  height: 300px;
+  margin: 5px 0;
+}
+
+/* line 37, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpFooter {
+  width: 100%;
+  cursor: n-resize;
+}
+
+/* line 41, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpResizeHandle {
+  overflow: hidden;
+  width: 22px;
+  height: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url(/images/markitup/handle.png);
+  cursor: n-resize;
+}
+
+/* line 51, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul li {
+  list-style: none;
+  float: left;
+  position: relative;
+}
+/* line 55, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul li ul {
+  display: none;
+}
+/* line 57, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul li:hover > ul {
+  display: block;
+}
+/* line 59, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul a {
+  display: block;
+  width: 16px;
+  height: 16px;
+  text-indent: -10000px;
+  background-repeat: no-repeat;
+  padding: 3px;
+  margin: 0px;
+}
+/* line 67, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul .markItUpDropMenu {
+  background: transparent url(/images/markitup/menu.png) no-repeat 115% 50%;
+  margin-right: 5px;
+}
+/* line 70, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul .markItUpDropMenu li {
+  margin-right: 0px;
+}
+/* line 72, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul .markItUpSeparator {
+  margin: 0 10px;
+  width: 1px;
+  height: 16px;
+  overflow: hidden;
+  background-color: #cccccc;
+}
+/* line 78, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul ul {
+  display: none;
+  position: absolute;
+  top: 18px;
+  left: 0px;
+  background: #f5f5f5;
+  border: 1px solid #3c769d;
+  height: inherit;
+}
+/* line 86, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul ul .markItUpSeparator {
+  width: auto;
+  height: 1px;
+  margin: 0px;
+}
+/* line 90, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul ul li {
+  float: none;
+  border-bottom: 1px solid #3c769d;
+}
+/* line 93, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul ul .markItUpDropMenu {
+  background: #f5f5f5 url(/images/markitup/submenu.png) no-repeat 100% 50%;
+}
+/* line 95, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul ul ul {
+  position: absolute;
+  top: -1px;
+  left: 150px;
+}
+/* line 99, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul ul ul li {
+  float: none;
+}
+/* line 101, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul ul a {
+  display: block;
+  padding-left: 0px;
+  text-indent: 0;
+  width: 120px;
+  padding: 5px 5px 5px 25px;
+  background-position: 2px 50%;
+}
+/* line 108, ../../app/stylesheets/partials/_markitup.scss */
+.markItUpHeader ul ul a:hover {
+  color: white;
+  background-color: #3c769d;
+}
+
+/* line 113, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .h1 a {
+  background-image: url(/images/markitup/h1.png);
+}
+/* line 115, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .h2 a {
+  background-image: url(/images/markitup/h2.png);
+}
+/* line 117, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .h3 a {
+  background-image: url(/images/markitup/h3.png);
+}
+/* line 119, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .h4 a {
+  background-image: url(/images/markitup/h4.png);
+}
+/* line 121, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .bold a {
+  background-image: url(/images/markitup/bold.png);
+}
+/* line 123, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .italic a {
+  background-image: url(/images/markitup/italic.png);
+}
+/* line 125, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .stroke a {
+  background-image: url(/images/markitup/stroke.png);
+}
+/* line 127, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .list-bullet a {
+  background-image: url(/images/markitup/list-bullet.png);
+}
+/* line 129, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .list-numeric a {
+  background-image: url(/images/markitup/list-numeric.png);
+}
+/* line 131, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .image a {
+  background-image: url(/images/markitup/picture.png);
+}
+/* line 133, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .link a {
+  background-image: url(/images/markitup/link.png);
+}
+/* line 135, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .quotes a {
+  background-image: url(/images/markitup/quotes.png);
+}
+/* line 137, ../../app/stylesheets/partials/_markitup.scss */
+.markItUp .code a {
+  background-image: url(/images/markitup/page_white_code.png);
+}
+
+/* line 1, ../../app/stylesheets/pygments/colorful.scss */
+.hll {
+  background-color: #ffffcc;
+}
+
+/* line 3, ../../app/stylesheets/pygments/colorful.scss */
+code.c {
+  color: #808080;
+}
+
+/* line 5, ../../app/stylesheets/pygments/colorful.scss */
+.err {
+  color: #f00000;
+  background-color: #f0a0a0;
+}
+
+/* line 8, ../../app/stylesheets/pygments/colorful.scss */
+.k {
+  color: #008000;
+  font-weight: bold;
+}
+
+/* line 11, ../../app/stylesheets/pygments/colorful.scss */
+.o {
+  color: #303030;
+}
+
+/* line 13, ../../app/stylesheets/pygments/colorful.scss */
+.cm {
+  color: #808080;
+}
+
+/* line 15, ../../app/stylesheets/pygments/colorful.scss */
+.cp {
+  color: #507090;
+}
+
+/* line 17, ../../app/stylesheets/pygments/colorful.scss */
+.c1 {
+  color: #808080;
+}
+
+/* line 19, ../../app/stylesheets/pygments/colorful.scss */
+.cs {
+  color: #cc0000;
+  font-weight: bold;
+}
+
+/* line 22, ../../app/stylesheets/pygments/colorful.scss */
+.gd {
+  color: #a00000;
+}
+
+/* line 24, ../../app/stylesheets/pygments/colorful.scss */
+.ge {
+  font-style: italic;
+}
+
+/* line 26, ../../app/stylesheets/pygments/colorful.scss */
+.gr {
+  color: #ff0000;
+}
+
+/* line 28, ../../app/stylesheets/pygments/colorful.scss */
+.gh {
+  color: #000080;
+  font-weight: bold;
+}
+
+/* line 31, ../../app/stylesheets/pygments/colorful.scss */
+.gi {
+  color: #00a000;
+}
+
+/* line 33, ../../app/stylesheets/pygments/colorful.scss */
+.go {
+  color: #808080;
+}
+
+/* line 35, ../../app/stylesheets/pygments/colorful.scss */
+.gp {
+  color: #c65d09;
+  font-weight: bold;
+}
+
+/* line 38, ../../app/stylesheets/pygments/colorful.scss */
+.gs {
+  font-weight: bold;
+}
+
+/* line 40, ../../app/stylesheets/pygments/colorful.scss */
+.gu {
+  color: #800080;
+  font-weight: bold;
+}
+
+/* line 43, ../../app/stylesheets/pygments/colorful.scss */
+.gt {
+  color: #0040d0;
+}
+
+/* line 45, ../../app/stylesheets/pygments/colorful.scss */
+.kc,
+.kd,
+.kn {
+  color: #008000;
+  font-weight: bold;
+}
+
+/* line 48, ../../app/stylesheets/pygments/colorful.scss */
+.kp {
+  color: #003080;
+  font-weight: bold;
+}
+
+/* line 51, ../../app/stylesheets/pygments/colorful.scss */
+.kr {
+  color: #008000;
+  font-weight: bold;
+}
+
+/* line 54, ../../app/stylesheets/pygments/colorful.scss */
+.kt {
+  color: #303090;
+  font-weight: bold;
+}
+
+/* line 57, ../../app/stylesheets/pygments/colorful.scss */
+.m {
+  color: #6000e0;
+  font-weight: bold;
+}
+
+/* line 60, ../../app/stylesheets/pygments/colorful.scss */
+.s {
+  background-color: #fff0f0;
+}
+
+/* line 62, ../../app/stylesheets/pygments/colorful.scss */
+.na {
+  color: #0000c0;
+}
+
+/* line 64, ../../app/stylesheets/pygments/colorful.scss */
+.nb {
+  color: #007020;
+}
+
+/* line 66, ../../app/stylesheets/pygments/colorful.scss */
+.nc {
+  color: #b00060;
+  font-weight: bold;
+}
+
+/* line 69, ../../app/stylesheets/pygments/colorful.scss */
+.no {
+  color: #003060;
+  font-weight: bold;
+}
+
+/* line 72, ../../app/stylesheets/pygments/colorful.scss */
+.nd {
+  color: #505050;
+  font-weight: bold;
+}
+
+/* line 75, ../../app/stylesheets/pygments/colorful.scss */
+.ni {
+  color: #800000;
+  font-weight: bold;
+}
+
+/* line 78, ../../app/stylesheets/pygments/colorful.scss */
+.ne {
+  color: #f00000;
+  font-weight: bold;
+}
+
+/* line 81, ../../app/stylesheets/pygments/colorful.scss */
+.nf {
+  color: #0060b0;
+  font-weight: bold;
+}
+
+/* line 84, ../../app/stylesheets/pygments/colorful.scss */
+.nl {
+  color: #907000;
+  font-weight: bold;
+}
+
+/* line 87, ../../app/stylesheets/pygments/colorful.scss */
+.nn {
+  color: #0e84b5;
+  font-weight: bold;
+}
+
+/* line 90, ../../app/stylesheets/pygments/colorful.scss */
+.nt {
+  color: #007000;
+}
+
+/* line 92, ../../app/stylesheets/pygments/colorful.scss */
+.nv {
+  color: #906030;
+}
+
+/* line 94, ../../app/stylesheets/pygments/colorful.scss */
+.ow {
+  color: #000000;
+  font-weight: bold;
+}
+
+/* line 97, ../../app/stylesheets/pygments/colorful.scss */
+.w {
+  color: #bbbbbb;
+}
+
+/* line 99, ../../app/stylesheets/pygments/colorful.scss */
+.mf {
+  color: #6000e0;
+  font-weight: bold;
+}
+
+/* line 102, ../../app/stylesheets/pygments/colorful.scss */
+.mh {
+  color: #005080;
+  font-weight: bold;
+}
+
+/* line 105, ../../app/stylesheets/pygments/colorful.scss */
+.mi {
+  color: #0000d0;
+  font-weight: bold;
+}
+
+/* line 108, ../../app/stylesheets/pygments/colorful.scss */
+.mo {
+  color: #4000e0;
+  font-weight: bold;
+}
+
+/* line 111, ../../app/stylesheets/pygments/colorful.scss */
+.sb {
+  background-color: #fff0f0;
+}
+
+/* line 113, ../../app/stylesheets/pygments/colorful.scss */
+.sc {
+  color: #0040d0;
+}
+
+/* line 115, ../../app/stylesheets/pygments/colorful.scss */
+.sd {
+  color: #d04020;
+}
+
+/* line 117, ../../app/stylesheets/pygments/colorful.scss */
+.s2 {
+  background-color: #fff0f0;
+}
+
+/* line 119, ../../app/stylesheets/pygments/colorful.scss */
+.se {
+  color: #606060;
+  font-weight: bold;
+  background-color: #fff0f0;
+}
+
+/* line 123, ../../app/stylesheets/pygments/colorful.scss */
+.sh {
+  background-color: #fff0f0;
+}
+
+/* line 125, ../../app/stylesheets/pygments/colorful.scss */
+.si {
+  background-color: #e0e0e0;
+}
+
+/* line 127, ../../app/stylesheets/pygments/colorful.scss */
+.sx {
+  color: #d02000;
+  background-color: #fff0f0;
+}
+
+/* line 130, ../../app/stylesheets/pygments/colorful.scss */
+.sr {
+  color: #000000;
+  background-color: #fff0ff;
+}
+
+/* line 133, ../../app/stylesheets/pygments/colorful.scss */
+.s1 {
+  background-color: #fff0f0;
+}
+
+/* line 135, ../../app/stylesheets/pygments/colorful.scss */
+.ss {
+  color: #a06000;
+}
+
+/* line 137, ../../app/stylesheets/pygments/colorful.scss */
+.bp {
+  color: #007020;
+}
+
+/* line 139, ../../app/stylesheets/pygments/colorful.scss */
+.vc {
+  color: #306090;
+}
+
+/* line 141, ../../app/stylesheets/pygments/colorful.scss */
+.vg {
+  color: #d07000;
+  font-weight: bold;
+}
+
+/* line 144, ../../app/stylesheets/pygments/colorful.scss */
+.vi {
+  color: #3030b0;
+}
+
+/* line 146, ../../app/stylesheets/pygments/colorful.scss */
+.il {
+  color: #0000d0;
+  font-weight: bold;
+}
+
+table#my_comments,
+table#my_posts,
+table#tracker {
+  border-collapse: collapse;
+  border: 2px solid black;
+}
+
+table#my_comments tbody th,
+table#my_posts tbody th,
+table#tracker tbody th {
+  background: -moz-linear-gradient(#8090a0, #607080) #607080;
+  border: 1px solid #405070;
+  border-bottom: 2px solid black;
+  font-weight: bold;
+  color: white;
+}
+
+table#my_comments tbody td,
+table#my_posts tbody td,
+table#tracker tbody td {
+  border: 1px solid #405070;
+  border-bottom-color: #607080;
+  background: white;
+}
+
+table#my_comments a,
+table#my_posts a,
+table#tracker a {
+  color: black;
+  text-decoration: none;
+}
+
+table#my_comments a:hover,
+table#my_posts a:hover,
+table#tracker a:hover {
+  text-decoration: underline;
+}
+
+table#wiki_help {
+  background: -moz-linear-gradient(#8090a0, #607080) repeat scroll 0 0 #607080;
+}
+
+table#wiki_help tbody tr td:first-child {
+  background: none;
+  border: 1px 0 0 1px solid black;
+  color: white;
+}
+
+table#wiki_help tbody tr td {
+  background: white;
+  border-width: 4px 0 1px 0;
+  border-style: solid;
+  border-color: #c0c4c8;
+}
+
+.misspelled {
+  color: inherit;
+  background-color: inherit;
+  border-bottom: 1px dashed red;
+}
+.pot_de_miel {
+  display: none;
+}
+
+@import "../common/statistics";
