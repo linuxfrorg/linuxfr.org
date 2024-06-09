@@ -1,8 +1,7 @@
-# encoding: utf-8
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "https://linuxfr.org/"
+SitemapGenerator::Sitemap.default_host = 'https://linuxfr.org/'
 
-SitemapGenerator::Sitemap.add_links do |sitemap|
+SitemapGenerator::Sitemap.create do |sitemap|
   # Put links creation logic here.
   #
   # The root path '/' and sitemap index file are added automatically.
@@ -44,6 +43,7 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   Node.sitemap(Diary).find_each do |node|
     diary = node.content
     next if diary.owner.nil?
+
     sitemap.add user_diary_path(user_id: diary.owner, id: diary), priority: 0.8, changefreq: diary.changefreq, lastmod: diary.lastmod
   end
 
@@ -52,6 +52,7 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
   Node.sitemap(Bookmark).find_each do |node|
     bookmark = node.content
     next if bookmark.owner.nil?
+
     sitemap.add user_bookmark_path(user_id: bookmark.owner, id: bookmark), priority: 0.8, changefreq: bookmark.changefreq, lastmod: bookmark.lastmod
   end
 
@@ -82,5 +83,4 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
     wiki_page = node.content
     sitemap.add wiki_page_path(wiki_page), priority: 0.8, changefreq: wiki_page.changefreq, lastmod: wiki_page.lastmod
   end
-
 end
