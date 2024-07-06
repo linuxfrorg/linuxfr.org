@@ -1,2 +1,3 @@
 = h1 "Les dépêches du #{@day}/#{@month}/#{@year}"
+- filter_pagination_params ['day', 'month', 'order', 'page', 'year']
 = paginated_nodes @nodes, link_to("Proposer une dépêche", "/news/nouveau")

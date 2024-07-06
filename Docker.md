@@ -2,33 +2,34 @@ LinuxFr on Docker
 -----------------
 
 To simplify set up of a developement environment, LinuxFr.org can be
-run on Docker with `docker-compose up`.
+run on Docker with `docker compose up`.
 
 To init the SQL database schema, you need to wait upto the `database`
-and `database-test` containers are ready to listen MySQL connections.
+container to be ready to listen MySQL connections.
 
 For example, you should see in the logs:
 
-> database-test_1  | 2020-09-21 16:03:12 140126029907968 [Note] mysqld: ready for connections.
->
-> database-test_1  | Version: '10.1.46-MariaDB-1\~bionic'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  mariadb.org binary distribution
->
 > database_1       | 2020-09-21 16:03:12 139820938893312 [Note] mysqld: ready for connections.
 >
 > database_1       | Version: '10.1.46-MariaDB-1\~bionic'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  mariadb.org binary distribution
 
+Or you can check the `database` container status to be "healthy".
+
 Then, open a second terminal and run:
 
 ```
-docker-compose run linuxfr.org bin/rails db:setup
+docker compose exec linuxfr.org bin/rails db:setup
 ```
 
 Finally, the environment is ready and you can open [http://dlfp.lo](http://dlfp.lo)
 in your favorite browser.
 
-Note: to be able to access this URL, you'll need to add the line
-`127.0.0.1 dlfp.lo image.dlfp.lo` to the `/etc/hosts` file of your
-machine.
+Note: to be able to access this URL, you'll need to add the following line
+into the `/etc/hosts` file of your machine:
+
+```
+127.0.0.1 dlfp.lo image.dlfp.lo
+```
 
 Personalize configuration
 =========================
@@ -44,7 +45,7 @@ service.
 
 If you want to change the application port and/or other configurations, you can
 [override](https://docs.docker.com/compose/extends/)
-the docker-compose configuration (in particular the `nginx` service for
+the docker compose configuration (in particular the `nginx` service for
 the port).
 
 Notice, that if LinuxFr.org doesn't run on port 80, the image cache
@@ -53,7 +54,7 @@ service won't work well and so you won't be able to see images in the news.
 Test modifications
 ==================
 
-The docker-compose is currently configured to share `./app`, `./db` and
+The docker compose is currently configured to share `./app`, `./db` and
 `./public` directories with the docker container.
 
 So you can update files with your prefered IDE on your machine. Rails
@@ -62,21 +63,39 @@ will directly detect changes and apply them on next page reload.
 Furthermore, if you need to access the Rails console, you need a second
 terminal and run:
 
-`docker-compose run linuxfr.org bin/rails console`
+```
+docker compose exec linuxfr.org bin/rails console
+```
 
 Note: currently, we didn't configure rails to show directly the
 `webconsole` in your browser. That's just because of time needed to
 find the good configuration, any help will be appreciated !
 
-Inspect database schema
-=======================
+Run application tests
+=====================
 
-In case you need to inspect the database, you need a second terminal
-and run:
+To help maintainers, we are in the process of adding tests to check the
+application has still the expected behaviour.
 
-`docker-compose run database mysql -hdatabase -ulinuxfr_rails -p linuxfr_rails`
+To get help about writing tests, see the 
+[Ruby on Rails documentation](https://guides.rubyonrails.org/testing.html#the-rails-test-runner)
+.
 
-By default, the requested password is the same as the username.
+To run tests with Docker environment, you need to use this command:
+
+```
+docker compose exec linuxfr.org bin/rails test -v
+```
+
+Inspect the database schema
+===========================
+
+In case you need to inspect the database, the port `3306` of your machine is
+by default bound to the port `3306` of the database container.
+
+Thus you can connect to the linuxfr database with hostname `localhost` and the
+username, password and database name defined in the `deployment/default.env`
+configuration file (all three last are by default `linuxfr_rails`).
 
 Apply database migrations
 =========================
@@ -84,17 +103,21 @@ Apply database migrations
 In case you need to apply new database migrations, you need a second
 terminal and run:
 
-`docker-compose run linuxfr.org bin/rails db:migrate`
+```
+docker compose exec linuxfr.org bin/rails db:migrate
+```
 
 If you had issue and want to reset all data in your database system,
 use:
 
-`docker-compose run linuxfr.org bin/rails db:reset`
+```
+docker compose exec linuxfr.org bin/rails db:reset
+```
 
-Services provided by the docker-compose
+Services provided by the docker compose
 =======================================
 
-Currently, these services are directly enabled by docker-compose:
+Currently, these services are directly enabled by docker compose:
 
 1. The [LinuxFr.org](https://github.com/linuxfrorg/linuxfr.org)
 ruby on rails application itself
@@ -111,7 +134,7 @@ For now, these services aren't available:
 because it requires to run 
 LinuxFr.org with a TLS certificate. When the service will accept to
 fetch articles with simple `http://`, we'll be able to provide it
-directly with docker-compose.
+directly with docker compose.
 2. The [svgtex service](https://github.com/linuxfrorg/svgtex), because LinuxFr
 has hard-coded the `localhost`
 hostname in it's [HTML Pipeline tool](https://github.com/linuxfrorg/html-pipeline-linuxfr/blob/linuxfr/lib/html/pipeline/linuxfr.rb#L8)

@@ -4,14 +4,20 @@
 # When a user use an image from an external domain on LinuxFr.org, we keep some
 # infos about this image in redis, so it can served by our proxy/cache daemon, img.
 #
-class Image < Struct.new(:link, :title, :alt_text)
+class Image < Struct.new(:link, :title, :alt_text, :blocked)
   LATEST_KEY = "img/latest"
   NB_IMG_IN_LATEST = 100
+  BLOCKED_KEY = "img/blocked"
   E403 = "/images/403.png"
 
   def self.latest(nb=NB_IMG_IN_LATEST)
     links = $redis.lrange LATEST_KEY, 0, nb
-    links.map {|l| Image.new(l, l, l) }
+    links.map {|l| Image.new(l, l, l, ($redis.hget "img/#{l}", "status") == "Blocked") }
+  end
+
+  def self.blocked(nb)
+    links = $redis.lrange BLOCKED_KEY, 0, nb
+    links.map {|l| Image.new(l, l, l, ($redis.hget "img/#{l}", "status") == "Blocked") }
   end
 
   def self.decoded_link(encoded_link)
@@ -19,7 +25,10 @@ class Image < Struct.new(:link, :title, :alt_text)
   end
 
   def self.destroy(encoded_link)
-    $redis.hset "img/#{decoded_link encoded_link}", "status", "Blocked"
+    link = decoded_link(encoded_link)
+    if $redis.hset "img/#{link}", "status", "Blocked"
+      $redis.lpush BLOCKED_KEY, link
+    end
   end
 
   def self.original_link(link)

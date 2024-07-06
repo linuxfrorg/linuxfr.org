@@ -3,4 +3,5 @@
 
 =h1 @section.title
 - feed "Flux Atom des dépêches de « #{@section.title} »"
+- filter_pagination_params ['id', 'order', 'page']
 = paginated_contents @news, link_to("Proposer une dépêche", "/news/nouveau")

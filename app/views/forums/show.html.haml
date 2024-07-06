@@ -4,4 +4,5 @@
 =h1 "Les messages du forum #{@forum.title}"
 - feed "Flux Atom du forum #{@forum.title}", "/forums/#{@forum.to_param}.atom"
 - new_content_link = link_to("Poster dans les forums", controller: 'posts', action: 'new', forum_id: @forum.id) if current_account
+- filter_pagination_params ['id', 'order', 'page']
 = paginated_contents @posts, new_content_link

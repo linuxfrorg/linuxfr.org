@@ -8,6 +8,7 @@
   %style{type: "text/css"}
     \.toolbox .pagination { display: block }
   %nav.toolbox
+    - filter_pagination_params ['id', 'page']
     = paginate @comments
   %div#comments
     %ul.threads

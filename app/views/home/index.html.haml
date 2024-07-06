@@ -13,6 +13,7 @@
   - if @banner
     %aside.banner
       = @banner
+  - filter_pagination_params ['order', 'page']
   = paginated_section @nodes, link_to("Proposer une dépêche", "/news/nouveau") do
     %main#contents(role="main")
       = render @nodes.map(&:content)

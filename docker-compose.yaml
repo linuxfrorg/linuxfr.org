@@ -1,5 +1,3 @@
-version: '3.1'
-
 services:
   linuxfr.org:
     build:
@@ -10,80 +8,122 @@ services:
     volumes:
       # Share host directories so, the developer can edit them
       # and see the result without need to restart the container
-      - ./app:/linuxfr.org/app
-      - ./db:/linuxfr.org/db
-      - ./public:/linuxfr.org/public
+      - ./app:/linuxfr.org/app:Z
+      - ./db:/linuxfr.org/db:Z
+      - ./lib:/linuxfr.org/lib:Z
+      - ./public:/linuxfr.org/public:Z
+      - ./test:/linuxfr.org/test:Z
       # uploads are shared with the nginx service
       - data-uploads:/linuxfr.org/uploads
     tmpfs:
       - /linuxfr.org/public/tmp:size=100M
+    healthcheck:
+      test: ["CMD", "curl", "--silent", "--fail", "--head", "http://localhost:3000"]
+      interval: 10s
+      start_period: 5s
     depends_on:
-      - database
-      - database-test
-      - redis
+      database:
+        condition: service_healthy
+        restart: true
+      redis:
+        condition: service_healthy
+        restart: true
 
   linuxfr-board:
     build:
       context: deployment/linuxfr-board
     env_file:
       - deployment/default.env
+    healthcheck:
+      test: ["CMD", "curl", "--silent", "--fail", "--head", "http://localhost:9000"]
+      interval: 10s
+      start_period: 5s
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
+        restart: true
 
   linuxfr-img:
     build:
       context: deployment/linuxfr-img
     env_file:
       - deployment/default.env
+    healthcheck:
+      test: ["CMD", "curl", "--silent", "--fail", "--head", "http://localhost:8000/status"]
+      interval: 10s
+      start_period: 5s
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
+        restart: true
     volumes:
       - cache-img:/linuxfr-img/cache
 
   nginx:
-    image: nginx:stable
+    image: docker.io/nginx:stable
     env_file:
       - deployment/default.env
     volumes:
-      - ./deployment/nginx/templates:/etc/nginx/templates
-      - ./public/fonts:/var/linuxfr/fonts
+      - ./deployment/nginx/templates:/etc/nginx/templates:Z
+      - ./public/fonts:/var/linuxfr/fonts:Z
       - data-uploads:/var/linuxfr/uploads
     ports:
-      - "80:80"
+      - target: 80
+        published: 127.0.0.1:80
+        protocol: tcp
+    healthcheck:
+      test: ["CMD", "curl", "--silent", "--fail", "--fail-early", "--head", "http://$$DOMAIN", "http://$$DOMAIN/img", "http://$$DOMAIN/b", "http://$$IMAGE_DOMAIN/status"]
+      interval: 10s
+      start_period: 5s
     depends_on:
-      - linuxfr.org
-      - linuxfr-board
-      - linuxfr-img
+      database:
+        condition: service_healthy
+        restart: true
+      redis:
+        condition: service_healthy
+        restart: true
+      linuxfr.org:
+        condition: service_healthy
+        restart: true
+      linuxfr-board:
+        condition: service_healthy
+        restart: true
+      linuxfr-img:
+        condition: service_healthy
+        restart: true
+    networks:
+      default:
+        aliases:
+          - ${DOMAIN}
+          - ${IMAGE_DOMAIN}
 
   database:
-    image: mariadb:10.1
+    build:
+      context: deployment/database
     env_file:
       - deployment/default.env
-    restart: always
+    ports:
+      - target: 3306
+        published: 127.0.0.1:3306
+        protocol: tcp
+    healthcheck:
+      test: ["CMD", "mysql", "-h", "127.0.0.1", "-u", "$$MYSQL_USER", "--password=$$MYSQL_PASSWORD", "--execute", "\"SHOW DATABASES;\""]
+      interval: 10s
+      start_period: 5s
     volumes:
       - data-database:/var/lib/mysql
 
-  database-test:
-    image: mariadb:10.1
-    env_file:
-      - deployment/default.env
-    entrypoint: ["/linuxfr-entrypoint.sh"]
-    command: ["mysqld"]
-    restart: always
-    volumes:
-      - data-database-test:/var/lib/mysql
-      - ./deployment/database-test/entrypoint.sh:/linuxfr-entrypoint.sh
-
   redis:
-    image: redis:5
-    restart: always
+    image: docker.io/redis:5
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      start_period: 5s
     volumes:
       - data-redis:/data
 
 volumes:
   data-database:
-    driver: local
-  data-database-test:
     driver: local
   data-redis:
     driver: local

@@ -528,3 +528,12 @@ body#redaction-index {
   float: left;
   margin: 12px 25px 0 0;
 }
+
+#followup_mail {
+  font-family: mono;
+  hyphens: none;
+  border-width: 1px;
+  pre {
+    white-space: pre-wrap;
+  }
+}

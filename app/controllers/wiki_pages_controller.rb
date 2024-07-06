@@ -21,7 +21,7 @@ class WikiPagesController < ApplicationController
     path = wiki_page_path(@wiki_page, format: params[:format])
     redirect_to path, status: 301 and return if request.path != path
     headers['Link'] = %(<#{wiki_page_url @wiki_page}>; rel="canonical")
-    flash.now[:alert] = "Attention, cette page a été supprimée et n’est visible que par les administrateurs" unless @wiki_page.visible?
+    flash.now[:alert] = "Attention, cette page a été supprimée et n’est visible que par l’équipe d'administration" unless @wiki_page.visible?
     respond_with @wiki_page
   rescue ActiveRecord::RecordNotFound
     if current_account

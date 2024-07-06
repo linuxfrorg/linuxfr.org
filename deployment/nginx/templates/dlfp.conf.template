@@ -5,7 +5,9 @@ server {
   server_name ${DOMAIN};
 
   location /fonts {
-    alias /var/linuxfr/fonts;
+    access_log  off;
+    expires     7d;
+    root /var/linuxfr/;
   }
  
   location ~ ^/(avatars|medias)/ { 

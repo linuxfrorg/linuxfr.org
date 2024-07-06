@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_13_191843) do
+ActiveRecord::Schema.define(version: 2023_05_06_121910) do
 
   create_table "accounts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "user_id"
@@ -38,23 +38,13 @@ ActiveRecord::Schema.define(version: 2021_09_13_191843) do
     t.integer "min_karma", default: 20
     t.integer "max_karma", default: 20
     t.string "uploaded_stylesheet"
+    t.date "last_seen_on"
     t.index ["confirmation_token"], name: "index_accounts_on_confirmation_token", unique: true
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["login"], name: "index_accounts_on_login"
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
     t.index ["role"], name: "index_accounts_on_role"
     t.index ["user_id"], name: "index_accounts_on_user_id"
-  end
-
-  create_table "badges", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
-    t.string "title"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "company"
-    t.string "country"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "banners", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
@@ -374,6 +364,7 @@ ActiveRecord::Schema.define(version: 2021_09_13_191843) do
     t.string "avatar"
     t.string "signature"
     t.string "custom_avatar_url"
+    t.string "mastodon_url"
     t.index ["cached_slug"], name: "index_users_on_cached_slug"
   end
 

@@ -58,6 +58,17 @@ module NodeHelper
     link_to content.title, path_for_content(content)
   end
 
+  def filter_pagination_params(allowed_params)
+    allowed_params += ['action', 'controller']
+    params.each do |k,v|
+      if allowed_params.include?(k)
+        params[k] = v
+      else
+        params[k] = nil
+      end
+    end
+  end
+
   def paginated_nodes(nodes, link=nil)
     paginated_section(nodes, link) do
       content_tag(:main, render(nodes.map &:content), id: 'contents', role: 'main')
@@ -100,14 +111,13 @@ module NodeHelper
       user_infos = []
       user_infos << homesite_link(user)
       user_infos << jabber_link(user)
+      user_infos << mastodon_link(user)
       user_infos.compact!
       user_link += (" (" + user_infos.join(', ') + ")").html_safe  if user_infos.any?
     end
     date_time    = content.is_a?(Comment) ? content.created_at : content.node.try(:created_at)
     date_time  ||= Time.now
-    date         = content_tag(:span, "le #{date_time.to_s(:date)}", class: "date")
-    time         = content_tag(:span, "à #{date_time.to_s(:time)}", class: "time")
-    published_at = content_tag(:time, date + " " + time, datetime: date_time.iso8601, class: "updated")
+    published_at = content_tag(:time, "le #{date_time.to_s(:posted)}", datetime: date_time.iso8601, class: "updated")
     caption      = content_tag(:span, "", class: "floating_spacer") +
                    content_tag(:span, "Posté par #{ user_link } #{ published_at }.".html_safe, class: "posted_by_spanblock")
     caption.html_safe

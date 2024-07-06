@@ -3,6 +3,7 @@
 = render "hide"
 
 =h1 "Tous les contenus que j’ai étiquetés"
+- filter_pagination_params ['order', 'page']
 = paginated_section @nodes do
   %main#contents(role="main")
     = render @nodes.map(&:content)

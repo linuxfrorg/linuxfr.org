@@ -102,7 +102,7 @@
 
     %h3#moderation Sur les derniers jours
 
-    %p Il y a eu #{pluralize @stats.moderated_news(7), "dépêche modérée", "dépêches modérées"} (acceptation ou rejet) sur les sept derniers jours, et #{pluralize @stats.moderated_news(31), "dépêche modérée", "dépêches modérées"} sur les trente‑et‑un derniers jours.
+    %p Il y a eu #{pluralize @stats.moderated_news(7), "dépêche modérée", "dépêches modérées"} (acceptation ou rejet) sur les sept derniers jours, #{pluralize @stats.moderated_news(31), "dépêche modérée", "dépêches modérées"} sur les trente‑et‑un derniers jours et #{pluralize @stats.moderated_news(90), "dépêche modérée", "dépêches modérées"} sur les quatre-vingt-dix (ou nonante) derniers jours.
 
     - if Account.amr.any?
       %h4 Équipe de modération actuelle (#{Account.amr.count})
@@ -111,8 +111,12 @@
           %th
           %th Modérations (7 j)
           %th Modérations (31 j)
+          %th Modérations (90 j)
           %th Éditions (7 j)
           %th Éditions (31 j)
+          %th Éditions (90 j)
+          %th Autres actes (31 j)
+          %th Autres actes (90 j)
           %th Votes (31 j)
           %th Dernière dépêche
           %th.sorttable_numeric Dépêches cette année en tant qu’auteur
@@ -121,8 +125,12 @@
             %td.stat= link_to User.find(user["user_id"]).name, User.find(user["user_id"])
             %td.stat= @stats.nb_moderations_x_days(user["user_id"],7)
             %td.stat= @stats.nb_moderations_x_days(user["user_id"],31)
+            %td.stat= @stats.nb_moderations_x_days(user["user_id"],90)
             %td.stat= @stats.nb_editions_x_days(user["user_id"],7)
             %td.stat= @stats.nb_editions_x_days(user["user_id"],31)
+            %td.stat= @stats.nb_editions_x_days(user["user_id"],90)
+            %td.stat= @stats.nb_acts_x_days(user["user_id"],31)
+            %td.stat= @stats.nb_acts_x_days(user["user_id"],90)
             %td.stat= @stats.nb_votes_last_month(user["login"])
             - @stats.last_news_at(user["user_id"]).each do |last|
               %td.stat= last["last"]

@@ -29,6 +29,7 @@
 #  min_karma              :integer          default(20)
 #  max_karma              :integer          default(20)
 #  uploaded_stylesheet    :string(255)
+#  last_seen_on           :date
 #
 
 #
@@ -69,7 +70,7 @@ class Account < ActiveRecord::Base
   validates :login, presence: { message: "Veuillez choisir un pseudo"},
                     uniqueness: { message: "Ce pseudo est déjà pris" },
                     format: { message: "Le pseudo n’est pas valide", with: LOGIN_REGEXP, allow_blank: true, on: :create },
-                    length: { maximum: 40, message: "Le nom d’utilisateur est trop long" }
+                    length: { maximum: 40, message: "Le nom du compte est trop long" }
 
   EMAIL_REGEXP = /\A[\p{Word}.%+\-]+@[\p{Word}.\-]+\.[\w]{2,}\z/i
   validates :email, presence: { message: "Veuillez remplir l’adresse de courriel" },
@@ -197,10 +198,28 @@ class Account < ActiveRecord::Base
     recoverable
   end
 
+  def display_last_seen_on
+    if not last_seen_on
+      'jamais'
+    elsif last_seen_on >= 30.days.ago
+      'dans les 30 derniers jours'
+    elsif last_seen_on >= 1.year.ago
+      'il y a moins d’un an'
+    elsif last_seen_on >= 3.year.ago
+      'il y a moins de trois ans'
+    else
+      'il y a plus de trois ans'
+    end
+  end
+
 ### Actions ###
 
   def viewable_by?(account)
     account && (account.admin? || account.moderator? || account.id == self.id)
+  end
+
+  def is?(account)
+    account && account.id == self.id
   end
 
   def can_post_on_board?
@@ -288,7 +307,11 @@ class Account < ActiveRecord::Base
   def block(nb_days, user_id)
     $redis.set("block/#{self.id}", 1)
     $redis.expire("block/#{self.id}", nb_days * 86400)
-    logs.create(description: "Interdiction de poster des commentaires pendant #{pluralize nb_days, "jour"}", user_id: user_id)
+    if nb_days > 0
+      logs.create(description: "Interdiction de poster des commentaires pendant #{pluralize nb_days, "jour"}", user_id: user_id)
+    else
+      logs.create(description: "Réautorisation de poster des commentaires", user_id: user_id)
+    end
   end
 
   def can_block?
@@ -304,7 +327,11 @@ class Account < ActiveRecord::Base
   def plonk(nb_days, user_id)
     $redis.set("plonk/#{self.id}", 1)
     $redis.expire("plonk/#{self.id}", nb_days * 86400)
-    logs.create(description: "Interdiction de tribune pendant #{pluralize nb_days, "jour"}", user_id: user_id)
+    if nb_days > 0
+      logs.create(description: "Interdiction de tribune pendant #{pluralize nb_days, "jour"}", user_id: user_id)
+    else
+      logs.create(description: "Réautorisation de poster des commentaires", user_id: user_id)
+    end
   end
 
   def can_plonk?

@@ -4,10 +4,17 @@ server {
 
   server_name ${IMAGE_DOMAIN};
 
-  location ~ ^/(avatars|medias)/ { 
+  location ~ ^/medias/ { 
     root /var/linuxfr/uploads;
   }
 
+  # Avatars files uploaded on linuxfr server are stored in partitions
+  # with folder name containing 3 digits
+  location ~ ^/avatars/\d\d\d/ { 
+    root /var/linuxfr/uploads;
+  }
+
+  # All other images (avatars URLs and /img) pass by the image service
   location / {
     proxy_pass http://linuxfr-img:8000;
   }

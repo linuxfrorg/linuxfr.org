@@ -3,4 +3,5 @@
   = render 'nodes'
 
 =h1 "#{@user.name} a écrit #{pluralize @nodes.total_count, "entrée"} sur le suivi"
+- filter_pagination_params ['id', 'order', 'page']
 = paginated_nodes @nodes

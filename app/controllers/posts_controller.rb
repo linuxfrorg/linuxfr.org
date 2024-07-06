@@ -42,7 +42,7 @@ class PostsController < ApplicationController
     path = forum_post_path(@forum, @post, format: params[:format])
     redirect_to path, status: 301 and return if request.path != path
     headers['Link'] = %(<#{forum_post_url @forum, @post}>; rel="canonical")
-    flash.now[:alert] = "Attention, ce message a été supprimé et n’est visible que par les administrateurs" unless @post.visible?
+    flash.now[:alert] = "Attention, ce message a été supprimé et n’est visible que par l’équipe d'administration" unless @post.visible?
   end
 
   def edit

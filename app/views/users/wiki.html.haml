@@ -4,6 +4,7 @@
 
 %main#contents(role="main")
   =h1 "Les participations de #{@user.name} au wiki"
+  - filter_pagination_params ['id', 'page']
   = paginate @versions
   %ul.changes
     = list_of(@versions) do |v|

@@ -199,8 +199,8 @@ class News < Content
   before_validation :wikify_fields
   def wikify_fields
     return if wiki_body.blank?
-    self.body        = wikify(wiki_body).gsub(/^<p>N\.?\p{Z}?[Dd]\.?\p{Z}?M\.?\p{Z}?:/, '<p><abbr title="Note des modérateurs">N. D. M. :</abbr>')
-    self.second_part = wikify(wiki_second_part).gsub(/^<p>N\.?\p{Z}?[Dd]\.?\p{Z}?M\.?\p{Z}?:/, '<p><abbr title="Note des modérateurs">N. D. M. :</abbr>')
+    self.body        = wikify(wiki_body).gsub(/^<p>N\.?\p{Z}?[Dd]\.?\p{Z}?M\.?\p{Z}?:/, '<p><abbr title="Note de la modération">N. D. M. :</abbr>')
+    self.second_part = wikify(wiki_second_part).gsub(/^<p>N\.?\p{Z}?[Dd]\.?\p{Z}?M\.?\p{Z}?:/, '<p><abbr title="Note de la modération">N. D. M. :</abbr>')
   end
 
   mark_as_safe_attr :body

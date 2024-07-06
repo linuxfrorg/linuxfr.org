@@ -16,6 +16,10 @@ module ApplicationHelper
     @feeds[link] = title
   end
 
+  def link(rel, link)
+    @links[link] = rel
+  end
+
   def meta_for(content)
     @author      = content.node.user.try(:name)
     @keywords    = content.node.popular_tags.map &:name

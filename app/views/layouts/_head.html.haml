@@ -18,3 +18,5 @@
     %meta(name="robots" content="noindex, nofollow")
   - @feeds.each do |link,title|
     = auto_discovery_link_tag :atom, link, { title: title }
+  - @links.each do |link,rel|
+    %link(rel=rel href=link)
