@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2023_05_06_121910) do
     t.text "wiki_body", limit: 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["created_at"], name: "index_comments_on_created_at"
     t.index ["node_id"], name: "index_comments_on_node_id"
     t.index ["state", "created_at"], name: "index_comments_on_state_and_created_at"
     t.index ["state", "materialized_path"], name: "index_comments_on_state_and_materialized_path", length: { materialized_path: 120 }

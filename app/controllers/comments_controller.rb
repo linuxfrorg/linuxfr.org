@@ -1,11 +1,21 @@
 # encoding: UTF-8
 class CommentsController < ApplicationController
-  before_action :authenticate_account!, except: [:index, :show]
-  before_action :find_node, except: [:templeet]
-  before_action :find_comment, except: [:index, :new, :answer, :create, :templeet]
+  before_action :authenticate_account!, except: [:index, :show, :latest]
+  before_action :find_node, except: [:templeet, :latest]
+  before_action :find_comment, except: [:index, :new, :answer, :create, :templeet, :latest]
 
   def index
     @comments = @node.comments.published.order('id DESC')
+    respond_to do |wants|
+      wants.html
+      wants.atom
+    end
+  end
+
+  def latest
+    @comments = Comment.latest.
+      page(params[:page]).
+      order(created_at: :desc)
     respond_to do |wants|
       wants.html
       wants.atom
