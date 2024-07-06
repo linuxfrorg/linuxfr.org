@@ -40,7 +40,7 @@ class Comment < ActiveRecord::Base
       select([:id, :node_id, :title])
   }
   scope :latest, -> {
-    where(["created_at >= ?", Date.current - 7.day])
+    where(["created_at >= ?", 7.days.ago])
   }
 
   paginates_per 50
