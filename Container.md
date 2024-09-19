@@ -1,7 +1,7 @@
 LinuxFr with Containers
 -----------------------
 
-To simplify set up of a developement environment, LinuxFr.org can be
+To simplify set up of a development environment, LinuxFr.org can be
 run with a container engine like Docker or Podman with the [`compose.yml`](./compose.yaml)
 file which describes how to build all needed services.
 
@@ -21,7 +21,7 @@ Thus you need to use the `podman compose up` command to start the system.
 At this point, the documentation will give you `docker compose` commands, but you should be able
 to use `podman compose` without any issue.
 
-To init the SQL database schema, you need to wait upto the `database`
+To init the SQL database schema, you need to wait up to the `database`
 container to be ready to listen MySQL connections.
 
 For example, you should see in the logs:
@@ -85,7 +85,7 @@ Test modifications
 The compose file currently shares `./app`, `./db` and
 `./public` directories with the container.
 
-So you can update files with your prefered IDE on your machine. Rails
+So you can update files with your preferred IDE on your machine. Rails
 will directly detect changes and apply them on next page reload.
 
 Furthermore, if you need to access the Rails console, you need a second
@@ -103,7 +103,7 @@ Run application tests
 =====================
 
 To help maintainers, we are in the process of adding tests to check the
-application has still the expected behaviour.
+application has still the expected behavior.
 
 To get help about writing tests, see the 
 [Ruby on Rails documentation](https://guides.rubyonrails.org/testing.html#the-rails-test-runner)
