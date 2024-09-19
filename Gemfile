@@ -32,7 +32,7 @@ gem "mysql2",                  "~>0.5.0"
 gem "nokogiri",                "~>1.10"
 gem "redis",                   "~>5.0"
 gem "rinku",                   "~>2.0"
-gem "sitemap_generator",       "~>2.1"
+gem "sitemap_generator"
 gem "state_machines-activerecord"
 
 # Gems used for assets
