@@ -75,7 +75,7 @@ class Diary < Content
       @news.save!
       $redis.set "convert/#{@news.id}", self.id
       @news.node.update_column(:cc_licensed, node.cc_licensed)
-      @news.links.create title: "Journal à l’origine de la dépêche", url: "https://#{MY_DOMAIN}/users/#{owner.to_param}/journaux/#{to_param}", lang: "fr"
+      @news.links.create title: "Journal à l’origine de la dépêche", url: "#{MY_PUBLIC_URL}/users/#{owner.to_param}/journaux/#{to_param}", lang: "fr"
       @news
     end
   end

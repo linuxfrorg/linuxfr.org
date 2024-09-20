@@ -174,7 +174,7 @@ class Node < ApplicationRecord
         if tag.new_record?
           tag.save!
           user = User.find(user_id)
-          Board.amr_notification("L’étiquette #{tagname} https://#{MY_DOMAIN}/tags/#{tagname}/public vient d’être créée par #{user.name} https://#{MY_DOMAIN}/users/#{user.cached_slug}")
+          Board.amr_notification("L’étiquette #{tagname} #{MY_PUBLIC_URL}/tags/#{tagname}/public vient d’être créée par #{user.name} #{MY_PUBLIC_URL}/users/#{user.cached_slug}")
         end
         taggings.create(tag_id: tag.id, user_id: user_id)
       end
