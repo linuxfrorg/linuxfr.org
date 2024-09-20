@@ -62,7 +62,7 @@ services:
       - cache-img:/linuxfr-img/cache
 
   nginx:
-    image: docker.io/nginx:stable
+    image: docker.io/nginxinc/nginx-unprivileged:stable-alpine
     env_file:
       - deployment/default.env
     volumes:
@@ -70,11 +70,14 @@ services:
       - ./public/fonts:/var/linuxfr/fonts:Z
       - data-uploads:/var/linuxfr/uploads
     ports:
-      - target: 80
-        published: 127.0.0.1:80
+      - target: 8080
+        # If you customize the published port, you have to update the
+        # DOMAIN_HTTP_PORT and IMAGE_DOMAIN_HTTP_PORT variables
+        # into the `deployment/default.env` file too
+        published: 127.0.0.1:9000
         protocol: tcp
     healthcheck:
-      test: ["CMD", "curl", "--silent", "--fail", "--fail-early", "--head", "http://$$DOMAIN", "http://$$DOMAIN/img", "http://$$DOMAIN/b", "http://$$IMAGE_DOMAIN/status"]
+      test: ["CMD", "curl", "--silent", "--fail", "--fail-early", "--location", "--head", "http://$$DOMAIN:8080", "http://$$DOMAIN:8080/img/status", "http://$$DOMAIN:8080/b", "http://$$IMAGE_DOMAIN:8080/status"]
       interval: 10s
       start_period: 5s
     depends_on:

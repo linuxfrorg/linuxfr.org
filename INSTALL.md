@@ -131,11 +131,20 @@ Additionally, you run the boards within another terminal:
 
 This extra step isn't really needed to be able to use LinuxFr.org.
 
-In the `config/environments/development.rb` file, there are two domains set
-inside variables `MY_DOMAIN` and `IMG_DOMAIN`.
-By default both domains are `dlfp.lo`.
+In the `config/environments/development.rb` file, there are these variables:
 
-You'll find this domain inside some documents like emails to confirm user
+1. `MY_DOMAIN` and `IMG_DOMAIN` which define the domain name for the LinuxFr
+    service and the image caching service.
+    By default both domain names are `dlfp.lo`.
+
+2. `MY_PUBLIC_URL` and `IMG_PUBLIC_PORT` which define the public HTTP port for
+    both services.
+    By default both ports are `80`.
+
+These two set of variables are used to build the public url of the two
+services. By default both public urls are `http://dlfp.lo`.
+
+You'll find this public url inside some documents like emails to confirm user
 subscription. To simplify your usage of LinuxFr.org, you should consider
 install a website locally using this domain name.
 
