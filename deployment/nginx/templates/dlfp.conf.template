@@ -1,6 +1,6 @@
-server {  
-  listen 80;
-  listen [::]:80;
+server {
+  listen 8080;
+  listen [::]:8080;
 
   server_name ${DOMAIN};
 
@@ -12,6 +12,11 @@ server {
  
   location ~ ^/(avatars|medias)/ { 
     root /var/linuxfr/uploads;
+  }
+
+  # Only used for health check command line in compose.yaml
+  location /img/status {
+    proxy_pass http://linuxfr-img:8000/status;
   }
 
   location /img/ {
