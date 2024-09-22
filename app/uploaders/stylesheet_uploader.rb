@@ -6,7 +6,7 @@ class StylesheetUploader < CarrierWave::Uploader::Base
   end
 
   def url
-    super.sub(base_dir.to_s, "//#{IMG_DOMAIN}")
+    super.sub(base_dir.to_s, "#{IMG_PUBLIC_URL}")
   end
 
   def store_dir

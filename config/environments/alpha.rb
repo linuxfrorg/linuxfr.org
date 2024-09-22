@@ -1,7 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   MY_DOMAIN = 'alpha.linuxfr.org'
+  MY_PUBLIC_URL = 'https://alpha.linuxfr.org'
   IMG_DOMAIN = 'img.alpha.linuxfr.org'
+  IMG_PUBLIC_URL = 'https://img.alpha.linuxfr.org'
 
   # Code is not reloaded between requests.
   config.cache_classes = true

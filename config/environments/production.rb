@@ -3,7 +3,9 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   MY_DOMAIN = "linuxfr.org"
+  MY_PUBLIC_URL = 'https://linuxfr.org'
   IMG_DOMAIN = "img.linuxfr.org"
+  IMG_PUBLIC_URL = 'https://img.linuxfr.org'
 
   # Code is not reloaded between requests.
   config.enable_reloading = false

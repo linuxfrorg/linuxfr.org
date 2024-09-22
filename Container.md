@@ -5,32 +5,43 @@ To simplify set up of a development environment, LinuxFr.org can be
 run with a container engine like Docker or Podman with the [`compose.yml`](./compose.yaml)
 file which describes how to build all needed services.
 
-If you use the Docker engine, you can use the `docker compose up` command to start the system (you
-need to install the [Docker compose plugin](https://docs.docker.com/compose/)).
+By default, the LinuxFr.org services will be provided under the domain names
+`dlfp.lo` and `image.dlfp.lo`. So you'll need to add the
+following line into the `/etc/hosts` file of your machine:
+
+  ```
+  127.0.0.1 dlfp.lo image.dlfp.lo
+  ```
+
+Then, if you use the Docker engine, you can use the `docker compose up`
+command to start the system (you need to install the
+[Docker compose plugin](https://docs.docker.com/compose/) first).
 
 > Note: with the Docker engine, you need to enable the Docker BuildKit builder.
 > Either you have a Docker version which uses it by default, or you set the
 > environment variable `export DOCKER_BUILDKIT=1`.
 
-If you use Podman, you can either use the same Docker compose plugin or the
-[podman-compose](https://github.com/containers/podman-compose/)
-utility. The podman cli itself provide a wrapper of one of these two tools through the
+If you use the Podman engine, you can either use the same Docker compose plugin
+or the [podman-compose](https://github.com/containers/podman-compose/)
+tool. The podman cli itself provides a wrapper of one of these two tools
+through the
 [`podman compose` command](https://docs.podman.io/en/latest/markdown/podman-compose.1.html).
 Thus you need to use the `podman compose up` command to start the system.
 
-At this point, the documentation will give you `docker compose` commands, but you should be able
-to use `podman compose` without any issue.
+At this point, this documentation will give you `docker compose` commands,
+but you should be able to use `podman compose` without any issue.
 
-To init the SQL database schema, you need to wait up to the `database`
-container to be ready to listen MySQL connections.
+To setup the SQL database schema, you need to wait until the `database`
+container becomes ready to listen MySQL connections.
 
 For example, you should see in the logs:
 
-> database_1       | 2020-09-21 16:03:12 139820938893312 [Note] mysqld: ready for connections.
+> database_1       | 2020-09-21 16:03:12 139820938893312 [Note] *mysqld: ready for connections.*
 >
 > database_1       | Version: '10.1.46-MariaDB-1\~bionic'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  mariadb.org binary distribution
 
-Or you can check the `database` container status to be "healthy".
+Or you can check the `database` container status to be *healthy* with the
+`docker compose ps` command.
 
 Then, open a second terminal and run:
 
@@ -38,26 +49,8 @@ Then, open a second terminal and run:
 docker compose exec linuxfr.org bin/rails db:setup
 ```
 
-Finally, the environment is ready and you can open [http://dlfp.lo](http://dlfp.lo)
+Finally, the environment is ready and you can open [http://dlfp.lo:9000](http://dlfp.lo:9000)
 in your favorite browser.
-
-Notes:
-
-1. to be able to access this URL, you'll need to add the following line
-  into the `/etc/hosts` file of your machine:
-  
-  ```
-  127.0.0.1 dlfp.lo image.dlfp.lo
-  ```
-
-2. for [rootless containers](https://rootlesscontaine.rs/), you'll need
-  to allow standard users to listen on ports less than 1024
-  (this is needed because linuxfr use port 80 and 443):
-
-  ```sh
-  sudo sysctl net.ipv4.ip_unprivileged_port_start=80
-  ```
-
 
 Personalize configuration
 =========================
@@ -68,16 +61,14 @@ If you want, you can change the domain names used by the LinuxFr.org
 web application. To do this, you can setup `DOMAIN` and `IMAGE_DOMAIN`
 variables in the `deployment/default.env` file.
 
+Within the same file, you can update the HTTP listening ports by updating the
+`DOMAIN_HTTP_PORT` and `IMAGE_DOMAIN_HTTP_PORT` variables (both are set to 
+`9000` by default). If you modify them, don't forget to add the new values as
+published ports for the `nginx` service in the `compose.yaml` file (they have
+to target the `8080` container port).
+
 You can also configure your own Redis service and your own MySQL
-service.
-
-If you want to change the application port and/or other configurations, you can
-[override](https://docs.docker.com/compose/extends/)
-the docker compose configuration (in particular the `nginx` service for
-the port).
-
-Notice, that if LinuxFr.org doesn't run on port 80, the image cache
-service won't work well and so you won't be able to see images in the news.
+service by updating environment variables in the same file.
 
 Test modifications
 ==================

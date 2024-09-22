@@ -67,7 +67,7 @@ class Image < Struct.new(:link, :title, :alt_text, :blocked)
     return link if internal_link?
     return E403 if blacklisted?
     register_in_redis
-    "//#{IMG_DOMAIN}/#{type}/#{encoded_link}/#{filename}"
+    "#{IMG_PUBLIC_URL}/#{type}/#{encoded_link}/#{filename}"
   end
 
   def src_attr
