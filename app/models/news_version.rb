@@ -13,11 +13,9 @@
 #  links       :text(16777215)
 #  created_at  :datetime
 #
-
-#
-class NewsVersion < ActiveRecord::Base
+class NewsVersion < ApplicationRecord
   belongs_to :news
-  belongs_to :user
+  belongs_to :user, optional: true
 
   acts_as_list column: 'version', scope: :news
 

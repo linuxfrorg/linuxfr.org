@@ -23,7 +23,7 @@ class Moderation::NewsController < ModerationController
     flash.now[:alert] = "Attention, cette dépêche a été refusée et n’est visible que par l’équipe de modération" if @news.refused?
     respond_to do |wants|
       wants.html { render :show, layout: 'chat_n_edit' }
-      wants.js { render partial: 'short' }
+      wants.js { render partial: 'redaction/news/short' }
       wants.md { @news.put_paragraphs_together }
     end
   end
@@ -39,7 +39,7 @@ class Moderation::NewsController < ModerationController
     @news.editor = current_account
     @news.save
     if request.xhr?
-      render partial: 'short'
+      render partial: 'redaction/news/short'
     else
       redirect_to @news, notice: "Modification enregistrée"
     end

@@ -5,16 +5,6 @@ Debian Stretch development machine.
 
 Note that all commands which require root access are prefixed by `sudo`.
 
-# Use stretch-backports
-
-LinuxFr.org requires to add `stretch-backports` source package as it
-needs the `npm`package.
-
-```
-~ $ sudo bash -c "echo 'deb http://deb.debian.org/debian stretch-backports main' >> /etc/apt/sources.list.d/linuxfr.list"
-~ $ sudo apt update
-```
-
 # Install Debian packages
 
 Packages to install from main Stretch source:
@@ -30,12 +20,6 @@ hunspell-fr-comprehensive redis-server ruby ruby-dev ruby-rack
 Note:
   * you can use libcurl4-gnutls-dev instead of libcurl4-openssl-dev.
   * the `mysql` packages will install MariaDB on Debian Stretch
-
-Packages to install from backports:
-
-```
-~ $ sudo apt install -t stretch-backports nodejs npm
-```
 
 # Get LinuxFr.org code and external resources
 
@@ -69,12 +53,6 @@ Now, we can reach external Ruby resources:
 ```
 
 The `check` command above should say you there's no problem.
-
-LinuxFr.org uses also some nodejs resources:
-
-```
-~/linuxfr.org $ npm install
-```
 
 ## Install the LinuxFr.org board
 
@@ -153,11 +131,20 @@ Additionally, you run the boards within another terminal:
 
 This extra step isn't really needed to be able to use LinuxFr.org.
 
-In the `config/environments/development.rb` file, there are two domains set
-inside variables `MY_DOMAIN` and `IMG_DOMAIN`.
-By default both domains are `dlfp.lo`.
+In the `config/environments/development.rb` file, there are these variables:
 
-You'll find this domain inside some documents like emails to confirm user
+1. `MY_DOMAIN` and `IMG_DOMAIN` which define the domain name for the LinuxFr
+    service and the image caching service.
+    By default both domain names are `dlfp.lo`.
+
+2. `MY_PUBLIC_URL` and `IMG_PUBLIC_PORT` which define the public HTTP port for
+    both services.
+    By default both ports are `80`.
+
+These two set of variables are used to build the public url of the two
+services. By default both public urls are `http://dlfp.lo`.
+
+You'll find this public url inside some documents like emails to confirm user
 subscription. To simplify your usage of LinuxFr.org, you should consider
 install a website locally using this domain name.
 

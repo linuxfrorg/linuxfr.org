@@ -21,7 +21,7 @@ class Bookmark < Content
   self.table_name = "bookmarks"
   self.type = "Lien"
 
-  belongs_to :owner, class_name: 'User'
+  belongs_to :owner, class_name: 'User', optional: true
 
   validates :title,     presence: { message: "Le titre est obligatoire" },
                         length: { maximum: 100, message: "Le titre est trop long" }

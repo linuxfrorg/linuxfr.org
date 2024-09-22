@@ -17,7 +17,7 @@
     - current_account.authorized_applications.each do |app|
       %tr
         %td= app.name
-        %td= app.created_at.to_s(:posted)
+        %td= app.created_at.to_fs(:posted)
         %td= button_to "Révoquer", api_authorized_application_path(app), method: :delete, data: { confirm: "Révoquer cette autorisation ?" }, class: "delete_button"
 - else
   %p Vous n’avez donné aucune autorisation à des applications.

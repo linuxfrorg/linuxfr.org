@@ -36,7 +36,7 @@ class Image < Struct.new(:link, :title, :alt_text, :blocked)
   end
 
   def register_in_redis
-    if $redis.exists "img/#{link}"
+    if $redis.exists? "img/#{link}"
       $redis.del "img/err/#{link}"
       return
     end
@@ -46,14 +46,12 @@ class Image < Struct.new(:link, :title, :alt_text, :blocked)
   end
 
   def internal_link?
-    uri = URI.parse(URI.encode link)
+    uri = URI.join(link)
     !uri.host || uri.host == MY_DOMAIN || uri.host == IMG_DOMAIN
-  rescue
-    true
   end
 
   def blacklisted?
-    uri = URI.parse(URI.encode link)
+    uri = URI.join(link)
     uri.host =~ /^(10|127|169\.254|192\.168)\./
   end
 
@@ -69,7 +67,7 @@ class Image < Struct.new(:link, :title, :alt_text, :blocked)
     return link if internal_link?
     return E403 if blacklisted?
     register_in_redis
-    "//#{IMG_DOMAIN}/#{type}/#{encoded_link}/#{filename}"
+    "#{IMG_PUBLIC_URL}/#{type}/#{encoded_link}/#{filename}"
   end
 
   def src_attr

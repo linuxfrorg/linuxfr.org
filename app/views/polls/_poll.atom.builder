@@ -9,5 +9,5 @@ feed.entry(poll, :published => poll.node.created_at) do |entry|
   poll.node.popular_tags.each do |tag|
     entry.category(:term => tag.name)
   end
-  entry.wfw :commentRss, "https://#{MY_DOMAIN}/nodes/#{poll.node.id}/comments.atom"
+  entry.wfw :commentRss, "#{MY_PUBLIC_URL}/nodes/#{poll.node.id}/comments.atom"
 end
