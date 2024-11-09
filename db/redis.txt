@@ -12,8 +12,8 @@ Key                                            | Type   | Value                 
 `dashboard/<account_id>`                       |  set   |      `<node_id>`      |   1 week   | Notifications from answers
 `img/<uri>`                                    |  hash  |                       |     no     | Images, with fields 'created_at': seconds since Epoch, 'status': 'Blocked' if administratively blocked (by moderation), 'type': content-type like 'image/jpeg' (set by `img` daemon), 'checksum': SHA1 (set by `img` daemon), and 'etag': etag (set by `img` daemon)
 `img/blocked`                                  |  list  |         URIs          |     no     | Images blocked by moderation team
-`img/err/<uri>`                                | string |         error         |     no     | Images in error, like "Invalid content-type", created by `img` daemon but removed by `dlfp`
-`img/latest`                                   |  list  |         URIs          | no, limited| Last images, limited to NB_IMG_IN_LATEST = 100
+`img/err/<uri>`                                | string |         error         |     1h     | Image fetch in error, like "Invalid content-type", created by `img` daemon
+`img/latest`                                   |  list  |         URIs          | no, limited| Last images as `<uri>`, limited to NB_IMG_IN_LATEST = 100
 `img/updated/<uri>`                            | string |        modtime        |     1h     | Cached images, created by `img` daemon, value like "Thu, 12 Dec 2013 12:28:47 GMT"
 `lang`                                         |  list  |     2-letters code    |     no     | Langages
 `lang/<xx>`                                    | string |      language name    |     no     | Language name
