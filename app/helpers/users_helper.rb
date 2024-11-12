@@ -25,6 +25,13 @@ module UsersHelper
     image_tag(user.avatar_url, options)
   end
 
+  def email_link(user)
+    return if not user.account.show_email
+    karma = user.account.try(:karma).to_i
+    return unless karma > 0
+    link_to("courriel", "mailto:" + user.account.email)
+  end
+
   def homesite_link(user)
     return if user.homesite.blank?
     karma = user.account.try(:karma).to_i
