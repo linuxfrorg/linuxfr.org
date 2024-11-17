@@ -8,5 +8,5 @@ feed.entry(tracker) do |entry|
   tracker.node.popular_tags.each do |tag|
     entry.category(:term => tag.name)
   end
-  entry.wfw :commentRss, "https://#{MY_DOMAIN}/nodes/#{tracker.node.id}/comments.atom"
+  entry.wfw :commentRss, "#{MY_PUBLIC_URL}/nodes/#{tracker.node.id}/comments.atom"
 end

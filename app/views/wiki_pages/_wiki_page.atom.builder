@@ -9,5 +9,5 @@ feed.entry(wiki_page) do |entry|
   wiki_page.node.popular_tags.each do |tag|
     entry.category(:term => tag.name)
   end
-  entry.wfw :commentRss, "https://#{MY_DOMAIN}/nodes/#{wiki_page.node.id}/comments.atom"
+  entry.wfw :commentRss, "#{MY_PUBLIC_URL}/nodes/#{wiki_page.node.id}/comments.atom"
 end

@@ -33,7 +33,7 @@
     Pour cela, il vous suffit de commencer votre feuille de style par la déclaration suivante :
 
   %pre
-    @import url("//#{MY_DOMAIN}/assets/application.css");
+    @import url("#{MY_PUBLIC_URL}/assets/application.css");
 
   %div.sideforms
     = form_tag "/stylesheet", method: :put do

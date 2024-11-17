@@ -8,8 +8,7 @@
 #  taggings_count :integer          default(0), not null
 #  public         :boolean          default(TRUE), not null
 #
-
-class Tag < ActiveRecord::Base
+class Tag < ApplicationRecord
   has_many :taggings, dependent: :destroy, inverse_of: :tag
   has_many :nodes, -> { distinct }, through: :taggings
 

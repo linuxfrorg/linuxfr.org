@@ -8,9 +8,7 @@
 #  content :text(16777215)
 #  active  :boolean          default(TRUE)
 #
-
-#
-class Banner < ActiveRecord::Base
+class Banner < ApplicationRecord
   scope :active, -> { where(active: true) }
 
   validates :title, presence: { message: "Le titre ne peut être vide" },

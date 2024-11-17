@@ -61,6 +61,6 @@ class Statistics::Tags < Statistics::Statistics
   end
 
   def taggings_by_day
-	  select_all "SELECT DAYNAME(CONVERT_TZ(taggings.created_at,'UTC','Europe/Paris')) AS d, WEEKDAY(CONVERT_TZ(taggings.created_at,'UTC','Europe/Paris')) AS day, COUNT(*) AS cnt FROM taggings,nodes WHERE taggings.node_id=nodes.id AND nodes.public=1 GROUP BY d ORDER BY day ASC"
+	  select_all "SELECT DAYNAME(CONVERT_TZ(taggings.created_at,'UTC','Europe/Paris')) AS d, WEEKDAY(CONVERT_TZ(taggings.created_at,'UTC','Europe/Paris')) AS day, COUNT(*) AS cnt FROM taggings,nodes WHERE taggings.node_id=nodes.id AND nodes.public=1 GROUP BY d, day ORDER BY day ASC"
   end
 end
