@@ -5,12 +5,16 @@ class DashboardController < ApplicationController
 
   def index
     @self_answer = params[:self] == "1"
+    # News
+    @candidates = News.where(author_email: current_account.email).candidate
+    @drafts   = News.where(author_email: current_account.email).draft
+    # Comment threads
     @comments = current_user.comments.on_dashboard.limit(30)
     @comments = @comments.where(answered_to_self: false) unless @self_answer
-    @posts    = Node.where(user_id: current_user.id).on_dashboard(Post).limit(10)
+    # Other nodes
+    @nodes = Node.where(user_id: current_user.id).on_dashboard([News, Diary, Bookmark, Post, WikiPage]).limit(10)
+    # Trackers can get very old, so keep them in their own dashboard
     @trackers = Node.where(user_id: current_user.id).on_dashboard(Tracker).limit(10)
-    @news     = News.where(author_email: current_account.email).candidate
-    @drafts   = News.where(author_email: current_account.email).draft
   end
 
   def answers

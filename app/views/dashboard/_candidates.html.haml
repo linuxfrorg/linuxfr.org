@@ -1,0 +1,19 @@
+%h2
+  Vos dépêches en attente de modération
+- if @candidates.empty?
+  Vous n’avez aucune dépêche en cours de modération
+- else
+  .table_container
+    %table#my_candidates
+      %tr
+        %th.left Section
+        %th.left Sujet
+        %th.left Date de soumission
+      - @candidates.each do |news|
+        %tr
+          %td= news.section.title
+          - if current_account.amr?
+            %td= link_to news.title, [:moderation, news]
+          - else
+            %td= news.title
+          %td= l news.node.created_at
