@@ -18,7 +18,7 @@
   - else
     = render @comment.node.content
     %div#comments
-      = render "preview", preview: @comment if @preview_mode
+      = render "preview", preview: @comment if @preview_mode and @comment.valid?
 
   = form_for [@node, @comment], url: "/nodes/#{@node.id}/comments#comment_new" do |form|
     = form.hidden_field :parent_id

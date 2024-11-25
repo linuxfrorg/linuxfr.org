@@ -8,6 +8,10 @@ class Lang
     vals.zip(keys)
   end
 
+  def self.valid_codes
+    $redis.lrange("lang", 0, -1).difference(["xx"])
+  end
+
   def self.[]=(key, value)
     $redis.set("lang/#{key}", value)
     $redis.rpush("lang", key)
