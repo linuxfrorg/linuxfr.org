@@ -36,9 +36,17 @@
         - else
           %li pas de contenus ;
         - if @user.tags.count > 0
-          %li étiquettes : #{ @user.tags.visible.count } sur #{ @user.tags.count }.
+          %li étiquettes : #{ @user.tags.visible.count } sur #{ @user.tags.count } ;
         - else
-          %li pas d'étiquettes.
+          %li pas d'étiquettes ;
+        - if @user.news_versions.count > 0
+          %li versions de dépêches : #{ @user.news_versions.count } ;
+        - else
+          %li pas de versions de dépêches ;
+        - if @user.wiki_versions.count > 0
+          %li versions de wiki : #{ @user.wiki_versions.count }.
+        - else
+          %li pas de versions de wiki.
 
       %p Étiquetages (🧐👾) : #{ @user.taggings.count }
       = button_to "+50 XP", karma_admin_account_path(@user.account.id)

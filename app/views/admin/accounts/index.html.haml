@@ -9,7 +9,7 @@
   %label(for="inactive") Inactifs
   %input(type="submit" value="Filtrer")
 
-%table
+%table{border: 1}
   %tr
     %th Pseudo / Adresses
     %th Karma
@@ -73,6 +73,13 @@
             #{ (account.user.tags.count - account.user.tags.visible.count) }
             #{ image_tag "/images/icones/denied.png", alt: "masqués", title: "masqués", width: "16px" }
           %br
+        - if account.user.news_versions.count > 0
+          %span{title: "Versions de dépêches"}
+            📝 #{ account.user.news_versions.count }
+          %br
+        - if account.user.wiki_versions.count > 0
+          %span{title: "Versions de wiki"}
+            🔀 #{ account.user.wiki_versions.count }
       %td= account.created_at.to_fs(:posted)
       %td= account.display_last_seen_on
       %td
