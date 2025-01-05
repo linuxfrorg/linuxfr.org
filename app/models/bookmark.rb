@@ -24,14 +24,17 @@ class Bookmark < Content
   belongs_to :owner, class_name: 'User'
 
   validates :title,     presence: { message: "Le titre est obligatoire" },
-                        length: { maximum: 100, message: "Le titre est trop long" }
+                        length: { maximum: 100, message: "Le titre est trop long" },
+                        uniqueness: { message: "Un lien avec le même titre a déjà été proposé" }
   validates :link, presence: { message: "Vous ne pouvez pas poster un lien vide" },
                    http_url: { message: "Le lien n'est pas valide" },
-                   length: { maximum: 255, message: "Le lien est trop long" }
+                   length: { maximum: 255, message: "Le lien est trop long" },
+                   uniqueness: { message: "Le lien a déjà été proposé" }
+  validates :lang, inclusion: { in: Lang.valid_codes, allow_nil: false, message: "La langue du lien doit être définie" }
 
   def link=(raw)
     raw.strip!
-    return write_attribute :url, nil if raw.blank?
+    return write_attribute :link, nil if raw.blank?
     uri = URI.parse(raw)
     # Default to HTTP link if neither scheme nor host is found
     if uri.scheme.blank? && uri.host.blank?

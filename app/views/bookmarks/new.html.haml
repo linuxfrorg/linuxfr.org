@@ -9,7 +9,7 @@
   %p
     Les <a href="/regles_de_moderation">règles de modération</a> sont applicables aux liens comme au reste du site.
 
-  = render "preview", preview: @bookmark if @preview_mode
+  = render "preview", preview: @bookmark if @preview_mode and @bookmark.valid?
 
   = form_for @bookmark do |form|
     = render form

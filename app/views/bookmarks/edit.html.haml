@@ -1,7 +1,7 @@
 %main#contents(role="main")
   =h1 "Éditer un lien"
 
-  = render "preview", preview: @bookmark if @preview_mode
+  = render "preview", preview: @bookmark if @preview_mode and @bookmark.valid?
 
   %h2 Édition
   = form_for [@bookmark.owner, @bookmark] do |form|
