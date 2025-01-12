@@ -304,9 +304,42 @@ soit les plus récents, soit les suffisamment bien notés et pas trop anciens).
 
 <p>Le karma augmente donc lorsque l’on reçoit des notes « pertinent » (quel que soit le type de contenu ou le commentaire noté) ou que l’on publie des dépêches.</p>
 
-<p>Le nombre d’avis quotidiens est déterminé à partir du karma. La formule est <code>max(0, min(3 + karma/10, 100))</code> (<a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/app/models/account.rb">source</a>).</p>
+<p>Le nombre d’avis quotidiens est déterminé à partir du karma. La formule mathématique est <code>max(0, min(3 + karma/10, 100))</code> (<a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/app/models/account.rb">source</a>) et en français cela donne le tableau qui suit.</p>
 
-<p>Le score de base des commentaires dépend du karma. La formule est <code>E(log10(karma)) - 1</code>, où <code>E()</code> est la partie entière inférieure si le karma est strictement positif. Et c’est <code>max(-10, -2 + E(karma/30))</code> pour un karma négatif ou nul. Avec un karma à 0, ça donne un score de -2 (<a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/app/models/comment.rb">source</a>).</p>
+<table>
+<tr><th>Karma</th><th>Nombre d’avis quotidiens</th></tr>
+<tr><td>-30 ou moins</td><td>0</td></tr>
+<tr><td>-29 à -20</td><td>1</td></tr>
+<tr><td>-19 à -10</td><td>2</td></tr>
+<tr><td>-9 à 9</td><td>3</td></tr>
+<tr><td>10 à 19</td><td>4</td></tr>
+<tr><td>20 à 29</td><td>5</td></tr>
+<tr><td>30 à 39</td><td>6</td></tr>
+<tr><td>…</td><td>… (enlever le chiffre des unités et ajouter 3)</td></tr>
+<tr><td>970 ou plus</td><td>100</td></tr>
+</table>
+
+<p>Le score de base des commentaires dépend du karma. La formule mathématique est <code>E(log10(karma)) - 1</code>, où <code>E()</code> est la partie entière inférieure si le karma est strictement positif. Et c’est <code>max(-10, -2 + E(karma/30))</code> pour un karma négatif ou nul. Avec un karma à 0, ça donne un score de -2 (<a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/app/models/comment.rb">source</a>). En français cela donne le tableau qui suit.</p>
+
+<table>
+<tr><th>Karma</th><th>Score de base des commentaires</th></tr>
+<tr><td>-240 ou moins </td><td>-10</td></tr>
+<tr><td>-239 à -210</td><td>-9</td></tr>
+<tr><td>-209 à -180</td><td>-8</td></tr>
+<tr><td>-179 à -150</td><td>-7</td></tr>
+<tr><td>-149 à -120</td><td>-6</td></tr>
+<tr><td>-119 à -90</td><td>-5</td></tr>
+<tr><td>-89 à -60</td><td>-4</td></tr>
+<tr><td>-59 à -30</td><td>-3</td></tr>
+<tr><td>-29 à 0</td><td>-2</td></tr>
+<tr><td>1 à 9</td><td>-1</td></tr>
+<tr><td>10 à 99</td><td>0</td></tr>
+<tr><td>100 à 999</td><td>1</td></tr>
+<tr><td>1000 à 9999</td><td>2</td></tr>
+<tr><td>10000 à 99999</td><td>3</td></tr>
+<tr><td>…</td><td>… (nombre de chiffres moins 2)</td></tr>
+<tr><td>10 milliards</td><td>10</td></tr>
+</table>
 
 <p>Pour pouvoir écrire un journal, publier un lien ou discuter sur la tribune, il faut avoir un karma supérieur strictement à 0, et pour éditer une page de wiki, il faut un karma strictement supérieur à 20 (sources <a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/app/models/diary.rb">journal</a>, <a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/app/models/bookmark.rb">lien</a>, <a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/app/models/wiki_page.rb">wiki</a> et <a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/app/models/account.rb">tribune</a>).</p>
 
