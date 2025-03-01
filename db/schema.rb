@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_01_132606) do
+ActiveRecord::Schema[7.2].define(version: 2023_10_01_132606) do
   create_table "accounts", id: :integer, charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "user_id"
     t.string "login", limit: 40, null: false, collation: "utf8mb4_bin"
@@ -205,7 +205,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_01_132606) do
     t.index ["user_id"], name: "index_nodes_on_user_id"
   end
 
-  create_table "oauth_access_grants", id: :integer, charset: "utf8", force: :cascade do |t|
+  create_table "oauth_access_grants", id: :integer, charset: "utf8mb3", collation: "utf8mb3_general_ci", force: :cascade do |t|
     t.integer "resource_owner_id", null: false
     t.integer "application_id", null: false
     t.string "token", null: false
@@ -219,7 +219,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_01_132606) do
     t.index ["token"], name: "index_oauth_access_grants_on_token", unique: true
   end
 
-  create_table "oauth_access_tokens", id: :integer, charset: "utf8", force: :cascade do |t|
+  create_table "oauth_access_tokens", id: :integer, charset: "utf8mb3", collation: "utf8mb3_general_ci", force: :cascade do |t|
     t.integer "resource_owner_id"
     t.integer "application_id", null: false
     t.string "token", null: false
@@ -234,7 +234,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_01_132606) do
     t.index ["token"], name: "index_oauth_access_tokens_on_token", unique: true
   end
 
-  create_table "oauth_applications", id: :integer, charset: "utf8", force: :cascade do |t|
+  create_table "oauth_applications", id: :integer, charset: "utf8mb3", collation: "utf8mb3_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "uid", null: false
     t.string "secret", null: false

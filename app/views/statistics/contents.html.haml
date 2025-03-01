@@ -22,16 +22,16 @@
     - else
       %h2#type Répartition par type
     %ul
-      %li #{pluralize @stats.contents["Diary"], "journal", "journaux"}
-      %li #{pluralize @stats.contents["Post"], "entrée"} de forums
+      %li #{pluralize @stats.contents["Diary"] || 0, "journal", "journaux"}
+      %li #{pluralize @stats.contents["Post"] || 0, "entrée"} de forums
       %li
-        #{pluralize @stats.contents["News"], "dépêche"}, plus #{@stats.news["draft"]} en rédaction, #{@stats.news["candidate"]} en modération, #{pluralize @stats.news["refused"], "refusée"} (et encore en base de données).
+        #{pluralize @stats.contents["News"] || 0, "dépêche"}, plus #{@stats.news["draft"]} en rédaction, #{@stats.news["candidate"]} en modération, #{pluralize @stats.news["refused"] || 0, "refusée"} (et encore en base de données).
         - if @stats.contents["News"].to_i > 0
-          = "Publication sous #{pluralize @stats.nb_news_authors, "nom"} par #{pluralize @stats.nb_news_accounts, "utilisateur"}."
-      %li #{pluralize @stats.contents["Tracker"], "entrée"} dans le système de suivi
-      %li #{pluralize @stats.contents["Poll"], "sondage"}
-      %li #{pluralize @stats.contents["WikiPage"], "page"} de wiki
-      %li #{pluralize @stats.contents["Bookmark"], "lien"}
+          = "Publication sous #{pluralize @stats.nb_news_authors || 0, "nom"} par #{pluralize @stats.nb_news_accounts || 0, "utilisateur"}."
+      %li #{pluralize @stats.contents["Tracker"] || 0, "entrée"} dans le système de suivi
+      %li #{pluralize @stats.contents["Poll"] || 0, "sondage"}
+      %li #{pluralize @stats.contents["WikiPage"] || 0, "page"} de wiki
+      %li #{pluralize @stats.contents["Bookmark"] || 0, "lien"}
 
     - if @stats.contents["Total"] > 1
       %h2#annee Répartition annuelle des #{@stats.contents["Total"]} contenus
@@ -72,7 +72,7 @@
         - content.each do |type,cnt|
           %tr
             -if newyear
-              %td{'class' => 'stat','rowspan' => content.count}= month.sub(/(\d{4})(\d{2})/, '\2 \1')
+              %td{'class' => 'stat','rowspan' => content.count}= month&.sub(/(\d{4})(\d{2})/, '\2 \1')
               - newyear = false
             %td
               .stat.stats100px(class="content#{type.downcase()}") #{translate_content_type(type)}
