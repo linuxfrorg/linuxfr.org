@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails",                   "~>7.1"
+gem "rails",                   "~>7.2"
 
 gem "actionpack-page_caching"
 gem "acts_as_list",            "~>1.1"
@@ -22,7 +22,7 @@ gem "french_rails",            "~>0.5", github: "linuxfrorg/french-rails"
 gem "friendly_id",             "~>5.1"
 gem "haml",                    "~>6.3"
 gem "htmlentities",            "~>4.3"
-gem "html-pipeline-linuxfr",   "~>0.17", github: "linuxfrorg/html-pipeline-linuxfr"
+gem "html-pipeline-linuxfr",   "~>0.17", github: "Trim/html-pipeline-linuxfr"
 gem "html_spellchecker",       "~>0.1"
 gem "html_truncator",          "~>0.4"
 gem "inherited_resources",     "~>1.8"

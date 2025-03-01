@@ -12,7 +12,7 @@ Rails.application.config.assets.precompile += %w[feather-icons/dist/icons/arrow-
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-# Rails.application.config.assets.precompile += %w( admin.js admin.css )
+# Rails.application.config.assets.precompile += %w[ admin.js admin.css ]
 Rails.application.config.assets.precompile += %w[sorttable.js]
 Dir.chdir(Rails.root.join("app/assets/stylesheets")) do
   Rails.application.config.assets.precompile += Dir["contrib/*"].map { |s| s.sub ".scss", ".css" }
