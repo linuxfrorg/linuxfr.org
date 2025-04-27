@@ -1,5 +1,7 @@
 ## Redis schema
 
+### Database non-cache (by default db 0)
+
 Key                                            | Type   | Value                 | Expiration | Description
 -----------------------------------------------|--------|---------------------------------------------------------
 `block/<account_id>`                           | string |           1           |   x days   | Not allowed to comment
@@ -12,8 +14,8 @@ Key                                            | Type   | Value                 
 `dashboard/<account_id>`                       |  set   |      `<node_id>`      |   1 week   | Notifications from answers
 `img/<uri>`                                    |  hash  |                       |     no     | Images, with fields 'created_at': seconds since Epoch, 'status': 'Blocked' if administratively blocked (by moderation), 'type': content-type like 'image/jpeg' (set by `img` daemon), 'checksum': SHA1 (set by `img` daemon), and 'etag': etag (set by `img` daemon)
 `img/blocked`                                  |  list  |         URIs          |     no     | Images blocked by moderation team
-`img/err/<uri>`                                | string |         error         |     1h     | Image fetch in error, like "Invalid content-type", created by `img` daemon
-`img/latest`                                   |  list  |         URIs          | no, limited| Last images as `<uri>`, limited to NB_IMG_IN_LATEST = 100
+`img/err/<uri>`                                | string |         error         |     no     | Images in error, like "Invalid content-type", created by `img` daemon but removed by `dlfp`
+`img/latest`                                   |  list  |         URIs          | no, limited| Last images, limited to NB_IMG_IN_LATEST = 100
 `img/updated/<uri>`                            | string |        modtime        |     1h     | Cached images, created by `img` daemon, value like "Thu, 12 Dec 2013 12:28:47 GMT"
 `lang`                                         |  list  |     2-letters code    |     no     | Langages
 `lang/<xx>`                                    | string |      language name    |     no     | Language name
@@ -37,3 +39,12 @@ Key                                            | Type   | Value                 
 `users/<login>/nb_votes`                       | string |        integer        |     no     | Total number of news voted in moderation, per moderator
 `users/<login>/nb_votes/<day_of_year>`         | string |        integer        |  31 days   | Number of news voted in moderation this day, per moderator
 `users/<user_id>/diff_karma`                   | string |        integer        |     no     | Karma change due to votes on comments/nodes, daily clean by cron
+
+### Database cache-store (by default db 1)
+
+Key                                                  | Type   | Value           | Expiration | Description
+-----------------------------------------------------|--------|---------------------------------------------------
+`views/home/index:<xxx>/home/<order>/<current_page>` | string | cache entry     |   1 min    | Homepage content ordering (unauthenticated access)
+`views/layouts/application:<xxx>/layouts/footer`     | string | cache entry     |   1 min    | Site layout
+`views/news/show:<xxx>/news/show/<news_slug>`        | string | cache entry     |   1 min    | News (unauthenticated access)
+`views/tags/_near:<xxx>/near_tags/<tag_name>`        | string | cache entry     |   1 min    | Near tags
