@@ -40,6 +40,7 @@ $PX_MARGE_GAUCHE: 42px;
 $PX_MARGE_DROITE: 30px;
 $PX_BANDEAU: 7px;
 $PX_BRANDING_LARG: 201px;
+$PX_BODY_BORDER_WIDTH_LEFT_RIGHT: 1px;
 $PX_SITE_PAD_DROIT: 42px;
 $PX_CONT_TOP: 34px;
 
@@ -88,15 +89,11 @@ body {
   max-width: 150ex;
   margin: 0 auto;
   border: solid $C_BORDER_FONCE;
-  border-width: 0 1px;
-  background: linear-gradient(
-      90deg,
-      $C_CLAIR,
-      $C_CLAIR $PX_BRANDING_LARG,
-      $C_CONTAINER $PX_BRANDING_LARG,
-      $C_CONTAINER
-    )
-    #fff;
+  border-width: 0 $PX_BODY_BORDER_WIDTH_LEFT_RIGHT;
+  background-repeat: no-repeat;
+  background-size: $PX_BRANDING_LARG + $PX_BODY_BORDER_WIDTH_LEFT_RIGHT, auto;
+  background-position: 0, $PX_BRANDING_LARG + $PX_BODY_BORDER_WIDTH_LEFT_RIGHT;
+  background-image: linear-gradient($C_CLAIR, $C_CLAIR), linear-gradient($C_CONTAINER, $C_CONTAINER);
 }
 
 a {
@@ -360,7 +357,6 @@ a.edit_client_app,
   width: $PX_BRANDING_LARG;
   text-align: left;
   font-size: 0.8em;
-  background: $C_CLAIR;
 
   a {
     font-weight: inherit;
