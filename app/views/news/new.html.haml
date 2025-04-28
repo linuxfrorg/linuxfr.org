@@ -11,7 +11,7 @@
       = list_of(news) do |news|
         = link_to news.title, [:redaction, news]
 
-  = render "preview", preview: @news if @preview_mode
+  = render "preview", preview: @news if @preview_mode and @news.valid?
 
   = form_for setup_news(@news), url: '/news' do |form|
     = render form

@@ -6,4 +6,4 @@
   = form.text_field :message, autocomplete: 'off', spellcheck: 'true', maxlength: 250, size: 80
 %p
   = form.submit "Prévisualiser", id: "wiki_preview"
-  = form.submit (form.object.new_record? ? "Créer" : "Mettre à jour") if @preview_mode
+  = form.submit (form.object.new_record? ? "Créer" : "Mettre à jour") if @preview_mode and @wiki_page.valid?

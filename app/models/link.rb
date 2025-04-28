@@ -25,10 +25,12 @@ class Link < ActiveRecord::Base
   Accessible = [:id, :user, :title, :url, :lang]
 
   validates :title, presence: { message: "Un lien doit obligatoirement avoir un titre" },
-                    length: { maximum: 100, message: "Le titre est trop long" }
+                    length: { maximum: 100, message: "Le titre du lien est trop long" }
   validates :url, http_url: { protocols: PROTOCOLS, message: "L'adresse n'est pas valide" },
                   presence: { message: "Un lien doit obligatoirement avoir une adresse" },
                   length: { maximum: 255, message: "L’adresse est trop longue" }
+  validates :lang, inclusion: { in: Lang.valid_codes, allow_nil: false, message: "La langue du lien doit être définie" }
+
 
   def url=(raw)
     raw.strip!
