@@ -353,6 +353,7 @@ class Account < ActiveRecord::Base
                          512 => :show_negative_nodes,
                         1024 => :bookmarks_on_home,
                         2048 => :board_in_sidebar,
+                        4096 => :show_email,
                          scopes: false
 
   def types_on_home
