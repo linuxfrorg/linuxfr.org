@@ -2,7 +2,7 @@
 
 %p
   = form.label :title, "Sujet du lien"
-  = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 100
+  = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 160
 %p
   = form.label :link, "Lien à partager"
   = form.text_field :link, autocomplete: 'off', required: 'required', spellcheck: 'false', maxlength: 1024
