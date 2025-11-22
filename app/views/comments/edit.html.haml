@@ -2,7 +2,7 @@
   =h1 "Éditer un commentaire"
 
   %div#comments
-    = render "preview", preview: @comment if @preview_mode
+    = render "preview", preview: @comment if @preview_mode and @comment.valid?
 
   = form_for [@comment.node, @comment] do |form|
     = render form
