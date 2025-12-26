@@ -91,7 +91,7 @@ GEM
       rake (>= 10.4, < 13.0)
     ansi (1.5.0)
     arel (9.0.0)
-    bcrypt (3.1.12)
+    bcrypt (3.1.13)
     better_errors (2.5.0)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -124,10 +124,10 @@ GEM
     crass (1.0.6)
     daemons (1.2.6)
     debug_inspector (0.0.3)
-    devise (4.6.2)
+    devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 6.0)
+      railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
     dimensions (1.3.0)
@@ -273,9 +273,9 @@ GEM
       ffi (~> 1.0)
     redcarpet (3.4.0)
     redis (4.0.2)
-    responders (2.4.1)
-      actionpack (>= 4.2.0, < 6.0)
-      railties (>= 4.2.0, < 6.0)
+    responders (3.0.0)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     rinku (2.0.4)
     sanitize (4.6.6)
       crass (~> 1.0.2)
@@ -348,7 +348,7 @@ DEPENDENCIES
   capistrano-maintenance
   carrierwave (~> 1.1)
   coffee-rails (~> 4.1)
-  devise (~> 4.3)
+  devise (~> 4.7)
   diff_match_patch!
   doorkeeper (~> 4.2)
   ffi-hunspell!
