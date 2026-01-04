@@ -5,7 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails",                   "~>8.0.2"
+gem "rails",                   "~>8.1.0"
+
+# Latest 6.0.1 is not starting any tests
+gem 'minitest', '< 6.0'
 
 gem "actionpack-page_caching"
 gem "acts_as_list",            "~>1.1"
@@ -18,11 +21,11 @@ gem "devise",                  "~>4.3"
 gem "diff_match_patch",        github: "nono/diff_match_patch-ruby", require: "diff_match_patch"
 gem "doorkeeper"
 gem "ffi-hunspell",            github: "postmodern/ffi-hunspell"
-gem "french_rails",            "~>0.5", github: "linuxfrorg/french-rails"
+gem "french_rails",            "~>0.7", github: "echarp/french-rails"
 gem "friendly_id",             "~>5.1"
 gem "haml",                    "~>6.3"
 gem "htmlentities",            "~>4.3"
-gem "html-pipeline-linuxfr",   "~>0.17", github: "Trim/html-pipeline-linuxfr"
+gem "html-pipeline-linuxfr",   "~>0.17", github: "echarp/html-pipeline-linuxfr"
 gem "html_spellchecker",       "~>0.1"
 gem "html_truncator",          "~>0.4"
 gem "inherited_resources",     "~>1.8"

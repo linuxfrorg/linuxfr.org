@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module LinuxfrOrg
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 8.0
+    config.load_defaults 8.1
 
     config.action_view.button_to_generates_button_tag = false
 
@@ -37,6 +37,7 @@ module LinuxfrOrg
     # in config/environments, which are processed later.
     #
     config.time_zone = "Paris"
+    # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.to_prepare do
