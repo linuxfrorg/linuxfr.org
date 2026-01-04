@@ -23,7 +23,7 @@ class Admin::SectionsControllerTest < ActionDispatch::IntegrationTest
     follow_redirect!
 
     assert_response :success
-    assert_select "p", "Il vous reste\n0\navis"
+    assert_select "p", "Il vous reste 0 avis"
   end
 
   test "should not create section" do

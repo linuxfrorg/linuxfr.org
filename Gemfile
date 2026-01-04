@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails",                   "~>7.2"
+gem "rails",                   "~>8.0.2"
 
 gem "actionpack-page_caching"
 gem "acts_as_list",            "~>1.1"
@@ -55,7 +55,6 @@ group :development do
   gem "letter_opener"
   gem "listen",                github: "guard/listen"
   gem "puma"
-  gem "spring"
   gem "web-console"
 end
 

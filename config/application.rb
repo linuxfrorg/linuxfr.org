@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module LinuxfrOrg
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.2
+    config.load_defaults 8.0
 
     config.action_view.button_to_generates_button_tag = false
 
