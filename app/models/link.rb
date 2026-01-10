@@ -31,7 +31,6 @@ class Link < ActiveRecord::Base
                   length: { maximum: 255, message: "L’adresse est trop longue" }
   validates :lang, inclusion: { in: Lang.valid_codes, allow_nil: false, message: "La langue du lien doit être définie" }
 
-
   def url=(raw)
     raw.strip!
     return write_attribute :url, nil if raw.blank?
@@ -44,6 +43,11 @@ class Link < ActiveRecord::Base
   # Let raw value if error when parsed, HttpUrlValidator will manage it
   rescue URI::InvalidURIError
     write_attribute :url, raw
+  end
+
+  def title=(raw)
+    raw.strip!
+    write_attribute :title, raw
   end
 
 ### Behaviour ###

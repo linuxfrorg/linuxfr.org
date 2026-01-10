@@ -13,7 +13,7 @@
       = form.text_field :pot_de_miel
 %p
   = form.label :title, "Titre de la dépêche"
-  = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 100
+  = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 160
 %p
   = form.label :section_id, "Section de la dépêche"
   = form.collection_select :section_id, Section.published, :id, :title, { include_blank: true }, { required: "required" }

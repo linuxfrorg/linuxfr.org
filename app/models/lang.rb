@@ -9,7 +9,7 @@ class Lang
   end
 
   def self.valid_codes
-    $redis.lrange("lang", 0, -1).difference(["xx"])
+    $redis.lrange("lang", 0, -1) - ["xx"]
   end
 
   def self.[]=(key, value)

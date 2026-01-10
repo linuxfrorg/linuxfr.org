@@ -59,13 +59,18 @@ class News < Content
   scope :with_node_ordered_by, ->(order) { joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
 
   validates :title,        presence: { message: "Le titre est obligatoire" },
-                           length: { maximum: 100, message: "Le titre est trop long" }
+                           length: { maximum: 160, message: "Le titre est trop long" }
   validates :body,         presence: { message: "Nous n’acceptons pas les dépêches vides" }
   validates :section,      presence: { message: "Veuillez choisir une section pour cette dépêche" }
   validates :author_name,  presence: { message: "Veuillez entrer votre nom" },
                            length: { maximum: 32, message: "Le nom de l’auteur est trop long" }
   validates :author_email, presence: { message: "Veuillez entrer votre adresse de courriel" },
                            length: { maximum: 64, message: "L’adresse de courriel de l’auteur est trop longue" }
+
+  def title=(raw)
+    raw.strip!
+    write_attribute :title, raw
+  end
 
 ### SEO ###
 

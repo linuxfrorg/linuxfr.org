@@ -46,7 +46,9 @@ class NewsController < ApplicationController
       redirect_to news_index_url, notice: "Votre proposition de dépêche a bien été soumise, et sera modérée dans les heures ou les jours à venir"
     else
       @news.node = Node.new(cc_licensed: @news.cc_licensed)
-      @news.node.preview_tags = params[:tags]
+      if params.include?(:tags)
+        @news.node.preview_tags = params[:tags]
+      end
       @news.valid?
       render :new
     end

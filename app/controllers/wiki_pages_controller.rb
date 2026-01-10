@@ -33,7 +33,9 @@ class WikiPagesController < ApplicationController
 
   def new
     @wiki_page = WikiPage.new
-    @wiki_page.title = params[:title]
+    if params.include?(:title)
+      @wiki_page.title = params[:title]
+    end
     return not_enough_karma('pages de wiki') unless @wiki_page.creatable_by?(current_account)
     enforce_create_permission(@wiki_page)
   end
