@@ -99,8 +99,8 @@ services:
     networks:
       default:
         aliases:
-          - ${DOMAIN}
-          - ${IMAGE_DOMAIN}
+          - $${DOMAIN}
+          - $${IMAGE_DOMAIN}
 
   database:
     build:
