@@ -19,10 +19,25 @@ LinuxFr.org development environment with the Docker engine and
 See also
 --------
 
-If you want the full stack for running LinuxFr.org, you should also look at:
+Overview of LinuxFr.org stack:
 
-* [The admin files](https://github.com/linuxfrorg/admin-linuxfr.org)
-* [The migration script](https://github.com/linuxfrorg/migration-linuxfr.org)
+```mermaid
+graph TD
+  J(share linuxfrorg/share-linuxfr.org) -->|HTTP| K[\third party social networks/]
+  A[/browser/webclient\] -->|HTTP| B[web front nginx]
+  D("img cache linuxfrorg/img-LinuxFr.org") -->|HTTP| G[\third party web sites/]
+  B -->|HTTP, IP socket| D
+  B -->|HTTP, unix socket| I("board linuxfrorg/board-sse-linuxfr.org")
+  B -->|HTTP, unix socket| C("RoR site linuxfrorg/linuxFr.org")
+  D --> F[Redis cache]
+  I --> F
+  C --> F
+  J --> F
+  C --> E[SQL database MariaDB]
+  C -->|HTTP, IP socket| Y("svgtex maths & LaTeX linuxfrorg/svgtex")
+  B <-->|HTTP,IP socket| H("epub converter linuxfrorg/epub-LinuxFr.org")
+```
+
 * [The board daemon](https://github.com/linuxfrorg/board-sse-linuxfr.org)
 * [The share daemon](https://github.com/linuxfrorg/share-LinuxFr.org)
 * [The epub daemon](https://github.com/linuxfrorg/epub-LinuxFr.org)
