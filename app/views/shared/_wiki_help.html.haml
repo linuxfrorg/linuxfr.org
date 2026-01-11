@@ -1,7 +1,9 @@
 .markdown_cheatsheet
   = image_tag "/images/markdown.png", alt: "Markdown", title: "Ce site prend en charge la syntaxe Markdown", class: "markdown"
   %h2 Aide‑mémoire sur la syntaxe Markdown
-  Voir la <a href="/wiki/aide-edition" title="Lien du wiki interne LinuxFr.org">documentation</a> sur le wiki.
+  Voir la <a href="/wiki/aide-edition" title="Lien du wiki interne LinuxFr.org">page de documentation détaillée</a> sur le wiki avec des exemples Markdown et leur rendu. Ci-dessous l'essentiel :
+
+  %hr
 
   %table#wiki_help
     %tbody
@@ -22,7 +24,7 @@
         %td multiplication ×
       %tr
         %td Alt Gr + :
-        %td ·
+        %td point médian ·
       %tr
         %td Alt Gr + Maj + :
         %td division ÷
@@ -63,11 +65,17 @@
         %td ![LinuxFr.org](https://linuxfr.org/images/sections/27.png)
         %td <img src="https://linuxfr.org/images/sections/27.png" alt="LinuxFr.org"/>
       %tr
-        %td [Kernel](https://www.kernel.org/)
-        %td <a href="https://www.kernel.org/">Kernel</a>
+        %td [Kernel.org](https://www.kernel.org/)
+        %td <a href="https://www.kernel.org/">Kernel.org</a>
       %tr
         %td [[Wikipédia]]
         %td <a href="https://fr.wikipedia.org/wiki/Wikipédia">Wikipédia</a>
+      %tr
+        %td [[de:Wikipedia]]
+        %td <a href="https://fr.wikipedia.org/wiki/de:Wikipedia">Wikipedia</a> (redirige vers Wikipédia germanophone)
+      %tr
+        %td [[wikt:brocoli]]
+        %td <a href="https://fr.wikipedia.org/wiki/wikt:brocoli">Wikipedia</a> (redirige vers Wiktionary francophone)
       %tr
         %td [[[Wiki]]] interne
         %td <a href="/wiki/Wiki">Wiki</a> interne
