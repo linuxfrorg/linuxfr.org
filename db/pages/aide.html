@@ -48,6 +48,14 @@
     </ul>
   </li>
 
+  <li>Écrire sur le site en syntaxe Markdown
+    <ul>
+      <li><a href="#aide-markdown">Syntaxe Markdown</a></li>
+      <li><a href="#aide-imagesexternes">Affichage d’images distantes</a></li>
+      <li><a href="#aide-sommaires">Avoir un sommaire</a></li>
+    </ul>
+  </li>
+
   <li>Questions techniques
     <ul>
       <li><a href="#aide-cookies" class="anchor">Quels sont les cookies utilisés par le site ?</a></li>
@@ -387,7 +395,7 @@ Vous pouvez gagner des livres des éditions <a href="https://www.editions-eyroll
 <li>soit il s’agit d’un compte fermé, auquel cas il faut <a href="mailto:team@linuxfr.org">envoyer une demande aux administrateurs</a> pour réouverture du compte (les courriels nécessitent une confirmation de votre part) ; un compte peut avoir été <a href="#aide-fermercompte">fermé par l’utilisateur ou l’utilisatrice</a>, <a href="#aide-fermercompteadmin">par une personne de l’équipe d’administration</a> sur demande de l’utilisateur, ou pour non‑respect des <a href="/regles_de_moderation">règles de modération en vigueur sur le site</a>, ou pour <a href="#aide-fermercompteinactivite">cause d’inactivité</a>.</li>
 </ul>
 
-<p>Note historique : afin de mieux sécuriser les mots de passe des comptes (voir la dépêche « <a href="https://linuxfr.org/news/un-an-apres-la-mise-a-jour-majeure-du-site-grand-nettoyage-dans-les-comptes-utilisateur">Un an après la mise à jour majeure du site, grand nettoyage dans les comptes utilisateur</a> »), nous avons fermé le 31 mars 2012 les environ 35 000 comptes personnels qui n’avaient pas été utilisés entre le 20 février 2011 et le 31 mars 2012, après plusieurs relances par courriel sur les adresses de comptes concernés.</p>
+<p>Note historique : afin de mieux sécuriser les mots de passe des comptes (voir la dépêche « <a href="https://linuxfr.org/news/un-an-apres-la-mise-a-jour-majeure-du-site-grand-nettoyage-dans-les-comptes-utilisateur">Un an après la mise à jour majeure du site, grand nettoyage dans les comptes utilisateur</a> »), nous avons fermé le 31 mars 2012 les environ 35 000 comptes personnels qui n’avaient pas été utilisés entre le 20 février 2011 et le 31 mars 2012, après plusieurs relances par courriel sur les adresses de comptes concernés.</p>
 
 <h2 id="aide-fermercompte">Fermeture volontaire de son compte <a href="#aide-fermercompte" class="anchor">¶</a></h2>
 
@@ -515,6 +523,41 @@ Seule l’équipe d’administration peut réaliser cette opération, définitiv
   <li>les listes de contenus ayant une étiquette non publique ;</li>
   <li>les éditions précédentes des pages wiki.</li>
 </ul>
+
+<h2 id="aide-imagesexternes">Affichage d’images distantes <a href="#aide-imagesexternes" class="anchor">¶</a></h2>
+
+<p>La syntaxe Markdown suivante permet de gérer l’affichage d’images provenant des sites tiers :<br>
+<code>![description textuelle](adresse "titre optionnel")</code><p>
+
+<p>Remarque : la description textuelle est importante pour être accessible à tout le monde, en proposant du texte de remplacement au contenu non textuel, en permettant aux personnes qui ne sont pas en mesure de voir les informations visuelles d’y avoir accès via un lecteur d’écran. Le titre optionnel s’affiche lors d’un survol à la souris par exemple.</p>
+
+<p>Pour que l’image soit affichée comme attendu, il faut :</p>
+
+<ul>
+<li>que l’adresse donnée soit correcte, sans caractère erroné, oublié ou excédentaire ;</li>
+<li>que le site tiers existe, réponde au moment où LinuxFr.org demande l’image, ne soit pas indisponible ou trop lent ;</li>
+<li>que le site tiers n’exige pas d’authentification, de <i><a href="https://fr.wikipedia.org/wiki/CAPTCHA">captcha</a></i> ou de vérification préalable à l’accès à l’image ;</li>
+<li>que le site tiers renvoie bien une image (et pas une page web par exemple) et que techniquement il indique bien renvoyer une image (voir la page Wikipedia <a href="https://fr.wikipedia.org/wiki/Type_de_m%C3%A9dias">type de médias</a> ou <em>Content-Type</em>) ;</li>
+<li>que ce type d’image soit accepté par notre service <i>img</i> (JPEG, GIF, PNG, SVG, TIFF, BMP, etc.) ;</li>
+<li>que le poids en octets de l’image soit inférieur à 5 MiB ;</li>
+<li>que l’adresse donnée n’ait pas été bloquée par l’équipe de modération (spam, contenu illégal, etc.).
+</ul>
+
+<p>Une fois récupérée, l’image est mise en cache pour être servie ensuite depuis LinuxFr.org (depuis <em>img.linuxfr.org</em> plus précisément), ce qui permet d’offrir de l’HTTPS, sans que les équipes d’administration des différents sites tiers voient les adresses de notre lectorat, sans charger leur site de multiples requêtes et de conserver les images en cas de disparition des sites tiers.</p>
+
+<p>Pour plus de détails, vous pouvez vous référer à cette description d’<a href="https://linuxfr.org/news/img-le-cache-d-images-sur-linuxfr-org"><i>img</i>, le cache d’images utilisé sur le site</a>.
+
+<h2 id="aide-markdown">Syntaxe Markdown <a href="#aide-markdown" class="anchor">¶</a></h2>
+
+<p>Les contenus (à l’exception des liens et d’anciennes dépêches antérieures à 2011) et les commentaires du site sont écrits en <a href="https://fr.wikipedia.org/wiki/Markdown">syntaxe Markdown</a>, « <i>un langage de balisage léger</i> » avec « <i>une syntaxe, facile à lire et à écrire, en l’état, sans formatage</i> ». Une interface graphique d’assistance à cette syntaxe est présente sur chaque page d’édition de contenus ou commentaires, ainsi qu’un aide-mémoire rappelant les principaux éléments.</p>
+
+<p>Il existe aussi une <a href="https://linuxfr.org/wiki/aide-edition">page de documentation détaillée sur le wiki avec des exemples Markdown et leur rendu</a>.</p>
+
+<h2 id="aide-sommaires">Avoir un sommaire <a href="#aide-sommaires" class="anchor">¶</a></h2>
+
+<p>Lorsque le texte d’un contenu (à l’exception des liens et d’anciennes dépêches antérieures à 2011) ou d’un commentaire devient suffisamment long, un sommaire est automatiquement crée à partir des titres déclarés en syntaxe Markdown. Actuellement, il faut un texte d’au moins 5 000 caractères (<a href="https://github.com/linuxfrorg/html-pipeline-linuxfr/blob/e570c7b39cad147958f582f5eab17ee7ed6694a0/lib/html/pipeline/linuxfr.rb#L6">source</a>).</p>
+
+<p>Pour une dépêche, le sommaire peut être créé pour chaque partie de la dépêche. Comme il est déconseillé d’avoir une première partie trop longue, en pratique seule la seconde partie aura un sommaire si elle contient elle-même les 5 000 caractères.</p>
 
 <h2 id="aide-cookies">Quels sont les cookies utilisés par le site ? <a href="#aide-cookies" class="anchor">¶</a></h2>
 
