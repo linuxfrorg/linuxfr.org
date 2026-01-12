@@ -50,6 +50,11 @@ class Comment < ApplicationRecord
     self.body = wikify(wiki_body, nofollow: nofollow)
   end
 
+  def title=(raw)
+    raw.strip!
+    write_attribute :title, raw
+  end
+
 ### Reading status ###
 
   # Returns true if this comment has been read by the given user,

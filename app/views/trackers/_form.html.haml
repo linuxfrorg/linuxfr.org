@@ -5,7 +5,7 @@
   = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 100
 %p
   = form.label :category_id, "Catégorie"
-  = form.collection_select :category_id, Category.all, :id, :title
+  = form.collection_select :category_id, Category.all, :id, :title, { include_blank: true }, { required: "required" }
 - if @tracker.new_record?
   %p.pot_de_miel
     = form.label :pot_de_miel, "Ne pas remplir ce champ"
@@ -23,4 +23,4 @@
       = form.collection_select :assigned_to_user_id, Account.tracker_admin, :user_id, :login, include_blank: true
 %p
   = form.submit "Prévisualiser", id: "tracker_preview"
-  = form.submit "Soumettre", 'data-disable-with' => "Enregistrement en cours" if @preview_mode || @tracker.persisted?
+  = form.submit "Soumettre", 'data-disable-with' => "Enregistrement en cours" if (@preview_mode || @tracker.persisted?) and @tracker.valid?

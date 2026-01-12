@@ -23,15 +23,22 @@ class Post < Content
 
   belongs_to :forum
 
+  validates_associated :forum, message: "Vous devez choisir un forum"
+
   scope :with_node_ordered_by, ->(order) { joins(:node).where("nodes.public = 1").order("nodes.#{order} DESC") }
 
   validates :forum,     presence: { message: "Vous devez choisir un forum" }
   validates :title,     presence: { message: "Le titre est obligatoire" },
-                        length: { maximum: 100, message: "Le titre est trop long" }
+                        length: { maximum: 160, message: "Le titre est trop long" }
   validates :wiki_body, presence: { message: "Vous ne pouvez pas poster une entrée de forum vide" }
 
   wikify_attr   :body
   truncate_attr :body
+
+  def title=(raw)
+    raw.strip!
+    write_attribute :title, raw
+  end
 
 ### SEO ###
 

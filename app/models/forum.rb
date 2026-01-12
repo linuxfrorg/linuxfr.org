@@ -31,6 +31,11 @@ class Forum < ApplicationRecord
   extend FriendlyId
   friendly_id
 
+  def title=(raw)
+    raw.strip!
+    write_attribute :title, raw
+  end
+
 ### Workflow ###
 
   state_machine :state, initial: :active do

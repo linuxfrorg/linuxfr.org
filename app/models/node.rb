@@ -160,7 +160,11 @@ class Node < ApplicationRecord
   attr_reader :preview_tags
 
   def preview_tags=(list)
-    @preview_tags = TagList.new(list)
+    if list.nil?
+      @preview_tags = TagList.new
+    else
+      @preview_tags = TagList.new(list)
+    end
   end
 
   def set_taglist(list, user_id)

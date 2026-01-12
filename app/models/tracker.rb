@@ -28,16 +28,24 @@ class Tracker < Content
   belongs_to :assigned_to_user, class_name: "User", optional: true
   belongs_to :category
 
+  validates_associated :category, message: "Veuillez choisir une catégorie pour cette entrée de suivi"
+
   attr_accessor :pot_de_miel
 
   validates :title,     presence: { message: "Le titre est obligatoire" },
                         length: { maximum: 100, message: "Le titre est trop long" }
+  validates :category,  presence: { message: "Veuillez choisir une catégorie pour cette entrée de suivi" }
   validates :wiki_body, presence: { message: "Veuillez décrire cette entrée du suivi" }
 
   scope :opened, -> { where(state: "opened") }
 
   wikify_attr   :body
   truncate_attr :body
+
+  def title=(raw)
+    raw.strip!
+    write_attribute :title, raw
+  end
 
 ### SEO ###
 
