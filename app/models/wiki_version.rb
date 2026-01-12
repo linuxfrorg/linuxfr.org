@@ -22,6 +22,11 @@ class WikiVersion < ActiveRecord::Base
 
   validates :message, length: { maximum: 255, message: "Le message est trop long" }
 
+  def message=(raw)
+    raw.strip!
+    write_attribute :message, raw
+  end
+
 ### Append-only ###
 
   before_update :raise_on_update

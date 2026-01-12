@@ -27,7 +27,7 @@ class Diary < Content
   belongs_to :converted_news, class_name: 'News'
 
   validates :title,     presence: { message: "Le titre est obligatoire" },
-                        length: { maximum: 100, message: "Le titre est trop long" }
+                        length: { maximum: 160, message: "Le titre est trop long" }
   validates :wiki_body, presence: { message: "Vous ne pouvez pas poster un journal vide" }
 
   validate :convert_only_cc_licensed_diary, on: :convert

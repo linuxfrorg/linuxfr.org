@@ -8,4 +8,4 @@
   = form.text_area :wiki_body, required: 'required', spellcheck: 'true', class: 'markItUp', placeholder: "Vous pouvez écrire votre commentaire ici.\n\nMerci de rester poli et courtois, on compte sur vous !"
 %p
   = form.submit "Prévisualiser", id: "comment_preview"
-  = form.submit "Poster le commentaire", 'data-disable-with' => "Enregistrement en cours" if @preview_mode
+  = form.submit "Poster le commentaire", 'data-disable-with' => "Enregistrement en cours" if @preview_mode and @comment.valid?

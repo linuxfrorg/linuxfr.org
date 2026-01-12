@@ -2,13 +2,13 @@
 
 %p
   = form.label :title, "Sujet du lien"
-  = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 100
+  = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 160
 %p
   = form.label :link, "Lien à partager"
   = form.text_field :link, autocomplete: 'off', required: 'required', spellcheck: 'false', maxlength: 1024
 %p
   = form.label :lang, "Langue"
-  = form.select :lang, Lang.all
+  = form.select :lang, Lang.all, { include_blank: true }, { required: "required" }
 %p
 - if form.object.new_record?
   %p
@@ -16,4 +16,4 @@
     = text_field_tag :tags, nil, class: 'autocomplete', 'data-url' => autocomplete_tags_path, value: params[:tags], size: 100
 %p
   = form.submit "Prévisualiser", id: "bookmark_preview"
-  = form.submit "Poster le lien", 'data-disable-with' => "Enregistrement en cours" if @preview_mode
+  = form.submit "Poster le lien", 'data-disable-with' => "Enregistrement en cours" if @preview_mode and @bookmark.valid?

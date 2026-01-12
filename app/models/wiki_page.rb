@@ -31,6 +31,11 @@ class WikiPage < Content
                     exclusion: { in: reserved, message: "Ce titre est réservé pour une page spéciale" }
   validates :body,  presence: { message: "Le corps est obligatoire" }
 
+  def title=(raw)
+    raw.strip!
+    write_attribute :title, raw
+  end
+
 ### SEO ###
 
   extend FriendlyId

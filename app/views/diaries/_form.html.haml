@@ -2,7 +2,7 @@
 
 %p
   = form.label :title, "Sujet du journal"
-  = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 100
+  = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 160
 %p
   = form.label :wiki_body, "Journal complet"
   = form.text_area :wiki_body, required: 'required', spellcheck: 'true', class: 'markItUp'
@@ -15,4 +15,4 @@
     = form.label :cc_licensed, 'Je place ce document sous licence Creative Commons Attribution et Partage dans les mêmes conditions, version 4.0 (<a href="http://creativecommons.org/licenses/by-sa/4.0/deed.fr">licence CC By‑SA 4.0</a>)'.html_safe
 %p
   = form.submit "Prévisualiser", id: "diary_preview"
-  = form.submit "Poster le journal", 'data-disable-with' => "Enregistrement en cours" if @preview_mode
+  = form.submit "Poster le journal", 'data-disable-with' => "Enregistrement en cours" if @preview_mode and @diary.valid?

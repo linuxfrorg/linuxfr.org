@@ -44,6 +44,11 @@ class Poll < Content
     end
   end
 
+  def title=(raw)
+    raw.strip!
+    write_attribute :title, raw
+  end
+
 ### Associated node ###
 
   def create_node(attrs={})
