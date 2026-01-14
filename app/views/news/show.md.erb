@@ -1,6 +1,6 @@
 <%= render "nodes/front_matter", :content => @news %>
 
-<%= raw @news.wiki_body %>
+<%= raw @news.wiki_body.encode(universal_newline: true) %>
 
 ----
 
@@ -10,4 +10,4 @@
 
 ----
 
-<%= raw @news.wiki_second_part %>
+<%= raw @news.wiki_second_part.encode(universal_newline: true) %>
