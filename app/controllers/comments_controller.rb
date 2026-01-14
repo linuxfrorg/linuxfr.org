@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
 
   def show
     enforce_view_permission(@comment)
+    @dont_index = true if @comment.score < 0
   end
 
   def new
