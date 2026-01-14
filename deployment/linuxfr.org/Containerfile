@@ -1,11 +1,11 @@
-FROM docker.io/debian:bookworm-slim
+FROM docker.io/debian:trixie-slim
 
 LABEL org.opencontainers.image.title="LinuxFr.org website"
 LABEL org.opencontainers.image.description="Run LinuxFr.org Ruby on Rails website"
 LABEL org.opencontainers.image.source="https://github.com/linuxfrorg/linuxfr.org"
 LABEL org.opencontainers.image.url="https://github.com/linuxfrorg/linuxfr.org/blob/master/Container.md"
 LABEL org.opencontainers.image.licenses="AGPL-3.0-only"
-LABEL org.opencontainers.image.version="rails7-bookworm"
+LABEL org.opencontainers.image.version="rails8-trixie"
 LABEL org.opencontainers.image.authors="Adrien Dorsaz <adrien@adorsaz.ch>"
 
 ARG UID=1200
@@ -16,13 +16,12 @@ RUN \
   IFS=$'\n\t'; \
   apt-get update; \
   apt-get install -y --no-install-recommends --allow-downgrades \
-    mariadb-client libmariadb++-dev git \
-    build-essential openssl libreadline-dev curl libcurl4-openssl-dev zlib1g \
-    zlib1g-dev libssl-dev libxml2-dev libxslt-dev autoconf libgmp-dev libyaml-dev \
-    ncurses-dev bison automake libtool imagemagick libc6-dev hunspell \
-    hunspell-fr-comprehensive ruby ruby-dev ruby-rack \
-    nodejs; \
-  gem install bundler -v 2.4.20; \
+    default-mysql-server default-libmysqlclient-dev \
+    libmysql++-dev git build-essential openssl libreadline-dev curl \
+    libcurl4-openssl-dev zlib1g zlib1g-dev libssl-dev libxml2-dev libxslt-dev \
+    autoconf libgmp-dev libyaml-dev ncurses-dev bison automake libtool \
+    imagemagick libc6-dev hunspell hunspell-fr-comprehensive redis-server \
+    ruby ruby-bundler ruby-dev; \
   apt-get clean
 
 USER ${UID}
