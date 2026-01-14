@@ -41,7 +41,7 @@ class Comment < ApplicationRecord
   }
 
   validates :title,     presence: { message: "Le titre est obligatoire" },
-                        length: { maximum: 100, message: "Le titre est trop long" }
+                        length: { maximum: 160, message: "Le titre est trop long" }
   validates :wiki_body, presence: { message: "Vous ne pouvez pas poster un commentaire vide" }
 
   wikify_attr :body
