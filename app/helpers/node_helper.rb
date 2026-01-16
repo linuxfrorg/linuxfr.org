@@ -109,6 +109,7 @@ module NodeHelper
     if user
       user_link  = link_to(user.name, "/users/#{user.cached_slug}", rel: 'author')
       user_infos = []
+      user_infos << email_link(user)
       user_infos << homesite_link(user)
       user_infos << jabber_link(user)
       user_infos << mastodon_link(user)
