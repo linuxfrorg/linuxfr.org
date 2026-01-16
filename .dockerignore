@@ -23,3 +23,4 @@
 /uploads
 /vendor/ruby
 /vendor/bundle
+/coverage

@@ -40,3 +40,10 @@ admin_<%= n%>:
   name: <%= "admin_#{n}" %>
   cached_slug: <%= "admin_#{n}" %>
 <% end %>
+
+joe:
+  name: Joe
+  cached_slug: joe
+bob:
+  name: Bob
+  cached_slug: bob

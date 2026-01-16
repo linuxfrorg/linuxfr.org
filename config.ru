@@ -8,3 +8,4 @@ if defined?(Unicorn::HttpRequest)
 end
 
 run Rails.application
+Rails.application.load_server

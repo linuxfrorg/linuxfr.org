@@ -25,7 +25,7 @@ class Tracker < Content
   self.table_name = "trackers"
   self.type = "Suivi"
 
-  belongs_to :assigned_to_user, class_name: "User"
+  belongs_to :assigned_to_user, class_name: "User", optional: true
   belongs_to :category
 
   validates_associated :category, message: "Veuillez choisir une catégorie pour cette entrée de suivi"

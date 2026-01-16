@@ -11,9 +11,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
-
-#
-class PollAnswer < ActiveRecord::Base
+class PollAnswer < ApplicationRecord
   belongs_to :poll
 
   acts_as_list scope: :poll

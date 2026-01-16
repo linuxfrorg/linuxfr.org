@@ -1,0 +1,139 @@
+services:
+  linuxfr.org:
+    build:
+      context: .
+      dockerfile: deployment/linuxfr.org/Containerfile
+    env_file:
+      - deployment/default.env
+    volumes:
+      # Share host directories so, the developer can edit them
+      # and see the result without need to restart the container
+      - ./app:/linuxfr.org/app:Z
+      - ./db:/linuxfr.org/db:Z
+      - ./Gemfile:/linuxfr.org/Gemfile:Z
+      - ./Gemfile.lock:/linuxfr.org/Gemfile.lock:Z
+      - ./lib:/linuxfr.org/lib:Z
+      - ./public:/linuxfr.org/public:Z
+      - ./test:/linuxfr.org/test:Z
+      # uploads are shared with the nginx service
+      - data-uploads:/linuxfr.org/uploads
+    tmpfs:
+      - /linuxfr.org/public/tmp:size=100M
+    healthcheck:
+      test: ["CMD", "curl", "--silent", "--fail", "--head", "http://localhost:3000"]
+      interval: 10s
+      start_period: 5s
+    depends_on:
+      database:
+        condition: service_healthy
+        restart: true
+      redis:
+        condition: service_healthy
+        restart: true
+
+  linuxfr-board:
+    build:
+      context: deployment/linuxfr-board
+    env_file:
+      - deployment/default.env
+    healthcheck:
+      test: ["CMD", "curl", "--silent", "--fail", "--head", "http://localhost:9000"]
+      interval: 10s
+      start_period: 5s
+    depends_on:
+      redis:
+        condition: service_healthy
+        restart: true
+
+  linuxfr-img:
+    build:
+      context: deployment/linuxfr-img
+    env_file:
+      - deployment/default.env
+    healthcheck:
+      test: ["CMD", "curl", "--silent", "--fail", "--head", "http://localhost:8000/status"]
+      interval: 10s
+      start_period: 5s
+    depends_on:
+      redis:
+        condition: service_healthy
+        restart: true
+    volumes:
+      - cache-img:/linuxfr-img/cache
+
+  nginx:
+    image: docker.io/nginxinc/nginx-unprivileged:stable-alpine
+    env_file:
+      - deployment/default.env
+    volumes:
+      - ./deployment/nginx/templates:/etc/nginx/templates:Z
+      - ./public/fonts:/var/linuxfr/fonts:Z
+      - data-uploads:/var/linuxfr/uploads
+    ports:
+      - target: 8080
+        # If you customize the published port, you have to update the
+        # DOMAIN_HTTP_PORT and IMAGE_DOMAIN_HTTP_PORT variables
+        # into the `deployment/default.env` file too
+        published: 127.0.0.1:9000
+        protocol: tcp
+    healthcheck:
+      test: ["CMD", "curl", "--silent", "--fail", "--fail-early", "--location", "--head", "http://$$DOMAIN:8080", "http://$$DOMAIN:8080/img/status", "http://$$DOMAIN:8080/b", "http://$$IMAGE_DOMAIN:8080/status"]
+      interval: 10s
+      start_period: 5s
+    depends_on:
+      database:
+        condition: service_healthy
+        restart: true
+      redis:
+        condition: service_healthy
+        restart: true
+      linuxfr.org:
+        condition: service_healthy
+        restart: true
+      linuxfr-board:
+        condition: service_healthy
+        restart: true
+      linuxfr-img:
+        condition: service_healthy
+        restart: true
+    networks:
+      default:
+        aliases:
+          - $${DOMAIN}
+          - $${IMAGE_DOMAIN}
+
+  database:
+    build:
+      context: deployment/database
+    env_file:
+      - deployment/default.env
+    ports:
+      - target: 3306
+        published: 127.0.0.1:3306
+        protocol: tcp
+    healthcheck:
+      test: ["CMD", "mysql", "-h", "127.0.0.1", "-u", "$$MYSQL_USER", "--password=$$MYSQL_PASSWORD", "--execute", "\"SHOW DATABASES;\""]
+      interval: 10s
+      start_period: 5s
+    volumes:
+      - data-database:/var/lib/mysql
+
+  redis:
+    image: docker.io/redis:5
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      start_period: 5s
+    volumes:
+      - data-redis:/data
+
+volumes:
+  data-database:
+    driver: local
+  data-redis:
+    driver: local
+  data-uploads:
+    driver: local
+  cache-img:
+    driver: local
+
