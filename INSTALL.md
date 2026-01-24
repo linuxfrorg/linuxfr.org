@@ -230,3 +230,16 @@ To be able to create your first news, you will need to add sections with link
 
 Be sure to set title `LinuxFr.org` to one of your sections, otherwise you won't
 be able to create news in the redaction space.
+
+## Make CSS works in alpha/production
+
+LinuxFr.org allows to select custom CSS styles.
+
+On production environments, like on alpha.linuxfr.org, system administrator
+needs to compile SCSS files as CSS with this command:
+
+```sh
+RAILS_ENV=alpha RAILS_GROUPS=assets bundle exec rake assets:precompile
+```
+
+For production, you need to change the `RAILS_ENV` value.
