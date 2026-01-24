@@ -1016,6 +1016,13 @@ footer.actions {
       border-image: url("/favicon.png") 0 0 0 32;
       border-style: solid;
     }
+    &[href^="https://www.projets-libres.org"],
+    &[href^="https://projets-libres.org"] {
+      padding-left: 3px;
+      border-left: 16px;
+      border-image: url("/projets_libres.png") 0 0 0 32;
+      border-style: solid;
+    }
   }
   ul,
   ol {
