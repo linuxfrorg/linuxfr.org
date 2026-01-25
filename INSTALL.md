@@ -250,3 +250,22 @@ To be able to create your first news, you will need to add sections with link
 
 Be sure to set title `LinuxFr.org` to one of your sections, otherwise you won't
 be able to create news in the redaction space.
+
+## Alternative Redis configuration
+
+Default Redis configuration is `redis://localhost:6379/0` and for the 1h cache
+`redis://localhost:6379/1/cache`.
+
+You can override the configuration with the following environment variables:
+
+- `REDIS_HOST` for the hostname or the IP of your Redis server
+- `REDIS_PORT` for the port (default TCP 6379)
+- `REDIS_URL` for the full address (like `redis://127.0.0.1:6379/0`)
+- `REDIS_CACHE_URL` for the cache full address (like `redis://127.0.0.1:6379/1/cache`)
+
+The first three environment variables are classic for Redis.
+The last one about the cache is specific to LinuxFr.org CMS configuration.
+
+Warning: the current configuration doesn't support authentication or TLS. Be
+careful with a remote Redis because everything will be exchange in plain text,
+and you exposed your Redis server on the network.
