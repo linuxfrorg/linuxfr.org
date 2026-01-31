@@ -89,7 +89,6 @@ body#boards-show {
     > div {
       display: -ms-flexbox;
       display: flex;
-      margin: 0.5em;
     }
     #board_message {
       border: 1px solid #999;
@@ -104,6 +103,19 @@ body#boards-show {
       border: 1px solid #999;
       border-left: none;
       margin: 0;
+    }
+    // If browser supports :has selector, we can remove the outline of input on focus
+    // and add it to the parent div to include the send button on right
+    @supports #{'\selector(:has(> input:focus)) and (outline-color: AccentColor)'} {
+      input#board_message:focus {
+        outline-style: none;
+      }
+      div:has(> input#board_message:focus) {
+        outline-style: auto;
+        outline-offset: -2px;
+        outline-width: 3px;
+        outline-color: AccentColor;
+      }
     }
   }
 }
