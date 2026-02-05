@@ -46,6 +46,7 @@ class Admin::AccountsController < AdminController
       Board.amr_notification("Le compte #{@account.login} #{user_url @account.login} a été réactivé par #{current_user.name} #{user_url(current_user)}")
       redirect_back notice: "Compte réactivé", fallback_location: admin_accounts_url
     else
+      @account.show_email = false
       @account.inactivate!
       user = @account.user
       user.homesite = nil
@@ -58,6 +59,7 @@ class Admin::AccountsController < AdminController
   end
 
   def destroy
+    @account.show_email = false
     @account.inactivate!
     user = @account.user
     user.homesite = nil

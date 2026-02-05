@@ -336,7 +336,7 @@
         .stat.misc(style="width: #{(width_stats * @stats.preferences(:hide_avatar) / maxval).to_i}px;")= @stats.preferences(:hide_avatar)
       %td #{@stats.pctrecent(@stats.preferences :hide_avatar)}
     %tr
-      %td.stat Publication de l'adresse de courriel
+      %td.stat Affichage public de l'adresse de courriel
       %td
         .stat.misc(style="width: #{(width_stats * @stats.preferences(:show_email) / maxval).to_i}px;")= @stats.preferences(:show_email)
       %td #{@stats.pctrecent(@stats.preferences :show_email)}
