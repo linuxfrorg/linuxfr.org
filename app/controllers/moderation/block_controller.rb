@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class Moderation::BlockController < ModerationController
+  include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
 
   def create

@@ -86,7 +86,7 @@
           - invalid = month[1]["invalid"] || 0
           %tr
             %td.stat
-              = month[0].sub(/(\d{4})(\d{2})/, '\2 \1')
+              = month[0]&.sub(/(\d{4})(\d{2})/, '\2 \1')
             %td
               .stat.remaining(style="width:#{width_stats * total / maxval / 4}px;")= total
             %td

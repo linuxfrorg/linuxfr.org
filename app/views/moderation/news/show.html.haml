@@ -1,20 +1,20 @@
 - title @news.title
 
 - content_for :metadata do
-  = render 'metadata', news: @news
+  = render 'redaction/news/metadata', news: @news
 
 - content_for :toolpanel do
-  = render 'toolpanel', news: @news, boards: @boards, enable_reassign: true
+  = render 'redaction/news/toolpanel', news: @news, boards: @boards, enable_reassign: true
 
 - content_for :toolbar do
-  = render 'toolbar', news: @news
+  = render 'redaction/news/toolbar', news: @news
 
-= render 'topbar', news: @news, show_backlink: true
+= render 'redaction/news/topbar', news: @news, show_backlink: true
 
 - if @news.paragraphs.any?
   = article_for @news do |c|
     - c.title = capture do
-      = render partial: 'short'
+      = render partial: 'redaction/news/short'
     - c.meta  = news_posted_by(@news)
     - c.image = link_to(image_tag(@news.section.image, alt: @news.section.title), @news.section)
     - c.body  = capture do

@@ -6,7 +6,7 @@ class Admin::StylesheetsController < AdminController
 
   def create
     Stylesheet.temporary(current_account, params[:url]) do
-      redirect_to "/" + Stylesheet.capture("http://#{MY_DOMAIN}/", cookies)
+      redirect_to "/" + Stylesheet.capture("#{MY_PUBLIC_URL}/", cookies)
     end
   end
 

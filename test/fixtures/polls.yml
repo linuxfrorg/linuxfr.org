@@ -1,0 +1,14 @@
+one:
+  state: published
+  title: Un joli sondage
+  cached_slug: un-joli-sondage
+
+draft:
+  state: draft
+  title: Un sondage en cours d'édition
+  cached_slug: un-sondage-en-cours-dedition
+
+collectif:
+  state: published
+  title: collectif
+  cached_slug: collectif

@@ -20,10 +20,10 @@
 # The users can comment any content.
 # Those comments are threaded and can be noted.
 #
-class Comment < ActiveRecord::Base
+class Comment < ApplicationRecord
   include Canable::Ables
 
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :node, counter_cache: :comments_count
 
   delegate :content, :content_type, to: :node

@@ -22,8 +22,8 @@
 # It helps organizing some common stuff between the contents,
 # and facilitates the transformation of one content to another.
 #
-class Node < ActiveRecord::Base
-  belongs_to :user     # can be NULL
+class Node < ApplicationRecord
+  belongs_to :user, optional: true     # can be NULL
   belongs_to :content, polymorphic: true, inverse_of: :node
   has_many :comments, inverse_of: :node
   has_many :taggings, -> { includes(:tag) }, dependent: :destroy
@@ -76,7 +76,7 @@ class Node < ActiveRecord::Base
 ### Votes ###
 
   def vote_by?(account_id)
-    $redis.exists("nodes/#{self.id}/votes/#{account_id}")
+    $redis.exists?("nodes/#{self.id}/votes/#{account_id}")
   end
 
   def vote_for(account)
@@ -174,7 +174,7 @@ class Node < ActiveRecord::Base
         if tag.new_record?
           tag.save!
           user = User.find(user_id)
-          Board.amr_notification("L’étiquette #{tagname} https://#{MY_DOMAIN}/tags/#{tagname}/public vient d’être créée par #{user.name} https://#{MY_DOMAIN}/users/#{user.cached_slug}")
+          Board.amr_notification("L’étiquette #{tagname} #{MY_PUBLIC_URL}/tags/#{tagname}/public vient d’être créée par #{user.name} #{MY_PUBLIC_URL}/users/#{user.cached_slug}")
         end
         taggings.create(tag_id: tag.id, user_id: user_id)
       end
