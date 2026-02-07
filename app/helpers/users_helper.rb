@@ -26,7 +26,7 @@ module UsersHelper
   end
 
   def email_link(user)
-    return if not user.account.show_email
+    return if not user.account.try(:show_email)
     karma = user.account.try(:karma).to_i
     return unless karma > 0
     link_to("courriel", "mailto:" + user.account.email)
