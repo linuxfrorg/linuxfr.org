@@ -249,6 +249,7 @@
       %th Domaines à plus de trois comptes
       %th Nombre de comptes
       %th Actifs
+      %th % déclarés
     - @stats.top_xmpp_domains.each do |domain|
       %tr
         %td.stat
@@ -257,6 +258,8 @@
           .stat.misc(style="width: #{(width_stats * domain["cnt"] / maxval).to_i}px;")= domain["cnt"]
         %td
           #{@stats.pctrecent(domain["cnt"])}
+        %td
+          #{@stats.pctrecent_filled(domain["cnt"],"jabber_id")}
 
   %h2#stats_mastodon Domaines Mastodon
   %p
@@ -267,6 +270,7 @@
       %th Domaines à plus de trois comptes
       %th Nombre de comptes
       %th Actifs
+      %th % déclarés
     - @stats.top_mastodon_domains.each do |domain|
       %tr
         %td.stat
@@ -275,6 +279,9 @@
           .stat.misc(style="width: #{(width_stats * domain["cnt"] / maxval).to_i}px;")= domain["cnt"]
         %td
           #{@stats.pctrecent(domain["cnt"])}
+        %td
+          #{@stats.pctrecent_filled(domain["cnt"],"mastodon_url")}
+
 
   %h2#stats_fonctionnalites Utilisation des fonctionnalités
   %p
