@@ -16,6 +16,7 @@ SitemapGenerator::Sitemap.add_links do |sitemap|
 
   # Static pages
   sitemap.add '/proposer-un-contenu', priority: 0.5, changefreq: 'yearly'
+  sitemap.add '/code_de_conduite', priority: 0.5, changefreq: 'yearly'
   sitemap.add '/contact', priority: 0.1, changefreq: 'yearly'
   sitemap.add '/faire_un_don', priority: 0.5, changefreq: 'monthly'
   sitemap.add '/team', priority: 0.5, changefreq: 'monthly'
