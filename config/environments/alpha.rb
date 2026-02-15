@@ -53,7 +53,7 @@ Rails.application.configure do
   config.log_tags = [ :request_id ]
 
   # Use a different cache store in production.
-  config.cache_store = :redis_cache_store, { url: "redis://localhost:6379/1/cache", expires_in: 1.hour }
+  config.cache_store = :redis_cache_store, { url: ENV.fetch("REDIS_CACHE_URL", "redis://localhost:6379/1"), namespace: "cache", expires_in: 1.hour }
 
   config.action_mailer.perform_caching = false
 
