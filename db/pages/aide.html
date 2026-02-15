@@ -313,7 +313,7 @@ soit les plus récents, soit les suffisamment bien notés et pas trop anciens).
 
 <p>Le karma augmente donc lorsque l’on reçoit des notes « pertinent » (quel que soit le type de contenu ou le commentaire noté) ou que l’on publie des dépêches.</p>
 
-<p>Le nombre d’avis quotidiens est déterminé à partir du karma. La formule mathématique est <code>max(0, min(3 + karma/10, 100))</code> (<a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/app/models/account.rb">source</a>) et en français cela donne le tableau qui suit.</p>
+<p>Le nombre d’avis quotidiens est déterminé à partir du karma. La formule mathématique est <code>max(0, min(3 + karma/10, 100))</code> (<a href="https://github.com/linuxfrorg/linuxfr.org/blob/main/app/models/account.rb">source</a>) et en français cela donne le tableau qui suit.</p>
 
 <table>
 <tr><th>Karma</th><th>Nombre d’avis quotidiens</th></tr>
@@ -328,7 +328,7 @@ soit les plus récents, soit les suffisamment bien notés et pas trop anciens).
 <tr><td>970 ou plus</td><td>100</td></tr>
 </table>
 
-<p>Le score de base des commentaires dépend du karma. La formule mathématique est <code>E(log10(karma)) - 1</code>, où <code>E()</code> est la partie entière inférieure si le karma est strictement positif. Et c’est <code>max(-10, -2 + E(karma/30))</code> pour un karma négatif ou nul. Avec un karma à 0, ça donne un score de -2 (<a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/app/models/comment.rb">source</a>). En français cela donne le tableau qui suit.</p>
+<p>Le score de base des commentaires dépend du karma. La formule mathématique est <code>E(log10(karma)) - 1</code>, où <code>E()</code> est la partie entière inférieure si le karma est strictement positif. Et c’est <code>max(-10, -2 + E(karma/30))</code> pour un karma négatif ou nul. Avec un karma à 0, ça donne un score de -2 (<a href="https://github.com/linuxfrorg/linuxfr.org/blob/main/app/models/comment.rb">source</a>). En français cela donne le tableau qui suit.</p>
 
 <table>
 <tr><th>Karma</th><th>Score de base des commentaires</th></tr>
@@ -350,13 +350,13 @@ soit les plus récents, soit les suffisamment bien notés et pas trop anciens).
 <tr><td>10 milliards</td><td>10</td></tr>
 </table>
 
-<p>Pour pouvoir écrire un journal, publier un lien ou discuter sur la tribune, il faut avoir un karma supérieur strictement à 0, et pour éditer une page de wiki, il faut un karma strictement supérieur à 20 (sources <a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/app/models/diary.rb">journal</a>, <a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/app/models/bookmark.rb">lien</a>, <a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/app/models/wiki_page.rb">wiki</a> et <a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/app/models/account.rb">tribune</a>).</p>
+<p>Pour pouvoir écrire un journal, publier un lien ou discuter sur la tribune, il faut avoir un karma supérieur strictement à 0, et pour éditer une page de wiki, il faut un karma strictement supérieur à 20 (sources <a href="https://github.com/linuxfrorg/linuxfr.org/blob/main/app/models/diary.rb">journal</a>, <a href="https://github.com/linuxfrorg/linuxfr.org/blob/main/app/models/bookmark.rb">lien</a>, <a href="https://github.com/linuxfrorg/linuxfr.org/blob/main/app/models/wiki_page.rb">wiki</a> et <a href="https://github.com/linuxfrorg/linuxfr.org/blob/main/app/models/account.rb">tribune</a>).</p>
 
-<p>Pour pouvoir afficher l’adresse de courriel associée à son compte ou l’adresse de son site personnel ou de son compte Mastodon ou son adresse XMPP, il faut avoir un karma strictement supérieur à 0 (<a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/app/helpers/users_helper.rb">source</a>).</p>
+<p>Pour pouvoir afficher l’adresse de courriel associée à son compte ou l’adresse de son site personnel ou de son compte Mastodon ou son adresse XMPP, il faut avoir un karma strictement supérieur à 0 (<a href="https://github.com/linuxfrorg/linuxfr.org/blob/main/app/helpers/users_helper.rb">source</a>).</p>
 
 <p>Le karma a un effet sur les <a href="#aide-moteursderecherche">indications données aux moteurs de recherche externes</a> et un faible karma conduit à des commentaires et contenus non indexés.</p>
 
-<p>La mise à jour du karma est <a href="https://github.com/linuxfrorg/linuxfr.org/blob/master/lib/tasks/linuxfr.rake">quotidienne</a>, ce qui entraîne donc un décalage temporel de son évolution, tandis que les notes sont mises à jour immédiatement.</p>
+<p>La mise à jour du karma est <a href="https://github.com/linuxfrorg/linuxfr.org/blob/main/lib/tasks/linuxfr.rake">quotidienne</a>, ce qui entraîne donc un décalage temporel de son évolution, tandis que les notes sont mises à jour immédiatement.</p>
 
 <h2 id="aide-toolbar">Barre d’outils <a href="#aide-toolbar" class="anchor">¶</a></h2>
 

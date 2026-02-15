@@ -3,7 +3,7 @@ FROM docker.io/debian:bullseye-slim
 LABEL org.opencontainers.image.title="LinuxFr.org website"
 LABEL org.opencontainers.image.description="Run LinuxFr.org Ruby on Rails website"
 LABEL org.opencontainers.image.source="https://github.com/linuxfrorg/linuxfr.org"
-LABEL org.opencontainers.image.url="https://github.com/linuxfrorg/linuxfr.org/blob/master/Docker.md"
+LABEL org.opencontainers.image.url="https://github.com/linuxfrorg/linuxfr.org/blob/main/Docker.md"
 LABEL org.opencontainers.image.licenses="AGPL-3.0-only"
 LABEL org.opencontainers.image.version="2.0"
 LABEL org.opencontainers.image.authors="Adrien Dorsaz <adrien@adorsaz.ch>"
