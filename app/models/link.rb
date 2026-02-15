@@ -26,23 +26,17 @@ class Link < ActiveRecord::Base
 
   validates :title, presence: { message: "Un lien doit obligatoirement avoir un titre" },
                     length: { maximum: 100, message: "Le titre du lien est trop long" }
-  validates :url, http_url: { protocols: PROTOCOLS, message: "L'adresse n'est pas valide" },
+  validates :url, uri: { protocols: PROTOCOLS, message: "L'adresse n'est pas valide" },
                   presence: { message: "Un lien doit obligatoirement avoir une adresse" },
                   length: { maximum: 255, message: "L’adresse est trop longue" }
   validates :lang, inclusion: { in: Lang.valid_codes, allow_nil: false, message: "La langue du lien doit être définie" }
 
-  def url=(raw)
-    raw.strip!
-    return write_attribute :url, nil if raw.blank?
-    uri = URI.parse(raw)
-    if uri.scheme.blank? && uri.host.blank?
-      raw = "http://#{raw}"
-      uri = URI.parse(raw)
-    end
-    write_attribute :url, uri.to_s
-  # Let raw value if error when parsed, HttpUrlValidator will manage it
-  rescue URI::InvalidURIError
-    write_attribute :url, raw
+  before_validation do |link|
+    link.url = UriValidator.before_validation(link.url);
+  end
+
+  after_validation do |link|
+    link.url = UriValidator.after_validation(link.url);
   end
 
   def title=(raw)
