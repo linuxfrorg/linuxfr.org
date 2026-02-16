@@ -1,0 +1,37 @@
+%h2
+  Vos derniers contenus publiés
+- if contents.empty?
+  %p
+    Vous n’avez aucun contenu publié
+- else
+  %p
+    Ce tableau de bord vous montre vos 10 contenus les plus récemment publiés.
+    %br
+    Pour retrouver tous vos contenus, visitez votre profile&nbsp;: #{link_to(current_account.login, current_account.user)}.
+  .table_container
+    %table#my_published
+      %tr
+        %th.left Type
+        %th.left Section / Forum
+        %th.left Sujet
+        %th.left Date
+        %th.number Note
+        %th.number <abbr title="Nombre de commentaires">Comm.</abbr>
+        %th.left Dernier commentaire
+      - contents.each do |node|
+        %tr
+          %td= translate_content_type node.content_type
+          %td
+            - if node.content.is_a? News
+              = node.content.section.title
+            - if node.content.is_a? Post
+              = node.content.forum.title
+          %td
+            = link_to_content node.content
+          %td.date= node.created_at.to_s(:posted)
+          %td.number= node.score
+          %td.number
+            - if node.read_status(current_account).is_a? Integer
+              = image_tag "/images/icones/comment.png", alt: "Nouveaux commentaires !", class: "thread-new-comments"
+            = node.comments_count
+          %td.date= node.latest_answer ? node.latest_answer.created_at.to_s(:posted) : " "
