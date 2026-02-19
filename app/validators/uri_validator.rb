@@ -27,6 +27,7 @@ class UriValidator < ActiveModel::EachValidator
   end 
 
   def self.before_validation(raw, default_scheme='http://')
+    return nil if raw.nil?
     raw.strip!
     return nil if raw.blank?
 
@@ -57,6 +58,7 @@ class UriValidator < ActiveModel::EachValidator
   def self.after_validation(raw)
     # Decodes sharp signs (#) found in URI fragment to keep visual match with
     # the user input
+    return nil if raw.nil?
     fragments = raw.split("#")
     if (fragments.length == 2)
       raw = fragments[0] + '#' + fragments[1].gsub('%23', '#')
