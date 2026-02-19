@@ -1,6 +1,8 @@
 <%= render "nodes/front_matter", :content => @poll %>
 
-<%= raw @poll.wiki_explanations.encode(universal_newline: true) %>
+<%- if !@poll.wiki_explanations.nil? -%>
+ <%= raw @poll.wiki_explanations.encode(universal_newline: true) %>
+<%- end -%>
 
 <%- @poll.answers.each do |answer| -%>
 * <%= raw answer.answer %>
