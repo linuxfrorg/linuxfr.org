@@ -8,7 +8,8 @@ module UsersHelper
       class: "avatar",
       alt: "",
       width: AvatarUploader::AVATAR_SIZE,
-      height: AvatarUploader::AVATAR_SIZE
+      height: AvatarUploader::AVATAR_SIZE,
+      loading: "lazy"
     }
     image_tag(user.avatar_url, options)
   end
@@ -20,7 +21,8 @@ module UsersHelper
       class: "avatar",
       alt: "",
       width: AvatarUploader::AVATAR_SIZE / 2,
-      height: AvatarUploader::AVATAR_SIZE / 2
+      height: AvatarUploader::AVATAR_SIZE / 2,
+      loading: "lazy"
     }
     image_tag(user.avatar_url, options)
   end
