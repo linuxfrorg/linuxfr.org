@@ -70,11 +70,15 @@
   <form class="new_account" id="new_account" action="/compte" accept-charset="UTF-8" method="post">
     <p>
       <label for="account_login">Identifiant</label>
-      <input required="required" maxlength="40" size="40" type="text" name="account[login]" id="account_login" />
+      <input required maxlength="40" size="40" type="text" name="account[login]" id="account_login" />
     </p>
     <p>
       <label for="account_email">Adresse de courriel</label>
-      <input required="required" type="email" name="account[email]" id="account_email" />
+      <input required type="email" name="account[email]" id="account_email" />
+    </p>
+    <p class="pot_de_miel">
+      <label for="pot_de_miel">Ne pas remplir ce champ</label>
+      <input type="text" name="account[pot_de_miel]" id="pot_de_miel" />
     </p>
     <p>
       <input type="submit" name="commit" value="Créer mon compte" data-disable-with="Créer mon compte" />

@@ -9,6 +9,9 @@
     %p
       = f.label :email, "Adresse de courriel"
       = f.email_field :email, required: "required"
+    %p.pot_de_miel
+      = f.label :pot_de_miel, "Ne pas remplir ce champ"
+      = f.text_field :pot_de_miel
     %p
       = f.submit "S’inscrire"
 

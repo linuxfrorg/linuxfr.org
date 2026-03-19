@@ -56,6 +56,8 @@ class Account < ActiveRecord::Base
 
   mount_uploader :uploaded_stylesheet, StylesheetUploader
 
+  attr_accessor :pot_de_miel
+
   attr_accessor :amr_id
   delegate :name, to: :user
 
