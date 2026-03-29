@@ -2,12 +2,12 @@
   Vos derniers contenus publiés
 - if contents.empty?
   %p
-    Vous n’avez aucun contenu publié
+    Vous n’avez aucun contenu publié.
 - else
   %p
     Ce tableau de bord vous montre vos 10 contenus les plus récemment publiés.
     %br
-    Pour retrouver tous vos contenus, visitez votre profile&nbsp;: #{link_to(current_account.login, current_account.user)}.
+    Pour retrouver tous vos contenus, visitez votre profil&nbsp;: #{link_to(current_account.login, current_account.user)}.
   .table_container
     %table#my_published
       %tr

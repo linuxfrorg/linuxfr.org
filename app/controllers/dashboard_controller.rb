@@ -12,7 +12,7 @@ class DashboardController < ApplicationController
     @comments = current_user.comments.on_dashboard.limit(30)
     @comments = @comments.where(answered_to_self: false) unless @self_answer
     # Other nodes
-    @nodes = Node.where(user_id: current_user.id).on_dashboard([News, Diary, Bookmark, Post, WikiPage]).limit(10)
+    @nodes = Node.where(user_id: current_user.id).on_dashboard([News, Diary, Bookmark, Post, Poll, WikiPage]).limit(10)
     # Trackers can get very old, so keep them in their own dashboard
     @trackers = Node.where(user_id: current_user.id).on_dashboard(Tracker).limit(10)
   end
