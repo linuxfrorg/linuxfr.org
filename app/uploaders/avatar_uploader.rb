@@ -3,7 +3,7 @@
 class AvatarUploader < CarrierWave::Uploader::Base
 
   AVATAR_SIZE = 64
-  DEFAULT_AVATAR_URL = "//#{MY_DOMAIN}/images/default-avatar.svg"
+  DEFAULT_AVATAR_URL = "https://#{MY_DOMAIN}/images/default-avatar.svg"
 
   include CarrierWave::MiniMagick
   process resize_and_pad: [AVATAR_SIZE, AVATAR_SIZE]
@@ -13,7 +13,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def url
-    super.sub(base_dir.to_s, "//#{IMG_DOMAIN}")
+    super.sub(base_dir.to_s, "https://#{IMG_DOMAIN}")
   end
 
   def store_dir
