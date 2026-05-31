@@ -44,7 +44,10 @@ RUN \
   apt-get update; \
   apt-get install -y --no-install-recommends \
     curl; \
-  apt-get clean;
+  apt-get clean; \
+  mkdir -p /linuxfr-img/cache; \
+  chown -R ${UID}:0 /linuxfr-img; \
+  chmod -R 770 /linuxfr-img;
 
 USER ${UID}
 WORKDIR /linuxfr-img
