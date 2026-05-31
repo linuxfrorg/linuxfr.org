@@ -20,7 +20,7 @@ services:
     tmpfs:
       - /linuxfr.org/public/tmp:size=100M
     healthcheck:
-      test: ["CMD", "curl", "--silent", "--fail", "--head", "http://localhost:3000"]
+      test: curl --silent --fail --head http://localhost:3000
       interval: 10s
       start_period: 5s
     depends_on:
@@ -38,7 +38,7 @@ services:
     env_file:
       - deployment/default.env
     healthcheck:
-      test: ["CMD", "curl", "--silent", "--fail", "--head", "http://localhost:9000"]
+      test: curl --silent --fail --head http://localhost:9000
       interval: 10s
       start_period: 5s
     depends_on:
@@ -53,7 +53,7 @@ services:
     env_file:
       - deployment/default.env
     healthcheck:
-      test: ["CMD", "curl", "--silent", "--fail", "--head", "http://localhost:8000/status"]
+      test: curl --silent --fail --head http://localhost:8000/status
       interval: 10s
       start_period: 5s
     depends_on:
@@ -76,10 +76,14 @@ services:
         # If you customize the published port, you have to update the
         # DOMAIN_HTTP_PORT and IMAGE_DOMAIN_HTTP_PORT variables
         # into the `deployment/default.env` file too
-        published: 127.0.0.1:9000
+        published: 9000
+        host_ip: 127.0.0.1
         protocol: tcp
     healthcheck:
-      test: ["CMD", "curl", "--silent", "--fail", "--fail-early", "--location", "--head", "http://$$DOMAIN:8080", "http://$$DOMAIN:8080/img/status", "http://$$DOMAIN:8080/b", "http://$$IMAGE_DOMAIN:8080/status"]
+      test: >-
+        curl --silent --fail --fail-early --location --head
+        http://$$DOMAIN:8080 http://$$DOMAIN:8080/img/status
+        http://$$DOMAIN:8080/b http://$$IMAGE_DOMAIN:8080/status
       interval: 10s
       start_period: 5s
     depends_on:
@@ -103,6 +107,9 @@ services:
         aliases:
           - $${DOMAIN}
           - $${IMAGE_DOMAIN}
+          # fallback for Docker as it cannot add aliases from environment variables
+          - dlfp.lo
+          - image.dlfp.lo
 
   database:
     build:
@@ -112,10 +119,13 @@ services:
       - deployment/default.env
     ports:
       - target: 3306
-        published: 127.0.0.1:3306
+        published: 3306
+        host_ip: 127.0.0.1
         protocol: tcp
     healthcheck:
-      test: ["CMD", "mysql", "-h", "127.0.0.1", "-u", "$$MYSQL_USER", "--password=$$MYSQL_PASSWORD", "--execute", "\"SHOW DATABASES;\""]
+      test: >-
+        exec mysql -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+        --execute 'SHOW DATABASES;'
       interval: 10s
       start_period: 5s
     volumes:
@@ -124,7 +134,7 @@ services:
   redis:
     image: docker.io/redis:5
     healthcheck:
-      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      test: redis-cli --raw incr ping
       interval: 10s
       start_period: 5s
     volumes:
