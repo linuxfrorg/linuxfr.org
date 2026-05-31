@@ -27,9 +27,6 @@ Rails.application.configure do
   end
   IMG_PUBLIC_URL = image_service_url
 
-  config.hosts << MY_DOMAIN
-  config.hosts << IMG_DOMAIN
-
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
