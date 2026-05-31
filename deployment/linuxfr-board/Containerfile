@@ -1,4 +1,4 @@
-FROM docker.io/ruby:2-slim-buster
+FROM docker.io/debian:bullseye-slim
 
 LABEL org.opencontainers.image.title="Board for LinuxFr.org"
 LABEL org.opencontainers.image.description="Users of the LinuxFr.org website can chat on a space called the board (« la tribune » in french). \
@@ -6,7 +6,7 @@ This Ruby daemon notifies the users when something is said with Server-Sent Even
 LABEL org.opencontainers.image.source="https://github.com/linuxfrorg/board-sse-linuxfr.org"
 LABEL org.opencontainers.image.url="https://github.com/linuxfrorg/board-sse-linuxfr.org"
 LABEL org.opencontainers.image.licenses="AGPL-3.0-only"
-LABEL org.opencontainers.image.version="1.1"
+LABEL org.opencontainers.image.version="1-ruby2-bullseye"
 LABEL org.opencontainers.image.authors="Adrien Dorsaz <adrien@adorsaz.ch>"
 
 ARG UID=1200
@@ -25,6 +25,8 @@ RUN \
 USER ${UID}
 WORKDIR /linuxfr-board
 ENV HOME=/linuxfr-board
+ENV GEM_HOME=/linuxfr-board/.gem
+ENV PATH=/bin:/usr/bin:/linuxfr-board/.gem/bin
 
 # Install board-linuxfr
 RUN gem install board-linuxfr -v '~> 0.1.3'
