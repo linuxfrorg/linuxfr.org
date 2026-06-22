@@ -50,9 +50,4 @@ class ActiveRecord::Base
     doc = Nokogiri::HTML::DocumentFragment.parse html
     doc.css(".sommaire,.toc,#sommaire,#sommaire+ul").to_html.html_safe
   end
-
-  # Transform []() to links on the given text
-  def linkify(txt)
-    ERB::Util.h(txt).gsub(/\[([^\]]*)\]\(([^)]*)\)/, '<a href="\2">\1</a>').html_safe
-  end
 end
