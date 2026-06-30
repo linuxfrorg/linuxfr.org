@@ -1,7 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  MY_DOMAIN = 'dlfp.lo'
-  IMG_DOMAIN = 'img.dlfp.lo'
+  MY_DOMAIN = "dlfp.lo"
+  MY_PUBLIC_URL = "http://dlfp.lo:9000"
+  IMG_DOMAIN = "img.dlfp.lo"
+  IMG_PUBLIC_URL = "http://dlfp.lo:9000"
 
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that

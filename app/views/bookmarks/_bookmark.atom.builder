@@ -8,5 +8,5 @@ feed.entry(bookmark, :url => url) do |entry|
   bookmark.node.popular_tags.each do |tag|
     entry.category(:term => tag.name)
   end
-  entry.wfw :commentRss, "https://#{MY_DOMAIN}/nodes/#{bookmark.node.id}/comments.atom"
+  entry.wfw :commentRss, "#{MY_PUBLIC_URL}/nodes/#{bookmark.node.id}/comments.atom"
 end
