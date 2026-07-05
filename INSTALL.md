@@ -159,7 +159,7 @@ In the `config/environments/development.rb` file, there are these variables:
     service and the image caching service.
     By default both domain names are `dlfp.lo`.
 
-2. `MY_PUBLIC_URL` and `IMG_PUBLIC_PORT` which define the public HTTP port for
+2. `MY_PUBLIC_PORT` and `IMG_PUBLIC_PORT` which define the public HTTP port for
     both services.
     By default both ports are `80`.
 
