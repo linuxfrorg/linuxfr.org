@@ -27,6 +27,9 @@ body#registrations-edit table {
   td,
   th {
     padding: 0.25rem;
+    &.left {
+      text-align: left;
+    }
     &.date {
       white-space: nowrap;
     }
@@ -49,6 +52,18 @@ body#registrations-edit td {
   .invalid {
     a {
       text-decoration: line-through;
+    }
+  }
+}
+
+// To build scrollable table, we need to wrap them into a container
+.table_container {
+  max-width: 100%;
+  overflow-x: auto;
+  td,
+  th {
+    &.number {
+      white-space: nowrap;
     }
   }
 }

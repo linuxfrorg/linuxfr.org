@@ -58,16 +58,14 @@
       width: 125px;
     }
     input#search_submit {
+      background-image: none;
       background: no-repeat 0 transparent;
-      background-size: 22px;
-      background-image: url("/images/icones/glass.png");
-      background-image: url("/images/icones/glass.svg"), none;
-      text-indent: -9998em;
       border: none;
-      width: 22px;
-      height: 22px;
+      text-indent: 0em;
+      padding-left: 0;
       padding-right: 0;
-      cursor: pointer;
+      content: "🔎";
+      text-align: left;
     }
   }
 }

@@ -37,6 +37,7 @@ fr:
     sessions:
       signed_in: "Connexion réussie."
       signed_out: "Déconnexion réussie."
+      already_signed_out": "Déconnexion réussie."
     unlocks:
       send_instructions: "Vous allez recevoir un courriel avec les instructions pour déverrouiller votre compte dans quelques minutes."
       unlocked: "Votre compte a été déverrouillé avec succès. Vous êtes maintenant connecté(e)."

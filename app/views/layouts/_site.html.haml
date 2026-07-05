@@ -9,10 +9,10 @@
     %li{class: ("active" if controller_name == "diaries" || (controller_name == "users" && action_name == "show"))}= link_to "Journaux", '/journaux', title: "Journaux personnels de nos visiteurs"
     %li{class: ("active" if controller_name == "bookmarks" || (controller_name == "users" && action_name == "show"))}= link_to "Liens", '/liens', title: "Liens remarquables"
     %li{class: ("active" if controller_name == "forums" || controller_name == "posts")}= link_to "Forums", '/forums', title: "Questions‑réponses, petites annonces"
-    %li{class: ("active" if controller_name == "wiki_pages" || controller_name == "wiki_versions")}= link_to "Wiki", '/wiki', title: "Pages wiki"
     %li{class: ("active" if current_page?("/redaction"))}= link_to "Rédaction", '/redaction', title: "Participez à la rédaction des dépêches"
+    %li= link_to "🎙️ Projets Libres", 'https://www.projets-libres.org/', title: "Podcast/baladodiffusion Projets Libres", id: "podcast"
   = form_tag '/recherche', method: :get do
     .searchbox(role="search")
       <label for="query" id="label_query">Recherche :</label>
       <input id="query" name="q" type="search" placeholder="Rechercher" />
-      = submit_tag "Rechercher", name: nil, id: "search_submit", title: "Lancer la recherche sur le site"
+      = submit_tag "🔎", name: nil, id: "search_submit", title: "Lancer la recherche sur le site"

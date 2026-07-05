@@ -25,6 +25,8 @@ RUN \
 USER ${UID}
 WORKDIR /linuxfr-board
 ENV HOME=/linuxfr-board
+ENV GEM_HOME=/linuxfr-board/.gem
+ENV PATH=/bin:/usr/bin:/linuxfr-board/.gem/bin
 
 # Install board-sse-linuxfr.org
 RUN gem install board-sse-linuxfr.org -v '~> 1.0.0'

@@ -27,24 +27,17 @@ class Bookmark < Content
                         length: { maximum: 160, message: "Le titre est trop long" },
                         uniqueness: { message: "Un lien avec le même titre a déjà été proposé" }
   validates :link, presence: { message: "Vous ne pouvez pas poster un lien vide" },
-                   http_url: { message: "Le lien n'est pas valide" },
+                   uri: { protocols: ["http", "https"], message: "Le lien n'est pas valide" },
                    length: { maximum: 255, message: "Le lien est trop long" },
                    uniqueness: { message: "Cette adresse de lien a déjà été proposée" }
   validates :lang, inclusion: { in: Lang.valid_codes, allow_nil: false, message: "La langue du lien doit être définie" }
 
-  def link=(raw)
-    raw.strip!
-    return write_attribute :link, nil if raw.blank?
-    uri = URI.parse(raw)
-    # Default to HTTP link if neither scheme nor host is found
-    if uri.scheme.blank? && uri.host.blank?
-      raw = "http://#{raw}"
-      uri = URI.parse(raw)
-    end
-    write_attribute :link, uri.to_s
-  # Let raw value if error when parsed, HttpUrlValidator will manage it
-  rescue URI::InvalidURIError
-    write_attribute :link, raw
+  before_validation do |bookmark|
+    bookmark.link = UriValidator.before_validation(bookmark.link);
+  end
+
+  after_validation do |bookmark|
+    bookmark.link = UriValidator.after_validation(bookmark.link);
   end
 
   def title=(raw)

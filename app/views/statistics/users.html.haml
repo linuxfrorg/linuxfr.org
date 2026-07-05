@@ -249,6 +249,7 @@
       %th Domaines à plus de trois comptes
       %th Nombre de comptes
       %th Actifs
+      %th Déclarés
     - @stats.top_xmpp_domains.each do |domain|
       %tr
         %td.stat
@@ -257,6 +258,8 @@
           .stat.misc(style="width: #{(width_stats * domain["cnt"] / maxval).to_i}px;")= domain["cnt"]
         %td
           #{@stats.pctrecent(domain["cnt"])}
+        %td
+          #{@stats.pctrecent_filled(domain["cnt"],"jabber_id")}
 
   %h2#stats_mastodon Domaines Mastodon
   %p
@@ -267,6 +270,7 @@
       %th Domaines à plus de trois comptes
       %th Nombre de comptes
       %th Actifs
+      %th Déclarés
     - @stats.top_mastodon_domains.each do |domain|
       %tr
         %td.stat
@@ -275,6 +279,9 @@
           .stat.misc(style="width: #{(width_stats * domain["cnt"] / maxval).to_i}px;")= domain["cnt"]
         %td
           #{@stats.pctrecent(domain["cnt"])}
+        %td
+          #{@stats.pctrecent_filled(domain["cnt"],"mastodon_url")}
+
 
   %h2#stats_fonctionnalites Utilisation des fonctionnalités
   %p
@@ -335,6 +342,11 @@
       %td
         .stat.misc(style="width: #{(width_stats * @stats.preferences(:hide_avatar) / maxval).to_i}px;")= @stats.preferences(:hide_avatar)
       %td #{@stats.pctrecent(@stats.preferences :hide_avatar)}
+    %tr
+      %td.stat Affichage public de l'adresse de courriel
+      %td
+        .stat.misc(style="width: #{(width_stats * @stats.preferences(:show_email) / maxval).to_i}px;")= @stats.preferences(:show_email)
+      %td #{@stats.pctrecent(@stats.preferences :show_email)}
     %tr
       %td.stat Affichage des contenus avec une note négative
       %td

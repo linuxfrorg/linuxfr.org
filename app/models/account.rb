@@ -57,6 +57,8 @@ class Account < ApplicationRecord
 
   mount_uploader :uploaded_stylesheet, StylesheetUploader
 
+  attr_accessor :pot_de_miel
+
   attr_accessor :amr_id
   delegate :name, to: :user
 
@@ -354,6 +356,7 @@ class Account < ApplicationRecord
                          512 => :show_negative_nodes,
                         1024 => :bookmarks_on_home,
                         2048 => :board_in_sidebar,
+                        4096 => :show_email,
                          scopes: false
 
   def types_on_home

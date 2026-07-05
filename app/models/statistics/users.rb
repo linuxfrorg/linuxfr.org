@@ -4,7 +4,11 @@ class Statistics::Users < Statistics::Statistics
   def pctrecent(value)
     "%.0f%%" % (100.0 * value / nb_recently_seen_accounts)
   end
-
+  
+  def pctrecent_filled(value, field)
+    "%.0f%%" % (100.0 * value / filled(field))
+  end
+  
   def nb_users
     count "SELECT COUNT(*) AS cnt FROM users"
   end

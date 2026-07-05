@@ -4,6 +4,6 @@
     - @sections.each do |section|
       %div{class: "section-#{section.id}"}
         = link_to section do
-          = image_tag section.image, alt: section.title, title: section.title
+          = image_tag section.image, alt: section.title, title: section.title, loading: "lazy"
           <br/>
           = section.title

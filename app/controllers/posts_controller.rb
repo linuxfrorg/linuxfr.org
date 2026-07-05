@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     @post.tmp_owner_id = current_account.user_id
     if !preview_mode && @post.save
       current_account.tag(@post.node, params[:tags])
-      redirect_to forum_posts_url(forum_id: @post.forum), notice: "Votre message a bien été créé"
+      redirect_to [@post.forum, @post], notice: "Votre message a bien été créé"
     else
       @post.node = Node.new
       if params.include?(:tags)

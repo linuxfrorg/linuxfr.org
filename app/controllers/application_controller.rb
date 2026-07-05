@@ -62,7 +62,7 @@ protected
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
     devise_parameter_sanitizer.permit(:account_update, keys: [
       :login, :email, :password, :password_confirmation, :current_password,
-      :hide_avatar, :news_on_home, :diaries_on_home, :posts_on_home,
+      :hide_avatar, :news_on_home, :diaries_on_home, :posts_on_home, :show_email,
       :polls_on_home, :wiki_pages_on_home, :trackers_on_home, :bookmarks_on_home,
       :sort_by_date_on_home, :hide_signature, :show_negative_nodes,
       :totoz_style, :totoz_source,

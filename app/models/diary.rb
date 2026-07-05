@@ -35,6 +35,11 @@ class Diary < Content
   wikify_attr   :body
   truncate_attr :body
 
+  def title=(raw)
+    raw.strip!
+    write_attribute :title, raw
+  end
+
   ### SEO ###
 
   extend FriendlyId

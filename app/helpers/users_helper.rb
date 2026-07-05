@@ -8,7 +8,8 @@ module UsersHelper
       class: "avatar",
       alt: "",
       width: AvatarUploader::AVATAR_SIZE,
-      height: AvatarUploader::AVATAR_SIZE
+      height: AvatarUploader::AVATAR_SIZE,
+      loading: "lazy"
     }
     image_tag(user.avatar_url, options)
   end
@@ -20,9 +21,17 @@ module UsersHelper
       class: "avatar",
       alt: "",
       width: AvatarUploader::AVATAR_SIZE / 2,
-      height: AvatarUploader::AVATAR_SIZE / 2
+      height: AvatarUploader::AVATAR_SIZE / 2,
+      loading: "lazy"
     }
     image_tag(user.avatar_url, options)
+  end
+
+  def email_link(user)
+    return if not user.account.try(:show_email)
+    karma = user.account.try(:karma).to_i
+    return unless karma > 0
+    link_to("courriel", "mailto:" + user.account.email)
   end
 
   def homesite_link(user)
