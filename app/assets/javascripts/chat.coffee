@@ -127,7 +127,7 @@ class Chat
   right_highlitizer: (event) =>
     time = $(event.target).data("clockTime")
     index = $(event.target).data("clockIndex")
-    if time.length = 5
+    if time.length == 5
         @inbox.find("time[data-clock-time*=\"" + time + "\"]").addClass "highlighted"
     else
         @inbox.find("time[data-clock-time=\"" + time + "\"][data-clock-index=\"" + index + "\"]").addClass "highlighted"
