@@ -139,7 +139,6 @@ $.fn.autocompleter = function() {
       matchSubset: false
     });
   });
-  return this;
 };
 $("input#tags").autocompleter();
 $(".tag_in_place")
