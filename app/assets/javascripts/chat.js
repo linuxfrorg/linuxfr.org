@@ -286,7 +286,7 @@ class Chat {
   right_highlitizer(event) {
     const time = $(event.target).data("clockTime");
     const index = $(event.target).data("clockIndex");
-    if ((time.length = 5)) {
+    if ((time.length === 5)) {
       return this.inbox
         .find('time[data-clock-time*="' + time + '"]')
         .addClass("highlighted");
