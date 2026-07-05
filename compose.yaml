@@ -2,7 +2,7 @@ services:
   linuxfr.org:
     build:
       context: .
-      dockerfile: deployment/linuxfr.org/Dockerfile
+      dockerfile: deployment/linuxfr.org/Containerfile
     env_file:
       - deployment/default.env
     volumes:
@@ -10,6 +10,8 @@ services:
       # and see the result without need to restart the container
       - ./app:/linuxfr.org/app:Z
       - ./db:/linuxfr.org/db:Z
+      - ./Gemfile:/linuxfr.org/Gemfile:Z
+      - ./Gemfile.lock:/linuxfr.org/Gemfile.lock:Z
       - ./lib:/linuxfr.org/lib:Z
       - ./public:/linuxfr.org/public:Z
       - ./test:/linuxfr.org/test:Z
@@ -18,7 +20,7 @@ services:
     tmpfs:
       - /linuxfr.org/public/tmp:size=100M
     healthcheck:
-      test: ["CMD", "curl", "--silent", "--fail", "--head", "http://localhost:3000"]
+      test: curl --silent --fail --head http://localhost:3000
       interval: 10s
       start_period: 5s
     depends_on:
@@ -32,10 +34,11 @@ services:
   linuxfr-board:
     build:
       context: deployment/linuxfr-board
+      dockerfile: Containerfile
     env_file:
       - deployment/default.env
     healthcheck:
-      test: ["CMD", "curl", "--silent", "--fail", "--head", "http://localhost:9000"]
+      test: curl --silent --fail --head http://localhost:9000
       interval: 10s
       start_period: 5s
     depends_on:
@@ -46,10 +49,11 @@ services:
   linuxfr-img:
     build:
       context: deployment/linuxfr-img
+      dockerfile: Containerfile
     env_file:
       - deployment/default.env
     healthcheck:
-      test: ["CMD", "curl", "--silent", "--fail", "--head", "http://localhost:8000/status"]
+      test: curl --silent --fail --head http://localhost:8000/status
       interval: 10s
       start_period: 5s
     depends_on:
@@ -60,7 +64,7 @@ services:
       - cache-img:/linuxfr-img/cache
 
   nginx:
-    image: docker.io/nginx:stable
+    image: docker.io/nginxinc/nginx-unprivileged:stable-alpine
     env_file:
       - deployment/default.env
     volumes:
@@ -68,11 +72,18 @@ services:
       - ./public/fonts:/var/linuxfr/fonts:Z
       - data-uploads:/var/linuxfr/uploads
     ports:
-      - target: 80
-        published: 127.0.0.1:80
+      - target: 8080
+        # If you customize the published port, you have to update the
+        # DOMAIN_HTTP_PORT and IMAGE_DOMAIN_HTTP_PORT variables
+        # into the `deployment/default.env` file too
+        published: 9000
+        host_ip: 127.0.0.1
         protocol: tcp
     healthcheck:
-      test: ["CMD", "curl", "--silent", "--fail", "--fail-early", "--head", "http://$$DOMAIN", "http://$$DOMAIN/img", "http://$$DOMAIN/b", "http://$$IMAGE_DOMAIN/status"]
+      test: >-
+        curl --silent --fail --fail-early --location --head
+        http://$$DOMAIN:8080 http://$$DOMAIN:8080/img/status
+        http://$$DOMAIN:8080/b http://$$IMAGE_DOMAIN:8080/status
       interval: 10s
       start_period: 5s
     depends_on:
@@ -94,20 +105,27 @@ services:
     networks:
       default:
         aliases:
-          - ${DOMAIN}
-          - ${IMAGE_DOMAIN}
+          - $${DOMAIN}
+          - $${IMAGE_DOMAIN}
+          # fallback for Docker as it cannot add aliases from environment variables
+          - dlfp.lo
+          - image.dlfp.lo
 
   database:
     build:
       context: deployment/database
+      dockerfile: Containerfile
     env_file:
       - deployment/default.env
     ports:
       - target: 3306
-        published: 127.0.0.1:3306
+        published: 3306
+        host_ip: 127.0.0.1
         protocol: tcp
     healthcheck:
-      test: ["CMD", "mysql", "-h", "127.0.0.1", "-u", "$$MYSQL_USER", "--password=$$MYSQL_PASSWORD", "--execute", "\"SHOW DATABASES;\""]
+      test: >-
+        exec mysql -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+        --execute 'SHOW DATABASES;'
       interval: 10s
       start_period: 5s
     volumes:
@@ -116,7 +134,7 @@ services:
   redis:
     image: docker.io/redis:5
     healthcheck:
-      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      test: redis-cli --raw incr ping
       interval: 10s
       start_period: 5s
     volumes:

@@ -1,7 +1,31 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  MY_DOMAIN  = ENV["DOMAIN"] || 'dlfp.lo'
-  IMG_DOMAIN = ENV["IMAGE_DOMAIN"] || 'dlfp.lo'
+  MY_DOMAIN  = ENV["DOMAIN"] || "dlfp.lo"
+  MY_PUBLIC_PORT = ENV["DOMAIN_HTTP_PORT"] || "80"
+
+  linuxfr_service_url = "http://#{MY_DOMAIN}"
+  if MY_PUBLIC_PORT != "" and MY_PUBLIC_PORT != "80"
+    linuxfr_service_url = "#{linuxfr_service_url}:#{ MY_PUBLIC_PORT}"
+  end
+
+  if MY_PUBLIC_PORT == "443"
+    linuxfr_service_url = "https://#{MY_DOMAIN}"
+  end
+  MY_PUBLIC_URL = linuxfr_service_url
+
+
+  IMG_DOMAIN = ENV["IMAGE_DOMAIN"] || "dlfp.lo"
+  IMG_PUBLIC_PORT = ENV["IMAGE_DOMAIN_HTTP_PORT"] || "80"
+
+  image_service_url = "http://#{IMG_DOMAIN}"
+  if IMG_PUBLIC_PORT != "" and IMG_PUBLIC_PORT != "80"
+    image_service_url = "#{image_service_url}:#{ IMG_PUBLIC_PORT}"
+  end
+
+  if IMG_PUBLIC_PORT == "443"
+    image_service_url = "https://#{IMG_DOMAIN}"
+  end
+  IMG_PUBLIC_URL = image_service_url
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
