@@ -1,4 +1,4 @@
-atom_feed(:root_url => forums_url, "xmlns:wfw" => "http://wellformedweb.org/CommentAPI/") do |feed|
+atom_feed(:root_url => forums_url, :language => "fr_FR", "xmlns:wfw" => "http://wellformedweb.org/CommentAPI/") do |feed|
   if @user
     feed.title("LinuxFr.org : les publications de #{@user.name}")
   else
