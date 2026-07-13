@@ -13,4 +13,4 @@
         %br
         %span.revision-date
           = "le #{I18n.l(revision.created_at, :format => '%d %B %Y à %H:%M:%S')}"
-  = render 'attendees', attendees: news.attendees, enable_reassign: false
+  = render 'redaction/news/attendees', attendees: news.attendees, enable_reassign: false

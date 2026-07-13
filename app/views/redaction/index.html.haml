@@ -45,7 +45,7 @@
             - if n.nb_editors > 0
               = "& #{pluralize n.nb_editors, "participant"}"
           %h3= link_to n.title, [:redaction, n]
-          Modifiée le #{n.updated_at.to_s :posted}
+          Modifiée le #{n.updated_at.to_fs :posted}
 
   %h2 #{pluralize @news.count, "dépêche"} en cours de modération
   - feed "Flux Atom des dépêches en cours de modération", "/redaction/news/moderation.atom"

@@ -1,11 +1,108 @@
-diary_lorem_cc_licensed:
-  cc_licensed: true
+one:
   user: visitor_1
+  cc_licensed: true
+  content: one
+  content_type: Diary
+  created_at: <%= Time.now %>
+
+old:
+  user: visitor_1
+  cc_licensed: true
+  content: old
+  content_type: Diary
+  created_at: <%= 4.months.ago %>
+
+diary_lorem_cc_licensed:
+  user: visitor_1
+  cc_licensed: true
   content: lorem_cc_licensed
-  content_type: Journal
+  content_type: Diary
 
 diary_lorem_copyright:
-  cc_licensed: false
   user: visitor_2
+  cc_licensed: false
   content: lorem_copyright
-  content_type: Journal
+  content_type: Diary
+
+tracker_one:
+  user: visitor_1
+  cc_licensed: true
+  content: one
+  content_type: Tracker
+
+tracker_two:
+  user: visitor_1
+  cc_licensed: true
+  content: two
+  content_type: Tracker
+
+forum:
+  user: visitor_1
+  cc_licensed: true
+  content: one
+  content_type: Forum
+
+news:
+  user: moderator_1
+  cc_licensed: true
+  content: news
+  content_type: News
+
+draft:
+  user: moderator_1
+  cc_licensed: true
+  content: draft
+  content_type: News
+
+candidate:
+  user: moderator_1
+  cc_licensed: true
+  content: candidate
+  content_type: News
+
+first_part_only:
+  user: moderator_1
+  cc_licensed: true
+  content: first_part_only
+  content_type: News
+
+poll:
+  user: moderator_1
+  cc_licensed: true
+  content: one
+  content_type: Poll
+
+poll_draft:
+  user: moderator_1
+  cc_licensed: true
+  content: draft
+  content_type: Poll
+
+poll_collectif:
+  user: community
+  cc_licensed: true
+  content: collectif
+  content_type: Poll
+
+post:
+  user: moderator_1
+  cc_licensed: true
+  content: one
+  content_type: Post
+
+wiki:
+  user: moderator_1
+  cc_licensed: true
+  content: one
+  content_type: WikiPage
+
+homePage:
+  user: moderator_1
+  cc_licensed: true
+  content: homePage
+  content_type: WikiPage
+
+bookmark:
+  user: visitor_0
+  content: one
+  content_type: Bookmark

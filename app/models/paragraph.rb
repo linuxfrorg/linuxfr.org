@@ -18,7 +18,7 @@
 #
 # A paragraph can be split in several if it has a blank line in its body.
 #
-class Paragraph < ActiveRecord::Base
+class Paragraph < ApplicationRecord
   belongs_to :news
 
   attr_accessor :user, :after, :already_split

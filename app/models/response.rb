@@ -13,7 +13,7 @@
 # too short, already proposed, should go in forum...
 # So, we keep response templates for theses emails.
 #
-class Response < ActiveRecord::Base
+class Response < ApplicationRecord
   validates :title, presence: { message: "Le titre est obligatoire" },
                     length: { maximum: 255, message: "Le titre est trop long" }
 end

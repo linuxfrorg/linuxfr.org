@@ -63,7 +63,7 @@ class Statistics::Contents < Statistics::Statistics
   end
 
   def contents_by_day
-    select_all "SELECT DAYNAME(CONVERT_TZ(created_at, 'UTC', 'Europe/Paris')) AS d, WEEKDAY(CONVERT_TZ(created_at, 'UTC', 'Europe/Paris')) AS day, COUNT(*) AS cnt FROM nodes WHERE public=1 GROUP BY d ORDER BY day ASC"
+    select_all "SELECT DAYNAME(CONVERT_TZ(created_at, 'UTC', 'Europe/Paris')) AS d, WEEKDAY(CONVERT_TZ(created_at, 'UTC', 'Europe/Paris')) AS day, COUNT(*) AS cnt FROM nodes WHERE public=1 GROUP BY d, day ORDER BY day ASC"
   end
 
   def news_size

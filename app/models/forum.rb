@@ -16,7 +16,7 @@
 # The forums is the place where the users ask questions and answer them.
 # It'as all about helping each others.
 #
-class Forum < ActiveRecord::Base
+class Forum < ApplicationRecord
   acts_as_list
 
   has_many :posts, inverse_of: :forum

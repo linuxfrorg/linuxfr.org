@@ -50,7 +50,7 @@
         %tr{class: tracker.state}
           %td= link_to tracker.id, tracker
           %td= link_to tracker.title, tracker
-          %td= tracker.created_at.to_s(:posted)
+          %td= tracker.created_at.to_fs(:posted)
           %td= tracker.assigned_to
           %td= tracker.user ? link_to(tracker.user.name, tracker.user) : "Anonyme"
           %td= link_to tracker.category_title, "/suivi?tracker%5Bcategory_id%5D=#{tracker.category_id}"

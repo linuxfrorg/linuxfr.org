@@ -45,13 +45,14 @@
 #   * editor        -> they edit the news in the redaction space
 #   * admin         -> the almighty users
 #
-class Account < ActiveRecord::Base
+class Account < ApplicationRecord
   include Canable::Cans
+  include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TextHelper
 
   has_many :applications, class_name: 'Doorkeeper::Application', as: :owner
   has_many :logs, dependent: :destroy
-  belongs_to :user, inverse_of: :account, dependent: :delete
+  belongs_to :user, inverse_of: :account, dependent: :delete, optional: true
   accepts_nested_attributes_for :user, reject_if: :all_blank
 
   mount_uploader :uploaded_stylesheet, StylesheetUploader
@@ -234,7 +235,7 @@ class Account < ActiveRecord::Base
 
   def read(node)
     node.read_by(self.id)
-    $redis.srem "dashboard/#{self.id}", node.id
+    $redis.srem? "dashboard/#{self.id}", node.id
   end
 
   def notify_answer_on(node_id)
@@ -303,7 +304,7 @@ class Account < ActiveRecord::Base
 ### Blocked for comments ###
 
   def blocked?
-    $redis.exists("block/#{self.id}")
+    $redis.exists?("block/#{self.id}")
   end
 
   def block(nb_days, user_id)
@@ -323,7 +324,7 @@ class Account < ActiveRecord::Base
 ### Plonk for the board ###
 
   def plonked?
-    $redis.exists("plonk/#{self.id}")
+    $redis.exists?("plonk/#{self.id}")
   end
 
   def plonk(nb_days, user_id)

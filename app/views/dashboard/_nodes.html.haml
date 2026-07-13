@@ -28,10 +28,10 @@
               = node.content.forum.title
           %td
             = link_to_content node.content
-          %td.date= node.created_at.to_s(:posted)
+          %td.date= node.created_at.to_fs(:posted)
           %td.number= node.score
           %td.number
             - if node.read_status(current_account).is_a? Integer
               = image_tag "/images/icones/comment.png", alt: "Nouveaux commentaires !", class: "thread-new-comments"
             = node.comments_count
-          %td.date= node.latest_answer ? node.latest_answer.created_at.to_s(:posted) : " "
+          %td.date= node.latest_answer ? node.latest_answer.created_at.to_fs(:posted) : " "

@@ -1,9 +1,7 @@
-# encoding: utf-8
 module AdminHelper
-
   def abusers
-    file = Rails.root.join("tmp", "abusers.txt")
-    if File.exists?(file)
+    file = Rails.root.join("tmp/abusers.txt")
+    if File.exist?(file)
       content_tag(:ul, class: "abusers") do
         File.readlines(file).map do |l|
           content_tag(:li, l)
@@ -13,5 +11,4 @@ module AdminHelper
       content_tag(:p, "aucun")
     end
   end
-
 end

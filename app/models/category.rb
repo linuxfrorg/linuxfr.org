@@ -13,7 +13,7 @@
 # The tracker entries are categorized,
 # for helping users browsing them.
 #
-class Category < ActiveRecord::Base
+class Category < ApplicationRecord
   has_many :trackers, dependent: :nullify
 
   validates :title, presence: { message: 'Les catégories ont obligatoirement un titre' },
