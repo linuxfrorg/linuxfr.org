@@ -19,7 +19,8 @@
 
   <li>Avoir un compte sur le site et les fonctionnalités associées
     <ul>
-      <li><a href="#aide-note" class="anchor">Notes sur les contenus</a></li>
+      <li><a href="#aide-note" class="anchor">Notes sur les contenus et les commentaires</a></li>
+      <li><a href="#aide-tri" class="anchor">Affichage trié</a></li>
       <li><a href="#aide-karma" class="anchor">Système de karma</a></li>
       <li><a href="#aide-toolbar" class="anchor">Barre d’outils</a></li>
       <li><a href="#aide-boiteperso" class="anchor">Boîte d’identification personnelle</a></li>
@@ -141,7 +142,7 @@ si le contenu le permet.</p>
 </tbody>
 </table>
 
-<p id="fn1">note 1 : lorsque la dépêche est envoyée directement en
+<p id="fn1">note 1 : lorsque la dépêche est envoyée directement en
 modération, il est possible de choisir d’accepter la licence CC By Sa
 4.0 (par défaut) ou non. Les dépêches créées en rédaction collaborative
 sont placées obligatoirement sous cette licence pour permettre la
@@ -151,7 +152,7 @@ mais la licence originale ne peut être retirée d’une part, et les
 licences mentionnées ne figureront pas dans les méta-données techniques
 de la dépêche). Il n’est pas possible pour l’équipe de modération de
 renvoyer en rédaction une dépêche qui ne serait pas sous cette licence.<a href="#fnref1">↩</a></p>
-<p id="fn2">note 2 : une licence de type CC By-ND, en plus d’être non
+<p id="fn2">note 2 : une licence de type CC By-ND, en plus d’être non
 libre, empêcherait par exemple les corrections, les traductions, les
 reformulations, les ajouts de liens ou d’images, etc. pour les personnes
  qui souhaiteraient y contribuer en rédaction.<a href="#fnref2">↩</a></p>
@@ -176,6 +177,7 @@ reformulations, les ajouts de liens ou d’images, etc. pour les personnes
 <h2 id="aide-role">À quoi correspond le rôle sur la page d’un compte personnel ? <a href="#aide-role" class="anchor">¶</a></h2>
 
 <p>Les différents rôles sont :</p>
+
 <ul>
 <li>admin : les membres de <a href="/equipe">l’équipe d’administration</a> ;</li>
 <li>compte fermé (<i>inactive</i>) : les comptes personnels fermés ;</li>
@@ -206,16 +208,20 @@ système de suivi, les commentaires associés, flux RSS/Atom) ;</li>
 <li>accéder à l’<a href="/redaction">espace de rédaction</a> et à la liste des contenus en rédaction.</li>
 </ul>
 
-<p>Une personne authentifiée (rôle <em>visitor</em>, affiché comme <em>visiteur</em> si elle n’a pas encore de contenus ou <em>contributeur</em> sinon) peut en plus :</p>
+<p>Une personne authentifiée (rôle <em>visitor</em>, affiché comme
+<em>visiteur</em> si elle n’a pas encore de contenus ou <em>contributeur</em>
+sinon) peut en plus :</p>
+
 <ul>
 <li><a href="/redaction">écrire en coopération</a> une dépêche dans l’espace de rédaction ;</li>
 <li>réorganiser n’importe quelle dépêche en rédaction ;</li>
 <li>utiliser l’<a href="/redaction">espace de rédaction</a> et participer à la rédaction des contenus ;</li>
 <li>écrire des commentaires sur les différentes ressources du site
 (dépêches, journaux, forums, sondages, tâches du système de suivi,
-tribunes) et les rééditer pendant quelques minutes ;</li>
+tribunes) et les rééditer pendant cinq minutes ;</li>
 <li>ajouter des étiquettes (<em>tags</em>) sur les différentes ressources du site ;</li>
 <li>publier dans les forums, les journaux, les liens ou le wiki (sous condition de <a href="#aide-karma">karma</a>) ;</li>
+<li>éditer une page du wiki (sous condition de <a href="#aide-karma">karma</a>) ;</li>
 <li>noter les commentaires des autres personnes ;</li>
 <li>modifier ses propres entrées dans le <a href="/suivi">système de suivi</a> ou dans les forums ;</li>
 <li>voter pour les bogues ou suggestions les plus prioritaires dans le système de suivi ;</li>
@@ -226,7 +232,7 @@ tribunes) et les rééditer pendant quelques minutes ;</li>
 <li>voir ses dernières contributions regroupées dans sa page personnelle ;</li>
 <li>accéder à ses dépêches en modération ou en rédaction dans son <a href="/tableau-de-bord">tableau de bord</a> ;</li>
 <li>choisir un avatar ;</li>
-<li>publier l’adresse de courriel associée à son compte (sous condition de <a href="#aide-karma">karma</a>) ;</li>
+<li>publier l’adresse de courriel associée à son compte (sous condition de <a href="#aide-karma">karma</a>) ;</li>
 <li>afficher l’adresse d’un site personnel, une adresse XMPP et/ou une adresse Mastodon (sous condition de <a href="#aide-karma">karma</a>) ;</li>
 <li>choisir quels types de contenus sont affichés en page d’accueil ;</li>
 <li>afficher ou non les signatures ou les avatars ;</li>
@@ -239,6 +245,7 @@ tribunes) et les rééditer pendant quelques minutes ;</li>
 <h2 id="aide-animation">Animation de l’espace de rédaction <a href="#aide-animation" class="anchor">¶</a></h2>
 
 <p>Par rapport à une personne ayant le rôle visiteur, faire partie de l’équipe d’animation de l’espace de rédaction (rôle <i>editor</i>) permet de :</p>
+
 <ul>
 <li>envoyer n’importe quelle dépêche en rédaction vers la modération ;</li>
 <li>réattribuer n’importe quelle dépêche en rédaction à un autre
@@ -259,6 +266,7 @@ peuvent être attribués les contenus rédigés collaborativement)<br>
 <h2 id="aide-moderation">Modération du site<a href="#aide-moderation" class="anchor">¶</a></h2>
 
 <p>Par rapport à une personne ayant le rôle visiteur, faire partie de l’équipe de modération (rôle <i>moderator</i>) permet de :</p>
+
 <ul>
 <li>accéder à la tribune de modération générale et celles liées à chaque dépêche en modération ;</li>
 <li>modérer <em>a priori</em> les dépêches (voter pour un rejet, une
@@ -285,6 +293,7 @@ atteint, l’appliquer) ;</li>
 <h2 id="aide-administration">Administration du site <a href="#aide-administration" class="anchor">¶</a></h2>
 
 <p>Les membres de l’équipe d’administration (rôle <i>admin</i>) cumule toutes les possibilités précédentes, et peuvent en plus :</p>
+
 <ul>
 <li>créditer le karma d’un compte de 50 points ;</li>
 <li>changer le rôle d’un compte personnel, le fermer ou le rouvrir ;</li>
@@ -324,7 +333,7 @@ le site ou un événement dont nous sommes partenaires), le choix se fait
 ainsi : <a href="/news?order=interest">trier par intérêt les dépêches</a>,
 trouver celle actuellement mise en valeur, choisir la première plus
 « intéressante » (plus haute dans le classement) et ayant un score
-important (en général au-dessus de 50, parfois au-dessus de 40 si on
+important (en général au-dessus de 30, parfois au-dessus de 20 si on
 manque de dépêches très bien notées). Il faut aussi que la dépêche ne
 soit pas dans les 15 dernières publiées pour éviter de l’avoir deux
 fois sur la page d’accueil.</p>
@@ -332,7 +341,7 @@ fois sur la page d’accueil.</p>
 <h2 id="aide-flux-atom">Les flux Atom pour suivre ce qui se passe sur le site <a href="#aide-flux-atom" class="anchor">¶</a></h2>
 
 <p>Un flux <a href="https://fr.wikipedia.org/wiki/Atom_Syndication_Format">RSS/Atom</a>
- permet de s’abonner, de se souscrire à des types d’événements : il est
+ permet de s’abonner, de se souscrire à des types d’événements : il est
 ainsi possible de recevoir l’information qu’un nouveau contenu ou un
 nouveau commentaire a été publié par exemple. Un flux informe sur les
 derniers événements (quantité limitée) survenus, dans l’ordre
@@ -345,44 +354,46 @@ XML, pris en charge par de nombreux logiciels. Ces logiciels peuvent
 détecter les flux disponibles dans une page donnée (certains flux sont
 explicitement mentionnés sur les pages du site). Les logiciels doivent
 être configurés pour ne pas aller vérifier l’information trop souvent
-(car cela utilise des ressources inutilement) : une fréquence d’une
+(car cela utilise des ressources inutilement) : une fréquence d’une
 journée ou d’une heure est généralement largement suffisante. La
 récupération d’un flux Atom ne nécessite pas d’avoir un compte sur le
 site.</p>
 
-<p>Le site propose de nombreux flux Atom :</p>
+<p>Le site propose de nombreux flux Atom :</p>
 
 <ul>
-<li>contenus :
+<li>contenus :
   <ul>
-  <li>dépêches : <a href="/news.atom">dernières publiées</a>, <a href="/redaction/news.atom">en rédaction</a>, <a href="/redaction/news/moderation.atom">en modération</a>, dernières dépêches d’une <a href="/sections">section</a>, derniers commentaires sur une dépêche donnée</li>
-  <li>journaux des utilisateurs et utilisatrices : <a href="/journaux.atom">derniers publiés</a>, derniers commentaires sur un journal donné</li>
-  <li>entrées dans les forums : <a href="/forums.atom">dernières questions</a>, dernières questions dans un forum donné, derniers commentaires sur une entrée donnée</li>
-  <li>liens : <a href="/liens.atom">derniers partagés</a>, derniers commentaires sur un lien donné</li>
-  <li>sondages : <a href="/sondages.atom">derniers publiés</a>, derniers commentaires sur un sondage donné</li>
-  <li>système de suivi des bogues et propositions d’évolutions : <a href="/suivi.atom">dernières entrées du suivi</a>, <a href="/suivi/comments.atom">derniers commentaires du suivi</a>, derniers commentaires sur une entrée donnée</li>
-  <li>wiki : <a href="/wiki.atom">dernières pages créées</a>, <a href="/modifications.atom">dernières modifications</a>, derniers commentaires sur une page donnée</li>
+  <li>dépêches : <a href="/news.atom">dernières publiées</a>, <a href="/redaction/news.atom">en rédaction</a>, <a href="/redaction/news/moderation.atom">en modération</a>, dernières dépêches d’une <a href="/sections">section</a>, derniers commentaires sur une dépêche donnée</li>
+  <li>journaux des utilisateurs et utilisatrices : <a href="/journaux.atom">derniers publiés</a>, derniers commentaires sur un journal donné</li>
+  <li>entrées dans les forums : <a href="/forums.atom">dernières questions</a>, dernières questions dans un forum donné, derniers commentaires sur une entrée donnée</li>
+  <li>liens : <a href="/liens.atom">derniers partagés</a>, derniers commentaires sur un lien donné</li>
+  <li>sondages : <a href="/sondages.atom">derniers publiés</a>, derniers commentaires sur un sondage donné</li>
+  <li>système de suivi des bogues et propositions d’évolutions : <a href="/suivi.atom">dernières entrées du suivi</a>, <a href="/suivi/comments.atom">derniers commentaires du suivi</a>, derniers commentaires sur une entrée donnée</li>
+  <li>wiki : <a href="/wiki.atom">dernières pages créées</a>, <a href="/modifications.atom">dernières modifications</a>, derniers commentaires sur une page donnée</li>
   </ul>
 </li>
-<li>commentaires :
+<li>commentaires :
   <ul>
-  <li>par contenu publié : flux des derniers commentaires</li>
-  <li>par utilisateur et utilisatrice : flux des derniers commentaires</li>
+  <li>par contenu publié : flux des derniers commentaires</li>
+  <li>par utilisateur et utilisatrice : flux des derniers commentaires</li>
   </ul>
 </li>
-<li>utilisateurs et utilisatrices : flux des derniers contenus publiés, flux des derniers commentaires</li>
-<li>étiquettes : flux des derniers contenus ayant une étiquette publique</li>
+<li>utilisateurs et utilisatrices : flux des derniers contenus publiés, flux des derniers commentaires</li>
+<li>étiquettes : flux des derniers contenus ayant une étiquette publique</li>
 </ul>
 
-<h2 id="aide-note">Notes sur les contenus <a href="#aide-note" class="anchor">¶</a></h2>
+<h2 id="aide-note">Notes sur les contenus et les commentaires<a href="#aide-note" class="anchor">¶</a></h2>
 
 <p>
-Chaque contenu du site (dépêche, journal, forum, sondage, entrée de suivi, lien, etc.)
-peut être noté pertinent (+1) ou inutile (-1) par les personnes authentifiées sur le site.
+Chaque contenu du site (dépêche, journal, forum, sondage, entrée de suivi, lien,
+etc.) et chaque commentaire peut être noté pertinent (+1) ou inutile (-1) par
+les personnes authentifiées sur le site.
 </p>
 <p>
-Il n’est pas possible de noter ses propres contenus, de noter un même contenu plusieurs fois
-ou de noter les contenus anciens. Il faut être authentifié pour pouvoir noter un contenu.
+Il n’est pas possible de noter ses propres contenus ou commentaires, de noter un même
+contenu ou commentaire plusieurs fois ou de noter les contenus ou commentaires anciens.
+Il faut être authentifié pour pouvoir noter un contenu ou un commentaire.
 L’affichage de la nouvelle note peut être légèrement différé pour des raisons techniques
 (systèmes de cache en place sur le site).
 </p>
@@ -391,11 +402,72 @@ La <b>note</b> globale d’un contenu est la somme des notes pertinent (+1) et i
 données par le lectorat authentifié. Elle peut être positive, négative ou nulle.
 </p>
 <p>
+La <b>note</b> globale d’un commentaire est aussi la somme des notes pertinent
+(+1) et inutile (-1) mais est limitée entre -10 et +10.
+</p>
+<p>La note d’un contenu est utilisée :</p>
+
+<ul>
+  <li>pour certains des <a href="#aide-tri">tris d’affichage</a> ;</li>
+  <li>via ses préférences de son compte, il est possible de choisir d’afficher
+ou non les contenus ayant une note négative ;</li>
+  <li>pour calculer le <a href="#aide-karma">karma</a> (plus précisément les
+notes pertinent/inutile plutôt que la note globale elle-même) ;</li>
+  <li>pour donner des <a href="#aide-moteursderecherche">indications aux moteurs
+de recherche</a> sur quoi indexer et quels liens suivre ou non.</li>
+</ul>
+
+<p>La note d’un commentaire est utilisée :</p>
+
+<ul>
+  <li>par la <a href="#aide-toolbar">barre d’outils</a> ;</li>
+  <li>pour calculer le <a href="#aide-karma">karma</a> (plus précisément les
+notes pertinent/inutile plutôt que la note globale elle-même) ;</li>
+  <li>pour donner des <a href="#aide-moteursderecherche">indications aux moteurs
+de recherche</a> sur quoi indexer et quels liens suivre ou non ;</li>
+  <li>l’affichage du commentaire pour le lectorat non authentifié (les
+commentaires notés négativement ne sont pas visibles par défaut).</li>
+</ul>
+
+<p>Le détail des pertinents/inutiles sur les notes des contenus et des
+commentaires n’est conservé que trois mois (ensuite sur la note globale est
+affichée). Les commentaires affichent pendant trois mois les trois informations
+note globale, nombre de pertinents et nombre d’inutiles, tandis que les contenus
+n’affichent que la note globale.</p>
+
+<h2 id="aide-tri">Affichage trié<a href="#aide-tri" class="anchor">¶</a></h2>
+
+<p>Différentes pages du site sont triables (pouvant être mis dans un ordre
+donné) :</p>
+
+<ul>
+<li>la <a href="/">page d’accueil du site</a> ;</li>
+<li>les pages d’index des contenus de type <a href="/news">dépêches</a>, <a
+href="/forums">entrées de forums</a>, <a href="/journaux">journaux</a>, <a
+href="/liens">liens</a> ou <a href="/sondages">sondages</a> ;</li>
+<li>la page de chaque <a href="/sections">sections de dépêches</a> ;</li>
+<li>la page de chaque <a href="/forums">forum</a> ;</li>
+<li>la page de chaque compte et les pages d’index de chaque type de contenus
+publiés par ce compte et la page d’index des commentaires publiés par ce
+compte.</li>
+</ul>
+
+<p>Les tris possibles sont :</p>
+
+<ul>
+<li>par date (par ordre chronologique inverse de publication) ;</li>
+<li>par <a href="#aide-note">note</a> ;</li>
+<li>par intérêt (voir plus bas) ;</li>
+<li>par dernier commentaire (par ordre chronologique inverse).</li>
+</ul>
+
+<p>
 L’<b>intérêt</b> d’un contenu est un indicateur calculé à partir de la date de création
 et de la note globale du contenu. Il sert à trier les contenus récents et bien notés (donc,
 soit les plus récents, soit les suffisamment bien notés et pas trop anciens).
 </p>
 <p>intérêt = date + note × coef. de contenu × coef. de fréquence</p>
+
 <ul>
 <li>date : date de création en secondes depuis Epoch ;</li>
 <li>coefficient de contenu :
@@ -411,13 +483,17 @@ soit les plus récents, soit les suffisamment bien notés et pas trop anciens).
 <li>coefficient de fréquence : 864 (≃ nombre de secondes par jour divisé par le nombre de votes par jour).</li>
 </ul>
 
-<p>Via ses préférences de son compte, il est possible de choisir d’afficher ou non les contenus ayant une note négative.</p>
+<p>L’<b>intérêt</b> est le tri par défaut sur la <a href="/">page d’accueil</a>
+en cas de visite non authentifiée. Avec un compte, il est possible de choisir
+entre tri chronologique ou tri par intérêt.</p>
+
+<p>L’intérêt est aussi utilisé pour déterminer la <a href="#aide-phare">dépêche mise en valeur</a>.</p>
 
 <h2 id="aide-karma">Système de karma <a href="#aide-karma" class="anchor">¶</a></h2>
 
 <p>Le karma est une note interne qui détermine le nombre d’avis
-quotidiens et la possibilité d’écrire sur le site de ceux qui sont
-authentifiés sur le site.</p>
+quotidiens et la possibilité d’écrire sur le site pour les personnes
+qui sont authentifiées sur le site.</p>
 
 <p>L’influence de différentes actions sur le karma :</p>
 <ul>
@@ -476,14 +552,26 @@ publie des dépêches.</p>
 </tbody>
 </table>
 
-<p>Pour pouvoir écrire un journal, publier un lien ou discuter sur la
-tribune, il faut avoir un karma supérieur strictement à 0, et pour
-éditer une page de wiki, il faut un karma strictement supérieur à 20
+<p>Le karma n’a, par définition, pas d’effet sur
+<a href="#aide-authentification">ce qui est possible sans authentification</a>.</p>
+
+<p>Le karma vient limiter ce qui possible avec authentification : pour pouvoir
+écrire un journal, publier un lien ou discuter sur la tribune, il faut avoir un
+karma supérieur strictement à 0, et pour éditer une page de wiki, il faut un
+karma strictement supérieur à 20
 (sources
 <a href="https://github.com/linuxfrorg/linuxfr.org/blob/main/app/models/diary.rb">journal</a>,
 <a href="https://github.com/linuxfrorg/linuxfr.org/blob/main/app/models/bookmark.rb">lien</a>,
 <a href="https://github.com/linuxfrorg/linuxfr.org/blob/main/app/models/wiki_page.rb">wiki</a> et
-<a href="https://github.com/linuxfrorg/linuxfr.org/blob/main/app/models/account.rb">tribune</a>).</p>
+<a href="https://github.com/linuxfrorg/linuxfr.org/blob/main/app/models/account.rb">tribune</a>).
+</p>
+
+<p>Un compte nouvellement créé ayant le karma initial par défaut ne peut donc
+éditer une page du wiki (mais il peut écrire un journal, publier dans les
+forums, créer une dépêche en rédaction ou l’envoyer directement en modération,
+intervenir en rédaction, proposer un sondage, créer une entrée dans le suivi,
+publier un lien, discuter sur la tribune, écrire un commentaire, étiqueter,
+etC.).</p>
 
 <p>Pour pouvoir afficher l’adresse de courriel associée à son compte ou
 l’adresse de son site personnel ou de son compte Mastodon ou son adresse
