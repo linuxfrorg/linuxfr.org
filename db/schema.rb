@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_06_121910) do
+ActiveRecord::Schema.define(version: 2026_07_14_144200) do
 
   create_table "accounts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "user_id"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2023_05_06_121910) do
     t.string "title", limit: 160, null: false
     t.string "cached_slug", limit: 165, null: false
     t.integer "owner_id"
-    t.string "link", null: false
+    t.string "link", limit: 2047, null: false
     t.string "lang", limit: 2, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 2023_05_06_121910) do
   create_table "links", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci", force: :cascade do |t|
     t.integer "news_id", null: false
     t.string "title", limit: 100, null: false
-    t.string "url", null: false
+    t.string "url", limit: 2047, null: false
     t.string "lang", limit: 2, null: false
     t.datetime "created_at"
     t.datetime "updated_at"

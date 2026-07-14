@@ -7,7 +7,7 @@
 #  title       :string(160)      not null
 #  cached_slug :string(165)      not null
 #  owner_id    :integer
-#  link        :string(255)      not null
+#  link        :string(2047)      not null
 #  lang        :string(2)        not null
 #  created_at  :datetime
 #  updated_at  :datetime
@@ -28,7 +28,7 @@ class Bookmark < Content
                         uniqueness: { message: "Un lien avec le même titre a déjà été proposé" }
   validates :link, presence: { message: "Vous ne pouvez pas poster un lien vide" },
                    uri: { protocols: ["http", "https"], message: "Le lien n'est pas valide" },
-                   length: { maximum: 255, message: "Le lien est trop long" },
+                   length: { maximum: 2047, message: "Le lien est trop long" },
                    uniqueness: { message: "Cette adresse de lien a déjà été proposée" }
   validates :lang, inclusion: { in: Lang.valid_codes, allow_nil: false, message: "La langue du lien doit être définie" }
 

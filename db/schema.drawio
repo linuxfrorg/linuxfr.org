@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0">
   <diagram name="Page-1" id="efa7a0a1-bf9b-a30e-e6df-94a7791c09e9">
-    <mxGraphModel dx="2111" dy="1837" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="2711" dy="2192" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -60,7 +60,7 @@
         <mxCell id="4iPdTcg1eZaAQi2mh2z5-122" parent="1" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#003366;shadow=1;fillColor=#D4E1F5;fontColor=#003366" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;strong&gt;friend_sites&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;I &quot;id&quot;&lt;br&gt;VC(255) &quot;title&quot;&lt;br&gt;VC(255) &quot;url&quot;&lt;br&gt;I &quot;position&quot;, IDX [&quot;index_friend_sites_on_position&quot;]" vertex="1">
           <mxGeometry height="100" width="281" x="2189.5" y="-270" as="geometry" />
         </mxCell>
-        <mxCell id="4iPdTcg1eZaAQi2mh2z5-123" parent="1" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#003366;shadow=1;fillColor=#D4E1F5;fontColor=#003366" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center ; text-decoration: underline&quot;&gt;&lt;strong&gt;links (with hits count in news)&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;I &quot;id&quot;&lt;br&gt;I &quot;news_id&quot;, null: false, IDX [&quot;index_links_on_news_id&quot;]&lt;br&gt;VC(100) &quot;title&quot;&amp;nbsp; null: false&lt;br&gt;VC(255) &quot;url&quot;, null: false&lt;br&gt;VC(2) &quot;lang&quot;&amp;nbsp; null: false&lt;br&gt;DT &quot;created_at&quot;&lt;br&gt;DT &quot;updated_at&quot;&lt;br&gt;" vertex="1">
+        <mxCell id="4iPdTcg1eZaAQi2mh2z5-123" parent="1" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;strokeColor=#003366;shadow=1;fillColor=#D4E1F5;fontColor=#003366" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center; text-decoration: underline;&quot;&gt;&lt;strong&gt;links (with hits count in news)&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;I &quot;id&quot;&lt;br&gt;I &quot;news_id&quot;, null: false, IDX [&quot;index_links_on_news_id&quot;]&lt;br&gt;VC(100) &quot;title&quot;&amp;nbsp; null: false&lt;br&gt;VC(2047) &quot;url&quot;, null: false&lt;br&gt;VC(2) &quot;lang&quot;&amp;nbsp; null: false&lt;br&gt;DT &quot;created_at&quot;&lt;br&gt;DT &quot;updated_at&quot;" vertex="1">
           <mxGeometry height="150" width="320" x="670" y="1270" as="geometry" />
         </mxCell>
         <mxCell id="4iPdTcg1eZaAQi2mh2z5-160" edge="1" parent="1" source="4iPdTcg1eZaAQi2mh2z5-124" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;" target="4iPdTcg1eZaAQi2mh2z5-147">

@@ -6,7 +6,7 @@
 #  id         :integer          not null, primary key
 #  news_id    :integer          not null
 #  title      :string(100)      not null
-#  url        :string(255)      not null
+#  url        :string(2047)      not null
 #  lang       :string(2)        not null
 #  created_at :datetime
 #  updated_at :datetime
@@ -28,7 +28,7 @@ class Link < ActiveRecord::Base
                     length: { maximum: 100, message: "Le titre du lien est trop long" }
   validates :url, uri: { protocols: PROTOCOLS, message: "L'adresse n'est pas valide" },
                   presence: { message: "Un lien doit obligatoirement avoir une adresse" },
-                  length: { maximum: 255, message: "L’adresse est trop longue" }
+                  length: { maximum: 2047, message: "L’adresse est trop longue" }
   validates :lang, inclusion: { in: Lang.valid_codes, allow_nil: false, message: "La langue du lien doit être définie" }
 
   before_validation do |link|
