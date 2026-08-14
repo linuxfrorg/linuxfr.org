@@ -114,6 +114,10 @@ class Statistics::Users < Statistics::Statistics
     select_all "SELECT SUBSTRING_INDEX(jabber_id,'@', -1) AS domain, COUNT(*) AS cnt FROM accounts LEFT JOIN users ON accounts.user_id=users.id WHERE jabber_id LIKE '%@%' AND last_seen_on > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY domain HAVING cnt > 3 ORDER BY cnt DESC LIMIT 10;"
   end
 
+  def top_deltachat_domains
+    select_all "SELECT SUBSTRING_INDEX(deltachat_id,'@', -1) AS domain, COUNT(*) AS cnt FROM accounts LEFT JOIN users ON accounts.user_id=users.id WHERE deltachat_id LIKE '%@%' AND last_seen_on > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY domain HAVING cnt > 3 ORDER BY cnt DESC LIMIT 10;"
+  end
+
   def top_mastodon_domains
     # We assume Mastodon URLs will always start with "https://"
     select_all "SELECT SUBSTRING_INDEX(SUBSTRING(mastodon_url, 9),'/', 1) AS domain, COUNT(*) AS cnt FROM accounts LEFT JOIN users ON accounts.user_id=users.id WHERE mastodon_url LIKE 'https://%/%' AND last_seen_on > DATE_SUB(CURDATE(),INTERVAL 90 DAY) AND role<>'inactive' GROUP BY domain HAVING cnt > 3 ORDER BY cnt DESC LIMIT 10;"
