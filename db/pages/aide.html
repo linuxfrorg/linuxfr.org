@@ -526,7 +526,7 @@ publie des dépêches.</p>
 </tbody>
 </table>
 
-<p>Le score de base des commentaires dépend du karma. La formule mathématique est <code>E(log10(karma)) - 1</code>, où <code>E()</code> est la partie entière inférieure si le karma est strictement positif. Et c’est <code>max(-10, -2 + E(karma/30))</code> pour un karma négatif ou nul. Avec un karma à 0, ça donne un score de -2 (<a href="https://github.com/linuxfrorg/linuxfr.org/blob/main/app/models/comment.rb">source</a>). En français cela donne le tableau qui suit.</p>
+<p>Le score de base des commentaires dépend du karma. La formule mathématique est <code>E(log10(karma)) - 1</code>, où <code>E()</code> est la partie entière inférieure si le karma est strictement positif (avec une spécificité pour les entrées de forums où le minimum est 1). Et pour un karma négatif ou nul, c’est <code>max(-10, -2 + E(karma/30))</code> . Avec un karma à 0, ça donne un score de -2 (<a href="https://github.com/linuxfrorg/linuxfr.org/blob/main/app/models/comment.rb">source</a>). En français cela donne le tableau qui suit.</p>
 
 <table>
 <thead>
@@ -542,8 +542,8 @@ publie des dépêches.</p>
 <tr><td>-89 à -60</td><td>-4</td></tr>
 <tr><td>-59 à -30</td><td>-3</td></tr>
 <tr><td>-29 à 0</td><td>-2</td></tr>
-<tr><td>1 à 9</td><td>-1</td></tr>
-<tr><td>10 à 99</td><td>0</td></tr>
+<tr><td>1 à 9</td><td>-1 (exception pour les forums : 1)</td></tr>
+<tr><td>10 à 99</td><td>0 (exception pour les forums : 1)</td></tr>
 <tr><td>100 à 999</td><td>1</td></tr>
 <tr><td>1000 à 9999</td><td>2</td></tr>
 <tr><td>10000 à 99999</td><td>3</td></tr>
