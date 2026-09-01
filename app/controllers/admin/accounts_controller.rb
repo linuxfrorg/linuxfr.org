@@ -51,6 +51,7 @@ class Admin::AccountsController < AdminController
       user = @account.user
       user.homesite = nil
       user.jabber_id = nil
+      user.deltachat_id = nil
       user.mastodon_url = nil
       user.save
       Board.amr_notification("Le compte #{@account.login} #{user_url @account.login} a été désactivé par #{current_user.name} #{user_url(current_user)}")
@@ -64,6 +65,7 @@ class Admin::AccountsController < AdminController
     user = @account.user
     user.homesite = nil
     user.jabber_id = nil
+    user.deltachat_id = nil
     user.mastodon_url = nil
     user.save
     Board.amr_notification("Le compte #{@account.login} #{user_url @account.login} a été désactivé par #{current_user.name} #{user_url(current_user)}")
