@@ -5,7 +5,7 @@
   = form.text_field :title, autocomplete: 'off', required: 'required', spellcheck: 'true', maxlength: 160
 %p
   = form.label :link, "Lien à partager"
-  = form.text_field :link, autocomplete: 'off', required: 'required', spellcheck: 'false', maxlength: 1024
+  = form.text_field :link, autocomplete: 'off', required: 'required', spellcheck: 'false', maxlength: 2047
 %p
   = form.label :lang, "Langue"
   = form.select :lang, Lang.all, { include_blank: true }, { required: "required" }
