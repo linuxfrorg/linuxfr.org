@@ -62,6 +62,7 @@ class CommentsController < ApplicationController
       flash[:notice] = "Votre commentaire a bien été modifié"
       redirect_to url_for_content(@node.content) + "#comment-#{@comment.id}"
     else
+      flash.now[:alert] = "Attention, ce commentaire a été supprimé et n’est visible que par l’équipe d'administration" if @comment.deleted?
       flash.now[:alert] = "Impossible d’enregistrer ce commentaire" if @comment.invalid?
       render :edit
     end

@@ -44,6 +44,7 @@ class TrackersController < ApplicationController
     path = tracker_path(@tracker, format: params[:format])
     headers['Link'] = %(<#{tracker_url @tracker}>; rel="canonical")
     redirect_to path, status: 301 if request.path != path
+    flash.now[:alert] = "Attention, cette entrée de suivi a été supprimée et n’est visible que par l’équipe d'administration" unless @tracker.visible?
   end
 
   def new

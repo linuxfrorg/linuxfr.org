@@ -22,6 +22,7 @@ class PollsController < ApplicationController
     path = poll_path(@poll, format: params[:format])
     headers['Link'] = %(<#{poll_url @poll}>; rel="canonical")
     redirect_to path, status: 301 and return if request.path != path
+    flash.now[:alert] = "Attention, ce sondage a été supprimé et n’est visible que par l’équipe d'administration" unless @poll.visible?
   end
 
   def new
