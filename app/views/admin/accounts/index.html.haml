@@ -39,6 +39,9 @@
         - if account.user.jabber_id.present?
           %br
           = account.user.jabber_id
+        - if account.user.deltachat_id.present?
+          %br
+          = account.user.deltachat_id
         - if account.user.mastodon_url.present?
           %br
           = account.user.mastodon_url

@@ -1810,6 +1810,9 @@ body:not(#tags-new) input[value="Tagger"] {
 .edit_account #account_user_attributes_jabber_id {
   width: 210px;
 }
+.edit_account #account_user_attributes_deltachat_id {
+  width: 210px;
+}
 button.remove {
   padding-bottom: 2px;
 }
