@@ -1,6 +1,6 @@
 #/usr/bin/env sh
 
-set -euo pipefail
+set -eu
 
 mysql -uroot -hlocalhost -p"${MYSQL_ROOT_PASSWORD}" <<EOSQL
   CREATE USER IF NOT EXISTS '${MYSQL_TEST_USER}'@'%' IDENTIFIED BY '${MYSQL_TEST_PASSWORD}';
