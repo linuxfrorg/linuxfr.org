@@ -11,6 +11,12 @@ LABEL org.opencontainers.image.authors="Adrien Dorsaz <adrien@adorsaz.ch>"
 
 ARG UID=1200
 
+RUN printf '%s\n' \
+  'deb [check-valid-until=no] http://archive.debian.org/debian bullseye main' \
+  'deb [check-valid-until=no] http://archive.debian.org/debian bullseye-updates main' \
+  'deb [check-valid-until=no] http://snapshot.debian.org/archive/debian-security/20260903T220410Z bullseye-security main' \
+  > /etc/apt/sources.list
+
 RUN \
   set -eux; \
   IFS=$'\n\t'; \
