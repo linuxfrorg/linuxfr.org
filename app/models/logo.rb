@@ -11,6 +11,14 @@ class Logo
     $redis.get "logo"
   end
 
+  def self.default_image=(img)
+    $redis.set "default_image_logo", img
+  end
+
+  def self.default_image
+    $redis.get "default_image_logo"
+  end
+
   def self.all
     logos = []
     Dir.chdir(Public) do

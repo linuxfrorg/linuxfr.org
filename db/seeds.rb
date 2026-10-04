@@ -1,7 +1,9 @@
 # encoding: UTF-8
 
-# The logo
-Logo.image = '/images/logos/linuxfr2_classic.png'
+# The official, permanent logo, which remains unchanged regardless of the circumstances.
+Logo.default_image = '/images/logos/linuxfr2_classic.png'
+# The logo that changes based on the event or time of year.
+Logo.image = Logo.default_image
 
 # Langs
 Lang['xx'] = '!? hmmm ?!' # default choice
