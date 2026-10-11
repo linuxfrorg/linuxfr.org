@@ -19,6 +19,7 @@
       %li= link_to("Informations personnelles", "#stats_infosperso")
       %li= link_to("Domaines des courriels", "#stats_courriel")
       %li= link_to("Domaines XMPP", "#stats_xmpp")
+      %li= link_to("Domaines Delta Chat", "#stats_deltachat")
       %li= link_to("Domaines Mastodon", "#stats_mastodon")
       %li= link_to("Utilisation des fonctionnalités", "#stats_fonctionnalites")
       %li= link_to("Style (CSS)", "#stats_css")
@@ -207,6 +208,11 @@
         .stat.misc(style="width: #{(width_stats * @stats.filled("jabber_id") / maxval).to_i}px;")= @stats.filled("jabber_id")
       %td #{@stats.pctrecent(@stats.filled("jabber_id"))}
     %tr
+      %td.stat Adresse Delta Chat
+      %td
+        .stat.misc(style="width: #{(width_stats * @stats.filled("deltachat_id") / maxval).to_i}px;")= @stats.filled("deltachat_id")
+      %td #{@stats.pctrecent(@stats.filled("deltachat_id"))}
+    %tr
       %td.stat Adresse Mastodon
       %td
         .stat.misc(style="width: #{(width_stats * @stats.filled("mastodon_url") / maxval).to_i}px;")= @stats.filled("mastodon_url")
@@ -260,6 +266,27 @@
           #{@stats.pctrecent(domain["cnt"])}
         %td
           #{@stats.pctrecent_filled(domain["cnt"],"jabber_id")}
+
+  %h2#stats_deltachat Domaines Delta Chat
+  %p
+    Sur #{pluralize @stats.nb_recently_seen_accounts, "compte utilisé", "comptes utilisés"} sur le site au cours des trois derniers mois :
+  %table
+    - maxval = @stats.nb_recently_seen_accounts
+    %tr
+      %th Domaines à plus de trois comptes
+      %th Nombre de comptes
+      %th Actifs
+      %th Déclarés
+    - @stats.top_deltachat_domains.each do |domain|
+      %tr
+        %td.stat
+          = domain["domain"]
+        %td
+          .stat.misc(style="width: #{(width_stats * domain["cnt"] / maxval).to_i}px;")= domain["cnt"]
+        %td
+          #{@stats.pctrecent(domain["cnt"])}
+        %td
+          #{@stats.pctrecent_filled(domain["cnt"],"deltachat_id")}
 
   %h2#stats_mastodon Domaines Mastodon
   %p

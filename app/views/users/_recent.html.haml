@@ -16,6 +16,8 @@
         %li Site perso : #{@user.homesite}
       - if @user.jabber_id.present?
         %li XMPP : #{@user.jabber_id}
+      - if @user.deltachat_id.present?
+        %li Delta Chat: #{@user.deltachat_id}
       - if @user.mastodon_url.present?
         %li Mastodon : #{@user.mastodon_url}
       - if current_account.admin?

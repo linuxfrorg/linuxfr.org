@@ -51,6 +51,14 @@ module UsersHelper
     link_to("adresse XMPP", "xmpp:" + user.jabber_id)
   end
 
+  def deltachat_link(user)
+    return unless current_account
+    return if user.deltachat_id.blank?
+    karma = user.account.try(:karma).to_i
+    return unless karma > 0
+    link_to("adresse Delta Chat", "mailto:" + user.deltachat_id)
+  end
+
   def mastodon_link(user)
     return if user.mastodon_url.blank?
     karma = user.account.try(:karma).to_i

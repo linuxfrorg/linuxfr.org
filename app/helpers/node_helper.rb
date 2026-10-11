@@ -112,6 +112,7 @@ module NodeHelper
       user_infos << email_link(user)
       user_infos << homesite_link(user)
       user_infos << jabber_link(user)
+      user_infos << deltachat_link(user)
       user_infos << mastodon_link(user)
       user_infos.compact!
       user_link += (" (" + user_infos.join(', ') + ")").html_safe  if user_infos.any?

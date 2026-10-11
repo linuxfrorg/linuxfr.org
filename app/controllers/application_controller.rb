@@ -67,7 +67,7 @@ protected
       :sort_by_date_on_home, :hide_signature, :show_negative_nodes,
       :totoz_style, :totoz_source,
       :board_in_sidebar,
-      user_attributes: [:id, :name, :homesite, :jabber_id, :mastodon_url, :signature, :avatar, :custom_avatar_url]
+      user_attributes: [:id, :name, :homesite, :jabber_id, :deltachat_id, :mastodon_url, :signature, :avatar, :custom_avatar_url]
     ])
   end
 
