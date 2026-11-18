@@ -20,3 +20,35 @@
     = auto_discovery_link_tag :atom, link, { title: title }
   - @links.each do |link,rel|
     %link(rel=rel href=link)
+  - topic = @topic || @title.first
+  %meta{ property: "og:site_name", content: "LinuxFr.org" }
+  %meta{ property: "og:title", content: topic }
+  %meta{ property: "og:description", content: @description }
+  - if @type == "profile"
+    %meta{ property: "og:profile:username", content: @userid }
+    %meta{ property: "og:profile:last_name", content: @author }
+  - url = @url || request.url
+  %meta{ property: "og:url", content: url }
+  - if @userid && @type != "profile"
+    %meta{ property: "article:author", content: "#{request.base_url}/users/#{@userid}" }
+  - image = absolute_image_url(@image)
+  - image_alt = @image_alt || topic
+  - if @image
+    %meta{ property: "og:image", content: image }
+    %meta{ property: "og:image:secure_url", content: image }
+    %meta{ property: "og:image:alt", content: image_alt }
+  %meta{ property: "og:type", content: @type }
+  - if @section
+    %meta{ property: "article:section", content: @section }
+  - if @keywords.present?
+    - @keywords.each do |keyword|
+      %meta{ property: "article:tag", content: keyword }
+  %meta{ name: "twitter:title", content: topic }
+  %meta{ name: "twitter:url", content: url }
+  - if @image
+    - if @image == Logo.default_image
+      %meta{ name: "twitter:card", content: "summary" }
+    - else
+      %meta{ name: "twitter:card", content: "summary_large_image" }
+    %meta{ name: "twitter:image", content: image }
+    %meta{ name: "twitter:image:alt", content: image_alt }

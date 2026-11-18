@@ -81,6 +81,14 @@ protected
     @user = User.find(params[:id])
     raise ActiveRecord::RecordNotFound.new unless @user
     @contents = @user.nodes.visible.by_date.limit(20)
+    @type = "profile"
+    @userid = @user.login
+    @author = @user.name
+    @topic = "#{@user.name} sur LinuxFr.org"
+    @description = "Contributions de #{@user.name} sur LinuxFr.org"
+    @url = user_url(@user)
+    @image = @user.avatar_url
+    @image_alt = "Avatar de #{@user.name}"
   end
 
   def find_nodes(klass)
