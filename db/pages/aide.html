@@ -233,7 +233,7 @@ tribunes) et les rééditer pendant cinq minutes ;</li>
 <li>accéder à ses dépêches en modération ou en rédaction dans son <a href="/tableau-de-bord">tableau de bord</a> ;</li>
 <li>choisir un avatar ;</li>
 <li>publier l’adresse de courriel associée à son compte (sous condition de <a href="#aide-karma">karma</a>) ;</li>
-<li>afficher l’adresse d’un site personnel, une adresse XMPP et/ou une adresse Mastodon (sous condition de <a href="#aide-karma">karma</a>) ;</li>
+<li>afficher l’adresse d’un site personnel, une adresse XMPP, une adresse Delta Chat et/ou une adresse Mastodon (sous condition de <a href="#aide-karma">karma</a>) ;</li>
 <li>choisir quels types de contenus sont affichés en page d’accueil ;</li>
 <li>afficher ou non les signatures ou les avatars ;</li>
 <li>afficher par défaut les contenus notés négativement ;</li>
@@ -574,8 +574,8 @@ publier un lien, discuter sur la tribune, écrire un commentaire, étiqueter,
 etC.).</p>
 
 <p>Pour pouvoir afficher l’adresse de courriel associée à son compte ou
-l’adresse de son site personnel ou de son compte Mastodon ou son adresse
-XMPP, il faut avoir un karma strictement supérieur à 0
+l’adresse de son site personnel ou de son compte Mastodon, son adresse Delta Chat
+ou son adresse XMPP, il faut avoir un karma strictement supérieur à 0
 (<a href="https://github.com/linuxfrorg/linuxfr.org/blob/main/app/helpers/users_helper.rb">source</a>).</p>
 
 <p>Le karma a un effet sur les <a href="#aide-moteursderecherche">indications données aux moteurs de recherche externes</a> et un faible karma conduit à des commentaires et contenus non indexés.</p>
@@ -1095,6 +1095,9 @@ moment tant que le compte est ouvert ;</li>
   <li>une adresse de messagerie instantanée XMPP : la personne utilisant
 le compte peut y associer une telle adresse et peut la modifier à tout
 moment tant que le compte est ouvert ;</li>
+  <li>une adresse de messagerie instantanée Delta Chat: la personne utilisant
+le compte peut y associer une telle adresse et peut la modifier à tout
+moment tant que le compte est ouvert ;</li>
   <li>une adresse de compte Mastodon : la personne utilisant le compte
 peut y associer une telle adresse et peut la modifier à tout moment tant
 que le compte est ouvert ;</li>
@@ -1146,8 +1149,8 @@ d’auteur) ;</li>
       <li>seront supprimées de la base le mot de passe, les dates et
 adresses IP des deux dernières connexions du compte, l’image éventuelle
 d’avatar, les éventuelles adresses de site web personnel, de messagerie
-instantanée XMPP et/ou de compte Mastodon, l’éventuelle feuille de style
-personnelle, l’éventuel choix de publier son adresse de courriel ;</li>
+instantanée XMPP, de messagerie instantanée Delta Chat et/ou de compte Mastodon,
+l’éventuelle feuille de style personnelle, l’éventuel choix de publier son adresse de courriel ;</li>
       <li>seront supprimées les applications utilisant l’API du site
 reliées au compte, ainsi que les accès et tokens reliés à ces
 applications ou au compte.</li>
@@ -1173,7 +1176,7 @@ Anonyme) ;</li>
       <li>seront supprimées de la base active l’adresse de courriel, le
 mot de passe, les dates et adresses IP des deux dernières connexions du
 compte, l’image éventuelle d’avatar, les éventuelles adresses de site
-web personnel, de messagerie instantanée XMPP et/ou de compte Mastodon,
+web personnel, de messagerie instantanée XMPP,  de messagerie instantanée Delta Chat et/ou de compte Mastodon,
 l’éventuelle feuille de style personnelle ;</li>
       <li>seront supprimées les applications utilisant l’API du site
 reliées au compte, ainsi que les accès et tokens reliés à ces

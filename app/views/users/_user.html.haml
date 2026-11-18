@@ -12,6 +12,9 @@
   - if current_account && user.jabber_id.present?
     %p
       Adresse XMPP : #{link_to 'xmpp:' + user.jabber_id, 'xmpp:' + user.jabber_id, class: 'url'}
+  - if current_account && user.deltachat_id.present?
+    %p
+      Adresse Delta Chat: #{link_to 'mailto:' + user.deltachat_id, 'mailto:' + user.deltachat_id, class: 'url'}
   - if current_account && user.mastodon_url.present?
     %p
       Adresse Mastodon : #{link_to 'Mastodon', user.mastodon_url, class: 'url'}

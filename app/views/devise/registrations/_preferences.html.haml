@@ -12,6 +12,10 @@
       %span.prefix xmpp:
       = u.text_field :jabber_id, placeholder: "me@example.net", maxlength: 32
     %p
+      = u.label :deltachat_id, 'Adresse Delta Chat'
+      %span.prefix mailto:
+      = u.text_field :deltachat_id, placeholder: "monchat@example.net", maxlength: 32
+    %p
       = u.label :mastodon_url, 'Adresse du compte Mastodon'
       = u.url_field :mastodon_url, placeholder: "https://mastodon.example/@me", maxlength: 100
     %p.help
