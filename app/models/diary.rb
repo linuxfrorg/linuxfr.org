@@ -52,7 +52,7 @@ class Diary < Content
 ### ACL ###
 
   def creatable_by?(account)
-    account.karma > 0
+    account.karma > Account.default_karma
   end
 
   def updatable_by?(account)
